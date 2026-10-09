@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -81,22 +83,13 @@ export interface AdapterSession {
   /** Identifier. The name of the session. This is always system-assigned. */
   name?: string;
 }
-const AdapterSession = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AdapterSession>;
-
 export interface AdapterProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which the new session is created. */
   parent: string;
   /** Request body */
   body?: AdapterSession;
 }
-const AdapterProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AdapterProjectsInstancesDatabasesSessionsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
-
 /** Message sent by the client to the adapter. */
 export interface AdaptMessageRequest {
   /** Optional. Uninterpreted bytes from the underlying wire protocol. */
@@ -106,19 +99,12 @@ export interface AdaptMessageRequest {
   /** Required. Identifier for the underlying wire protocol. */
   protocol?: string;
 }
-const AdaptMessageRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AdaptMessageRequest>;
-
 export interface AdaptMessageProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database session in which the adapter request is processed. */
   name: string;
   /** Request body */
   body?: AdaptMessageRequest;
 }
-const AdaptMessageProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AdaptMessageProjectsInstancesDatabasesSessionsRequest>;
-
 /** Message sent by the adapter to the client. */
 export interface AdaptMessageResponse {
   /** Optional. Opaque state updates to be applied by the client. */
@@ -128,21 +114,13 @@ export interface AdaptMessageResponse {
   /** Optional. Uninterpreted bytes from the underlying wire protocol. */
   payload?: string;
 }
-const AdaptMessageResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AdaptMessageResponse>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentList>;
-
 /** A split key. */
 export interface Key {
   /** Required. The column values making up the split key. */
   keyParts?: DocumentList;
 }
-const Key = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Key>;
-
 export type KeyList = Array<Key>;
-const KeyList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<KeyList>;
-
 /** The split points of a table or an index. */
 export interface SplitPoints {
   /** Required. The list of split keys. In essence, the split boundaries. */
@@ -154,11 +132,7 @@ export interface SplitPoints {
   /** Optional. The expiration timestamp of the split points. A timestamp in the past means immediate expiration. The maximum value can be 30 days in the future. Defaults to 10 days in the future if not specified. */
   expireTime?: string;
 }
-const SplitPoints = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SplitPoints>;
-
 export type SplitPointsList = Array<SplitPoints>;
-const SplitPointsList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SplitPointsList>;
-
 /** The request for AddSplitPoints. */
 export interface AddSplitPointsRequest {
   /** Required. The split points to add. */
@@ -166,29 +140,14 @@ export interface AddSplitPointsRequest {
   /** Optional. A user-supplied tag associated with the split points. For example, "initial_data_load", "special_event_1". Defaults to "CloudAddSplitPointsAPI" if not specified. The length of the tag must not exceed 50 characters, or else it is trimmed. Only valid UTF8 characters are allowed. */
   initiator?: string;
 }
-const AddSplitPointsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AddSplitPointsRequest>;
-
 export interface AddSplitPointsProjectsInstancesDatabasesRequest {
   /** Required. The database on whose tables or indexes the split points are to be added. Values are of the form `projects//instances//databases/`. */
   database: string;
   /** Request body */
   body?: AddSplitPointsRequest;
 }
-const AddSplitPointsProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddSplitPointsProjectsInstancesDatabasesRequest>;
-
 /** The response for AddSplitPoints. */
 export interface AddSplitPointsResponse {}
-const AddSplitPointsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AddSplitPointsResponse>;
-
 /** A session in the Cloud Spanner API. */
 export interface Session {
   /** The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels. */
@@ -204,8 +163,6 @@ export interface Session {
   /** Output only. The timestamp when the session is created. */
   createTime?: string;
 }
-const Session = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Session>;
-
 /** The request for BatchCreateSessions. */
 export interface BatchCreateSessionsRequest {
   /** Parameters to apply to each created session. */
@@ -213,52 +170,29 @@ export interface BatchCreateSessionsRequest {
   /** Required. The number of sessions to be created in this batch call. At least one session is created. The API can return fewer than the requested number of sessions. If a specific number of sessions are desired, the client can make additional calls to `BatchCreateSessions` (adjusting session_count as necessary). */
   sessionCount?: number;
 }
-const BatchCreateSessionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BatchCreateSessionsRequest>;
-
 export interface BatchCreateProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which the new sessions are created. */
   database: string;
   /** Request body */
   body?: BatchCreateSessionsRequest;
 }
-const BatchCreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
-
 export type SessionList = Array<Session>;
-const SessionList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SessionList>;
-
 /** The response for BatchCreateSessions. */
 export interface BatchCreateSessionsResponse {
   /** The freshly created sessions. */
   session?: SessionList;
 }
-const BatchCreateSessionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchCreateSessionsResponse>;
-
 export type RequestOptionsPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
   | "PRIORITY_HIGH";
-const RequestOptionsPriorityEnum = S.String;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DocumentMap>;
-
 /** Container for various pieces of client-owned context attached to a request. */
 export interface ClientContext {
   /** Optional. Map of parameter name to value for this request. These values will be returned by any SECURE_CONTEXT() calls invoked by this request (e.g., by queries against Parameterized Secure Views). */
   secureContext?: DocumentMap;
 }
-const ClientContext = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ClientContext>;
-
 /** Common request options for various APIs. */
 export interface RequestOptions {
   /** A tag used for statistics collection about this transaction. Both `request_tag` and `transaction_tag` can be specified for a read or query that belongs to a transaction. To enable tagging on a transaction, `transaction_tag` must be set to the same value for all requests belonging to the same transaction, including BeginTransaction. If this request doesn't belong to any transaction, `transaction_tag` is ignored. Legal characters for `transaction_tag` values are all printable characters (ASCII 32 - 126) and the length of a `transaction_tag` is limited to 50 characters. Values that exceed this limit are truncated. Any leading underscore (_) characters are removed from the string. */
@@ -270,14 +204,8 @@ export interface RequestOptions {
   /** Optional. Optional context that may be needed for some requests. */
   clientContext?: ClientContext;
 }
-const RequestOptions = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RequestOptions>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StringList>;
-
 export type DocumentListList = Array<DocumentList>;
-const DocumentListList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DocumentListList>;
-
 /** Arguments to insert, update, insert_or_update, and replace operations. */
 export interface Write {
   /** The names of the columns in table to be written. The list of columns must contain enough columns to allow Cloud Spanner to derive values for all primary key columns in the row(s) to be modified. */
@@ -287,8 +215,6 @@ export interface Write {
   /** The values to be written. `values` can contain more than one list of values. If it does, then multiple rows are written, one for each entry in `values`. Each list in `values` must have exactly as many entries as there are entries in columns above. Sending multiple lists is equivalent to sending multiple `Mutation`s, each containing one `values` entry and repeating table and columns. Individual values in each list are encoded as described here. */
   values?: DocumentListList;
 }
-const Write = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Write>;
-
 /** Arguments to ack operations. */
 export interface Ack {
   /** By default, an attempt to ack a message that does not exist will fail with a `NOT_FOUND` error. With `ignore_not_found` set to true, the ack will succeed even if the message does not exist. This is useful for unconditionally acking a message, even if it is missing or has already been acked. */
@@ -298,8 +224,6 @@ export interface Ack {
   /** Required. The queue where the message to be acked is stored. */
   queue?: string;
 }
-const Ack = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Ack>;
-
 /** Arguments to send operations. */
 export interface Send {
   /** Required. The queue to which the message will be sent. */
@@ -311,8 +235,6 @@ export interface Send {
   /** The payload of the message. */
   payload?: unknown;
 }
-const Send = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Send>;
-
 /** KeyRange represents a range of rows in a table or index. A range has a start key and an end key. These keys can be open or closed, indicating if the range includes rows with that key. Keys are represented by lists, where the ith value in the list corresponds to the ith component of the table or index primary key. Individual values are encoded as described here. For example, consider the following table definition: CREATE TABLE UserEvents ( UserName STRING(MAX), EventDate STRING(10) ) PRIMARY KEY(UserName, EventDate); The following keys name rows in this table: "Bob", "2014-09-23" Since the `UserEvents` table's `PRIMARY KEY` clause names two columns, each `UserEvents` key has two elements; the first is the `UserName`, and the second is the `EventDate`. Key ranges with multiple components are interpreted lexicographically by component using the table or index key's declared sort order. For example, the following range returns all events for user `"Bob"` that occurred in the year 2015: "start_closed": ["Bob", "2015-01-01"] "end_closed": ["Bob", "2015-12-31"] Start and end keys can omit trailing key components. This affects the inclusion and exclusion of rows that exactly match the provided key components: if the key is closed, then rows that exactly match the provided components are included; if the key is open, then rows that exactly match are not included. For example, the following range includes all events for `"Bob"` that occurred during and after the year 2000: "start_closed": ["Bob", "2000-01-01"] "end_closed": ["Bob"] The next example retrieves all events for `"Bob"`: "start_closed": ["Bob"] "end_closed": ["Bob"] To retrieve events before the year 2000: "start_closed": ["Bob"] "end_open": ["Bob", "2000-01-01"] The following range includes all rows in the table: "start_closed": [] "end_closed": [] This range returns all users whose `UserName` begins with any character from A to C: "start_closed": ["A"] "end_open": ["D"] This range returns all users whose `UserName` begins with B: "start_closed": ["B"] "end_open": ["C"] Key ranges honor column sort order. For example, suppose a table is defined as follows: CREATE TABLE DescendingSortedTable { Key INT64, ... ) PRIMARY KEY(Key DESC); The following range retrieves all rows with key values between 1 and 100 inclusive: "start_closed": ["100"] "end_closed": ["1"] Note that 100 is passed as the start, and 1 is passed as the end, because `Key` is a descending column in the schema. */
 export interface KeyRange {
   /** If the end is open, then the range excludes rows whose first `len(end_open)` key columns exactly match `end_open`. */
@@ -324,11 +246,7 @@ export interface KeyRange {
   /** If the start is open, then the range excludes rows whose first `len(start_open)` key columns exactly match `start_open`. */
   startOpen?: DocumentList;
 }
-const KeyRange = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<KeyRange>;
-
 export type KeyRangeList = Array<KeyRange>;
-const KeyRangeList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<KeyRangeList>;
-
 /** `KeySet` defines a collection of Cloud Spanner keys and/or key ranges. All the keys are expected to be in the same table or index. The keys need not be sorted in any particular way. If the same key is specified multiple times in the set (for example if two ranges, two keys, or a key and a range overlap), Cloud Spanner behaves as if the key were only specified once. */
 export interface KeySet {
   /** For convenience `all` can be set to `true` to indicate that this `KeySet` matches all keys in the table or index. Note that any keys specified in `keys` or `ranges` are only yielded once. */
@@ -338,8 +256,6 @@ export interface KeySet {
   /** A list of specific keys. Entries in `keys` should have exactly as many elements as there are columns in the primary or index key with which this `KeySet` is used. Individual key values are encoded as described here. */
   keys?: DocumentListList;
 }
-const KeySet = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<KeySet>;
-
 /** Arguments to delete operations. */
 export interface Delete {
   /** Required. The primary keys of the rows within table to delete. The primary keys must be specified in the order in which they appear in the `PRIMARY KEY()` clause of the table's equivalent DDL statement (the DDL statement used to create the table). Delete is idempotent. The transaction will succeed even if some or all rows do not exist. */
@@ -347,8 +263,6 @@ export interface Delete {
   /** Required. The table whose rows will be deleted. */
   table?: string;
 }
-const Delete = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Delete>;
-
 /** A modification to one or more Cloud Spanner rows. Mutations can be applied to a Cloud Spanner database by sending them in a Commit call. */
 export interface Mutation {
   /** Like insert, except that if the row already exists, then its column values are overwritten with the ones provided. Any column values not explicitly written are preserved. When using insert_or_update, just as when using insert, all `NOT NULL` columns in the table must be given a value. This holds true even when the row already exists and will therefore actually be updated. */
@@ -366,21 +280,13 @@ export interface Mutation {
   /** Delete rows from a table. Succeeds whether or not the named rows were present. */
   delete?: Delete;
 }
-const Mutation = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Mutation>;
-
 export type MutationList = Array<Mutation>;
-const MutationList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MutationList>;
-
 /** A group of mutations to be committed together. Related mutations should be placed in a group. For example, two mutations inserting rows with the same primary key prefix in both parent and child tables are related. */
 export interface MutationGroup {
   /** Required. The mutations in this group. */
   mutations?: MutationList;
 }
-const MutationGroup = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<MutationGroup>;
-
 export type MutationGroupList = Array<MutationGroup>;
-const MutationGroupList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<MutationGroupList>;
-
 /** The request for BatchWrite. */
 export interface BatchWriteRequest {
   /** Optional. If you don't set the `exclude_txn_from_change_streams` option or if it's set to `false`, then any change streams monitoring columns modified by transactions will capture the updates made within that transaction. */
@@ -390,22 +296,13 @@ export interface BatchWriteRequest {
   /** Required. The groups of mutations to be applied. */
   mutationGroups?: MutationGroupList;
 }
-const BatchWriteRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<BatchWriteRequest>;
-
 export interface BatchWriteProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the batch request is to be run. */
   session: string;
   /** Request body */
   body?: BatchWriteRequest;
 }
-const BatchWriteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -415,11 +312,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Status>;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<IntegerList>;
-
 /** The result of applying a batch of mutations. */
 export interface BatchWriteResponse {
   /** The commit timestamp of the transaction that applied this batch. Present if status is OK and the mutation groups were applied, absent otherwise. For mutation groups with conditions, a status=OK and missing commit_timestamp means that the mutation groups were not applied due to the condition not being satisfied after evaluation. */
@@ -429,18 +322,12 @@ export interface BatchWriteResponse {
   /** The mutation groups applied in this batch. The values index into the `mutation_groups` field in the corresponding `BatchWriteRequest`. */
   indexes?: IntegerList;
 }
-const BatchWriteResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<BatchWriteResponse>;
-
 export type TransactionOptionsIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
   | "REPEATABLE_READ";
-const TransactionOptionsIsolationLevelEnum = S.String;
-
 /** Message type to initiate a Partitioned DML transaction. */
 export interface PartitionedDml {}
-const PartitionedDml = AddSplitPointsResponse as any as S.Schema<PartitionedDml>;
-
 /** Message type to initiate a read-only transaction. */
 export interface ReadOnly {
   /** Read at a timestamp where all previously committed transactions are visible. */
@@ -456,11 +343,7 @@ export interface ReadOnly {
   /** If true, the Cloud Spanner-selected read timestamp is included in the Transaction message that describes the transaction. */
   returnReadTimestamp?: boolean;
 }
-const ReadOnly = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ReadOnly>;
-
 export type ReadWriteReadLockModeEnum = "READ_LOCK_MODE_UNSPECIFIED" | "PESSIMISTIC" | "OPTIMISTIC";
-const ReadWriteReadLockModeEnum = S.String;
-
 /** Message type to initiate a read-write transaction. Currently this transaction type has no options. */
 export interface ReadWrite {
   /** The read lock mode for the transaction. */
@@ -468,8 +351,6 @@ export interface ReadWrite {
   /** Optional. Clients should pass the transaction ID of the previous transaction attempt that was aborted if this transaction is being executed on a multiplexed session. */
   multiplexedSessionPreviousTransactionId?: string;
 }
-const ReadWrite = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ReadWrite>;
-
 /** Options to use for transactions. */
 export interface TransactionOptions {
   /** Isolation level for the transaction. */
@@ -483,8 +364,6 @@ export interface TransactionOptions {
   /** Transaction may write. Authorization to begin a read-write transaction requires `spanner.databases.beginOrRollbackReadWriteTransaction` permission on the `session` resource. */
   readWrite?: ReadWrite;
 }
-const TransactionOptions = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<TransactionOptions>;
-
 /** The request for BeginTransaction. */
 export interface BeginTransactionRequest {
   /** Required. Options for the new transaction. */
@@ -494,22 +373,12 @@ export interface BeginTransactionRequest {
   /** Optional. Required for read-write transactions on a multiplexed session that commit mutations but don't perform any reads or queries. You must randomly select one of the mutations from the mutation set and send it as a part of this request. */
   mutationKey?: Mutation;
 }
-const BeginTransactionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<BeginTransactionRequest>;
-
 export interface BeginTransactionProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the transaction runs. */
   session: string;
   /** Request body */
   body?: BeginTransactionRequest;
 }
-const BeginTransactionProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<BeginTransactionProjectsInstancesDatabasesSessionsRequest>;
-
 /** When a read-write transaction is executed on a multiplexed session, this precommit token is sent back to the client as a part of the Transaction message in the BeginTransaction response and also as a part of the ResultSet and PartialResultSet responses. */
 export interface MultiplexedSessionPrecommitToken {
   /** An incrementing seq number is generated on every precommit token that is returned. Clients should remember the precommit token with the highest sequence number from the current transaction attempt. */
@@ -517,11 +386,6 @@ export interface MultiplexedSessionPrecommitToken {
   /** Opaque precommit token. */
   precommitToken?: string;
 }
-const MultiplexedSessionPrecommitToken = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<MultiplexedSessionPrecommitToken>;
-
 /** A transaction. */
 export interface Transaction {
   /** `id` may be used to identify the transaction in subsequent Read, ExecuteSql, Commit, or Rollback calls. Single-use read-only transactions do not have IDs, because single-use transactions do not support multiple requests. */
@@ -531,66 +395,32 @@ export interface Transaction {
   /** For snapshot read-only transactions, the read timestamp chosen for the transaction. Not returned by default: see TransactionOptions.ReadOnly.return_read_timestamp. A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds. Example: `"2014-10-02T15:01:23.045123456Z"`. */
   readTimestamp?: string;
 }
-const Transaction = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Transaction>;
-
 export interface CancelProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CancelProjectsInstanceConfigsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = AddSplitPointsResponse as any as S.Schema<Empty>;
-
 export interface CancelProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CancelProjectsInstanceConfigsSsdCachesOperationsRequest>;
-
 export interface CancelProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CancelProjectsInstancesBackupsOperationsRequest>;
-
 export interface CancelProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CancelProjectsInstancesDatabasesOperationsRequest>;
-
 export interface CancelProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CancelProjectsInstancesInstancePartitionsOperationsRequest>;
-
 export interface CancelProjectsInstancesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsInstancesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CancelProjectsInstancesOperationsRequest>;
-
 /** Message type for a dual-region quorum. Currently this type has no options. */
 export type DualRegionQuorum = PartitionedDml;
 /** Message type for a single-region quorum. */
@@ -598,8 +428,6 @@ export interface SingleRegionQuorum {
   /** Required. The location of the serving region, for example, "us-central1". The location must be one of the regions within the dual-region instance configuration of your database. The list of valid locations is available using the GetInstanceConfig API. This should only be used if you plan to change quorum to the single-region quorum type. */
   servingLocation?: string;
 }
-const SingleRegionQuorum = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<SingleRegionQuorum>;
-
 /** Information about the database quorum type. This only applies to dual-region instance configs. */
 export interface QuorumType {
   /** Dual-region quorum type. */
@@ -607,8 +435,6 @@ export interface QuorumType {
   /** Single-region quorum type. */
   singleRegion?: SingleRegionQuorum;
 }
-const QuorumType = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<QuorumType>;
-
 /** The request for ChangeQuorum. */
 export interface ChangeQuorumRequest {
   /** Optional. The etag is the hash of the `QuorumInfo`. The `ChangeQuorum` operation is only performed if the etag matches that of the `QuorumInfo` in the current database resource. Otherwise the API returns an `ABORTED` error. The etag is used for optimistic concurrency control as a way to help prevent simultaneous change quorum requests that could create a race condition. */
@@ -618,19 +444,12 @@ export interface ChangeQuorumRequest {
   /** Required. The type of this quorum. */
   quorumType?: QuorumType;
 }
-const ChangeQuorumRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ChangeQuorumRequest>;
-
 export interface ChangequorumProjectsInstancesDatabasesRequest {
   /** Required. Name of the database in which to apply `ChangeQuorum`. Values are of the form `projects//instances//databases/`. */
   name: string;
   /** Request body */
   body?: ChangeQuorumRequest;
 }
-const ChangequorumProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ChangequorumProjectsInstancesDatabasesRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -644,8 +463,6 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Operation>;
-
 /** The request for Commit. */
 export interface CommitRequest {
   /** Optional. The amount of latency this request is configured to incur in order to improve throughput. If this field isn't set, Spanner assumes requests are relatively latency sensitive and automatically determines an appropriate delay time. You can specify a commit delay value between 0 and 500 ms. */
@@ -663,38 +480,25 @@ export interface CommitRequest {
   /** The mutations to be executed when this transaction commits. All mutations are applied atomically, in the order they appear in this list. */
   mutations?: MutationList;
 }
-const CommitRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CommitRequest>;
-
 export interface CommitProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the transaction to be committed is running. */
   session: string;
   /** Request body */
   body?: CommitRequest;
 }
-const CommitProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CommitProjectsInstancesDatabasesSessionsRequest>;
-
 /** Additional statistics about a commit. */
 export interface CommitStats {
   /** The total number of mutations for the transaction. Knowing the `mutation_count` value can help you maximize the number of mutations in a transaction and minimize the number of API round trips. You can also monitor this value to prevent transactions from exceeding the system [limit](https://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data). If the number of mutations exceeds the limit, the server returns [INVALID_ARGUMENT](https://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT). */
   mutationCount?: string;
 }
-const CommitStats = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CommitStats>;
-
 export type CommitResponseIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
   | "REPEATABLE_READ";
-const CommitResponseIsolationLevelEnum = S.String;
-
 export type CommitResponseReadLockModeEnum =
   | "READ_LOCK_MODE_UNSPECIFIED"
   | "PESSIMISTIC"
   | "OPTIMISTIC";
-const CommitResponseReadLockModeEnum = S.String;
-
 /** The response for Commit. */
 export interface CommitResponse {
   /** The Cloud Spanner timestamp at which the transaction committed. */
@@ -710,15 +514,11 @@ export interface CommitResponse {
   /** The read lock mode used for the read-write transaction. */
   readLockMode?: CommitResponseReadLockModeEnum;
 }
-const CommitResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CommitResponse>;
-
 export type CopyBackupEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-const CopyBackupEncryptionConfigEncryptionTypeEnum = S.String;
-
 /** Encryption configuration for the copied backup. */
 export interface CopyBackupEncryptionConfig {
   /** Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. KMS keys specified can be in any order. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
@@ -728,11 +528,6 @@ export interface CopyBackupEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. */
   kmsKeyName?: string;
 }
-const CopyBackupEncryptionConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CopyBackupEncryptionConfig>;
-
 /** The request for CopyBackup. */
 export interface CopyBackupRequest {
   /** Required. The expiration time of the backup in microsecond granularity. The expiration time must be at least 6 hours and at most 366 days from the `create_time` of the source backup. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup. */
@@ -744,30 +539,19 @@ export interface CopyBackupRequest {
   /** Required. The source backup to be copied. The source backup needs to be in READY state for it to be copied. Once CopyBackup is in progress, the source backup cannot be deleted or cleaned up on expiration until CopyBackup is finished. Values are of the form: `projects/{project}/instances/{instance}/backups/{backup}`. */
   sourceBackup?: string;
 }
-const CopyBackupRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<CopyBackupRequest>;
-
 export interface CopyProjectsInstancesBackupsRequest {
   /** Required. The name of the destination instance that will contain the backup copy. Values are of the form: `projects/{project}/instances/{instance}`. */
   parent: string;
   /** Request body */
   body?: CopyBackupRequest;
 }
-const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CopyProjectsInstancesBackupsRequest>;
-
 export type InstanceConfigFreeInstanceAvailabilityEnum =
   | "FREE_INSTANCE_AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
   | "UNSUPPORTED"
   | "DISABLED"
   | "QUOTA_EXCEEDED";
-const InstanceConfigFreeInstanceAvailabilityEnum = S.String;
-
 export type ReplicaInfoTypeEnum = "TYPE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY" | "WITNESS";
-const ReplicaInfoTypeEnum = S.String;
-
 export interface ReplicaInfo {
   /** If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details. */
   defaultLeaderLocation?: boolean;
@@ -776,24 +560,14 @@ export interface ReplicaInfo {
   /** The location of the serving resources, e.g., "us-central1". */
   location?: string;
 }
-const ReplicaInfo = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ReplicaInfo>;
-
 export type ReplicaInfoList = Array<ReplicaInfo>;
-const ReplicaInfoList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ReplicaInfoList>;
-
 export type InstanceConfigStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-const InstanceConfigStateEnum = S.String;
-
 export type InstanceConfigQuorumTypeEnum =
   | "QUORUM_TYPE_UNSPECIFIED"
   | "REGION"
   | "DUAL_REGION"
   | "MULTI_REGION";
-const InstanceConfigQuorumTypeEnum = S.String;
-
 export type InstanceConfigConfigTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_MANAGED" | "USER_MANAGED";
-const InstanceConfigConfigTypeEnum = S.String;
-
 /** A possible configuration for a Cloud Spanner instance. Configurations define the geographic placement of nodes and their replication. */
 export interface InstanceConfig {
   /** A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`. User instance configuration must start with `custom-`. */
@@ -825,8 +599,6 @@ export interface InstanceConfig {
   /** Output only. Whether this instance configuration is a Google-managed or user-managed configuration. */
   configType?: InstanceConfigConfigTypeEnum | (string & {});
 }
-const InstanceConfig = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<InstanceConfig>;
-
 /** The request for CreateInstanceConfig. */
 export interface CreateInstanceConfigRequest {
   /** Required. The ID of the instance configuration to create. Valid identifiers are of the form `custom-[-a-z0-9]*[a-z0-9]` and must be between 2 and 64 characters in length. The `custom-` prefix is required to avoid name conflicts with Google-managed configurations. */
@@ -836,35 +608,21 @@ export interface CreateInstanceConfigRequest {
   /** An option to validate, but not actually execute, a request, and provide the same response. */
   validateOnly?: boolean;
 }
-const CreateInstanceConfigRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateInstanceConfigRequest>;
-
 export interface CreateProjectsInstanceConfigsRequest {
   /** Required. The name of the project in which to create the instance configuration. Values are of the form `projects/`. */
   parent: string;
   /** Request body */
   body?: CreateInstanceConfigRequest;
 }
-const CreateProjectsInstanceConfigsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateProjectsInstanceConfigsRequest>;
-
 export type InstanceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
-const InstanceEditionEnum = S.String;
-
 export type FreeInstanceMetadataExpireBehaviorEnum =
   | "EXPIRE_BEHAVIOR_UNSPECIFIED"
   | "FREE_TO_PROVISIONED"
   | "REMOVE_AFTER_GRACE_PERIOD";
-const FreeInstanceMetadataExpireBehaviorEnum = S.String;
-
 /** Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes. */
 export interface FreeInstanceMetadata {
   /** Output only. Timestamp after which the instance will either be upgraded or scheduled for deletion after a grace period. ExpireBehavior is used to choose between upgrading or scheduling the free instance for deletion. This timestamp is set during the creation of a free instance. */
@@ -874,24 +632,15 @@ export interface FreeInstanceMetadata {
   /** Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration. */
   expireBehavior?: FreeInstanceMetadataExpireBehaviorEnum | (string & {});
 }
-const FreeInstanceMetadata = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<FreeInstanceMetadata>;
-
 export type InstanceDefaultBackupScheduleTypeEnum =
   | "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED"
   | "NONE"
   | "AUTOMATIC";
-const InstanceDefaultBackupScheduleTypeEnum = S.String;
-
 /** ReplicaSelection identifies replicas with common properties. */
 export interface InstanceReplicaSelection {
   /** Required. Name of the location of the replicas (for example, "us-central1"). */
   location?: string;
 }
-const InstanceReplicaSelection = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<InstanceReplicaSelection>;
-
 /** ReplicaComputeCapacity describes the amount of server resources that are allocated to each replica identified by the replica selection. */
 export interface ReplicaComputeCapacity {
   /** The number of nodes allocated to each replica. This may be zero in API responses for instances that are not yet in state `READY`. */
@@ -901,20 +650,8 @@ export interface ReplicaComputeCapacity {
   /** Required. Identifies replicas by specified properties. All replicas in the selection have the same amount of compute capacity. */
   replicaSelection?: InstanceReplicaSelection;
 }
-const ReplicaComputeCapacity = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ReplicaComputeCapacity>;
-
 export type ReplicaComputeCapacityList = Array<ReplicaComputeCapacity>;
-const ReplicaComputeCapacityList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ReplicaComputeCapacityList>;
-
 export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-const InstanceStateEnum = S.String;
-
 /** The autoscaling limits for the instance. Users can define the minimum and maximum compute capacity allocated to the instance, and the autoscaler will only scale within that range. Users can either use nodes or processing units to specify the limits, but should use the same unit to set both the min_limit and max_limit. */
 export interface AutoscalingLimits {
   /** Maximum number of nodes allocated to the instance. If set, this number should be greater than or equal to min_nodes. */
@@ -926,8 +663,6 @@ export interface AutoscalingLimits {
   /** Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units. */
   maxProcessingUnits?: number;
 }
-const AutoscalingLimits = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AutoscalingLimits>;
-
 /** Overrides the top-level autoscaling configuration for the replicas identified by `replica_selection`. All fields in this message are optional. Any unspecified fields will use the corresponding values from the top-level autoscaling configuration. */
 export interface AutoscalingConfigOverrides {
   /** Optional. If specified, overrides the min/max limit in the top-level autoscaling configuration for the selected replicas. */
@@ -941,11 +676,6 @@ export interface AutoscalingConfigOverrides {
   /** Optional. If true, disables high priority CPU autoscaling for the selected replicas and ignores high_priority_cpu_utilization_percent in the top-level autoscaling configuration. When setting this field to true, setting autoscaling_target_high_priority_cpu_utilization_percent field to a non-zero value for the same replica is not supported. If false, the autoscaling_target_high_priority_cpu_utilization_percent field in the replica will be used if set to a non-zero value. Otherwise, the high_priority_cpu_utilization_percent field in the top-level autoscaling configuration will be used. Setting both disable_high_priority_cpu_autoscaling and disable_total_cpu_autoscaling to true for the same replica is not supported. */
   disableHighPriorityCpuAutoscaling?: boolean;
 }
-const AutoscalingConfigOverrides = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<AutoscalingConfigOverrides>;
-
 /** AsymmetricAutoscalingOption specifies the scaling of replicas identified by the given selection. */
 export interface AsymmetricAutoscalingOption {
   /** Required. Selects the replicas to which this AsymmetricAutoscalingOption applies. Only read-only replicas are supported. */
@@ -953,17 +683,7 @@ export interface AsymmetricAutoscalingOption {
   /** Optional. Overrides applied to the top-level autoscaling configuration for the selected replicas. */
   overrides?: AutoscalingConfigOverrides;
 }
-const AsymmetricAutoscalingOption = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<AsymmetricAutoscalingOption>;
-
 export type AsymmetricAutoscalingOptionList = Array<AsymmetricAutoscalingOption>;
-const AsymmetricAutoscalingOptionList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<AsymmetricAutoscalingOptionList>;
-
 /** The autoscaling targets for an instance. */
 export interface AutoscalingTargets {
   /** Optional. The target total CPU utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive. If not specified or set to 0, the autoscaler skips scaling based on total CPU utilization. If both `high_priority_cpu_utilization_percent` and `total_cpu_utilization_percent` are specified, the autoscaler provisions the larger of the two required compute capacities to satisfy both targets. */
@@ -973,8 +693,6 @@ export interface AutoscalingTargets {
   /** Optional. The target high priority cpu utilization percentage that the autoscaler should be trying to achieve for the instance. This number is on a scale from 0 (no utilization) to 100 (full utilization). The valid range is [10, 90] inclusive. If not specified or set to 0, the autoscaler skips scaling based on high priority CPU utilization. */
   highPriorityCpuUtilizationPercent?: number;
 }
-const AutoscalingTargets = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<AutoscalingTargets>;
-
 /** Autoscaling configuration for an instance. */
 export interface AutoscalingConfig {
   /** Optional. Optional asymmetric autoscaling options. Replicas matching the replica selection criteria will be autoscaled independently from other replicas. The autoscaler will scale the replicas based on the utilization of replicas identified by the replica selection. Replica selections should not overlap with each other. Other replicas (those do not match any replica selection) will be autoscaled together and will have the same compute capacity allocated to them. */
@@ -984,14 +702,10 @@ export interface AutoscalingConfig {
   /** Required. Autoscaling limits for an instance. */
   autoscalingLimits?: AutoscalingLimits;
 }
-const AutoscalingConfig = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<AutoscalingConfig>;
-
 export type InstanceInstanceTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
   | "PROVISIONED"
   | "FREE_INSTANCE";
-const InstanceInstanceTypeEnum = S.String;
-
 /** An isolated set of Cloud Spanner resources on which databases can be hosted. */
 export interface Instance {
   /** Output only. The time at which the instance was most recently updated. */
@@ -1027,8 +741,6 @@ export interface Instance {
   /** The `InstanceType` of the current instance. */
   instanceType?: InstanceInstanceTypeEnum | (string & {});
 }
-const Instance = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Instance>;
-
 /** The request for CreateInstance. */
 export interface CreateInstanceRequest {
   /** Required. The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length. */
@@ -1036,35 +748,21 @@ export interface CreateInstanceRequest {
   /** Required. The instance to create. The name may be omitted, but if specified must be `/instances/`. */
   instance?: Instance;
 }
-const CreateInstanceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateInstanceRequest>;
-
 export interface CreateProjectsInstancesRequest {
   /** Required. The name of the project in which to create the instance. Values are of the form `projects/`. */
   parent: string;
   /** Request body */
   body?: CreateInstanceRequest;
 }
-const CreateProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateProjectsInstancesRequest>;
-
 export type CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum = S.String;
-
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-const EncryptionInfoEncryptionTypeEnum = S.String;
-
 /** Encryption information for a Cloud Spanner database or backup. */
 export interface EncryptionInfo {
   /** Output only. The type of encryption. */
@@ -1074,43 +772,23 @@ export interface EncryptionInfo {
   /** Output only. If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest. */
   encryptionStatus?: Status;
 }
-const EncryptionInfo = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<EncryptionInfo>;
-
 export type EncryptionInfoList = Array<EncryptionInfo>;
-const EncryptionInfoList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<EncryptionInfoList>;
-
 export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-const BackupStateEnum = S.String;
-
 export type BackupMinimumRestorableEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
-const BackupMinimumRestorableEditionEnum = S.String;
-
 export type BackupDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
   | "POSTGRESQL";
-const BackupDatabaseDialectEnum = S.String;
-
 /** Instance partition information for the backup. */
 export interface BackupInstancePartition {
   /** A unique identifier for the instance partition. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition_id}` */
   instancePartition?: string;
 }
-const BackupInstancePartition = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<BackupInstancePartition>;
-
 export type BackupInstancePartitionList = Array<BackupInstancePartition>;
-const BackupInstancePartitionList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<BackupInstancePartitionList>;
-
 /** A backup of a Cloud Spanner database. */
 export interface Backup {
   /** Output only. Data deleted at a time older than this is guaranteed not to be retained in order to support this backup. For a backup in an incremental backup chain, this is the version time of the oldest backup that exists or ever existed in the chain. For all other backups, this is the version time of the backup. This field can be used to understand what data is being retained by the backup system. */
@@ -1154,8 +832,6 @@ export interface Backup {
   /** Output only. Populated only for backups in an incremental backup chain. Backups share the same chain id if and only if they belong to the same incremental backup chain. Use this field to determine which backups are part of the same incremental backup chain. The ordering of backups in the chain can be determined by ordering the backup `version_time`. */
   incrementalBackupChainId?: string;
 }
-const Backup = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Backup>;
-
 export interface CreateProjectsInstancesBackupsRequest {
   /** Required. The name of the instance in which the backup is created. This must be the same instance that contains the database the backup is created from. The backup will be stored in the locations specified in the instance configuration of this instance. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
@@ -1172,11 +848,6 @@ export interface CreateProjectsInstancesBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-const CreateProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateProjectsInstancesBackupsRequest>;
-
 /** Encryption configuration for a Cloud Spanner database. */
 export interface EncryptionConfig {
   /** The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
@@ -1184,14 +855,10 @@ export interface EncryptionConfig {
   /** Specifies the KMS configuration for one or more keys used to encrypt the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
   kmsKeyNames?: StringList;
 }
-const EncryptionConfig = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<EncryptionConfig>;
-
 export type CreateDatabaseRequestDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
   | "POSTGRESQL";
-const CreateDatabaseRequestDatabaseDialectEnum = S.String;
-
 /** The request for CreateDatabase. */
 export interface CreateDatabaseRequest {
   /** Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption. */
@@ -1205,22 +872,12 @@ export interface CreateDatabaseRequest {
   /** Optional. The dialect of the Cloud Spanner Database. */
   databaseDialect?: CreateDatabaseRequestDatabaseDialectEnum | (string & {});
 }
-const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateDatabaseRequest>;
-
 export interface CreateProjectsInstancesDatabasesRequest {
   /** Required. The name of the instance that will serve the new database. Values are of the form `projects//instances/`. */
   parent: string;
   /** Request body */
   body?: CreateDatabaseRequest;
 }
-const CreateProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateProjectsInstancesDatabasesRequest>;
-
 /** The specification for incremental backup chains. An incremental backup stores the delta of changes between a previous backup and the database contents at a given version time. An incremental backup chain consists of a full backup and zero or more successive incremental backups. The first backup created for an incremental backup chain is always a full backup. */
 export type IncrementalBackupSpec = PartitionedDml;
 /** CrontabSpec can be used to specify the version time and frequency at which the backup is created. */
@@ -1232,22 +889,16 @@ export interface CrontabSpec {
   /** Output only. Scheduled backups contain an externally consistent copy of the database at the version time specified in `schedule_spec.cron_spec`. However, Spanner might not initiate the creation of the scheduled backups at that version time. Spanner initiates the creation of scheduled backups within the time window bounded by the version_time specified in `schedule_spec.cron_spec` and version_time + `creation_window`. */
   creationWindow?: string;
 }
-const CrontabSpec = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CrontabSpec>;
-
 /** Defines specifications of the backup schedule. */
 export interface BackupScheduleSpec {
   /** Cron style schedule specification. */
   cronSpec?: CrontabSpec;
 }
-const BackupScheduleSpec = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<BackupScheduleSpec>;
-
 export type CreateBackupEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-const CreateBackupEncryptionConfigEncryptionTypeEnum = S.String;
-
 /** Encryption configuration for the backup to create. */
 export interface CreateBackupEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{kms_key_name}`. */
@@ -1257,11 +908,6 @@ export interface CreateBackupEncryptionConfig {
   /** Required. The encryption type of the backup. */
   encryptionType?: CreateBackupEncryptionConfigEncryptionTypeEnum | (string & {});
 }
-const CreateBackupEncryptionConfig = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateBackupEncryptionConfig>;
-
 /** The specification for full backups. A full backup stores the entire contents of the database at a given version time. */
 export type FullBackupSpec = PartitionedDml;
 /** BackupSchedule expresses the automated backup creation specification for a Spanner database. */
@@ -1281,8 +927,6 @@ export interface BackupSchedule {
   /** Identifier. Output only for the CreateBackupSchedule operation. Required for the UpdateBackupSchedule operation. A globally unique identifier for the backup schedule which cannot be changed. Values are of the form `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. */
   name?: string;
 }
-const BackupSchedule = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<BackupSchedule>;
-
 export interface CreateProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The Id to use for the backup schedule. The `backup_schedule_id` appended to `parent` forms the full backup schedule name of the form `projects//instances//databases//backupSchedules/`. */
   backupScheduleId?: string;
@@ -1291,35 +935,18 @@ export interface CreateProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: BackupSchedule;
 }
-const CreateProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 /** The request for CreateSession. */
 export interface CreateSessionRequest {
   /** Required. The session to create. */
   session?: Session;
 }
-const CreateSessionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateSessionRequest>;
-
 export interface CreateProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which the new session is created. */
   database: string;
   /** Request body */
   body?: CreateSessionRequest;
 }
-const CreateProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateProjectsInstancesDatabasesSessionsRequest>;
-
 export type InstancePartitionStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
-const InstancePartitionStateEnum = S.String;
-
 /** An isolated set of Cloud Spanner resources that databases can define placements on. */
 export interface InstancePartition {
   /** Required. A unique identifier for the instance partition. Values are of the form `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length. An instance partition's name cannot be changed after the instance partition is created. */
@@ -1347,8 +974,6 @@ export interface InstancePartition {
   /** Output only. Deprecated: This field is not populated. Output only. The names of the backups that reference this instance partition. Referencing backups should share the parent instance. The existence of any referencing backup prevents the instance partition from being deleted. */
   referencingBackups?: StringList;
 }
-const InstancePartition = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<InstancePartition>;
-
 /** The request for CreateInstancePartition. */
 export interface CreateInstancePartitionRequest {
   /** Required. The ID of the instance partition to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length. */
@@ -1356,22 +981,12 @@ export interface CreateInstancePartitionRequest {
   /** Required. The instance partition to create. The instance_partition.name may be omitted, but if specified must be `/instancePartitions/`. */
   instancePartition?: InstancePartition;
 }
-const CreateInstancePartitionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateInstancePartitionRequest>;
-
 export interface CreateProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the instance in which to create the instance partition. Values are of the form `projects//instances/`. */
   parent: string;
   /** Request body */
   body?: CreateInstancePartitionRequest;
 }
-const CreateProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateProjectsInstancesInstancePartitionsRequest>;
-
 export interface DeleteProjectsInstanceConfigsRequest {
   /** Required. The name of the instance configuration to be deleted. Values are of the form `projects//instanceConfigs/` */
   name: string;
@@ -1380,121 +995,56 @@ export interface DeleteProjectsInstanceConfigsRequest {
   /** Used for optimistic concurrency control as a way to help prevent simultaneous deletes of an instance configuration from overwriting each other. If not empty, the API only deletes the instance configuration when the etag provided matches the current status of the requested instance configuration. Otherwise, deletes the instance configuration without checking the current status of the requested instance configuration. */
   etag?: string;
 }
-const DeleteProjectsInstanceConfigsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteProjectsInstanceConfigsRequest>;
-
 export interface DeleteProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteProjectsInstanceConfigsOperationsRequest>;
-
 export interface DeleteProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteProjectsInstanceConfigsSsdCachesOperationsRequest>;
-
 export interface DeleteProjectsInstancesRequest {
   /** Required. The name of the instance to be deleted. Values are of the form `projects//instances/` */
   name: string;
 }
-const DeleteProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteProjectsInstancesRequest>;
-
 export interface DeleteProjectsInstancesBackupsRequest {
   /** Required. Name of the backup to delete. Values are of the form `projects/{project}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-const DeleteProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteProjectsInstancesBackupsRequest>;
-
 export interface DeleteProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteProjectsInstancesBackupsOperationsRequest>;
-
 export interface DeleteProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The name of the schedule to delete. Values are of the form `projects//instances//databases//backupSchedules/`. */
   name: string;
 }
-const DeleteProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 export interface DeleteProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteProjectsInstancesDatabasesOperationsRequest>;
-
 export interface DeleteProjectsInstancesDatabasesSessionsRequest {
   /** Required. The name of the session to delete. */
   name: string;
 }
-const DeleteProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeleteProjectsInstancesDatabasesSessionsRequest>;
-
 export interface DeleteProjectsInstancesInstancePartitionsRequest {
   /** Optional. If not empty, the API only deletes the instance partition when the etag provided matches the current status of the requested instance partition. Otherwise, deletes the instance partition without checking the current status of the requested instance partition. */
   etag?: string;
   /** Required. The name of the instance partition to be deleted. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}` */
   name: string;
 }
-const DeleteProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsRequest>;
-
 export interface DeleteProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsOperationsRequest>;
-
 export interface DeleteProjectsInstancesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsInstancesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteProjectsInstancesOperationsRequest>;
-
 export interface DropDatabaseProjectsInstancesDatabasesRequest {
   /** Required. The database to be dropped. */
   database: string;
 }
-const DropDatabaseProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DropDatabaseProjectsInstancesDatabasesRequest>;
-
 /** This message is used to select the transaction in which a Read or ExecuteSql call runs. See TransactionOptions for more information about transactions. */
 export interface TransactionSelector {
   /** Begin a new transaction and execute this read or SQL query in it. The transaction ID of the new transaction is returned in ResultSetMetadata.transaction, which is a Transaction. */
@@ -1504,15 +1054,11 @@ export interface TransactionSelector {
   /** Execute the read or SQL query in a previously-started transaction. */
   id?: string;
 }
-const TransactionSelector = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<TransactionSelector>;
-
 export type TypeTypeAnnotationEnum =
   | "TYPE_ANNOTATION_CODE_UNSPECIFIED"
   | "PG_NUMERIC"
   | "PG_JSONB"
   | "PG_OID";
-const TypeTypeAnnotationEnum = S.String;
-
 /** Message representing a single field of a struct. */
 export interface Field {
   /** The name of the field. For reads, this is the column name. For SQL queries, it is the column alias (e.g., `"Word"` in the query `"SELECT 'hello' AS Word"`), or the column name (e.g., `"ColName"` in the query `"SELECT ColName FROM Table"`). Some columns might have an empty name (e.g., `"SELECT UPPER(ColName)"`). Note that a query result can contain multiple fields with the same name. */
@@ -1520,18 +1066,12 @@ export interface Field {
   /** The type of the field. */
   type?: Type;
 }
-const Field = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Field>;
-
 export type FieldList = Array<Field>;
-const FieldList = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<FieldList>;
-
 /** `StructType` defines the fields of a STRUCT type. */
 export interface StructType {
   /** The list of fields that make up this struct. Order is significant, because values of this struct type are represented as lists, where the order of field values matches the order of fields in the StructType. In turn, the order of fields matches the order of columns in a read request, or the order of fields in the `SELECT` clause of a query. */
   fields?: FieldList;
 }
-const StructType = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<StructType>;
-
 export type TypeCodeEnum =
   | "TYPE_CODE_UNSPECIFIED"
   | "BOOL"
@@ -1550,8 +1090,6 @@ export type TypeCodeEnum =
   | "ENUM"
   | "INTERVAL"
   | "UUID";
-const TypeCodeEnum = S.String;
-
 /** `Type` indicates the type of a Cloud Spanner value, as might be stored in a table cell or returned from an SQL query. */
 export interface Type {
   /** The TypeAnnotationCode that disambiguates SQL type that Spanner will use to represent values of this type during query processing. This is necessary for some type codes because a single TypeCode can be mapped to different SQL types depending on the SQL dialect. type_annotation typically is not needed to process the content of a value (it doesn't affect serialization) and clients can ignore it on the read path. */
@@ -1565,11 +1103,7 @@ export interface Type {
   /** If code == ARRAY, then `array_element_type` is the type of the array elements. */
   arrayElementType?: Type;
 }
-const Type = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<Type>;
-
 export type TypeMap = { [key: string]: Type | undefined };
-const TypeMap = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<TypeMap>;
-
 /** A single DML statement. */
 export interface Statement {
   /** It isn't always possible for Cloud Spanner to infer the right SQL type from a JSON value. For example, values of type `BYTES` and values of type `STRING` both appear in params as JSON strings. In these cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL statement parameters. See the definition of Type for more information about SQL types. */
@@ -1579,11 +1113,7 @@ export interface Statement {
   /** Parameter names and values that bind to placeholders in the DML string. A parameter placeholder consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names can contain letters, numbers, and underscores. Parameters can appear anywhere that a literal value is expected. The same parameter name can be used more than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL statement with unbound parameters. */
   params?: DocumentMap;
 }
-const Statement = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Statement>;
-
 export type StatementList = Array<Statement>;
-const StatementList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<StatementList>;
-
 /** The request for ExecuteBatchDml. */
 export interface ExecuteBatchDmlRequest {
   /** Required. The transaction to use. Must be a read-write transaction. To protect against replays, single-use transactions are not supported. The caller must either supply an existing transaction ID or begin a new transaction. */
@@ -1597,25 +1127,13 @@ export interface ExecuteBatchDmlRequest {
   /** Required. The list of statements to execute in this batch. Statements are executed serially, such that the effects of statement `i` are visible to statement `i+1`. Each statement must be a DML statement. Execution stops at the first failed statement; the remaining statements are not executed. Callers must provide at least one statement. */
   statements?: StatementList;
 }
-const ExecuteBatchDmlRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ExecuteBatchDmlRequest>;
-
 export interface ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the DML statements should be performed. */
   session: string;
   /** Request body */
   body?: ExecuteBatchDmlRequest;
 }
-const ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest>;
-
 export type IntegerMap = { [key: string]: number | undefined };
-const IntegerMap = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<IntegerMap>;
-
 /** Condensed representation of a node and its subtree. Only present for `SCALAR` PlanNode(s). */
 export interface ShortRepresentation {
   /** A string representation of the expression subtree rooted at this node. */
@@ -1623,8 +1141,6 @@ export interface ShortRepresentation {
   /** A mapping of (subquery variable name) -> (subquery node id) for cases where the `description` string of this node references a `SCALAR` subquery contained in the expression subtree rooted at this node. The referenced `SCALAR` subquery may not necessarily be a direct child of this node. */
   subqueries?: IntegerMap;
 }
-const ShortRepresentation = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ShortRepresentation>;
-
 /** Metadata associated with a parent-child relationship appearing in a PlanNode. */
 export interface ChildLink {
   /** The node to which the link points. */
@@ -1634,14 +1150,8 @@ export interface ChildLink {
   /** The type of the link. For example, in Hash Joins this could be used to distinguish between the build child and the probe child, or in the case of the child being an output variable, to represent the tag associated with the output variable. */
   type?: string;
 }
-const ChildLink = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ChildLink>;
-
 export type ChildLinkList = Array<ChildLink>;
-const ChildLinkList = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ChildLinkList>;
-
 export type PlanNodeKindEnum = "KIND_UNSPECIFIED" | "RELATIONAL" | "SCALAR";
-const PlanNodeKindEnum = S.String;
-
 /** Node information for nodes appearing in a QueryPlan.plan_nodes. */
 export interface PlanNode {
   /** Condensed representation for SCALAR nodes. */
@@ -1659,11 +1169,7 @@ export interface PlanNode {
   /** The `PlanNode`'s index in node list. */
   index?: number;
 }
-const PlanNode = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<PlanNode>;
-
 export type PlanNodeList = Array<PlanNode>;
-const PlanNodeList = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<PlanNodeList>;
-
 /** Recommendation to add new indexes to run queries more efficiently. */
 export interface IndexAdvice {
   /** Optional. DDL statements to add new indexes that will improve the query. */
@@ -1671,18 +1177,12 @@ export interface IndexAdvice {
   /** Optional. Estimated latency improvement factor. For example if the query currently takes 500 ms to run and the estimated latency with new indexes is 100 ms this field will be 5. */
   improvementFactor?: number;
 }
-const IndexAdvice = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<IndexAdvice>;
-
 export type IndexAdviceList = Array<IndexAdvice>;
-const IndexAdviceList = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<IndexAdviceList>;
-
 /** Output of query advisor analysis. */
 export interface QueryAdvisorResult {
   /** Optional. Index Recommendation for a query. This is an optional field and the recommendation will only be available when the recommendation guarantees significant improvement in query performance. */
   indexAdvice?: IndexAdviceList;
 }
-const QueryAdvisorResult = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<QueryAdvisorResult>;
-
 /** Contains an ordered list of nodes appearing in the query plan. */
 export interface QueryPlan {
   /** The nodes in the query plan. Plan nodes are returned in pre-order starting with the plan root. Each PlanNode's `id` corresponds to its index in `plan_nodes`. */
@@ -1690,8 +1190,6 @@ export interface QueryPlan {
   /** Optional. The advise/recommendations for a query. Currently this field will be serving index recommendations for a query. */
   queryAdvice?: QueryAdvisorResult;
 }
-const QueryPlan = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<QueryPlan>;
-
 /** Additional statistics about a ResultSet or PartialResultSet. */
 export interface ResultSetStats {
   /** Partitioned DML doesn't offer exactly-once semantics, so it returns a lower bound of the rows modified. */
@@ -1703,8 +1201,6 @@ export interface ResultSetStats {
   /** Standard DML returns an exact count of rows that were modified. */
   rowCountExact?: string;
 }
-const ResultSetStats = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<ResultSetStats>;
-
 /** Metadata about a ResultSet or PartialResultSet. */
 export interface ResultSetMetadata {
   /** If the read or SQL query began a transaction as a side-effect, the information about the new transaction is yielded here. */
@@ -1714,8 +1210,6 @@ export interface ResultSetMetadata {
   /** Indicates the field names and types for the rows in the result set. For example, a SQL query like `"SELECT UserId, UserName FROM Users"` could return a `row_type` value like: "fields": [ { "name": "UserId", "type": { "code": "INT64" } }, { "name": "UserName", "type": { "code": "STRING" } }, ] */
   rowType?: StructType;
 }
-const ResultSetMetadata = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ResultSetMetadata>;
-
 /** Results from Read or ExecuteSql. */
 export interface ResultSet {
   /** Optional. A precommit token is included if the read-write transaction is on a multiplexed session. Pass the precommit token with the highest sequence number from this transaction attempt to the Commit request for this transaction. */
@@ -1727,11 +1221,7 @@ export interface ResultSet {
   /** Each element in `rows` is a row whose format is defined by metadata.row_type. The ith element in each row matches the ith field in metadata.row_type. Elements are encoded based on type as described here. */
   rows?: DocumentListList;
 }
-const ResultSet = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ResultSet>;
-
 export type ResultSetList = Array<ResultSet>;
-const ResultSetList = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ResultSetList>;
-
 /** The response for ExecuteBatchDml. Contains a list of ResultSet messages, one for each DML statement that has successfully executed, in the same order as the statements in the request. If a statement fails, the status in the response body identifies the cause of the failure. To check for DML statements that failed, use the following approach: 1. Check the status in the response message. The google.rpc.Code enum value `OK` indicates that all statements were executed successfully. 2. If the status was not `OK`, check the number of result sets in the response. If the response contains `N` ResultSet messages, then statement `N+1` in the request failed. Example 1: * Request: 5 DML statements, all executed successfully. * Response: 5 ResultSet messages, with the status `OK`. Example 2: * Request: 5 DML statements. The third statement has a syntax error. * Response: 2 ResultSet messages, and a syntax error (`INVALID_ARGUMENT`) status. The number of ResultSet messages indicates that the third statement failed, and the fourth and fifth statements were not executed. */
 export interface ExecuteBatchDmlResponse {
   /** One ResultSet for each statement in the request that ran successfully, in the same order as the statements in the request. Each ResultSet does not contain any rows. The ResultSetStats in each ResultSet contain the number of rows modified by the statement. Only the first ResultSet in the response contains valid ResultSetMetadata. */
@@ -1741,22 +1231,13 @@ export interface ExecuteBatchDmlResponse {
   /** If all DML statements are executed successfully, the status is `OK`. Otherwise, the error status of the first failed statement. */
   status?: Status;
 }
-const ExecuteBatchDmlResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ExecuteBatchDmlResponse>;
-
 export type ExecuteSqlRequestQueryModeEnum =
   | "NORMAL"
   | "PLAN"
   | "PROFILE"
   | "WITH_STATS"
   | "WITH_PLAN_AND_STATS";
-const ExecuteSqlRequestQueryModeEnum = S.String;
-
 export type ReplicaSelectionTypeEnum = "TYPE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY";
-const ReplicaSelectionTypeEnum = S.String;
-
 /** The directed read replica selector. Callers must provide one or more of the following fields for replica selection: * `location` - The location must be one of the regions within the multi-region configuration of your database. * `type` - The type of the replica. Some examples of using replica_selectors are: * `location:us-east1` --> The "us-east1" replica(s) of any available type is used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type replica(s) in the nearest available location are used to process the request. * `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in location "us-east1" is used to process the request. */
 export interface ReplicaSelection {
   /** The type of replica. */
@@ -1764,14 +1245,7 @@ export interface ReplicaSelection {
   /** The location or region of the serving requests, for example, "us-east1". */
   location?: string;
 }
-const ReplicaSelection = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ReplicaSelection>;
-
 export type ReplicaSelectionList = Array<ReplicaSelection>;
-const ReplicaSelectionList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ReplicaSelectionList>;
-
 /** An `IncludeReplicas` contains a repeated set of `ReplicaSelection` which indicates the order in which replicas should be considered. */
 export interface IncludeReplicas {
   /** The directed read replica selector. */
@@ -1779,15 +1253,11 @@ export interface IncludeReplicas {
   /** If `true`, Spanner doesn't route requests to a replica outside the <`include_replicas` list when all of the specified replicas are unavailable or unhealthy. Default value is `false`. */
   autoFailoverDisabled?: boolean;
 }
-const IncludeReplicas = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<IncludeReplicas>;
-
 /** An ExcludeReplicas contains a repeated set of ReplicaSelection that should be excluded from serving requests. */
 export interface ExcludeReplicas {
   /** The directed read replica selector. */
   replicaSelections?: ReplicaSelectionList;
 }
-const ExcludeReplicas = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ExcludeReplicas>;
-
 /** The `DirectedReadOptions` can be used to indicate which replicas or regions should be used for non-transactional reads or queries. `DirectedReadOptions` can only be specified for a read-only transaction, otherwise the API returns an `INVALID_ARGUMENT` error. */
 export interface DirectedReadOptions {
   /** `Include_replicas` indicates the order of replicas (as they appear in this list) to process the request. If `auto_failover_disabled` is set to `true` and all replicas are exhausted without finding a healthy replica, Spanner waits for a replica in the list to become available, requests might fail due to `DEADLINE_EXCEEDED` errors. */
@@ -1795,8 +1265,6 @@ export interface DirectedReadOptions {
   /** `Exclude_replicas` indicates that specified replicas should be excluded from serving requests. Spanner doesn't route requests to the replicas in this list. */
   excludeReplicas?: ExcludeReplicas;
 }
-const DirectedReadOptions = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<DirectedReadOptions>;
-
 /** Query optimizer configuration. */
 export interface QueryOptions {
   /** An option to control the selection of optimizer statistics package. This parameter allows individual queries to use a different query optimizer statistics package. Specifying `latest` as a value instructs Cloud Spanner to use the latest generated statistics package. If not specified, Cloud Spanner uses the statistics package set at the database level options, or the latest package if the database option isn't set. The statistics package requested by the query has to be exempt from garbage collection. This can be achieved with the following DDL statement: ```sql ALTER STATISTICS SET OPTIONS (allow_gc=false) ``` The list of available statistics packages can be queried from `INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL statement with an invalid optimizer statistics package or with a statistics package that allows garbage collection fails with an `INVALID_ARGUMENT` error. */
@@ -1804,8 +1272,6 @@ export interface QueryOptions {
   /** An option to control the selection of optimizer version. This parameter allows individual queries to pick different query optimizer versions. Specifying `latest` as a value instructs Cloud Spanner to use the latest supported query optimizer version. If not specified, Cloud Spanner uses the optimizer version set at the database level options. Any other positive integer (from the list of supported optimizer versions) overrides the default optimizer version for query execution. The list of supported optimizer versions can be queried from `SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS`. Executing a SQL statement with an invalid optimizer version fails with an `INVALID_ARGUMENT` error. See https://cloud.google.com/spanner/docs/query-optimizer/manage-query-optimizer for more information on managing the query optimizer. The `optimizer_version` statement hint has precedence over this setting. */
   optimizerVersion?: string;
 }
-const QueryOptions = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<QueryOptions>;
-
 /** The request for ExecuteSql and ExecuteStreamingSql. */
 export interface ExecuteSqlRequest {
   /** Used to control the amount of debugging information returned in ResultSetStats. If partition_token is set, query_mode can only be set to QueryMode.NORMAL. */
@@ -1835,30 +1301,18 @@ export interface ExecuteSqlRequest {
   /** Query optimizer configuration to use for the given query. */
   queryOptions?: QueryOptions;
 }
-const ExecuteSqlRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ExecuteSqlRequest>;
-
 export interface ExecuteSqlProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the SQL query should be performed. */
   session: string;
   /** Request body */
   body?: ExecuteSqlRequest;
 }
-const ExecuteSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ExecuteSqlProjectsInstancesDatabasesSessionsRequest>;
-
 export interface ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the SQL query should be performed. */
   session: string;
   /** Request body */
   body?: ExecuteSqlRequest;
 }
-const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest>;
-
 /** Partial results from a streaming read or SQL query. Streaming reads and SQL queries better tolerate large result sets, large rows, and large values, but are a little trickier to consume. */
 export interface PartialResultSet {
   /** Streaming calls might be interrupted for a variety of reasons, such as TCP connection loss. If this occurs, the stream of results can be resumed by re-sending the original request and including `resume_token`. Note that executing any other transaction in the same session invalidates the token. */
@@ -1876,17 +1330,10 @@ export interface PartialResultSet {
   /** Optional. Indicates whether this is the last `PartialResultSet` in the stream. The server might optionally set this field. Clients shouldn't rely on this field being set in all cases. */
   last?: boolean;
 }
-const PartialResultSet = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<PartialResultSet>;
-
 export interface GetDdlProjectsInstancesDatabasesRequest {
   /** Required. The database whose schema we wish to get. Values are of the form `projects//instances//databases/` */
   database: string;
 }
-const GetDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetDdlProjectsInstancesDatabasesRequest>;
-
 /** The response for GetDatabaseDdl. */
 export interface GetDatabaseDdlResponse {
   /** Proto descriptors stored in the database. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
@@ -1894,36 +1341,22 @@ export interface GetDatabaseDdlResponse {
   /** A list of formatted DDL statements defining the schema of the database specified in the request. */
   statements?: StringList;
 }
-const GetDatabaseDdlResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetDatabaseDdlResponse>;
-
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-const GetPolicyOptions = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetPolicyOptions>;
-
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<GetIamPolicyRequest>;
-
 export interface GetIamPolicyProjectsInstancesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetIamPolicyProjectsInstancesRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -1935,8 +1368,6 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1946,11 +1377,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -1960,109 +1387,55 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-const Policy = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyProjectsInstancesBackupsRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsInstancesBackupsRequest>;
-
 export interface GetIamPolicyProjectsInstancesDatabasesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesRequest>;
-
 export interface GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 export interface GetProjectsInstanceConfigsRequest {
   /** Required. The name of the requested instance configuration. Values are of the form `projects//instanceConfigs/`. */
   name: string;
 }
-const GetProjectsInstanceConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetProjectsInstanceConfigsRequest>;
-
 export interface GetProjectsInstanceConfigsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetProjectsInstanceConfigsOperationsRequest>;
-
 export interface GetProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetProjectsInstanceConfigsSsdCachesOperationsRequest>;
-
 export interface GetProjectsInstancesRequest {
   /** Required. The name of the requested instance. Values are of the form `projects//instances/`. */
   name: string;
   /** If field_mask is present, specifies the subset of Instance fields that should be returned. If absent, all Instance fields are returned. */
   fieldMask?: string;
 }
-const GetProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetProjectsInstancesRequest>;
-
 export interface GetProjectsInstancesBackupsRequest {
   /** Required. Name of the backup. Values are of the form `projects/{project}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-const GetProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetProjectsInstancesBackupsRequest>;
-
 export interface GetProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GetProjectsInstancesBackupsOperationsRequest>;
-
 export interface GetProjectsInstancesDatabasesRequest {
   /** Required. The name of the requested database. Values are of the form `projects//instances//databases/`. */
   name: string;
 }
-const GetProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetProjectsInstancesDatabasesRequest>;
-
 export type QuorumInfoInitiatorEnum = "INITIATOR_UNSPECIFIED" | "GOOGLE" | "USER";
-const QuorumInfoInitiatorEnum = S.String;
-
 /** Information about the dual-region quorum. */
 export interface QuorumInfo {
   /** Output only. The type of this quorum. See QuorumType for more information about quorum type specifications. */
@@ -2074,8 +1447,6 @@ export interface QuorumInfo {
   /** Output only. The timestamp when the request was triggered. */
   startTime?: string;
 }
-const QuorumInfo = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<QuorumInfo>;
-
 /** Information about a backup. */
 export interface BackupInfo {
   /** Name of the backup. */
@@ -2087,11 +1458,7 @@ export interface BackupInfo {
   /** The time the CreateBackup request was received. */
   createTime?: string;
 }
-const BackupInfo = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<BackupInfo>;
-
 export type RestoreInfoSourceTypeEnum = "TYPE_UNSPECIFIED" | "BACKUP";
-const RestoreInfoSourceTypeEnum = S.String;
-
 /** Information about the database restore. */
 export interface RestoreInfo {
   /** Information about the backup used to restore the database. The backup may no longer exist. */
@@ -2099,17 +1466,11 @@ export interface RestoreInfo {
   /** The type of the restore source. */
   sourceType?: RestoreInfoSourceTypeEnum | (string & {});
 }
-const RestoreInfo = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<RestoreInfo>;
-
 export type DatabaseStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY" | "READY_OPTIMIZING";
-const DatabaseStateEnum = S.String;
-
 export type DatabaseDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
   | "POSTGRESQL";
-const DatabaseDatabaseDialectEnum = S.String;
-
 /** A Cloud Spanner database. */
 export interface Database {
   /** Output only. Applicable only for databases that use dual-region instance configurations. Contains information about the quorum. */
@@ -2139,65 +1500,31 @@ export interface Database {
   /** Output only. For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status` field inside of each `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field. */
   encryptionInfo?: EncryptionInfoList;
 }
-const Database = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<Database>;
-
 export interface GetProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. The name of the schedule to retrieve. Values are of the form `projects//instances//databases//backupSchedules/`. */
   name: string;
 }
-const GetProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GetProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 export interface GetProjectsInstancesDatabasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetProjectsInstancesDatabasesOperationsRequest>;
-
 export interface GetProjectsInstancesDatabasesSessionsRequest {
   /** Required. The name of the session to retrieve. */
   name: string;
 }
-const GetProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetProjectsInstancesDatabasesSessionsRequest>;
-
 export interface GetProjectsInstancesInstancePartitionsRequest {
   /** Required. The name of the requested instance partition. Values are of the form `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`. */
   name: string;
 }
-const GetProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetProjectsInstancesInstancePartitionsRequest>;
-
 export interface GetProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetProjectsInstancesInstancePartitionsOperationsRequest>;
-
 export interface GetProjectsInstancesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetProjectsInstancesOperationsRequest>;
-
 export type GetScansProjectsInstancesDatabasesViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
-const GetScansProjectsInstancesDatabasesViewEnum = S.String;
-
 export interface GetScansProjectsInstancesDatabasesRequest {
   /** Required. The unique name of the scan containing the requested information, specific to the Database service implementing this interface. */
   name: string;
@@ -2208,11 +1535,6 @@ export interface GetScansProjectsInstancesDatabasesRequest {
   /** These fields restrict the Database-specific information returned in the `Scan.data` field. If a `View` is provided that does not include the `Scan.data` field, these are ignored. This range of time must be entirely contained within the defined time range of the targeted scan. The lower bound for the time range to retrieve Scan data for. */
   startTime?: string;
 }
-const GetScansProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetScansProjectsInstancesDatabasesRequest>;
-
 /** A message representing a key prefix node in the key prefix hierarchy. for eg. Bigtable keyspaces are lexicographically ordered mappings of keys to values. Keys often have a shared prefix structure where users use the keys to organize data. Eg ///employee In this case Keysight will possibly use one node for a company and reuse it for all employees that fall under the company. Doing so improves legibility in the UI. */
 export interface PrefixNode {
   /** The index of the end key bucket of the range that this node spans. */
@@ -2226,14 +1548,8 @@ export interface PrefixNode {
   /** Whether this corresponds to a data_source name. */
   dataSourceNode?: boolean;
 }
-const PrefixNode = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<PrefixNode>;
-
 export type PrefixNodeList = Array<PrefixNode>;
-const PrefixNodeList = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<PrefixNodeList>;
-
 export type VisualizationDataKeyUnitEnum = "KEY_UNIT_UNSPECIFIED" | "KEY" | "CHUNK";
-const VisualizationDataKeyUnitEnum = S.String;
-
 /** A message representing a user-facing string whose value may need to be translated before being displayed. */
 export interface LocalizedString {
   /** The token identifying the message, e.g. 'METRIC_READ_CPU'. This should be unique within the service. */
@@ -2243,16 +1559,12 @@ export interface LocalizedString {
   /** The canonical English version of this message. If no token is provided or the front-end has no message associated with the token, this text will be displayed as-is. */
   message?: string;
 }
-const LocalizedString = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<LocalizedString>;
-
 export type ContextValueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
   | "ERROR"
   | "FATAL";
-const ContextValueSeverityEnum = S.String;
-
 /** A message representing context for a KeyRangeInfo, including a label, value, unit, and severity. */
 export interface ContextValue {
   /** The unit of the context value. */
@@ -2264,11 +1576,7 @@ export interface ContextValue {
   /** The severity of this context. */
   severity?: ContextValueSeverityEnum;
 }
-const ContextValue = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ContextValue>;
-
 export type ContextValueList = Array<ContextValue>;
-const ContextValueList = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ContextValueList>;
-
 /** A message representing information for a key range (possibly one key). */
 export interface KeyRangeInfo {
   /** The index of the end key in indexed_keys. */
@@ -2290,11 +1598,7 @@ export interface KeyRangeInfo {
   /** The name of the metric. e.g. "latency". */
   metric?: LocalizedString;
 }
-const KeyRangeInfo = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<KeyRangeInfo>;
-
 export type KeyRangeInfoList = Array<KeyRangeInfo>;
-const KeyRangeInfoList = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<KeyRangeInfoList>;
-
 /** A message representing a list of specific information for multiple key ranges. */
 export interface KeyRangeInfos {
   /** The total size of the list of all KeyRangeInfos. This may be larger than the number of repeated messages above. If that is the case, this number may be used to determine how many are not being shown. */
@@ -2302,50 +1606,26 @@ export interface KeyRangeInfos {
   /** The list individual KeyRangeInfos. */
   infos?: KeyRangeInfoList;
 }
-const KeyRangeInfos = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<KeyRangeInfos>;
-
 export type KeyRangeInfosMap = { [key: string]: KeyRangeInfos | undefined };
-const KeyRangeInfosMap = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<KeyRangeInfosMap>;
-
 /** A message representing a (sparse) collection of KeyRangeInfos for specific key buckets. */
 export interface IndexedKeyRangeInfos {
   /** A (sparse) mapping from key bucket index to the KeyRangeInfos for that key bucket. */
   keyRangeInfos?: KeyRangeInfosMap;
 }
-const IndexedKeyRangeInfos = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<IndexedKeyRangeInfos>;
-
 export type IndexedKeyRangeInfosMap = { [key: string]: IndexedKeyRangeInfos | undefined };
-const IndexedKeyRangeInfosMap = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<IndexedKeyRangeInfosMap>;
-
 export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
-const MetricAggregationEnum = S.String;
-
 export type DoubleList = Array<number>;
-const DoubleList = IntegerList as any as S.Schema<DoubleList>;
-
 /** A message representing a row of a matrix of floats. */
 export interface MetricMatrixRow {
   /** The columns of the row. */
   cols?: DoubleList;
 }
-const MetricMatrixRow = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<MetricMatrixRow>;
-
 export type MetricMatrixRowList = Array<MetricMatrixRow>;
-const MetricMatrixRowList = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<MetricMatrixRowList>;
-
 /** A message representing a matrix of floats. */
 export interface MetricMatrix {
   /** The rows of the matrix. */
   rows?: MetricMatrixRowList;
 }
-const MetricMatrix = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<MetricMatrix>;
-
 /** A message representing a derived metric. */
 export interface DerivedMetric {
   /** The name of the numerator metric. e.g. "latency". */
@@ -2353,18 +1633,12 @@ export interface DerivedMetric {
   /** The name of the denominator metric. e.g. "rows". */
   denominator?: LocalizedString;
 }
-const DerivedMetric = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<DerivedMetric>;
-
 /** A message representing a (sparse) collection of hot keys for specific key buckets. */
 export interface IndexedHotKey {
   /** A (sparse) mapping from key bucket index to the index of the specific hot row key for that key bucket. The index of the hot row key can be translated to the actual row key via the ScanData.VisualizationData.indexed_keys repeated field. */
   sparseHotKeys?: IntegerMap;
 }
-const IndexedHotKey = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<IndexedHotKey>;
-
 export type IndexedHotKeyMap = { [key: string]: IndexedHotKey | undefined };
-const IndexedHotKeyMap = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<IndexedHotKeyMap>;
-
 /** A message representing the actual monitoring data, values for each key bucket over time, of a metric. */
 export interface Metric {
   /** The (sparse) mapping from time interval index to an IndexedKeyRangeInfos message, representing those time intervals for which there are informational messages concerning key ranges. */
@@ -2392,19 +1666,13 @@ export interface Metric {
   /** The category of the metric, e.g. "Activity", "Alerts", "Reads", etc. */
   category?: LocalizedString;
 }
-const Metric = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<Metric>;
-
 export type MetricList = Array<Metric>;
-const MetricList = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<MetricList>;
-
 export type DiagnosticMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
   | "ERROR"
   | "FATAL";
-const DiagnosticMessageSeverityEnum = S.String;
-
 /** A message representing the key visualizer diagnostic messages. */
 export interface DiagnosticMessage {
   /** Information about this diagnostic information. */
@@ -2418,14 +1686,7 @@ export interface DiagnosticMessage {
   /** Whether this message is specific only for the current metric. By default Diagnostics are shown for all metrics, regardless which metric is the currently selected metric in the UI. However occasionally a metric will generate so many messages that the resulting visual clutter becomes overwhelming. In this case setting this to true, will show the diagnostic messages for that metric only if it is the currently selected metric. */
   metricSpecific?: boolean;
 }
-const DiagnosticMessage = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<DiagnosticMessage>;
-
 export type DiagnosticMessageList = Array<DiagnosticMessage>;
-const DiagnosticMessageList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DiagnosticMessageList>;
-
 export interface VisualizationData {
   /** The list of extracted key prefix nodes used in the key prefix hierarchy. */
   prefixNodes?: PrefixNodeList;
@@ -2448,8 +1709,6 @@ export interface VisualizationData {
   /** The list of messages (info, alerts, ...) */
   diagnosticMessages?: DiagnosticMessageList;
 }
-const VisualizationData = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<VisualizationData>;
-
 /** ScanData contains Cloud Key Visualizer scan data used by the caller to construct a visualization. */
 export interface ScanData {
   /** Cloud Key Visualizer scan data. The range of time this information covers is captured via the above time range fields. Note, this field is not available to the ListScans method. */
@@ -2459,8 +1718,6 @@ export interface ScanData {
   /** The upper bound for when the contained data is defined. */
   endTime?: string;
 }
-const ScanData = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ScanData>;
-
 /** Scan is a structure which describes Cloud Key Visualizer scan information. */
 export interface Scan {
   /** Additional information provided by the implementer. */
@@ -2474,8 +1731,6 @@ export interface Scan {
   /** A range of time (inclusive) for when the scan is defined. The lower bound for when the scan is defined. */
   startTime?: string;
 }
-const Scan = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<Scan>;
-
 export interface ListProjectsInstanceConfigOperationsRequest {
   /** Required. The project of the instance configuration operations. Values are of the form `projects/`. */
   parent: string;
@@ -2486,14 +1741,7 @@ export interface ListProjectsInstanceConfigOperationsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListInstanceConfigOperationsResponse to the same `parent` and with the same `filter`. */
   pageToken?: string;
 }
-const ListProjectsInstanceConfigOperationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<OperationList>;
-
 /** The response for ListInstanceConfigOperations. */
 export interface ListInstanceConfigOperationsResponse {
   /** The list of matching instance configuration long-running operations. Each operation's name will be prefixed by the name of the instance configuration. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
@@ -2501,11 +1749,6 @@ export interface ListInstanceConfigOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
-const ListInstanceConfigOperationsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListInstanceConfigOperationsResponse>;
-
 export interface ListProjectsInstanceConfigsRequest {
   /** Required. The name of the project for which a list of supported instance configurations is requested. Values are of the form `projects/`. */
   parent: string;
@@ -2514,14 +1757,7 @@ export interface ListProjectsInstanceConfigsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListInstanceConfigsResponse. */
   pageToken?: string;
 }
-const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListProjectsInstanceConfigsRequest>;
-
 export type InstanceConfigList = Array<InstanceConfig>;
-const InstanceConfigList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<InstanceConfigList>;
-
 /** The response for ListInstanceConfigs. */
 export interface ListInstanceConfigsResponse {
   /** The list of requested instance configurations. */
@@ -2529,11 +1765,6 @@ export interface ListInstanceConfigsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstanceConfigs call to fetch more of the matching instance configurations. */
   nextPageToken?: string;
 }
-const ListInstanceConfigsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListInstanceConfigsResponse>;
-
 export interface ListProjectsInstanceConfigsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -2546,11 +1777,6 @@ export interface ListProjectsInstanceConfigsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsInstanceConfigsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListProjectsInstanceConfigsOperationsRequest>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -2560,11 +1786,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -2577,11 +1798,6 @@ export interface ListProjectsInstanceConfigsSsdCachesOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsInstanceConfigsSsdCachesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ListProjectsInstanceConfigsSsdCachesOperationsRequest>;
-
 export interface ListProjectsInstancesRequest {
   /** An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `display_name` * `labels.key` where key is the name of a label Some examples of using filters are: * `name:*` --> The instance has a name. * `name:Howl` --> The instance's name contains the string "howl". * `name:HOWL` --> Equivalent to above. * `NAME:howl` --> Equivalent to above. * `labels.env:*` --> The instance has the label "env". * `labels.env:dev` --> The instance has the label "env" and the value of the label contains the string "dev". * `name:howl labels.env:dev` --> The instance's name contains "howl" and it has the label "env" with its value containing "dev". */
   filter?: string;
@@ -2594,14 +1810,7 @@ export interface ListProjectsInstancesRequest {
   /** Required. The name of the project for which a list of instances is requested. Values are of the form `projects/`. */
   parent: string;
 }
-const ListProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListProjectsInstancesRequest>;
-
 export type InstanceList = Array<Instance>;
-const InstanceList = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<InstanceList>;
-
 /** The response for ListInstances. */
 export interface ListInstancesResponse {
   /** The list of unreachable instances. It includes the names of instances whose metadata could not be retrieved within instance_deadline. */
@@ -2611,11 +1820,6 @@ export interface ListInstancesResponse {
   /** `next_page_token` can be sent in a subsequent ListInstances call to fetch more of the matching instances. */
   nextPageToken?: string;
 }
-const ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListInstancesResponse>;
-
 export interface ListProjectsInstancesBackupOperationsRequest {
   /** Number of operations to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
@@ -2626,11 +1830,6 @@ export interface ListProjectsInstancesBackupOperationsRequest {
   /** Required. The instance of the backup operations. Values are of the form `projects/{project}/instances/{instance}`. */
   parent: string;
 }
-const ListProjectsInstancesBackupOperationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListProjectsInstancesBackupOperationsRequest>;
-
 /** The response for ListBackupOperations. */
 export interface ListBackupOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListBackupOperations call to fetch more of the matching metadata. */
@@ -2638,11 +1837,6 @@ export interface ListBackupOperationsResponse {
   /** The list of matching backup long-running operations. Each operation's name will be prefixed by the backup's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that are pending or have completed/failed/canceled within the last 7 days. Operations returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most recently started operation. */
   operations?: OperationList;
 }
-const ListBackupOperationsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListBackupOperationsResponse>;
-
 export interface ListProjectsInstancesBackupsRequest {
   /** An expression that filters the list of returned backups. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case sensitive. The following fields in the Backup are eligible for filtering: * `name` * `database` * `state` * `create_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `version_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ) * `size_bytes` * `backup_schedules` You can combine multiple expressions by enclosing each expression in parentheses. By default, expressions are combined with AND logic, but you can specify AND, OR, and NOT logic explicitly. Here are a few examples: * `name:Howl` - The backup's name contains the string "howl". * `database:prod` - The database's name contains the string "prod". * `state:CREATING` - The backup is pending creation. * `state:READY` - The backup is fully created and ready for use. * `(name:howl) AND (create_time < \"2018-03-28T14:50:00Z\")` - The backup name contains the string "howl" and `create_time` of the backup is before 2018-03-28T14:50:00Z. * `expire_time < \"2018-03-28T14:50:00Z\"` - The backup `expire_time` is before 2018-03-28T14:50:00Z. * `size_bytes > 10000000000` - The backup's size is greater than 10GB * `backup_schedules:daily` - The backup is created from a schedule with "daily" in its name. */
   filter?: string;
@@ -2653,14 +1847,7 @@ export interface ListProjectsInstancesBackupsRequest {
   /** Number of backups to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
 }
-const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListProjectsInstancesBackupsRequest>;
-
 export type BackupList = Array<Backup>;
-const BackupList = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<BackupList>;
-
 /** The response for ListBackups. */
 export interface ListBackupsResponse {
   /** `next_page_token` can be sent in a subsequent ListBackups call to fetch more of the matching backups. */
@@ -2668,8 +1855,6 @@ export interface ListBackupsResponse {
   /** The list of matching backups. Backups returned are ordered by `create_time` in descending order, starting from the most recent `create_time`. */
   backups?: BackupList;
 }
-const ListBackupsResponse = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<ListBackupsResponse>;
-
 export interface ListProjectsInstancesBackupsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -2682,11 +1867,6 @@ export interface ListProjectsInstancesBackupsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsInstancesBackupsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListProjectsInstancesBackupsOperationsRequest>;
-
 export interface ListProjectsInstancesDatabaseOperationsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListDatabaseOperationsResponse to the same `parent` and with the same `filter`. */
   pageToken?: string;
@@ -2697,11 +1877,6 @@ export interface ListProjectsInstancesDatabaseOperationsRequest {
   /** An expression that filters the list of returned operations. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case sensitive. The following fields in the operation are eligible for filtering: * `name` - The name of the long-running operation * `done` - False if the operation is in progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for RestoreDatabaseMetadata is `type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata`. * `metadata.` - any field in metadata.value. `metadata.@type` must be specified first, if filtering on metadata fields. * `error` - Error associated with the long-running operation. * `response.@type` - the type of response. * `response.` - any field in response.value. You can combine multiple expressions by enclosing each expression in parentheses. By default, expressions are combined with AND logic. However, you can specify AND, OR, and NOT logic explicitly. Here are a few examples: * `done:true` - The operation is complete. * `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.RestoreDatabaseMetadata) AND` \ `(metadata.source_type:BACKUP) AND` \ `(metadata.backup_info.backup:backup_howl) AND` \ `(metadata.name:restored_howl) AND` \ `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND` \ `(error:*)` - Return operations where: * The operation's metadata type is RestoreDatabaseMetadata. * The database is restored from a backup. * The backup name contains "backup_howl". * The restored database's name contains "restored_howl". * The operation started before 2018-03-28T14:50:00Z. * The operation resulted in an error. */
   filter?: string;
 }
-const ListProjectsInstancesDatabaseOperationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListProjectsInstancesDatabaseOperationsRequest>;
-
 /** The response for ListDatabaseOperations. */
 export interface ListDatabaseOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabaseOperations call to fetch more of the matching metadata. */
@@ -2709,9 +1884,6 @@ export interface ListDatabaseOperationsResponse {
   /** The list of matching database long-running operations. Each operation's name will be prefixed by the database's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
   operations?: OperationList;
 }
-const ListDatabaseOperationsResponse =
-  ListBackupOperationsResponse as any as S.Schema<ListDatabaseOperationsResponse>;
-
 export interface ListProjectsInstancesDatabasesRequest {
   /** Required. The instance whose databases should be listed. Values are of the form `projects//instances/`. */
   parent: string;
@@ -2720,14 +1892,7 @@ export interface ListProjectsInstancesDatabasesRequest {
   /** Number of databases to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
 }
-const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListProjectsInstancesDatabasesRequest>;
-
 export type DatabaseList = Array<Database>;
-const DatabaseList = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<DatabaseList>;
-
 /** The response for ListDatabases. */
 export interface ListDatabasesResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabases call to fetch more of the matching databases. */
@@ -2735,11 +1900,6 @@ export interface ListDatabasesResponse {
   /** Databases that matched the request. */
   databases?: DatabaseList;
 }
-const ListDatabasesResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListDatabasesResponse>;
-
 export interface ListProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. Database is the parent resource whose backup schedules should be listed. Values are of the form projects//instances//databases/ */
   parent: string;
@@ -2748,14 +1908,7 @@ export interface ListProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Optional. Number of backup schedules to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
 }
-const ListProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 export type BackupScheduleList = Array<BackupSchedule>;
-const BackupScheduleList = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<BackupScheduleList>;
-
 /** The response for ListBackupSchedules. */
 export interface ListBackupSchedulesResponse {
   /** `next_page_token` can be sent in a subsequent ListBackupSchedules call to fetch more of the schedules. */
@@ -2763,11 +1916,6 @@ export interface ListBackupSchedulesResponse {
   /** The list of backup schedules for a database. */
   backupSchedules?: BackupScheduleList;
 }
-const ListBackupSchedulesResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ListBackupSchedulesResponse>;
-
 export interface ListProjectsInstancesDatabasesDatabaseRolesRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListDatabaseRolesResponse. */
   pageToken?: string;
@@ -2776,21 +1924,12 @@ export interface ListProjectsInstancesDatabasesDatabaseRolesRequest {
   /** Required. The database whose roles should be listed. Values are of the form `projects//instances//databases/`. */
   parent: string;
 }
-const ListProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListProjectsInstancesDatabasesDatabaseRolesRequest>;
-
 /** A Cloud Spanner database role. */
 export interface DatabaseRole {
   /** Required. The name of the database role. Values are of the form `projects//instances//databases//databaseRoles/` where `` is as specified in the `CREATE ROLE` DDL statement. */
   name?: string;
 }
-const DatabaseRole = AdapterSession as any as S.Schema<DatabaseRole>;
-
 export type DatabaseRoleList = Array<DatabaseRole>;
-const DatabaseRoleList = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<DatabaseRoleList>;
-
 /** The response for ListDatabaseRoles. */
 export interface ListDatabaseRolesResponse {
   /** Database roles that matched the request. */
@@ -2798,11 +1937,6 @@ export interface ListDatabaseRolesResponse {
   /** `next_page_token` can be sent in a subsequent ListDatabaseRoles call to fetch more of the matching roles. */
   nextPageToken?: string;
 }
-const ListDatabaseRolesResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ListDatabaseRolesResponse>;
-
 export interface ListProjectsInstancesDatabasesOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -2815,11 +1949,6 @@ export interface ListProjectsInstancesDatabasesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListProjectsInstancesDatabasesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ListProjectsInstancesDatabasesOperationsRequest>;
-
 export interface ListProjectsInstancesDatabasesSessionsRequest {
   /** Required. The database in which to list sessions. */
   database: string;
@@ -2830,11 +1959,6 @@ export interface ListProjectsInstancesDatabasesSessionsRequest {
   /** If non-empty, `page_token` should contain a next_page_token from a previous ListSessionsResponse. */
   pageToken?: string;
 }
-const ListProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ListProjectsInstancesDatabasesSessionsRequest>;
-
 /** The response for ListSessions. */
 export interface ListSessionsResponse {
   /** `next_page_token` can be sent in a subsequent ListSessions call to fetch more of the matching sessions. */
@@ -2842,11 +1966,6 @@ export interface ListSessionsResponse {
   /** The list of requested sessions. */
   sessions?: SessionList;
 }
-const ListSessionsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ListSessionsResponse>;
-
 export interface ListProjectsInstancesInstancePartitionOperationsRequest {
   /** Optional. Number of operations to be returned in the response. If 0 or less, defaults to the server's maximum allowed page size. */
   pageSize?: number;
@@ -2859,11 +1978,6 @@ export interface ListProjectsInstancesInstancePartitionOperationsRequest {
   /** Required. The parent instance of the instance partition operations. Values are of the form `projects//instances/`. */
   parent: string;
 }
-const ListProjectsInstancesInstancePartitionOperationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListProjectsInstancesInstancePartitionOperationsRequest>;
-
 /** The response for ListInstancePartitionOperations. */
 export interface ListInstancePartitionOperationsResponse {
   /** The list of matching instance partition long-running operations. Each operation's name will be prefixed by the instance partition's name. The operation's metadata field type `metadata.type_url` describes the type of the metadata. */
@@ -2873,11 +1987,6 @@ export interface ListInstancePartitionOperationsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstancePartitionOperations call to fetch more of the matching metadata. */
   nextPageToken?: string;
 }
-const ListInstancePartitionOperationsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ListInstancePartitionOperationsResponse>;
-
 export interface ListProjectsInstancesInstancePartitionsRequest {
   /** Required. The instance whose instance partitions should be listed. Values are of the form `projects//instances/`. Use `{instance} = '-'` to list instance partitions for all Instances in a project, e.g., `projects/myproject/instances/-`. */
   parent: string;
@@ -2888,17 +1997,7 @@ export interface ListProjectsInstancesInstancePartitionsRequest {
   /** Optional. Deadline used while retrieving metadata for instance partitions. Instance partitions whose metadata cannot be retrieved within this deadline will be added to unreachable in ListInstancePartitionsResponse. */
   instancePartitionDeadline?: string;
 }
-const ListProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>;
-
 export type InstancePartitionList = Array<InstancePartition>;
-const InstancePartitionList = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<InstancePartitionList>;
-
 /** The response for ListInstancePartitions. */
 export interface ListInstancePartitionsResponse {
   /** The list of unreachable instances or instance partitions. It includes the names of instances or instance partitions whose metadata could not be retrieved within instance_partition_deadline. */
@@ -2908,11 +2007,6 @@ export interface ListInstancePartitionsResponse {
   /** `next_page_token` can be sent in a subsequent ListInstancePartitions call to fetch more of the matching instance partitions. */
   nextPageToken?: string;
 }
-const ListInstancePartitionsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListInstancePartitionsResponse>;
-
 export interface ListProjectsInstancesInstancePartitionsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -2925,11 +2019,6 @@ export interface ListProjectsInstancesInstancePartitionsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsInstancesInstancePartitionsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ListProjectsInstancesInstancePartitionsOperationsRequest>;
-
 export interface ListProjectsInstancesOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -2942,14 +2031,7 @@ export interface ListProjectsInstancesOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListProjectsInstancesOperationsRequest>;
-
 export type ListScansViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
-const ListScansViewEnum = S.String;
-
 export interface ListScansRequest {
   /** Specifies which parts of the Scan should be returned in the response. Note, only the SUMMARY view (the default) is currently supported for ListScans. */
   view?: ListScansViewEnum | (string & {});
@@ -2962,11 +2044,7 @@ export interface ListScansRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-const ListScansRequest = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<ListScansRequest>;
-
 export type ScanList = Array<Scan>;
-const ScanList = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<ScanList>;
-
 /** Response method from the ListScans method. */
 export interface ListScansResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -2974,8 +2052,6 @@ export interface ListScansResponse {
   /** Available scans based on the list query parameters. */
   scans?: ScanList;
 }
-const ListScansResponse = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<ListScansResponse>;
-
 /** Encryption configuration for a Cloud Spanner database. */
 export interface InstanceEncryptionConfig {
   /** Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
@@ -2983,11 +2059,6 @@ export interface InstanceEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
   kmsKeyName?: string;
 }
-const InstanceEncryptionConfig = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<InstanceEncryptionConfig>;
-
 /** The configuration for each database in the target instance configuration. */
 export interface DatabaseMoveConfig {
   /** Optional. Encryption configuration to be used for the database in the target configuration. The encryption configuration must be specified for every database which currently uses CMEK encryption. If a database currently uses Google-managed encryption and a target encryption configuration is not specified, then the database defaults to Google-managed encryption. If a database currently uses Google-managed encryption and a target CMEK encryption is specified, the request is rejected. If a database currently uses CMEK encryption, then a target encryption configuration must be specified. You can't move a CMEK database to a Google-managed encryption database using the MoveInstance API. */
@@ -2995,14 +2066,7 @@ export interface DatabaseMoveConfig {
   /** Required. The unique identifier of the database resource in the Instance. For example, if the database uri is `projects/foo/instances/bar/databases/baz`, then the id to supply here is baz. */
   databaseId?: string;
 }
-const DatabaseMoveConfig = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<DatabaseMoveConfig>;
-
 export type DatabaseMoveConfigList = Array<DatabaseMoveConfig>;
-const DatabaseMoveConfigList = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<DatabaseMoveConfigList>;
-
 /** The request for MoveInstance. */
 export interface MoveInstanceRequest {
   /** Required. The target instance configuration where to move the instance. Values are of the form `projects//instanceConfigs/`. */
@@ -3010,19 +2074,12 @@ export interface MoveInstanceRequest {
   /** Optional. The configuration for each database in the target instance configuration. */
   targetDatabaseMoveConfigs?: DatabaseMoveConfigList;
 }
-const MoveInstanceRequest = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<MoveInstanceRequest>;
-
 export interface MoveProjectsInstancesRequest {
   /** Required. The instance to move. Values are of the form `projects//instances/`. */
   name: string;
   /** Request body */
   body?: MoveInstanceRequest;
 }
-const MoveProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<MoveProjectsInstancesRequest>;
-
 /** Options for a `PartitionQueryRequest` and `PartitionReadRequest`. */
 export interface PartitionOptions {
   /** **Note:** This hint is currently ignored by `PartitionQuery` and `PartitionRead` requests. The desired maximum number of partitions to return. For example, this might be set to the number of workers available. The default for this option is currently 10,000. The maximum value is currently 200,000. This is only a hint. The actual number of partitions returned can be smaller or larger than this maximum count request. */
@@ -3030,8 +2087,6 @@ export interface PartitionOptions {
   /** **Note:** This hint is currently ignored by `PartitionQuery` and `PartitionRead` requests. The desired data size for each partition generated. The default for this option is currently 1 GiB. This is only a hint. The actual size of each partition can be smaller or larger than this size request. */
   partitionSizeBytes?: string;
 }
-const PartitionOptions = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<PartitionOptions>;
-
 /** The request for PartitionQuery */
 export interface PartitionQueryRequest {
   /** Optional. Parameter names and values that bind to placeholders in the SQL string. A parameter placeholder consists of the `@` character followed by the parameter name (for example, `@firstName`). Parameter names can contain letters, numbers, and underscores. Parameters can appear anywhere that a literal value is expected. The same parameter name can be used more than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an error to execute a SQL statement with unbound parameters. */
@@ -3045,32 +2100,18 @@ export interface PartitionQueryRequest {
   /** Optional. It isn't always possible for Cloud Spanner to infer the right SQL type from a JSON value. For example, values of type `BYTES` and values of type `STRING` both appear in params as JSON strings. In these cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL query parameters. See the definition of Type for more information about SQL types. */
   paramTypes?: TypeMap;
 }
-const PartitionQueryRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<PartitionQueryRequest>;
-
 export interface PartitionQueryProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session used to create the partitions. */
   session: string;
   /** Request body */
   body?: PartitionQueryRequest;
 }
-const PartitionQueryProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<PartitionQueryProjectsInstancesDatabasesSessionsRequest>;
-
 /** Information returned for each partition returned in a PartitionResponse. */
 export interface Partition {
   /** This token can be passed to `Read`, `StreamingRead`, `ExecuteSql`, or `ExecuteStreamingSql` requests to restrict the results to those identified by this partition token. */
   partitionToken?: string;
 }
-const Partition = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<Partition>;
-
 export type PartitionList = Array<Partition>;
-const PartitionList = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<PartitionList>;
-
 /** The response for PartitionQuery or PartitionRead */
 export interface PartitionResponse {
   /** Transaction created by this request. */
@@ -3078,8 +2119,6 @@ export interface PartitionResponse {
   /** Partitions created by this request. */
   partitions?: PartitionList;
 }
-const PartitionResponse = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<PartitionResponse>;
-
 /** The request for PartitionRead */
 export interface PartitionReadRequest {
   /** The columns of table to be returned for each row matching this request. */
@@ -3095,22 +2134,12 @@ export interface PartitionReadRequest {
   /** If non-empty, the name of an index on table. This index is used instead of the table primary key when interpreting key_set and sorting result rows. See key_set for further information. */
   index?: string;
 }
-const PartitionReadRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<PartitionReadRequest>;
-
 export interface PartitionReadProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session used to create the partitions. */
   session: string;
   /** Request body */
   body?: PartitionReadRequest;
 }
-const PartitionReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<PartitionReadProjectsInstancesDatabasesSessionsRequest>;
-
 /** The request for UpdateInstanceConfig. */
 export interface UpdateInstanceConfigRequest {
   /** An option to validate, but not actually execute, a request, and provide the same response. */
@@ -3120,22 +2149,12 @@ export interface UpdateInstanceConfigRequest {
   /** Required. The user instance configuration to update, which must always include the instance configuration name. Otherwise, only fields mentioned in update_mask need be included. To prevent conflicts of concurrent updates, etag can be used. */
   instanceConfig?: InstanceConfig;
 }
-const UpdateInstanceConfigRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<UpdateInstanceConfigRequest>;
-
 export interface PatchProjectsInstanceConfigsRequest {
   /** A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`. User instance configuration must start with `custom-`. */
   name: string;
   /** Request body */
   body?: UpdateInstanceConfigRequest;
 }
-const PatchProjectsInstanceConfigsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<PatchProjectsInstanceConfigsRequest>;
-
 /** The request for UpdateInstance. */
 export interface UpdateInstanceRequest {
   /** Required. The instance to update, which must always include the instance name. Otherwise, only fields mentioned in field_mask need be included. */
@@ -3143,22 +2162,12 @@ export interface UpdateInstanceRequest {
   /** Required. A mask specifying which fields in Instance should be updated. The field mask must always be specified; this prevents any future fields in Instance from being erased accidentally by clients that do not know about them. */
   fieldMask?: string;
 }
-const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<UpdateInstanceRequest>;
-
 export interface PatchProjectsInstancesRequest {
   /** Required. A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length. */
   name: string;
   /** Request body */
   body?: UpdateInstanceRequest;
 }
-const PatchProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<PatchProjectsInstancesRequest>;
-
 export interface PatchProjectsInstancesBackupsRequest {
   /** Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}`. */
   name: string;
@@ -3167,11 +2176,6 @@ export interface PatchProjectsInstancesBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-const PatchProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<PatchProjectsInstancesBackupsRequest>;
-
 export interface PatchProjectsInstancesDatabasesRequest {
   /** Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database. */
   name: string;
@@ -3180,11 +2184,6 @@ export interface PatchProjectsInstancesDatabasesRequest {
   /** Request body */
   body?: Database;
 }
-const PatchProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<PatchProjectsInstancesDatabasesRequest>;
-
 export interface PatchProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Required. A mask specifying which fields in the BackupSchedule resource should be updated. This mask is relative to the BackupSchedule resource, not to the request message. The field mask must always be specified; this prevents any future fields from being erased accidentally. */
   updateMask?: string;
@@ -3193,11 +2192,6 @@ export interface PatchProjectsInstancesDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: BackupSchedule;
 }
-const PatchProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<PatchProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 /** The request for UpdateInstancePartition. */
 export interface UpdateInstancePartitionRequest {
   /** Required. The instance partition to update, which must always include the instance partition name. Otherwise, only fields mentioned in field_mask need be included. */
@@ -3205,34 +2199,20 @@ export interface UpdateInstancePartitionRequest {
   /** Required. A mask specifying which fields in InstancePartition should be updated. The field mask must always be specified; this prevents any future fields in InstancePartition from being erased accidentally by clients that do not know about them. */
   fieldMask?: string;
 }
-const UpdateInstancePartitionRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<UpdateInstancePartitionRequest>;
-
 export interface PatchProjectsInstancesInstancePartitionsRequest {
   /** Required. A unique identifier for the instance partition. Values are of the form `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length. An instance partition's name cannot be changed after the instance partition is created. */
   name: string;
   /** Request body */
   body?: UpdateInstancePartitionRequest;
 }
-const PatchProjectsInstancesInstancePartitionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<PatchProjectsInstancesInstancePartitionsRequest>;
-
 export type ReadRequestLockHintEnum =
   | "LOCK_HINT_UNSPECIFIED"
   | "LOCK_HINT_SHARED"
   | "LOCK_HINT_EXCLUSIVE";
-const ReadRequestLockHintEnum = S.String;
-
 export type ReadRequestOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "ORDER_BY_PRIMARY_KEY"
   | "ORDER_BY_NO_ORDER";
-const ReadRequestOrderByEnum = S.String;
-
 /** The request for Read and StreamingRead. */
 export interface ReadRequest {
   /** If this request is resuming a previously interrupted read, `resume_token` should be copied from the last PartialResultSet yielded before the interruption. Doing this enables the new read to resume where the last read left off. The rest of the request parameters must exactly match the request that yielded this token. */
@@ -3262,26 +2242,17 @@ export interface ReadRequest {
   /** Required. The name of the table in the database to be read. */
   table?: string;
 }
-const ReadRequest = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ReadRequest>;
-
 export interface ReadProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the read should be performed. */
   session: string;
   /** Request body */
   body?: ReadRequest;
 }
-const ReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<ReadProjectsInstancesDatabasesSessionsRequest>;
-
 export type RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
   | "CUSTOMER_MANAGED_ENCRYPTION";
-const RestoreDatabaseEncryptionConfigEncryptionTypeEnum = S.String;
-
 /** Encryption configuration for the restored database. */
 export interface RestoreDatabaseEncryptionConfig {
   /** Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`. */
@@ -3291,11 +2262,6 @@ export interface RestoreDatabaseEncryptionConfig {
   /** Optional. Specifies the KMS configuration for one or more keys used to encrypt the database. Values have the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the database's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. */
   kmsKeyNames?: StringList;
 }
-const RestoreDatabaseEncryptionConfig = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<RestoreDatabaseEncryptionConfig>;
-
 /** The request for RestoreDatabase. */
 export interface RestoreDatabaseRequest {
   /** Name of the backup from which to restore. Values are of the form `projects//instances//backups/`. */
@@ -3305,175 +2271,98 @@ export interface RestoreDatabaseRequest {
   /** Optional. An encryption configuration describing the encryption type and key resources in Cloud KMS used to encrypt/decrypt the database to restore to. If this field is not specified, the restored database will use the same encryption configuration as the backup by default, namely encryption_type = `USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION`. */
   encryptionConfig?: RestoreDatabaseEncryptionConfig;
 }
-const RestoreDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<RestoreDatabaseRequest>;
-
 export interface RestoreProjectsInstancesDatabasesRequest {
   /** Required. The name of the instance in which to create the restored database. This instance must be in the same project and have the same instance configuration as the instance containing the source backup. Values are of the form `projects//instances/`. */
   parent: string;
   /** Request body */
   body?: RestoreDatabaseRequest;
 }
-const RestoreProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<RestoreProjectsInstancesDatabasesRequest>;
-
 /** The request for Rollback. */
 export interface RollbackRequest {
   /** Required. The transaction to roll back. */
   transactionId?: string;
 }
-const RollbackRequest = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<RollbackRequest>;
-
 export interface RollbackProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the transaction to roll back is running. */
   session: string;
   /** Request body */
   body?: RollbackRequest;
 }
-const RollbackProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<RollbackProjectsInstancesDatabasesSessionsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsInstancesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsInstancesRequest>;
-
 export interface SetIamPolicyProjectsInstancesBackupsRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsInstancesBackupsRequest>;
-
 export interface SetIamPolicyProjectsInstancesDatabasesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesRequest>;
-
 export interface SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
   /** REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for databases resources. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 export interface StreamingReadProjectsInstancesDatabasesSessionsRequest {
   /** Required. The session in which the read should be performed. */
   session: string;
   /** Request body */
   body?: ReadRequest;
 }
-const StreamingReadProjectsInstancesDatabasesSessionsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<StreamingReadProjectsInstancesDatabasesSessionsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** REQUIRED: The set of permissions to check for 'resource'. Permissions with wildcards (such as '*', 'spanner.*', 'spanner.instances.*') are not allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsInstancesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsInstancesRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsInstancesBackupsRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsInstancesBackupsRequest>;
-
 export interface TestIamPermissionsProjectsInstancesDatabasesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesRequest>;
-
 export interface TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest>;
-
 export interface TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest {
   /** REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is `projects//instances/` for instance resources and `projects//instances//databases/` for database resources. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest>;
-
 /** Enqueues the given DDL statements to be applied, in order but not necessarily all at once, to the database schema at some point (or points) in the future. The server checks that the statements are executable (syntactically valid, name tables that exist, etc.) before enqueueing them, but they may still fail upon later execution (for example, if a statement from another batch of statements is applied first and it conflicts in some way, or if there is some data-related problem like a `NULL` value in a column to which `NOT NULL` would be added). If a statement fails, all subsequent statements in the batch are automatically cancelled. Each batch of statements is assigned a name which can be used with the Operations API to monitor progress. See the operation_id field for more details. */
 export interface UpdateDatabaseDdlRequest {
   /** Required. DDL statements to be applied to the database. */
@@ -3483,22 +2372,12 @@ export interface UpdateDatabaseDdlRequest {
   /** Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
   protoDescriptors?: string;
 }
-const UpdateDatabaseDdlRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<UpdateDatabaseDdlRequest>;
-
 export interface UpdateDdlProjectsInstancesDatabasesRequest {
   /** Required. The database to update. */
   database: string;
   /** Request body */
   body?: UpdateDatabaseDdlRequest;
 }
-const UpdateDdlProjectsInstancesDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<UpdateDdlProjectsInstancesDatabasesRequest>;
-
 export type AdapterProjectsInstancesDatabasesSessionsError =
   | NotFound
   | Forbidden
@@ -3512,8 +2391,8 @@ export const adapterProjectsInstancesDatabasesSessions: API.OperationMethod<
   AdapterProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdapterProjectsInstancesDatabasesSessionsRequest,
-  output: AdapterSession,
+  input: __S(1) as any as S.Schema<AdapterProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(0) as any as S.Schema<AdapterSession>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3532,8 +2411,8 @@ export const adaptMessageProjectsInstancesDatabasesSessions: API.OperationMethod
   AdaptMessageProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AdaptMessageProjectsInstancesDatabasesSessionsRequest,
-  output: AdaptMessageResponse,
+  input: __S(4) as any as S.Schema<AdaptMessageProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(5) as any as S.Schema<AdaptMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3552,8 +2431,8 @@ export const addSplitPointsProjectsInstancesDatabases: API.OperationMethod<
   AddSplitPointsProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSplitPointsProjectsInstancesDatabasesRequest,
-  output: AddSplitPointsResponse,
+  input: __S(12) as any as S.Schema<AddSplitPointsProjectsInstancesDatabasesRequest>,
+  output: __S(13) as any as S.Schema<AddSplitPointsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3572,8 +2451,8 @@ export const batchCreateProjectsInstancesDatabasesSessions: API.OperationMethod<
   BatchCreateProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsInstancesDatabasesSessionsRequest,
-  output: BatchCreateSessionsResponse,
+  input: __S(16) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(18) as any as S.Schema<BatchCreateSessionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3592,8 +2471,8 @@ export const batchWriteProjectsInstancesDatabasesSessions: API.OperationMethod<
   BatchWriteProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchWriteProjectsInstancesDatabasesSessionsRequest,
-  output: BatchWriteResponse,
+  input: __S(36) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(40) as any as S.Schema<BatchWriteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3613,8 +2492,8 @@ export const beginTransactionProjectsInstancesDatabasesSessions: API.OperationMe
   BeginTransactionProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BeginTransactionProjectsInstancesDatabasesSessionsRequest,
-  output: Transaction,
+  input: __S(45) as any as S.Schema<BeginTransactionProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(47) as any as S.Schema<Transaction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3633,8 +2512,8 @@ export const cancelProjectsInstanceConfigsOperations: API.OperationMethod<
   CancelProjectsInstanceConfigsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsInstanceConfigsOperationsRequest,
-  output: Empty,
+  input: __S(48) as any as S.Schema<CancelProjectsInstanceConfigsOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3653,8 +2532,8 @@ export const cancelProjectsInstanceConfigsSsdCachesOperations: API.OperationMeth
   CancelProjectsInstanceConfigsSsdCachesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsInstanceConfigsSsdCachesOperationsRequest,
-  output: Empty,
+  input: __S(49) as any as S.Schema<CancelProjectsInstanceConfigsSsdCachesOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3673,8 +2552,8 @@ export const cancelProjectsInstancesBackupsOperations: API.OperationMethod<
   CancelProjectsInstancesBackupsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsInstancesBackupsOperationsRequest,
-  output: Empty,
+  input: __S(50) as any as S.Schema<CancelProjectsInstancesBackupsOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3693,8 +2572,8 @@ export const cancelProjectsInstancesDatabasesOperations: API.OperationMethod<
   CancelProjectsInstancesDatabasesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsInstancesDatabasesOperationsRequest,
-  output: Empty,
+  input: __S(51) as any as S.Schema<CancelProjectsInstancesDatabasesOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3713,8 +2592,8 @@ export const cancelProjectsInstancesInstancePartitionsOperations: API.OperationM
   CancelProjectsInstancesInstancePartitionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsInstancesInstancePartitionsOperationsRequest,
-  output: Empty,
+  input: __S(52) as any as S.Schema<CancelProjectsInstancesInstancePartitionsOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3733,8 +2612,8 @@ export const cancelProjectsInstancesOperations: API.OperationMethod<
   CancelProjectsInstancesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsInstancesOperationsRequest,
-  output: Empty,
+  input: __S(53) as any as S.Schema<CancelProjectsInstancesOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3753,8 +2632,8 @@ export const changequorumProjectsInstancesDatabases: API.OperationMethod<
   ChangequorumProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangequorumProjectsInstancesDatabasesRequest,
-  output: Operation,
+  input: __S(57) as any as S.Schema<ChangequorumProjectsInstancesDatabasesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3774,8 +2653,8 @@ export const commitProjectsInstancesDatabasesSessions: API.OperationMethod<
   CommitProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitProjectsInstancesDatabasesSessionsRequest,
-  output: CommitResponse,
+  input: __S(60) as any as S.Schema<CommitProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(62) as any as S.Schema<CommitResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3794,8 +2673,8 @@ export const copyProjectsInstancesBackups: API.OperationMethod<
   CopyProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyProjectsInstancesBackupsRequest,
-  output: Operation,
+  input: __S(65) as any as S.Schema<CopyProjectsInstancesBackupsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3814,8 +2693,8 @@ export const createProjectsInstanceConfigs: API.OperationMethod<
   CreateProjectsInstanceConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstanceConfigsRequest,
-  output: Operation,
+  input: __S(70) as any as S.Schema<CreateProjectsInstanceConfigsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3834,8 +2713,8 @@ export const createProjectsInstances: API.OperationMethod<
   CreateProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesRequest,
-  output: Operation,
+  input: __S(83) as any as S.Schema<CreateProjectsInstancesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3854,8 +2733,8 @@ export const createProjectsInstancesBackups: API.OperationMethod<
   CreateProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesBackupsRequest,
-  output: Operation,
+  input: __S(89) as any as S.Schema<CreateProjectsInstancesBackupsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3874,8 +2753,8 @@ export const createProjectsInstancesDatabases: API.OperationMethod<
   CreateProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesDatabasesRequest,
-  output: Operation,
+  input: __S(92) as any as S.Schema<CreateProjectsInstancesDatabasesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3894,8 +2773,8 @@ export const createProjectsInstancesDatabasesBackupSchedules: API.OperationMetho
   CreateProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: BackupSchedule,
+  input: __S(97) as any as S.Schema<CreateProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(96) as any as S.Schema<BackupSchedule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3914,8 +2793,8 @@ export const createProjectsInstancesDatabasesSessions: API.OperationMethod<
   CreateProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesDatabasesSessionsRequest,
-  output: Session,
+  input: __S(99) as any as S.Schema<CreateProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(14) as any as S.Schema<Session>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3934,8 +2813,8 @@ export const createProjectsInstancesInstancePartitions: API.OperationMethod<
   CreateProjectsInstancesInstancePartitionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsInstancesInstancePartitionsRequest,
-  output: Operation,
+  input: __S(102) as any as S.Schema<CreateProjectsInstancesInstancePartitionsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3954,8 +2833,8 @@ export const deleteProjectsInstanceConfigs: API.OperationMethod<
   DeleteProjectsInstanceConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstanceConfigsRequest,
-  output: Empty,
+  input: __S(103) as any as S.Schema<DeleteProjectsInstanceConfigsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3974,8 +2853,8 @@ export const deleteProjectsInstanceConfigsOperations: API.OperationMethod<
   DeleteProjectsInstanceConfigsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstanceConfigsOperationsRequest,
-  output: Empty,
+  input: __S(104) as any as S.Schema<DeleteProjectsInstanceConfigsOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3994,8 +2873,8 @@ export const deleteProjectsInstanceConfigsSsdCachesOperations: API.OperationMeth
   DeleteProjectsInstanceConfigsSsdCachesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstanceConfigsSsdCachesOperationsRequest,
-  output: Empty,
+  input: __S(105) as any as S.Schema<DeleteProjectsInstanceConfigsSsdCachesOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4014,8 +2893,8 @@ export const deleteProjectsInstances: API.OperationMethod<
   DeleteProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesRequest,
-  output: Empty,
+  input: __S(106) as any as S.Schema<DeleteProjectsInstancesRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4034,8 +2913,8 @@ export const deleteProjectsInstancesBackups: API.OperationMethod<
   DeleteProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesBackupsRequest,
-  output: Empty,
+  input: __S(107) as any as S.Schema<DeleteProjectsInstancesBackupsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4054,8 +2933,8 @@ export const deleteProjectsInstancesBackupsOperations: API.OperationMethod<
   DeleteProjectsInstancesBackupsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesBackupsOperationsRequest,
-  output: Empty,
+  input: __S(108) as any as S.Schema<DeleteProjectsInstancesBackupsOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4074,8 +2953,8 @@ export const deleteProjectsInstancesDatabasesBackupSchedules: API.OperationMetho
   DeleteProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: Empty,
+  input: __S(109) as any as S.Schema<DeleteProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4094,8 +2973,8 @@ export const deleteProjectsInstancesDatabasesOperations: API.OperationMethod<
   DeleteProjectsInstancesDatabasesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesDatabasesOperationsRequest,
-  output: Empty,
+  input: __S(110) as any as S.Schema<DeleteProjectsInstancesDatabasesOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4115,8 +2994,8 @@ export const deleteProjectsInstancesDatabasesSessions: API.OperationMethod<
   DeleteProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesDatabasesSessionsRequest,
-  output: Empty,
+  input: __S(111) as any as S.Schema<DeleteProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4135,8 +3014,8 @@ export const deleteProjectsInstancesInstancePartitions: API.OperationMethod<
   DeleteProjectsInstancesInstancePartitionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesInstancePartitionsRequest,
-  output: Empty,
+  input: __S(112) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4155,8 +3034,8 @@ export const deleteProjectsInstancesInstancePartitionsOperations: API.OperationM
   DeleteProjectsInstancesInstancePartitionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesInstancePartitionsOperationsRequest,
-  output: Empty,
+  input: __S(113) as any as S.Schema<DeleteProjectsInstancesInstancePartitionsOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4175,8 +3054,8 @@ export const deleteProjectsInstancesOperations: API.OperationMethod<
   DeleteProjectsInstancesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsInstancesOperationsRequest,
-  output: Empty,
+  input: __S(114) as any as S.Schema<DeleteProjectsInstancesOperationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4195,8 +3074,8 @@ export const dropDatabaseProjectsInstancesDatabases: API.OperationMethod<
   DropDatabaseProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DropDatabaseProjectsInstancesDatabasesRequest,
-  output: Empty,
+  input: __S(115) as any as S.Schema<DropDatabaseProjectsInstancesDatabasesRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4216,8 +3095,8 @@ export const executeBatchDmlProjectsInstancesDatabasesSessions: API.OperationMet
   ExecuteBatchDmlProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest,
-  output: ExecuteBatchDmlResponse,
+  input: __S(125) as any as S.Schema<ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(140) as any as S.Schema<ExecuteBatchDmlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4237,8 +3116,8 @@ export const executeSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
   ExecuteSqlProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteSqlProjectsInstancesDatabasesSessionsRequest,
-  output: ResultSet,
+  input: __S(148) as any as S.Schema<ExecuteSqlProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(138) as any as S.Schema<ResultSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4258,8 +3137,8 @@ export const executeStreamingSqlProjectsInstancesDatabasesSessions: API.Operatio
   ExecuteStreamingSqlProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest,
-  output: PartialResultSet,
+  input: __S(149) as any as S.Schema<ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(150) as any as S.Schema<PartialResultSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4273,8 +3152,8 @@ export const getDdlProjectsInstancesDatabases: API.OperationMethod<
   GetDdlProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDdlProjectsInstancesDatabasesRequest,
-  output: GetDatabaseDdlResponse,
+  input: __S(151) as any as S.Schema<GetDdlProjectsInstancesDatabasesRequest>,
+  output: __S(152) as any as S.Schema<GetDatabaseDdlResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4293,8 +3172,8 @@ export const getIamPolicyProjectsInstances: API.OperationMethod<
   GetIamPolicyProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesRequest,
-  output: Policy,
+  input: __S(155) as any as S.Schema<GetIamPolicyProjectsInstancesRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4313,8 +3192,8 @@ export const getIamPolicyProjectsInstancesBackups: API.OperationMethod<
   GetIamPolicyProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesBackupsRequest,
-  output: Policy,
+  input: __S(160) as any as S.Schema<GetIamPolicyProjectsInstancesBackupsRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4333,8 +3212,8 @@ export const getIamPolicyProjectsInstancesDatabases: API.OperationMethod<
   GetIamPolicyProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesDatabasesRequest,
-  output: Policy,
+  input: __S(161) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4353,8 +3232,8 @@ export const getIamPolicyProjectsInstancesDatabasesBackupSchedules: API.Operatio
   GetIamPolicyProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: Policy,
+  input: __S(162) as any as S.Schema<GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4368,8 +3247,8 @@ export const getProjectsInstanceConfigs: API.OperationMethod<
   GetProjectsInstanceConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstanceConfigsRequest,
-  output: InstanceConfig,
+  input: __S(163) as any as S.Schema<GetProjectsInstanceConfigsRequest>,
+  output: __S(68) as any as S.Schema<InstanceConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4383,8 +3262,8 @@ export const getProjectsInstanceConfigsOperations: API.OperationMethod<
   GetProjectsInstanceConfigsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstanceConfigsOperationsRequest,
-  output: Operation,
+  input: __S(164) as any as S.Schema<GetProjectsInstanceConfigsOperationsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4398,8 +3277,8 @@ export const getProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
   GetProjectsInstanceConfigsSsdCachesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstanceConfigsSsdCachesOperationsRequest,
-  output: Operation,
+  input: __S(165) as any as S.Schema<GetProjectsInstanceConfigsSsdCachesOperationsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4413,8 +3292,8 @@ export const getProjectsInstances: API.OperationMethod<
   GetProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesRequest,
-  output: Instance,
+  input: __S(166) as any as S.Schema<GetProjectsInstancesRequest>,
+  output: __S(81) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4428,8 +3307,8 @@ export const getProjectsInstancesBackups: API.OperationMethod<
   GetProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesBackupsRequest,
-  output: Backup,
+  input: __S(167) as any as S.Schema<GetProjectsInstancesBackupsRequest>,
+  output: __S(88) as any as S.Schema<Backup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4443,8 +3322,8 @@ export const getProjectsInstancesBackupsOperations: API.OperationMethod<
   GetProjectsInstancesBackupsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesBackupsOperationsRequest,
-  output: Operation,
+  input: __S(168) as any as S.Schema<GetProjectsInstancesBackupsOperationsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4458,8 +3337,8 @@ export const getProjectsInstancesDatabases: API.OperationMethod<
   GetProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesDatabasesRequest,
-  output: Database,
+  input: __S(169) as any as S.Schema<GetProjectsInstancesDatabasesRequest>,
+  output: __S(173) as any as S.Schema<Database>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4473,8 +3352,8 @@ export const getProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
   GetProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: BackupSchedule,
+  input: __S(174) as any as S.Schema<GetProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(96) as any as S.Schema<BackupSchedule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4488,8 +3367,8 @@ export const getProjectsInstancesDatabasesOperations: API.OperationMethod<
   GetProjectsInstancesDatabasesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesDatabasesOperationsRequest,
-  output: Operation,
+  input: __S(175) as any as S.Schema<GetProjectsInstancesDatabasesOperationsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4507,8 +3386,8 @@ export const getProjectsInstancesDatabasesSessions: API.OperationMethod<
   GetProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesDatabasesSessionsRequest,
-  output: Session,
+  input: __S(176) as any as S.Schema<GetProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(14) as any as S.Schema<Session>,
   errors: [NotFound, Forbidden, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4522,8 +3401,8 @@ export const getProjectsInstancesInstancePartitions: API.OperationMethod<
   GetProjectsInstancesInstancePartitionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesInstancePartitionsRequest,
-  output: InstancePartition,
+  input: __S(177) as any as S.Schema<GetProjectsInstancesInstancePartitionsRequest>,
+  output: __S(100) as any as S.Schema<InstancePartition>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4540,8 +3419,8 @@ export const getProjectsInstancesInstancePartitionsOperations: API.OperationMeth
   GetProjectsInstancesInstancePartitionsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesInstancePartitionsOperationsRequest,
-  output: Operation,
+  input: __S(178) as any as S.Schema<GetProjectsInstancesInstancePartitionsOperationsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4555,8 +3434,8 @@ export const getProjectsInstancesOperations: API.OperationMethod<
   GetProjectsInstancesOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsInstancesOperationsRequest,
-  output: Operation,
+  input: __S(179) as any as S.Schema<GetProjectsInstancesOperationsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4570,8 +3449,8 @@ export const getScansProjectsInstancesDatabases: API.OperationMethod<
   GetScansProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScansProjectsInstancesDatabasesRequest,
-  output: Scan,
+  input: __S(180) as any as S.Schema<GetScansProjectsInstancesDatabasesRequest>,
+  output: __S(204) as any as S.Schema<Scan>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4586,8 +3465,8 @@ export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstanceConfigOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstanceConfigOperationsRequest,
-  output: ListInstanceConfigOperationsResponse,
+  input: __S(205) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>,
+  output: __S(207) as any as S.Schema<ListInstanceConfigOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4603,8 +3482,8 @@ export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstanceConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstanceConfigsRequest,
-  output: ListInstanceConfigsResponse,
+  input: __S(208) as any as S.Schema<ListProjectsInstanceConfigsRequest>,
+  output: __S(210) as any as S.Schema<ListInstanceConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4620,8 +3499,8 @@ export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstanceConfigsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(211) as any as S.Schema<ListProjectsInstanceConfigsOperationsRequest>,
+  output: __S(212) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4637,8 +3516,8 @@ export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperat
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstanceConfigsSsdCachesOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(213) as any as S.Schema<ListProjectsInstanceConfigsSsdCachesOperationsRequest>,
+  output: __S(212) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4654,8 +3533,8 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesRequest,
-  output: ListInstancesResponse,
+  input: __S(214) as any as S.Schema<ListProjectsInstancesRequest>,
+  output: __S(216) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4671,8 +3550,8 @@ export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod
   GcpOpContext,
   ListBackupOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesBackupOperationsRequest,
-  output: ListBackupOperationsResponse,
+  input: __S(217) as any as S.Schema<ListProjectsInstancesBackupOperationsRequest>,
+  output: __S(218) as any as S.Schema<ListBackupOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4688,8 +3567,8 @@ export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesBackupsRequest,
-  output: ListBackupsResponse,
+  input: __S(219) as any as S.Schema<ListProjectsInstancesBackupsRequest>,
+  output: __S(221) as any as S.Schema<ListBackupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4705,8 +3584,8 @@ export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMetho
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesBackupsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(222) as any as S.Schema<ListProjectsInstancesBackupsOperationsRequest>,
+  output: __S(212) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4722,8 +3601,8 @@ export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMeth
   GcpOpContext,
   ListDatabaseOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesDatabaseOperationsRequest,
-  output: ListDatabaseOperationsResponse,
+  input: __S(223) as any as S.Schema<ListProjectsInstancesDatabaseOperationsRequest>,
+  output: __S(218) as any as S.Schema<ListDatabaseOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4739,8 +3618,8 @@ export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatabasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesDatabasesRequest,
-  output: ListDatabasesResponse,
+  input: __S(224) as any as S.Schema<ListProjectsInstancesDatabasesRequest>,
+  output: __S(226) as any as S.Schema<ListDatabasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4756,8 +3635,8 @@ export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperati
   GcpOpContext,
   ListBackupSchedulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: ListBackupSchedulesResponse,
+  input: __S(227) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(229) as any as S.Schema<ListBackupSchedulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4773,8 +3652,8 @@ export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperation
   GcpOpContext,
   ListDatabaseRolesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesDatabasesDatabaseRolesRequest,
-  output: ListDatabaseRolesResponse,
+  input: __S(230) as any as S.Schema<ListProjectsInstancesDatabasesDatabaseRolesRequest>,
+  output: __S(232) as any as S.Schema<ListDatabaseRolesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4790,8 +3669,8 @@ export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMet
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesDatabasesOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(233) as any as S.Schema<ListProjectsInstancesDatabasesOperationsRequest>,
+  output: __S(212) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4807,8 +3686,8 @@ export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMetho
   GcpOpContext,
   ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesDatabasesSessionsRequest,
-  output: ListSessionsResponse,
+  input: __S(234) as any as S.Schema<ListProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(235) as any as S.Schema<ListSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4827,8 +3706,8 @@ export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOper
   GcpOpContext,
   ListInstancePartitionOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesInstancePartitionOperationsRequest,
-  output: ListInstancePartitionOperationsResponse,
+  input: __S(236) as any as S.Schema<ListProjectsInstancesInstancePartitionOperationsRequest>,
+  output: __S(237) as any as S.Schema<ListInstancePartitionOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4844,8 +3723,8 @@ export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMeth
   GcpOpContext,
   ListInstancePartitionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesInstancePartitionsRequest,
-  output: ListInstancePartitionsResponse,
+  input: __S(238) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>,
+  output: __S(240) as any as S.Schema<ListInstancePartitionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4864,8 +3743,8 @@ export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOpe
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesInstancePartitionsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(241) as any as S.Schema<ListProjectsInstancesInstancePartitionsOperationsRequest>,
+  output: __S(212) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4881,8 +3760,8 @@ export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsInstancesOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(242) as any as S.Schema<ListProjectsInstancesOperationsRequest>,
+  output: __S(212) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4898,8 +3777,8 @@ export const listScans: API.PaginatedOperationMethod<
   GcpOpContext,
   ListScansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScansRequest,
-  output: ListScansResponse,
+  input: __S(243) as any as S.Schema<ListScansRequest>,
+  output: __S(245) as any as S.Schema<ListScansResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4914,8 +3793,8 @@ export const moveProjectsInstances: API.OperationMethod<
   MoveProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveProjectsInstancesRequest,
-  output: Operation,
+  input: __S(250) as any as S.Schema<MoveProjectsInstancesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4935,8 +3814,8 @@ export const partitionQueryProjectsInstancesDatabasesSessions: API.OperationMeth
   PartitionQueryProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartitionQueryProjectsInstancesDatabasesSessionsRequest,
-  output: PartitionResponse,
+  input: __S(253) as any as S.Schema<PartitionQueryProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(256) as any as S.Schema<PartitionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4956,8 +3835,8 @@ export const partitionReadProjectsInstancesDatabasesSessions: API.OperationMetho
   PartitionReadProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartitionReadProjectsInstancesDatabasesSessionsRequest,
-  output: PartitionResponse,
+  input: __S(258) as any as S.Schema<PartitionReadProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(256) as any as S.Schema<PartitionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4976,8 +3855,8 @@ export const patchProjectsInstanceConfigs: API.OperationMethod<
   PatchProjectsInstanceConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstanceConfigsRequest,
-  output: Operation,
+  input: __S(260) as any as S.Schema<PatchProjectsInstanceConfigsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4991,8 +3870,8 @@ export const patchProjectsInstances: API.OperationMethod<
   PatchProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesRequest,
-  output: Operation,
+  input: __S(262) as any as S.Schema<PatchProjectsInstancesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5011,8 +3890,8 @@ export const patchProjectsInstancesBackups: API.OperationMethod<
   PatchProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesBackupsRequest,
-  output: Backup,
+  input: __S(263) as any as S.Schema<PatchProjectsInstancesBackupsRequest>,
+  output: __S(88) as any as S.Schema<Backup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5031,8 +3910,8 @@ export const patchProjectsInstancesDatabases: API.OperationMethod<
   PatchProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesDatabasesRequest,
-  output: Operation,
+  input: __S(264) as any as S.Schema<PatchProjectsInstancesDatabasesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5051,8 +3930,8 @@ export const patchProjectsInstancesDatabasesBackupSchedules: API.OperationMethod
   PatchProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: BackupSchedule,
+  input: __S(265) as any as S.Schema<PatchProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(96) as any as S.Schema<BackupSchedule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5071,8 +3950,8 @@ export const patchProjectsInstancesInstancePartitions: API.OperationMethod<
   PatchProjectsInstancesInstancePartitionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsInstancesInstancePartitionsRequest,
-  output: Operation,
+  input: __S(267) as any as S.Schema<PatchProjectsInstancesInstancePartitionsRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5092,8 +3971,8 @@ export const readProjectsInstancesDatabasesSessions: API.OperationMethod<
   ReadProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadProjectsInstancesDatabasesSessionsRequest,
-  output: ResultSet,
+  input: __S(269) as any as S.Schema<ReadProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(138) as any as S.Schema<ResultSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5112,8 +3991,8 @@ export const restoreProjectsInstancesDatabases: API.OperationMethod<
   RestoreProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreProjectsInstancesDatabasesRequest,
-  output: Operation,
+  input: __S(272) as any as S.Schema<RestoreProjectsInstancesDatabasesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5133,8 +4012,8 @@ export const rollbackProjectsInstancesDatabasesSessions: API.OperationMethod<
   RollbackProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RollbackProjectsInstancesDatabasesSessionsRequest,
-  output: Empty,
+  input: __S(274) as any as S.Schema<RollbackProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5153,8 +4032,8 @@ export const setIamPolicyProjectsInstances: API.OperationMethod<
   SetIamPolicyProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesRequest,
-  output: Policy,
+  input: __S(276) as any as S.Schema<SetIamPolicyProjectsInstancesRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5173,8 +4052,8 @@ export const setIamPolicyProjectsInstancesBackups: API.OperationMethod<
   SetIamPolicyProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesBackupsRequest,
-  output: Policy,
+  input: __S(277) as any as S.Schema<SetIamPolicyProjectsInstancesBackupsRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5193,8 +4072,8 @@ export const setIamPolicyProjectsInstancesDatabases: API.OperationMethod<
   SetIamPolicyProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesDatabasesRequest,
-  output: Policy,
+  input: __S(278) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5213,8 +4092,8 @@ export const setIamPolicyProjectsInstancesDatabasesBackupSchedules: API.Operatio
   SetIamPolicyProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: Policy,
+  input: __S(279) as any as S.Schema<SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(159) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5234,8 +4113,8 @@ export const streamingReadProjectsInstancesDatabasesSessions: API.OperationMetho
   StreamingReadProjectsInstancesDatabasesSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamingReadProjectsInstancesDatabasesSessionsRequest,
-  output: PartialResultSet,
+  input: __S(280) as any as S.Schema<StreamingReadProjectsInstancesDatabasesSessionsRequest>,
+  output: __S(150) as any as S.Schema<PartialResultSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, SessionNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5254,8 +4133,8 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
   TestIamPermissionsProjectsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(282) as any as S.Schema<TestIamPermissionsProjectsInstancesRequest>,
+  output: __S(281) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5274,8 +4153,8 @@ export const testIamPermissionsProjectsInstancesBackups: API.OperationMethod<
   TestIamPermissionsProjectsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesBackupsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(283) as any as S.Schema<TestIamPermissionsProjectsInstancesBackupsRequest>,
+  output: __S(281) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5294,8 +4173,8 @@ export const testIamPermissionsProjectsInstancesDatabases: API.OperationMethod<
   TestIamPermissionsProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesDatabasesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(284) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesRequest>,
+  output: __S(281) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5314,8 +4193,10 @@ export const testIamPermissionsProjectsInstancesDatabasesBackupSchedules: API.Op
   TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    285,
+  ) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest>,
+  output: __S(281) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5334,8 +4215,10 @@ export const testIamPermissionsProjectsInstancesDatabasesDatabaseRoles: API.Oper
   TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    286,
+  ) as any as S.Schema<TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest>,
+  output: __S(281) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5354,8 +4237,8 @@ export const updateDdlProjectsInstancesDatabases: API.OperationMethod<
   UpdateDdlProjectsInstancesDatabasesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDdlProjectsInstancesDatabasesRequest,
-  output: Operation,
+  input: __S(288) as any as S.Schema<UpdateDdlProjectsInstancesDatabasesRequest>,
+  output: __S(58) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5374,7 +4257,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AdapterSession.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5391,7 +4274,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           payload: S.optional(S.String),
-          attachments: S.optional(StringMap),
+          attachments: S.optional(__S(2)),
           protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdaptMessageRequest" });
@@ -5399,7 +4282,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AdaptMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5413,7 +4296,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          stateUpdates: S.optional(StringMap),
+          stateUpdates: S.optional(__S(2)),
           last: S.optional(S.Boolean),
           payload: S.optional(S.String),
         }),
@@ -5423,7 +4306,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keyParts: S.optional(DocumentList),
+          keyParts: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Key" });
   }
@@ -5431,22 +4314,22 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Key);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(KeyList),
+          keys: S.optional(__S(8)),
           index: S.optional(S.String),
           table: S.optional(S.String),
           expireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SplitPoints" });
     case 2:
-      return S.Array(SplitPoints);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          splitPoints: S.optional(SplitPointsList),
+          splitPoints: S.optional(__S(10)),
           initiator: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddSplitPointsRequest" });
@@ -5454,7 +4337,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           database: S.String.pipe(T.Label()),
-          body: S.optional(AddSplitPointsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5472,7 +4355,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(2)),
           multiplexed: S.optional(S.Boolean),
           approximateLastUseTime: S.optional(S.String),
           creatorRole: S.optional(S.String),
@@ -5483,7 +4366,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sessionTemplate: S.optional(Session),
+          sessionTemplate: S.optional(__S(14)),
           sessionCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -5497,7 +4380,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           database: S.String.pipe(T.Label()),
-          body: S.optional(BatchCreateSessionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5509,11 +4392,11 @@ function __c2(j: number): any {
         identifier: "BatchCreateProjectsInstancesDatabasesSessionsRequest",
       });
     case 1:
-      return S.Array(Session);
+      return S.Array(__S(14));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          session: S.optional(SessionList),
+          session: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "BatchCreateSessionsResponse",
@@ -5523,22 +4406,22 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          secureContext: S.optional(DocumentMap),
+          secureContext: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "ClientContext" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           transactionTag: S.optional(S.String),
-          priority: S.optional(RequestOptionsPriorityEnum),
+          priority: S.optional(S.String),
           requestTag: S.optional(S.String),
-          clientContext: S.optional(ClientContext),
+          clientContext: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "RequestOptions" });
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Array(DocumentList);
+      return S.Array(__S(6));
   }
 }
 function __c3(j: number): any {
@@ -5546,16 +4429,16 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(StringList),
+          columns: S.optional(__S(22)),
           table: S.optional(S.String),
-          values: S.optional(DocumentListList),
+          values: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "Write" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ignoreNotFound: S.optional(S.Boolean),
-          key: S.optional(DocumentList),
+          key: S.optional(__S(6)),
           queue: S.optional(S.String),
         }),
       ).annotate({ identifier: "Ack" });
@@ -5564,46 +4447,46 @@ function __c3(j: number): any {
         S.Struct({
           queue: S.optional(S.String),
           deliverTime: S.optional(S.String),
-          key: S.optional(DocumentList),
+          key: S.optional(__S(6)),
           payload: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Send" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endOpen: S.optional(DocumentList),
-          endClosed: S.optional(DocumentList),
-          startClosed: S.optional(DocumentList),
-          startOpen: S.optional(DocumentList),
+          endOpen: S.optional(__S(6)),
+          endClosed: S.optional(__S(6)),
+          startClosed: S.optional(__S(6)),
+          startOpen: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "KeyRange" });
     case 4:
-      return S.Array(KeyRange);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           all: S.optional(S.Boolean),
-          ranges: S.optional(KeyRangeList),
-          keys: S.optional(DocumentListList),
+          ranges: S.optional(__S(28)),
+          keys: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "KeySet" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keySet: S.optional(KeySet),
+          keySet: S.optional(__S(29)),
           table: S.optional(S.String),
         }),
       ).annotate({ identifier: "Delete" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          insertOrUpdate: S.optional(Write),
-          ack: S.optional(Ack),
-          replace: S.optional(Write),
-          send: S.optional(Send),
-          insert: S.optional(Write),
-          update: S.optional(Write),
-          delete: S.optional(Delete),
+          insertOrUpdate: S.optional(__S(24)),
+          ack: S.optional(__S(25)),
+          replace: S.optional(__S(24)),
+          send: S.optional(__S(26)),
+          insert: S.optional(__S(24)),
+          update: S.optional(__S(24)),
+          delete: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "Mutation" });
   }
@@ -5611,28 +4494,28 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Mutation);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mutations: S.optional(MutationList),
+          mutations: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "MutationGroup" });
     case 2:
-      return S.Array(MutationGroup);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
           excludeTxnFromChangeStreams: S.optional(S.Boolean),
-          requestOptions: S.optional(RequestOptions),
-          mutationGroups: S.optional(MutationGroupList),
+          requestOptions: S.optional(__S(21)),
+          mutationGroups: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "BatchWriteRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(BatchWriteRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5644,12 +4527,12 @@ function __c4(j: number): any {
         identifier: "BatchWriteProjectsInstancesDatabasesSessionsRequest",
       });
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(19));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(37)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
@@ -5663,8 +4546,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           commitTimestamp: S.optional(S.String),
-          status: S.optional(Status),
-          indexes: S.optional(IntegerList),
+          status: S.optional(__S(38)),
+          indexes: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "BatchWriteResponse" });
     case 1:
@@ -5681,33 +4564,33 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          readLockMode: S.optional(ReadWriteReadLockModeEnum),
+          readLockMode: S.optional(S.String),
           multiplexedSessionPreviousTransactionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReadWrite" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          isolationLevel: S.optional(TransactionOptionsIsolationLevelEnum),
-          partitionedDml: S.optional(PartitionedDml),
+          isolationLevel: S.optional(S.String),
+          partitionedDml: S.optional(__S(13)),
           excludeTxnFromChangeStreams: S.optional(S.Boolean),
-          readOnly: S.optional(ReadOnly),
-          readWrite: S.optional(ReadWrite),
+          readOnly: S.optional(__S(41)),
+          readWrite: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "TransactionOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(TransactionOptions),
-          requestOptions: S.optional(RequestOptions),
-          mutationKey: S.optional(Mutation),
+          options: S.optional(__S(43)),
+          requestOptions: S.optional(__S(21)),
+          mutationKey: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "BeginTransactionRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(44).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5731,7 +4614,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          precommitToken: S.optional(MultiplexedSessionPrecommitToken),
+          precommitToken: S.optional(__S(46)),
           readTimestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Transaction" });
@@ -5832,8 +4715,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dualRegion: S.optional(PartitionedDml),
-          singleRegion: S.optional(SingleRegionQuorum),
+          dualRegion: S.optional(__S(13)),
+          singleRegion: S.optional(__S(54)),
         }),
       ).annotate({ identifier: "QuorumType" });
   }
@@ -5845,14 +4728,14 @@ function __c7(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           name: S.optional(S.String),
-          quorumType: S.optional(QuorumType),
+          quorumType: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "ChangeQuorumRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ChangeQuorumRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5866,11 +4749,11 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(38)),
+          response: S.optional(__S(19)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
@@ -5878,18 +4761,18 @@ function __c7(j: number): any {
         S.Struct({
           maxCommitDelay: S.optional(S.String),
           returnCommitStats: S.optional(S.Boolean),
-          precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-          singleUseTransaction: S.optional(TransactionOptions),
+          precommitToken: S.optional(__S(46)),
+          singleUseTransaction: S.optional(__S(43)),
           transactionId: S.optional(S.String),
-          requestOptions: S.optional(RequestOptions),
-          mutations: S.optional(MutationList),
+          requestOptions: S.optional(__S(21)),
+          mutations: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "CommitRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(CommitRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(59).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5911,17 +4794,17 @@ function __c7(j: number): any {
         S.Struct({
           commitTimestamp: S.optional(S.String),
           snapshotTimestamp: S.optional(S.String),
-          precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-          commitStats: S.optional(CommitStats),
-          isolationLevel: S.optional(CommitResponseIsolationLevelEnum),
-          readLockMode: S.optional(CommitResponseReadLockModeEnum),
+          precommitToken: S.optional(__S(46)),
+          commitStats: S.optional(__S(61)),
+          isolationLevel: S.optional(S.String),
+          readLockMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommitResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          kmsKeyNames: S.optional(StringList),
-          encryptionType: S.optional(CopyBackupEncryptionConfigEncryptionTypeEnum),
+          kmsKeyNames: S.optional(__S(22)),
+          encryptionType: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
         }),
       ).annotate({
@@ -5935,7 +4818,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expireTime: S.optional(S.String),
-          encryptionConfig: S.optional(CopyBackupEncryptionConfig),
+          encryptionConfig: S.optional(__S(63)),
           backupId: S.optional(S.String),
           sourceBackup: S.optional(S.String),
         }),
@@ -5944,7 +4827,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CopyBackupRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(64).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5959,36 +4842,36 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           defaultLeaderLocation: S.optional(S.Boolean),
-          type: S.optional(ReplicaInfoTypeEnum),
+          type: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaInfo" });
     case 3:
-      return S.Array(ReplicaInfo);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          leaderOptions: S.optional(StringList),
-          labels: S.optional(StringMap),
+          leaderOptions: S.optional(__S(22)),
+          labels: S.optional(__S(2)),
           etag: S.optional(S.String),
           storageLimitPerProcessingUnit: S.optional(S.String),
-          freeInstanceAvailability: S.optional(InstanceConfigFreeInstanceAvailabilityEnum),
-          optionalReplicas: S.optional(ReplicaInfoList),
-          replicas: S.optional(ReplicaInfoList),
+          freeInstanceAvailability: S.optional(S.String),
+          optionalReplicas: S.optional(__S(67)),
+          replicas: S.optional(__S(67)),
           baseConfig: S.optional(S.String),
-          state: S.optional(InstanceConfigStateEnum),
+          state: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          quorumType: S.optional(InstanceConfigQuorumTypeEnum),
-          configType: S.optional(InstanceConfigConfigTypeEnum),
+          quorumType: S.optional(S.String),
+          configType: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           instanceConfigId: S.optional(S.String),
-          instanceConfig: S.optional(InstanceConfig),
+          instanceConfig: S.optional(__S(68)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5998,7 +4881,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateInstanceConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(69).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6014,7 +4897,7 @@ function __c8(j: number): any {
         S.Struct({
           expireTime: S.optional(S.String),
           upgradeTime: S.optional(S.String),
-          expireBehavior: S.optional(FreeInstanceMetadataExpireBehaviorEnum),
+          expireBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeInstanceMetadata" });
   }
@@ -6032,11 +4915,11 @@ function __c9(j: number): any {
         S.Struct({
           nodeCount: S.optional(S.Number),
           processingUnits: S.optional(S.Number),
-          replicaSelection: S.optional(InstanceReplicaSelection),
+          replicaSelection: S.optional(__S(72)),
         }),
       ).annotate({ identifier: "ReplicaComputeCapacity" });
     case 2:
-      return S.Array(ReplicaComputeCapacity);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6049,7 +4932,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          autoscalingLimits: S.optional(AutoscalingLimits),
+          autoscalingLimits: S.optional(__S(75)),
           autoscalingTargetHighPriorityCpuUtilizationPercent: S.optional(S.Number),
           disableTotalCpuAutoscaling: S.optional(S.Boolean),
           autoscalingTargetTotalCpuUtilizationPercent: S.optional(S.Number),
@@ -6061,14 +4944,14 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          replicaSelection: S.optional(InstanceReplicaSelection),
-          overrides: S.optional(AutoscalingConfigOverrides),
+          replicaSelection: S.optional(__S(72)),
+          overrides: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "AsymmetricAutoscalingOption",
       });
     case 6:
-      return S.Array(AsymmetricAutoscalingOption);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6084,44 +4967,44 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          asymmetricAutoscalingOptions: S.optional(AsymmetricAutoscalingOptionList),
-          autoscalingTargets: S.optional(AutoscalingTargets),
-          autoscalingLimits: S.optional(AutoscalingLimits),
+          asymmetricAutoscalingOptions: S.optional(__S(78)),
+          autoscalingTargets: S.optional(__S(79)),
+          autoscalingLimits: S.optional(__S(75)),
         }),
       ).annotate({ identifier: "AutoscalingConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          edition: S.optional(InstanceEditionEnum),
-          labels: S.optional(StringMap),
-          freeInstanceMetadata: S.optional(FreeInstanceMetadata),
+          edition: S.optional(S.String),
+          labels: S.optional(__S(2)),
+          freeInstanceMetadata: S.optional(__S(71)),
           nodeCount: S.optional(S.Number),
           processingUnits: S.optional(S.Number),
           config: S.optional(S.String),
-          defaultBackupScheduleType: S.optional(InstanceDefaultBackupScheduleTypeEnum),
+          defaultBackupScheduleType: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          replicaComputeCapacity: S.optional(ReplicaComputeCapacityList),
-          state: S.optional(InstanceStateEnum),
+          replicaComputeCapacity: S.optional(__S(74)),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
-          endpointUris: S.optional(StringList),
-          autoscalingConfig: S.optional(AutoscalingConfig),
-          instanceType: S.optional(InstanceInstanceTypeEnum),
+          endpointUris: S.optional(__S(22)),
+          autoscalingConfig: S.optional(__S(80)),
+          instanceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Instance" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           instanceId: S.optional(S.String),
-          instance: S.optional(Instance),
+          instance: S.optional(__S(81)),
         }),
       ).annotate({ identifier: "CreateInstanceRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(82).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6135,13 +5018,13 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          encryptionType: S.optional(EncryptionInfoEncryptionTypeEnum),
+          encryptionType: S.optional(S.String),
           kmsKeyVersion: S.optional(S.String),
-          encryptionStatus: S.optional(Status),
+          encryptionStatus: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "EncryptionInfo" });
     case 5:
-      return S.Array(EncryptionInfo);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6149,7 +5032,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "BackupInstancePartition" });
     case 7:
-      return S.Array(BackupInstancePartition);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -6158,23 +5041,23 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           oldestVersionTime: S.optional(S.String),
-          referencingBackups: S.optional(StringList),
-          encryptionInformation: S.optional(EncryptionInfoList),
+          referencingBackups: S.optional(__S(22)),
+          encryptionInformation: S.optional(__S(85)),
           sizeBytes: S.optional(S.String),
-          encryptionInfo: S.optional(EncryptionInfo),
+          encryptionInfo: S.optional(__S(84)),
           database: S.optional(S.String),
           maxExpireTime: S.optional(S.String),
-          state: S.optional(BackupStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
           freeableSizeBytes: S.optional(S.String),
           versionTime: S.optional(S.String),
           exclusiveSizeBytes: S.optional(S.String),
-          minimumRestorableEdition: S.optional(BackupMinimumRestorableEditionEnum),
-          databaseDialect: S.optional(BackupDatabaseDialectEnum),
-          referencingDatabases: S.optional(StringList),
+          minimumRestorableEdition: S.optional(S.String),
+          databaseDialect: S.optional(S.String),
+          referencingDatabases: S.optional(__S(22)),
           name: S.optional(S.String),
-          backupSchedules: S.optional(StringList),
-          instancePartitions: S.optional(BackupInstancePartitionList),
+          backupSchedules: S.optional(__S(22)),
+          instancePartitions: S.optional(__S(87)),
           expireTime: S.optional(S.String),
           incrementalBackupChainId: S.optional(S.String),
         }),
@@ -6184,12 +5067,10 @@ function __c11(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           backupId: S.optional(S.String.pipe(T.Query())),
-          "encryptionConfig.encryptionType": S.optional(
-            CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum.pipe(T.Query()),
-          ),
-          "encryptionConfig.kmsKeyNames": S.optional(StringList.pipe(T.Query())),
+          "encryptionConfig.encryptionType": S.optional(S.String.pipe(T.Query())),
+          "encryptionConfig.kmsKeyNames": S.optional(__S(22).pipe(T.Query())),
           "encryptionConfig.kmsKeyName": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Backup.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6204,24 +5085,24 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          kmsKeyNames: S.optional(StringList),
+          kmsKeyNames: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "EncryptionConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          encryptionConfig: S.optional(EncryptionConfig),
-          extraStatements: S.optional(StringList),
+          encryptionConfig: S.optional(__S(90)),
+          extraStatements: S.optional(__S(22)),
           protoDescriptors: S.optional(S.String),
           createStatement: S.optional(S.String),
-          databaseDialect: S.optional(CreateDatabaseRequestDatabaseDialectEnum),
+          databaseDialect: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateDatabaseRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateDatabaseRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(91).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6243,15 +5124,15 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cronSpec: S.optional(CrontabSpec),
+          cronSpec: S.optional(__S(93)),
         }),
       ).annotate({ identifier: "BackupScheduleSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          kmsKeyNames: S.optional(StringList),
-          encryptionType: S.optional(CreateBackupEncryptionConfigEncryptionTypeEnum),
+          kmsKeyNames: S.optional(__S(22)),
+          encryptionType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateBackupEncryptionConfig",
@@ -6263,12 +5144,12 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          incrementalBackupSpec: S.optional(PartitionedDml),
+          incrementalBackupSpec: S.optional(__S(13)),
           updateTime: S.optional(S.String),
-          spec: S.optional(BackupScheduleSpec),
+          spec: S.optional(__S(94)),
           retentionDuration: S.optional(S.String),
-          encryptionConfig: S.optional(CreateBackupEncryptionConfig),
-          fullBackupSpec: S.optional(PartitionedDml),
+          encryptionConfig: S.optional(__S(95)),
+          fullBackupSpec: S.optional(__S(13)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupSchedule" });
@@ -6277,7 +5158,7 @@ function __c12(j: number): any {
         S.Struct({
           backupScheduleId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BackupSchedule.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6291,14 +5172,14 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          session: S.optional(Session),
+          session: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "CreateSessionRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           database: S.String.pipe(T.Label()),
-          body: S.optional(CreateSessionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(98).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6315,22 +5196,22 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           etag: S.optional(S.String),
           config: S.optional(S.String),
-          autoscalingConfig: S.optional(AutoscalingConfig),
+          autoscalingConfig: S.optional(__S(80)),
           processingUnits: S.optional(S.Number),
           createTime: S.optional(S.String),
           nodeCount: S.optional(S.Number),
-          state: S.optional(InstancePartitionStateEnum),
-          referencingDatabases: S.optional(StringList),
+          state: S.optional(S.String),
+          referencingDatabases: S.optional(__S(22)),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
-          referencingBackups: S.optional(StringList),
+          referencingBackups: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "InstancePartition" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           instancePartitionId: S.optional(S.String),
-          instancePartition: S.optional(InstancePartition),
+          instancePartition: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "CreateInstancePartitionRequest",
@@ -6339,7 +5220,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateInstancePartitionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(101).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6546,8 +5427,8 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          begin: S.optional(TransactionOptions),
-          singleUse: S.optional(TransactionOptions),
+          begin: S.optional(__S(43)),
+          singleUse: S.optional(__S(43)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransactionSelector" });
@@ -6555,15 +5436,15 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(S.suspend(() => Type)),
+          type: S.optional(S.suspend(() => __S(120))),
         }),
       ).annotate({ identifier: "Field" });
     case 6:
-      return S.Array(Field);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(FieldList),
+          fields: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "StructType" });
   }
@@ -6573,40 +5454,40 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          typeAnnotation: S.optional(TypeTypeAnnotationEnum),
-          structType: S.optional(StructType),
-          code: S.optional(TypeCodeEnum),
+          typeAnnotation: S.optional(S.String),
+          structType: S.optional(__S(119)),
+          code: S.optional(S.String),
           protoTypeFqn: S.optional(S.String),
-          arrayElementType: S.optional(Type),
+          arrayElementType: S.optional(__S(120)),
         }),
       ).annotate({ identifier: "Type" });
     case 1:
-      return S.Record(S.String, Type);
+      return S.Record(S.String, __S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          paramTypes: S.optional(TypeMap),
+          paramTypes: S.optional(__S(121)),
           sql: S.optional(S.String),
-          params: S.optional(DocumentMap),
+          params: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "Statement" });
     case 3:
-      return S.Array(Statement);
+      return S.Array(__S(122));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          transaction: S.optional(TransactionSelector),
+          transaction: S.optional(__S(116)),
           lastStatements: S.optional(S.Boolean),
-          requestOptions: S.optional(RequestOptions),
+          requestOptions: S.optional(__S(21)),
           seqno: S.optional(S.String),
-          statements: S.optional(StatementList),
+          statements: S.optional(__S(123)),
         }),
       ).annotate({ identifier: "ExecuteBatchDmlRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteBatchDmlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(124).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6623,7 +5504,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          subqueries: S.optional(IntegerMap),
+          subqueries: S.optional(__S(126)),
         }),
       ).annotate({ identifier: "ShortRepresentation" });
   }
@@ -6639,41 +5520,41 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ChildLink" });
     case 1:
-      return S.Array(ChildLink);
+      return S.Array(__S(128));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          shortRepresentation: S.optional(ShortRepresentation),
-          childLinks: S.optional(ChildLinkList),
-          metadata: S.optional(DocumentMap),
-          kind: S.optional(PlanNodeKindEnum),
+          shortRepresentation: S.optional(__S(127)),
+          childLinks: S.optional(__S(129)),
+          metadata: S.optional(__S(19)),
+          kind: S.optional(S.String),
           displayName: S.optional(S.String),
-          executionStats: S.optional(DocumentMap),
+          executionStats: S.optional(__S(19)),
           index: S.optional(S.Number),
         }),
       ).annotate({ identifier: "PlanNode" });
     case 3:
-      return S.Array(PlanNode);
+      return S.Array(__S(130));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ddl: S.optional(StringList),
+          ddl: S.optional(__S(22)),
           improvementFactor: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IndexAdvice" });
     case 5:
-      return S.Array(IndexAdvice);
+      return S.Array(__S(132));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          indexAdvice: S.optional(IndexAdviceList),
+          indexAdvice: S.optional(__S(133)),
         }),
       ).annotate({ identifier: "QueryAdvisorResult" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          planNodes: S.optional(PlanNodeList),
-          queryAdvice: S.optional(QueryAdvisorResult),
+          planNodes: S.optional(__S(131)),
+          queryAdvice: S.optional(__S(134)),
         }),
       ).annotate({ identifier: "QueryPlan" });
   }
@@ -6684,51 +5565,51 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rowCountLowerBound: S.optional(S.String),
-          queryPlan: S.optional(QueryPlan),
-          queryStats: S.optional(DocumentMap),
+          queryPlan: S.optional(__S(135)),
+          queryStats: S.optional(__S(19)),
           rowCountExact: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResultSetStats" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          transaction: S.optional(Transaction),
-          undeclaredParameters: S.optional(StructType),
-          rowType: S.optional(StructType),
+          transaction: S.optional(__S(47)),
+          undeclaredParameters: S.optional(__S(119)),
+          rowType: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "ResultSetMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-          stats: S.optional(ResultSetStats),
-          metadata: S.optional(ResultSetMetadata),
-          rows: S.optional(DocumentListList),
+          precommitToken: S.optional(__S(46)),
+          stats: S.optional(__S(136)),
+          metadata: S.optional(__S(137)),
+          rows: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "ResultSet" });
     case 3:
-      return S.Array(ResultSet);
+      return S.Array(__S(138));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resultSets: S.optional(ResultSetList),
-          precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-          status: S.optional(Status),
+          resultSets: S.optional(__S(139)),
+          precommitToken: S.optional(__S(46)),
+          status: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "ExecuteBatchDmlResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ReplicaSelectionTypeEnum),
+          type: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaSelection" });
     case 6:
-      return S.Array(ReplicaSelection);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          replicaSelections: S.optional(ReplicaSelectionList),
+          replicaSelections: S.optional(__S(142)),
           autoFailoverDisabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IncludeReplicas" });
@@ -6739,14 +5620,14 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          replicaSelections: S.optional(ReplicaSelectionList),
+          replicaSelections: S.optional(__S(142)),
         }),
       ).annotate({ identifier: "ExcludeReplicas" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          includeReplicas: S.optional(IncludeReplicas),
-          excludeReplicas: S.optional(ExcludeReplicas),
+          includeReplicas: S.optional(__S(143)),
+          excludeReplicas: S.optional(__S(144)),
         }),
       ).annotate({ identifier: "DirectedReadOptions" });
     case 2:
@@ -6759,26 +5640,26 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          queryMode: S.optional(ExecuteSqlRequestQueryModeEnum),
-          transaction: S.optional(TransactionSelector),
-          paramTypes: S.optional(TypeMap),
-          directedReadOptions: S.optional(DirectedReadOptions),
+          queryMode: S.optional(S.String),
+          transaction: S.optional(__S(116)),
+          paramTypes: S.optional(__S(121)),
+          directedReadOptions: S.optional(__S(145)),
           sql: S.optional(S.String),
           seqno: S.optional(S.String),
           partitionToken: S.optional(S.String),
           resumeToken: S.optional(S.String),
           lastStatement: S.optional(S.Boolean),
           dataBoostEnabled: S.optional(S.Boolean),
-          requestOptions: S.optional(RequestOptions),
-          params: S.optional(DocumentMap),
-          queryOptions: S.optional(QueryOptions),
+          requestOptions: S.optional(__S(21)),
+          params: S.optional(__S(19)),
+          queryOptions: S.optional(__S(146)),
         }),
       ).annotate({ identifier: "ExecuteSqlRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(147).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6793,7 +5674,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteSqlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(147).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6809,10 +5690,10 @@ function __c18(j: number): any {
         S.Struct({
           resumeToken: S.optional(S.String),
           chunkedValue: S.optional(S.Boolean),
-          stats: S.optional(ResultSetStats),
-          values: S.optional(DocumentList),
-          precommitToken: S.optional(MultiplexedSessionPrecommitToken),
-          metadata: S.optional(ResultSetMetadata),
+          stats: S.optional(__S(136)),
+          values: S.optional(__S(6)),
+          precommitToken: S.optional(__S(46)),
+          metadata: S.optional(__S(137)),
           last: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PartialResultSet" });
@@ -6838,7 +5719,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           protoDescriptors: S.optional(S.String),
-          statements: S.optional(StringList),
+          statements: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "GetDatabaseDdlResponse" });
     case 1:
@@ -6850,14 +5731,14 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(GetPolicyOptions),
+          options: S.optional(__S(153)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6880,18 +5761,18 @@ function __c19(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
+          condition: S.optional(__S(156)),
           role: S.optional(S.String),
-          members: S.optional(StringList),
+          members: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "Binding" });
     case 6:
-      return S.Array(Binding);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(158)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Policy" });
@@ -6903,7 +5784,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6918,7 +5799,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6933,7 +5814,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7022,9 +5903,9 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          quorumType: S.optional(QuorumType),
+          quorumType: S.optional(__S(55)),
           etag: S.optional(S.String),
-          initiator: S.optional(QuorumInfoInitiatorEnum),
+          initiator: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuorumInfo" });
@@ -7040,26 +5921,26 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backupInfo: S.optional(BackupInfo),
-          sourceType: S.optional(RestoreInfoSourceTypeEnum),
+          backupInfo: S.optional(__S(171)),
+          sourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestoreInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          quorumInfo: S.optional(QuorumInfo),
-          restoreInfo: S.optional(RestoreInfo),
-          state: S.optional(DatabaseStateEnum),
+          quorumInfo: S.optional(__S(170)),
+          restoreInfo: S.optional(__S(172)),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           defaultLeader: S.optional(S.String),
           versionRetentionPeriod: S.optional(S.String),
           earliestVersionTime: S.optional(S.String),
-          databaseDialect: S.optional(DatabaseDatabaseDialectEnum),
+          databaseDialect: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          encryptionConfig: S.optional(EncryptionConfig),
+          encryptionConfig: S.optional(__S(90)),
           enableDropProtection: S.optional(S.Boolean),
           createTime: S.optional(S.String),
-          encryptionInfo: S.optional(EncryptionInfoList),
+          encryptionInfo: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "Database" });
     case 6:
@@ -7130,7 +6011,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetScansProjectsInstancesDatabasesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           endTime: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -7154,12 +6035,12 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "PrefixNode" });
     case 6:
-      return S.Array(PrefixNode);
+      return S.Array(__S(181));
     case 7:
       return S.suspend(() =>
         S.Struct({
           token: S.optional(S.String),
-          args: S.optional(StringMap),
+          args: S.optional(__S(2)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalizedString" });
@@ -7171,46 +6052,46 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
-          label: S.optional(LocalizedString),
+          label: S.optional(__S(183)),
           value: S.optional(S.Number),
-          severity: S.optional(ContextValueSeverityEnum),
+          severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContextValue" });
     case 1:
-      return S.Array(ContextValue);
+      return S.Array(__S(184));
     case 2:
       return S.suspend(() =>
         S.Struct({
           endKeyIndex: S.optional(S.Number),
-          unit: S.optional(LocalizedString),
+          unit: S.optional(__S(183)),
           timeOffset: S.optional(S.String),
           value: S.optional(S.Number),
           startKeyIndex: S.optional(S.Number),
-          contextValues: S.optional(ContextValueList),
-          info: S.optional(LocalizedString),
+          contextValues: S.optional(__S(185)),
+          info: S.optional(__S(183)),
           keysCount: S.optional(S.String),
-          metric: S.optional(LocalizedString),
+          metric: S.optional(__S(183)),
         }),
       ).annotate({ identifier: "KeyRangeInfo" });
     case 3:
-      return S.Array(KeyRangeInfo);
+      return S.Array(__S(186));
     case 4:
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          infos: S.optional(KeyRangeInfoList),
+          infos: S.optional(__S(187)),
         }),
       ).annotate({ identifier: "KeyRangeInfos" });
     case 5:
-      return S.Record(S.String, KeyRangeInfos);
+      return S.Record(S.String, __S(188));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keyRangeInfos: S.optional(KeyRangeInfosMap),
+          keyRangeInfos: S.optional(__S(189)),
         }),
       ).annotate({ identifier: "IndexedKeyRangeInfos" });
     case 7:
-      return S.Record(S.String, IndexedKeyRangeInfos);
+      return S.Record(S.String, __S(190));
   }
 }
 function __c24(j: number): any {
@@ -7218,51 +6099,51 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cols: S.optional(DoubleList),
+          cols: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "MetricMatrixRow" });
     case 1:
-      return S.Array(MetricMatrixRow);
+      return S.Array(__S(192));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(MetricMatrixRowList),
+          rows: S.optional(__S(193)),
         }),
       ).annotate({ identifier: "MetricMatrix" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          numerator: S.optional(LocalizedString),
-          denominator: S.optional(LocalizedString),
+          numerator: S.optional(__S(183)),
+          denominator: S.optional(__S(183)),
         }),
       ).annotate({ identifier: "DerivedMetric" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sparseHotKeys: S.optional(IntegerMap),
+          sparseHotKeys: S.optional(__S(126)),
         }),
       ).annotate({ identifier: "IndexedHotKey" });
     case 5:
-      return S.Record(S.String, IndexedHotKey);
+      return S.Record(S.String, __S(196));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          indexedKeyRangeInfos: S.optional(IndexedKeyRangeInfosMap),
-          aggregation: S.optional(MetricAggregationEnum),
-          matrix: S.optional(MetricMatrix),
-          info: S.optional(LocalizedString),
-          derived: S.optional(DerivedMetric),
+          indexedKeyRangeInfos: S.optional(__S(191)),
+          aggregation: S.optional(S.String),
+          matrix: S.optional(__S(194)),
+          info: S.optional(__S(183)),
+          derived: S.optional(__S(195)),
           hotValue: S.optional(S.Number),
-          displayLabel: S.optional(LocalizedString),
+          displayLabel: S.optional(__S(183)),
           visible: S.optional(S.Boolean),
-          unit: S.optional(LocalizedString),
+          unit: S.optional(__S(183)),
           hasNonzeroData: S.optional(S.Boolean),
-          indexedHotKeys: S.optional(IndexedHotKeyMap),
-          category: S.optional(LocalizedString),
+          indexedHotKeys: S.optional(__S(197)),
+          category: S.optional(__S(183)),
         }),
       ).annotate({ identifier: "Metric" });
     case 7:
-      return S.Array(Metric);
+      return S.Array(__S(198));
   }
 }
 function __c25(j: number): any {
@@ -7270,34 +6151,34 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(LocalizedString),
-          shortMessage: S.optional(LocalizedString),
-          metric: S.optional(LocalizedString),
-          severity: S.optional(DiagnosticMessageSeverityEnum),
+          info: S.optional(__S(183)),
+          shortMessage: S.optional(__S(183)),
+          metric: S.optional(__S(183)),
+          severity: S.optional(S.String),
           metricSpecific: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DiagnosticMessage" });
     case 1:
-      return S.Array(DiagnosticMessage);
+      return S.Array(__S(200));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prefixNodes: S.optional(PrefixNodeList),
+          prefixNodes: S.optional(__S(182)),
           keySeparator: S.optional(S.String),
-          keyUnit: S.optional(VisualizationDataKeyUnitEnum),
-          indexedKeys: S.optional(StringList),
+          keyUnit: S.optional(S.String),
+          indexedKeys: S.optional(__S(22)),
           dataSourceSeparatorToken: S.optional(S.String),
           hasPii: S.optional(S.Boolean),
           dataSourceEndToken: S.optional(S.String),
-          endKeyStrings: S.optional(StringList),
-          metrics: S.optional(MetricList),
-          diagnosticMessages: S.optional(DiagnosticMessageList),
+          endKeyStrings: S.optional(__S(22)),
+          metrics: S.optional(__S(199)),
+          diagnosticMessages: S.optional(__S(201)),
         }),
       ).annotate({ identifier: "VisualizationData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(VisualizationData),
+          data: S.optional(__S(202)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -7305,9 +6186,9 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMap),
+          details: S.optional(__S(19)),
           name: S.optional(S.String),
-          scanData: S.optional(ScanData),
+          scanData: S.optional(__S(203)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
@@ -7330,11 +6211,11 @@ function __c25(j: number): any {
         identifier: "ListProjectsInstanceConfigOperationsRequest",
       });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(58));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(206)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7361,11 +6242,11 @@ function __c26(j: number): any {
         identifier: "ListProjectsInstanceConfigsRequest",
       });
     case 1:
-      return S.Array(InstanceConfig);
+      return S.Array(__S(68));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instanceConfigs: S.optional(InstanceConfigList),
+          instanceConfigs: S.optional(__S(209)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7388,8 +6269,8 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(22)),
+          operations: S.optional(__S(206)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -7426,7 +6307,7 @@ function __c26(j: number): any {
         identifier: "ListProjectsInstancesRequest",
       });
     case 7:
-      return S.Array(Instance);
+      return S.Array(__S(81));
   }
 }
 function __c27(j: number): any {
@@ -7434,8 +6315,8 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          instances: S.optional(InstanceList),
+          unreachable: S.optional(__S(22)),
+          instances: S.optional(__S(215)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -7460,7 +6341,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(206)),
         }),
       ).annotate({
         identifier: "ListBackupOperationsResponse",
@@ -7483,12 +6364,12 @@ function __c27(j: number): any {
         identifier: "ListProjectsInstancesBackupsRequest",
       });
     case 4:
-      return S.Array(Backup);
+      return S.Array(__S(88));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          backups: S.optional(BackupList),
+          backups: S.optional(__S(220)),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
     case 6:
@@ -7543,12 +6424,12 @@ function __c28(j: number): any {
         identifier: "ListProjectsInstancesDatabasesRequest",
       });
     case 1:
-      return S.Array(Database);
+      return S.Array(__S(173));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          databases: S.optional(DatabaseList),
+          databases: S.optional(__S(225)),
         }),
       ).annotate({ identifier: "ListDatabasesResponse" });
     case 3:
@@ -7568,12 +6449,12 @@ function __c28(j: number): any {
         identifier: "ListProjectsInstancesDatabasesBackupSchedulesRequest",
       });
     case 4:
-      return S.Array(BackupSchedule);
+      return S.Array(__S(96));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          backupSchedules: S.optional(BackupScheduleList),
+          backupSchedules: S.optional(__S(228)),
         }),
       ).annotate({
         identifier: "ListBackupSchedulesResponse",
@@ -7595,7 +6476,7 @@ function __c28(j: number): any {
         identifier: "ListProjectsInstancesDatabasesDatabaseRolesRequest",
       });
     case 7:
-      return S.Array(DatabaseRole);
+      return S.Array(__S(0));
   }
 }
 function __c29(j: number): any {
@@ -7603,7 +6484,7 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          databaseRoles: S.optional(DatabaseRoleList),
+          databaseRoles: S.optional(__S(231)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7644,7 +6525,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sessions: S.optional(SessionList),
+          sessions: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 4:
@@ -7668,8 +6549,8 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
-          unreachableInstancePartitions: S.optional(StringList),
+          operations: S.optional(__S(206)),
+          unreachableInstancePartitions: S.optional(__S(22)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7693,7 +6574,7 @@ function __c29(j: number): any {
         identifier: "ListProjectsInstancesInstancePartitionsRequest",
       });
     case 7:
-      return S.Array(InstancePartition);
+      return S.Array(__S(100));
   }
 }
 function __c30(j: number): any {
@@ -7701,8 +6582,8 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          instancePartitions: S.optional(InstancePartitionList),
+          unreachable: S.optional(__S(22)),
+          instancePartitions: S.optional(__S(239)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7739,7 +6620,7 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(ListScansViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -7753,25 +6634,25 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListScansRequest" });
     case 4:
-      return S.Array(Scan);
+      return S.Array(__S(204));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          scans: S.optional(ScanList),
+          scans: S.optional(__S(244)),
         }),
       ).annotate({ identifier: "ListScansResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          kmsKeyNames: S.optional(StringList),
+          kmsKeyNames: S.optional(__S(22)),
           kmsKeyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceEncryptionConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          encryptionConfig: S.optional(InstanceEncryptionConfig),
+          encryptionConfig: S.optional(__S(246)),
           databaseId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatabaseMoveConfig" });
@@ -7780,19 +6661,19 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatabaseMoveConfig);
+      return S.Array(__S(247));
     case 1:
       return S.suspend(() =>
         S.Struct({
           targetConfig: S.optional(S.String),
-          targetDatabaseMoveConfigs: S.optional(DatabaseMoveConfigList),
+          targetDatabaseMoveConfigs: S.optional(__S(248)),
         }),
       ).annotate({ identifier: "MoveInstanceRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MoveInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(249).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7813,18 +6694,18 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          params: S.optional(DocumentMap),
-          transaction: S.optional(TransactionSelector),
+          params: S.optional(__S(19)),
+          transaction: S.optional(__S(116)),
           sql: S.optional(S.String),
-          partitionOptions: S.optional(PartitionOptions),
-          paramTypes: S.optional(TypeMap),
+          partitionOptions: S.optional(__S(251)),
+          paramTypes: S.optional(__S(121)),
         }),
       ).annotate({ identifier: "PartitionQueryRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(252).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7842,7 +6723,7 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "Partition" });
     case 7:
-      return S.Array(Partition);
+      return S.Array(__S(254));
   }
 }
 function __c32(j: number): any {
@@ -7850,18 +6731,18 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          transaction: S.optional(Transaction),
-          partitions: S.optional(PartitionList),
+          transaction: S.optional(__S(47)),
+          partitions: S.optional(__S(255)),
         }),
       ).annotate({ identifier: "PartitionResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(StringList),
-          partitionOptions: S.optional(PartitionOptions),
-          transaction: S.optional(TransactionSelector),
+          columns: S.optional(__S(22)),
+          partitionOptions: S.optional(__S(251)),
+          transaction: S.optional(__S(116)),
           table: S.optional(S.String),
-          keySet: S.optional(KeySet),
+          keySet: S.optional(__S(29)),
           index: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartitionReadRequest" });
@@ -7869,7 +6750,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(PartitionReadRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(257).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7885,7 +6766,7 @@ function __c32(j: number): any {
         S.Struct({
           validateOnly: S.optional(S.Boolean),
           updateMask: S.optional(S.String),
-          instanceConfig: S.optional(InstanceConfig),
+          instanceConfig: S.optional(__S(68)),
         }),
       ).annotate({
         identifier: "UpdateInstanceConfigRequest",
@@ -7894,7 +6775,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateInstanceConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(259).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7908,7 +6789,7 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instance: S.optional(Instance),
+          instance: S.optional(__S(81)),
           fieldMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateInstanceRequest" });
@@ -7916,7 +6797,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(261).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7932,7 +6813,7 @@ function __c32(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Backup.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7952,7 +6833,7 @@ function __c33(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Database.pipe(T.HttpBody())),
+          body: S.optional(__S(173).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7968,7 +6849,7 @@ function __c33(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(BackupSchedule.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7982,7 +6863,7 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instancePartition: S.optional(InstancePartition),
+          instancePartition: S.optional(__S(100)),
           fieldMask: S.optional(S.String),
         }),
       ).annotate({
@@ -7992,7 +6873,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateInstancePartitionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(266).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8007,15 +6888,15 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resumeToken: S.optional(S.String),
-          keySet: S.optional(KeySet),
-          lockHint: S.optional(ReadRequestLockHintEnum),
-          columns: S.optional(StringList),
+          keySet: S.optional(__S(29)),
+          lockHint: S.optional(S.String),
+          columns: S.optional(__S(22)),
           dataBoostEnabled: S.optional(S.Boolean),
-          orderBy: S.optional(ReadRequestOrderByEnum),
+          orderBy: S.optional(S.String),
           index: S.optional(S.String),
-          directedReadOptions: S.optional(DirectedReadOptions),
-          transaction: S.optional(TransactionSelector),
-          requestOptions: S.optional(RequestOptions),
+          directedReadOptions: S.optional(__S(145)),
+          transaction: S.optional(__S(116)),
+          requestOptions: S.optional(__S(21)),
           limit: S.optional(S.String),
           partitionToken: S.optional(S.String),
           table: S.optional(S.String),
@@ -8025,7 +6906,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(ReadRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(268).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8040,8 +6921,8 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          encryptionType: S.optional(RestoreDatabaseEncryptionConfigEncryptionTypeEnum),
-          kmsKeyNames: S.optional(StringList),
+          encryptionType: S.optional(S.String),
+          kmsKeyNames: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "RestoreDatabaseEncryptionConfig",
@@ -8051,7 +6932,7 @@ function __c33(j: number): any {
         S.Struct({
           backup: S.optional(S.String),
           databaseId: S.optional(S.String),
-          encryptionConfig: S.optional(RestoreDatabaseEncryptionConfig),
+          encryptionConfig: S.optional(__S(270)),
         }),
       ).annotate({ identifier: "RestoreDatabaseRequest" });
   }
@@ -8062,7 +6943,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RestoreDatabaseRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(271).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8083,7 +6964,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(RollbackRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(273).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8097,14 +6978,14 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(159)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(275).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8119,7 +7000,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(275).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8134,7 +7015,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(275).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8149,7 +7030,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(275).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8168,7 +7049,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           session: S.String.pipe(T.Label()),
-          body: S.optional(ReadRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(268).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8182,7 +7063,7 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -8191,7 +7072,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(281).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8206,7 +7087,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(281).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8221,7 +7102,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(281).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8236,7 +7117,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(281).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8251,7 +7132,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(281).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8265,7 +7146,7 @@ function __c35(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          statements: S.optional(StringList),
+          statements: S.optional(__S(22)),
           operationId: S.optional(S.String),
           protoDescriptors: S.optional(S.String),
         }),
@@ -8278,7 +7159,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           database: S.String.pipe(T.Label()),
-          body: S.optional(UpdateDatabaseDdlRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(287).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8289,5 +7170,88 @@ function __c36(j: number): any {
       ).annotate({
         identifier: "UpdateDdlProjectsInstancesDatabasesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
   }
 }

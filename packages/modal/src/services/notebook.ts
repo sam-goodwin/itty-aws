@@ -6,6 +6,8 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -16,11 +18,6 @@ export interface NotebookOutputExecuteResult {
   /** mimebundle */
   metadata?: unknown;
 }
-const NotebookOutputExecuteResult = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<NotebookOutputExecuteResult>;
-
 /** Data displayed as a result of code cell execution. */
 export interface NotebookOutputDisplayData {
   data?: unknown;
@@ -29,30 +26,19 @@ export interface NotebookOutputDisplayData {
   /** This should not be included in saved notebook. */
   transientDisplayId?: string;
 }
-const NotebookOutputDisplayData = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<NotebookOutputDisplayData>;
-
 /** Stream output from a code cell (stdout / stderr). */
 export interface NotebookOutputStream {
   name?: string;
   /** stdout | stderr */
   text?: string;
 }
-const NotebookOutputStream = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<NotebookOutputStream>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
-
 /** Output of an error that occurred during code cell execution. */
 export interface NotebookOutputError {
   ename?: string;
   evalue?: string;
   traceback?: StringList;
 }
-const NotebookOutputError = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<NotebookOutputError>;
-
 /** A single output from a notebook. When you execute a cell, it produces an array of these outputs as the code runs. https://github.com/jupyter/nbformat/blob/v5.10.4/nbformat/v4/nbformat.v4.schema.json#L301-L309 */
 export interface NotebookOutput {
   executeResult?: NotebookOutputExecuteResult;
@@ -60,19 +46,12 @@ export interface NotebookOutput {
   stream?: NotebookOutputStream;
   error?: NotebookOutputError;
 }
-const NotebookOutput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<NotebookOutput>;
-
 /** See kernelshim.py for the differences between this and `ExecuteResult`. https://jupyter-client.readthedocs.io/en/stable/messaging.html#execution-results */
 export interface NotebookKernelPublishResultsRequestExecuteReply {
   status?: string;
   executionCount?: number;
   duration?: number;
 }
-const NotebookKernelPublishResultsRequestExecuteReply = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<NotebookKernelPublishResultsRequestExecuteReply>;
-
 /** IOPub message or reply received from the kernel for a cell. */
 export interface NotebookKernelPublishResultsRequestCellResult {
   cellId?: string;
@@ -83,33 +62,13 @@ export interface NotebookKernelPublishResultsRequestCellResult {
   /** Cell has finished executing, return the kernel's execute_reply. */
   executeReply?: NotebookKernelPublishResultsRequestExecuteReply;
 }
-const NotebookKernelPublishResultsRequestCellResult = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<NotebookKernelPublishResultsRequestCellResult>;
-
 export type NotebookKernelPublishResultsRequestCellResultList =
   Array<NotebookKernelPublishResultsRequestCellResult>;
-const NotebookKernelPublishResultsRequestCellResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<NotebookKernelPublishResultsRequestCellResultList>;
-
 export interface NotebookKernelPublishResultsRequest {
   notebookId?: string;
   results?: NotebookKernelPublishResultsRequestCellResultList;
 }
-const NotebookKernelPublishResultsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<NotebookKernelPublishResultsRequest>;
-
 export interface NotebookKernelPublishResultsResponse {}
-const NotebookKernelPublishResultsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<NotebookKernelPublishResultsResponse>;
-
 export type NotebookKernelPublishResultsError = ModalOpError;
 /** Notebooks */
 export const notebookKernelPublishResults: API.OperationMethod<
@@ -118,8 +77,8 @@ export const notebookKernelPublishResults: API.OperationMethod<
   NotebookKernelPublishResultsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NotebookKernelPublishResultsRequest,
-  output: NotebookKernelPublishResultsResponse,
+  input: __S(9) as any as S.Schema<NotebookKernelPublishResultsRequest>,
+  output: __S(10) as any as S.Schema<NotebookKernelPublishResultsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -162,16 +121,16 @@ function __c0(j: number): any {
         S.Struct({
           ename: S.optional(S.String),
           evalue: S.optional(S.String),
-          traceback: S.optional(StringList),
+          traceback: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "NotebookOutputError" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          executeResult: S.optional(NotebookOutputExecuteResult),
-          displayData: S.optional(NotebookOutputDisplayData),
-          stream: S.optional(NotebookOutputStream),
-          error: S.optional(NotebookOutputError),
+          executeResult: S.optional(__S(0)),
+          displayData: S.optional(__S(1)),
+          stream: S.optional(__S(2)),
+          error: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "NotebookOutput" });
     case 6:
@@ -188,9 +147,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cellId: S.optional(S.String),
-          output: S.optional(NotebookOutput),
+          output: S.optional(__S(5)),
           clearOutput: S.optional(S.Boolean),
-          executeReply: S.optional(NotebookKernelPublishResultsRequestExecuteReply),
+          executeReply: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "NotebookKernelPublishResultsRequestCellResult",
@@ -200,12 +159,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NotebookKernelPublishResultsRequestCellResult);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           notebookId: S.optional(S.String),
-          results: S.optional(NotebookKernelPublishResultsRequestCellResultList),
+          results: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -220,5 +179,18 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "NotebookKernelPublishResultsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

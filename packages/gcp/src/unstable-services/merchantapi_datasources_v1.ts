@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,8 +71,6 @@ export interface PromotionDataSource {
   /** Required. Immutable. The target country used as part of the unique identifier. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). Promotions are only available in selected [countries](https://support.google.com/merchants/answer/4588460). */
   targetCountry?: string;
 }
-const PromotionDataSource = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PromotionDataSource>;
-
 /** The local inventory data source type is only available for file inputs and can't be used to create API local inventory data sources. */
 export interface LocalInventoryDataSource {
   /** Required. Immutable. The feed label of the offers to which the local inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). */
@@ -78,11 +78,6 @@ export interface LocalInventoryDataSource {
   /** Required. Immutable. The two-letter ISO 639-1 language of the items to which the local inventory is provided. */
   contentLanguage?: string;
 }
-const LocalInventoryDataSource = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LocalInventoryDataSource>;
-
 /** Data source reference can be used to manage related data sources within the data source service. */
 export interface DataSourceReference {
   /** Optional. Deprecated: Use `self` instead to reference the primary data source. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}` */
@@ -92,14 +87,7 @@ export interface DataSourceReference {
   /** Self should be used to reference the primary data source itself. */
   self?: boolean;
 }
-const DataSourceReference = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataSourceReference>;
-
 export type DataSourceReferenceList = Array<DataSourceReference>;
-const DataSourceReferenceList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DataSourceReferenceList>;
-
 /** The [supplemental data source](https://developers.google.com/merchant/api/guides/data-sources/api-sources#link-supplemental-data-source) for local and online products. After creation,you should make sure to link the supplemental product data source into one or more primary product data sources. */
 export interface SupplementalProductDataSource {
   /** Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction. */
@@ -109,22 +97,12 @@ export interface SupplementalProductDataSource {
   /** Optional. Immutable. The feed label that is specified on the data source level. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). `feedLabel` and `contentLanguage` must be either both set or unset for data sources with product content type. They must be set for data sources with a file input. The fields must be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction. */
   feedLabel?: string;
 }
-const SupplementalProductDataSource = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SupplementalProductDataSource>;
-
 export interface RegionalInventoryDataSource {
   /** Required. Immutable. The feed label of the offers to which the regional inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). */
   feedLabel?: string;
   /** Required. Immutable. The two-letter ISO 639-1 language of the items to which the regional inventory is provided. */
   contentLanguage?: string;
 }
-const RegionalInventoryDataSource = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<RegionalInventoryDataSource>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -136,8 +114,6 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TimeOfDay>;
-
 export type FetchSettingsDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -147,15 +123,11 @@ export type FetchSettingsDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-const FetchSettingsDayOfWeekEnum = S.String;
-
 export type FetchSettingsFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "FREQUENCY_DAILY"
   | "FREQUENCY_WEEKLY"
   | "FREQUENCY_MONTHLY";
-const FetchSettingsFrequencyEnum = S.String;
-
 /** Fetch details to deliver the data source. */
 export interface FetchSettings {
   /** Optional. The day of the month when the data source file should be fetched (1-31). This field can only be set for monthly frequency. */
@@ -177,15 +149,11 @@ export interface FetchSettings {
   /** Required. The frequency describing fetch schedule. */
   frequency?: FetchSettingsFrequencyEnum | (string & {});
 }
-const FetchSettings = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<FetchSettings>;
-
 export type FileInputFileInputTypeEnum =
   | "FILE_INPUT_TYPE_UNSPECIFIED"
   | "UPLOAD"
   | "FETCH"
   | "GOOGLE_SHEETS";
-const FileInputFileInputTypeEnum = S.String;
-
 /** The data specific for file data sources. This field is empty for other data source inputs. */
 export interface FileInput {
   /** Optional. The file name of the data source. Required for `UPLOAD` file input type. */
@@ -195,15 +163,11 @@ export interface FileInput {
   /** Output only. The type of file input. */
   fileInputType?: FileInputFileInputTypeEnum | (string & {});
 }
-const FileInput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<FileInput>;
-
 /** Default rule management of the data source. */
 export interface DefaultRule {
   /** Required. The list of data sources linked in the [default rule](https://support.google.com/merchants/answer/7450276). This list is ordered by the default rule priority of joining the data. It might include none or multiple references to `self` and supplemental data sources. The list must not be empty. To link the data source to the default rule, you need to add a new reference to this list (in sequential order). To unlink the data source from the default rule, you need to remove the given reference from this list. Changing the order of this list will result in changing the priority of data sources in the default rule. For example, providing the following list: [`1001`, `self`] will take attribute values from supplemental data source `1001`, and fallback to `self` if the attribute is not set in `1001`. Warning: The update (patch) and create call replaces the entire default rule setup. It doesn't work as an addition or append. If `self` is missing from the list of `take_from_data_sources`, the API will ignore attributes from the primary data source itself. */
   takeFromDataSources?: DataSourceReferenceList;
 }
-const DefaultRule = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DefaultRule>;
-
 export type DestinationDestinationEnum =
   | "DESTINATION_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -219,11 +183,7 @@ export type DestinationDestinationEnum =
   | "CLOUD_RETAIL"
   | "LOCAL_CLOUD_RETAIL"
   | "RENTAL_ADS";
-const DestinationDestinationEnum = S.String;
-
 export type DestinationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
-const DestinationStateEnum = S.String;
-
 /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. */
 export interface Destination {
   /** [Marketing methods](https://support.google.com/merchants/answer/15130232) (also known as destination) selections. */
@@ -231,14 +191,8 @@ export interface Destination {
   /** The state of the destination. */
   state?: DestinationStateEnum | (string & {});
 }
-const Destination = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Destination>;
-
 export type DestinationList = Array<Destination>;
-const DestinationList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DestinationList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
-
 /** The primary data source for local and online products. */
 export interface PrimaryProductDataSource {
   /** Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept products without that restriction. */
@@ -254,21 +208,9 @@ export interface PrimaryProductDataSource {
   /** Optional. The countries where the items may be displayed. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). */
   countries?: StringList;
 }
-const PrimaryProductDataSource = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PrimaryProductDataSource>;
-
 export type DataSourceInputEnum = "INPUT_UNSPECIFIED" | "API" | "FILE" | "UI" | "AUTOFEED";
-const DataSourceInputEnum = S.String;
-
 /** The product review data source. */
 export interface ProductReviewDataSource {}
-const ProductReviewDataSource = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ProductReviewDataSource>;
-
 /** The merchant review data source. */
 export type MerchantReviewDataSource = ProductReviewDataSource;
 /** The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account. */
@@ -298,32 +240,18 @@ export interface DataSource {
   /** The [merchant review](https://support.google.com/merchants/answer/7045996) data source. */
   merchantReviewDataSource?: ProductReviewDataSource;
 }
-const DataSource = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DataSource>;
-
 export interface CreateAccountsDataSourcesRequest {
   /** Required. The account where this data source will be created. Format: `accounts/{account}` */
   parent: string;
   /** Request body */
   body?: DataSource;
 }
-const CreateAccountsDataSourcesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateAccountsDataSourcesRequest>;
-
 export interface DeleteAccountsDataSourcesRequest {
   /** Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
 }
-const DeleteAccountsDataSourcesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteAccountsDataSourcesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = ProductReviewDataSource as any as S.Schema<Empty>;
-
 /** Request message for the FetchDataSource method. */
 export type FetchDataSourceRequest = ProductReviewDataSource;
 export interface FetchAccountsDataSourcesRequest {
@@ -332,32 +260,15 @@ export interface FetchAccountsDataSourcesRequest {
   /** Request body */
   body?: ProductReviewDataSource;
 }
-const FetchAccountsDataSourcesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<FetchAccountsDataSourcesRequest>;
-
 export interface GetAccountsDataSourcesRequest {
   /** Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
 }
-const GetAccountsDataSourcesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetAccountsDataSourcesRequest>;
-
 export interface GetAccountsDataSourcesFileUploadsRequest {
   /** Required. The name of the data source file upload to retrieve. Format: `accounts/{account}/dataSources/{datasource}/fileUploads/latest` */
   name: string;
 }
-const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>;
-
 export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
-const IssueSeverityEnum = S.String;
-
 /** An error occurring in the data source, like "invalid price". */
 export interface Issue {
   /** Output only. Link to the documentation explaining the issue in more details, if available. */
@@ -373,18 +284,12 @@ export interface Issue {
   /** Output only. The title of the issue, for example, "Item too big". */
   title?: string;
 }
-const Issue = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Issue>;
-
 export type IssueList = Array<Issue>;
-const IssueList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IssueList>;
-
 export type FileUploadProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "FAILED"
   | "IN_PROGRESS"
   | "SUCCEEDED";
-const FileUploadProcessingStateEnum = S.String;
-
 /** The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain timestamp computed asynchronously when the data source processing is finished. Only applicable to file data sources. */
 export interface FileUpload {
   /** Output only. The data source id. */
@@ -404,8 +309,6 @@ export interface FileUpload {
   /** Identifier. The name of the data source file upload. Format: `{datasource.name=accounts/{account}/dataSources/{datasource}/fileUploads/{fileupload}}` */
   name?: string;
 }
-const FileUpload = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FileUpload>;
-
 export interface ListAccountsDataSourcesRequest {
   /** Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned. */
   pageSize?: number;
@@ -414,14 +317,7 @@ export interface ListAccountsDataSourcesRequest {
   /** Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAccountsDataSourcesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListAccountsDataSourcesRequest>;
-
 export type DataSourceList = Array<DataSource>;
-const DataSourceList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DataSourceList>;
-
 /** Response message for the ListDataSources method. */
 export interface ListDataSourcesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -429,11 +325,6 @@ export interface ListDataSourcesResponse {
   /** The data sources from the specified account. */
   dataSources?: DataSourceList;
 }
-const ListDataSourcesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListDataSourcesResponse>;
-
 export interface PatchAccountsDataSourcesRequest {
   /** Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
@@ -442,11 +333,6 @@ export interface PatchAccountsDataSourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-const PatchAccountsDataSourcesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PatchAccountsDataSourcesRequest>;
-
 export type CreateAccountsDataSourcesError =
   | NotFound
   | Forbidden
@@ -460,8 +346,8 @@ export const createAccountsDataSources: API.OperationMethod<
   CreateAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsDataSourcesRequest,
-  output: DataSource,
+  input: __S(16) as any as S.Schema<CreateAccountsDataSourcesRequest>,
+  output: __S(15) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -480,8 +366,8 @@ export const deleteAccountsDataSources: API.OperationMethod<
   DeleteAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsDataSourcesRequest,
-  output: Empty,
+  input: __S(17) as any as S.Schema<DeleteAccountsDataSourcesRequest>,
+  output: __S(14) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -500,8 +386,8 @@ export const fetchAccountsDataSources: API.OperationMethod<
   FetchAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchAccountsDataSourcesRequest,
-  output: Empty,
+  input: __S(18) as any as S.Schema<FetchAccountsDataSourcesRequest>,
+  output: __S(14) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -515,8 +401,8 @@ export const getAccountsDataSources: API.OperationMethod<
   GetAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsDataSourcesRequest,
-  output: DataSource,
+  input: __S(19) as any as S.Schema<GetAccountsDataSourcesRequest>,
+  output: __S(15) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -530,8 +416,8 @@ export const getAccountsDataSourcesFileUploads: API.OperationMethod<
   GetAccountsDataSourcesFileUploadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsDataSourcesFileUploadsRequest,
-  output: FileUpload,
+  input: __S(20) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>,
+  output: __S(23) as any as S.Schema<FileUpload>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -546,8 +432,8 @@ export const listAccountsDataSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsDataSourcesRequest,
-  output: ListDataSourcesResponse,
+  input: __S(24) as any as S.Schema<ListAccountsDataSourcesRequest>,
+  output: __S(26) as any as S.Schema<ListDataSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -567,8 +453,8 @@ export const patchAccountsDataSources: API.OperationMethod<
   PatchAccountsDataSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsDataSourcesRequest,
-  output: DataSource,
+  input: __S(27) as any as S.Schema<PatchAccountsDataSourcesRequest>,
+  output: __S(15) as any as S.Schema<DataSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -600,12 +486,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DataSourceReference" });
     case 3:
-      return S.Array(DataSourceReference);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           contentLanguage: S.optional(S.String),
-          referencingPrimaryDataSources: S.optional(DataSourceReferenceList),
+          referencingPrimaryDataSources: S.optional(__S(3)),
           feedLabel: S.optional(S.String),
         }),
       ).annotate({
@@ -638,9 +524,9 @@ function __c0(j: number): any {
           fetchUri: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String),
-          timeOfDay: S.optional(TimeOfDay),
-          dayOfWeek: S.optional(FetchSettingsDayOfWeekEnum),
-          frequency: S.optional(FetchSettingsFrequencyEnum),
+          timeOfDay: S.optional(__S(6)),
+          dayOfWeek: S.optional(S.String),
+          frequency: S.optional(S.String),
         }),
       ).annotate({ identifier: "FetchSettings" });
   }
@@ -651,36 +537,36 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileName: S.optional(S.String),
-          fetchSettings: S.optional(FetchSettings),
-          fileInputType: S.optional(FileInputFileInputTypeEnum),
+          fetchSettings: S.optional(__S(7)),
+          fileInputType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          takeFromDataSources: S.optional(DataSourceReferenceList),
+          takeFromDataSources: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "DefaultRule" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(DestinationDestinationEnum),
-          state: S.optional(DestinationStateEnum),
+          destination: S.optional(S.String),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Destination" });
     case 3:
-      return S.Array(Destination);
+      return S.Array(__S(10));
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           contentLanguage: S.optional(S.String),
-          defaultRule: S.optional(DefaultRule),
-          destinations: S.optional(DestinationList),
+          defaultRule: S.optional(__S(9)),
+          destinations: S.optional(__S(11)),
           legacyLocal: S.optional(S.Boolean),
           feedLabel: S.optional(S.String),
-          countries: S.optional(StringList),
+          countries: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "PrimaryProductDataSource" });
     case 6:
@@ -690,18 +576,18 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          promotionDataSource: S.optional(PromotionDataSource),
+          promotionDataSource: S.optional(__S(0)),
           displayName: S.optional(S.String),
-          localInventoryDataSource: S.optional(LocalInventoryDataSource),
+          localInventoryDataSource: S.optional(__S(1)),
           name: S.optional(S.String),
-          supplementalProductDataSource: S.optional(SupplementalProductDataSource),
-          regionalInventoryDataSource: S.optional(RegionalInventoryDataSource),
-          fileInput: S.optional(FileInput),
+          supplementalProductDataSource: S.optional(__S(4)),
+          regionalInventoryDataSource: S.optional(__S(5)),
+          fileInput: S.optional(__S(8)),
           dataSourceId: S.optional(S.String),
-          primaryProductDataSource: S.optional(PrimaryProductDataSource),
-          input: S.optional(DataSourceInputEnum),
-          productReviewDataSource: S.optional(ProductReviewDataSource),
-          merchantReviewDataSource: S.optional(ProductReviewDataSource),
+          primaryProductDataSource: S.optional(__S(13)),
+          input: S.optional(S.String),
+          productReviewDataSource: S.optional(__S(14)),
+          merchantReviewDataSource: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "DataSource" });
   }
@@ -712,7 +598,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DataSource.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -741,7 +627,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ProductReviewDataSource.pipe(T.HttpBody())),
+          body: S.optional(__S(14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -786,20 +672,20 @@ function __c2(j: number): any {
           documentationUri: S.optional(S.String),
           count: S.optional(S.String),
           code: S.optional(S.String),
-          severity: S.optional(IssueSeverityEnum),
+          severity: S.optional(S.String),
           description: S.optional(S.String),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Issue" });
     case 6:
-      return S.Array(Issue);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           dataSourceId: S.optional(S.String),
-          issues: S.optional(IssueList),
+          issues: S.optional(__S(22)),
           itemsUpdated: S.optional(S.String),
-          processingState: S.optional(FileUploadProcessingStateEnum),
+          processingState: S.optional(S.String),
           uploadTime: S.optional(S.String),
           itemsCreated: S.optional(S.String),
           itemsTotal: S.optional(S.String),
@@ -827,12 +713,12 @@ function __c3(j: number): any {
         identifier: "ListAccountsDataSourcesRequest",
       });
     case 1:
-      return S.Array(DataSource);
+      return S.Array(__S(15));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dataSources: S.optional(DataSourceList),
+          dataSources: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "ListDataSourcesResponse" });
     case 3:
@@ -840,7 +726,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(DataSource.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -851,5 +737,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchAccountsDataSourcesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

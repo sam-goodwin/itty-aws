@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -21,26 +23,14 @@ export interface CheckRecoveryServiceNameAvailabilityRequest {
   /** Resource name for which availability needs to be checked */
   name?: string;
 }
-const CheckRecoveryServiceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckRecoveryServiceNameAvailabilityRequest>;
-
 /** Response for check name availability API. Resource provider will set availability as true | false. */
 export interface CheckNameAvailabilityResult {
   nameAvailable?: boolean;
   reason?: string;
   message?: string;
 }
-const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckNameAvailabilityResult>;
-
 /** Specifies the authentication type. */
 export type AuthType = "Invalid" | "ACS" | "AAD" | "AccessControlService" | "AzureActiveDirectory";
-const AuthType = S.String;
-
 /** Raw certificate data. */
 export interface RawCertificateData {
   /** Specifies the authentication type. */
@@ -48,8 +38,6 @@ export interface RawCertificateData {
   /** The base64 encoded certificate raw data string */
   certificate?: string;
 }
-const RawCertificateData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RawCertificateData>;
-
 export interface CreateVaultCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -62,11 +50,6 @@ export interface CreateVaultCertificateRequest {
   /** Raw certificate data. */
   properties?: RawCertificateData;
 }
-const CreateVaultCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateVaultCertificateRequest>;
-
 /** Certificate details representing the Vault credentials. */
 export interface ResourceCertificateDetails {
   /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
@@ -88,11 +71,6 @@ export interface ResourceCertificateDetails {
   /** Certificate Validity End Date time. */
   validTo?: string;
 }
-const ResourceCertificateDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ResourceCertificateDetails>;
-
 /** Certificate corresponding to a vault that can be used by clients to register themselves with the vault. */
 export interface VaultCertificateResponse {
   /** Resource name associated with the resource. */
@@ -104,11 +82,6 @@ export interface VaultCertificateResponse {
   /** Certificate details representing the Vault credentials. */
   properties?: ResourceCertificateDetails;
 }
-const VaultCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<VaultCertificateResponse>;
-
 export interface DeleteRegisteredIdentityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -119,17 +92,7 @@ export interface DeleteRegisteredIdentityRequest {
   /** Name of the protection container to unregister. */
   identityName: string;
 }
-const DeleteRegisteredIdentityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteRegisteredIdentityRequest>;
-
 export interface DeleteRegisteredIdentityResponse {}
-const DeleteRegisteredIdentityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteRegisteredIdentityResponse>;
-
 export interface DeleteVaultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -138,11 +101,7 @@ export interface DeleteVaultRequest {
   /** The name of the Vault */
   vaultName: string;
 }
-const DeleteVaultRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteVaultRequest>;
-
 export interface DeleteVaultResponse {}
-const DeleteVaultResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteVaultResponse>;
-
 export interface GetDeletedVaultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -151,19 +110,10 @@ export interface GetDeletedVaultRequest {
   /** The name of the DeletedVault */
   deletedVaultName: string;
 }
-const GetDeletedVaultRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetDeletedVaultRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -179,8 +129,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
-
 /** Properties of the DeletedVault. */
 export interface DeletedVaultProperties {
   /** ARM Id of the Vault which was deleted. */
@@ -190,11 +138,6 @@ export interface DeletedVaultProperties {
   /** Time in UTC at which the DeletedVault will be purged. */
   purgeAt?: string;
 }
-const DeletedVaultProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeletedVaultProperties>;
-
 export interface GetDeletedVaultResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -207,11 +150,6 @@ export interface GetDeletedVaultResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeletedVaultProperties;
 }
-const GetDeletedVaultResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetDeletedVaultResponse>;
-
 export interface GetDeletedVaultOperationStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -221,11 +159,6 @@ export interface GetDeletedVaultOperationStatusRequest {
   deletedVaultName: string;
   operationId: string;
 }
-const GetDeletedVaultOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetDeletedVaultOperationStatusRequest>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfoItem {
   /** The additional info type. */
@@ -233,22 +166,10 @@ export interface ErrorAdditionalInfoItem {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfoItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ErrorAdditionalInfoItem>;
-
 /** The error additional info. */
 export type ErrorAdditionalInfoList = Array<ErrorAdditionalInfoItem>;
-const ErrorAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ErrorAdditionalInfoList>;
-
 /** The error details. */
 export type ErrorDetailsList = Array<Error>;
-const ErrorDetailsList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ErrorDetailsList>;
-
 /** The resource management error response. */
 export interface Error {
   /** The error additional info. */
@@ -262,8 +183,6 @@ export interface Error {
   /** The error target. */
   target?: string;
 }
-const Error = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Error>;
-
 /** Operation Resource */
 export interface OperationResource {
   /** End time of the operation */
@@ -279,8 +198,6 @@ export interface OperationResource {
   /** Start time of the operation */
   startTime?: string;
 }
-const OperationResource = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<OperationResource>;
-
 export interface GetOperationResultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -291,26 +208,12 @@ export interface GetOperationResultRequest {
   /** The name of the Vault */
   operationId: string;
 }
-const GetOperationResultRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetOperationResultRequest>;
-
 /** Resource tags. */
 export type GetOperationResultResponseTagsMap = { [key: string]: string | undefined };
-const GetOperationResultResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetOperationResultResponseTagsMap>;
-
 /** Status of the vault upgrade operation. */
 export type VaultUpgradeState = "Unknown" | "InProgress" | "Upgraded" | "Failed";
-const VaultUpgradeState = S.String;
-
 /** The way the vault upgrade was triggered. */
 export type TriggerType = "UserTriggered" | "ForcedUpgrade";
-const TriggerType = S.String;
-
 /** Details for upgrading vault. */
 export interface UpgradeDetails {
   /** ID of the vault upgrade operation. */
@@ -332,23 +235,15 @@ export interface UpgradeDetails {
   /** Resource ID of the vault before the upgrade. */
   previousResourceId?: string;
 }
-const UpgradeDetails = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UpgradeDetails>;
-
 /** Gets or sets provisioning state of the private endpoint connection. */
 export type ProvisioningState = "Succeeded" | "Deleting" | "Failed" | "Pending";
-const ProvisioningState = S.String;
-
 /** The Private Endpoint network resource that is linked to the Private Endpoint connection. */
 export interface PrivateEndpoint {
   /** Gets or sets id. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PrivateEndpoint>;
-
 /** Gets or sets the status. */
 export type PrivateEndpointConnectionStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-const PrivateEndpointConnectionStatus = S.String;
-
 /** Gets or sets private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
   /** Gets or sets the status. */
@@ -358,22 +253,10 @@ export interface PrivateLinkServiceConnectionState {
   /** Gets or sets actions required. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Subresource type for vault AzureBackup, AzureBackup_secondary or AzureSiteRecovery */
 export type VaultSubResourceType = "AzureBackup" | "AzureBackup_secondary" | "AzureSiteRecovery";
-const VaultSubResourceType = S.String;
-
 /** Group Ids for the Private Endpoint */
 export type PrivateEndpointConnectionGroupIdsList = Array<VaultSubResourceType>;
-const PrivateEndpointConnectionGroupIdsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionGroupIdsList>;
-
 /** Private Endpoint Connection Response Properties. */
 export interface PrivateEndpointConnection {
   /** Gets or sets provisioning state of the private endpoint connection. */
@@ -385,11 +268,6 @@ export interface PrivateEndpointConnection {
   /** Group Ids for the Private Endpoint */
   groupIds?: PrivateEndpointConnectionGroupIdsList;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** Information to be stored in Vault properties as an element of privateEndpointConnections List. */
 export interface PrivateEndpointConnectionVaultProperties {
   /** Format of id subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.[Service]/{resource}/{resourceName}/privateEndpointConnections/{connectionName}. */
@@ -403,33 +281,16 @@ export interface PrivateEndpointConnectionVaultProperties {
   /** The location of the private Endpoint connection */
   location?: string;
 }
-const PrivateEndpointConnectionVaultProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionVaultProperties>;
-
 /** List of private endpoint connection. */
 export type VaultPropertiesPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionVaultProperties>;
-const VaultPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<VaultPropertiesPrivateEndpointConnectionsList>;
-
 /** Private endpoint state for backup. */
 export type VaultPrivateEndpointState = "None" | "Enabled";
-const VaultPrivateEndpointState = S.String;
-
 /** The properties of the Key Vault which hosts CMK */
 export interface CmkKeyVaultProperties {
   /** The key uri of the Customer Managed Key */
   keyUri?: string;
 }
-const CmkKeyVaultProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CmkKeyVaultProperties>;
-
 /** The details of the identity used for CMK */
 export interface CmkKekIdentity {
   /** Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field */
@@ -437,12 +298,8 @@ export interface CmkKekIdentity {
   /** The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned */
   userAssignedIdentity?: string;
 }
-const CmkKekIdentity = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CmkKekIdentity>;
-
 /** Enabling/Disabling the Double Encryption state */
 export type InfrastructureEncryptionState = "Enabled" | "Disabled";
-const InfrastructureEncryptionState = S.String;
-
 /** Customer Managed Key details of the resource. */
 export interface VaultPropertiesEncryption {
   /** The properties of the Key Vault which hosts CMK */
@@ -452,11 +309,6 @@ export interface VaultPropertiesEncryption {
   /** Enabling/Disabling the Double Encryption state */
   infrastructureEncryption?: InfrastructureEncryptionState | (string & {});
 }
-const VaultPropertiesEncryption = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<VaultPropertiesEncryption>;
-
 /** The details of the latest move operation performed on the Azure Resource */
 export interface VaultPropertiesMoveDetails {
   /** OperationId of the Resource Move Operation */
@@ -470,11 +322,6 @@ export interface VaultPropertiesMoveDetails {
   /** Target Resource of the Resource Move Operation */
   targetResourceId?: string;
 }
-const VaultPropertiesMoveDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<VaultPropertiesMoveDetails>;
-
 /** The State of the Resource after the move operation */
 export type ResourceMoveState =
   | "Unknown"
@@ -487,37 +334,22 @@ export type ResourceMoveState =
   | "Failure"
   | "CriticalFailure"
   | "PartialSuccess";
-const ResourceMoveState = S.String;
-
 /** Backup storage version */
 export type BackupStorageVersion = "V1" | "V2" | "Unassigned";
-const BackupStorageVersion = S.String;
-
 /** property to enable or disable resource provider inbound network traffic from public clients */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 export type AlertsState = "Enabled" | "Disabled";
-const AlertsState = S.String;
-
 /** Settings for Azure Monitor based alerts */
 export interface AzureMonitorAlertSettings {
   alertsForAllJobFailures?: AlertsState | (string & {});
   alertsForAllReplicationIssues?: AlertsState | (string & {});
   alertsForAllFailoverIssues?: AlertsState | (string & {});
 }
-const AzureMonitorAlertSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AzureMonitorAlertSettings>;
-
 /** Settings for classic alerts */
 export interface ClassicAlertSettings {
   alertsForCriticalOperations?: AlertsState | (string & {});
   emailNotificationsForSiteRecovery?: AlertsState | (string & {});
 }
-const ClassicAlertSettings = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ClassicAlertSettings>;
-
 /** Monitoring Settings of the vault */
 export interface MonitoringSettings {
   /** Settings for Azure Monitor based alerts */
@@ -525,52 +357,30 @@ export interface MonitoringSettings {
   /** Settings for classic alerts */
   classicAlertSettings?: ClassicAlertSettings;
 }
-const MonitoringSettings = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MonitoringSettings>;
-
 export type GranularityLevel = "VaultLevel" | "ProtectedItemLevel" | "ProtectedItemWithParentTag";
-const GranularityLevel = S.String;
-
 /** Cost Management Settings of the vault */
 export interface CostManagementSettings {
   /** Settings for granularity level */
   granularityLevel?: GranularityLevel | (string & {});
 }
-const CostManagementSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CostManagementSettings>;
-
 export type CrossSubscriptionRestoreState = "Enabled" | "Disabled" | "PermanentlyDisabled";
-const CrossSubscriptionRestoreState = S.String;
-
 /** Settings for Cross Subscription Restore Settings */
 export interface CrossSubscriptionRestoreSettings {
   crossSubscriptionRestoreState?: CrossSubscriptionRestoreState | (string & {});
 }
-const CrossSubscriptionRestoreSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CrossSubscriptionRestoreSettings>;
-
 /** Restore Settings of the vault */
 export interface RestoreSettings {
   /** Settings for CrossSubscriptionRestore */
   crossSubscriptionRestoreSettings?: CrossSubscriptionRestoreSettings;
 }
-const RestoreSettings = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RestoreSettings>;
-
 /** The storage redundancy setting of a vault */
 export type StandardTierStorageRedundancy =
   | "Invalid"
   | "LocallyRedundant"
   | "GeoRedundant"
   | "ZoneRedundant";
-const StandardTierStorageRedundancy = S.String;
-
 /** Flag to show if Cross Region Restore is enabled on the Vault or not */
 export type CrossRegionRestore = "Enabled" | "Disabled";
-const CrossRegionRestore = S.String;
-
 /** The redundancy Settings of a Vault */
 export interface VaultPropertiesRedundancySettings {
   /** The storage redundancy setting of a vault */
@@ -578,18 +388,9 @@ export interface VaultPropertiesRedundancySettings {
   /** Flag to show if Cross Region Restore is enabled on the Vault or not */
   crossRegionRestore?: CrossRegionRestore | (string & {});
 }
-const VaultPropertiesRedundancySettings = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<VaultPropertiesRedundancySettings>;
-
 export type ImmutabilityState = "Disabled" | "Unlocked" | "Locked";
-const ImmutabilityState = S.String;
-
 /** Immutability config type. */
 export type ImmutabilityType = "AsPerPolicy" | "TimeBased";
-const ImmutabilityType = S.String;
-
 /** Immutability configuration of vault. */
 export interface ImmutabilityConfiguration {
   /** Immutability type. 'AsPerPolicy' inherits duration from backup policy; 'TimeBased' requires explicit durationInDays. */
@@ -597,25 +398,14 @@ export interface ImmutabilityConfiguration {
   /** Duration in days. Required when type is TimeBased, omitted when AsPerPolicy. */
   durationInDays?: number;
 }
-const ImmutabilityConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ImmutabilityConfiguration>;
-
 /** Immutability Settings of vault */
 export interface ImmutabilitySettings {
   state?: ImmutabilityState | (string & {});
   /** Immutability configuration of the vault -- selects whether immutability is inherited from the backup policy (AsPerPolicy) or fixed for a specific duration (TimeBased). */
   configuration?: ImmutabilityConfiguration;
 }
-const ImmutabilitySettings = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ImmutabilitySettings>;
-
 export type SoftDeleteState = "Invalid" | "Enabled" | "Disabled" | "AlwaysON";
-const SoftDeleteState = S.String;
-
 export type EnhancedSecurityState = "Invalid" | "Enabled" | "Disabled" | "AlwaysON";
-const EnhancedSecurityState = S.String;
-
 /** Soft delete Settings of vault */
 export interface SoftDeleteSettings {
   softDeleteState?: SoftDeleteState | (string & {});
@@ -623,19 +413,11 @@ export interface SoftDeleteSettings {
   softDeleteRetentionPeriodInDays?: number;
   enhancedSecurityState?: EnhancedSecurityState | (string & {});
 }
-const SoftDeleteSettings = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SoftDeleteSettings>;
-
 /** MUA Settings of vault */
 export type MultiUserAuthorization = "Invalid" | "Enabled" | "Disabled";
-const MultiUserAuthorization = S.String;
-
 export type State = "Invalid" | "Enabled" | "Disabled";
-const State = S.String;
-
 /** Identity type that should be used for an operation. */
 export type IdentityType = "SystemAssigned" | "UserAssigned";
-const IdentityType = S.String;
-
 /** Identity details to be used for an operation */
 export interface AssociatedIdentity {
   /** Identity type that should be used for an operation. */
@@ -643,19 +425,12 @@ export interface AssociatedIdentity {
   /** User assigned identity to be used for an operation if operationIdentityType is UserAssigned. */
   userAssignedIdentity?: string;
 }
-const AssociatedIdentity = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AssociatedIdentity>;
-
 /** Source scan configuration of vault */
 export interface SourceScanConfiguration {
   state?: State | (string & {});
   /** Identity details to be used for an operation */
   sourceScanIdentity?: AssociatedIdentity;
 }
-const SourceScanConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SourceScanConfiguration>;
-
 /** Security Settings of the vault */
 export interface SecuritySettings {
   /** Immutability Settings of a vault */
@@ -667,33 +442,17 @@ export interface SecuritySettings {
   /** Source scan configuration of vault */
   sourceScanConfiguration?: SourceScanConfiguration;
 }
-const SecuritySettings = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SecuritySettings>;
-
 /** Secure Score of Recovery Services Vault */
 export type SecureScoreLevel = "None" | "Minimum" | "Adequate" | "Maximum";
-const SecureScoreLevel = S.String;
-
 /** Security levels of Recovery Services Vault for business continuity and disaster recovery */
 export type BCDRSecurityLevel = "Poor" | "Fair" | "Good" | "Excellent";
-const BCDRSecurityLevel = S.String;
-
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type VaultPropertiesResourceGuardOperationRequestsList = Array<string>;
-const VaultPropertiesResourceGuardOperationRequestsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<VaultPropertiesResourceGuardOperationRequestsList>;
-
 /** Region of choice settings at vault level. This setting allows customers to configure backups for datasources from different region. */
 export interface RegionOfChoiceSettings {
   /** The status of region of choice settings - Enabled or Disabled. */
   status?: State | (string & {});
 }
-const RegionOfChoiceSettings = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<RegionOfChoiceSettings>;
-
 /** Properties of the vault. */
 export interface VaultProperties {
   /** Provisioning State. */
@@ -735,16 +494,12 @@ export interface VaultProperties {
   /** Region of choice settings for this vault. */
   regionOfChoiceSettings?: RegionOfChoiceSettings;
 }
-const VaultProperties = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<VaultProperties>;
-
 /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities. */
 export type ResourceIdentityType =
   | "SystemAssigned"
   | "None"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-const ResourceIdentityType = S.String;
-
 /** A resource identity that is managed by the user of the service. */
 export interface UserIdentity {
   /** The principal ID of the user-assigned identity. */
@@ -752,15 +507,8 @@ export interface UserIdentity {
   /** The client ID of the user-assigned identity. */
   clientId?: string;
 }
-const UserIdentity = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UserIdentity>;
-
 /** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityDataUserAssignedIdentitiesMap = { [key: string]: UserIdentity | undefined };
-const IdentityDataUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<IdentityDataUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface IdentityData {
   /** The principal ID of resource identity. */
@@ -772,12 +520,8 @@ export interface IdentityData {
   /** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityDataUserAssignedIdentitiesMap;
 }
-const IdentityData = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<IdentityData>;
-
 /** Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig */
 export type SkuName = "Standard" | "RS0";
-const SkuName = S.String;
-
 /** Identifies the unique system identifier for each Azure resource. */
 export interface Sku {
   /** Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig */
@@ -791,8 +535,6 @@ export interface Sku {
   /** The sku capacity */
   capacity?: string;
 }
-const Sku = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Sku>;
-
 export interface GetOperationResultResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -815,11 +557,6 @@ export interface GetOperationResultResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const GetOperationResultResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetOperationResultResponse>;
-
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -829,11 +566,6 @@ export interface GetOperationStatusRequest {
   vaultName: string;
   operationId: string;
 }
-const GetOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetOperationStatusRequest>;
-
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -843,21 +575,10 @@ export interface GetPrivateLinkResourceRequest {
   vaultName: string;
   privateLinkResourceName: string;
 }
-const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetPrivateLinkResourceRequest>;
-
 /** [backup-ecs1, backup-prot1, backup-prot1b, backup-prot1c, backup-id1] */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of the private link resource. */
 export interface PrivateLinkResourceProperties {
   /** e.g. f9ad6492-33d4-4690-9999-6bfd52a0d081 (Backup) or f9ad6492-33d4-4690-9999-6bfd52a0d082 (SiteRecovery) */
@@ -867,11 +588,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 export interface GetPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -884,11 +600,6 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties */
   properties?: PrivateLinkResourceProperties;
 }
-const GetPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetPrivateLinkResourceResponse>;
-
 export interface GetVaultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -897,13 +608,8 @@ export interface GetVaultRequest {
   /** The name of the Vault */
   vaultName: string;
 }
-const GetVaultRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetVaultRequest>;
-
 /** Resource tags. */
 export type GetVaultResponseTagsMap = { [key: string]: string | undefined };
-const GetVaultResponseTagsMap =
-  GetOperationResultResponseTagsMap as any as S.Schema<GetVaultResponseTagsMap>;
-
 export interface GetVaultResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -926,8 +632,6 @@ export interface GetVaultResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const GetVaultResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetVaultResponse>;
-
 export interface GetVaultExtendedInfoRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -936,11 +640,6 @@ export interface GetVaultExtendedInfoRequest {
   /** The name of the recovery services vault. */
   vaultName: string;
 }
-const GetVaultExtendedInfoRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetVaultExtendedInfoRequest>;
-
 /** Vault extended information. */
 export interface VaultExtendedInfo {
   /** Integrity key. */
@@ -952,8 +651,6 @@ export interface VaultExtendedInfo {
   /** Algorithm for Vault ExtendedInfo */
   algorithm?: string;
 }
-const VaultExtendedInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<VaultExtendedInfo>;
-
 export interface GetVaultExtendedInfoResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -968,22 +665,12 @@ export interface GetVaultExtendedInfoResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const GetVaultExtendedInfoResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetVaultExtendedInfoResponse>;
-
 export interface ListDeletedVaultBySubscriptionIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
 }
-const ListDeletedVaultBySubscriptionIdRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListDeletedVaultBySubscriptionIdRequest>;
-
 /** DeletedVault information as returned by the resource provider. */
 export interface DeletedVault {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -997,15 +684,8 @@ export interface DeletedVault {
   /** The resource-specific properties for this resource. */
   properties?: DeletedVaultProperties;
 }
-const DeletedVault = GetDeletedVaultResponse as any as S.Schema<DeletedVault>;
-
 /** The DeletedVault items on this page */
 export type DeletedVaultListValueList = Array<DeletedVault>;
-const DeletedVaultListValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeletedVaultListValueList>;
-
 /** The response model for a list of DeletedVaults. */
 export interface DeletedVaultList {
   /** The DeletedVault items on this page */
@@ -1013,14 +693,7 @@ export interface DeletedVaultList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeletedVaultList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DeletedVaultList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information of an operation. */
 export interface ClientDiscoveryDisplay {
   /** Name of the provider for display purposes */
@@ -1032,11 +705,6 @@ export interface ClientDiscoveryDisplay {
   /** Description of the operation having details of what operation is about. */
   description?: string;
 }
-const ClientDiscoveryDisplay = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ClientDiscoveryDisplay>;
-
 /** Class to represent shoebox log specification in json client discovery. */
 export interface ClientDiscoveryForLogSpecification {
   /** Name of the log. */
@@ -1046,39 +714,19 @@ export interface ClientDiscoveryForLogSpecification {
   /** Blobs created in customer storage account per hour */
   blobDuration?: string;
 }
-const ClientDiscoveryForLogSpecification = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ClientDiscoveryForLogSpecification>;
-
 /** List of log specifications of this operation. */
 export type ClientDiscoveryForServiceSpecificationLogSpecificationsList =
   Array<ClientDiscoveryForLogSpecification>;
-const ClientDiscoveryForServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ClientDiscoveryForServiceSpecificationLogSpecificationsList>;
-
 /** Class to represent shoebox service specification in json client discovery. */
 export interface ClientDiscoveryForServiceSpecification {
   /** List of log specifications of this operation. */
   logSpecifications?: ClientDiscoveryForServiceSpecificationLogSpecificationsList;
 }
-const ClientDiscoveryForServiceSpecification = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ClientDiscoveryForServiceSpecification>;
-
 /** Class to represent shoebox properties in json client discovery. */
 export interface ClientDiscoveryForProperties {
   /** Operation properties. */
   serviceSpecification?: ClientDiscoveryForServiceSpecification;
 }
-const ClientDiscoveryForProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ClientDiscoveryForProperties>;
-
 /** Available operation details. */
 export interface ClientDiscoveryValueForSingleApi {
   /** Name of the Operation. */
@@ -1090,18 +738,8 @@ export interface ClientDiscoveryValueForSingleApi {
   /** ShoeBox properties for the given operation. */
   properties?: ClientDiscoveryForProperties;
 }
-const ClientDiscoveryValueForSingleApi = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ClientDiscoveryValueForSingleApi>;
-
 /** The ClientDiscoveryValueForSingleApi items on this page */
 export type ClientDiscoveryResponseValueList = Array<ClientDiscoveryValueForSingleApi>;
-const ClientDiscoveryResponseValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ClientDiscoveryResponseValueList>;
-
 /** Paged collection of ClientDiscoveryValueForSingleApi items */
 export interface ClientDiscoveryResponse {
   /** The ClientDiscoveryValueForSingleApi items on this page */
@@ -1109,11 +747,6 @@ export interface ClientDiscoveryResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ClientDiscoveryResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ClientDiscoveryResponse>;
-
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1122,11 +755,6 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of the recovery services vault. */
   vaultName: string;
 }
-const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListPrivateLinkResourcesRequest>;
-
 /** Information of the private link resource. */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1140,15 +768,8 @@ export interface PrivateLinkResource {
   /** Resource properties */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<PrivateLinkResource>;
-
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourcesValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourcesValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<PrivateLinkResourcesValueList>;
-
 /** Class which represent the stamps associated with the vault. */
 export interface PrivateLinkResources {
   /** The PrivateLinkResource items on this page */
@@ -1156,8 +777,6 @@ export interface PrivateLinkResources {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateLinkResources = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PrivateLinkResources>;
-
 export interface ListReplicationUsagesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1166,11 +785,6 @@ export interface ListReplicationUsagesRequest {
   /** The name of the Vault */
   vaultName: string;
 }
-const ListReplicationUsagesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListReplicationUsagesRequest>;
-
 /** Summary of the replication monitoring data for this vault. */
 export interface MonitoringSummary {
   /** Count of unhealthy VMs. */
@@ -1186,8 +800,6 @@ export interface MonitoringSummary {
   /** Count of all the unsupported recovery service providers. */
   unsupportedProviderCount?: number;
 }
-const MonitoringSummary = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<MonitoringSummary>;
-
 /** Summary of the replication job data for this vault. */
 export interface JobsSummary {
   /** Count of failed jobs. */
@@ -1197,8 +809,6 @@ export interface JobsSummary {
   /** Count of in-progress jobs. */
   inProgressJobs?: number;
 }
-const JobsSummary = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<JobsSummary>;
-
 /** Replication usages of a vault. */
 export interface ReplicationUsage {
   /** Summary of the replication monitoring data for this vault. */
@@ -1214,26 +824,14 @@ export interface ReplicationUsage {
   /** The authentication type of recovery service providers in the vault. */
   recoveryServicesProviderAuthType?: number;
 }
-const ReplicationUsage = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ReplicationUsage>;
-
 /** The list of replication usages for the given vault. */
 export type ReplicationUsageListValueList = Array<ReplicationUsage>;
-const ReplicationUsageListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ReplicationUsageListValueList>;
-
 /** Replication usages for vault. */
 export interface ReplicationUsageList {
   /** The list of replication usages for the given vault. */
   value?: ReplicationUsageListValueList;
   nextLink?: string;
 }
-const ReplicationUsageList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ReplicationUsageList>;
-
 export interface ListUsageByVaultsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1242,11 +840,6 @@ export interface ListUsageByVaultsRequest {
   /** The name of the Vault */
   vaultName: string;
 }
-const ListUsageByVaultsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListUsageByVaultsRequest>;
-
 /** Unit of the usage. */
 export type UsagesUnit =
   | "Count"
@@ -1255,8 +848,6 @@ export type UsagesUnit =
   | "Percent"
   | "CountPerSecond"
   | "BytesPerSecond";
-const UsagesUnit = S.String;
-
 /** The name of usage. */
 export interface NameInfo {
   /** Value of usage. */
@@ -1264,8 +855,6 @@ export interface NameInfo {
   /** Localized value of usage. */
   localizedValue?: string;
 }
-const NameInfo = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<NameInfo>;
-
 /** Usages of a vault. */
 export interface VaultUsage {
   /** Unit of the usage. */
@@ -1281,34 +870,20 @@ export interface VaultUsage {
   /** Name of usage. */
   name?: NameInfo;
 }
-const VaultUsage = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<VaultUsage>;
-
 /** The list of usages for the given vault. */
 export type VaultUsageListValueList = Array<VaultUsage>;
-const VaultUsageListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<VaultUsageListValueList>;
-
 /** Usage for vault. */
 export interface VaultUsageList {
   /** The list of usages for the given vault. */
   value?: VaultUsageListValueList;
   nextLink?: string;
 }
-const VaultUsageList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<VaultUsageList>;
-
 export interface ListVaultByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListVaultByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListVaultByResourceGroupRequest>;
-
 /** Resource tags. */
 export type VaultTagsMap = { [key: string]: string | undefined };
 /** Resource information, as returned by the resource provider. */
@@ -1334,12 +909,8 @@ export interface Vault {
   /** etag for the resource. */
   etag?: string;
 }
-const Vault = GetVaultResponse as any as S.Schema<Vault>;
-
 /** The Vault items on this page */
 export type VaultListValueList = Array<Vault>;
-const VaultListValueList = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<VaultListValueList>;
-
 /** The response model for a list of Vaults. */
 export interface VaultList {
   /** The Vault items on this page */
@@ -1347,39 +918,20 @@ export interface VaultList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const VaultList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<VaultList>;
-
 export interface ListVaultBySubscriptionIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListVaultBySubscriptionIdRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListVaultBySubscriptionIdRequest>;
-
 /** DNSZone information */
 export interface DNSZone {
   /** Subresource type for vault AzureBackup, AzureBackup_secondary or AzureSiteRecovery */
   subResource?: VaultSubResourceType | (string & {});
 }
-const DNSZone = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<DNSZone>;
-
 export type CapabilitiesPropertiesDnsZonesList = Array<DNSZone>;
-const CapabilitiesPropertiesDnsZonesList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CapabilitiesPropertiesDnsZonesList>;
-
 /** Capabilities information */
 export interface CapabilitiesProperties {
   dnsZones?: CapabilitiesPropertiesDnsZonesList;
 }
-const CapabilitiesProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<CapabilitiesProperties>;
-
 export interface RecoveryServicesCapabilitiesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1390,16 +942,8 @@ export interface RecoveryServicesCapabilitiesRequest {
   /** Capabilities information */
   properties?: CapabilitiesProperties;
 }
-const RecoveryServicesCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<RecoveryServicesCapabilitiesRequest>;
-
 /** The private link resource Private link DNS zone names. */
 export type DNSZoneResponseRequiredZoneNamesList = Array<string>;
-const DNSZoneResponseRequiredZoneNamesList =
-  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<DNSZoneResponseRequiredZoneNamesList>;
-
 /** DNSZone information for Microsoft.RecoveryServices */
 export interface DNSZoneResponse {
   /** Subresource type for vault AzureBackup, AzureBackup_secondary or AzureSiteRecovery */
@@ -1407,44 +951,22 @@ export interface DNSZoneResponse {
   /** The private link resource Private link DNS zone names. */
   requiredZoneNames?: DNSZoneResponseRequiredZoneNamesList;
 }
-const DNSZoneResponse = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<DNSZoneResponse>;
-
 export type CapabilitiesResponsePropertiesDnsZonesList = Array<DNSZoneResponse>;
-const CapabilitiesResponsePropertiesDnsZonesList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CapabilitiesResponsePropertiesDnsZonesList>;
-
 /** Capabilities properties in response */
 export interface CapabilitiesResponseProperties {
   dnsZones?: CapabilitiesResponsePropertiesDnsZonesList;
 }
-const CapabilitiesResponseProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CapabilitiesResponseProperties>;
-
 export interface RecoveryServicesCapabilitiesResponse {
   /** Describes the Resource type: Microsoft.RecoveryServices/Vaults */
   type: string;
   /** Capabilities properties in response */
   properties?: CapabilitiesResponseProperties;
 }
-const RecoveryServicesCapabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<RecoveryServicesCapabilitiesResponse>;
-
 /** Input definition for DeletedVault undelete properties. */
 export interface DeletedVaultUndeleteInputProperties {
   /** Recovery resource group Id. */
   recoveryResourceGroupId: string;
 }
-const DeletedVaultUndeleteInputProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeletedVaultUndeleteInputProperties>;
-
 export interface UndeleteDeletedVaultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1455,11 +977,6 @@ export interface UndeleteDeletedVaultRequest {
   /** Undelete input properties. */
   properties: DeletedVaultUndeleteInputProperties;
 }
-const UndeleteDeletedVaultRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UndeleteDeletedVaultRequest>;
-
 export interface UndeleteDeletedVaultResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1472,27 +989,14 @@ export interface UndeleteDeletedVaultResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeletedVaultProperties;
 }
-const UndeleteDeletedVaultResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<UndeleteDeletedVaultResponse>;
-
 /** Resource tags. */
 export type UpdateVaultRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVaultRequestTagsMap =
-  GetOperationResultResponseTagsMap as any as S.Schema<UpdateVaultRequestTagsMap>;
-
 /** Details for upgrading vault. */
 export interface UpgradeDetailsInput {}
-const UpgradeDetailsInput = DeleteVaultResponse as any as S.Schema<UpgradeDetailsInput>;
-
 /** The details of the latest move operation performed on the Azure Resource */
 export type VaultPropertiesMoveDetailsInput = UpgradeDetailsInput;
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type VaultPropertiesInputResourceGuardOperationRequestsList = Array<string>;
-const VaultPropertiesInputResourceGuardOperationRequestsList =
-  VaultPropertiesResourceGuardOperationRequestsList as any as S.Schema<VaultPropertiesInputResourceGuardOperationRequestsList>;
-
 /** Properties of the vault. */
 export interface VaultPropertiesInput {
   /** Details for upgrading vault. */
@@ -1518,22 +1022,12 @@ export interface VaultPropertiesInput {
   /** Region of choice settings for this vault. */
   regionOfChoiceSettings?: RegionOfChoiceSettings;
 }
-const VaultPropertiesInput = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<VaultPropertiesInput>;
-
 /** A resource identity that is managed by the user of the service. */
 export type UserIdentityInput = UpgradeDetailsInput;
 /** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityDataInputUserAssignedIdentitiesMap = {
   [key: string]: UpgradeDetailsInput | undefined;
 };
-const IdentityDataInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<IdentityDataInputUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface IdentityDataInput {
   /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities. */
@@ -1541,8 +1035,6 @@ export interface IdentityDataInput {
   /** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityDataInputUserAssignedIdentitiesMap;
 }
-const IdentityDataInput = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<IdentityDataInput>;
-
 export interface UpdateVaultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1563,8 +1055,6 @@ export interface UpdateVaultRequest {
   /** Identity for the resource. */
   identity?: IdentityDataInput;
 }
-const UpdateVaultRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<UpdateVaultRequest>;
-
 /** Resource tags. */
 export type UpdateVaultResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVaultResponse {
@@ -1589,8 +1079,6 @@ export interface UpdateVaultResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const UpdateVaultResponse = GetVaultResponse as any as S.Schema<UpdateVaultResponse>;
-
 export interface UpdateVaultExtendedInfoRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1603,11 +1091,6 @@ export interface UpdateVaultExtendedInfoRequest {
   /** etag for the resource. */
   etag?: string;
 }
-const UpdateVaultExtendedInfoRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<UpdateVaultExtendedInfoRequest>;
-
 export interface UpdateVaultExtendedInfoResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1622,9 +1105,6 @@ export interface UpdateVaultExtendedInfoResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const UpdateVaultExtendedInfoResponse =
-  GetVaultExtendedInfoResponse as any as S.Schema<UpdateVaultExtendedInfoResponse>;
-
 export interface VaultExtendedInfoCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1637,11 +1117,6 @@ export interface VaultExtendedInfoCreateOrUpdateRequest {
   /** etag for the resource. */
   etag?: string;
 }
-const VaultExtendedInfoCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<VaultExtendedInfoCreateOrUpdateRequest>;
-
 export interface VaultExtendedInfoCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1656,14 +1131,8 @@ export interface VaultExtendedInfoCreateOrUpdateResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const VaultExtendedInfoCreateOrUpdateResponse =
-  GetVaultExtendedInfoResponse as any as S.Schema<VaultExtendedInfoCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type VaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const VaultsCreateOrUpdateRequestTagsMap =
-  GetOperationResultResponseTagsMap as any as S.Schema<VaultsCreateOrUpdateRequestTagsMap>;
-
 export interface VaultsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1684,11 +1153,6 @@ export interface VaultsCreateOrUpdateRequest {
   /** etag for the resource. */
   etag?: string;
 }
-const VaultsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<VaultsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type VaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface VaultsCreateOrUpdateResponse {
@@ -1713,9 +1177,6 @@ export interface VaultsCreateOrUpdateResponse {
   /** etag for the resource. */
   etag?: string;
 }
-const VaultsCreateOrUpdateResponse =
-  GetOperationResultResponse as any as S.Schema<VaultsCreateOrUpdateResponse>;
-
 export type CheckRecoveryServiceNameAvailabilityError = AzureOpError;
 /** API to check for resource name availability. A name is available if no other resource exists that has the same SubscriptionId, Resource Name and Type or if one or more such resources exist, each of these must be GC'd and their time of deletion be more than 24 Hours Ago API to check for resource name availability. A name is available if no other resource exists that has the same SubscriptionId, Resource Name and Type or if one or more such resources exist, each of these must be GC'd and their time of deletion be more than 24 Hours Ago */
 export const CheckRecoveryServiceNameAvailability: API.OperationMethod<
@@ -1724,8 +1185,8 @@ export const CheckRecoveryServiceNameAvailability: API.OperationMethod<
   CheckRecoveryServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckRecoveryServiceNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(0) as any as S.Schema<CheckRecoveryServiceNameAvailabilityRequest>,
+  output: __S(1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1739,8 +1200,8 @@ export const CreateVaultCertificate: API.OperationMethod<
   CreateVaultCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVaultCertificateRequest,
-  output: VaultCertificateResponse,
+  input: __S(3) as any as S.Schema<CreateVaultCertificateRequest>,
+  output: __S(5) as any as S.Schema<VaultCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1754,8 +1215,8 @@ export const DeleteRegisteredIdentity: API.OperationMethod<
   DeleteRegisteredIdentityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegisteredIdentityRequest,
-  output: DeleteRegisteredIdentityResponse,
+  input: __S(6) as any as S.Schema<DeleteRegisteredIdentityRequest>,
+  output: __S(7) as any as S.Schema<DeleteRegisteredIdentityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1769,8 +1230,8 @@ export const DeleteVault: API.OperationMethod<
   DeleteVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultRequest,
-  output: DeleteVaultResponse,
+  input: __S(8) as any as S.Schema<DeleteVaultRequest>,
+  output: __S(9) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1784,8 +1245,8 @@ export const GetDeletedVault: API.OperationMethod<
   GetDeletedVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeletedVaultRequest,
-  output: GetDeletedVaultResponse,
+  input: __S(10) as any as S.Schema<GetDeletedVaultRequest>,
+  output: __S(13) as any as S.Schema<GetDeletedVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1799,8 +1260,8 @@ export const GetDeletedVaultOperationStatus: API.OperationMethod<
   GetDeletedVaultOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeletedVaultOperationStatusRequest,
-  output: OperationResource,
+  input: __S(14) as any as S.Schema<GetDeletedVaultOperationStatusRequest>,
+  output: __S(19) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1814,8 +1275,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationResultRequest,
-  output: GetOperationResultResponse,
+  input: __S(20) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(53) as any as S.Schema<GetOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1829,8 +1290,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationStatusRequest,
-  output: OperationResource,
+  input: __S(54) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(19) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1844,8 +1305,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceRequest,
-  output: GetPrivateLinkResourceResponse,
+  input: __S(55) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(57) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1859,8 +1320,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultRequest,
-  output: GetVaultResponse,
+  input: __S(58) as any as S.Schema<GetVaultRequest>,
+  output: __S(59) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1874,8 +1335,8 @@ export const GetVaultExtendedInfo: API.OperationMethod<
   GetVaultExtendedInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultExtendedInfoRequest,
-  output: GetVaultExtendedInfoResponse,
+  input: __S(60) as any as S.Schema<GetVaultExtendedInfoRequest>,
+  output: __S(62) as any as S.Schema<GetVaultExtendedInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1889,8 +1350,8 @@ export const ListDeletedVaultBySubscriptionId: API.OperationMethod<
   ListDeletedVaultBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeletedVaultBySubscriptionIdRequest,
-  output: DeletedVaultList,
+  input: __S(63) as any as S.Schema<ListDeletedVaultBySubscriptionIdRequest>,
+  output: __S(65) as any as S.Schema<DeletedVaultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1904,8 +1365,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ClientDiscoveryResponse,
+  input: __S(66) as any as S.Schema<ListOperationsRequest>,
+  output: __S(74) as any as S.Schema<ClientDiscoveryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1919,8 +1380,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourcesRequest,
-  output: PrivateLinkResources,
+  input: __S(75) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(78) as any as S.Schema<PrivateLinkResources>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1934,8 +1395,8 @@ export const ListReplicationUsages: API.OperationMethod<
   ListReplicationUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReplicationUsagesRequest,
-  output: ReplicationUsageList,
+  input: __S(79) as any as S.Schema<ListReplicationUsagesRequest>,
+  output: __S(84) as any as S.Schema<ReplicationUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1949,8 +1410,8 @@ export const ListUsageByVaults: API.OperationMethod<
   ListUsageByVaultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsageByVaultsRequest,
-  output: VaultUsageList,
+  input: __S(85) as any as S.Schema<ListUsageByVaultsRequest>,
+  output: __S(89) as any as S.Schema<VaultUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1964,8 +1425,8 @@ export const ListVaultByResourceGroup: API.OperationMethod<
   ListVaultByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultByResourceGroupRequest,
-  output: VaultList,
+  input: __S(90) as any as S.Schema<ListVaultByResourceGroupRequest>,
+  output: __S(92) as any as S.Schema<VaultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1979,8 +1440,8 @@ export const ListVaultBySubscriptionId: API.OperationMethod<
   ListVaultBySubscriptionIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultBySubscriptionIdRequest,
-  output: VaultList,
+  input: __S(93) as any as S.Schema<ListVaultBySubscriptionIdRequest>,
+  output: __S(92) as any as S.Schema<VaultList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1994,8 +1455,8 @@ export const RecoveryServicesCapabilities: API.OperationMethod<
   RecoveryServicesCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecoveryServicesCapabilitiesRequest,
-  output: RecoveryServicesCapabilitiesResponse,
+  input: __S(97) as any as S.Schema<RecoveryServicesCapabilitiesRequest>,
+  output: __S(101) as any as S.Schema<RecoveryServicesCapabilitiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2009,8 +1470,8 @@ export const UndeleteDeletedVault: API.OperationMethod<
   UndeleteDeletedVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteDeletedVaultRequest,
-  output: UndeleteDeletedVaultResponse,
+  input: __S(103) as any as S.Schema<UndeleteDeletedVaultRequest>,
+  output: __S(104) as any as S.Schema<UndeleteDeletedVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2024,8 +1485,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultRequest,
-  output: UpdateVaultResponse,
+  input: __S(108) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(59) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2039,8 +1500,8 @@ export const UpdateVaultExtendedInfo: API.OperationMethod<
   UpdateVaultExtendedInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultExtendedInfoRequest,
-  output: UpdateVaultExtendedInfoResponse,
+  input: __S(109) as any as S.Schema<UpdateVaultExtendedInfoRequest>,
+  output: __S(62) as any as S.Schema<UpdateVaultExtendedInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2054,8 +1515,8 @@ export const VaultExtendedInfoCreateOrUpdate: API.OperationMethod<
   VaultExtendedInfoCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VaultExtendedInfoCreateOrUpdateRequest,
-  output: VaultExtendedInfoCreateOrUpdateResponse,
+  input: __S(110) as any as S.Schema<VaultExtendedInfoCreateOrUpdateRequest>,
+  output: __S(62) as any as S.Schema<VaultExtendedInfoCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2069,8 +1530,8 @@ export const VaultsCreateOrUpdate: API.OperationMethod<
   VaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VaultsCreateOrUpdateRequest,
-  output: VaultsCreateOrUpdateResponse,
+  input: __S(111) as any as S.Schema<VaultsCreateOrUpdateRequest>,
+  output: __S(53) as any as S.Schema<VaultsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2111,7 +1572,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authType: S.optional(AuthType),
+          authType: S.optional(S.String),
           certificate: S.optional(S.String),
         }),
       ).annotate({ identifier: "RawCertificateData" });
@@ -2122,7 +1583,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: S.optional(RawCertificateData),
+          properties: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2156,7 +1617,7 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           id: S.optional(S.String),
-          properties: S.optional(ResourceCertificateDetails),
+          properties: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "VaultCertificateResponse" });
     case 6:
@@ -2223,10 +1684,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2244,8 +1705,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeletedVaultProperties),
+          systemData: S.optional(__S(11)),
+          properties: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "GetDeletedVaultResponse" });
     case 6:
@@ -2278,15 +1739,15 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ErrorAdditionalInfoItem);
+      return S.Array(__S(15));
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => Error));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(18)));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          additionalInfo: S.optional(ErrorAdditionalInfoList),
+          additionalInfo: S.optional(__S(16)),
           code: S.optional(S.String),
-          details: S.optional(ErrorDetailsList),
+          details: S.optional(__S(17)),
           message: S.optional(S.String),
           target: S.optional(S.String),
         }),
@@ -2295,7 +1756,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          error: S.optional(Error),
+          error: S.optional(__S(18)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           status: S.optional(S.String),
@@ -2329,9 +1790,9 @@ function __c2(j: number): any {
           startTimeUtc: S.optional(S.String),
           lastUpdatedTimeUtc: S.optional(S.String),
           endTimeUtc: S.optional(S.String),
-          status: S.optional(VaultUpgradeState),
+          status: S.optional(S.String),
           message: S.optional(S.String),
-          triggerType: S.optional(TriggerType),
+          triggerType: S.optional(S.String),
           upgradedResourceId: S.optional(S.String),
           previousResourceId: S.optional(S.String),
         }),
@@ -2349,7 +1810,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2357,14 +1818,14 @@ function __c3(j: number): any {
         identifier: "PrivateLinkServiceConnectionState",
       });
     case 1:
-      return S.Array(VaultSubResourceType);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
-          groupIds: S.optional(PrivateEndpointConnectionGroupIdsList),
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(23)),
+          privateLinkServiceConnectionState: S.optional(__S(24)),
+          groupIds: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
@@ -2373,7 +1834,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(PrivateEndpointConnection),
+          properties: S.optional(__S(26)),
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
@@ -2382,7 +1843,7 @@ function __c3(j: number): any {
         identifier: "PrivateEndpointConnectionVaultProperties",
       });
     case 4:
-      return S.Array(PrivateEndpointConnectionVaultProperties);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2399,9 +1860,9 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(CmkKeyVaultProperties),
-          kekIdentity: S.optional(CmkKekIdentity),
-          infrastructureEncryption: S.optional(InfrastructureEncryptionState),
+          keyVaultProperties: S.optional(__S(29)),
+          kekIdentity: S.optional(__S(30)),
+          infrastructureEncryption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VaultPropertiesEncryption",
@@ -2425,9 +1886,9 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          alertsForAllJobFailures: S.optional(AlertsState),
-          alertsForAllReplicationIssues: S.optional(AlertsState),
-          alertsForAllFailoverIssues: S.optional(AlertsState),
+          alertsForAllJobFailures: S.optional(S.String),
+          alertsForAllReplicationIssues: S.optional(S.String),
+          alertsForAllFailoverIssues: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AzureMonitorAlertSettings",
@@ -2435,27 +1896,27 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          alertsForCriticalOperations: S.optional(AlertsState),
-          emailNotificationsForSiteRecovery: S.optional(AlertsState),
+          alertsForCriticalOperations: S.optional(S.String),
+          emailNotificationsForSiteRecovery: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClassicAlertSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          azureMonitorAlertSettings: S.optional(AzureMonitorAlertSettings),
-          classicAlertSettings: S.optional(ClassicAlertSettings),
+          azureMonitorAlertSettings: S.optional(__S(33)),
+          classicAlertSettings: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "MonitoringSettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          granularityLevel: S.optional(GranularityLevel),
+          granularityLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostManagementSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          crossSubscriptionRestoreState: S.optional(CrossSubscriptionRestoreState),
+          crossSubscriptionRestoreState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CrossSubscriptionRestoreSettings",
@@ -2463,14 +1924,14 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          crossSubscriptionRestoreSettings: S.optional(CrossSubscriptionRestoreSettings),
+          crossSubscriptionRestoreSettings: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "RestoreSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          standardTierStorageRedundancy: S.optional(StandardTierStorageRedundancy),
-          crossRegionRestore: S.optional(CrossRegionRestore),
+          standardTierStorageRedundancy: S.optional(S.String),
+          crossRegionRestore: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VaultPropertiesRedundancySettings",
@@ -2482,7 +1943,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ImmutabilityType),
+          type: S.optional(S.String),
           durationInDays: S.optional(S.Number),
         }),
       ).annotate({
@@ -2491,39 +1952,39 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ImmutabilityState),
-          configuration: S.optional(ImmutabilityConfiguration),
+          state: S.optional(S.String),
+          configuration: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "ImmutabilitySettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          softDeleteState: S.optional(SoftDeleteState),
+          softDeleteState: S.optional(S.String),
           softDeleteRetentionPeriodInDays: S.optional(S.Number),
-          enhancedSecurityState: S.optional(EnhancedSecurityState),
+          enhancedSecurityState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SoftDeleteSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operationIdentityType: S.optional(IdentityType),
+          operationIdentityType: S.optional(S.String),
           userAssignedIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociatedIdentity" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(State),
-          sourceScanIdentity: S.optional(AssociatedIdentity),
+          state: S.optional(S.String),
+          sourceScanIdentity: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "SourceScanConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          immutabilitySettings: S.optional(ImmutabilitySettings),
-          softDeleteSettings: S.optional(SoftDeleteSettings),
-          multiUserAuthorization: S.optional(MultiUserAuthorization),
-          sourceScanConfiguration: S.optional(SourceScanConfiguration),
+          immutabilitySettings: S.optional(__S(41)),
+          softDeleteSettings: S.optional(__S(42)),
+          multiUserAuthorization: S.optional(S.String),
+          sourceScanConfiguration: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "SecuritySettings" });
     case 6:
@@ -2531,7 +1992,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(State),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegionOfChoiceSettings" });
   }
@@ -2542,26 +2003,24 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          upgradeDetails: S.optional(UpgradeDetails),
-          privateEndpointConnections: S.optional(VaultPropertiesPrivateEndpointConnectionsList),
-          privateEndpointStateForBackup: S.optional(VaultPrivateEndpointState),
-          privateEndpointStateForSiteRecovery: S.optional(VaultPrivateEndpointState),
-          encryption: S.optional(VaultPropertiesEncryption),
-          moveDetails: S.optional(VaultPropertiesMoveDetails),
-          moveState: S.optional(ResourceMoveState),
-          backupStorageVersion: S.optional(BackupStorageVersion),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          monitoringSettings: S.optional(MonitoringSettings),
-          costManagementSettings: S.optional(CostManagementSettings),
-          restoreSettings: S.optional(RestoreSettings),
-          redundancySettings: S.optional(VaultPropertiesRedundancySettings),
-          securitySettings: S.optional(SecuritySettings),
-          secureScore: S.optional(SecureScoreLevel),
-          bcdrSecurityLevel: S.optional(BCDRSecurityLevel),
-          resourceGuardOperationRequests: S.optional(
-            VaultPropertiesResourceGuardOperationRequestsList,
-          ),
-          regionOfChoiceSettings: S.optional(RegionOfChoiceSettings),
+          upgradeDetails: S.optional(__S(22)),
+          privateEndpointConnections: S.optional(__S(28)),
+          privateEndpointStateForBackup: S.optional(S.String),
+          privateEndpointStateForSiteRecovery: S.optional(S.String),
+          encryption: S.optional(__S(31)),
+          moveDetails: S.optional(__S(32)),
+          moveState: S.optional(S.String),
+          backupStorageVersion: S.optional(S.String),
+          publicNetworkAccess: S.optional(S.String),
+          monitoringSettings: S.optional(__S(35)),
+          costManagementSettings: S.optional(__S(36)),
+          restoreSettings: S.optional(__S(38)),
+          redundancySettings: S.optional(__S(39)),
+          securitySettings: S.optional(__S(45)),
+          secureScore: S.optional(S.String),
+          bcdrSecurityLevel: S.optional(S.String),
+          resourceGuardOperationRequests: S.optional(__S(46)),
+          regionOfChoiceSettings: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "VaultProperties" });
     case 1:
@@ -2572,20 +2031,20 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "UserIdentity" });
     case 2:
-      return S.Record(S.String, UserIdentity);
+      return S.Record(S.String, __S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ResourceIdentityType,
-          userAssignedIdentities: S.optional(IdentityDataUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "IdentityData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
+          name: S.String,
           tier: S.optional(S.String),
           family: S.optional(S.String),
           size: S.optional(S.String),
@@ -2598,12 +2057,12 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetOperationResultResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          tags: S.optional(__S(21)),
           location: S.String,
-          properties: S.optional(VaultProperties),
-          identity: S.optional(IdentityData),
-          sku: S.optional(Sku),
+          properties: S.optional(__S(48)),
+          identity: S.optional(__S(51)),
+          sku: S.optional(__S(52)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -2653,8 +2112,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(46)),
+          requiredZoneNames: S.optional(__S(46)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -2665,8 +2124,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(11)),
+          properties: S.optional(__S(56)),
         }),
       ).annotate({
         identifier: "GetPrivateLinkResourceResponse",
@@ -2692,12 +2151,12 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetVaultResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          tags: S.optional(__S(21)),
           location: S.String,
-          properties: S.optional(VaultProperties),
-          identity: S.optional(IdentityData),
-          sku: S.optional(Sku),
+          properties: S.optional(__S(48)),
+          identity: S.optional(__S(51)),
+          sku: S.optional(__S(52)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetVaultResponse" });
@@ -2733,8 +2192,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(VaultExtendedInfo),
+          systemData: S.optional(__S(11)),
+          properties: S.optional(__S(61)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -2761,11 +2220,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeletedVault);
+      return S.Array(__S(13));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: DeletedVaultListValueList,
+          value: __S(64),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedVaultList" });
@@ -2800,13 +2259,11 @@ function __c8(j: number): any {
         identifier: "ClientDiscoveryForLogSpecification",
       });
     case 5:
-      return S.Array(ClientDiscoveryForLogSpecification);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(
-            ClientDiscoveryForServiceSpecificationLogSpecificationsList,
-          ),
+          logSpecifications: S.optional(__S(69)),
         }),
       ).annotate({
         identifier: "ClientDiscoveryForServiceSpecification",
@@ -2814,7 +2271,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ClientDiscoveryForServiceSpecification),
+          serviceSpecification: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "ClientDiscoveryForProperties",
@@ -2827,19 +2284,19 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(ClientDiscoveryDisplay),
+          display: S.optional(__S(67)),
           origin: S.optional(S.String),
-          properties: S.optional(ClientDiscoveryForProperties),
+          properties: S.optional(__S(71)),
         }),
       ).annotate({
         identifier: "ClientDiscoveryValueForSingleApi",
       });
     case 1:
-      return S.Array(ClientDiscoveryValueForSingleApi);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ClientDiscoveryResponseValueList,
+          value: __S(73),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientDiscoveryResponse" });
@@ -2866,16 +2323,16 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(11)),
+          properties: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 5:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(76));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourcesValueList,
+          value: __S(77),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResources" });
@@ -2922,8 +2379,8 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          monitoringSummary: S.optional(MonitoringSummary),
-          jobsSummary: S.optional(JobsSummary),
+          monitoringSummary: S.optional(__S(80)),
+          jobsSummary: S.optional(__S(81)),
           protectedItemCount: S.optional(S.Number),
           recoveryPlanCount: S.optional(S.Number),
           registeredServersCount: S.optional(S.Number),
@@ -2931,11 +2388,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ReplicationUsage" });
     case 3:
-      return S.Array(ReplicationUsage);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReplicationUsageListValueList),
+          value: S.optional(__S(83)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationUsageList" });
@@ -2964,12 +2421,12 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(UsagesUnit),
+          unit: S.optional(S.String),
           quotaPeriod: S.optional(S.String),
           nextResetTime: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(NameInfo),
+          name: S.optional(__S(86)),
         }),
       ).annotate({ identifier: "VaultUsage" });
   }
@@ -2977,11 +2434,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VaultUsage);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(VaultUsageListValueList),
+          value: S.optional(__S(88)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultUsageList" });
@@ -3002,11 +2459,11 @@ function __c11(j: number): any {
         identifier: "ListVaultByResourceGroupRequest",
       });
     case 3:
-      return S.Array(Vault);
+      return S.Array(__S(59));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: VaultListValueList,
+          value: __S(91),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultList" });
@@ -3028,11 +2485,11 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          subResource: S.optional(VaultSubResourceType),
+          subResource: S.optional(S.String),
         }),
       ).annotate({ identifier: "DNSZone" });
     case 7:
-      return S.Array(DNSZone);
+      return S.Array(__S(94));
   }
 }
 function __c12(j: number): any {
@@ -3040,7 +2497,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dnsZones: S.optional(CapabilitiesPropertiesDnsZonesList),
+          dnsZones: S.optional(__S(95)),
         }),
       ).annotate({ identifier: "CapabilitiesProperties" });
     case 1:
@@ -3049,7 +2506,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           type: S.String,
-          properties: S.optional(CapabilitiesProperties),
+          properties: S.optional(__S(96)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3064,16 +2521,16 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subResource: S.optional(VaultSubResourceType),
-          requiredZoneNames: S.optional(DNSZoneResponseRequiredZoneNamesList),
+          subResource: S.optional(S.String),
+          requiredZoneNames: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "DNSZoneResponse" });
     case 3:
-      return S.Array(DNSZoneResponse);
+      return S.Array(__S(98));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dnsZones: S.optional(CapabilitiesResponsePropertiesDnsZonesList),
+          dnsZones: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "CapabilitiesResponseProperties",
@@ -3082,7 +2539,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          properties: S.optional(CapabilitiesResponseProperties),
+          properties: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "RecoveryServicesCapabilitiesResponse",
@@ -3101,7 +2558,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           deletedVaultName: S.String.pipe(T.Label()),
-          properties: DeletedVaultUndeleteInputProperties,
+          properties: __S(102),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3123,8 +2580,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeletedVaultProperties),
+          systemData: S.optional(__S(11)),
+          properties: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "UndeleteDeletedVaultResponse",
@@ -3132,28 +2589,26 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          upgradeDetails: S.optional(UpgradeDetailsInput),
-          encryption: S.optional(VaultPropertiesEncryption),
-          moveDetails: S.optional(UpgradeDetailsInput),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          monitoringSettings: S.optional(MonitoringSettings),
-          costManagementSettings: S.optional(CostManagementSettings),
-          restoreSettings: S.optional(RestoreSettings),
-          redundancySettings: S.optional(VaultPropertiesRedundancySettings),
-          securitySettings: S.optional(SecuritySettings),
-          resourceGuardOperationRequests: S.optional(
-            VaultPropertiesInputResourceGuardOperationRequestsList,
-          ),
-          regionOfChoiceSettings: S.optional(RegionOfChoiceSettings),
+          upgradeDetails: S.optional(__S(9)),
+          encryption: S.optional(__S(31)),
+          moveDetails: S.optional(__S(9)),
+          publicNetworkAccess: S.optional(S.String),
+          monitoringSettings: S.optional(__S(35)),
+          costManagementSettings: S.optional(__S(36)),
+          restoreSettings: S.optional(__S(38)),
+          redundancySettings: S.optional(__S(39)),
+          securitySettings: S.optional(__S(45)),
+          resourceGuardOperationRequests: S.optional(__S(46)),
+          regionOfChoiceSettings: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "VaultPropertiesInput" });
     case 2:
-      return S.Record(S.String, UpgradeDetailsInput);
+      return S.Record(S.String, __S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ResourceIdentityType,
-          userAssignedIdentities: S.optional(IdentityDataInputUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(106)),
         }),
       ).annotate({ identifier: "IdentityDataInput" });
     case 4:
@@ -3163,11 +2618,11 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateVaultRequestTagsMap),
+          tags: S.optional(__S(21)),
           etag: S.optional(S.String),
-          properties: S.optional(VaultPropertiesInput),
-          sku: S.optional(Sku),
-          identity: S.optional(IdentityDataInput),
+          properties: S.optional(__S(105)),
+          sku: S.optional(__S(52)),
+          identity: S.optional(__S(107)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3183,7 +2638,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(VaultExtendedInfo),
+          properties: S.optional(__S(61)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3202,7 +2657,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          properties: S.optional(VaultExtendedInfo),
+          properties: S.optional(__S(61)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3221,11 +2676,11 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(VaultsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(21)),
           location: S.String,
-          properties: S.optional(VaultPropertiesInput),
-          identity: S.optional(IdentityDataInput),
-          sku: S.optional(Sku),
+          properties: S.optional(__S(105)),
+          identity: S.optional(__S(107)),
+          sku: S.optional(__S(52)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3238,5 +2693,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "VaultsCreateOrUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
   }
 }

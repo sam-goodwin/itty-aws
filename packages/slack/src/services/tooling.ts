@@ -7,6 +7,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -14,8 +16,6 @@ export interface RotateTokenRequest {
   /** The `xoxe` refresh token that was issued along with the old app configuration token. */
   refresh_token: string | Redacted.Redacted<string>;
 }
-const RotateTokenRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<RotateTokenRequest>;
-
 export interface RotateTokenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -32,8 +32,6 @@ export interface RotateTokenResponse {
   /** Issued at (iat) identifies the time at which the token was issued. */
   iat: number;
 }
-const RotateTokenResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<RotateTokenResponse>;
-
 export type RotateTokenError = SlackOpError;
 /** Exchanges a refresh token for a new app configuration token. Rate limit tier: 5 Method-specific errors (the `error` slug on the SlackError): - `internal_error` -- Internal error - `invalid_refresh_token` -- The given refresh token is invalid. - `unknown_error` -- Temporary error for dev only restriction See https://docs.slack.dev/reference/methods/tooling.tokens.rotate */
 export const rotateToken: API.OperationMethod<
@@ -42,8 +40,8 @@ export const rotateToken: API.OperationMethod<
   RotateTokenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateTokenRequest,
-  output: RotateTokenResponse,
+  input: __S(0) as any as S.Schema<RotateTokenRequest>,
+  output: __S(1) as any as S.Schema<RotateTokenResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -77,5 +75,16 @@ function __c0(j: number): any {
           iat: S.Number,
         }),
       ).annotate({ identifier: "RotateTokenResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 1) {
+    case 0:
+      return __c0(i & 1);
   }
 }

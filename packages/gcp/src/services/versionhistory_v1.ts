@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -44,8 +46,6 @@ export interface ListPlatformsRequest {
   /** Required. The product, which owns this collection of platforms. Format: {product} */
   parent: string;
 }
-const ListPlatformsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListPlatformsRequest>;
-
 export type PlatformPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "WIN"
@@ -63,8 +63,6 @@ export type PlatformPlatformTypeEnum =
   | "LACROS_ARM64"
   | "FUCHSIA"
   | "WIN_ARM64";
-const PlatformPlatformTypeEnum = S.String;
-
 /** Each Platform is owned by a Product and owns a collection of channels. Available platforms are listed in Platform enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
 export interface Platform {
   /** Platform name. Format is "{product}/platforms/{platform}" */
@@ -72,11 +70,7 @@ export interface Platform {
   /** Type of platform. */
   platformType?: PlatformPlatformTypeEnum;
 }
-const Platform = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Platform>;
-
 export type PlatformList = Array<Platform>;
-const PlatformList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PlatformList>;
-
 /** Response message for ListPlatforms. */
 export interface ListPlatformsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -84,11 +78,6 @@ export interface ListPlatformsResponse {
   /** The list of platforms. */
   platforms?: PlatformList;
 }
-const ListPlatformsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListPlatformsResponse>;
-
 export interface ListPlatformsChannelsRequest {
   /** Required. The platform, which owns this collection of channels. Format: {product}/platforms/{platform} */
   parent: string;
@@ -97,11 +86,6 @@ export interface ListPlatformsChannelsRequest {
   /** Optional. A page token, received from a previous `ListChannels` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListPlatformsChannelsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListPlatformsChannelsRequest>;
-
 export type ChannelChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "STABLE"
@@ -113,8 +97,6 @@ export type ChannelChannelTypeEnum =
   | "EXTENDED"
   | "LTS"
   | "LTC";
-const ChannelChannelTypeEnum = S.String;
-
 /** Each Channel is owned by a Platform and owns a collection of versions. Possible Channels are listed in the Channel enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
 export interface Channel {
   /** Channel name. Format is "{product}/platforms/{platform}/channels/{channel}" */
@@ -122,11 +104,7 @@ export interface Channel {
   /** Type of channel. */
   channelType?: ChannelChannelTypeEnum;
 }
-const Channel = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Channel>;
-
 export type ChannelList = Array<Channel>;
-const ChannelList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ChannelList>;
-
 /** Response message for ListChannels. */
 export interface ListChannelsResponse {
   /** The list of channels. */
@@ -134,8 +112,6 @@ export interface ListChannelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListChannelsResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListChannelsResponse>;
-
 export interface ListPlatformsChannelsVersionsRequest {
   /** Optional. A page token, received from a previous `ListVersions` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
@@ -148,11 +124,6 @@ export interface ListPlatformsChannelsVersionsRequest {
   /** Optional. Ordering string. Valid order_by strings are "version", "name", "platform", and "channel". Optionally, you can append " desc" or " asc" to specify the sorting order. Multiple order_by strings can be used in a comma separated list. Ordering by channel will sort by distance from the stable channel (not alphabetically). A list of channels sorted in this order is: stable, beta, dev, canary, and canary_asan. Sorting by name may cause unexpected behaviour as it is a naive string sort. For example, 1.0.0.8 will be before 1.0.0.10 in descending order. If order_by is not specified the response will be sorted by version in descending order. Ex) "...?order_by=version asc" Ex) "...?order_by=platform desc, channel, version" */
   orderBy?: string;
 }
-const ListPlatformsChannelsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListPlatformsChannelsVersionsRequest>;
-
 /** Each Version is owned by a Channel. A Version only displays the Version number (e.g. 84.0.4147.38). A Version owns a collection of releases. */
 export interface Version {
   /** Version name. Format is "{product}/platforms/{platform}/channels/{channel}/versions/{version}" e.g. "chrome/platforms/win/channels/beta/versions/84.0.4147.38" */
@@ -160,11 +131,7 @@ export interface Version {
   /** String containing just the version number. e.g. "84.0.4147.38" */
   version?: string;
 }
-const Version = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Version>;
-
 export type VersionList = Array<Version>;
-const VersionList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<VersionList>;
-
 /** Response message for ListVersions. */
 export interface ListVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -172,8 +139,6 @@ export interface ListVersionsResponse {
   /** The list of versions. */
   versions?: VersionList;
 }
-const ListVersionsResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListVersionsResponse>;
-
 export interface ListPlatformsChannelsVersionsReleasesRequest {
   /** Required. The version, which owns this collection of releases. Format: {product}/platforms/{platform}/channels/{channel}/versions/{version} */
   parent: string;
@@ -186,14 +151,7 @@ export interface ListPlatformsChannelsVersionsReleasesRequest {
   /** Optional. Ordering string. Valid order_by strings are "version", "name", "starttime", "endtime", "platform", "channel", and "fraction". Optionally, you can append "desc" or "asc" to specify the sorting order. Multiple order_by strings can be used in a comma separated list. Ordering by channel will sort by distance from the stable channel (not alphabetically). A list of channels sorted in this order is: stable, beta, dev, canary, and canary_asan. Sorting by name may cause unexpected behaviour as it is a naive string sort. For example, 1.0.0.8 will be before 1.0.0.10 in descending order. If order_by is not specified the response will be sorted by starttime in descending order. Ex) "...?order_by=starttime asc" Ex) "...?order_by=platform desc, channel, startime desc" */
   orderBy?: string;
 }
-const ListPlatformsChannelsVersionsReleasesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringList>;
-
 /** Rollout-related metadata for a release. */
 export interface RolloutData {
   /** The name of the rollout. */
@@ -201,11 +159,7 @@ export interface RolloutData {
   /** Tags associated with a release's role in a rollout. Most rollouts will have at least one release with a "rollout" tag and another release with a "control" tag. Some rollouts may have additional named arms. */
   tag?: StringList;
 }
-const RolloutData = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RolloutData>;
-
 export type RolloutDataList = Array<RolloutData>;
-const RolloutDataList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RolloutDataList>;
-
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -213,8 +167,6 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-const Interval = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Interval>;
-
 /** A Release is owned by a Version. A Release contains information about the release(s) of its parent version. This includes when the release began and ended, as well as what percentage it was released at. If the version is released again, or if the serving percentage changes, it will create another release under the version. */
 export interface Release {
   /** Rollout fraction. This fraction indicates the fraction of people that should receive this version in this release. If the fraction is not specified in ReleaseManager, the API will assume fraction is 1. */
@@ -232,11 +184,7 @@ export interface Release {
   /** String containing just the version number. e.g. "84.0.4147.38" */
   version?: string;
 }
-const Release = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Release>;
-
 export type ReleaseList = Array<Release>;
-const ReleaseList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ReleaseList>;
-
 /** Response message for ListReleases. */
 export interface ListReleasesResponse {
   /** The list of releases. */
@@ -244,8 +192,6 @@ export interface ListReleasesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListReleasesResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListReleasesResponse>;
-
 export type ListPlatformsError = NotFound | Forbidden | GcpOpError;
 /** Returns list of platforms that are available for a given product. The resource "product" has no resource name in its name. */
 export const listPlatforms: API.PaginatedOperationMethod<
@@ -255,8 +201,8 @@ export const listPlatforms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsRequest,
-  output: ListPlatformsResponse,
+  input: __S(0) as any as S.Schema<ListPlatformsRequest>,
+  output: __S(3) as any as S.Schema<ListPlatformsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -272,8 +218,8 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsChannelsRequest,
-  output: ListChannelsResponse,
+  input: __S(4) as any as S.Schema<ListPlatformsChannelsRequest>,
+  output: __S(7) as any as S.Schema<ListChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -289,8 +235,8 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsChannelsVersionsRequest,
-  output: ListVersionsResponse,
+  input: __S(8) as any as S.Schema<ListPlatformsChannelsVersionsRequest>,
+  output: __S(11) as any as S.Schema<ListVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -306,8 +252,8 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
   GcpOpContext,
   ListReleasesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsChannelsVersionsReleasesRequest,
-  output: ListReleasesResponse,
+  input: __S(12) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>,
+  output: __S(19) as any as S.Schema<ListReleasesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -335,16 +281,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          platformType: S.optional(PlatformPlatformTypeEnum),
+          platformType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Platform" });
     case 2:
-      return S.Array(Platform);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          platforms: S.optional(PlatformList),
+          platforms: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ListPlatformsResponse" });
     case 4:
@@ -367,15 +313,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          channelType: S.optional(ChannelChannelTypeEnum),
+          channelType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Channel" });
     case 6:
-      return S.Array(Channel);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(ChannelList),
+          channels: S.optional(__S(6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
@@ -409,12 +355,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Version" });
     case 2:
-      return S.Array(Version);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          versions: S.optional(VersionList),
+          versions: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
     case 4:
@@ -441,11 +387,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           rolloutName: S.optional(S.String),
-          tag: S.optional(StringList),
+          tag: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "RolloutData" });
     case 7:
-      return S.Array(RolloutData);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -462,21 +408,36 @@ function __c2(j: number): any {
         S.Struct({
           fraction: S.optional(S.Number),
           pinnable: S.optional(S.Boolean),
-          rolloutData: S.optional(RolloutDataList),
+          rolloutData: S.optional(__S(15)),
           name: S.optional(S.String),
           fractionGroup: S.optional(S.String),
-          serving: S.optional(Interval),
+          serving: S.optional(__S(16)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "Release" });
     case 2:
-      return S.Array(Release);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          releases: S.optional(ReleaseList),
+          releases: S.optional(__S(18)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListReleasesResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "forecast",
   serviceShapeName: "AmazonForecast",
@@ -113,44 +115,33 @@ export class ResourceNotFoundException
 export type Name = string;
 export type ForecastType = string;
 export type ForecastTypes = string[];
-const ForecastTypes = /*@__PURE__*/ __L.at(__c0, 0);
 export type ForecastDimensions = string[];
-const ForecastDimensions = ForecastTypes as any as S.Schema<ForecastDimensions>;
 export type Frequency = string;
 export type Arn = string;
 export type Value = string;
 export type Transformations = { [key: string]: string | undefined };
-const Transformations = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AttributeConfig {
   AttributeName: string;
   Transformations: { [key: string]: string | undefined };
 }
-const AttributeConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AttributeConfig>;
 export type AttributeConfigs = AttributeConfig[];
-const AttributeConfigs = /*@__PURE__*/ __L.at(__c0, 3);
 export type Values = string[];
-const Values = ForecastTypes as any as S.Schema<Values>;
 export type Configuration = { [key: string]: string[] | undefined };
-const Configuration = /*@__PURE__*/ __L.at(__c0, 4);
 export interface AdditionalDataset {
   Name: string;
   Configuration?: { [key: string]: string[] | undefined };
 }
-const AdditionalDataset = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AdditionalDataset>;
 export type AdditionalDatasets = AdditionalDataset[];
-const AdditionalDatasets = /*@__PURE__*/ __L.at(__c0, 6);
 export interface DataConfig {
   DatasetGroupArn: string;
   AttributeConfigs?: AttributeConfig[];
   AdditionalDatasets?: AdditionalDataset[];
 }
-const DataConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DataConfig>;
 export type KMSKeyArn = string;
 export interface EncryptionConfig {
   RoleArn: string;
   KMSKeyArn: string;
 }
-const EncryptionConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EncryptionConfig>;
 export type OptimizationMetric =
   | "WAPE"
   | "RMSE"
@@ -158,21 +149,16 @@ export type OptimizationMetric =
   | "MASE"
   | "MAPE"
   | (string & {});
-const OptimizationMetric = S.String;
-
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-const Tag = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ __L.at(__c1, 2);
 export interface MonitorConfig {
   MonitorName: string;
 }
-const MonitorConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MonitorConfig>;
 export type Month =
   | "JANUARY"
   | "FEBRUARY"
@@ -187,8 +173,6 @@ export type Month =
   | "NOVEMBER"
   | "DECEMBER"
   | (string & {});
-const Month = S.String;
-
 export type DayOfMonth = number;
 export type DayOfWeek =
   | "MONDAY"
@@ -199,8 +183,6 @@ export type DayOfWeek =
   | "SATURDAY"
   | "SUNDAY"
   | (string & {});
-const DayOfWeek = S.String;
-
 export type Hour = number;
 export interface TimeAlignmentBoundary {
   Month?: Month;
@@ -208,10 +190,6 @@ export interface TimeAlignmentBoundary {
   DayOfWeek?: DayOfWeek;
   Hour?: number;
 }
-const TimeAlignmentBoundary = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TimeAlignmentBoundary>;
 export interface CreateAutoPredictorRequest {
   PredictorName: string;
   ForecastHorizon?: number;
@@ -227,17 +205,9 @@ export interface CreateAutoPredictorRequest {
   MonitorConfig?: MonitorConfig;
   TimeAlignmentBoundary?: TimeAlignmentBoundary;
 }
-const CreateAutoPredictorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateAutoPredictorRequest>;
 export interface CreateAutoPredictorResponse {
   PredictorArn?: string;
 }
-const CreateAutoPredictorResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateAutoPredictorResponse>;
 export type Domain =
   | "RETAIL"
   | "CUSTOM"
@@ -247,15 +217,11 @@ export type Domain =
   | "WEB_TRAFFIC"
   | "METRICS"
   | (string & {});
-const Domain = S.String;
-
 export type DatasetType =
   | "TARGET_TIME_SERIES"
   | "RELATED_TIME_SERIES"
   | "ITEM_METADATA"
   | (string & {});
-const DatasetType = S.String;
-
 export type AttributeType =
   | "string"
   | "integer"
@@ -263,19 +229,14 @@ export type AttributeType =
   | "timestamp"
   | "geolocation"
   | (string & {});
-const AttributeType = S.String;
-
 export interface SchemaAttribute {
   AttributeName?: string;
   AttributeType?: AttributeType;
 }
-const SchemaAttribute = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SchemaAttribute>;
 export type SchemaAttributes = SchemaAttribute[];
-const SchemaAttributes = /*@__PURE__*/ __L.at(__c2, 0);
 export interface Schema {
   Attributes?: SchemaAttribute[];
 }
-const Schema = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Schema>;
 export interface CreateDatasetRequest {
   DatasetName: string;
   Domain: Domain;
@@ -285,52 +246,34 @@ export interface CreateDatasetRequest {
   EncryptionConfig?: EncryptionConfig;
   Tags?: Tag[];
 }
-const CreateDatasetRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateDatasetRequest>;
 export interface CreateDatasetResponse {
   DatasetArn?: string;
 }
-const CreateDatasetResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateDatasetResponse>;
 export type ArnList = string[];
-const ArnList = ForecastTypes as any as S.Schema<ArnList>;
 export interface CreateDatasetGroupRequest {
   DatasetGroupName: string;
   Domain: Domain;
   DatasetArns?: string[];
   Tags?: Tag[];
 }
-const CreateDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateDatasetGroupRequest>;
 export interface CreateDatasetGroupResponse {
   DatasetGroupArn?: string;
 }
-const CreateDatasetGroupResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateDatasetGroupResponse>;
 export type S3Path = string;
 export interface S3Config {
   Path: string;
   RoleArn: string;
   KMSKeyArn?: string;
 }
-const S3Config = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<S3Config>;
 export interface DataSource {
   S3Config: S3Config;
 }
-const DataSource = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DataSource>;
 export type TimestampFormat = string;
 export type TimeZone = string;
 export type UseGeolocationForTimeZone = boolean;
 export type GeolocationFormat = string;
 export type Format = string;
 export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
-const ImportMode = S.String;
-
 export interface CreateDatasetImportJobRequest {
   DatasetImportJobName: string;
   DatasetArn: string;
@@ -343,28 +286,15 @@ export interface CreateDatasetImportJobRequest {
   Format?: string;
   ImportMode?: ImportMode;
 }
-const CreateDatasetImportJobRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateDatasetImportJobRequest>;
 export interface CreateDatasetImportJobResponse {
   DatasetImportJobArn?: string;
 }
-const CreateDatasetImportJobResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateDatasetImportJobResponse>;
 export type TimeSeriesGranularity = "ALL" | "SPECIFIC" | (string & {});
-const TimeSeriesGranularity = S.String;
-
 export type TimePointGranularity = "ALL" | "SPECIFIC" | (string & {});
-const TimePointGranularity = S.String;
-
 export interface ExplainabilityConfig {
   TimeSeriesGranularity: TimeSeriesGranularity;
   TimePointGranularity: TimePointGranularity;
 }
-const ExplainabilityConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ExplainabilityConfig>;
 export type LocalDateTime = string;
 export interface CreateExplainabilityRequest {
   ExplainabilityName: string;
@@ -377,21 +307,12 @@ export interface CreateExplainabilityRequest {
   EndDateTime?: string;
   Tags?: Tag[];
 }
-const CreateExplainabilityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateExplainabilityRequest>;
 export interface CreateExplainabilityResponse {
   ExplainabilityArn?: string;
 }
-const CreateExplainabilityResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateExplainabilityResponse>;
 export interface DataDestination {
   S3Config: S3Config;
 }
-const DataDestination = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DataDestination>;
 export interface CreateExplainabilityExportRequest {
   ExplainabilityExportName: string;
   ExplainabilityArn: string;
@@ -399,30 +320,17 @@ export interface CreateExplainabilityExportRequest {
   Tags?: Tag[];
   Format?: string;
 }
-const CreateExplainabilityExportRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateExplainabilityExportRequest>;
 export interface CreateExplainabilityExportResponse {
   ExplainabilityExportArn?: string;
 }
-const CreateExplainabilityExportResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateExplainabilityExportResponse>;
 export interface TimeSeriesIdentifiers {
   DataSource?: DataSource;
   Schema?: Schema;
   Format?: string;
 }
-const TimeSeriesIdentifiers = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<TimeSeriesIdentifiers>;
 export interface TimeSeriesSelector {
   TimeSeriesIdentifiers?: TimeSeriesIdentifiers;
 }
-const TimeSeriesSelector = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<TimeSeriesSelector>;
 export interface CreateForecastRequest {
   ForecastName: string;
   PredictorArn: string;
@@ -430,17 +338,9 @@ export interface CreateForecastRequest {
   Tags?: Tag[];
   TimeSeriesSelector?: TimeSeriesSelector;
 }
-const CreateForecastRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateForecastRequest>;
 export interface CreateForecastResponse {
   ForecastArn?: string;
 }
-const CreateForecastResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateForecastResponse>;
 export interface CreateForecastExportJobRequest {
   ForecastExportJobName: string;
   ForecastArn: string;
@@ -448,67 +348,38 @@ export interface CreateForecastExportJobRequest {
   Tags?: Tag[];
   Format?: string;
 }
-const CreateForecastExportJobRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateForecastExportJobRequest>;
 export interface CreateForecastExportJobResponse {
   ForecastExportJobArn?: string;
 }
-const CreateForecastExportJobResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateForecastExportJobResponse>;
 export interface CreateMonitorRequest {
   MonitorName: string;
   ResourceArn: string;
   Tags?: Tag[];
 }
-const CreateMonitorRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CreateMonitorRequest>;
 export interface CreateMonitorResponse {
   MonitorArn?: string;
 }
-const CreateMonitorResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateMonitorResponse>;
 export type AutoMLOverrideStrategy = "LatencyOptimized" | "AccuracyOptimized" | (string & {});
-const AutoMLOverrideStrategy = S.String;
-
 export type ParameterKey = string;
 export type ParameterValue = string;
 export type TrainingParameters = { [key: string]: string | undefined };
-const TrainingParameters = Transformations as any as S.Schema<TrainingParameters>;
 export interface EvaluationParameters {
   NumberOfBacktestWindows?: number;
   BackTestWindowOffset?: number;
 }
-const EvaluationParameters = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<EvaluationParameters>;
 export interface CategoricalParameterRange {
   Name: string;
   Values: string[];
 }
-const CategoricalParameterRange = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CategoricalParameterRange>;
 export type CategoricalParameterRanges = CategoricalParameterRange[];
-const CategoricalParameterRanges = /*@__PURE__*/ __L.at(__c5, 2);
 export type ScalingType = "Auto" | "Linear" | "Logarithmic" | "ReverseLogarithmic" | (string & {});
-const ScalingType = S.String;
-
 export interface ContinuousParameterRange {
   Name: string;
   MaxValue: number;
   MinValue: number;
   ScalingType?: ScalingType;
 }
-const ContinuousParameterRange = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ContinuousParameterRange>;
 export type ContinuousParameterRanges = ContinuousParameterRange[];
-const ContinuousParameterRanges = /*@__PURE__*/ __L.at(__c5, 4);
 export interface IntegerParameterRange {
   Name: string;
   MaxValue: number;
@@ -516,58 +387,40 @@ export interface IntegerParameterRange {
   ScalingType?: ScalingType;
 }
 export type IntegerParameterRanges = IntegerParameterRange[];
-const IntegerParameterRanges = ContinuousParameterRanges as any as S.Schema<IntegerParameterRanges>;
 export interface ParameterRanges {
   CategoricalParameterRanges?: CategoricalParameterRange[];
   ContinuousParameterRanges?: ContinuousParameterRange[];
   IntegerParameterRanges?: IntegerParameterRange[];
 }
-const ParameterRanges = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ParameterRanges>;
 export interface HyperParameterTuningJobConfig {
   ParameterRanges?: ParameterRanges;
 }
-const HyperParameterTuningJobConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<HyperParameterTuningJobConfig>;
 export interface SupplementaryFeature {
   Name: string;
   Value: string;
 }
-const SupplementaryFeature = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<SupplementaryFeature>;
 export type SupplementaryFeatures = SupplementaryFeature[];
-const SupplementaryFeatures = /*@__PURE__*/ __L.at(__c6, 0);
 export interface InputDataConfig {
   DatasetGroupArn: string;
   SupplementaryFeatures?: SupplementaryFeature[];
 }
-const InputDataConfig = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<InputDataConfig>;
 export type FeaturizationMethodName = "filling" | (string & {});
-const FeaturizationMethodName = S.String;
-
 export type FeaturizationMethodParameters = { [key: string]: string | undefined };
-const FeaturizationMethodParameters =
-  Transformations as any as S.Schema<FeaturizationMethodParameters>;
 export interface FeaturizationMethod {
   FeaturizationMethodName: FeaturizationMethodName;
   FeaturizationMethodParameters?: { [key: string]: string | undefined };
 }
-const FeaturizationMethod = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<FeaturizationMethod>;
 export type FeaturizationPipeline = FeaturizationMethod[];
-const FeaturizationPipeline = /*@__PURE__*/ __L.at(__c6, 3);
 export interface Featurization {
   AttributeName: string;
   FeaturizationPipeline?: FeaturizationMethod[];
 }
-const Featurization = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Featurization>;
 export type Featurizations = Featurization[];
-const Featurizations = /*@__PURE__*/ __L.at(__c6, 5);
 export interface FeaturizationConfig {
   ForecastFrequency: string;
   ForecastDimensions?: string[];
   Featurizations?: Featurization[];
 }
-const FeaturizationConfig = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<FeaturizationConfig>;
 export interface CreatePredictorRequest {
   PredictorName: string;
   AlgorithmArn?: string;
@@ -585,17 +438,9 @@ export interface CreatePredictorRequest {
   Tags?: Tag[];
   OptimizationMetric?: OptimizationMetric;
 }
-const CreatePredictorRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreatePredictorRequest>;
 export interface CreatePredictorResponse {
   PredictorArn?: string;
 }
-const CreatePredictorResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreatePredictorResponse>;
 export interface CreatePredictorBacktestExportJobRequest {
   PredictorBacktestExportJobName: string;
   PredictorArn: string;
@@ -603,75 +448,43 @@ export interface CreatePredictorBacktestExportJobRequest {
   Tags?: Tag[];
   Format?: string;
 }
-const CreatePredictorBacktestExportJobRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreatePredictorBacktestExportJobRequest>;
 export interface CreatePredictorBacktestExportJobResponse {
   PredictorBacktestExportJobArn?: string;
 }
-const CreatePredictorBacktestExportJobResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreatePredictorBacktestExportJobResponse>;
 export interface CreateWhatIfAnalysisRequest {
   WhatIfAnalysisName: string;
   ForecastArn: string;
   TimeSeriesSelector?: TimeSeriesSelector;
   Tags?: Tag[];
 }
-const CreateWhatIfAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateWhatIfAnalysisRequest>;
 export interface CreateWhatIfAnalysisResponse {
   WhatIfAnalysisArn?: string;
 }
-const CreateWhatIfAnalysisResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateWhatIfAnalysisResponse>;
 export type Operation = "ADD" | "SUBTRACT" | "MULTIPLY" | "DIVIDE" | (string & {});
-const Operation = S.String;
-
 export interface Action {
   AttributeName: string;
   Operation: Operation;
   Value: number;
 }
-const Action = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Action>;
 export type AttributeValue = string;
 export type Condition = "EQUALS" | "NOT_EQUALS" | "LESS_THAN" | "GREATER_THAN" | (string & {});
-const Condition = S.String;
-
 export interface TimeSeriesCondition {
   AttributeName: string;
   AttributeValue: string;
   Condition: Condition;
 }
-const TimeSeriesCondition = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<TimeSeriesCondition>;
 export type TimeSeriesConditions = TimeSeriesCondition[];
-const TimeSeriesConditions = /*@__PURE__*/ __L.at(__c7, 7);
 export interface TimeSeriesTransformation {
   Action?: Action;
   TimeSeriesConditions?: TimeSeriesCondition[];
 }
-const TimeSeriesTransformation = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<TimeSeriesTransformation>;
 export type TimeSeriesTransformations = TimeSeriesTransformation[];
-const TimeSeriesTransformations = /*@__PURE__*/ __L.at(__c8, 1);
 export interface TimeSeriesReplacementsDataSource {
   S3Config: S3Config;
   Schema: Schema;
   Format?: string;
   TimestampFormat?: string;
 }
-const TimeSeriesReplacementsDataSource = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<TimeSeriesReplacementsDataSource>;
 export interface CreateWhatIfForecastRequest {
   WhatIfForecastName: string;
   WhatIfAnalysisArn: string;
@@ -679,21 +492,11 @@ export interface CreateWhatIfForecastRequest {
   TimeSeriesReplacementsDataSource?: TimeSeriesReplacementsDataSource;
   Tags?: Tag[];
 }
-const CreateWhatIfForecastRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateWhatIfForecastRequest>;
 export type LongArn = string;
 export interface CreateWhatIfForecastResponse {
   WhatIfForecastArn?: string;
 }
-const CreateWhatIfForecastResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateWhatIfForecastResponse>;
 export type WhatIfForecastArnListForExport = string[];
-const WhatIfForecastArnListForExport =
-  ForecastTypes as any as S.Schema<WhatIfForecastArnListForExport>;
 export interface CreateWhatIfForecastExportRequest {
   WhatIfForecastExportName: string;
   WhatIfForecastArns: string[];
@@ -701,187 +504,83 @@ export interface CreateWhatIfForecastExportRequest {
   Tags?: Tag[];
   Format?: string;
 }
-const CreateWhatIfForecastExportRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateWhatIfForecastExportRequest>;
 export interface CreateWhatIfForecastExportResponse {
   WhatIfForecastExportArn?: string;
 }
-const CreateWhatIfForecastExportResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateWhatIfForecastExportResponse>;
 export interface DeleteDatasetRequest {
   DatasetArn: string;
 }
-const DeleteDatasetRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DeleteDatasetRequest>;
 export interface DeleteDatasetResponse {}
-const DeleteDatasetResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteDatasetResponse>;
 export interface DeleteDatasetGroupRequest {
   DatasetGroupArn: string;
 }
-const DeleteDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteDatasetGroupRequest>;
 export interface DeleteDatasetGroupResponse {}
-const DeleteDatasetGroupResponse =
-  DeleteDatasetResponse as any as S.Schema<DeleteDatasetGroupResponse>;
 export interface DeleteDatasetImportJobRequest {
   DatasetImportJobArn: string;
 }
-const DeleteDatasetImportJobRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteDatasetImportJobRequest>;
 export interface DeleteDatasetImportJobResponse {}
-const DeleteDatasetImportJobResponse =
-  DeleteDatasetResponse as any as S.Schema<DeleteDatasetImportJobResponse>;
 export interface DeleteExplainabilityRequest {
   ExplainabilityArn: string;
 }
-const DeleteExplainabilityRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteExplainabilityRequest>;
 export interface DeleteExplainabilityResponse {}
-const DeleteExplainabilityResponse =
-  DeleteDatasetResponse as any as S.Schema<DeleteExplainabilityResponse>;
 export interface DeleteExplainabilityExportRequest {
   ExplainabilityExportArn: string;
 }
-const DeleteExplainabilityExportRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteExplainabilityExportRequest>;
 export interface DeleteExplainabilityExportResponse {}
-const DeleteExplainabilityExportResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteExplainabilityExportResponse>;
 export interface DeleteForecastRequest {
   ForecastArn: string;
 }
-const DeleteForecastRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteForecastRequest>;
 export interface DeleteForecastResponse {}
-const DeleteForecastResponse = DeleteDatasetResponse as any as S.Schema<DeleteForecastResponse>;
 export interface DeleteForecastExportJobRequest {
   ForecastExportJobArn: string;
 }
-const DeleteForecastExportJobRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteForecastExportJobRequest>;
 export interface DeleteForecastExportJobResponse {}
-const DeleteForecastExportJobResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteForecastExportJobResponse>;
 export interface DeleteMonitorRequest {
   MonitorArn: string;
 }
-const DeleteMonitorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteMonitorRequest>;
 export interface DeleteMonitorResponse {}
-const DeleteMonitorResponse = DeleteDatasetResponse as any as S.Schema<DeleteMonitorResponse>;
 export interface DeletePredictorRequest {
   PredictorArn: string;
 }
-const DeletePredictorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeletePredictorRequest>;
 export interface DeletePredictorResponse {}
-const DeletePredictorResponse = DeleteDatasetResponse as any as S.Schema<DeletePredictorResponse>;
 export interface DeletePredictorBacktestExportJobRequest {
   PredictorBacktestExportJobArn: string;
 }
-const DeletePredictorBacktestExportJobRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeletePredictorBacktestExportJobRequest>;
 export interface DeletePredictorBacktestExportJobResponse {}
-const DeletePredictorBacktestExportJobResponse =
-  DeleteExplainabilityExportResponse as any as S.Schema<DeletePredictorBacktestExportJobResponse>;
 export interface DeleteResourceTreeRequest {
   ResourceArn: string;
 }
-const DeleteResourceTreeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteResourceTreeRequest>;
 export interface DeleteResourceTreeResponse {}
-const DeleteResourceTreeResponse =
-  DeleteDatasetResponse as any as S.Schema<DeleteResourceTreeResponse>;
 export interface DeleteWhatIfAnalysisRequest {
   WhatIfAnalysisArn: string;
 }
-const DeleteWhatIfAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteWhatIfAnalysisRequest>;
 export interface DeleteWhatIfAnalysisResponse {}
-const DeleteWhatIfAnalysisResponse =
-  DeleteDatasetResponse as any as S.Schema<DeleteWhatIfAnalysisResponse>;
 export interface DeleteWhatIfForecastRequest {
   WhatIfForecastArn: string;
 }
-const DeleteWhatIfForecastRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteWhatIfForecastRequest>;
 export interface DeleteWhatIfForecastResponse {}
-const DeleteWhatIfForecastResponse =
-  DeleteDatasetResponse as any as S.Schema<DeleteWhatIfForecastResponse>;
 export interface DeleteWhatIfForecastExportRequest {
   WhatIfForecastExportArn: string;
 }
-const DeleteWhatIfForecastExportRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteWhatIfForecastExportRequest>;
 export interface DeleteWhatIfForecastExportResponse {}
-const DeleteWhatIfForecastExportResponse =
-  DeleteExplainabilityExportResponse as any as S.Schema<DeleteWhatIfForecastExportResponse>;
 export interface DescribeAutoPredictorRequest {
   PredictorArn: string;
 }
-const DescribeAutoPredictorRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DescribeAutoPredictorRequest>;
 export type State = "Active" | "Deleted" | (string & {});
-const State = S.String;
-
 export interface ReferencePredictorSummary {
   Arn?: string;
   State?: State;
 }
-const ReferencePredictorSummary = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ReferencePredictorSummary>;
 export type Status = string;
 export type Message = string;
 export interface ExplainabilityInfo {
   ExplainabilityArn?: string;
   Status?: string;
 }
-const ExplainabilityInfo = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<ExplainabilityInfo>;
 export interface MonitorInfo {
   MonitorArn?: string;
   Status?: string;
 }
-const MonitorInfo = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<MonitorInfo>;
 export interface DescribeAutoPredictorResponse {
   PredictorArn?: string;
   PredictorName?: string;
@@ -903,17 +602,9 @@ export interface DescribeAutoPredictorResponse {
   MonitorInfo?: MonitorInfo;
   TimeAlignmentBoundary?: TimeAlignmentBoundary;
 }
-const DescribeAutoPredictorResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DescribeAutoPredictorResponse>;
 export interface DescribeDatasetRequest {
   DatasetArn: string;
 }
-const DescribeDatasetRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DescribeDatasetRequest>;
 export interface DescribeDatasetResponse {
   DatasetArn?: string;
   DatasetName?: string;
@@ -926,17 +617,9 @@ export interface DescribeDatasetResponse {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const DescribeDatasetResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DescribeDatasetResponse>;
 export interface DescribeDatasetGroupRequest {
   DatasetGroupArn: string;
 }
-const DescribeDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DescribeDatasetGroupRequest>;
 export interface DescribeDatasetGroupResponse {
   DatasetGroupName?: string;
   DatasetGroupArn?: string;
@@ -946,17 +629,9 @@ export interface DescribeDatasetGroupResponse {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const DescribeDatasetGroupResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DescribeDatasetGroupResponse>;
 export interface DescribeDatasetImportJobRequest {
   DatasetImportJobArn: string;
 }
-const DescribeDatasetImportJobRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DescribeDatasetImportJobRequest>;
 export interface Statistics {
   Count?: number;
   CountDistinct?: number;
@@ -971,9 +646,7 @@ export interface Statistics {
   CountNullLong?: number;
   CountNanLong?: number;
 }
-const Statistics = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Statistics>;
 export type FieldStatistics = { [key: string]: Statistics | undefined };
-const FieldStatistics = /*@__PURE__*/ __L.at(__c12, 3);
 export interface DescribeDatasetImportJobResponse {
   DatasetImportJobName?: string;
   DatasetImportJobArn?: string;
@@ -993,17 +666,9 @@ export interface DescribeDatasetImportJobResponse {
   Format?: string;
   ImportMode?: ImportMode;
 }
-const DescribeDatasetImportJobResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DescribeDatasetImportJobResponse>;
 export interface DescribeExplainabilityRequest {
   ExplainabilityArn: string;
 }
-const DescribeExplainabilityRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DescribeExplainabilityRequest>;
 export interface DescribeExplainabilityResponse {
   ExplainabilityArn?: string;
   ExplainabilityName?: string;
@@ -1020,17 +685,9 @@ export interface DescribeExplainabilityResponse {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const DescribeExplainabilityResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DescribeExplainabilityResponse>;
 export interface DescribeExplainabilityExportRequest {
   ExplainabilityExportArn: string;
 }
-const DescribeExplainabilityExportRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DescribeExplainabilityExportRequest>;
 export interface DescribeExplainabilityExportResponse {
   ExplainabilityExportArn?: string;
   ExplainabilityExportName?: string;
@@ -1042,17 +699,9 @@ export interface DescribeExplainabilityExportResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-const DescribeExplainabilityExportResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DescribeExplainabilityExportResponse>;
 export interface DescribeForecastRequest {
   ForecastArn: string;
 }
-const DescribeForecastRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DescribeForecastRequest>;
 export type ErrorMessage = string;
 export interface DescribeForecastResponse {
   ForecastArn?: string;
@@ -1067,17 +716,9 @@ export interface DescribeForecastResponse {
   LastModificationTime?: Date;
   TimeSeriesSelector?: TimeSeriesSelector;
 }
-const DescribeForecastResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DescribeForecastResponse>;
 export interface DescribeForecastExportJobRequest {
   ForecastExportJobArn: string;
 }
-const DescribeForecastExportJobRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DescribeForecastExportJobRequest>;
 export interface DescribeForecastExportJobResponse {
   ForecastExportJobArn?: string;
   ForecastExportJobName?: string;
@@ -1089,33 +730,21 @@ export interface DescribeForecastExportJobResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-const DescribeForecastExportJobResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DescribeForecastExportJobResponse>;
 export interface DescribeMonitorRequest {
   MonitorArn: string;
 }
-const DescribeMonitorRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DescribeMonitorRequest>;
 export type EvaluationState = string;
 export interface BaselineMetric {
   Name?: string;
   Value?: number;
 }
-const BaselineMetric = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<BaselineMetric>;
 export type BaselineMetrics = BaselineMetric[];
-const BaselineMetrics = /*@__PURE__*/ __L.at(__c13, 7);
 export interface PredictorBaseline {
   BaselineMetrics?: BaselineMetric[];
 }
-const PredictorBaseline = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<PredictorBaseline>;
 export interface Baseline {
   PredictorBaseline?: PredictorBaseline;
 }
-const Baseline = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Baseline>;
 export interface DescribeMonitorResponse {
   MonitorName?: string;
   MonitorArn?: string;
@@ -1129,40 +758,24 @@ export interface DescribeMonitorResponse {
   LastModificationTime?: Date;
   EstimatedEvaluationTimeRemainingInMinutes?: number;
 }
-const DescribeMonitorResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DescribeMonitorResponse>;
 export interface DescribePredictorRequest {
   PredictorArn: string;
 }
-const DescribePredictorRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DescribePredictorRequest>;
 export interface TestWindowSummary {
   TestWindowStart?: Date;
   TestWindowEnd?: Date;
   Status?: string;
   Message?: string;
 }
-const TestWindowSummary = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<TestWindowSummary>;
 export type TestWindowDetails = TestWindowSummary[];
-const TestWindowDetails = /*@__PURE__*/ __L.at(__c14, 5);
 export interface PredictorExecution {
   AlgorithmArn?: string;
   TestWindows?: TestWindowSummary[];
 }
-const PredictorExecution = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<PredictorExecution>;
 export type PredictorExecutions = PredictorExecution[];
-const PredictorExecutions = /*@__PURE__*/ __L.at(__c14, 7);
 export interface PredictorExecutionDetails {
   PredictorExecutions?: PredictorExecution[];
 }
-const PredictorExecutionDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<PredictorExecutionDetails>;
 export interface DescribePredictorResponse {
   PredictorArn?: string;
   PredictorName?: string;
@@ -1189,17 +802,9 @@ export interface DescribePredictorResponse {
   LastModificationTime?: Date;
   OptimizationMetric?: OptimizationMetric;
 }
-const DescribePredictorResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DescribePredictorResponse>;
 export interface DescribePredictorBacktestExportJobRequest {
   PredictorBacktestExportJobArn: string;
 }
-const DescribePredictorBacktestExportJobRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DescribePredictorBacktestExportJobRequest>;
 export interface DescribePredictorBacktestExportJobResponse {
   PredictorBacktestExportJobArn?: string;
   PredictorBacktestExportJobName?: string;
@@ -1211,17 +816,9 @@ export interface DescribePredictorBacktestExportJobResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-const DescribePredictorBacktestExportJobResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DescribePredictorBacktestExportJobResponse>;
 export interface DescribeWhatIfAnalysisRequest {
   WhatIfAnalysisArn: string;
 }
-const DescribeWhatIfAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DescribeWhatIfAnalysisRequest>;
 export interface DescribeWhatIfAnalysisResponse {
   WhatIfAnalysisName?: string;
   WhatIfAnalysisArn?: string;
@@ -1233,17 +830,9 @@ export interface DescribeWhatIfAnalysisResponse {
   LastModificationTime?: Date;
   TimeSeriesSelector?: TimeSeriesSelector;
 }
-const DescribeWhatIfAnalysisResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DescribeWhatIfAnalysisResponse>;
 export interface DescribeWhatIfForecastRequest {
   WhatIfForecastArn: string;
 }
-const DescribeWhatIfForecastRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DescribeWhatIfForecastRequest>;
 export interface DescribeWhatIfForecastResponse {
   WhatIfForecastName?: string;
   WhatIfForecastArn?: string;
@@ -1257,19 +846,10 @@ export interface DescribeWhatIfForecastResponse {
   TimeSeriesReplacementsDataSource?: TimeSeriesReplacementsDataSource;
   ForecastTypes?: string[];
 }
-const DescribeWhatIfForecastResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DescribeWhatIfForecastResponse>;
 export interface DescribeWhatIfForecastExportRequest {
   WhatIfForecastExportArn: string;
 }
-const DescribeWhatIfForecastExportRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DescribeWhatIfForecastExportRequest>;
 export type LongArnList = string[];
-const LongArnList = ForecastTypes as any as S.Schema<LongArnList>;
 export interface DescribeWhatIfForecastExportResponse {
   WhatIfForecastExportArn?: string;
   WhatIfForecastExportName?: string;
@@ -1282,30 +862,15 @@ export interface DescribeWhatIfForecastExportResponse {
   LastModificationTime?: Date;
   Format?: string;
 }
-const DescribeWhatIfForecastExportResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DescribeWhatIfForecastExportResponse>;
 export interface GetAccuracyMetricsRequest {
   PredictorArn: string;
 }
-const GetAccuracyMetricsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetAccuracyMetricsRequest>;
 export type EvaluationType = "SUMMARY" | "COMPUTED" | (string & {});
-const EvaluationType = S.String;
-
 export interface WeightedQuantileLoss {
   Quantile?: number;
   LossValue?: number;
 }
-const WeightedQuantileLoss = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<WeightedQuantileLoss>;
 export type WeightedQuantileLosses = WeightedQuantileLoss[];
-const WeightedQuantileLosses = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ErrorMetric {
   ForecastType?: string;
   WAPE?: number;
@@ -1313,16 +878,13 @@ export interface ErrorMetric {
   MASE?: number;
   MAPE?: number;
 }
-const ErrorMetric = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ErrorMetric>;
 export type ErrorMetrics = ErrorMetric[];
-const ErrorMetrics = /*@__PURE__*/ __L.at(__c16, 6);
 export interface Metrics {
   RMSE?: number;
   WeightedQuantileLosses?: WeightedQuantileLoss[];
   ErrorMetrics?: ErrorMetric[];
   AverageWeightedQuantileLoss?: number;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<Metrics>;
 export interface WindowSummary {
   TestWindowStart?: Date;
   TestWindowEnd?: Date;
@@ -1330,73 +892,47 @@ export interface WindowSummary {
   EvaluationType?: EvaluationType;
   Metrics?: Metrics;
 }
-const WindowSummary = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<WindowSummary>;
 export type TestWindows = WindowSummary[];
-const TestWindows = /*@__PURE__*/ __L.at(__c17, 1);
 export interface EvaluationResult {
   AlgorithmArn?: string;
   TestWindows?: WindowSummary[];
 }
-const EvaluationResult = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<EvaluationResult>;
 export type PredictorEvaluationResults = EvaluationResult[];
-const PredictorEvaluationResults = /*@__PURE__*/ __L.at(__c17, 3);
 export interface GetAccuracyMetricsResponse {
   PredictorEvaluationResults?: EvaluationResult[];
   IsAutoPredictor?: boolean;
   AutoMLOverrideStrategy?: AutoMLOverrideStrategy;
   OptimizationMetric?: OptimizationMetric;
 }
-const GetAccuracyMetricsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetAccuracyMetricsResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListDatasetGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDatasetGroupsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListDatasetGroupsRequest>;
 export interface DatasetGroupSummary {
   DatasetGroupArn?: string;
   DatasetGroupName?: string;
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const DatasetGroupSummary = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<DatasetGroupSummary>;
 export type DatasetGroups = DatasetGroupSummary[];
-const DatasetGroups = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListDatasetGroupsResponse {
   DatasetGroups?: DatasetGroupSummary[];
   NextToken?: string;
 }
-const ListDatasetGroupsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListDatasetGroupsResponse>;
 export type FilterConditionString = "IS" | "IS_NOT" | (string & {});
-const FilterConditionString = S.String;
-
 export interface Filter {
   Key: string;
   Value: string;
   Condition: FilterConditionString;
 }
-const Filter = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<Filter>;
 export type Filters = Filter[];
-const Filters = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListDatasetImportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListDatasetImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListDatasetImportJobsRequest>;
 export interface DatasetImportJobSummary {
   DatasetImportJobArn?: string;
   DatasetImportJobName?: string;
@@ -1407,25 +943,15 @@ export interface DatasetImportJobSummary {
   LastModificationTime?: Date;
   ImportMode?: ImportMode;
 }
-const DatasetImportJobSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<DatasetImportJobSummary>;
 export type DatasetImportJobs = DatasetImportJobSummary[];
-const DatasetImportJobs = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListDatasetImportJobsResponse {
   DatasetImportJobs?: DatasetImportJobSummary[];
   NextToken?: string;
 }
-const ListDatasetImportJobsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListDatasetImportJobsResponse>;
 export interface ListDatasetsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDatasetsRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ListDatasetsRequest>;
 export interface DatasetSummary {
   DatasetArn?: string;
   DatasetName?: string;
@@ -1434,26 +960,16 @@ export interface DatasetSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const DatasetSummary = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<DatasetSummary>;
 export type Datasets = DatasetSummary[];
-const Datasets = /*@__PURE__*/ __L.at(__c19, 1);
 export interface ListDatasetsResponse {
   Datasets?: DatasetSummary[];
   NextToken?: string;
 }
-const ListDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListDatasetsResponse>;
 export interface ListExplainabilitiesRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListExplainabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListExplainabilitiesRequest>;
 export interface ExplainabilitySummary {
   ExplainabilityArn?: string;
   ExplainabilityName?: string;
@@ -1464,29 +980,16 @@ export interface ExplainabilitySummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const ExplainabilitySummary = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ExplainabilitySummary>;
 export type Explainabilities = ExplainabilitySummary[];
-const Explainabilities = /*@__PURE__*/ __L.at(__c19, 5);
 export interface ListExplainabilitiesResponse {
   Explainabilities?: ExplainabilitySummary[];
   NextToken?: string;
 }
-const ListExplainabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListExplainabilitiesResponse>;
 export interface ListExplainabilityExportsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListExplainabilityExportsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListExplainabilityExportsRequest>;
 export interface ExplainabilityExportSummary {
   ExplainabilityExportArn?: string;
   ExplainabilityExportName?: string;
@@ -1496,29 +999,16 @@ export interface ExplainabilityExportSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const ExplainabilityExportSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ExplainabilityExportSummary>;
 export type ExplainabilityExports = ExplainabilityExportSummary[];
-const ExplainabilityExports = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListExplainabilityExportsResponse {
   ExplainabilityExports?: ExplainabilityExportSummary[];
   NextToken?: string;
 }
-const ListExplainabilityExportsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListExplainabilityExportsResponse>;
 export interface ListForecastExportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListForecastExportJobsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListForecastExportJobsRequest>;
 export interface ForecastExportJobSummary {
   ForecastExportJobArn?: string;
   ForecastExportJobName?: string;
@@ -1528,29 +1018,16 @@ export interface ForecastExportJobSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const ForecastExportJobSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ForecastExportJobSummary>;
 export type ForecastExportJobs = ForecastExportJobSummary[];
-const ForecastExportJobs = /*@__PURE__*/ __L.at(__c20, 5);
 export interface ListForecastExportJobsResponse {
   ForecastExportJobs?: ForecastExportJobSummary[];
   NextToken?: string;
 }
-const ListForecastExportJobsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListForecastExportJobsResponse>;
 export interface ListForecastsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListForecastsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListForecastsRequest>;
 export interface ForecastSummary {
   ForecastArn?: string;
   ForecastName?: string;
@@ -1562,47 +1039,33 @@ export interface ForecastSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const ForecastSummary = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ForecastSummary>;
 export type Forecasts = ForecastSummary[];
-const Forecasts = /*@__PURE__*/ __L.at(__c21, 1);
 export interface ListForecastsResponse {
   Forecasts?: ForecastSummary[];
   NextToken?: string;
 }
-const ListForecastsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListForecastsResponse>;
 export interface ListMonitorEvaluationsRequest {
   NextToken?: string;
   MaxResults?: number;
   MonitorArn: string;
   Filters?: Filter[];
 }
-const ListMonitorEvaluationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListMonitorEvaluationsRequest>;
 export type Detail = string;
 export interface PredictorEvent {
   Detail?: string;
   Datetime?: Date;
 }
-const PredictorEvent = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<PredictorEvent>;
 export interface MonitorDataSource {
   DatasetImportJobArn?: string;
   ForecastArn?: string;
   PredictorArn?: string;
 }
-const MonitorDataSource = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<MonitorDataSource>;
 export type MetricName = string;
 export interface MetricResult {
   MetricName?: string;
   MetricValue?: number;
 }
-const MetricResult = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<MetricResult>;
 export type MetricResults = MetricResult[];
-const MetricResults = /*@__PURE__*/ __L.at(__c21, 7);
 export interface PredictorMonitorEvaluation {
   ResourceArn?: string;
   MonitorArn?: string;
@@ -1616,26 +1079,16 @@ export interface PredictorMonitorEvaluation {
   NumItemsEvaluated?: number;
   Message?: string;
 }
-const PredictorMonitorEvaluation = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<PredictorMonitorEvaluation>;
 export type PredictorMonitorEvaluations = PredictorMonitorEvaluation[];
-const PredictorMonitorEvaluations = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListMonitorEvaluationsResponse {
   NextToken?: string;
   PredictorMonitorEvaluations?: PredictorMonitorEvaluation[];
 }
-const ListMonitorEvaluationsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListMonitorEvaluationsResponse>;
 export interface ListMonitorsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListMonitorsRequest = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<ListMonitorsRequest>;
 export interface MonitorSummary {
   MonitorArn?: string;
   MonitorName?: string;
@@ -1644,26 +1097,16 @@ export interface MonitorSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const MonitorSummary = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<MonitorSummary>;
 export type Monitors = MonitorSummary[];
-const Monitors = /*@__PURE__*/ __L.at(__c22, 5);
 export interface ListMonitorsResponse {
   Monitors?: MonitorSummary[];
   NextToken?: string;
 }
-const ListMonitorsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListMonitorsResponse>;
 export interface ListPredictorBacktestExportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListPredictorBacktestExportJobsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListPredictorBacktestExportJobsRequest>;
 export interface PredictorBacktestExportJobSummary {
   PredictorBacktestExportJobArn?: string;
   PredictorBacktestExportJobName?: string;
@@ -1673,29 +1116,16 @@ export interface PredictorBacktestExportJobSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const PredictorBacktestExportJobSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<PredictorBacktestExportJobSummary>;
 export type PredictorBacktestExportJobs = PredictorBacktestExportJobSummary[];
-const PredictorBacktestExportJobs = /*@__PURE__*/ __L.at(__c23, 1);
 export interface ListPredictorBacktestExportJobsResponse {
   PredictorBacktestExportJobs?: PredictorBacktestExportJobSummary[];
   NextToken?: string;
 }
-const ListPredictorBacktestExportJobsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListPredictorBacktestExportJobsResponse>;
 export interface ListPredictorsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListPredictorsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListPredictorsRequest>;
 export interface PredictorSummary {
   PredictorArn?: string;
   PredictorName?: string;
@@ -1707,40 +1137,22 @@ export interface PredictorSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const PredictorSummary = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<PredictorSummary>;
 export type Predictors = PredictorSummary[];
-const Predictors = /*@__PURE__*/ __L.at(__c23, 5);
 export interface ListPredictorsResponse {
   Predictors?: PredictorSummary[];
   NextToken?: string;
 }
-const ListPredictorsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListPredictorsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWhatIfAnalysesRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListWhatIfAnalysesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListWhatIfAnalysesRequest>;
 export interface WhatIfAnalysisSummary {
   WhatIfAnalysisArn?: string;
   WhatIfAnalysisName?: string;
@@ -1750,29 +1162,16 @@ export interface WhatIfAnalysisSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const WhatIfAnalysisSummary = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<WhatIfAnalysisSummary>;
 export type WhatIfAnalyses = WhatIfAnalysisSummary[];
-const WhatIfAnalyses = /*@__PURE__*/ __L.at(__c24, 3);
 export interface ListWhatIfAnalysesResponse {
   WhatIfAnalyses?: WhatIfAnalysisSummary[];
   NextToken?: string;
 }
-const ListWhatIfAnalysesResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListWhatIfAnalysesResponse>;
 export interface ListWhatIfForecastExportsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListWhatIfForecastExportsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListWhatIfForecastExportsRequest>;
 export interface WhatIfForecastExportSummary {
   WhatIfForecastExportArn?: string;
   WhatIfForecastArns?: string[];
@@ -1783,29 +1182,16 @@ export interface WhatIfForecastExportSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const WhatIfForecastExportSummary = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<WhatIfForecastExportSummary>;
 export type WhatIfForecastExports = WhatIfForecastExportSummary[];
-const WhatIfForecastExports = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ListWhatIfForecastExportsResponse {
   WhatIfForecastExports?: WhatIfForecastExportSummary[];
   NextToken?: string;
 }
-const ListWhatIfForecastExportsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListWhatIfForecastExportsResponse>;
 export interface ListWhatIfForecastsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: Filter[];
 }
-const ListWhatIfForecastsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListWhatIfForecastsRequest>;
 export interface WhatIfForecastSummary {
   WhatIfForecastArn?: string;
   WhatIfForecastName?: string;
@@ -1815,65 +1201,35 @@ export interface WhatIfForecastSummary {
   CreationTime?: Date;
   LastModificationTime?: Date;
 }
-const WhatIfForecastSummary = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<WhatIfForecastSummary>;
 export type WhatIfForecasts = WhatIfForecastSummary[];
-const WhatIfForecasts = /*@__PURE__*/ __L.at(__c25, 3);
 export interface ListWhatIfForecastsResponse {
   WhatIfForecasts?: WhatIfForecastSummary[];
   NextToken?: string;
 }
-const ListWhatIfForecastsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListWhatIfForecastsResponse>;
 export interface ResumeResourceRequest {
   ResourceArn: string;
 }
-const ResumeResourceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ResumeResourceRequest>;
 export interface ResumeResourceResponse {}
-const ResumeResourceResponse = DeleteDatasetResponse as any as S.Schema<ResumeResourceResponse>;
 export interface StopResourceRequest {
   ResourceArn: string;
 }
-const StopResourceRequest = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<StopResourceRequest>;
 export interface StopResourceResponse {}
-const StopResourceResponse = DeleteDatasetResponse as any as S.Schema<StopResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteDatasetResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = (string | redacted.Redacted<string>)[];
-const TagKeys = /*@__PURE__*/ __L.at(__c26, 0);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: (string | redacted.Redacted<string>)[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteDatasetResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDatasetGroupRequest {
   DatasetGroupArn: string;
   DatasetArns: string[];
 }
-const UpdateDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<UpdateDatasetGroupRequest>;
 export interface UpdateDatasetGroupResponse {}
-const UpdateDatasetGroupResponse =
-  DeleteDatasetResponse as any as S.Schema<UpdateDatasetGroupResponse>;
 export type CreateAutoPredictorError =
   | InvalidInputException
   | LimitExceededException
@@ -1925,8 +1281,8 @@ export const createAutoPredictor: API.OperationMethod<
   CreateAutoPredictorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutoPredictorRequest,
-  output: CreateAutoPredictorResponse,
+  input: __S(13) as any as S.Schema<CreateAutoPredictorRequest>,
+  output: __S(14) as any as S.Schema<CreateAutoPredictorResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -1988,8 +1344,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetRequest,
-  output: CreateDatasetResponse,
+  input: __S(18) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(19) as any as S.Schema<CreateDatasetResponse>,
   errors: [InvalidInputException, LimitExceededException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2022,8 +1378,8 @@ export const createDatasetGroup: API.OperationMethod<
   CreateDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetGroupRequest,
-  output: CreateDatasetGroupResponse,
+  input: __S(20) as any as S.Schema<CreateDatasetGroupRequest>,
+  output: __S(21) as any as S.Schema<CreateDatasetGroupResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2073,8 +1429,8 @@ export const createDatasetImportJob: API.OperationMethod<
   CreateDatasetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetImportJobRequest,
-  output: CreateDatasetImportJobResponse,
+  input: __S(24) as any as S.Schema<CreateDatasetImportJobRequest>,
+  output: __S(25) as any as S.Schema<CreateDatasetImportJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2182,8 +1538,8 @@ export const createExplainability: API.OperationMethod<
   CreateExplainabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExplainabilityRequest,
-  output: CreateExplainabilityResponse,
+  input: __S(27) as any as S.Schema<CreateExplainabilityRequest>,
+  output: __S(28) as any as S.Schema<CreateExplainabilityResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2220,8 +1576,8 @@ export const createExplainabilityExport: API.OperationMethod<
   CreateExplainabilityExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExplainabilityExportRequest,
-  output: CreateExplainabilityExportResponse,
+  input: __S(30) as any as S.Schema<CreateExplainabilityExportRequest>,
+  output: __S(31) as any as S.Schema<CreateExplainabilityExportResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2272,8 +1628,8 @@ export const createForecast: API.OperationMethod<
   CreateForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForecastRequest,
-  output: CreateForecastResponse,
+  input: __S(34) as any as S.Schema<CreateForecastRequest>,
+  output: __S(35) as any as S.Schema<CreateForecastResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2319,8 +1675,8 @@ export const createForecastExportJob: API.OperationMethod<
   CreateForecastExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForecastExportJobRequest,
-  output: CreateForecastExportJobResponse,
+  input: __S(36) as any as S.Schema<CreateForecastExportJobRequest>,
+  output: __S(37) as any as S.Schema<CreateForecastExportJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2350,8 +1706,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMonitorRequest,
-  output: CreateMonitorResponse,
+  input: __S(38) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(39) as any as S.Schema<CreateMonitorResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2431,8 +1787,8 @@ export const createPredictor: API.OperationMethod<
   CreatePredictorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePredictorRequest,
-  output: CreatePredictorResponse,
+  input: __S(55) as any as S.Schema<CreatePredictorRequest>,
+  output: __S(56) as any as S.Schema<CreatePredictorResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2476,8 +1832,8 @@ export const createPredictorBacktestExportJob: API.OperationMethod<
   CreatePredictorBacktestExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePredictorBacktestExportJobRequest,
-  output: CreatePredictorBacktestExportJobResponse,
+  input: __S(57) as any as S.Schema<CreatePredictorBacktestExportJobRequest>,
+  output: __S(58) as any as S.Schema<CreatePredictorBacktestExportJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2522,8 +1878,8 @@ export const createWhatIfAnalysis: API.OperationMethod<
   CreateWhatIfAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWhatIfAnalysisRequest,
-  output: CreateWhatIfAnalysisResponse,
+  input: __S(59) as any as S.Schema<CreateWhatIfAnalysisRequest>,
+  output: __S(60) as any as S.Schema<CreateWhatIfAnalysisResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2553,8 +1909,8 @@ export const createWhatIfForecast: API.OperationMethod<
   CreateWhatIfForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWhatIfForecastRequest,
-  output: CreateWhatIfForecastResponse,
+  input: __S(67) as any as S.Schema<CreateWhatIfForecastRequest>,
+  output: __S(68) as any as S.Schema<CreateWhatIfForecastResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2601,8 +1957,8 @@ export const createWhatIfForecastExport: API.OperationMethod<
   CreateWhatIfForecastExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWhatIfForecastExportRequest,
-  output: CreateWhatIfForecastExportResponse,
+  input: __S(69) as any as S.Schema<CreateWhatIfForecastExportRequest>,
+  output: __S(70) as any as S.Schema<CreateWhatIfForecastExportResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2635,8 +1991,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetRequest,
-  output: DeleteDatasetResponse,
+  input: __S(71) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(72) as any as S.Schema<DeleteDatasetResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2661,8 +2017,8 @@ export const deleteDatasetGroup: API.OperationMethod<
   DeleteDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetGroupRequest,
-  output: DeleteDatasetGroupResponse,
+  input: __S(73) as any as S.Schema<DeleteDatasetGroupRequest>,
+  output: __S(72) as any as S.Schema<DeleteDatasetGroupResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2686,8 +2042,8 @@ export const deleteDatasetImportJob: API.OperationMethod<
   DeleteDatasetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetImportJobRequest,
-  output: DeleteDatasetImportJobResponse,
+  input: __S(74) as any as S.Schema<DeleteDatasetImportJobRequest>,
+  output: __S(72) as any as S.Schema<DeleteDatasetImportJobResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2711,8 +2067,8 @@ export const deleteExplainability: API.OperationMethod<
   DeleteExplainabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExplainabilityRequest,
-  output: DeleteExplainabilityResponse,
+  input: __S(75) as any as S.Schema<DeleteExplainabilityRequest>,
+  output: __S(72) as any as S.Schema<DeleteExplainabilityResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2733,8 +2089,8 @@ export const deleteExplainabilityExport: API.OperationMethod<
   DeleteExplainabilityExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExplainabilityExportRequest,
-  output: DeleteExplainabilityExportResponse,
+  input: __S(76) as any as S.Schema<DeleteExplainabilityExportRequest>,
+  output: __S(77) as any as S.Schema<DeleteExplainabilityExportResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2760,8 +2116,8 @@ export const deleteForecast: API.OperationMethod<
   DeleteForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForecastRequest,
-  output: DeleteForecastResponse,
+  input: __S(78) as any as S.Schema<DeleteForecastRequest>,
+  output: __S(72) as any as S.Schema<DeleteForecastResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2784,8 +2140,8 @@ export const deleteForecastExportJob: API.OperationMethod<
   DeleteForecastExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForecastExportJobRequest,
-  output: DeleteForecastExportJobResponse,
+  input: __S(79) as any as S.Schema<DeleteForecastExportJobRequest>,
+  output: __S(80) as any as S.Schema<DeleteForecastExportJobResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2806,8 +2162,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMonitorRequest,
-  output: DeleteMonitorResponse,
+  input: __S(81) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(72) as any as S.Schema<DeleteMonitorResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2829,8 +2185,8 @@ export const deletePredictor: API.OperationMethod<
   DeletePredictorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePredictorRequest,
-  output: DeletePredictorResponse,
+  input: __S(82) as any as S.Schema<DeletePredictorRequest>,
+  output: __S(72) as any as S.Schema<DeletePredictorResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2851,8 +2207,8 @@ export const deletePredictorBacktestExportJob: API.OperationMethod<
   DeletePredictorBacktestExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePredictorBacktestExportJobRequest,
-  output: DeletePredictorBacktestExportJobResponse,
+  input: __S(83) as any as S.Schema<DeletePredictorBacktestExportJobRequest>,
+  output: __S(77) as any as S.Schema<DeletePredictorBacktestExportJobResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2893,8 +2249,8 @@ export const deleteResourceTree: API.OperationMethod<
   DeleteResourceTreeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourceTreeRequest,
-  output: DeleteResourceTreeResponse,
+  input: __S(84) as any as S.Schema<DeleteResourceTreeRequest>,
+  output: __S(72) as any as S.Schema<DeleteResourceTreeResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2918,8 +2274,8 @@ export const deleteWhatIfAnalysis: API.OperationMethod<
   DeleteWhatIfAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWhatIfAnalysisRequest,
-  output: DeleteWhatIfAnalysisResponse,
+  input: __S(85) as any as S.Schema<DeleteWhatIfAnalysisRequest>,
+  output: __S(72) as any as S.Schema<DeleteWhatIfAnalysisResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2943,8 +2299,8 @@ export const deleteWhatIfForecast: API.OperationMethod<
   DeleteWhatIfForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWhatIfForecastRequest,
-  output: DeleteWhatIfForecastResponse,
+  input: __S(86) as any as S.Schema<DeleteWhatIfForecastRequest>,
+  output: __S(72) as any as S.Schema<DeleteWhatIfForecastResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2966,8 +2322,8 @@ export const deleteWhatIfForecastExport: API.OperationMethod<
   DeleteWhatIfForecastExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWhatIfForecastExportRequest,
-  output: DeleteWhatIfForecastExportResponse,
+  input: __S(87) as any as S.Schema<DeleteWhatIfForecastExportRequest>,
+  output: __S(77) as any as S.Schema<DeleteWhatIfForecastExportResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2987,8 +2343,8 @@ export const describeAutoPredictor: API.OperationMethod<
   DescribeAutoPredictorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAutoPredictorRequest,
-  output: DescribeAutoPredictorResponse,
+  input: __S(88) as any as S.Schema<DescribeAutoPredictorRequest>,
+  output: __S(92) as any as S.Schema<DescribeAutoPredictorResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3014,8 +2370,8 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetRequest,
-  output: DescribeDatasetResponse,
+  input: __S(93) as any as S.Schema<DescribeDatasetRequest>,
+  output: __S(94) as any as S.Schema<DescribeDatasetResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3047,8 +2403,8 @@ export const describeDatasetGroup: API.OperationMethod<
   DescribeDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetGroupRequest,
-  output: DescribeDatasetGroupResponse,
+  input: __S(95) as any as S.Schema<DescribeDatasetGroupRequest>,
+  output: __S(96) as any as S.Schema<DescribeDatasetGroupResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3084,8 +2440,8 @@ export const describeDatasetImportJob: API.OperationMethod<
   DescribeDatasetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetImportJobRequest,
-  output: DescribeDatasetImportJobResponse,
+  input: __S(97) as any as S.Schema<DescribeDatasetImportJobRequest>,
+  output: __S(100) as any as S.Schema<DescribeDatasetImportJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3105,8 +2461,8 @@ export const describeExplainability: API.OperationMethod<
   DescribeExplainabilityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeExplainabilityRequest,
-  output: DescribeExplainabilityResponse,
+  input: __S(101) as any as S.Schema<DescribeExplainabilityRequest>,
+  output: __S(102) as any as S.Schema<DescribeExplainabilityResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3126,8 +2482,8 @@ export const describeExplainabilityExport: API.OperationMethod<
   DescribeExplainabilityExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeExplainabilityExportRequest,
-  output: DescribeExplainabilityExportResponse,
+  input: __S(103) as any as S.Schema<DescribeExplainabilityExportRequest>,
+  output: __S(104) as any as S.Schema<DescribeExplainabilityExportResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3161,8 +2517,8 @@ export const describeForecast: API.OperationMethod<
   DescribeForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeForecastRequest,
-  output: DescribeForecastResponse,
+  input: __S(105) as any as S.Schema<DescribeForecastRequest>,
+  output: __S(106) as any as S.Schema<DescribeForecastResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3194,8 +2550,8 @@ export const describeForecastExportJob: API.OperationMethod<
   DescribeForecastExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeForecastExportJobRequest,
-  output: DescribeForecastExportJobResponse,
+  input: __S(107) as any as S.Schema<DescribeForecastExportJobRequest>,
+  output: __S(108) as any as S.Schema<DescribeForecastExportJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3226,8 +2582,8 @@ export const describeMonitor: API.OperationMethod<
   DescribeMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeMonitorRequest,
-  output: DescribeMonitorResponse,
+  input: __S(109) as any as S.Schema<DescribeMonitorRequest>,
+  output: __S(114) as any as S.Schema<DescribeMonitorResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3268,8 +2624,8 @@ export const describePredictor: API.OperationMethod<
   DescribePredictorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePredictorRequest,
-  output: DescribePredictorResponse,
+  input: __S(115) as any as S.Schema<DescribePredictorRequest>,
+  output: __S(121) as any as S.Schema<DescribePredictorResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3301,8 +2657,8 @@ export const describePredictorBacktestExportJob: API.OperationMethod<
   DescribePredictorBacktestExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePredictorBacktestExportJobRequest,
-  output: DescribePredictorBacktestExportJobResponse,
+  input: __S(122) as any as S.Schema<DescribePredictorBacktestExportJobRequest>,
+  output: __S(123) as any as S.Schema<DescribePredictorBacktestExportJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3332,8 +2688,8 @@ export const describeWhatIfAnalysis: API.OperationMethod<
   DescribeWhatIfAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeWhatIfAnalysisRequest,
-  output: DescribeWhatIfAnalysisResponse,
+  input: __S(124) as any as S.Schema<DescribeWhatIfAnalysisRequest>,
+  output: __S(125) as any as S.Schema<DescribeWhatIfAnalysisResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3363,8 +2719,8 @@ export const describeWhatIfForecast: API.OperationMethod<
   DescribeWhatIfForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeWhatIfForecastRequest,
-  output: DescribeWhatIfForecastResponse,
+  input: __S(126) as any as S.Schema<DescribeWhatIfForecastRequest>,
+  output: __S(127) as any as S.Schema<DescribeWhatIfForecastResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3394,8 +2750,8 @@ export const describeWhatIfForecastExport: API.OperationMethod<
   DescribeWhatIfForecastExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeWhatIfForecastExportRequest,
-  output: DescribeWhatIfForecastExportResponse,
+  input: __S(128) as any as S.Schema<DescribeWhatIfForecastExportRequest>,
+  output: __S(129) as any as S.Schema<DescribeWhatIfForecastExportResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3433,8 +2789,8 @@ export const getAccuracyMetrics: API.OperationMethod<
   GetAccuracyMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccuracyMetricsRequest,
-  output: GetAccuracyMetricsResponse,
+  input: __S(130) as any as S.Schema<GetAccuracyMetricsRequest>,
+  output: __S(140) as any as S.Schema<GetAccuracyMetricsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3456,8 +2812,8 @@ export const listDatasetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetGroupsRequest,
-  output: ListDatasetGroupsResponse,
+  input: __S(141) as any as S.Schema<ListDatasetGroupsRequest>,
+  output: __S(144) as any as S.Schema<ListDatasetGroupsResponse>,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3488,8 +2844,8 @@ export const listDatasetImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetImportJobsRequest,
-  output: ListDatasetImportJobsResponse,
+  input: __S(147) as any as S.Schema<ListDatasetImportJobsRequest>,
+  output: __S(150) as any as S.Schema<ListDatasetImportJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3515,8 +2871,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetsRequest,
-  output: ListDatasetsResponse,
+  input: __S(151) as any as S.Schema<ListDatasetsRequest>,
+  output: __S(154) as any as S.Schema<ListDatasetsResponse>,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3548,8 +2904,8 @@ export const listExplainabilities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExplainabilitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExplainabilitiesRequest,
-  output: ListExplainabilitiesResponse,
+  input: __S(155) as any as S.Schema<ListExplainabilitiesRequest>,
+  output: __S(158) as any as S.Schema<ListExplainabilitiesResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3580,8 +2936,8 @@ export const listExplainabilityExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExplainabilityExportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExplainabilityExportsRequest,
-  output: ListExplainabilityExportsResponse,
+  input: __S(159) as any as S.Schema<ListExplainabilityExportsRequest>,
+  output: __S(162) as any as S.Schema<ListExplainabilityExportsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3611,8 +2967,8 @@ export const listForecastExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ForecastExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListForecastExportJobsRequest,
-  output: ListForecastExportJobsResponse,
+  input: __S(163) as any as S.Schema<ListForecastExportJobsRequest>,
+  output: __S(166) as any as S.Schema<ListForecastExportJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3640,8 +2996,8 @@ export const listForecasts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ForecastSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListForecastsRequest,
-  output: ListForecastsResponse,
+  input: __S(167) as any as S.Schema<ListForecastsRequest>,
+  output: __S(170) as any as S.Schema<ListForecastsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3673,8 +3029,8 @@ export const listMonitorEvaluations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PredictorMonitorEvaluation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMonitorEvaluationsRequest,
-  output: ListMonitorEvaluationsResponse,
+  input: __S(171) as any as S.Schema<ListMonitorEvaluationsRequest>,
+  output: __S(178) as any as S.Schema<ListMonitorEvaluationsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3699,8 +3055,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMonitorsRequest,
-  output: ListMonitorsResponse,
+  input: __S(179) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(182) as any as S.Schema<ListMonitorsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3731,8 +3087,8 @@ export const listPredictorBacktestExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PredictorBacktestExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPredictorBacktestExportJobsRequest,
-  output: ListPredictorBacktestExportJobsResponse,
+  input: __S(183) as any as S.Schema<ListPredictorBacktestExportJobsRequest>,
+  output: __S(186) as any as S.Schema<ListPredictorBacktestExportJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3761,8 +3117,8 @@ export const listPredictors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PredictorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPredictorsRequest,
-  output: ListPredictorsResponse,
+  input: __S(187) as any as S.Schema<ListPredictorsRequest>,
+  output: __S(190) as any as S.Schema<ListPredictorsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3788,8 +3144,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(191) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(192) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3810,8 +3166,8 @@ export const listWhatIfAnalyses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WhatIfAnalysisSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWhatIfAnalysesRequest,
-  output: ListWhatIfAnalysesResponse,
+  input: __S(193) as any as S.Schema<ListWhatIfAnalysesRequest>,
+  output: __S(196) as any as S.Schema<ListWhatIfAnalysesResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3838,8 +3194,8 @@ export const listWhatIfForecastExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WhatIfForecastExportSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWhatIfForecastExportsRequest,
-  output: ListWhatIfForecastExportsResponse,
+  input: __S(197) as any as S.Schema<ListWhatIfForecastExportsRequest>,
+  output: __S(200) as any as S.Schema<ListWhatIfForecastExportsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3866,8 +3222,8 @@ export const listWhatIfForecasts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   WhatIfForecastSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWhatIfForecastsRequest,
-  output: ListWhatIfForecastsResponse,
+  input: __S(201) as any as S.Schema<ListWhatIfForecastsRequest>,
+  output: __S(204) as any as S.Schema<ListWhatIfForecastsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3895,8 +3251,8 @@ export const resumeResource: API.OperationMethod<
   ResumeResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeResourceRequest,
-  output: ResumeResourceResponse,
+  input: __S(205) as any as S.Schema<ResumeResourceRequest>,
+  output: __S(72) as any as S.Schema<ResumeResourceResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -3943,8 +3299,8 @@ export const stopResource: API.OperationMethod<
   StopResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopResourceRequest,
-  output: StopResourceResponse,
+  input: __S(206) as any as S.Schema<StopResourceRequest>,
+  output: __S(72) as any as S.Schema<StopResourceResponse>,
   errors: [InvalidInputException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3968,8 +3324,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(207) as any as S.Schema<TagResourceRequest>,
+  output: __S(72) as any as S.Schema<TagResourceResponse>,
   errors: [InvalidInputException, LimitExceededException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3986,8 +3342,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(209) as any as S.Schema<UntagResourceRequest>,
+  output: __S(72) as any as S.Schema<UntagResourceResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4012,8 +3368,8 @@ export const updateDatasetGroup: API.OperationMethod<
   UpdateDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetGroupRequest,
-  output: UpdateDatasetGroupResponse,
+  input: __S(210) as any as S.Schema<UpdateDatasetGroupRequest>,
+  output: __S(72) as any as S.Schema<UpdateDatasetGroupResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4029,24 +3385,24 @@ function __c0(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.String, Transformations: Transformations }),
+        S.Struct({ AttributeName: S.String, Transformations: __S(1) }),
       ).annotate({ identifier: "AttributeConfig" });
     case 3:
-      return S.Array(AttributeConfig);
+      return S.Array(__S(2));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ Values.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Configuration: S.optional(Configuration) }),
+        S.Struct({ Name: S.String, Configuration: S.optional(__S(4)) }),
       ).annotate({ identifier: "AdditionalDataset" });
     case 6:
-      return S.Array(AdditionalDataset);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           DatasetGroupArn: S.String,
-          AttributeConfigs: S.optional(AttributeConfigs),
-          AdditionalDatasets: S.optional(AdditionalDatasets),
+          AttributeConfigs: S.optional(__S(3)),
+          AdditionalDatasets: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "DataConfig" });
   }
@@ -4062,7 +3418,7 @@ function __c1(j: number): any {
         identifier: "Tag",
       });
     case 2:
-      return S.Array(Tag);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() => S.Struct({ MonitorName: S.String })).annotate({
         identifier: "MonitorConfig",
@@ -4070,9 +3426,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Month: S.optional(Month),
+          Month: S.optional(S.String),
           DayOfMonth: S.optional(S.Number),
-          DayOfWeek: S.optional(DayOfWeek),
+          DayOfWeek: S.optional(S.String),
           Hour: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TimeAlignmentBoundary" });
@@ -4081,17 +3437,17 @@ function __c1(j: number): any {
         S.Struct({
           PredictorName: S.String,
           ForecastHorizon: S.optional(S.Number),
-          ForecastTypes: S.optional(ForecastTypes),
-          ForecastDimensions: S.optional(ForecastDimensions),
+          ForecastTypes: S.optional(__S(0)),
+          ForecastDimensions: S.optional(__S(0)),
           ForecastFrequency: S.optional(S.String),
-          DataConfig: S.optional(DataConfig),
-          EncryptionConfig: S.optional(EncryptionConfig),
+          DataConfig: S.optional(__S(7)),
+          EncryptionConfig: S.optional(__S(8)),
           ReferencePredictorArn: S.optional(S.String),
-          OptimizationMetric: S.optional(OptimizationMetric),
+          OptimizationMetric: S.optional(S.String),
           ExplainPredictor: S.optional(S.Boolean),
-          Tags: S.optional(Tags),
-          MonitorConfig: S.optional(MonitorConfig),
-          TimeAlignmentBoundary: S.optional(TimeAlignmentBoundary),
+          Tags: S.optional(__S(10)),
+          MonitorConfig: S.optional(__S(11)),
+          TimeAlignmentBoundary: S.optional(__S(12)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAutoPredictorRequest",
@@ -4102,28 +3458,28 @@ function __c1(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.optional(S.String), AttributeType: S.optional(AttributeType) }),
+        S.Struct({ AttributeName: S.optional(S.String), AttributeType: S.optional(S.String) }),
       ).annotate({ identifier: "SchemaAttribute" });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SchemaAttribute);
+      return S.Array(__S(15));
     case 1:
-      return S.suspend(() => S.Struct({ Attributes: S.optional(SchemaAttributes) })).annotate({
+      return S.suspend(() => S.Struct({ Attributes: S.optional(__S(16)) })).annotate({
         identifier: "Schema",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           DatasetName: S.String,
-          Domain: Domain,
-          DatasetType: DatasetType,
+          Domain: S.String,
+          DatasetType: S.String,
           DataFrequency: S.optional(S.String),
-          Schema: Schema,
-          EncryptionConfig: S.optional(EncryptionConfig),
-          Tags: S.optional(Tags),
+          Schema: __S(17),
+          EncryptionConfig: S.optional(__S(8)),
+          Tags: S.optional(__S(10)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDatasetRequest" });
     case 3:
@@ -4134,9 +3490,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DatasetGroupName: S.String,
-          Domain: Domain,
-          DatasetArns: S.optional(ArnList),
-          Tags: S.optional(Tags),
+          Domain: S.String,
+          DatasetArns: S.optional(__S(0)),
+          Tags: S.optional(__S(10)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDatasetGroupRequest",
@@ -4150,7 +3506,7 @@ function __c2(j: number): any {
         S.Struct({ Path: S.String, RoleArn: S.String, KMSKeyArn: S.optional(S.String) }),
       ).annotate({ identifier: "S3Config" });
     case 7:
-      return S.suspend(() => S.Struct({ S3Config: S3Config })).annotate({
+      return S.suspend(() => S.Struct({ S3Config: __S(22) })).annotate({
         identifier: "DataSource",
       });
   }
@@ -4162,14 +3518,14 @@ function __c3(j: number): any {
         S.Struct({
           DatasetImportJobName: S.String,
           DatasetArn: S.String,
-          DataSource: DataSource,
+          DataSource: __S(23),
           TimestampFormat: S.optional(S.String),
           TimeZone: S.optional(S.String),
           UseGeolocationForTimeZone: S.optional(S.Boolean),
           GeolocationFormat: S.optional(S.String),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(10)),
           Format: S.optional(S.String),
-          ImportMode: S.optional(ImportMode),
+          ImportMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDatasetImportJobRequest",
@@ -4181,8 +3537,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TimeSeriesGranularity: TimeSeriesGranularity,
-          TimePointGranularity: TimePointGranularity,
+          TimeSeriesGranularity: S.String,
+          TimePointGranularity: S.String,
         }),
       ).annotate({ identifier: "ExplainabilityConfig" });
     case 3:
@@ -4190,13 +3546,13 @@ function __c3(j: number): any {
         S.Struct({
           ExplainabilityName: S.String,
           ResourceArn: S.String,
-          ExplainabilityConfig: ExplainabilityConfig,
-          DataSource: S.optional(DataSource),
-          Schema: S.optional(Schema),
+          ExplainabilityConfig: __S(26),
+          DataSource: S.optional(__S(23)),
+          Schema: S.optional(__S(17)),
           EnableVisualization: S.optional(S.Boolean),
           StartDateTime: S.optional(S.String),
           EndDateTime: S.optional(S.String),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(10)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateExplainabilityRequest",
@@ -4206,7 +3562,7 @@ function __c3(j: number): any {
         identifier: "CreateExplainabilityResponse",
       });
     case 5:
-      return S.suspend(() => S.Struct({ S3Config: S3Config })).annotate({
+      return S.suspend(() => S.Struct({ S3Config: __S(22) })).annotate({
         identifier: "DataDestination",
       });
     case 6:
@@ -4214,8 +3570,8 @@ function __c3(j: number): any {
         S.Struct({
           ExplainabilityExportName: S.String,
           ExplainabilityArn: S.String,
-          Destination: DataDestination,
-          Tags: S.optional(Tags),
+          Destination: __S(29),
+          Tags: S.optional(__S(10)),
           Format: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4232,23 +3588,23 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          DataSource: S.optional(DataSource),
-          Schema: S.optional(Schema),
+          DataSource: S.optional(__S(23)),
+          Schema: S.optional(__S(17)),
           Format: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeSeriesIdentifiers" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ TimeSeriesIdentifiers: S.optional(TimeSeriesIdentifiers) }),
-      ).annotate({ identifier: "TimeSeriesSelector" });
+      return S.suspend(() => S.Struct({ TimeSeriesIdentifiers: S.optional(__S(32)) })).annotate({
+        identifier: "TimeSeriesSelector",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ForecastName: S.String,
           PredictorArn: S.String,
-          ForecastTypes: S.optional(ForecastTypes),
-          Tags: S.optional(Tags),
-          TimeSeriesSelector: S.optional(TimeSeriesSelector),
+          ForecastTypes: S.optional(__S(0)),
+          Tags: S.optional(__S(10)),
+          TimeSeriesSelector: S.optional(__S(33)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateForecastRequest" });
     case 3:
@@ -4260,8 +3616,8 @@ function __c4(j: number): any {
         S.Struct({
           ForecastExportJobName: S.String,
           ForecastArn: S.String,
-          Destination: DataDestination,
-          Tags: S.optional(Tags),
+          Destination: __S(29),
+          Tags: S.optional(__S(10)),
           Format: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4273,7 +3629,7 @@ function __c4(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ MonitorName: S.String, ResourceArn: S.String, Tags: S.optional(Tags) }).pipe(
+        S.Struct({ MonitorName: S.String, ResourceArn: S.String, Tags: S.optional(__S(10)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateMonitorRequest" });
@@ -4293,32 +3649,32 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "EvaluationParameters" });
     case 1:
-      return S.suspend(() => S.Struct({ Name: S.String, Values: Values })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(0) })).annotate({
         identifier: "CategoricalParameterRange",
       });
     case 2:
-      return S.Array(CategoricalParameterRange);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           MaxValue: S.Number,
           MinValue: S.Number,
-          ScalingType: S.optional(ScalingType),
+          ScalingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContinuousParameterRange" });
     case 4:
-      return S.Array(ContinuousParameterRange);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CategoricalParameterRanges: S.optional(CategoricalParameterRanges),
-          ContinuousParameterRanges: S.optional(ContinuousParameterRanges),
-          IntegerParameterRanges: S.optional(IntegerParameterRanges),
+          CategoricalParameterRanges: S.optional(__S(42)),
+          ContinuousParameterRanges: S.optional(__S(44)),
+          IntegerParameterRanges: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "ParameterRanges" });
     case 6:
-      return S.suspend(() => S.Struct({ ParameterRanges: S.optional(ParameterRanges) })).annotate({
+      return S.suspend(() => S.Struct({ ParameterRanges: S.optional(__S(45)) })).annotate({
         identifier: "HyperParameterTuningJobConfig",
       });
     case 7:
@@ -4330,38 +3686,38 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SupplementaryFeature);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
           DatasetGroupArn: S.String,
-          SupplementaryFeatures: S.optional(SupplementaryFeatures),
+          SupplementaryFeatures: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "InputDataConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FeaturizationMethodName: FeaturizationMethodName,
-          FeaturizationMethodParameters: S.optional(FeaturizationMethodParameters),
+          FeaturizationMethodName: S.String,
+          FeaturizationMethodParameters: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "FeaturizationMethod" });
     case 3:
-      return S.Array(FeaturizationMethod);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.String,
-          FeaturizationPipeline: S.optional(FeaturizationPipeline),
+          FeaturizationPipeline: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "Featurization" });
     case 5:
-      return S.Array(Featurization);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ForecastFrequency: S.String,
-          ForecastDimensions: S.optional(ForecastDimensions),
-          Featurizations: S.optional(Featurizations),
+          ForecastDimensions: S.optional(__S(0)),
+          Featurizations: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "FeaturizationConfig" });
     case 7:
@@ -4370,18 +3726,18 @@ function __c6(j: number): any {
           PredictorName: S.String,
           AlgorithmArn: S.optional(S.String),
           ForecastHorizon: S.Number,
-          ForecastTypes: S.optional(ForecastTypes),
+          ForecastTypes: S.optional(__S(0)),
           PerformAutoML: S.optional(S.Boolean),
-          AutoMLOverrideStrategy: S.optional(AutoMLOverrideStrategy),
+          AutoMLOverrideStrategy: S.optional(S.String),
           PerformHPO: S.optional(S.Boolean),
-          TrainingParameters: S.optional(TrainingParameters),
-          EvaluationParameters: S.optional(EvaluationParameters),
-          HPOConfig: S.optional(HyperParameterTuningJobConfig),
-          InputDataConfig: InputDataConfig,
-          FeaturizationConfig: FeaturizationConfig,
-          EncryptionConfig: S.optional(EncryptionConfig),
-          Tags: S.optional(Tags),
-          OptimizationMetric: S.optional(OptimizationMetric),
+          TrainingParameters: S.optional(__S(1)),
+          EvaluationParameters: S.optional(__S(40)),
+          HPOConfig: S.optional(__S(46)),
+          InputDataConfig: __S(49),
+          FeaturizationConfig: __S(54),
+          EncryptionConfig: S.optional(__S(8)),
+          Tags: S.optional(__S(10)),
+          OptimizationMetric: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreatePredictorRequest" });
   }
@@ -4397,8 +3753,8 @@ function __c7(j: number): any {
         S.Struct({
           PredictorBacktestExportJobName: S.String,
           PredictorArn: S.String,
-          Destination: DataDestination,
-          Tags: S.optional(Tags),
+          Destination: __S(29),
+          Tags: S.optional(__S(10)),
           Format: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4415,8 +3771,8 @@ function __c7(j: number): any {
         S.Struct({
           WhatIfAnalysisName: S.String,
           ForecastArn: S.String,
-          TimeSeriesSelector: S.optional(TimeSeriesSelector),
-          Tags: S.optional(Tags),
+          TimeSeriesSelector: S.optional(__S(33)),
+          Tags: S.optional(__S(10)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWhatIfAnalysisRequest",
@@ -4427,14 +3783,14 @@ function __c7(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.String, Operation: Operation, Value: S.Number }),
+        S.Struct({ AttributeName: S.String, Operation: S.String, Value: S.Number }),
       ).annotate({ identifier: "Action" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.String, AttributeValue: S.String, Condition: Condition }),
+        S.Struct({ AttributeName: S.String, AttributeValue: S.String, Condition: S.String }),
       ).annotate({ identifier: "TimeSeriesCondition" });
     case 7:
-      return S.Array(TimeSeriesCondition);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -4442,17 +3798,17 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(Action),
-          TimeSeriesConditions: S.optional(TimeSeriesConditions),
+          Action: S.optional(__S(61)),
+          TimeSeriesConditions: S.optional(__S(63)),
         }),
       ).annotate({ identifier: "TimeSeriesTransformation" });
     case 1:
-      return S.Array(TimeSeriesTransformation);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          S3Config: S3Config,
-          Schema: Schema,
+          S3Config: __S(22),
+          Schema: __S(17),
           Format: S.optional(S.String),
           TimestampFormat: S.optional(S.String),
         }),
@@ -4464,9 +3820,9 @@ function __c8(j: number): any {
         S.Struct({
           WhatIfForecastName: S.String,
           WhatIfAnalysisArn: S.String,
-          TimeSeriesTransformations: S.optional(TimeSeriesTransformations),
-          TimeSeriesReplacementsDataSource: S.optional(TimeSeriesReplacementsDataSource),
-          Tags: S.optional(Tags),
+          TimeSeriesTransformations: S.optional(__S(65)),
+          TimeSeriesReplacementsDataSource: S.optional(__S(66)),
+          Tags: S.optional(__S(10)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateWhatIfForecastRequest",
@@ -4479,9 +3835,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WhatIfForecastExportName: S.String,
-          WhatIfForecastArns: WhatIfForecastArnListForExport,
-          Destination: DataDestination,
-          Tags: S.optional(Tags),
+          WhatIfForecastArns: __S(0),
+          Destination: __S(29),
+          Tags: S.optional(__S(10)),
           Format: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4629,7 +3985,7 @@ function __c11(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), State: S.optional(State) }),
+        S.Struct({ Arn: S.optional(S.String), State: S.optional(S.String) }),
       ).annotate({
         identifier: "ReferencePredictorSummary",
       });
@@ -4647,22 +4003,22 @@ function __c11(j: number): any {
           PredictorArn: S.optional(S.String),
           PredictorName: S.optional(S.String),
           ForecastHorizon: S.optional(S.Number),
-          ForecastTypes: S.optional(ForecastTypes),
+          ForecastTypes: S.optional(__S(0)),
           ForecastFrequency: S.optional(S.String),
-          ForecastDimensions: S.optional(ForecastDimensions),
-          DatasetImportJobArns: S.optional(ArnList),
-          DataConfig: S.optional(DataConfig),
-          EncryptionConfig: S.optional(EncryptionConfig),
-          ReferencePredictorSummary: S.optional(ReferencePredictorSummary),
+          ForecastDimensions: S.optional(__S(0)),
+          DatasetImportJobArns: S.optional(__S(0)),
+          DataConfig: S.optional(__S(7)),
+          EncryptionConfig: S.optional(__S(8)),
+          ReferencePredictorSummary: S.optional(__S(89)),
           EstimatedTimeRemainingInMinutes: S.optional(S.Number),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          OptimizationMetric: S.optional(OptimizationMetric),
-          ExplainabilityInfo: S.optional(ExplainabilityInfo),
-          MonitorInfo: S.optional(MonitorInfo),
-          TimeAlignmentBoundary: S.optional(TimeAlignmentBoundary),
+          OptimizationMetric: S.optional(S.String),
+          ExplainabilityInfo: S.optional(__S(90)),
+          MonitorInfo: S.optional(__S(91)),
+          TimeAlignmentBoundary: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "DescribeAutoPredictorResponse",
@@ -4678,11 +4034,11 @@ function __c11(j: number): any {
         S.Struct({
           DatasetArn: S.optional(S.String),
           DatasetName: S.optional(S.String),
-          Domain: S.optional(Domain),
-          DatasetType: S.optional(DatasetType),
+          Domain: S.optional(S.String),
+          DatasetType: S.optional(S.String),
           DataFrequency: S.optional(S.String),
-          Schema: S.optional(Schema),
-          EncryptionConfig: S.optional(EncryptionConfig),
+          Schema: S.optional(__S(17)),
+          EncryptionConfig: S.optional(__S(8)),
           Status: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4705,8 +4061,8 @@ function __c12(j: number): any {
         S.Struct({
           DatasetGroupName: S.optional(S.String),
           DatasetGroupArn: S.optional(S.String),
-          DatasetArns: S.optional(ArnList),
-          Domain: S.optional(Domain),
+          DatasetArns: S.optional(__S(0)),
+          Domain: S.optional(S.String),
           Status: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4740,7 +4096,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Statistics" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ Statistics.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(98).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4751,16 +4107,16 @@ function __c12(j: number): any {
           TimeZone: S.optional(S.String),
           UseGeolocationForTimeZone: S.optional(S.Boolean),
           GeolocationFormat: S.optional(S.String),
-          DataSource: S.optional(DataSource),
+          DataSource: S.optional(__S(23)),
           EstimatedTimeRemainingInMinutes: S.optional(S.Number),
-          FieldStatistics: S.optional(FieldStatistics),
+          FieldStatistics: S.optional(__S(99)),
           DataSize: S.optional(S.Number),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Format: S.optional(S.String),
-          ImportMode: S.optional(ImportMode),
+          ImportMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeDatasetImportJobResponse",
@@ -4779,10 +4135,10 @@ function __c12(j: number): any {
           ExplainabilityArn: S.optional(S.String),
           ExplainabilityName: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          ExplainabilityConfig: S.optional(ExplainabilityConfig),
+          ExplainabilityConfig: S.optional(__S(26)),
           EnableVisualization: S.optional(S.Boolean),
-          DataSource: S.optional(DataSource),
-          Schema: S.optional(Schema),
+          DataSource: S.optional(__S(23)),
+          Schema: S.optional(__S(17)),
           StartDateTime: S.optional(S.String),
           EndDateTime: S.optional(S.String),
           EstimatedTimeRemainingInMinutes: S.optional(S.Number),
@@ -4812,7 +4168,7 @@ function __c13(j: number): any {
           ExplainabilityExportArn: S.optional(S.String),
           ExplainabilityExportName: S.optional(S.String),
           ExplainabilityArn: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Message: S.optional(S.String),
           Status: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4833,7 +4189,7 @@ function __c13(j: number): any {
         S.Struct({
           ForecastArn: S.optional(S.String),
           ForecastName: S.optional(S.String),
-          ForecastTypes: S.optional(ForecastTypes),
+          ForecastTypes: S.optional(__S(0)),
           PredictorArn: S.optional(S.String),
           DatasetGroupArn: S.optional(S.String),
           EstimatedTimeRemainingInMinutes: S.optional(S.Number),
@@ -4841,7 +4197,7 @@ function __c13(j: number): any {
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TimeSeriesSelector: S.optional(TimeSeriesSelector),
+          TimeSeriesSelector: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "DescribeForecastResponse" });
     case 3:
@@ -4858,7 +4214,7 @@ function __c13(j: number): any {
           ForecastExportJobArn: S.optional(S.String),
           ForecastExportJobName: S.optional(S.String),
           ForecastArn: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Message: S.optional(S.String),
           Status: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4879,19 +4235,19 @@ function __c13(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.Number) }),
       ).annotate({ identifier: "BaselineMetric" });
     case 7:
-      return S.Array(BaselineMetric);
+      return S.Array(__S(110));
   }
 }
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ BaselineMetrics: S.optional(BaselineMetrics) })).annotate({
+      return S.suspend(() => S.Struct({ BaselineMetrics: S.optional(__S(111)) })).annotate({
         identifier: "PredictorBaseline",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ PredictorBaseline: S.optional(PredictorBaseline) }),
-      ).annotate({ identifier: "Baseline" });
+      return S.suspend(() => S.Struct({ PredictorBaseline: S.optional(__S(112)) })).annotate({
+        identifier: "Baseline",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4901,7 +4257,7 @@ function __c14(j: number): any {
           Status: S.optional(S.String),
           LastEvaluationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastEvaluationState: S.optional(S.String),
-          Baseline: S.optional(Baseline),
+          Baseline: S.optional(__S(113)),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4924,24 +4280,22 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "TestWindowSummary" });
     case 5:
-      return S.Array(TestWindowSummary);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
           AlgorithmArn: S.optional(S.String),
-          TestWindows: S.optional(TestWindowDetails),
+          TestWindows: S.optional(__S(117)),
         }),
       ).annotate({ identifier: "PredictorExecution" });
     case 7:
-      return S.Array(PredictorExecution);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ PredictorExecutions: S.optional(PredictorExecutions) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ PredictorExecutions: S.optional(__S(119)) })).annotate({
         identifier: "PredictorExecutionDetails",
       });
     case 1:
@@ -4950,27 +4304,27 @@ function __c15(j: number): any {
           PredictorArn: S.optional(S.String),
           PredictorName: S.optional(S.String),
           AlgorithmArn: S.optional(S.String),
-          AutoMLAlgorithmArns: S.optional(ArnList),
+          AutoMLAlgorithmArns: S.optional(__S(0)),
           ForecastHorizon: S.optional(S.Number),
-          ForecastTypes: S.optional(ForecastTypes),
+          ForecastTypes: S.optional(__S(0)),
           PerformAutoML: S.optional(S.Boolean),
-          AutoMLOverrideStrategy: S.optional(AutoMLOverrideStrategy),
+          AutoMLOverrideStrategy: S.optional(S.String),
           PerformHPO: S.optional(S.Boolean),
-          TrainingParameters: S.optional(TrainingParameters),
-          EvaluationParameters: S.optional(EvaluationParameters),
-          HPOConfig: S.optional(HyperParameterTuningJobConfig),
-          InputDataConfig: S.optional(InputDataConfig),
-          FeaturizationConfig: S.optional(FeaturizationConfig),
-          EncryptionConfig: S.optional(EncryptionConfig),
-          PredictorExecutionDetails: S.optional(PredictorExecutionDetails),
+          TrainingParameters: S.optional(__S(1)),
+          EvaluationParameters: S.optional(__S(40)),
+          HPOConfig: S.optional(__S(46)),
+          InputDataConfig: S.optional(__S(49)),
+          FeaturizationConfig: S.optional(__S(54)),
+          EncryptionConfig: S.optional(__S(8)),
+          PredictorExecutionDetails: S.optional(__S(120)),
           EstimatedTimeRemainingInMinutes: S.optional(S.Number),
           IsAutoPredictor: S.optional(S.Boolean),
-          DatasetImportJobArns: S.optional(ArnList),
+          DatasetImportJobArns: S.optional(__S(0)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          OptimizationMetric: S.optional(OptimizationMetric),
+          OptimizationMetric: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribePredictorResponse",
@@ -4989,7 +4343,7 @@ function __c15(j: number): any {
           PredictorBacktestExportJobArn: S.optional(S.String),
           PredictorBacktestExportJobName: S.optional(S.String),
           PredictorArn: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Message: S.optional(S.String),
           Status: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5018,7 +4372,7 @@ function __c15(j: number): any {
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TimeSeriesSelector: S.optional(TimeSeriesSelector),
+          TimeSeriesSelector: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "DescribeWhatIfAnalysisResponse",
@@ -5042,9 +4396,9 @@ function __c15(j: number): any {
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TimeSeriesTransformations: S.optional(TimeSeriesTransformations),
-          TimeSeriesReplacementsDataSource: S.optional(TimeSeriesReplacementsDataSource),
-          ForecastTypes: S.optional(ForecastTypes),
+          TimeSeriesTransformations: S.optional(__S(65)),
+          TimeSeriesReplacementsDataSource: S.optional(__S(66)),
+          ForecastTypes: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "DescribeWhatIfForecastResponse",
@@ -5066,8 +4420,8 @@ function __c16(j: number): any {
         S.Struct({
           WhatIfForecastExportArn: S.optional(S.String),
           WhatIfForecastExportName: S.optional(S.String),
-          WhatIfForecastArns: S.optional(LongArnList),
-          Destination: S.optional(DataDestination),
+          WhatIfForecastArns: S.optional(__S(0)),
+          Destination: S.optional(__S(29)),
           Message: S.optional(S.String),
           Status: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5091,7 +4445,7 @@ function __c16(j: number): any {
         S.Struct({ Quantile: S.optional(S.Number), LossValue: S.optional(S.Number) }),
       ).annotate({ identifier: "WeightedQuantileLoss" });
     case 4:
-      return S.Array(WeightedQuantileLoss);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5103,13 +4457,13 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ErrorMetric" });
     case 6:
-      return S.Array(ErrorMetric);
+      return S.Array(__S(133));
     case 7:
       return S.suspend(() =>
         S.Struct({
           RMSE: S.optional(S.Number),
-          WeightedQuantileLosses: S.optional(WeightedQuantileLosses),
-          ErrorMetrics: S.optional(ErrorMetrics),
+          WeightedQuantileLosses: S.optional(__S(132)),
+          ErrorMetrics: S.optional(__S(134)),
           AverageWeightedQuantileLoss: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Metrics" });
@@ -5123,25 +4477,25 @@ function __c17(j: number): any {
           TestWindowStart: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TestWindowEnd: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ItemCount: S.optional(S.Number),
-          EvaluationType: S.optional(EvaluationType),
-          Metrics: S.optional(Metrics),
+          EvaluationType: S.optional(S.String),
+          Metrics: S.optional(__S(135)),
         }),
       ).annotate({ identifier: "WindowSummary" });
     case 1:
-      return S.Array(WindowSummary);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
-        S.Struct({ AlgorithmArn: S.optional(S.String), TestWindows: S.optional(TestWindows) }),
+        S.Struct({ AlgorithmArn: S.optional(S.String), TestWindows: S.optional(__S(137)) }),
       ).annotate({ identifier: "EvaluationResult" });
     case 3:
-      return S.Array(EvaluationResult);
+      return S.Array(__S(138));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          PredictorEvaluationResults: S.optional(PredictorEvaluationResults),
+          PredictorEvaluationResults: S.optional(__S(139)),
           IsAutoPredictor: S.optional(S.Boolean),
-          AutoMLOverrideStrategy: S.optional(AutoMLOverrideStrategy),
-          OptimizationMetric: S.optional(OptimizationMetric),
+          AutoMLOverrideStrategy: S.optional(S.String),
+          OptimizationMetric: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetAccuracyMetricsResponse",
@@ -5162,29 +4516,29 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "DatasetGroupSummary" });
     case 7:
-      return S.Array(DatasetGroupSummary);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DatasetGroups: S.optional(DatasetGroups), NextToken: S.optional(S.String) }),
+        S.Struct({ DatasetGroups: S.optional(__S(143)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDatasetGroupsResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Key: S.String, Value: S.String, Condition: FilterConditionString }),
+        S.Struct({ Key: S.String, Value: S.String, Condition: S.String }),
       ).annotate({ identifier: "Filter" });
     case 2:
-      return S.Array(Filter);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListDatasetImportJobsRequest",
@@ -5194,20 +4548,20 @@ function __c18(j: number): any {
         S.Struct({
           DatasetImportJobArn: S.optional(S.String),
           DatasetImportJobName: S.optional(S.String),
-          DataSource: S.optional(DataSource),
+          DataSource: S.optional(__S(23)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ImportMode: S.optional(ImportMode),
+          ImportMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetImportJobSummary" });
     case 5:
-      return S.Array(DatasetImportJobSummary);
+      return S.Array(__S(148));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DatasetImportJobs: S.optional(DatasetImportJobs),
+          DatasetImportJobs: S.optional(__S(149)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5228,24 +4582,24 @@ function __c19(j: number): any {
         S.Struct({
           DatasetArn: S.optional(S.String),
           DatasetName: S.optional(S.String),
-          DatasetType: S.optional(DatasetType),
-          Domain: S.optional(Domain),
+          DatasetType: S.optional(S.String),
+          Domain: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "DatasetSummary" });
     case 1:
-      return S.Array(DatasetSummary);
+      return S.Array(__S(152));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Datasets: S.optional(Datasets), NextToken: S.optional(S.String) }),
+        S.Struct({ Datasets: S.optional(__S(153)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatasetsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListExplainabilitiesRequest",
@@ -5256,7 +4610,7 @@ function __c19(j: number): any {
           ExplainabilityArn: S.optional(S.String),
           ExplainabilityName: S.optional(S.String),
           ResourceArn: S.optional(S.String),
-          ExplainabilityConfig: S.optional(ExplainabilityConfig),
+          ExplainabilityConfig: S.optional(__S(26)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5264,11 +4618,11 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ExplainabilitySummary" });
     case 5:
-      return S.Array(ExplainabilitySummary);
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Explainabilities: S.optional(Explainabilities),
+          Explainabilities: S.optional(__S(157)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5279,7 +4633,7 @@ function __c19(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListExplainabilityExportsRequest",
@@ -5293,7 +4647,7 @@ function __c20(j: number): any {
         S.Struct({
           ExplainabilityExportArn: S.optional(S.String),
           ExplainabilityExportName: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5303,11 +4657,11 @@ function __c20(j: number): any {
         identifier: "ExplainabilityExportSummary",
       });
     case 1:
-      return S.Array(ExplainabilityExportSummary);
+      return S.Array(__S(160));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ExplainabilityExports: S.optional(ExplainabilityExports),
+          ExplainabilityExports: S.optional(__S(161)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5318,7 +4672,7 @@ function __c20(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListForecastExportJobsRequest",
@@ -5328,7 +4682,7 @@ function __c20(j: number): any {
         S.Struct({
           ForecastExportJobArn: S.optional(S.String),
           ForecastExportJobName: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5336,11 +4690,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ForecastExportJobSummary" });
     case 5:
-      return S.Array(ForecastExportJobSummary);
+      return S.Array(__S(164));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ForecastExportJobs: S.optional(ForecastExportJobs),
+          ForecastExportJobs: S.optional(__S(165)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5351,7 +4705,7 @@ function __c20(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListForecastsRequest" });
   }
@@ -5373,10 +4727,10 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ForecastSummary" });
     case 1:
-      return S.Array(ForecastSummary);
+      return S.Array(__S(168));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Forecasts: S.optional(Forecasts), NextToken: S.optional(S.String) }),
+        S.Struct({ Forecasts: S.optional(__S(169)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListForecastsResponse" });
     case 3:
       return S.suspend(() =>
@@ -5384,7 +4738,7 @@ function __c21(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           MonitorArn: S.String,
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListMonitorEvaluationsRequest",
@@ -5409,7 +4763,7 @@ function __c21(j: number): any {
         S.Struct({ MetricName: S.optional(S.String), MetricValue: S.optional(S.Number) }),
       ).annotate({ identifier: "MetricResult" });
     case 7:
-      return S.Array(MetricResult);
+      return S.Array(__S(174));
   }
 }
 function __c22(j: number): any {
@@ -5423,9 +4777,9 @@ function __c22(j: number): any {
           EvaluationState: S.optional(S.String),
           WindowStartDatetime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           WindowEndDatetime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          PredictorEvent: S.optional(PredictorEvent),
-          MonitorDataSource: S.optional(MonitorDataSource),
-          MetricResults: S.optional(MetricResults),
+          PredictorEvent: S.optional(__S(172)),
+          MonitorDataSource: S.optional(__S(173)),
+          MetricResults: S.optional(__S(175)),
           NumItemsEvaluated: S.optional(S.Number),
           Message: S.optional(S.String),
         }),
@@ -5433,12 +4787,12 @@ function __c22(j: number): any {
         identifier: "PredictorMonitorEvaluation",
       });
     case 1:
-      return S.Array(PredictorMonitorEvaluation);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          PredictorMonitorEvaluations: S.optional(PredictorMonitorEvaluations),
+          PredictorMonitorEvaluations: S.optional(__S(177)),
         }),
       ).annotate({
         identifier: "ListMonitorEvaluationsResponse",
@@ -5448,7 +4802,7 @@ function __c22(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListMonitorsRequest" });
     case 4:
@@ -5463,17 +4817,17 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "MonitorSummary" });
     case 5:
-      return S.Array(MonitorSummary);
+      return S.Array(__S(180));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Monitors: S.optional(Monitors), NextToken: S.optional(S.String) }),
+        S.Struct({ Monitors: S.optional(__S(181)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMonitorsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListPredictorBacktestExportJobsRequest",
@@ -5487,7 +4841,7 @@ function __c23(j: number): any {
         S.Struct({
           PredictorBacktestExportJobArn: S.optional(S.String),
           PredictorBacktestExportJobName: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5497,11 +4851,11 @@ function __c23(j: number): any {
         identifier: "PredictorBacktestExportJobSummary",
       });
     case 1:
-      return S.Array(PredictorBacktestExportJobSummary);
+      return S.Array(__S(184));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          PredictorBacktestExportJobs: S.optional(PredictorBacktestExportJobs),
+          PredictorBacktestExportJobs: S.optional(__S(185)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5512,7 +4866,7 @@ function __c23(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListPredictorsRequest" });
     case 4:
@@ -5522,7 +4876,7 @@ function __c23(j: number): any {
           PredictorName: S.optional(S.String),
           DatasetGroupArn: S.optional(S.String),
           IsAutoPredictor: S.optional(S.Boolean),
-          ReferencePredictorSummary: S.optional(ReferencePredictorSummary),
+          ReferencePredictorSummary: S.optional(__S(89)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5530,10 +4884,10 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "PredictorSummary" });
     case 5:
-      return S.Array(PredictorSummary);
+      return S.Array(__S(188));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Predictors: S.optional(Predictors), NextToken: S.optional(S.String) }),
+        S.Struct({ Predictors: S.optional(__S(189)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPredictorsResponse" });
     case 7:
       return S.suspend(() =>
@@ -5548,7 +4902,7 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(10)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 1:
@@ -5556,7 +4910,7 @@ function __c24(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListWhatIfAnalysesRequest",
@@ -5574,10 +4928,10 @@ function __c24(j: number): any {
         }),
       ).annotate({ identifier: "WhatIfAnalysisSummary" });
     case 3:
-      return S.Array(WhatIfAnalysisSummary);
+      return S.Array(__S(194));
     case 4:
       return S.suspend(() =>
-        S.Struct({ WhatIfAnalyses: S.optional(WhatIfAnalyses), NextToken: S.optional(S.String) }),
+        S.Struct({ WhatIfAnalyses: S.optional(__S(195)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWhatIfAnalysesResponse",
       });
@@ -5586,7 +4940,7 @@ function __c24(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListWhatIfForecastExportsRequest",
@@ -5595,9 +4949,9 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           WhatIfForecastExportArn: S.optional(S.String),
-          WhatIfForecastArns: S.optional(WhatIfForecastArnListForExport),
+          WhatIfForecastArns: S.optional(__S(0)),
           WhatIfForecastExportName: S.optional(S.String),
-          Destination: S.optional(DataDestination),
+          Destination: S.optional(__S(29)),
           Status: S.optional(S.String),
           Message: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5607,7 +4961,7 @@ function __c24(j: number): any {
         identifier: "WhatIfForecastExportSummary",
       });
     case 7:
-      return S.Array(WhatIfForecastExportSummary);
+      return S.Array(__S(198));
   }
 }
 function __c25(j: number): any {
@@ -5615,7 +4969,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          WhatIfForecastExports: S.optional(WhatIfForecastExports),
+          WhatIfForecastExports: S.optional(__S(199)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5626,7 +4980,7 @@ function __c25(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(Filters),
+          Filters: S.optional(__S(146)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListWhatIfForecastsRequest",
@@ -5644,10 +4998,10 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "WhatIfForecastSummary" });
     case 3:
-      return S.Array(WhatIfForecastSummary);
+      return S.Array(__S(202));
     case 4:
       return S.suspend(() =>
-        S.Struct({ WhatIfForecasts: S.optional(WhatIfForecasts), NextToken: S.optional(S.String) }),
+        S.Struct({ WhatIfForecasts: S.optional(__S(203)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListWhatIfForecastsResponse",
       });
@@ -5665,7 +5019,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "StopResourceRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: Tags }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(10) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -5677,17 +5031,80 @@ function __c26(j: number): any {
       return S.Array(SensitiveString);
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: TagKeys }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(208) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ DatasetGroupArn: S.String, DatasetArns: ArnList }).pipe(
+        S.Struct({ DatasetGroupArn: S.String, DatasetArns: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "UpdateDatasetGroupRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
   }
 }

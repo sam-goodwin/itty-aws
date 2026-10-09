@@ -7,6 +7,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -15,21 +17,9 @@ export interface ActivateTelephonyLineNewPhoneRequest {
   billingAccount: string;
   serviceName: string;
 }
-const ActivateTelephonyLineNewPhoneRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateTelephonyLineNewPhoneRequest>;
-
 export interface ActivateTelephonyLineNewPhoneResponse {}
-const ActivateTelephonyLineNewPhoneResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ActivateTelephonyLineNewPhoneResponse>;
-
 /** The blocking mode of line calls */
 export type TelephonyLineBlockingMode = "both" | "incoming" | "outgoing";
-const TelephonyLineBlockingMode = S.String;
-
 export interface BlockTelephonyLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -37,46 +27,20 @@ export interface BlockTelephonyLineRequest {
   /** The block mode : outgoing, incoming, both (default: both) */
   mode?: TelephonyLineBlockingMode | (string & {});
 }
-const BlockTelephonyLineRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BlockTelephonyLineRequest>;
-
 export interface BlockTelephonyLineResponse {}
-const BlockTelephonyLineResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BlockTelephonyLineResponse>;
-
 export interface CancelTelephonyLineConvertToNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const CancelTelephonyLineConvertToNumberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelTelephonyLineConvertToNumberRequest>;
-
 export interface CancelTelephonyLineConvertToNumberResponse {}
-const CancelTelephonyLineConvertToNumberResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyLineConvertToNumberResponse>;
-
 export interface CancelTelephonyNumberConvertToLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Name of the service */
   serviceName: string;
 }
-const CancelTelephonyNumberConvertToLineRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelTelephonyNumberConvertToLineRequest>;
-
 export interface CancelTelephonyNumberConvertToLineResponse {}
-const CancelTelephonyNumberConvertToLineResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyNumberConvertToLineResponse>;
-
 export interface CancelTelephonyPortabilityRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -85,79 +49,34 @@ export interface CancelTelephonyPortabilityRequest {
   /** The cancellation reason */
   reason?: string;
 }
-const CancelTelephonyPortabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelTelephonyPortabilityRequest>;
-
 export interface CancelTelephonyPortabilityResponse {}
-const CancelTelephonyPortabilityResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyPortabilityResponse>;
-
 export interface CancelTelephonyProcedureRequest {
   /** Procedure ID */
   id: number;
 }
-const CancelTelephonyProcedureRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CancelTelephonyProcedureRequest>;
-
 export interface CancelTelephonyProcedureResponse {}
-const CancelTelephonyProcedureResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyProcedureResponse>;
-
 export interface CancelTelephonyRsvaScheduledRateCodeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const CancelTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelTelephonyRsvaScheduledRateCodeRequest>;
-
 export interface CancelTelephonyRsvaScheduledRateCodeResponse {}
-const CancelTelephonyRsvaScheduledRateCodeResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyRsvaScheduledRateCodeResponse>;
-
 export interface CancelTelephonyServiceTerminationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const CancelTelephonyServiceTerminationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelTelephonyServiceTerminationRequest>;
-
 export interface CancelTelephonyServiceTerminationResponse {}
-const CancelTelephonyServiceTerminationResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyServiceTerminationResponse>;
-
 export interface CancelTelephonyTerminationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const CancelTelephonyTerminationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelTelephonyTerminationRequest>;
-
 export interface CancelTelephonyTerminationResponse {}
-const CancelTelephonyTerminationResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CancelTelephonyTerminationResponse>;
-
 export interface ConvertTelephonyLineToNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ConvertTelephonyLineToNumberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConvertTelephonyLineToNumberRequest>;
-
 /** Offer task actions */
 export type TelephonyOfferTaskActionEnum =
   | "convertToAlias"
@@ -168,16 +87,10 @@ export type TelephonyOfferTaskActionEnum =
   | "termination"
   | "updateFirmware"
   | "upgrade";
-const TelephonyOfferTaskActionEnum = S.String;
-
 /** Task status */
 export type TelephonyTaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo";
-const TelephonyTaskStatusEnum = S.String;
-
 /** Offer task types */
 export type TelephonyOfferTaskTypeEnum = "line" | "offer" | "option" | "phone";
-const TelephonyOfferTaskTypeEnum = S.String;
-
 /** Operation on a telephony offer */
 export interface TelephonyOfferTask {
   /** Actual action that will be executed */
@@ -190,8 +103,6 @@ export interface TelephonyOfferTask {
   /** Type of operation that will be executed */
   type?: TelephonyOfferTaskTypeEnum;
 }
-const TelephonyOfferTask = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TelephonyOfferTask>;
-
 export interface ConvertTelephonyNumberToLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -200,11 +111,6 @@ export interface ConvertTelephonyNumberToLineRequest {
   /** The future offer of the converted number */
   offer: string;
 }
-const ConvertTelephonyNumberToLineRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ConvertTelephonyNumberToLineRequest>;
-
 export interface CreateTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -215,11 +121,6 @@ export interface CreateTelephonyAbbreviatedNumberRequest {
   name: string;
   surname: string;
 }
-const CreateTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateTelephonyAbbreviatedNumberRequest>;
-
 /** Abbreviated number */
 export interface TelephonyAbbreviatedNumberGroup {
   /** The abbreviated number which must start with "7" and must have a length of 3 or 4 digits */
@@ -229,11 +130,6 @@ export interface TelephonyAbbreviatedNumberGroup {
   name?: string;
   surname?: string;
 }
-const TelephonyAbbreviatedNumberGroup = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<TelephonyAbbreviatedNumberGroup>;
-
 export interface CreateTelephonyAliasChangeContactRequest {
   /** Your line number */
   serviceName: string;
@@ -244,56 +140,23 @@ export interface CreateTelephonyAliasChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateTelephonyAliasChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateTelephonyAliasChangeContactRequest>;
-
 export type CreateTelephonyAliasChangeContactResponseBodyList = Array<number>;
-const CreateTelephonyAliasChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateTelephonyAliasChangeContactResponseBodyList>;
-
 export type CreateTelephonyAliasChangeContactResponse =
   CreateTelephonyAliasChangeContactResponseBodyList;
-const CreateTelephonyAliasChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateTelephonyAliasChangeContactResponse>;
-
 export interface CreateTelephonyBillingAccountSiteRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Billing account site (master billing account) */
   billingAccountSite: string;
 }
-const CreateTelephonyBillingAccountSiteRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateTelephonyBillingAccountSiteRequest>;
-
 export interface CreateTelephonyBillingAccountSiteResponse {}
-const CreateTelephonyBillingAccountSiteResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyBillingAccountSiteResponse>;
-
 export interface CreateTelephonyCanTransferSecurityDepositRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The destination billing account */
   billingAccountDestination: string;
 }
-const CreateTelephonyCanTransferSecurityDepositRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateTelephonyCanTransferSecurityDepositRequest>;
-
 export type CreateTelephonyCanTransferSecurityDepositResponse = boolean;
-const CreateTelephonyCanTransferSecurityDepositResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateTelephonyCanTransferSecurityDepositResponse>;
-
 export interface CreateTelephonyChangeContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -304,16 +167,8 @@ export interface CreateTelephonyChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateTelephonyChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateTelephonyChangeContactRequest>;
-
 export type CreateTelephonyChangeContactResponseBodyList = Array<number>;
 export type CreateTelephonyChangeContactResponse = CreateTelephonyChangeContactResponseBodyList;
-const CreateTelephonyChangeContactResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<CreateTelephonyChangeContactResponse>;
-
 export interface CreateTelephonyConferenceAnnounceUploadRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -321,11 +176,6 @@ export interface CreateTelephonyConferenceAnnounceUploadRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-const CreateTelephonyConferenceAnnounceUploadRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateTelephonyConferenceAnnounceUploadRequest>;
-
 /** Operation on a telephony service */
 export interface TelephonyTask {
   /** Action associated with the task */
@@ -339,8 +189,6 @@ export interface TelephonyTask {
   status?: TelephonyTaskStatusEnum;
   taskId?: number;
 }
-const TelephonyTask = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TelephonyTask>;
-
 export interface CreateTelephonyConferenceParticipantDeafRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -348,11 +196,6 @@ export interface CreateTelephonyConferenceParticipantDeafRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyConferenceParticipantDeafRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateTelephonyConferenceParticipantDeafRequest>;
-
 export interface CreateTelephonyConferenceParticipantEnergyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -362,11 +205,6 @@ export interface CreateTelephonyConferenceParticipantEnergyRequest {
   /** The value of energy level */
   value: number;
 }
-const CreateTelephonyConferenceParticipantEnergyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateTelephonyConferenceParticipantEnergyRequest>;
-
 export interface CreateTelephonyConferenceParticipantKickRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -374,11 +212,6 @@ export interface CreateTelephonyConferenceParticipantKickRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyConferenceParticipantKickRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateTelephonyConferenceParticipantKickRequest>;
-
 export interface CreateTelephonyConferenceParticipantUndeafRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -386,11 +219,6 @@ export interface CreateTelephonyConferenceParticipantUndeafRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyConferenceParticipantUndeafRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateTelephonyConferenceParticipantUndeafRequest>;
-
 export interface CreateTelephonyConferenceRoomRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -398,19 +226,10 @@ export interface CreateTelephonyConferenceRoomRequest {
   /** The room number (a random number will be generated if not specified) */
   roomNumber?: number;
 }
-const CreateTelephonyConferenceRoomRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateTelephonyConferenceRoomRequest>;
-
 /** Available language for your conference */
 export type TelephonyConferenceLanguageEnum = "de" | "en" | "es" | "fr" | "it";
-const TelephonyConferenceLanguageEnum = S.String;
-
 /** Conference report receiver */
 export type TelephonyConferenceReportStatusEnum = "customer" | "none" | "other";
-const TelephonyConferenceReportStatusEnum = S.String;
-
 /** Conference room */
 export interface TelephonyConferenceRoom {
   /** Whether announce file is played before entrance */
@@ -442,11 +261,6 @@ export interface TelephonyConferenceRoom {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-const TelephonyConferenceRoom = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TelephonyConferenceRoom>;
-
 export interface CreateTelephonyConferenceRoomParticipantDeafRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -456,11 +270,6 @@ export interface CreateTelephonyConferenceRoomParticipantDeafRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyConferenceRoomParticipantDeafRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateTelephonyConferenceRoomParticipantDeafRequest>;
-
 export interface CreateTelephonyConferenceRoomParticipantEnergyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -472,11 +281,6 @@ export interface CreateTelephonyConferenceRoomParticipantEnergyRequest {
   /** The value of energy level */
   value: number;
 }
-const CreateTelephonyConferenceRoomParticipantEnergyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateTelephonyConferenceRoomParticipantEnergyRequest>;
-
 export interface CreateTelephonyConferenceRoomParticipantKickRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -486,11 +290,6 @@ export interface CreateTelephonyConferenceRoomParticipantKickRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyConferenceRoomParticipantKickRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateTelephonyConferenceRoomParticipantKickRequest>;
-
 export interface CreateTelephonyConferenceRoomParticipantUndeafRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -500,15 +299,8 @@ export interface CreateTelephonyConferenceRoomParticipantUndeafRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyConferenceRoomParticipantUndeafRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateTelephonyConferenceRoomParticipantUndeafRequest>;
-
 /** Webaccess type for your conference */
 export type TelephonyConferenceWebAccessTypeEnum = "read" | "write";
-const TelephonyConferenceWebAccessTypeEnum = S.String;
-
 export interface CreateTelephonyConferenceRoomWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -518,11 +310,6 @@ export interface CreateTelephonyConferenceRoomWebAccessRequest {
   /** The type of the conference web access : read or write */
   type: TelephonyConferenceWebAccessTypeEnum | (string & {});
 }
-const CreateTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateTelephonyConferenceRoomWebAccessRequest>;
-
 /** List public web access of your conference */
 export interface TelephonyConferenceWebAccess {
   /** The id of the conference web access */
@@ -532,11 +319,6 @@ export interface TelephonyConferenceWebAccess {
   /** The URL of the conference web access */
   url?: string;
 }
-const TelephonyConferenceWebAccess = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TelephonyConferenceWebAccess>;
-
 export interface CreateTelephonyConferenceWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -544,11 +326,6 @@ export interface CreateTelephonyConferenceWebAccessRequest {
   /** The type of the conference web access : read or write */
   type: TelephonyConferenceWebAccessTypeEnum | (string & {});
 }
-const CreateTelephonyConferenceWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateTelephonyConferenceWebAccessRequest>;
-
 export interface CreateTelephonyDdiChangeDestinationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -556,15 +333,8 @@ export interface CreateTelephonyDdiChangeDestinationRequest {
   /** The destination */
   destination: string;
 }
-const CreateTelephonyDdiChangeDestinationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateTelephonyDdiChangeDestinationRequest>;
-
 /** Status of the agent */
 export type TelephonyOvhPabxHuntingAgentStatusEnum = "available" | "loggedOut" | "onBreak";
-const TelephonyOvhPabxHuntingAgentStatusEnum = S.String;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -582,15 +352,8 @@ export interface CreateTelephonyEasyHuntingHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime: number;
 }
-const CreateTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentRequest>;
-
 /** Type of the agent */
 export type TelephonyOvhPabxHuntingAgentTypeEnum = "external" | "internal";
-const TelephonyOvhPabxHuntingAgentTypeEnum = S.String;
-
 /** Calls agent */
 export interface TelephonyOvhPabxHuntingAgent {
   agentId?: number;
@@ -611,22 +374,12 @@ export interface TelephonyOvhPabxHuntingAgent {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime?: number;
 }
-const TelephonyOvhPabxHuntingAgent = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TelephonyOvhPabxHuntingAgent>;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest>;
-
 /** The web access for your cloudpabx */
 export interface TelephonyBannerAccess {
   /** The creation date of this access */
@@ -635,11 +388,6 @@ export interface TelephonyBannerAccess {
   /** The url of the web access */
   url?: string;
 }
-const TelephonyBannerAccess = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TelephonyBannerAccess>;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -650,11 +398,6 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest {
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-const CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -663,11 +406,6 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -676,11 +414,6 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -691,17 +424,10 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest {
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-const CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest>;
-
 /** Whispering mode */
 export type TelephonyOvhPabxWhisperingModeEnum =
   | "Whisper to agent only"
   | "Whisper to all participants";
-const TelephonyOvhPabxWhisperingModeEnum = S.String;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -714,11 +440,6 @@ export interface CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest>;
-
 /** expiration possibility */
 export type TelephonyTokenExpirationEnum =
   | "1 day"
@@ -726,8 +447,6 @@ export type TelephonyTokenExpirationEnum =
   | "30 days"
   | "5 minutes"
   | "unlimited";
-const TelephonyTokenExpirationEnum = S.String;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -736,17 +455,7 @@ export interface CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest>;
-
 export type CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse = string;
-const CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse>;
-
 export interface CreateTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -757,11 +466,6 @@ export interface CreateTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The queue where you want to add the agent */
   queueId: number;
 }
-const CreateTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentQueueRequest>;
-
 /** Agent assigned to a queue */
 export interface TelephonyOvhPabxHuntingAgentQueue {
   agentId?: number;
@@ -769,11 +473,6 @@ export interface TelephonyOvhPabxHuntingAgentQueue {
   position?: number;
   queueId?: number;
 }
-const TelephonyOvhPabxHuntingAgentQueue = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>;
-
 export interface CreateTelephonyEasyHuntingHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -785,11 +484,6 @@ export interface CreateTelephonyEasyHuntingHuntingCustomStatusRequest {
   /** The name of the status (Pause, Mission, etc...) */
   name: string;
 }
-const CreateTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingCustomStatusRequest>;
-
 /** Custom statuses of your callcenter agents */
 export interface TelephonyOvhPabxCustomStatus {
   /** The color (in hexadecimal) of the status that will be displayed on agent banner web application */
@@ -800,11 +494,6 @@ export interface TelephonyOvhPabxCustomStatus {
   /** The name of the status (Pause, Mission, etc...) */
   name?: string;
 }
-const TelephonyOvhPabxCustomStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<TelephonyOvhPabxCustomStatus>;
-
 export interface CreateTelephonyEasyHuntingHuntingEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -812,21 +501,9 @@ export interface CreateTelephonyEasyHuntingHuntingEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingEventTokenRequest>;
-
 export type CreateTelephonyEasyHuntingHuntingEventTokenResponse = string;
-const CreateTelephonyEasyHuntingHuntingEventTokenResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingEventTokenResponse>;
-
 /** Available actions for overflow and on closure */
 export type TelephonyOvhPabxQueueActionEnum = "playback" | "voicemail";
-const TelephonyOvhPabxQueueActionEnum = S.String;
-
 /** Digit keys allowed to be pressed to disable call record */
 export type TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum =
   | 0
@@ -839,12 +516,8 @@ export type TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum =
   | 7
   | 8
   | 9;
-const TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum = S.Number;
-
 /** Possible languages of the sound played to inform caller that he can disable call record */
 export type TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum = "english" | "french";
-const TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum = S.String;
-
 /** Calls dispatching startegy */
 export type TelephonyOvhPabxHuntingQueueStrategyEnum =
   | "cumulationByAgentOrder"
@@ -854,8 +527,6 @@ export type TelephonyOvhPabxHuntingQueueStrategyEnum =
   | "ringAll"
   | "roundRobin"
   | "sequentiallyByAgentOrder";
-const TelephonyOvhPabxHuntingQueueStrategyEnum = S.String;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -887,11 +558,6 @@ export interface CreateTelephonyEasyHuntingHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueRequest>;
-
 /** IVR menu key */
 export type TelephonyOvhPabxIvrMenuKeyEnum =
   | "#"
@@ -906,8 +572,6 @@ export type TelephonyOvhPabxIvrMenuKeyEnum =
   | "7"
   | "8"
   | "9";
-const TelephonyOvhPabxIvrMenuKeyEnum = S.String;
-
 /** Calls queue */
 export interface TelephonyOvhPabxHuntingQueue {
   /** Action executed when there is no member in queue */
@@ -942,11 +606,6 @@ export interface TelephonyOvhPabxHuntingQueue {
   /** The calls dispatching strategy */
   strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum;
 }
-const TelephonyOvhPabxHuntingQueue = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<TelephonyOvhPabxHuntingQueue>;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -955,11 +614,6 @@ export interface CreateTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The position of the agent in the queue */
   position: number;
 }
-const CreateTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueAgentRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -970,11 +624,6 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest 
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-const CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -983,11 +632,6 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -996,11 +640,6 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1011,11 +650,6 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest 
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-const CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest>;
-
 export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1028,19 +662,12 @@ export interface CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest>;
-
 /** Screenlist condition type */
 export type TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum =
   | "destinationBlackList"
   | "destinationWhiteList"
   | "incomingBlackList"
   | "incomingWhiteList";
-const TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum = S.String;
-
 export interface CreateTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1052,11 +679,6 @@ export interface CreateTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** Type of screenlist */
   screenListType: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateTelephonyEasyHuntingScreenListConditionConditionRequest>;
-
 /** Screenlist condition */
 export interface TelephonyEasyHuntingScreenListsConditions {
   /** Screenlist based on the presented caller number */
@@ -1067,11 +689,6 @@ export interface TelephonyEasyHuntingScreenListsConditions {
   /** Type of screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum;
 }
-const TelephonyEasyHuntingScreenListsConditions = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<TelephonyEasyHuntingScreenListsConditions>;
-
 export interface CreateTelephonyEasyHuntingSoundUploadRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1082,15 +699,8 @@ export interface CreateTelephonyEasyHuntingSoundUploadRequest {
   /** URL of the file you want to import (instead of /me/document ID) */
   url?: string;
 }
-const CreateTelephonyEasyHuntingSoundUploadRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateTelephonyEasyHuntingSoundUploadRequest>;
-
 /** Policy of the time condition */
 export type TelephonyTimeConditionsPolicyEnum = "available" | "slot1" | "slot2" | "slot3";
-const TelephonyTimeConditionsPolicyEnum = S.String;
-
 /** Day of the week */
 export type TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum =
   | "friday"
@@ -1100,8 +710,6 @@ export type TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum =
   | "thursday"
   | "tuesday"
   | "wednesday";
-const TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum = S.String;
-
 export interface CreateTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1115,11 +723,6 @@ export interface CreateTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The day of the week when the extension will be executed */
   weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-const CreateTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateTelephonyEasyHuntingTimeConditionConditionRequest>;
-
 /** Easy hunting time conditions */
 export interface TelephonyEasyHuntingTimeConditions {
   conditionId?: number;
@@ -1132,45 +735,21 @@ export interface TelephonyEasyHuntingTimeConditions {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
 }
-const TelephonyEasyHuntingTimeConditions = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<TelephonyEasyHuntingTimeConditions>;
-
 export interface CreateTelephonyEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-const CreateTelephonyEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateTelephonyEventTokenRequest>;
-
 export type CreateTelephonyEventTokenResponse = string;
-const CreateTelephonyEventTokenResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyEventTokenResponse>;
-
 /** Available quality for fax documents */
 export type TelephonyFaxQualityEnum = "best" | "high" | "normal";
-const TelephonyFaxQualityEnum = S.String;
-
 /** If recipientsType is set to list, the list of recipients phone numbers */
 export type CreateTelephonyFaxCampaignRequestRecipientsListList = Array<string>;
-const CreateTelephonyFaxCampaignRequestRecipientsListList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateTelephonyFaxCampaignRequestRecipientsListList>;
-
 /** Available recipients method for fax campaign */
 export type TelephonyFaxCampaignRecipientsTypeEnum = "document" | "list";
-const TelephonyFaxCampaignRecipientsTypeEnum = S.String;
-
 /** Available sending method for fax campaign */
 export type TelephonyFaxCampaignSendTypeEnum = "automatic" | "manual" | "scheduled";
-const TelephonyFaxCampaignSendTypeEnum = S.String;
-
 export interface CreateTelephonyFaxCampaignRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1192,11 +771,6 @@ export interface CreateTelephonyFaxCampaignRequest {
   /** Sending type of the campaign */
   sendType: TelephonyFaxCampaignSendTypeEnum | (string & {});
 }
-const CreateTelephonyFaxCampaignRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateTelephonyFaxCampaignRequest>;
-
 /** Fax campaigns */
 export interface TelephonyFaxCampaign {
   /** The count of failed faxes in the campaign */
@@ -1218,32 +792,16 @@ export interface TelephonyFaxCampaign {
   /** The status of the fax campaign */
   status?: string;
 }
-const TelephonyFaxCampaign = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<TelephonyFaxCampaign>;
-
 /** List of numbers not allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestBlacklistedNumbersList = Array<string>;
-const CreateTelephonyFaxScreenListRequestBlacklistedNumbersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestBlacklistedNumbersList>;
-
 /** List of logins (TSI or ID) not allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestBlacklistedTSIList = Array<string>;
-const CreateTelephonyFaxScreenListRequestBlacklistedTSIList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestBlacklistedTSIList>;
-
 /** Type of screen list */
 export type TelephonyFaxScreenListTypeEnum = "" | "blacklist" | "no" | "whitelist";
-const TelephonyFaxScreenListTypeEnum = S.String;
-
 /** List of numbers allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestWhitelistedNumbersList = Array<string>;
-const CreateTelephonyFaxScreenListRequestWhitelistedNumbersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestWhitelistedNumbersList>;
-
 /** List of logins (TSI or ID) allowed to send a fax */
 export type CreateTelephonyFaxScreenListRequestWhitelistedTSIList = Array<string>;
-const CreateTelephonyFaxScreenListRequestWhitelistedTSIList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<CreateTelephonyFaxScreenListRequestWhitelistedTSIList>;
-
 export interface CreateTelephonyFaxScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1259,31 +817,14 @@ export interface CreateTelephonyFaxScreenListRequest {
   /** List of logins (TSI or ID) allowed to send a fax */
   whitelistedTSI?: CreateTelephonyFaxScreenListRequestWhitelistedTSIList;
 }
-const CreateTelephonyFaxScreenListRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateTelephonyFaxScreenListRequest>;
-
 /** List of numbers not allowed to send a fax */
 export type TelephonyFaxScreenBlacklistedNumbersList = Array<string>;
-const TelephonyFaxScreenBlacklistedNumbersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenBlacklistedNumbersList>;
-
 /** List of logins (TSI or ID) not allowed to send a fax */
 export type TelephonyFaxScreenBlacklistedTSIList = Array<string>;
-const TelephonyFaxScreenBlacklistedTSIList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenBlacklistedTSIList>;
-
 /** List of numbers allowed to send a fax */
 export type TelephonyFaxScreenWhitelistedNumbersList = Array<string>;
-const TelephonyFaxScreenWhitelistedNumbersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenWhitelistedNumbersList>;
-
 /** List of logins (TSI or ID) allowed to send a fax */
 export type TelephonyFaxScreenWhitelistedTSIList = Array<string>;
-const TelephonyFaxScreenWhitelistedTSIList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxScreenWhitelistedTSIList>;
-
 /** Fax ScreenLists */
 export interface TelephonyFaxScreen {
   /** List of numbers not allowed to send a fax */
@@ -1302,8 +843,6 @@ export interface TelephonyFaxScreen {
   /** List of logins (TSI or ID) allowed to send a fax */
   whitelistedTSI?: TelephonyFaxScreenWhitelistedTSIList | null;
 }
-const TelephonyFaxScreen = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<TelephonyFaxScreen>;
-
 export interface CreateTelephonyFaxSettingsChangePasswordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1311,26 +850,13 @@ export interface CreateTelephonyFaxSettingsChangePasswordRequest {
   /** The password, if not specified, a random password will be generated */
   password?: string | Redacted.Redacted<string>;
 }
-const CreateTelephonyFaxSettingsChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateTelephonyFaxSettingsChangePasswordRequest>;
-
 export type CreateTelephonyFaxSettingsChangePasswordResponse = string;
-const CreateTelephonyFaxSettingsChangePasswordResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyFaxSettingsChangePasswordResponse>;
-
 export interface CreateTelephonyHistoryRepaymentConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The number of the bill */
   billingNumber?: string;
 }
-const CreateTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateTelephonyHistoryRepaymentConsumptionRequest>;
-
 export type OrderCurrencyCodeEnum =
   | "AUD"
   | "CAD"
@@ -1347,20 +873,14 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-const OrderCurrencyCodeEnum = S.String;
-
 /** Price with it's currency and textual representation */
 export interface OrderPrice {
   currencyCode?: OrderCurrencyCodeEnum | (string & {});
   text?: string;
   value?: number;
 }
-const OrderPrice = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<OrderPrice>;
-
 /** Billing progress status */
 export type TelephonyBillStatusEnum = "doing" | "done" | "error" | "todo";
-const TelephonyBillStatusEnum = S.String;
-
 /** Previous repayment bill */
 export interface TelephonyHistoryRepaymentConsumption {
   /** the number of the bill */
@@ -1372,11 +892,6 @@ export interface TelephonyHistoryRepaymentConsumption {
   /** status of the bill */
   status?: TelephonyBillStatusEnum;
 }
-const TelephonyHistoryRepaymentConsumption = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<TelephonyHistoryRepaymentConsumption>;
-
 export interface CreateTelephonyLineAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1388,11 +903,6 @@ export interface CreateTelephonyLineAbbreviatedNumberRequest {
   name: string;
   surname: string;
 }
-const CreateTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateTelephonyLineAbbreviatedNumberRequest>;
-
 /** Abbreviated number */
 export interface TelephonyAbbreviatedNumber {
   /** The abbreviated number which must start with "2" and must have a length of 3 or 4 digits */
@@ -1402,17 +912,12 @@ export interface TelephonyAbbreviatedNumber {
   name?: string;
   surname?: string;
 }
-const TelephonyAbbreviatedNumber =
-  TelephonyAbbreviatedNumberGroup as any as S.Schema<TelephonyAbbreviatedNumber>;
-
 /** Action for list antihack */
 export type TelephonyAntihackActionEnum =
   | "AUTHORIZE_ALL"
   | "AUTHORIZE_ONE_NUMBER"
   | "BLOCK_ALL"
   | "BLOCK_ONE_NUMBER";
-const TelephonyAntihackActionEnum = S.String;
-
 export interface CreateTelephonyLineAntihackRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1422,15 +927,7 @@ export interface CreateTelephonyLineAntihackRequest {
   /** Number or short number restricted */
   restricted?: string;
 }
-const CreateTelephonyLineAntihackRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateTelephonyLineAntihackRequest>;
-
 export interface CreateTelephonyLineAntihackResponse {}
-const CreateTelephonyLineAntihackResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineAntihackResponse>;
-
 export interface CreateTelephonyLineAssociateDeviceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1442,22 +939,12 @@ export interface CreateTelephonyLineAssociateDeviceRequest {
   /** The slot or line position on the device (from 1 to N. N is the maximum number of lines/slots available on the device) */
   slot?: number;
 }
-const CreateTelephonyLineAssociateDeviceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateTelephonyLineAssociateDeviceRequest>;
-
 export interface CreateTelephonyLineAssociateDeviceResponse {}
-const CreateTelephonyLineAssociateDeviceResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineAssociateDeviceResponse>;
-
 /** Types of dialplan available for callsGenerator. */
 export type TelephonyCallsGeneratorDialplanEnum =
   | "ReadText"
   | "RequestAppointmentConfirmation"
   | "RequestAppointmentConfirmationWithTransfer";
-const TelephonyCallsGeneratorDialplanEnum = S.String;
-
 export interface CreateTelephonyLineAutomaticCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1479,15 +966,7 @@ export interface CreateTelephonyLineAutomaticCallRequest {
   /** Text to read if TTS on dialplan selected */
   ttsTextDialplan?: string;
 }
-const CreateTelephonyLineAutomaticCallRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateTelephonyLineAutomaticCallRequest>;
-
 export type CreateTelephonyLineAutomaticCallResponse = string;
-const CreateTelephonyLineAutomaticCallResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyLineAutomaticCallResponse>;
-
 export interface CreateTelephonyLineChangeContactRequest {
   /** Your line number */
   serviceName: string;
@@ -1498,17 +977,9 @@ export interface CreateTelephonyLineChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateTelephonyLineChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateTelephonyLineChangeContactRequest>;
-
 export type CreateTelephonyLineChangeContactResponseBodyList = Array<number>;
 export type CreateTelephonyLineChangeContactResponse =
   CreateTelephonyLineChangeContactResponseBodyList;
-const CreateTelephonyLineChangeContactResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<CreateTelephonyLineChangeContactResponse>;
-
 export interface CreateTelephonyLineChangePasswordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1516,15 +987,7 @@ export interface CreateTelephonyLineChangePasswordRequest {
   /** The password */
   password?: string | Redacted.Redacted<string>;
 }
-const CreateTelephonyLineChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateTelephonyLineChangePasswordRequest>;
-
 export interface CreateTelephonyLineChangePasswordResponse {}
-const CreateTelephonyLineChangePasswordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineChangePasswordResponse>;
-
 export interface CreateTelephonyLineClick2CallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1534,15 +997,7 @@ export interface CreateTelephonyLineClick2CallRequest {
   /** Activate the calling number in intercom mode automatically (pick up and speaker automatic activation). */
   intercom?: boolean;
 }
-const CreateTelephonyLineClick2CallRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateTelephonyLineClick2CallRequest>;
-
 export interface CreateTelephonyLineClick2CallResponse {}
-const CreateTelephonyLineClick2CallResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineClick2CallResponse>;
-
 export interface CreateTelephonyLineClick2CallUserRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1552,17 +1007,7 @@ export interface CreateTelephonyLineClick2CallUserRequest {
   /** The user password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateTelephonyLineClick2CallUserRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CreateTelephonyLineClick2CallUserRequest>;
-
 export type CreateTelephonyLineClick2CallUserResponse = number;
-const CreateTelephonyLineClick2CallUserResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CreateTelephonyLineClick2CallUserResponse>;
-
 export interface CreateTelephonyLineClick2CallUserChangePasswordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1572,15 +1017,7 @@ export interface CreateTelephonyLineClick2CallUserChangePasswordRequest {
   /** The password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateTelephonyLineClick2CallUserChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CreateTelephonyLineClick2CallUserChangePasswordRequest>;
-
 export interface CreateTelephonyLineClick2CallUserChangePasswordResponse {}
-const CreateTelephonyLineClick2CallUserChangePasswordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineClick2CallUserChangePasswordResponse>;
-
 export interface CreateTelephonyLineClick2CallUserClick2CallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1590,15 +1027,7 @@ export interface CreateTelephonyLineClick2CallUserClick2CallRequest {
   calledNumber: string;
   callingNumber?: string;
 }
-const CreateTelephonyLineClick2CallUserClick2CallRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateTelephonyLineClick2CallUserClick2CallRequest>;
-
 export interface CreateTelephonyLineClick2CallUserClick2CallResponse {}
-const CreateTelephonyLineClick2CallUserClick2CallResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineClick2CallUserClick2CallResponse>;
-
 export interface CreateTelephonyLineDissociateDeviceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1608,34 +1037,15 @@ export interface CreateTelephonyLineDissociateDeviceRequest {
   /** The mac address of the device you want to dissociate from the line (format: AABBCCDDEEFF) */
   macAddress: string;
 }
-const CreateTelephonyLineDissociateDeviceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateTelephonyLineDissociateDeviceRequest>;
-
 export interface CreateTelephonyLineDissociateDeviceResponse {}
-const CreateTelephonyLineDissociateDeviceResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLineDissociateDeviceResponse>;
-
 /** Key and value, with proper key strings */
 export interface ComplexTypeSafeKeyValueString {
   key?: string;
   value?: string;
 }
-const ComplexTypeSafeKeyValueString = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ComplexTypeSafeKeyValueString>;
-
 /** Name value pairs of provisioning options */
 export type CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList =
   Array<ComplexTypeSafeKeyValueString>;
-const CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    4,
-  ) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList>;
-
 export interface CreateTelephonyLinePhoneChangePhoneConfigurationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1645,17 +1055,7 @@ export interface CreateTelephonyLinePhoneChangePhoneConfigurationRequest {
   /** Name value pairs of provisioning options */
   newConfigurations?: CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList;
 }
-const CreateTelephonyLinePhoneChangePhoneConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationRequest>;
-
 export interface CreateTelephonyLinePhoneChangePhoneConfigurationResponse {}
-const CreateTelephonyLinePhoneChangePhoneConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationResponse>;
-
 export interface CreateTelephonyLinePhonePhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1663,15 +1063,7 @@ export interface CreateTelephonyLinePhonePhonebookRequest {
   /** Name of the wanted phonebook */
   name: string;
 }
-const CreateTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateTelephonyLinePhonePhonebookRequest>;
-
 export type CreateTelephonyLinePhonePhonebookResponse = string;
-const CreateTelephonyLinePhonePhonebookResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyLinePhonePhonebookResponse>;
-
 export interface CreateTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1693,23 +1085,11 @@ export interface CreateTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string;
 }
-const CreateTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<CreateTelephonyLinePhonePhonebookPhonebookContactRequest>;
-
 export type CreateTelephonyLinePhonePhonebookPhonebookContactResponse = number;
-const CreateTelephonyLinePhonePhonebookPhonebookContactResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateTelephonyLinePhonePhonebookPhonebookContactResponse>;
-
 /** Return merchandise authorisation type */
 export type TelephonyRmaPublicTypeEnum =
   | "change to another phone/equipment (restitution first and shipping then)"
   | "restitution but keep the service enable";
-const TelephonyRmaPublicTypeEnum = S.String;
-
 export interface CreateTelephonyLinePhoneRmaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1723,22 +1103,13 @@ export interface CreateTelephonyLinePhoneRmaRequest {
   /** Typology process of merchandise return */
   type: TelephonyRmaPublicTypeEnum | (string & {});
 }
-const CreateTelephonyLinePhoneRmaRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateTelephonyLinePhoneRmaRequest>;
-
 /** Post-creation return information structure */
 export interface TelephonyRmaReturn {
   /** Voucher reference identifier of the return merchandise authorisation */
   id?: string;
 }
-const TelephonyRmaReturn = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<TelephonyRmaReturn>;
-
 /** Types of return merchandise authorisation you can change to */
 export type TelephonyRmaChangeTypeEnum = "resiliate" | "toSip";
-const TelephonyRmaChangeTypeEnum = S.String;
-
 export interface CreateTelephonyLinePhoneRmaChangeTypeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1748,15 +1119,7 @@ export interface CreateTelephonyLinePhoneRmaChangeTypeRequest {
   /** new RMA type */
   type: TelephonyRmaChangeTypeEnum | (string & {});
 }
-const CreateTelephonyLinePhoneRmaChangeTypeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateTelephonyLinePhoneRmaChangeTypeRequest>;
-
 export interface CreateTelephonyLinePhoneRmaChangeTypeResponse {}
-const CreateTelephonyLinePhoneRmaChangeTypeResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyLinePhoneRmaChangeTypeResponse>;
-
 export interface CreateTelephonyLineSoftphoneTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1764,25 +1127,13 @@ export interface CreateTelephonyLineSoftphoneTokenRequest {
   /** Email to receive the generated provisioning token */
   email?: string;
 }
-const CreateTelephonyLineSoftphoneTokenRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateTelephonyLineSoftphoneTokenRequest>;
-
 /** Softphone provisioning token */
 export interface TelephonySoftphoneToken {
   /** Provisioning token used to register device */
   token?: string;
 }
-const TelephonySoftphoneToken = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<TelephonySoftphoneToken>;
-
 /** Tones type */
 export type TelephonyTonesTypeEnum = "callWaiting" | "endCall" | "onHold" | "ringback";
-const TelephonyTonesTypeEnum = S.String;
-
 export interface CreateTelephonyLineToneToneUploadRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1793,11 +1144,6 @@ export interface CreateTelephonyLineToneToneUploadRequest {
   /** URL of the file you want to import (instead of /me/document ID) */
   url?: string;
 }
-const CreateTelephonyLineToneToneUploadRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateTelephonyLineToneToneUploadRequest>;
-
 export interface CreateTelephonyLineTrafficExtractRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1807,11 +1153,6 @@ export interface CreateTelephonyLineTrafficExtractRequest {
   /** The start date of the traffic extract */
   dateStart: string;
 }
-const CreateTelephonyLineTrafficExtractRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CreateTelephonyLineTrafficExtractRequest>;
-
 /** Traffic extracts (SIP) of your line */
 export interface TelephonyTrafficExtract {
   /** The start date of the traffic extract */
@@ -1827,11 +1168,6 @@ export interface TelephonyTrafficExtract {
   /** The status of the extract */
   status?: TelephonyTaskStatusEnum;
 }
-const TelephonyTrafficExtract = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<TelephonyTrafficExtract>;
-
 /** All existing types of line or alias */
 export type TelephonyTypeEnum =
   | "carrierSip"
@@ -1854,8 +1190,6 @@ export type TelephonyTypeEnum =
   | "voicefax"
   | "voicemail"
   | "vxml";
-const TelephonyTypeEnum = S.String;
-
 export interface CreateTelephonyNumberChangeFeatureTypeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1864,19 +1198,12 @@ export interface CreateTelephonyNumberChangeFeatureTypeRequest {
   /** The new feature of the number */
   featureType: TelephonyTypeEnum | (string & {});
 }
-const CreateTelephonyNumberChangeFeatureTypeRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateTelephonyNumberChangeFeatureTypeRequest>;
-
 /** Type of line blocking on outplan notification */
 export type TelephonyOutplanNotificationBlockEnum =
   | "blockAllCalls"
   | "blockIncomingCalls"
   | "blockOutgoingCalls"
   | "none";
-const TelephonyOutplanNotificationBlockEnum = S.String;
-
 export interface CreateTelephonyOutplanNotificationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1887,11 +1214,6 @@ export interface CreateTelephonyOutplanNotificationRequest {
   /** The notification percentage of maximum outplan */
   percentage: number;
 }
-const CreateTelephonyOutplanNotificationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateTelephonyOutplanNotificationRequest>;
-
 /** The outplan notifications configured for your billing account */
 export interface TelephonyConsumptionThreshold {
   /** The blocking type of the associate lines */
@@ -1903,15 +1225,8 @@ export interface TelephonyConsumptionThreshold {
   /** The notification percentage of maximum outplan */
   percentage?: number;
 }
-const TelephonyConsumptionThreshold = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<TelephonyConsumptionThreshold>;
-
 /** Displayed number */
 export type TelephonyOvhPabxDialplanNumberPresentationEnum = "alias" | "both" | "caller";
-const TelephonyOvhPabxDialplanNumberPresentationEnum = S.String;
-
 export interface CreateTelephonyOvhPabxDialplanRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1925,11 +1240,6 @@ export interface CreateTelephonyOvhPabxDialplanRequest {
   /** The timeout (in seconds) when bridging calls */
   transferTimeout: number;
 }
-const CreateTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateTelephonyOvhPabxDialplanRequest>;
-
 /** Dialplan */
 export interface TelephonyOvhPabxDialplan {
   /** Reject (hangup) anonymous calls */
@@ -1943,19 +1253,12 @@ export interface TelephonyOvhPabxDialplan {
   /** The timeout (in seconds) when bridging calls */
   transferTimeout?: number;
 }
-const TelephonyOvhPabxDialplan = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<TelephonyOvhPabxDialplan>;
-
 /** Scheculer category */
 export type TelephonySchedulerCategoryEnum =
   | "holidays"
   | "scheduler1"
   | "scheduler2"
   | "scheduler3";
-const TelephonySchedulerCategoryEnum = S.String;
-
 export interface CreateTelephonyOvhPabxDialplanExtensionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -1970,11 +1273,6 @@ export interface CreateTelephonyOvhPabxDialplanExtensionRequest {
   /** The type of the screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-const CreateTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionRequest>;
-
 /** Dialplan extension */
 export interface TelephonyOvhPabxDialplanExtension {
   /** True if the extension is enabled */
@@ -1987,11 +1285,6 @@ export interface TelephonyOvhPabxDialplanExtension {
   /** The type of the screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | null;
 }
-const TelephonyOvhPabxDialplanExtension = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<TelephonyOvhPabxDialplanExtension>;
-
 export interface CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2005,11 +1298,6 @@ export interface CreateTelephonyOvhPabxDialplanExtensionConditionScreenListReque
   /** Type of screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-const CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
-
 /** Screenlist condition */
 export interface TelephonyOvhPabxDialplanExtensionConditionScreenList {
   /** Screenlist based on the presented caller number */
@@ -2020,11 +1308,6 @@ export interface TelephonyOvhPabxDialplanExtensionConditionScreenList {
   /** Type of screenlist */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | null;
 }
-const TelephonyOvhPabxDialplanExtensionConditionScreenList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<TelephonyOvhPabxDialplanExtensionConditionScreenList>;
-
 export interface CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2038,11 +1321,6 @@ export interface CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The day of the week when the extension will be executed */
   weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-const CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
-
 /** Time condition */
 export interface TelephonyOvhPabxDialplanExtensionConditionTime {
   conditionId?: number;
@@ -2053,11 +1331,6 @@ export interface TelephonyOvhPabxDialplanExtensionConditionTime {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum;
 }
-const TelephonyOvhPabxDialplanExtensionConditionTime = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<TelephonyOvhPabxDialplanExtensionConditionTime>;
-
 /** Dialplan rule action */
 export type TelephonyOvhPabxDialplanExtensionRuleActionEnum =
   | "bridge"
@@ -2071,8 +1344,6 @@ export type TelephonyOvhPabxDialplanExtensionRuleActionEnum =
   | "sleep"
   | "tts"
   | "voicemail";
-const TelephonyOvhPabxDialplanExtensionRuleActionEnum = S.String;
-
 export interface CreateTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2088,11 +1359,6 @@ export interface CreateTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The position of the rule in the extension (the rules are executed following this order) */
   position: number;
 }
-const CreateTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionRuleRequest>;
-
 /** Dialplan rule */
 export interface TelephonyOvhPabxDialplanExtensionRule {
   /** The action made by the rule */
@@ -2105,11 +1371,6 @@ export interface TelephonyOvhPabxDialplanExtensionRule {
   position?: number;
   ruleId?: number;
 }
-const TelephonyOvhPabxDialplanExtensionRule = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<TelephonyOvhPabxDialplanExtensionRule>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2127,22 +1388,12 @@ export interface CreateTelephonyOvhPabxHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime: number;
 }
-const CreateTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2153,11 +1404,6 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest {
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-const CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentCallHangupRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2166,11 +1412,6 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyOvhPabxHuntingAgentCallHangupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallHangupRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentCallHoldRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2179,11 +1420,6 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyOvhPabxHuntingAgentCallHoldRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallHoldRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2194,11 +1430,6 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest {
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-const CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2211,11 +1442,6 @@ export interface CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-const CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2224,15 +1450,7 @@ export interface CreateTelephonyOvhPabxHuntingAgentEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-const CreateTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentEventTokenRequest>;
-
 export type CreateTelephonyOvhPabxHuntingAgentEventTokenResponse = string;
-const CreateTelephonyOvhPabxHuntingAgentEventTokenResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentEventTokenResponse>;
-
 export interface CreateTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2243,11 +1461,6 @@ export interface CreateTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The queue where you want to add the agent */
   queueId: number;
 }
-const CreateTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentQueueRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2259,11 +1472,6 @@ export interface CreateTelephonyOvhPabxHuntingCustomStatusRequest {
   /** The name of the status (Pause, Mission, etc...) */
   name: string;
 }
-const CreateTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingCustomStatusRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2271,15 +1479,7 @@ export interface CreateTelephonyOvhPabxHuntingEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-const CreateTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingEventTokenRequest>;
-
 export type CreateTelephonyOvhPabxHuntingEventTokenResponse = string;
-const CreateTelephonyOvhPabxHuntingEventTokenResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyOvhPabxHuntingEventTokenResponse>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2311,11 +1511,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-const CreateTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2324,11 +1519,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The position of the agent in the queue */
   position: number;
 }
-const CreateTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueAgentRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2339,11 +1529,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest {
   /** Phone number that will be called and bridged in the communication */
   number: string;
 }
-const CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2352,11 +1537,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2365,11 +1545,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest {
   /** Id of the object */
   id: number;
 }
-const CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2380,11 +1555,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest {
   /** Phone number that will be called and that will intercept the communication */
   number: string;
 }
-const CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest>;
-
 export interface CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2397,11 +1567,6 @@ export interface CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest {
   /** Whispering mode */
   whisperingMode: TelephonyOvhPabxWhisperingModeEnum | (string & {});
 }
-const CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest>;
-
 export interface CreateTelephonyOvhPabxMenuRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2421,11 +1586,6 @@ export interface CreateTelephonyOvhPabxMenuRequest {
   /** The timeout in milliseconds before ending the menu when no DTMF is received */
   timeout?: number;
 }
-const CreateTelephonyOvhPabxMenuRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CreateTelephonyOvhPabxMenuRequest>;
-
 /** IVR Menu */
 export interface TelephonyOvhPabxMenu {
   /** The id of the OvhPabxSound played to greet */
@@ -2444,11 +1604,6 @@ export interface TelephonyOvhPabxMenu {
   /** The timeout in milliseconds before ending the menu when no DTMF is received */
   timeout?: number;
 }
-const TelephonyOvhPabxMenu = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<TelephonyOvhPabxMenu>;
-
 /** IVR menu action */
 export type TelephonyOvhPabxIvrMenuEntryActionEnum =
   | "bridge"
@@ -2460,8 +1615,6 @@ export type TelephonyOvhPabxIvrMenuEntryActionEnum =
   | "playback"
   | "readDtmf"
   | "setCallerName";
-const TelephonyOvhPabxIvrMenuEntryActionEnum = S.String;
-
 export interface CreateTelephonyOvhPabxMenuEntryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2476,11 +1629,6 @@ export interface CreateTelephonyOvhPabxMenuEntryRequest {
   /** The position of the entry in the menu */
   position: number;
 }
-const CreateTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreateTelephonyOvhPabxMenuEntryRequest>;
-
 /** IVR menu entry */
 export interface TelephonyOvhPabxMenuEntry {
   /** The action triggered by the DTMF */
@@ -2493,11 +1641,6 @@ export interface TelephonyOvhPabxMenuEntry {
   /** The position of the entry in the menu */
   position?: number;
 }
-const TelephonyOvhPabxMenuEntry = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<TelephonyOvhPabxMenuEntry>;
-
 export interface CreateTelephonyOvhPabxSoundUploadRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2509,15 +1652,8 @@ export interface CreateTelephonyOvhPabxSoundUploadRequest {
   /** URL of the file you want to import (instead of /me/document ID) */
   url?: string;
 }
-const CreateTelephonyOvhPabxSoundUploadRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CreateTelephonyOvhPabxSoundUploadRequest>;
-
 /** Voice to use for your text to speech */
 export type TelephonyOvhPabxTtsVoiceEnum = "Bruce" | "Helene" | "Jenny" | "Loic";
-const TelephonyOvhPabxTtsVoiceEnum = S.String;
-
 export interface CreateTelephonyOvhPabxTtsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2525,30 +1661,14 @@ export interface CreateTelephonyOvhPabxTtsRequest {
   text: string;
   voice?: TelephonyOvhPabxTtsVoiceEnum | (string & {});
 }
-const CreateTelephonyOvhPabxTtsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<CreateTelephonyOvhPabxTtsRequest>;
-
 export interface CreateTelephonyOvhPabxTtsResponse {}
-const CreateTelephonyOvhPabxTtsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyOvhPabxTtsResponse>;
-
 export interface CreateTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Name of the wanted phonebook */
   name: string;
 }
-const CreateTelephonyPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CreateTelephonyPhonebookRequest>;
-
 export type CreateTelephonyPhonebookResponse = string;
-const CreateTelephonyPhonebookResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyPhonebookResponse>;
-
 export interface CreateTelephonyPhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2569,15 +1689,7 @@ export interface CreateTelephonyPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string;
 }
-const CreateTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<CreateTelephonyPhonebookPhonebookContactRequest>;
-
 export type CreateTelephonyPhonebookPhonebookContactResponse = number;
-const CreateTelephonyPhonebookPhonebookContactResponse =
-  CreateTelephonyLineClick2CallUserResponse as any as S.Schema<CreateTelephonyPhonebookPhonebookContactResponse>;
-
 export interface CreateTelephonyPortabilityChangeDateRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2586,15 +1698,7 @@ export interface CreateTelephonyPortabilityChangeDateRequest {
   /** The proposed portability due date */
   date: string;
 }
-const CreateTelephonyPortabilityChangeDateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<CreateTelephonyPortabilityChangeDateRequest>;
-
 export interface CreateTelephonyPortabilityChangeDateResponse {}
-const CreateTelephonyPortabilityChangeDateResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyPortabilityChangeDateResponse>;
-
 export interface CreateTelephonyPortabilityDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2605,11 +1709,6 @@ export interface CreateTelephonyPortabilityDocumentRequest {
   /** Document's name */
   name: string;
 }
-const CreateTelephonyPortabilityDocumentRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateTelephonyPortabilityDocumentRequest>;
-
 /** Document linked to a portability */
 export interface TelephonyPortabilityDocument {
   /** Description of the document */
@@ -2625,19 +1724,9 @@ export interface TelephonyPortabilityDocument {
   /** Document size (in bytes) */
   size?: number;
 }
-const TelephonyPortabilityDocument = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<TelephonyPortabilityDocument>;
-
 /** List of parameters to use to fix error */
 export type CreateTelephonyPortabilityRelaunchRequestParametersList =
   Array<ComplexTypeSafeKeyValueString>;
-const CreateTelephonyPortabilityRelaunchRequestParametersList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CreateTelephonyPortabilityRelaunchRequestParametersList>;
-
 export interface CreateTelephonyPortabilityRelaunchRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2646,15 +1735,7 @@ export interface CreateTelephonyPortabilityRelaunchRequest {
   /** List of parameters to use to fix error */
   parameters: CreateTelephonyPortabilityRelaunchRequestParametersList;
 }
-const CreateTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CreateTelephonyPortabilityRelaunchRequest>;
-
 export interface CreateTelephonyPortabilityRelaunchResponse {}
-const CreateTelephonyPortabilityRelaunchResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyPortabilityRelaunchResponse>;
-
 export interface CreateTelephonyProcedureRequest {
   /** Account's BIC */
   bic?: string;
@@ -2667,11 +1748,6 @@ export interface CreateTelephonyProcedureRequest {
   /** The ID of your registered SEPA account payment mean. */
   paymentMeanID?: number;
 }
-const CreateTelephonyProcedureRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CreateTelephonyProcedureRequest>;
-
 /** Telephony procedure status */
 export type TelephonyProcedureStatusEnum =
   | "cancelled"
@@ -2679,8 +1755,6 @@ export type TelephonyProcedureStatusEnum =
   | "done"
   | "todo"
   | "waiting_for_customer";
-const TelephonyProcedureStatusEnum = S.String;
-
 /** Procedure linked to your account */
 export interface TelephonyProcedure {
   /** The date at which the procedure was closed. */
@@ -2694,8 +1768,6 @@ export interface TelephonyProcedure {
   /** The current status of the procedure. */
   status?: TelephonyProcedureStatusEnum;
 }
-const TelephonyProcedure = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<TelephonyProcedure>;
-
 export interface CreateTelephonyRedirectChangeDestinationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2703,11 +1775,6 @@ export interface CreateTelephonyRedirectChangeDestinationRequest {
   /** The destination */
   destination: string;
 }
-const CreateTelephonyRedirectChangeDestinationRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CreateTelephonyRedirectChangeDestinationRequest>;
-
 export interface CreateTelephonyRsvaScheduleRateCodeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2715,11 +1782,6 @@ export interface CreateTelephonyRsvaScheduleRateCodeRequest {
   /** The specified rate code */
   rateCode: string;
 }
-const CreateTelephonyRsvaScheduleRateCodeRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateTelephonyRsvaScheduleRateCodeRequest>;
-
 /** Detailed informations related to this number */
 export interface TelephonyDetailedRateCodeInformation {
   /** Cancelable datetime deadline for the new scheduled rateCode */
@@ -2739,11 +1801,6 @@ export interface TelephonyDetailedRateCodeInformation {
   /** Fees concerning rateCode update */
   updateRateCodePriceWithoutTax?: OrderPrice | null;
 }
-const TelephonyDetailedRateCodeInformation = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<TelephonyDetailedRateCodeInformation>;
-
 export interface CreateTelephonySchedulerEventRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2761,15 +1818,7 @@ export interface CreateTelephonySchedulerEventRequest {
   /** The unique ICS event identifier */
   uid?: string;
 }
-const CreateTelephonySchedulerEventRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<CreateTelephonySchedulerEventRequest>;
-
 export interface CreateTelephonySchedulerEventResponse {}
-const CreateTelephonySchedulerEventResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonySchedulerEventResponse>;
-
 /** Nature of screen list */
 export type TelephonyScreenListNatureEnum =
   | "fax"
@@ -2777,16 +1826,12 @@ export type TelephonyScreenListNatureEnum =
   | "services"
   | "special"
   | "voicemail";
-const TelephonyScreenListNatureEnum = S.String;
-
 /** Type of screen list */
 export type TelephonyScreenListTypeEnum =
   | "incomingBlackList"
   | "incomingWhiteList"
   | "outgoingBlackList"
   | "outgoingWhiteList";
-const TelephonyScreenListTypeEnum = S.String;
-
 export interface CreateTelephonyScreenScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2798,15 +1843,7 @@ export interface CreateTelephonyScreenScreenListRequest {
   /** The type of the generic screen list */
   type: TelephonyScreenListTypeEnum | (string & {});
 }
-const CreateTelephonyScreenScreenListRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CreateTelephonyScreenScreenListRequest>;
-
 export interface CreateTelephonyScreenScreenListResponse {}
-const CreateTelephonyScreenScreenListResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyScreenScreenListResponse>;
-
 export interface CreateTelephonyServiceChangeOfBillingAccountRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2814,15 +1851,7 @@ export interface CreateTelephonyServiceChangeOfBillingAccountRequest {
   /** Billing account destination target */
   billingAccountDestination: string;
 }
-const CreateTelephonyServiceChangeOfBillingAccountRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<CreateTelephonyServiceChangeOfBillingAccountRequest>;
-
 export interface CreateTelephonyServiceChangeOfBillingAccountResponse {}
-const CreateTelephonyServiceChangeOfBillingAccountResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyServiceChangeOfBillingAccountResponse>;
-
 export interface CreateTelephonyServiceEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2830,15 +1859,7 @@ export interface CreateTelephonyServiceEventTokenRequest {
   /** Time to live in seconds for the token */
   expiration: TelephonyTokenExpirationEnum | (string & {});
 }
-const CreateTelephonyServiceEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<CreateTelephonyServiceEventTokenRequest>;
-
 export type CreateTelephonyServiceEventTokenResponse = string;
-const CreateTelephonyServiceEventTokenResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<CreateTelephonyServiceEventTokenResponse>;
-
 export interface CreateTelephonyServiceOfferChangeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2846,26 +1867,13 @@ export interface CreateTelephonyServiceOfferChangeRequest {
   /** The future offer */
   offer: string;
 }
-const CreateTelephonyServiceOfferChangeRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<CreateTelephonyServiceOfferChangeRequest>;
-
 export interface CreateTelephonyServiceOfferChangeResponse {}
-const CreateTelephonyServiceOfferChangeResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyServiceOfferChangeResponse>;
-
 export interface CreateTelephonySoundRequest {
   /** Sound description */
   description?: string;
   /** Sound filename */
   filename: string;
 }
-const CreateTelephonySoundRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<CreateTelephonySoundRequest>;
-
 /** Sounds attached to this telephony account */
 export interface TelephonySound {
   /** Sound creation date */
@@ -2883,8 +1891,6 @@ export interface TelephonySound {
   /** Sound file size (in bytes) */
   size?: number;
 }
-const TelephonySound = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<TelephonySound>;
-
 /** Day of the time condition */
 export type TelephonyTimeConditionsDayEnum =
   | "friday"
@@ -2895,8 +1901,6 @@ export type TelephonyTimeConditionsDayEnum =
   | "thursday"
   | "tuesday"
   | "wednesday";
-const TelephonyTimeConditionsDayEnum = S.String;
-
 export interface CreateTelephonyTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2910,11 +1914,6 @@ export interface CreateTelephonyTimeConditionConditionRequest {
   /** The policy */
   policy: TelephonyTimeConditionsPolicyEnum | (string & {});
 }
-const CreateTelephonyTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<CreateTelephonyTimeConditionConditionRequest>;
-
 /** Time conditions */
 export interface TelephonyTimeCondition {
   day?: TelephonyTimeConditionsDayEnum;
@@ -2924,11 +1923,6 @@ export interface TelephonyTimeCondition {
   policy?: TelephonyTimeConditionsPolicyEnum;
   status?: string;
 }
-const TelephonyTimeCondition = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<TelephonyTimeCondition>;
-
 export interface CreateTelephonyTrunkChangeContactRequest {
   /** Your trunk number */
   serviceName: string;
@@ -2939,17 +1933,9 @@ export interface CreateTelephonyTrunkChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateTelephonyTrunkChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<CreateTelephonyTrunkChangeContactRequest>;
-
 export type CreateTelephonyTrunkChangeContactResponseBodyList = Array<number>;
 export type CreateTelephonyTrunkChangeContactResponse =
   CreateTelephonyTrunkChangeContactResponseBodyList;
-const CreateTelephonyTrunkChangeContactResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<CreateTelephonyTrunkChangeContactResponse>;
-
 export interface CreateTelephonyTrunkExternalDisplayedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -2960,19 +1946,12 @@ export interface CreateTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number to create, in international format */
   number: string;
 }
-const CreateTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<CreateTelephonyTrunkExternalDisplayedNumberRequest>;
-
 /** Status of the trunk's external displayed number */
 export type TelephonyTrunkExternalDisplayedNumberStatusEnum =
   | "enabled"
   | "refused"
   | "toDelete"
   | "waitingValidation";
-const TelephonyTrunkExternalDisplayedNumberStatusEnum = S.String;
-
 /** External displayed number linked to a trunk */
 export interface TelephonyTrunkExternalDisplayedNumber {
   /** Creation date */
@@ -2984,15 +1963,8 @@ export interface TelephonyTrunkExternalDisplayedNumber {
   /** Validation date */
   validatedAt?: string | null;
 }
-const TelephonyTrunkExternalDisplayedNumber = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<TelephonyTrunkExternalDisplayedNumber>;
-
 /** Folder type */
 export type TelephonyVoicemailMessageFolderGreetingEnum = "busy" | "greet" | "temp" | "unavail";
-const TelephonyVoicemailMessageFolderGreetingEnum = S.String;
-
 export interface CreateTelephonyVoicemailGreetingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3002,15 +1974,7 @@ export interface CreateTelephonyVoicemailGreetingRequest {
   /** Get the /me/document uuid generated */
   documentId: string;
 }
-const CreateTelephonyVoicemailGreetingRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CreateTelephonyVoicemailGreetingRequest>;
-
 export type CreateTelephonyVoicemailGreetingResponse = number;
-const CreateTelephonyVoicemailGreetingResponse =
-  CreateTelephonyLineClick2CallUserResponse as any as S.Schema<CreateTelephonyVoicemailGreetingResponse>;
-
 export interface CreateTelephonyVoicemailSettingsChangePasswordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3018,19 +1982,9 @@ export interface CreateTelephonyVoicemailSettingsChangePasswordRequest {
   /** The password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateTelephonyVoicemailSettingsChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<CreateTelephonyVoicemailSettingsChangePasswordRequest>;
-
 export interface CreateTelephonyVoicemailSettingsChangePasswordResponse {}
-const CreateTelephonyVoicemailSettingsChangePasswordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyVoicemailSettingsChangePasswordResponse>;
-
 /** All existing type of routing for a voicemail */
 export type TelephonyVoicefaxRoutingEnum = "fax" | "voicemail";
-const TelephonyVoicefaxRoutingEnum = S.String;
-
 export interface CreateTelephonyVoicemailSettingsChangeRoutingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3038,25 +1992,12 @@ export interface CreateTelephonyVoicemailSettingsChangeRoutingRequest {
   /** Activate or Desactivate voicemail on the line */
   routing: TelephonyVoicefaxRoutingEnum | (string & {});
 }
-const CreateTelephonyVoicemailSettingsChangeRoutingRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<CreateTelephonyVoicemailSettingsChangeRoutingRequest>;
-
 export interface CreateTelephonyVoicemailSettingsChangeRoutingResponse {}
-const CreateTelephonyVoicemailSettingsChangeRoutingResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<CreateTelephonyVoicemailSettingsChangeRoutingResponse>;
-
 export interface CreateTelephonyVxmlSettingsLogRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const CreateTelephonyVxmlSettingsLogRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<CreateTelephonyVxmlSettingsLogRequest>;
-
 /** Temporary url informations */
 export interface TelephonyTemporaryLogsLink {
   /** Temporary url expiration date */
@@ -3064,11 +2005,6 @@ export interface TelephonyTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-const TelephonyTemporaryLogsLink = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<TelephonyTemporaryLogsLink>;
-
 /** Termination reason */
 export type TelephonyTerminationReasonEnum =
   | "addresseMove"
@@ -3079,8 +2015,6 @@ export type TelephonyTerminationReasonEnum =
   | "other"
   | "plugAndPhoneDifficulties"
   | "technicalDifficulties";
-const TelephonyTerminationReasonEnum = S.String;
-
 export interface DeleteTelephonyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3089,30 +2023,14 @@ export interface DeleteTelephonyRequest {
   /** Termination reason */
   reason: TelephonyTerminationReasonEnum | (string & {});
 }
-const DeleteTelephonyRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DeleteTelephonyRequest>;
-
 export interface DeleteTelephonyResponse {}
-const DeleteTelephonyResponse =
-  BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonyResponse>;
-
 export interface DeleteTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The abbreviated number which must start with "7" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-const DeleteTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DeleteTelephonyAbbreviatedNumberRequest>;
-
 export interface DeleteTelephonyAbbreviatedNumberResponse {}
-const DeleteTelephonyAbbreviatedNumberResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyAbbreviatedNumberResponse>;
-
 export interface DeleteTelephonyConferenceRoomWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3122,15 +2040,7 @@ export interface DeleteTelephonyConferenceRoomWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DeleteTelephonyConferenceRoomWebAccessRequest>;
-
 export interface DeleteTelephonyConferenceRoomWebAccessResponse {}
-const DeleteTelephonyConferenceRoomWebAccessResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyConferenceRoomWebAccessResponse>;
-
 export interface DeleteTelephonyConferenceWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3138,60 +2048,28 @@ export interface DeleteTelephonyConferenceWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyConferenceWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<DeleteTelephonyConferenceWebAccessRequest>;
-
 export interface DeleteTelephonyConferenceWebAccessResponse {}
-const DeleteTelephonyConferenceWebAccessResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyConferenceWebAccessResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const DeleteTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentResponse {}
-const DeleteTelephonyEasyHuntingHuntingAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse {}
-const DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse {}
-const DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3199,59 +2077,27 @@ export interface DeleteTelephonyEasyHuntingHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-const DeleteTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentQueueRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingAgentQueueResponse {}
-const DeleteTelephonyEasyHuntingHuntingAgentQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentQueueResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const DeleteTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingCustomStatusRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingCustomStatusResponse {}
-const DeleteTelephonyEasyHuntingHuntingCustomStatusResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingCustomStatusResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingEventTokenRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingEventTokenResponse {}
-const DeleteTelephonyEasyHuntingHuntingEventTokenResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingEventTokenResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const DeleteTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingQueueResponse {}
-const DeleteTelephonyEasyHuntingHuntingQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueResponse>;
-
 export interface DeleteTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3259,90 +2105,40 @@ export interface DeleteTelephonyEasyHuntingHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-const DeleteTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueAgentRequest>;
-
 export interface DeleteTelephonyEasyHuntingHuntingQueueAgentResponse {}
-const DeleteTelephonyEasyHuntingHuntingQueueAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueAgentResponse>;
-
 export interface DeleteTelephonyEasyHuntingRecordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const DeleteTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<DeleteTelephonyEasyHuntingRecordRequest>;
-
 export interface DeleteTelephonyEasyHuntingRecordResponse {}
-const DeleteTelephonyEasyHuntingRecordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingRecordResponse>;
-
 export interface DeleteTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   conditionId: number;
 }
-const DeleteTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionRequest>;
-
 export interface DeleteTelephonyEasyHuntingScreenListConditionConditionResponse {}
-const DeleteTelephonyEasyHuntingScreenListConditionConditionResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionResponse>;
-
 export interface DeleteTelephonyEasyHuntingSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   soundId: number;
 }
-const DeleteTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<DeleteTelephonyEasyHuntingSoundRequest>;
-
 export interface DeleteTelephonyEasyHuntingSoundResponse {}
-const DeleteTelephonyEasyHuntingSoundResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEasyHuntingSoundResponse>;
-
 export interface DeleteTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   conditionId: number;
 }
-const DeleteTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<DeleteTelephonyEasyHuntingTimeConditionConditionRequest>;
-
 export interface DeleteTelephonyEasyHuntingTimeConditionConditionResponse {}
-const DeleteTelephonyEasyHuntingTimeConditionConditionResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyEasyHuntingTimeConditionConditionResponse>;
-
 export interface DeleteTelephonyEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const DeleteTelephonyEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<DeleteTelephonyEventTokenRequest>;
-
 export interface DeleteTelephonyEventTokenResponse {}
-const DeleteTelephonyEventTokenResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyEventTokenResponse>;
-
 export interface DeleteTelephonyFaxCampaignRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3350,29 +2146,13 @@ export interface DeleteTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyFaxCampaignRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<DeleteTelephonyFaxCampaignRequest>;
-
 export interface DeleteTelephonyFaxCampaignResponse {}
-const DeleteTelephonyFaxCampaignResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyFaxCampaignResponse>;
-
 export interface DeleteTelephonyFaxScreenListsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyFaxScreenListsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DeleteTelephonyFaxScreenListsRequest>;
-
 export interface DeleteTelephonyFaxScreenListsResponse {}
-const DeleteTelephonyFaxScreenListsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyFaxScreenListsResponse>;
-
 export interface DeleteTelephonyLineAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3380,15 +2160,7 @@ export interface DeleteTelephonyLineAbbreviatedNumberRequest {
   /** The abbreviated number which must start with "2" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-const DeleteTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<DeleteTelephonyLineAbbreviatedNumberRequest>;
-
 export interface DeleteTelephonyLineAbbreviatedNumberResponse {}
-const DeleteTelephonyLineAbbreviatedNumberResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineAbbreviatedNumberResponse>;
-
 export interface DeleteTelephonyLineClick2CallUserRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3396,15 +2168,7 @@ export interface DeleteTelephonyLineClick2CallUserRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyLineClick2CallUserRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<DeleteTelephonyLineClick2CallUserRequest>;
-
 export interface DeleteTelephonyLineClick2CallUserResponse {}
-const DeleteTelephonyLineClick2CallUserResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineClick2CallUserResponse>;
-
 export interface DeleteTelephonyLinePhonePhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3412,15 +2176,7 @@ export interface DeleteTelephonyLinePhonePhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const DeleteTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<DeleteTelephonyLinePhonePhonebookRequest>;
-
 export interface DeleteTelephonyLinePhonePhonebookResponse {}
-const DeleteTelephonyLinePhonePhonebookResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLinePhonePhonebookResponse>;
-
 export interface DeleteTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3430,15 +2186,7 @@ export interface DeleteTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-const DeleteTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<DeleteTelephonyLinePhonePhonebookPhonebookContactRequest>;
-
 export interface DeleteTelephonyLinePhonePhonebookPhonebookContactResponse {}
-const DeleteTelephonyLinePhonePhonebookPhonebookContactResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyLinePhonePhonebookPhonebookContactResponse>;
-
 export interface DeleteTelephonyLinePhoneRmaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3446,15 +2194,7 @@ export interface DeleteTelephonyLinePhoneRmaRequest {
   /** Return merchandise authorisation identifier */
   id: string;
 }
-const DeleteTelephonyLinePhoneRmaRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<DeleteTelephonyLinePhoneRmaRequest>;
-
 export interface DeleteTelephonyLinePhoneRmaResponse {}
-const DeleteTelephonyLinePhoneRmaResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLinePhoneRmaResponse>;
-
 export interface DeleteTelephonyLineRecordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3462,15 +2202,7 @@ export interface DeleteTelephonyLineRecordRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyLineRecordRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DeleteTelephonyLineRecordRequest>;
-
 export interface DeleteTelephonyLineRecordResponse {}
-const DeleteTelephonyLineRecordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineRecordResponse>;
-
 export interface DeleteTelephonyLineSoftphoneDeviceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3478,43 +2210,19 @@ export interface DeleteTelephonyLineSoftphoneDeviceRequest {
   /** Device ID */
   deviceId: string;
 }
-const DeleteTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<DeleteTelephonyLineSoftphoneDeviceRequest>;
-
 export interface DeleteTelephonyLineSoftphoneDeviceResponse {}
-const DeleteTelephonyLineSoftphoneDeviceResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineSoftphoneDeviceResponse>;
-
 export interface DeleteTelephonyLineSoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<DeleteTelephonyLineSoftphoneLogoRequest>;
-
 export interface DeleteTelephonyLineSoftphoneLogoResponse {}
-const DeleteTelephonyLineSoftphoneLogoResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineSoftphoneLogoResponse>;
-
 export interface DeleteTelephonyLineSoftphoneThemeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<DeleteTelephonyLineSoftphoneThemeRequest>;
-
 export interface DeleteTelephonyLineSoftphoneThemeResponse {}
-const DeleteTelephonyLineSoftphoneThemeResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineSoftphoneThemeResponse>;
-
 export interface DeleteTelephonyLineTrafficExtractRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3522,45 +2230,21 @@ export interface DeleteTelephonyLineTrafficExtractRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyLineTrafficExtractRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DeleteTelephonyLineTrafficExtractRequest>;
-
 export interface DeleteTelephonyLineTrafficExtractResponse {}
-const DeleteTelephonyLineTrafficExtractResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyLineTrafficExtractResponse>;
-
 export interface DeleteTelephonyOutplanNotificationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyOutplanNotificationRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<DeleteTelephonyOutplanNotificationRequest>;
-
 export interface DeleteTelephonyOutplanNotificationResponse {}
-const DeleteTelephonyOutplanNotificationResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOutplanNotificationResponse>;
-
 export interface DeleteTelephonyOvhPabxDialplanRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   dialplanId: number;
 }
-const DeleteTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DeleteTelephonyOvhPabxDialplanRequest>;
-
 export interface DeleteTelephonyOvhPabxDialplanResponse {}
-const DeleteTelephonyOvhPabxDialplanResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanResponse>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3568,15 +2252,7 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionRequest {
   dialplanId: number;
   extensionId: number;
 }
-const DeleteTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRequest>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionResponse {}
-const DeleteTelephonyOvhPabxDialplanExtensionResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionResponse>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3585,15 +2261,7 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListReque
   extensionId: number;
   conditionId: number;
 }
-const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse {}
-const DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse =
-  DeleteTelephonyEasyHuntingScreenListConditionConditionResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3602,15 +2270,7 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   extensionId: number;
   conditionId: number;
 }
-const DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse {}
-const DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3619,60 +2279,28 @@ export interface DeleteTelephonyOvhPabxDialplanExtensionRuleRequest {
   extensionId: number;
   ruleId: number;
 }
-const DeleteTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRuleRequest>;
-
 export interface DeleteTelephonyOvhPabxDialplanExtensionRuleResponse {}
-const DeleteTelephonyOvhPabxDialplanExtensionRuleResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRuleResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const DeleteTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentResponse {}
-const DeleteTelephonyOvhPabxHuntingAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse {}
-const DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse {}
-const DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3680,59 +2308,27 @@ export interface DeleteTelephonyOvhPabxHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-const DeleteTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentQueueRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingAgentQueueResponse {}
-const DeleteTelephonyOvhPabxHuntingAgentQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentQueueResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const DeleteTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingCustomStatusRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingCustomStatusResponse {}
-const DeleteTelephonyOvhPabxHuntingCustomStatusResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingCustomStatusResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingEventTokenRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingEventTokenResponse {}
-const DeleteTelephonyOvhPabxHuntingEventTokenResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingEventTokenResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const DeleteTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingQueueResponse {}
-const DeleteTelephonyOvhPabxHuntingQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueResponse>;
-
 export interface DeleteTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3740,30 +2336,14 @@ export interface DeleteTelephonyOvhPabxHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-const DeleteTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueAgentRequest>;
-
 export interface DeleteTelephonyOvhPabxHuntingQueueAgentResponse {}
-const DeleteTelephonyOvhPabxHuntingQueueAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueAgentResponse>;
-
 export interface DeleteTelephonyOvhPabxMenuRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   menuId: number;
 }
-const DeleteTelephonyOvhPabxMenuRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<DeleteTelephonyOvhPabxMenuRequest>;
-
 export interface DeleteTelephonyOvhPabxMenuResponse {}
-const DeleteTelephonyOvhPabxMenuResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxMenuResponse>;
-
 export interface DeleteTelephonyOvhPabxMenuEntryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3771,75 +2351,35 @@ export interface DeleteTelephonyOvhPabxMenuEntryRequest {
   menuId: number;
   entryId: number;
 }
-const DeleteTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<DeleteTelephonyOvhPabxMenuEntryRequest>;
-
 export interface DeleteTelephonyOvhPabxMenuEntryResponse {}
-const DeleteTelephonyOvhPabxMenuEntryResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxMenuEntryResponse>;
-
 export interface DeleteTelephonyOvhPabxRecordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const DeleteTelephonyOvhPabxRecordRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<DeleteTelephonyOvhPabxRecordRequest>;
-
 export interface DeleteTelephonyOvhPabxRecordResponse {}
-const DeleteTelephonyOvhPabxRecordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxRecordResponse>;
-
 export interface DeleteTelephonyOvhPabxSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   soundId: number;
 }
-const DeleteTelephonyOvhPabxSoundRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<DeleteTelephonyOvhPabxSoundRequest>;
-
 export interface DeleteTelephonyOvhPabxSoundResponse {}
-const DeleteTelephonyOvhPabxSoundResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxSoundResponse>;
-
 export interface DeleteTelephonyOvhPabxTtsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const DeleteTelephonyOvhPabxTtsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DeleteTelephonyOvhPabxTtsRequest>;
-
 export interface DeleteTelephonyOvhPabxTtsResponse {}
-const DeleteTelephonyOvhPabxTtsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyOvhPabxTtsResponse>;
-
 export interface DeleteTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const DeleteTelephonyPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DeleteTelephonyPhonebookRequest>;
-
 export interface DeleteTelephonyPhonebookResponse {}
-const DeleteTelephonyPhonebookResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyPhonebookResponse>;
-
 export interface DeleteTelephonyPhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3848,15 +2388,7 @@ export interface DeleteTelephonyPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-const DeleteTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DeleteTelephonyPhonebookPhonebookContactRequest>;
-
 export interface DeleteTelephonyPhonebookPhonebookContactResponse {}
-const DeleteTelephonyPhonebookPhonebookContactResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyPhonebookPhonebookContactResponse>;
-
 export interface DeleteTelephonyPortabilityDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3865,15 +2397,7 @@ export interface DeleteTelephonyPortabilityDocumentRequest {
   /** Identifier of the document */
   documentId: number;
 }
-const DeleteTelephonyPortabilityDocumentRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DeleteTelephonyPortabilityDocumentRequest>;
-
 export interface DeleteTelephonyPortabilityDocumentResponse {}
-const DeleteTelephonyPortabilityDocumentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyPortabilityDocumentResponse>;
-
 export interface DeleteTelephonySchedulerEventRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3881,15 +2405,7 @@ export interface DeleteTelephonySchedulerEventRequest {
   /** The unique ICS event identifier */
   uid: string;
 }
-const DeleteTelephonySchedulerEventRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DeleteTelephonySchedulerEventRequest>;
-
 export interface DeleteTelephonySchedulerEventResponse {}
-const DeleteTelephonySchedulerEventResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonySchedulerEventResponse>;
-
 export interface DeleteTelephonyScreenScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3897,15 +2413,7 @@ export interface DeleteTelephonyScreenScreenListRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyScreenScreenListRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<DeleteTelephonyScreenScreenListRequest>;
-
 export interface DeleteTelephonyScreenScreenListResponse {}
-const DeleteTelephonyScreenScreenListResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyScreenScreenListResponse>;
-
 export interface DeleteTelephonyServiceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3915,82 +2423,34 @@ export interface DeleteTelephonyServiceRequest {
   /** Termination reason */
   reason: TelephonyTerminationReasonEnum | (string & {});
 }
-const DeleteTelephonyServiceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DeleteTelephonyServiceRequest>;
-
 export interface DeleteTelephonyServiceResponse {}
-const DeleteTelephonyServiceResponse =
-  BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonyServiceResponse>;
-
 export interface DeleteTelephonyServiceEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyServiceEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<DeleteTelephonyServiceEventTokenRequest>;
-
 export interface DeleteTelephonyServiceEventTokenResponse {}
-const DeleteTelephonyServiceEventTokenResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyServiceEventTokenResponse>;
-
 export interface DeleteTelephonyServiceOfferChangeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DeleteTelephonyServiceOfferChangeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<DeleteTelephonyServiceOfferChangeRequest>;
-
 export interface DeleteTelephonyServiceOfferChangeResponse {}
-const DeleteTelephonyServiceOfferChangeResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyServiceOfferChangeResponse>;
-
 export interface DeleteTelephonySoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const DeleteTelephonySoftphoneLogoRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DeleteTelephonySoftphoneLogoRequest>;
-
 export interface DeleteTelephonySoftphoneLogoResponse {}
-const DeleteTelephonySoftphoneLogoResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonySoftphoneLogoResponse>;
-
 export interface DeleteTelephonySoundRequest {
   /** Sound ID */
   id: number;
 }
-const DeleteTelephonySoundRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<DeleteTelephonySoundRequest>;
-
 export interface DeleteTelephonySoundResponse {}
-const DeleteTelephonySoundResponse =
-  BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonySoundResponse>;
-
 export interface DeleteTelephonySpareRequest {
   /** The internal name of your spare */
   spare: string;
 }
-const DeleteTelephonySpareRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<DeleteTelephonySpareRequest>;
-
 export interface DeleteTelephonySpareResponse {}
-const DeleteTelephonySpareResponse =
-  BlockTelephonyLineResponse as any as S.Schema<DeleteTelephonySpareResponse>;
-
 export interface DeleteTelephonyTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -3998,15 +2458,7 @@ export interface DeleteTelephonyTimeConditionConditionRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<DeleteTelephonyTimeConditionConditionRequest>;
-
 export interface DeleteTelephonyTimeConditionConditionResponse {}
-const DeleteTelephonyTimeConditionConditionResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyTimeConditionConditionResponse>;
-
 export interface DeleteTelephonyTrunkExternalDisplayedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4015,15 +2467,7 @@ export interface DeleteTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number linked to a trunk */
   number: string;
 }
-const DeleteTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<DeleteTelephonyTrunkExternalDisplayedNumberRequest>;
-
 export interface DeleteTelephonyTrunkExternalDisplayedNumberResponse {}
-const DeleteTelephonyTrunkExternalDisplayedNumberResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyTrunkExternalDisplayedNumberResponse>;
-
 export interface DeleteTelephonyVoicemailDirectoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4031,15 +2475,7 @@ export interface DeleteTelephonyVoicemailDirectoryRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<DeleteTelephonyVoicemailDirectoryRequest>;
-
 export interface DeleteTelephonyVoicemailDirectoryResponse {}
-const DeleteTelephonyVoicemailDirectoryResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyVoicemailDirectoryResponse>;
-
 export interface DeleteTelephonyVoicemailGreetingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4047,44 +2483,20 @@ export interface DeleteTelephonyVoicemailGreetingRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteTelephonyVoicemailGreetingRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<DeleteTelephonyVoicemailGreetingRequest>;
-
 export interface DeleteTelephonyVoicemailGreetingResponse {}
-const DeleteTelephonyVoicemailGreetingResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DeleteTelephonyVoicemailGreetingResponse>;
-
 export interface DisconnectTelephonyLineSoftphoneDeviceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const DisconnectTelephonyLineSoftphoneDeviceRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<DisconnectTelephonyLineSoftphoneDeviceRequest>;
-
 export interface DisconnectTelephonyLineSoftphoneDeviceResponse {}
-const DisconnectTelephonyLineSoftphoneDeviceResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<DisconnectTelephonyLineSoftphoneDeviceResponse>;
-
 export interface ExecuteTelephonyPortabilityRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const ExecuteTelephonyPortabilityRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ExecuteTelephonyPortabilityRequest>;
-
 export interface ExecuteTelephonyPortabilityResponse {}
-const ExecuteTelephonyPortabilityResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<ExecuteTelephonyPortabilityResponse>;
-
 export interface FetchTelephonyServiceDirectoryEntrepriseInformationsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4092,11 +2504,6 @@ export interface FetchTelephonyServiceDirectoryEntrepriseInformationsRequest {
   /** Entreprise number to fetch informations from */
   entrepriseNumber: string;
 }
-const FetchTelephonyServiceDirectoryEntrepriseInformationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<FetchTelephonyServiceDirectoryEntrepriseInformationsRequest>;
-
 /** Task informations about an entreprise */
 export interface TelephonyEntrepriseNumberInformations {
   /** Address of the entreprise */
@@ -4114,11 +2521,6 @@ export interface TelephonyEntrepriseNumberInformations {
   /** Short version of the entreprise number (FR only) */
   siren?: string | null;
 }
-const TelephonyEntrepriseNumberInformations = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<TelephonyEntrepriseNumberInformations>;
-
 /** Task about getting entreprise informations */
 export interface TelephonyEntrepriseNumberInformationsTask {
   /** Informations about the enterprise */
@@ -4126,34 +2528,14 @@ export interface TelephonyEntrepriseNumberInformationsTask {
   /** Task status */
   status?: TelephonyTaskStatusEnum;
 }
-const TelephonyEntrepriseNumberInformationsTask = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<TelephonyEntrepriseNumberInformationsTask>;
-
 export interface GenerateTelephonyResellerPanelPasswordRequest {}
-const GenerateTelephonyResellerPanelPasswordRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GenerateTelephonyResellerPanelPasswordRequest>;
-
 export interface GenerateTelephonyResellerPanelPasswordResponse {}
-const GenerateTelephonyResellerPanelPasswordResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<GenerateTelephonyResellerPanelPasswordResponse>;
-
 export interface GetTelephonyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonyRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<GetTelephonyRequest>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -4165,12 +2547,8 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<IamResourceMetadata>;
-
 /** Status of billing account */
 export type TelephonyBillingAccountStatusEnum = "closed" | "deleted" | "enabled" | "expired";
-const TelephonyBillingAccountStatusEnum = S.String;
-
 /** Billing Account */
 export interface TelephonyBillingAccountWithIAM {
   /** Allowed outplan */
@@ -4198,56 +2576,28 @@ export interface TelephonyBillingAccountWithIAM {
   /** Is the billing account trusted */
   trusted?: boolean;
 }
-const TelephonyBillingAccountWithIAM = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<TelephonyBillingAccountWithIAM>;
-
 export interface GetTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The abbreviated number which must start with "7" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-const GetTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetTelephonyAbbreviatedNumberRequest>;
-
 export interface GetTelephonyAliasRequest {
   /** Your line number */
   serviceName: string;
 }
-const GetTelephonyAliasRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetTelephonyAliasRequest>;
-
 /** Telephony service */
 export interface TelephonyTelephonyGenericServiceWithIAM {
   /** IAM resource metadata */
   iam?: IamResourceMetadata | null;
   serviceName?: string;
 }
-const TelephonyTelephonyGenericServiceWithIAM = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<TelephonyTelephonyGenericServiceWithIAM>;
-
 export interface GetTelephonyAliasServiceInfosRequest {
   /** Your line number */
   serviceName: string;
 }
-const GetTelephonyAliasServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetTelephonyAliasServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateTelephonyAliasChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -4261,8 +2611,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -4273,8 +2621,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -4282,8 +2628,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -4303,43 +2647,24 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<ServicesService>;
-
 export interface GetTelephonyBillingAccountSiteRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonyBillingAccountSiteRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetTelephonyBillingAccountSiteRequest>;
-
 export type GetTelephonyBillingAccountSiteResponse = string;
-const GetTelephonyBillingAccountSiteResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<GetTelephonyBillingAccountSiteResponse>;
-
 export interface GetTelephonyCarrierSipRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyCarrierSipRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetTelephonyCarrierSipRequest>;
-
 /** All existing types */
 export type TelephonyTypeServiceEnum = "alias" | "line";
-const TelephonyTypeServiceEnum = S.String;
-
 /** CarrierSip */
 export interface TelephonyCarrierSip {
   description?: string;
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyCarrierSip = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<TelephonyCarrierSip>;
-
 export interface GetTelephonyCarrierSipCdrsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4347,11 +2672,6 @@ export interface GetTelephonyCarrierSipCdrsRequest {
   /** The month you want to extract (format: YYYY-MM). Current month if not specified. */
   month?: string;
 }
-const GetTelephonyCarrierSipCdrsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GetTelephonyCarrierSipCdrsRequest>;
-
 /** Document linked to a telephony service */
 export interface TelephonyDocument {
   /** Description of the document */
@@ -4367,8 +2687,6 @@ export interface TelephonyDocument {
   /** Document validation date */
   validationDate?: string | null;
 }
-const TelephonyDocument = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<TelephonyDocument>;
-
 export interface GetTelephonyCarrierSipEndpointRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4376,15 +2694,8 @@ export interface GetTelephonyCarrierSipEndpointRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyCarrierSipEndpointRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GetTelephonyCarrierSipEndpointRequest>;
-
 /** Protocol of a carrier sip trunk customer endpoint */
 export type TelephonyCarrierSipEndpointProtocolEnum = "tcp" | "tls" | "udp";
-const TelephonyCarrierSipEndpointProtocolEnum = S.String;
-
 /** Carrier SIP Endpoints */
 export interface TelephonyCarrierSipCustomerEndpoint {
   /** Should we send incoming calls to this endpoint */
@@ -4402,21 +2713,11 @@ export interface TelephonyCarrierSipCustomerEndpoint {
   /** SIP Endpoint weight (DNS SRV) */
   weight?: number;
 }
-const TelephonyCarrierSipCustomerEndpoint = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<TelephonyCarrierSipCustomerEndpoint>;
-
 export interface GetTelephonyCarrierSipSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetTelephonyCarrierSipSettingsRequest>;
-
 /** Carrier SIP Properties */
 export interface TelephonyCarrierSipDetails {
   /** The carrier SIP trunk description */
@@ -4426,11 +2727,6 @@ export interface TelephonyCarrierSipDetails {
   /** The maximum concurrent calls on your carrier sip service */
   maxConcurrentCalls?: number;
 }
-const TelephonyCarrierSipDetails = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<TelephonyCarrierSipDetails>;
-
 export interface GetTelephonyCarrierSipVnoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4438,11 +2734,6 @@ export interface GetTelephonyCarrierSipVnoRequest {
   /** The reference written on your VNO contract. */
   contractReference: string;
 }
-const GetTelephonyCarrierSipVnoRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetTelephonyCarrierSipVnoRequest>;
-
 /** Carrier SIP VNO mandate */
 export interface TelephonyCarrierSipVnoMandate {
   /** Date at which the associated ranges will be routed. */
@@ -4450,11 +2741,6 @@ export interface TelephonyCarrierSipVnoMandate {
   /** The reference written on your VNO contract. */
   contractReference?: string;
 }
-const TelephonyCarrierSipVnoMandate = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<TelephonyCarrierSipVnoMandate>;
-
 export interface GetTelephonyCarrierSipVnoRangeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4464,11 +2750,6 @@ export interface GetTelephonyCarrierSipVnoRangeRequest {
   /** The phone range prefix. */
   prefix: string;
 }
-const GetTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetTelephonyCarrierSipVnoRangeRequest>;
-
 /** Carrier SIP VNO range */
 export interface TelephonyCarrierSipVnoRange {
   /** The carrier SIP trunk description. */
@@ -4476,25 +2757,12 @@ export interface TelephonyCarrierSipVnoRange {
   /** The phone range prefix. */
   prefix?: string;
 }
-const TelephonyCarrierSipVnoRange = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<TelephonyCarrierSipVnoRange>;
-
 export interface GetTelephonyConferenceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyConferenceRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GetTelephonyConferenceRequest>;
-
 export type TelephonyConferenceOffersList = Array<string>;
-const TelephonyConferenceOffersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyConferenceOffersList>;
-
 /** Conference */
 export interface TelephonyConference {
   description?: string;
@@ -4502,8 +2770,6 @@ export interface TelephonyConference {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyConference = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<TelephonyConference>;
-
 export interface GetTelephonyConferenceHistoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4511,11 +2777,6 @@ export interface GetTelephonyConferenceHistoryRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyConferenceHistoryRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetTelephonyConferenceHistoryRequest>;
-
 /** Event of a conference (participant left/join) */
 export interface TelephonyConferenceHistoryEvent {
   /** The caller id of the participant */
@@ -4525,18 +2786,8 @@ export interface TelephonyConferenceHistoryEvent {
   /** The nature of the event : left/join */
   type?: string;
 }
-const TelephonyConferenceHistoryEvent = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<TelephonyConferenceHistoryEvent>;
-
 /** The events of the conference (participants joining/left) */
 export type TelephonyConferenceHistoryEventsList = Array<TelephonyConferenceHistoryEvent>;
-const TelephonyConferenceHistoryEventsList = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<TelephonyConferenceHistoryEventsList>;
-
 /** List past conferences on your number */
 export interface TelephonyConferenceHistory {
   /** The count of connections to the conference */
@@ -4556,21 +2807,11 @@ export interface TelephonyConferenceHistory {
   /** The audio record url if you set recording */
   recordUrl?: string | null;
 }
-const TelephonyConferenceHistory = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<TelephonyConferenceHistory>;
-
 export interface GetTelephonyConferenceInformationsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyConferenceInformationsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<GetTelephonyConferenceInformationsRequest>;
-
 /** Conference realtime informations structure */
 export interface TelephonyConferenceInformations {
   /** The date when the conference began */
@@ -4580,11 +2821,6 @@ export interface TelephonyConferenceInformations {
   /** The current participants count in your conference room */
   membersCount?: number;
 }
-const TelephonyConferenceInformations = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<TelephonyConferenceInformations>;
-
 export interface GetTelephonyConferenceParticipantRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4592,11 +2828,6 @@ export interface GetTelephonyConferenceParticipantRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyConferenceParticipantRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GetTelephonyConferenceParticipantRequest>;
-
 /** Conference service */
 export interface TelephonyConferenceParticipants {
   /** The arrival datetime of the participant in the conference. */
@@ -4618,11 +2849,6 @@ export interface TelephonyConferenceParticipants {
   /** Whether the participant is talking */
   talking?: boolean;
 }
-const TelephonyConferenceParticipants = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<TelephonyConferenceParticipants>;
-
 export interface GetTelephonyConferenceRoomRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4630,11 +2856,6 @@ export interface GetTelephonyConferenceRoomRequest {
   /** The conference room number */
   roomNumber: number;
 }
-const GetTelephonyConferenceRoomRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GetTelephonyConferenceRoomRequest>;
-
 export interface GetTelephonyConferenceRoomHistoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4644,11 +2865,6 @@ export interface GetTelephonyConferenceRoomHistoryRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyConferenceRoomHistoryRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetTelephonyConferenceRoomHistoryRequest>;
-
 export interface GetTelephonyConferenceRoomParticipantRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4658,21 +2874,11 @@ export interface GetTelephonyConferenceRoomParticipantRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyConferenceRoomParticipantRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<GetTelephonyConferenceRoomParticipantRequest>;
-
 export interface GetTelephonyConferenceRoomsStatsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyConferenceRoomsStatsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetTelephonyConferenceRoomsStatsRequest>;
-
 /** Get realtime statistics about all rooms of your conference number */
 export interface TelephonyConferenceRoomsStatistics {
   /** The total numbers of rooms currently active in the conference number */
@@ -4682,11 +2888,6 @@ export interface TelephonyConferenceRoomsStatistics {
   /** The number of rooms available in the conference number */
   roomsCount?: number;
 }
-const TelephonyConferenceRoomsStatistics = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<TelephonyConferenceRoomsStatistics>;
-
 export interface GetTelephonyConferenceRoomWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4696,21 +2897,11 @@ export interface GetTelephonyConferenceRoomWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<GetTelephonyConferenceRoomWebAccessRequest>;
-
 export interface GetTelephonyConferenceSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyConferenceSettingsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<GetTelephonyConferenceSettingsRequest>;
-
 /** Conference properties */
 export interface TelephonyConferenceProperties {
   /** Whether announce file is played before entrance */
@@ -4740,11 +2931,6 @@ export interface TelephonyConferenceProperties {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-const TelephonyConferenceProperties = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<TelephonyConferenceProperties>;
-
 export interface GetTelephonyConferenceWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4752,21 +2938,11 @@ export interface GetTelephonyConferenceWebAccessRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyConferenceWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GetTelephonyConferenceWebAccessRequest>;
-
 export interface GetTelephonyDdiRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyDdiRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GetTelephonyDdiRequest>;
-
 /** DDI (direct dial-in) service */
 export interface TelephonyDdi {
   description?: string;
@@ -4775,18 +2951,11 @@ export interface TelephonyDdi {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyDdi = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<TelephonyDdi>;
-
 export interface GetTelephonyEasyHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyEasyHuntingRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GetTelephonyEasyHuntingRequest>;
-
 /** OVH easy calls queues */
 export interface TelephonyEasyHunting {
   /** Reject (hangup) anonymous calls */
@@ -4819,21 +2988,11 @@ export interface TelephonyEasyHunting {
   /** The voicemail used by the EasyPABX */
   voicemail?: string | null;
 }
-const TelephonyEasyHunting = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<TelephonyEasyHunting>;
-
 export interface GetTelephonyEasyHuntingHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingRequest>;
-
 /** PABX Hunting */
 export interface TelephonyOvhPabxHunting {
   /** The templated url of your CRM, opened by the banner application of your cloudpabx */
@@ -4845,33 +3004,18 @@ export interface TelephonyOvhPabxHunting {
   /** Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default. */
   statusIvrEnabled?: boolean;
 }
-const TelephonyOvhPabxHunting = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<TelephonyOvhPabxHunting>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4880,15 +3024,8 @@ export interface GetTelephonyEasyHuntingHuntingAgentCallRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentCallRequest>;
-
 /** State of the call */
 export type TelephonyOvhPabxHuntingLiveCallsStateEnum = "Answered" | "Waiting";
-const TelephonyOvhPabxHuntingLiveCallsStateEnum = S.String;
-
 /** Live statistics of the queue */
 export interface TelephonyOvhPabxHuntingQueueLiveCalls {
   /** Name or number of the agent who answered the call */
@@ -4913,39 +3050,22 @@ export interface TelephonyOvhPabxHuntingQueueLiveCalls {
   /** Current state of the call */
   state?: TelephonyOvhPabxHuntingLiveCallsStateEnum;
 }
-const TelephonyOvhPabxHuntingQueueLiveCalls = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveCalls>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentEventTokenRequest>;
-
 /** Token associated to the service for live event */
 export interface TelephonyEventToken {
   token?: string;
 }
-const TelephonyEventToken = TelephonySoftphoneToken as any as S.Schema<TelephonyEventToken>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest>;
-
 /** Status of the agent */
 export type TelephonyOvhPabxHuntingLiveAgentStatusEnum =
   | "inAQueueCall"
@@ -4953,8 +3073,6 @@ export type TelephonyOvhPabxHuntingLiveAgentStatusEnum =
   | "onBreak"
   | "receiving"
   | "waiting";
-const TelephonyOvhPabxHuntingLiveAgentStatusEnum = S.String;
-
 /** Live statistics of the queue */
 export interface TelephonyOvhPabxHuntingAgentLiveStatus {
   /** The number of calls this agent took on the current day */
@@ -4966,11 +3084,6 @@ export interface TelephonyOvhPabxHuntingAgentLiveStatus {
   /** The total duration in seconds of the calls this agent took on the current day */
   totalCallDuration?: number;
 }
-const TelephonyOvhPabxHuntingAgentLiveStatus = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4978,11 +3091,6 @@ export interface GetTelephonyEasyHuntingHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentQueueRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -4990,43 +3098,23 @@ export interface GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest {
   agentId: number;
   queueId: number;
 }
-const GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const GetTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingCustomStatusRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyEasyHuntingHuntingEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingEventTokenRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const GetTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5034,11 +3122,6 @@ export interface GetTelephonyEasyHuntingHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-const GetTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueAgentRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5046,11 +3129,6 @@ export interface GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest {
   queueId: number;
   agentId: number;
 }
-const GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingQueueLiveCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5059,22 +3137,12 @@ export interface GetTelephonyEasyHuntingHuntingQueueLiveCallRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyEasyHuntingHuntingQueueLiveCallRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueLiveCallRequest>;
-
 export interface GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest>;
-
 /** Live statistics of the queue */
 export interface TelephonyOvhPabxHuntingQueueLiveStatistics {
   /** Total of calls answered */
@@ -5090,22 +3158,12 @@ export interface TelephonyOvhPabxHuntingQueueLiveStatistics {
   /** Total waiting duration in seconds */
   totalWaitingDuration?: number;
 }
-const TelephonyOvhPabxHuntingQueueLiveStatistics = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveStatistics>;
-
 export interface GetTelephonyEasyHuntingRecordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const GetTelephonyEasyHuntingRecordRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<GetTelephonyEasyHuntingRecordRequest>;
-
 /** The PABX records */
 export interface TelephonyOvhPabxRecord {
   /** The agent number of the recorded call */
@@ -5126,95 +3184,51 @@ export interface TelephonyOvhPabxRecord {
   fileUrl?: string;
   id?: number;
 }
-const TelephonyOvhPabxRecord = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<TelephonyOvhPabxRecord>;
-
 export interface GetTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   conditionId: number;
 }
-const GetTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetTelephonyEasyHuntingScreenListConditionConditionRequest>;
-
 export interface GetTelephonyEasyHuntingScreenListConditionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetTelephonyEasyHuntingScreenListConditionsRequest>;
-
 /** Screenlist condition type */
 export type TelephonyEasyHuntingScreenListsConditionsStatusEnum =
   | "disabled"
   | "incomingBlackList"
   | "incomingWhiteList";
-const TelephonyEasyHuntingScreenListsConditionsStatusEnum = S.String;
-
 /** Easy hunting screen lists conditions options */
 export interface TelephonyEasyHuntingScreenListsConditionsSettings {
   status?: TelephonyEasyHuntingScreenListsConditionsStatusEnum;
 }
-const TelephonyEasyHuntingScreenListsConditionsSettings = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<TelephonyEasyHuntingScreenListsConditionsSettings>;
-
 export interface GetTelephonyEasyHuntingSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   soundId: number;
 }
-const GetTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetTelephonyEasyHuntingSoundRequest>;
-
 /** The PABX sounds */
 export interface TelephonyOvhPabxSound {
   /** The sound filename */
   name?: string;
   soundId?: number;
 }
-const TelephonyOvhPabxSound = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<TelephonyOvhPabxSound>;
-
 export interface GetTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   conditionId: number;
 }
-const GetTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetTelephonyEasyHuntingTimeConditionConditionRequest>;
-
 export interface GetTelephonyEasyHuntingTimeConditionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetTelephonyEasyHuntingTimeConditionsRequest>;
-
 /** Forward type */
 export type TelephonyTimeConditionsSettingsForwardTypeEnum = "number" | "voicemail";
-const TelephonyTimeConditionsSettingsForwardTypeEnum = S.String;
-
 /** Easy hunting time conditions options */
 export interface TelephonyEasyHuntingTimeConditionsSettings {
   /** Status of time conditions */
@@ -5236,34 +3250,17 @@ export interface TelephonyEasyHuntingTimeConditionsSettings {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSettingsForwardTypeEnum | null;
 }
-const TelephonyEasyHuntingTimeConditionsSettings = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<TelephonyEasyHuntingTimeConditionsSettings>;
-
 export interface GetTelephonyEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonyEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<GetTelephonyEventTokenRequest>;
-
 export interface GetTelephonyFaxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyFaxRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GetTelephonyFaxRequest>;
-
 /** Types of statistics available for a line. */
 export type TelephonyLineNotificationsLogsFrequencyEnum = "Never" | "Once a day" | "Twice a day";
-const TelephonyLineNotificationsLogsFrequencyEnum = S.String;
-
 /** Error logging notifications options */
 export interface TelephonyLineNotificationsLogsOptions {
   /** Email address where to send notifications */
@@ -5273,24 +3270,11 @@ export interface TelephonyLineNotificationsLogsOptions {
   /** Send a blank notification if there is no diagnosticReports entries for the period */
   sendIfNull?: boolean | null;
 }
-const TelephonyLineNotificationsLogsOptions = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<TelephonyLineNotificationsLogsOptions>;
-
 export interface TelephonyLineNotificationsOptions {
   /** Error logging notifications options */
   logs?: TelephonyLineNotificationsLogsOptions | null;
 }
-const TelephonyLineNotificationsOptions = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<TelephonyLineNotificationsOptions>;
-
 export type TelephonyFaxOffersList = Array<string>;
-const TelephonyFaxOffersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxOffersList>;
-
 /** Fax service */
 export interface TelephonyFax {
   description?: string;
@@ -5300,8 +3284,6 @@ export interface TelephonyFax {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyFax = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<TelephonyFax>;
-
 export interface GetTelephonyFaxCampaignRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5309,43 +3291,21 @@ export interface GetTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyFaxCampaignRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetTelephonyFaxCampaignRequest>;
-
 export interface GetTelephonyFaxScreenListsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyFaxScreenListsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetTelephonyFaxScreenListsRequest>;
-
 export interface GetTelephonyFaxSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyFaxSettingsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GetTelephonyFaxSettingsRequest>;
-
 /** Number of tries when sending a fax */
 export type TelephonyFaxSendingTries = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-const TelephonyFaxSendingTries = S.Number;
-
 /** Format of the notification mail. "html" will include a preview image of the fax */
 export type TelephonyFaxMailFormatEnum = "html" | "text";
-const TelephonyFaxMailFormatEnum = S.String;
-
 export type TelephonyFaxPropertiesRedirectionEmailList = Array<string>;
-const TelephonyFaxPropertiesRedirectionEmailList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxPropertiesRedirectionEmailList>;
-
 /** Fax properties */
 export interface TelephonyFaxProperties {
   callNumber?: string;
@@ -5361,34 +3321,16 @@ export interface TelephonyFaxProperties {
   rejectAnonymous?: boolean;
   sender?: string;
 }
-const TelephonyFaxProperties = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<TelephonyFaxProperties>;
-
 export interface GetTelephonyHasSpecialNumbersRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonyHasSpecialNumbersRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetTelephonyHasSpecialNumbersRequest>;
-
 export type GetTelephonyHasSpecialNumbersResponse = boolean;
-const GetTelephonyHasSpecialNumbersResponse =
-  CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyHasSpecialNumbersResponse>;
-
 export interface GetTelephonyHistoryConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   date: string;
 }
-const GetTelephonyHistoryConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetTelephonyHistoryConsumptionRequest>;
-
 /** Previous billed consumptions */
 export interface TelephonyHistoryConsumption {
   date?: string;
@@ -5396,15 +3338,8 @@ export interface TelephonyHistoryConsumption {
   priceOutplan?: OrderPrice;
   status?: TelephonyBillStatusEnum;
 }
-const TelephonyHistoryConsumption = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<TelephonyHistoryConsumption>;
-
 /** Document suffix */
 export type TelephonyBillDocument = "csv" | "pdf" | "received.csv" | "xml";
-const TelephonyBillDocument = S.String;
-
 export interface GetTelephonyHistoryConsumptionFileRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5412,15 +3347,8 @@ export interface GetTelephonyHistoryConsumptionFileRequest {
   /** Document suffix */
   extension: TelephonyBillDocument | (string & {});
 }
-const GetTelephonyHistoryConsumptionFileRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<GetTelephonyHistoryConsumptionFileRequest>;
-
 /** File providing task status */
 export type TelephonyPcsFileStatusEnum = "doing" | "done" | "error" | "todo";
-const TelephonyPcsFileStatusEnum = S.String;
-
 /** Telephony API related file hosted */
 export interface TelephonyPcsFile {
   filename?: string;
@@ -5428,41 +3356,24 @@ export interface TelephonyPcsFile {
   url?: string;
   urlExpirationDatetime?: string;
 }
-const TelephonyPcsFile = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<TelephonyPcsFile>;
-
 export interface GetTelephonyHistoryRepaymentConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** date of the bill */
   date: string;
 }
-const GetTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GetTelephonyHistoryRepaymentConsumptionRequest>;
-
 export interface GetTelephonyHistoryRepaymentConsumptionDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** date of the bill */
   date: string;
 }
-const GetTelephonyHistoryRepaymentConsumptionDocumentRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GetTelephonyHistoryRepaymentConsumptionDocumentRequest>;
-
 export interface GetTelephonyHistoryTollfreeConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** date of the bill */
   date: string;
 }
-const GetTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<GetTelephonyHistoryTollfreeConsumptionRequest>;
-
 /** Previous tollfree bill */
 export interface TelephonyHistoryTollfreeConsumption {
   /** date of the bill */
@@ -5472,31 +3383,16 @@ export interface TelephonyHistoryTollfreeConsumption {
   /** status of the bill */
   status?: TelephonyBillStatusEnum;
 }
-const TelephonyHistoryTollfreeConsumption = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<TelephonyHistoryTollfreeConsumption>;
-
 export interface GetTelephonyHistoryTollfreeConsumptionDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** date of the bill */
   date: string;
 }
-const GetTelephonyHistoryTollfreeConsumptionDocumentRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<GetTelephonyHistoryTollfreeConsumptionDocumentRequest>;
-
 export interface GetTelephonyLineRequest {
   /** Your line number */
   serviceName: string;
 }
-const GetTelephonyLineRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<GetTelephonyLineRequest>;
-
 export interface GetTelephonyLineAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5504,25 +3400,12 @@ export interface GetTelephonyLineAbbreviatedNumberRequest {
   /** The abbreviated number which must start with "2" and must have a length of 3 or 4 digits */
   abbreviatedNumber: number;
 }
-const GetTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<GetTelephonyLineAbbreviatedNumberRequest>;
-
 export interface GetTelephonyLineActivateNewPhoneRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineActivateNewPhoneRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<GetTelephonyLineActivateNewPhoneRequest>;
-
 export interface GetTelephonyLineActivateNewPhoneResponse {}
-const GetTelephonyLineActivateNewPhoneResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<GetTelephonyLineActivateNewPhoneResponse>;
-
 export interface GetTelephonyLineAutomaticCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5530,11 +3413,6 @@ export interface GetTelephonyLineAutomaticCallRequest {
   /** Generated call identifier */
   identifier: string;
 }
-const GetTelephonyLineAutomaticCallRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<GetTelephonyLineAutomaticCallRequest>;
-
 /** Types of hangupCause for generated calls. */
 export type TelephonyCallsGeneratorHangupCauseEnum =
   | "AccessInformationDiscarded"
@@ -5602,8 +3480,6 @@ export type TelephonyCallsGeneratorHangupCauseEnum =
   | "UnspecifiedNoOtherCauseCodesApplicable"
   | "UserChallenge"
   | "UserNotRegistered";
-const TelephonyCallsGeneratorHangupCauseEnum = S.String;
-
 /** Automatic Call made by Call Generator on this line */
 export interface TelephonyCallsGenerated {
   /** answer date */
@@ -5635,21 +3511,11 @@ export interface TelephonyCallsGenerated {
   /** unique call id */
   uuid?: string;
 }
-const TelephonyCallsGenerated = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<TelephonyCallsGenerated>;
-
 export interface GetTelephonyLineByServiceNameRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineByServiceNameRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<GetTelephonyLineByServiceNameRequest>;
-
 /** Informations related to a line offer */
 export interface TelephonyLineOffer {
   /** The offer description */
@@ -5659,13 +3525,8 @@ export interface TelephonyLineOffer {
   /** Offer price per month */
   price?: OrderPrice | null;
 }
-const TelephonyLineOffer = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<TelephonyLineOffer>;
-
 /** The line offers (Deprecated, prefer "name" in getPublicOffer) */
 export type TelephonyLineOffersList = Array<string>;
-const TelephonyLineOffersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyLineOffersList>;
-
 /** Line service */
 export interface TelephonyLine {
   /** Ability to manage SIP password on this service */
@@ -5687,8 +3548,6 @@ export interface TelephonyLine {
   serviceType?: TelephonyTypeServiceEnum;
   simultaneousLines?: number;
 }
-const TelephonyLine = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<TelephonyLine>;
-
 export interface GetTelephonyLineClick2CallUserRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5696,11 +3555,6 @@ export interface GetTelephonyLineClick2CallUserRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyLineClick2CallUserRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<GetTelephonyLineClick2CallUserRequest>;
-
 /** User of the click 2 call */
 export interface TelephonyClick2CallUser {
   /** Date when user was created */
@@ -5710,11 +3564,6 @@ export interface TelephonyClick2CallUser {
   /** login of the click 2 call user */
   login?: string;
 }
-const TelephonyClick2CallUser = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<TelephonyClick2CallUser>;
-
 export interface GetTelephonyLineEventRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -5722,15 +3571,8 @@ export interface GetTelephonyLineEventRequest {
   /** Id of the object */
   id: string;
 }
-const GetTelephonyLineEventRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<GetTelephonyLineEventRequest>;
-
 /** The call direction for a given event */
 export type TelephonyRealtimeEventDirection = "incoming" | "outgoing";
-const TelephonyRealtimeEventDirection = S.String;
-
 /** The event type */
 export type TelephonyRealtimeEventType =
   | "end_calling"
@@ -5739,12 +3581,8 @@ export type TelephonyRealtimeEventType =
   | "start_calling"
   | "start_hold"
   | "start_ringing";
-const TelephonyRealtimeEventType = S.String;
-
 /** The event protocol */
 export type TelephonyRealtimeEventProtocol = "mgcp" | "sip";
-const TelephonyRealtimeEventProtocol = S.String;
-
 /** Events triggered by the line */
 export interface TelephonyEvent {
   /** Called referer, could be the msisdn or the label name */
@@ -5764,69 +3602,34 @@ export interface TelephonyEvent {
   /** Protocol (mgcp or sip) */
   protocol?: TelephonyRealtimeEventProtocol;
 }
-const TelephonyEvent = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<TelephonyEvent>;
-
 export interface GetTelephonyLineMaximumAvailableSimultaneousLinesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineMaximumAvailableSimultaneousLinesRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<GetTelephonyLineMaximumAvailableSimultaneousLinesRequest>;
-
 export type GetTelephonyLineMaximumAvailableSimultaneousLinesResponse = number;
-const GetTelephonyLineMaximumAvailableSimultaneousLinesResponse =
-  CreateTelephonyLinePhonePhonebookPhonebookContactResponse as any as S.Schema<GetTelephonyLineMaximumAvailableSimultaneousLinesResponse>;
-
 export interface GetTelephonyLineOfferRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineOfferRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<GetTelephonyLineOfferRequest>;
-
 export interface GetTelephonyLineOptionDefaultCodecsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineOptionDefaultCodecsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<GetTelephonyLineOptionDefaultCodecsRequest>;
-
 export type GetTelephonyLineOptionDefaultCodecsResponse = string;
-const GetTelephonyLineOptionDefaultCodecsResponse =
-  CreateTelephonyEasyHuntingHuntingEventTokenResponse as any as S.Schema<GetTelephonyLineOptionDefaultCodecsResponse>;
-
 export interface GetTelephonyLineOptionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineOptionsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<GetTelephonyLineOptionsRequest>;
-
 /** The nature of the call forward */
 export type TelephonyLineOptionForwardNatureTypeEnum = "fax" | "number" | "voicemail";
-const TelephonyLineOptionForwardNatureTypeEnum = S.String;
-
 /** Intercom configuration */
 export type TelephonyLineOptionIntercomEnum = "no" | "prefixed" | "yes";
-const TelephonyLineOptionIntercomEnum = S.String;
-
 /** The ip restrictions of your line */
 export type TelephonyLineOptionsIpRestrictionsList = Array<string>;
-const TelephonyLineOptionsIpRestrictionsList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyLineOptionsIpRestrictionsList>;
-
 /** The language of the line */
 export type TelephonyLineOptionLanguageEnum =
   | "Dutch"
@@ -5836,8 +3639,6 @@ export type TelephonyLineOptionLanguageEnum =
   | "German"
   | "Italian"
   | "Spanish";
-const TelephonyLineOptionLanguageEnum = S.String;
-
 /** Line options */
 export interface TelephonyLineOptions {
   absentSubscriber?: boolean;
@@ -5910,40 +3711,20 @@ export interface TelephonyLineOptions {
   /** Voicemail short number to dial from the line */
   voicemailInternalNumber?: string;
 }
-const TelephonyLineOptions = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<TelephonyLineOptions>;
-
 export interface GetTelephonyLinePhoneRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLinePhoneRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<GetTelephonyLinePhoneRequest>;
-
 /** Property value possibilities */
 export type TelephonyPhoneConfigurationPropertyEnumList = Array<string>;
-const TelephonyPhoneConfigurationPropertyEnumList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyPhoneConfigurationPropertyEnumList>;
-
 /** Phone Configuration level enum */
 export type TelephonyPhoneConfigurationLevelEnum = "admin" | "expert";
-const TelephonyPhoneConfigurationLevelEnum = S.String;
-
 /** Start and end points (inclusive) of a range */
 export interface ComplexTypeRangeLong {
   from?: number;
   to?: number;
 }
-const ComplexTypeRangeLong = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ComplexTypeRangeLong>;
-
 /** Phone configuration type enum */
 export type TelephonyPhoneConfigurationTypeEnum =
   | "boolean"
@@ -5952,8 +3733,6 @@ export type TelephonyPhoneConfigurationTypeEnum =
   | "ipv4"
   | "numeric"
   | "string";
-const TelephonyPhoneConfigurationTypeEnum = S.String;
-
 /** Phone configuration property */
 export interface TelephonyPhoneConfigurationProperty {
   /** Default property value */
@@ -5977,22 +3756,10 @@ export interface TelephonyPhoneConfigurationProperty {
   /** Current property value */
   value?: string | null;
 }
-const TelephonyPhoneConfigurationProperty = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<TelephonyPhoneConfigurationProperty>;
-
 /** Current phone properties */
 export type TelephonyPhonePhoneConfigurationList = Array<TelephonyPhoneConfigurationProperty>;
-const TelephonyPhonePhoneConfigurationList = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<TelephonyPhonePhoneConfigurationList>;
-
 /** Phone protocol */
 export type TelephonyProtocolEnum = "mgcp" | "sip";
-const TelephonyProtocolEnum = S.String;
-
 /** Plug & Phone */
 export interface TelephonyPhone {
   /** Brand name */
@@ -6014,18 +3781,11 @@ export interface TelephonyPhone {
   /** The phone user password */
   userPassword?: string | Redacted.Redacted<string> | null;
 }
-const TelephonyPhone = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<TelephonyPhone>;
-
 export interface GetTelephonyLinePhoneAdminCredentialsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLinePhoneAdminCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<GetTelephonyLinePhoneAdminCredentialsRequest>;
-
 /** Credentials to access the web interface of the phone */
 export interface TelephonyPhoneCredentials {
   /** Username to access the web interface of the phone */
@@ -6033,11 +3793,6 @@ export interface TelephonyPhoneCredentials {
   /** Password to access the web interface of the phone */
   password?: string | Redacted.Redacted<string>;
 }
-const TelephonyPhoneCredentials = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<TelephonyPhoneCredentials>;
-
 export interface GetTelephonyLinePhoneFunctionKeyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6045,11 +3800,6 @@ export interface GetTelephonyLinePhoneFunctionKeyRequest {
   /** The number of the function key */
   keyNum: number;
 }
-const GetTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GetTelephonyLinePhoneFunctionKeyRequest>;
-
 /** Plug & Phone function key */
 export interface TelephonyFunctionKey {
   /** The default function used by the key */
@@ -6065,11 +3815,6 @@ export interface TelephonyFunctionKey {
   /** The key type */
   type?: string;
 }
-const TelephonyFunctionKey = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<TelephonyFunctionKey>;
-
 export interface GetTelephonyLinePhonePhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6077,11 +3822,6 @@ export interface GetTelephonyLinePhonePhonebookRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const GetTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<GetTelephonyLinePhonePhonebookRequest>;
-
 /** Phone book */
 export interface TelephonyPhonebook {
   /** Identifier of the phonebook */
@@ -6093,12 +3833,8 @@ export interface TelephonyPhonebook {
   /** Phone key identifier between the phone and phonebooks */
   phoneKey?: string;
 }
-const TelephonyPhonebook = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<TelephonyPhonebook>;
-
 /** Export file format */
 export type TelephonyContactsExportFormatsEnum = "csv";
-const TelephonyContactsExportFormatsEnum = S.String;
-
 export interface GetTelephonyLinePhonePhonebookExportRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6108,11 +3844,6 @@ export interface GetTelephonyLinePhonePhonebookExportRequest {
   /** Format of the file */
   format: TelephonyContactsExportFormatsEnum | (string & {});
 }
-const GetTelephonyLinePhonePhonebookExportRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<GetTelephonyLinePhonePhonebookExportRequest>;
-
 export interface GetTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6122,11 +3853,6 @@ export interface GetTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-const GetTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<GetTelephonyLinePhonePhonebookPhonebookContactRequest>;
-
 /** Phone book contact */
 export interface TelephonyPhonebookContact {
   /** Group name of the phonebook */
@@ -6146,11 +3872,6 @@ export interface TelephonyPhonebookContact {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-const TelephonyPhonebookContact = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<TelephonyPhonebookContact>;
-
 export interface GetTelephonyLinePhoneRmaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6158,19 +3879,10 @@ export interface GetTelephonyLinePhoneRmaRequest {
   /** Return merchandise authorisation identifier */
   id: string;
 }
-const GetTelephonyLinePhoneRmaRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<GetTelephonyLinePhoneRmaRequest>;
-
 /** Return merchandise authorisation offer type */
 export type TelephonyRmaOfferTypeEnum = "deposit" | "loan" | "purchase";
-const TelephonyRmaOfferTypeEnum = S.String;
-
 /** Return merchandise authorisation type */
 export type TelephonyRmaReplaceTypeEnum = "changePhone" | "phoneRestitution" | "undefined";
-const TelephonyRmaReplaceTypeEnum = S.String;
-
 /** ISO country codes */
 export type CoreTypesCountryEnum =
   | "ac"
@@ -6433,8 +4145,6 @@ export type CoreTypesCountryEnum =
   | "za"
   | "zm"
   | "zw";
-const CoreTypesCountryEnum = S.String;
-
 /** Contact informations structure */
 export interface TelephonyContact {
   /** Contact address */
@@ -6455,12 +4165,8 @@ export interface TelephonyContact {
   /** Contact zip */
   zip?: string | null;
 }
-const TelephonyContact = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<TelephonyContact>;
-
 /** Return merchandise authorisation step */
 export type TelephonyRmaStatusEnum = "closed" | "open" | "received";
-const TelephonyRmaStatusEnum = S.String;
-
 /** RMA step names */
 export type TelephonyRmaStepNameEnum =
   | "dispatchJustification"
@@ -6470,12 +4176,8 @@ export type TelephonyRmaStepNameEnum =
   | "parcelReception"
   | "parcelValidation"
   | "validation";
-const TelephonyRmaStepNameEnum = S.String;
-
 /** Status of the RMA step */
 export type TelephonyRmaStepStatusEnum = "done" | "todo";
-const TelephonyRmaStepStatusEnum = S.String;
-
 /** Informations related to the current RMA step status */
 export interface TelephonyRmaStep {
   /** A brief description of the step */
@@ -6489,15 +4191,8 @@ export interface TelephonyRmaStep {
   /** Status of the step */
   status?: TelephonyRmaStepStatusEnum;
 }
-const TelephonyRmaStep = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<TelephonyRmaStep>;
-
 /** Indicates the current status of the RMA with a list of steps */
 export type TelephonyRmaStepsList = Array<TelephonyRmaStep>;
-const TelephonyRmaStepsList = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<TelephonyRmaStepsList>;
-
 /** Return merchandise authorisation type */
 export type TelephonyRmaTypeEnum =
   | "after sale equipment service exchange"
@@ -6511,8 +4206,6 @@ export type TelephonyRmaTypeEnum =
   | "specific return merchandise authorisation"
   | "termination"
   | "unknown";
-const TelephonyRmaTypeEnum = S.String;
-
 /** Current Return Merchandise Authorisation */
 export interface TelephonyRma {
   /** Is the RMA cancellable? */
@@ -6544,22 +4237,12 @@ export interface TelephonyRma {
   /** Typology process of merchandise return */
   type?: TelephonyRmaTypeEnum;
 }
-const TelephonyRma = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<TelephonyRma>;
-
 export interface GetTelephonyLinePhoneSupportsPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLinePhoneSupportsPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GetTelephonyLinePhoneSupportsPhonebookRequest>;
-
 export type GetTelephonyLinePhoneSupportsPhonebookResponse = boolean;
-const GetTelephonyLinePhoneSupportsPhonebookResponse =
-  CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyLinePhoneSupportsPhonebookResponse>;
-
 export interface GetTelephonyLineRecordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6567,30 +4250,15 @@ export interface GetTelephonyLineRecordRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyLineRecordRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<GetTelephonyLineRecordRequest>;
-
 export interface GetTelephonyLineServiceInfosRequest {
   /** Your line number */
   serviceName: string;
 }
-const GetTelephonyLineServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<GetTelephonyLineServiceInfosRequest>;
-
 export interface GetTelephonyLineSimultaneousChannelsDetailsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineSimultaneousChannelsDetailsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<GetTelephonyLineSimultaneousChannelsDetailsRequest>;
-
 /** Details about simultaneous channels of this line */
 export interface TelephonySimultaneousChannelsDetails {
   /** Basic quantity of simultaneous channels included in the line. */
@@ -6604,41 +4272,21 @@ export interface TelephonySimultaneousChannelsDetails {
   /** Quantity of simultaneous channels going to be deleted at the end of the billing cycle. */
   toBeDeleted?: number;
 }
-const TelephonySimultaneousChannelsDetails = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<TelephonySimultaneousChannelsDetails>;
-
 export interface GetTelephonyLineSoftphoneBetaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineSoftphoneBetaRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<GetTelephonyLineSoftphoneBetaRequest>;
-
 /** Beta status of softphone */
 export interface TelephonySoftphoneBetaStatus {
   /** Whether Softphone beta is enabled or disabled */
   enabled: boolean;
 }
-const TelephonySoftphoneBetaStatus = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<TelephonySoftphoneBetaStatus>;
-
 export interface GetTelephonyLineSoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<GetTelephonyLineSoftphoneLogoRequest>;
-
 /** Softphone logo information */
 export interface TelephonySoftphoneLogo {
   /** Logo filename */
@@ -6646,25 +4294,13 @@ export interface TelephonySoftphoneLogo {
   /** URL used to download logo */
   url: string;
 }
-const TelephonySoftphoneLogo = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<TelephonySoftphoneLogo>;
-
 export interface GetTelephonyLineSoftphoneStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineSoftphoneStatusRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GetTelephonyLineSoftphoneStatusRequest>;
-
 /** Softphone infrastructure */
 export type TelephonySoftphoneInfrastructureEnum = "LEGACY" | "NOWI";
-const TelephonySoftphoneInfrastructureEnum = S.String;
-
 /** Softphone status */
 export interface TelephonySoftphoneStatus {
   /** Line beta softphone activation status */
@@ -6674,21 +4310,11 @@ export interface TelephonySoftphoneStatus {
   /** Line infrastructure */
   infrastructure?: TelephonySoftphoneInfrastructureEnum;
 }
-const TelephonySoftphoneStatus = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<TelephonySoftphoneStatus>;
-
 export interface GetTelephonyLineSoftphoneThemeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GetTelephonyLineSoftphoneThemeRequest>;
-
 /** Softphone theme information */
 export interface TelephonySoftphoneTheme {
   /** Theme main color code */
@@ -6696,29 +4322,15 @@ export interface TelephonySoftphoneTheme {
   /** Theme ID */
   themeId?: number;
 }
-const TelephonySoftphoneTheme = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<TelephonySoftphoneTheme>;
-
 export interface GetTelephonyLineTonesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyLineTonesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<GetTelephonyLineTonesRequest>;
-
 /** Tones type */
 export type TelephonyTonesEnum = "Custom sound" | "None";
-const TelephonyTonesEnum = S.String;
-
 /** Tones type */
 export type TelephonyTonesOnHoldEnum = "Custom sound" | "None" | "Predefined 1" | "Predefined 2";
-const TelephonyTonesOnHoldEnum = S.String;
-
 /** Line tones */
 export interface TelephonyTones {
   /** Tone played when caller is waiting in queue */
@@ -6730,8 +4342,6 @@ export interface TelephonyTones {
   /** Ringback tone */
   ringback?: TelephonyTonesEnum;
 }
-const TelephonyTones = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<TelephonyTones>;
-
 export interface GetTelephonyLineTrafficExtractRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6739,22 +4349,12 @@ export interface GetTelephonyLineTrafficExtractRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyLineTrafficExtractRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<GetTelephonyLineTrafficExtractRequest>;
-
 export interface GetTelephonyNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Name of the service */
   serviceName: string;
 }
-const GetTelephonyNumberRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetTelephonyNumberRequest>;
-
 /** Additional number */
 export interface TelephonyNumber {
   /** Description of the service */
@@ -6767,39 +4367,22 @@ export interface TelephonyNumber {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyNumber = /*@__PURE__*/ __L.at(__c48, 5) as any as S.Schema<TelephonyNumber>;
-
 export interface GetTelephonyOfferTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   taskId: number;
 }
-const GetTelephonyOfferTaskRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<GetTelephonyOfferTaskRequest>;
-
 export interface GetTelephonyOutplanNotificationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Id of the object */
   id: number;
 }
-const GetTelephonyOutplanNotificationRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<GetTelephonyOutplanNotificationRequest>;
-
 export interface GetTelephonyOvhPabxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyOvhPabxRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<GetTelephonyOvhPabxRequest>;
-
 /** OVH calls queues and OVH IVRs (Interactive Voice Response) */
 export interface TelephonyOvhPabx {
   /** Description of the service */
@@ -6812,19 +4395,12 @@ export interface TelephonyOvhPabx {
   /** General type of the service */
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyOvhPabx = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<TelephonyOvhPabx>;
-
 export interface GetTelephonyOvhPabxDialplanRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   dialplanId: number;
 }
-const GetTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<GetTelephonyOvhPabxDialplanRequest>;
-
 export interface GetTelephonyOvhPabxDialplanExtensionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6832,11 +4408,6 @@ export interface GetTelephonyOvhPabxDialplanExtensionRequest {
   dialplanId: number;
   extensionId: number;
 }
-const GetTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionRequest>;
-
 export interface GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6845,11 +4416,6 @@ export interface GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest 
   extensionId: number;
   conditionId: number;
 }
-const GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
-
 export interface GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6858,11 +4424,6 @@ export interface GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   extensionId: number;
   conditionId: number;
 }
-const GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
-
 export interface GetTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6871,43 +4432,23 @@ export interface GetTelephonyOvhPabxDialplanExtensionRuleRequest {
   extensionId: number;
   ruleId: number;
 }
-const GetTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionRuleRequest>;
-
 export interface GetTelephonyOvhPabxHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentBannerAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyOvhPabxHuntingAgentBannerAccessRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentBannerAccessRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6916,33 +4457,18 @@ export interface GetTelephonyOvhPabxHuntingAgentCallRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyOvhPabxHuntingAgentCallRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentCallRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyOvhPabxHuntingAgentEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentEventTokenRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentLiveStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const GetTelephonyOvhPabxHuntingAgentLiveStatusRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentLiveStatusRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6950,11 +4476,6 @@ export interface GetTelephonyOvhPabxHuntingAgentQueueRequest {
   agentId: number;
   queueId: number;
 }
-const GetTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentQueueRequest>;
-
 export interface GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -6962,43 +4483,23 @@ export interface GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest {
   agentId: number;
   queueId: number;
 }
-const GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest>;
-
 export interface GetTelephonyOvhPabxHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const GetTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingCustomStatusRequest>;
-
 export interface GetTelephonyOvhPabxHuntingEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyOvhPabxHuntingEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingEventTokenRequest>;
-
 export interface GetTelephonyOvhPabxHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const GetTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueRequest>;
-
 export interface GetTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7006,11 +4507,6 @@ export interface GetTelephonyOvhPabxHuntingQueueAgentRequest {
   queueId: number;
   agentId: number;
 }
-const GetTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueAgentRequest>;
-
 export interface GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7018,11 +4514,6 @@ export interface GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest {
   queueId: number;
   agentId: number;
 }
-const GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest>;
-
 export interface GetTelephonyOvhPabxHuntingQueueLiveCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7031,33 +4522,18 @@ export interface GetTelephonyOvhPabxHuntingQueueLiveCallRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyOvhPabxHuntingQueueLiveCallRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueLiveCallRequest>;
-
 export interface GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest>;
-
 export interface GetTelephonyOvhPabxMenuRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   menuId: number;
 }
-const GetTelephonyOvhPabxMenuRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<GetTelephonyOvhPabxMenuRequest>;
-
 export interface GetTelephonyOvhPabxMenuEntryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7065,44 +4541,24 @@ export interface GetTelephonyOvhPabxMenuEntryRequest {
   menuId: number;
   entryId: number;
 }
-const GetTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<GetTelephonyOvhPabxMenuEntryRequest>;
-
 export interface GetTelephonyOvhPabxRecordRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const GetTelephonyOvhPabxRecordRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<GetTelephonyOvhPabxRecordRequest>;
-
 export interface GetTelephonyOvhPabxSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   soundId: number;
 }
-const GetTelephonyOvhPabxSoundRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<GetTelephonyOvhPabxSoundRequest>;
-
 export interface GetTelephonyOvhPabxTtsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   id: number;
 }
-const GetTelephonyOvhPabxTtsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<GetTelephonyOvhPabxTtsRequest>;
-
 /** The PABX Text To Speech sounds */
 export interface TelephonyOvhPabxTts {
   id?: number;
@@ -7111,19 +4567,12 @@ export interface TelephonyOvhPabxTts {
   /** The voice used to say text */
   voice?: TelephonyOvhPabxTtsVoiceEnum;
 }
-const TelephonyOvhPabxTts = /*@__PURE__*/ __L.at(__c52, 3) as any as S.Schema<TelephonyOvhPabxTts>;
-
 export interface GetTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const GetTelephonyPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<GetTelephonyPhonebookRequest>;
-
 /** Phone book on group */
 export interface TelephonyPhonebookMaster {
   /** Identifier of the phonebook */
@@ -7131,11 +4580,6 @@ export interface TelephonyPhonebookMaster {
   /** Phone book name */
   name?: string;
 }
-const TelephonyPhonebookMaster = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<TelephonyPhonebookMaster>;
-
 export interface GetTelephonyPhonebookExportRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7144,11 +4588,6 @@ export interface GetTelephonyPhonebookExportRequest {
   /** Format of the file */
   format: TelephonyContactsExportFormatsEnum | (string & {});
 }
-const GetTelephonyPhonebookExportRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<GetTelephonyPhonebookExportRequest>;
-
 export interface GetTelephonyPhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7157,22 +4596,12 @@ export interface GetTelephonyPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-const GetTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<GetTelephonyPhonebookPhonebookContactRequest>;
-
 export interface GetTelephonyPortabilityRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const GetTelephonyPortabilityRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<GetTelephonyPortabilityRequest>;
-
 /** Customer informations about a portability */
 export interface TelephonyPortabilityCustomerInfos {
   /** Building of the customer's address */
@@ -7196,25 +4625,12 @@ export interface TelephonyPortabilityCustomerInfos {
   /** ZIP code of the customer's address */
   zip?: string;
 }
-const TelephonyPortabilityCustomerInfos = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<TelephonyPortabilityCustomerInfos>;
-
 /** Codes representing the error in current portability */
 export type TelephonyPortabilityErrorCodesList = Array<string>;
-const TelephonyPortabilityErrorCodesList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyPortabilityErrorCodesList>;
-
 /** The list of numbers that is going to be ported */
 export type TelephonyPortabilityNumbersListList = Array<string>;
-const TelephonyPortabilityNumbersListList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyPortabilityNumbersListList>;
-
 /** Country that defines the portability kind */
 export type TelephonyPortabilityCountryEnum = "belgium" | "france" | "switzerland";
-const TelephonyPortabilityCountryEnum = S.String;
-
 /** Portability informations */
 export interface TelephonyPortability {
   /** The billing account where the numbers will be inserted */
@@ -7244,56 +4660,27 @@ export interface TelephonyPortability {
   /** RIO of the portability (France only) */
   rio?: string | null;
 }
-const TelephonyPortability = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<TelephonyPortability>;
-
 export interface GetTelephonyPortabilityCanBeCancelledRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const GetTelephonyPortabilityCanBeCancelledRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<GetTelephonyPortabilityCanBeCancelledRequest>;
-
 export type GetTelephonyPortabilityCanBeCancelledResponse = boolean;
-const GetTelephonyPortabilityCanBeCancelledResponse =
-  CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyPortabilityCanBeCancelledResponse>;
-
 export interface GetTelephonyPortabilityCanBeExecutedRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const GetTelephonyPortabilityCanBeExecutedRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<GetTelephonyPortabilityCanBeExecutedRequest>;
-
 export type GetTelephonyPortabilityCanBeExecutedResponse = boolean;
-const GetTelephonyPortabilityCanBeExecutedResponse =
-  CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyPortabilityCanBeExecutedResponse>;
-
 export interface GetTelephonyPortabilityDateCanBeChangedRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const GetTelephonyPortabilityDateCanBeChangedRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<GetTelephonyPortabilityDateCanBeChangedRequest>;
-
 export type GetTelephonyPortabilityDateCanBeChangedResponse = boolean;
-const GetTelephonyPortabilityDateCanBeChangedResponse =
-  CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyPortabilityDateCanBeChangedResponse>;
-
 export interface GetTelephonyPortabilityDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7302,40 +4689,17 @@ export interface GetTelephonyPortabilityDocumentRequest {
   /** Identifier of the document */
   documentId: number;
 }
-const GetTelephonyPortabilityDocumentRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<GetTelephonyPortabilityDocumentRequest>;
-
 export interface GetTelephonyProcedureRequest {
   /** Procedure ID */
   id: number;
 }
-const GetTelephonyProcedureRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<GetTelephonyProcedureRequest>;
-
 export interface GetTelephonyProcedureRequiredRequest {}
-const GetTelephonyProcedureRequiredRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<GetTelephonyProcedureRequiredRequest>;
-
 export type GetTelephonyProcedureRequiredResponse = boolean;
-const GetTelephonyProcedureRequiredResponse =
-  CreateTelephonyCanTransferSecurityDepositResponse as any as S.Schema<GetTelephonyProcedureRequiredResponse>;
-
 export interface GetTelephonyRedirectRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyRedirectRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<GetTelephonyRedirectRequest>;
-
 /** Redirect service */
 export interface TelephonyRedirect {
   description?: string;
@@ -7344,18 +4708,9 @@ export interface TelephonyRedirect {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyRedirect = TelephonyDdi as any as S.Schema<TelephonyRedirect>;
-
 export interface GetTelephonyResellerPanelStatusRequest {}
-const GetTelephonyResellerPanelStatusRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<GetTelephonyResellerPanelStatusRequest>;
-
 /** Status of password update */
 export type TelephonyResellerPanelPasswordUpdateStatusEnum = "doing" | "done" | "error" | "todo";
-const TelephonyResellerPanelPasswordUpdateStatusEnum = S.String;
-
 /** Describe the status of the reseller panel, if it is activated and if there is a password update ongoing */
 export interface TelephonyResellerPanelStatus {
   /** Whether the reseller panel is enabled or not */
@@ -7363,21 +4718,11 @@ export interface TelephonyResellerPanelStatus {
   /** Password update task status */
   passwordUpdateStatus?: TelephonyResellerPanelPasswordUpdateStatusEnum | null;
 }
-const TelephonyResellerPanelStatus = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<TelephonyResellerPanelStatus>;
-
 export interface GetTelephonyRsvaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyRsvaRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<GetTelephonyRsvaRequest>;
-
 /** Special number category */
 export type TelephonyPortabilitySpecialNumberCategoryEnum =
   | "access"
@@ -7390,45 +4735,26 @@ export type TelephonyPortabilitySpecialNumberCategoryEnum =
   | "linking"
   | "m2m"
   | "relationship";
-const TelephonyPortabilitySpecialNumberCategoryEnum = S.String;
-
 /** French value added services subject to the RSVA reform (Référentiel des numéros SVA) */
 export interface TelephonyRsva {
   serviceName?: string;
   typology?: TelephonyPortabilitySpecialNumberCategoryEnum | null;
 }
-const TelephonyRsva = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<TelephonyRsva>;
-
 export interface GetTelephonyRsvaCurrentRateCodeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyRsvaCurrentRateCodeRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<GetTelephonyRsvaCurrentRateCodeRequest>;
-
 export interface GetTelephonyRsvaScheduledRateCodeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyRsvaScheduledRateCodeRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<GetTelephonyRsvaScheduledRateCodeRequest>;
-
 export interface GetTelephonySchedulerRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonySchedulerRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<GetTelephonySchedulerRequest>;
-
 /** Time zones available for scheduled events time definitions */
 export type TelephonyTimeZone =
   | "Europe/Berlin"
@@ -7437,15 +4763,11 @@ export type TelephonyTimeZone =
   | "Europe/Madrid"
   | "Europe/Paris"
   | "Europe/Zurich";
-const TelephonyTimeZone = S.String;
-
 /** Scheduler capable services */
 export interface TelephonyScheduler {
   serviceName?: string;
   timeZone?: TelephonyTimeZone;
 }
-const TelephonyScheduler = /*@__PURE__*/ __L.at(__c55, 1) as any as S.Schema<TelephonyScheduler>;
-
 export interface GetTelephonySchedulerEventRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7453,11 +4775,6 @@ export interface GetTelephonySchedulerEventRequest {
   /** The unique ICS event identifier */
   uid: string;
 }
-const GetTelephonySchedulerEventRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<GetTelephonySchedulerEventRequest>;
-
 /** Scheduled event */
 export interface TelephonySchedulerEvent {
   /** The category of the event */
@@ -7471,33 +4788,19 @@ export interface TelephonySchedulerEvent {
   /** The unique ICS event identifier */
   uid?: string;
 }
-const TelephonySchedulerEvent = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<TelephonySchedulerEvent>;
-
 export interface GetTelephonyScreenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyScreenRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<GetTelephonyScreenRequest>;
-
 /** Type of screen list */
 export type TelephonyScreenListChoosingEnum = "blacklist" | "disabled" | "whitelist";
-const TelephonyScreenListChoosingEnum = S.String;
-
 /** ScreenList capable services */
 export interface TelephonyScreen {
   incomingScreenList?: TelephonyScreenListChoosingEnum;
   outgoingScreenList?: TelephonyScreenListChoosingEnum;
   serviceName?: string;
 }
-const TelephonyScreen = /*@__PURE__*/ __L.at(__c55, 5) as any as S.Schema<TelephonyScreen>;
-
 export interface GetTelephonyScreenScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -7505,11 +4808,6 @@ export interface GetTelephonyScreenScreenListRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyScreenScreenListRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<GetTelephonyScreenScreenListRequest>;
-
 /** Screen list */
 export interface TelephonyScreenList {
   callNumber?: string;
@@ -7518,40 +4816,19 @@ export interface TelephonyScreenList {
   status?: string;
   type?: TelephonyScreenListTypeEnum;
 }
-const TelephonyScreenList = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<TelephonyScreenList>;
-
 export interface GetTelephonyServiceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyServiceRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<GetTelephonyServiceRequest>;
-
 /** Number country */
 export type TelephonyServiceNumberCountryEnum = "be" | "ch" | "de" | "es" | "fr" | "gb" | "uk";
-const TelephonyServiceNumberCountryEnum = S.String;
-
 /** Number country code */
 export type TelephonyNumberCountryCodeEnum = 32 | 33 | 34 | 41 | 44 | 49;
-const TelephonyNumberCountryCodeEnum = S.Number;
-
 export type TelephonyTelephonyServiceOffersList = Array<string>;
-const TelephonyTelephonyServiceOffersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyTelephonyServiceOffersList>;
-
 /** All existing properties of line or alias offer */
 export type TelephonyPropertyEnum = "xdsl";
-const TelephonyPropertyEnum = S.String;
-
 export type TelephonyTelephonyServicePropertiesList = Array<TelephonyPropertyEnum>;
-const TelephonyTelephonyServicePropertiesList = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<TelephonyTelephonyServicePropertiesList>;
-
 /** Telephony service */
 export interface TelephonyTelephonyService {
   /** MAC address of the associated device if there is one. */
@@ -7576,25 +4853,13 @@ export interface TelephonyTelephonyService {
   serviceType?: TelephonyTypeServiceEnum;
   simultaneousLines?: number;
 }
-const TelephonyTelephonyService = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<TelephonyTelephonyService>;
-
 export interface GetTelephonyServiceDirectoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyServiceDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<GetTelephonyServiceDirectoryRequest>;
-
 /** All genders a person can choose */
 export type NichandleGenderEnum = "female" | "male";
-const NichandleGenderEnum = S.String;
-
 /** Directory Informations */
 export interface TelephonyDirectoryInfo {
   PJSocialNomination?: string;
@@ -7636,21 +4901,11 @@ export interface TelephonyDirectoryInfo {
   wayNumberExtra?: string;
   wayType?: string;
 }
-const TelephonyDirectoryInfo = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<TelephonyDirectoryInfo>;
-
 export interface GetTelephonyServiceEventCallbackRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyServiceEventCallbackRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<GetTelephonyServiceEventCallbackRequest>;
-
 /** Callback url for each event */
 export interface TelephonyEventCallback {
   /** Email notification address in case of url calling failure */
@@ -7658,36 +4913,19 @@ export interface TelephonyEventCallback {
   /** Url called for each event */
   url?: string | null;
 }
-const TelephonyEventCallback = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<TelephonyEventCallback>;
-
 export interface GetTelephonyServiceEventTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyServiceEventTokenRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<GetTelephonyServiceEventTokenRequest>;
-
 export interface GetTelephonyServiceFaxConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   consumptionId: number;
 }
-const GetTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<GetTelephonyServiceFaxConsumptionRequest>;
-
 /** Consumption way type */
 export type TelephonyFaxConsumptionWayTypeEnum = "received" | "sent";
-const TelephonyFaxConsumptionWayTypeEnum = S.String;
-
 /** Fax delivery record */
 export interface TelephonyFaxConsumption {
   called?: string | null;
@@ -7698,74 +4936,38 @@ export interface TelephonyFaxConsumption {
   priceWithoutTax?: OrderPrice;
   wayType?: TelephonyFaxConsumptionWayTypeEnum;
 }
-const TelephonyFaxConsumption = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<TelephonyFaxConsumption>;
-
 export interface GetTelephonyServiceInfosRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonyServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<GetTelephonyServiceInfosRequest>;
-
 export interface GetTelephonyServiceOfferChangeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyServiceOfferChangeRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<GetTelephonyServiceOfferChangeRequest>;
-
 /** Offer change */
 export interface TelephonyOfferChange {
   /** The current offer will be replace by this one on the next renew. */
   offer?: string;
 }
-const TelephonyOfferChange = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<TelephonyOfferChange>;
-
 export interface GetTelephonyServiceOfferTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   taskId: number;
 }
-const GetTelephonyServiceOfferTaskRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<GetTelephonyServiceOfferTaskRequest>;
-
 export interface GetTelephonyServicePreviousVoiceConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   consumptionId: number;
 }
-const GetTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<GetTelephonyServicePreviousVoiceConsumptionRequest>;
-
 /** Consumption destination type */
 export type TelephonyVoiceConsumptionDestinationTypeEnum = "landline" | "mobile" | "special";
-const TelephonyVoiceConsumptionDestinationTypeEnum = S.String;
-
 /** Consumption plan type */
 export type TelephonyVoiceConsumptionPlanTypeEnum = "outplan" | "priceplan";
-const TelephonyVoiceConsumptionPlanTypeEnum = S.String;
-
 /** Consumption way type */
 export type TelephonyVoiceConsumptionWayTypeEnum = "incoming" | "outgoing" | "transfer";
-const TelephonyVoiceConsumptionWayTypeEnum = S.String;
-
 /** Call delivery record of the previous month */
 export interface TelephonyPreviousVoiceConsumption {
   called?: string | null;
@@ -7784,22 +4986,12 @@ export interface TelephonyPreviousVoiceConsumption {
   priceWithoutTax?: OrderPrice;
   wayType?: TelephonyVoiceConsumptionWayTypeEnum;
 }
-const TelephonyPreviousVoiceConsumption = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<TelephonyPreviousVoiceConsumption>;
-
 export interface GetTelephonyServiceRepaymentConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   consumptionId: number;
 }
-const GetTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<GetTelephonyServiceRepaymentConsumptionRequest>;
-
 /** Call which are repayable */
 export interface TelephonyRepaymentConsumption {
   /** Called number of the call */
@@ -7819,33 +5011,18 @@ export interface TelephonyRepaymentConsumption {
   /** Is the call repayable right now */
   repayable?: boolean | null;
 }
-const TelephonyRepaymentConsumption = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<TelephonyRepaymentConsumption>;
-
 export interface GetTelephonyServiceTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   taskId: number;
 }
-const GetTelephonyServiceTaskRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<GetTelephonyServiceTaskRequest>;
-
 export interface GetTelephonyServiceVoiceConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   consumptionId: number;
 }
-const GetTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<GetTelephonyServiceVoiceConsumptionRequest>;
-
 /** Call delivery record */
 export interface TelephonyVoiceConsumption {
   called?: string | null;
@@ -7865,42 +5042,17 @@ export interface TelephonyVoiceConsumption {
   priceWithoutTax?: OrderPrice;
   wayType?: TelephonyVoiceConsumptionWayTypeEnum;
 }
-const TelephonyVoiceConsumption = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<TelephonyVoiceConsumption>;
-
 export interface GetTelephonySoftphoneBetaEligibilityRequest {}
-const GetTelephonySoftphoneBetaEligibilityRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<GetTelephonySoftphoneBetaEligibilityRequest>;
-
 /** Softphone beta eligibility */
 export interface TelephonySoftphoneBetaEligibility {
   /** Whether the account is eligible to the Softphone beta offer */
   eligibility?: boolean;
 }
-const TelephonySoftphoneBetaEligibility = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<TelephonySoftphoneBetaEligibility>;
-
 export interface GetTelephonySoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonySoftphoneLogoRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<GetTelephonySoftphoneLogoRequest>;
-
 export interface GetTelephonySoftphoneStoreLinksRequest {}
-const GetTelephonySoftphoneStoreLinksRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<GetTelephonySoftphoneStoreLinksRequest>;
-
 /** Softphone application stores links */
 export interface TelephonySoftphoneStoreLinks {
   /** Android application store link */
@@ -7912,47 +5064,22 @@ export interface TelephonySoftphoneStoreLinks {
   /** Windows application store link */
   windows?: string;
 }
-const TelephonySoftphoneStoreLinks = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<TelephonySoftphoneStoreLinks>;
-
 export interface GetTelephonySoftphoneThemeRequest {
   /** Theme ID */
   themeId: number;
 }
-const GetTelephonySoftphoneThemeRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<GetTelephonySoftphoneThemeRequest>;
-
 export interface GetTelephonySoftphoneThemeRequest2 {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const GetTelephonySoftphoneThemeRequest2 = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<GetTelephonySoftphoneThemeRequest2>;
-
 export interface GetTelephonySoundRequest {
   /** Sound ID */
   id: number;
 }
-const GetTelephonySoundRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<GetTelephonySoundRequest>;
-
 export interface GetTelephonySpareRequest {
   /** The internal name of your spare */
   spare: string;
 }
-const GetTelephonySpareRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<GetTelephonySpareRequest>;
-
 /** Spare properties */
 export interface SpareTelephonyTelephonySpareWithIAM {
   /** Phone brand model */
@@ -7964,49 +5091,24 @@ export interface SpareTelephonyTelephonySpareWithIAM {
   /** Phone protocol */
   protocol?: TelephonyProtocolEnum;
 }
-const SpareTelephonyTelephonySpareWithIAM = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<SpareTelephonyTelephonySpareWithIAM>;
-
 export interface GetTelephonySpareServiceInfosRequest {
   /** The internal name of your spare */
   spare: string;
 }
-const GetTelephonySpareServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<GetTelephonySpareServiceInfosRequest>;
-
 export interface GetTelephonyTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   taskId: number;
 }
-const GetTelephonyTaskRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<GetTelephonyTaskRequest>;
-
 export interface GetTelephonyTimeConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyTimeConditionRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<GetTelephonyTimeConditionRequest>;
-
 /** Time conditions capable services */
 export interface TelephonyGenericScreen {
   serviceName?: string;
 }
-const TelephonyGenericScreen = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<TelephonyGenericScreen>;
-
 export interface GetTelephonyTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8014,29 +5116,15 @@ export interface GetTelephonyTimeConditionConditionRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<GetTelephonyTimeConditionConditionRequest>;
-
 export interface GetTelephonyTimeConditionOptionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<GetTelephonyTimeConditionOptionsRequest>;
-
 /** Type of slot */
 export type TelephonyTimeConditionsSlotTypeEnum = "number" | "voicemail";
-const TelephonyTimeConditionsSlotTypeEnum = S.String;
-
 /** Time conditions global status */
 export type TelephonyTimeConditionsGlobalStatusEnum = "deleted" | "disabled" | "enabled";
-const TelephonyTimeConditionsGlobalStatusEnum = S.String;
-
 /** Timeout before unavailable action is triggered */
 export type TelephonyTimeConditionsTimeoutEnum =
   | 5
@@ -8057,8 +5145,6 @@ export type TelephonyTimeConditionsTimeoutEnum =
   | 80
   | 85
   | 90;
-const TelephonyTimeConditionsTimeoutEnum = S.Number;
-
 /** Time conditions options */
 export interface TelephonyTimeConditionOptions {
   /** Number associated to the first slot action */
@@ -8082,31 +5168,16 @@ export interface TelephonyTimeConditionOptions {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSlotTypeEnum;
 }
-const TelephonyTimeConditionOptions = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<TelephonyTimeConditionOptions>;
-
 export interface GetTelephonyTrunkRequest {
   /** Your trunk number */
   serviceName: string;
 }
-const GetTelephonyTrunkRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<GetTelephonyTrunkRequest>;
-
 export interface GetTelephonyTrunkByServiceNameRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Name of the service */
   serviceName: string;
 }
-const GetTelephonyTrunkByServiceNameRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<GetTelephonyTrunkByServiceNameRequest>;
-
 /** Trunk service */
 export interface TelephonyTrunk {
   /** Description of the service */
@@ -8116,8 +5187,6 @@ export interface TelephonyTrunk {
   /** Type of the service */
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyTrunk = TelephonyCarrierSip as any as S.Schema<TelephonyTrunk>;
-
 export interface GetTelephonyTrunkExternalDisplayedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8126,30 +5195,15 @@ export interface GetTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number linked to a trunk */
   number: string;
 }
-const GetTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<GetTelephonyTrunkExternalDisplayedNumberRequest>;
-
 export interface GetTelephonyTrunkServiceInfosRequest {
   /** Your trunk number */
   serviceName: string;
 }
-const GetTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<GetTelephonyTrunkServiceInfosRequest>;
-
 export interface GetTelephonyVoicemailRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyVoicemailRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<GetTelephonyVoicemailRequest>;
-
 export type TelephonyVoicemailOffersList = Array<string>;
 /** Voicemail service */
 export interface TelephonyVoicemail {
@@ -8158,8 +5212,6 @@ export interface TelephonyVoicemail {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyVoicemail = TelephonyConference as any as S.Schema<TelephonyVoicemail>;
-
 export interface GetTelephonyVoicemailDirectoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8167,11 +5219,6 @@ export interface GetTelephonyVoicemailDirectoryRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<GetTelephonyVoicemailDirectoryRequest>;
-
 /** Folder type */
 export type TelephonyVoicemailMessageFolderDirectoryEnum =
   | "family"
@@ -8180,8 +5227,6 @@ export type TelephonyVoicemailMessageFolderDirectoryEnum =
   | "old"
   | "urgent"
   | "work";
-const TelephonyVoicemailMessageFolderDirectoryEnum = S.String;
-
 /** Voicemail message */
 export interface TelephonyVoicemailMessages {
   /** Callee number in international format */
@@ -8197,11 +5242,6 @@ export interface TelephonyVoicemailMessages {
   /** Uniq voicemail message identifier */
   id?: number;
 }
-const TelephonyVoicemailMessages = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<TelephonyVoicemailMessages>;
-
 /** Voicemail audio format */
 export type TelephonyServiceVoicemailAudioFormatEnum =
   | "aiff"
@@ -8210,8 +5250,6 @@ export type TelephonyServiceVoicemailAudioFormatEnum =
   | "mp3"
   | "ogg"
   | "wav";
-const TelephonyServiceVoicemailAudioFormatEnum = S.String;
-
 export interface GetTelephonyVoicemailDirectoryDownloadRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8221,11 +5259,6 @@ export interface GetTelephonyVoicemailDirectoryDownloadRequest {
   /** File format wanted */
   format?: TelephonyServiceVoicemailAudioFormatEnum | (string & {});
 }
-const GetTelephonyVoicemailDirectoryDownloadRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<GetTelephonyVoicemailDirectoryDownloadRequest>;
-
 export interface GetTelephonyVoicemailGreetingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8233,11 +5266,6 @@ export interface GetTelephonyVoicemailGreetingRequest {
   /** Id of the object */
   id: number;
 }
-const GetTelephonyVoicemailGreetingRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<GetTelephonyVoicemailGreetingRequest>;
-
 /** Voicemail greeting */
 export interface TelephonyVoicemailGreetings {
   /** Callee number in international format */
@@ -8247,11 +5275,6 @@ export interface TelephonyVoicemailGreetings {
   /** Uniq customized greeting identifier */
   id?: number;
 }
-const TelephonyVoicemailGreetings = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<TelephonyVoicemailGreetings>;
-
 export interface GetTelephonyVoicemailGreetingDownloadRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8261,47 +5284,23 @@ export interface GetTelephonyVoicemailGreetingDownloadRequest {
   /** File format wanted */
   format?: TelephonyServiceVoicemailAudioFormatEnum | (string & {});
 }
-const GetTelephonyVoicemailGreetingDownloadRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<GetTelephonyVoicemailGreetingDownloadRequest>;
-
 export interface GetTelephonyVoicemailSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyVoicemailSettingsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<GetTelephonyVoicemailSettingsRequest>;
-
 /** Greeting type */
 export type TelephonyVoicemailGreetingEnum = "default" | "full" | "short";
-const TelephonyVoicemailGreetingEnum = S.String;
-
 /** Voicemail configuration */
 export type TelephonyServiceVoicemailMailOptionEnum = "attachment" | "simple";
-const TelephonyServiceVoicemailMailOptionEnum = S.String;
-
 /** Voicemail configuration */
 export interface TelephonyServiceVoicemailNotifications {
   email?: string;
   type?: TelephonyServiceVoicemailMailOptionEnum | (string & {});
 }
-const TelephonyServiceVoicemailNotifications = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<TelephonyServiceVoicemailNotifications>;
-
 /** Email addresses to notify when a new voicemail is left */
 export type TelephonyVoicemailPropertiesRedirectionEmailsList =
   Array<TelephonyServiceVoicemailNotifications>;
-const TelephonyVoicemailPropertiesRedirectionEmailsList = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<TelephonyVoicemailPropertiesRedirectionEmailsList>;
-
 /** Voicemail Properties */
 export interface TelephonyVoicemailProperties {
   /** Name of the voicemail panel announce file */
@@ -8335,37 +5334,17 @@ export interface TelephonyVoicemailProperties {
   /** Quantity of unread voicemails */
   unreadMessages?: number;
 }
-const TelephonyVoicemailProperties = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<TelephonyVoicemailProperties>;
-
 export interface GetTelephonyVoicemailSettingsRoutingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyVoicemailSettingsRoutingRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<GetTelephonyVoicemailSettingsRoutingRequest>;
-
 export type GetTelephonyVoicemailSettingsRoutingResponse = TelephonyVoicefaxRoutingEnum;
-const GetTelephonyVoicemailSettingsRoutingResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<GetTelephonyVoicemailSettingsRoutingResponse>;
-
 export interface GetTelephonyVoicemailSettingsVoicemailNumbersRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyVoicemailSettingsVoicemailNumbersRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<GetTelephonyVoicemailSettingsVoicemailNumbersRequest>;
-
 /** Internal and external numbers for voicemail service */
 export interface TelephonyVoicemailNumbers {
   /** The external voicemail number */
@@ -8373,21 +5352,11 @@ export interface TelephonyVoicemailNumbers {
   /** The internal voicemail number */
   internal?: string;
 }
-const TelephonyVoicemailNumbers = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<TelephonyVoicemailNumbers>;
-
 export interface GetTelephonyVxmlRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyVxmlRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<GetTelephonyVxmlRequest>;
-
 export type TelephonyVxmlOffersList = Array<string>;
 /** Vxml services */
 export interface TelephonyVxml {
@@ -8396,28 +5365,16 @@ export interface TelephonyVxml {
   serviceName?: string;
   serviceType?: TelephonyTypeServiceEnum;
 }
-const TelephonyVxml = TelephonyConference as any as S.Schema<TelephonyVxml>;
-
 export interface GetTelephonyVxmlSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const GetTelephonyVxmlSettingsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<GetTelephonyVxmlSettingsRequest>;
-
 /** Vxml Properties */
 export interface TelephonyVxmlProperties {
   url?: string;
   urlRecord?: string;
 }
-const TelephonyVxmlProperties = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<TelephonyVxmlProperties>;
-
 export interface ImportTelephonyLinePhonePhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8427,11 +5384,6 @@ export interface ImportTelephonyLinePhonePhonebookRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-const ImportTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<ImportTelephonyLinePhonePhonebookRequest>;
-
 export interface ImportTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8440,11 +5392,6 @@ export interface ImportTelephonyPhonebookRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-const ImportTelephonyPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<ImportTelephonyPhonebookRequest>;
-
 export interface ImportTelephonySchedulerIcsCalendarRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8452,74 +5399,30 @@ export interface ImportTelephonySchedulerIcsCalendarRequest {
   /** The URL of your ICS formated calendar */
   url: string;
 }
-const ImportTelephonySchedulerIcsCalendarRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<ImportTelephonySchedulerIcsCalendarRequest>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput =
-  BlockTelephonyLineResponse as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListTelephonyRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListTelephonyRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<ListTelephonyRequestIamTagsValueList>;
-
 export type ListTelephonyRequestIamTagsMap = {
   [key: string]: ListTelephonyRequestIamTagsValueList | undefined;
 };
-const ListTelephonyRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<ListTelephonyRequestIamTagsMap>;
-
 export interface ListTelephonyRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyRequestIamTagsMap;
 }
-const ListTelephonyRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<ListTelephonyRequest>;
-
 export type ListTelephonyResponseBodyList = Array<string>;
-const ListTelephonyResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyResponseBodyList>;
-
 export type ListTelephonyResponse = ListTelephonyResponseBodyList;
-const ListTelephonyResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<ListTelephonyResponse>;
-
 export interface ListTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<ListTelephonyAbbreviatedNumberRequest>;
-
 export type ListTelephonyAbbreviatedNumberResponseBodyList = Array<number>;
 export type ListTelephonyAbbreviatedNumberResponse = ListTelephonyAbbreviatedNumberResponseBodyList;
-const ListTelephonyAbbreviatedNumberResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyAbbreviatedNumberResponse>;
-
 export interface ListTelephonyAccessoriesRequest {
   /** Phone brand */
   brand?: string;
   /** The country */
   country: TelephonyServiceNumberCountryEnum | (string & {});
 }
-const ListTelephonyAccessoriesRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<ListTelephonyAccessoriesRequest>;
-
 /** Informations related to a line offer */
 export interface TelephonyAccessoryOffer {
   /** The accessory description */
@@ -8531,104 +5434,40 @@ export interface TelephonyAccessoryOffer {
   /** An URL to accessory details */
   url?: string | null;
 }
-const TelephonyAccessoryOffer = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<TelephonyAccessoryOffer>;
-
 export type ListTelephonyAccessoriesResponseBodyList = Array<TelephonyAccessoryOffer>;
-const ListTelephonyAccessoriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<ListTelephonyAccessoriesResponseBodyList>;
-
 export type ListTelephonyAccessoriesResponse = ListTelephonyAccessoriesResponseBodyList;
-const ListTelephonyAccessoriesResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<ListTelephonyAccessoriesResponse>;
-
 export type ListTelephonyAliasesRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListTelephonyAliasesRequestIamTagsMap = {
   [key: string]: ListTelephonyAliasesRequestIamTagsValueList | undefined;
 };
-const ListTelephonyAliasesRequestIamTagsMap =
-  ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonyAliasesRequestIamTagsMap>;
-
 export interface ListTelephonyAliasesRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyAliasesRequestIamTagsMap;
 }
-const ListTelephonyAliasesRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<ListTelephonyAliasesRequest>;
-
 export type ListTelephonyAliasesResponseBodyList = Array<string>;
-const ListTelephonyAliasesResponseBodyList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<ListTelephonyAliasesResponseBodyList>;
-
 export type ListTelephonyAliasesResponse = ListTelephonyAliasesResponseBodyList;
-const ListTelephonyAliasesResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<ListTelephonyAliasesResponse>;
-
 export interface ListTelephonyAllowedCreditThresholdRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyAllowedCreditThresholdRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<ListTelephonyAllowedCreditThresholdRequest>;
-
 export type ListTelephonyAllowedCreditThresholdResponseBodyList = Array<OrderPrice>;
-const ListTelephonyAllowedCreditThresholdResponseBodyList = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<ListTelephonyAllowedCreditThresholdResponseBodyList>;
-
 export type ListTelephonyAllowedCreditThresholdResponse =
   ListTelephonyAllowedCreditThresholdResponseBodyList;
-const ListTelephonyAllowedCreditThresholdResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<ListTelephonyAllowedCreditThresholdResponse>;
-
 export interface ListTelephonyAmountSecurityDepositRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyAmountSecurityDepositRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<ListTelephonyAmountSecurityDepositRequest>;
-
 export type ListTelephonyAmountSecurityDepositResponseBodyList = Array<OrderPrice>;
 export type ListTelephonyAmountSecurityDepositResponse =
   ListTelephonyAmountSecurityDepositResponseBodyList;
-const ListTelephonyAmountSecurityDepositResponse =
-  ListTelephonyAllowedCreditThresholdResponse as any as S.Schema<ListTelephonyAmountSecurityDepositResponse>;
-
 /** Product type */
 export type TelephonySipDomainProductTypeEnum = "sip" | "trunk";
-const TelephonySipDomainProductTypeEnum = S.String;
-
 export interface ListTelephonyAvailableDefaultSipDomainsRequest {
   /** Product type */
   type: TelephonySipDomainProductTypeEnum | (string & {});
 }
-const ListTelephonyAvailableDefaultSipDomainsRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<ListTelephonyAvailableDefaultSipDomainsRequest>;
-
 /** List of available SIP domains */
 export type TelephonyDefaultSipDomainsListList = Array<string>;
-const TelephonyDefaultSipDomainsListList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyDefaultSipDomainsListList>;
-
 export interface TelephonyDefaultSipDomains {
   /** Country */
   country?: TelephonyServiceNumberCountryEnum;
@@ -8639,58 +5478,25 @@ export interface TelephonyDefaultSipDomains {
   /** Type of the VoIP product concerned */
   productType?: TelephonySipDomainProductTypeEnum;
 }
-const TelephonyDefaultSipDomains = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<TelephonyDefaultSipDomains>;
-
 export type ListTelephonyAvailableDefaultSipDomainsResponseBodyList =
   Array<TelephonyDefaultSipDomains>;
-const ListTelephonyAvailableDefaultSipDomainsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<ListTelephonyAvailableDefaultSipDomainsResponseBodyList>;
-
 export type ListTelephonyAvailableDefaultSipDomainsResponse =
   ListTelephonyAvailableDefaultSipDomainsResponseBodyList;
-const ListTelephonyAvailableDefaultSipDomainsResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<ListTelephonyAvailableDefaultSipDomainsResponse>;
-
 export interface ListTelephonyCarrierSipRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyCarrierSipRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<ListTelephonyCarrierSipRequest>;
-
 export type ListTelephonyCarrierSipResponseBodyList = Array<string>;
 export type ListTelephonyCarrierSipResponse = ListTelephonyCarrierSipResponseBodyList;
-const ListTelephonyCarrierSipResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyCarrierSipResponse>;
-
 export interface ListTelephonyCarrierSipClusterDetailsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyCarrierSipClusterDetailsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<ListTelephonyCarrierSipClusterDetailsRequest>;
-
 /** The list of media (RTP) ips of this zone */
 export type TelephonyCarrierSipClusterZoneMediaIpsList = Array<string>;
-const TelephonyCarrierSipClusterZoneMediaIpsList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyCarrierSipClusterZoneMediaIpsList>;
-
 /** Carrier SIP Zone Regions */
 export type TelephonyCarrierSipClusterZoneRegionEnum = "rbx" | "sbg";
-const TelephonyCarrierSipClusterZoneRegionEnum = S.String;
-
 /** The information about a carrier sip cluster zone */
 export interface TelephonyCarrierSipClusterZone {
   /** The list of media (RTP) ips of this zone */
@@ -8698,18 +5504,8 @@ export interface TelephonyCarrierSipClusterZone {
   /** The region of the cluster (rbx, sbg,...) */
   region?: TelephonyCarrierSipClusterZoneRegionEnum;
 }
-const TelephonyCarrierSipClusterZone = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<TelephonyCarrierSipClusterZone>;
-
 /** The availability zones of the cluster */
 export type TelephonyCarrierSipClusterInfoZonesList = Array<TelephonyCarrierSipClusterZone>;
-const TelephonyCarrierSipClusterInfoZonesList = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<TelephonyCarrierSipClusterInfoZonesList>;
-
 /** The information about the Carrier SIP cluster attached to your service */
 export interface TelephonyCarrierSipClusterInfo {
   /** The name of the cluster */
@@ -8717,42 +5513,21 @@ export interface TelephonyCarrierSipClusterInfo {
   /** The availability zones of the cluster */
   zones?: TelephonyCarrierSipClusterInfoZonesList;
 }
-const TelephonyCarrierSipClusterInfo = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<TelephonyCarrierSipClusterInfo>;
-
 export interface ListTelephonyCarrierSipEndpointsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyCarrierSipEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<ListTelephonyCarrierSipEndpointsRequest>;
-
 export type ListTelephonyCarrierSipEndpointsResponseBodyList = Array<number>;
 export type ListTelephonyCarrierSipEndpointsResponse =
   ListTelephonyCarrierSipEndpointsResponseBodyList;
-const ListTelephonyCarrierSipEndpointsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyCarrierSipEndpointsResponse>;
-
 export interface ListTelephonyCarrierSipVnoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyCarrierSipVnoRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<ListTelephonyCarrierSipVnoRequest>;
-
 export type ListTelephonyCarrierSipVnoResponseBodyList = Array<string>;
 export type ListTelephonyCarrierSipVnoResponse = ListTelephonyCarrierSipVnoResponseBodyList;
-const ListTelephonyCarrierSipVnoResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyCarrierSipVnoResponse>;
-
 export interface ListTelephonyCarrierSipVnoRangesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8760,31 +5535,15 @@ export interface ListTelephonyCarrierSipVnoRangesRequest {
   /** The reference written on your VNO contract. */
   contractReference: string;
 }
-const ListTelephonyCarrierSipVnoRangesRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<ListTelephonyCarrierSipVnoRangesRequest>;
-
 export type ListTelephonyCarrierSipVnoRangesResponseBodyList = Array<string>;
 export type ListTelephonyCarrierSipVnoRangesResponse =
   ListTelephonyCarrierSipVnoRangesResponseBodyList;
-const ListTelephonyCarrierSipVnoRangesResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyCarrierSipVnoRangesResponse>;
-
 export interface ListTelephonyConferenceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyConferenceRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<ListTelephonyConferenceRequest>;
-
 export type ListTelephonyConferenceResponseBodyList = Array<string>;
 export type ListTelephonyConferenceResponse = ListTelephonyConferenceResponseBodyList;
-const ListTelephonyConferenceResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyConferenceResponse>;
-
 export interface ListTelephonyConferenceHistoriesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8794,33 +5553,17 @@ export interface ListTelephonyConferenceHistoriesRequest {
   /** Filter the value of dateBegin property (<=) */
   dateBegin_to?: string;
 }
-const ListTelephonyConferenceHistoriesRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<ListTelephonyConferenceHistoriesRequest>;
-
 export type ListTelephonyConferenceHistoriesResponseBodyList = Array<number>;
 export type ListTelephonyConferenceHistoriesResponse =
   ListTelephonyConferenceHistoriesResponseBodyList;
-const ListTelephonyConferenceHistoriesResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceHistoriesResponse>;
-
 export interface ListTelephonyConferenceParticipantsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyConferenceParticipantsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<ListTelephonyConferenceParticipantsRequest>;
-
 export type ListTelephonyConferenceParticipantsResponseBodyList = Array<number>;
 export type ListTelephonyConferenceParticipantsResponse =
   ListTelephonyConferenceParticipantsResponseBodyList;
-const ListTelephonyConferenceParticipantsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceParticipantsResponse>;
-
 export interface ListTelephonyConferenceRoomHistoriesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8832,17 +5575,9 @@ export interface ListTelephonyConferenceRoomHistoriesRequest {
   /** Filter the value of dateBegin property (<=) */
   dateBegin_to?: string;
 }
-const ListTelephonyConferenceRoomHistoriesRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<ListTelephonyConferenceRoomHistoriesRequest>;
-
 export type ListTelephonyConferenceRoomHistoriesResponseBodyList = Array<number>;
 export type ListTelephonyConferenceRoomHistoriesResponse =
   ListTelephonyConferenceRoomHistoriesResponseBodyList;
-const ListTelephonyConferenceRoomHistoriesResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomHistoriesResponse>;
-
 export interface ListTelephonyConferenceRoomParticipantsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8850,32 +5585,16 @@ export interface ListTelephonyConferenceRoomParticipantsRequest {
   /** The conference room number */
   roomNumber: number;
 }
-const ListTelephonyConferenceRoomParticipantsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<ListTelephonyConferenceRoomParticipantsRequest>;
-
 export type ListTelephonyConferenceRoomParticipantsResponseBodyList = Array<number>;
 export type ListTelephonyConferenceRoomParticipantsResponse =
   ListTelephonyConferenceRoomParticipantsResponseBodyList;
-const ListTelephonyConferenceRoomParticipantsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomParticipantsResponse>;
-
 export interface ListTelephonyConferenceRoomsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyConferenceRoomsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<ListTelephonyConferenceRoomsRequest>;
-
 export type ListTelephonyConferenceRoomsResponseBodyList = Array<number>;
 export type ListTelephonyConferenceRoomsResponse = ListTelephonyConferenceRoomsResponseBodyList;
-const ListTelephonyConferenceRoomsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomsResponse>;
-
 export interface ListTelephonyConferenceRoomWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -8883,85 +5602,41 @@ export interface ListTelephonyConferenceRoomWebAccessRequest {
   /** The conference room number */
   roomNumber: number;
 }
-const ListTelephonyConferenceRoomWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<ListTelephonyConferenceRoomWebAccessRequest>;
-
 export type ListTelephonyConferenceRoomWebAccessResponseBodyList = Array<number>;
 export type ListTelephonyConferenceRoomWebAccessResponse =
   ListTelephonyConferenceRoomWebAccessResponseBodyList;
-const ListTelephonyConferenceRoomWebAccessResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceRoomWebAccessResponse>;
-
 export interface ListTelephonyConferenceWebAccessRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyConferenceWebAccessRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<ListTelephonyConferenceWebAccessRequest>;
-
 export type ListTelephonyConferenceWebAccessResponseBodyList = Array<number>;
 export type ListTelephonyConferenceWebAccessResponse =
   ListTelephonyConferenceWebAccessResponseBodyList;
-const ListTelephonyConferenceWebAccessResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyConferenceWebAccessResponse>;
-
 export interface ListTelephonyCurrentOrderIdsRequest {}
-const ListTelephonyCurrentOrderIdsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<ListTelephonyCurrentOrderIdsRequest>;
-
 export type ListTelephonyCurrentOrderIdsResponseBodyList = Array<number>;
 export type ListTelephonyCurrentOrderIdsResponse = ListTelephonyCurrentOrderIdsResponseBodyList;
-const ListTelephonyCurrentOrderIdsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyCurrentOrderIdsResponse>;
-
 export interface ListTelephonyDdiRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyDdiRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<ListTelephonyDdiRequest>;
-
 export type ListTelephonyDdiResponseBodyList = Array<string>;
 export type ListTelephonyDdiResponse = ListTelephonyDdiResponseBodyList;
-const ListTelephonyDdiResponse = ListTelephonyResponse as any as S.Schema<ListTelephonyDdiResponse>;
-
 export interface ListTelephonyDirectoryAvailableZipCodesRequest {
   /** The country of the city */
   country: TelephonyServiceNumberCountryEnum | (string & {});
   /** The number (can be a range terminated by XXXX) */
   number: string;
 }
-const ListTelephonyDirectoryAvailableZipCodesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesRequest>;
-
 export type ListTelephonyDirectoryAvailableZipCodesResponseBodyList = Array<string>;
 export type ListTelephonyDirectoryAvailableZipCodesResponse =
   ListTelephonyDirectoryAvailableZipCodesResponseBodyList;
-const ListTelephonyDirectoryAvailableZipCodesResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesResponse>;
-
 export interface ListTelephonyDirectoryCitiesRequest {
   /** The country of the city */
   country: TelephonyServiceNumberCountryEnum | (string & {});
   /** The zip code of the city */
   zipCode: string;
 }
-const ListTelephonyDirectoryCitiesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<ListTelephonyDirectoryCitiesRequest>;
-
 /** Represents a city */
 export interface TelephonyCity {
   /** The identifier of the city */
@@ -8971,166 +5646,82 @@ export interface TelephonyCity {
   /** The zip code of the city */
   zipCode?: string;
 }
-const TelephonyCity = /*@__PURE__*/ __L.at(__c68, 6) as any as S.Schema<TelephonyCity>;
-
 export type ListTelephonyDirectoryCitiesResponseBodyList = Array<TelephonyCity>;
-const ListTelephonyDirectoryCitiesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<ListTelephonyDirectoryCitiesResponseBodyList>;
-
 export type ListTelephonyDirectoryCitiesResponse = ListTelephonyDirectoryCitiesResponseBodyList;
-const ListTelephonyDirectoryCitiesResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<ListTelephonyDirectoryCitiesResponse>;
-
 export interface ListTelephonyEasyHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyEasyHuntingRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<ListTelephonyEasyHuntingRequest>;
-
 export type ListTelephonyEasyHuntingResponseBodyList = Array<string>;
 export type ListTelephonyEasyHuntingResponse = ListTelephonyEasyHuntingResponseBodyList;
-const ListTelephonyEasyHuntingResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyEasyHuntingResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentRequest>;
-
 export type ListTelephonyEasyHuntingHuntingAgentResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingAgentResponse =
   ListTelephonyEasyHuntingHuntingAgentResponseBodyList;
-const ListTelephonyEasyHuntingHuntingAgentResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingAgentCallsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const ListTelephonyEasyHuntingHuntingAgentCallsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsRequest>;
-
 export type ListTelephonyEasyHuntingHuntingAgentCallsResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingAgentCallsResponse =
   ListTelephonyEasyHuntingHuntingAgentCallsResponseBodyList;
-const ListTelephonyEasyHuntingHuntingAgentCallsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const ListTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueRequest>;
-
 export type ListTelephonyEasyHuntingHuntingAgentQueueResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingAgentQueueResponse =
   ListTelephonyEasyHuntingHuntingAgentQueueResponseBodyList;
-const ListTelephonyEasyHuntingHuntingAgentQueueResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyEasyHuntingHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusRequest>;
-
 export type ListTelephonyEasyHuntingHuntingCustomStatusResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingCustomStatusResponse =
   ListTelephonyEasyHuntingHuntingCustomStatusResponseBodyList;
-const ListTelephonyEasyHuntingHuntingCustomStatusResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueRequest>;
-
 export type ListTelephonyEasyHuntingHuntingQueueResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingQueueResponse =
   ListTelephonyEasyHuntingHuntingQueueResponseBodyList;
-const ListTelephonyEasyHuntingHuntingQueueResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const ListTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentRequest>;
-
 export type ListTelephonyEasyHuntingHuntingQueueAgentResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingQueueAgentResponse =
   ListTelephonyEasyHuntingHuntingQueueAgentResponseBodyList;
-const ListTelephonyEasyHuntingHuntingQueueAgentResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentResponse>;
-
 export interface ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest>;
-
 export type ListTelephonyEasyHuntingHuntingQueueLiveCallsResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse =
   ListTelephonyEasyHuntingHuntingQueueLiveCallsResponseBodyList;
-const ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse>;
-
 export interface ListTelephonyEasyHuntingRecordsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyEasyHuntingRecordsRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<ListTelephonyEasyHuntingRecordsRequest>;
-
 export type ListTelephonyEasyHuntingRecordsResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingRecordsResponse =
   ListTelephonyEasyHuntingRecordsResponseBodyList;
-const ListTelephonyEasyHuntingRecordsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingRecordsResponse>;
-
 export interface ListTelephonyEasyHuntingScreenListConditionConditionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -9138,39 +5729,16 @@ export interface ListTelephonyEasyHuntingScreenListConditionConditionsRequest {
   /** Filter the value of screenListType property (=) */
   screenListType?: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum | (string & {});
 }
-const ListTelephonyEasyHuntingScreenListConditionConditionsRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsRequest>;
-
 export type ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList = Array<number>;
-const ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList>;
-
 export type ListTelephonyEasyHuntingScreenListConditionConditionsResponse =
   ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList;
-const ListTelephonyEasyHuntingScreenListConditionConditionsResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponse>;
-
 export interface ListTelephonyEasyHuntingSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyEasyHuntingSoundRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<ListTelephonyEasyHuntingSoundRequest>;
-
 export type ListTelephonyEasyHuntingSoundResponseBodyList = Array<number>;
 export type ListTelephonyEasyHuntingSoundResponse = ListTelephonyEasyHuntingSoundResponseBodyList;
-const ListTelephonyEasyHuntingSoundResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyEasyHuntingSoundResponse>;
-
 export interface ListTelephonyEasyHuntingTimeConditionConditionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -9178,35 +5746,15 @@ export interface ListTelephonyEasyHuntingTimeConditionConditionsRequest {
   /** Filter the value of policy property (=) */
   policy?: TelephonyTimeConditionsPolicyEnum | (string & {});
 }
-const ListTelephonyEasyHuntingTimeConditionConditionsRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  6,
-) as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsRequest>;
-
 export type ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList = Array<number>;
-const ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList =
-  ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList>;
-
 export type ListTelephonyEasyHuntingTimeConditionConditionsResponse =
   ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList;
-const ListTelephonyEasyHuntingTimeConditionConditionsResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsResponse>;
-
 export interface ListTelephonyFaxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyFaxRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<ListTelephonyFaxRequest>;
-
 export type ListTelephonyFaxResponseBodyList = Array<string>;
 export type ListTelephonyFaxResponse = ListTelephonyFaxResponseBodyList;
-const ListTelephonyFaxResponse = ListTelephonyResponse as any as S.Schema<ListTelephonyFaxResponse>;
-
 export interface ListTelephonyFaxCampaignDetailRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -9214,268 +5762,119 @@ export interface ListTelephonyFaxCampaignDetailRequest {
   /** Id of the object */
   id: number;
 }
-const ListTelephonyFaxCampaignDetailRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<ListTelephonyFaxCampaignDetailRequest>;
-
 export type TelephonyFaxCampaignDetailFailedList = Array<string>;
-const TelephonyFaxCampaignDetailFailedList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxCampaignDetailFailedList>;
-
 export type TelephonyFaxCampaignDetailSuccessList = Array<string>;
-const TelephonyFaxCampaignDetailSuccessList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxCampaignDetailSuccessList>;
-
 export type TelephonyFaxCampaignDetailTodoList = Array<string>;
-const TelephonyFaxCampaignDetailTodoList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyFaxCampaignDetailTodoList>;
-
 /** Detail of a fax campaign */
 export interface TelephonyFaxCampaignDetail {
   failed?: TelephonyFaxCampaignDetailFailedList;
   success?: TelephonyFaxCampaignDetailSuccessList;
   todo?: TelephonyFaxCampaignDetailTodoList;
 }
-const TelephonyFaxCampaignDetail = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<TelephonyFaxCampaignDetail>;
-
 export interface ListTelephonyFaxCampaignsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyFaxCampaignsRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<ListTelephonyFaxCampaignsRequest>;
-
 export type ListTelephonyFaxCampaignsResponseBodyList = Array<number>;
 export type ListTelephonyFaxCampaignsResponse = ListTelephonyFaxCampaignsResponseBodyList;
-const ListTelephonyFaxCampaignsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyFaxCampaignsResponse>;
-
 /** Number country */
 export type TelephonyNumberCountryEnum = "be" | "ch" | "fr" | "gb" | "uk";
-const TelephonyNumberCountryEnum = S.String;
-
 export interface ListTelephonyFaxOffersRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-const ListTelephonyFaxOffersRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<ListTelephonyFaxOffersRequest>;
-
 export type ListTelephonyFaxOffersResponseBodyList = Array<TelephonyLineOffer>;
-const ListTelephonyFaxOffersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<ListTelephonyFaxOffersResponseBodyList>;
-
 export type ListTelephonyFaxOffersResponse = ListTelephonyFaxOffersResponseBodyList;
-const ListTelephonyFaxOffersResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<ListTelephonyFaxOffersResponse>;
-
 export interface ListTelephonyHistoryConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyHistoryConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<ListTelephonyHistoryConsumptionRequest>;
-
 export type ListTelephonyHistoryConsumptionResponseBodyList = Array<string>;
 export type ListTelephonyHistoryConsumptionResponse =
   ListTelephonyHistoryConsumptionResponseBodyList;
-const ListTelephonyHistoryConsumptionResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyHistoryConsumptionResponse>;
-
 export interface ListTelephonyHistoryRepaymentConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyHistoryRepaymentConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionRequest>;
-
 export type ListTelephonyHistoryRepaymentConsumptionResponseBodyList = Array<string>;
 export type ListTelephonyHistoryRepaymentConsumptionResponse =
   ListTelephonyHistoryRepaymentConsumptionResponseBodyList;
-const ListTelephonyHistoryRepaymentConsumptionResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionResponse>;
-
 export interface ListTelephonyHistoryTollfreeConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyHistoryTollfreeConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  1,
-) as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionRequest>;
-
 export type ListTelephonyHistoryTollfreeConsumptionResponseBodyList = Array<string>;
 export type ListTelephonyHistoryTollfreeConsumptionResponse =
   ListTelephonyHistoryTollfreeConsumptionResponseBodyList;
-const ListTelephonyHistoryTollfreeConsumptionResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionResponse>;
-
 export interface ListTelephonyLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyLineRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<ListTelephonyLineRequest>;
-
 export type ListTelephonyLineResponseBodyList = Array<string>;
 export type ListTelephonyLineResponse = ListTelephonyLineResponseBodyList;
-const ListTelephonyLineResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineResponse>;
-
 export interface ListTelephonyLineAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<ListTelephonyLineAbbreviatedNumberRequest>;
-
 export type ListTelephonyLineAbbreviatedNumberResponseBodyList = Array<number>;
 export type ListTelephonyLineAbbreviatedNumberResponse =
   ListTelephonyLineAbbreviatedNumberResponseBodyList;
-const ListTelephonyLineAbbreviatedNumberResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineAbbreviatedNumberResponse>;
-
 export interface ListTelephonyLineAntihackRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineAntihackRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<ListTelephonyLineAntihackRequest>;
-
 export type ListTelephonyLineAntihackResponseBodyList = Array<string>;
 export type ListTelephonyLineAntihackResponse = ListTelephonyLineAntihackResponseBodyList;
-const ListTelephonyLineAntihackResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineAntihackResponse>;
-
 export interface ListTelephonyLineAutomaticCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineAutomaticCallRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  5,
-) as any as S.Schema<ListTelephonyLineAutomaticCallRequest>;
-
 export type ListTelephonyLineAutomaticCallResponseBodyList = Array<string>;
 export type ListTelephonyLineAutomaticCallResponse = ListTelephonyLineAutomaticCallResponseBodyList;
-const ListTelephonyLineAutomaticCallResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineAutomaticCallResponse>;
-
 export interface ListTelephonyLineAvailableSipDomainsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineAvailableSipDomainsRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  6,
-) as any as S.Schema<ListTelephonyLineAvailableSipDomainsRequest>;
-
 export type ListTelephonyLineAvailableSipDomainsResponseBodyList = Array<string>;
 export type ListTelephonyLineAvailableSipDomainsResponse =
   ListTelephonyLineAvailableSipDomainsResponseBodyList;
-const ListTelephonyLineAvailableSipDomainsResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineAvailableSipDomainsResponse>;
-
 export interface ListTelephonyLineClick2CallUserRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineClick2CallUserRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  7,
-) as any as S.Schema<ListTelephonyLineClick2CallUserRequest>;
-
 export type ListTelephonyLineClick2CallUserResponseBodyList = Array<number>;
 export type ListTelephonyLineClick2CallUserResponse =
   ListTelephonyLineClick2CallUserResponseBodyList;
-const ListTelephonyLineClick2CallUserResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineClick2CallUserResponse>;
-
 export interface ListTelephonyLineEventsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineEventsRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<ListTelephonyLineEventsRequest>;
-
 export type ListTelephonyLineEventsResponseBodyList = Array<string>;
 export type ListTelephonyLineEventsResponse = ListTelephonyLineEventsResponseBodyList;
-const ListTelephonyLineEventsResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineEventsResponse>;
-
 export interface ListTelephonyLineIpsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineIpsRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  1,
-) as any as S.Schema<ListTelephonyLineIpsRequest>;
-
 /** A ip value associated to a datetime */
 export interface TelephonyDatetimeAndIpvalue {
   datetime?: string;
   ip?: string | null;
 }
-const TelephonyDatetimeAndIpvalue = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<TelephonyDatetimeAndIpvalue>;
-
 export type ListTelephonyLineIpsResponseBodyList = Array<TelephonyDatetimeAndIpvalue>;
-const ListTelephonyLineIpsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<ListTelephonyLineIpsResponseBodyList>;
-
 export type ListTelephonyLineIpsResponse = ListTelephonyLineIpsResponseBodyList;
-const ListTelephonyLineIpsResponse = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<ListTelephonyLineIpsResponse>;
-
 export interface ListTelephonyLineLastRegistrationsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineLastRegistrationsRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  5,
-) as any as S.Schema<ListTelephonyLineLastRegistrationsRequest>;
-
 /** Informations about a SIP registration (i.e. IP, port, User-Agent...) */
 export interface TelephonyRegistrationInformations {
   /** SIP registration's date */
@@ -9493,35 +5892,15 @@ export interface TelephonyRegistrationInformations {
   /** SIP registration's User-Agent */
   userAgent?: string | null;
 }
-const TelephonyRegistrationInformations = /*@__PURE__*/ __L.at(
-  __c73,
-  6,
-) as any as S.Schema<TelephonyRegistrationInformations>;
-
 export type ListTelephonyLineLastRegistrationsResponseBodyList =
   Array<TelephonyRegistrationInformations>;
-const ListTelephonyLineLastRegistrationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<ListTelephonyLineLastRegistrationsResponseBodyList>;
-
 export type ListTelephonyLineLastRegistrationsResponse =
   ListTelephonyLineLastRegistrationsResponseBodyList;
-const ListTelephonyLineLastRegistrationsResponse = /*@__PURE__*/ __L.at(
-  __c74,
-  0,
-) as any as S.Schema<ListTelephonyLineLastRegistrationsResponse>;
-
 export interface ListTelephonyLineListAssociablePhonesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineListAssociablePhonesRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  1,
-) as any as S.Schema<ListTelephonyLineListAssociablePhonesRequest>;
-
 /** Current lines configured on the phone */
 export interface TelephonyLinePhoneAssociableConfiguredLines {
   /** The line description */
@@ -9529,19 +5908,9 @@ export interface TelephonyLinePhoneAssociableConfiguredLines {
   /** Service name of the line */
   serviceName?: string;
 }
-const TelephonyLinePhoneAssociableConfiguredLines = /*@__PURE__*/ __L.at(
-  __c74,
-  2,
-) as any as S.Schema<TelephonyLinePhoneAssociableConfiguredLines>;
-
 /** Current lines configured on the phone */
 export type TelephonyLinePhoneAssociableAssociatedLinesList =
   Array<TelephonyLinePhoneAssociableConfiguredLines>;
-const TelephonyLinePhoneAssociableAssociatedLinesList = /*@__PURE__*/ __L.at(
-  __c74,
-  3,
-) as any as S.Schema<TelephonyLinePhoneAssociableAssociatedLinesList>;
-
 /** Informations related to associable phone capabilities */
 export interface TelephonyLinePhoneAssociable {
   /** Current lines configured on the phone */
@@ -9553,36 +5922,16 @@ export interface TelephonyLinePhoneAssociable {
   /** Phone protocol */
   protocol?: TelephonyProtocolEnum;
 }
-const TelephonyLinePhoneAssociable = /*@__PURE__*/ __L.at(
-  __c74,
-  4,
-) as any as S.Schema<TelephonyLinePhoneAssociable>;
-
 export type ListTelephonyLineListAssociablePhonesResponseBodyList =
   Array<TelephonyLinePhoneAssociable>;
-const ListTelephonyLineListAssociablePhonesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c74,
-  5,
-) as any as S.Schema<ListTelephonyLineListAssociablePhonesResponseBodyList>;
-
 export type ListTelephonyLineListAssociablePhonesResponse =
   ListTelephonyLineListAssociablePhonesResponseBodyList;
-const ListTelephonyLineListAssociablePhonesResponse = /*@__PURE__*/ __L.at(
-  __c74,
-  6,
-) as any as S.Schema<ListTelephonyLineListAssociablePhonesResponse>;
-
 export interface ListTelephonyLineOfferPhonesRequest {
   /** The country */
   country: TelephonyServiceNumberCountryEnum | (string & {});
   /** The selected offer */
   offer: string;
 }
-const ListTelephonyLineOfferPhonesRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  7,
-) as any as S.Schema<ListTelephonyLineOfferPhonesRequest>;
-
 /** Informations related to phone capabilities */
 export interface TelephonyLinePhone {
   /** Brand name of the phone */
@@ -9600,66 +5949,30 @@ export interface TelephonyLinePhone {
   /** Phone protocol */
   protocol?: TelephonyProtocolEnum;
 }
-const TelephonyLinePhone = /*@__PURE__*/ __L.at(__c75, 0) as any as S.Schema<TelephonyLinePhone>;
-
 export type ListTelephonyLineOfferPhonesResponseBodyList = Array<TelephonyLinePhone>;
-const ListTelephonyLineOfferPhonesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c75,
-  1,
-) as any as S.Schema<ListTelephonyLineOfferPhonesResponseBodyList>;
-
 export type ListTelephonyLineOfferPhonesResponse = ListTelephonyLineOfferPhonesResponseBodyList;
-const ListTelephonyLineOfferPhonesResponse = /*@__PURE__*/ __L.at(
-  __c75,
-  2,
-) as any as S.Schema<ListTelephonyLineOfferPhonesResponse>;
-
 export interface ListTelephonyLineOffersRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-const ListTelephonyLineOffersRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  3,
-) as any as S.Schema<ListTelephonyLineOffersRequest>;
-
 export type ListTelephonyLineOffersResponseBodyList = Array<TelephonyLineOffer>;
 export type ListTelephonyLineOffersResponse = ListTelephonyLineOffersResponseBodyList;
-const ListTelephonyLineOffersResponse =
-  ListTelephonyFaxOffersResponse as any as S.Schema<ListTelephonyLineOffersResponse>;
-
 export interface ListTelephonyLineOptionAvailableCodecsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineOptionAvailableCodecsRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  4,
-) as any as S.Schema<ListTelephonyLineOptionAvailableCodecsRequest>;
-
 export type ListTelephonyLineOptionAvailableCodecsResponseBodyList = Array<string>;
 export type ListTelephonyLineOptionAvailableCodecsResponse =
   ListTelephonyLineOptionAvailableCodecsResponseBodyList;
-const ListTelephonyLineOptionAvailableCodecsResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLineOptionAvailableCodecsResponse>;
-
 export interface ListTelephonyLinePhoneFunctionKeyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  5,
-) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyRequest>;
-
 export type ListTelephonyLinePhoneFunctionKeyResponseBodyList = Array<number>;
 export type ListTelephonyLinePhoneFunctionKeyResponse =
   ListTelephonyLinePhoneFunctionKeyResponseBodyList;
-const ListTelephonyLinePhoneFunctionKeyResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLinePhoneFunctionKeyResponse>;
-
 export interface ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -9667,34 +5980,14 @@ export interface ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest {
   /** The number of the function key */
   keyNum: number;
 }
-const ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  6,
-) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest>;
-
 export type ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList = Array<string>;
-const ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c75,
-  7,
-) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList>;
-
 export type ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse =
   ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList;
-const ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse = /*@__PURE__*/ __L.at(
-  __c76,
-  0,
-) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse>;
-
 export interface ListTelephonyLinePhoneMerchandiseAvailableRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLinePhoneMerchandiseAvailableRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  1,
-) as any as S.Schema<ListTelephonyLinePhoneMerchandiseAvailableRequest>;
-
 /** Informations related to a telephone offer */
 export interface TelephonyHardwareOffer {
   /** The telephony description */
@@ -9710,25 +6003,14 @@ export type ListTelephonyLinePhoneMerchandiseAvailableResponseBodyList =
   Array<TelephonyHardwareOffer>;
 export type ListTelephonyLinePhoneMerchandiseAvailableResponse =
   ListTelephonyLinePhoneMerchandiseAvailableResponseBodyList;
-const ListTelephonyLinePhoneMerchandiseAvailableResponse =
-  ListTelephonyAccessoriesResponse as any as S.Schema<ListTelephonyLinePhoneMerchandiseAvailableResponse>;
-
 export interface ListTelephonyLinePhonePhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  2,
-) as any as S.Schema<ListTelephonyLinePhonePhonebookRequest>;
-
 export type ListTelephonyLinePhonePhonebookResponseBodyList = Array<string>;
 export type ListTelephonyLinePhonePhonebookResponse =
   ListTelephonyLinePhonePhonebookResponseBodyList;
-const ListTelephonyLinePhonePhonebookResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLinePhonePhonebookResponse>;
-
 export interface ListTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -9736,78 +6018,38 @@ export interface ListTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const ListTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  3,
-) as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactRequest>;
-
 export type ListTelephonyLinePhonePhonebookPhonebookContactResponseBodyList = Array<number>;
 export type ListTelephonyLinePhonePhonebookPhonebookContactResponse =
   ListTelephonyLinePhonePhonebookPhonebookContactResponseBodyList;
-const ListTelephonyLinePhonePhonebookPhonebookContactResponse =
-  ListTelephonyEasyHuntingTimeConditionConditionsResponse as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactResponse>;
-
 export interface ListTelephonyLinePhoneRmaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLinePhoneRmaRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  4,
-) as any as S.Schema<ListTelephonyLinePhoneRmaRequest>;
-
 export type ListTelephonyLinePhoneRmaResponseBodyList = Array<string>;
 export type ListTelephonyLinePhoneRmaResponse = ListTelephonyLinePhoneRmaResponseBodyList;
-const ListTelephonyLinePhoneRmaResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLinePhoneRmaResponse>;
-
 export interface ListTelephonyLineRecordsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineRecordsRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  5,
-) as any as S.Schema<ListTelephonyLineRecordsRequest>;
-
 export type ListTelephonyLineRecordsResponseBodyList = Array<number>;
 export type ListTelephonyLineRecordsResponse = ListTelephonyLineRecordsResponseBodyList;
-const ListTelephonyLineRecordsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineRecordsResponse>;
-
 export type ListTelephonyLinesRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListTelephonyLinesRequestIamTagsMap = {
   [key: string]: ListTelephonyLinesRequestIamTagsValueList | undefined;
 };
-const ListTelephonyLinesRequestIamTagsMap =
-  ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonyLinesRequestIamTagsMap>;
-
 export interface ListTelephonyLinesRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyLinesRequestIamTagsMap;
 }
-const ListTelephonyLinesRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  6,
-) as any as S.Schema<ListTelephonyLinesRequest>;
-
 export type ListTelephonyLinesResponseBodyList = Array<string>;
 export type ListTelephonyLinesResponse = ListTelephonyLinesResponseBodyList;
-const ListTelephonyLinesResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyLinesResponse>;
-
 export interface ListTelephonyLineSoftphoneDevicesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineSoftphoneDevicesRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  7,
-) as any as S.Schema<ListTelephonyLineSoftphoneDevicesRequest>;
-
 /** List of softphone devices */
 export interface TelephonySoftphoneDevices {
   /** Device ID */
@@ -9821,85 +6063,39 @@ export interface TelephonySoftphoneDevices {
   /** Device user agent */
   userAgent?: string;
 }
-const TelephonySoftphoneDevices = /*@__PURE__*/ __L.at(
-  __c77,
-  0,
-) as any as S.Schema<TelephonySoftphoneDevices>;
-
 export type ListTelephonyLineSoftphoneDevicesResponseBodyList = Array<TelephonySoftphoneDevices>;
-const ListTelephonyLineSoftphoneDevicesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c77,
-  1,
-) as any as S.Schema<ListTelephonyLineSoftphoneDevicesResponseBodyList>;
-
 export type ListTelephonyLineSoftphoneDevicesResponse =
   ListTelephonyLineSoftphoneDevicesResponseBodyList;
-const ListTelephonyLineSoftphoneDevicesResponse = /*@__PURE__*/ __L.at(
-  __c77,
-  2,
-) as any as S.Schema<ListTelephonyLineSoftphoneDevicesResponse>;
-
 export interface ListTelephonyLineTrafficExtractsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyLineTrafficExtractsRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  3,
-) as any as S.Schema<ListTelephonyLineTrafficExtractsRequest>;
-
 export type ListTelephonyLineTrafficExtractsResponseBodyList = Array<number>;
 export type ListTelephonyLineTrafficExtractsResponse =
   ListTelephonyLineTrafficExtractsResponseBodyList;
-const ListTelephonyLineTrafficExtractsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyLineTrafficExtractsResponse>;
-
 export interface ListTelephonyNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyNumberRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  4,
-) as any as S.Schema<ListTelephonyNumberRequest>;
-
 export type ListTelephonyNumberResponseBodyList = Array<string>;
 export type ListTelephonyNumberResponse = ListTelephonyNumberResponseBodyList;
-const ListTelephonyNumberResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyNumberResponse>;
-
 export interface ListTelephonyNumberConvertToLineAvailableOffersRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Name of the service */
   serviceName: string;
 }
-const ListTelephonyNumberConvertToLineAvailableOffersRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  5,
-) as any as S.Schema<ListTelephonyNumberConvertToLineAvailableOffersRequest>;
-
 /** A contract */
 export interface OrderContract {
   content?: string;
   name?: string;
   url?: string;
 }
-const OrderContract = /*@__PURE__*/ __L.at(__c77, 6) as any as S.Schema<OrderContract>;
-
 /** Informations related to a line contracts */
 export type TelephonyLineOffersAndContractsContractsList = Array<OrderContract>;
-const TelephonyLineOffersAndContractsContractsList = /*@__PURE__*/ __L.at(
-  __c77,
-  7,
-) as any as S.Schema<TelephonyLineOffersAndContractsContractsList>;
-
 /** Informations related to a line offer */
 export type TelephonyLineOffersAndContractsOffersList = Array<TelephonyLineOffer>;
-const TelephonyLineOffersAndContractsOffersList =
-  ListTelephonyFaxOffersResponseBodyList as any as S.Schema<TelephonyLineOffersAndContractsOffersList>;
-
 /** Informations related to a line offer */
 export interface TelephonyLineOffersAndContracts {
   /** Informations related to a line contracts */
@@ -9907,39 +6103,22 @@ export interface TelephonyLineOffersAndContracts {
   /** Informations related to a line offer */
   offers?: TelephonyLineOffersAndContractsOffersList;
 }
-const TelephonyLineOffersAndContracts = /*@__PURE__*/ __L.at(
-  __c78,
-  0,
-) as any as S.Schema<TelephonyLineOffersAndContracts>;
-
 export interface ListTelephonyNumberDetailedZonesRequest {
   /** Enter a part of a city name or a zip for specific zne returns */
   axiom?: string;
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-const ListTelephonyNumberDetailedZonesRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  1,
-) as any as S.Schema<ListTelephonyNumberDetailedZonesRequest>;
-
 /** The possible criteria matching a searched value for a zone */
 export type TelephonyNumberDetailedZoneMatchingCriteriaEnum =
   | "city"
   | "internationalNumber"
   | "number"
   | "zne";
-const TelephonyNumberDetailedZoneMatchingCriteriaEnum = S.String;
-
 /** A zone type */
 export type TelephonyNumberDetailedZoneTypeEnum = "geographic" | "non-geographic" | "special";
-const TelephonyNumberDetailedZoneTypeEnum = S.String;
-
 /** The list of ZNE of this zone */
 export type TelephonyNumberDetailedZoneZneListList = Array<string>;
-const TelephonyNumberDetailedZoneZneListList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<TelephonyNumberDetailedZoneZneListList>;
-
 /** A geographic zone from a country */
 export interface TelephonyNumberDetailedZone {
   /** The searched value */
@@ -9963,42 +6142,17 @@ export interface TelephonyNumberDetailedZone {
   /** The list of ZNE of this zone */
   zneList?: TelephonyNumberDetailedZoneZneListList;
 }
-const TelephonyNumberDetailedZone = /*@__PURE__*/ __L.at(
-  __c78,
-  2,
-) as any as S.Schema<TelephonyNumberDetailedZone>;
-
 export type ListTelephonyNumberDetailedZonesResponseBodyList = Array<TelephonyNumberDetailedZone>;
-const ListTelephonyNumberDetailedZonesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c78,
-  3,
-) as any as S.Schema<ListTelephonyNumberDetailedZonesResponseBodyList>;
-
 export type ListTelephonyNumberDetailedZonesResponse =
   ListTelephonyNumberDetailedZonesResponseBodyList;
-const ListTelephonyNumberDetailedZonesResponse = /*@__PURE__*/ __L.at(
-  __c78,
-  4,
-) as any as S.Schema<ListTelephonyNumberDetailedZonesResponse>;
-
 export interface ListTelephonyNumberRangesRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-const ListTelephonyNumberRangesRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  5,
-) as any as S.Schema<ListTelephonyNumberRangesRequest>;
-
 export type ListTelephonyNumberRangesResponseBodyList = Array<string>;
 export type ListTelephonyNumberRangesResponse = ListTelephonyNumberRangesResponseBodyList;
-const ListTelephonyNumberRangesResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyNumberRangesResponse>;
-
 /** Typology of number */
 export type TelephonyNumberTypeEnum = "geographic" | "nogeographic" | "special";
-const TelephonyNumberTypeEnum = S.String;
-
 export interface ListTelephonyNumberSpecificNumbersRequest {
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
@@ -10009,11 +6163,6 @@ export interface ListTelephonyNumberSpecificNumbersRequest {
   /** The zone (geographic number) */
   zone?: string;
 }
-const ListTelephonyNumberSpecificNumbersRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  6,
-) as any as S.Schema<ListTelephonyNumberSpecificNumbersRequest>;
-
 /** Specific number available */
 export interface TelephonySpecificNumber {
   /** Set if number is premium */
@@ -10021,40 +6170,17 @@ export interface TelephonySpecificNumber {
   /** The number */
   number?: string;
 }
-const TelephonySpecificNumber = /*@__PURE__*/ __L.at(
-  __c78,
-  7,
-) as any as S.Schema<TelephonySpecificNumber>;
-
 export type ListTelephonyNumberSpecificNumbersResponseBodyList = Array<TelephonySpecificNumber>;
-const ListTelephonyNumberSpecificNumbersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c79,
-  0,
-) as any as S.Schema<ListTelephonyNumberSpecificNumbersResponseBodyList>;
-
 export type ListTelephonyNumberSpecificNumbersResponse =
   ListTelephonyNumberSpecificNumbersResponseBodyList;
-const ListTelephonyNumberSpecificNumbersResponse = /*@__PURE__*/ __L.at(
-  __c79,
-  1,
-) as any as S.Schema<ListTelephonyNumberSpecificNumbersResponse>;
-
 export interface ListTelephonyNumberZonesRequest {
   /** Enter a part of a city name or a zip for specific zne returns */
   axiom?: string;
   /** The country */
   country: TelephonyNumberCountryEnum | (string & {});
 }
-const ListTelephonyNumberZonesRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  2,
-) as any as S.Schema<ListTelephonyNumberZonesRequest>;
-
 export type ListTelephonyNumberZonesResponseBodyList = Array<string>;
 export type ListTelephonyNumberZonesResponse = ListTelephonyNumberZonesResponseBodyList;
-const ListTelephonyNumberZonesResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyNumberZonesResponse>;
-
 export interface ListTelephonyOfferTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10065,25 +6191,12 @@ export interface ListTelephonyOfferTaskRequest {
   /** Filter the value of type property (=) */
   type?: TelephonyOfferTaskTypeEnum | (string & {});
 }
-const ListTelephonyOfferTaskRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  3,
-) as any as S.Schema<ListTelephonyOfferTaskRequest>;
-
 export type ListTelephonyOfferTaskResponseBodyList = Array<number>;
 export type ListTelephonyOfferTaskResponse = ListTelephonyOfferTaskResponseBodyList;
-const ListTelephonyOfferTaskResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOfferTaskResponse>;
-
 export interface ListTelephonyOldPhoneRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyOldPhoneRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  4,
-) as any as S.Schema<ListTelephonyOldPhoneRequest>;
-
 /** Informations related to phone */
 export interface TelephonyOldPhone {
   /** Mac address of the phone */
@@ -10091,81 +6204,37 @@ export interface TelephonyOldPhone {
   /** Model of the phone */
   model?: string;
 }
-const TelephonyOldPhone = /*@__PURE__*/ __L.at(__c79, 5) as any as S.Schema<TelephonyOldPhone>;
-
 export type ListTelephonyOldPhoneResponseBodyList = Array<TelephonyOldPhone>;
-const ListTelephonyOldPhoneResponseBodyList = /*@__PURE__*/ __L.at(
-  __c79,
-  6,
-) as any as S.Schema<ListTelephonyOldPhoneResponseBodyList>;
-
 export type ListTelephonyOldPhoneResponse = ListTelephonyOldPhoneResponseBodyList;
-const ListTelephonyOldPhoneResponse = /*@__PURE__*/ __L.at(
-  __c79,
-  7,
-) as any as S.Schema<ListTelephonyOldPhoneResponse>;
-
 export interface ListTelephonyOutplanNotificationRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyOutplanNotificationRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  0,
-) as any as S.Schema<ListTelephonyOutplanNotificationRequest>;
-
 export type ListTelephonyOutplanNotificationResponseBodyList = Array<number>;
 export type ListTelephonyOutplanNotificationResponse =
   ListTelephonyOutplanNotificationResponseBodyList;
-const ListTelephonyOutplanNotificationResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOutplanNotificationResponse>;
-
 export interface ListTelephonyOvhPabxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyOvhPabxRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  1,
-) as any as S.Schema<ListTelephonyOvhPabxRequest>;
-
 export type ListTelephonyOvhPabxResponseBodyList = Array<string>;
 export type ListTelephonyOvhPabxResponse = ListTelephonyOvhPabxResponseBodyList;
-const ListTelephonyOvhPabxResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyOvhPabxResponse>;
-
 export interface ListTelephonyOvhPabxDialplanRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  2,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanRequest>;
-
 export type ListTelephonyOvhPabxDialplanResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxDialplanResponse = ListTelephonyOvhPabxDialplanResponseBodyList;
-const ListTelephonyOvhPabxDialplanResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxDialplanResponse>;
-
 export interface ListTelephonyOvhPabxDialplanExtensionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   dialplanId: number;
 }
-const ListTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  3,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRequest>;
-
 export type ListTelephonyOvhPabxDialplanExtensionResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxDialplanExtensionResponse =
   ListTelephonyOvhPabxDialplanExtensionResponseBodyList;
-const ListTelephonyOvhPabxDialplanExtensionResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionResponse>;
-
 export interface ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10173,23 +6242,10 @@ export interface ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest
   dialplanId: number;
   extensionId: number;
 }
-const ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  4,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>;
-
 export type ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList =
   Array<number>;
-const ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList =
-  ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList>;
-
 export type ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse =
   ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList;
-const ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse = /*@__PURE__*/ __L.at(
-  __c80,
-  5,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>;
-
 export interface ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10197,22 +6253,9 @@ export interface ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   dialplanId: number;
   extensionId: number;
 }
-const ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  6,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
-
 export type ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList = Array<number>;
-const ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList =
-  ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList>;
-
 export type ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
   ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList;
-const ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse = /*@__PURE__*/ __L.at(
-  __c80,
-  7,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse>;
-
 export interface ListTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10220,292 +6263,145 @@ export interface ListTelephonyOvhPabxDialplanExtensionRuleRequest {
   dialplanId: number;
   extensionId: number;
 }
-const ListTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  0,
-) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleRequest>;
-
 export type ListTelephonyOvhPabxDialplanExtensionRuleResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxDialplanExtensionRuleResponse =
   ListTelephonyOvhPabxDialplanExtensionRuleResponseBodyList;
-const ListTelephonyOvhPabxDialplanExtensionRuleResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleResponse>;
-
 export interface ListTelephonyOvhPabxHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  1,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentRequest>;
-
 export type ListTelephonyOvhPabxHuntingAgentResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingAgentResponse =
   ListTelephonyOvhPabxHuntingAgentResponseBodyList;
-const ListTelephonyOvhPabxHuntingAgentResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingAgentResponse>;
-
 export interface ListTelephonyOvhPabxHuntingAgentCallsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const ListTelephonyOvhPabxHuntingAgentCallsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  2,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsRequest>;
-
 export type ListTelephonyOvhPabxHuntingAgentCallsResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingAgentCallsResponse =
   ListTelephonyOvhPabxHuntingAgentCallsResponseBodyList;
-const ListTelephonyOvhPabxHuntingAgentCallsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsResponse>;
-
 export interface ListTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   agentId: number;
 }
-const ListTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  3,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueRequest>;
-
 export type ListTelephonyOvhPabxHuntingAgentQueueResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingAgentQueueResponse =
   ListTelephonyOvhPabxHuntingAgentQueueResponseBodyList;
-const ListTelephonyOvhPabxHuntingAgentQueueResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueResponse>;
-
 export interface ListTelephonyOvhPabxHuntingCustomStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxHuntingCustomStatusRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  4,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusRequest>;
-
 export type ListTelephonyOvhPabxHuntingCustomStatusResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingCustomStatusResponse =
   ListTelephonyOvhPabxHuntingCustomStatusResponseBodyList;
-const ListTelephonyOvhPabxHuntingCustomStatusResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusResponse>;
-
 export interface ListTelephonyOvhPabxHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  5,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueRequest>;
-
 export type ListTelephonyOvhPabxHuntingQueueResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingQueueResponse =
   ListTelephonyOvhPabxHuntingQueueResponseBodyList;
-const ListTelephonyOvhPabxHuntingQueueResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingQueueResponse>;
-
 export interface ListTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const ListTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  6,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentRequest>;
-
 export type ListTelephonyOvhPabxHuntingQueueAgentResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingQueueAgentResponse =
   ListTelephonyOvhPabxHuntingQueueAgentResponseBodyList;
-const ListTelephonyOvhPabxHuntingQueueAgentResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentResponse>;
-
 export interface ListTelephonyOvhPabxHuntingQueueLiveCallsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   queueId: number;
 }
-const ListTelephonyOvhPabxHuntingQueueLiveCallsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  7,
-) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsRequest>;
-
 export type ListTelephonyOvhPabxHuntingQueueLiveCallsResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxHuntingQueueLiveCallsResponse =
   ListTelephonyOvhPabxHuntingQueueLiveCallsResponseBodyList;
-const ListTelephonyOvhPabxHuntingQueueLiveCallsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsResponse>;
-
 export interface ListTelephonyOvhPabxMenuRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxMenuRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  0,
-) as any as S.Schema<ListTelephonyOvhPabxMenuRequest>;
-
 export type ListTelephonyOvhPabxMenuResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxMenuResponse = ListTelephonyOvhPabxMenuResponseBodyList;
-const ListTelephonyOvhPabxMenuResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxMenuResponse>;
-
 export interface ListTelephonyOvhPabxMenuEntryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   menuId: number;
 }
-const ListTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  1,
-) as any as S.Schema<ListTelephonyOvhPabxMenuEntryRequest>;
-
 export type ListTelephonyOvhPabxMenuEntryResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxMenuEntryResponse = ListTelephonyOvhPabxMenuEntryResponseBodyList;
-const ListTelephonyOvhPabxMenuEntryResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxMenuEntryResponse>;
-
 export interface ListTelephonyOvhPabxRecordsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxRecordsRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  2,
-) as any as S.Schema<ListTelephonyOvhPabxRecordsRequest>;
-
 export type ListTelephonyOvhPabxRecordsResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxRecordsResponse = ListTelephonyOvhPabxRecordsResponseBodyList;
-const ListTelephonyOvhPabxRecordsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxRecordsResponse>;
-
 export interface ListTelephonyOvhPabxSoundRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxSoundRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  3,
-) as any as S.Schema<ListTelephonyOvhPabxSoundRequest>;
-
 export type ListTelephonyOvhPabxSoundResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxSoundResponse = ListTelephonyOvhPabxSoundResponseBodyList;
-const ListTelephonyOvhPabxSoundResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxSoundResponse>;
-
 export interface ListTelephonyOvhPabxTtsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyOvhPabxTtsRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  4,
-) as any as S.Schema<ListTelephonyOvhPabxTtsRequest>;
-
 export type ListTelephonyOvhPabxTtsResponseBodyList = Array<number>;
 export type ListTelephonyOvhPabxTtsResponse = ListTelephonyOvhPabxTtsResponseBodyList;
-const ListTelephonyOvhPabxTtsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyOvhPabxTtsResponse>;
-
 export interface ListTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  5,
-) as any as S.Schema<ListTelephonyPhonebookRequest>;
-
 export type ListTelephonyPhonebookResponseBodyList = Array<string>;
 export type ListTelephonyPhonebookResponse = ListTelephonyPhonebookResponseBodyList;
-const ListTelephonyPhonebookResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyPhonebookResponse>;
-
 export interface ListTelephonyPhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const ListTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  6,
-) as any as S.Schema<ListTelephonyPhonebookPhonebookContactRequest>;
-
 export type ListTelephonyPhonebookPhonebookContactResponseBodyList = Array<number>;
 export type ListTelephonyPhonebookPhonebookContactResponse =
   ListTelephonyPhonebookPhonebookContactResponseBodyList;
-const ListTelephonyPhonebookPhonebookContactResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyPhonebookPhonebookContactResponse>;
-
 export interface ListTelephonyPortabilityRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyPortabilityRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  7,
-) as any as S.Schema<ListTelephonyPortabilityRequest>;
-
 export type ListTelephonyPortabilityResponseBodyList = Array<number>;
 export type ListTelephonyPortabilityResponse = ListTelephonyPortabilityResponseBodyList;
-const ListTelephonyPortabilityResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyPortabilityResponse>;
-
 export interface ListTelephonyPortabilityDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const ListTelephonyPortabilityDocumentRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  0,
-) as any as S.Schema<ListTelephonyPortabilityDocumentRequest>;
-
 export type ListTelephonyPortabilityDocumentResponseBodyList = Array<number>;
 export type ListTelephonyPortabilityDocumentResponse =
   ListTelephonyPortabilityDocumentResponseBodyList;
-const ListTelephonyPortabilityDocumentResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyPortabilityDocumentResponse>;
-
 export interface ListTelephonyPortabilityRelaunchRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const ListTelephonyPortabilityRelaunchRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  1,
-) as any as S.Schema<ListTelephonyPortabilityRelaunchRequest>;
-
 /** Mandatory parameter list */
 export type TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList = Array<string>;
-const TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList =
-  ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList as any as S.Schema<TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList>;
-
 /** Optional parameter list */
 export type TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList = Array<string>;
-const TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList =
-  ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList as any as S.Schema<TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList>;
-
 /** Possible parameters to provide to fix portability errors */
 export interface TelephonyPortabilityFixErrorPossibleParameters {
   /** Mandatory parameter list */
@@ -10513,26 +6409,14 @@ export interface TelephonyPortabilityFixErrorPossibleParameters {
   /** Optional parameter list */
   optionalParameters?: TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList;
 }
-const TelephonyPortabilityFixErrorPossibleParameters = /*@__PURE__*/ __L.at(
-  __c83,
-  2,
-) as any as S.Schema<TelephonyPortabilityFixErrorPossibleParameters>;
-
 export interface ListTelephonyPortabilityStatusRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** The ID of the portability */
   id: number;
 }
-const ListTelephonyPortabilityStatusRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  3,
-) as any as S.Schema<ListTelephonyPortabilityStatusRequest>;
-
 /** List of possible duration unit. "NA" means that there is no defined duration */
 export type TelephonyPortabilityStepDurationUnitEnum = "NA" | "day" | "hour" | "openday";
-const TelephonyPortabilityStepDurationUnitEnum = S.String;
-
 /** Represent the delay between two portability steps */
 export interface TelephonyPortabilityStepDuration {
   /** The quantity of delay */
@@ -10540,11 +6424,6 @@ export interface TelephonyPortabilityStepDuration {
   /** The delay's unit */
   unit?: TelephonyPortabilityStepDurationUnitEnum;
 }
-const TelephonyPortabilityStepDuration = /*@__PURE__*/ __L.at(
-  __c83,
-  4,
-) as any as S.Schema<TelephonyPortabilityStepDuration>;
-
 /** Additional informations about the portability step */
 export interface TelephonyPortabilityStepInfos {
   /** The last portability due date that has been proposed */
@@ -10554,11 +6433,6 @@ export interface TelephonyPortabilityStepInfos {
   /** A code representing the reason */
   reasonType?: string | null;
 }
-const TelephonyPortabilityStepInfos = /*@__PURE__*/ __L.at(
-  __c83,
-  5,
-) as any as S.Schema<TelephonyPortabilityStepInfos>;
-
 /** List of possible step name */
 export type TelephonyPortabilityStepNameEnum =
   | "acknowledgmentReceivedFromOperator"
@@ -10576,8 +6450,6 @@ export type TelephonyPortabilityStepNameEnum =
   | "numberActivation"
   | "requestSentToOperator"
   | "sDASequenceReceivedFromOperator";
-const TelephonyPortabilityStepNameEnum = S.String;
-
 /** List of possible status of a step */
 export type TelephonyPortabilityStepStatusEnum =
   | "cancelled"
@@ -10586,8 +6458,6 @@ export type TelephonyPortabilityStepStatusEnum =
   | "error"
   | "hold"
   | "todo";
-const TelephonyPortabilityStepStatusEnum = S.String;
-
 /** A step in the portability process */
 export interface TelephonyPortabilityStep {
   /** A brief description of the step */
@@ -10603,72 +6473,28 @@ export interface TelephonyPortabilityStep {
   /** Indicates if the step is to do, currently doing or done */
   status?: TelephonyPortabilityStepStatusEnum;
 }
-const TelephonyPortabilityStep = /*@__PURE__*/ __L.at(
-  __c83,
-  6,
-) as any as S.Schema<TelephonyPortabilityStep>;
-
 export type ListTelephonyPortabilityStatusResponseBodyList = Array<TelephonyPortabilityStep>;
-const ListTelephonyPortabilityStatusResponseBodyList = /*@__PURE__*/ __L.at(
-  __c83,
-  7,
-) as any as S.Schema<ListTelephonyPortabilityStatusResponseBodyList>;
-
 export type ListTelephonyPortabilityStatusResponse = ListTelephonyPortabilityStatusResponseBodyList;
-const ListTelephonyPortabilityStatusResponse = /*@__PURE__*/ __L.at(
-  __c84,
-  0,
-) as any as S.Schema<ListTelephonyPortabilityStatusResponse>;
-
 export interface ListTelephonyProcedureRequest {}
-const ListTelephonyProcedureRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  1,
-) as any as S.Schema<ListTelephonyProcedureRequest>;
-
 export type ListTelephonyProcedureResponseBodyList = Array<number>;
 export type ListTelephonyProcedureResponse = ListTelephonyProcedureResponseBodyList;
-const ListTelephonyProcedureResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyProcedureResponse>;
-
 export interface ListTelephonyRedirectRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyRedirectRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  2,
-) as any as S.Schema<ListTelephonyRedirectRequest>;
-
 export type ListTelephonyRedirectResponseBodyList = Array<string>;
 export type ListTelephonyRedirectResponse = ListTelephonyRedirectResponseBodyList;
-const ListTelephonyRedirectResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyRedirectResponse>;
-
 export interface ListTelephonyRsvaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyRsvaRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  3,
-) as any as S.Schema<ListTelephonyRsvaRequest>;
-
 export type ListTelephonyRsvaResponseBodyList = Array<string>;
 export type ListTelephonyRsvaResponse = ListTelephonyRsvaResponseBodyList;
-const ListTelephonyRsvaResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyRsvaResponse>;
-
 export interface ListTelephonyRsvaAllowedRateCodesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyRsvaAllowedRateCodesRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  4,
-) as any as S.Schema<ListTelephonyRsvaAllowedRateCodesRequest>;
-
 /** Informations related to the rate code */
 export interface TelephonyRateCodeInformation {
   /** The Rsva rate code */
@@ -10678,38 +6504,15 @@ export interface TelephonyRateCodeInformation {
   /** Price per minute */
   pricePerMinuteWithoutTax?: OrderPrice;
 }
-const TelephonyRateCodeInformation = /*@__PURE__*/ __L.at(
-  __c84,
-  5,
-) as any as S.Schema<TelephonyRateCodeInformation>;
-
 export type ListTelephonyRsvaAllowedRateCodesResponseBodyList = Array<TelephonyRateCodeInformation>;
-const ListTelephonyRsvaAllowedRateCodesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c84,
-  6,
-) as any as S.Schema<ListTelephonyRsvaAllowedRateCodesResponseBodyList>;
-
 export type ListTelephonyRsvaAllowedRateCodesResponse =
   ListTelephonyRsvaAllowedRateCodesResponseBodyList;
-const ListTelephonyRsvaAllowedRateCodesResponse = /*@__PURE__*/ __L.at(
-  __c84,
-  7,
-) as any as S.Schema<ListTelephonyRsvaAllowedRateCodesResponse>;
-
 export interface ListTelephonySchedulerRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonySchedulerRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  0,
-) as any as S.Schema<ListTelephonySchedulerRequest>;
-
 export type ListTelephonySchedulerResponseBodyList = Array<string>;
 export type ListTelephonySchedulerResponse = ListTelephonySchedulerResponseBodyList;
-const ListTelephonySchedulerResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySchedulerResponse>;
-
 export interface ListTelephonySchedulerEventsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10725,58 +6528,27 @@ export interface ListTelephonySchedulerEventsRequest {
   /** Filter the value of dateStart property (<=) */
   dateStart_to?: string;
 }
-const ListTelephonySchedulerEventsRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  1,
-) as any as S.Schema<ListTelephonySchedulerEventsRequest>;
-
 export type ListTelephonySchedulerEventsResponseBodyList = Array<string>;
 export type ListTelephonySchedulerEventsResponse = ListTelephonySchedulerEventsResponseBodyList;
-const ListTelephonySchedulerEventsResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySchedulerEventsResponse>;
-
 export interface ListTelephonyScreenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyScreenRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  2,
-) as any as S.Schema<ListTelephonyScreenRequest>;
-
 export type ListTelephonyScreenResponseBodyList = Array<string>;
 export type ListTelephonyScreenResponse = ListTelephonyScreenResponseBodyList;
-const ListTelephonyScreenResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyScreenResponse>;
-
 export interface ListTelephonyScreenScreenListsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyScreenScreenListsRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  3,
-) as any as S.Schema<ListTelephonyScreenScreenListsRequest>;
-
 export type ListTelephonyScreenScreenListsResponseBodyList = Array<number>;
 export type ListTelephonyScreenScreenListsResponse = ListTelephonyScreenScreenListsResponseBodyList;
-const ListTelephonyScreenScreenListsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyScreenScreenListsResponse>;
-
 export interface ListTelephonySearchServicesRequest {
   /** Filter the value of property (like) */
   axiom: string;
 }
-const ListTelephonySearchServicesRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  4,
-) as any as S.Schema<ListTelephonySearchServicesRequest>;
-
 /** List of possible type of a telephony service */
 export type TelephonyTelephonySearchServiceTypeEnum = "alias" | "line" | "trunk";
-const TelephonyTelephonySearchServiceTypeEnum = S.String;
-
 /** Informations related to a telephony service */
 export interface TelephonyTelephonySearchService {
   /** The billing account of the service */
@@ -10786,48 +6558,20 @@ export interface TelephonyTelephonySearchService {
   /** The offer description */
   type?: TelephonyTelephonySearchServiceTypeEnum;
 }
-const TelephonyTelephonySearchService = /*@__PURE__*/ __L.at(
-  __c85,
-  5,
-) as any as S.Schema<TelephonyTelephonySearchService>;
-
 export type ListTelephonySearchServicesResponseBodyList = Array<TelephonyTelephonySearchService>;
-const ListTelephonySearchServicesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c85,
-  6,
-) as any as S.Schema<ListTelephonySearchServicesResponseBodyList>;
-
 export type ListTelephonySearchServicesResponse = ListTelephonySearchServicesResponseBodyList;
-const ListTelephonySearchServicesResponse = /*@__PURE__*/ __L.at(
-  __c85,
-  7,
-) as any as S.Schema<ListTelephonySearchServicesResponse>;
-
 export interface ListTelephonyServiceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyServiceRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  0,
-) as any as S.Schema<ListTelephonyServiceRequest>;
-
 export type ListTelephonyServiceResponseBodyList = Array<string>;
 export type ListTelephonyServiceResponse = ListTelephonyServiceResponseBodyList;
-const ListTelephonyServiceResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyServiceResponse>;
-
 export interface ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   apeCode: string;
 }
-const ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  1,
-) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest>;
-
 /** Directory Informations */
 export interface TelephonyDirectoryHeadingPJ {
   apeCode?: string;
@@ -10836,59 +6580,24 @@ export interface TelephonyDirectoryHeadingPJ {
   directoryServiceDescription?: string;
   notification?: string;
 }
-const TelephonyDirectoryHeadingPJ = /*@__PURE__*/ __L.at(
-  __c86,
-  2,
-) as any as S.Schema<TelephonyDirectoryHeadingPJ>;
-
 export type ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList =
   Array<TelephonyDirectoryHeadingPJ>;
-const ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList = /*@__PURE__*/ __L.at(
-  __c86,
-  3,
-) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList>;
-
 export type ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse =
   ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList;
-const ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse = /*@__PURE__*/ __L.at(
-  __c86,
-  4,
-) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse>;
-
 export interface ListTelephonyServiceDirectoryGetWayTypesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyServiceDirectoryGetWayTypesRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  5,
-) as any as S.Schema<ListTelephonyServiceDirectoryGetWayTypesRequest>;
-
 /** Directory way type */
 export interface TelephonyDirectoryWayType {
   abbreviatedName?: string;
   wayName?: string;
 }
-const TelephonyDirectoryWayType = /*@__PURE__*/ __L.at(
-  __c86,
-  6,
-) as any as S.Schema<TelephonyDirectoryWayType>;
-
 export type ListTelephonyServiceDirectoryGetWayTypesResponseBodyList =
   Array<TelephonyDirectoryWayType>;
-const ListTelephonyServiceDirectoryGetWayTypesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c86,
-  7,
-) as any as S.Schema<ListTelephonyServiceDirectoryGetWayTypesResponseBodyList>;
-
 export type ListTelephonyServiceDirectoryGetWayTypesResponse =
   ListTelephonyServiceDirectoryGetWayTypesResponseBodyList;
-const ListTelephonyServiceDirectoryGetWayTypesResponse = /*@__PURE__*/ __L.at(
-  __c87,
-  0,
-) as any as S.Schema<ListTelephonyServiceDirectoryGetWayTypesResponse>;
-
 export interface ListTelephonyServiceFaxConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10900,33 +6609,17 @@ export interface ListTelephonyServiceFaxConsumptionRequest {
   /** Filter the value of wayType property (=) */
   wayType?: TelephonyFaxConsumptionWayTypeEnum | (string & {});
 }
-const ListTelephonyServiceFaxConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  1,
-) as any as S.Schema<ListTelephonyServiceFaxConsumptionRequest>;
-
 export type ListTelephonyServiceFaxConsumptionResponseBodyList = Array<number>;
 export type ListTelephonyServiceFaxConsumptionResponse =
   ListTelephonyServiceFaxConsumptionResponseBodyList;
-const ListTelephonyServiceFaxConsumptionResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceFaxConsumptionResponse>;
-
 export interface ListTelephonyServiceOfferChangesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyServiceOfferChangesRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  2,
-) as any as S.Schema<ListTelephonyServiceOfferChangesRequest>;
-
 export type ListTelephonyServiceOfferChangesResponseBodyList = Array<TelephonyLineOffer>;
 export type ListTelephonyServiceOfferChangesResponse =
   ListTelephonyServiceOfferChangesResponseBodyList;
-const ListTelephonyServiceOfferChangesResponse =
-  ListTelephonyFaxOffersResponse as any as S.Schema<ListTelephonyServiceOfferChangesResponse>;
-
 export interface ListTelephonyServiceOfferTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10938,16 +6631,8 @@ export interface ListTelephonyServiceOfferTaskRequest {
   /** Filter the value of type property (=) */
   type?: TelephonyOfferTaskTypeEnum | (string & {});
 }
-const ListTelephonyServiceOfferTaskRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  3,
-) as any as S.Schema<ListTelephonyServiceOfferTaskRequest>;
-
 export type ListTelephonyServiceOfferTaskResponseBodyList = Array<number>;
 export type ListTelephonyServiceOfferTaskResponse = ListTelephonyServiceOfferTaskResponseBodyList;
-const ListTelephonyServiceOfferTaskResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceOfferTaskResponse>;
-
 export interface ListTelephonyServicePreviousVoiceConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10963,17 +6648,9 @@ export interface ListTelephonyServicePreviousVoiceConsumptionRequest {
   /** Filter the value of wayType property (=) */
   wayType?: TelephonyVoiceConsumptionWayTypeEnum | (string & {});
 }
-const ListTelephonyServicePreviousVoiceConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  4,
-) as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionRequest>;
-
 export type ListTelephonyServicePreviousVoiceConsumptionResponseBodyList = Array<number>;
 export type ListTelephonyServicePreviousVoiceConsumptionResponse =
   ListTelephonyServicePreviousVoiceConsumptionResponseBodyList;
-const ListTelephonyServicePreviousVoiceConsumptionResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionResponse>;
-
 export interface ListTelephonyServiceRepaymentConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -10983,17 +6660,9 @@ export interface ListTelephonyServiceRepaymentConsumptionRequest {
   /** Filter the value of creationDatetime property (<=) */
   creationDatetime_to?: string;
 }
-const ListTelephonyServiceRepaymentConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  5,
-) as any as S.Schema<ListTelephonyServiceRepaymentConsumptionRequest>;
-
 export type ListTelephonyServiceRepaymentConsumptionResponseBodyList = Array<number>;
 export type ListTelephonyServiceRepaymentConsumptionResponse =
   ListTelephonyServiceRepaymentConsumptionResponseBodyList;
-const ListTelephonyServiceRepaymentConsumptionResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceRepaymentConsumptionResponse>;
-
 export interface ListTelephonyServiceTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11005,16 +6674,8 @@ export interface ListTelephonyServiceTaskRequest {
   /** Filter the value of status property (=) */
   status?: TelephonyTaskStatusEnum | (string & {});
 }
-const ListTelephonyServiceTaskRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  6,
-) as any as S.Schema<ListTelephonyServiceTaskRequest>;
-
 export type ListTelephonyServiceTaskResponseBodyList = Array<number>;
 export type ListTelephonyServiceTaskResponse = ListTelephonyServiceTaskResponseBodyList;
-const ListTelephonyServiceTaskResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceTaskResponse>;
-
 export interface ListTelephonyServiceVoiceConsumptionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11030,86 +6691,35 @@ export interface ListTelephonyServiceVoiceConsumptionRequest {
   /** Filter the value of wayType property (=) */
   wayType?: TelephonyVoiceConsumptionWayTypeEnum | (string & {});
 }
-const ListTelephonyServiceVoiceConsumptionRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  7,
-) as any as S.Schema<ListTelephonyServiceVoiceConsumptionRequest>;
-
 export type ListTelephonyServiceVoiceConsumptionResponseBodyList = Array<number>;
 export type ListTelephonyServiceVoiceConsumptionResponse =
   ListTelephonyServiceVoiceConsumptionResponseBodyList;
-const ListTelephonyServiceVoiceConsumptionResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyServiceVoiceConsumptionResponse>;
-
 export interface ListTelephonySoftphoneThemesRequest {}
-const ListTelephonySoftphoneThemesRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  0,
-) as any as S.Schema<ListTelephonySoftphoneThemesRequest>;
-
 export type ListTelephonySoftphoneThemesResponseBodyList = Array<number>;
 export type ListTelephonySoftphoneThemesResponse = ListTelephonySoftphoneThemesResponseBodyList;
-const ListTelephonySoftphoneThemesResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonySoftphoneThemesResponse>;
-
 export interface ListTelephonySoundsRequest {}
-const ListTelephonySoundsRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  1,
-) as any as S.Schema<ListTelephonySoundsRequest>;
-
 export type ListTelephonySoundsResponseBodyList = Array<number>;
 export type ListTelephonySoundsResponse = ListTelephonySoundsResponseBodyList;
-const ListTelephonySoundsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonySoundsResponse>;
-
 export type ListTelephonySpareRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListTelephonySpareRequestIamTagsMap = {
   [key: string]: ListTelephonySpareRequestIamTagsValueList | undefined;
 };
-const ListTelephonySpareRequestIamTagsMap =
-  ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonySpareRequestIamTagsMap>;
-
 export interface ListTelephonySpareRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonySpareRequestIamTagsMap;
 }
-const ListTelephonySpareRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  2,
-) as any as S.Schema<ListTelephonySpareRequest>;
-
 export type ListTelephonySpareResponseBodyList = Array<string>;
 export type ListTelephonySpareResponse = ListTelephonySpareResponseBodyList;
-const ListTelephonySpareResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySpareResponse>;
-
 export interface ListTelephonySpareBrandsRequest {}
-const ListTelephonySpareBrandsRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  3,
-) as any as S.Schema<ListTelephonySpareBrandsRequest>;
-
 export type ListTelephonySpareBrandsResponseBodyList = Array<string>;
 export type ListTelephonySpareBrandsResponse = ListTelephonySpareBrandsResponseBodyList;
-const ListTelephonySpareBrandsResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySpareBrandsResponse>;
-
 export interface ListTelephonySpareCompatibleReplacementRequest {
   /** The internal name of your spare */
   spare: string;
 }
-const ListTelephonySpareCompatibleReplacementRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  4,
-) as any as S.Schema<ListTelephonySpareCompatibleReplacementRequest>;
-
 export type ListTelephonySpareCompatibleReplacementResponseBodyList = Array<string>;
 export type ListTelephonySpareCompatibleReplacementResponse =
   ListTelephonySpareCompatibleReplacementResponseBodyList;
-const ListTelephonySpareCompatibleReplacementResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonySpareCompatibleReplacementResponse>;
-
 export interface ListTelephonyTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11120,60 +6730,28 @@ export interface ListTelephonyTaskRequest {
   /** Filter the value of status property (=) */
   status?: TelephonyTaskStatusEnum | (string & {});
 }
-const ListTelephonyTaskRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  5,
-) as any as S.Schema<ListTelephonyTaskRequest>;
-
 export type ListTelephonyTaskResponseBodyList = Array<number>;
 export type ListTelephonyTaskResponse = ListTelephonyTaskResponseBodyList;
-const ListTelephonyTaskResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyTaskResponse>;
-
 export interface ListTelephonyTimeConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyTimeConditionRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  6,
-) as any as S.Schema<ListTelephonyTimeConditionRequest>;
-
 export type ListTelephonyTimeConditionResponseBodyList = Array<string>;
 export type ListTelephonyTimeConditionResponse = ListTelephonyTimeConditionResponseBodyList;
-const ListTelephonyTimeConditionResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTimeConditionResponse>;
-
 export interface ListTelephonyTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const ListTelephonyTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  7,
-) as any as S.Schema<ListTelephonyTimeConditionConditionRequest>;
-
 export type ListTelephonyTimeConditionConditionResponseBodyList = Array<number>;
 export type ListTelephonyTimeConditionConditionResponse =
   ListTelephonyTimeConditionConditionResponseBodyList;
-const ListTelephonyTimeConditionConditionResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyTimeConditionConditionResponse>;
-
 export interface ListTelephonyTrunkRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyTrunkRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  0,
-) as any as S.Schema<ListTelephonyTrunkRequest>;
-
 export type ListTelephonyTrunkResponseBodyList = Array<string>;
 export type ListTelephonyTrunkResponse = ListTelephonyTrunkResponseBodyList;
-const ListTelephonyTrunkResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTrunkResponse>;
-
 export interface ListTelephonyTrunkChannelsPacksRepartitionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11182,11 +6760,6 @@ export interface ListTelephonyTrunkChannelsPacksRepartitionRequest {
   /** Channels quantity to get the best repartition on */
   quantity: number;
 }
-const ListTelephonyTrunkChannelsPacksRepartitionRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  1,
-) as any as S.Schema<ListTelephonyTrunkChannelsPacksRepartitionRequest>;
-
 /** Details for a channels pack */
 export interface TelephonyTrunkSimultaneousPack {
   /** The number of channels included in the pack */
@@ -11196,19 +6769,9 @@ export interface TelephonyTrunkSimultaneousPack {
   /** The unit price of the channels pack */
   unitPrice?: OrderPrice;
 }
-const TelephonyTrunkSimultaneousPack = /*@__PURE__*/ __L.at(
-  __c89,
-  2,
-) as any as S.Schema<TelephonyTrunkSimultaneousPack>;
-
 /** The repartition of the packs */
 export type TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList =
   Array<TelephonyTrunkSimultaneousPack>;
-const TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList = /*@__PURE__*/ __L.at(
-  __c89,
-  3,
-) as any as S.Schema<TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList>;
-
 /** Repartition of simultaneous channels packs for a trunk */
 export interface TelephonyTrunkSimultaneousPacksRepartition {
   /** The optimized quantity of channels to order */
@@ -11218,63 +6781,31 @@ export interface TelephonyTrunkSimultaneousPacksRepartition {
   /** The total price of the channels packs combination */
   totalPrice?: OrderPrice;
 }
-const TelephonyTrunkSimultaneousPacksRepartition = /*@__PURE__*/ __L.at(
-  __c89,
-  4,
-) as any as S.Schema<TelephonyTrunkSimultaneousPacksRepartition>;
-
 export interface ListTelephonyTrunkExternalDisplayedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Name of the service */
   serviceName: string;
 }
-const ListTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  5,
-) as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberRequest>;
-
 export type ListTelephonyTrunkExternalDisplayedNumberResponseBodyList = Array<string>;
 export type ListTelephonyTrunkExternalDisplayedNumberResponse =
   ListTelephonyTrunkExternalDisplayedNumberResponseBodyList;
-const ListTelephonyTrunkExternalDisplayedNumberResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberResponse>;
-
 export type ListTelephonyTrunksRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListTelephonyTrunksRequestIamTagsMap = {
   [key: string]: ListTelephonyTrunksRequestIamTagsValueList | undefined;
 };
-const ListTelephonyTrunksRequestIamTagsMap =
-  ListTelephonyRequestIamTagsMap as any as S.Schema<ListTelephonyTrunksRequestIamTagsMap>;
-
 export interface ListTelephonyTrunksRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListTelephonyTrunksRequestIamTagsMap;
 }
-const ListTelephonyTrunksRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  6,
-) as any as S.Schema<ListTelephonyTrunksRequest>;
-
 export type ListTelephonyTrunksResponseBodyList = Array<string>;
 export type ListTelephonyTrunksResponse = ListTelephonyTrunksResponseBodyList;
-const ListTelephonyTrunksResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyTrunksResponse>;
-
 export interface ListTelephonyVoicemailRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyVoicemailRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  7,
-) as any as S.Schema<ListTelephonyVoicemailRequest>;
-
 export type ListTelephonyVoicemailResponseBodyList = Array<string>;
 export type ListTelephonyVoicemailResponse = ListTelephonyVoicemailResponseBodyList;
-const ListTelephonyVoicemailResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyVoicemailResponse>;
-
 export interface ListTelephonyVoicemailDirectoriesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11282,17 +6813,9 @@ export interface ListTelephonyVoicemailDirectoriesRequest {
   /** Filter the value of dir property (=) */
   dir?: TelephonyVoicemailMessageFolderDirectoryEnum | (string & {});
 }
-const ListTelephonyVoicemailDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  0,
-) as any as S.Schema<ListTelephonyVoicemailDirectoriesRequest>;
-
 export type ListTelephonyVoicemailDirectoriesResponseBodyList = Array<number>;
 export type ListTelephonyVoicemailDirectoriesResponse =
   ListTelephonyVoicemailDirectoriesResponseBodyList;
-const ListTelephonyVoicemailDirectoriesResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyVoicemailDirectoriesResponse>;
-
 export interface ListTelephonyVoicemailGreetingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11300,41 +6823,20 @@ export interface ListTelephonyVoicemailGreetingsRequest {
   /** Filter the value of dir property (=) */
   dir?: TelephonyVoicemailMessageFolderGreetingEnum | (string & {});
 }
-const ListTelephonyVoicemailGreetingsRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  1,
-) as any as S.Schema<ListTelephonyVoicemailGreetingsRequest>;
-
 export type ListTelephonyVoicemailGreetingsResponseBodyList = Array<number>;
 export type ListTelephonyVoicemailGreetingsResponse =
   ListTelephonyVoicemailGreetingsResponseBodyList;
-const ListTelephonyVoicemailGreetingsResponse =
-  CreateTelephonyAliasChangeContactResponse as any as S.Schema<ListTelephonyVoicemailGreetingsResponse>;
-
 export interface ListTelephonyVxmlRequest {
   /** The name of your billingAccount */
   billingAccount: string;
 }
-const ListTelephonyVxmlRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  2,
-) as any as S.Schema<ListTelephonyVxmlRequest>;
-
 export type ListTelephonyVxmlResponseBodyList = Array<string>;
 export type ListTelephonyVxmlResponse = ListTelephonyVxmlResponseBodyList;
-const ListTelephonyVxmlResponse =
-  ListTelephonyAliasesResponse as any as S.Schema<ListTelephonyVxmlResponse>;
-
 export interface LockTelephonyConferenceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const LockTelephonyConferenceRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  3,
-) as any as S.Schema<LockTelephonyConferenceRequest>;
-
 export interface LockTelephonyConferenceRoomRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11342,25 +6844,12 @@ export interface LockTelephonyConferenceRoomRequest {
   /** The conference room number */
   roomNumber: number;
 }
-const LockTelephonyConferenceRoomRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  4,
-) as any as S.Schema<LockTelephonyConferenceRoomRequest>;
-
 export interface MigrateTelephonyVoicemailOnNewVersionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const MigrateTelephonyVoicemailOnNewVersionRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  5,
-) as any as S.Schema<MigrateTelephonyVoicemailOnNewVersionRequest>;
-
 export interface MigrateTelephonyVoicemailOnNewVersionResponse {}
-const MigrateTelephonyVoicemailOnNewVersionResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<MigrateTelephonyVoicemailOnNewVersionResponse>;
-
 export interface MoveTelephonyVoicemailDirectoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11370,15 +6859,7 @@ export interface MoveTelephonyVoicemailDirectoryRequest {
   /** Greeting voicemail directory */
   dir: TelephonyVoicemailMessageFolderDirectoryEnum | (string & {});
 }
-const MoveTelephonyVoicemailDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  6,
-) as any as S.Schema<MoveTelephonyVoicemailDirectoryRequest>;
-
 export interface MoveTelephonyVoicemailDirectoryResponse {}
-const MoveTelephonyVoicemailDirectoryResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<MoveTelephonyVoicemailDirectoryResponse>;
-
 export interface MoveTelephonyVoicemailGreetingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11388,15 +6869,7 @@ export interface MoveTelephonyVoicemailGreetingRequest {
   /** Greeting voicemail directory */
   dir: TelephonyVoicemailMessageFolderGreetingEnum | (string & {});
 }
-const MoveTelephonyVoicemailGreetingRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  7,
-) as any as S.Schema<MoveTelephonyVoicemailGreetingRequest>;
-
 export interface MoveTelephonyVoicemailGreetingResponse {}
-const MoveTelephonyVoicemailGreetingResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<MoveTelephonyVoicemailGreetingResponse>;
-
 export interface MuteTelephonyConferenceParticipantRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11404,11 +6877,6 @@ export interface MuteTelephonyConferenceParticipantRequest {
   /** Id of the object */
   id: number;
 }
-const MuteTelephonyConferenceParticipantRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  0,
-) as any as S.Schema<MuteTelephonyConferenceParticipantRequest>;
-
 export interface MuteTelephonyConferenceRoomsParticipantRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11418,11 +6886,6 @@ export interface MuteTelephonyConferenceRoomsParticipantRequest {
   /** Id of the object */
   id: number;
 }
-const MuteTelephonyConferenceRoomsParticipantRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  1,
-) as any as S.Schema<MuteTelephonyConferenceRoomsParticipantRequest>;
-
 export interface PutTelephonyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11435,11 +6898,7 @@ export interface PutTelephonyRequest {
   /** Override number display for calls between services of your billing account */
   overrideDisplayedNumber?: boolean;
 }
-const PutTelephonyRequest = /*@__PURE__*/ __L.at(__c91, 2) as any as S.Schema<PutTelephonyRequest>;
-
 export interface PutTelephonyResponse {}
-const PutTelephonyResponse = BlockTelephonyLineResponse as any as S.Schema<PutTelephonyResponse>;
-
 export interface PutTelephonyAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11450,30 +6909,14 @@ export interface PutTelephonyAbbreviatedNumberRequest {
   name?: string;
   surname?: string;
 }
-const PutTelephonyAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  3,
-) as any as S.Schema<PutTelephonyAbbreviatedNumberRequest>;
-
 export interface PutTelephonyAbbreviatedNumberResponse {}
-const PutTelephonyAbbreviatedNumberResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyAbbreviatedNumberResponse>;
-
 export interface PutTelephonyAliasServiceInfosRequest {
   /** Your line number */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutTelephonyAliasServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  4,
-) as any as S.Schema<PutTelephonyAliasServiceInfosRequest>;
-
 export interface PutTelephonyAliasServiceInfosResponse {}
-const PutTelephonyAliasServiceInfosResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyAliasServiceInfosResponse>;
-
 export interface PutTelephonyCarrierSipSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11481,15 +6924,7 @@ export interface PutTelephonyCarrierSipSettingsRequest {
   /** The carrier SIP trunk description */
   description?: string;
 }
-const PutTelephonyCarrierSipSettingsRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  5,
-) as any as S.Schema<PutTelephonyCarrierSipSettingsRequest>;
-
 export interface PutTelephonyCarrierSipSettingsResponse {}
-const PutTelephonyCarrierSipSettingsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyCarrierSipSettingsResponse>;
-
 export interface PutTelephonyCarrierSipVnoRangeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11501,15 +6936,7 @@ export interface PutTelephonyCarrierSipVnoRangeRequest {
   /** The carrier SIP trunk description. */
   description?: string;
 }
-const PutTelephonyCarrierSipVnoRangeRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  6,
-) as any as S.Schema<PutTelephonyCarrierSipVnoRangeRequest>;
-
 export interface PutTelephonyCarrierSipVnoRangeResponse {}
-const PutTelephonyCarrierSipVnoRangeResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyCarrierSipVnoRangeResponse>;
-
 export interface PutTelephonyConferenceRoomRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11539,15 +6966,7 @@ export interface PutTelephonyConferenceRoomRequest {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-const PutTelephonyConferenceRoomRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  7,
-) as any as S.Schema<PutTelephonyConferenceRoomRequest>;
-
 export interface PutTelephonyConferenceRoomResponse {}
-const PutTelephonyConferenceRoomResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyConferenceRoomResponse>;
-
 export interface PutTelephonyConferenceSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11573,30 +6992,14 @@ export interface PutTelephonyConferenceSettingsRequest {
   /** True if you want to receive a white-labelled mail report of your conference */
   whiteLabelReport?: boolean;
 }
-const PutTelephonyConferenceSettingsRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  0,
-) as any as S.Schema<PutTelephonyConferenceSettingsRequest>;
-
 export interface PutTelephonyConferenceSettingsResponse {}
-const PutTelephonyConferenceSettingsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyConferenceSettingsResponse>;
-
 export interface PutTelephonyDdiRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   description?: string;
 }
-const PutTelephonyDdiRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  1,
-) as any as S.Schema<PutTelephonyDdiRequest>;
-
 export interface PutTelephonyDdiResponse {}
-const PutTelephonyDdiResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyDdiResponse>;
-
 export interface PutTelephonyEasyHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11624,17 +7027,7 @@ export interface PutTelephonyEasyHuntingRequest {
   /** The voicemail used by the EasyPABX */
   voicemail?: string | null;
 }
-const PutTelephonyEasyHuntingRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  2,
-) as any as S.Schema<PutTelephonyEasyHuntingRequest>;
-
 export interface PutTelephonyEasyHuntingResponse {}
-const PutTelephonyEasyHuntingResponse = /*@__PURE__*/ __L.at(
-  __c92,
-  3,
-) as any as S.Schema<PutTelephonyEasyHuntingResponse>;
-
 export interface PutTelephonyEasyHuntingHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11646,15 +7039,7 @@ export interface PutTelephonyEasyHuntingHuntingRequest {
   /** Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default. */
   statusIvrEnabled?: boolean;
 }
-const PutTelephonyEasyHuntingHuntingRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  4,
-) as any as S.Schema<PutTelephonyEasyHuntingHuntingRequest>;
-
 export interface PutTelephonyEasyHuntingHuntingResponse {}
-const PutTelephonyEasyHuntingHuntingResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingResponse>;
-
 export interface PutTelephonyEasyHuntingHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11675,15 +7060,7 @@ export interface PutTelephonyEasyHuntingHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime?: number;
 }
-const PutTelephonyEasyHuntingHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  5,
-) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentRequest>;
-
 export interface PutTelephonyEasyHuntingHuntingAgentResponse {}
-const PutTelephonyEasyHuntingHuntingAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentResponse>;
-
 export interface PutTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11693,15 +7070,7 @@ export interface PutTelephonyEasyHuntingHuntingAgentQueueRequest {
   /** The position in the queue */
   position?: number;
 }
-const PutTelephonyEasyHuntingHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  6,
-) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentQueueRequest>;
-
 export interface PutTelephonyEasyHuntingHuntingAgentQueueResponse {}
-const PutTelephonyEasyHuntingHuntingAgentQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentQueueResponse>;
-
 export interface PutTelephonyEasyHuntingHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11744,15 +7113,7 @@ export interface PutTelephonyEasyHuntingHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-const PutTelephonyEasyHuntingHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  7,
-) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueRequest>;
-
 export interface PutTelephonyEasyHuntingHuntingQueueResponse {}
-const PutTelephonyEasyHuntingHuntingQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueResponse>;
-
 export interface PutTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11762,15 +7123,7 @@ export interface PutTelephonyEasyHuntingHuntingQueueAgentRequest {
   /** The position in the queue */
   position?: number;
 }
-const PutTelephonyEasyHuntingHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  0,
-) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueAgentRequest>;
-
 export interface PutTelephonyEasyHuntingHuntingQueueAgentResponse {}
-const PutTelephonyEasyHuntingHuntingQueueAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueAgentResponse>;
-
 export interface PutTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11781,30 +7134,14 @@ export interface PutTelephonyEasyHuntingScreenListConditionConditionRequest {
   /** Screenlist based on the destination number */
   destinationNumber?: string | null;
 }
-const PutTelephonyEasyHuntingScreenListConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  1,
-) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionConditionRequest>;
-
 export interface PutTelephonyEasyHuntingScreenListConditionConditionResponse {}
-const PutTelephonyEasyHuntingScreenListConditionConditionResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionConditionResponse>;
-
 export interface PutTelephonyEasyHuntingScreenListConditionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   status?: TelephonyEasyHuntingScreenListsConditionsStatusEnum | (string & {});
 }
-const PutTelephonyEasyHuntingScreenListConditionsRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  2,
-) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionsRequest>;
-
 export interface PutTelephonyEasyHuntingScreenListConditionsResponse {}
-const PutTelephonyEasyHuntingScreenListConditionsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionsResponse>;
-
 export interface PutTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11819,15 +7156,7 @@ export interface PutTelephonyEasyHuntingTimeConditionConditionRequest {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-const PutTelephonyEasyHuntingTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  3,
-) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionConditionRequest>;
-
 export interface PutTelephonyEasyHuntingTimeConditionConditionResponse {}
-const PutTelephonyEasyHuntingTimeConditionConditionResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingTimeConditionConditionResponse>;
-
 export interface PutTelephonyEasyHuntingTimeConditionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11851,15 +7180,7 @@ export interface PutTelephonyEasyHuntingTimeConditionsRequest {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSettingsForwardTypeEnum | (string & {}) | null;
 }
-const PutTelephonyEasyHuntingTimeConditionsRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  4,
-) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionsRequest>;
-
 export interface PutTelephonyEasyHuntingTimeConditionsResponse {}
-const PutTelephonyEasyHuntingTimeConditionsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyEasyHuntingTimeConditionsResponse>;
-
 export interface PutTelephonyFaxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11868,35 +7189,15 @@ export interface PutTelephonyFaxRequest {
   /** Send notifications about Line's diagnosticReports */
   notifications?: TelephonyLineNotificationsOptions | null;
 }
-const PutTelephonyFaxRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  5,
-) as any as S.Schema<PutTelephonyFaxRequest>;
-
 export interface PutTelephonyFaxResponse {}
-const PutTelephonyFaxResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyFaxResponse>;
-
 /** List of numbers not allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestBlacklistedNumbersList = Array<string>;
-const PutTelephonyFaxScreenListsRequestBlacklistedNumbersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestBlacklistedNumbersList>;
-
 /** List of logins (TSI or ID) not allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestBlacklistedTSIList = Array<string>;
-const PutTelephonyFaxScreenListsRequestBlacklistedTSIList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestBlacklistedTSIList>;
-
 /** List of numbers allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestWhitelistedNumbersList = Array<string>;
-const PutTelephonyFaxScreenListsRequestWhitelistedNumbersList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestWhitelistedNumbersList>;
-
 /** List of logins (TSI or ID) allowed to send a fax */
 export type PutTelephonyFaxScreenListsRequestWhitelistedTSIList = Array<string>;
-const PutTelephonyFaxScreenListsRequestWhitelistedTSIList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxScreenListsRequestWhitelistedTSIList>;
-
 export interface PutTelephonyFaxScreenListsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11910,19 +7211,8 @@ export interface PutTelephonyFaxScreenListsRequest {
   /** List of logins (TSI or ID) allowed to send a fax */
   whitelistedTSI?: PutTelephonyFaxScreenListsRequestWhitelistedTSIList | null;
 }
-const PutTelephonyFaxScreenListsRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  6,
-) as any as S.Schema<PutTelephonyFaxScreenListsRequest>;
-
 export interface PutTelephonyFaxScreenListsResponse {}
-const PutTelephonyFaxScreenListsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyFaxScreenListsResponse>;
-
 export type PutTelephonyFaxSettingsRequestRedirectionEmailList = Array<string>;
-const PutTelephonyFaxSettingsRequestRedirectionEmailList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyFaxSettingsRequestRedirectionEmailList>;
-
 export interface PutTelephonyFaxSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11938,15 +7228,7 @@ export interface PutTelephonyFaxSettingsRequest {
   rejectAnonymous?: boolean;
   sender?: string;
 }
-const PutTelephonyFaxSettingsRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  7,
-) as any as S.Schema<PutTelephonyFaxSettingsRequest>;
-
 export interface PutTelephonyFaxSettingsResponse {}
-const PutTelephonyFaxSettingsResponse =
-  PutTelephonyEasyHuntingResponse as any as S.Schema<PutTelephonyFaxSettingsResponse>;
-
 export interface PutTelephonyLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11955,15 +7237,7 @@ export interface PutTelephonyLineRequest {
   /** Send notifications about Line's diagnosticReports */
   notifications?: TelephonyLineNotificationsOptions | null;
 }
-const PutTelephonyLineRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  0,
-) as any as S.Schema<PutTelephonyLineRequest>;
-
 export interface PutTelephonyLineResponse {}
-const PutTelephonyLineResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyLineResponse>;
-
 export interface PutTelephonyLineAbbreviatedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -11975,20 +7249,9 @@ export interface PutTelephonyLineAbbreviatedNumberRequest {
   name?: string;
   surname?: string;
 }
-const PutTelephonyLineAbbreviatedNumberRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  1,
-) as any as S.Schema<PutTelephonyLineAbbreviatedNumberRequest>;
-
 export interface PutTelephonyLineAbbreviatedNumberResponse {}
-const PutTelephonyLineAbbreviatedNumberResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLineAbbreviatedNumberResponse>;
-
 /** The ip restrictions of your line */
 export type PutTelephonyLineOptionsRequestIpRestrictionsList = Array<string>;
-const PutTelephonyLineOptionsRequestIpRestrictionsList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<PutTelephonyLineOptionsRequestIpRestrictionsList>;
-
 export interface PutTelephonyLineOptionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12057,15 +7320,7 @@ export interface PutTelephonyLineOptionsRequest {
   /** Sound ID of ringback tone */
   toneRingbackSoundId?: number | null;
 }
-const PutTelephonyLineOptionsRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  2,
-) as any as S.Schema<PutTelephonyLineOptionsRequest>;
-
 export interface PutTelephonyLineOptionsResponse {}
-const PutTelephonyLineOptionsResponse =
-  PutTelephonyEasyHuntingResponse as any as S.Schema<PutTelephonyLineOptionsResponse>;
-
 export interface PutTelephonyLinePhoneRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12073,15 +7328,7 @@ export interface PutTelephonyLinePhoneRequest {
   /** The ip restriction of your MGCP phone */
   mgcpIpRestriction?: string | null;
 }
-const PutTelephonyLinePhoneRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  3,
-) as any as S.Schema<PutTelephonyLinePhoneRequest>;
-
 export interface PutTelephonyLinePhoneResponse {}
-const PutTelephonyLinePhoneResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyLinePhoneResponse>;
-
 export interface PutTelephonyLinePhoneFunctionKeyRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12093,15 +7340,7 @@ export interface PutTelephonyLinePhoneFunctionKeyRequest {
   /** The function parameter */
   parameter?: string | null;
 }
-const PutTelephonyLinePhoneFunctionKeyRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  4,
-) as any as S.Schema<PutTelephonyLinePhoneFunctionKeyRequest>;
-
 export interface PutTelephonyLinePhoneFunctionKeyResponse {}
-const PutTelephonyLinePhoneFunctionKeyResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhoneFunctionKeyResponse>;
-
 export interface PutTelephonyLinePhonePhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12113,15 +7352,7 @@ export interface PutTelephonyLinePhonePhonebookRequest {
   /** Phonebook name */
   name?: string;
 }
-const PutTelephonyLinePhonePhonebookRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  5,
-) as any as S.Schema<PutTelephonyLinePhonePhonebookRequest>;
-
 export interface PutTelephonyLinePhonePhonebookResponse {}
-const PutTelephonyLinePhonePhonebookResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhonePhonebookResponse>;
-
 export interface PutTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12145,15 +7376,7 @@ export interface PutTelephonyLinePhonePhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-const PutTelephonyLinePhonePhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  6,
-) as any as S.Schema<PutTelephonyLinePhonePhonebookPhonebookContactRequest>;
-
 export interface PutTelephonyLinePhonePhonebookPhonebookContactResponse {}
-const PutTelephonyLinePhonePhonebookPhonebookContactResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhonePhonebookPhonebookContactResponse>;
-
 export interface PutTelephonyLinePhoneRmaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12165,30 +7388,14 @@ export interface PutTelephonyLinePhoneRmaRequest {
   /** Contact information related to the delivery shipping in case of exchange */
   shippingContact?: TelephonyContact;
 }
-const PutTelephonyLinePhoneRmaRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  7,
-) as any as S.Schema<PutTelephonyLinePhoneRmaRequest>;
-
 export interface PutTelephonyLinePhoneRmaResponse {}
-const PutTelephonyLinePhoneRmaResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLinePhoneRmaResponse>;
-
 export interface PutTelephonyLineServiceInfosRequest {
   /** Your line number */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutTelephonyLineServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  0,
-) as any as S.Schema<PutTelephonyLineServiceInfosRequest>;
-
 export interface PutTelephonyLineServiceInfosResponse {}
-const PutTelephonyLineServiceInfosResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyLineServiceInfosResponse>;
-
 export interface PutTelephonyLineSoftphoneBetaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12196,11 +7403,6 @@ export interface PutTelephonyLineSoftphoneBetaRequest {
   /** Whether Softphone beta is enabled or disabled */
   enabled: boolean;
 }
-const PutTelephonyLineSoftphoneBetaRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  1,
-) as any as S.Schema<PutTelephonyLineSoftphoneBetaRequest>;
-
 export interface PutTelephonyLineSoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12210,11 +7412,6 @@ export interface PutTelephonyLineSoftphoneLogoRequest {
   /** URL used to download logo */
   url: string;
 }
-const PutTelephonyLineSoftphoneLogoRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  2,
-) as any as S.Schema<PutTelephonyLineSoftphoneLogoRequest>;
-
 export interface PutTelephonyLineSoftphoneThemeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12222,11 +7419,6 @@ export interface PutTelephonyLineSoftphoneThemeRequest {
   /** Theme ID */
   themeId: number;
 }
-const PutTelephonyLineSoftphoneThemeRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  3,
-) as any as S.Schema<PutTelephonyLineSoftphoneThemeRequest>;
-
 export interface PutTelephonyLineTonesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12240,15 +7432,7 @@ export interface PutTelephonyLineTonesRequest {
   /** Ringback tone */
   ringback?: TelephonyTonesEnum | (string & {});
 }
-const PutTelephonyLineTonesRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  4,
-) as any as S.Schema<PutTelephonyLineTonesRequest>;
-
 export interface PutTelephonyLineTonesResponse {}
-const PutTelephonyLineTonesResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyLineTonesResponse>;
-
 export interface PutTelephonyNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12257,15 +7441,7 @@ export interface PutTelephonyNumberRequest {
   /** Description of the service */
   description?: string;
 }
-const PutTelephonyNumberRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  5,
-) as any as S.Schema<PutTelephonyNumberRequest>;
-
 export interface PutTelephonyNumberResponse {}
-const PutTelephonyNumberResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyNumberResponse>;
-
 export interface PutTelephonyOfferTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12273,15 +7449,7 @@ export interface PutTelephonyOfferTaskRequest {
   /** Planned execution date */
   executionDate?: string;
 }
-const PutTelephonyOfferTaskRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  6,
-) as any as S.Schema<PutTelephonyOfferTaskRequest>;
-
 export interface PutTelephonyOfferTaskResponse {}
-const PutTelephonyOfferTaskResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyOfferTaskResponse>;
-
 export interface PutTelephonyOvhPabxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12289,15 +7457,7 @@ export interface PutTelephonyOvhPabxRequest {
   /** Description of the service */
   description?: string;
 }
-const PutTelephonyOvhPabxRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  7,
-) as any as S.Schema<PutTelephonyOvhPabxRequest>;
-
 export interface PutTelephonyOvhPabxResponse {}
-const PutTelephonyOvhPabxResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyOvhPabxResponse>;
-
 export interface PutTelephonyOvhPabxDialplanRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12312,15 +7472,7 @@ export interface PutTelephonyOvhPabxDialplanRequest {
   /** The timeout (in seconds) when bridging calls */
   transferTimeout?: number;
 }
-const PutTelephonyOvhPabxDialplanRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  0,
-) as any as S.Schema<PutTelephonyOvhPabxDialplanRequest>;
-
 export interface PutTelephonyOvhPabxDialplanResponse {}
-const PutTelephonyOvhPabxDialplanResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxDialplanResponse>;
-
 export interface PutTelephonyOvhPabxDialplanExtensionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12339,15 +7491,7 @@ export interface PutTelephonyOvhPabxDialplanExtensionRequest {
     | (string & {})
     | null;
 }
-const PutTelephonyOvhPabxDialplanExtensionRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  1,
-) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRequest>;
-
 export interface PutTelephonyOvhPabxDialplanExtensionResponse {}
-const PutTelephonyOvhPabxDialplanExtensionResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionResponse>;
-
 export interface PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12362,15 +7506,7 @@ export interface PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest {
   /** The day of the week when the extension will be executed */
   weekDay?: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum | (string & {});
 }
-const PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  2,
-) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest>;
-
 export interface PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse {}
-const PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse =
-  CreateTelephonyLinePhoneChangePhoneConfigurationResponse as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse>;
-
 export interface PutTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12387,15 +7523,7 @@ export interface PutTelephonyOvhPabxDialplanExtensionRuleRequest {
   /** The position of the rule in the extension (the rules are executed following this order) */
   position?: number;
 }
-const PutTelephonyOvhPabxDialplanExtensionRuleRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  3,
-) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRuleRequest>;
-
 export interface PutTelephonyOvhPabxDialplanExtensionRuleResponse {}
-const PutTelephonyOvhPabxDialplanExtensionRuleResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRuleResponse>;
-
 export interface PutTelephonyOvhPabxHuntingRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12407,15 +7535,7 @@ export interface PutTelephonyOvhPabxHuntingRequest {
   /** Enable/Disable the status change IVR on your callcenter. The IVR is enabled by default. */
   statusIvrEnabled?: boolean;
 }
-const PutTelephonyOvhPabxHuntingRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  4,
-) as any as S.Schema<PutTelephonyOvhPabxHuntingRequest>;
-
 export interface PutTelephonyOvhPabxHuntingResponse {}
-const PutTelephonyOvhPabxHuntingResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingResponse>;
-
 export interface PutTelephonyOvhPabxHuntingAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12436,15 +7556,7 @@ export interface PutTelephonyOvhPabxHuntingAgentRequest {
   /** The wrap up time (in seconds) after the calls */
   wrapUpTime?: number;
 }
-const PutTelephonyOvhPabxHuntingAgentRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  5,
-) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentRequest>;
-
 export interface PutTelephonyOvhPabxHuntingAgentResponse {}
-const PutTelephonyOvhPabxHuntingAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingAgentResponse>;
-
 export interface PutTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12454,15 +7566,7 @@ export interface PutTelephonyOvhPabxHuntingAgentQueueRequest {
   /** The position in the queue */
   position?: number;
 }
-const PutTelephonyOvhPabxHuntingAgentQueueRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  6,
-) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentQueueRequest>;
-
 export interface PutTelephonyOvhPabxHuntingAgentQueueResponse {}
-const PutTelephonyOvhPabxHuntingAgentQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingAgentQueueResponse>;
-
 export interface PutTelephonyOvhPabxHuntingQueueRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12505,15 +7609,7 @@ export interface PutTelephonyOvhPabxHuntingQueueRequest {
   /** The calls dispatching strategy */
   strategy?: TelephonyOvhPabxHuntingQueueStrategyEnum | (string & {});
 }
-const PutTelephonyOvhPabxHuntingQueueRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  7,
-) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueRequest>;
-
 export interface PutTelephonyOvhPabxHuntingQueueResponse {}
-const PutTelephonyOvhPabxHuntingQueueResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingQueueResponse>;
-
 export interface PutTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12523,15 +7619,7 @@ export interface PutTelephonyOvhPabxHuntingQueueAgentRequest {
   /** The position in the queue */
   position?: number;
 }
-const PutTelephonyOvhPabxHuntingQueueAgentRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  0,
-) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueAgentRequest>;
-
 export interface PutTelephonyOvhPabxHuntingQueueAgentResponse {}
-const PutTelephonyOvhPabxHuntingQueueAgentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxHuntingQueueAgentResponse>;
-
 export interface PutTelephonyOvhPabxMenuRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12552,15 +7640,7 @@ export interface PutTelephonyOvhPabxMenuRequest {
   /** The timeout in milliseconds before ending the menu when no DTMF is received */
   timeout?: number;
 }
-const PutTelephonyOvhPabxMenuRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  1,
-) as any as S.Schema<PutTelephonyOvhPabxMenuRequest>;
-
 export interface PutTelephonyOvhPabxMenuResponse {}
-const PutTelephonyOvhPabxMenuResponse =
-  PutTelephonyEasyHuntingResponse as any as S.Schema<PutTelephonyOvhPabxMenuResponse>;
-
 export interface PutTelephonyOvhPabxMenuEntryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12574,15 +7654,7 @@ export interface PutTelephonyOvhPabxMenuEntryRequest {
   /** The DTMF that triggers the action */
   dtmf?: string;
 }
-const PutTelephonyOvhPabxMenuEntryRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  2,
-) as any as S.Schema<PutTelephonyOvhPabxMenuEntryRequest>;
-
 export interface PutTelephonyOvhPabxMenuEntryResponse {}
-const PutTelephonyOvhPabxMenuEntryResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyOvhPabxMenuEntryResponse>;
-
 export interface PutTelephonyOvhPabxTtsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12593,15 +7665,7 @@ export interface PutTelephonyOvhPabxTtsRequest {
   /** The voice used to say text */
   voice?: TelephonyOvhPabxTtsVoiceEnum | (string & {});
 }
-const PutTelephonyOvhPabxTtsRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  3,
-) as any as S.Schema<PutTelephonyOvhPabxTtsRequest>;
-
 export interface PutTelephonyOvhPabxTtsResponse {}
-const PutTelephonyOvhPabxTtsResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyOvhPabxTtsResponse>;
-
 export interface PutTelephonyPhonebookRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12610,15 +7674,7 @@ export interface PutTelephonyPhonebookRequest {
   /** Phone book name */
   name?: string;
 }
-const PutTelephonyPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  4,
-) as any as S.Schema<PutTelephonyPhonebookRequest>;
-
 export interface PutTelephonyPhonebookResponse {}
-const PutTelephonyPhonebookResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyPhonebookResponse>;
-
 export interface PutTelephonyPhonebookPhonebookContactRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12641,15 +7697,7 @@ export interface PutTelephonyPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-const PutTelephonyPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  5,
-) as any as S.Schema<PutTelephonyPhonebookPhonebookContactRequest>;
-
 export interface PutTelephonyPhonebookPhonebookContactResponse {}
-const PutTelephonyPhonebookPhonebookContactResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyPhonebookPhonebookContactResponse>;
-
 export interface PutTelephonyPortabilityDocumentRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12662,60 +7710,28 @@ export interface PutTelephonyPortabilityDocumentRequest {
   /** Name of the document */
   name?: string;
 }
-const PutTelephonyPortabilityDocumentRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  6,
-) as any as S.Schema<PutTelephonyPortabilityDocumentRequest>;
-
 export interface PutTelephonyPortabilityDocumentResponse {}
-const PutTelephonyPortabilityDocumentResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyPortabilityDocumentResponse>;
-
 export interface PutTelephonyRedirectRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   description?: string;
 }
-const PutTelephonyRedirectRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  7,
-) as any as S.Schema<PutTelephonyRedirectRequest>;
-
 export interface PutTelephonyRedirectResponse {}
-const PutTelephonyRedirectResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyRedirectResponse>;
-
 export interface PutTelephonyRsvaRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   typology?: TelephonyPortabilitySpecialNumberCategoryEnum | (string & {}) | null;
 }
-const PutTelephonyRsvaRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  0,
-) as any as S.Schema<PutTelephonyRsvaRequest>;
-
 export interface PutTelephonyRsvaResponse {}
-const PutTelephonyRsvaResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyRsvaResponse>;
-
 export interface PutTelephonySchedulerRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   timeZone?: TelephonyTimeZone | (string & {});
 }
-const PutTelephonySchedulerRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  1,
-) as any as S.Schema<PutTelephonySchedulerRequest>;
-
 export interface PutTelephonySchedulerResponse {}
-const PutTelephonySchedulerResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonySchedulerResponse>;
-
 export interface PutTelephonySchedulerEventRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12731,15 +7747,7 @@ export interface PutTelephonySchedulerEventRequest {
   description?: string | null;
   title?: string;
 }
-const PutTelephonySchedulerEventRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  2,
-) as any as S.Schema<PutTelephonySchedulerEventRequest>;
-
 export interface PutTelephonySchedulerEventResponse {}
-const PutTelephonySchedulerEventResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonySchedulerEventResponse>;
-
 export interface PutTelephonyScreenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12747,30 +7755,14 @@ export interface PutTelephonyScreenRequest {
   incomingScreenList?: TelephonyScreenListChoosingEnum | (string & {});
   outgoingScreenList?: TelephonyScreenListChoosingEnum | (string & {});
 }
-const PutTelephonyScreenRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  3,
-) as any as S.Schema<PutTelephonyScreenRequest>;
-
 export interface PutTelephonyScreenResponse {}
-const PutTelephonyScreenResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyScreenResponse>;
-
 export interface PutTelephonyServiceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   description?: string;
 }
-const PutTelephonyServiceRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  4,
-) as any as S.Schema<PutTelephonyServiceRequest>;
-
 export interface PutTelephonyServiceResponse {}
-const PutTelephonyServiceResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyServiceResponse>;
-
 export interface PutTelephonyServiceDirectoryRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12808,15 +7800,7 @@ export interface PutTelephonyServiceDirectoryRequest {
   wayNumberExtra?: string;
   wayType?: string;
 }
-const PutTelephonyServiceDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  5,
-) as any as S.Schema<PutTelephonyServiceDirectoryRequest>;
-
 export interface PutTelephonyServiceDirectoryResponse {}
-const PutTelephonyServiceDirectoryResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceDirectoryResponse>;
-
 export interface PutTelephonyServiceEventCallbackRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12826,30 +7810,14 @@ export interface PutTelephonyServiceEventCallbackRequest {
   /** Url called for each event */
   url?: string | null;
 }
-const PutTelephonyServiceEventCallbackRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  6,
-) as any as S.Schema<PutTelephonyServiceEventCallbackRequest>;
-
 export interface PutTelephonyServiceEventCallbackResponse {}
-const PutTelephonyServiceEventCallbackResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceEventCallbackResponse>;
-
 export interface PutTelephonyServiceInfosRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutTelephonyServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c98,
-  7,
-) as any as S.Schema<PutTelephonyServiceInfosRequest>;
-
 export interface PutTelephonyServiceInfosResponse {}
-const PutTelephonyServiceInfosResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceInfosResponse>;
-
 export interface PutTelephonyServiceOfferTaskRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12858,15 +7826,7 @@ export interface PutTelephonyServiceOfferTaskRequest {
   /** Planned execution date */
   executionDate?: string;
 }
-const PutTelephonyServiceOfferTaskRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  0,
-) as any as S.Schema<PutTelephonyServiceOfferTaskRequest>;
-
 export interface PutTelephonyServiceOfferTaskResponse {}
-const PutTelephonyServiceOfferTaskResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyServiceOfferTaskResponse>;
-
 export interface PutTelephonySoftphoneLogoRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12875,22 +7835,12 @@ export interface PutTelephonySoftphoneLogoRequest {
   /** URL used to download logo */
   url: string;
 }
-const PutTelephonySoftphoneLogoRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  1,
-) as any as S.Schema<PutTelephonySoftphoneLogoRequest>;
-
 export interface PutTelephonySoftphoneThemeRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   /** Theme ID */
   themeId: number;
 }
-const PutTelephonySoftphoneThemeRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  2,
-) as any as S.Schema<PutTelephonySoftphoneThemeRequest>;
-
 export interface PutTelephonySoundRequest {
   /** Sound ID */
   id: number;
@@ -12899,30 +7849,14 @@ export interface PutTelephonySoundRequest {
   /** Sound filename */
   filename?: string;
 }
-const PutTelephonySoundRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  3,
-) as any as S.Schema<PutTelephonySoundRequest>;
-
 export interface PutTelephonySoundResponse {}
-const PutTelephonySoundResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonySoundResponse>;
-
 export interface PutTelephonySpareServiceInfosRequest {
   /** The internal name of your spare */
   spare: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutTelephonySpareServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  4,
-) as any as S.Schema<PutTelephonySpareServiceInfosRequest>;
-
 export interface PutTelephonySpareServiceInfosResponse {}
-const PutTelephonySpareServiceInfosResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonySpareServiceInfosResponse>;
-
 export interface PutTelephonyTimeConditionConditionRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12935,15 +7869,7 @@ export interface PutTelephonyTimeConditionConditionRequest {
   policy?: TelephonyTimeConditionsPolicyEnum | (string & {});
   status?: string;
 }
-const PutTelephonyTimeConditionConditionRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  5,
-) as any as S.Schema<PutTelephonyTimeConditionConditionRequest>;
-
 export interface PutTelephonyTimeConditionConditionResponse {}
-const PutTelephonyTimeConditionConditionResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyTimeConditionConditionResponse>;
-
 export interface PutTelephonyTimeConditionOptionsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -12969,51 +7895,24 @@ export interface PutTelephonyTimeConditionOptionsRequest {
   /** Action type executed when the unavailable slot is used */
   unavailableType?: TelephonyTimeConditionsSlotTypeEnum | (string & {});
 }
-const PutTelephonyTimeConditionOptionsRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  6,
-) as any as S.Schema<PutTelephonyTimeConditionOptionsRequest>;
-
 export interface PutTelephonyTimeConditionOptionsResponse {}
-const PutTelephonyTimeConditionOptionsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyTimeConditionOptionsResponse>;
-
 export interface PutTelephonyTrunkServiceInfosRequest {
   /** Your trunk number */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutTelephonyTrunkServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c99,
-  7,
-) as any as S.Schema<PutTelephonyTrunkServiceInfosRequest>;
-
 export interface PutTelephonyTrunkServiceInfosResponse {}
-const PutTelephonyTrunkServiceInfosResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyTrunkServiceInfosResponse>;
-
 export interface PutTelephonyVoicemailRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
   description?: string;
 }
-const PutTelephonyVoicemailRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  0,
-) as any as S.Schema<PutTelephonyVoicemailRequest>;
-
 export interface PutTelephonyVoicemailResponse {}
-const PutTelephonyVoicemailResponse =
-  BlockTelephonyLineResponse as any as S.Schema<PutTelephonyVoicemailResponse>;
-
 /** Email addresses to notify when a new voicemail is left */
 export type PutTelephonyVoicemailSettingsRequestRedirectionEmailsList =
   Array<TelephonyServiceVoicemailNotifications>;
-const PutTelephonyVoicemailSettingsRequestRedirectionEmailsList =
-  TelephonyVoicemailPropertiesRedirectionEmailsList as any as S.Schema<PutTelephonyVoicemailSettingsRequestRedirectionEmailsList>;
-
 export interface PutTelephonyVoicemailSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13043,15 +7942,7 @@ export interface PutTelephonyVoicemailSettingsRequest {
   /** Sound ID of the temporary greeeting */
   temporaryGreetingSoundId?: number | null;
 }
-const PutTelephonyVoicemailSettingsRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  1,
-) as any as S.Schema<PutTelephonyVoicemailSettingsRequest>;
-
 export interface PutTelephonyVoicemailSettingsResponse {}
-const PutTelephonyVoicemailSettingsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyVoicemailSettingsResponse>;
-
 export interface PutTelephonyVxmlSettingsRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13059,49 +7950,23 @@ export interface PutTelephonyVxmlSettingsRequest {
   url?: string;
   urlRecord?: string;
 }
-const PutTelephonyVxmlSettingsRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  2,
-) as any as S.Schema<PutTelephonyVxmlSettingsRequest>;
-
 export interface PutTelephonyVxmlSettingsResponse {}
-const PutTelephonyVxmlSettingsResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<PutTelephonyVxmlSettingsResponse>;
-
 export interface RebootTelephonyLinePhoneRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const RebootTelephonyLinePhoneRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  3,
-) as any as S.Schema<RebootTelephonyLinePhoneRequest>;
-
 export interface RefreshTelephonyLinePhoneScreenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const RefreshTelephonyLinePhoneScreenRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  4,
-) as any as S.Schema<RefreshTelephonyLinePhoneScreenRequest>;
-
 export interface RegenerateTelephonyLineSoftphoneBetaTokenRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const RegenerateTelephonyLineSoftphoneBetaTokenRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  5,
-) as any as S.Schema<RegenerateTelephonyLineSoftphoneBetaTokenRequest>;
-
 export interface RegenerateTelephonyLineSoftphoneBetaTokenResponse {}
-const RegenerateTelephonyLineSoftphoneBetaTokenResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<RegenerateTelephonyLineSoftphoneBetaTokenResponse>;
-
 export interface RemoveTelephonyLineSimultaneousLinesRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13109,15 +7974,7 @@ export interface RemoveTelephonyLineSimultaneousLinesRequest {
   /** The quantity of extra simultaneous lines to remove */
   quantityRemove: number;
 }
-const RemoveTelephonyLineSimultaneousLinesRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  6,
-) as any as S.Schema<RemoveTelephonyLineSimultaneousLinesRequest>;
-
 export interface RemoveTelephonyLineSimultaneousLinesResponse {}
-const RemoveTelephonyLineSimultaneousLinesResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<RemoveTelephonyLineSimultaneousLinesResponse>;
-
 export interface ReplaceTelephonySpareRequest {
   /** The internal name of your spare */
   spare: string;
@@ -13126,15 +7983,7 @@ export interface ReplaceTelephonySpareRequest {
   /** Public ip of the phone */
   ip: string;
 }
-const ReplaceTelephonySpareRequest = /*@__PURE__*/ __L.at(
-  __c100,
-  7,
-) as any as S.Schema<ReplaceTelephonySpareRequest>;
-
 export interface ReplaceTelephonySpareResponse {}
-const ReplaceTelephonySpareResponse =
-  BlockTelephonyLineResponse as any as S.Schema<ReplaceTelephonySpareResponse>;
-
 export interface ResetTelephonyFaxScreenListRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13148,15 +7997,7 @@ export interface ResetTelephonyFaxScreenListRequest {
   /** List of white login (TSI or ID) */
   whitelistedTSI?: boolean;
 }
-const ResetTelephonyFaxScreenListRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  0,
-) as any as S.Schema<ResetTelephonyFaxScreenListRequest>;
-
 export interface ResetTelephonyFaxScreenListResponse {}
-const ResetTelephonyFaxScreenListResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<ResetTelephonyFaxScreenListResponse>;
-
 export interface ResetTelephonyLinePhoneConfigRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13164,11 +8005,6 @@ export interface ResetTelephonyLinePhoneConfigRequest {
   /** The public ip phone allowed for reset */
   ip: string;
 }
-const ResetTelephonyLinePhoneConfigRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  1,
-) as any as S.Schema<ResetTelephonyLinePhoneConfigRequest>;
-
 /** Relevant informations about reset code */
 export interface TelephonyResetPhoneCodeInfo {
   /** Activation code */
@@ -13178,15 +8014,8 @@ export interface TelephonyResetPhoneCodeInfo {
   /** Server url */
   serverURL?: string | null;
 }
-const TelephonyResetPhoneCodeInfo = /*@__PURE__*/ __L.at(
-  __c101,
-  2,
-) as any as S.Schema<TelephonyResetPhoneCodeInfo>;
-
 /** How the phone had been reset */
 export type TelephonyResetPhoneMethodEnum = "code" | "http";
-const TelephonyResetPhoneMethodEnum = S.String;
-
 /** Relevant informations of the phone reset */
 export interface TelephonyResetPhoneInfo {
   /** Reset code informations */
@@ -13194,16 +8023,8 @@ export interface TelephonyResetPhoneInfo {
   /** Which way had been used to reset the phone */
   resetPhoneMethod?: TelephonyResetPhoneMethodEnum;
 }
-const TelephonyResetPhoneInfo = /*@__PURE__*/ __L.at(
-  __c101,
-  3,
-) as any as S.Schema<TelephonyResetPhoneInfo>;
-
 /** List of recipients of your fax */
 export type SendTelephonyFaxSettingsFaxRequestRecipientsList = Array<string>;
-const SendTelephonyFaxSettingsFaxRequestRecipientsList =
-  CreateTelephonyFaxCampaignRequestRecipientsListList as any as S.Schema<SendTelephonyFaxSettingsFaxRequestRecipientsList>;
-
 export interface SendTelephonyFaxSettingsFaxRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13215,11 +8036,6 @@ export interface SendTelephonyFaxSettingsFaxRequest {
   /** List of recipients of your fax */
   recipients: SendTelephonyFaxSettingsFaxRequestRecipientsList;
 }
-const SendTelephonyFaxSettingsFaxRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  4,
-) as any as S.Schema<SendTelephonyFaxSettingsFaxRequest>;
-
 export interface SetTelephonyDefaultSipDomainRequest {
   /** Country */
   country: TelephonyServiceNumberCountryEnum | (string & {});
@@ -13228,15 +8044,7 @@ export interface SetTelephonyDefaultSipDomainRequest {
   /** Product type */
   type: TelephonySipDomainProductTypeEnum | (string & {});
 }
-const SetTelephonyDefaultSipDomainRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  5,
-) as any as S.Schema<SetTelephonyDefaultSipDomainRequest>;
-
 export interface SetTelephonyDefaultSipDomainResponse {}
-const SetTelephonyDefaultSipDomainResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<SetTelephonyDefaultSipDomainResponse>;
-
 export interface StartTelephonyFaxCampaignRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13244,15 +8052,7 @@ export interface StartTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-const StartTelephonyFaxCampaignRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  6,
-) as any as S.Schema<StartTelephonyFaxCampaignRequest>;
-
 export interface StartTelephonyFaxCampaignResponse {}
-const StartTelephonyFaxCampaignResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<StartTelephonyFaxCampaignResponse>;
-
 export interface StopTelephonyFaxCampaignRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13260,15 +8060,7 @@ export interface StopTelephonyFaxCampaignRequest {
   /** Id of the object */
   id: number;
 }
-const StopTelephonyFaxCampaignRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  7,
-) as any as S.Schema<StopTelephonyFaxCampaignRequest>;
-
 export interface StopTelephonyFaxCampaignResponse {}
-const StopTelephonyFaxCampaignResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<StopTelephonyFaxCampaignResponse>;
-
 export interface TransferTelephonyEasyHuntingHuntingAgentCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13279,11 +8071,6 @@ export interface TransferTelephonyEasyHuntingHuntingAgentCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-const TransferTelephonyEasyHuntingHuntingAgentCallRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  0,
-) as any as S.Schema<TransferTelephonyEasyHuntingHuntingAgentCallRequest>;
-
 export interface TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13294,11 +8081,6 @@ export interface TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-const TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  1,
-) as any as S.Schema<TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest>;
-
 export interface TransferTelephonyOvhPabxHuntingAgentCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13309,11 +8091,6 @@ export interface TransferTelephonyOvhPabxHuntingAgentCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-const TransferTelephonyOvhPabxHuntingAgentCallRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  2,
-) as any as S.Schema<TransferTelephonyOvhPabxHuntingAgentCallRequest>;
-
 export interface TransferTelephonyOvhPabxHuntingQueueLiveCallRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13324,11 +8101,6 @@ export interface TransferTelephonyOvhPabxHuntingQueueLiveCallRequest {
   /** Phone number to whom the communication will be transfered */
   number: string;
 }
-const TransferTelephonyOvhPabxHuntingQueueLiveCallRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  3,
-) as any as S.Schema<TransferTelephonyOvhPabxHuntingQueueLiveCallRequest>;
-
 export interface TransferTelephonySecurityDepositRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13337,39 +8109,18 @@ export interface TransferTelephonySecurityDepositRequest {
   /** The destination billing account */
   billingAccountDestination: string;
 }
-const TransferTelephonySecurityDepositRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  4,
-) as any as S.Schema<TransferTelephonySecurityDepositRequest>;
-
 export interface TransferTelephonySecurityDepositResponse {}
-const TransferTelephonySecurityDepositResponse =
-  ActivateTelephonyLineNewPhoneResponse as any as S.Schema<TransferTelephonySecurityDepositResponse>;
-
 export interface UnblockTelephonyLineRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const UnblockTelephonyLineRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  5,
-) as any as S.Schema<UnblockTelephonyLineRequest>;
-
 export interface UnblockTelephonyLineResponse {}
-const UnblockTelephonyLineResponse =
-  BlockTelephonyLineResponse as any as S.Schema<UnblockTelephonyLineResponse>;
-
 export interface UnlockTelephonyConferenceRequest {
   /** The name of your billingAccount */
   billingAccount: string;
   serviceName: string;
 }
-const UnlockTelephonyConferenceRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  6,
-) as any as S.Schema<UnlockTelephonyConferenceRequest>;
-
 export interface UnlockTelephonyConferenceRoomRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13377,11 +8128,6 @@ export interface UnlockTelephonyConferenceRoomRequest {
   /** The conference room number */
   roomNumber: number;
 }
-const UnlockTelephonyConferenceRoomRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  7,
-) as any as S.Schema<UnlockTelephonyConferenceRoomRequest>;
-
 export interface UnmuteTelephonyConferenceParticipantRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13389,11 +8135,6 @@ export interface UnmuteTelephonyConferenceParticipantRequest {
   /** Id of the object */
   id: number;
 }
-const UnmuteTelephonyConferenceParticipantRequest = /*@__PURE__*/ __L.at(
-  __c103,
-  0,
-) as any as S.Schema<UnmuteTelephonyConferenceParticipantRequest>;
-
 export interface UnmuteTelephonyConferenceRoomsParticipantRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13403,11 +8144,6 @@ export interface UnmuteTelephonyConferenceRoomsParticipantRequest {
   /** Id of the object */
   id: number;
 }
-const UnmuteTelephonyConferenceRoomsParticipantRequest = /*@__PURE__*/ __L.at(
-  __c103,
-  1,
-) as any as S.Schema<UnmuteTelephonyConferenceRoomsParticipantRequest>;
-
 export interface ValidateTelephonyTrunkExternalDisplayedNumberRequest {
   /** The name of your billingAccount */
   billingAccount: string;
@@ -13416,11 +8152,6 @@ export interface ValidateTelephonyTrunkExternalDisplayedNumberRequest {
   /** External displayed number linked to a trunk */
   number: string;
 }
-const ValidateTelephonyTrunkExternalDisplayedNumberRequest = /*@__PURE__*/ __L.at(
-  __c103,
-  2,
-) as any as S.Schema<ValidateTelephonyTrunkExternalDisplayedNumberRequest>;
-
 /** Trunk external displayed number validation */
 export interface TelephonyTrunkExternalDisplayedNumberValidation {
   /** telephony.Task id of the validation phone call */
@@ -13428,11 +8159,6 @@ export interface TelephonyTrunkExternalDisplayedNumberValidation {
   /** Validation code to type during phone call */
   validationCode?: string;
 }
-const TelephonyTrunkExternalDisplayedNumberValidation = /*@__PURE__*/ __L.at(
-  __c103,
-  3,
-) as any as S.Schema<TelephonyTrunkExternalDisplayedNumberValidation>;
-
 export type ActivateTelephonyLineNewPhoneError = OvhOpError;
 /** Allow to activate new phone, in case of phone switch */
 export const activateTelephonyLineNewPhone: API.OperationMethod<
@@ -13441,8 +8167,8 @@ export const activateTelephonyLineNewPhone: API.OperationMethod<
   ActivateTelephonyLineNewPhoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateTelephonyLineNewPhoneRequest,
-  output: ActivateTelephonyLineNewPhoneResponse,
+  input: __S(0) as any as S.Schema<ActivateTelephonyLineNewPhoneRequest>,
+  output: __S(1) as any as S.Schema<ActivateTelephonyLineNewPhoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13456,8 +8182,8 @@ export const blockTelephonyLine: API.OperationMethod<
   BlockTelephonyLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BlockTelephonyLineRequest,
-  output: BlockTelephonyLineResponse,
+  input: __S(2) as any as S.Schema<BlockTelephonyLineRequest>,
+  output: __S(3) as any as S.Schema<BlockTelephonyLineResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13471,8 +8197,8 @@ export const cancelTelephonyLineConvertToNumber: API.OperationMethod<
   CancelTelephonyLineConvertToNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyLineConvertToNumberRequest,
-  output: CancelTelephonyLineConvertToNumberResponse,
+  input: __S(4) as any as S.Schema<CancelTelephonyLineConvertToNumberRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyLineConvertToNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13486,8 +8212,8 @@ export const cancelTelephonyNumberConvertToLine: API.OperationMethod<
   CancelTelephonyNumberConvertToLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyNumberConvertToLineRequest,
-  output: CancelTelephonyNumberConvertToLineResponse,
+  input: __S(5) as any as S.Schema<CancelTelephonyNumberConvertToLineRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyNumberConvertToLineResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13501,8 +8227,8 @@ export const cancelTelephonyPortability: API.OperationMethod<
   CancelTelephonyPortabilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyPortabilityRequest,
-  output: CancelTelephonyPortabilityResponse,
+  input: __S(6) as any as S.Schema<CancelTelephonyPortabilityRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyPortabilityResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13516,8 +8242,8 @@ export const cancelTelephonyProcedure: API.OperationMethod<
   CancelTelephonyProcedureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyProcedureRequest,
-  output: CancelTelephonyProcedureResponse,
+  input: __S(7) as any as S.Schema<CancelTelephonyProcedureRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyProcedureResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13531,8 +8257,8 @@ export const cancelTelephonyRsvaScheduledRateCode: API.OperationMethod<
   CancelTelephonyRsvaScheduledRateCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyRsvaScheduledRateCodeRequest,
-  output: CancelTelephonyRsvaScheduledRateCodeResponse,
+  input: __S(8) as any as S.Schema<CancelTelephonyRsvaScheduledRateCodeRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyRsvaScheduledRateCodeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13546,8 +8272,8 @@ export const cancelTelephonyServiceTermination: API.OperationMethod<
   CancelTelephonyServiceTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyServiceTerminationRequest,
-  output: CancelTelephonyServiceTerminationResponse,
+  input: __S(9) as any as S.Schema<CancelTelephonyServiceTerminationRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyServiceTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13561,8 +8287,8 @@ export const cancelTelephonyTermination: API.OperationMethod<
   CancelTelephonyTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTelephonyTerminationRequest,
-  output: CancelTelephonyTerminationResponse,
+  input: __S(10) as any as S.Schema<CancelTelephonyTerminationRequest>,
+  output: __S(1) as any as S.Schema<CancelTelephonyTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13576,8 +8302,8 @@ export const convertTelephonyLineToNumber: API.OperationMethod<
   ConvertTelephonyLineToNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConvertTelephonyLineToNumberRequest,
-  output: TelephonyOfferTask,
+  input: __S(11) as any as S.Schema<ConvertTelephonyLineToNumberRequest>,
+  output: __S(12) as any as S.Schema<TelephonyOfferTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13591,8 +8317,8 @@ export const convertTelephonyNumberToLine: API.OperationMethod<
   ConvertTelephonyNumberToLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConvertTelephonyNumberToLineRequest,
-  output: TelephonyOfferTask,
+  input: __S(13) as any as S.Schema<ConvertTelephonyNumberToLineRequest>,
+  output: __S(12) as any as S.Schema<TelephonyOfferTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13606,8 +8332,8 @@ export const createTelephonyAbbreviatedNumber: API.OperationMethod<
   CreateTelephonyAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyAbbreviatedNumberRequest,
-  output: TelephonyAbbreviatedNumberGroup,
+  input: __S(14) as any as S.Schema<CreateTelephonyAbbreviatedNumberRequest>,
+  output: __S(15) as any as S.Schema<TelephonyAbbreviatedNumberGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13621,8 +8347,8 @@ export const createTelephonyAliasChangeContact: API.OperationMethod<
   CreateTelephonyAliasChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyAliasChangeContactRequest,
-  output: CreateTelephonyAliasChangeContactResponse,
+  input: __S(16) as any as S.Schema<CreateTelephonyAliasChangeContactRequest>,
+  output: __S(18) as any as S.Schema<CreateTelephonyAliasChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13636,8 +8362,8 @@ export const createTelephonyBillingAccountSite: API.OperationMethod<
   CreateTelephonyBillingAccountSiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyBillingAccountSiteRequest,
-  output: CreateTelephonyBillingAccountSiteResponse,
+  input: __S(19) as any as S.Schema<CreateTelephonyBillingAccountSiteRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyBillingAccountSiteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13651,8 +8377,8 @@ export const createTelephonyCanTransferSecurityDeposit: API.OperationMethod<
   CreateTelephonyCanTransferSecurityDepositError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyCanTransferSecurityDepositRequest,
-  output: CreateTelephonyCanTransferSecurityDepositResponse,
+  input: __S(20) as any as S.Schema<CreateTelephonyCanTransferSecurityDepositRequest>,
+  output: __S(21) as any as S.Schema<CreateTelephonyCanTransferSecurityDepositResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13666,8 +8392,8 @@ export const createTelephonyChangeContact: API.OperationMethod<
   CreateTelephonyChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyChangeContactRequest,
-  output: CreateTelephonyChangeContactResponse,
+  input: __S(22) as any as S.Schema<CreateTelephonyChangeContactRequest>,
+  output: __S(18) as any as S.Schema<CreateTelephonyChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13681,8 +8407,8 @@ export const createTelephonyConferenceAnnounceUpload: API.OperationMethod<
   CreateTelephonyConferenceAnnounceUploadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceAnnounceUploadRequest,
-  output: TelephonyTask,
+  input: __S(23) as any as S.Schema<CreateTelephonyConferenceAnnounceUploadRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13696,8 +8422,8 @@ export const createTelephonyConferenceParticipantDeaf: API.OperationMethod<
   CreateTelephonyConferenceParticipantDeafError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceParticipantDeafRequest,
-  output: TelephonyTask,
+  input: __S(25) as any as S.Schema<CreateTelephonyConferenceParticipantDeafRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13711,8 +8437,8 @@ export const createTelephonyConferenceParticipantEnergy: API.OperationMethod<
   CreateTelephonyConferenceParticipantEnergyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceParticipantEnergyRequest,
-  output: TelephonyTask,
+  input: __S(26) as any as S.Schema<CreateTelephonyConferenceParticipantEnergyRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13726,8 +8452,8 @@ export const createTelephonyConferenceParticipantKick: API.OperationMethod<
   CreateTelephonyConferenceParticipantKickError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceParticipantKickRequest,
-  output: TelephonyTask,
+  input: __S(27) as any as S.Schema<CreateTelephonyConferenceParticipantKickRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13741,8 +8467,8 @@ export const createTelephonyConferenceParticipantUndeaf: API.OperationMethod<
   CreateTelephonyConferenceParticipantUndeafError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceParticipantUndeafRequest,
-  output: TelephonyTask,
+  input: __S(28) as any as S.Schema<CreateTelephonyConferenceParticipantUndeafRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13756,8 +8482,8 @@ export const createTelephonyConferenceRoom: API.OperationMethod<
   CreateTelephonyConferenceRoomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceRoomRequest,
-  output: TelephonyConferenceRoom,
+  input: __S(29) as any as S.Schema<CreateTelephonyConferenceRoomRequest>,
+  output: __S(30) as any as S.Schema<TelephonyConferenceRoom>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13771,8 +8497,8 @@ export const createTelephonyConferenceRoomParticipantDeaf: API.OperationMethod<
   CreateTelephonyConferenceRoomParticipantDeafError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceRoomParticipantDeafRequest,
-  output: TelephonyTask,
+  input: __S(31) as any as S.Schema<CreateTelephonyConferenceRoomParticipantDeafRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13786,8 +8512,8 @@ export const createTelephonyConferenceRoomParticipantEnergy: API.OperationMethod
   CreateTelephonyConferenceRoomParticipantEnergyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceRoomParticipantEnergyRequest,
-  output: TelephonyTask,
+  input: __S(32) as any as S.Schema<CreateTelephonyConferenceRoomParticipantEnergyRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13801,8 +8527,8 @@ export const createTelephonyConferenceRoomParticipantKick: API.OperationMethod<
   CreateTelephonyConferenceRoomParticipantKickError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceRoomParticipantKickRequest,
-  output: TelephonyTask,
+  input: __S(33) as any as S.Schema<CreateTelephonyConferenceRoomParticipantKickRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13816,8 +8542,8 @@ export const createTelephonyConferenceRoomParticipantUndeaf: API.OperationMethod
   CreateTelephonyConferenceRoomParticipantUndeafError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceRoomParticipantUndeafRequest,
-  output: TelephonyTask,
+  input: __S(34) as any as S.Schema<CreateTelephonyConferenceRoomParticipantUndeafRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13831,8 +8557,8 @@ export const createTelephonyConferenceRoomWebAccess: API.OperationMethod<
   CreateTelephonyConferenceRoomWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceRoomWebAccessRequest,
-  output: TelephonyConferenceWebAccess,
+  input: __S(35) as any as S.Schema<CreateTelephonyConferenceRoomWebAccessRequest>,
+  output: __S(36) as any as S.Schema<TelephonyConferenceWebAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13846,8 +8572,8 @@ export const createTelephonyConferenceWebAccess: API.OperationMethod<
   CreateTelephonyConferenceWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyConferenceWebAccessRequest,
-  output: TelephonyConferenceWebAccess,
+  input: __S(37) as any as S.Schema<CreateTelephonyConferenceWebAccessRequest>,
+  output: __S(36) as any as S.Schema<TelephonyConferenceWebAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13861,8 +8587,8 @@ export const createTelephonyDdiChangeDestination: API.OperationMethod<
   CreateTelephonyDdiChangeDestinationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyDdiChangeDestinationRequest,
-  output: TelephonyTask,
+  input: __S(38) as any as S.Schema<CreateTelephonyDdiChangeDestinationRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13876,8 +8602,8 @@ export const createTelephonyEasyHuntingHuntingAgent: API.OperationMethod<
   CreateTelephonyEasyHuntingHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentRequest,
-  output: TelephonyOvhPabxHuntingAgent,
+  input: __S(39) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentRequest>,
+  output: __S(40) as any as S.Schema<TelephonyOvhPabxHuntingAgent>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13891,8 +8617,8 @@ export const createTelephonyEasyHuntingHuntingAgentBannerAccess: API.OperationMe
   CreateTelephonyEasyHuntingHuntingAgentBannerAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest,
-  output: TelephonyBannerAccess,
+  input: __S(41) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentBannerAccessRequest>,
+  output: __S(42) as any as S.Schema<TelephonyBannerAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13906,8 +8632,8 @@ export const createTelephonyEasyHuntingHuntingAgentCallEavesdrop: API.OperationM
   CreateTelephonyEasyHuntingHuntingAgentCallEavesdropError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest,
-  output: TelephonyTask,
+  input: __S(43) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallEavesdropRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13921,8 +8647,8 @@ export const createTelephonyEasyHuntingHuntingAgentCallHangup: API.OperationMeth
   CreateTelephonyEasyHuntingHuntingAgentCallHangupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest,
-  output: TelephonyTask,
+  input: __S(44) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallHangupRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13936,8 +8662,8 @@ export const createTelephonyEasyHuntingHuntingAgentCallHold: API.OperationMethod
   CreateTelephonyEasyHuntingHuntingAgentCallHoldError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest,
-  output: TelephonyTask,
+  input: __S(45) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallHoldRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13951,8 +8677,8 @@ export const createTelephonyEasyHuntingHuntingAgentCallIntercept: API.OperationM
   CreateTelephonyEasyHuntingHuntingAgentCallInterceptError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest,
-  output: TelephonyTask,
+  input: __S(46) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallInterceptRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13966,8 +8692,8 @@ export const createTelephonyEasyHuntingHuntingAgentCallWhisper: API.OperationMet
   CreateTelephonyEasyHuntingHuntingAgentCallWhisperError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest,
-  output: TelephonyTask,
+  input: __S(47) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentCallWhisperRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13981,8 +8707,8 @@ export const createTelephonyEasyHuntingHuntingAgentEventToken: API.OperationMeth
   CreateTelephonyEasyHuntingHuntingAgentEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest,
-  output: CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse,
+  input: __S(48) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentEventTokenRequest>,
+  output: __S(49) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -13996,8 +8722,8 @@ export const createTelephonyEasyHuntingHuntingAgentQueue: API.OperationMethod<
   CreateTelephonyEasyHuntingHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingAgentQueueRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(50) as any as S.Schema<CreateTelephonyEasyHuntingHuntingAgentQueueRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14011,8 +8737,8 @@ export const createTelephonyEasyHuntingHuntingCustomStatus: API.OperationMethod<
   CreateTelephonyEasyHuntingHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingCustomStatusRequest,
-  output: TelephonyOvhPabxCustomStatus,
+  input: __S(52) as any as S.Schema<CreateTelephonyEasyHuntingHuntingCustomStatusRequest>,
+  output: __S(53) as any as S.Schema<TelephonyOvhPabxCustomStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14026,8 +8752,8 @@ export const createTelephonyEasyHuntingHuntingEventToken: API.OperationMethod<
   CreateTelephonyEasyHuntingHuntingEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingEventTokenRequest,
-  output: CreateTelephonyEasyHuntingHuntingEventTokenResponse,
+  input: __S(54) as any as S.Schema<CreateTelephonyEasyHuntingHuntingEventTokenRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyEasyHuntingHuntingEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14041,8 +8767,8 @@ export const createTelephonyEasyHuntingHuntingQueue: API.OperationMethod<
   CreateTelephonyEasyHuntingHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueRequest,
-  output: TelephonyOvhPabxHuntingQueue,
+  input: __S(56) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueRequest>,
+  output: __S(57) as any as S.Schema<TelephonyOvhPabxHuntingQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14056,8 +8782,8 @@ export const createTelephonyEasyHuntingHuntingQueueAgent: API.OperationMethod<
   CreateTelephonyEasyHuntingHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueAgentRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(58) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueAgentRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14071,8 +8797,8 @@ export const createTelephonyEasyHuntingHuntingQueueLiveCallEavesdrop: API.Operat
   CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest,
-  output: TelephonyTask,
+  input: __S(59) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallEavesdropRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14086,8 +8812,8 @@ export const createTelephonyEasyHuntingHuntingQueueLiveCallHangup: API.Operation
   CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest,
-  output: TelephonyTask,
+  input: __S(60) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallHangupRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14101,8 +8827,8 @@ export const createTelephonyEasyHuntingHuntingQueueLiveCallHold: API.OperationMe
   CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest,
-  output: TelephonyTask,
+  input: __S(61) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallHoldRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14116,8 +8842,8 @@ export const createTelephonyEasyHuntingHuntingQueueLiveCallIntercept: API.Operat
   CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest,
-  output: TelephonyTask,
+  input: __S(62) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallInterceptRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14131,8 +8857,8 @@ export const createTelephonyEasyHuntingHuntingQueueLiveCallWhisper: API.Operatio
   CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest,
-  output: TelephonyTask,
+  input: __S(63) as any as S.Schema<CreateTelephonyEasyHuntingHuntingQueueLiveCallWhisperRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14146,8 +8872,8 @@ export const createTelephonyEasyHuntingScreenListConditionCondition: API.Operati
   CreateTelephonyEasyHuntingScreenListConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingScreenListConditionConditionRequest,
-  output: TelephonyEasyHuntingScreenListsConditions,
+  input: __S(64) as any as S.Schema<CreateTelephonyEasyHuntingScreenListConditionConditionRequest>,
+  output: __S(65) as any as S.Schema<TelephonyEasyHuntingScreenListsConditions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14161,8 +8887,8 @@ export const createTelephonyEasyHuntingSoundUpload: API.OperationMethod<
   CreateTelephonyEasyHuntingSoundUploadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingSoundUploadRequest,
-  output: TelephonyTask,
+  input: __S(66) as any as S.Schema<CreateTelephonyEasyHuntingSoundUploadRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14176,8 +8902,8 @@ export const createTelephonyEasyHuntingTimeConditionCondition: API.OperationMeth
   CreateTelephonyEasyHuntingTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEasyHuntingTimeConditionConditionRequest,
-  output: TelephonyEasyHuntingTimeConditions,
+  input: __S(67) as any as S.Schema<CreateTelephonyEasyHuntingTimeConditionConditionRequest>,
+  output: __S(68) as any as S.Schema<TelephonyEasyHuntingTimeConditions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14191,8 +8917,8 @@ export const createTelephonyEventToken: API.OperationMethod<
   CreateTelephonyEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyEventTokenRequest,
-  output: CreateTelephonyEventTokenResponse,
+  input: __S(69) as any as S.Schema<CreateTelephonyEventTokenRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14206,8 +8932,8 @@ export const createTelephonyFaxCampaign: API.OperationMethod<
   CreateTelephonyFaxCampaignError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyFaxCampaignRequest,
-  output: TelephonyFaxCampaign,
+  input: __S(71) as any as S.Schema<CreateTelephonyFaxCampaignRequest>,
+  output: __S(72) as any as S.Schema<TelephonyFaxCampaign>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14221,8 +8947,8 @@ export const createTelephonyFaxScreenList: API.OperationMethod<
   CreateTelephonyFaxScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyFaxScreenListRequest,
-  output: TelephonyFaxScreen,
+  input: __S(73) as any as S.Schema<CreateTelephonyFaxScreenListRequest>,
+  output: __S(74) as any as S.Schema<TelephonyFaxScreen>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14236,8 +8962,8 @@ export const createTelephonyFaxSettingsChangePassword: API.OperationMethod<
   CreateTelephonyFaxSettingsChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyFaxSettingsChangePasswordRequest,
-  output: CreateTelephonyFaxSettingsChangePasswordResponse,
+  input: __S(75) as any as S.Schema<CreateTelephonyFaxSettingsChangePasswordRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyFaxSettingsChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14251,8 +8977,8 @@ export const createTelephonyHistoryRepaymentConsumption: API.OperationMethod<
   CreateTelephonyHistoryRepaymentConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyHistoryRepaymentConsumptionRequest,
-  output: TelephonyHistoryRepaymentConsumption,
+  input: __S(76) as any as S.Schema<CreateTelephonyHistoryRepaymentConsumptionRequest>,
+  output: __S(78) as any as S.Schema<TelephonyHistoryRepaymentConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14266,8 +8992,8 @@ export const createTelephonyLineAbbreviatedNumber: API.OperationMethod<
   CreateTelephonyLineAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineAbbreviatedNumberRequest,
-  output: TelephonyAbbreviatedNumber,
+  input: __S(79) as any as S.Schema<CreateTelephonyLineAbbreviatedNumberRequest>,
+  output: __S(15) as any as S.Schema<TelephonyAbbreviatedNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14281,8 +9007,8 @@ export const createTelephonyLineAntihack: API.OperationMethod<
   CreateTelephonyLineAntihackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineAntihackRequest,
-  output: CreateTelephonyLineAntihackResponse,
+  input: __S(80) as any as S.Schema<CreateTelephonyLineAntihackRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineAntihackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14296,8 +9022,8 @@ export const createTelephonyLineAssociateDevice: API.OperationMethod<
   CreateTelephonyLineAssociateDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineAssociateDeviceRequest,
-  output: CreateTelephonyLineAssociateDeviceResponse,
+  input: __S(81) as any as S.Schema<CreateTelephonyLineAssociateDeviceRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineAssociateDeviceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14311,8 +9037,8 @@ export const createTelephonyLineAutomaticCall: API.OperationMethod<
   CreateTelephonyLineAutomaticCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineAutomaticCallRequest,
-  output: CreateTelephonyLineAutomaticCallResponse,
+  input: __S(82) as any as S.Schema<CreateTelephonyLineAutomaticCallRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyLineAutomaticCallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14326,8 +9052,8 @@ export const createTelephonyLineChangeContact: API.OperationMethod<
   CreateTelephonyLineChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineChangeContactRequest,
-  output: CreateTelephonyLineChangeContactResponse,
+  input: __S(83) as any as S.Schema<CreateTelephonyLineChangeContactRequest>,
+  output: __S(18) as any as S.Schema<CreateTelephonyLineChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14341,8 +9067,8 @@ export const createTelephonyLineChangePassword: API.OperationMethod<
   CreateTelephonyLineChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineChangePasswordRequest,
-  output: CreateTelephonyLineChangePasswordResponse,
+  input: __S(84) as any as S.Schema<CreateTelephonyLineChangePasswordRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14356,8 +9082,8 @@ export const createTelephonyLineClick2Call: API.OperationMethod<
   CreateTelephonyLineClick2CallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineClick2CallRequest,
-  output: CreateTelephonyLineClick2CallResponse,
+  input: __S(85) as any as S.Schema<CreateTelephonyLineClick2CallRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineClick2CallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14371,8 +9097,8 @@ export const createTelephonyLineClick2CallUser: API.OperationMethod<
   CreateTelephonyLineClick2CallUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineClick2CallUserRequest,
-  output: CreateTelephonyLineClick2CallUserResponse,
+  input: __S(86) as any as S.Schema<CreateTelephonyLineClick2CallUserRequest>,
+  output: __S(87) as any as S.Schema<CreateTelephonyLineClick2CallUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14386,8 +9112,8 @@ export const createTelephonyLineClick2CallUserChangePassword: API.OperationMetho
   CreateTelephonyLineClick2CallUserChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineClick2CallUserChangePasswordRequest,
-  output: CreateTelephonyLineClick2CallUserChangePasswordResponse,
+  input: __S(88) as any as S.Schema<CreateTelephonyLineClick2CallUserChangePasswordRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineClick2CallUserChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14401,8 +9127,8 @@ export const createTelephonyLineClick2CallUserClick2Call: API.OperationMethod<
   CreateTelephonyLineClick2CallUserClick2CallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineClick2CallUserClick2CallRequest,
-  output: CreateTelephonyLineClick2CallUserClick2CallResponse,
+  input: __S(89) as any as S.Schema<CreateTelephonyLineClick2CallUserClick2CallRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineClick2CallUserClick2CallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14416,8 +9142,8 @@ export const createTelephonyLineDissociateDevice: API.OperationMethod<
   CreateTelephonyLineDissociateDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineDissociateDeviceRequest,
-  output: CreateTelephonyLineDissociateDeviceResponse,
+  input: __S(90) as any as S.Schema<CreateTelephonyLineDissociateDeviceRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLineDissociateDeviceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14431,8 +9157,8 @@ export const createTelephonyLinePhoneChangePhoneConfiguration: API.OperationMeth
   CreateTelephonyLinePhoneChangePhoneConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLinePhoneChangePhoneConfigurationRequest,
-  output: CreateTelephonyLinePhoneChangePhoneConfigurationResponse,
+  input: __S(93) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationRequest>,
+  output: __S(94) as any as S.Schema<CreateTelephonyLinePhoneChangePhoneConfigurationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14446,8 +9172,8 @@ export const createTelephonyLinePhonePhonebook: API.OperationMethod<
   CreateTelephonyLinePhonePhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLinePhonePhonebookRequest,
-  output: CreateTelephonyLinePhonePhonebookResponse,
+  input: __S(95) as any as S.Schema<CreateTelephonyLinePhonePhonebookRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyLinePhonePhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14461,8 +9187,8 @@ export const createTelephonyLinePhonePhonebookPhonebookContact: API.OperationMet
   CreateTelephonyLinePhonePhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLinePhonePhonebookPhonebookContactRequest,
-  output: CreateTelephonyLinePhonePhonebookPhonebookContactResponse,
+  input: __S(96) as any as S.Schema<CreateTelephonyLinePhonePhonebookPhonebookContactRequest>,
+  output: __S(97) as any as S.Schema<CreateTelephonyLinePhonePhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14476,8 +9202,8 @@ export const createTelephonyLinePhoneRma: API.OperationMethod<
   CreateTelephonyLinePhoneRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLinePhoneRmaRequest,
-  output: TelephonyRmaReturn,
+  input: __S(98) as any as S.Schema<CreateTelephonyLinePhoneRmaRequest>,
+  output: __S(99) as any as S.Schema<TelephonyRmaReturn>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14491,8 +9217,8 @@ export const createTelephonyLinePhoneRmaChangeType: API.OperationMethod<
   CreateTelephonyLinePhoneRmaChangeTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLinePhoneRmaChangeTypeRequest,
-  output: CreateTelephonyLinePhoneRmaChangeTypeResponse,
+  input: __S(100) as any as S.Schema<CreateTelephonyLinePhoneRmaChangeTypeRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyLinePhoneRmaChangeTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14506,8 +9232,8 @@ export const createTelephonyLineSoftphoneToken: API.OperationMethod<
   CreateTelephonyLineSoftphoneTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineSoftphoneTokenRequest,
-  output: TelephonySoftphoneToken,
+  input: __S(101) as any as S.Schema<CreateTelephonyLineSoftphoneTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonySoftphoneToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14521,8 +9247,8 @@ export const createTelephonyLineToneToneUpload: API.OperationMethod<
   CreateTelephonyLineToneToneUploadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineToneToneUploadRequest,
-  output: TelephonyTask,
+  input: __S(103) as any as S.Schema<CreateTelephonyLineToneToneUploadRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14536,8 +9262,8 @@ export const createTelephonyLineTrafficExtract: API.OperationMethod<
   CreateTelephonyLineTrafficExtractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyLineTrafficExtractRequest,
-  output: TelephonyTrafficExtract,
+  input: __S(104) as any as S.Schema<CreateTelephonyLineTrafficExtractRequest>,
+  output: __S(105) as any as S.Schema<TelephonyTrafficExtract>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14551,8 +9277,8 @@ export const createTelephonyNumberChangeFeatureType: API.OperationMethod<
   CreateTelephonyNumberChangeFeatureTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyNumberChangeFeatureTypeRequest,
-  output: TelephonyTask,
+  input: __S(106) as any as S.Schema<CreateTelephonyNumberChangeFeatureTypeRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14566,8 +9292,8 @@ export const createTelephonyOutplanNotification: API.OperationMethod<
   CreateTelephonyOutplanNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOutplanNotificationRequest,
-  output: TelephonyConsumptionThreshold,
+  input: __S(107) as any as S.Schema<CreateTelephonyOutplanNotificationRequest>,
+  output: __S(108) as any as S.Schema<TelephonyConsumptionThreshold>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14581,8 +9307,8 @@ export const createTelephonyOvhPabxDialplan: API.OperationMethod<
   CreateTelephonyOvhPabxDialplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxDialplanRequest,
-  output: TelephonyOvhPabxDialplan,
+  input: __S(109) as any as S.Schema<CreateTelephonyOvhPabxDialplanRequest>,
+  output: __S(110) as any as S.Schema<TelephonyOvhPabxDialplan>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14596,8 +9322,8 @@ export const createTelephonyOvhPabxDialplanExtension: API.OperationMethod<
   CreateTelephonyOvhPabxDialplanExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxDialplanExtensionRequest,
-  output: TelephonyOvhPabxDialplanExtension,
+  input: __S(111) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionRequest>,
+  output: __S(112) as any as S.Schema<TelephonyOvhPabxDialplanExtension>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14611,8 +9337,10 @@ export const createTelephonyOvhPabxDialplanExtensionConditionScreenList: API.Ope
   CreateTelephonyOvhPabxDialplanExtensionConditionScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest,
-  output: TelephonyOvhPabxDialplanExtensionConditionScreenList,
+  input: __S(
+    113,
+  ) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>,
+  output: __S(114) as any as S.Schema<TelephonyOvhPabxDialplanExtensionConditionScreenList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14626,8 +9354,8 @@ export const createTelephonyOvhPabxDialplanExtensionConditionTime: API.Operation
   CreateTelephonyOvhPabxDialplanExtensionConditionTimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest,
-  output: TelephonyOvhPabxDialplanExtensionConditionTime,
+  input: __S(115) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionConditionTimeRequest>,
+  output: __S(116) as any as S.Schema<TelephonyOvhPabxDialplanExtensionConditionTime>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14641,8 +9369,8 @@ export const createTelephonyOvhPabxDialplanExtensionRule: API.OperationMethod<
   CreateTelephonyOvhPabxDialplanExtensionRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxDialplanExtensionRuleRequest,
-  output: TelephonyOvhPabxDialplanExtensionRule,
+  input: __S(117) as any as S.Schema<CreateTelephonyOvhPabxDialplanExtensionRuleRequest>,
+  output: __S(118) as any as S.Schema<TelephonyOvhPabxDialplanExtensionRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14656,8 +9384,8 @@ export const createTelephonyOvhPabxHuntingAgent: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentRequest,
-  output: TelephonyOvhPabxHuntingAgent,
+  input: __S(119) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentRequest>,
+  output: __S(40) as any as S.Schema<TelephonyOvhPabxHuntingAgent>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14671,8 +9399,8 @@ export const createTelephonyOvhPabxHuntingAgentBannerAccess: API.OperationMethod
   CreateTelephonyOvhPabxHuntingAgentBannerAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest,
-  output: TelephonyBannerAccess,
+  input: __S(120) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentBannerAccessRequest>,
+  output: __S(42) as any as S.Schema<TelephonyBannerAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14686,8 +9414,8 @@ export const createTelephonyOvhPabxHuntingAgentCallEavesdrop: API.OperationMetho
   CreateTelephonyOvhPabxHuntingAgentCallEavesdropError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest,
-  output: TelephonyTask,
+  input: __S(121) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallEavesdropRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14701,8 +9429,8 @@ export const createTelephonyOvhPabxHuntingAgentCallHangup: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingAgentCallHangupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentCallHangupRequest,
-  output: TelephonyTask,
+  input: __S(122) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallHangupRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14716,8 +9444,8 @@ export const createTelephonyOvhPabxHuntingAgentCallHold: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingAgentCallHoldError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentCallHoldRequest,
-  output: TelephonyTask,
+  input: __S(123) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallHoldRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14731,8 +9459,8 @@ export const createTelephonyOvhPabxHuntingAgentCallIntercept: API.OperationMetho
   CreateTelephonyOvhPabxHuntingAgentCallInterceptError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest,
-  output: TelephonyTask,
+  input: __S(124) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallInterceptRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14746,8 +9474,8 @@ export const createTelephonyOvhPabxHuntingAgentCallWhisper: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingAgentCallWhisperError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest,
-  output: TelephonyTask,
+  input: __S(125) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentCallWhisperRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14761,8 +9489,8 @@ export const createTelephonyOvhPabxHuntingAgentEventToken: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingAgentEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentEventTokenRequest,
-  output: CreateTelephonyOvhPabxHuntingAgentEventTokenResponse,
+  input: __S(126) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentEventTokenRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14776,8 +9504,8 @@ export const createTelephonyOvhPabxHuntingAgentQueue: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingAgentQueueRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(127) as any as S.Schema<CreateTelephonyOvhPabxHuntingAgentQueueRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14791,8 +9519,8 @@ export const createTelephonyOvhPabxHuntingCustomStatus: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingCustomStatusRequest,
-  output: TelephonyOvhPabxCustomStatus,
+  input: __S(128) as any as S.Schema<CreateTelephonyOvhPabxHuntingCustomStatusRequest>,
+  output: __S(53) as any as S.Schema<TelephonyOvhPabxCustomStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14806,8 +9534,8 @@ export const createTelephonyOvhPabxHuntingEventToken: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingEventTokenRequest,
-  output: CreateTelephonyOvhPabxHuntingEventTokenResponse,
+  input: __S(129) as any as S.Schema<CreateTelephonyOvhPabxHuntingEventTokenRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyOvhPabxHuntingEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14821,8 +9549,8 @@ export const createTelephonyOvhPabxHuntingQueue: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueRequest,
-  output: TelephonyOvhPabxHuntingQueue,
+  input: __S(130) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueRequest>,
+  output: __S(57) as any as S.Schema<TelephonyOvhPabxHuntingQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14836,8 +9564,8 @@ export const createTelephonyOvhPabxHuntingQueueAgent: API.OperationMethod<
   CreateTelephonyOvhPabxHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueAgentRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(131) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueAgentRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14851,8 +9579,8 @@ export const createTelephonyOvhPabxHuntingQueueLiveCallEavesdrop: API.OperationM
   CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest,
-  output: TelephonyTask,
+  input: __S(132) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallEavesdropRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14866,8 +9594,8 @@ export const createTelephonyOvhPabxHuntingQueueLiveCallHangup: API.OperationMeth
   CreateTelephonyOvhPabxHuntingQueueLiveCallHangupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest,
-  output: TelephonyTask,
+  input: __S(133) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallHangupRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14881,8 +9609,8 @@ export const createTelephonyOvhPabxHuntingQueueLiveCallHold: API.OperationMethod
   CreateTelephonyOvhPabxHuntingQueueLiveCallHoldError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest,
-  output: TelephonyTask,
+  input: __S(134) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallHoldRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14896,8 +9624,8 @@ export const createTelephonyOvhPabxHuntingQueueLiveCallIntercept: API.OperationM
   CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest,
-  output: TelephonyTask,
+  input: __S(135) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallInterceptRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14911,8 +9639,8 @@ export const createTelephonyOvhPabxHuntingQueueLiveCallWhisper: API.OperationMet
   CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest,
-  output: TelephonyTask,
+  input: __S(136) as any as S.Schema<CreateTelephonyOvhPabxHuntingQueueLiveCallWhisperRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14926,8 +9654,8 @@ export const createTelephonyOvhPabxMenu: API.OperationMethod<
   CreateTelephonyOvhPabxMenuError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxMenuRequest,
-  output: TelephonyOvhPabxMenu,
+  input: __S(137) as any as S.Schema<CreateTelephonyOvhPabxMenuRequest>,
+  output: __S(138) as any as S.Schema<TelephonyOvhPabxMenu>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14941,8 +9669,8 @@ export const createTelephonyOvhPabxMenuEntry: API.OperationMethod<
   CreateTelephonyOvhPabxMenuEntryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxMenuEntryRequest,
-  output: TelephonyOvhPabxMenuEntry,
+  input: __S(139) as any as S.Schema<CreateTelephonyOvhPabxMenuEntryRequest>,
+  output: __S(140) as any as S.Schema<TelephonyOvhPabxMenuEntry>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14956,8 +9684,8 @@ export const createTelephonyOvhPabxSoundUpload: API.OperationMethod<
   CreateTelephonyOvhPabxSoundUploadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxSoundUploadRequest,
-  output: TelephonyTask,
+  input: __S(141) as any as S.Schema<CreateTelephonyOvhPabxSoundUploadRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14971,8 +9699,8 @@ export const createTelephonyOvhPabxTts: API.OperationMethod<
   CreateTelephonyOvhPabxTtsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyOvhPabxTtsRequest,
-  output: CreateTelephonyOvhPabxTtsResponse,
+  input: __S(142) as any as S.Schema<CreateTelephonyOvhPabxTtsRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyOvhPabxTtsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -14986,8 +9714,8 @@ export const createTelephonyPhonebook: API.OperationMethod<
   CreateTelephonyPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyPhonebookRequest,
-  output: CreateTelephonyPhonebookResponse,
+  input: __S(143) as any as S.Schema<CreateTelephonyPhonebookRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15001,8 +9729,8 @@ export const createTelephonyPhonebookPhonebookContact: API.OperationMethod<
   CreateTelephonyPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyPhonebookPhonebookContactRequest,
-  output: CreateTelephonyPhonebookPhonebookContactResponse,
+  input: __S(144) as any as S.Schema<CreateTelephonyPhonebookPhonebookContactRequest>,
+  output: __S(87) as any as S.Schema<CreateTelephonyPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15016,8 +9744,8 @@ export const createTelephonyPortabilityChangeDate: API.OperationMethod<
   CreateTelephonyPortabilityChangeDateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyPortabilityChangeDateRequest,
-  output: CreateTelephonyPortabilityChangeDateResponse,
+  input: __S(145) as any as S.Schema<CreateTelephonyPortabilityChangeDateRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyPortabilityChangeDateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15031,8 +9759,8 @@ export const createTelephonyPortabilityDocument: API.OperationMethod<
   CreateTelephonyPortabilityDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyPortabilityDocumentRequest,
-  output: TelephonyPortabilityDocument,
+  input: __S(146) as any as S.Schema<CreateTelephonyPortabilityDocumentRequest>,
+  output: __S(147) as any as S.Schema<TelephonyPortabilityDocument>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15046,8 +9774,8 @@ export const createTelephonyPortabilityRelaunch: API.OperationMethod<
   CreateTelephonyPortabilityRelaunchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyPortabilityRelaunchRequest,
-  output: CreateTelephonyPortabilityRelaunchResponse,
+  input: __S(149) as any as S.Schema<CreateTelephonyPortabilityRelaunchRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyPortabilityRelaunchResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15061,8 +9789,8 @@ export const createTelephonyProcedure: API.OperationMethod<
   CreateTelephonyProcedureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyProcedureRequest,
-  output: TelephonyProcedure,
+  input: __S(150) as any as S.Schema<CreateTelephonyProcedureRequest>,
+  output: __S(151) as any as S.Schema<TelephonyProcedure>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15076,8 +9804,8 @@ export const createTelephonyRedirectChangeDestination: API.OperationMethod<
   CreateTelephonyRedirectChangeDestinationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyRedirectChangeDestinationRequest,
-  output: TelephonyTask,
+  input: __S(152) as any as S.Schema<CreateTelephonyRedirectChangeDestinationRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15091,8 +9819,8 @@ export const createTelephonyRsvaScheduleRateCode: API.OperationMethod<
   CreateTelephonyRsvaScheduleRateCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyRsvaScheduleRateCodeRequest,
-  output: TelephonyDetailedRateCodeInformation,
+  input: __S(153) as any as S.Schema<CreateTelephonyRsvaScheduleRateCodeRequest>,
+  output: __S(154) as any as S.Schema<TelephonyDetailedRateCodeInformation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15106,8 +9834,8 @@ export const createTelephonySchedulerEvent: API.OperationMethod<
   CreateTelephonySchedulerEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonySchedulerEventRequest,
-  output: CreateTelephonySchedulerEventResponse,
+  input: __S(155) as any as S.Schema<CreateTelephonySchedulerEventRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonySchedulerEventResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15121,8 +9849,8 @@ export const createTelephonyScreenScreenList: API.OperationMethod<
   CreateTelephonyScreenScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyScreenScreenListRequest,
-  output: CreateTelephonyScreenScreenListResponse,
+  input: __S(156) as any as S.Schema<CreateTelephonyScreenScreenListRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyScreenScreenListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15136,8 +9864,8 @@ export const createTelephonyServiceChangeOfBillingAccount: API.OperationMethod<
   CreateTelephonyServiceChangeOfBillingAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyServiceChangeOfBillingAccountRequest,
-  output: CreateTelephonyServiceChangeOfBillingAccountResponse,
+  input: __S(157) as any as S.Schema<CreateTelephonyServiceChangeOfBillingAccountRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyServiceChangeOfBillingAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15151,8 +9879,8 @@ export const createTelephonyServiceEventToken: API.OperationMethod<
   CreateTelephonyServiceEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyServiceEventTokenRequest,
-  output: CreateTelephonyServiceEventTokenResponse,
+  input: __S(158) as any as S.Schema<CreateTelephonyServiceEventTokenRequest>,
+  output: __S(55) as any as S.Schema<CreateTelephonyServiceEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15166,8 +9894,8 @@ export const createTelephonyServiceOfferChange: API.OperationMethod<
   CreateTelephonyServiceOfferChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyServiceOfferChangeRequest,
-  output: CreateTelephonyServiceOfferChangeResponse,
+  input: __S(159) as any as S.Schema<CreateTelephonyServiceOfferChangeRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyServiceOfferChangeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15181,8 +9909,8 @@ export const createTelephonySound: API.OperationMethod<
   CreateTelephonySoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonySoundRequest,
-  output: TelephonySound,
+  input: __S(160) as any as S.Schema<CreateTelephonySoundRequest>,
+  output: __S(161) as any as S.Schema<TelephonySound>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15196,8 +9924,8 @@ export const createTelephonyTimeConditionCondition: API.OperationMethod<
   CreateTelephonyTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyTimeConditionConditionRequest,
-  output: TelephonyTimeCondition,
+  input: __S(162) as any as S.Schema<CreateTelephonyTimeConditionConditionRequest>,
+  output: __S(163) as any as S.Schema<TelephonyTimeCondition>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15211,8 +9939,8 @@ export const createTelephonyTrunkChangeContact: API.OperationMethod<
   CreateTelephonyTrunkChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyTrunkChangeContactRequest,
-  output: CreateTelephonyTrunkChangeContactResponse,
+  input: __S(164) as any as S.Schema<CreateTelephonyTrunkChangeContactRequest>,
+  output: __S(18) as any as S.Schema<CreateTelephonyTrunkChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15226,8 +9954,8 @@ export const createTelephonyTrunkExternalDisplayedNumber: API.OperationMethod<
   CreateTelephonyTrunkExternalDisplayedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyTrunkExternalDisplayedNumberRequest,
-  output: TelephonyTrunkExternalDisplayedNumber,
+  input: __S(165) as any as S.Schema<CreateTelephonyTrunkExternalDisplayedNumberRequest>,
+  output: __S(166) as any as S.Schema<TelephonyTrunkExternalDisplayedNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15241,8 +9969,8 @@ export const createTelephonyVoicemailGreeting: API.OperationMethod<
   CreateTelephonyVoicemailGreetingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyVoicemailGreetingRequest,
-  output: CreateTelephonyVoicemailGreetingResponse,
+  input: __S(167) as any as S.Schema<CreateTelephonyVoicemailGreetingRequest>,
+  output: __S(87) as any as S.Schema<CreateTelephonyVoicemailGreetingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15256,8 +9984,8 @@ export const createTelephonyVoicemailSettingsChangePassword: API.OperationMethod
   CreateTelephonyVoicemailSettingsChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyVoicemailSettingsChangePasswordRequest,
-  output: CreateTelephonyVoicemailSettingsChangePasswordResponse,
+  input: __S(168) as any as S.Schema<CreateTelephonyVoicemailSettingsChangePasswordRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyVoicemailSettingsChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15271,8 +9999,8 @@ export const createTelephonyVoicemailSettingsChangeRouting: API.OperationMethod<
   CreateTelephonyVoicemailSettingsChangeRoutingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyVoicemailSettingsChangeRoutingRequest,
-  output: CreateTelephonyVoicemailSettingsChangeRoutingResponse,
+  input: __S(169) as any as S.Schema<CreateTelephonyVoicemailSettingsChangeRoutingRequest>,
+  output: __S(1) as any as S.Schema<CreateTelephonyVoicemailSettingsChangeRoutingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15286,8 +10014,8 @@ export const createTelephonyVxmlSettingsLog: API.OperationMethod<
   CreateTelephonyVxmlSettingsLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTelephonyVxmlSettingsLogRequest,
-  output: TelephonyTemporaryLogsLink,
+  input: __S(170) as any as S.Schema<CreateTelephonyVxmlSettingsLogRequest>,
+  output: __S(171) as any as S.Schema<TelephonyTemporaryLogsLink>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15301,8 +10029,8 @@ export const deleteTelephony: API.OperationMethod<
   DeleteTelephonyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyRequest,
-  output: DeleteTelephonyResponse,
+  input: __S(172) as any as S.Schema<DeleteTelephonyRequest>,
+  output: __S(3) as any as S.Schema<DeleteTelephonyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15316,8 +10044,8 @@ export const deleteTelephonyAbbreviatedNumber: API.OperationMethod<
   DeleteTelephonyAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyAbbreviatedNumberRequest,
-  output: DeleteTelephonyAbbreviatedNumberResponse,
+  input: __S(173) as any as S.Schema<DeleteTelephonyAbbreviatedNumberRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyAbbreviatedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15331,8 +10059,8 @@ export const deleteTelephonyConferenceRoomWebAccess: API.OperationMethod<
   DeleteTelephonyConferenceRoomWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyConferenceRoomWebAccessRequest,
-  output: DeleteTelephonyConferenceRoomWebAccessResponse,
+  input: __S(174) as any as S.Schema<DeleteTelephonyConferenceRoomWebAccessRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyConferenceRoomWebAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15346,8 +10074,8 @@ export const deleteTelephonyConferenceWebAccess: API.OperationMethod<
   DeleteTelephonyConferenceWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyConferenceWebAccessRequest,
-  output: DeleteTelephonyConferenceWebAccessResponse,
+  input: __S(175) as any as S.Schema<DeleteTelephonyConferenceWebAccessRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyConferenceWebAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15361,8 +10089,8 @@ export const deleteTelephonyEasyHuntingHuntingAgent: API.OperationMethod<
   DeleteTelephonyEasyHuntingHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingAgentRequest,
-  output: DeleteTelephonyEasyHuntingHuntingAgentResponse,
+  input: __S(176) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15376,8 +10104,8 @@ export const deleteTelephonyEasyHuntingHuntingAgentBannerAccess: API.OperationMe
   DeleteTelephonyEasyHuntingHuntingAgentBannerAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest,
-  output: DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse,
+  input: __S(177) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentBannerAccessRequest>,
+  output: __S(94) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentBannerAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15391,8 +10119,8 @@ export const deleteTelephonyEasyHuntingHuntingAgentEventToken: API.OperationMeth
   DeleteTelephonyEasyHuntingHuntingAgentEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest,
-  output: DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse,
+  input: __S(178) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentEventTokenRequest>,
+  output: __S(94) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15406,8 +10134,8 @@ export const deleteTelephonyEasyHuntingHuntingAgentQueue: API.OperationMethod<
   DeleteTelephonyEasyHuntingHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingAgentQueueRequest,
-  output: DeleteTelephonyEasyHuntingHuntingAgentQueueResponse,
+  input: __S(179) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentQueueRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingAgentQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15421,8 +10149,8 @@ export const deleteTelephonyEasyHuntingHuntingCustomStatus: API.OperationMethod<
   DeleteTelephonyEasyHuntingHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingCustomStatusRequest,
-  output: DeleteTelephonyEasyHuntingHuntingCustomStatusResponse,
+  input: __S(180) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingCustomStatusRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingCustomStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15436,8 +10164,8 @@ export const deleteTelephonyEasyHuntingHuntingEventToken: API.OperationMethod<
   DeleteTelephonyEasyHuntingHuntingEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingEventTokenRequest,
-  output: DeleteTelephonyEasyHuntingHuntingEventTokenResponse,
+  input: __S(181) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingEventTokenRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15451,8 +10179,8 @@ export const deleteTelephonyEasyHuntingHuntingQueue: API.OperationMethod<
   DeleteTelephonyEasyHuntingHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingQueueRequest,
-  output: DeleteTelephonyEasyHuntingHuntingQueueResponse,
+  input: __S(182) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15466,8 +10194,8 @@ export const deleteTelephonyEasyHuntingHuntingQueueAgent: API.OperationMethod<
   DeleteTelephonyEasyHuntingHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingHuntingQueueAgentRequest,
-  output: DeleteTelephonyEasyHuntingHuntingQueueAgentResponse,
+  input: __S(183) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueAgentRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingHuntingQueueAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15481,8 +10209,8 @@ export const deleteTelephonyEasyHuntingRecord: API.OperationMethod<
   DeleteTelephonyEasyHuntingRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingRecordRequest,
-  output: DeleteTelephonyEasyHuntingRecordResponse,
+  input: __S(184) as any as S.Schema<DeleteTelephonyEasyHuntingRecordRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15496,8 +10224,10 @@ export const deleteTelephonyEasyHuntingScreenListConditionCondition: API.Operati
   DeleteTelephonyEasyHuntingScreenListConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingScreenListConditionConditionRequest,
-  output: DeleteTelephonyEasyHuntingScreenListConditionConditionResponse,
+  input: __S(185) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionRequest>,
+  output: __S(
+    186,
+  ) as any as S.Schema<DeleteTelephonyEasyHuntingScreenListConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15511,8 +10241,8 @@ export const deleteTelephonyEasyHuntingSound: API.OperationMethod<
   DeleteTelephonyEasyHuntingSoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingSoundRequest,
-  output: DeleteTelephonyEasyHuntingSoundResponse,
+  input: __S(187) as any as S.Schema<DeleteTelephonyEasyHuntingSoundRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEasyHuntingSoundResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15526,8 +10256,8 @@ export const deleteTelephonyEasyHuntingTimeConditionCondition: API.OperationMeth
   DeleteTelephonyEasyHuntingTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEasyHuntingTimeConditionConditionRequest,
-  output: DeleteTelephonyEasyHuntingTimeConditionConditionResponse,
+  input: __S(188) as any as S.Schema<DeleteTelephonyEasyHuntingTimeConditionConditionRequest>,
+  output: __S(94) as any as S.Schema<DeleteTelephonyEasyHuntingTimeConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15541,8 +10271,8 @@ export const deleteTelephonyEventToken: API.OperationMethod<
   DeleteTelephonyEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyEventTokenRequest,
-  output: DeleteTelephonyEventTokenResponse,
+  input: __S(189) as any as S.Schema<DeleteTelephonyEventTokenRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15556,8 +10286,8 @@ export const deleteTelephonyFaxCampaign: API.OperationMethod<
   DeleteTelephonyFaxCampaignError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyFaxCampaignRequest,
-  output: DeleteTelephonyFaxCampaignResponse,
+  input: __S(190) as any as S.Schema<DeleteTelephonyFaxCampaignRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyFaxCampaignResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15571,8 +10301,8 @@ export const deleteTelephonyFaxScreenLists: API.OperationMethod<
   DeleteTelephonyFaxScreenListsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyFaxScreenListsRequest,
-  output: DeleteTelephonyFaxScreenListsResponse,
+  input: __S(191) as any as S.Schema<DeleteTelephonyFaxScreenListsRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyFaxScreenListsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15586,8 +10316,8 @@ export const deleteTelephonyLineAbbreviatedNumber: API.OperationMethod<
   DeleteTelephonyLineAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineAbbreviatedNumberRequest,
-  output: DeleteTelephonyLineAbbreviatedNumberResponse,
+  input: __S(192) as any as S.Schema<DeleteTelephonyLineAbbreviatedNumberRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineAbbreviatedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15601,8 +10331,8 @@ export const deleteTelephonyLineClick2CallUser: API.OperationMethod<
   DeleteTelephonyLineClick2CallUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineClick2CallUserRequest,
-  output: DeleteTelephonyLineClick2CallUserResponse,
+  input: __S(193) as any as S.Schema<DeleteTelephonyLineClick2CallUserRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineClick2CallUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15616,8 +10346,8 @@ export const deleteTelephonyLinePhonePhonebook: API.OperationMethod<
   DeleteTelephonyLinePhonePhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLinePhonePhonebookRequest,
-  output: DeleteTelephonyLinePhonePhonebookResponse,
+  input: __S(194) as any as S.Schema<DeleteTelephonyLinePhonePhonebookRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLinePhonePhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15631,8 +10361,8 @@ export const deleteTelephonyLinePhonePhonebookPhonebookContact: API.OperationMet
   DeleteTelephonyLinePhonePhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLinePhonePhonebookPhonebookContactRequest,
-  output: DeleteTelephonyLinePhonePhonebookPhonebookContactResponse,
+  input: __S(195) as any as S.Schema<DeleteTelephonyLinePhonePhonebookPhonebookContactRequest>,
+  output: __S(94) as any as S.Schema<DeleteTelephonyLinePhonePhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15646,8 +10376,8 @@ export const deleteTelephonyLinePhoneRma: API.OperationMethod<
   DeleteTelephonyLinePhoneRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLinePhoneRmaRequest,
-  output: DeleteTelephonyLinePhoneRmaResponse,
+  input: __S(196) as any as S.Schema<DeleteTelephonyLinePhoneRmaRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLinePhoneRmaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15661,8 +10391,8 @@ export const deleteTelephonyLineRecord: API.OperationMethod<
   DeleteTelephonyLineRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineRecordRequest,
-  output: DeleteTelephonyLineRecordResponse,
+  input: __S(197) as any as S.Schema<DeleteTelephonyLineRecordRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15676,8 +10406,8 @@ export const deleteTelephonyLineSoftphoneDevice: API.OperationMethod<
   DeleteTelephonyLineSoftphoneDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineSoftphoneDeviceRequest,
-  output: DeleteTelephonyLineSoftphoneDeviceResponse,
+  input: __S(198) as any as S.Schema<DeleteTelephonyLineSoftphoneDeviceRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineSoftphoneDeviceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15691,8 +10421,8 @@ export const deleteTelephonyLineSoftphoneLogo: API.OperationMethod<
   DeleteTelephonyLineSoftphoneLogoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineSoftphoneLogoRequest,
-  output: DeleteTelephonyLineSoftphoneLogoResponse,
+  input: __S(199) as any as S.Schema<DeleteTelephonyLineSoftphoneLogoRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineSoftphoneLogoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15706,8 +10436,8 @@ export const deleteTelephonyLineSoftphoneTheme: API.OperationMethod<
   DeleteTelephonyLineSoftphoneThemeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineSoftphoneThemeRequest,
-  output: DeleteTelephonyLineSoftphoneThemeResponse,
+  input: __S(200) as any as S.Schema<DeleteTelephonyLineSoftphoneThemeRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineSoftphoneThemeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15721,8 +10451,8 @@ export const deleteTelephonyLineTrafficExtract: API.OperationMethod<
   DeleteTelephonyLineTrafficExtractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyLineTrafficExtractRequest,
-  output: DeleteTelephonyLineTrafficExtractResponse,
+  input: __S(201) as any as S.Schema<DeleteTelephonyLineTrafficExtractRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyLineTrafficExtractResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15736,8 +10466,8 @@ export const deleteTelephonyOutplanNotification: API.OperationMethod<
   DeleteTelephonyOutplanNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOutplanNotificationRequest,
-  output: DeleteTelephonyOutplanNotificationResponse,
+  input: __S(202) as any as S.Schema<DeleteTelephonyOutplanNotificationRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOutplanNotificationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15751,8 +10481,8 @@ export const deleteTelephonyOvhPabxDialplan: API.OperationMethod<
   DeleteTelephonyOvhPabxDialplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxDialplanRequest,
-  output: DeleteTelephonyOvhPabxDialplanResponse,
+  input: __S(203) as any as S.Schema<DeleteTelephonyOvhPabxDialplanRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxDialplanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15766,8 +10496,8 @@ export const deleteTelephonyOvhPabxDialplanExtension: API.OperationMethod<
   DeleteTelephonyOvhPabxDialplanExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxDialplanExtensionRequest,
-  output: DeleteTelephonyOvhPabxDialplanExtensionResponse,
+  input: __S(204) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15781,8 +10511,12 @@ export const deleteTelephonyOvhPabxDialplanExtensionConditionScreenList: API.Ope
   DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest,
-  output: DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse,
+  input: __S(
+    205,
+  ) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>,
+  output: __S(
+    186,
+  ) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15796,8 +10530,8 @@ export const deleteTelephonyOvhPabxDialplanExtensionConditionTime: API.Operation
   DeleteTelephonyOvhPabxDialplanExtensionConditionTimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest,
-  output: DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse,
+  input: __S(206) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionTimeRequest>,
+  output: __S(94) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionConditionTimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15811,8 +10545,8 @@ export const deleteTelephonyOvhPabxDialplanExtensionRule: API.OperationMethod<
   DeleteTelephonyOvhPabxDialplanExtensionRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxDialplanExtensionRuleRequest,
-  output: DeleteTelephonyOvhPabxDialplanExtensionRuleResponse,
+  input: __S(207) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRuleRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxDialplanExtensionRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15826,8 +10560,8 @@ export const deleteTelephonyOvhPabxHuntingAgent: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingAgentRequest,
-  output: DeleteTelephonyOvhPabxHuntingAgentResponse,
+  input: __S(208) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15841,8 +10575,8 @@ export const deleteTelephonyOvhPabxHuntingAgentBannerAccess: API.OperationMethod
   DeleteTelephonyOvhPabxHuntingAgentBannerAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest,
-  output: DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse,
+  input: __S(209) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentBannerAccessRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentBannerAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15856,8 +10590,8 @@ export const deleteTelephonyOvhPabxHuntingAgentEventToken: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingAgentEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest,
-  output: DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse,
+  input: __S(210) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentEventTokenRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15871,8 +10605,8 @@ export const deleteTelephonyOvhPabxHuntingAgentQueue: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingAgentQueueRequest,
-  output: DeleteTelephonyOvhPabxHuntingAgentQueueResponse,
+  input: __S(211) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentQueueRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingAgentQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15886,8 +10620,8 @@ export const deleteTelephonyOvhPabxHuntingCustomStatus: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingCustomStatusRequest,
-  output: DeleteTelephonyOvhPabxHuntingCustomStatusResponse,
+  input: __S(212) as any as S.Schema<DeleteTelephonyOvhPabxHuntingCustomStatusRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingCustomStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15901,8 +10635,8 @@ export const deleteTelephonyOvhPabxHuntingEventToken: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingEventTokenRequest,
-  output: DeleteTelephonyOvhPabxHuntingEventTokenResponse,
+  input: __S(213) as any as S.Schema<DeleteTelephonyOvhPabxHuntingEventTokenRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15916,8 +10650,8 @@ export const deleteTelephonyOvhPabxHuntingQueue: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingQueueRequest,
-  output: DeleteTelephonyOvhPabxHuntingQueueResponse,
+  input: __S(214) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15931,8 +10665,8 @@ export const deleteTelephonyOvhPabxHuntingQueueAgent: API.OperationMethod<
   DeleteTelephonyOvhPabxHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxHuntingQueueAgentRequest,
-  output: DeleteTelephonyOvhPabxHuntingQueueAgentResponse,
+  input: __S(215) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueAgentRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxHuntingQueueAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15946,8 +10680,8 @@ export const deleteTelephonyOvhPabxMenu: API.OperationMethod<
   DeleteTelephonyOvhPabxMenuError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxMenuRequest,
-  output: DeleteTelephonyOvhPabxMenuResponse,
+  input: __S(216) as any as S.Schema<DeleteTelephonyOvhPabxMenuRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxMenuResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15961,8 +10695,8 @@ export const deleteTelephonyOvhPabxMenuEntry: API.OperationMethod<
   DeleteTelephonyOvhPabxMenuEntryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxMenuEntryRequest,
-  output: DeleteTelephonyOvhPabxMenuEntryResponse,
+  input: __S(217) as any as S.Schema<DeleteTelephonyOvhPabxMenuEntryRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxMenuEntryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15976,8 +10710,8 @@ export const deleteTelephonyOvhPabxRecord: API.OperationMethod<
   DeleteTelephonyOvhPabxRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxRecordRequest,
-  output: DeleteTelephonyOvhPabxRecordResponse,
+  input: __S(218) as any as S.Schema<DeleteTelephonyOvhPabxRecordRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxRecordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -15991,8 +10725,8 @@ export const deleteTelephonyOvhPabxSound: API.OperationMethod<
   DeleteTelephonyOvhPabxSoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxSoundRequest,
-  output: DeleteTelephonyOvhPabxSoundResponse,
+  input: __S(219) as any as S.Schema<DeleteTelephonyOvhPabxSoundRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxSoundResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16006,8 +10740,8 @@ export const deleteTelephonyOvhPabxTts: API.OperationMethod<
   DeleteTelephonyOvhPabxTtsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyOvhPabxTtsRequest,
-  output: DeleteTelephonyOvhPabxTtsResponse,
+  input: __S(220) as any as S.Schema<DeleteTelephonyOvhPabxTtsRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyOvhPabxTtsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16021,8 +10755,8 @@ export const deleteTelephonyPhonebook: API.OperationMethod<
   DeleteTelephonyPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyPhonebookRequest,
-  output: DeleteTelephonyPhonebookResponse,
+  input: __S(221) as any as S.Schema<DeleteTelephonyPhonebookRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16036,8 +10770,8 @@ export const deleteTelephonyPhonebookPhonebookContact: API.OperationMethod<
   DeleteTelephonyPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyPhonebookPhonebookContactRequest,
-  output: DeleteTelephonyPhonebookPhonebookContactResponse,
+  input: __S(222) as any as S.Schema<DeleteTelephonyPhonebookPhonebookContactRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16051,8 +10785,8 @@ export const deleteTelephonyPortabilityDocument: API.OperationMethod<
   DeleteTelephonyPortabilityDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyPortabilityDocumentRequest,
-  output: DeleteTelephonyPortabilityDocumentResponse,
+  input: __S(223) as any as S.Schema<DeleteTelephonyPortabilityDocumentRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyPortabilityDocumentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16066,8 +10800,8 @@ export const deleteTelephonySchedulerEvent: API.OperationMethod<
   DeleteTelephonySchedulerEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonySchedulerEventRequest,
-  output: DeleteTelephonySchedulerEventResponse,
+  input: __S(224) as any as S.Schema<DeleteTelephonySchedulerEventRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonySchedulerEventResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16081,8 +10815,8 @@ export const deleteTelephonyScreenScreenList: API.OperationMethod<
   DeleteTelephonyScreenScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyScreenScreenListRequest,
-  output: DeleteTelephonyScreenScreenListResponse,
+  input: __S(225) as any as S.Schema<DeleteTelephonyScreenScreenListRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyScreenScreenListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16096,8 +10830,8 @@ export const deleteTelephonyService: API.OperationMethod<
   DeleteTelephonyServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyServiceRequest,
-  output: DeleteTelephonyServiceResponse,
+  input: __S(226) as any as S.Schema<DeleteTelephonyServiceRequest>,
+  output: __S(3) as any as S.Schema<DeleteTelephonyServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16111,8 +10845,8 @@ export const deleteTelephonyServiceEventToken: API.OperationMethod<
   DeleteTelephonyServiceEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyServiceEventTokenRequest,
-  output: DeleteTelephonyServiceEventTokenResponse,
+  input: __S(227) as any as S.Schema<DeleteTelephonyServiceEventTokenRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyServiceEventTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16126,8 +10860,8 @@ export const deleteTelephonyServiceOfferChange: API.OperationMethod<
   DeleteTelephonyServiceOfferChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyServiceOfferChangeRequest,
-  output: DeleteTelephonyServiceOfferChangeResponse,
+  input: __S(228) as any as S.Schema<DeleteTelephonyServiceOfferChangeRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyServiceOfferChangeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16141,8 +10875,8 @@ export const deleteTelephonySoftphoneLogo: API.OperationMethod<
   DeleteTelephonySoftphoneLogoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonySoftphoneLogoRequest,
-  output: DeleteTelephonySoftphoneLogoResponse,
+  input: __S(229) as any as S.Schema<DeleteTelephonySoftphoneLogoRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonySoftphoneLogoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16156,8 +10890,8 @@ export const deleteTelephonySound: API.OperationMethod<
   DeleteTelephonySoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonySoundRequest,
-  output: DeleteTelephonySoundResponse,
+  input: __S(230) as any as S.Schema<DeleteTelephonySoundRequest>,
+  output: __S(3) as any as S.Schema<DeleteTelephonySoundResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16171,8 +10905,8 @@ export const deleteTelephonySpare: API.OperationMethod<
   DeleteTelephonySpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonySpareRequest,
-  output: DeleteTelephonySpareResponse,
+  input: __S(231) as any as S.Schema<DeleteTelephonySpareRequest>,
+  output: __S(3) as any as S.Schema<DeleteTelephonySpareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16186,8 +10920,8 @@ export const deleteTelephonyTimeConditionCondition: API.OperationMethod<
   DeleteTelephonyTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyTimeConditionConditionRequest,
-  output: DeleteTelephonyTimeConditionConditionResponse,
+  input: __S(232) as any as S.Schema<DeleteTelephonyTimeConditionConditionRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyTimeConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16201,8 +10935,8 @@ export const deleteTelephonyTrunkExternalDisplayedNumber: API.OperationMethod<
   DeleteTelephonyTrunkExternalDisplayedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyTrunkExternalDisplayedNumberRequest,
-  output: DeleteTelephonyTrunkExternalDisplayedNumberResponse,
+  input: __S(233) as any as S.Schema<DeleteTelephonyTrunkExternalDisplayedNumberRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyTrunkExternalDisplayedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16216,8 +10950,8 @@ export const deleteTelephonyVoicemailDirectory: API.OperationMethod<
   DeleteTelephonyVoicemailDirectoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyVoicemailDirectoryRequest,
-  output: DeleteTelephonyVoicemailDirectoryResponse,
+  input: __S(234) as any as S.Schema<DeleteTelephonyVoicemailDirectoryRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyVoicemailDirectoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16231,8 +10965,8 @@ export const deleteTelephonyVoicemailGreeting: API.OperationMethod<
   DeleteTelephonyVoicemailGreetingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTelephonyVoicemailGreetingRequest,
-  output: DeleteTelephonyVoicemailGreetingResponse,
+  input: __S(235) as any as S.Schema<DeleteTelephonyVoicemailGreetingRequest>,
+  output: __S(1) as any as S.Schema<DeleteTelephonyVoicemailGreetingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16246,8 +10980,8 @@ export const disconnectTelephonyLineSoftphoneDevice: API.OperationMethod<
   DisconnectTelephonyLineSoftphoneDeviceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisconnectTelephonyLineSoftphoneDeviceRequest,
-  output: DisconnectTelephonyLineSoftphoneDeviceResponse,
+  input: __S(236) as any as S.Schema<DisconnectTelephonyLineSoftphoneDeviceRequest>,
+  output: __S(1) as any as S.Schema<DisconnectTelephonyLineSoftphoneDeviceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16261,8 +10995,8 @@ export const executeTelephonyPortability: API.OperationMethod<
   ExecuteTelephonyPortabilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteTelephonyPortabilityRequest,
-  output: ExecuteTelephonyPortabilityResponse,
+  input: __S(237) as any as S.Schema<ExecuteTelephonyPortabilityRequest>,
+  output: __S(1) as any as S.Schema<ExecuteTelephonyPortabilityResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16276,8 +11010,8 @@ export const fetchTelephonyServiceDirectoryEntrepriseInformations: API.Operation
   FetchTelephonyServiceDirectoryEntrepriseInformationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchTelephonyServiceDirectoryEntrepriseInformationsRequest,
-  output: TelephonyEntrepriseNumberInformationsTask,
+  input: __S(238) as any as S.Schema<FetchTelephonyServiceDirectoryEntrepriseInformationsRequest>,
+  output: __S(240) as any as S.Schema<TelephonyEntrepriseNumberInformationsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16291,8 +11025,8 @@ export const generateTelephonyResellerPanelPassword: API.OperationMethod<
   GenerateTelephonyResellerPanelPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateTelephonyResellerPanelPasswordRequest,
-  output: GenerateTelephonyResellerPanelPasswordResponse,
+  input: __S(241) as any as S.Schema<GenerateTelephonyResellerPanelPasswordRequest>,
+  output: __S(1) as any as S.Schema<GenerateTelephonyResellerPanelPasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16306,8 +11040,8 @@ export const getTelephony: API.OperationMethod<
   GetTelephonyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyRequest,
-  output: TelephonyBillingAccountWithIAM,
+  input: __S(242) as any as S.Schema<GetTelephonyRequest>,
+  output: __S(245) as any as S.Schema<TelephonyBillingAccountWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16321,8 +11055,8 @@ export const getTelephonyAbbreviatedNumber: API.OperationMethod<
   GetTelephonyAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyAbbreviatedNumberRequest,
-  output: TelephonyAbbreviatedNumberGroup,
+  input: __S(246) as any as S.Schema<GetTelephonyAbbreviatedNumberRequest>,
+  output: __S(15) as any as S.Schema<TelephonyAbbreviatedNumberGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16336,8 +11070,8 @@ export const getTelephonyAlias: API.OperationMethod<
   GetTelephonyAliasError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyAliasRequest,
-  output: TelephonyTelephonyGenericServiceWithIAM,
+  input: __S(247) as any as S.Schema<GetTelephonyAliasRequest>,
+  output: __S(248) as any as S.Schema<TelephonyTelephonyGenericServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16351,8 +11085,8 @@ export const getTelephonyAliasServiceInfos: API.OperationMethod<
   GetTelephonyAliasServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyAliasServiceInfosRequest,
-  output: ServicesService,
+  input: __S(249) as any as S.Schema<GetTelephonyAliasServiceInfosRequest>,
+  output: __S(251) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16366,8 +11100,8 @@ export const getTelephonyBillingAccountSite: API.OperationMethod<
   GetTelephonyBillingAccountSiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyBillingAccountSiteRequest,
-  output: GetTelephonyBillingAccountSiteResponse,
+  input: __S(252) as any as S.Schema<GetTelephonyBillingAccountSiteRequest>,
+  output: __S(55) as any as S.Schema<GetTelephonyBillingAccountSiteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16381,8 +11115,8 @@ export const getTelephonyCarrierSip: API.OperationMethod<
   GetTelephonyCarrierSipError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyCarrierSipRequest,
-  output: TelephonyCarrierSip,
+  input: __S(253) as any as S.Schema<GetTelephonyCarrierSipRequest>,
+  output: __S(254) as any as S.Schema<TelephonyCarrierSip>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16396,8 +11130,8 @@ export const getTelephonyCarrierSipCdrs: API.OperationMethod<
   GetTelephonyCarrierSipCdrsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyCarrierSipCdrsRequest,
-  output: TelephonyDocument,
+  input: __S(255) as any as S.Schema<GetTelephonyCarrierSipCdrsRequest>,
+  output: __S(256) as any as S.Schema<TelephonyDocument>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16411,8 +11145,8 @@ export const getTelephonyCarrierSipEndpoint: API.OperationMethod<
   GetTelephonyCarrierSipEndpointError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyCarrierSipEndpointRequest,
-  output: TelephonyCarrierSipCustomerEndpoint,
+  input: __S(257) as any as S.Schema<GetTelephonyCarrierSipEndpointRequest>,
+  output: __S(258) as any as S.Schema<TelephonyCarrierSipCustomerEndpoint>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16426,8 +11160,8 @@ export const getTelephonyCarrierSipSettings: API.OperationMethod<
   GetTelephonyCarrierSipSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyCarrierSipSettingsRequest,
-  output: TelephonyCarrierSipDetails,
+  input: __S(259) as any as S.Schema<GetTelephonyCarrierSipSettingsRequest>,
+  output: __S(260) as any as S.Schema<TelephonyCarrierSipDetails>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16441,8 +11175,8 @@ export const getTelephonyCarrierSipVno: API.OperationMethod<
   GetTelephonyCarrierSipVnoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyCarrierSipVnoRequest,
-  output: TelephonyCarrierSipVnoMandate,
+  input: __S(261) as any as S.Schema<GetTelephonyCarrierSipVnoRequest>,
+  output: __S(262) as any as S.Schema<TelephonyCarrierSipVnoMandate>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16456,8 +11190,8 @@ export const getTelephonyCarrierSipVnoRange: API.OperationMethod<
   GetTelephonyCarrierSipVnoRangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyCarrierSipVnoRangeRequest,
-  output: TelephonyCarrierSipVnoRange,
+  input: __S(263) as any as S.Schema<GetTelephonyCarrierSipVnoRangeRequest>,
+  output: __S(264) as any as S.Schema<TelephonyCarrierSipVnoRange>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16471,8 +11205,8 @@ export const getTelephonyConference: API.OperationMethod<
   GetTelephonyConferenceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceRequest,
-  output: TelephonyConference,
+  input: __S(265) as any as S.Schema<GetTelephonyConferenceRequest>,
+  output: __S(266) as any as S.Schema<TelephonyConference>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16486,8 +11220,8 @@ export const getTelephonyConferenceHistory: API.OperationMethod<
   GetTelephonyConferenceHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceHistoryRequest,
-  output: TelephonyConferenceHistory,
+  input: __S(267) as any as S.Schema<GetTelephonyConferenceHistoryRequest>,
+  output: __S(270) as any as S.Schema<TelephonyConferenceHistory>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16501,8 +11235,8 @@ export const getTelephonyConferenceInformations: API.OperationMethod<
   GetTelephonyConferenceInformationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceInformationsRequest,
-  output: TelephonyConferenceInformations,
+  input: __S(271) as any as S.Schema<GetTelephonyConferenceInformationsRequest>,
+  output: __S(272) as any as S.Schema<TelephonyConferenceInformations>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16516,8 +11250,8 @@ export const getTelephonyConferenceParticipant: API.OperationMethod<
   GetTelephonyConferenceParticipantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceParticipantRequest,
-  output: TelephonyConferenceParticipants,
+  input: __S(273) as any as S.Schema<GetTelephonyConferenceParticipantRequest>,
+  output: __S(274) as any as S.Schema<TelephonyConferenceParticipants>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16531,8 +11265,8 @@ export const getTelephonyConferenceRoom: API.OperationMethod<
   GetTelephonyConferenceRoomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceRoomRequest,
-  output: TelephonyConferenceRoom,
+  input: __S(275) as any as S.Schema<GetTelephonyConferenceRoomRequest>,
+  output: __S(30) as any as S.Schema<TelephonyConferenceRoom>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16546,8 +11280,8 @@ export const getTelephonyConferenceRoomHistory: API.OperationMethod<
   GetTelephonyConferenceRoomHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceRoomHistoryRequest,
-  output: TelephonyConferenceHistory,
+  input: __S(276) as any as S.Schema<GetTelephonyConferenceRoomHistoryRequest>,
+  output: __S(270) as any as S.Schema<TelephonyConferenceHistory>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16561,8 +11295,8 @@ export const getTelephonyConferenceRoomParticipant: API.OperationMethod<
   GetTelephonyConferenceRoomParticipantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceRoomParticipantRequest,
-  output: TelephonyConferenceParticipants,
+  input: __S(277) as any as S.Schema<GetTelephonyConferenceRoomParticipantRequest>,
+  output: __S(274) as any as S.Schema<TelephonyConferenceParticipants>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16576,8 +11310,8 @@ export const getTelephonyConferenceRoomsStats: API.OperationMethod<
   GetTelephonyConferenceRoomsStatsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceRoomsStatsRequest,
-  output: TelephonyConferenceRoomsStatistics,
+  input: __S(278) as any as S.Schema<GetTelephonyConferenceRoomsStatsRequest>,
+  output: __S(279) as any as S.Schema<TelephonyConferenceRoomsStatistics>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16591,8 +11325,8 @@ export const getTelephonyConferenceRoomWebAccess: API.OperationMethod<
   GetTelephonyConferenceRoomWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceRoomWebAccessRequest,
-  output: TelephonyConferenceWebAccess,
+  input: __S(280) as any as S.Schema<GetTelephonyConferenceRoomWebAccessRequest>,
+  output: __S(36) as any as S.Schema<TelephonyConferenceWebAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16606,8 +11340,8 @@ export const getTelephonyConferenceSettings: API.OperationMethod<
   GetTelephonyConferenceSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceSettingsRequest,
-  output: TelephonyConferenceProperties,
+  input: __S(281) as any as S.Schema<GetTelephonyConferenceSettingsRequest>,
+  output: __S(282) as any as S.Schema<TelephonyConferenceProperties>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16621,8 +11355,8 @@ export const getTelephonyConferenceWebAccess: API.OperationMethod<
   GetTelephonyConferenceWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyConferenceWebAccessRequest,
-  output: TelephonyConferenceWebAccess,
+  input: __S(283) as any as S.Schema<GetTelephonyConferenceWebAccessRequest>,
+  output: __S(36) as any as S.Schema<TelephonyConferenceWebAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16636,8 +11370,8 @@ export const getTelephonyDdi: API.OperationMethod<
   GetTelephonyDdiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyDdiRequest,
-  output: TelephonyDdi,
+  input: __S(284) as any as S.Schema<GetTelephonyDdiRequest>,
+  output: __S(285) as any as S.Schema<TelephonyDdi>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16651,8 +11385,8 @@ export const getTelephonyEasyHunting: API.OperationMethod<
   GetTelephonyEasyHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingRequest,
-  output: TelephonyEasyHunting,
+  input: __S(286) as any as S.Schema<GetTelephonyEasyHuntingRequest>,
+  output: __S(287) as any as S.Schema<TelephonyEasyHunting>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16666,8 +11400,8 @@ export const getTelephonyEasyHuntingHunting: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingRequest,
-  output: TelephonyOvhPabxHunting,
+  input: __S(288) as any as S.Schema<GetTelephonyEasyHuntingHuntingRequest>,
+  output: __S(289) as any as S.Schema<TelephonyOvhPabxHunting>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16681,8 +11415,8 @@ export const getTelephonyEasyHuntingHuntingAgent: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentRequest,
-  output: TelephonyOvhPabxHuntingAgent,
+  input: __S(290) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentRequest>,
+  output: __S(40) as any as S.Schema<TelephonyOvhPabxHuntingAgent>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16696,8 +11430,8 @@ export const getTelephonyEasyHuntingHuntingAgentBannerAccess: API.OperationMetho
   GetTelephonyEasyHuntingHuntingAgentBannerAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest,
-  output: TelephonyBannerAccess,
+  input: __S(291) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentBannerAccessRequest>,
+  output: __S(42) as any as S.Schema<TelephonyBannerAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16711,8 +11445,8 @@ export const getTelephonyEasyHuntingHuntingAgentCall: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingAgentCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentCallRequest,
-  output: TelephonyOvhPabxHuntingQueueLiveCalls,
+  input: __S(292) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentCallRequest>,
+  output: __S(293) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveCalls>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16726,8 +11460,8 @@ export const getTelephonyEasyHuntingHuntingAgentEventToken: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingAgentEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentEventTokenRequest,
-  output: TelephonyEventToken,
+  input: __S(294) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentEventTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonyEventToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16741,8 +11475,8 @@ export const getTelephonyEasyHuntingHuntingAgentLiveStatus: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingAgentLiveStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest,
-  output: TelephonyOvhPabxHuntingAgentLiveStatus,
+  input: __S(295) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentLiveStatusRequest>,
+  output: __S(296) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16756,8 +11490,8 @@ export const getTelephonyEasyHuntingHuntingAgentQueue: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentQueueRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(297) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentQueueRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16771,8 +11505,8 @@ export const getTelephonyEasyHuntingHuntingAgentQueueLiveStatus: API.OperationMe
   GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest,
-  output: TelephonyOvhPabxHuntingAgentLiveStatus,
+  input: __S(298) as any as S.Schema<GetTelephonyEasyHuntingHuntingAgentQueueLiveStatusRequest>,
+  output: __S(296) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16786,8 +11520,8 @@ export const getTelephonyEasyHuntingHuntingCustomStatus: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingCustomStatusRequest,
-  output: TelephonyOvhPabxCustomStatus,
+  input: __S(299) as any as S.Schema<GetTelephonyEasyHuntingHuntingCustomStatusRequest>,
+  output: __S(53) as any as S.Schema<TelephonyOvhPabxCustomStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16801,8 +11535,8 @@ export const getTelephonyEasyHuntingHuntingEventToken: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingEventTokenRequest,
-  output: TelephonyEventToken,
+  input: __S(300) as any as S.Schema<GetTelephonyEasyHuntingHuntingEventTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonyEventToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16816,8 +11550,8 @@ export const getTelephonyEasyHuntingHuntingQueue: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingQueueRequest,
-  output: TelephonyOvhPabxHuntingQueue,
+  input: __S(301) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueRequest>,
+  output: __S(57) as any as S.Schema<TelephonyOvhPabxHuntingQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16831,8 +11565,8 @@ export const getTelephonyEasyHuntingHuntingQueueAgent: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingQueueAgentRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(302) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueAgentRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16846,8 +11580,8 @@ export const getTelephonyEasyHuntingHuntingQueueAgentLiveStatus: API.OperationMe
   GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest,
-  output: TelephonyOvhPabxHuntingAgentLiveStatus,
+  input: __S(303) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueAgentLiveStatusRequest>,
+  output: __S(296) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16861,8 +11595,8 @@ export const getTelephonyEasyHuntingHuntingQueueLiveCall: API.OperationMethod<
   GetTelephonyEasyHuntingHuntingQueueLiveCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingQueueLiveCallRequest,
-  output: TelephonyOvhPabxHuntingQueueLiveCalls,
+  input: __S(304) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueLiveCallRequest>,
+  output: __S(293) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveCalls>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16876,8 +11610,8 @@ export const getTelephonyEasyHuntingHuntingQueueLiveStatistics: API.OperationMet
   GetTelephonyEasyHuntingHuntingQueueLiveStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest,
-  output: TelephonyOvhPabxHuntingQueueLiveStatistics,
+  input: __S(305) as any as S.Schema<GetTelephonyEasyHuntingHuntingQueueLiveStatisticsRequest>,
+  output: __S(306) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveStatistics>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16891,8 +11625,8 @@ export const getTelephonyEasyHuntingRecord: API.OperationMethod<
   GetTelephonyEasyHuntingRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingRecordRequest,
-  output: TelephonyOvhPabxRecord,
+  input: __S(307) as any as S.Schema<GetTelephonyEasyHuntingRecordRequest>,
+  output: __S(308) as any as S.Schema<TelephonyOvhPabxRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16906,8 +11640,8 @@ export const getTelephonyEasyHuntingScreenListConditionCondition: API.OperationM
   GetTelephonyEasyHuntingScreenListConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingScreenListConditionConditionRequest,
-  output: TelephonyEasyHuntingScreenListsConditions,
+  input: __S(309) as any as S.Schema<GetTelephonyEasyHuntingScreenListConditionConditionRequest>,
+  output: __S(65) as any as S.Schema<TelephonyEasyHuntingScreenListsConditions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16921,8 +11655,8 @@ export const getTelephonyEasyHuntingScreenListConditions: API.OperationMethod<
   GetTelephonyEasyHuntingScreenListConditionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingScreenListConditionsRequest,
-  output: TelephonyEasyHuntingScreenListsConditionsSettings,
+  input: __S(310) as any as S.Schema<GetTelephonyEasyHuntingScreenListConditionsRequest>,
+  output: __S(311) as any as S.Schema<TelephonyEasyHuntingScreenListsConditionsSettings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16936,8 +11670,8 @@ export const getTelephonyEasyHuntingSound: API.OperationMethod<
   GetTelephonyEasyHuntingSoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingSoundRequest,
-  output: TelephonyOvhPabxSound,
+  input: __S(312) as any as S.Schema<GetTelephonyEasyHuntingSoundRequest>,
+  output: __S(313) as any as S.Schema<TelephonyOvhPabxSound>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16951,8 +11685,8 @@ export const getTelephonyEasyHuntingTimeConditionCondition: API.OperationMethod<
   GetTelephonyEasyHuntingTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingTimeConditionConditionRequest,
-  output: TelephonyEasyHuntingTimeConditions,
+  input: __S(314) as any as S.Schema<GetTelephonyEasyHuntingTimeConditionConditionRequest>,
+  output: __S(68) as any as S.Schema<TelephonyEasyHuntingTimeConditions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16966,8 +11700,8 @@ export const getTelephonyEasyHuntingTimeConditions: API.OperationMethod<
   GetTelephonyEasyHuntingTimeConditionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEasyHuntingTimeConditionsRequest,
-  output: TelephonyEasyHuntingTimeConditionsSettings,
+  input: __S(315) as any as S.Schema<GetTelephonyEasyHuntingTimeConditionsRequest>,
+  output: __S(316) as any as S.Schema<TelephonyEasyHuntingTimeConditionsSettings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16981,8 +11715,8 @@ export const getTelephonyEventToken: API.OperationMethod<
   GetTelephonyEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyEventTokenRequest,
-  output: TelephonyEventToken,
+  input: __S(317) as any as S.Schema<GetTelephonyEventTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonyEventToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -16996,8 +11730,8 @@ export const getTelephonyFax: API.OperationMethod<
   GetTelephonyFaxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyFaxRequest,
-  output: TelephonyFax,
+  input: __S(318) as any as S.Schema<GetTelephonyFaxRequest>,
+  output: __S(321) as any as S.Schema<TelephonyFax>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17011,8 +11745,8 @@ export const getTelephonyFaxCampaign: API.OperationMethod<
   GetTelephonyFaxCampaignError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyFaxCampaignRequest,
-  output: TelephonyFaxCampaign,
+  input: __S(322) as any as S.Schema<GetTelephonyFaxCampaignRequest>,
+  output: __S(72) as any as S.Schema<TelephonyFaxCampaign>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17026,8 +11760,8 @@ export const getTelephonyFaxScreenLists: API.OperationMethod<
   GetTelephonyFaxScreenListsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyFaxScreenListsRequest,
-  output: TelephonyFaxScreen,
+  input: __S(323) as any as S.Schema<GetTelephonyFaxScreenListsRequest>,
+  output: __S(74) as any as S.Schema<TelephonyFaxScreen>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17041,8 +11775,8 @@ export const getTelephonyFaxSettings: API.OperationMethod<
   GetTelephonyFaxSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyFaxSettingsRequest,
-  output: TelephonyFaxProperties,
+  input: __S(324) as any as S.Schema<GetTelephonyFaxSettingsRequest>,
+  output: __S(325) as any as S.Schema<TelephonyFaxProperties>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17056,8 +11790,8 @@ export const getTelephonyHasSpecialNumbers: API.OperationMethod<
   GetTelephonyHasSpecialNumbersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHasSpecialNumbersRequest,
-  output: GetTelephonyHasSpecialNumbersResponse,
+  input: __S(326) as any as S.Schema<GetTelephonyHasSpecialNumbersRequest>,
+  output: __S(21) as any as S.Schema<GetTelephonyHasSpecialNumbersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17071,8 +11805,8 @@ export const getTelephonyHistoryConsumption: API.OperationMethod<
   GetTelephonyHistoryConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHistoryConsumptionRequest,
-  output: TelephonyHistoryConsumption,
+  input: __S(327) as any as S.Schema<GetTelephonyHistoryConsumptionRequest>,
+  output: __S(328) as any as S.Schema<TelephonyHistoryConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17086,8 +11820,8 @@ export const getTelephonyHistoryConsumptionFile: API.OperationMethod<
   GetTelephonyHistoryConsumptionFileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHistoryConsumptionFileRequest,
-  output: TelephonyPcsFile,
+  input: __S(329) as any as S.Schema<GetTelephonyHistoryConsumptionFileRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17101,8 +11835,8 @@ export const getTelephonyHistoryRepaymentConsumption: API.OperationMethod<
   GetTelephonyHistoryRepaymentConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHistoryRepaymentConsumptionRequest,
-  output: TelephonyHistoryRepaymentConsumption,
+  input: __S(331) as any as S.Schema<GetTelephonyHistoryRepaymentConsumptionRequest>,
+  output: __S(78) as any as S.Schema<TelephonyHistoryRepaymentConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17116,8 +11850,8 @@ export const getTelephonyHistoryRepaymentConsumptionDocument: API.OperationMetho
   GetTelephonyHistoryRepaymentConsumptionDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHistoryRepaymentConsumptionDocumentRequest,
-  output: TelephonyPcsFile,
+  input: __S(332) as any as S.Schema<GetTelephonyHistoryRepaymentConsumptionDocumentRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17131,8 +11865,8 @@ export const getTelephonyHistoryTollfreeConsumption: API.OperationMethod<
   GetTelephonyHistoryTollfreeConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHistoryTollfreeConsumptionRequest,
-  output: TelephonyHistoryTollfreeConsumption,
+  input: __S(333) as any as S.Schema<GetTelephonyHistoryTollfreeConsumptionRequest>,
+  output: __S(334) as any as S.Schema<TelephonyHistoryTollfreeConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17146,8 +11880,8 @@ export const getTelephonyHistoryTollfreeConsumptionDocument: API.OperationMethod
   GetTelephonyHistoryTollfreeConsumptionDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyHistoryTollfreeConsumptionDocumentRequest,
-  output: TelephonyPcsFile,
+  input: __S(335) as any as S.Schema<GetTelephonyHistoryTollfreeConsumptionDocumentRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17161,8 +11895,8 @@ export const getTelephonyLine: API.OperationMethod<
   GetTelephonyLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineRequest,
-  output: TelephonyTelephonyGenericServiceWithIAM,
+  input: __S(336) as any as S.Schema<GetTelephonyLineRequest>,
+  output: __S(248) as any as S.Schema<TelephonyTelephonyGenericServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17176,8 +11910,8 @@ export const getTelephonyLineAbbreviatedNumber: API.OperationMethod<
   GetTelephonyLineAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineAbbreviatedNumberRequest,
-  output: TelephonyAbbreviatedNumber,
+  input: __S(337) as any as S.Schema<GetTelephonyLineAbbreviatedNumberRequest>,
+  output: __S(15) as any as S.Schema<TelephonyAbbreviatedNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17191,8 +11925,8 @@ export const getTelephonyLineActivateNewPhone: API.OperationMethod<
   GetTelephonyLineActivateNewPhoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineActivateNewPhoneRequest,
-  output: GetTelephonyLineActivateNewPhoneResponse,
+  input: __S(338) as any as S.Schema<GetTelephonyLineActivateNewPhoneRequest>,
+  output: __S(1) as any as S.Schema<GetTelephonyLineActivateNewPhoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17206,8 +11940,8 @@ export const getTelephonyLineAutomaticCall: API.OperationMethod<
   GetTelephonyLineAutomaticCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineAutomaticCallRequest,
-  output: TelephonyCallsGenerated,
+  input: __S(339) as any as S.Schema<GetTelephonyLineAutomaticCallRequest>,
+  output: __S(340) as any as S.Schema<TelephonyCallsGenerated>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17221,8 +11955,8 @@ export const getTelephonyLineByServiceName: API.OperationMethod<
   GetTelephonyLineByServiceNameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineByServiceNameRequest,
-  output: TelephonyLine,
+  input: __S(341) as any as S.Schema<GetTelephonyLineByServiceNameRequest>,
+  output: __S(343) as any as S.Schema<TelephonyLine>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17236,8 +11970,8 @@ export const getTelephonyLineClick2CallUser: API.OperationMethod<
   GetTelephonyLineClick2CallUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineClick2CallUserRequest,
-  output: TelephonyClick2CallUser,
+  input: __S(344) as any as S.Schema<GetTelephonyLineClick2CallUserRequest>,
+  output: __S(345) as any as S.Schema<TelephonyClick2CallUser>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17251,8 +11985,8 @@ export const getTelephonyLineEvent: API.OperationMethod<
   GetTelephonyLineEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineEventRequest,
-  output: TelephonyEvent,
+  input: __S(346) as any as S.Schema<GetTelephonyLineEventRequest>,
+  output: __S(347) as any as S.Schema<TelephonyEvent>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17266,8 +12000,8 @@ export const getTelephonyLineMaximumAvailableSimultaneousLines: API.OperationMet
   GetTelephonyLineMaximumAvailableSimultaneousLinesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineMaximumAvailableSimultaneousLinesRequest,
-  output: GetTelephonyLineMaximumAvailableSimultaneousLinesResponse,
+  input: __S(348) as any as S.Schema<GetTelephonyLineMaximumAvailableSimultaneousLinesRequest>,
+  output: __S(97) as any as S.Schema<GetTelephonyLineMaximumAvailableSimultaneousLinesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17281,8 +12015,8 @@ export const getTelephonyLineOffer: API.OperationMethod<
   GetTelephonyLineOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineOfferRequest,
-  output: TelephonyLineOffer,
+  input: __S(349) as any as S.Schema<GetTelephonyLineOfferRequest>,
+  output: __S(342) as any as S.Schema<TelephonyLineOffer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17296,8 +12030,8 @@ export const getTelephonyLineOptionDefaultCodecs: API.OperationMethod<
   GetTelephonyLineOptionDefaultCodecsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineOptionDefaultCodecsRequest,
-  output: GetTelephonyLineOptionDefaultCodecsResponse,
+  input: __S(350) as any as S.Schema<GetTelephonyLineOptionDefaultCodecsRequest>,
+  output: __S(55) as any as S.Schema<GetTelephonyLineOptionDefaultCodecsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17311,8 +12045,8 @@ export const getTelephonyLineOptions: API.OperationMethod<
   GetTelephonyLineOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineOptionsRequest,
-  output: TelephonyLineOptions,
+  input: __S(351) as any as S.Schema<GetTelephonyLineOptionsRequest>,
+  output: __S(352) as any as S.Schema<TelephonyLineOptions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17326,8 +12060,8 @@ export const getTelephonyLinePhone: API.OperationMethod<
   GetTelephonyLinePhoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhoneRequest,
-  output: TelephonyPhone,
+  input: __S(353) as any as S.Schema<GetTelephonyLinePhoneRequest>,
+  output: __S(357) as any as S.Schema<TelephonyPhone>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17341,8 +12075,8 @@ export const getTelephonyLinePhoneAdminCredentials: API.OperationMethod<
   GetTelephonyLinePhoneAdminCredentialsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhoneAdminCredentialsRequest,
-  output: TelephonyPhoneCredentials,
+  input: __S(358) as any as S.Schema<GetTelephonyLinePhoneAdminCredentialsRequest>,
+  output: __S(359) as any as S.Schema<TelephonyPhoneCredentials>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17356,8 +12090,8 @@ export const getTelephonyLinePhoneFunctionKey: API.OperationMethod<
   GetTelephonyLinePhoneFunctionKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhoneFunctionKeyRequest,
-  output: TelephonyFunctionKey,
+  input: __S(360) as any as S.Schema<GetTelephonyLinePhoneFunctionKeyRequest>,
+  output: __S(361) as any as S.Schema<TelephonyFunctionKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17371,8 +12105,8 @@ export const getTelephonyLinePhonePhonebook: API.OperationMethod<
   GetTelephonyLinePhonePhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhonePhonebookRequest,
-  output: TelephonyPhonebook,
+  input: __S(362) as any as S.Schema<GetTelephonyLinePhonePhonebookRequest>,
+  output: __S(363) as any as S.Schema<TelephonyPhonebook>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17386,8 +12120,8 @@ export const getTelephonyLinePhonePhonebookExport: API.OperationMethod<
   GetTelephonyLinePhonePhonebookExportError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhonePhonebookExportRequest,
-  output: TelephonyPcsFile,
+  input: __S(364) as any as S.Schema<GetTelephonyLinePhonePhonebookExportRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17401,8 +12135,8 @@ export const getTelephonyLinePhonePhonebookPhonebookContact: API.OperationMethod
   GetTelephonyLinePhonePhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhonePhonebookPhonebookContactRequest,
-  output: TelephonyPhonebookContact,
+  input: __S(365) as any as S.Schema<GetTelephonyLinePhonePhonebookPhonebookContactRequest>,
+  output: __S(366) as any as S.Schema<TelephonyPhonebookContact>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17416,8 +12150,8 @@ export const getTelephonyLinePhoneRma: API.OperationMethod<
   GetTelephonyLinePhoneRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhoneRmaRequest,
-  output: TelephonyRma,
+  input: __S(367) as any as S.Schema<GetTelephonyLinePhoneRmaRequest>,
+  output: __S(371) as any as S.Schema<TelephonyRma>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17431,8 +12165,8 @@ export const getTelephonyLinePhoneSupportsPhonebook: API.OperationMethod<
   GetTelephonyLinePhoneSupportsPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLinePhoneSupportsPhonebookRequest,
-  output: GetTelephonyLinePhoneSupportsPhonebookResponse,
+  input: __S(372) as any as S.Schema<GetTelephonyLinePhoneSupportsPhonebookRequest>,
+  output: __S(21) as any as S.Schema<GetTelephonyLinePhoneSupportsPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17446,8 +12180,8 @@ export const getTelephonyLineRecord: API.OperationMethod<
   GetTelephonyLineRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineRecordRequest,
-  output: TelephonyOvhPabxRecord,
+  input: __S(373) as any as S.Schema<GetTelephonyLineRecordRequest>,
+  output: __S(308) as any as S.Schema<TelephonyOvhPabxRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17461,8 +12195,8 @@ export const getTelephonyLineServiceInfos: API.OperationMethod<
   GetTelephonyLineServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineServiceInfosRequest,
-  output: ServicesService,
+  input: __S(374) as any as S.Schema<GetTelephonyLineServiceInfosRequest>,
+  output: __S(251) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17476,8 +12210,8 @@ export const getTelephonyLineSimultaneousChannelsDetails: API.OperationMethod<
   GetTelephonyLineSimultaneousChannelsDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineSimultaneousChannelsDetailsRequest,
-  output: TelephonySimultaneousChannelsDetails,
+  input: __S(375) as any as S.Schema<GetTelephonyLineSimultaneousChannelsDetailsRequest>,
+  output: __S(376) as any as S.Schema<TelephonySimultaneousChannelsDetails>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17491,8 +12225,8 @@ export const getTelephonyLineSoftphoneBeta: API.OperationMethod<
   GetTelephonyLineSoftphoneBetaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineSoftphoneBetaRequest,
-  output: TelephonySoftphoneBetaStatus,
+  input: __S(377) as any as S.Schema<GetTelephonyLineSoftphoneBetaRequest>,
+  output: __S(378) as any as S.Schema<TelephonySoftphoneBetaStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17506,8 +12240,8 @@ export const getTelephonyLineSoftphoneLogo: API.OperationMethod<
   GetTelephonyLineSoftphoneLogoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineSoftphoneLogoRequest,
-  output: TelephonySoftphoneLogo,
+  input: __S(379) as any as S.Schema<GetTelephonyLineSoftphoneLogoRequest>,
+  output: __S(380) as any as S.Schema<TelephonySoftphoneLogo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17521,8 +12255,8 @@ export const getTelephonyLineSoftphoneStatus: API.OperationMethod<
   GetTelephonyLineSoftphoneStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineSoftphoneStatusRequest,
-  output: TelephonySoftphoneStatus,
+  input: __S(381) as any as S.Schema<GetTelephonyLineSoftphoneStatusRequest>,
+  output: __S(382) as any as S.Schema<TelephonySoftphoneStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17536,8 +12270,8 @@ export const getTelephonyLineSoftphoneTheme: API.OperationMethod<
   GetTelephonyLineSoftphoneThemeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineSoftphoneThemeRequest,
-  output: TelephonySoftphoneTheme,
+  input: __S(383) as any as S.Schema<GetTelephonyLineSoftphoneThemeRequest>,
+  output: __S(384) as any as S.Schema<TelephonySoftphoneTheme>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17551,8 +12285,8 @@ export const getTelephonyLineTones: API.OperationMethod<
   GetTelephonyLineTonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineTonesRequest,
-  output: TelephonyTones,
+  input: __S(385) as any as S.Schema<GetTelephonyLineTonesRequest>,
+  output: __S(386) as any as S.Schema<TelephonyTones>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17566,8 +12300,8 @@ export const getTelephonyLineTrafficExtract: API.OperationMethod<
   GetTelephonyLineTrafficExtractError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyLineTrafficExtractRequest,
-  output: TelephonyTrafficExtract,
+  input: __S(387) as any as S.Schema<GetTelephonyLineTrafficExtractRequest>,
+  output: __S(105) as any as S.Schema<TelephonyTrafficExtract>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17581,8 +12315,8 @@ export const getTelephonyNumber: API.OperationMethod<
   GetTelephonyNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyNumberRequest,
-  output: TelephonyNumber,
+  input: __S(388) as any as S.Schema<GetTelephonyNumberRequest>,
+  output: __S(389) as any as S.Schema<TelephonyNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17596,8 +12330,8 @@ export const getTelephonyOfferTask: API.OperationMethod<
   GetTelephonyOfferTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOfferTaskRequest,
-  output: TelephonyOfferTask,
+  input: __S(390) as any as S.Schema<GetTelephonyOfferTaskRequest>,
+  output: __S(12) as any as S.Schema<TelephonyOfferTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17611,8 +12345,8 @@ export const getTelephonyOutplanNotification: API.OperationMethod<
   GetTelephonyOutplanNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOutplanNotificationRequest,
-  output: TelephonyConsumptionThreshold,
+  input: __S(391) as any as S.Schema<GetTelephonyOutplanNotificationRequest>,
+  output: __S(108) as any as S.Schema<TelephonyConsumptionThreshold>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17626,8 +12360,8 @@ export const getTelephonyOvhPabx: API.OperationMethod<
   GetTelephonyOvhPabxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxRequest,
-  output: TelephonyOvhPabx,
+  input: __S(392) as any as S.Schema<GetTelephonyOvhPabxRequest>,
+  output: __S(393) as any as S.Schema<TelephonyOvhPabx>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17641,8 +12375,8 @@ export const getTelephonyOvhPabxDialplan: API.OperationMethod<
   GetTelephonyOvhPabxDialplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxDialplanRequest,
-  output: TelephonyOvhPabxDialplan,
+  input: __S(394) as any as S.Schema<GetTelephonyOvhPabxDialplanRequest>,
+  output: __S(110) as any as S.Schema<TelephonyOvhPabxDialplan>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17656,8 +12390,8 @@ export const getTelephonyOvhPabxDialplanExtension: API.OperationMethod<
   GetTelephonyOvhPabxDialplanExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxDialplanExtensionRequest,
-  output: TelephonyOvhPabxDialplanExtension,
+  input: __S(395) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionRequest>,
+  output: __S(112) as any as S.Schema<TelephonyOvhPabxDialplanExtension>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17671,8 +12405,10 @@ export const getTelephonyOvhPabxDialplanExtensionConditionScreenList: API.Operat
   GetTelephonyOvhPabxDialplanExtensionConditionScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest,
-  output: TelephonyOvhPabxDialplanExtensionConditionScreenList,
+  input: __S(
+    396,
+  ) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>,
+  output: __S(114) as any as S.Schema<TelephonyOvhPabxDialplanExtensionConditionScreenList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17686,8 +12422,8 @@ export const getTelephonyOvhPabxDialplanExtensionConditionTime: API.OperationMet
   GetTelephonyOvhPabxDialplanExtensionConditionTimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest,
-  output: TelephonyOvhPabxDialplanExtensionConditionTime,
+  input: __S(397) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionConditionTimeRequest>,
+  output: __S(116) as any as S.Schema<TelephonyOvhPabxDialplanExtensionConditionTime>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17701,8 +12437,8 @@ export const getTelephonyOvhPabxDialplanExtensionRule: API.OperationMethod<
   GetTelephonyOvhPabxDialplanExtensionRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxDialplanExtensionRuleRequest,
-  output: TelephonyOvhPabxDialplanExtensionRule,
+  input: __S(398) as any as S.Schema<GetTelephonyOvhPabxDialplanExtensionRuleRequest>,
+  output: __S(118) as any as S.Schema<TelephonyOvhPabxDialplanExtensionRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17716,8 +12452,8 @@ export const getTelephonyOvhPabxHunting: API.OperationMethod<
   GetTelephonyOvhPabxHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingRequest,
-  output: TelephonyOvhPabxHunting,
+  input: __S(399) as any as S.Schema<GetTelephonyOvhPabxHuntingRequest>,
+  output: __S(289) as any as S.Schema<TelephonyOvhPabxHunting>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17731,8 +12467,8 @@ export const getTelephonyOvhPabxHuntingAgent: API.OperationMethod<
   GetTelephonyOvhPabxHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentRequest,
-  output: TelephonyOvhPabxHuntingAgent,
+  input: __S(400) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentRequest>,
+  output: __S(40) as any as S.Schema<TelephonyOvhPabxHuntingAgent>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17746,8 +12482,8 @@ export const getTelephonyOvhPabxHuntingAgentBannerAccess: API.OperationMethod<
   GetTelephonyOvhPabxHuntingAgentBannerAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentBannerAccessRequest,
-  output: TelephonyBannerAccess,
+  input: __S(401) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentBannerAccessRequest>,
+  output: __S(42) as any as S.Schema<TelephonyBannerAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17761,8 +12497,8 @@ export const getTelephonyOvhPabxHuntingAgentCall: API.OperationMethod<
   GetTelephonyOvhPabxHuntingAgentCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentCallRequest,
-  output: TelephonyOvhPabxHuntingQueueLiveCalls,
+  input: __S(402) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentCallRequest>,
+  output: __S(293) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveCalls>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17776,8 +12512,8 @@ export const getTelephonyOvhPabxHuntingAgentEventToken: API.OperationMethod<
   GetTelephonyOvhPabxHuntingAgentEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentEventTokenRequest,
-  output: TelephonyEventToken,
+  input: __S(403) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentEventTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonyEventToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17791,8 +12527,8 @@ export const getTelephonyOvhPabxHuntingAgentLiveStatus: API.OperationMethod<
   GetTelephonyOvhPabxHuntingAgentLiveStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentLiveStatusRequest,
-  output: TelephonyOvhPabxHuntingAgentLiveStatus,
+  input: __S(404) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentLiveStatusRequest>,
+  output: __S(296) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17806,8 +12542,8 @@ export const getTelephonyOvhPabxHuntingAgentQueue: API.OperationMethod<
   GetTelephonyOvhPabxHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentQueueRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(405) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentQueueRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17821,8 +12557,8 @@ export const getTelephonyOvhPabxHuntingAgentQueueLiveStatus: API.OperationMethod
   GetTelephonyOvhPabxHuntingAgentQueueLiveStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest,
-  output: TelephonyOvhPabxHuntingAgentLiveStatus,
+  input: __S(406) as any as S.Schema<GetTelephonyOvhPabxHuntingAgentQueueLiveStatusRequest>,
+  output: __S(296) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17836,8 +12572,8 @@ export const getTelephonyOvhPabxHuntingCustomStatus: API.OperationMethod<
   GetTelephonyOvhPabxHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingCustomStatusRequest,
-  output: TelephonyOvhPabxCustomStatus,
+  input: __S(407) as any as S.Schema<GetTelephonyOvhPabxHuntingCustomStatusRequest>,
+  output: __S(53) as any as S.Schema<TelephonyOvhPabxCustomStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17851,8 +12587,8 @@ export const getTelephonyOvhPabxHuntingEventToken: API.OperationMethod<
   GetTelephonyOvhPabxHuntingEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingEventTokenRequest,
-  output: TelephonyEventToken,
+  input: __S(408) as any as S.Schema<GetTelephonyOvhPabxHuntingEventTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonyEventToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17866,8 +12602,8 @@ export const getTelephonyOvhPabxHuntingQueue: API.OperationMethod<
   GetTelephonyOvhPabxHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingQueueRequest,
-  output: TelephonyOvhPabxHuntingQueue,
+  input: __S(409) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueRequest>,
+  output: __S(57) as any as S.Schema<TelephonyOvhPabxHuntingQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17881,8 +12617,8 @@ export const getTelephonyOvhPabxHuntingQueueAgent: API.OperationMethod<
   GetTelephonyOvhPabxHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingQueueAgentRequest,
-  output: TelephonyOvhPabxHuntingAgentQueue,
+  input: __S(410) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueAgentRequest>,
+  output: __S(51) as any as S.Schema<TelephonyOvhPabxHuntingAgentQueue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17896,8 +12632,8 @@ export const getTelephonyOvhPabxHuntingQueueAgentLiveStatus: API.OperationMethod
   GetTelephonyOvhPabxHuntingQueueAgentLiveStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest,
-  output: TelephonyOvhPabxHuntingAgentLiveStatus,
+  input: __S(411) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueAgentLiveStatusRequest>,
+  output: __S(296) as any as S.Schema<TelephonyOvhPabxHuntingAgentLiveStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17911,8 +12647,8 @@ export const getTelephonyOvhPabxHuntingQueueLiveCall: API.OperationMethod<
   GetTelephonyOvhPabxHuntingQueueLiveCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingQueueLiveCallRequest,
-  output: TelephonyOvhPabxHuntingQueueLiveCalls,
+  input: __S(412) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueLiveCallRequest>,
+  output: __S(293) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveCalls>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17926,8 +12662,8 @@ export const getTelephonyOvhPabxHuntingQueueLiveStatistics: API.OperationMethod<
   GetTelephonyOvhPabxHuntingQueueLiveStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest,
-  output: TelephonyOvhPabxHuntingQueueLiveStatistics,
+  input: __S(413) as any as S.Schema<GetTelephonyOvhPabxHuntingQueueLiveStatisticsRequest>,
+  output: __S(306) as any as S.Schema<TelephonyOvhPabxHuntingQueueLiveStatistics>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17941,8 +12677,8 @@ export const getTelephonyOvhPabxMenu: API.OperationMethod<
   GetTelephonyOvhPabxMenuError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxMenuRequest,
-  output: TelephonyOvhPabxMenu,
+  input: __S(414) as any as S.Schema<GetTelephonyOvhPabxMenuRequest>,
+  output: __S(138) as any as S.Schema<TelephonyOvhPabxMenu>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17956,8 +12692,8 @@ export const getTelephonyOvhPabxMenuEntry: API.OperationMethod<
   GetTelephonyOvhPabxMenuEntryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxMenuEntryRequest,
-  output: TelephonyOvhPabxMenuEntry,
+  input: __S(415) as any as S.Schema<GetTelephonyOvhPabxMenuEntryRequest>,
+  output: __S(140) as any as S.Schema<TelephonyOvhPabxMenuEntry>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17971,8 +12707,8 @@ export const getTelephonyOvhPabxRecord: API.OperationMethod<
   GetTelephonyOvhPabxRecordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxRecordRequest,
-  output: TelephonyOvhPabxRecord,
+  input: __S(416) as any as S.Schema<GetTelephonyOvhPabxRecordRequest>,
+  output: __S(308) as any as S.Schema<TelephonyOvhPabxRecord>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -17986,8 +12722,8 @@ export const getTelephonyOvhPabxSound: API.OperationMethod<
   GetTelephonyOvhPabxSoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxSoundRequest,
-  output: TelephonyOvhPabxSound,
+  input: __S(417) as any as S.Schema<GetTelephonyOvhPabxSoundRequest>,
+  output: __S(313) as any as S.Schema<TelephonyOvhPabxSound>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18001,8 +12737,8 @@ export const getTelephonyOvhPabxTts: API.OperationMethod<
   GetTelephonyOvhPabxTtsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyOvhPabxTtsRequest,
-  output: TelephonyOvhPabxTts,
+  input: __S(418) as any as S.Schema<GetTelephonyOvhPabxTtsRequest>,
+  output: __S(419) as any as S.Schema<TelephonyOvhPabxTts>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18016,8 +12752,8 @@ export const getTelephonyPhonebook: API.OperationMethod<
   GetTelephonyPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPhonebookRequest,
-  output: TelephonyPhonebookMaster,
+  input: __S(420) as any as S.Schema<GetTelephonyPhonebookRequest>,
+  output: __S(421) as any as S.Schema<TelephonyPhonebookMaster>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18031,8 +12767,8 @@ export const getTelephonyPhonebookExport: API.OperationMethod<
   GetTelephonyPhonebookExportError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPhonebookExportRequest,
-  output: TelephonyPcsFile,
+  input: __S(422) as any as S.Schema<GetTelephonyPhonebookExportRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18046,8 +12782,8 @@ export const getTelephonyPhonebookPhonebookContact: API.OperationMethod<
   GetTelephonyPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPhonebookPhonebookContactRequest,
-  output: TelephonyPhonebookContact,
+  input: __S(423) as any as S.Schema<GetTelephonyPhonebookPhonebookContactRequest>,
+  output: __S(366) as any as S.Schema<TelephonyPhonebookContact>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18061,8 +12797,8 @@ export const getTelephonyPortability: API.OperationMethod<
   GetTelephonyPortabilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPortabilityRequest,
-  output: TelephonyPortability,
+  input: __S(424) as any as S.Schema<GetTelephonyPortabilityRequest>,
+  output: __S(426) as any as S.Schema<TelephonyPortability>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18076,8 +12812,8 @@ export const getTelephonyPortabilityCanBeCancelled: API.OperationMethod<
   GetTelephonyPortabilityCanBeCancelledError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPortabilityCanBeCancelledRequest,
-  output: GetTelephonyPortabilityCanBeCancelledResponse,
+  input: __S(427) as any as S.Schema<GetTelephonyPortabilityCanBeCancelledRequest>,
+  output: __S(21) as any as S.Schema<GetTelephonyPortabilityCanBeCancelledResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18091,8 +12827,8 @@ export const getTelephonyPortabilityCanBeExecuted: API.OperationMethod<
   GetTelephonyPortabilityCanBeExecutedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPortabilityCanBeExecutedRequest,
-  output: GetTelephonyPortabilityCanBeExecutedResponse,
+  input: __S(428) as any as S.Schema<GetTelephonyPortabilityCanBeExecutedRequest>,
+  output: __S(21) as any as S.Schema<GetTelephonyPortabilityCanBeExecutedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18106,8 +12842,8 @@ export const getTelephonyPortabilityDateCanBeChanged: API.OperationMethod<
   GetTelephonyPortabilityDateCanBeChangedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPortabilityDateCanBeChangedRequest,
-  output: GetTelephonyPortabilityDateCanBeChangedResponse,
+  input: __S(429) as any as S.Schema<GetTelephonyPortabilityDateCanBeChangedRequest>,
+  output: __S(21) as any as S.Schema<GetTelephonyPortabilityDateCanBeChangedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18121,8 +12857,8 @@ export const getTelephonyPortabilityDocument: API.OperationMethod<
   GetTelephonyPortabilityDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyPortabilityDocumentRequest,
-  output: TelephonyPortabilityDocument,
+  input: __S(430) as any as S.Schema<GetTelephonyPortabilityDocumentRequest>,
+  output: __S(147) as any as S.Schema<TelephonyPortabilityDocument>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18136,8 +12872,8 @@ export const getTelephonyProcedure: API.OperationMethod<
   GetTelephonyProcedureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyProcedureRequest,
-  output: TelephonyProcedure,
+  input: __S(431) as any as S.Schema<GetTelephonyProcedureRequest>,
+  output: __S(151) as any as S.Schema<TelephonyProcedure>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18151,8 +12887,8 @@ export const getTelephonyProcedureRequired: API.OperationMethod<
   GetTelephonyProcedureRequiredError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyProcedureRequiredRequest,
-  output: GetTelephonyProcedureRequiredResponse,
+  input: __S(432) as any as S.Schema<GetTelephonyProcedureRequiredRequest>,
+  output: __S(21) as any as S.Schema<GetTelephonyProcedureRequiredResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18166,8 +12902,8 @@ export const getTelephonyRedirect: API.OperationMethod<
   GetTelephonyRedirectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyRedirectRequest,
-  output: TelephonyRedirect,
+  input: __S(433) as any as S.Schema<GetTelephonyRedirectRequest>,
+  output: __S(285) as any as S.Schema<TelephonyRedirect>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18181,8 +12917,8 @@ export const getTelephonyResellerPanelStatus: API.OperationMethod<
   GetTelephonyResellerPanelStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyResellerPanelStatusRequest,
-  output: TelephonyResellerPanelStatus,
+  input: __S(434) as any as S.Schema<GetTelephonyResellerPanelStatusRequest>,
+  output: __S(435) as any as S.Schema<TelephonyResellerPanelStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18196,8 +12932,8 @@ export const getTelephonyRsva: API.OperationMethod<
   GetTelephonyRsvaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyRsvaRequest,
-  output: TelephonyRsva,
+  input: __S(436) as any as S.Schema<GetTelephonyRsvaRequest>,
+  output: __S(437) as any as S.Schema<TelephonyRsva>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18211,8 +12947,8 @@ export const getTelephonyRsvaCurrentRateCode: API.OperationMethod<
   GetTelephonyRsvaCurrentRateCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyRsvaCurrentRateCodeRequest,
-  output: TelephonyDetailedRateCodeInformation,
+  input: __S(438) as any as S.Schema<GetTelephonyRsvaCurrentRateCodeRequest>,
+  output: __S(154) as any as S.Schema<TelephonyDetailedRateCodeInformation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18226,8 +12962,8 @@ export const getTelephonyRsvaScheduledRateCode: API.OperationMethod<
   GetTelephonyRsvaScheduledRateCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyRsvaScheduledRateCodeRequest,
-  output: TelephonyDetailedRateCodeInformation,
+  input: __S(439) as any as S.Schema<GetTelephonyRsvaScheduledRateCodeRequest>,
+  output: __S(154) as any as S.Schema<TelephonyDetailedRateCodeInformation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18241,8 +12977,8 @@ export const getTelephonyScheduler: API.OperationMethod<
   GetTelephonySchedulerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySchedulerRequest,
-  output: TelephonyScheduler,
+  input: __S(440) as any as S.Schema<GetTelephonySchedulerRequest>,
+  output: __S(441) as any as S.Schema<TelephonyScheduler>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18256,8 +12992,8 @@ export const getTelephonySchedulerEvent: API.OperationMethod<
   GetTelephonySchedulerEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySchedulerEventRequest,
-  output: TelephonySchedulerEvent,
+  input: __S(442) as any as S.Schema<GetTelephonySchedulerEventRequest>,
+  output: __S(443) as any as S.Schema<TelephonySchedulerEvent>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18271,8 +13007,8 @@ export const getTelephonyScreen: API.OperationMethod<
   GetTelephonyScreenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyScreenRequest,
-  output: TelephonyScreen,
+  input: __S(444) as any as S.Schema<GetTelephonyScreenRequest>,
+  output: __S(445) as any as S.Schema<TelephonyScreen>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18286,8 +13022,8 @@ export const getTelephonyScreenScreenList: API.OperationMethod<
   GetTelephonyScreenScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyScreenScreenListRequest,
-  output: TelephonyScreenList,
+  input: __S(446) as any as S.Schema<GetTelephonyScreenScreenListRequest>,
+  output: __S(447) as any as S.Schema<TelephonyScreenList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18301,8 +13037,8 @@ export const getTelephonyService: API.OperationMethod<
   GetTelephonyServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceRequest,
-  output: TelephonyTelephonyService,
+  input: __S(448) as any as S.Schema<GetTelephonyServiceRequest>,
+  output: __S(450) as any as S.Schema<TelephonyTelephonyService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18316,8 +13052,8 @@ export const getTelephonyServiceDirectory: API.OperationMethod<
   GetTelephonyServiceDirectoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceDirectoryRequest,
-  output: TelephonyDirectoryInfo,
+  input: __S(451) as any as S.Schema<GetTelephonyServiceDirectoryRequest>,
+  output: __S(452) as any as S.Schema<TelephonyDirectoryInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18331,8 +13067,8 @@ export const getTelephonyServiceEventCallback: API.OperationMethod<
   GetTelephonyServiceEventCallbackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceEventCallbackRequest,
-  output: TelephonyEventCallback,
+  input: __S(453) as any as S.Schema<GetTelephonyServiceEventCallbackRequest>,
+  output: __S(454) as any as S.Schema<TelephonyEventCallback>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18346,8 +13082,8 @@ export const getTelephonyServiceEventToken: API.OperationMethod<
   GetTelephonyServiceEventTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceEventTokenRequest,
-  output: TelephonyEventToken,
+  input: __S(455) as any as S.Schema<GetTelephonyServiceEventTokenRequest>,
+  output: __S(102) as any as S.Schema<TelephonyEventToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18361,8 +13097,8 @@ export const getTelephonyServiceFaxConsumption: API.OperationMethod<
   GetTelephonyServiceFaxConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceFaxConsumptionRequest,
-  output: TelephonyFaxConsumption,
+  input: __S(456) as any as S.Schema<GetTelephonyServiceFaxConsumptionRequest>,
+  output: __S(457) as any as S.Schema<TelephonyFaxConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18376,8 +13112,8 @@ export const getTelephonyServiceInfos: API.OperationMethod<
   GetTelephonyServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceInfosRequest,
-  output: ServicesService,
+  input: __S(458) as any as S.Schema<GetTelephonyServiceInfosRequest>,
+  output: __S(251) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18391,8 +13127,8 @@ export const getTelephonyServiceOfferChange: API.OperationMethod<
   GetTelephonyServiceOfferChangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceOfferChangeRequest,
-  output: TelephonyOfferChange,
+  input: __S(459) as any as S.Schema<GetTelephonyServiceOfferChangeRequest>,
+  output: __S(460) as any as S.Schema<TelephonyOfferChange>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18406,8 +13142,8 @@ export const getTelephonyServiceOfferTask: API.OperationMethod<
   GetTelephonyServiceOfferTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceOfferTaskRequest,
-  output: TelephonyOfferTask,
+  input: __S(461) as any as S.Schema<GetTelephonyServiceOfferTaskRequest>,
+  output: __S(12) as any as S.Schema<TelephonyOfferTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18421,8 +13157,8 @@ export const getTelephonyServicePreviousVoiceConsumption: API.OperationMethod<
   GetTelephonyServicePreviousVoiceConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServicePreviousVoiceConsumptionRequest,
-  output: TelephonyPreviousVoiceConsumption,
+  input: __S(462) as any as S.Schema<GetTelephonyServicePreviousVoiceConsumptionRequest>,
+  output: __S(463) as any as S.Schema<TelephonyPreviousVoiceConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18436,8 +13172,8 @@ export const getTelephonyServiceRepaymentConsumption: API.OperationMethod<
   GetTelephonyServiceRepaymentConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceRepaymentConsumptionRequest,
-  output: TelephonyRepaymentConsumption,
+  input: __S(464) as any as S.Schema<GetTelephonyServiceRepaymentConsumptionRequest>,
+  output: __S(465) as any as S.Schema<TelephonyRepaymentConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18451,8 +13187,8 @@ export const getTelephonyServiceTask: API.OperationMethod<
   GetTelephonyServiceTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceTaskRequest,
-  output: TelephonyTask,
+  input: __S(466) as any as S.Schema<GetTelephonyServiceTaskRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18466,8 +13202,8 @@ export const getTelephonyServiceVoiceConsumption: API.OperationMethod<
   GetTelephonyServiceVoiceConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyServiceVoiceConsumptionRequest,
-  output: TelephonyVoiceConsumption,
+  input: __S(467) as any as S.Schema<GetTelephonyServiceVoiceConsumptionRequest>,
+  output: __S(468) as any as S.Schema<TelephonyVoiceConsumption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18481,8 +13217,8 @@ export const getTelephonySoftphoneBetaEligibility: API.OperationMethod<
   GetTelephonySoftphoneBetaEligibilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySoftphoneBetaEligibilityRequest,
-  output: TelephonySoftphoneBetaEligibility,
+  input: __S(469) as any as S.Schema<GetTelephonySoftphoneBetaEligibilityRequest>,
+  output: __S(470) as any as S.Schema<TelephonySoftphoneBetaEligibility>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18496,8 +13232,8 @@ export const getTelephonySoftphoneLogo: API.OperationMethod<
   GetTelephonySoftphoneLogoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySoftphoneLogoRequest,
-  output: TelephonySoftphoneLogo,
+  input: __S(471) as any as S.Schema<GetTelephonySoftphoneLogoRequest>,
+  output: __S(380) as any as S.Schema<TelephonySoftphoneLogo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18511,8 +13247,8 @@ export const getTelephonySoftphoneStoreLinks: API.OperationMethod<
   GetTelephonySoftphoneStoreLinksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySoftphoneStoreLinksRequest,
-  output: TelephonySoftphoneStoreLinks,
+  input: __S(472) as any as S.Schema<GetTelephonySoftphoneStoreLinksRequest>,
+  output: __S(473) as any as S.Schema<TelephonySoftphoneStoreLinks>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18526,8 +13262,8 @@ export const getTelephonySoftphoneTheme: API.OperationMethod<
   GetTelephonySoftphoneThemeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySoftphoneThemeRequest,
-  output: TelephonySoftphoneTheme,
+  input: __S(474) as any as S.Schema<GetTelephonySoftphoneThemeRequest>,
+  output: __S(384) as any as S.Schema<TelephonySoftphoneTheme>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18541,8 +13277,8 @@ export const getTelephonySoftphoneTheme2: API.OperationMethod<
   GetTelephonySoftphoneTheme2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySoftphoneThemeRequest2,
-  output: TelephonySoftphoneTheme,
+  input: __S(475) as any as S.Schema<GetTelephonySoftphoneThemeRequest2>,
+  output: __S(384) as any as S.Schema<TelephonySoftphoneTheme>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18556,8 +13292,8 @@ export const getTelephonySound: API.OperationMethod<
   GetTelephonySoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySoundRequest,
-  output: TelephonySound,
+  input: __S(476) as any as S.Schema<GetTelephonySoundRequest>,
+  output: __S(161) as any as S.Schema<TelephonySound>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18571,8 +13307,8 @@ export const getTelephonySpare: API.OperationMethod<
   GetTelephonySpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySpareRequest,
-  output: SpareTelephonyTelephonySpareWithIAM,
+  input: __S(477) as any as S.Schema<GetTelephonySpareRequest>,
+  output: __S(478) as any as S.Schema<SpareTelephonyTelephonySpareWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18586,8 +13322,8 @@ export const getTelephonySpareServiceInfos: API.OperationMethod<
   GetTelephonySpareServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonySpareServiceInfosRequest,
-  output: ServicesService,
+  input: __S(479) as any as S.Schema<GetTelephonySpareServiceInfosRequest>,
+  output: __S(251) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18601,8 +13337,8 @@ export const getTelephonyTask: API.OperationMethod<
   GetTelephonyTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTaskRequest,
-  output: TelephonyTask,
+  input: __S(480) as any as S.Schema<GetTelephonyTaskRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18616,8 +13352,8 @@ export const getTelephonyTimeCondition: API.OperationMethod<
   GetTelephonyTimeConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTimeConditionRequest,
-  output: TelephonyGenericScreen,
+  input: __S(481) as any as S.Schema<GetTelephonyTimeConditionRequest>,
+  output: __S(482) as any as S.Schema<TelephonyGenericScreen>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18631,8 +13367,8 @@ export const getTelephonyTimeConditionCondition: API.OperationMethod<
   GetTelephonyTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTimeConditionConditionRequest,
-  output: TelephonyTimeCondition,
+  input: __S(483) as any as S.Schema<GetTelephonyTimeConditionConditionRequest>,
+  output: __S(163) as any as S.Schema<TelephonyTimeCondition>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18646,8 +13382,8 @@ export const getTelephonyTimeConditionOptions: API.OperationMethod<
   GetTelephonyTimeConditionOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTimeConditionOptionsRequest,
-  output: TelephonyTimeConditionOptions,
+  input: __S(484) as any as S.Schema<GetTelephonyTimeConditionOptionsRequest>,
+  output: __S(485) as any as S.Schema<TelephonyTimeConditionOptions>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18661,8 +13397,8 @@ export const getTelephonyTrunk: API.OperationMethod<
   GetTelephonyTrunkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTrunkRequest,
-  output: TelephonyTelephonyGenericServiceWithIAM,
+  input: __S(486) as any as S.Schema<GetTelephonyTrunkRequest>,
+  output: __S(248) as any as S.Schema<TelephonyTelephonyGenericServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18676,8 +13412,8 @@ export const getTelephonyTrunkByServiceName: API.OperationMethod<
   GetTelephonyTrunkByServiceNameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTrunkByServiceNameRequest,
-  output: TelephonyTrunk,
+  input: __S(487) as any as S.Schema<GetTelephonyTrunkByServiceNameRequest>,
+  output: __S(254) as any as S.Schema<TelephonyTrunk>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18691,8 +13427,8 @@ export const getTelephonyTrunkExternalDisplayedNumber: API.OperationMethod<
   GetTelephonyTrunkExternalDisplayedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTrunkExternalDisplayedNumberRequest,
-  output: TelephonyTrunkExternalDisplayedNumber,
+  input: __S(488) as any as S.Schema<GetTelephonyTrunkExternalDisplayedNumberRequest>,
+  output: __S(166) as any as S.Schema<TelephonyTrunkExternalDisplayedNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18706,8 +13442,8 @@ export const getTelephonyTrunkServiceInfos: API.OperationMethod<
   GetTelephonyTrunkServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyTrunkServiceInfosRequest,
-  output: ServicesService,
+  input: __S(489) as any as S.Schema<GetTelephonyTrunkServiceInfosRequest>,
+  output: __S(251) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18721,8 +13457,8 @@ export const getTelephonyVoicemail: API.OperationMethod<
   GetTelephonyVoicemailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailRequest,
-  output: TelephonyVoicemail,
+  input: __S(490) as any as S.Schema<GetTelephonyVoicemailRequest>,
+  output: __S(266) as any as S.Schema<TelephonyVoicemail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18736,8 +13472,8 @@ export const getTelephonyVoicemailDirectory: API.OperationMethod<
   GetTelephonyVoicemailDirectoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailDirectoryRequest,
-  output: TelephonyVoicemailMessages,
+  input: __S(491) as any as S.Schema<GetTelephonyVoicemailDirectoryRequest>,
+  output: __S(492) as any as S.Schema<TelephonyVoicemailMessages>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18751,8 +13487,8 @@ export const getTelephonyVoicemailDirectoryDownload: API.OperationMethod<
   GetTelephonyVoicemailDirectoryDownloadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailDirectoryDownloadRequest,
-  output: TelephonyPcsFile,
+  input: __S(493) as any as S.Schema<GetTelephonyVoicemailDirectoryDownloadRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18766,8 +13502,8 @@ export const getTelephonyVoicemailGreeting: API.OperationMethod<
   GetTelephonyVoicemailGreetingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailGreetingRequest,
-  output: TelephonyVoicemailGreetings,
+  input: __S(494) as any as S.Schema<GetTelephonyVoicemailGreetingRequest>,
+  output: __S(495) as any as S.Schema<TelephonyVoicemailGreetings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18781,8 +13517,8 @@ export const getTelephonyVoicemailGreetingDownload: API.OperationMethod<
   GetTelephonyVoicemailGreetingDownloadError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailGreetingDownloadRequest,
-  output: TelephonyPcsFile,
+  input: __S(496) as any as S.Schema<GetTelephonyVoicemailGreetingDownloadRequest>,
+  output: __S(330) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18796,8 +13532,8 @@ export const getTelephonyVoicemailSettings: API.OperationMethod<
   GetTelephonyVoicemailSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailSettingsRequest,
-  output: TelephonyVoicemailProperties,
+  input: __S(497) as any as S.Schema<GetTelephonyVoicemailSettingsRequest>,
+  output: __S(500) as any as S.Schema<TelephonyVoicemailProperties>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18811,8 +13547,8 @@ export const getTelephonyVoicemailSettingsRouting: API.OperationMethod<
   GetTelephonyVoicemailSettingsRoutingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailSettingsRoutingRequest,
-  output: GetTelephonyVoicemailSettingsRoutingResponse,
+  input: __S(501) as any as S.Schema<GetTelephonyVoicemailSettingsRoutingRequest>,
+  output: __S(502) as any as S.Schema<GetTelephonyVoicemailSettingsRoutingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18826,8 +13562,8 @@ export const getTelephonyVoicemailSettingsVoicemailNumbers: API.OperationMethod<
   GetTelephonyVoicemailSettingsVoicemailNumbersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVoicemailSettingsVoicemailNumbersRequest,
-  output: TelephonyVoicemailNumbers,
+  input: __S(503) as any as S.Schema<GetTelephonyVoicemailSettingsVoicemailNumbersRequest>,
+  output: __S(504) as any as S.Schema<TelephonyVoicemailNumbers>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18841,8 +13577,8 @@ export const getTelephonyVxml: API.OperationMethod<
   GetTelephonyVxmlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVxmlRequest,
-  output: TelephonyVxml,
+  input: __S(505) as any as S.Schema<GetTelephonyVxmlRequest>,
+  output: __S(266) as any as S.Schema<TelephonyVxml>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18856,8 +13592,8 @@ export const getTelephonyVxmlSettings: API.OperationMethod<
   GetTelephonyVxmlSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelephonyVxmlSettingsRequest,
-  output: TelephonyVxmlProperties,
+  input: __S(506) as any as S.Schema<GetTelephonyVxmlSettingsRequest>,
+  output: __S(507) as any as S.Schema<TelephonyVxmlProperties>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18871,8 +13607,8 @@ export const importTelephonyLinePhonePhonebook: API.OperationMethod<
   ImportTelephonyLinePhonePhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportTelephonyLinePhonePhonebookRequest,
-  output: TelephonyTask,
+  input: __S(508) as any as S.Schema<ImportTelephonyLinePhonePhonebookRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18886,8 +13622,8 @@ export const importTelephonyPhonebook: API.OperationMethod<
   ImportTelephonyPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportTelephonyPhonebookRequest,
-  output: TelephonyTask,
+  input: __S(509) as any as S.Schema<ImportTelephonyPhonebookRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18901,8 +13637,8 @@ export const importTelephonySchedulerIcsCalendar: API.OperationMethod<
   ImportTelephonySchedulerIcsCalendarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportTelephonySchedulerIcsCalendarRequest,
-  output: TelephonyTask,
+  input: __S(510) as any as S.Schema<ImportTelephonySchedulerIcsCalendarRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18916,8 +13652,8 @@ export const listTelephony: API.OperationMethod<
   ListTelephonyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyRequest,
-  output: ListTelephonyResponse,
+  input: __S(513) as any as S.Schema<ListTelephonyRequest>,
+  output: __S(514) as any as S.Schema<ListTelephonyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18931,8 +13667,8 @@ export const listTelephonyAbbreviatedNumber: API.OperationMethod<
   ListTelephonyAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyAbbreviatedNumberRequest,
-  output: ListTelephonyAbbreviatedNumberResponse,
+  input: __S(515) as any as S.Schema<ListTelephonyAbbreviatedNumberRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyAbbreviatedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18946,8 +13682,8 @@ export const listTelephonyAccessories: API.OperationMethod<
   ListTelephonyAccessoriesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyAccessoriesRequest,
-  output: ListTelephonyAccessoriesResponse,
+  input: __S(516) as any as S.Schema<ListTelephonyAccessoriesRequest>,
+  output: __S(519) as any as S.Schema<ListTelephonyAccessoriesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18961,8 +13697,8 @@ export const listTelephonyAliases: API.OperationMethod<
   ListTelephonyAliasesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyAliasesRequest,
-  output: ListTelephonyAliasesResponse,
+  input: __S(520) as any as S.Schema<ListTelephonyAliasesRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyAliasesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18976,8 +13712,8 @@ export const listTelephonyAllowedCreditThreshold: API.OperationMethod<
   ListTelephonyAllowedCreditThresholdError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyAllowedCreditThresholdRequest,
-  output: ListTelephonyAllowedCreditThresholdResponse,
+  input: __S(522) as any as S.Schema<ListTelephonyAllowedCreditThresholdRequest>,
+  output: __S(524) as any as S.Schema<ListTelephonyAllowedCreditThresholdResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -18991,8 +13727,8 @@ export const listTelephonyAmountSecurityDeposit: API.OperationMethod<
   ListTelephonyAmountSecurityDepositError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyAmountSecurityDepositRequest,
-  output: ListTelephonyAmountSecurityDepositResponse,
+  input: __S(525) as any as S.Schema<ListTelephonyAmountSecurityDepositRequest>,
+  output: __S(524) as any as S.Schema<ListTelephonyAmountSecurityDepositResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19006,8 +13742,8 @@ export const listTelephonyAvailableDefaultSipDomains: API.OperationMethod<
   ListTelephonyAvailableDefaultSipDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyAvailableDefaultSipDomainsRequest,
-  output: ListTelephonyAvailableDefaultSipDomainsResponse,
+  input: __S(526) as any as S.Schema<ListTelephonyAvailableDefaultSipDomainsRequest>,
+  output: __S(529) as any as S.Schema<ListTelephonyAvailableDefaultSipDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19021,8 +13757,8 @@ export const listTelephonyCarrierSip: API.OperationMethod<
   ListTelephonyCarrierSipError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyCarrierSipRequest,
-  output: ListTelephonyCarrierSipResponse,
+  input: __S(530) as any as S.Schema<ListTelephonyCarrierSipRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyCarrierSipResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19036,8 +13772,8 @@ export const listTelephonyCarrierSipClusterDetails: API.OperationMethod<
   ListTelephonyCarrierSipClusterDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyCarrierSipClusterDetailsRequest,
-  output: TelephonyCarrierSipClusterInfo,
+  input: __S(531) as any as S.Schema<ListTelephonyCarrierSipClusterDetailsRequest>,
+  output: __S(534) as any as S.Schema<TelephonyCarrierSipClusterInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19051,8 +13787,8 @@ export const listTelephonyCarrierSipEndpoints: API.OperationMethod<
   ListTelephonyCarrierSipEndpointsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyCarrierSipEndpointsRequest,
-  output: ListTelephonyCarrierSipEndpointsResponse,
+  input: __S(535) as any as S.Schema<ListTelephonyCarrierSipEndpointsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyCarrierSipEndpointsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19066,8 +13802,8 @@ export const listTelephonyCarrierSipVno: API.OperationMethod<
   ListTelephonyCarrierSipVnoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyCarrierSipVnoRequest,
-  output: ListTelephonyCarrierSipVnoResponse,
+  input: __S(536) as any as S.Schema<ListTelephonyCarrierSipVnoRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyCarrierSipVnoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19081,8 +13817,8 @@ export const listTelephonyCarrierSipVnoRanges: API.OperationMethod<
   ListTelephonyCarrierSipVnoRangesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyCarrierSipVnoRangesRequest,
-  output: ListTelephonyCarrierSipVnoRangesResponse,
+  input: __S(537) as any as S.Schema<ListTelephonyCarrierSipVnoRangesRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyCarrierSipVnoRangesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19096,8 +13832,8 @@ export const listTelephonyConference: API.OperationMethod<
   ListTelephonyConferenceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceRequest,
-  output: ListTelephonyConferenceResponse,
+  input: __S(538) as any as S.Schema<ListTelephonyConferenceRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyConferenceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19111,8 +13847,8 @@ export const listTelephonyConferenceHistories: API.OperationMethod<
   ListTelephonyConferenceHistoriesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceHistoriesRequest,
-  output: ListTelephonyConferenceHistoriesResponse,
+  input: __S(539) as any as S.Schema<ListTelephonyConferenceHistoriesRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceHistoriesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19126,8 +13862,8 @@ export const listTelephonyConferenceParticipants: API.OperationMethod<
   ListTelephonyConferenceParticipantsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceParticipantsRequest,
-  output: ListTelephonyConferenceParticipantsResponse,
+  input: __S(540) as any as S.Schema<ListTelephonyConferenceParticipantsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceParticipantsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19141,8 +13877,8 @@ export const listTelephonyConferenceRoomHistories: API.OperationMethod<
   ListTelephonyConferenceRoomHistoriesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceRoomHistoriesRequest,
-  output: ListTelephonyConferenceRoomHistoriesResponse,
+  input: __S(541) as any as S.Schema<ListTelephonyConferenceRoomHistoriesRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceRoomHistoriesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19156,8 +13892,8 @@ export const listTelephonyConferenceRoomParticipants: API.OperationMethod<
   ListTelephonyConferenceRoomParticipantsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceRoomParticipantsRequest,
-  output: ListTelephonyConferenceRoomParticipantsResponse,
+  input: __S(542) as any as S.Schema<ListTelephonyConferenceRoomParticipantsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceRoomParticipantsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19171,8 +13907,8 @@ export const listTelephonyConferenceRooms: API.OperationMethod<
   ListTelephonyConferenceRoomsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceRoomsRequest,
-  output: ListTelephonyConferenceRoomsResponse,
+  input: __S(543) as any as S.Schema<ListTelephonyConferenceRoomsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceRoomsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19186,8 +13922,8 @@ export const listTelephonyConferenceRoomWebAccess: API.OperationMethod<
   ListTelephonyConferenceRoomWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceRoomWebAccessRequest,
-  output: ListTelephonyConferenceRoomWebAccessResponse,
+  input: __S(544) as any as S.Schema<ListTelephonyConferenceRoomWebAccessRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceRoomWebAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19201,8 +13937,8 @@ export const listTelephonyConferenceWebAccess: API.OperationMethod<
   ListTelephonyConferenceWebAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyConferenceWebAccessRequest,
-  output: ListTelephonyConferenceWebAccessResponse,
+  input: __S(545) as any as S.Schema<ListTelephonyConferenceWebAccessRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyConferenceWebAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19216,8 +13952,8 @@ export const listTelephonyCurrentOrderIds: API.OperationMethod<
   ListTelephonyCurrentOrderIdsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyCurrentOrderIdsRequest,
-  output: ListTelephonyCurrentOrderIdsResponse,
+  input: __S(546) as any as S.Schema<ListTelephonyCurrentOrderIdsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyCurrentOrderIdsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19231,8 +13967,8 @@ export const listTelephonyDdi: API.OperationMethod<
   ListTelephonyDdiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyDdiRequest,
-  output: ListTelephonyDdiResponse,
+  input: __S(547) as any as S.Schema<ListTelephonyDdiRequest>,
+  output: __S(514) as any as S.Schema<ListTelephonyDdiResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19246,8 +13982,8 @@ export const listTelephonyDirectoryAvailableZipCodes: API.OperationMethod<
   ListTelephonyDirectoryAvailableZipCodesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyDirectoryAvailableZipCodesRequest,
-  output: ListTelephonyDirectoryAvailableZipCodesResponse,
+  input: __S(548) as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyDirectoryAvailableZipCodesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19261,8 +13997,8 @@ export const listTelephonyDirectoryCities: API.OperationMethod<
   ListTelephonyDirectoryCitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyDirectoryCitiesRequest,
-  output: ListTelephonyDirectoryCitiesResponse,
+  input: __S(549) as any as S.Schema<ListTelephonyDirectoryCitiesRequest>,
+  output: __S(552) as any as S.Schema<ListTelephonyDirectoryCitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19276,8 +14012,8 @@ export const listTelephonyEasyHunting: API.OperationMethod<
   ListTelephonyEasyHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingRequest,
-  output: ListTelephonyEasyHuntingResponse,
+  input: __S(553) as any as S.Schema<ListTelephonyEasyHuntingRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyEasyHuntingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19291,8 +14027,8 @@ export const listTelephonyEasyHuntingHuntingAgent: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingAgentRequest,
-  output: ListTelephonyEasyHuntingHuntingAgentResponse,
+  input: __S(554) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19306,8 +14042,8 @@ export const listTelephonyEasyHuntingHuntingAgentCalls: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingAgentCallsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingAgentCallsRequest,
-  output: ListTelephonyEasyHuntingHuntingAgentCallsResponse,
+  input: __S(555) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentCallsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19321,8 +14057,8 @@ export const listTelephonyEasyHuntingHuntingAgentQueue: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingAgentQueueRequest,
-  output: ListTelephonyEasyHuntingHuntingAgentQueueResponse,
+  input: __S(556) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingAgentQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19336,8 +14072,8 @@ export const listTelephonyEasyHuntingHuntingCustomStatus: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingCustomStatusRequest,
-  output: ListTelephonyEasyHuntingHuntingCustomStatusResponse,
+  input: __S(557) as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingCustomStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19351,8 +14087,8 @@ export const listTelephonyEasyHuntingHuntingQueue: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingQueueRequest,
-  output: ListTelephonyEasyHuntingHuntingQueueResponse,
+  input: __S(558) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19366,8 +14102,8 @@ export const listTelephonyEasyHuntingHuntingQueueAgent: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingQueueAgentRequest,
-  output: ListTelephonyEasyHuntingHuntingQueueAgentResponse,
+  input: __S(559) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19381,8 +14117,8 @@ export const listTelephonyEasyHuntingHuntingQueueLiveCalls: API.OperationMethod<
   ListTelephonyEasyHuntingHuntingQueueLiveCallsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest,
-  output: ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse,
+  input: __S(560) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingHuntingQueueLiveCallsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19396,8 +14132,8 @@ export const listTelephonyEasyHuntingRecords: API.OperationMethod<
   ListTelephonyEasyHuntingRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingRecordsRequest,
-  output: ListTelephonyEasyHuntingRecordsResponse,
+  input: __S(561) as any as S.Schema<ListTelephonyEasyHuntingRecordsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19411,8 +14147,10 @@ export const listTelephonyEasyHuntingScreenListConditionConditions: API.Operatio
   ListTelephonyEasyHuntingScreenListConditionConditionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingScreenListConditionConditionsRequest,
-  output: ListTelephonyEasyHuntingScreenListConditionConditionsResponse,
+  input: __S(562) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsRequest>,
+  output: __S(
+    564,
+  ) as any as S.Schema<ListTelephonyEasyHuntingScreenListConditionConditionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19426,8 +14164,8 @@ export const listTelephonyEasyHuntingSound: API.OperationMethod<
   ListTelephonyEasyHuntingSoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingSoundRequest,
-  output: ListTelephonyEasyHuntingSoundResponse,
+  input: __S(565) as any as S.Schema<ListTelephonyEasyHuntingSoundRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyEasyHuntingSoundResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19441,8 +14179,8 @@ export const listTelephonyEasyHuntingTimeConditionConditions: API.OperationMetho
   ListTelephonyEasyHuntingTimeConditionConditionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyEasyHuntingTimeConditionConditionsRequest,
-  output: ListTelephonyEasyHuntingTimeConditionConditionsResponse,
+  input: __S(566) as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsRequest>,
+  output: __S(567) as any as S.Schema<ListTelephonyEasyHuntingTimeConditionConditionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19456,8 +14194,8 @@ export const listTelephonyFax: API.OperationMethod<
   ListTelephonyFaxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyFaxRequest,
-  output: ListTelephonyFaxResponse,
+  input: __S(568) as any as S.Schema<ListTelephonyFaxRequest>,
+  output: __S(514) as any as S.Schema<ListTelephonyFaxResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19471,8 +14209,8 @@ export const listTelephonyFaxCampaignDetail: API.OperationMethod<
   ListTelephonyFaxCampaignDetailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyFaxCampaignDetailRequest,
-  output: TelephonyFaxCampaignDetail,
+  input: __S(569) as any as S.Schema<ListTelephonyFaxCampaignDetailRequest>,
+  output: __S(570) as any as S.Schema<TelephonyFaxCampaignDetail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19486,8 +14224,8 @@ export const listTelephonyFaxCampaigns: API.OperationMethod<
   ListTelephonyFaxCampaignsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyFaxCampaignsRequest,
-  output: ListTelephonyFaxCampaignsResponse,
+  input: __S(571) as any as S.Schema<ListTelephonyFaxCampaignsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyFaxCampaignsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19501,8 +14239,8 @@ export const listTelephonyFaxOffers: API.OperationMethod<
   ListTelephonyFaxOffersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyFaxOffersRequest,
-  output: ListTelephonyFaxOffersResponse,
+  input: __S(572) as any as S.Schema<ListTelephonyFaxOffersRequest>,
+  output: __S(574) as any as S.Schema<ListTelephonyFaxOffersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19516,8 +14254,8 @@ export const listTelephonyHistoryConsumption: API.OperationMethod<
   ListTelephonyHistoryConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyHistoryConsumptionRequest,
-  output: ListTelephonyHistoryConsumptionResponse,
+  input: __S(575) as any as S.Schema<ListTelephonyHistoryConsumptionRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyHistoryConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19531,8 +14269,8 @@ export const listTelephonyHistoryRepaymentConsumption: API.OperationMethod<
   ListTelephonyHistoryRepaymentConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyHistoryRepaymentConsumptionRequest,
-  output: ListTelephonyHistoryRepaymentConsumptionResponse,
+  input: __S(576) as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyHistoryRepaymentConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19546,8 +14284,8 @@ export const listTelephonyHistoryTollfreeConsumption: API.OperationMethod<
   ListTelephonyHistoryTollfreeConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyHistoryTollfreeConsumptionRequest,
-  output: ListTelephonyHistoryTollfreeConsumptionResponse,
+  input: __S(577) as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyHistoryTollfreeConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19561,8 +14299,8 @@ export const listTelephonyLine: API.OperationMethod<
   ListTelephonyLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineRequest,
-  output: ListTelephonyLineResponse,
+  input: __S(578) as any as S.Schema<ListTelephonyLineRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLineResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19576,8 +14314,8 @@ export const listTelephonyLineAbbreviatedNumber: API.OperationMethod<
   ListTelephonyLineAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineAbbreviatedNumberRequest,
-  output: ListTelephonyLineAbbreviatedNumberResponse,
+  input: __S(579) as any as S.Schema<ListTelephonyLineAbbreviatedNumberRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyLineAbbreviatedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19591,8 +14329,8 @@ export const listTelephonyLineAntihack: API.OperationMethod<
   ListTelephonyLineAntihackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineAntihackRequest,
-  output: ListTelephonyLineAntihackResponse,
+  input: __S(580) as any as S.Schema<ListTelephonyLineAntihackRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLineAntihackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19606,8 +14344,8 @@ export const listTelephonyLineAutomaticCall: API.OperationMethod<
   ListTelephonyLineAutomaticCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineAutomaticCallRequest,
-  output: ListTelephonyLineAutomaticCallResponse,
+  input: __S(581) as any as S.Schema<ListTelephonyLineAutomaticCallRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLineAutomaticCallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19621,8 +14359,8 @@ export const listTelephonyLineAvailableSipDomains: API.OperationMethod<
   ListTelephonyLineAvailableSipDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineAvailableSipDomainsRequest,
-  output: ListTelephonyLineAvailableSipDomainsResponse,
+  input: __S(582) as any as S.Schema<ListTelephonyLineAvailableSipDomainsRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLineAvailableSipDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19636,8 +14374,8 @@ export const listTelephonyLineClick2CallUser: API.OperationMethod<
   ListTelephonyLineClick2CallUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineClick2CallUserRequest,
-  output: ListTelephonyLineClick2CallUserResponse,
+  input: __S(583) as any as S.Schema<ListTelephonyLineClick2CallUserRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyLineClick2CallUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19651,8 +14389,8 @@ export const listTelephonyLineEvents: API.OperationMethod<
   ListTelephonyLineEventsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineEventsRequest,
-  output: ListTelephonyLineEventsResponse,
+  input: __S(584) as any as S.Schema<ListTelephonyLineEventsRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLineEventsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19666,8 +14404,8 @@ export const listTelephonyLineIps: API.OperationMethod<
   ListTelephonyLineIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineIpsRequest,
-  output: ListTelephonyLineIpsResponse,
+  input: __S(585) as any as S.Schema<ListTelephonyLineIpsRequest>,
+  output: __S(588) as any as S.Schema<ListTelephonyLineIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19681,8 +14419,8 @@ export const listTelephonyLineLastRegistrations: API.OperationMethod<
   ListTelephonyLineLastRegistrationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineLastRegistrationsRequest,
-  output: ListTelephonyLineLastRegistrationsResponse,
+  input: __S(589) as any as S.Schema<ListTelephonyLineLastRegistrationsRequest>,
+  output: __S(592) as any as S.Schema<ListTelephonyLineLastRegistrationsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19696,8 +14434,8 @@ export const listTelephonyLineListAssociablePhones: API.OperationMethod<
   ListTelephonyLineListAssociablePhonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineListAssociablePhonesRequest,
-  output: ListTelephonyLineListAssociablePhonesResponse,
+  input: __S(593) as any as S.Schema<ListTelephonyLineListAssociablePhonesRequest>,
+  output: __S(598) as any as S.Schema<ListTelephonyLineListAssociablePhonesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19711,8 +14449,8 @@ export const listTelephonyLineOfferPhones: API.OperationMethod<
   ListTelephonyLineOfferPhonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineOfferPhonesRequest,
-  output: ListTelephonyLineOfferPhonesResponse,
+  input: __S(599) as any as S.Schema<ListTelephonyLineOfferPhonesRequest>,
+  output: __S(602) as any as S.Schema<ListTelephonyLineOfferPhonesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19726,8 +14464,8 @@ export const listTelephonyLineOffers: API.OperationMethod<
   ListTelephonyLineOffersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineOffersRequest,
-  output: ListTelephonyLineOffersResponse,
+  input: __S(603) as any as S.Schema<ListTelephonyLineOffersRequest>,
+  output: __S(574) as any as S.Schema<ListTelephonyLineOffersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19741,8 +14479,8 @@ export const listTelephonyLineOptionAvailableCodecs: API.OperationMethod<
   ListTelephonyLineOptionAvailableCodecsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineOptionAvailableCodecsRequest,
-  output: ListTelephonyLineOptionAvailableCodecsResponse,
+  input: __S(604) as any as S.Schema<ListTelephonyLineOptionAvailableCodecsRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLineOptionAvailableCodecsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19756,8 +14494,8 @@ export const listTelephonyLinePhoneFunctionKey: API.OperationMethod<
   ListTelephonyLinePhoneFunctionKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinePhoneFunctionKeyRequest,
-  output: ListTelephonyLinePhoneFunctionKeyResponse,
+  input: __S(605) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19771,8 +14509,8 @@ export const listTelephonyLinePhoneFunctionKeyAvailableFunction: API.OperationMe
   ListTelephonyLinePhoneFunctionKeyAvailableFunctionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest,
-  output: ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse,
+  input: __S(606) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionRequest>,
+  output: __S(608) as any as S.Schema<ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19786,8 +14524,8 @@ export const listTelephonyLinePhoneMerchandiseAvailable: API.OperationMethod<
   ListTelephonyLinePhoneMerchandiseAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinePhoneMerchandiseAvailableRequest,
-  output: ListTelephonyLinePhoneMerchandiseAvailableResponse,
+  input: __S(609) as any as S.Schema<ListTelephonyLinePhoneMerchandiseAvailableRequest>,
+  output: __S(519) as any as S.Schema<ListTelephonyLinePhoneMerchandiseAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19801,8 +14539,8 @@ export const listTelephonyLinePhonePhonebook: API.OperationMethod<
   ListTelephonyLinePhonePhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinePhonePhonebookRequest,
-  output: ListTelephonyLinePhonePhonebookResponse,
+  input: __S(610) as any as S.Schema<ListTelephonyLinePhonePhonebookRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLinePhonePhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19816,8 +14554,8 @@ export const listTelephonyLinePhonePhonebookPhonebookContact: API.OperationMetho
   ListTelephonyLinePhonePhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinePhonePhonebookPhonebookContactRequest,
-  output: ListTelephonyLinePhonePhonebookPhonebookContactResponse,
+  input: __S(611) as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactRequest>,
+  output: __S(567) as any as S.Schema<ListTelephonyLinePhonePhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19831,8 +14569,8 @@ export const listTelephonyLinePhoneRma: API.OperationMethod<
   ListTelephonyLinePhoneRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinePhoneRmaRequest,
-  output: ListTelephonyLinePhoneRmaResponse,
+  input: __S(612) as any as S.Schema<ListTelephonyLinePhoneRmaRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLinePhoneRmaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19846,8 +14584,8 @@ export const listTelephonyLineRecords: API.OperationMethod<
   ListTelephonyLineRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineRecordsRequest,
-  output: ListTelephonyLineRecordsResponse,
+  input: __S(613) as any as S.Schema<ListTelephonyLineRecordsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyLineRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19861,8 +14599,8 @@ export const listTelephonyLines: API.OperationMethod<
   ListTelephonyLinesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLinesRequest,
-  output: ListTelephonyLinesResponse,
+  input: __S(614) as any as S.Schema<ListTelephonyLinesRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyLinesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19876,8 +14614,8 @@ export const listTelephonyLineSoftphoneDevices: API.OperationMethod<
   ListTelephonyLineSoftphoneDevicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineSoftphoneDevicesRequest,
-  output: ListTelephonyLineSoftphoneDevicesResponse,
+  input: __S(615) as any as S.Schema<ListTelephonyLineSoftphoneDevicesRequest>,
+  output: __S(618) as any as S.Schema<ListTelephonyLineSoftphoneDevicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19891,8 +14629,8 @@ export const listTelephonyLineTrafficExtracts: API.OperationMethod<
   ListTelephonyLineTrafficExtractsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyLineTrafficExtractsRequest,
-  output: ListTelephonyLineTrafficExtractsResponse,
+  input: __S(619) as any as S.Schema<ListTelephonyLineTrafficExtractsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyLineTrafficExtractsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19906,8 +14644,8 @@ export const listTelephonyNumber: API.OperationMethod<
   ListTelephonyNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyNumberRequest,
-  output: ListTelephonyNumberResponse,
+  input: __S(620) as any as S.Schema<ListTelephonyNumberRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19921,8 +14659,8 @@ export const listTelephonyNumberConvertToLineAvailableOffers: API.OperationMetho
   ListTelephonyNumberConvertToLineAvailableOffersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyNumberConvertToLineAvailableOffersRequest,
-  output: TelephonyLineOffersAndContracts,
+  input: __S(621) as any as S.Schema<ListTelephonyNumberConvertToLineAvailableOffersRequest>,
+  output: __S(624) as any as S.Schema<TelephonyLineOffersAndContracts>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19936,8 +14674,8 @@ export const listTelephonyNumberDetailedZones: API.OperationMethod<
   ListTelephonyNumberDetailedZonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyNumberDetailedZonesRequest,
-  output: ListTelephonyNumberDetailedZonesResponse,
+  input: __S(625) as any as S.Schema<ListTelephonyNumberDetailedZonesRequest>,
+  output: __S(628) as any as S.Schema<ListTelephonyNumberDetailedZonesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19951,8 +14689,8 @@ export const listTelephonyNumberRanges: API.OperationMethod<
   ListTelephonyNumberRangesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyNumberRangesRequest,
-  output: ListTelephonyNumberRangesResponse,
+  input: __S(629) as any as S.Schema<ListTelephonyNumberRangesRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyNumberRangesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19966,8 +14704,8 @@ export const listTelephonyNumberSpecificNumbers: API.OperationMethod<
   ListTelephonyNumberSpecificNumbersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyNumberSpecificNumbersRequest,
-  output: ListTelephonyNumberSpecificNumbersResponse,
+  input: __S(630) as any as S.Schema<ListTelephonyNumberSpecificNumbersRequest>,
+  output: __S(633) as any as S.Schema<ListTelephonyNumberSpecificNumbersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19981,8 +14719,8 @@ export const listTelephonyNumberZones: API.OperationMethod<
   ListTelephonyNumberZonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyNumberZonesRequest,
-  output: ListTelephonyNumberZonesResponse,
+  input: __S(634) as any as S.Schema<ListTelephonyNumberZonesRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyNumberZonesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -19996,8 +14734,8 @@ export const listTelephonyOfferTask: API.OperationMethod<
   ListTelephonyOfferTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOfferTaskRequest,
-  output: ListTelephonyOfferTaskResponse,
+  input: __S(635) as any as S.Schema<ListTelephonyOfferTaskRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOfferTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20011,8 +14749,8 @@ export const listTelephonyOldPhone: API.OperationMethod<
   ListTelephonyOldPhoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOldPhoneRequest,
-  output: ListTelephonyOldPhoneResponse,
+  input: __S(636) as any as S.Schema<ListTelephonyOldPhoneRequest>,
+  output: __S(639) as any as S.Schema<ListTelephonyOldPhoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20026,8 +14764,8 @@ export const listTelephonyOutplanNotification: API.OperationMethod<
   ListTelephonyOutplanNotificationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOutplanNotificationRequest,
-  output: ListTelephonyOutplanNotificationResponse,
+  input: __S(640) as any as S.Schema<ListTelephonyOutplanNotificationRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOutplanNotificationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20041,8 +14779,8 @@ export const listTelephonyOvhPabx: API.OperationMethod<
   ListTelephonyOvhPabxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxRequest,
-  output: ListTelephonyOvhPabxResponse,
+  input: __S(641) as any as S.Schema<ListTelephonyOvhPabxRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyOvhPabxResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20056,8 +14794,8 @@ export const listTelephonyOvhPabxDialplan: API.OperationMethod<
   ListTelephonyOvhPabxDialplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxDialplanRequest,
-  output: ListTelephonyOvhPabxDialplanResponse,
+  input: __S(642) as any as S.Schema<ListTelephonyOvhPabxDialplanRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxDialplanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20071,8 +14809,8 @@ export const listTelephonyOvhPabxDialplanExtension: API.OperationMethod<
   ListTelephonyOvhPabxDialplanExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxDialplanExtensionRequest,
-  output: ListTelephonyOvhPabxDialplanExtensionResponse,
+  input: __S(643) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20086,8 +14824,12 @@ export const listTelephonyOvhPabxDialplanExtensionConditionScreenList: API.Opera
   ListTelephonyOvhPabxDialplanExtensionConditionScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest,
-  output: ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse,
+  input: __S(
+    644,
+  ) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest>,
+  output: __S(
+    645,
+  ) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20101,8 +14843,8 @@ export const listTelephonyOvhPabxDialplanExtensionConditionTime: API.OperationMe
   ListTelephonyOvhPabxDialplanExtensionConditionTimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest,
-  output: ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse,
+  input: __S(646) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest>,
+  output: __S(647) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20116,8 +14858,8 @@ export const listTelephonyOvhPabxDialplanExtensionRule: API.OperationMethod<
   ListTelephonyOvhPabxDialplanExtensionRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxDialplanExtensionRuleRequest,
-  output: ListTelephonyOvhPabxDialplanExtensionRuleResponse,
+  input: __S(648) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxDialplanExtensionRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20131,8 +14873,8 @@ export const listTelephonyOvhPabxHuntingAgent: API.OperationMethod<
   ListTelephonyOvhPabxHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingAgentRequest,
-  output: ListTelephonyOvhPabxHuntingAgentResponse,
+  input: __S(649) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20146,8 +14888,8 @@ export const listTelephonyOvhPabxHuntingAgentCalls: API.OperationMethod<
   ListTelephonyOvhPabxHuntingAgentCallsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingAgentCallsRequest,
-  output: ListTelephonyOvhPabxHuntingAgentCallsResponse,
+  input: __S(650) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentCallsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20161,8 +14903,8 @@ export const listTelephonyOvhPabxHuntingAgentQueue: API.OperationMethod<
   ListTelephonyOvhPabxHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingAgentQueueRequest,
-  output: ListTelephonyOvhPabxHuntingAgentQueueResponse,
+  input: __S(651) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingAgentQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20176,8 +14918,8 @@ export const listTelephonyOvhPabxHuntingCustomStatus: API.OperationMethod<
   ListTelephonyOvhPabxHuntingCustomStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingCustomStatusRequest,
-  output: ListTelephonyOvhPabxHuntingCustomStatusResponse,
+  input: __S(652) as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingCustomStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20191,8 +14933,8 @@ export const listTelephonyOvhPabxHuntingQueue: API.OperationMethod<
   ListTelephonyOvhPabxHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingQueueRequest,
-  output: ListTelephonyOvhPabxHuntingQueueResponse,
+  input: __S(653) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20206,8 +14948,8 @@ export const listTelephonyOvhPabxHuntingQueueAgent: API.OperationMethod<
   ListTelephonyOvhPabxHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingQueueAgentRequest,
-  output: ListTelephonyOvhPabxHuntingQueueAgentResponse,
+  input: __S(654) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20221,8 +14963,8 @@ export const listTelephonyOvhPabxHuntingQueueLiveCalls: API.OperationMethod<
   ListTelephonyOvhPabxHuntingQueueLiveCallsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxHuntingQueueLiveCallsRequest,
-  output: ListTelephonyOvhPabxHuntingQueueLiveCallsResponse,
+  input: __S(655) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxHuntingQueueLiveCallsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20236,8 +14978,8 @@ export const listTelephonyOvhPabxMenu: API.OperationMethod<
   ListTelephonyOvhPabxMenuError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxMenuRequest,
-  output: ListTelephonyOvhPabxMenuResponse,
+  input: __S(656) as any as S.Schema<ListTelephonyOvhPabxMenuRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxMenuResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20251,8 +14993,8 @@ export const listTelephonyOvhPabxMenuEntry: API.OperationMethod<
   ListTelephonyOvhPabxMenuEntryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxMenuEntryRequest,
-  output: ListTelephonyOvhPabxMenuEntryResponse,
+  input: __S(657) as any as S.Schema<ListTelephonyOvhPabxMenuEntryRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxMenuEntryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20266,8 +15008,8 @@ export const listTelephonyOvhPabxRecords: API.OperationMethod<
   ListTelephonyOvhPabxRecordsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxRecordsRequest,
-  output: ListTelephonyOvhPabxRecordsResponse,
+  input: __S(658) as any as S.Schema<ListTelephonyOvhPabxRecordsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxRecordsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20281,8 +15023,8 @@ export const listTelephonyOvhPabxSound: API.OperationMethod<
   ListTelephonyOvhPabxSoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxSoundRequest,
-  output: ListTelephonyOvhPabxSoundResponse,
+  input: __S(659) as any as S.Schema<ListTelephonyOvhPabxSoundRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxSoundResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20296,8 +15038,8 @@ export const listTelephonyOvhPabxTts: API.OperationMethod<
   ListTelephonyOvhPabxTtsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyOvhPabxTtsRequest,
-  output: ListTelephonyOvhPabxTtsResponse,
+  input: __S(660) as any as S.Schema<ListTelephonyOvhPabxTtsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyOvhPabxTtsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20311,8 +15053,8 @@ export const listTelephonyPhonebook: API.OperationMethod<
   ListTelephonyPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyPhonebookRequest,
-  output: ListTelephonyPhonebookResponse,
+  input: __S(661) as any as S.Schema<ListTelephonyPhonebookRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20326,8 +15068,8 @@ export const listTelephonyPhonebookPhonebookContact: API.OperationMethod<
   ListTelephonyPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyPhonebookPhonebookContactRequest,
-  output: ListTelephonyPhonebookPhonebookContactResponse,
+  input: __S(662) as any as S.Schema<ListTelephonyPhonebookPhonebookContactRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20341,8 +15083,8 @@ export const listTelephonyPortability: API.OperationMethod<
   ListTelephonyPortabilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyPortabilityRequest,
-  output: ListTelephonyPortabilityResponse,
+  input: __S(663) as any as S.Schema<ListTelephonyPortabilityRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyPortabilityResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20356,8 +15098,8 @@ export const listTelephonyPortabilityDocument: API.OperationMethod<
   ListTelephonyPortabilityDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyPortabilityDocumentRequest,
-  output: ListTelephonyPortabilityDocumentResponse,
+  input: __S(664) as any as S.Schema<ListTelephonyPortabilityDocumentRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyPortabilityDocumentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20371,8 +15113,8 @@ export const listTelephonyPortabilityRelaunch: API.OperationMethod<
   ListTelephonyPortabilityRelaunchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyPortabilityRelaunchRequest,
-  output: TelephonyPortabilityFixErrorPossibleParameters,
+  input: __S(665) as any as S.Schema<ListTelephonyPortabilityRelaunchRequest>,
+  output: __S(666) as any as S.Schema<TelephonyPortabilityFixErrorPossibleParameters>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20386,8 +15128,8 @@ export const listTelephonyPortabilityStatus: API.OperationMethod<
   ListTelephonyPortabilityStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyPortabilityStatusRequest,
-  output: ListTelephonyPortabilityStatusResponse,
+  input: __S(667) as any as S.Schema<ListTelephonyPortabilityStatusRequest>,
+  output: __S(672) as any as S.Schema<ListTelephonyPortabilityStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20401,8 +15143,8 @@ export const listTelephonyProcedure: API.OperationMethod<
   ListTelephonyProcedureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyProcedureRequest,
-  output: ListTelephonyProcedureResponse,
+  input: __S(673) as any as S.Schema<ListTelephonyProcedureRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyProcedureResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20416,8 +15158,8 @@ export const listTelephonyRedirect: API.OperationMethod<
   ListTelephonyRedirectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyRedirectRequest,
-  output: ListTelephonyRedirectResponse,
+  input: __S(674) as any as S.Schema<ListTelephonyRedirectRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyRedirectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20431,8 +15173,8 @@ export const listTelephonyRsva: API.OperationMethod<
   ListTelephonyRsvaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyRsvaRequest,
-  output: ListTelephonyRsvaResponse,
+  input: __S(675) as any as S.Schema<ListTelephonyRsvaRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyRsvaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20446,8 +15188,8 @@ export const listTelephonyRsvaAllowedRateCodes: API.OperationMethod<
   ListTelephonyRsvaAllowedRateCodesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyRsvaAllowedRateCodesRequest,
-  output: ListTelephonyRsvaAllowedRateCodesResponse,
+  input: __S(676) as any as S.Schema<ListTelephonyRsvaAllowedRateCodesRequest>,
+  output: __S(679) as any as S.Schema<ListTelephonyRsvaAllowedRateCodesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20461,8 +15203,8 @@ export const listTelephonyScheduler: API.OperationMethod<
   ListTelephonySchedulerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySchedulerRequest,
-  output: ListTelephonySchedulerResponse,
+  input: __S(680) as any as S.Schema<ListTelephonySchedulerRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonySchedulerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20476,8 +15218,8 @@ export const listTelephonySchedulerEvents: API.OperationMethod<
   ListTelephonySchedulerEventsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySchedulerEventsRequest,
-  output: ListTelephonySchedulerEventsResponse,
+  input: __S(681) as any as S.Schema<ListTelephonySchedulerEventsRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonySchedulerEventsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20491,8 +15233,8 @@ export const listTelephonyScreen: API.OperationMethod<
   ListTelephonyScreenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyScreenRequest,
-  output: ListTelephonyScreenResponse,
+  input: __S(682) as any as S.Schema<ListTelephonyScreenRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyScreenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20506,8 +15248,8 @@ export const listTelephonyScreenScreenLists: API.OperationMethod<
   ListTelephonyScreenScreenListsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyScreenScreenListsRequest,
-  output: ListTelephonyScreenScreenListsResponse,
+  input: __S(683) as any as S.Schema<ListTelephonyScreenScreenListsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyScreenScreenListsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20521,8 +15263,8 @@ export const listTelephonySearchServices: API.OperationMethod<
   ListTelephonySearchServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySearchServicesRequest,
-  output: ListTelephonySearchServicesResponse,
+  input: __S(684) as any as S.Schema<ListTelephonySearchServicesRequest>,
+  output: __S(687) as any as S.Schema<ListTelephonySearchServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20536,8 +15278,8 @@ export const listTelephonyService: API.OperationMethod<
   ListTelephonyServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceRequest,
-  output: ListTelephonyServiceResponse,
+  input: __S(688) as any as S.Schema<ListTelephonyServiceRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20551,8 +15293,8 @@ export const listTelephonyServiceDirectoryGetDirectoryServiceCode: API.Operation
   ListTelephonyServiceDirectoryGetDirectoryServiceCodeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest,
-  output: ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse,
+  input: __S(689) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeRequest>,
+  output: __S(692) as any as S.Schema<ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20566,8 +15308,8 @@ export const listTelephonyServiceDirectoryGetWayTypes: API.OperationMethod<
   ListTelephonyServiceDirectoryGetWayTypesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceDirectoryGetWayTypesRequest,
-  output: ListTelephonyServiceDirectoryGetWayTypesResponse,
+  input: __S(693) as any as S.Schema<ListTelephonyServiceDirectoryGetWayTypesRequest>,
+  output: __S(696) as any as S.Schema<ListTelephonyServiceDirectoryGetWayTypesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20581,8 +15323,8 @@ export const listTelephonyServiceFaxConsumption: API.OperationMethod<
   ListTelephonyServiceFaxConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceFaxConsumptionRequest,
-  output: ListTelephonyServiceFaxConsumptionResponse,
+  input: __S(697) as any as S.Schema<ListTelephonyServiceFaxConsumptionRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyServiceFaxConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20596,8 +15338,8 @@ export const listTelephonyServiceOfferChanges: API.OperationMethod<
   ListTelephonyServiceOfferChangesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceOfferChangesRequest,
-  output: ListTelephonyServiceOfferChangesResponse,
+  input: __S(698) as any as S.Schema<ListTelephonyServiceOfferChangesRequest>,
+  output: __S(574) as any as S.Schema<ListTelephonyServiceOfferChangesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20611,8 +15353,8 @@ export const listTelephonyServiceOfferTask: API.OperationMethod<
   ListTelephonyServiceOfferTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceOfferTaskRequest,
-  output: ListTelephonyServiceOfferTaskResponse,
+  input: __S(699) as any as S.Schema<ListTelephonyServiceOfferTaskRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyServiceOfferTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20626,8 +15368,8 @@ export const listTelephonyServicePreviousVoiceConsumption: API.OperationMethod<
   ListTelephonyServicePreviousVoiceConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServicePreviousVoiceConsumptionRequest,
-  output: ListTelephonyServicePreviousVoiceConsumptionResponse,
+  input: __S(700) as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyServicePreviousVoiceConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20641,8 +15383,8 @@ export const listTelephonyServiceRepaymentConsumption: API.OperationMethod<
   ListTelephonyServiceRepaymentConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceRepaymentConsumptionRequest,
-  output: ListTelephonyServiceRepaymentConsumptionResponse,
+  input: __S(701) as any as S.Schema<ListTelephonyServiceRepaymentConsumptionRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyServiceRepaymentConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20656,8 +15398,8 @@ export const listTelephonyServiceTask: API.OperationMethod<
   ListTelephonyServiceTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceTaskRequest,
-  output: ListTelephonyServiceTaskResponse,
+  input: __S(702) as any as S.Schema<ListTelephonyServiceTaskRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyServiceTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20671,8 +15413,8 @@ export const listTelephonyServiceVoiceConsumption: API.OperationMethod<
   ListTelephonyServiceVoiceConsumptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyServiceVoiceConsumptionRequest,
-  output: ListTelephonyServiceVoiceConsumptionResponse,
+  input: __S(703) as any as S.Schema<ListTelephonyServiceVoiceConsumptionRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyServiceVoiceConsumptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20686,8 +15428,8 @@ export const listTelephonySoftphoneThemes: API.OperationMethod<
   ListTelephonySoftphoneThemesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySoftphoneThemesRequest,
-  output: ListTelephonySoftphoneThemesResponse,
+  input: __S(704) as any as S.Schema<ListTelephonySoftphoneThemesRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonySoftphoneThemesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20701,8 +15443,8 @@ export const listTelephonySounds: API.OperationMethod<
   ListTelephonySoundsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySoundsRequest,
-  output: ListTelephonySoundsResponse,
+  input: __S(705) as any as S.Schema<ListTelephonySoundsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonySoundsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20716,8 +15458,8 @@ export const listTelephonySpare: API.OperationMethod<
   ListTelephonySpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySpareRequest,
-  output: ListTelephonySpareResponse,
+  input: __S(706) as any as S.Schema<ListTelephonySpareRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonySpareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20731,8 +15473,8 @@ export const listTelephonySpareBrands: API.OperationMethod<
   ListTelephonySpareBrandsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySpareBrandsRequest,
-  output: ListTelephonySpareBrandsResponse,
+  input: __S(707) as any as S.Schema<ListTelephonySpareBrandsRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonySpareBrandsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20746,8 +15488,8 @@ export const listTelephonySpareCompatibleReplacement: API.OperationMethod<
   ListTelephonySpareCompatibleReplacementError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonySpareCompatibleReplacementRequest,
-  output: ListTelephonySpareCompatibleReplacementResponse,
+  input: __S(708) as any as S.Schema<ListTelephonySpareCompatibleReplacementRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonySpareCompatibleReplacementResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20761,8 +15503,8 @@ export const listTelephonyTask: API.OperationMethod<
   ListTelephonyTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTaskRequest,
-  output: ListTelephonyTaskResponse,
+  input: __S(709) as any as S.Schema<ListTelephonyTaskRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20776,8 +15518,8 @@ export const listTelephonyTimeCondition: API.OperationMethod<
   ListTelephonyTimeConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTimeConditionRequest,
-  output: ListTelephonyTimeConditionResponse,
+  input: __S(710) as any as S.Schema<ListTelephonyTimeConditionRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyTimeConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20791,8 +15533,8 @@ export const listTelephonyTimeConditionCondition: API.OperationMethod<
   ListTelephonyTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTimeConditionConditionRequest,
-  output: ListTelephonyTimeConditionConditionResponse,
+  input: __S(711) as any as S.Schema<ListTelephonyTimeConditionConditionRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyTimeConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20806,8 +15548,8 @@ export const listTelephonyTrunk: API.OperationMethod<
   ListTelephonyTrunkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTrunkRequest,
-  output: ListTelephonyTrunkResponse,
+  input: __S(712) as any as S.Schema<ListTelephonyTrunkRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyTrunkResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20821,8 +15563,8 @@ export const listTelephonyTrunkChannelsPacksRepartition: API.OperationMethod<
   ListTelephonyTrunkChannelsPacksRepartitionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTrunkChannelsPacksRepartitionRequest,
-  output: TelephonyTrunkSimultaneousPacksRepartition,
+  input: __S(713) as any as S.Schema<ListTelephonyTrunkChannelsPacksRepartitionRequest>,
+  output: __S(716) as any as S.Schema<TelephonyTrunkSimultaneousPacksRepartition>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20836,8 +15578,8 @@ export const listTelephonyTrunkExternalDisplayedNumber: API.OperationMethod<
   ListTelephonyTrunkExternalDisplayedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTrunkExternalDisplayedNumberRequest,
-  output: ListTelephonyTrunkExternalDisplayedNumberResponse,
+  input: __S(717) as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyTrunkExternalDisplayedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20851,8 +15593,8 @@ export const listTelephonyTrunks: API.OperationMethod<
   ListTelephonyTrunksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyTrunksRequest,
-  output: ListTelephonyTrunksResponse,
+  input: __S(718) as any as S.Schema<ListTelephonyTrunksRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyTrunksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20866,8 +15608,8 @@ export const listTelephonyVoicemail: API.OperationMethod<
   ListTelephonyVoicemailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyVoicemailRequest,
-  output: ListTelephonyVoicemailResponse,
+  input: __S(719) as any as S.Schema<ListTelephonyVoicemailRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyVoicemailResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20881,8 +15623,8 @@ export const listTelephonyVoicemailDirectories: API.OperationMethod<
   ListTelephonyVoicemailDirectoriesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyVoicemailDirectoriesRequest,
-  output: ListTelephonyVoicemailDirectoriesResponse,
+  input: __S(720) as any as S.Schema<ListTelephonyVoicemailDirectoriesRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyVoicemailDirectoriesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20896,8 +15638,8 @@ export const listTelephonyVoicemailGreetings: API.OperationMethod<
   ListTelephonyVoicemailGreetingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyVoicemailGreetingsRequest,
-  output: ListTelephonyVoicemailGreetingsResponse,
+  input: __S(721) as any as S.Schema<ListTelephonyVoicemailGreetingsRequest>,
+  output: __S(18) as any as S.Schema<ListTelephonyVoicemailGreetingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20911,8 +15653,8 @@ export const listTelephonyVxml: API.OperationMethod<
   ListTelephonyVxmlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTelephonyVxmlRequest,
-  output: ListTelephonyVxmlResponse,
+  input: __S(722) as any as S.Schema<ListTelephonyVxmlRequest>,
+  output: __S(521) as any as S.Schema<ListTelephonyVxmlResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20926,8 +15668,8 @@ export const lockTelephonyConference: API.OperationMethod<
   LockTelephonyConferenceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LockTelephonyConferenceRequest,
-  output: TelephonyTask,
+  input: __S(723) as any as S.Schema<LockTelephonyConferenceRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20941,8 +15683,8 @@ export const lockTelephonyConferenceRoom: API.OperationMethod<
   LockTelephonyConferenceRoomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LockTelephonyConferenceRoomRequest,
-  output: TelephonyTask,
+  input: __S(724) as any as S.Schema<LockTelephonyConferenceRoomRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20956,8 +15698,8 @@ export const migrateTelephonyVoicemailOnNewVersion: API.OperationMethod<
   MigrateTelephonyVoicemailOnNewVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MigrateTelephonyVoicemailOnNewVersionRequest,
-  output: MigrateTelephonyVoicemailOnNewVersionResponse,
+  input: __S(725) as any as S.Schema<MigrateTelephonyVoicemailOnNewVersionRequest>,
+  output: __S(1) as any as S.Schema<MigrateTelephonyVoicemailOnNewVersionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20971,8 +15713,8 @@ export const moveTelephonyVoicemailDirectory: API.OperationMethod<
   MoveTelephonyVoicemailDirectoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveTelephonyVoicemailDirectoryRequest,
-  output: MoveTelephonyVoicemailDirectoryResponse,
+  input: __S(726) as any as S.Schema<MoveTelephonyVoicemailDirectoryRequest>,
+  output: __S(1) as any as S.Schema<MoveTelephonyVoicemailDirectoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -20986,8 +15728,8 @@ export const moveTelephonyVoicemailGreeting: API.OperationMethod<
   MoveTelephonyVoicemailGreetingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveTelephonyVoicemailGreetingRequest,
-  output: MoveTelephonyVoicemailGreetingResponse,
+  input: __S(727) as any as S.Schema<MoveTelephonyVoicemailGreetingRequest>,
+  output: __S(1) as any as S.Schema<MoveTelephonyVoicemailGreetingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21001,8 +15743,8 @@ export const muteTelephonyConferenceParticipant: API.OperationMethod<
   MuteTelephonyConferenceParticipantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MuteTelephonyConferenceParticipantRequest,
-  output: TelephonyTask,
+  input: __S(728) as any as S.Schema<MuteTelephonyConferenceParticipantRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21016,8 +15758,8 @@ export const muteTelephonyConferenceRoomsParticipant: API.OperationMethod<
   MuteTelephonyConferenceRoomsParticipantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MuteTelephonyConferenceRoomsParticipantRequest,
-  output: TelephonyTask,
+  input: __S(729) as any as S.Schema<MuteTelephonyConferenceRoomsParticipantRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21031,8 +15773,8 @@ export const putTelephony: API.OperationMethod<
   PutTelephonyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyRequest,
-  output: PutTelephonyResponse,
+  input: __S(730) as any as S.Schema<PutTelephonyRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21046,8 +15788,8 @@ export const putTelephonyAbbreviatedNumber: API.OperationMethod<
   PutTelephonyAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyAbbreviatedNumberRequest,
-  output: PutTelephonyAbbreviatedNumberResponse,
+  input: __S(731) as any as S.Schema<PutTelephonyAbbreviatedNumberRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyAbbreviatedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21061,8 +15803,8 @@ export const putTelephonyAliasServiceInfos: API.OperationMethod<
   PutTelephonyAliasServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyAliasServiceInfosRequest,
-  output: PutTelephonyAliasServiceInfosResponse,
+  input: __S(732) as any as S.Schema<PutTelephonyAliasServiceInfosRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyAliasServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21076,8 +15818,8 @@ export const putTelephonyCarrierSipSettings: API.OperationMethod<
   PutTelephonyCarrierSipSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyCarrierSipSettingsRequest,
-  output: PutTelephonyCarrierSipSettingsResponse,
+  input: __S(733) as any as S.Schema<PutTelephonyCarrierSipSettingsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyCarrierSipSettingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21091,8 +15833,8 @@ export const putTelephonyCarrierSipVnoRange: API.OperationMethod<
   PutTelephonyCarrierSipVnoRangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyCarrierSipVnoRangeRequest,
-  output: PutTelephonyCarrierSipVnoRangeResponse,
+  input: __S(734) as any as S.Schema<PutTelephonyCarrierSipVnoRangeRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyCarrierSipVnoRangeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21106,8 +15848,8 @@ export const putTelephonyConferenceRoom: API.OperationMethod<
   PutTelephonyConferenceRoomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyConferenceRoomRequest,
-  output: PutTelephonyConferenceRoomResponse,
+  input: __S(735) as any as S.Schema<PutTelephonyConferenceRoomRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyConferenceRoomResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21121,8 +15863,8 @@ export const putTelephonyConferenceSettings: API.OperationMethod<
   PutTelephonyConferenceSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyConferenceSettingsRequest,
-  output: PutTelephonyConferenceSettingsResponse,
+  input: __S(736) as any as S.Schema<PutTelephonyConferenceSettingsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyConferenceSettingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21136,8 +15878,8 @@ export const putTelephonyDdi: API.OperationMethod<
   PutTelephonyDdiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyDdiRequest,
-  output: PutTelephonyDdiResponse,
+  input: __S(737) as any as S.Schema<PutTelephonyDdiRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyDdiResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21151,8 +15893,8 @@ export const putTelephonyEasyHunting: API.OperationMethod<
   PutTelephonyEasyHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingRequest,
-  output: PutTelephonyEasyHuntingResponse,
+  input: __S(738) as any as S.Schema<PutTelephonyEasyHuntingRequest>,
+  output: __S(739) as any as S.Schema<PutTelephonyEasyHuntingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21166,8 +15908,8 @@ export const putTelephonyEasyHuntingHunting: API.OperationMethod<
   PutTelephonyEasyHuntingHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingHuntingRequest,
-  output: PutTelephonyEasyHuntingHuntingResponse,
+  input: __S(740) as any as S.Schema<PutTelephonyEasyHuntingHuntingRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingHuntingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21181,8 +15923,8 @@ export const putTelephonyEasyHuntingHuntingAgent: API.OperationMethod<
   PutTelephonyEasyHuntingHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingHuntingAgentRequest,
-  output: PutTelephonyEasyHuntingHuntingAgentResponse,
+  input: __S(741) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21196,8 +15938,8 @@ export const putTelephonyEasyHuntingHuntingAgentQueue: API.OperationMethod<
   PutTelephonyEasyHuntingHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingHuntingAgentQueueRequest,
-  output: PutTelephonyEasyHuntingHuntingAgentQueueResponse,
+  input: __S(742) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentQueueRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingHuntingAgentQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21211,8 +15953,8 @@ export const putTelephonyEasyHuntingHuntingQueue: API.OperationMethod<
   PutTelephonyEasyHuntingHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingHuntingQueueRequest,
-  output: PutTelephonyEasyHuntingHuntingQueueResponse,
+  input: __S(743) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21226,8 +15968,8 @@ export const putTelephonyEasyHuntingHuntingQueueAgent: API.OperationMethod<
   PutTelephonyEasyHuntingHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingHuntingQueueAgentRequest,
-  output: PutTelephonyEasyHuntingHuntingQueueAgentResponse,
+  input: __S(744) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueAgentRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingHuntingQueueAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21241,8 +15983,8 @@ export const putTelephonyEasyHuntingScreenListConditionCondition: API.OperationM
   PutTelephonyEasyHuntingScreenListConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingScreenListConditionConditionRequest,
-  output: PutTelephonyEasyHuntingScreenListConditionConditionResponse,
+  input: __S(745) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionConditionRequest>,
+  output: __S(94) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21256,8 +15998,8 @@ export const putTelephonyEasyHuntingScreenListConditions: API.OperationMethod<
   PutTelephonyEasyHuntingScreenListConditionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingScreenListConditionsRequest,
-  output: PutTelephonyEasyHuntingScreenListConditionsResponse,
+  input: __S(746) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingScreenListConditionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21271,8 +16013,8 @@ export const putTelephonyEasyHuntingTimeConditionCondition: API.OperationMethod<
   PutTelephonyEasyHuntingTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingTimeConditionConditionRequest,
-  output: PutTelephonyEasyHuntingTimeConditionConditionResponse,
+  input: __S(747) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionConditionRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21286,8 +16028,8 @@ export const putTelephonyEasyHuntingTimeConditions: API.OperationMethod<
   PutTelephonyEasyHuntingTimeConditionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyEasyHuntingTimeConditionsRequest,
-  output: PutTelephonyEasyHuntingTimeConditionsResponse,
+  input: __S(748) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyEasyHuntingTimeConditionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21301,8 +16043,8 @@ export const putTelephonyFax: API.OperationMethod<
   PutTelephonyFaxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyFaxRequest,
-  output: PutTelephonyFaxResponse,
+  input: __S(749) as any as S.Schema<PutTelephonyFaxRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyFaxResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21316,8 +16058,8 @@ export const putTelephonyFaxScreenLists: API.OperationMethod<
   PutTelephonyFaxScreenListsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyFaxScreenListsRequest,
-  output: PutTelephonyFaxScreenListsResponse,
+  input: __S(750) as any as S.Schema<PutTelephonyFaxScreenListsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyFaxScreenListsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21331,8 +16073,8 @@ export const putTelephonyFaxSettings: API.OperationMethod<
   PutTelephonyFaxSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyFaxSettingsRequest,
-  output: PutTelephonyFaxSettingsResponse,
+  input: __S(751) as any as S.Schema<PutTelephonyFaxSettingsRequest>,
+  output: __S(739) as any as S.Schema<PutTelephonyFaxSettingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21346,8 +16088,8 @@ export const putTelephonyLine: API.OperationMethod<
   PutTelephonyLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineRequest,
-  output: PutTelephonyLineResponse,
+  input: __S(752) as any as S.Schema<PutTelephonyLineRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyLineResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21361,8 +16103,8 @@ export const putTelephonyLineAbbreviatedNumber: API.OperationMethod<
   PutTelephonyLineAbbreviatedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineAbbreviatedNumberRequest,
-  output: PutTelephonyLineAbbreviatedNumberResponse,
+  input: __S(753) as any as S.Schema<PutTelephonyLineAbbreviatedNumberRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyLineAbbreviatedNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21376,8 +16118,8 @@ export const putTelephonyLineOptions: API.OperationMethod<
   PutTelephonyLineOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineOptionsRequest,
-  output: PutTelephonyLineOptionsResponse,
+  input: __S(754) as any as S.Schema<PutTelephonyLineOptionsRequest>,
+  output: __S(739) as any as S.Schema<PutTelephonyLineOptionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21391,8 +16133,8 @@ export const putTelephonyLinePhone: API.OperationMethod<
   PutTelephonyLinePhoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLinePhoneRequest,
-  output: PutTelephonyLinePhoneResponse,
+  input: __S(755) as any as S.Schema<PutTelephonyLinePhoneRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyLinePhoneResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21406,8 +16148,8 @@ export const putTelephonyLinePhoneFunctionKey: API.OperationMethod<
   PutTelephonyLinePhoneFunctionKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLinePhoneFunctionKeyRequest,
-  output: PutTelephonyLinePhoneFunctionKeyResponse,
+  input: __S(756) as any as S.Schema<PutTelephonyLinePhoneFunctionKeyRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyLinePhoneFunctionKeyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21421,8 +16163,8 @@ export const putTelephonyLinePhonePhonebook: API.OperationMethod<
   PutTelephonyLinePhonePhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLinePhonePhonebookRequest,
-  output: PutTelephonyLinePhonePhonebookResponse,
+  input: __S(757) as any as S.Schema<PutTelephonyLinePhonePhonebookRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyLinePhonePhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21436,8 +16178,8 @@ export const putTelephonyLinePhonePhonebookPhonebookContact: API.OperationMethod
   PutTelephonyLinePhonePhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLinePhonePhonebookPhonebookContactRequest,
-  output: PutTelephonyLinePhonePhonebookPhonebookContactResponse,
+  input: __S(758) as any as S.Schema<PutTelephonyLinePhonePhonebookPhonebookContactRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyLinePhonePhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21451,8 +16193,8 @@ export const putTelephonyLinePhoneRma: API.OperationMethod<
   PutTelephonyLinePhoneRmaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLinePhoneRmaRequest,
-  output: PutTelephonyLinePhoneRmaResponse,
+  input: __S(759) as any as S.Schema<PutTelephonyLinePhoneRmaRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyLinePhoneRmaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21466,8 +16208,8 @@ export const putTelephonyLineServiceInfos: API.OperationMethod<
   PutTelephonyLineServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineServiceInfosRequest,
-  output: PutTelephonyLineServiceInfosResponse,
+  input: __S(760) as any as S.Schema<PutTelephonyLineServiceInfosRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyLineServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21481,8 +16223,8 @@ export const putTelephonyLineSoftphoneBeta: API.OperationMethod<
   PutTelephonyLineSoftphoneBetaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineSoftphoneBetaRequest,
-  output: TelephonySoftphoneBetaStatus,
+  input: __S(761) as any as S.Schema<PutTelephonyLineSoftphoneBetaRequest>,
+  output: __S(378) as any as S.Schema<TelephonySoftphoneBetaStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21496,8 +16238,8 @@ export const putTelephonyLineSoftphoneLogo: API.OperationMethod<
   PutTelephonyLineSoftphoneLogoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineSoftphoneLogoRequest,
-  output: TelephonySoftphoneLogo,
+  input: __S(762) as any as S.Schema<PutTelephonyLineSoftphoneLogoRequest>,
+  output: __S(380) as any as S.Schema<TelephonySoftphoneLogo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21511,8 +16253,8 @@ export const putTelephonyLineSoftphoneTheme: API.OperationMethod<
   PutTelephonyLineSoftphoneThemeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineSoftphoneThemeRequest,
-  output: TelephonySoftphoneTheme,
+  input: __S(763) as any as S.Schema<PutTelephonyLineSoftphoneThemeRequest>,
+  output: __S(384) as any as S.Schema<TelephonySoftphoneTheme>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21526,8 +16268,8 @@ export const putTelephonyLineTones: API.OperationMethod<
   PutTelephonyLineTonesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyLineTonesRequest,
-  output: PutTelephonyLineTonesResponse,
+  input: __S(764) as any as S.Schema<PutTelephonyLineTonesRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyLineTonesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21541,8 +16283,8 @@ export const putTelephonyNumber: API.OperationMethod<
   PutTelephonyNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyNumberRequest,
-  output: PutTelephonyNumberResponse,
+  input: __S(765) as any as S.Schema<PutTelephonyNumberRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyNumberResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21556,8 +16298,8 @@ export const putTelephonyOfferTask: API.OperationMethod<
   PutTelephonyOfferTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOfferTaskRequest,
-  output: PutTelephonyOfferTaskResponse,
+  input: __S(766) as any as S.Schema<PutTelephonyOfferTaskRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyOfferTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21571,8 +16313,8 @@ export const putTelephonyOvhPabx: API.OperationMethod<
   PutTelephonyOvhPabxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxRequest,
-  output: PutTelephonyOvhPabxResponse,
+  input: __S(767) as any as S.Schema<PutTelephonyOvhPabxRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyOvhPabxResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21586,8 +16328,8 @@ export const putTelephonyOvhPabxDialplan: API.OperationMethod<
   PutTelephonyOvhPabxDialplanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxDialplanRequest,
-  output: PutTelephonyOvhPabxDialplanResponse,
+  input: __S(768) as any as S.Schema<PutTelephonyOvhPabxDialplanRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxDialplanResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21601,8 +16343,8 @@ export const putTelephonyOvhPabxDialplanExtension: API.OperationMethod<
   PutTelephonyOvhPabxDialplanExtensionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxDialplanExtensionRequest,
-  output: PutTelephonyOvhPabxDialplanExtensionResponse,
+  input: __S(769) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21616,8 +16358,8 @@ export const putTelephonyOvhPabxDialplanExtensionConditionTime: API.OperationMet
   PutTelephonyOvhPabxDialplanExtensionConditionTimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest,
-  output: PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse,
+  input: __S(770) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionConditionTimeRequest>,
+  output: __S(94) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionConditionTimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21631,8 +16373,8 @@ export const putTelephonyOvhPabxDialplanExtensionRule: API.OperationMethod<
   PutTelephonyOvhPabxDialplanExtensionRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxDialplanExtensionRuleRequest,
-  output: PutTelephonyOvhPabxDialplanExtensionRuleResponse,
+  input: __S(771) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRuleRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxDialplanExtensionRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21646,8 +16388,8 @@ export const putTelephonyOvhPabxHunting: API.OperationMethod<
   PutTelephonyOvhPabxHuntingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxHuntingRequest,
-  output: PutTelephonyOvhPabxHuntingResponse,
+  input: __S(772) as any as S.Schema<PutTelephonyOvhPabxHuntingRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxHuntingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21661,8 +16403,8 @@ export const putTelephonyOvhPabxHuntingAgent: API.OperationMethod<
   PutTelephonyOvhPabxHuntingAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxHuntingAgentRequest,
-  output: PutTelephonyOvhPabxHuntingAgentResponse,
+  input: __S(773) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21676,8 +16418,8 @@ export const putTelephonyOvhPabxHuntingAgentQueue: API.OperationMethod<
   PutTelephonyOvhPabxHuntingAgentQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxHuntingAgentQueueRequest,
-  output: PutTelephonyOvhPabxHuntingAgentQueueResponse,
+  input: __S(774) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentQueueRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxHuntingAgentQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21691,8 +16433,8 @@ export const putTelephonyOvhPabxHuntingQueue: API.OperationMethod<
   PutTelephonyOvhPabxHuntingQueueError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxHuntingQueueRequest,
-  output: PutTelephonyOvhPabxHuntingQueueResponse,
+  input: __S(775) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21706,8 +16448,8 @@ export const putTelephonyOvhPabxHuntingQueueAgent: API.OperationMethod<
   PutTelephonyOvhPabxHuntingQueueAgentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxHuntingQueueAgentRequest,
-  output: PutTelephonyOvhPabxHuntingQueueAgentResponse,
+  input: __S(776) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueAgentRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxHuntingQueueAgentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21721,8 +16463,8 @@ export const putTelephonyOvhPabxMenu: API.OperationMethod<
   PutTelephonyOvhPabxMenuError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxMenuRequest,
-  output: PutTelephonyOvhPabxMenuResponse,
+  input: __S(777) as any as S.Schema<PutTelephonyOvhPabxMenuRequest>,
+  output: __S(739) as any as S.Schema<PutTelephonyOvhPabxMenuResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21736,8 +16478,8 @@ export const putTelephonyOvhPabxMenuEntry: API.OperationMethod<
   PutTelephonyOvhPabxMenuEntryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxMenuEntryRequest,
-  output: PutTelephonyOvhPabxMenuEntryResponse,
+  input: __S(778) as any as S.Schema<PutTelephonyOvhPabxMenuEntryRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyOvhPabxMenuEntryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21751,8 +16493,8 @@ export const putTelephonyOvhPabxTts: API.OperationMethod<
   PutTelephonyOvhPabxTtsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyOvhPabxTtsRequest,
-  output: PutTelephonyOvhPabxTtsResponse,
+  input: __S(779) as any as S.Schema<PutTelephonyOvhPabxTtsRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyOvhPabxTtsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21766,8 +16508,8 @@ export const putTelephonyPhonebook: API.OperationMethod<
   PutTelephonyPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyPhonebookRequest,
-  output: PutTelephonyPhonebookResponse,
+  input: __S(780) as any as S.Schema<PutTelephonyPhonebookRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21781,8 +16523,8 @@ export const putTelephonyPhonebookPhonebookContact: API.OperationMethod<
   PutTelephonyPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyPhonebookPhonebookContactRequest,
-  output: PutTelephonyPhonebookPhonebookContactResponse,
+  input: __S(781) as any as S.Schema<PutTelephonyPhonebookPhonebookContactRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21796,8 +16538,8 @@ export const putTelephonyPortabilityDocument: API.OperationMethod<
   PutTelephonyPortabilityDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyPortabilityDocumentRequest,
-  output: PutTelephonyPortabilityDocumentResponse,
+  input: __S(782) as any as S.Schema<PutTelephonyPortabilityDocumentRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyPortabilityDocumentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21811,8 +16553,8 @@ export const putTelephonyRedirect: API.OperationMethod<
   PutTelephonyRedirectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyRedirectRequest,
-  output: PutTelephonyRedirectResponse,
+  input: __S(783) as any as S.Schema<PutTelephonyRedirectRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyRedirectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21826,8 +16568,8 @@ export const putTelephonyRsva: API.OperationMethod<
   PutTelephonyRsvaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyRsvaRequest,
-  output: PutTelephonyRsvaResponse,
+  input: __S(784) as any as S.Schema<PutTelephonyRsvaRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyRsvaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21841,8 +16583,8 @@ export const putTelephonyScheduler: API.OperationMethod<
   PutTelephonySchedulerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonySchedulerRequest,
-  output: PutTelephonySchedulerResponse,
+  input: __S(785) as any as S.Schema<PutTelephonySchedulerRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonySchedulerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21856,8 +16598,8 @@ export const putTelephonySchedulerEvent: API.OperationMethod<
   PutTelephonySchedulerEventError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonySchedulerEventRequest,
-  output: PutTelephonySchedulerEventResponse,
+  input: __S(786) as any as S.Schema<PutTelephonySchedulerEventRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonySchedulerEventResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21871,8 +16613,8 @@ export const putTelephonyScreen: API.OperationMethod<
   PutTelephonyScreenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyScreenRequest,
-  output: PutTelephonyScreenResponse,
+  input: __S(787) as any as S.Schema<PutTelephonyScreenRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyScreenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21886,8 +16628,8 @@ export const putTelephonyService: API.OperationMethod<
   PutTelephonyServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyServiceRequest,
-  output: PutTelephonyServiceResponse,
+  input: __S(788) as any as S.Schema<PutTelephonyServiceRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21901,8 +16643,8 @@ export const putTelephonyServiceDirectory: API.OperationMethod<
   PutTelephonyServiceDirectoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyServiceDirectoryRequest,
-  output: PutTelephonyServiceDirectoryResponse,
+  input: __S(789) as any as S.Schema<PutTelephonyServiceDirectoryRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyServiceDirectoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21916,8 +16658,8 @@ export const putTelephonyServiceEventCallback: API.OperationMethod<
   PutTelephonyServiceEventCallbackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyServiceEventCallbackRequest,
-  output: PutTelephonyServiceEventCallbackResponse,
+  input: __S(790) as any as S.Schema<PutTelephonyServiceEventCallbackRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyServiceEventCallbackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21931,8 +16673,8 @@ export const putTelephonyServiceInfos: API.OperationMethod<
   PutTelephonyServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyServiceInfosRequest,
-  output: PutTelephonyServiceInfosResponse,
+  input: __S(791) as any as S.Schema<PutTelephonyServiceInfosRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21946,8 +16688,8 @@ export const putTelephonyServiceOfferTask: API.OperationMethod<
   PutTelephonyServiceOfferTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyServiceOfferTaskRequest,
-  output: PutTelephonyServiceOfferTaskResponse,
+  input: __S(792) as any as S.Schema<PutTelephonyServiceOfferTaskRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyServiceOfferTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21961,8 +16703,8 @@ export const putTelephonySoftphoneLogo: API.OperationMethod<
   PutTelephonySoftphoneLogoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonySoftphoneLogoRequest,
-  output: TelephonySoftphoneLogo,
+  input: __S(793) as any as S.Schema<PutTelephonySoftphoneLogoRequest>,
+  output: __S(380) as any as S.Schema<TelephonySoftphoneLogo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21976,8 +16718,8 @@ export const putTelephonySoftphoneTheme: API.OperationMethod<
   PutTelephonySoftphoneThemeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonySoftphoneThemeRequest,
-  output: TelephonySoftphoneTheme,
+  input: __S(794) as any as S.Schema<PutTelephonySoftphoneThemeRequest>,
+  output: __S(384) as any as S.Schema<TelephonySoftphoneTheme>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -21991,8 +16733,8 @@ export const putTelephonySound: API.OperationMethod<
   PutTelephonySoundError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonySoundRequest,
-  output: PutTelephonySoundResponse,
+  input: __S(795) as any as S.Schema<PutTelephonySoundRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonySoundResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22006,8 +16748,8 @@ export const putTelephonySpareServiceInfos: API.OperationMethod<
   PutTelephonySpareServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonySpareServiceInfosRequest,
-  output: PutTelephonySpareServiceInfosResponse,
+  input: __S(796) as any as S.Schema<PutTelephonySpareServiceInfosRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonySpareServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22021,8 +16763,8 @@ export const putTelephonyTimeConditionCondition: API.OperationMethod<
   PutTelephonyTimeConditionConditionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyTimeConditionConditionRequest,
-  output: PutTelephonyTimeConditionConditionResponse,
+  input: __S(797) as any as S.Schema<PutTelephonyTimeConditionConditionRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyTimeConditionConditionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22036,8 +16778,8 @@ export const putTelephonyTimeConditionOptions: API.OperationMethod<
   PutTelephonyTimeConditionOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyTimeConditionOptionsRequest,
-  output: PutTelephonyTimeConditionOptionsResponse,
+  input: __S(798) as any as S.Schema<PutTelephonyTimeConditionOptionsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyTimeConditionOptionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22051,8 +16793,8 @@ export const putTelephonyTrunkServiceInfos: API.OperationMethod<
   PutTelephonyTrunkServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyTrunkServiceInfosRequest,
-  output: PutTelephonyTrunkServiceInfosResponse,
+  input: __S(799) as any as S.Schema<PutTelephonyTrunkServiceInfosRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyTrunkServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22066,8 +16808,8 @@ export const putTelephonyVoicemail: API.OperationMethod<
   PutTelephonyVoicemailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyVoicemailRequest,
-  output: PutTelephonyVoicemailResponse,
+  input: __S(800) as any as S.Schema<PutTelephonyVoicemailRequest>,
+  output: __S(3) as any as S.Schema<PutTelephonyVoicemailResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22081,8 +16823,8 @@ export const putTelephonyVoicemailSettings: API.OperationMethod<
   PutTelephonyVoicemailSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyVoicemailSettingsRequest,
-  output: PutTelephonyVoicemailSettingsResponse,
+  input: __S(801) as any as S.Schema<PutTelephonyVoicemailSettingsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyVoicemailSettingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22096,8 +16838,8 @@ export const putTelephonyVxmlSettings: API.OperationMethod<
   PutTelephonyVxmlSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTelephonyVxmlSettingsRequest,
-  output: PutTelephonyVxmlSettingsResponse,
+  input: __S(802) as any as S.Schema<PutTelephonyVxmlSettingsRequest>,
+  output: __S(1) as any as S.Schema<PutTelephonyVxmlSettingsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22111,8 +16853,8 @@ export const rebootTelephonyLinePhone: API.OperationMethod<
   RebootTelephonyLinePhoneError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootTelephonyLinePhoneRequest,
-  output: TelephonyTask,
+  input: __S(803) as any as S.Schema<RebootTelephonyLinePhoneRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22126,8 +16868,8 @@ export const refreshTelephonyLinePhoneScreen: API.OperationMethod<
   RefreshTelephonyLinePhoneScreenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshTelephonyLinePhoneScreenRequest,
-  output: TelephonyTask,
+  input: __S(804) as any as S.Schema<RefreshTelephonyLinePhoneScreenRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22141,8 +16883,8 @@ export const regenerateTelephonyLineSoftphoneBetaToken: API.OperationMethod<
   RegenerateTelephonyLineSoftphoneBetaTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateTelephonyLineSoftphoneBetaTokenRequest,
-  output: RegenerateTelephonyLineSoftphoneBetaTokenResponse,
+  input: __S(805) as any as S.Schema<RegenerateTelephonyLineSoftphoneBetaTokenRequest>,
+  output: __S(1) as any as S.Schema<RegenerateTelephonyLineSoftphoneBetaTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22156,8 +16898,8 @@ export const removeTelephonyLineSimultaneousLines: API.OperationMethod<
   RemoveTelephonyLineSimultaneousLinesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveTelephonyLineSimultaneousLinesRequest,
-  output: RemoveTelephonyLineSimultaneousLinesResponse,
+  input: __S(806) as any as S.Schema<RemoveTelephonyLineSimultaneousLinesRequest>,
+  output: __S(1) as any as S.Schema<RemoveTelephonyLineSimultaneousLinesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22171,8 +16913,8 @@ export const replaceTelephonySpare: API.OperationMethod<
   ReplaceTelephonySpareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceTelephonySpareRequest,
-  output: ReplaceTelephonySpareResponse,
+  input: __S(807) as any as S.Schema<ReplaceTelephonySpareRequest>,
+  output: __S(3) as any as S.Schema<ReplaceTelephonySpareResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22186,8 +16928,8 @@ export const resetTelephonyFaxScreenList: API.OperationMethod<
   ResetTelephonyFaxScreenListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetTelephonyFaxScreenListRequest,
-  output: ResetTelephonyFaxScreenListResponse,
+  input: __S(808) as any as S.Schema<ResetTelephonyFaxScreenListRequest>,
+  output: __S(1) as any as S.Schema<ResetTelephonyFaxScreenListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22201,8 +16943,8 @@ export const resetTelephonyLinePhoneConfig: API.OperationMethod<
   ResetTelephonyLinePhoneConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetTelephonyLinePhoneConfigRequest,
-  output: TelephonyResetPhoneInfo,
+  input: __S(809) as any as S.Schema<ResetTelephonyLinePhoneConfigRequest>,
+  output: __S(811) as any as S.Schema<TelephonyResetPhoneInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22216,8 +16958,8 @@ export const sendTelephonyFaxSettingsFax: API.OperationMethod<
   SendTelephonyFaxSettingsFaxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendTelephonyFaxSettingsFaxRequest,
-  output: TelephonyTask,
+  input: __S(812) as any as S.Schema<SendTelephonyFaxSettingsFaxRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22231,8 +16973,8 @@ export const setTelephonyDefaultSipDomain: API.OperationMethod<
   SetTelephonyDefaultSipDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetTelephonyDefaultSipDomainRequest,
-  output: SetTelephonyDefaultSipDomainResponse,
+  input: __S(813) as any as S.Schema<SetTelephonyDefaultSipDomainRequest>,
+  output: __S(1) as any as S.Schema<SetTelephonyDefaultSipDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22246,8 +16988,8 @@ export const startTelephonyFaxCampaign: API.OperationMethod<
   StartTelephonyFaxCampaignError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartTelephonyFaxCampaignRequest,
-  output: StartTelephonyFaxCampaignResponse,
+  input: __S(814) as any as S.Schema<StartTelephonyFaxCampaignRequest>,
+  output: __S(1) as any as S.Schema<StartTelephonyFaxCampaignResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22261,8 +17003,8 @@ export const stopTelephonyFaxCampaign: API.OperationMethod<
   StopTelephonyFaxCampaignError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopTelephonyFaxCampaignRequest,
-  output: StopTelephonyFaxCampaignResponse,
+  input: __S(815) as any as S.Schema<StopTelephonyFaxCampaignRequest>,
+  output: __S(1) as any as S.Schema<StopTelephonyFaxCampaignResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22276,8 +17018,8 @@ export const transferTelephonyEasyHuntingHuntingAgentCall: API.OperationMethod<
   TransferTelephonyEasyHuntingHuntingAgentCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferTelephonyEasyHuntingHuntingAgentCallRequest,
-  output: TelephonyTask,
+  input: __S(816) as any as S.Schema<TransferTelephonyEasyHuntingHuntingAgentCallRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22291,8 +17033,8 @@ export const transferTelephonyEasyHuntingHuntingQueueLiveCall: API.OperationMeth
   TransferTelephonyEasyHuntingHuntingQueueLiveCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest,
-  output: TelephonyTask,
+  input: __S(817) as any as S.Schema<TransferTelephonyEasyHuntingHuntingQueueLiveCallRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22306,8 +17048,8 @@ export const transferTelephonyOvhPabxHuntingAgentCall: API.OperationMethod<
   TransferTelephonyOvhPabxHuntingAgentCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferTelephonyOvhPabxHuntingAgentCallRequest,
-  output: TelephonyTask,
+  input: __S(818) as any as S.Schema<TransferTelephonyOvhPabxHuntingAgentCallRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22321,8 +17063,8 @@ export const transferTelephonyOvhPabxHuntingQueueLiveCall: API.OperationMethod<
   TransferTelephonyOvhPabxHuntingQueueLiveCallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferTelephonyOvhPabxHuntingQueueLiveCallRequest,
-  output: TelephonyTask,
+  input: __S(819) as any as S.Schema<TransferTelephonyOvhPabxHuntingQueueLiveCallRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22336,8 +17078,8 @@ export const transferTelephonySecurityDeposit: API.OperationMethod<
   TransferTelephonySecurityDepositError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferTelephonySecurityDepositRequest,
-  output: TransferTelephonySecurityDepositResponse,
+  input: __S(820) as any as S.Schema<TransferTelephonySecurityDepositRequest>,
+  output: __S(1) as any as S.Schema<TransferTelephonySecurityDepositResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22351,8 +17093,8 @@ export const unblockTelephonyLine: API.OperationMethod<
   UnblockTelephonyLineError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnblockTelephonyLineRequest,
-  output: UnblockTelephonyLineResponse,
+  input: __S(821) as any as S.Schema<UnblockTelephonyLineRequest>,
+  output: __S(3) as any as S.Schema<UnblockTelephonyLineResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22366,8 +17108,8 @@ export const unlockTelephonyConference: API.OperationMethod<
   UnlockTelephonyConferenceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockTelephonyConferenceRequest,
-  output: TelephonyTask,
+  input: __S(822) as any as S.Schema<UnlockTelephonyConferenceRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22381,8 +17123,8 @@ export const unlockTelephonyConferenceRoom: API.OperationMethod<
   UnlockTelephonyConferenceRoomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockTelephonyConferenceRoomRequest,
-  output: TelephonyTask,
+  input: __S(823) as any as S.Schema<UnlockTelephonyConferenceRoomRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22396,8 +17138,8 @@ export const unmuteTelephonyConferenceParticipant: API.OperationMethod<
   UnmuteTelephonyConferenceParticipantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnmuteTelephonyConferenceParticipantRequest,
-  output: TelephonyTask,
+  input: __S(824) as any as S.Schema<UnmuteTelephonyConferenceParticipantRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22411,8 +17153,8 @@ export const unmuteTelephonyConferenceRoomsParticipant: API.OperationMethod<
   UnmuteTelephonyConferenceRoomsParticipantError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnmuteTelephonyConferenceRoomsParticipantRequest,
-  output: TelephonyTask,
+  input: __S(825) as any as S.Schema<UnmuteTelephonyConferenceRoomsParticipantRequest>,
+  output: __S(24) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22426,8 +17168,8 @@ export const validateTelephonyTrunkExternalDisplayedNumber: API.OperationMethod<
   ValidateTelephonyTrunkExternalDisplayedNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateTelephonyTrunkExternalDisplayedNumberRequest,
-  output: TelephonyTrunkExternalDisplayedNumberValidation,
+  input: __S(826) as any as S.Schema<ValidateTelephonyTrunkExternalDisplayedNumberRequest>,
+  output: __S(827) as any as S.Schema<TelephonyTrunkExternalDisplayedNumberValidation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -22460,7 +17202,7 @@ function __c0(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          mode: S.optional(TelephonyLineBlockingMode),
+          mode: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -22595,11 +17337,11 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(TelephonyOfferTaskActionEnum),
+          action: S.optional(S.String),
           executionDate: S.optional(S.String),
-          status: S.optional(TelephonyTaskStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.Number),
-          type: S.optional(TelephonyOfferTaskTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyOfferTask" });
     case 5:
@@ -22671,9 +17413,7 @@ function __c2(j: number): any {
     case 1:
       return S.Array(S.Number);
     case 2:
-      return S.suspend(() =>
-        CreateTelephonyAliasChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(17).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateTelephonyAliasChangeContactResponse",
       });
     case 3:
@@ -22750,7 +17490,7 @@ function __c3(j: number): any {
           message: S.optional(S.NullOr(S.String)),
           objectCreated: S.optional(S.NullOr(S.String)),
           serviceType: S.optional(S.String),
-          status: S.optional(TelephonyTaskStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TelephonyTask" });
@@ -22845,11 +17585,11 @@ function __c3(j: number): any {
           enterMuted: S.optional(S.Boolean),
           eventsChannel: S.optional(S.String),
           expirationDate: S.optional(S.NullOr(S.String)),
-          language: S.optional(TelephonyConferenceLanguageEnum),
+          language: S.optional(S.String),
           pin: S.optional(S.String),
           recordStatus: S.optional(S.Boolean),
           reportEmail: S.optional(S.NullOr(S.String)),
-          reportStatus: S.optional(TelephonyConferenceReportStatusEnum),
+          reportStatus: S.optional(S.String),
           roomNumber: S.optional(S.Number),
           whiteLabelReport: S.optional(S.Boolean),
         }),
@@ -22933,7 +17673,7 @@ function __c4(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           roomNumber: S.Number.pipe(T.Label()),
-          type: TelephonyConferenceWebAccessTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -22948,7 +17688,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          type: S.optional(TelephonyConferenceWebAccessTypeEnum),
+          type: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -22959,7 +17699,7 @@ function __c4(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          type: TelephonyConferenceWebAccessTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -22994,7 +17734,7 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           number: S.String,
           simultaneousLines: S.Number,
-          status: TelephonyOvhPabxHuntingAgentStatusEnum,
+          status: S.String,
           timeout: S.Number,
           wrapUpTime: S.Number,
         }).pipe(
@@ -23019,9 +17759,9 @@ function __c5(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
           simultaneousLines: S.optional(S.Number),
-          status: S.optional(TelephonyOvhPabxHuntingAgentStatusEnum),
+          status: S.optional(S.String),
           timeout: S.optional(S.Number),
-          type: S.optional(TelephonyOvhPabxHuntingAgentTypeEnum),
+          type: S.optional(S.String),
           wrapUpTime: S.optional(S.Number),
         }),
       ).annotate({
@@ -23129,7 +17869,7 @@ function __c5(j: number): any {
           agentId: S.Number.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           number: S.String,
-          whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+          whisperingMode: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23150,7 +17890,7 @@ function __c6(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           agentId: S.Number.pipe(T.Label()),
-          expiration: TelephonyTokenExpirationEnum,
+          expiration: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23227,7 +17967,7 @@ function __c6(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          expiration: TelephonyTokenExpirationEnum,
+          expiration: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23251,21 +17991,19 @@ function __c7(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          actionOnClosure: S.optional(TelephonyOvhPabxQueueActionEnum),
+          actionOnClosure: S.optional(S.String),
           actionOnClosureParam: S.optional(S.String),
-          actionOnOverflow: S.optional(TelephonyOvhPabxQueueActionEnum),
+          actionOnOverflow: S.optional(S.String),
           actionOnOverflowParam: S.optional(S.String),
           askForRecordDisabling: S.optional(S.Boolean),
           description: S.optional(S.String),
           maxMember: S.optional(S.Number),
           maxWaitTime: S.optional(S.Number),
           record: S.optional(S.Boolean),
-          recordDisablingDigit: S.optional(TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum),
-          recordDisablingLanguage: S.optional(
-            TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum,
-          ),
+          recordDisablingDigit: S.optional(S.Number),
+          recordDisablingLanguage: S.optional(S.String),
           soundOnHold: S.optional(S.Number),
-          strategy: TelephonyOvhPabxHuntingQueueStrategyEnum,
+          strategy: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23279,26 +18017,22 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actionOnClosure: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
+          actionOnClosure: S.optional(S.NullOr(S.String)),
           actionOnClosureParam: S.optional(S.NullOr(S.String)),
-          actionOnOverflow: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
+          actionOnOverflow: S.optional(S.NullOr(S.String)),
           actionOnOverflowParam: S.optional(S.NullOr(S.String)),
           askForRecordDisabling: S.optional(S.NullOr(S.Boolean)),
-          confirmKey: S.optional(S.NullOr(TelephonyOvhPabxIvrMenuKeyEnum)),
+          confirmKey: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           followCallForwards: S.optional(S.NullOr(S.Boolean)),
           maxMember: S.optional(S.Number),
           maxWaitTime: S.optional(S.Number),
           queueId: S.optional(S.Number),
           record: S.optional(S.NullOr(S.Boolean)),
-          recordDisablingDigit: S.optional(
-            S.NullOr(TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum),
-          ),
-          recordDisablingLanguage: S.optional(
-            S.NullOr(TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum),
-          ),
+          recordDisablingDigit: S.optional(S.NullOr(S.Number)),
+          recordDisablingLanguage: S.optional(S.NullOr(S.String)),
           soundOnHold: S.optional(S.NullOr(S.Number)),
-          strategy: S.optional(TelephonyOvhPabxHuntingQueueStrategyEnum),
+          strategy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyOvhPabxHuntingQueue",
@@ -23398,7 +18132,7 @@ function __c7(j: number): any {
           queueId: S.Number.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           number: S.String,
-          whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+          whisperingMode: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23420,7 +18154,7 @@ function __c8(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           callerIdNumber: S.optional(S.String),
           destinationNumber: S.optional(S.String),
-          screenListType: TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum,
+          screenListType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23437,7 +18171,7 @@ function __c8(j: number): any {
           callerIdNumber: S.optional(S.NullOr(S.String)),
           conditionId: S.optional(S.Number),
           destinationNumber: S.optional(S.NullOr(S.String)),
-          screenListType: S.optional(TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum),
+          screenListType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyEasyHuntingScreenListsConditions",
@@ -23465,10 +18199,10 @@ function __c8(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          policy: TelephonyTimeConditionsPolicyEnum,
+          policy: S.String,
           timeFrom: S.String,
           timeTo: S.String,
-          weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum,
+          weekDay: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23483,10 +18217,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           conditionId: S.optional(S.Number),
-          policy: S.optional(TelephonyTimeConditionsPolicyEnum),
+          policy: S.optional(S.String),
           timeFrom: S.optional(S.String),
           timeTo: S.optional(S.String),
-          weekDay: S.optional(TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum),
+          weekDay: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyEasyHuntingTimeConditions",
@@ -23495,7 +18229,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
-          expiration: TelephonyTokenExpirationEnum,
+          expiration: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/telephony/{billingAccount}/eventToken", code: 200 }),
         ),
@@ -23510,13 +18244,13 @@ function __c8(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           documentId: S.String,
-          faxQuality: S.optional(TelephonyFaxQualityEnum),
+          faxQuality: S.optional(S.String),
           name: S.String,
           recipientsDocId: S.optional(S.String),
-          recipientsList: S.optional(CreateTelephonyFaxCampaignRequestRecipientsListList),
-          recipientsType: TelephonyFaxCampaignRecipientsTypeEnum,
+          recipientsList: S.optional(__S(70)),
+          recipientsType: S.String,
           sendDate: S.optional(S.String),
-          sendType: TelephonyFaxCampaignSendTypeEnum,
+          sendType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23550,11 +18284,11 @@ function __c9(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          blacklistedNumbers: S.optional(CreateTelephonyFaxScreenListRequestBlacklistedNumbersList),
-          blacklistedTSI: S.optional(CreateTelephonyFaxScreenListRequestBlacklistedTSIList),
-          filteringList: S.optional(TelephonyFaxScreenListTypeEnum),
-          whitelistedNumbers: S.optional(CreateTelephonyFaxScreenListRequestWhitelistedNumbersList),
-          whitelistedTSI: S.optional(CreateTelephonyFaxScreenListRequestWhitelistedTSIList),
+          blacklistedNumbers: S.optional(__S(70)),
+          blacklistedTSI: S.optional(__S(70)),
+          filteringList: S.optional(S.String),
+          whitelistedNumbers: S.optional(__S(70)),
+          whitelistedTSI: S.optional(__S(70)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23568,14 +18302,14 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          blacklistedNumbers: S.optional(S.NullOr(TelephonyFaxScreenBlacklistedNumbersList)),
-          blacklistedTSI: S.optional(S.NullOr(TelephonyFaxScreenBlacklistedTSIList)),
+          blacklistedNumbers: S.optional(S.NullOr(__S(70))),
+          blacklistedTSI: S.optional(S.NullOr(__S(70))),
           callNumber: S.optional(S.String),
           countryCode: S.optional(S.String),
-          filteringList: S.optional(S.NullOr(TelephonyFaxScreenListTypeEnum)),
+          filteringList: S.optional(S.NullOr(S.String)),
           serviceName: S.optional(S.String),
-          whitelistedNumbers: S.optional(S.NullOr(TelephonyFaxScreenWhitelistedNumbersList)),
-          whitelistedTSI: S.optional(S.NullOr(TelephonyFaxScreenWhitelistedTSIList)),
+          whitelistedNumbers: S.optional(S.NullOr(__S(70))),
+          whitelistedTSI: S.optional(S.NullOr(__S(70))),
         }),
       ).annotate({ identifier: "TelephonyFaxScreen" });
     case 3:
@@ -23612,7 +18346,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(OrderCurrencyCodeEnum),
+          currencyCode: S.optional(S.String),
           text: S.optional(S.String),
           value: S.optional(S.Number),
         }),
@@ -23622,8 +18356,8 @@ function __c9(j: number): any {
         S.Struct({
           billingNumber: S.optional(S.String),
           date: S.optional(S.String),
-          price: S.optional(OrderPrice),
-          status: S.optional(TelephonyBillStatusEnum),
+          price: S.optional(__S(77)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyHistoryRepaymentConsumption",
@@ -23656,7 +18390,7 @@ function __c10(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          action: TelephonyAntihackActionEnum,
+          action: S.String,
           restricted: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -23694,7 +18428,7 @@ function __c10(j: number): any {
           bridgeNumberDialplan: S.optional(S.String),
           calledNumber: S.String,
           callingNumber: S.optional(S.String),
-          dialplan: TelephonyCallsGeneratorDialplanEnum,
+          dialplan: S.String,
           isAnonymous: S.Boolean,
           playbackAudioFileDialplan: S.optional(S.String),
           timeout: S.optional(S.Number),
@@ -23847,16 +18581,14 @@ function __c11(j: number): any {
         identifier: "ComplexTypeSafeKeyValueString",
       });
     case 4:
-      return S.Array(ComplexTypeSafeKeyValueString);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           autoReboot: S.optional(S.Boolean),
-          newConfigurations: S.optional(
-            CreateTelephonyLinePhoneChangePhoneConfigurationRequestNewConfigurationsList,
-          ),
+          newConfigurations: S.optional(__S(92)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23926,7 +18658,7 @@ function __c12(j: number): any {
           mondialRelayId: S.optional(S.String),
           newMerchandise: S.optional(S.String),
           shippingContactId: S.optional(S.Number),
-          type: TelephonyRmaPublicTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23949,7 +18681,7 @@ function __c12(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          type: TelephonyRmaChangeTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -23988,7 +18720,7 @@ function __c12(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           documentId: S.optional(S.String),
-          type: TelephonyTonesTypeEnum,
+          type: S.String,
           url: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -24029,7 +18761,7 @@ function __c13(j: number): any {
           fileSize: S.optional(S.Number),
           fileUrl: S.optional(S.String),
           id: S.optional(S.Number),
-          status: S.optional(TelephonyTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyTrafficExtract" });
     case 2:
@@ -24037,7 +18769,7 @@ function __c13(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          featureType: TelephonyTypeEnum,
+          featureType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24052,7 +18784,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
-          block: TelephonyOutplanNotificationBlockEnum,
+          block: S.String,
           notifyEmail: S.optional(S.String),
           percentage: S.Number,
         }).pipe(
@@ -24068,7 +18800,7 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          block: S.optional(TelephonyOutplanNotificationBlockEnum),
+          block: S.optional(S.String),
           id: S.optional(S.Number),
           notifyEmail: S.optional(S.String),
           percentage: S.optional(S.Number),
@@ -24083,7 +18815,7 @@ function __c13(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           anonymousRejection: S.Boolean,
           name: S.String,
-          showCallerNumber: TelephonyOvhPabxDialplanNumberPresentationEnum,
+          showCallerNumber: S.String,
           transferTimeout: S.Number,
         }).pipe(
           T.Http({
@@ -24102,7 +18834,7 @@ function __c13(j: number): any {
           dialplanId: S.optional(S.Number),
           lastUpdate: S.optional(S.String),
           name: S.optional(S.String),
-          showCallerNumber: S.optional(TelephonyOvhPabxDialplanNumberPresentationEnum),
+          showCallerNumber: S.optional(S.String),
           transferTimeout: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TelephonyOvhPabxDialplan" });
@@ -24114,8 +18846,8 @@ function __c13(j: number): any {
           dialplanId: S.Number.pipe(T.Label()),
           enable: S.Boolean,
           position: S.Number,
-          schedulerCategory: S.optional(TelephonySchedulerCategoryEnum),
-          screenListType: S.optional(TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum),
+          schedulerCategory: S.optional(S.String),
+          screenListType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24136,10 +18868,8 @@ function __c14(j: number): any {
           enabled: S.optional(S.Boolean),
           extensionId: S.optional(S.Number),
           position: S.optional(S.Number),
-          schedulerCategory: S.optional(S.NullOr(TelephonySchedulerCategoryEnum)),
-          screenListType: S.optional(
-            S.NullOr(TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum),
-          ),
+          schedulerCategory: S.optional(S.NullOr(S.String)),
+          screenListType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TelephonyOvhPabxDialplanExtension",
@@ -24153,7 +18883,7 @@ function __c14(j: number): any {
           extensionId: S.Number.pipe(T.Label()),
           callerIdNumber: S.optional(S.String),
           destinationNumber: S.optional(S.String),
-          screenListType: S.optional(TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum),
+          screenListType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24170,9 +18900,7 @@ function __c14(j: number): any {
           callerIdNumber: S.optional(S.NullOr(S.String)),
           conditionId: S.optional(S.Number),
           destinationNumber: S.optional(S.NullOr(S.String)),
-          screenListType: S.optional(
-            S.NullOr(TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum),
-          ),
+          screenListType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TelephonyOvhPabxDialplanExtensionConditionScreenList",
@@ -24186,7 +18914,7 @@ function __c14(j: number): any {
           extensionId: S.Number.pipe(T.Label()),
           timeFrom: S.String,
           timeTo: S.String,
-          weekDay: TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum,
+          weekDay: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24203,7 +18931,7 @@ function __c14(j: number): any {
           conditionId: S.optional(S.Number),
           timeFrom: S.optional(S.String),
           timeTo: S.optional(S.String),
-          weekDay: S.optional(TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum),
+          weekDay: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyOvhPabxDialplanExtensionConditionTime",
@@ -24215,7 +18943,7 @@ function __c14(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           dialplanId: S.Number.pipe(T.Label()),
           extensionId: S.Number.pipe(T.Label()),
-          action: TelephonyOvhPabxDialplanExtensionRuleActionEnum,
+          action: S.String,
           actionParam: S.optional(S.String),
           negativeAction: S.Boolean,
           position: S.Number,
@@ -24232,7 +18960,7 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(TelephonyOvhPabxDialplanExtensionRuleActionEnum),
+          action: S.optional(S.String),
           actionParam: S.optional(S.NullOr(S.String)),
           negativeAction: S.optional(S.Boolean),
           position: S.optional(S.Number),
@@ -24249,7 +18977,7 @@ function __c14(j: number): any {
           description: S.optional(S.String),
           number: S.String,
           simultaneousLines: S.Number,
-          status: TelephonyOvhPabxHuntingAgentStatusEnum,
+          status: S.String,
           timeout: S.Number,
           wrapUpTime: S.Number,
         }).pipe(
@@ -24360,7 +19088,7 @@ function __c15(j: number): any {
           agentId: S.Number.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           number: S.String,
-          whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+          whisperingMode: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24377,7 +19105,7 @@ function __c15(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           agentId: S.Number.pipe(T.Label()),
-          expiration: TelephonyTokenExpirationEnum,
+          expiration: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24433,7 +19161,7 @@ function __c16(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          expiration: TelephonyTokenExpirationEnum,
+          expiration: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24449,21 +19177,19 @@ function __c16(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          actionOnClosure: S.optional(TelephonyOvhPabxQueueActionEnum),
+          actionOnClosure: S.optional(S.String),
           actionOnClosureParam: S.optional(S.String),
-          actionOnOverflow: S.optional(TelephonyOvhPabxQueueActionEnum),
+          actionOnOverflow: S.optional(S.String),
           actionOnOverflowParam: S.optional(S.String),
           askForRecordDisabling: S.optional(S.Boolean),
           description: S.optional(S.String),
           maxMember: S.optional(S.Number),
           maxWaitTime: S.optional(S.Number),
           record: S.optional(S.Boolean),
-          recordDisablingDigit: S.optional(TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum),
-          recordDisablingLanguage: S.optional(
-            TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum,
-          ),
+          recordDisablingDigit: S.optional(S.Number),
+          recordDisablingLanguage: S.optional(S.String),
           soundOnHold: S.optional(S.Number),
-          strategy: TelephonyOvhPabxHuntingQueueStrategyEnum,
+          strategy: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24573,7 +19299,7 @@ function __c17(j: number): any {
           queueId: S.Number.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           number: S.String,
-          whisperingMode: TelephonyOvhPabxWhisperingModeEnum,
+          whisperingMode: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24625,7 +19351,7 @@ function __c17(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           menuId: S.Number.pipe(T.Label()),
-          action: TelephonyOvhPabxIvrMenuEntryActionEnum,
+          action: S.String,
           actionParam: S.optional(S.String),
           dtmf: S.String,
           position: S.Number,
@@ -24642,7 +19368,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(TelephonyOvhPabxIvrMenuEntryActionEnum),
+          action: S.optional(S.String),
           actionParam: S.optional(S.String),
           dtmf: S.optional(S.String),
           entryId: S.optional(S.Number),
@@ -24675,7 +19401,7 @@ function __c17(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           text: S.String,
-          voice: S.optional(TelephonyOvhPabxTtsVoiceEnum),
+          voice: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24770,13 +19496,13 @@ function __c18(j: number): any {
         identifier: "TelephonyPortabilityDocument",
       });
     case 4:
-      return S.Array(ComplexTypeSafeKeyValueString);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          parameters: CreateTelephonyPortabilityRelaunchRequestParametersList,
+          parameters: __S(148),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24806,7 +19532,7 @@ function __c18(j: number): any {
           id: S.optional(S.Number),
           pdfUrl: S.optional(S.String),
           requestDate: S.optional(S.String),
-          status: S.optional(TelephonyProcedureStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyProcedure" });
   }
@@ -24850,12 +19576,12 @@ function __c19(j: number): any {
         S.Struct({
           cancelLimitDatetime: S.optional(S.NullOr(S.String)),
           effectiveDatetime: S.optional(S.NullOr(S.String)),
-          pricePerCallWithoutTax: S.optional(OrderPrice),
-          pricePerMinuteWithoutTax: S.optional(OrderPrice),
+          pricePerCallWithoutTax: S.optional(__S(77)),
+          pricePerMinuteWithoutTax: S.optional(__S(77)),
           rateCode: S.optional(S.String),
-          repaymentPricePerCallWithoutTax: S.optional(OrderPrice),
-          repaymentPricePerMinuteWithoutTax: S.optional(OrderPrice),
-          updateRateCodePriceWithoutTax: S.optional(S.NullOr(OrderPrice)),
+          repaymentPricePerCallWithoutTax: S.optional(__S(77)),
+          repaymentPricePerMinuteWithoutTax: S.optional(__S(77)),
+          updateRateCodePriceWithoutTax: S.optional(S.NullOr(__S(77))),
         }),
       ).annotate({
         identifier: "TelephonyDetailedRateCodeInformation",
@@ -24865,7 +19591,7 @@ function __c19(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          category: TelephonySchedulerCategoryEnum,
+          category: S.String,
           dateEnd: S.String,
           dateStart: S.String,
           description: S.optional(S.String),
@@ -24887,8 +19613,8 @@ function __c19(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           callNumber: S.optional(S.String),
-          nature: TelephonyScreenListNatureEnum,
-          type: TelephonyScreenListTypeEnum,
+          nature: S.String,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24920,7 +19646,7 @@ function __c19(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          expiration: TelephonyTokenExpirationEnum,
+          expiration: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24977,10 +19703,10 @@ function __c20(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          day: TelephonyTimeConditionsDayEnum,
+          day: S.String,
           hourBegin: S.String,
           hourEnd: S.String,
-          policy: TelephonyTimeConditionsPolicyEnum,
+          policy: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -24994,11 +19720,11 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          day: S.optional(TelephonyTimeConditionsDayEnum),
+          day: S.optional(S.String),
           hourBegin: S.optional(S.String),
           hourEnd: S.optional(S.String),
           id: S.optional(S.Number),
-          policy: S.optional(TelephonyTimeConditionsPolicyEnum),
+          policy: S.optional(S.String),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyTimeCondition" });
@@ -25041,7 +19767,7 @@ function __c20(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           number: S.optional(S.String),
-          status: S.optional(TelephonyTrunkExternalDisplayedNumberStatusEnum),
+          status: S.optional(S.String),
           validatedAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -25052,7 +19778,7 @@ function __c20(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          dir: TelephonyVoicemailMessageFolderGreetingEnum,
+          dir: S.String,
           documentId: S.String,
         }).pipe(
           T.Http({
@@ -25089,7 +19815,7 @@ function __c21(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          routing: TelephonyVoicefaxRoutingEnum,
+          routing: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -25129,7 +19855,7 @@ function __c21(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           details: S.optional(S.String.pipe(T.Query())),
-          reason: TelephonyTerminationReasonEnum.pipe(T.Query()),
+          reason: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "DELETE", uri: "/telephony/{billingAccount}", code: 200 })),
       ).annotate({ identifier: "DeleteTelephonyRequest" });
     case 5:
@@ -26002,7 +20728,7 @@ function __c28(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           details: S.optional(S.String.pipe(T.Query())),
-          reason: TelephonyTerminationReasonEnum.pipe(T.Query()),
+          reason: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -26208,8 +20934,8 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          informations: S.optional(TelephonyEntrepriseNumberInformations),
-          status: S.optional(TelephonyTaskStatusEnum),
+          informations: S.optional(__S(239)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyEntrepriseNumberInformationsTask",
@@ -26235,24 +20961,24 @@ function __c30(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(243))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowedOutplan: S.optional(OrderPrice),
+          allowedOutplan: S.optional(__S(77)),
           billingAccount: S.optional(S.String),
-          creditThreshold: S.optional(OrderPrice),
-          currentOutplan: S.optional(OrderPrice),
+          creditThreshold: S.optional(__S(77)),
+          currentOutplan: S.optional(__S(77)),
           description: S.optional(S.String),
           hasSpecialNumbers: S.optional(S.Boolean),
           hiddenExternalNumber: S.optional(S.Boolean),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(244))),
           overrideDisplayedNumber: S.optional(S.Boolean),
-          securityDeposit: S.optional(OrderPrice),
-          status: S.optional(TelephonyBillingAccountStatusEnum),
+          securityDeposit: S.optional(__S(77)),
+          status: S.optional(S.String),
           trusted: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -26286,7 +21012,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(244))),
           serviceName: S.optional(S.String),
         }),
       ).annotate({
@@ -26327,11 +21053,11 @@ function __c31(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(17))),
+          renew: S.optional(S.NullOr(__S(250))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 4:
@@ -26368,7 +21094,7 @@ function __c31(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyCarrierSip" });
     case 7:
@@ -26426,7 +21152,7 @@ function __c32(j: number): any {
           ip: S.optional(S.String),
           port: S.optional(S.Number),
           priority: S.optional(S.Number),
-          protocol: S.optional(TelephonyCarrierSipEndpointProtocolEnum),
+          protocol: S.optional(S.String),
           weight: S.optional(S.Number),
         }),
       ).annotate({
@@ -26531,9 +21257,9 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          offers: S.optional(TelephonyConferenceOffersList),
+          offers: S.optional(__S(70)),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyConference" });
     case 3:
@@ -26563,7 +21289,7 @@ function __c33(j: number): any {
         identifier: "TelephonyConferenceHistoryEvent",
       });
     case 5:
-      return S.Array(TelephonyConferenceHistoryEvent);
+      return S.Array(__S(268));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -26572,7 +21298,7 @@ function __c33(j: number): any {
           dateBegin: S.optional(S.String),
           dateEnd: S.optional(S.String),
           duration: S.optional(S.Number),
-          events: S.optional(TelephonyConferenceHistoryEventsList),
+          events: S.optional(__S(269)),
           id: S.optional(S.Number),
           recordUrl: S.optional(S.NullOr(S.String)),
         }),
@@ -26760,11 +21486,11 @@ function __c35(j: number): any {
           anonymousRejection: S.optional(S.Boolean),
           enterMuted: S.optional(S.Boolean),
           eventsChannel: S.optional(S.String),
-          language: S.optional(TelephonyConferenceLanguageEnum),
+          language: S.optional(S.String),
           pin: S.optional(S.String),
           recordStatus: S.optional(S.Boolean),
           reportEmail: S.optional(S.NullOr(S.String)),
-          reportStatus: S.optional(TelephonyConferenceReportStatusEnum),
+          reportStatus: S.optional(S.String),
           roomNumber: S.optional(S.Number),
           whiteLabelReport: S.optional(S.Boolean),
         }),
@@ -26805,9 +21531,9 @@ function __c35(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           destination: S.optional(S.NullOr(S.String)),
-          featureType: S.optional(TelephonyTypeEnum),
+          featureType: S.optional(S.String),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyDdi" });
     case 6:
@@ -26830,15 +21556,15 @@ function __c35(j: number): any {
         S.Struct({
           anonymousRejection: S.optional(S.Boolean),
           description: S.optional(S.String),
-          featureType: S.optional(TelephonyTypeEnum),
+          featureType: S.optional(S.String),
           isCCS: S.optional(S.Boolean),
           maxWaitTime: S.optional(S.Number),
           queueSize: S.optional(S.Number),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
-          showCallerNumber: S.optional(TelephonyOvhPabxDialplanNumberPresentationEnum),
+          serviceType: S.optional(S.String),
+          showCallerNumber: S.optional(S.String),
           statusIvrEnabled: S.optional(S.Boolean),
-          strategy: S.optional(TelephonyOvhPabxHuntingQueueStrategyEnum),
+          strategy: S.optional(S.String),
           toneOnClosing: S.optional(S.NullOr(S.Number)),
           toneOnHold: S.optional(S.NullOr(S.Number)),
           toneOnOpening: S.optional(S.NullOr(S.Number)),
@@ -26935,7 +21661,7 @@ function __c36(j: number): any {
           id: S.optional(S.Number),
           onHold: S.optional(S.NullOr(S.Boolean)),
           queue: S.optional(S.String),
-          state: S.optional(TelephonyOvhPabxHuntingLiveCallsStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyOvhPabxHuntingQueueLiveCalls",
@@ -26981,7 +21707,7 @@ function __c37(j: number): any {
         S.Struct({
           answeredCalls: S.optional(S.Number),
           lastStatusChange: S.optional(S.String),
-          status: S.optional(TelephonyOvhPabxHuntingLiveAgentStatusEnum),
+          status: S.optional(S.String),
           totalCallDuration: S.optional(S.Number),
         }),
       ).annotate({
@@ -27216,7 +21942,7 @@ function __c38(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TelephonyEasyHuntingScreenListsConditionsStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyEasyHuntingScreenListsConditionsSettings",
@@ -27284,13 +22010,13 @@ function __c39(j: number): any {
         S.Struct({
           enable: S.optional(S.Boolean),
           slot1Number: S.optional(S.NullOr(S.String)),
-          slot1Type: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          slot1Type: S.optional(S.NullOr(S.String)),
           slot2Number: S.optional(S.NullOr(S.String)),
-          slot2Type: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          slot2Type: S.optional(S.NullOr(S.String)),
           slot3Number: S.optional(S.NullOr(S.String)),
-          slot3Type: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          slot3Type: S.optional(S.NullOr(S.String)),
           unavailableNumber: S.optional(S.NullOr(S.String)),
-          unavailableType: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          unavailableType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TelephonyEasyHuntingTimeConditionsSettings",
@@ -27322,7 +22048,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.NullOr(S.String)),
-          frequency: S.optional(S.NullOr(TelephonyLineNotificationsLogsFrequencyEnum)),
+          frequency: S.optional(S.NullOr(S.String)),
           sendIfNull: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -27335,7 +22061,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(S.NullOr(TelephonyLineNotificationsLogsOptions)),
+          logs: S.optional(S.NullOr(__S(319))),
         }),
       ).annotate({
         identifier: "TelephonyLineNotificationsOptions",
@@ -27344,10 +22070,10 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          notifications: S.optional(S.NullOr(TelephonyLineNotificationsOptions)),
-          offers: S.optional(TelephonyFaxOffersList),
+          notifications: S.optional(S.NullOr(__S(320))),
+          offers: S.optional(__S(70)),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyFax" });
     case 2:
@@ -27401,14 +22127,14 @@ function __c40(j: number): any {
         S.Struct({
           callNumber: S.optional(S.String),
           countryCode: S.optional(S.String),
-          faxMaxCall: S.optional(TelephonyFaxSendingTries),
-          faxQuality: S.optional(TelephonyFaxQualityEnum),
+          faxMaxCall: S.optional(S.Number),
+          faxQuality: S.optional(S.String),
           faxTagLine: S.optional(S.String),
           fromEmail: S.optional(S.String),
           fromName: S.optional(S.String),
-          mailFormat: S.optional(TelephonyFaxMailFormatEnum),
+          mailFormat: S.optional(S.String),
           receiver: S.optional(S.String),
-          redirectionEmail: S.optional(TelephonyFaxPropertiesRedirectionEmailList),
+          redirectionEmail: S.optional(__S(70)),
           rejectAnonymous: S.optional(S.Boolean),
           sender: S.optional(S.String),
         }),
@@ -27450,9 +22176,9 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.String),
-          price: S.optional(OrderPrice),
-          priceOutplan: S.optional(OrderPrice),
-          status: S.optional(TelephonyBillStatusEnum),
+          price: S.optional(__S(77)),
+          priceOutplan: S.optional(__S(77)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyHistoryConsumption",
@@ -27462,7 +22188,7 @@ function __c41(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           date: S.String.pipe(T.Label()),
-          extension: TelephonyBillDocument.pipe(T.Query()),
+          extension: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27477,7 +22203,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
-          status: S.optional(TelephonyPcsFileStatusEnum),
+          status: S.optional(S.String),
           url: S.optional(S.String),
           urlExpirationDatetime: S.optional(S.String),
         }),
@@ -27531,8 +22257,8 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           date: S.optional(S.String),
-          price: S.optional(OrderPrice),
-          status: S.optional(TelephonyBillStatusEnum),
+          price: S.optional(__S(77)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyHistoryTollfreeConsumption",
@@ -27621,7 +22347,7 @@ function __c42(j: number): any {
           callee: S.optional(S.NullOr(S.String)),
           caller: S.optional(S.NullOr(S.String)),
           dtmf: S.optional(S.NullOr(S.String)),
-          hangupCause: S.optional(S.NullOr(TelephonyCallsGeneratorHangupCauseEnum)),
+          hangupCause: S.optional(S.NullOr(S.String)),
           hangupDatetime: S.optional(S.NullOr(S.String)),
           identifier: S.optional(S.String),
           transferFrom: S.optional(S.NullOr(S.String)),
@@ -27648,7 +22374,7 @@ function __c42(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           name: S.optional(S.String),
-          price: S.optional(S.NullOr(OrderPrice)),
+          price: S.optional(S.NullOr(__S(77))),
         }),
       ).annotate({ identifier: "TelephonyLineOffer" });
     case 7:
@@ -27657,13 +22383,13 @@ function __c42(j: number): any {
           canChangePassword: S.optional(S.Boolean),
           description: S.optional(S.String),
           deviceSlot: S.optional(S.Number),
-          getPublicOffer: S.optional(TelephonyLineOffer),
+          getPublicOffer: S.optional(__S(342)),
           infrastructure: S.optional(S.String),
           isAttachedToOtherLinesPhone: S.optional(S.Boolean),
-          notifications: S.optional(S.NullOr(TelephonyLineNotificationsOptions)),
-          offers: S.optional(TelephonyLineOffersList),
+          notifications: S.optional(S.NullOr(__S(320))),
+          offers: S.optional(__S(70)),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
           simultaneousLines: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TelephonyLine" });
@@ -27717,11 +22443,11 @@ function __c43(j: number): any {
           calledIdentifier: S.optional(S.String),
           callingIdentifier: S.optional(S.String),
           dateTime: S.optional(S.String),
-          direction: S.optional(TelephonyRealtimeEventDirection),
+          direction: S.optional(S.String),
           duration: S.optional(S.Number),
-          eventType: S.optional(TelephonyRealtimeEventType),
+          eventType: S.optional(S.String),
           id: S.optional(S.String),
-          protocol: S.optional(TelephonyRealtimeEventProtocol),
+          protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyEvent" });
     case 4:
@@ -27802,22 +22528,22 @@ function __c44(j: number): any {
           doNotDisturb: S.optional(S.Boolean),
           domain: S.optional(S.String),
           forwardBackup: S.optional(S.Boolean),
-          forwardBackupNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardBackupNature: S.optional(S.String),
           forwardBackupNumber: S.optional(S.String),
           forwardBusy: S.optional(S.Boolean),
-          forwardBusyNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardBusyNature: S.optional(S.String),
           forwardBusyNumber: S.optional(S.String),
           forwardNoReply: S.optional(S.Boolean),
           forwardNoReplyDelay: S.optional(S.Number),
-          forwardNoReplyNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardNoReplyNature: S.optional(S.String),
           forwardNoReplyNumber: S.optional(S.String),
           forwardUnconditional: S.optional(S.Boolean),
-          forwardUnconditionalNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardUnconditionalNature: S.optional(S.String),
           forwardUnconditionalNumber: S.optional(S.String),
           identificationRestriction: S.optional(S.Boolean),
-          intercom: S.optional(TelephonyLineOptionIntercomEnum),
-          ipRestrictions: S.optional(TelephonyLineOptionsIpRestrictionsList),
-          language: S.optional(TelephonyLineOptionLanguageEnum),
+          intercom: S.optional(S.String),
+          ipRestrictions: S.optional(__S(70)),
+          language: S.optional(S.String),
           lockOutCall: S.optional(S.Boolean),
           lockOutCallPassword: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           proxy: S.optional(S.String),
@@ -27856,20 +22582,20 @@ function __c44(j: number): any {
         S.Struct({
           default: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          enum: S.optional(S.NullOr(TelephonyPhoneConfigurationPropertyEnumList)),
+          enum: S.optional(S.NullOr(__S(70))),
           group: S.optional(S.NullOr(S.String)),
-          level: S.optional(S.NullOr(TelephonyPhoneConfigurationLevelEnum)),
+          level: S.optional(S.NullOr(S.String)),
           maxlength: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
-          rangeValue: S.optional(S.NullOr(ComplexTypeRangeLong)),
-          type: S.optional(S.NullOr(TelephonyPhoneConfigurationTypeEnum)),
+          rangeValue: S.optional(S.NullOr(__S(354))),
+          type: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TelephonyPhoneConfigurationProperty",
       });
     case 4:
-      return S.Array(TelephonyPhoneConfigurationProperty);
+      return S.Array(__S(355));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -27879,8 +22605,8 @@ function __c44(j: number): any {
           maxSimultaneousCalls: S.optional(S.Number),
           maxline: S.optional(S.Number),
           mgcpIpRestriction: S.optional(S.NullOr(S.String)),
-          phoneConfiguration: S.optional(TelephonyPhonePhoneConfigurationList),
-          protocol: S.optional(TelephonyProtocolEnum),
+          phoneConfiguration: S.optional(__S(356)),
+          protocol: S.optional(S.String),
           userPassword: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "TelephonyPhone" });
@@ -27970,7 +22696,7 @@ function __c45(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           bookKey: S.String.pipe(T.Label()),
-          format: TelephonyContactsExportFormatsEnum.pipe(T.Query()),
+          format: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -28038,7 +22764,7 @@ function __c46(j: number): any {
         S.Struct({
           address: S.optional(S.NullOr(S.String)),
           city: S.optional(S.NullOr(S.String)),
-          country: S.optional(S.NullOr(CoreTypesCountryEnum)),
+          country: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           firstname: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
@@ -28053,12 +22779,12 @@ function __c46(j: number): any {
           description: S.optional(S.String),
           doneDate: S.optional(S.NullOr(S.String)),
           infos: S.optional(S.NullOr(S.String)),
-          name: S.optional(TelephonyRmaStepNameEnum),
-          status: S.optional(TelephonyRmaStepStatusEnum),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyRmaStep" });
     case 2:
-      return S.Array(TelephonyRmaStep);
+      return S.Array(__S(369));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -28067,15 +22793,15 @@ function __c46(j: number): any {
           equipmentReference: S.optional(S.String),
           id: S.optional(S.String),
           newMerchandise: S.optional(S.NullOr(S.String)),
-          offerTypeNew: S.optional(S.NullOr(TelephonyRmaOfferTypeEnum)),
-          offerTypeOld: S.optional(TelephonyRmaOfferTypeEnum),
-          process: S.optional(TelephonyRmaReplaceTypeEnum),
+          offerTypeNew: S.optional(S.NullOr(S.String)),
+          offerTypeOld: S.optional(S.String),
+          process: S.optional(S.String),
           receptionDatetime: S.optional(S.NullOr(S.String)),
-          shippingContact: S.optional(TelephonyContact),
-          status: S.optional(TelephonyRmaStatusEnum),
-          steps: S.optional(TelephonyRmaStepsList),
+          shippingContact: S.optional(__S(368)),
+          status: S.optional(S.String),
+          steps: S.optional(__S(370)),
           terminationDatetime: S.optional(S.NullOr(S.String)),
-          type: S.optional(TelephonyRmaTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyRma" });
     case 4:
@@ -28215,7 +22941,7 @@ function __c47(j: number): any {
         S.Struct({
           activation: S.optional(S.Boolean),
           eligibility: S.optional(S.Boolean),
-          infrastructure: S.optional(TelephonySoftphoneInfrastructureEnum),
+          infrastructure: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonySoftphoneStatus" });
     case 7:
@@ -28262,10 +22988,10 @@ function __c48(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          callWaiting: S.optional(TelephonyTonesEnum),
-          endCall: S.optional(TelephonyTonesEnum),
-          onHold: S.optional(TelephonyTonesOnHoldEnum),
-          ringback: S.optional(TelephonyTonesEnum),
+          callWaiting: S.optional(S.String),
+          endCall: S.optional(S.String),
+          onHold: S.optional(S.String),
+          ringback: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyTones" });
     case 3:
@@ -28303,10 +23029,10 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          featureType: S.optional(TelephonyTypeEnum),
+          featureType: S.optional(S.String),
           partOfPool: S.optional(S.NullOr(S.String)),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyNumber" });
     case 6:
@@ -28362,10 +23088,10 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          featureType: S.optional(TelephonyTypeEnum),
+          featureType: S.optional(S.String),
           isCCS: S.optional(S.Boolean),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyOvhPabx" });
     case 2:
@@ -28797,7 +23523,7 @@ function __c52(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           text: S.optional(S.String),
-          voice: S.optional(TelephonyOvhPabxTtsVoiceEnum),
+          voice: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyOvhPabxTts" });
     case 4:
@@ -28827,7 +23553,7 @@ function __c52(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           bookKey: S.String.pipe(T.Label()),
-          format: TelephonyContactsExportFormatsEnum.pipe(T.Query()),
+          format: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -28891,16 +23617,16 @@ function __c53(j: number): any {
         S.Struct({
           billingAccount: S.optional(S.String),
           creationDate: S.optional(S.String),
-          customerInfos: S.optional(TelephonyPortabilityCustomerInfos),
+          customerInfos: S.optional(__S(425)),
           desiredExecutionDate: S.optional(S.NullOr(S.String)),
           error: S.optional(S.Boolean),
-          errorCodes: S.optional(TelephonyPortabilityErrorCodesList),
+          errorCodes: S.optional(__S(70)),
           id: S.optional(S.Number),
           lineToRedirectTo: S.optional(S.NullOr(S.String)),
-          numbersList: S.optional(TelephonyPortabilityNumbersListList),
+          numbersList: S.optional(__S(70)),
           operator: S.optional(S.String),
           orderId: S.optional(S.Number),
-          portabilityCountry: S.optional(TelephonyPortabilityCountryEnum),
+          portabilityCountry: S.optional(S.String),
           rio: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TelephonyPortability" });
@@ -29012,9 +23738,7 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          passwordUpdateStatus: S.optional(
-            S.NullOr(TelephonyResellerPanelPasswordUpdateStatusEnum),
-          ),
+          passwordUpdateStatus: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "TelephonyResellerPanelStatus",
@@ -29036,7 +23760,7 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          typology: S.optional(S.NullOr(TelephonyPortabilitySpecialNumberCategoryEnum)),
+          typology: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TelephonyRsva" });
     case 6:
@@ -29092,7 +23816,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
-          timeZone: S.optional(TelephonyTimeZone),
+          timeZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyScheduler" });
     case 2:
@@ -29114,7 +23838,7 @@ function __c55(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(TelephonySchedulerCategoryEnum),
+          categories: S.optional(S.String),
           dateEnd: S.optional(S.String),
           dateStart: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
@@ -29140,8 +23864,8 @@ function __c55(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          incomingScreenList: S.optional(TelephonyScreenListChoosingEnum),
-          outgoingScreenList: S.optional(TelephonyScreenListChoosingEnum),
+          incomingScreenList: S.optional(S.String),
+          outgoingScreenList: S.optional(S.String),
           serviceName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyScreen" });
@@ -29166,9 +23890,9 @@ function __c55(j: number): any {
         S.Struct({
           callNumber: S.optional(S.String),
           id: S.optional(S.Number),
-          nature: S.optional(TelephonyScreenListNatureEnum),
+          nature: S.optional(S.String),
           status: S.optional(S.String),
-          type: S.optional(TelephonyScreenListTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyScreenList" });
   }
@@ -29191,23 +23915,23 @@ function __c56(j: number): any {
         identifier: "GetTelephonyServiceRequest",
       });
     case 1:
-      return S.Array(TelephonyPropertyEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           associatedDeviceMac: S.optional(S.NullOr(S.String)),
-          country: S.optional(TelephonyServiceNumberCountryEnum),
-          countryCode: S.optional(TelephonyNumberCountryCodeEnum),
-          currentOutplan: S.optional(OrderPrice),
+          country: S.optional(S.String),
+          countryCode: S.optional(S.Number),
+          currentOutplan: S.optional(__S(77)),
           description: S.optional(S.String),
-          featureType: S.optional(TelephonyTypeEnum),
-          getPublicOffer: S.optional(TelephonyLineOffer),
+          featureType: S.optional(S.String),
+          getPublicOffer: S.optional(__S(342)),
           hasFaxCapabilities: S.optional(S.Boolean),
-          offers: S.optional(TelephonyTelephonyServiceOffersList),
-          properties: S.optional(TelephonyTelephonyServicePropertiesList),
+          offers: S.optional(__S(70)),
+          properties: S.optional(__S(449)),
           rio: S.optional(S.String),
           serviceName: S.optional(S.String),
-          serviceType: S.optional(TelephonyTypeServiceEnum),
+          serviceType: S.optional(S.String),
           simultaneousLines: S.optional(S.Number),
         }),
       ).annotate({
@@ -29248,7 +23972,7 @@ function __c56(j: number): any {
           displayUniversalDirectory: S.optional(S.Boolean),
           email: S.optional(S.String),
           firstName: S.optional(S.String),
-          gender: S.optional(S.NullOr(NichandleGenderEnum)),
+          gender: S.optional(S.NullOr(S.String)),
           inseeCode: S.optional(S.Number),
           legalForm: S.optional(S.String),
           lineDescription: S.optional(S.String),
@@ -29336,8 +24060,8 @@ function __c57(j: number): any {
           consumptionId: S.optional(S.Number),
           creationDatetime: S.optional(S.String),
           pages: S.optional(S.Number),
-          priceWithoutTax: S.optional(OrderPrice),
-          wayType: S.optional(TelephonyFaxConsumptionWayTypeEnum),
+          priceWithoutTax: S.optional(__S(77)),
+          wayType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyFaxConsumption" });
     case 2:
@@ -29412,12 +24136,12 @@ function __c57(j: number): any {
           countrySuffix: S.optional(S.String),
           creationDatetime: S.optional(S.String),
           designation: S.optional(S.String),
-          destinationType: S.optional(TelephonyVoiceConsumptionDestinationTypeEnum),
+          destinationType: S.optional(S.String),
           duration: S.optional(S.Number),
           hangupNature: S.optional(S.NullOr(S.String)),
-          planType: S.optional(TelephonyVoiceConsumptionPlanTypeEnum),
-          priceWithoutTax: S.optional(OrderPrice),
-          wayType: S.optional(TelephonyVoiceConsumptionWayTypeEnum),
+          planType: S.optional(S.String),
+          priceWithoutTax: S.optional(__S(77)),
+          wayType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyPreviousVoiceConsumption",
@@ -29499,13 +24223,13 @@ function __c58(j: number): any {
           countrySuffix: S.optional(S.String),
           creationDatetime: S.optional(S.String),
           designation: S.optional(S.String),
-          destinationType: S.optional(TelephonyVoiceConsumptionDestinationTypeEnum),
+          destinationType: S.optional(S.String),
           dialed: S.optional(S.NullOr(S.String)),
           duration: S.optional(S.Number),
           hangupNature: S.optional(S.NullOr(S.String)),
-          planType: S.optional(TelephonyVoiceConsumptionPlanTypeEnum),
-          priceWithoutTax: S.optional(OrderPrice),
-          wayType: S.optional(TelephonyVoiceConsumptionWayTypeEnum),
+          planType: S.optional(S.String),
+          priceWithoutTax: S.optional(__S(77)),
+          wayType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyVoiceConsumption",
@@ -29593,9 +24317,9 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           brand: S.optional(S.String),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(244))),
           macAddress: S.optional(S.String),
-          protocol: S.optional(TelephonyProtocolEnum),
+          protocol: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SpareTelephonyTelephonySpareWithIAM",
@@ -29677,15 +24401,15 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slot1Number: S.optional(S.String),
-          slot1Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
+          slot1Type: S.optional(S.String),
           slot2Number: S.optional(S.String),
-          slot2Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
+          slot2Type: S.optional(S.String),
           slot3Number: S.optional(S.String),
-          slot3Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
-          status: S.optional(TelephonyTimeConditionsGlobalStatusEnum),
-          timeout: S.optional(S.NullOr(TelephonyTimeConditionsTimeoutEnum)),
+          slot3Type: S.optional(S.String),
+          status: S.optional(S.String),
+          timeout: S.optional(S.NullOr(S.Number)),
           unavailableNumber: S.optional(S.String),
-          unavailableType: S.optional(TelephonyTimeConditionsSlotTypeEnum),
+          unavailableType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyTimeConditionOptions",
@@ -29778,7 +24502,7 @@ function __c61(j: number): any {
           callee: S.optional(S.String),
           caller: S.optional(S.String),
           creationDatetime: S.optional(S.String),
-          dir: S.optional(TelephonyVoicemailMessageFolderDirectoryEnum),
+          dir: S.optional(S.String),
           duration: S.optional(S.Number),
           id: S.optional(S.Number),
         }),
@@ -29791,7 +24515,7 @@ function __c61(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(TelephonyServiceVoicemailAudioFormatEnum.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -29822,7 +24546,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           callee: S.optional(S.String),
-          dir: S.optional(TelephonyVoicemailMessageFolderGreetingEnum),
+          dir: S.optional(S.String),
           id: S.optional(S.Number),
         }),
       ).annotate({
@@ -29838,7 +24562,7 @@ function __c62(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          format: S.optional(TelephonyServiceVoicemailAudioFormatEnum.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -29868,27 +24592,27 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          type: S.optional(TelephonyServiceVoicemailMailOptionEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyServiceVoicemailNotifications",
       });
     case 3:
-      return S.Array(TelephonyServiceVoicemailNotifications);
+      return S.Array(__S(498));
     case 4:
       return S.suspend(() =>
         S.Struct({
           annouceMessage: S.optional(S.String),
-          audioFormat: S.optional(TelephonyServiceVoicemailAudioFormatEnum),
+          audioFormat: S.optional(S.String),
           doNotRecord: S.optional(S.Boolean),
           forcePassword: S.optional(S.Boolean),
           fromEmail: S.optional(S.String),
           fromName: S.optional(S.String),
           fullGreetingSoundId: S.optional(S.NullOr(S.Number)),
-          greetingType: S.optional(TelephonyVoicemailGreetingEnum),
+          greetingType: S.optional(S.String),
           isNewVersion: S.optional(S.Boolean),
           keepMessage: S.optional(S.Boolean),
-          redirectionEmails: S.optional(TelephonyVoicemailPropertiesRedirectionEmailsList),
+          redirectionEmails: S.optional(__S(499)),
           shortGreetingSoundId: S.optional(S.NullOr(S.Number)),
           temporaryGreetingActivated: S.optional(S.Boolean),
           temporaryGreetingSoundId: S.optional(S.NullOr(S.Number)),
@@ -29913,7 +24637,7 @@ function __c62(j: number): any {
         identifier: "GetTelephonyVoicemailSettingsRoutingRequest",
       });
     case 6:
-      return S.suspend(() => TelephonyVoicefaxRoutingEnum.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetTelephonyVoicemailSettingsRoutingResponse",
       });
     case 7:
@@ -30029,21 +24753,21 @@ function __c63(j: number): any {
         identifier: "ImportTelephonySchedulerIcsCalendarRequest",
       });
     case 7:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(3));
   }
 }
 function __c64(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, ListTelephonyRequestIamTagsValueList);
+      return S.Record(S.String, __S(511));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListTelephonyRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(512).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony", code: 200 })),
       ).annotate({ identifier: "ListTelephonyRequest" });
     case 2:
-      return S.suspend(() => ListTelephonyResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(70).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyResponse",
       });
     case 3:
@@ -30064,7 +24788,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           brand: S.optional(S.String.pipe(T.Query())),
-          country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/accessories", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyAccessoriesRequest",
@@ -30074,16 +24798,14 @@ function __c64(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          price: S.optional(OrderPrice),
+          price: S.optional(__S(77)),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TelephonyAccessoryOffer" });
     case 6:
-      return S.Array(TelephonyAccessoryOffer);
+      return S.Array(__S(517));
     case 7:
-      return S.suspend(() =>
-        ListTelephonyAccessoriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(518).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyAccessoriesResponse",
       });
   }
@@ -30093,15 +24815,13 @@ function __c65(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListTelephonyAliasesRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(512).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/aliases", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyAliasesRequest",
       });
     case 1:
-      return S.suspend(() =>
-        ListTelephonyAliasesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(70).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyAliasesResponse",
       });
     case 2:
@@ -30119,11 +24839,9 @@ function __c65(j: number): any {
         identifier: "ListTelephonyAllowedCreditThresholdRequest",
       });
     case 3:
-      return S.Array(OrderPrice);
+      return S.Array(__S(77));
     case 4:
-      return S.suspend(() =>
-        ListTelephonyAllowedCreditThresholdResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(523).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyAllowedCreditThresholdResponse",
       });
     case 5:
@@ -30143,7 +24861,7 @@ function __c65(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: TelephonySipDomainProductTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/availableDefaultSipDomains", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyAvailableDefaultSipDomainsRequest",
@@ -30151,10 +24869,10 @@ function __c65(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          country: S.optional(TelephonyServiceNumberCountryEnum),
+          country: S.optional(S.String),
           currentDomain: S.optional(S.String),
-          list: S.optional(TelephonyDefaultSipDomainsListList),
-          productType: S.optional(TelephonySipDomainProductTypeEnum),
+          list: S.optional(__S(70)),
+          productType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyDefaultSipDomains",
@@ -30164,11 +24882,9 @@ function __c65(j: number): any {
 function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TelephonyDefaultSipDomains);
+      return S.Array(__S(527));
     case 1:
-      return S.suspend(() =>
-        ListTelephonyAvailableDefaultSipDomainsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(528).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyAvailableDefaultSipDomainsResponse",
       });
     case 2:
@@ -30199,19 +24915,19 @@ function __c66(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mediaIps: S.optional(TelephonyCarrierSipClusterZoneMediaIpsList),
-          region: S.optional(TelephonyCarrierSipClusterZoneRegionEnum),
+          mediaIps: S.optional(__S(70)),
+          region: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyCarrierSipClusterZone",
       });
     case 5:
-      return S.Array(TelephonyCarrierSipClusterZone);
+      return S.Array(__S(532));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          zones: S.optional(TelephonyCarrierSipClusterInfoZonesList),
+          zones: S.optional(__S(533)),
         }),
       ).annotate({
         identifier: "TelephonyCarrierSipClusterInfo",
@@ -30407,7 +25123,7 @@ function __c68(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
           number: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/telephony/directories/availableZipCodes", code: 200 }),
@@ -30418,7 +25134,7 @@ function __c68(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
           zipCode: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/directories/cities", code: 200 })),
       ).annotate({
@@ -30433,15 +25149,13 @@ function __c68(j: number): any {
         }),
       ).annotate({ identifier: "TelephonyCity" });
     case 7:
-      return S.Array(TelephonyCity);
+      return S.Array(__S(550));
   }
 }
 function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListTelephonyDirectoryCitiesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(551).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyDirectoryCitiesResponse",
       });
     case 1:
@@ -30587,9 +25301,7 @@ function __c70(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          screenListType: S.optional(
-            TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum.pipe(T.Query()),
-          ),
+          screenListType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -30603,11 +25315,7 @@ function __c70(j: number): any {
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() =>
-        ListTelephonyEasyHuntingScreenListConditionConditionsResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(563).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyEasyHuntingScreenListConditionConditionsResponse",
       });
     case 5:
@@ -30630,7 +25338,7 @@ function __c70(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          policy: S.optional(TelephonyTimeConditionsPolicyEnum.pipe(T.Query())),
+          policy: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -30642,9 +25350,7 @@ function __c70(j: number): any {
         identifier: "ListTelephonyEasyHuntingTimeConditionConditionsRequest",
       });
     case 7:
-      return S.suspend(() =>
-        ListTelephonyEasyHuntingTimeConditionConditionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(563).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyEasyHuntingTimeConditionConditionsResponse",
       });
   }
@@ -30676,9 +25382,9 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          failed: S.optional(TelephonyFaxCampaignDetailFailedList),
-          success: S.optional(TelephonyFaxCampaignDetailSuccessList),
-          todo: S.optional(TelephonyFaxCampaignDetailTodoList),
+          failed: S.optional(__S(70)),
+          success: S.optional(__S(70)),
+          todo: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "TelephonyFaxCampaignDetail",
@@ -30701,17 +25407,15 @@ function __c71(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/fax/offers", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyFaxOffersRequest",
       });
     case 5:
-      return S.Array(TelephonyLineOffer);
+      return S.Array(__S(342));
     case 6:
-      return S.suspend(() =>
-        ListTelephonyFaxOffersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(573).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyFaxOffersResponse",
       });
     case 7:
@@ -30885,11 +25589,9 @@ function __c73(j: number): any {
         identifier: "TelephonyDatetimeAndIpvalue",
       });
     case 3:
-      return S.Array(TelephonyDatetimeAndIpvalue);
+      return S.Array(__S(586));
     case 4:
-      return S.suspend(() =>
-        ListTelephonyLineIpsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(587).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyLineIpsResponse",
       });
     case 5:
@@ -30922,15 +25624,13 @@ function __c73(j: number): any {
         identifier: "TelephonyRegistrationInformations",
       });
     case 7:
-      return S.Array(TelephonyRegistrationInformations);
+      return S.Array(__S(590));
   }
 }
 function __c74(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListTelephonyLineLastRegistrationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(591).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyLineLastRegistrationsResponse",
       });
     case 1:
@@ -30958,30 +25658,28 @@ function __c74(j: number): any {
         identifier: "TelephonyLinePhoneAssociableConfiguredLines",
       });
     case 3:
-      return S.Array(TelephonyLinePhoneAssociableConfiguredLines);
+      return S.Array(__S(594));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          associatedLines: S.optional(TelephonyLinePhoneAssociableAssociatedLinesList),
+          associatedLines: S.optional(__S(595)),
           brand: S.optional(S.String),
           maxLines: S.optional(S.Number),
-          protocol: S.optional(TelephonyProtocolEnum),
+          protocol: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyLinePhoneAssociable",
       });
     case 5:
-      return S.Array(TelephonyLinePhoneAssociable);
+      return S.Array(__S(596));
     case 6:
-      return S.suspend(() =>
-        ListTelephonyLineListAssociablePhonesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(597).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyLineListAssociablePhonesResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyServiceNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
           offer: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/line/offer/phones", code: 200 })),
       ).annotate({
@@ -30996,25 +25694,23 @@ function __c75(j: number): any {
         S.Struct({
           brand: S.optional(S.String),
           description: S.optional(S.String),
-          fees: S.optional(S.NullOr(OrderPrice)),
+          fees: S.optional(S.NullOr(__S(77))),
           maxline: S.optional(S.Number),
-          offerType: S.optional(TelephonyRmaOfferTypeEnum),
-          price: S.optional(OrderPrice),
-          protocol: S.optional(TelephonyProtocolEnum),
+          offerType: S.optional(S.String),
+          price: S.optional(__S(77)),
+          protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyLinePhone" });
     case 1:
-      return S.Array(TelephonyLinePhone);
+      return S.Array(__S(600));
     case 2:
-      return S.suspend(() =>
-        ListTelephonyLineOfferPhonesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(601).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyLineOfferPhonesResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/line/offers", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyLineOffersRequest",
@@ -31072,11 +25768,7 @@ function __c75(j: number): any {
 function __c76(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(607).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyLinePhoneFunctionKeyAvailableFunctionResponse",
       });
     case 1:
@@ -31158,7 +25850,7 @@ function __c76(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListTelephonyLinesRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(512).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/lines", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyLinesRequest",
@@ -31195,11 +25887,9 @@ function __c77(j: number): any {
         identifier: "TelephonySoftphoneDevices",
       });
     case 1:
-      return S.Array(TelephonySoftphoneDevices);
+      return S.Array(__S(616));
     case 2:
-      return S.suspend(() =>
-        ListTelephonyLineSoftphoneDevicesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(617).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyLineSoftphoneDevicesResponse",
       });
     case 3:
@@ -31249,7 +25939,7 @@ function __c77(j: number): any {
         }),
       ).annotate({ identifier: "OrderContract" });
     case 7:
-      return S.Array(OrderContract);
+      return S.Array(__S(622));
   }
 }
 function __c78(j: number): any {
@@ -31257,8 +25947,8 @@ function __c78(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contracts: S.optional(TelephonyLineOffersAndContractsContractsList),
-          offers: S.optional(TelephonyLineOffersAndContractsOffersList),
+          contracts: S.optional(__S(623)),
+          offers: S.optional(__S(573)),
         }),
       ).annotate({
         identifier: "TelephonyLineOffersAndContracts",
@@ -31267,7 +25957,7 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           axiom: S.optional(S.String.pipe(T.Query())),
-          country: TelephonyNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/number/detailedZones", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyNumberDetailedZonesRequest",
@@ -31277,30 +25967,28 @@ function __c78(j: number): any {
         S.Struct({
           askedCity: S.optional(S.NullOr(S.String)),
           city: S.optional(S.String),
-          country: S.optional(TelephonyNumberCountryEnum),
+          country: S.optional(S.String),
           internationalNumber: S.optional(S.String),
-          matchingCriteria: S.optional(S.NullOr(TelephonyNumberDetailedZoneMatchingCriteriaEnum)),
+          matchingCriteria: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
-          prefix: S.optional(TelephonyNumberCountryCodeEnum),
-          type: S.optional(TelephonyNumberDetailedZoneTypeEnum),
+          prefix: S.optional(S.Number),
+          type: S.optional(S.String),
           zipCode: S.optional(S.NullOr(S.String)),
-          zneList: S.optional(TelephonyNumberDetailedZoneZneListList),
+          zneList: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "TelephonyNumberDetailedZone",
       });
     case 3:
-      return S.Array(TelephonyNumberDetailedZone);
+      return S.Array(__S(626));
     case 4:
-      return S.suspend(() =>
-        ListTelephonyNumberDetailedZonesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(627).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyNumberDetailedZonesResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/number/ranges", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyNumberRangesRequest",
@@ -31308,9 +25996,9 @@ function __c78(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
           range: S.optional(S.String.pipe(T.Query())),
-          type: TelephonyNumberTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
           zone: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/number/specificNumbers", code: 200 })),
       ).annotate({
@@ -31328,18 +26016,16 @@ function __c78(j: number): any {
 function __c79(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TelephonySpecificNumber);
+      return S.Array(__S(631));
     case 1:
-      return S.suspend(() =>
-        ListTelephonyNumberSpecificNumbersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(632).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyNumberSpecificNumbersResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           axiom: S.optional(S.String.pipe(T.Query())),
-          country: TelephonyNumberCountryEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/number/zones", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyNumberZonesRequest",
@@ -31348,9 +26034,9 @@ function __c79(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
-          action: S.optional(TelephonyOfferTaskActionEnum.pipe(T.Query())),
-          status: S.optional(TelephonyTaskStatusEnum.pipe(T.Query())),
-          type: S.optional(TelephonyOfferTaskTypeEnum.pipe(T.Query())),
+          action: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/offerTask", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyOfferTaskRequest",
@@ -31371,11 +26057,9 @@ function __c79(j: number): any {
         }),
       ).annotate({ identifier: "TelephonyOldPhone" });
     case 6:
-      return S.Array(TelephonyOldPhone);
+      return S.Array(__S(637));
     case 7:
-      return S.suspend(() =>
-        ListTelephonyOldPhoneResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(638).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyOldPhoneResponse",
       });
   }
@@ -31453,11 +26137,7 @@ function __c80(j: number): any {
         identifier: "ListTelephonyOvhPabxDialplanExtensionConditionScreenListRequest",
       });
     case 5:
-      return S.suspend(() =>
-        ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(563).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyOvhPabxDialplanExtensionConditionScreenListResponse",
       });
     case 6:
@@ -31478,11 +26158,7 @@ function __c80(j: number): any {
         identifier: "ListTelephonyOvhPabxDialplanExtensionConditionTimeRequest",
       });
     case 7:
-      return S.suspend(() =>
-        ListTelephonyOvhPabxDialplanExtensionConditionTimeResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(563).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyOvhPabxDialplanExtensionConditionTimeResponse",
       });
   }
@@ -31765,12 +26441,8 @@ function __c83(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mandatoryParameters: S.optional(
-            TelephonyPortabilityFixErrorPossibleParametersMandatoryParametersList,
-          ),
-          optionalParameters: S.optional(
-            TelephonyPortabilityFixErrorPossibleParametersOptionalParametersList,
-          ),
+          mandatoryParameters: S.optional(__S(607)),
+          optionalParameters: S.optional(__S(607)),
         }),
       ).annotate({
         identifier: "TelephonyPortabilityFixErrorPossibleParameters",
@@ -31794,7 +26466,7 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           quantity: S.optional(S.Number),
-          unit: S.optional(TelephonyPortabilityStepDurationUnitEnum),
+          unit: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyPortabilityStepDuration",
@@ -31814,22 +26486,20 @@ function __c83(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           doneDate: S.optional(S.NullOr(S.String)),
-          duration: S.optional(TelephonyPortabilityStepDuration),
-          infos: S.optional(S.NullOr(TelephonyPortabilityStepInfos)),
-          name: S.optional(TelephonyPortabilityStepNameEnum),
-          status: S.optional(TelephonyPortabilityStepStatusEnum),
+          duration: S.optional(__S(668)),
+          infos: S.optional(S.NullOr(__S(669))),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyPortabilityStep" });
     case 7:
-      return S.Array(TelephonyPortabilityStep);
+      return S.Array(__S(670));
   }
 }
 function __c84(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListTelephonyPortabilityStatusResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(671).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyPortabilityStatusResponse",
       });
     case 1:
@@ -31871,18 +26541,16 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
-          pricePerCallWithoutTax: S.optional(OrderPrice),
-          pricePerMinuteWithoutTax: S.optional(OrderPrice),
+          pricePerCallWithoutTax: S.optional(__S(77)),
+          pricePerMinuteWithoutTax: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "TelephonyRateCodeInformation",
       });
     case 6:
-      return S.Array(TelephonyRateCodeInformation);
+      return S.Array(__S(677));
     case 7:
-      return S.suspend(() =>
-        ListTelephonyRsvaAllowedRateCodesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(678).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyRsvaAllowedRateCodesResponse",
       });
   }
@@ -31902,7 +26570,7 @@ function __c85(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          categories: S.optional(TelephonySchedulerCategoryEnum.pipe(T.Query())),
+          categories: S.optional(S.String.pipe(T.Query())),
           dateEnd_from: S.optional(S.String.pipe(T.Query("dateEnd.from"))),
           dateEnd_to: S.optional(S.String.pipe(T.Query("dateEnd.to"))),
           dateStart_from: S.optional(S.String.pipe(T.Query("dateStart.from"))),
@@ -31953,17 +26621,15 @@ function __c85(j: number): any {
         S.Struct({
           billingAccount: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.String),
-          type: S.optional(TelephonyTelephonySearchServiceTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TelephonyTelephonySearchService",
       });
     case 6:
-      return S.Array(TelephonyTelephonySearchService);
+      return S.Array(__S(685));
     case 7:
-      return S.suspend(() =>
-        ListTelephonySearchServicesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(686).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonySearchServicesResponse",
       });
   }
@@ -32007,13 +26673,9 @@ function __c86(j: number): any {
         identifier: "TelephonyDirectoryHeadingPJ",
       });
     case 3:
-      return S.Array(TelephonyDirectoryHeadingPJ);
+      return S.Array(__S(690));
     case 4:
-      return S.suspend(() =>
-        ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(691).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyServiceDirectoryGetDirectoryServiceCodeResponse",
       });
     case 5:
@@ -32041,15 +26703,13 @@ function __c86(j: number): any {
         identifier: "TelephonyDirectoryWayType",
       });
     case 7:
-      return S.Array(TelephonyDirectoryWayType);
+      return S.Array(__S(694));
   }
 }
 function __c87(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListTelephonyServiceDirectoryGetWayTypesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(695).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListTelephonyServiceDirectoryGetWayTypesResponse",
       });
     case 1:
@@ -32059,7 +26719,7 @@ function __c87(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           creationDatetime_from: S.optional(S.String.pipe(T.Query("creationDatetime.from"))),
           creationDatetime_to: S.optional(S.String.pipe(T.Query("creationDatetime.to"))),
-          wayType: S.optional(TelephonyFaxConsumptionWayTypeEnum.pipe(T.Query())),
+          wayType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32090,9 +26750,9 @@ function __c87(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          action: S.optional(TelephonyOfferTaskActionEnum.pipe(T.Query())),
-          status: S.optional(TelephonyTaskStatusEnum.pipe(T.Query())),
-          type: S.optional(TelephonyOfferTaskTypeEnum.pipe(T.Query())),
+          action: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32110,9 +26770,9 @@ function __c87(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           creationDatetime_from: S.optional(S.String.pipe(T.Query("creationDatetime.from"))),
           creationDatetime_to: S.optional(S.String.pipe(T.Query("creationDatetime.to"))),
-          destinationType: S.optional(TelephonyVoiceConsumptionDestinationTypeEnum.pipe(T.Query())),
-          planType: S.optional(TelephonyVoiceConsumptionPlanTypeEnum.pipe(T.Query())),
-          wayType: S.optional(TelephonyVoiceConsumptionWayTypeEnum.pipe(T.Query())),
+          destinationType: S.optional(S.String.pipe(T.Query())),
+          planType: S.optional(S.String.pipe(T.Query())),
+          wayType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32147,7 +26807,7 @@ function __c87(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           action: S.optional(S.String.pipe(T.Query())),
           serviceType: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(TelephonyTaskStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32165,9 +26825,9 @@ function __c87(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           creationDatetime_from: S.optional(S.String.pipe(T.Query("creationDatetime.from"))),
           creationDatetime_to: S.optional(S.String.pipe(T.Query("creationDatetime.to"))),
-          destinationType: S.optional(TelephonyVoiceConsumptionDestinationTypeEnum.pipe(T.Query())),
-          planType: S.optional(TelephonyVoiceConsumptionPlanTypeEnum.pipe(T.Query())),
-          wayType: S.optional(TelephonyVoiceConsumptionWayTypeEnum.pipe(T.Query())),
+          destinationType: S.optional(S.String.pipe(T.Query())),
+          planType: S.optional(S.String.pipe(T.Query())),
+          wayType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32197,7 +26857,7 @@ function __c88(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListTelephonySpareRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(512).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/spare", code: 200 })),
       ).annotate({
         identifier: "ListTelephonySpareRequest",
@@ -32228,7 +26888,7 @@ function __c88(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           action: S.optional(S.String.pipe(T.Query())),
           serviceType: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(TelephonyTaskStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/{billingAccount}/task", code: 200 })),
       ).annotate({ identifier: "ListTelephonyTaskRequest" });
     case 6:
@@ -32289,21 +26949,19 @@ function __c89(j: number): any {
         S.Struct({
           channels: S.optional(S.Number),
           quantity: S.optional(S.Number),
-          unitPrice: S.optional(OrderPrice),
+          unitPrice: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "TelephonyTrunkSimultaneousPack",
       });
     case 3:
-      return S.Array(TelephonyTrunkSimultaneousPack);
+      return S.Array(__S(714));
     case 4:
       return S.suspend(() =>
         S.Struct({
           optimizedChannelsQuantity: S.optional(S.Number),
-          packsRepartition: S.optional(
-            TelephonyTrunkSimultaneousPacksRepartitionPacksRepartitionList,
-          ),
-          totalPrice: S.optional(OrderPrice),
+          packsRepartition: S.optional(__S(715)),
+          totalPrice: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "TelephonyTrunkSimultaneousPacksRepartition",
@@ -32326,7 +26984,7 @@ function __c89(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListTelephonyTrunksRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(512).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/telephony/trunks", code: 200 })),
       ).annotate({
         identifier: "ListTelephonyTrunksRequest",
@@ -32348,7 +27006,7 @@ function __c90(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          dir: S.optional(TelephonyVoicemailMessageFolderDirectoryEnum.pipe(T.Query())),
+          dir: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32364,7 +27022,7 @@ function __c90(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          dir: S.optional(TelephonyVoicemailMessageFolderGreetingEnum.pipe(T.Query())),
+          dir: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -32433,7 +27091,7 @@ function __c90(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          dir: TelephonyVoicemailMessageFolderDirectoryEnum,
+          dir: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -32450,7 +27108,7 @@ function __c90(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          dir: TelephonyVoicemailMessageFolderGreetingEnum,
+          dir: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -32502,7 +27160,7 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
-          creditThreshold: S.optional(OrderPrice),
+          creditThreshold: S.optional(__S(77)),
           description: S.optional(S.String),
           hiddenExternalNumber: S.optional(S.Boolean),
           overrideDisplayedNumber: S.optional(S.Boolean),
@@ -32530,7 +27188,7 @@ function __c91(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(250))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32586,11 +27244,11 @@ function __c91(j: number): any {
           anonymousRejection: S.optional(S.Boolean),
           enterMuted: S.optional(S.Boolean),
           expirationDate: S.optional(S.NullOr(S.String)),
-          language: S.optional(TelephonyConferenceLanguageEnum),
+          language: S.optional(S.String),
           pin: S.optional(S.String),
           recordStatus: S.optional(S.Boolean),
           reportEmail: S.optional(S.NullOr(S.String)),
-          reportStatus: S.optional(TelephonyConferenceReportStatusEnum),
+          reportStatus: S.optional(S.String),
           whiteLabelReport: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -32615,11 +27273,11 @@ function __c92(j: number): any {
           announceSoundId: S.optional(S.NullOr(S.Number)),
           anonymousRejection: S.optional(S.Boolean),
           enterMuted: S.optional(S.Boolean),
-          language: S.optional(TelephonyConferenceLanguageEnum),
+          language: S.optional(S.String),
           pin: S.optional(S.String),
           recordStatus: S.optional(S.Boolean),
           reportEmail: S.optional(S.NullOr(S.String)),
-          reportStatus: S.optional(TelephonyConferenceReportStatusEnum),
+          reportStatus: S.optional(S.String),
           whiteLabelReport: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -32654,9 +27312,9 @@ function __c92(j: number): any {
           description: S.optional(S.String),
           maxWaitTime: S.optional(S.Number),
           queueSize: S.optional(S.Number),
-          showCallerNumber: S.optional(TelephonyOvhPabxDialplanNumberPresentationEnum),
+          showCallerNumber: S.optional(S.String),
           statusIvrEnabled: S.optional(S.Boolean),
-          strategy: S.optional(TelephonyOvhPabxHuntingQueueStrategyEnum),
+          strategy: S.optional(S.String),
           toneOnClosing: S.optional(S.NullOr(S.Number)),
           toneOnHold: S.optional(S.NullOr(S.Number)),
           toneOnOpening: S.optional(S.NullOr(S.Number)),
@@ -32703,7 +27361,7 @@ function __c92(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
           simultaneousLines: S.optional(S.Number),
-          status: S.optional(TelephonyOvhPabxHuntingAgentStatusEnum),
+          status: S.optional(S.String),
           timeout: S.optional(S.Number),
           wrapUpTime: S.optional(S.Number),
         }).pipe(
@@ -32740,25 +27398,21 @@ function __c92(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           queueId: S.Number.pipe(T.Label()),
-          actionOnClosure: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
+          actionOnClosure: S.optional(S.NullOr(S.String)),
           actionOnClosureParam: S.optional(S.NullOr(S.String)),
-          actionOnOverflow: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
+          actionOnOverflow: S.optional(S.NullOr(S.String)),
           actionOnOverflowParam: S.optional(S.NullOr(S.String)),
           askForRecordDisabling: S.optional(S.NullOr(S.Boolean)),
-          confirmKey: S.optional(S.NullOr(TelephonyOvhPabxIvrMenuKeyEnum)),
+          confirmKey: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           followCallForwards: S.optional(S.NullOr(S.Boolean)),
           maxMember: S.optional(S.Number),
           maxWaitTime: S.optional(S.Number),
           record: S.optional(S.NullOr(S.Boolean)),
-          recordDisablingDigit: S.optional(
-            S.NullOr(TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum),
-          ),
-          recordDisablingLanguage: S.optional(
-            S.NullOr(TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum),
-          ),
+          recordDisablingDigit: S.optional(S.NullOr(S.Number)),
+          recordDisablingLanguage: S.optional(S.NullOr(S.String)),
           soundOnHold: S.optional(S.NullOr(S.Number)),
-          strategy: S.optional(TelephonyOvhPabxHuntingQueueStrategyEnum),
+          strategy: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32814,7 +27468,7 @@ function __c93(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          status: S.optional(TelephonyEasyHuntingScreenListsConditionsStatusEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32831,10 +27485,10 @@ function __c93(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           conditionId: S.Number.pipe(T.Label()),
-          policy: S.optional(TelephonyTimeConditionsPolicyEnum),
+          policy: S.optional(S.String),
           timeFrom: S.optional(S.String),
           timeTo: S.optional(S.String),
-          weekDay: S.optional(TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum),
+          weekDay: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32852,13 +27506,13 @@ function __c93(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           enable: S.optional(S.Boolean),
           slot1Number: S.optional(S.NullOr(S.String)),
-          slot1Type: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          slot1Type: S.optional(S.NullOr(S.String)),
           slot2Number: S.optional(S.NullOr(S.String)),
-          slot2Type: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          slot2Type: S.optional(S.NullOr(S.String)),
           slot3Number: S.optional(S.NullOr(S.String)),
-          slot3Type: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          slot3Type: S.optional(S.NullOr(S.String)),
           unavailableNumber: S.optional(S.NullOr(S.String)),
-          unavailableType: S.optional(S.NullOr(TelephonyTimeConditionsSettingsForwardTypeEnum)),
+          unavailableType: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32875,7 +27529,7 @@ function __c93(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          notifications: S.optional(S.NullOr(TelephonyLineNotificationsOptions)),
+          notifications: S.optional(S.NullOr(__S(320))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32889,14 +27543,10 @@ function __c93(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          blacklistedNumbers: S.optional(
-            S.NullOr(PutTelephonyFaxScreenListsRequestBlacklistedNumbersList),
-          ),
-          blacklistedTSI: S.optional(S.NullOr(PutTelephonyFaxScreenListsRequestBlacklistedTSIList)),
-          whitelistedNumbers: S.optional(
-            S.NullOr(PutTelephonyFaxScreenListsRequestWhitelistedNumbersList),
-          ),
-          whitelistedTSI: S.optional(S.NullOr(PutTelephonyFaxScreenListsRequestWhitelistedTSIList)),
+          blacklistedNumbers: S.optional(S.NullOr(__S(70))),
+          blacklistedTSI: S.optional(S.NullOr(__S(70))),
+          whitelistedNumbers: S.optional(S.NullOr(__S(70))),
+          whitelistedTSI: S.optional(S.NullOr(__S(70))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32912,14 +27562,14 @@ function __c93(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          faxMaxCall: S.optional(TelephonyFaxSendingTries),
-          faxQuality: S.optional(TelephonyFaxQualityEnum),
+          faxMaxCall: S.optional(S.Number),
+          faxQuality: S.optional(S.String),
           faxTagLine: S.optional(S.String),
           fromEmail: S.optional(S.String),
           fromName: S.optional(S.String),
-          mailFormat: S.optional(TelephonyFaxMailFormatEnum),
+          mailFormat: S.optional(S.String),
           receiver: S.optional(S.String),
-          redirectionEmail: S.optional(PutTelephonyFaxSettingsRequestRedirectionEmailList),
+          redirectionEmail: S.optional(__S(70)),
           rejectAnonymous: S.optional(S.Boolean),
           sender: S.optional(S.String),
         }).pipe(
@@ -32942,7 +27592,7 @@ function __c94(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          notifications: S.optional(S.NullOr(TelephonyLineNotificationsOptions)),
+          notifications: S.optional(S.NullOr(__S(320))),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -32986,22 +27636,22 @@ function __c94(j: number): any {
           doNotDisturb: S.optional(S.Boolean),
           domain: S.optional(S.String),
           forwardBackup: S.optional(S.Boolean),
-          forwardBackupNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardBackupNature: S.optional(S.String),
           forwardBackupNumber: S.optional(S.String),
           forwardBusy: S.optional(S.Boolean),
-          forwardBusyNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardBusyNature: S.optional(S.String),
           forwardBusyNumber: S.optional(S.String),
           forwardNoReply: S.optional(S.Boolean),
           forwardNoReplyDelay: S.optional(S.Number),
-          forwardNoReplyNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardNoReplyNature: S.optional(S.String),
           forwardNoReplyNumber: S.optional(S.String),
           forwardUnconditional: S.optional(S.Boolean),
-          forwardUnconditionalNature: S.optional(TelephonyLineOptionForwardNatureTypeEnum),
+          forwardUnconditionalNature: S.optional(S.String),
           forwardUnconditionalNumber: S.optional(S.String),
           identificationRestriction: S.optional(S.Boolean),
-          intercom: S.optional(TelephonyLineOptionIntercomEnum),
-          ipRestrictions: S.optional(PutTelephonyLineOptionsRequestIpRestrictionsList),
-          language: S.optional(TelephonyLineOptionLanguageEnum),
+          intercom: S.optional(S.String),
+          ipRestrictions: S.optional(__S(70)),
+          language: S.optional(S.String),
           lockOutCall: S.optional(S.Boolean),
           lockOutCallPassword: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           recordOutgoingCallsBeta: S.optional(S.Boolean),
@@ -33100,8 +27750,8 @@ function __c94(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          process: S.optional(TelephonyRmaReplaceTypeEnum),
-          shippingContact: S.optional(TelephonyContact),
+          process: S.optional(S.String),
+          shippingContact: S.optional(__S(368)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33120,7 +27770,7 @@ function __c95(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(250))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/telephony/lines/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -33181,10 +27831,10 @@ function __c95(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          callWaiting: S.optional(TelephonyTonesEnum),
-          endCall: S.optional(TelephonyTonesEnum),
-          onHold: S.optional(TelephonyTonesOnHoldEnum),
-          ringback: S.optional(TelephonyTonesEnum),
+          callWaiting: S.optional(S.String),
+          endCall: S.optional(S.String),
+          onHold: S.optional(S.String),
+          ringback: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33255,7 +27905,7 @@ function __c96(j: number): any {
           dialplanId: S.Number.pipe(T.Label()),
           anonymousRejection: S.optional(S.Boolean),
           name: S.optional(S.String),
-          showCallerNumber: S.optional(TelephonyOvhPabxDialplanNumberPresentationEnum),
+          showCallerNumber: S.optional(S.String),
           transferTimeout: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -33276,10 +27926,8 @@ function __c96(j: number): any {
           extensionId: S.Number.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
           position: S.optional(S.Number),
-          schedulerCategory: S.optional(S.NullOr(TelephonySchedulerCategoryEnum)),
-          screenListType: S.optional(
-            S.NullOr(TelephonyOvhPabxDialplanExtensionConditionScreenListTypeEnum),
-          ),
+          schedulerCategory: S.optional(S.NullOr(S.String)),
+          screenListType: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33300,7 +27948,7 @@ function __c96(j: number): any {
           conditionId: S.Number.pipe(T.Label()),
           timeFrom: S.optional(S.String),
           timeTo: S.optional(S.String),
-          weekDay: S.optional(TelephonyOvhPabxDialplanExtensionConditionTimeWeekDayEnum),
+          weekDay: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33319,7 +27967,7 @@ function __c96(j: number): any {
           dialplanId: S.Number.pipe(T.Label()),
           extensionId: S.Number.pipe(T.Label()),
           ruleId: S.Number.pipe(T.Label()),
-          action: S.optional(TelephonyOvhPabxDialplanExtensionRuleActionEnum),
+          action: S.optional(S.String),
           actionParam: S.optional(S.NullOr(S.String)),
           negativeAction: S.optional(S.Boolean),
           position: S.optional(S.Number),
@@ -33361,7 +28009,7 @@ function __c96(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           number: S.optional(S.String),
           simultaneousLines: S.optional(S.Number),
-          status: S.optional(TelephonyOvhPabxHuntingAgentStatusEnum),
+          status: S.optional(S.String),
           timeout: S.optional(S.Number),
           wrapUpTime: S.optional(S.Number),
         }).pipe(
@@ -33398,25 +28046,21 @@ function __c96(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           queueId: S.Number.pipe(T.Label()),
-          actionOnClosure: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
+          actionOnClosure: S.optional(S.NullOr(S.String)),
           actionOnClosureParam: S.optional(S.NullOr(S.String)),
-          actionOnOverflow: S.optional(S.NullOr(TelephonyOvhPabxQueueActionEnum)),
+          actionOnOverflow: S.optional(S.NullOr(S.String)),
           actionOnOverflowParam: S.optional(S.NullOr(S.String)),
           askForRecordDisabling: S.optional(S.NullOr(S.Boolean)),
-          confirmKey: S.optional(S.NullOr(TelephonyOvhPabxIvrMenuKeyEnum)),
+          confirmKey: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           followCallForwards: S.optional(S.NullOr(S.Boolean)),
           maxMember: S.optional(S.Number),
           maxWaitTime: S.optional(S.Number),
           record: S.optional(S.NullOr(S.Boolean)),
-          recordDisablingDigit: S.optional(
-            S.NullOr(TelephonyOvhPabxHuntingQueueRecordDisablingDigitEnum),
-          ),
-          recordDisablingLanguage: S.optional(
-            S.NullOr(TelephonyOvhPabxHuntingQueueRecordDisablingLanguageEnum),
-          ),
+          recordDisablingDigit: S.optional(S.NullOr(S.Number)),
+          recordDisablingLanguage: S.optional(S.NullOr(S.String)),
           soundOnHold: S.optional(S.NullOr(S.Number)),
-          strategy: S.optional(TelephonyOvhPabxHuntingQueueStrategyEnum),
+          strategy: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33479,7 +28123,7 @@ function __c97(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           menuId: S.Number.pipe(T.Label()),
           entryId: S.Number.pipe(T.Label()),
-          action: S.optional(TelephonyOvhPabxIvrMenuEntryActionEnum),
+          action: S.optional(S.String),
           actionParam: S.optional(S.String),
           dtmf: S.optional(S.String),
         }).pipe(
@@ -33499,7 +28143,7 @@ function __c97(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           text: S.optional(S.String),
-          voice: S.optional(TelephonyOvhPabxTtsVoiceEnum),
+          voice: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33592,7 +28236,7 @@ function __c98(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          typology: S.optional(S.NullOr(TelephonyPortabilitySpecialNumberCategoryEnum)),
+          typology: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33606,7 +28250,7 @@ function __c98(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          timeZone: S.optional(TelephonyTimeZone),
+          timeZone: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33623,7 +28267,7 @@ function __c98(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           uid: S.String.pipe(T.Label()),
-          categories: S.optional(TelephonySchedulerCategoryEnum),
+          categories: S.optional(S.String),
           dateEnd: S.optional(S.String),
           dateStart: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
@@ -33643,8 +28287,8 @@ function __c98(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          incomingScreenList: S.optional(TelephonyScreenListChoosingEnum),
-          outgoingScreenList: S.optional(TelephonyScreenListChoosingEnum),
+          incomingScreenList: S.optional(S.String),
+          outgoingScreenList: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33692,7 +28336,7 @@ function __c98(j: number): any {
           displayUniversalDirectory: S.optional(S.Boolean),
           email: S.optional(S.String),
           firstName: S.optional(S.String),
-          gender: S.optional(S.NullOr(NichandleGenderEnum)),
+          gender: S.optional(S.NullOr(S.String)),
           legalForm: S.optional(S.String),
           lineDescription: S.optional(S.String),
           name: S.optional(S.String),
@@ -33739,7 +28383,7 @@ function __c98(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(250))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/telephony/{billingAccount}/serviceInfos", code: 200 }),
         ),
@@ -33802,7 +28446,7 @@ function __c99(j: number): any {
       return S.suspend(() =>
         S.Struct({
           spare: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(250))),
         }).pipe(T.Http({ method: "PUT", uri: "/telephony/spare/{spare}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutTelephonySpareServiceInfosRequest",
@@ -33813,10 +28457,10 @@ function __c99(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          day: S.optional(TelephonyTimeConditionsDayEnum),
+          day: S.optional(S.String),
           hourBegin: S.optional(S.String),
           hourEnd: S.optional(S.String),
-          policy: S.optional(TelephonyTimeConditionsPolicyEnum),
+          policy: S.optional(S.String),
           status: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -33834,15 +28478,15 @@ function __c99(j: number): any {
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           slot1Number: S.optional(S.String),
-          slot1Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
+          slot1Type: S.optional(S.String),
           slot2Number: S.optional(S.String),
-          slot2Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
+          slot2Type: S.optional(S.String),
           slot3Number: S.optional(S.String),
-          slot3Type: S.optional(TelephonyTimeConditionsSlotTypeEnum),
-          status: S.optional(TelephonyTimeConditionsGlobalStatusEnum),
-          timeout: S.optional(S.NullOr(TelephonyTimeConditionsTimeoutEnum)),
+          slot3Type: S.optional(S.String),
+          status: S.optional(S.String),
+          timeout: S.optional(S.NullOr(S.Number)),
           unavailableNumber: S.optional(S.String),
-          unavailableType: S.optional(TelephonyTimeConditionsSlotTypeEnum),
+          unavailableType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -33857,7 +28501,7 @@ function __c99(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(250))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/telephony/trunks/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -33889,15 +28533,15 @@ function __c100(j: number): any {
         S.Struct({
           billingAccount: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          audioFormat: S.optional(TelephonyServiceVoicemailAudioFormatEnum),
+          audioFormat: S.optional(S.String),
           doNotRecord: S.optional(S.Boolean),
           forcePassword: S.optional(S.Boolean),
           fromEmail: S.optional(S.String),
           fromName: S.optional(S.String),
           fullGreetingSoundId: S.optional(S.NullOr(S.Number)),
-          greetingType: S.optional(TelephonyVoicemailGreetingEnum),
+          greetingType: S.optional(S.String),
           keepMessage: S.optional(S.Boolean),
-          redirectionEmails: S.optional(PutTelephonyVoicemailSettingsRequestRedirectionEmailsList),
+          redirectionEmails: S.optional(__S(499)),
           shortGreetingSoundId: S.optional(S.NullOr(S.Number)),
           temporaryGreetingActivated: S.optional(S.Boolean),
           temporaryGreetingSoundId: S.optional(S.NullOr(S.Number)),
@@ -34051,8 +28695,8 @@ function __c101(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resetCodeInfo: S.optional(S.NullOr(TelephonyResetPhoneCodeInfo)),
-          resetPhoneMethod: S.optional(TelephonyResetPhoneMethodEnum),
+          resetCodeInfo: S.optional(S.NullOr(__S(810))),
+          resetPhoneMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "TelephonyResetPhoneInfo" });
     case 4:
@@ -34062,7 +28706,7 @@ function __c101(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           dateSchedule: S.optional(S.String),
           pdfUrl: S.String,
-          recipients: SendTelephonyFaxSettingsFaxRequestRecipientsList,
+          recipients: __S(70),
         }).pipe(
           T.Http({
             method: "POST",
@@ -34076,9 +28720,9 @@ function __c101(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          country: TelephonyServiceNumberCountryEnum,
+          country: S.String,
           domain: S.String,
-          type: TelephonySipDomainProductTypeEnum,
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/telephony/setDefaultSipDomain", code: 200 })),
       ).annotate({
         identifier: "SetTelephonyDefaultSipDomainRequest",
@@ -34315,5 +28959,222 @@ function __c103(j: number): any {
       ).annotate({
         identifier: "TelephonyTrunkExternalDisplayedNumberValidation",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
+    case 70:
+      return __c70(i & 7);
+    case 71:
+      return __c71(i & 7);
+    case 72:
+      return __c72(i & 7);
+    case 73:
+      return __c73(i & 7);
+    case 74:
+      return __c74(i & 7);
+    case 75:
+      return __c75(i & 7);
+    case 76:
+      return __c76(i & 7);
+    case 77:
+      return __c77(i & 7);
+    case 78:
+      return __c78(i & 7);
+    case 79:
+      return __c79(i & 7);
+    case 80:
+      return __c80(i & 7);
+    case 81:
+      return __c81(i & 7);
+    case 82:
+      return __c82(i & 7);
+    case 83:
+      return __c83(i & 7);
+    case 84:
+      return __c84(i & 7);
+    case 85:
+      return __c85(i & 7);
+    case 86:
+      return __c86(i & 7);
+    case 87:
+      return __c87(i & 7);
+    case 88:
+      return __c88(i & 7);
+    case 89:
+      return __c89(i & 7);
+    case 90:
+      return __c90(i & 7);
+    case 91:
+      return __c91(i & 7);
+    case 92:
+      return __c92(i & 7);
+    case 93:
+      return __c93(i & 7);
+    case 94:
+      return __c94(i & 7);
+    case 95:
+      return __c95(i & 7);
+    case 96:
+      return __c96(i & 7);
+    case 97:
+      return __c97(i & 7);
+    case 98:
+      return __c98(i & 7);
+    case 99:
+      return __c99(i & 7);
+    case 100:
+      return __c100(i & 7);
+    case 101:
+      return __c101(i & 7);
+    case 102:
+      return __c102(i & 7);
+    case 103:
+      return __c103(i & 7);
   }
 }

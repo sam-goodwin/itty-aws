@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -80,18 +82,9 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 /** A service account. */
 export interface ServiceAccount {
   /** Email address of the service account. If empty, default Compute service account will be used. */
@@ -99,8 +92,6 @@ export interface ServiceAccount {
   /** The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed. */
   scope?: StringList;
 }
-const ServiceAccount = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ServiceAccount>;
-
 export type NodeStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -118,14 +109,8 @@ export type NodeStateEnum =
   | "HIDDEN"
   | "UNHIDING"
   | "UNKNOWN";
-const NodeStateEnum = S.String;
-
 export type UpcomingMaintenanceMaintenanceStatusEnum = "UNKNOWN" | "PENDING" | "ONGOING";
-const UpcomingMaintenanceMaintenanceStatusEnum = S.String;
-
 export type UpcomingMaintenanceTypeEnum = "UNKNOWN_TYPE" | "SCHEDULED" | "UNSCHEDULED";
-const UpcomingMaintenanceTypeEnum = S.String;
-
 /** Upcoming Maintenance notification information. */
 export interface UpcomingMaintenance {
   /** The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format. */
@@ -141,8 +126,6 @@ export interface UpcomingMaintenance {
   /** The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format. */
   latestWindowStartTime?: string;
 }
-const UpcomingMaintenance = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UpcomingMaintenance>;
-
 /** Network related configurations. */
 export interface NetworkConfig {
   /** Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes. */
@@ -156,16 +139,12 @@ export interface NetworkConfig {
   /** The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If none is provided, "default" will be used. */
   subnetwork?: string;
 }
-const NetworkConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<NetworkConfig>;
-
 export type NodeHealthEnum =
   | "HEALTH_UNSPECIFIED"
   | "HEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
   | "UNHEALTHY_MAINTENANCE";
-const NodeHealthEnum = S.String;
-
 export type SymptomSymptomTypeEnum =
   | "SYMPTOM_TYPE_UNSPECIFIED"
   | "LOW_MEMORY"
@@ -174,8 +153,6 @@ export type SymptomSymptomTypeEnum =
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
   | "PROJECT_ABUSE";
-const SymptomSymptomTypeEnum = S.String;
-
 /** A Symptom instance. */
 export interface Symptom {
   /** A string used to uniquely distinguish a worker within a TPU node. */
@@ -187,32 +164,20 @@ export interface Symptom {
   /** Detailed information of the current Symptom. */
   details?: string;
 }
-const Symptom = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Symptom>;
-
 export type SymptomList = Array<Symptom>;
-const SymptomList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SymptomList>;
-
 export type NetworkConfigList = Array<NetworkConfig>;
-const NetworkConfigList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<NetworkConfigList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringMap>;
-
 export type NodeApiVersionEnum =
   | "API_VERSION_UNSPECIFIED"
   | "V1_ALPHA1"
   | "V1"
   | "V2_ALPHA1"
   | "V2";
-const NodeApiVersionEnum = S.String;
-
 /** An access config attached to the TPU worker. */
 export interface AccessConfig {
   /** Output only. An external IP address associated with the TPU worker. */
   externalIp?: string;
 }
-const AccessConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AccessConfig>;
-
 /** A network endpoint over which a TPU worker can be reached. */
 export interface NetworkEndpoint {
   /** The internal IP address of this network endpoint. */
@@ -222,11 +187,7 @@ export interface NetworkEndpoint {
   /** The port of this network endpoint. */
   port?: number;
 }
-const NetworkEndpoint = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<NetworkEndpoint>;
-
 export type NetworkEndpointList = Array<NetworkEndpoint>;
-const NetworkEndpointList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<NetworkEndpointList>;
-
 export type AcceleratorConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "V2"
@@ -235,8 +196,6 @@ export type AcceleratorConfigTypeEnum =
   | "V5LITE_POD"
   | "V5P"
   | "V6E";
-const AcceleratorConfigTypeEnum = S.String;
-
 /** A TPU accelerator configuration. */
 export interface AcceleratorConfig {
   /** Required. Topology of TPU in chips. */
@@ -244,11 +203,7 @@ export interface AcceleratorConfig {
   /** Required. Type of TPU. */
   type?: AcceleratorConfigTypeEnum | (string & {});
 }
-const AcceleratorConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AcceleratorConfig>;
-
 export type AttachedDiskModeEnum = "DISK_MODE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY";
-const AttachedDiskModeEnum = S.String;
-
 /** A node-attached disk resource. Next ID: 8; */
 export interface AttachedDisk {
   /** Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk". */
@@ -256,38 +211,22 @@ export interface AttachedDisk {
   /** The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks. */
   mode?: AttachedDiskModeEnum | (string & {});
 }
-const AttachedDisk = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AttachedDisk>;
-
 export type AttachedDiskList = Array<AttachedDisk>;
-const AttachedDiskList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AttachedDiskList>;
-
 /** A set of Shielded Instance options. */
 export interface ShieldedInstanceConfig {
   /** Defines whether the instance has Secure Boot enabled. */
   enableSecureBoot?: boolean;
 }
-const ShieldedInstanceConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ShieldedInstanceConfig>;
-
 /** Defines the customer encryption key for disk encryption. */
 export interface CustomerEncryptionKey {
   /** The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1 */
   kmsKeyName?: string;
 }
-const CustomerEncryptionKey = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CustomerEncryptionKey>;
-
 /** Sets the boot disk configuration for the TPU node. */
 export interface BootDiskConfig {
   /** Optional. Customer encryption key for boot disk. */
   customerEncryptionKey?: CustomerEncryptionKey;
 }
-const BootDiskConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<BootDiskConfig>;
-
 /** Sets the scheduling options for this node. */
 export interface SchedulingConfig {
   /** Whether the node is created under a reservation. */
@@ -297,8 +236,6 @@ export interface SchedulingConfig {
   /** Defines whether the node is preemptible. */
   preemptible?: boolean;
 }
-const SchedulingConfig = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SchedulingConfig>;
-
 /** A TPU instance. */
 export interface Node {
   /** Optional. The type of hardware accelerators associated with this node. */
@@ -356,8 +293,6 @@ export interface Node {
   /** Output only. Whether the Node belongs to a Multislice group. */
   multisliceNode?: boolean;
 }
-const Node = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Node>;
-
 export interface CreateProjectsLocationsNodesRequest {
   /** Required. The parent resource name. */
   parent: string;
@@ -366,17 +301,8 @@ export interface CreateProjectsLocationsNodesRequest {
   /** Request body */
   body?: Node;
 }
-const CreateProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateProjectsLocationsNodesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -386,8 +312,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -401,12 +325,8 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Operation>;
-
 /** Spot tier definition. */
 export interface Spot {}
-const Spot = Empty as any as S.Schema<Spot>;
-
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -414,8 +334,6 @@ export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
-const Interval = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Interval>;
-
 /** Defines the policy of the QueuedRequest. */
 export interface QueueingPolicy {
   /** Optional. An absolute time after which resources may be created. */
@@ -429,8 +347,6 @@ export interface QueueingPolicy {
   /** Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed. */
   validUntilDuration?: string;
 }
-const QueueingPolicy = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<QueueingPolicy>;
-
 /** Parameters to specify for multislice QueuedResource requests. This message must be populated in case of multislice requests instead of node_id. */
 export interface MultisliceParams {
   /** Required. Number of nodes with this spec. The system will attempt to provision "node_count" nodes as part of the request. This needs to be > 1. */
@@ -438,8 +354,6 @@ export interface MultisliceParams {
   /** Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix. */
   nodeIdPrefix?: string;
 }
-const MultisliceParams = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MultisliceParams>;
-
 /** Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created. */
 export interface NodeSpec {
   /** Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multislice requests, multislice_params must be populated instead. */
@@ -451,25 +365,17 @@ export interface NodeSpec {
   /** Optional. Fields to specify in case of multislice request. */
   multisliceParams?: MultisliceParams;
 }
-const NodeSpec = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<NodeSpec>;
-
 export type NodeSpecList = Array<NodeSpec>;
-const NodeSpecList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<NodeSpecList>;
-
 /** Details of the TPU resource(s) being requested. */
 export interface Tpu {
   /** Optional. The TPU node(s) being requested. */
   nodeSpec?: NodeSpecList;
 }
-const Tpu = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Tpu>;
-
 /** Guaranteed tier definition. */
 export interface Guaranteed {
   /** Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration. */
   minDuration?: string;
 }
-const Guaranteed = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Guaranteed>;
-
 /** Further data for the deleting state. */
 export type DeletingData = Spot;
 /** Further data for the suspending state. */
@@ -489,16 +395,12 @@ export type QueuedResourceStateStateEnum =
   | "SUSPENDING"
   | "SUSPENDED"
   | "WAITING_FOR_RESOURCES";
-const QueuedResourceStateStateEnum = S.String;
-
 /** Further data for the creating state. */
 export type CreatingData = Spot;
 export type QueuedResourceStateStateInitiatorEnum =
   | "STATE_INITIATOR_UNSPECIFIED"
   | "USER"
   | "SERVICE";
-const QueuedResourceStateStateInitiatorEnum = S.String;
-
 /** Further data for the suspended state. */
 export type SuspendedData = Spot;
 /** Further data for the provisioning state. */
@@ -508,8 +410,6 @@ export interface FailedData {
   /** Output only. The error that caused the queued resource to enter the FAILED state. */
   error?: Status;
 }
-const FailedData = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<FailedData>;
-
 /** QueuedResourceState defines the details of the QueuedResource request. */
 export interface QueuedResourceState {
   /** Output only. Further data for the deleting state. */
@@ -533,8 +433,6 @@ export interface QueuedResourceState {
   /** Output only. Further data for the failed state. */
   failedData?: FailedData;
 }
-const QueuedResourceState = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<QueuedResourceState>;
-
 /** A QueuedResource represents a request for resources that will be placed in a queue and fulfilled when the necessary resources are available. */
 export interface QueuedResource {
   /** Optional. Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation} */
@@ -554,8 +452,6 @@ export interface QueuedResource {
   /** Output only. State of the QueuedResource request. */
   state?: QueuedResourceState;
 }
-const QueuedResource = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<QueuedResource>;
-
 export interface CreateProjectsLocationsQueuedResourcesRequest {
   /** Required. The parent resource name. */
   parent: string;
@@ -566,29 +462,14 @@ export interface CreateProjectsLocationsQueuedResourcesRequest {
   /** Request body */
   body?: QueuedResource;
 }
-const CreateProjectsLocationsQueuedResourcesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateProjectsLocationsQueuedResourcesRequest>;
-
 export interface DeleteProjectsLocationsNodesRequest {
   /** Required. The resource name. */
   name: string;
 }
-const DeleteProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsNodesRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsQueuedResourcesRequest {
   /** Optional. If set to true, all running nodes belonging to this queued resource will be deleted first and then the queued resource will be deleted. Otherwise (i.e. force=false), the queued resource will only be deleted if its nodes have already been deleted or the queued resource is in the ACCEPTED, FAILED, or SUSPENDED state. */
   force?: boolean;
@@ -597,11 +478,6 @@ export interface DeleteProjectsLocationsQueuedResourcesRequest {
   /** Required. The resource name. */
   name: string;
 }
-const DeleteProjectsLocationsQueuedResourcesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsQueuedResourcesRequest>;
-
 /** Request for GenerateServiceIdentity. */
 export type GenerateServiceIdentityRequest = Spot;
 export interface GenerateServiceIdentityProjectsLocationsRequest {
@@ -610,28 +486,16 @@ export interface GenerateServiceIdentityProjectsLocationsRequest {
   /** Request body */
   body?: Spot;
 }
-const GenerateServiceIdentityProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GenerateServiceIdentityProjectsLocationsRequest>;
-
 /** The per-product per-project service identity for Cloud TPU service. */
 export interface ServiceIdentity {
   /** The email address of the service identity. */
   email?: string;
 }
-const ServiceIdentity = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ServiceIdentity>;
-
 /** Response for GenerateServiceIdentity. */
 export interface GenerateServiceIdentityResponse {
   /** ServiceIdentity that was created or retrieved. */
   identity?: ServiceIdentity;
 }
-const GenerateServiceIdentityResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GenerateServiceIdentityResponse>;
-
 /** Request for GetGuestAttributes. */
 export interface GetGuestAttributesRequest {
   /** The 0-based worker ID. If it is empty, all workers' GuestAttributes will be returned. */
@@ -639,22 +503,12 @@ export interface GetGuestAttributesRequest {
   /** The guest attributes path to be queried. */
   queryPath?: string;
 }
-const GetGuestAttributesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetGuestAttributesRequest>;
-
 export interface GetGuestAttributesProjectsLocationsNodesRequest {
   /** Required. The resource name. */
   name: string;
   /** Request body */
   body?: GetGuestAttributesRequest;
 }
-const GetGuestAttributesProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetGuestAttributesProjectsLocationsNodesRequest>;
-
 /** A guest attributes namespace/key/value entry. */
 export interface GuestAttributesEntry {
   /** Key for the guest attribute entry. */
@@ -664,21 +518,12 @@ export interface GuestAttributesEntry {
   /** Namespace for the guest attribute entry. */
   namespace?: string;
 }
-const GuestAttributesEntry = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GuestAttributesEntry>;
-
 export type GuestAttributesEntryList = Array<GuestAttributesEntry>;
-const GuestAttributesEntryList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GuestAttributesEntryList>;
-
 /** Array of guest attribute namespace/key/value tuples. */
 export interface GuestAttributesValue {
   /** The list of guest attributes entries. */
   items?: GuestAttributesEntryList;
 }
-const GuestAttributesValue = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GuestAttributesValue>;
-
 /** A guest attributes. */
 export interface GuestAttributes {
   /** The value of the requested queried path. */
@@ -686,30 +531,16 @@ export interface GuestAttributes {
   /** The path to be queried. This can be the default namespace ('/') or a nested namespace ('/\/') or a specified key ('/\/\') */
   queryPath?: string;
 }
-const GuestAttributes = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GuestAttributes>;
-
 export type GuestAttributesList = Array<GuestAttributes>;
-const GuestAttributesList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GuestAttributesList>;
-
 /** Response for GetGuestAttributes. */
 export interface GetGuestAttributesResponse {
   /** The guest attributes for the TPU workers. */
   guestAttributes?: GuestAttributesList;
 }
-const GetGuestAttributesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetGuestAttributesResponse>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -723,23 +554,11 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsAcceleratorTypesRequest {
   /** Required. The resource name. */
   name: string;
 }
-const GetProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
-
 export type AcceleratorConfigList = Array<AcceleratorConfig>;
-const AcceleratorConfigList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AcceleratorConfigList>;
-
 /** A accelerator type that a Node can be configured with. */
 export interface AcceleratorType {
   /** The accelerator config. */
@@ -749,44 +568,22 @@ export interface AcceleratorType {
   /** The accelerator type. */
   type?: string;
 }
-const AcceleratorType = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AcceleratorType>;
-
 export interface GetProjectsLocationsNodesRequest {
   /** Required. The resource name. */
   name: string;
 }
-const GetProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetProjectsLocationsNodesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsQueuedResourcesRequest {
   /** Required. The resource name. */
   name: string;
 }
-const GetProjectsLocationsQueuedResourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetProjectsLocationsQueuedResourcesRequest>;
-
 export interface GetProjectsLocationsRuntimeVersionsRequest {
   /** Required. The resource name. */
   name: string;
 }
-const GetProjectsLocationsRuntimeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetProjectsLocationsRuntimeVersionsRequest>;
-
 /** A runtime version that a Node can be configured with. */
 export interface RuntimeVersion {
   /** The resource name. */
@@ -794,8 +591,6 @@ export interface RuntimeVersion {
   /** The runtime version. */
   version?: string;
 }
-const RuntimeVersion = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<RuntimeVersion>;
-
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -808,14 +603,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -823,11 +611,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsAcceleratorTypesRequest {
   /** Required. The parent resource name. */
   parent: string;
@@ -840,14 +623,7 @@ export interface ListProjectsLocationsAcceleratorTypesRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-const ListProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
-
 export type AcceleratorTypeList = Array<AcceleratorType>;
-const AcceleratorTypeList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<AcceleratorTypeList>;
-
 /** Response for ListAcceleratorTypes. */
 export interface ListAcceleratorTypesResponse {
   /** Locations that could not be reached. */
@@ -857,11 +633,6 @@ export interface ListAcceleratorTypesResponse {
   /** The next page token or empty if none. */
   nextPageToken?: string;
 }
-const ListAcceleratorTypesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListAcceleratorTypesResponse>;
-
 export interface ListProjectsLocationsNodesRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
@@ -870,14 +641,7 @@ export interface ListProjectsLocationsNodesRequest {
   /** Required. The parent resource name. */
   parent: string;
 }
-const ListProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListProjectsLocationsNodesRequest>;
-
 export type NodeList = Array<Node>;
-const NodeList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<NodeList>;
-
 /** Response for ListNodes. */
 export interface ListNodesResponse {
   /** The listed nodes. */
@@ -887,8 +651,6 @@ export interface ListNodesResponse {
   /** The next page token or empty if none. */
   nextPageToken?: string;
 }
-const ListNodesResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListNodesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -901,14 +663,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -918,11 +673,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsQueuedResourcesRequest {
   /** Required. The parent resource name. */
   parent: string;
@@ -931,14 +681,7 @@ export interface ListProjectsLocationsQueuedResourcesRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-const ListProjectsLocationsQueuedResourcesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListProjectsLocationsQueuedResourcesRequest>;
-
 export type QueuedResourceList = Array<QueuedResource>;
-const QueuedResourceList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<QueuedResourceList>;
-
 /** Response for ListQueuedResources. */
 export interface ListQueuedResourcesResponse {
   /** The next page token or empty if none. */
@@ -948,11 +691,6 @@ export interface ListQueuedResourcesResponse {
   /** The listed queued resources. */
   queuedResources?: QueuedResourceList;
 }
-const ListQueuedResourcesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListQueuedResourcesResponse>;
-
 export interface ListProjectsLocationsRuntimeVersionsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -965,14 +703,7 @@ export interface ListProjectsLocationsRuntimeVersionsRequest {
   /** Sort results. */
   orderBy?: string;
 }
-const ListProjectsLocationsRuntimeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListProjectsLocationsRuntimeVersionsRequest>;
-
 export type RuntimeVersionList = Array<RuntimeVersion>;
-const RuntimeVersionList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<RuntimeVersionList>;
-
 /** Response for ListRuntimeVersions. */
 export interface ListRuntimeVersionsResponse {
   /** The next page token or empty if none. */
@@ -982,11 +713,6 @@ export interface ListRuntimeVersionsResponse {
   /** The listed nodes. */
   runtimeVersions?: RuntimeVersionList;
 }
-const ListRuntimeVersionsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListRuntimeVersionsResponse>;
-
 export interface PatchProjectsLocationsNodesRequest {
   /** Required. Mask of fields from Node to update. Supported fields: [description, tags, labels, metadata, network_config.enable_external_ips]. */
   updateMask?: string;
@@ -995,11 +721,6 @@ export interface PatchProjectsLocationsNodesRequest {
   /** Request body */
   body?: Node;
 }
-const PatchProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PatchProjectsLocationsNodesRequest>;
-
 /** Request for ResetQueuedResource. */
 export type ResetQueuedResourceRequest = Spot;
 export interface ResetProjectsLocationsQueuedResourcesRequest {
@@ -1008,11 +729,6 @@ export interface ResetProjectsLocationsQueuedResourcesRequest {
   /** Request body */
   body?: Spot;
 }
-const ResetProjectsLocationsQueuedResourcesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ResetProjectsLocationsQueuedResourcesRequest>;
-
 /** Request for StartNode. */
 export type StartNodeRequest = Spot;
 export interface StartProjectsLocationsNodesRequest {
@@ -1021,11 +737,6 @@ export interface StartProjectsLocationsNodesRequest {
   /** Request body */
   body?: Spot;
 }
-const StartProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<StartProjectsLocationsNodesRequest>;
-
 /** Request for StopNode. */
 export type StopNodeRequest = Spot;
 export interface StopProjectsLocationsNodesRequest {
@@ -1034,11 +745,6 @@ export interface StopProjectsLocationsNodesRequest {
   /** Request body */
   body?: Spot;
 }
-const StopProjectsLocationsNodesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<StopProjectsLocationsNodesRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1053,8 +759,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(0) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1074,8 +780,8 @@ export const createProjectsLocationsNodes: API.OperationMethod<
   CreateProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsNodesRequest,
-  output: Operation,
+  input: __S(21) as any as S.Schema<CreateProjectsLocationsNodesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1095,8 +801,8 @@ export const createProjectsLocationsQueuedResources: API.OperationMethod<
   CreateProjectsLocationsQueuedResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsQueuedResourcesRequest,
-  output: Operation,
+  input: __S(36) as any as S.Schema<CreateProjectsLocationsQueuedResourcesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1116,8 +822,8 @@ export const deleteProjectsLocationsNodes: API.OperationMethod<
   DeleteProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsNodesRequest,
-  output: Operation,
+  input: __S(37) as any as S.Schema<DeleteProjectsLocationsNodesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1137,8 +843,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(38) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1158,8 +864,8 @@ export const deleteProjectsLocationsQueuedResources: API.OperationMethod<
   DeleteProjectsLocationsQueuedResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsQueuedResourcesRequest,
-  output: Operation,
+  input: __S(39) as any as S.Schema<DeleteProjectsLocationsQueuedResourcesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1179,8 +885,8 @@ export const generateServiceIdentityProjectsLocations: API.OperationMethod<
   GenerateServiceIdentityProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateServiceIdentityProjectsLocationsRequest,
-  output: GenerateServiceIdentityResponse,
+  input: __S(40) as any as S.Schema<GenerateServiceIdentityProjectsLocationsRequest>,
+  output: __S(42) as any as S.Schema<GenerateServiceIdentityResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1200,8 +906,8 @@ export const getGuestAttributesProjectsLocationsNodes: API.OperationMethod<
   GetGuestAttributesProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuestAttributesProjectsLocationsNodesRequest,
-  output: GetGuestAttributesResponse,
+  input: __S(44) as any as S.Schema<GetGuestAttributesProjectsLocationsNodesRequest>,
+  output: __S(50) as any as S.Schema<GetGuestAttributesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1215,8 +921,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(51) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(52) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1234,8 +940,8 @@ export const getProjectsLocationsAcceleratorTypes: API.OperationMethod<
   GetProjectsLocationsAcceleratorTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAcceleratorTypesRequest,
-  output: AcceleratorType,
+  input: __S(53) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>,
+  output: __S(55) as any as S.Schema<AcceleratorType>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1249,8 +955,8 @@ export const getProjectsLocationsNodes: API.OperationMethod<
   GetProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsNodesRequest,
-  output: Node,
+  input: __S(56) as any as S.Schema<GetProjectsLocationsNodesRequest>,
+  output: __S(20) as any as S.Schema<Node>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1268,8 +974,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(57) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1287,8 +993,8 @@ export const getProjectsLocationsQueuedResources: API.OperationMethod<
   GetProjectsLocationsQueuedResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsQueuedResourcesRequest,
-  output: QueuedResource,
+  input: __S(58) as any as S.Schema<GetProjectsLocationsQueuedResourcesRequest>,
+  output: __S(35) as any as S.Schema<QueuedResource>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1012,8 @@ export const getProjectsLocationsRuntimeVersions: API.OperationMethod<
   GetProjectsLocationsRuntimeVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRuntimeVersionsRequest,
-  output: RuntimeVersion,
+  input: __S(59) as any as S.Schema<GetProjectsLocationsRuntimeVersionsRequest>,
+  output: __S(60) as any as S.Schema<RuntimeVersion>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1028,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(61) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(63) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1049,8 @@ export const listProjectsLocationsAcceleratorTypes: API.PaginatedOperationMethod
   GcpOpContext,
   ListAcceleratorTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAcceleratorTypesRequest,
-  output: ListAcceleratorTypesResponse,
+  input: __S(64) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>,
+  output: __S(66) as any as S.Schema<ListAcceleratorTypesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1360,8 +1066,8 @@ export const listProjectsLocationsNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsNodesRequest,
-  output: ListNodesResponse,
+  input: __S(67) as any as S.Schema<ListProjectsLocationsNodesRequest>,
+  output: __S(69) as any as S.Schema<ListNodesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1381,8 +1087,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(70) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(72) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1402,8 +1108,8 @@ export const listProjectsLocationsQueuedResources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQueuedResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsQueuedResourcesRequest,
-  output: ListQueuedResourcesResponse,
+  input: __S(73) as any as S.Schema<ListProjectsLocationsQueuedResourcesRequest>,
+  output: __S(75) as any as S.Schema<ListQueuedResourcesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1423,8 +1129,8 @@ export const listProjectsLocationsRuntimeVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRuntimeVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRuntimeVersionsRequest,
-  output: ListRuntimeVersionsResponse,
+  input: __S(76) as any as S.Schema<ListProjectsLocationsRuntimeVersionsRequest>,
+  output: __S(78) as any as S.Schema<ListRuntimeVersionsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1151,8 @@ export const patchProjectsLocationsNodes: API.OperationMethod<
   PatchProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsNodesRequest,
-  output: Operation,
+  input: __S(79) as any as S.Schema<PatchProjectsLocationsNodesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1466,8 +1172,8 @@ export const resetProjectsLocationsQueuedResources: API.OperationMethod<
   ResetProjectsLocationsQueuedResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetProjectsLocationsQueuedResourcesRequest,
-  output: Operation,
+  input: __S(80) as any as S.Schema<ResetProjectsLocationsQueuedResourcesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1487,8 +1193,8 @@ export const startProjectsLocationsNodes: API.OperationMethod<
   StartProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartProjectsLocationsNodesRequest,
-  output: Operation,
+  input: __S(81) as any as S.Schema<StartProjectsLocationsNodesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1214,8 @@ export const stopProjectsLocationsNodes: API.OperationMethod<
   StopProjectsLocationsNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsNodesRequest,
-  output: Operation,
+  input: __S(82) as any as S.Schema<StopProjectsLocationsNodesRequest>,
+  output: __S(25) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1542,15 +1248,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          scope: S.optional(StringList),
+          scope: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ServiceAccount" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           windowEndTime: S.optional(S.String),
-          maintenanceStatus: S.optional(UpcomingMaintenanceMaintenanceStatusEnum),
-          type: S.optional(UpcomingMaintenanceTypeEnum),
+          maintenanceStatus: S.optional(S.String),
+          type: S.optional(S.String),
           canReschedule: S.optional(S.Boolean),
           windowStartTime: S.optional(S.String),
           latestWindowStartTime: S.optional(S.String),
@@ -1571,18 +1277,18 @@ function __c0(j: number): any {
         S.Struct({
           workerId: S.optional(S.String),
           createTime: S.optional(S.String),
-          symptomType: S.optional(SymptomSymptomTypeEnum),
+          symptomType: S.optional(S.String),
           details: S.optional(S.String),
         }),
       ).annotate({ identifier: "Symptom" });
     case 7:
-      return S.Array(Symptom);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NetworkConfig);
+      return S.Array(__S(5));
     case 1:
       return S.Record(S.String, S.String);
     case 2:
@@ -1595,28 +1301,28 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipAddress: S.optional(S.String),
-          accessConfig: S.optional(AccessConfig),
+          accessConfig: S.optional(__S(10)),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NetworkEndpoint" });
     case 4:
-      return S.Array(NetworkEndpoint);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           topology: S.optional(S.String),
-          type: S.optional(AcceleratorConfigTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AcceleratorConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           sourceDisk: S.optional(S.String),
-          mode: S.optional(AttachedDiskModeEnum),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachedDisk" });
     case 7:
-      return S.Array(AttachedDisk);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1636,7 +1342,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customerEncryptionKey: S.optional(CustomerEncryptionKey),
+          customerEncryptionKey: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "BootDiskConfig" });
     case 3:
@@ -1651,30 +1357,30 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           acceleratorType: S.optional(S.String),
-          serviceAccount: S.optional(ServiceAccount),
+          serviceAccount: S.optional(__S(3)),
           queuedResource: S.optional(S.String),
-          state: S.optional(NodeStateEnum),
-          upcomingMaintenance: S.optional(UpcomingMaintenance),
+          state: S.optional(S.String),
+          upcomingMaintenance: S.optional(__S(4)),
           description: S.optional(S.String),
-          networkConfig: S.optional(NetworkConfig),
-          tags: S.optional(StringList),
-          health: S.optional(NodeHealthEnum),
-          symptoms: S.optional(SymptomList),
-          networkConfigs: S.optional(NetworkConfigList),
-          labels: S.optional(StringMap),
-          apiVersion: S.optional(NodeApiVersionEnum),
-          networkEndpoints: S.optional(NetworkEndpointList),
-          acceleratorConfig: S.optional(AcceleratorConfig),
+          networkConfig: S.optional(__S(5)),
+          tags: S.optional(__S(2)),
+          health: S.optional(S.String),
+          symptoms: S.optional(__S(7)),
+          networkConfigs: S.optional(__S(8)),
+          labels: S.optional(__S(9)),
+          apiVersion: S.optional(S.String),
+          networkEndpoints: S.optional(__S(12)),
+          acceleratorConfig: S.optional(__S(13)),
           healthDescription: S.optional(S.String),
           createTime: S.optional(S.String),
-          dataDisks: S.optional(AttachedDiskList),
-          shieldedInstanceConfig: S.optional(ShieldedInstanceConfig),
-          metadata: S.optional(StringMap),
+          dataDisks: S.optional(__S(15)),
+          shieldedInstanceConfig: S.optional(__S(16)),
+          metadata: S.optional(__S(9)),
           id: S.optional(S.String),
           cidrBlock: S.optional(S.String),
-          bootDiskConfig: S.optional(BootDiskConfig),
+          bootDiskConfig: S.optional(__S(18)),
           runtimeVersion: S.optional(S.String),
-          schedulingConfig: S.optional(SchedulingConfig),
+          schedulingConfig: S.optional(__S(19)),
           name: S.optional(S.String),
           multisliceNode: S.optional(S.Boolean),
         }),
@@ -1684,7 +1390,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           nodeId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Node.pipe(T.HttpBody())),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1698,7 +1404,7 @@ function __c2(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1707,18 +1413,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(23)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(24)),
+          response: S.optional(__S(22)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
@@ -1734,7 +1440,7 @@ function __c3(j: number): any {
           validAfterTime: S.optional(S.String),
           validAfterDuration: S.optional(S.String),
           validUntilTime: S.optional(S.String),
-          validInterval: S.optional(Interval),
+          validInterval: S.optional(__S(26)),
           validUntilDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueueingPolicy" });
@@ -1750,16 +1456,16 @@ function __c3(j: number): any {
         S.Struct({
           nodeId: S.optional(S.String),
           parent: S.optional(S.String),
-          node: S.optional(Node),
-          multisliceParams: S.optional(MultisliceParams),
+          node: S.optional(__S(20)),
+          multisliceParams: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "NodeSpec" });
     case 6:
-      return S.Array(NodeSpec);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          nodeSpec: S.optional(NodeSpecList),
+          nodeSpec: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "Tpu" });
   }
@@ -1775,22 +1481,22 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
+          error: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "FailedData" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deletingData: S.optional(Spot),
-          suspendingData: S.optional(Spot),
-          acceptedData: S.optional(Spot),
-          activeData: S.optional(Spot),
-          state: S.optional(QueuedResourceStateStateEnum),
-          creatingData: S.optional(Spot),
-          stateInitiator: S.optional(QueuedResourceStateStateInitiatorEnum),
-          suspendedData: S.optional(Spot),
-          provisioningData: S.optional(Spot),
-          failedData: S.optional(FailedData),
+          deletingData: S.optional(__S(1)),
+          suspendingData: S.optional(__S(1)),
+          acceptedData: S.optional(__S(1)),
+          activeData: S.optional(__S(1)),
+          state: S.optional(S.String),
+          creatingData: S.optional(__S(1)),
+          stateInitiator: S.optional(S.String),
+          suspendedData: S.optional(__S(1)),
+          provisioningData: S.optional(__S(1)),
+          failedData: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "QueuedResourceState" });
     case 3:
@@ -1799,11 +1505,11 @@ function __c4(j: number): any {
           reservationName: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          spot: S.optional(Spot),
-          queueingPolicy: S.optional(QueueingPolicy),
-          tpu: S.optional(Tpu),
-          guaranteed: S.optional(Guaranteed),
-          state: S.optional(QueuedResourceState),
+          spot: S.optional(__S(1)),
+          queueingPolicy: S.optional(__S(27)),
+          tpu: S.optional(__S(31)),
+          guaranteed: S.optional(__S(32)),
+          state: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "QueuedResource" });
     case 4:
@@ -1812,7 +1518,7 @@ function __c4(j: number): any {
           parent: S.String.pipe(T.Label()),
           queuedResourceId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(QueuedResource.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1863,7 +1569,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Spot.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1883,7 +1589,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(ServiceIdentity),
+          identity: S.optional(__S(41)),
         }),
       ).annotate({
         identifier: "GenerateServiceIdentityResponse",
@@ -1891,7 +1597,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workerIds: S.optional(StringList),
+          workerIds: S.optional(__S(2)),
           queryPath: S.optional(S.String),
         }),
       ).annotate({
@@ -1901,7 +1607,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GetGuestAttributesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(43).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1921,11 +1627,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "GuestAttributesEntry" });
     case 6:
-      return S.Array(GuestAttributesEntry);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(GuestAttributesEntryList),
+          items: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "GuestAttributesValue" });
   }
@@ -1935,16 +1641,16 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          queryValue: S.optional(GuestAttributesValue),
+          queryValue: S.optional(__S(47)),
           queryPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestAttributes" });
     case 1:
-      return S.Array(GuestAttributes);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          guestAttributes: S.optional(GuestAttributesList),
+          guestAttributes: S.optional(__S(49)),
         }),
       ).annotate({
         identifier: "GetGuestAttributesResponse",
@@ -1963,8 +1669,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
-          metadata: S.optional(DocumentMap),
+          labels: S.optional(__S(9)),
+          metadata: S.optional(__S(22)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -1980,11 +1686,11 @@ function __c6(j: number): any {
         identifier: "GetProjectsLocationsAcceleratorTypesRequest",
       });
     case 6:
-      return S.Array(AcceleratorConfig);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          acceleratorConfigs: S.optional(AcceleratorConfigList),
+          acceleratorConfigs: S.optional(__S(54)),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -2046,7 +1752,7 @@ function __c7(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2059,11 +1765,11 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 6:
-      return S.Array(Location);
+      return S.Array(__S(52));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(62)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -2090,12 +1796,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsAcceleratorTypesRequest",
       });
     case 1:
-      return S.Array(AcceleratorType);
+      return S.Array(__S(55));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          acceleratorTypes: S.optional(AcceleratorTypeList),
+          unreachable: S.optional(__S(2)),
+          acceleratorTypes: S.optional(__S(65)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2118,12 +1824,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsNodesRequest",
       });
     case 4:
-      return S.Array(Node);
+      return S.Array(__S(20));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          nodes: S.optional(NodeList),
-          unreachable: S.optional(StringList),
+          nodes: S.optional(__S(68)),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNodesResponse" });
@@ -2146,7 +1852,7 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(25));
   }
 }
 function __c9(j: number): any {
@@ -2154,8 +1860,8 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(2)),
+          operations: S.optional(__S(71)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2176,13 +1882,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsQueuedResourcesRequest",
       });
     case 2:
-      return S.Array(QueuedResource);
+      return S.Array(__S(35));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          queuedResources: S.optional(QueuedResourceList),
+          unreachable: S.optional(__S(2)),
+          queuedResources: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "ListQueuedResourcesResponse",
@@ -2206,13 +1912,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsRuntimeVersionsRequest",
       });
     case 5:
-      return S.Array(RuntimeVersion);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          runtimeVersions: S.optional(RuntimeVersionList),
+          unreachable: S.optional(__S(2)),
+          runtimeVersions: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "ListRuntimeVersionsResponse",
@@ -2222,7 +1928,7 @@ function __c9(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Node.pipe(T.HttpBody())),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://tpu.googleapis.com/" }),
         ),
@@ -2237,7 +1943,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Spot.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2252,7 +1958,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Spot.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2267,7 +1973,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Spot.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2278,5 +1984,36 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "StopProjectsLocationsNodesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

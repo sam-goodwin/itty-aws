@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -113,8 +115,6 @@ export type AddFieldForOrgRequestBody =
   | AddFieldForOrgRequestBodyCase1
   | AddFieldForOrgRequestBodyCase2
   | AddFieldForOrgRequestBodyCase3;
-const AddFieldForOrgRequestBody = S.Unknown as any as S.Schema<AddFieldForOrgRequestBody>;
-
 export interface AddFieldForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -122,11 +122,6 @@ export interface AddFieldForOrgRequest {
   project_number: number;
   body: AddFieldForOrgRequestBody;
 }
-const AddFieldForOrgRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddFieldForOrgRequest>;
-
 /** The field's data type. */
 export type ProjectsV2FieldDataType =
   | "assignees"
@@ -144,18 +139,11 @@ export type ProjectsV2FieldDataType =
   | "issue_type"
   | "parent_issue"
   | "sub_issues_progress";
-const ProjectsV2FieldDataType = S.String;
-
 /** The display name of the option, in raw text and HTML formats. */
 export interface ProjectsV2SingleSelectOptionsName {
   raw: string;
   html: string;
 }
-const ProjectsV2SingleSelectOptionsName = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ProjectsV2SingleSelectOptionsName>;
-
 /** The description of the option, in raw text and HTML formats. */
 export type ProjectsV2SingleSelectOptionsDescription = ProjectsV2SingleSelectOptionsName;
 /** An option for a single select field */
@@ -169,18 +157,8 @@ export interface ProjectsV2SingleSelectOptions {
   /** The color associated with the option. */
   color: string;
 }
-const ProjectsV2SingleSelectOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ProjectsV2SingleSelectOptions>;
-
 /** The options available for single select fields. */
 export type ProjectsV2FieldOptionsList = Array<ProjectsV2SingleSelectOptions>;
-const ProjectsV2FieldOptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ProjectsV2FieldOptionsList>;
-
 /** The iteration title, in raw text and HTML formats. */
 export type ProjectsV2IterationSettingsTitle = ProjectsV2SingleSelectOptionsName;
 /** An iteration setting for an iteration field */
@@ -196,17 +174,7 @@ export interface ProjectsV2IterationSettings {
   /** Whether the iteration has been completed. */
   completed: boolean;
 }
-const ProjectsV2IterationSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ProjectsV2IterationSettings>;
-
 export type ProjectsV2FieldConfigurationIterationsList = Array<ProjectsV2IterationSettings>;
-const ProjectsV2FieldConfigurationIterationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ProjectsV2FieldConfigurationIterationsList>;
-
 /** Configuration for iteration fields. */
 export interface ProjectsV2FieldConfiguration {
   /** The day of the week when the iteration starts. */
@@ -215,11 +183,6 @@ export interface ProjectsV2FieldConfiguration {
   duration?: number;
   iterations?: ProjectsV2FieldConfigurationIterationsList;
 }
-const ProjectsV2FieldConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ProjectsV2FieldConfiguration>;
-
 /** A field inside a projects v2 project */
 export interface ProjectsV2Field {
   /** The unique identifier of the field. */
@@ -243,8 +206,6 @@ export interface ProjectsV2Field {
   /** The time when the field was last updated. */
   updated_at: string;
 }
-const ProjectsV2Field = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ProjectsV2Field>;
-
 /** The field's data type. */
 export type AddFieldForUserRequestBodyCase0DataType = "text" | "number" | "date";
 export interface AddFieldForUserRequestBodyCase0 {
@@ -279,8 +240,6 @@ export type AddFieldForUserRequestBody =
   | AddFieldForUserRequestBodyCase0
   | AddFieldForUserRequestBodyCase1
   | AddFieldForUserRequestBodyCase2;
-const AddFieldForUserRequestBody = S.Unknown as any as S.Schema<AddFieldForUserRequestBody>;
-
 export interface AddFieldForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -288,15 +247,8 @@ export interface AddFieldForUserRequest {
   project_number: number;
   body: AddFieldForUserRequestBody;
 }
-const AddFieldForUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddFieldForUserRequest>;
-
 /** The type of item to add to the project. Must be either Issue or PullRequest. */
 export type AddItemForOrgRequestType = "Issue" | "PullRequest";
-const AddItemForOrgRequestType = S.String;
-
 export interface AddItemForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -313,8 +265,6 @@ export interface AddItemForOrgRequest {
   /** The issue or pull request number. */
   number?: number;
 }
-const AddItemForOrgRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AddItemForOrgRequest>;
-
 /** The reason for the current state */
 export type IssueStateReason = "completed" | "reopened" | "not_planned" | "duplicate";
 /** A GitHub user. */
@@ -342,8 +292,6 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const NullableSimpleUser = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<NullableSimpleUser>;
-
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 export interface IssueLabelsItemCase1 {
@@ -980,12 +928,8 @@ export interface ProjectsV2DraftIssue {
 }
 /** The content represented by the item. */
 export type ProjectsV2ItemSimpleContent = Issue | PullRequestSimple | ProjectsV2DraftIssue;
-const ProjectsV2ItemSimpleContent = S.Unknown as any as S.Schema<ProjectsV2ItemSimpleContent>;
-
 /** The type of content tracked in a project item */
 export type ProjectsV2ItemContentType = "Issue" | "PullRequest" | "DraftIssue";
-const ProjectsV2ItemContentType = S.String;
-
 /** An item belonging to a project */
 export interface ProjectsV2ItemSimple {
   /** The unique identifier of the project item. */
@@ -1007,12 +951,8 @@ export interface ProjectsV2ItemSimple {
   /** The URL of the item in the project. */
   item_url?: string;
 }
-const ProjectsV2ItemSimple = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ProjectsV2ItemSimple>;
-
 /** The type of item to add to the project. Must be either Issue or PullRequest. */
 export type AddItemForUserRequestType = "Issue" | "PullRequest";
-const AddItemForUserRequestType = S.String;
-
 export interface AddItemForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1029,11 +969,6 @@ export interface AddItemForUserRequest {
   /** The issue or pull request number. */
   number?: number;
 }
-const AddItemForUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddItemForUserRequest>;
-
 export interface CreateDraftItemForAuthenticatedUserRequest {
   /** The unique identifier of the user. */
   user_id: string;
@@ -1044,11 +979,6 @@ export interface CreateDraftItemForAuthenticatedUserRequest {
   /** The body content of the draft issue item to create in the project. */
   body?: string;
 }
-const CreateDraftItemForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateDraftItemForAuthenticatedUserRequest>;
-
 export interface CreateDraftItemForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1059,49 +989,18 @@ export interface CreateDraftItemForOrgRequest {
   /** The body content of the draft issue item to create in the project. */
   body?: string;
 }
-const CreateDraftItemForOrgRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDraftItemForOrgRequest>;
-
 /** The layout of the view. */
 export type CreateViewForOrgRequestLayout = "table" | "board" | "roadmap";
-const CreateViewForOrgRequestLayout = S.String;
-
 /** `visible_fields` is not applicable to `roadmap` layout views. For `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used. */
 export type CreateViewForOrgRequestVisibleFieldsList = Array<number>;
-const CreateViewForOrgRequestVisibleFieldsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateViewForOrgRequestVisibleFieldsList>;
-
 export type CreateViewForOrgRequestSortByItemItem = number | string;
-const CreateViewForOrgRequestSortByItemItem =
-  S.Unknown as any as S.Schema<CreateViewForOrgRequestSortByItemItem>;
-
 export type CreateViewForOrgRequestSortByItemList = Array<CreateViewForOrgRequestSortByItemItem>;
-const CreateViewForOrgRequestSortByItemList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateViewForOrgRequestSortByItemList>;
-
 /** Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order. */
 export type CreateViewForOrgRequestSortByList = Array<CreateViewForOrgRequestSortByItemList>;
-const CreateViewForOrgRequestSortByList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateViewForOrgRequestSortByList>;
-
 /** The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForOrgRequestGroupByList = Array<number>;
-const CreateViewForOrgRequestGroupByList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForOrgRequestGroupByList>;
-
 /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForOrgRequestVerticalGroupByList = Array<number>;
-const CreateViewForOrgRequestVerticalGroupByList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForOrgRequestVerticalGroupByList>;
-
 export interface CreateViewForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1122,46 +1021,18 @@ export interface CreateViewForOrgRequest {
   /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
   vertical_group_by?: CreateViewForOrgRequestVerticalGroupByList;
 }
-const CreateViewForOrgRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateViewForOrgRequest>;
-
 /** The layout of the view. */
 export type ProjectsV2ViewLayout = "table" | "board" | "roadmap";
-const ProjectsV2ViewLayout = S.String;
-
 /** The list of field IDs that are visible in the view. */
 export type ProjectsV2ViewVisibleFieldsList = Array<number>;
-const ProjectsV2ViewVisibleFieldsList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewVisibleFieldsList>;
-
 export type ProjectsV2ViewSortByItemItem = number | string;
-const ProjectsV2ViewSortByItemItem = S.Unknown as any as S.Schema<ProjectsV2ViewSortByItemItem>;
-
 export type ProjectsV2ViewSortByItemList = Array<ProjectsV2ViewSortByItemItem>;
-const ProjectsV2ViewSortByItemList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ProjectsV2ViewSortByItemList>;
-
 /** The sorting configuration for the view. Each element is a tuple of [field_id, direction] where direction is "asc" or "desc". */
 export type ProjectsV2ViewSortByList = Array<ProjectsV2ViewSortByItemList>;
-const ProjectsV2ViewSortByList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ProjectsV2ViewSortByList>;
-
 /** The list of field IDs used for horizontal grouping. */
 export type ProjectsV2ViewGroupByList = Array<number>;
-const ProjectsV2ViewGroupByList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewGroupByList>;
-
 /** The list of field IDs used for vertical grouping (board layout). */
 export type ProjectsV2ViewVerticalGroupByList = Array<number>;
-const ProjectsV2ViewVerticalGroupByList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<ProjectsV2ViewVerticalGroupByList>;
-
 /** A view inside a projects v2 project */
 export interface ProjectsV2View {
   /** The unique identifier of the view. */
@@ -1194,44 +1065,18 @@ export interface ProjectsV2View {
   /** The list of field IDs used for vertical grouping (board layout). */
   vertical_group_by: ProjectsV2ViewVerticalGroupByList;
 }
-const ProjectsV2View = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ProjectsV2View>;
-
 /** The layout of the view. */
 export type CreateViewForUserRequestLayout = "table" | "board" | "roadmap";
-const CreateViewForUserRequestLayout = S.String;
-
 /** `visible_fields` is not applicable to `roadmap` layout views. For `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used. */
 export type CreateViewForUserRequestVisibleFieldsList = Array<number>;
-const CreateViewForUserRequestVisibleFieldsList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestVisibleFieldsList>;
-
 export type CreateViewForUserRequestSortByItemItem = number | string;
-const CreateViewForUserRequestSortByItemItem =
-  S.Unknown as any as S.Schema<CreateViewForUserRequestSortByItemItem>;
-
 export type CreateViewForUserRequestSortByItemList = Array<CreateViewForUserRequestSortByItemItem>;
-const CreateViewForUserRequestSortByItemList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateViewForUserRequestSortByItemList>;
-
 /** Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order. */
 export type CreateViewForUserRequestSortByList = Array<CreateViewForUserRequestSortByItemList>;
-const CreateViewForUserRequestSortByList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateViewForUserRequestSortByList>;
-
 /** The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForUserRequestGroupByList = Array<number>;
-const CreateViewForUserRequestGroupByList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestGroupByList>;
-
 /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
 export type CreateViewForUserRequestVerticalGroupByList = Array<number>;
-const CreateViewForUserRequestVerticalGroupByList =
-  CreateViewForOrgRequestVisibleFieldsList as any as S.Schema<CreateViewForUserRequestVerticalGroupByList>;
-
 export interface CreateViewForUserRequest {
   /** The unique identifier of the user. */
   user_id: string;
@@ -1252,11 +1097,6 @@ export interface CreateViewForUserRequest {
   /** The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on. */
   vertical_group_by?: CreateViewForUserRequestVerticalGroupByList;
 }
-const CreateViewForUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateViewForUserRequest>;
-
 export interface DeleteItemForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1265,17 +1105,7 @@ export interface DeleteItemForOrgRequest {
   /** The unique identifier of the project item. */
   item_id: number;
 }
-const DeleteItemForOrgRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteItemForOrgRequest>;
-
 export interface DeleteItemForOrgResponse {}
-const DeleteItemForOrgResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteItemForOrgResponse>;
-
 export interface DeleteItemForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1284,15 +1114,7 @@ export interface DeleteItemForUserRequest {
   /** The unique identifier of the project item. */
   item_id: number;
 }
-const DeleteItemForUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteItemForUserRequest>;
-
 export interface DeleteItemForUserResponse {}
-const DeleteItemForUserResponse =
-  DeleteItemForOrgResponse as any as S.Schema<DeleteItemForUserResponse>;
-
 export interface GetFieldForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1301,11 +1123,6 @@ export interface GetFieldForOrgRequest {
   /** The unique identifier of the field. */
   field_id: number;
 }
-const GetFieldForOrgRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetFieldForOrgRequest>;
-
 export interface GetFieldForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1314,23 +1131,14 @@ export interface GetFieldForUserRequest {
   /** The unique identifier of the field. */
   field_id: number;
 }
-const GetFieldForUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetFieldForUserRequest>;
-
 export interface GetForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The project's number. */
   project_number: number;
 }
-const GetForOrgRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetForOrgRequest>;
-
 /** The current state of the project. */
 export type ProjectsV2State = "open" | "closed";
-const ProjectsV2State = S.String;
-
 /** The current status. */
 export type NullableProjectsV2StatusUpdateStatus =
   | "INACTIVE"
@@ -1338,8 +1146,6 @@ export type NullableProjectsV2StatusUpdateStatus =
   | "AT_RISK"
   | "OFF_TRACK"
   | "COMPLETE";
-const NullableProjectsV2StatusUpdateStatus = S.String;
-
 /** An status update belonging to a project */
 export interface NullableProjectsV2StatusUpdate {
   /** The unique identifier of the status update. */
@@ -1362,11 +1168,6 @@ export interface NullableProjectsV2StatusUpdate {
   /** Body of the status update */
   body?: string | null;
 }
-const NullableProjectsV2StatusUpdate = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<NullableProjectsV2StatusUpdate>;
-
 /** A projects v2 project */
 export interface ProjectsV2 {
   /** The unique identifier of the project. */
@@ -1400,20 +1201,14 @@ export interface ProjectsV2 {
   /** Whether this project is a template */
   is_template?: boolean;
 }
-const ProjectsV2 = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ProjectsV2>;
-
 export interface GetForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
   /** The project's number. */
   project_number: number;
 }
-const GetForUserRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetForUserRequest>;
-
 export type GetOrgItemRequestFieldsCase1List = Array<string>;
 export type GetOrgItemRequestFields = string | GetOrgItemRequestFieldsCase1List;
-const GetOrgItemRequestFields = S.Unknown as any as S.Schema<GetOrgItemRequestFields>;
-
 export interface GetOrgItemRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1424,26 +1219,11 @@ export interface GetOrgItemRequest {
   /** Limit results to specific fields, by their IDs. If not specified, the title field will be returned. Example: fields[]=123&fields[]=456&fields[]=789 or fields=123,456,789 */
   fields?: GetOrgItemRequestFields;
 }
-const GetOrgItemRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetOrgItemRequest>;
-
 /** The content of the item, which varies by content type. */
 export type ProjectsV2ItemWithContentContentMap = { [key: string]: unknown | undefined };
-const ProjectsV2ItemWithContentContentMap = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ProjectsV2ItemWithContentContentMap>;
-
 export type ProjectsV2ItemWithContentFieldsItemMap = { [key: string]: unknown | undefined };
-const ProjectsV2ItemWithContentFieldsItemMap =
-  ProjectsV2ItemWithContentContentMap as any as S.Schema<ProjectsV2ItemWithContentFieldsItemMap>;
-
 /** The fields and values associated with this item. */
 export type ProjectsV2ItemWithContentFieldsList = Array<ProjectsV2ItemWithContentFieldsItemMap>;
-const ProjectsV2ItemWithContentFieldsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ProjectsV2ItemWithContentFieldsList>;
-
 /** An item belonging to a project */
 export interface ProjectsV2ItemWithContent {
   /** The unique identifier of the project item. */
@@ -1467,15 +1247,8 @@ export interface ProjectsV2ItemWithContent {
   /** The fields and values associated with this item. */
   fields?: ProjectsV2ItemWithContentFieldsList;
 }
-const ProjectsV2ItemWithContent = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ProjectsV2ItemWithContent>;
-
 export type GetUserItemRequestFieldsCase1List = Array<string>;
 export type GetUserItemRequestFields = string | GetUserItemRequestFieldsCase1List;
-const GetUserItemRequestFields = S.Unknown as any as S.Schema<GetUserItemRequestFields>;
-
 export interface GetUserItemRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1486,8 +1259,6 @@ export interface GetUserItemRequest {
   /** Limit results to specific fields, by their IDs. If not specified, the title field will be returned. Example: fields[]=123&fields[]=456&fields[]=789 or fields=123,456,789 */
   fields?: GetUserItemRequestFields;
 }
-const GetUserItemRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetUserItemRequest>;
-
 export interface ListFieldsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1500,23 +1271,8 @@ export interface ListFieldsForOrgRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-const ListFieldsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListFieldsForOrgRequest>;
-
 export type ListFieldsForOrgResponseBodyList = Array<ProjectsV2Field>;
-const ListFieldsForOrgResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListFieldsForOrgResponseBodyList>;
-
 export type ListFieldsForOrgResponse = ListFieldsForOrgResponseBodyList;
-const ListFieldsForOrgResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListFieldsForOrgResponse>;
-
 export interface ListFieldsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1529,21 +1285,8 @@ export interface ListFieldsForUserRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-const ListFieldsForUserRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListFieldsForUserRequest>;
-
 export type ListFieldsForUserResponseBodyList = Array<ProjectsV2Field>;
-const ListFieldsForUserResponseBodyList =
-  ListFieldsForOrgResponseBodyList as any as S.Schema<ListFieldsForUserResponseBodyList>;
-
 export type ListFieldsForUserResponse = ListFieldsForUserResponseBodyList;
-const ListFieldsForUserResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListFieldsForUserResponse>;
-
 export interface ListForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1556,17 +1299,8 @@ export interface ListForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListForOrgRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListForOrgRequest>;
-
 export type ListForOrgResponseBodyList = Array<ProjectsV2>;
-const ListForOrgResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListForOrgResponseBodyList>;
-
 export type ListForOrgResponse = ListForOrgResponseBodyList;
-const ListForOrgResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ListForOrgResponse>;
-
 export interface ListForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1579,16 +1313,10 @@ export interface ListForUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListForUserRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ListForUserRequest>;
-
 export type ListForUserResponseBodyList = Array<ProjectsV2>;
 export type ListForUserResponse = ListForUserResponseBodyList;
-const ListForUserResponse = ListForOrgResponse as any as S.Schema<ListForUserResponse>;
-
 export type ListItemsForOrgRequestFieldsCase1List = Array<string>;
 export type ListItemsForOrgRequestFields = string | ListItemsForOrgRequestFieldsCase1List;
-const ListItemsForOrgRequestFields = S.Unknown as any as S.Schema<ListItemsForOrgRequestFields>;
-
 export interface ListItemsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1605,27 +1333,10 @@ export interface ListItemsForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListItemsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListItemsForOrgRequest>;
-
 export type ListItemsForOrgResponseBodyList = Array<ProjectsV2ItemWithContent>;
-const ListItemsForOrgResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListItemsForOrgResponseBodyList>;
-
 export type ListItemsForOrgResponse = ListItemsForOrgResponseBodyList;
-const ListItemsForOrgResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListItemsForOrgResponse>;
-
 export type ListItemsForUserRequestFieldsCase1List = Array<string>;
 export type ListItemsForUserRequestFields = string | ListItemsForUserRequestFieldsCase1List;
-const ListItemsForUserRequestFields = S.Unknown as any as S.Schema<ListItemsForUserRequestFields>;
-
 export interface ListItemsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1642,21 +1353,10 @@ export interface ListItemsForUserRequest {
   /** Limit results to specific fields, by their IDs. If not specified, the title field will be returned. Example: `fields[]=123&fields[]=456&fields[]=789` or `fields=123,456,789` */
   fields?: ListItemsForUserRequestFields;
 }
-const ListItemsForUserRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListItemsForUserRequest>;
-
 export type ListItemsForUserResponseBodyList = Array<ProjectsV2ItemWithContent>;
 export type ListItemsForUserResponse = ListItemsForUserResponseBodyList;
-const ListItemsForUserResponse =
-  ListItemsForOrgResponse as any as S.Schema<ListItemsForUserResponse>;
-
 export type ListViewItemsForOrgRequestFieldsCase1List = Array<string>;
 export type ListViewItemsForOrgRequestFields = string | ListViewItemsForOrgRequestFieldsCase1List;
-const ListViewItemsForOrgRequestFields =
-  S.Unknown as any as S.Schema<ListViewItemsForOrgRequestFields>;
-
 export interface ListViewItemsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1673,26 +1373,10 @@ export interface ListViewItemsForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListViewItemsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListViewItemsForOrgRequest>;
-
 export type ListViewItemsForOrgResponseBodyList = Array<ProjectsV2ItemWithContent>;
-const ListViewItemsForOrgResponseBodyList =
-  ListItemsForOrgResponseBodyList as any as S.Schema<ListViewItemsForOrgResponseBodyList>;
-
 export type ListViewItemsForOrgResponse = ListViewItemsForOrgResponseBodyList;
-const ListViewItemsForOrgResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListViewItemsForOrgResponse>;
-
 export type ListViewItemsForUserRequestFieldsCase1List = Array<string>;
 export type ListViewItemsForUserRequestFields = string | ListViewItemsForUserRequestFieldsCase1List;
-const ListViewItemsForUserRequestFields =
-  S.Unknown as any as S.Schema<ListViewItemsForUserRequestFields>;
-
 export interface ListViewItemsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1709,39 +1393,18 @@ export interface ListViewItemsForUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListViewItemsForUserRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListViewItemsForUserRequest>;
-
 export type ListViewItemsForUserResponseBodyList = Array<ProjectsV2ItemWithContent>;
 export type ListViewItemsForUserResponse = ListViewItemsForUserResponseBodyList;
-const ListViewItemsForUserResponse =
-  ListViewItemsForOrgResponse as any as S.Schema<ListViewItemsForUserResponse>;
-
 /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
 export type UpdateItemForOrgRequestFieldsItemValue = string | number;
-const UpdateItemForOrgRequestFieldsItemValue =
-  S.Unknown as any as S.Schema<UpdateItemForOrgRequestFieldsItemValue>;
-
 export interface UpdateItemForOrgRequestFieldsItem {
   /** The ID of the project field to update. */
   id: number;
   /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
   value: UpdateItemForOrgRequestFieldsItemValue | null;
 }
-const UpdateItemForOrgRequestFieldsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UpdateItemForOrgRequestFieldsItem>;
-
 /** A list of field updates to apply. */
 export type UpdateItemForOrgRequestFieldsList = Array<UpdateItemForOrgRequestFieldsItem>;
-const UpdateItemForOrgRequestFieldsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UpdateItemForOrgRequestFieldsList>;
-
 export interface UpdateItemForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1752,34 +1415,16 @@ export interface UpdateItemForOrgRequest {
   /** A list of field updates to apply. */
   fields: UpdateItemForOrgRequestFieldsList;
 }
-const UpdateItemForOrgRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UpdateItemForOrgRequest>;
-
 /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
 export type UpdateItemForUserRequestFieldsItemValue = string | number;
-const UpdateItemForUserRequestFieldsItemValue =
-  S.Unknown as any as S.Schema<UpdateItemForUserRequestFieldsItemValue>;
-
 export interface UpdateItemForUserRequestFieldsItem {
   /** The ID of the project field to update. */
   id: number;
   /** The new value for the field: - For text, number, and date fields, provide the new value directly. - For single select and iteration fields, provide the ID of the option or iteration. - To clear the field, set this to null. */
   value: UpdateItemForUserRequestFieldsItemValue | null;
 }
-const UpdateItemForUserRequestFieldsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<UpdateItemForUserRequestFieldsItem>;
-
 /** A list of field updates to apply. */
 export type UpdateItemForUserRequestFieldsList = Array<UpdateItemForUserRequestFieldsItem>;
-const UpdateItemForUserRequestFieldsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<UpdateItemForUserRequestFieldsList>;
-
 export interface UpdateItemForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -1790,11 +1435,6 @@ export interface UpdateItemForUserRequest {
   /** A list of field updates to apply. */
   fields: UpdateItemForUserRequestFieldsList;
 }
-const UpdateItemForUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<UpdateItemForUserRequest>;
-
 export type AddFieldForOrgError = Forbidden | UnprocessableEntity | GithubOpError;
 /** Add a field to an organization-owned project. Add a field to an organization-owned project. */
 export const addFieldForOrg: API.OperationMethod<
@@ -1803,8 +1443,8 @@ export const addFieldForOrg: API.OperationMethod<
   AddFieldForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddFieldForOrgRequest,
-  output: ProjectsV2Field,
+  input: __S(0) as any as S.Schema<AddFieldForOrgRequest>,
+  output: __S(7) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1818,8 +1458,8 @@ export const addFieldForUser: API.OperationMethod<
   AddFieldForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddFieldForUserRequest,
-  output: ProjectsV2Field,
+  input: __S(8) as any as S.Schema<AddFieldForUserRequest>,
+  output: __S(7) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1473,8 @@ export const addItemForOrg: API.OperationMethod<
   AddItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddItemForOrgRequest,
-  output: ProjectsV2ItemSimple,
+  input: __S(9) as any as S.Schema<AddItemForOrgRequest>,
+  output: __S(11) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1488,8 @@ export const addItemForUser: API.OperationMethod<
   AddItemForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddItemForUserRequest,
-  output: ProjectsV2ItemSimple,
+  input: __S(12) as any as S.Schema<AddItemForUserRequest>,
+  output: __S(11) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1863,8 +1503,8 @@ export const createDraftItemForAuthenticatedUser: API.OperationMethod<
   CreateDraftItemForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDraftItemForAuthenticatedUserRequest,
-  output: ProjectsV2ItemSimple,
+  input: __S(13) as any as S.Schema<CreateDraftItemForAuthenticatedUserRequest>,
+  output: __S(11) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1518,8 @@ export const createDraftItemForOrg: API.OperationMethod<
   CreateDraftItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDraftItemForOrgRequest,
-  output: ProjectsV2ItemSimple,
+  input: __S(14) as any as S.Schema<CreateDraftItemForOrgRequest>,
+  output: __S(11) as any as S.Schema<ProjectsV2ItemSimple>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1533,8 @@ export const createViewForOrg: API.OperationMethod<
   CreateViewForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateViewForOrgRequest,
-  output: ProjectsV2View,
+  input: __S(18) as any as S.Schema<CreateViewForOrgRequest>,
+  output: __S(21) as any as S.Schema<ProjectsV2View>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1908,8 +1548,8 @@ export const createViewForUser: API.OperationMethod<
   CreateViewForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateViewForUserRequest,
-  output: ProjectsV2View,
+  input: __S(24) as any as S.Schema<CreateViewForUserRequest>,
+  output: __S(21) as any as S.Schema<ProjectsV2View>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1923,8 +1563,8 @@ export const deleteItemForOrg: API.OperationMethod<
   DeleteItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteItemForOrgRequest,
-  output: DeleteItemForOrgResponse,
+  input: __S(25) as any as S.Schema<DeleteItemForOrgRequest>,
+  output: __S(26) as any as S.Schema<DeleteItemForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1578,8 @@ export const deleteItemForUser: API.OperationMethod<
   DeleteItemForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteItemForUserRequest,
-  output: DeleteItemForUserResponse,
+  input: __S(27) as any as S.Schema<DeleteItemForUserRequest>,
+  output: __S(26) as any as S.Schema<DeleteItemForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1593,8 @@ export const getFieldForOrg: API.OperationMethod<
   GetFieldForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldForOrgRequest,
-  output: ProjectsV2Field,
+  input: __S(28) as any as S.Schema<GetFieldForOrgRequest>,
+  output: __S(7) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1608,8 @@ export const getFieldForUser: API.OperationMethod<
   GetFieldForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldForUserRequest,
-  output: ProjectsV2Field,
+  input: __S(29) as any as S.Schema<GetFieldForUserRequest>,
+  output: __S(7) as any as S.Schema<ProjectsV2Field>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1623,8 @@ export const getForOrg: API.OperationMethod<
   GetForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetForOrgRequest,
-  output: ProjectsV2,
+  input: __S(30) as any as S.Schema<GetForOrgRequest>,
+  output: __S(32) as any as S.Schema<ProjectsV2>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1638,8 @@ export const getForUser: API.OperationMethod<
   GetForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetForUserRequest,
-  output: ProjectsV2,
+  input: __S(33) as any as S.Schema<GetForUserRequest>,
+  output: __S(32) as any as S.Schema<ProjectsV2>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2013,8 +1653,8 @@ export const getOrgItem: API.OperationMethod<
   GetOrgItemError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgItemRequest,
-  output: ProjectsV2ItemWithContent,
+  input: __S(34) as any as S.Schema<GetOrgItemRequest>,
+  output: __S(37) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2028,8 +1668,8 @@ export const getUserItem: API.OperationMethod<
   GetUserItemError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserItemRequest,
-  output: ProjectsV2ItemWithContent,
+  input: __S(38) as any as S.Schema<GetUserItemRequest>,
+  output: __S(37) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2043,8 +1683,8 @@ export const listFieldsForOrg: API.OperationMethod<
   ListFieldsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFieldsForOrgRequest,
-  output: ListFieldsForOrgResponse,
+  input: __S(39) as any as S.Schema<ListFieldsForOrgRequest>,
+  output: __S(41) as any as S.Schema<ListFieldsForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2058,8 +1698,8 @@ export const listFieldsForUser: API.OperationMethod<
   ListFieldsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFieldsForUserRequest,
-  output: ListFieldsForUserResponse,
+  input: __S(42) as any as S.Schema<ListFieldsForUserRequest>,
+  output: __S(43) as any as S.Schema<ListFieldsForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2073,8 +1713,8 @@ export const listForOrg: API.OperationMethod<
   ListForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForOrgRequest,
-  output: ListForOrgResponse,
+  input: __S(44) as any as S.Schema<ListForOrgRequest>,
+  output: __S(46) as any as S.Schema<ListForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2088,8 +1728,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForUserRequest,
-  output: ListForUserResponse,
+  input: __S(47) as any as S.Schema<ListForUserRequest>,
+  output: __S(46) as any as S.Schema<ListForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2103,8 +1743,8 @@ export const listItemsForOrg: API.OperationMethod<
   ListItemsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListItemsForOrgRequest,
-  output: ListItemsForOrgResponse,
+  input: __S(48) as any as S.Schema<ListItemsForOrgRequest>,
+  output: __S(50) as any as S.Schema<ListItemsForOrgResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2118,8 +1758,8 @@ export const listItemsForUser: API.OperationMethod<
   ListItemsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListItemsForUserRequest,
-  output: ListItemsForUserResponse,
+  input: __S(51) as any as S.Schema<ListItemsForUserRequest>,
+  output: __S(50) as any as S.Schema<ListItemsForUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2133,8 +1773,8 @@ export const listViewItemsForOrg: API.OperationMethod<
   ListViewItemsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListViewItemsForOrgRequest,
-  output: ListViewItemsForOrgResponse,
+  input: __S(52) as any as S.Schema<ListViewItemsForOrgRequest>,
+  output: __S(53) as any as S.Schema<ListViewItemsForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2148,8 +1788,8 @@ export const listViewItemsForUser: API.OperationMethod<
   ListViewItemsForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListViewItemsForUserRequest,
-  output: ListViewItemsForUserResponse,
+  input: __S(54) as any as S.Schema<ListViewItemsForUserRequest>,
+  output: __S(53) as any as S.Schema<ListViewItemsForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2163,8 +1803,8 @@ export const updateItemForOrg: API.OperationMethod<
   UpdateItemForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateItemForOrgRequest,
-  output: ProjectsV2ItemWithContent,
+  input: __S(57) as any as S.Schema<UpdateItemForOrgRequest>,
+  output: __S(37) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2178,8 +1818,8 @@ export const updateItemForUser: API.OperationMethod<
   UpdateItemForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateItemForUserRequest,
-  output: ProjectsV2ItemWithContent,
+  input: __S(60) as any as S.Schema<UpdateItemForUserRequest>,
+  output: __S(37) as any as S.Schema<ProjectsV2ItemWithContent>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2193,7 +1833,7 @@ function __c0(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
-          body: AddFieldForOrgRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2215,35 +1855,35 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          name: ProjectsV2SingleSelectOptionsName,
-          description: ProjectsV2SingleSelectOptionsName,
+          name: __S(1),
+          description: __S(1),
           color: S.String,
         }),
       ).annotate({
         identifier: "ProjectsV2SingleSelectOptions",
       });
     case 3:
-      return S.Array(ProjectsV2SingleSelectOptions);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           start_date: S.String,
           duration: S.Number,
-          title: ProjectsV2SingleSelectOptionsName,
+          title: __S(1),
           completed: S.Boolean,
         }),
       ).annotate({
         identifier: "ProjectsV2IterationSettings",
       });
     case 5:
-      return S.Array(ProjectsV2IterationSettings);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           start_day: S.optional(S.Number),
           duration: S.optional(S.Number),
-          iterations: S.optional(ProjectsV2FieldConfigurationIterationsList),
+          iterations: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "ProjectsV2FieldConfiguration",
@@ -2256,9 +1896,9 @@ function __c0(j: number): any {
           node_id: S.optional(S.String),
           project_url: S.String,
           name: S.String,
-          data_type: ProjectsV2FieldDataType,
-          options: S.optional(ProjectsV2FieldOptionsList),
-          configuration: S.optional(ProjectsV2FieldConfiguration),
+          data_type: S.String,
+          options: S.optional(__S(3)),
+          configuration: S.optional(__S(6)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -2272,7 +1912,7 @@ function __c1(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
-          body: AddFieldForUserRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2286,7 +1926,7 @@ function __c1(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
-          type: AddItemForOrgRequestType,
+          type: S.String,
           id: S.optional(S.Number),
           owner: S.optional(S.String),
           repo: S.optional(S.String),
@@ -2331,9 +1971,9 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           node_id: S.optional(S.String),
-          content: S.optional(ProjectsV2ItemSimpleContent),
-          content_type: ProjectsV2ItemContentType,
-          creator: S.optional(NullableSimpleUser),
+          content: S.optional(S.Unknown),
+          content_type: S.String,
+          creator: S.optional(__S(10)),
           created_at: S.String,
           updated_at: S.String,
           archived_at: S.NullOr(S.String),
@@ -2346,7 +1986,7 @@ function __c1(j: number): any {
         S.Struct({
           username: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
-          type: AddItemForUserRequestType,
+          type: S.String,
           id: S.optional(S.Number),
           owner: S.optional(S.String),
           repo: S.optional(S.String),
@@ -2400,21 +2040,21 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateViewForOrgRequestSortByItemItem);
+      return S.Array(S.Unknown);
     case 1:
-      return S.Array(CreateViewForOrgRequestSortByItemList);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           name: S.String,
-          layout: CreateViewForOrgRequestLayout,
+          layout: S.String,
           filter: S.optional(S.String),
-          visible_fields: S.optional(CreateViewForOrgRequestVisibleFieldsList),
-          sort_by: S.optional(CreateViewForOrgRequestSortByList),
-          group_by: S.optional(CreateViewForOrgRequestGroupByList),
-          vertical_group_by: S.optional(CreateViewForOrgRequestVerticalGroupByList),
+          visible_fields: S.optional(__S(15)),
+          sort_by: S.optional(__S(17)),
+          group_by: S.optional(__S(15)),
+          vertical_group_by: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2424,33 +2064,33 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "CreateViewForOrgRequest" });
     case 3:
-      return S.Array(ProjectsV2ViewSortByItemItem);
+      return S.Array(S.Unknown);
     case 4:
-      return S.Array(ProjectsV2ViewSortByItemList);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           number: S.Number,
           name: S.String,
-          layout: ProjectsV2ViewLayout,
+          layout: S.String,
           node_id: S.String,
           project_url: S.String,
           html_url: S.String,
-          creator: NullableSimpleUser,
+          creator: __S(10),
           created_at: S.String,
           updated_at: S.String,
           filter: S.optional(S.NullOr(S.String)),
-          visible_fields: ProjectsV2ViewVisibleFieldsList,
-          sort_by: ProjectsV2ViewSortByList,
-          group_by: ProjectsV2ViewGroupByList,
-          vertical_group_by: ProjectsV2ViewVerticalGroupByList,
+          visible_fields: __S(15),
+          sort_by: __S(20),
+          group_by: __S(15),
+          vertical_group_by: __S(15),
         }),
       ).annotate({ identifier: "ProjectsV2View" });
     case 6:
-      return S.Array(CreateViewForUserRequestSortByItemItem);
+      return S.Array(S.Unknown);
     case 7:
-      return S.Array(CreateViewForUserRequestSortByItemList);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -2461,12 +2101,12 @@ function __c3(j: number): any {
           user_id: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           name: S.String,
-          layout: CreateViewForUserRequestLayout,
+          layout: S.String,
           filter: S.optional(S.String),
-          visible_fields: S.optional(CreateViewForUserRequestVisibleFieldsList),
-          sort_by: S.optional(CreateViewForUserRequestSortByList),
-          group_by: S.optional(CreateViewForUserRequestGroupByList),
-          vertical_group_by: S.optional(CreateViewForUserRequestVerticalGroupByList),
+          visible_fields: S.optional(__S(15)),
+          sort_by: S.optional(__S(23)),
+          group_by: S.optional(__S(15)),
+          vertical_group_by: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2550,10 +2190,10 @@ function __c3(j: number): any {
           id: S.Number,
           node_id: S.String,
           project_node_id: S.optional(S.String),
-          creator: S.optional(NullableSimpleUser),
+          creator: S.optional(__S(10)),
           created_at: S.String,
           updated_at: S.String,
-          status: S.optional(S.NullOr(NullableProjectsV2StatusUpdateStatus)),
+          status: S.optional(S.NullOr(S.String)),
           start_date: S.optional(S.String),
           target_date: S.optional(S.String),
           body: S.optional(S.NullOr(S.String)),
@@ -2570,8 +2210,8 @@ function __c4(j: number): any {
         S.Struct({
           id: S.Number,
           node_id: S.String,
-          owner: NullableSimpleUser,
-          creator: NullableSimpleUser,
+          owner: __S(10),
+          creator: __S(10),
           title: S.String,
           description: S.NullOr(S.String),
           public: S.Boolean,
@@ -2581,9 +2221,9 @@ function __c4(j: number): any {
           number: S.Number,
           short_description: S.NullOr(S.String),
           deleted_at: S.NullOr(S.String),
-          deleted_by: S.NullOr(NullableSimpleUser),
-          state: S.optional(ProjectsV2State),
-          latest_status_update: S.optional(S.NullOr(NullableProjectsV2StatusUpdate)),
+          deleted_by: S.NullOr(__S(10)),
+          state: S.optional(S.String),
+          latest_status_update: S.optional(S.NullOr(__S(31))),
           is_template: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ProjectsV2" });
@@ -2606,7 +2246,7 @@ function __c4(j: number): any {
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           item_id: S.Number.pipe(T.Label()),
-          fields: S.optional(GetOrgItemRequestFields.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2618,21 +2258,21 @@ function __c4(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(ProjectsV2ItemWithContentFieldsItemMap);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           node_id: S.optional(S.String),
           project_url: S.optional(S.String),
-          content_type: ProjectsV2ItemContentType,
-          content: S.optional(S.NullOr(ProjectsV2ItemWithContentContentMap)),
-          creator: S.optional(NullableSimpleUser),
+          content_type: S.String,
+          content: S.optional(S.NullOr(__S(35))),
+          creator: S.optional(__S(10)),
           created_at: S.String,
           updated_at: S.String,
           archived_at: S.NullOr(S.String),
           item_url: S.optional(S.NullOr(S.String)),
-          fields: S.optional(ProjectsV2ItemWithContentFieldsList),
+          fields: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "ProjectsV2ItemWithContent",
@@ -2643,7 +2283,7 @@ function __c4(j: number): any {
           username: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           item_id: S.Number.pipe(T.Label()),
-          fields: S.optional(GetUserItemRequestFields.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2673,9 +2313,9 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProjectsV2Field);
+      return S.Array(__S(7));
     case 1:
-      return S.suspend(() => ListFieldsForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(40).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFieldsForOrgResponse",
       });
     case 2:
@@ -2695,7 +2335,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListFieldsForUserRequest" });
     case 3:
-      return S.suspend(() => ListFieldsForUserResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(40).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFieldsForUserResponse",
       });
     case 4:
@@ -2709,9 +2349,9 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/projectsV2", code: 200 })),
       ).annotate({ identifier: "ListForOrgRequest" });
     case 5:
-      return S.Array(ProjectsV2);
+      return S.Array(__S(32));
     case 6:
-      return S.suspend(() => ListForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(45).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForOrgResponse",
       });
     case 7:
@@ -2734,7 +2374,7 @@ function __c6(j: number): any {
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           q: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(ListItemsForOrgRequestFields.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
@@ -2747,9 +2387,9 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListItemsForOrgRequest" });
     case 1:
-      return S.Array(ProjectsV2ItemWithContent);
+      return S.Array(__S(37));
     case 2:
-      return S.suspend(() => ListItemsForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(49).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListItemsForOrgResponse",
       });
     case 3:
@@ -2761,7 +2401,7 @@ function __c6(j: number): any {
           after: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
-          fields: S.optional(ListItemsForUserRequestFields.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2776,7 +2416,7 @@ function __c6(j: number): any {
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           view_number: S.Number.pipe(T.Label()),
-          fields: S.optional(ListViewItemsForOrgRequestFields.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
@@ -2791,9 +2431,7 @@ function __c6(j: number): any {
         identifier: "ListViewItemsForOrgRequest",
       });
     case 5:
-      return S.suspend(() =>
-        ListViewItemsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(49).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListViewItemsForOrgResponse",
       });
     case 6:
@@ -2802,7 +2440,7 @@ function __c6(j: number): any {
           username: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           view_number: S.Number.pipe(T.Label()),
-          fields: S.optional(ListViewItemsForUserRequestFields.pipe(T.Query())),
+          fields: S.optional(S.Unknown.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
@@ -2820,7 +2458,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          value: S.NullOr(UpdateItemForOrgRequestFieldsItemValue),
+          value: S.NullOr(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateItemForOrgRequestFieldsItem",
@@ -2830,14 +2468,14 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateItemForOrgRequestFieldsItem);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           item_id: S.Number.pipe(T.Label()),
-          fields: UpdateItemForOrgRequestFieldsList,
+          fields: __S(56),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2850,20 +2488,20 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          value: S.NullOr(UpdateItemForUserRequestFieldsItemValue),
+          value: S.NullOr(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateItemForUserRequestFieldsItem",
       });
     case 3:
-      return S.Array(UpdateItemForUserRequestFieldsItem);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           project_number: S.Number.pipe(T.Label()),
           item_id: S.Number.pipe(T.Label()),
-          fields: UpdateItemForUserRequestFieldsList,
+          fields: __S(59),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2872,5 +2510,30 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateItemForUserRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

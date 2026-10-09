@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,52 +70,30 @@ export interface DeleteAgentUsersRequest {
   /** Required. Third-party user ID. */
   agentUserId: string;
 }
-const DeleteAgentUsersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteAgentUsersRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
-
 export type QueryRequestDeviceViewEnum =
   | "DEVICE_VIEW_UNSPECIFIED"
   | "SMART_HOME_TRAIT_ONLY"
   | "HOME_TRAIT_ONLY"
   | "HOME_TRAIT_AND_SMART_HOME_TRAIT";
-const QueryRequestDeviceViewEnum = S.String;
-
 /** Third-party device ID for one device. */
 export interface AgentDeviceId {
   /** Third-party device ID. */
   id?: string;
 }
-const AgentDeviceId = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AgentDeviceId>;
-
 export type AgentDeviceIdList = Array<AgentDeviceId>;
-const AgentDeviceIdList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AgentDeviceIdList>;
-
 /** Payload containing device IDs. */
 export interface QueryRequestPayload {
   /** Third-party device IDs for which to get the device states. */
   devices?: AgentDeviceIdList;
 }
-const QueryRequestPayload = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<QueryRequestPayload>;
-
 /** Device ID inputs to QueryRequest. */
 export interface QueryRequestInput {
   /** Payload containing third-party device IDs. */
   payload?: QueryRequestPayload;
 }
-const QueryRequestInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<QueryRequestInput>;
-
 export type QueryRequestInputList = Array<QueryRequestInput>;
-const QueryRequestInputList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<QueryRequestInputList>;
-
 /** Request type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. */
 export interface QueryRequest {
   /** Request ID used for debugging. */
@@ -127,36 +107,20 @@ export interface QueryRequest {
   /** Required. Third-party user ID. */
   agentUserId?: string;
 }
-const QueryRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<QueryRequest>;
-
 export interface QueryDevicesRequest {
   /** Request body */
   body?: QueryRequest;
 }
-const QueryDevicesRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<QueryDevicesRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringMap>;
-
 /** Metadata for traits of a single device. */
 export interface DeviceMetadata {
   /** Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. */
   traitCommitTimestamps?: StringMap;
 }
-const DeviceMetadata = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeviceMetadata>;
-
 export type DeviceMetadataMap = { [key: string]: DeviceMetadata | undefined };
-const DeviceMetadataMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeviceMetadataMap>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
-
 export type ComponentList = Array<Component>;
-const ComponentList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ComponentList>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DocumentMap>;
-
 /** Contains the trait payload for a single trait. */
 export interface TraitData {
   /** The Provider Home API trait payload. */
@@ -166,11 +130,7 @@ export interface TraitData {
   /** The custom timestamp supplied by the provider during a ReportStateAndNotification update (if provided). This field is returned as part of the `QueryResponse`. */
   providerUpdateTime?: string;
 }
-const TraitData = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TraitData>;
-
 export type TraitDataList = Array<TraitData>;
-const TraitDataList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TraitDataList>;
-
 /** Component of a provider device. */
 export interface Component {
   /** Required. List of Device types associated with this component. Supported device types are defined in cs//depot/google3/home/homeservicelayer/uddm/types/uddm_device_types.proto and the type string is the enum name, for example: ON_OFF_LIGHT => "ON_OFF_LIGHT". */
@@ -182,21 +142,13 @@ export interface Component {
   /** Required. ID of the component from the device provider. */
   id?: string;
 }
-const Component = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Component>;
-
 /** Container for UDDM trait data associated with a device. */
 export interface HomeTraitPayload {
   /** The root component of the device as reported by the provider. */
   rootComponent?: Component;
 }
-const HomeTraitPayload = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<HomeTraitPayload>;
-
 export type HomeTraitPayloadMap = { [key: string]: HomeTraitPayload | undefined };
-const HomeTraitPayloadMap = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<HomeTraitPayloadMap>;
-
 export type DocumentMapMap = { [key: string]: DocumentMap | undefined };
-const DocumentMapMap = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentMapMap>;
-
 /** Payload containing device states information. */
 export interface QueryResponsePayload {
   /** Map from the Trait ID (e.g., "action.devices.traits.OnOff") to its last Spanner commit timestamp. If a trait has no recorded timestamp, it will be omitted from this map. */
@@ -206,8 +158,6 @@ export interface QueryResponsePayload {
   /** States of the devices. Map of third-party device ID to struct of device states. */
   devices?: DocumentMapMap;
 }
-const QueryResponsePayload = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<QueryResponsePayload>;
-
 /** Response type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should follow the same format as the Google smart home `action.devices.QUERY` [response](https://developers.home.google.com/cloud-to-cloud/intents/query). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "devices": { "123": { "on": true, "online": true }, "456": { "on": true, "online": true, "brightness": 80, "color": { "name": "cerulean", "spectrumRGB": 31655 } } } } } ``` */
 export interface QueryResponse {
   /** Request ID used for debugging. Copied from the request. */
@@ -215,8 +165,6 @@ export interface QueryResponse {
   /** Device states for the devices given in the request. */
   payload?: QueryResponsePayload;
 }
-const QueryResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QueryResponse>;
-
 /** Contains the set of updates for a component. */
 export interface ComponentTraitUpdates {
   /** Required. ID of the component from the device provider. */
@@ -224,17 +172,7 @@ export interface ComponentTraitUpdates {
   /** Required. The updated trait data for the component. */
   traitData?: TraitDataList;
 }
-const ComponentTraitUpdates = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ComponentTraitUpdates>;
-
 export type ComponentTraitUpdatesList = Array<ComponentTraitUpdates>;
-const ComponentTraitUpdatesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ComponentTraitUpdatesList>;
-
 /** Contains the set of updates for a device. */
 export interface HomeTraitUpdates {
   /** Required. Unique identifier for the device. */
@@ -242,11 +180,7 @@ export interface HomeTraitUpdates {
   /** Required. Trait updates for each component. */
   components?: ComponentTraitUpdatesList;
 }
-const HomeTraitUpdates = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<HomeTraitUpdates>;
-
 export type HomeTraitUpdatesList = Array<HomeTraitUpdates>;
-const HomeTraitUpdatesList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<HomeTraitUpdatesList>;
-
 /** Contains the details for a single event. */
 export interface EventData {
   /** Required. The unique event ID from the device provider. */
@@ -256,11 +190,7 @@ export interface EventData {
   /** Required. The timestamp of the event. */
   eventTime?: string;
 }
-const EventData = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<EventData>;
-
 export type EventDataList = Array<EventData>;
-const EventDataList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EventDataList>;
-
 /** Contains a set of events for a specific component. */
 export interface Events {
   /** Optional. The ID of the provider component if the events are associated with a specific component. Optional for WHDM events, required for UDDM events. */
@@ -268,11 +198,7 @@ export interface Events {
   /** Required. List of events associated with the component. */
   events?: EventDataList;
 }
-const Events = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Events>;
-
 export type EventsList = Array<Events>;
-const EventsList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<EventsList>;
-
 /** Contains the set of events for an item. */
 export interface HomeEvents {
   /** Required. / Unique identifier for the device. */
@@ -280,11 +206,7 @@ export interface HomeEvents {
   /** Required. List of events for the item. */
   events?: EventsList;
 }
-const HomeEvents = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<HomeEvents>;
-
 export type HomeEventsList = Array<HomeEvents>;
-const HomeEventsList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<HomeEventsList>;
-
 /** The states and notifications specific to a device. */
 export interface ReportStateAndNotificationDevice {
   /** States of devices to update. See the **Device STATES** section of the individual trait [reference guides](https://developers.home.google.com/cloud-to-cloud/traits). */
@@ -296,21 +218,11 @@ export interface ReportStateAndNotificationDevice {
   /** Notifications metadata for devices. See the **Device NOTIFICATIONS** section of the individual trait [reference guides](https://developers.home.google.com/cloud-to-cloud/traits). */
   notifications?: DocumentMap;
 }
-const ReportStateAndNotificationDevice = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ReportStateAndNotificationDevice>;
-
 /** Payload containing the state and notification information for devices. */
 export interface StateAndNotificationPayload {
   /** The devices for updating state and sending notifications. */
   devices?: ReportStateAndNotificationDevice;
 }
-const StateAndNotificationPayload = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<StateAndNotificationPayload>;
-
 /** Request type for the [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. It may include states, notifications, home_traits, home_events, or any combination thereof. Smart Home Device Traits (SHDT) `states` and `notifications` are defined per `device_id` (for example, "123" and "456" in the following example). Google Home Traits `home_traits` and `home_events` are lists of updates or events, each associated with a `device_id` (for example, "789" in the following example). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": { "devices": { "states": { "123": { "on": true }, "456": { "on": true, "brightness": 10 }, }, "homeTraits": [ { "deviceId": "789", "components": [ { "componentId": "main", "traitData": [ { "trait": { "@type": "type.googleapis.com/home.graph.v1.OnOffTrait", "onOff": true } } ] } ] } ], "homeEvents": [ { "deviceId": "789", "events": [ { "componentId": "main", "events": [ { "eventId": "event-123", "eventTime": "2026-01-01T00:00:00Z", "event": { "@type": "type.googleapis.com/home.graph.v1.DoorbellPressTrait.DoorbellPressedEvent" } } ] } ] } ] } } } ``` */
 export interface ReportStateAndNotificationRequest {
   /** Request ID used for debugging. */
@@ -324,30 +236,16 @@ export interface ReportStateAndNotificationRequest {
   /** Required. Third-party user ID. */
   agentUserId?: string;
 }
-const ReportStateAndNotificationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ReportStateAndNotificationRequest>;
-
 export interface ReportStateAndNotificationDevicesRequest {
   /** Request body */
   body?: ReportStateAndNotificationRequest;
 }
-const ReportStateAndNotificationDevicesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ReportStateAndNotificationDevicesRequest>;
-
 /** Result of reporting state and notifications for a single device. */
 export interface Result {
   /** The trait commit timestamp of the state update in Home Graph. */
   homeTraitCommitTime?: string;
 }
-const Result = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Result>;
-
 export type ResultMap = { [key: string]: Result | undefined };
-const ResultMap = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ResultMap>;
-
 /** Response type for the [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. */
 export interface ReportStateAndNotificationResponse {
   /** Map from agent device ID to the result of reporting state and notifications. This is only populated for UDDM updates for now. */
@@ -355,11 +253,6 @@ export interface ReportStateAndNotificationResponse {
   /** Request ID copied from ReportStateAndNotificationRequest. */
   requestId?: string;
 }
-const ReportStateAndNotificationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ReportStateAndNotificationResponse>;
-
 /** Request type for the [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call. */
 export interface RequestSyncDevicesRequest {
   /** Optional. If set, the request will be added to a queue and a response will be returned immediately. This enables concurrent requests for the given `agent_user_id`, but the caller will not receive any error responses. */
@@ -367,24 +260,12 @@ export interface RequestSyncDevicesRequest {
   /** Required. Third-party user ID. */
   agentUserId?: string;
 }
-const RequestSyncDevicesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<RequestSyncDevicesRequest>;
-
 export interface RequestSyncDevicesRequest_ {
   /** Request body */
   body?: RequestSyncDevicesRequest;
 }
-const RequestSyncDevicesRequest_ = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<RequestSyncDevicesRequest_>;
-
 /** Response type for the [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices) call. Intentionally empty upon success. An HTTP response code is returned with more details upon failure. */
 export interface RequestSyncDevicesResponse {}
-const RequestSyncDevicesResponse = Empty as any as S.Schema<RequestSyncDevicesResponse>;
-
 /** Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. */
 export interface SyncRequest {
   /** Request ID used for debugging. */
@@ -392,14 +273,10 @@ export interface SyncRequest {
   /** Required. Third-party user ID. */
   agentUserId?: string;
 }
-const SyncRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SyncRequest>;
-
 export interface SyncDevicesRequest {
   /** Request body */
   body?: SyncRequest;
 }
-const SyncDevicesRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SyncDevicesRequest>;
-
 /** Alternate third-party device ID. */
 export interface AgentOtherDeviceId {
   /** Unique third-party device ID. */
@@ -407,14 +284,7 @@ export interface AgentOtherDeviceId {
   /** Project ID for your smart home Action. */
   agentId?: string;
 }
-const AgentOtherDeviceId = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AgentOtherDeviceId>;
-
 export type AgentOtherDeviceIdList = Array<AgentOtherDeviceId>;
-const AgentOtherDeviceIdList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<AgentOtherDeviceIdList>;
-
 /** Device information. */
 export interface DeviceInfo {
   /** Device model. */
@@ -426,8 +296,6 @@ export interface DeviceInfo {
   /** Device software version. */
   swVersion?: string;
 }
-const DeviceInfo = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeviceInfo>;
-
 /** Identifiers used to describe the device. */
 export interface DeviceNames {
   /** List of names provided by the manufacturer rather than the user, such as serial numbers, SKUs, etc. */
@@ -437,8 +305,6 @@ export interface DeviceNames {
   /** Additional names provided by the user for the device. */
   nicknames?: StringList;
 }
-const DeviceNames = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DeviceNames>;
-
 /** Third-party device definition. */
 export interface Device {
   /** Suggested name for the room where this device is installed. Google attempts to use this value during user setup. */
@@ -466,11 +332,7 @@ export interface Device {
   /** Indicates whether your smart home Action will report state of this device to Google via ReportStateAndNotification. */
   willReportState?: boolean;
 }
-const Device = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Device>;
-
 export type DeviceList = Array<Device>;
-const DeviceList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeviceList>;
-
 /** Payload containing device information. */
 export interface SyncResponsePayload {
   /** Devices associated with the third-party user. */
@@ -478,8 +340,6 @@ export interface SyncResponsePayload {
   /** Third-party user ID */
   agentUserId?: string;
 }
-const SyncResponsePayload = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<SyncResponsePayload>;
-
 /** Response type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should follow the same format as the Google smart home `action.devices.SYNC` [response](https://developers.home.google.com/cloud-to-cloud/intents/sync). Example: ```json { "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "agentUserId": "1836.15267389", "devices": [{ "id": "123", "type": "action.devices.types.OUTLET", "traits": [ "action.devices.traits.OnOff" ], "name": { "defaultNames": ["My Outlet 1234"], "name": "Night light", "nicknames": ["wall plug"] }, "willReportState": false, "deviceInfo": { "manufacturer": "lights-out-inc", "model": "hs1234", "hwVersion": "3.2", "swVersion": "11.4" }, "customData": { "fooValue": 74, "barValue": true, "bazValue": "foo" } }] } } ``` */
 export interface SyncResponse {
   /** Request ID used for debugging. Copied from the request. */
@@ -487,8 +347,6 @@ export interface SyncResponse {
   /** Devices associated with the third-party user. */
   payload?: SyncResponsePayload;
 }
-const SyncResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SyncResponse>;
-
 export type DeleteAgentUsersError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const deleteAgentUsers: API.OperationMethod<
@@ -497,8 +355,8 @@ export const deleteAgentUsers: API.OperationMethod<
   DeleteAgentUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentUsersRequest,
-  output: Empty,
+  input: __S(0) as any as S.Schema<DeleteAgentUsersRequest>,
+  output: __S(1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -512,8 +370,8 @@ export const queryDevices: API.OperationMethod<
   QueryDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryDevicesRequest,
-  output: QueryResponse,
+  input: __S(8) as any as S.Schema<QueryDevicesRequest>,
+  output: __S(22) as any as S.Schema<QueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -532,8 +390,8 @@ export const reportStateAndNotificationDevices: API.OperationMethod<
   ReportStateAndNotificationDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportStateAndNotificationDevicesRequest,
-  output: ReportStateAndNotificationResponse,
+  input: __S(36) as any as S.Schema<ReportStateAndNotificationDevicesRequest>,
+  output: __S(39) as any as S.Schema<ReportStateAndNotificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -547,8 +405,8 @@ export const requestSyncDevices: API.OperationMethod<
   RequestSyncDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestSyncDevicesRequest_,
-  output: RequestSyncDevicesResponse,
+  input: __S(41) as any as S.Schema<RequestSyncDevicesRequest_>,
+  output: __S(1) as any as S.Schema<RequestSyncDevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -562,8 +420,8 @@ export const syncDevices: API.OperationMethod<
   SyncDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncDevicesRequest,
-  output: SyncResponse,
+  input: __S(43) as any as S.Schema<SyncDevicesRequest>,
+  output: __S(51) as any as S.Schema<SyncResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -596,28 +454,28 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AgentDeviceId" });
     case 3:
-      return S.Array(AgentDeviceId);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(AgentDeviceIdList),
+          devices: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "QueryRequestPayload" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(QueryRequestPayload),
+          payload: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "QueryRequestInput" });
     case 6:
-      return S.Array(QueryRequestInput);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
           includeDeviceMetadata: S.optional(S.Boolean),
-          deviceView: S.optional(QueryRequestDeviceViewEnum),
-          inputs: S.optional(QueryRequestInputList),
+          deviceView: S.optional(S.String),
+          inputs: S.optional(__S(6)),
           agentUserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRequest" });
@@ -628,7 +486,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(QueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -642,21 +500,21 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          traitCommitTimestamps: S.optional(StringMap),
+          traitCommitTimestamps: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "DeviceMetadata" });
     case 3:
-      return S.Record(S.String, DeviceMetadata);
+      return S.Record(S.String, __S(10));
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => Component));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(17)));
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          trait: S.optional(DocumentMap),
+          trait: S.optional(__S(14)),
           commitTime: S.optional(S.String),
           providerUpdateTime: S.optional(S.String),
         }),
@@ -666,46 +524,46 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TraitData);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deviceTypes: S.optional(StringList),
-          childComponents: S.optional(ComponentList),
-          traitData: S.optional(TraitDataList),
+          deviceTypes: S.optional(__S(12)),
+          childComponents: S.optional(__S(13)),
+          traitData: S.optional(__S(16)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Component" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rootComponent: S.optional(Component),
+          rootComponent: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "HomeTraitPayload" });
     case 3:
-      return S.Record(S.String, HomeTraitPayload);
+      return S.Record(S.String, __S(18));
     case 4:
-      return S.Record(S.String, DocumentMap);
+      return S.Record(S.String, __S(14));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deviceMetadata: S.optional(DeviceMetadataMap),
-          homeTraitPayload: S.optional(HomeTraitPayloadMap),
-          devices: S.optional(DocumentMapMap),
+          deviceMetadata: S.optional(__S(11)),
+          homeTraitPayload: S.optional(__S(19)),
+          devices: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "QueryResponsePayload" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          payload: S.optional(QueryResponsePayload),
+          payload: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "QueryResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           componentId: S.optional(S.String),
-          traitData: S.optional(TraitDataList),
+          traitData: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "ComponentTraitUpdates" });
   }
@@ -713,40 +571,40 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ComponentTraitUpdates);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.optional(S.String),
-          components: S.optional(ComponentTraitUpdatesList),
+          components: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "HomeTraitUpdates" });
     case 2:
-      return S.Array(HomeTraitUpdates);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           eventId: S.optional(S.String),
-          event: S.optional(DocumentMap),
+          event: S.optional(__S(14)),
           eventTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventData" });
     case 4:
-      return S.Array(EventData);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           componentId: S.optional(S.String),
-          events: S.optional(EventDataList),
+          events: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "Events" });
     case 6:
-      return S.Array(Events);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           deviceId: S.optional(S.String),
-          events: S.optional(EventsList),
+          events: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "HomeEvents" });
   }
@@ -754,14 +612,14 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HomeEvents);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          states: S.optional(DocumentMap),
-          homeTraits: S.optional(HomeTraitUpdatesList),
-          homeEvents: S.optional(HomeEventsList),
-          notifications: S.optional(DocumentMap),
+          states: S.optional(__S(14)),
+          homeTraits: S.optional(__S(26)),
+          homeEvents: S.optional(__S(32)),
+          notifications: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "ReportStateAndNotificationDevice",
@@ -769,7 +627,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(ReportStateAndNotificationDevice),
+          devices: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "StateAndNotificationPayload",
@@ -780,7 +638,7 @@ function __c4(j: number): any {
           requestId: S.optional(S.String),
           eventId: S.optional(S.String),
           followUpToken: S.optional(S.String),
-          payload: S.optional(StateAndNotificationPayload),
+          payload: S.optional(__S(34)),
           agentUserId: S.optional(S.String),
         }),
       ).annotate({
@@ -789,7 +647,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ReportStateAndNotificationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -807,11 +665,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Result" });
     case 6:
-      return S.Record(S.String, Result);
+      return S.Record(S.String, __S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deviceResults: S.optional(ResultMap),
+          deviceResults: S.optional(__S(38)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -833,7 +691,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RequestSyncDevicesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(40).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -854,7 +712,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(SyncRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(42).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -871,7 +729,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "AgentOtherDeviceId" });
     case 5:
-      return S.Array(AgentOtherDeviceId);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -884,9 +742,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          defaultNames: S.optional(StringList),
+          defaultNames: S.optional(__S(12)),
           name: S.optional(S.String),
-          nicknames: S.optional(StringList),
+          nicknames: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "DeviceNames" });
   }
@@ -899,23 +757,23 @@ function __c6(j: number): any {
           roomHint: S.optional(S.String),
           id: S.optional(S.String),
           structureHint: S.optional(S.String),
-          customData: S.optional(DocumentMap),
-          attributes: S.optional(DocumentMap),
-          otherDeviceIds: S.optional(AgentOtherDeviceIdList),
-          deviceInfo: S.optional(DeviceInfo),
+          customData: S.optional(__S(14)),
+          attributes: S.optional(__S(14)),
+          otherDeviceIds: S.optional(__S(45)),
+          deviceInfo: S.optional(__S(46)),
           notificationSupportedByAgent: S.optional(S.Boolean),
           type: S.optional(S.String),
-          traits: S.optional(StringList),
-          name: S.optional(DeviceNames),
+          traits: S.optional(__S(12)),
+          name: S.optional(__S(47)),
           willReportState: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Device" });
     case 1:
-      return S.Array(Device);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          devices: S.optional(DeviceList),
+          devices: S.optional(__S(49)),
           agentUserId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SyncResponsePayload" });
@@ -923,8 +781,31 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          payload: S.optional(SyncResponsePayload),
+          payload: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "SyncResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

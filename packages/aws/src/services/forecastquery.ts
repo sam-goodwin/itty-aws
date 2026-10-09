@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "forecastquery",
   serviceShapeName: "AmazonForecastRuntime",
@@ -108,7 +110,6 @@ export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Filters = { [key: string]: string | undefined };
-const Filters = /*@__PURE__*/ __L.at(__c0, 0);
 export type NextToken = string;
 export interface QueryForecastRequest {
   ForecastArn: string;
@@ -117,28 +118,19 @@ export interface QueryForecastRequest {
   Filters: { [key: string]: string | undefined };
   NextToken?: string;
 }
-const QueryForecastRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<QueryForecastRequest>;
 export type Statistic = string;
 export interface DataPoint {
   Timestamp?: string;
   Value?: number;
 }
-const DataPoint = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataPoint>;
 export type TimeSeries = DataPoint[];
-const TimeSeries = /*@__PURE__*/ __L.at(__c0, 3);
 export type Predictions = { [key: string]: DataPoint[] | undefined };
-const Predictions = /*@__PURE__*/ __L.at(__c0, 4);
 export interface Forecast {
   Predictions?: { [key: string]: DataPoint[] | undefined };
 }
-const Forecast = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Forecast>;
 export interface QueryForecastResponse {
   Forecast?: Forecast;
 }
-const QueryForecastResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<QueryForecastResponse>;
 export type LongArn = string;
 export interface QueryWhatIfForecastRequest {
   WhatIfForecastArn: string;
@@ -147,17 +139,9 @@ export interface QueryWhatIfForecastRequest {
   Filters: { [key: string]: string | undefined };
   NextToken?: string;
 }
-const QueryWhatIfForecastRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<QueryWhatIfForecastRequest>;
 export interface QueryWhatIfForecastResponse {
   Forecast?: Forecast;
 }
-const QueryWhatIfForecastResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<QueryWhatIfForecastResponse>;
 export type ErrorMessage = string;
 export type QueryForecastError =
   | InvalidInputException
@@ -188,8 +172,8 @@ export const queryForecast: API.OperationMethod<
   QueryForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryForecastRequest,
-  output: QueryForecastResponse,
+  input: __S(1) as any as S.Schema<QueryForecastRequest>,
+  output: __S(6) as any as S.Schema<QueryForecastResponse>,
   errors: [
     InvalidInputException,
     InvalidNextTokenException,
@@ -218,8 +202,8 @@ export const queryWhatIfForecast: API.OperationMethod<
   QueryWhatIfForecastError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryWhatIfForecastRequest,
-  output: QueryWhatIfForecastResponse,
+  input: __S(7) as any as S.Schema<QueryWhatIfForecastRequest>,
+  output: __S(8) as any as S.Schema<QueryWhatIfForecastResponse>,
   errors: [
     InvalidInputException,
     InvalidNextTokenException,
@@ -243,7 +227,7 @@ function __c0(j: number): any {
           ForecastArn: S.String,
           StartDate: S.optional(S.String),
           EndDate: S.optional(S.String),
-          Filters: Filters,
+          Filters: __S(0),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "QueryForecastRequest" });
@@ -252,15 +236,15 @@ function __c0(j: number): any {
         S.Struct({ Timestamp: S.optional(S.String), Value: S.optional(S.Number) }),
       ).annotate({ identifier: "DataPoint" });
     case 3:
-      return S.Array(DataPoint);
+      return S.Array(__S(2));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ TimeSeries.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(3).pipe(S.optional));
     case 5:
-      return S.suspend(() => S.Struct({ Predictions: S.optional(Predictions) })).annotate({
+      return S.suspend(() => S.Struct({ Predictions: S.optional(__S(4)) })).annotate({
         identifier: "Forecast",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Forecast: S.optional(Forecast) })).annotate({
+      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(5)) })).annotate({
         identifier: "QueryForecastResponse",
       });
     case 7:
@@ -269,7 +253,7 @@ function __c0(j: number): any {
           WhatIfForecastArn: S.String,
           StartDate: S.optional(S.String),
           EndDate: S.optional(S.String),
-          Filters: Filters,
+          Filters: __S(0),
           NextToken: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -280,8 +264,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Forecast: S.optional(Forecast) })).annotate({
+      return S.suspend(() => S.Struct({ Forecast: S.optional(__S(5)) })).annotate({
         identifier: "QueryWhatIfForecastResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

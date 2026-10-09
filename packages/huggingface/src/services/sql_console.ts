@@ -9,28 +9,18 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type CreateEmbedRequestRepoType = "datasets";
-const CreateEmbedRequestRepoType = S.String;
-
 export interface CreateEmbedRequestViewsItem {
   key: string;
   displayName: string;
   viewName: string;
 }
-const CreateEmbedRequestViewsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateEmbedRequestViewsItem>;
-
 export type CreateEmbedRequestViewsList = Array<CreateEmbedRequestViewsItem>;
-const CreateEmbedRequestViewsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateEmbedRequestViewsList>;
-
 export interface CreateEmbedRequest {
   repoType: CreateEmbedRequestRepoType | (string & {});
   namespace: string;
@@ -40,13 +30,8 @@ export interface CreateEmbedRequest {
   private?: boolean;
   views: CreateEmbedRequestViewsList;
 }
-const CreateEmbedRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateEmbedRequest>;
-
 export type CreateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
 export type CreateEmbedResponseViewsList = Array<CreateEmbedRequestViewsItem>;
-const CreateEmbedResponseViewsList =
-  CreateEmbedRequestViewsList as any as S.Schema<CreateEmbedResponseViewsList>;
-
 export interface CreateEmbedResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -63,39 +48,23 @@ export interface CreateEmbedResponse {
   rating?: number;
   justification?: string;
 }
-const CreateEmbedResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateEmbedResponse>;
-
 export type DeleteEmbedRequestRepoType = "datasets";
-const DeleteEmbedRequestRepoType = S.String;
-
 export interface DeleteEmbedRequest {
   repoType: DeleteEmbedRequestRepoType | (string & {});
   namespace: string;
   repo: string;
   id: string;
 }
-const DeleteEmbedRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteEmbedRequest>;
-
 export type DeleteEmbedResponse = unknown;
-const DeleteEmbedResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteEmbedResponse>;
-
 export type HideEmbedRequestRepoType = "datasets";
-const HideEmbedRequestRepoType = S.String;
-
 export interface HideEmbedRequest {
   repoType: HideEmbedRequestRepoType | (string & {});
   namespace: string;
   repo: string;
   id: string;
 }
-const HideEmbedRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<HideEmbedRequest>;
-
 export type HideEmbedResponse = unknown;
-const HideEmbedResponse = DeleteEmbedResponse as any as S.Schema<HideEmbedResponse>;
-
 export type UpdateEmbedRequestRepoType = "datasets";
-const UpdateEmbedRequestRepoType = S.String;
-
 export interface UpdateEmbedRequest {
   repoType: UpdateEmbedRequestRepoType | (string & {});
   namespace: string;
@@ -105,8 +74,6 @@ export interface UpdateEmbedRequest {
   private?: boolean;
   sql?: string;
 }
-const UpdateEmbedRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UpdateEmbedRequest>;
-
 export type UpdateEmbedResponseViewsItem = CreateEmbedRequestViewsItem;
 export type UpdateEmbedResponseViewsList = Array<CreateEmbedRequestViewsItem>;
 export interface UpdateEmbedResponse {
@@ -125,8 +92,6 @@ export interface UpdateEmbedResponse {
   rating?: number;
   justification?: string;
 }
-const UpdateEmbedResponse = CreateEmbedResponse as any as S.Schema<UpdateEmbedResponse>;
-
 export type CreateEmbedError = HuggingFaceOpError;
 /** Create embed Create SQL Console embed */
 export const createEmbed: API.OperationMethod<
@@ -135,8 +100,8 @@ export const createEmbed: API.OperationMethod<
   CreateEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmbedRequest,
-  output: CreateEmbedResponse,
+  input: __S(2) as any as S.Schema<CreateEmbedRequest>,
+  output: __S(3) as any as S.Schema<CreateEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -150,8 +115,8 @@ export const deleteEmbed: API.OperationMethod<
   DeleteEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmbedRequest,
-  output: DeleteEmbedResponse,
+  input: __S(4) as any as S.Schema<DeleteEmbedRequest>,
+  output: __S(5) as any as S.Schema<DeleteEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -165,8 +130,8 @@ export const hideEmbed: API.OperationMethod<
   HideEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HideEmbedRequest,
-  output: HideEmbedResponse,
+  input: __S(6) as any as S.Schema<HideEmbedRequest>,
+  output: __S(5) as any as S.Schema<HideEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -180,8 +145,8 @@ export const updateEmbed: API.OperationMethod<
   UpdateEmbedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmbedRequest,
-  output: UpdateEmbedResponse,
+  input: __S(7) as any as S.Schema<UpdateEmbedRequest>,
+  output: __S(3) as any as S.Schema<UpdateEmbedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -201,17 +166,17 @@ function __c0(j: number): any {
         identifier: "CreateEmbedRequestViewsItem",
       });
     case 1:
-      return S.Array(CreateEmbedRequestViewsItem);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          repoType: CreateEmbedRequestRepoType.pipe(T.Label()),
+          repoType: S.String.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           sql: S.String,
           title: S.String,
           private: S.optional(S.Boolean),
-          views: CreateEmbedRequestViewsList,
+          views: __S(1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -225,7 +190,7 @@ function __c0(j: number): any {
         S.Struct({
           _id: S.String,
           repoId: S.String,
-          views: CreateEmbedResponseViewsList,
+          views: __S(1),
           sql: S.String,
           title: S.String,
           userId: S.String,
@@ -239,7 +204,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          repoType: DeleteEmbedRequestRepoType.pipe(T.Label()),
+          repoType: S.String.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
@@ -258,7 +223,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repoType: HideEmbedRequestRepoType.pipe(T.Label()),
+          repoType: S.String.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
@@ -273,7 +238,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repoType: UpdateEmbedRequestRepoType.pipe(T.Label()),
+          repoType: S.String.pipe(T.Label()),
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
@@ -288,5 +253,16 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEmbedRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

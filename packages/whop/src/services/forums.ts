@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,12 +52,8 @@ export interface GetForumRequest {
   /** The unique identifier of the forum or experience to retrieve. */
   id: string;
 }
-const GetForumRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetForumRequest>;
-
 /** Email notification preference option for a forum feed */
 export type ForumEmailNotificationPreferences = "all_admin_posts" | "only_weekly_summary" | "none";
-const ForumEmailNotificationPreferences = S.String;
-
 /** The parent experience that this forum belongs to. */
 export interface ForumExperience {
   /** The unique identifier for the experience. */
@@ -65,16 +63,10 @@ export interface ForumExperience {
   /** The display name of this experience shown to users in the product navigation. Maximum 255 characters. */
   name: string;
 }
-const ForumExperience = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ForumExperience>;
-
 /** Who can comment on a forum feed */
 export type ForumWhoCanCommentTypes = "everyone" | "admins";
-const ForumWhoCanCommentTypes = S.String;
-
 /** Who can post on a forum feed */
 export type ForumWhoCanPostTypes = "everyone" | "admins";
-const ForumWhoCanPostTypes = S.String;
-
 /** A discussion forum where members can create posts, comment, and react, belonging to an experience. */
 export interface Forum {
   /** The email notification setting that controls which posts trigger email alerts. One of: all_admin_posts, only_weekly_summary, none. */
@@ -88,8 +80,6 @@ export interface Forum {
   /** The permission level controlling who can create new posts. One of: everyone, admins. */
   who_can_post: ForumWhoCanPostTypes;
 }
-const Forum = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Forum>;
-
 export interface ListForumRequest {
   after?: string;
   before?: string;
@@ -98,8 +88,6 @@ export interface ListForumRequest {
   product_id?: string;
   account_id: string;
 }
-const ListForumRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListForumRequest>;
-
 /** The parent experience that this forum belongs to. */
 export type ForumListItemExperience = ForumExperience;
 /** A discussion forum where members can create posts, comment, and react, belonging to an experience. */
@@ -115,15 +103,8 @@ export interface ForumListItem {
   /** The permission level controlling who can create new posts. One of: everyone, admins. */
   who_can_post: ForumWhoCanPostTypes;
 }
-const ForumListItem = Forum as any as S.Schema<ForumListItem>;
-
 /** A list of nodes. */
 export type ListForumResponseDataList = Array<ForumListItem>;
-const ListForumResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListForumResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -135,33 +116,19 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PageInfo>;
-
 export interface ListForumResponse {
   /** A list of nodes. */
   data: ListForumResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListForumResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListForumResponse>;
-
 /** A list of words that are automatically blocked from posts in this forum. For example, ['spam', 'scam']. */
 export type UpdateForumRequestBannedWordsList = Array<string>;
-const UpdateForumRequestBannedWordsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UpdateForumRequestBannedWordsList>;
-
 /** The banner image displayed at the top of the forum page. Pass null to remove the existing banner. */
 export interface UpdateForumRequestBannerImage {
   /** The ID of an existing file object. */
   id: string;
 }
-const UpdateForumRequestBannerImage = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateForumRequestBannerImage>;
-
 export interface UpdateForumRequest {
   /** The unique identifier of the forum to update. Accepts either an experience ID (e.g. 'exp_xxxxx') or a forum ID. */
   id: string;
@@ -176,14 +143,12 @@ export interface UpdateForumRequest {
   /** Controls which roles are allowed to create new posts in this forum. */
   who_can_post?: ForumWhoCanPostTypes | (string & {}) | null;
 }
-const UpdateForumRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UpdateForumRequest>;
-
 export type GetForumError = BadRequest | Forbidden | NotFound | UnprocessableEntity | WhopOpError;
 /** Retrieve forum [Legacy API -- https://docs.whop.com/api-reference] Retrieves the details of an existing forum. Required permissions: - `forum:read` */
 export const getForum: API.OperationMethod<GetForumRequest, Forum, GetForumError, WhopOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetForumRequest,
-    output: Forum,
+    input: __S(0) as any as S.Schema<GetForumRequest>,
+    output: __S(2) as any as S.Schema<Forum>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -199,8 +164,8 @@ export const listForum: API.PaginatedOperationMethod<
   ForumListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListForumRequest,
-    output: ListForumResponse,
+    input: __S(3) as any as S.Schema<ListForumRequest>,
+    output: __S(6) as any as S.Schema<ListForumResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -229,8 +194,8 @@ export const updateForum: API.OperationMethod<
   UpdateForumError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateForumRequest,
-  output: Forum,
+  input: __S(9) as any as S.Schema<UpdateForumRequest>,
+  output: __S(2) as any as S.Schema<Forum>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -256,11 +221,11 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          email_notification_preference: ForumEmailNotificationPreferences,
-          experience: ForumExperience,
+          email_notification_preference: S.String,
+          experience: __S(1),
           id: S.String,
-          who_can_comment: ForumWhoCanCommentTypes,
-          who_can_post: ForumWhoCanPostTypes,
+          who_can_comment: S.String,
+          who_can_post: S.String,
         }),
       ).annotate({ identifier: "Forum" });
     case 3:
@@ -275,7 +240,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/forums", code: 200 })),
       ).annotate({ identifier: "ListForumRequest" });
     case 4:
-      return S.Array(ForumListItem);
+      return S.Array(__S(2));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -288,8 +253,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ListForumResponseDataList,
-          page_info: PageInfo,
+          data: __S(4),
+          page_info: __S(5),
         }),
       ).annotate({ identifier: "ListForumResponse" });
     case 7:
@@ -310,12 +275,25 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          banned_words: S.optional(S.NullOr(UpdateForumRequestBannedWordsList)),
-          banner_image: S.optional(S.NullOr(UpdateForumRequestBannerImage)),
-          email_notification_preference: S.optional(S.NullOr(ForumEmailNotificationPreferences)),
-          who_can_comment: S.optional(S.NullOr(ForumWhoCanCommentTypes)),
-          who_can_post: S.optional(S.NullOr(ForumWhoCanPostTypes)),
+          banned_words: S.optional(S.NullOr(__S(7))),
+          banner_image: S.optional(S.NullOr(__S(8))),
+          email_notification_preference: S.optional(S.NullOr(S.String)),
+          who_can_comment: S.optional(S.NullOr(S.String)),
+          who_can_post: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/forums/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateForumRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

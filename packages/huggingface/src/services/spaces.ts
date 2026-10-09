@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -29,11 +31,6 @@ export interface AddResourceGroupRequest {
   /** The resource group to add the repository to, if null, the repository will be removed from the resource group */
   resourceGroupId: string | null;
 }
-const AddResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddResourceGroupRequest>;
-
 export type AddResourceGroupResponseType =
   | "dataset"
   | "model"
@@ -41,35 +38,18 @@ export type AddResourceGroupResponseType =
   | "bucket"
   | "kernel"
   | "container";
-const AddResourceGroupResponseType = S.String;
-
 export interface AddResourceGroupResponse {
   name: string;
   type: AddResourceGroupResponseType;
   private: boolean;
   addedBy: string;
 }
-const AddResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddResourceGroupResponse>;
-
 export interface CheckUploadMethodRequestFilesItem {
   path: string;
   size: number;
   sample: string;
 }
-const CheckUploadMethodRequestFilesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckUploadMethodRequestFilesItem>;
-
 export type CheckUploadMethodRequestFilesList = Array<CheckUploadMethodRequestFilesItem>;
-const CheckUploadMethodRequestFilesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckUploadMethodRequestFilesList>;
-
 export interface CheckUploadMethodRequest {
   namespace: string;
   repo: string;
@@ -80,14 +60,7 @@ export interface CheckUploadMethodRequest {
   /** Content of the .gitignore file for the revision. Optional, otherwise takes the existing content of `.gitignore` for the revision. */
   gitIgnore?: string;
 }
-const CheckUploadMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CheckUploadMethodRequest>;
-
 export type CheckUploadMethodResponseFilesItemUploadMode = "lfs" | "regular";
-const CheckUploadMethodResponseFilesItemUploadMode = S.String;
-
 export interface CheckUploadMethodResponseFilesItem {
   path: string;
   uploadMode: CheckUploadMethodResponseFilesItemUploadMode;
@@ -95,30 +68,13 @@ export interface CheckUploadMethodResponseFilesItem {
   /** The oid of the blob if it already exists in the repository. If the blob is a LFS file, it'll be the lfs oid. */
   oid?: string;
 }
-const CheckUploadMethodResponseFilesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CheckUploadMethodResponseFilesItem>;
-
 export type CheckUploadMethodResponseFilesList = Array<CheckUploadMethodResponseFilesItem>;
-const CheckUploadMethodResponseFilesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CheckUploadMethodResponseFilesList>;
-
 export interface CheckUploadMethodResponse {
   files: CheckUploadMethodResponseFilesList;
   commitOid: string;
 }
-const CheckUploadMethodResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CheckUploadMethodResponse>;
-
 /** `application/x-ndjson` if you to commit by json lines */
 export type CommitRequestContentType = "application/json" | "application/x-ndjson";
-const CommitRequestContentType = S.String;
-
 export interface CommitRequest {
   namespace: string;
   repo: string;
@@ -127,8 +83,6 @@ export interface CommitRequest {
   hot_reload?: string;
   contentType?: CommitRequestContentType | (string & {});
 }
-const CommitRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CommitRequest>;
-
 export interface CommitResponse {
   /** Whether the commit was successful */
   success: boolean;
@@ -141,8 +95,6 @@ export interface CommitResponse {
   /** The output of the git hook */
   hookOutput: string;
 }
-const CommitResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CommitResponse>;
-
 export interface CreateBranchRequest {
   namespace: string;
   repo: string;
@@ -154,11 +106,7 @@ export interface CreateBranchRequest {
   /** Overwrite the branch if it already exists */
   overwrite?: boolean;
 }
-const CreateBranchRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateBranchRequest>;
-
 export interface CreateBranchResponse {}
-const CreateBranchResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateBranchResponse>;
-
 export interface CreateTagRequest {
   namespace: string;
   repo: string;
@@ -166,148 +114,71 @@ export interface CreateTagRequest {
   tag: string;
   message?: string;
 }
-const CreateTagRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateTagRequest>;
-
 export interface CreateTagResponse {}
-const CreateTagResponse = CreateBranchResponse as any as S.Schema<CreateTagResponse>;
-
 export interface DeleteBranchRequest {
   namespace: string;
   repo: string;
   rev: string;
 }
-const DeleteBranchRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteBranchRequest>;
-
 export interface DeleteBranchResponse {}
-const DeleteBranchResponse = CreateBranchResponse as any as S.Schema<DeleteBranchResponse>;
-
 export interface DeleteLargeFileRequest {
   namespace: string;
   repo: string;
   sha: string;
   rewriteHistory?: string;
 }
-const DeleteLargeFileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteLargeFileRequest>;
-
 export interface DeleteLargeFileResponse {}
-const DeleteLargeFileResponse = CreateBranchResponse as any as S.Schema<DeleteLargeFileResponse>;
-
 export type DeleteLargeFilesRequestDeletionsShaList = Array<string>;
-const DeleteLargeFilesRequestDeletionsShaList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteLargeFilesRequestDeletionsShaList>;
-
 export interface DeleteLargeFilesRequestDeletions {
   sha: DeleteLargeFilesRequestDeletionsShaList;
   rewriteHistory?: boolean;
 }
-const DeleteLargeFilesRequestDeletions = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteLargeFilesRequestDeletions>;
-
 export interface DeleteLargeFilesRequest {
   namespace: string;
   repo: string;
   deletions: DeleteLargeFilesRequestDeletions;
 }
-const DeleteLargeFilesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteLargeFilesRequest>;
-
 export interface DeleteLargeFilesResponse {}
-const DeleteLargeFilesResponse = CreateBranchResponse as any as S.Schema<DeleteLargeFilesResponse>;
-
 export interface DeleteSecretRequest {
   namespace: string;
   repo: string;
   key: string;
 }
-const DeleteSecretRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteSecretRequest>;
-
 export interface DeleteSecretResponse {}
-const DeleteSecretResponse = CreateBranchResponse as any as S.Schema<DeleteSecretResponse>;
-
 export interface DeleteSpaceVolumesRequest {
   namespace: string;
   repo: string;
 }
-const DeleteSpaceVolumesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteSpaceVolumesRequest>;
-
 export interface DeleteSpaceVolumesResponse {}
-const DeleteSpaceVolumesResponse =
-  CreateBranchResponse as any as S.Schema<DeleteSpaceVolumesResponse>;
-
 export interface DeleteTagRequest {
   namespace: string;
   repo: string;
   rev: string;
 }
-const DeleteTagRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteTagRequest>;
-
 export interface DeleteTagResponse {}
-const DeleteTagResponse = CreateBranchResponse as any as S.Schema<DeleteTagResponse>;
-
 export interface DeleteVariableRequest {
   namespace: string;
   repo: string;
   key: string;
 }
-const DeleteVariableRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteVariableRequest>;
-
 export interface DeleteVariableResponse {}
-const DeleteVariableResponse = CreateBranchResponse as any as S.Schema<DeleteVariableResponse>;
-
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
-const DuplicateXetFilesRequestTargetType = S.String;
-
 export interface DuplicateXetFilesRequestTarget {
   type: DuplicateXetFilesRequestTargetType | (string & {});
   name: string;
 }
-const DuplicateXetFilesRequestTarget = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DuplicateXetFilesRequestTarget>;
-
 export interface DuplicateXetFilesRequestFilesItem {
   xetHash: string;
   sha256: string;
   filename?: string;
 }
-const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DuplicateXetFilesRequestFilesItem>;
-
 export type DuplicateXetFilesRequestFilesList = Array<DuplicateXetFilesRequestFilesItem>;
-const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DuplicateXetFilesRequestFilesList>;
-
 export interface DuplicateXetFilesRequest {
   namespace: string;
   repo: string;
   target: DuplicateXetFilesRequestTarget;
   files: DuplicateXetFilesRequestFilesList;
 }
-const DuplicateXetFilesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DuplicateXetFilesRequest>;
-
 export interface DuplicateXetFilesResponseFailedItem {
   /** Xet content hash of the file that failed */
   xetHash: string;
@@ -316,18 +187,8 @@ export interface DuplicateXetFilesResponseFailedItem {
   /** Error message */
   error: string;
 }
-const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DuplicateXetFilesResponseFailedItem>;
-
 /** Per-file failures */
 export type DuplicateXetFilesResponseFailedList = Array<DuplicateXetFilesResponseFailedItem>;
-const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DuplicateXetFilesResponseFailedList>;
-
 export interface DuplicateXetFilesResponse {
   /** True if all requested files were duplicated (or already present) */
   success: boolean;
@@ -338,22 +199,10 @@ export interface DuplicateXetFilesResponse {
   /** Per-file failures */
   failed: DuplicateXetFilesResponseFailedList;
 }
-const DuplicateXetFilesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DuplicateXetFilesResponse>;
-
 export interface FeaturedSpacesRequest {
   date?: string;
 }
-const FeaturedSpacesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<FeaturedSpacesRequest>;
-
 export interface FeaturedSpacesResponse {}
-const FeaturedSpacesResponse = CreateBranchResponse as any as S.Schema<FeaturedSpacesResponse>;
-
 export interface GenerateJwtRequest {
   namespace: string;
   repo: string;
@@ -365,8 +214,6 @@ export interface GenerateJwtRequest {
   include_pro_status?: string;
   billing_details?: string;
 }
-const GenerateJwtRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GenerateJwtRequest>;
-
 /** Encrypted JWT token and key ID (only if encrypted=true was requested) */
 export interface GenerateJwtResponseEncryptedToken {
   /** The encrypted JWT token */
@@ -374,11 +221,6 @@ export interface GenerateJwtResponseEncryptedToken {
   /** Key ID used to encrypt the token */
   keyId: string;
 }
-const GenerateJwtResponseEncryptedToken = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GenerateJwtResponseEncryptedToken>;
-
 export interface GenerateJwtResponse {
   /** The JWT token with Bearer prefix */
   accessToken: string | Redacted.Redacted<string>;
@@ -389,52 +231,31 @@ export interface GenerateJwtResponse {
   /** Encrypted JWT token and key ID (only if encrypted=true was requested) */
   encryptedToken?: GenerateJwtResponseEncryptedToken;
 }
-const GenerateJwtResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GenerateJwtResponse>;
-
 export interface GetCompareRevRequest {
   namespace: string;
   repo: string;
   compare: string;
   raw?: string;
 }
-const GetCompareRevRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetCompareRevRequest>;
-
 export type GetCompareRevResponse = string;
-const GetCompareRevResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetCompareRevResponse>;
-
 export interface GetFolderSizeRequest {
   namespace: string;
   repo: string;
   rev: string;
   path: string;
 }
-const GetFolderSizeRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetFolderSizeRequest>;
-
 export interface GetFolderSizeResponse {
   /** The normalized path of the subtree, starting with a slash */
   path: string;
   /** Total size in bytes of all files under the subtree */
   size: number;
 }
-const GetFolderSizeResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetFolderSizeResponse>;
-
 export interface GetNotebookUrlRequest {
   namespace: string;
   repo: string;
   rev: string;
   path: string;
 }
-const GetNotebookUrlRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetNotebookUrlRequest>;
-
 export interface GetNotebookUrlResponseBodyCase0 {
   error: string;
 }
@@ -448,43 +269,21 @@ export type GetNotebookUrlResponseBody =
   | GetNotebookUrlResponseBodyCase0
   | GetNotebookUrlResponseBodyCase1
   | GetNotebookUrlResponseBodyCase2;
-const GetNotebookUrlResponseBody = S.Unknown as any as S.Schema<GetNotebookUrlResponseBody>;
-
 export type GetNotebookUrlResponse = GetNotebookUrlResponseBody;
-const GetNotebookUrlResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetNotebookUrlResponse>;
-
 export interface GetResourceGroupRequest {
   namespace: string;
   repo: string;
 }
-const GetResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetResourceGroupRequest>;
-
 export interface GetResourceGroupResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   numUsers?: number;
 }
-const GetResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetResourceGroupResponse>;
-
 export interface GetSecurityStatusRequest {
   namespace: string;
   repo: string;
 }
-const GetSecurityStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetSecurityStatusRequest>;
-
 export type GetSecurityStatusResponseFilesWithIssuesItemLevel =
   | "unscanned"
   | "safe"
@@ -493,39 +292,17 @@ export type GetSecurityStatusResponseFilesWithIssuesItemLevel =
   | "caution"
   | "suspicious"
   | "unsafe";
-const GetSecurityStatusResponseFilesWithIssuesItemLevel = S.String;
-
 export interface GetSecurityStatusResponseFilesWithIssuesItem {
   path: string;
   level: GetSecurityStatusResponseFilesWithIssuesItemLevel;
 }
-const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetSecurityStatusResponseFilesWithIssuesItem>;
-
 export type GetSecurityStatusResponseFilesWithIssuesList =
   Array<GetSecurityStatusResponseFilesWithIssuesItem>;
-const GetSecurityStatusResponseFilesWithIssuesList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetSecurityStatusResponseFilesWithIssuesList>;
-
 export interface GetSecurityStatusResponse {
   scansDone: boolean;
   filesWithIssues: GetSecurityStatusResponseFilesWithIssuesList;
 }
-const GetSecurityStatusResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetSecurityStatusResponse>;
-
 export interface GetZeroGPUQuotaRequest {}
-const GetZeroGPUQuotaRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetZeroGPUQuotaRequest>;
-
 /** Execution (runs) accounting, or omitted for visitors without a runs limit */
 export interface GetZeroGPUQuotaResponseRuns {
   /** Executions used in the current runs window */
@@ -537,11 +314,6 @@ export interface GetZeroGPUQuotaResponseRuns {
   /** ISO 8601 timestamp when the runs window resets, or null if no run has happened yet. Independent of resetsAt. */
   resetsAt: string | null;
 }
-const GetZeroGPUQuotaResponseRuns = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetZeroGPUQuotaResponseRuns>;
-
 export interface GetZeroGPUQuotaResponse {
   /** Total quota in GPU-seconds */
   base: number;
@@ -554,20 +326,8 @@ export interface GetZeroGPUQuotaResponse {
   /** Execution (runs) accounting, or omitted for visitors without a runs limit */
   runs?: GetZeroGPUQuotaResponseRuns;
 }
-const GetZeroGPUQuotaResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetZeroGPUQuotaResponse>;
-
 export type ListCommitsRequestExpandItem = "formatted";
-const ListCommitsRequestExpandItem = S.String;
-
 export type ListCommitsRequestExpandList = Array<ListCommitsRequestExpandItem | (string & {})>;
-const ListCommitsRequestExpandList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListCommitsRequestExpandList>;
-
 export interface ListCommitsRequest {
   namespace: string;
   repo: string;
@@ -576,33 +336,16 @@ export interface ListCommitsRequest {
   expand?: ListCommitsRequestExpandList;
   limit?: number;
 }
-const ListCommitsRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ListCommitsRequest>;
-
 export interface ListCommitsResponseBodyItemAuthorsItem {
   user: string;
   avatar?: string;
 }
-const ListCommitsResponseBodyItemAuthorsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListCommitsResponseBodyItemAuthorsItem>;
-
 export type ListCommitsResponseBodyItemAuthorsList = Array<ListCommitsResponseBodyItemAuthorsItem>;
-const ListCommitsResponseBodyItemAuthorsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListCommitsResponseBodyItemAuthorsList>;
-
 /** Available if expand includes formatted */
 export interface ListCommitsResponseBodyItemFormatted {
   title: string;
   message?: string;
 }
-const ListCommitsResponseBodyItemFormatted = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListCommitsResponseBodyItemFormatted>;
-
 export interface ListCommitsResponseBodyItem {
   id: string;
   title: string;
@@ -612,20 +355,8 @@ export interface ListCommitsResponseBodyItem {
   /** Available if expand includes formatted */
   formatted?: ListCommitsResponseBodyItemFormatted;
 }
-const ListCommitsResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListCommitsResponseBodyItem>;
-
 export type ListCommitsResponseBodyList = Array<ListCommitsResponseBodyItem>;
-const ListCommitsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListCommitsResponseBodyList>;
-
 export type ListCommitsResponse = ListCommitsResponseBodyList;
-const ListCommitsResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListCommitsResponse>;
-
 export interface ListFolderContentRequest {
   namespace: string;
   repo: string;
@@ -636,34 +367,17 @@ export interface ListFolderContentRequest {
   limit?: number;
   cursor?: string;
 }
-const ListFolderContentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListFolderContentRequest>;
-
 export type ListFolderContentResponseBodyItemType = "file" | "directory" | "unknown";
-const ListFolderContentResponseBodyItemType = S.String;
-
 export interface ListFolderContentResponseBodyItemLfs {
   oid: string;
   size: number;
   pointerSize: number;
 }
-const ListFolderContentResponseBodyItemLfs = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListFolderContentResponseBodyItemLfs>;
-
 export interface ListFolderContentResponseBodyItemLastCommit {
   id: string;
   title: string;
   date: string;
 }
-const ListFolderContentResponseBodyItemLastCommit = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListFolderContentResponseBodyItemLastCommit>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusStatus =
   | "unscanned"
   | "safe"
@@ -672,8 +386,6 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListFolderContentResponseBodyItemSecurityFileStatusStatus = S.String;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "unscanned"
   | "safe"
@@ -682,34 +394,17 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus = S.String;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    3,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
-const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    4,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList>;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus;
   message?: string;
@@ -718,11 +413,6 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan {
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList;
   version?: string;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus =
   | "unscanned"
   | "safe"
@@ -731,34 +421,17 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStat
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus = S.String;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    6,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
-const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    7,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList>;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus;
   message?: string;
@@ -767,11 +440,6 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusProtectAiSca
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList;
   version?: string;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus =
   | "unscanned"
   | "safe"
@@ -799,9 +467,6 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScan {
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList;
   version?: string;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusAvScan =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScan>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus =
   | "unscanned"
   | "safe"
@@ -810,34 +475,17 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanS
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus = S.String;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    1,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
-const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    2,
-  ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList>;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus;
   message?: string;
@@ -846,11 +494,6 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusPickleImport
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList;
   version?: string;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanStatus =
   | "unscanned"
   | "safe"
@@ -878,9 +521,6 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalSc
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList;
   version?: string;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan =
-  ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan>;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatus {
   status: ListFolderContentResponseBodyItemSecurityFileStatusStatus;
   jFrogScan?: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan;
@@ -889,11 +529,6 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatus {
   pickleImportScan: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan;
   virusTotalScan?: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan;
 }
-const ListFolderContentResponseBodyItemSecurityFileStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatus>;
-
 export interface ListFolderContentResponseBodyItem {
   type: ListFolderContentResponseBodyItemType;
   oid: string;
@@ -904,29 +539,10 @@ export interface ListFolderContentResponseBodyItem {
   lastCommit?: ListFolderContentResponseBodyItemLastCommit;
   securityFileStatus?: ListFolderContentResponseBodyItemSecurityFileStatus;
 }
-const ListFolderContentResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListFolderContentResponseBodyItem>;
-
 export type ListFolderContentResponseBodyList = Array<ListFolderContentResponseBodyItem>;
-const ListFolderContentResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListFolderContentResponseBodyList>;
-
 export type ListFolderContentResponse = ListFolderContentResponseBodyList;
-const ListFolderContentResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListFolderContentResponse>;
-
 export type ListLargeFilesRequestDirection = "asc" | "desc";
-const ListLargeFilesRequestDirection = S.String;
-
 export type ListLargeFilesRequestSort = "size" | "pushedAt";
-const ListLargeFilesRequestSort = S.String;
-
 export interface ListLargeFilesRequest {
   namespace: string;
   repo: string;
@@ -936,26 +552,17 @@ export interface ListLargeFilesRequest {
   sort?: ListLargeFilesRequestSort | (string & {});
   xet?: string;
 }
-const ListLargeFilesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListLargeFilesRequest>;
-
 export type ListLargeFilesResponseBodyItemPusherPrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-const ListLargeFilesResponseBodyItemPusherPrimaryOrgPlan = S.String;
-
 export type ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole = S.String;
-
 export interface ListLargeFilesResponseBodyItemPusherPrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -969,11 +576,6 @@ export interface ListLargeFilesResponseBodyItemPusherPrimaryOrg {
   userRole?: ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole;
   numUsers?: number;
 }
-const ListLargeFilesResponseBodyItemPusherPrimaryOrg = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListLargeFilesResponseBodyItemPusherPrimaryOrg>;
-
 export interface ListLargeFilesResponseBodyItemPusher {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -989,11 +591,6 @@ export interface ListLargeFilesResponseBodyItemPusher {
   isUserFollowing?: boolean;
   primaryOrg?: ListLargeFilesResponseBodyItemPusherPrimaryOrg;
 }
-const ListLargeFilesResponseBodyItemPusher = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListLargeFilesResponseBodyItemPusher>;
-
 export interface ListLargeFilesResponseBodyItem {
   pusher?: ListLargeFilesResponseBodyItemPusher;
   ref?: string;
@@ -1005,46 +602,20 @@ export interface ListLargeFilesResponseBodyItem {
   filename?: string;
   xetHash?: string;
 }
-const ListLargeFilesResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListLargeFilesResponseBodyItem>;
-
 export type ListLargeFilesResponseBodyList = Array<ListLargeFilesResponseBodyItem>;
-const ListLargeFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListLargeFilesResponseBodyList>;
-
 export type ListLargeFilesResponse = ListLargeFilesResponseBodyList;
-const ListLargeFilesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListLargeFilesResponse>;
-
 export type ListLikersRequestExpandItem = "likedAt";
 export type ListLikersRequestExpandList = Array<ListLikersRequestExpandItem | (string & {})>;
-const ListLikersRequestExpandList =
-  ListCommitsRequestExpandList as any as S.Schema<ListLikersRequestExpandList>;
-
 export interface ListLikersRequest {
   namespace: string;
   repo: string;
   expand?: ListLikersRequestExpandList;
 }
-const ListLikersRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ListLikersRequest>;
-
 export interface ListLikersResponse {}
-const ListLikersResponse = CreateBranchResponse as any as S.Schema<ListLikersResponse>;
-
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
-const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
-
 /** Expand the response with the last commit and security file status */
 export type ListPathsInfoRequestExpand = string | boolean;
-const ListPathsInfoRequestExpand = S.Unknown as any as S.Schema<ListPathsInfoRequestExpand>;
-
 export interface ListPathsInfoRequest {
   namespace: string;
   repo: string;
@@ -1053,19 +624,10 @@ export interface ListPathsInfoRequest {
   /** Expand the response with the last commit and security file status */
   expand?: ListPathsInfoRequestExpand;
 }
-const ListPathsInfoRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListPathsInfoRequest>;
-
 export type ListPathsInfoResponseBodyItemType = "file" | "directory" | "unknown";
-const ListPathsInfoResponseBodyItemType = S.String;
-
 export interface ListPathsInfoResponseBodyItemLfs {
   pointerSize: number;
 }
-const ListPathsInfoResponseBodyItemLfs = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListPathsInfoResponseBodyItemLfs>;
-
 export type ListPathsInfoResponseBodyItemLastCommit = ListFolderContentResponseBodyItemLastCommit;
 export type ListPathsInfoResponseBodyItemSecurityFileStatusStatus =
   | "unscanned"
@@ -1075,8 +637,6 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListPathsInfoResponseBodyItemSecurityFileStatusStatus = S.String;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "unscanned"
   | "safe"
@@ -1104,9 +664,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList;
   version?: string;
 }
-const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus =
   | "unscanned"
   | "safe"
@@ -1134,9 +691,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList;
   version?: string;
 }
-const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus =
   | "unscanned"
   | "safe"
@@ -1145,8 +699,6 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus = S.String;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
@@ -1158,9 +710,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImpo
 }
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
-const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus;
   message?: string;
@@ -1169,11 +718,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList;
   version?: string;
 }
-const ListPathsInfoResponseBodyItemSecurityFileStatusAvScan = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScan>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanStatus =
   | "unscanned"
   | "safe"
@@ -1201,9 +745,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList;
   version?: string;
 }
-const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan =
-  ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus =
   | "unscanned"
   | "safe"
@@ -1212,8 +753,6 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus 
   | "caution"
   | "suspicious"
   | "unsafe";
-const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus = S.String;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
@@ -1225,9 +764,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPi
 }
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
-const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus;
   message?: string;
@@ -1236,11 +772,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList;
   version?: string;
 }
-const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan>;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatus {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusStatus;
   jFrogScan?: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan;
@@ -1249,11 +780,6 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatus {
   pickleImportScan: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan;
   virusTotalScan?: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan;
 }
-const ListPathsInfoResponseBodyItemSecurityFileStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatus>;
-
 export interface ListPathsInfoResponseBodyItem {
   type: ListPathsInfoResponseBodyItemType;
   oid: string;
@@ -1264,114 +790,47 @@ export interface ListPathsInfoResponseBodyItem {
   lastCommit?: ListFolderContentResponseBodyItemLastCommit;
   securityFileStatus?: ListPathsInfoResponseBodyItemSecurityFileStatus;
 }
-const ListPathsInfoResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListPathsInfoResponseBodyItem>;
-
 export type ListPathsInfoResponseBodyList = Array<ListPathsInfoResponseBodyItem>;
-const ListPathsInfoResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListPathsInfoResponseBodyList>;
-
 export type ListPathsInfoResponse = ListPathsInfoResponseBodyList;
-const ListPathsInfoResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListPathsInfoResponse>;
-
 export interface ListReferencesRequest {
   namespace: string;
   repo: string;
   include_prs?: string;
 }
-const ListReferencesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListReferencesRequest>;
-
 export interface ListReferencesResponseTagsItem {
   name: string;
   ref: string;
   targetCommit: string;
 }
-const ListReferencesResponseTagsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListReferencesResponseTagsItem>;
-
 export type ListReferencesResponseTagsList = Array<ListReferencesResponseTagsItem>;
-const ListReferencesResponseTagsList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListReferencesResponseTagsList>;
-
 export type ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
 export type ListReferencesResponseBranchesList = Array<ListReferencesResponseTagsItem>;
-const ListReferencesResponseBranchesList =
-  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseBranchesList>;
-
 export type ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
 export type ListReferencesResponseConvertsList = Array<ListReferencesResponseTagsItem>;
-const ListReferencesResponseConvertsList =
-  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseConvertsList>;
-
 export type ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
 export type ListReferencesResponsePullRequestsList = Array<ListReferencesResponseTagsItem>;
-const ListReferencesResponsePullRequestsList =
-  ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponsePullRequestsList>;
-
 export interface ListReferencesResponse {
   tags: ListReferencesResponseTagsList;
   branches: ListReferencesResponseBranchesList;
   converts: ListReferencesResponseConvertsList;
   pullRequests?: ListReferencesResponsePullRequestsList;
 }
-const ListReferencesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListReferencesResponse>;
-
 export interface ListSecretsRequest {
   namespace: string;
   repo: string;
 }
-const ListSecretsRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ListSecretsRequest>;
-
 export interface ListSecretsResponseBodyValue {
   key: string;
   description?: string;
   updatedAt?: string;
 }
-const ListSecretsResponseBodyValue = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListSecretsResponseBodyValue>;
-
 export type ListSecretsResponseBodyMap = {
   [key: string]: ListSecretsResponseBodyValue | undefined;
 };
-const ListSecretsResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListSecretsResponseBodyMap>;
-
 export type ListSecretsResponse = ListSecretsResponseBodyMap;
-const ListSecretsResponse = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ListSecretsResponse>;
-
 export interface ListSpaceHardwareRequest {}
-const ListSpaceHardwareRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListSpaceHardwareRequest>;
-
 export type ListSpaceHardwareResponseBodyItemAcceleratorType = "gpu" | "neuron";
-const ListSpaceHardwareResponseBodyItemAcceleratorType = S.String;
-
 export type ListSpaceHardwareResponseBodyItemAcceleratorManufacturer = "Nvidia" | "AWS";
-const ListSpaceHardwareResponseBodyItemAcceleratorManufacturer = S.String;
-
 export interface ListSpaceHardwareResponseBodyItemAccelerator {
   type: ListSpaceHardwareResponseBodyItemAcceleratorType;
   model: string;
@@ -1379,11 +838,6 @@ export interface ListSpaceHardwareResponseBodyItemAccelerator {
   vram: string;
   manufacturer: ListSpaceHardwareResponseBodyItemAcceleratorManufacturer;
 }
-const ListSpaceHardwareResponseBodyItemAccelerator = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListSpaceHardwareResponseBodyItemAccelerator>;
-
 export interface ListSpaceHardwareResponseBodyItem {
   name: string;
   prettyName: string;
@@ -1394,32 +848,10 @@ export interface ListSpaceHardwareResponseBodyItem {
   unitCostUSD: number;
   unitLabel: string;
 }
-const ListSpaceHardwareResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListSpaceHardwareResponseBodyItem>;
-
 export type ListSpaceHardwareResponseBodyList = Array<ListSpaceHardwareResponseBodyItem>;
-const ListSpaceHardwareResponseBodyList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListSpaceHardwareResponseBodyList>;
-
 export type ListSpaceHardwareResponse = ListSpaceHardwareResponseBodyList;
-const ListSpaceHardwareResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListSpaceHardwareResponse>;
-
 export interface ListSpaceTemplatesRequest {}
-const ListSpaceTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListSpaceTemplatesRequest>;
-
 export type ListSpaceTemplatesResponseTemplatesItemSdk = "docker" | "static" | "gradio";
-const ListSpaceTemplatesResponseTemplatesItemSdk = S.String;
-
 export interface ListSpaceTemplatesResponseTemplatesItem {
   sdk: ListSpaceTemplatesResponseTemplatesItemSdk;
   /** Human-friendly name of the template (e.g. `JupyterLab`). */
@@ -1429,60 +861,25 @@ export interface ListSpaceTemplatesResponseTemplatesItem {
   /** Whether the created Space is expected to be private. */
   preferredPrivate: boolean;
 }
-const ListSpaceTemplatesResponseTemplatesItem = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListSpaceTemplatesResponseTemplatesItem>;
-
 export type ListSpaceTemplatesResponseTemplatesList =
   Array<ListSpaceTemplatesResponseTemplatesItem>;
-const ListSpaceTemplatesResponseTemplatesList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListSpaceTemplatesResponseTemplatesList>;
-
 export interface ListSpaceTemplatesResponse {
   templates: ListSpaceTemplatesResponseTemplatesList;
 }
-const ListSpaceTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListSpaceTemplatesResponse>;
-
 export interface ListVariablesRequest {
   namespace: string;
   repo: string;
 }
-const ListVariablesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListVariablesRequest>;
-
 export interface ListVariablesResponseBodyValue {
   key: string;
   value: string;
   description?: string;
   updatedAt?: string;
 }
-const ListVariablesResponseBodyValue = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListVariablesResponseBodyValue>;
-
 export type ListVariablesResponseBodyMap = {
   [key: string]: ListVariablesResponseBodyValue | undefined;
 };
-const ListVariablesResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListVariablesResponseBodyMap>;
-
 export type ListVariablesResponse = ListVariablesResponseBodyMap;
-const ListVariablesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListVariablesResponse>;
-
 export interface ResolveFileRequest {
   namespace: string;
   repo: string;
@@ -1491,8 +888,6 @@ export interface ResolveFileRequest {
   range?: string;
   accept?: string;
 }
-const ResolveFileRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ResolveFileRequest>;
-
 export interface ResolveFileResponse {
   /** The XET hash of the file */
   hash: string;
@@ -1505,8 +900,6 @@ export interface ResolveFileResponse {
   /** The size of the file */
   size: number;
 }
-const ResolveFileResponse = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ResolveFileResponse>;
-
 export interface ResolveFileCachedRequest {
   namespace: string;
   repo: string;
@@ -1515,11 +908,6 @@ export interface ResolveFileCachedRequest {
   range?: string;
   accept?: string;
 }
-const ResolveFileCachedRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ResolveFileCachedRequest>;
-
 export interface ResolveFileCachedResponse {
   /** The XET hash of the file */
   hash: string;
@@ -1532,11 +920,6 @@ export interface ResolveFileCachedResponse {
   /** The size of the file */
   size: number;
 }
-const ResolveFileCachedResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ResolveFileCachedResponse>;
-
 export type SearchSemanticRequestCategory =
   | "image-generation"
   | "video-generation"
@@ -1576,17 +959,9 @@ export type SearchSemanticRequestCategory =
   | "agent-environment"
   | "image"
   | "other";
-const SearchSemanticRequestCategory = S.String;
-
 export type SearchSemanticRequestSdkItem = "gradio" | "docker" | "static" | "streamlit";
 export type SearchSemanticRequestSdkList = Array<SearchSemanticRequestSdkItem | (string & {})>;
-const SearchSemanticRequestSdkList =
-  ListCommitsRequestExpandList as any as S.Schema<SearchSemanticRequestSdkList>;
-
 export type SearchSemanticRequestFilterList = Array<string>;
-const SearchSemanticRequestFilterList =
-  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<SearchSemanticRequestFilterList>;
-
 export interface SearchSemanticRequest {
   q?: string;
   category?: SearchSemanticRequestCategory | (string & {});
@@ -1595,43 +970,21 @@ export interface SearchSemanticRequest {
   filter?: SearchSemanticRequestFilterList;
   agents?: boolean;
 }
-const SearchSemanticRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<SearchSemanticRequest>;
-
 export interface SearchSemanticResponse {}
-const SearchSemanticResponse = CreateBranchResponse as any as S.Schema<SearchSemanticResponse>;
-
 export interface SetCustomDomainRequest {
   namespace: string;
   repo: string;
   domain: string;
 }
-const SetCustomDomainRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<SetCustomDomainRequest>;
-
 export interface SetCustomDomainResponse {}
-const SetCustomDomainResponse = CreateBranchResponse as any as S.Schema<SetCustomDomainResponse>;
-
 export type SetSleepTimeRequestSeconds = number | number;
-const SetSleepTimeRequestSeconds = S.Unknown as any as S.Schema<SetSleepTimeRequestSeconds>;
-
 export interface SetSleepTimeRequest {
   namespace: string;
   repo: string;
   seconds: SetSleepTimeRequestSeconds;
 }
-const SetSleepTimeRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<SetSleepTimeRequest>;
-
 export interface SetSleepTimeResponse {}
-const SetSleepTimeResponse = CreateBranchResponse as any as S.Schema<SetSleepTimeResponse>;
-
 export type SetSpaceVolumesRequestVolumesItemType = "bucket" | "model" | "dataset" | "space";
-const SetSpaceVolumesRequestVolumesItemType = S.String;
-
 export interface SetSpaceVolumesRequestVolumesItem {
   type: SetSpaceVolumesRequestVolumesItemType | (string & {});
   /** Source identifier, e.g. 'username/my-bucket' or 'username/my-model' */
@@ -1645,93 +998,48 @@ export interface SetSpaceVolumesRequestVolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-const SetSpaceVolumesRequestVolumesItem = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<SetSpaceVolumesRequestVolumesItem>;
-
 export type SetSpaceVolumesRequestVolumesList = Array<SetSpaceVolumesRequestVolumesItem>;
-const SetSpaceVolumesRequestVolumesList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SetSpaceVolumesRequestVolumesList>;
-
 export interface SetSpaceVolumesRequest {
   namespace: string;
   repo: string;
   volumes: SetSpaceVolumesRequestVolumesList;
 }
-const SetSpaceVolumesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<SetSpaceVolumesRequest>;
-
 export interface SetSpaceVolumesResponse {}
-const SetSpaceVolumesResponse = CreateBranchResponse as any as S.Schema<SetSpaceVolumesResponse>;
-
 export interface SquashRefRequest {
   namespace: string;
   repo: string;
   rev: string;
   message?: string;
 }
-const SquashRefRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<SquashRefRequest>;
-
 export interface SquashRefResponse {
   /** The new commit ID after the squash */
   commitId: string;
 }
-const SquashRefResponse = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SquashRefResponse>;
-
 export interface StreamEventsRequest {
   namespace: string;
   repo: string;
   session_uuid?: string;
 }
-const StreamEventsRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<StreamEventsRequest>;
-
 export interface StreamEventsResponse {}
-const StreamEventsResponse = CreateBranchResponse as any as S.Schema<StreamEventsResponse>;
-
 export type StreamLogsRequestLogType = "build" | "run";
-const StreamLogsRequestLogType = S.String;
-
 export interface StreamLogsRequest {
   namespace: string;
   repo: string;
   logType: StreamLogsRequestLogType | (string & {});
   tail?: number;
 }
-const StreamLogsRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<StreamLogsRequest>;
-
 export interface StreamLogsResponse {}
-const StreamLogsResponse = CreateBranchResponse as any as S.Schema<StreamLogsResponse>;
-
 export interface StreamMetricsRequest {
   namespace: string;
   repo: string;
 }
-const StreamMetricsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<StreamMetricsRequest>;
-
 export interface StreamMetricsResponse {}
-const StreamMetricsResponse = CreateBranchResponse as any as S.Schema<StreamMetricsResponse>;
-
 export interface ToggleDevModeRequest {
   namespace: string;
   repo: string;
   enabled: boolean;
 }
-const ToggleDevModeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ToggleDevModeRequest>;
-
 export interface ToggleDevModeResponse {}
-const ToggleDevModeResponse = CreateBranchResponse as any as S.Schema<ToggleDevModeResponse>;
-
 export type UpdateHardwareFlavorRequestFlavor =
   | "cpu-basic"
   | "cpu-upgrade"
@@ -1762,44 +1070,23 @@ export type UpdateHardwareFlavorRequestFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-const UpdateHardwareFlavorRequestFlavor = S.String;
-
 export type UpdateHardwareFlavorRequestSleepTimeSeconds = number | number;
-const UpdateHardwareFlavorRequestSleepTimeSeconds =
-  S.Unknown as any as S.Schema<UpdateHardwareFlavorRequestSleepTimeSeconds>;
-
 export interface UpdateHardwareFlavorRequest {
   namespace: string;
   repo: string;
   flavor: UpdateHardwareFlavorRequestFlavor | (string & {});
   sleepTimeSeconds?: UpdateHardwareFlavorRequestSleepTimeSeconds;
 }
-const UpdateHardwareFlavorRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<UpdateHardwareFlavorRequest>;
-
 export interface UpdateHardwareFlavorResponse {}
-const UpdateHardwareFlavorResponse =
-  CreateBranchResponse as any as S.Schema<UpdateHardwareFlavorResponse>;
-
 /** Repository visibility. `protected` is only supported for Spaces. */
 export type UpdateRepoSettingsRequestVisibility = "private" | "public" | "protected";
-const UpdateRepoSettingsRequestVisibility = S.String;
-
 export type UpdateRepoSettingsRequestDiscussionsSorting =
   | "recently-created"
   | "trending"
   | "reactions";
-const UpdateRepoSettingsRequestDiscussionsSorting = S.String;
-
 export type UpdateRepoSettingsRequestGatedCase1 = "auto" | "manual";
 export type UpdateRepoSettingsRequestGated = boolean | UpdateRepoSettingsRequestGatedCase1;
-const UpdateRepoSettingsRequestGated = S.Unknown as any as S.Schema<UpdateRepoSettingsRequestGated>;
-
 export type UpdateRepoSettingsRequestGatedNotificationsMode = "bulk" | "real-time";
-const UpdateRepoSettingsRequestGatedNotificationsMode = S.String;
-
 export interface UpdateRepoSettingsRequest {
   namespace: string;
   repo: string;
@@ -1814,29 +1101,15 @@ export interface UpdateRepoSettingsRequest {
   gatedNotificationsEmail?: string;
   gatedNotificationsMode?: UpdateRepoSettingsRequestGatedNotificationsMode | (string & {});
 }
-const UpdateRepoSettingsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<UpdateRepoSettingsRequest>;
-
 /** Repository visibility. `protected` is only supported for Spaces. */
 export type UpdateRepoSettingsResponseVisibility = "private" | "public" | "protected";
-const UpdateRepoSettingsResponseVisibility = S.String;
-
 export type UpdateRepoSettingsResponseDiscussionsSorting =
   | "recently-created"
   | "trending"
   | "reactions";
-const UpdateRepoSettingsResponseDiscussionsSorting = S.String;
-
 export type UpdateRepoSettingsResponseGatedCase1 = "auto" | "manual";
 export type UpdateRepoSettingsResponseGated = boolean | UpdateRepoSettingsResponseGatedCase1;
-const UpdateRepoSettingsResponseGated =
-  S.Unknown as any as S.Schema<UpdateRepoSettingsResponseGated>;
-
 export type UpdateRepoSettingsResponseGatedNotificationsMode = "bulk" | "real-time";
-const UpdateRepoSettingsResponseGatedNotificationsMode = S.String;
-
 export interface UpdateRepoSettingsResponse {
   private?: boolean;
   /** Repository visibility. `protected` is only supported for Spaces. */
@@ -1849,11 +1122,6 @@ export interface UpdateRepoSettingsResponse {
   gatedNotificationsEmail?: string;
   gatedNotificationsMode?: UpdateRepoSettingsResponseGatedNotificationsMode;
 }
-const UpdateRepoSettingsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<UpdateRepoSettingsResponse>;
-
 export interface UpsertSecretRequest {
   namespace: string;
   repo: string;
@@ -1861,11 +1129,7 @@ export interface UpsertSecretRequest {
   description?: string;
   value?: string;
 }
-const UpsertSecretRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<UpsertSecretRequest>;
-
 export interface UpsertSecretResponse {}
-const UpsertSecretResponse = CreateBranchResponse as any as S.Schema<UpsertSecretResponse>;
-
 export interface UpsertVariableRequest {
   namespace: string;
   repo: string;
@@ -1873,48 +1137,27 @@ export interface UpsertVariableRequest {
   description?: string;
   value?: string;
 }
-const UpsertVariableRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<UpsertVariableRequest>;
-
 export interface UpsertVariableResponse {}
-const UpsertVariableResponse = CreateBranchResponse as any as S.Schema<UpsertVariableResponse>;
-
 export interface XetReadTokenRequest {
   namespace: string;
   repo: string;
   rev: string;
 }
-const XetReadTokenRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<XetReadTokenRequest>;
-
 export interface XetReadTokenResponse {
   casUrl: string;
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-const XetReadTokenResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<XetReadTokenResponse>;
-
 export interface XetWriteTokenRequest {
   namespace: string;
   repo: string;
   rev: string;
 }
-const XetWriteTokenRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<XetWriteTokenRequest>;
-
 export interface XetWriteTokenResponse {
   casUrl: string;
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
-
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */
 export const addResourceGroup: API.OperationMethod<
@@ -1923,8 +1166,8 @@ export const addResourceGroup: API.OperationMethod<
   AddResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddResourceGroupRequest,
-  output: AddResourceGroupResponse,
+  input: __S(0) as any as S.Schema<AddResourceGroupRequest>,
+  output: __S(1) as any as S.Schema<AddResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1181,8 @@ export const checkUploadMethod: API.OperationMethod<
   CheckUploadMethodError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckUploadMethodRequest,
-  output: CheckUploadMethodResponse,
+  input: __S(4) as any as S.Schema<CheckUploadMethodRequest>,
+  output: __S(7) as any as S.Schema<CheckUploadMethodResponse>,
   errors: [UnprocessableEntity],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1196,8 @@ export const commit: API.OperationMethod<
   CommitError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitRequest,
-  output: CommitResponse,
+  input: __S(8) as any as S.Schema<CommitRequest>,
+  output: __S(9) as any as S.Schema<CommitResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1211,8 @@ export const createBranch: API.OperationMethod<
   CreateBranchError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBranchRequest,
-  output: CreateBranchResponse,
+  input: __S(10) as any as S.Schema<CreateBranchRequest>,
+  output: __S(11) as any as S.Schema<CreateBranchResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1226,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTagRequest,
-  output: CreateTagResponse,
+  input: __S(12) as any as S.Schema<CreateTagRequest>,
+  output: __S(11) as any as S.Schema<CreateTagResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1241,8 @@ export const deleteBranch: API.OperationMethod<
   DeleteBranchError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBranchRequest,
-  output: DeleteBranchResponse,
+  input: __S(13) as any as S.Schema<DeleteBranchRequest>,
+  output: __S(11) as any as S.Schema<DeleteBranchResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2013,8 +1256,8 @@ export const deleteLargeFile: API.OperationMethod<
   DeleteLargeFileError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLargeFileRequest,
-  output: DeleteLargeFileResponse,
+  input: __S(14) as any as S.Schema<DeleteLargeFileRequest>,
+  output: __S(11) as any as S.Schema<DeleteLargeFileResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2028,8 +1271,8 @@ export const deleteLargeFiles: API.OperationMethod<
   DeleteLargeFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLargeFilesRequest,
-  output: DeleteLargeFilesResponse,
+  input: __S(17) as any as S.Schema<DeleteLargeFilesRequest>,
+  output: __S(11) as any as S.Schema<DeleteLargeFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2043,8 +1286,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecretRequest,
-  output: DeleteSecretResponse,
+  input: __S(18) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(11) as any as S.Schema<DeleteSecretResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2058,8 +1301,8 @@ export const deleteSpaceVolumes: API.OperationMethod<
   DeleteSpaceVolumesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSpaceVolumesRequest,
-  output: DeleteSpaceVolumesResponse,
+  input: __S(19) as any as S.Schema<DeleteSpaceVolumesRequest>,
+  output: __S(11) as any as S.Schema<DeleteSpaceVolumesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2073,8 +1316,8 @@ export const deleteTag: API.OperationMethod<
   DeleteTagError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagRequest,
-  output: DeleteTagResponse,
+  input: __S(20) as any as S.Schema<DeleteTagRequest>,
+  output: __S(11) as any as S.Schema<DeleteTagResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2088,8 +1331,8 @@ export const deleteVariable: API.OperationMethod<
   DeleteVariableError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVariableRequest,
-  output: DeleteVariableResponse,
+  input: __S(21) as any as S.Schema<DeleteVariableRequest>,
+  output: __S(11) as any as S.Schema<DeleteVariableResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2103,8 +1346,8 @@ export const duplicateXetFiles: API.OperationMethod<
   DuplicateXetFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DuplicateXetFilesRequest,
-  output: DuplicateXetFilesResponse,
+  input: __S(25) as any as S.Schema<DuplicateXetFilesRequest>,
+  output: __S(28) as any as S.Schema<DuplicateXetFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2118,8 +1361,8 @@ export const featuredSpaces: API.OperationMethod<
   FeaturedSpacesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeaturedSpacesRequest,
-  output: FeaturedSpacesResponse,
+  input: __S(29) as any as S.Schema<FeaturedSpacesRequest>,
+  output: __S(11) as any as S.Schema<FeaturedSpacesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2133,8 +1376,8 @@ export const generateJwt: API.OperationMethod<
   GenerateJwtError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateJwtRequest,
-  output: GenerateJwtResponse,
+  input: __S(30) as any as S.Schema<GenerateJwtRequest>,
+  output: __S(32) as any as S.Schema<GenerateJwtResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2148,8 +1391,8 @@ export const getCompareRev: API.OperationMethod<
   GetCompareRevError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCompareRevRequest,
-  output: GetCompareRevResponse,
+  input: __S(33) as any as S.Schema<GetCompareRevRequest>,
+  output: __S(34) as any as S.Schema<GetCompareRevResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2163,8 +1406,8 @@ export const getFolderSize: API.OperationMethod<
   GetFolderSizeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFolderSizeRequest,
-  output: GetFolderSizeResponse,
+  input: __S(35) as any as S.Schema<GetFolderSizeRequest>,
+  output: __S(36) as any as S.Schema<GetFolderSizeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2178,8 +1421,8 @@ export const getNotebookUrl: API.OperationMethod<
   GetNotebookUrlError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotebookUrlRequest,
-  output: GetNotebookUrlResponse,
+  input: __S(37) as any as S.Schema<GetNotebookUrlRequest>,
+  output: __S(38) as any as S.Schema<GetNotebookUrlResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2193,8 +1436,8 @@ export const getResourceGroup: API.OperationMethod<
   GetResourceGroupError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceGroupRequest,
-  output: GetResourceGroupResponse,
+  input: __S(39) as any as S.Schema<GetResourceGroupRequest>,
+  output: __S(40) as any as S.Schema<GetResourceGroupResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2208,8 +1451,8 @@ export const getSecurityStatus: API.OperationMethod<
   GetSecurityStatusError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityStatusRequest,
-  output: GetSecurityStatusResponse,
+  input: __S(41) as any as S.Schema<GetSecurityStatusRequest>,
+  output: __S(44) as any as S.Schema<GetSecurityStatusResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2223,8 +1466,8 @@ export const getZeroGPUQuota: API.OperationMethod<
   GetZeroGPUQuotaError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZeroGPUQuotaRequest,
-  output: GetZeroGPUQuotaResponse,
+  input: __S(45) as any as S.Schema<GetZeroGPUQuotaRequest>,
+  output: __S(47) as any as S.Schema<GetZeroGPUQuotaResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2238,8 +1481,8 @@ export const listCommits: API.OperationMethod<
   ListCommitsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitsRequest,
-  output: ListCommitsResponse,
+  input: __S(49) as any as S.Schema<ListCommitsRequest>,
+  output: __S(55) as any as S.Schema<ListCommitsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2253,8 +1496,8 @@ export const listFolderContent: API.OperationMethod<
   ListFolderContentError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFolderContentRequest,
-  output: ListFolderContentResponse,
+  input: __S(56) as any as S.Schema<ListFolderContentRequest>,
+  output: __S(71) as any as S.Schema<ListFolderContentResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2268,8 +1511,8 @@ export const listLargeFiles: API.OperationMethod<
   ListLargeFilesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLargeFilesRequest,
-  output: ListLargeFilesResponse,
+  input: __S(72) as any as S.Schema<ListLargeFilesRequest>,
+  output: __S(77) as any as S.Schema<ListLargeFilesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2283,8 +1526,8 @@ export const listLikers: API.OperationMethod<
   ListLikersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLikersRequest,
-  output: ListLikersResponse,
+  input: __S(78) as any as S.Schema<ListLikersRequest>,
+  output: __S(11) as any as S.Schema<ListLikersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2298,8 +1541,8 @@ export const listPathsInfo: API.OperationMethod<
   ListPathsInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPathsInfoRequest,
-  output: ListPathsInfoResponse,
+  input: __S(79) as any as S.Schema<ListPathsInfoRequest>,
+  output: __S(86) as any as S.Schema<ListPathsInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2313,8 +1556,8 @@ export const listReferences: API.OperationMethod<
   ListReferencesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReferencesRequest,
-  output: ListReferencesResponse,
+  input: __S(87) as any as S.Schema<ListReferencesRequest>,
+  output: __S(90) as any as S.Schema<ListReferencesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2328,8 +1571,8 @@ export const listSecrets: API.OperationMethod<
   ListSecretsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecretsRequest,
-  output: ListSecretsResponse,
+  input: __S(91) as any as S.Schema<ListSecretsRequest>,
+  output: __S(94) as any as S.Schema<ListSecretsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2343,8 +1586,8 @@ export const listSpaceHardware: API.OperationMethod<
   ListSpaceHardwareError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSpaceHardwareRequest,
-  output: ListSpaceHardwareResponse,
+  input: __S(95) as any as S.Schema<ListSpaceHardwareRequest>,
+  output: __S(99) as any as S.Schema<ListSpaceHardwareResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2358,8 +1601,8 @@ export const listSpaceTemplates: API.OperationMethod<
   ListSpaceTemplatesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSpaceTemplatesRequest,
-  output: ListSpaceTemplatesResponse,
+  input: __S(100) as any as S.Schema<ListSpaceTemplatesRequest>,
+  output: __S(103) as any as S.Schema<ListSpaceTemplatesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2373,8 +1616,8 @@ export const listVariables: API.OperationMethod<
   ListVariablesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVariablesRequest,
-  output: ListVariablesResponse,
+  input: __S(104) as any as S.Schema<ListVariablesRequest>,
+  output: __S(107) as any as S.Schema<ListVariablesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2388,8 +1631,8 @@ export const resolveFile: API.OperationMethod<
   ResolveFileError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResolveFileRequest,
-  output: ResolveFileResponse,
+  input: __S(108) as any as S.Schema<ResolveFileRequest>,
+  output: __S(109) as any as S.Schema<ResolveFileResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2403,8 +1646,8 @@ export const resolveFileCached: API.OperationMethod<
   ResolveFileCachedError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResolveFileCachedRequest,
-  output: ResolveFileCachedResponse,
+  input: __S(110) as any as S.Schema<ResolveFileCachedRequest>,
+  output: __S(111) as any as S.Schema<ResolveFileCachedResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2418,8 +1661,8 @@ export const searchSemantic: API.OperationMethod<
   SearchSemanticError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchSemanticRequest,
-  output: SearchSemanticResponse,
+  input: __S(112) as any as S.Schema<SearchSemanticRequest>,
+  output: __S(11) as any as S.Schema<SearchSemanticResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2433,8 +1676,8 @@ export const setCustomDomain: API.OperationMethod<
   SetCustomDomainError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetCustomDomainRequest,
-  output: SetCustomDomainResponse,
+  input: __S(113) as any as S.Schema<SetCustomDomainRequest>,
+  output: __S(11) as any as S.Schema<SetCustomDomainResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2448,8 +1691,8 @@ export const setSleepTime: API.OperationMethod<
   SetSleepTimeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSleepTimeRequest,
-  output: SetSleepTimeResponse,
+  input: __S(114) as any as S.Schema<SetSleepTimeRequest>,
+  output: __S(11) as any as S.Schema<SetSleepTimeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2463,8 +1706,8 @@ export const setSpaceVolumes: API.OperationMethod<
   SetSpaceVolumesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSpaceVolumesRequest,
-  output: SetSpaceVolumesResponse,
+  input: __S(117) as any as S.Schema<SetSpaceVolumesRequest>,
+  output: __S(11) as any as S.Schema<SetSpaceVolumesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2478,8 +1721,8 @@ export const squashRef: API.OperationMethod<
   SquashRefError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SquashRefRequest,
-  output: SquashRefResponse,
+  input: __S(118) as any as S.Schema<SquashRefRequest>,
+  output: __S(119) as any as S.Schema<SquashRefResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2493,8 +1736,8 @@ export const streamEvents: API.OperationMethod<
   StreamEventsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamEventsRequest,
-  output: StreamEventsResponse,
+  input: __S(120) as any as S.Schema<StreamEventsRequest>,
+  output: __S(11) as any as S.Schema<StreamEventsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2508,8 +1751,8 @@ export const streamLogs: API.OperationMethod<
   StreamLogsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamLogsRequest,
-  output: StreamLogsResponse,
+  input: __S(121) as any as S.Schema<StreamLogsRequest>,
+  output: __S(11) as any as S.Schema<StreamLogsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2523,8 +1766,8 @@ export const streamMetrics: API.OperationMethod<
   StreamMetricsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamMetricsRequest,
-  output: StreamMetricsResponse,
+  input: __S(122) as any as S.Schema<StreamMetricsRequest>,
+  output: __S(11) as any as S.Schema<StreamMetricsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2538,8 +1781,8 @@ export const toggleDevMode: API.OperationMethod<
   ToggleDevModeError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ToggleDevModeRequest,
-  output: ToggleDevModeResponse,
+  input: __S(123) as any as S.Schema<ToggleDevModeRequest>,
+  output: __S(11) as any as S.Schema<ToggleDevModeResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2553,8 +1796,8 @@ export const updateHardwareFlavor: API.OperationMethod<
   UpdateHardwareFlavorError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHardwareFlavorRequest,
-  output: UpdateHardwareFlavorResponse,
+  input: __S(124) as any as S.Schema<UpdateHardwareFlavorRequest>,
+  output: __S(11) as any as S.Schema<UpdateHardwareFlavorResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2568,8 +1811,8 @@ export const updateRepoSettings: API.OperationMethod<
   UpdateRepoSettingsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepoSettingsRequest,
-  output: UpdateRepoSettingsResponse,
+  input: __S(125) as any as S.Schema<UpdateRepoSettingsRequest>,
+  output: __S(126) as any as S.Schema<UpdateRepoSettingsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2583,8 +1826,8 @@ export const upsertSecret: API.OperationMethod<
   UpsertSecretError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpsertSecretRequest,
-  output: UpsertSecretResponse,
+  input: __S(127) as any as S.Schema<UpsertSecretRequest>,
+  output: __S(11) as any as S.Schema<UpsertSecretResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2598,8 +1841,8 @@ export const upsertVariable: API.OperationMethod<
   UpsertVariableError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpsertVariableRequest,
-  output: UpsertVariableResponse,
+  input: __S(128) as any as S.Schema<UpsertVariableRequest>,
+  output: __S(11) as any as S.Schema<UpsertVariableResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2613,8 +1856,8 @@ export const xetReadToken: API.OperationMethod<
   XetReadTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: XetReadTokenRequest,
-  output: XetReadTokenResponse,
+  input: __S(129) as any as S.Schema<XetReadTokenRequest>,
+  output: __S(130) as any as S.Schema<XetReadTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2628,8 +1871,8 @@ export const xetWriteToken: API.OperationMethod<
   XetWriteTokenError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: XetWriteTokenRequest,
-  output: XetWriteTokenResponse,
+  input: __S(131) as any as S.Schema<XetWriteTokenRequest>,
+  output: __S(130) as any as S.Schema<XetWriteTokenResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -2656,7 +1899,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: AddResourceGroupResponseType,
+          type: S.String,
           private: S.Boolean,
           addedBy: S.String,
         }),
@@ -2672,14 +1915,14 @@ function __c0(j: number): any {
         identifier: "CheckUploadMethodRequestFilesItem",
       });
     case 3:
-      return S.Array(CheckUploadMethodRequestFilesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           rev: S.String.pipe(T.Label()),
-          files: CheckUploadMethodRequestFilesList,
+          files: __S(3),
           gitAttributes: S.optional(S.String),
           gitIgnore: S.optional(S.String),
         }).pipe(
@@ -2694,7 +1937,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String,
-          uploadMode: CheckUploadMethodResponseFilesItemUploadMode,
+          uploadMode: S.String,
           shouldIgnore: S.Boolean,
           oid: S.optional(S.String),
         }),
@@ -2702,11 +1945,11 @@ function __c0(j: number): any {
         identifier: "CheckUploadMethodResponseFilesItem",
       });
     case 6:
-      return S.Array(CheckUploadMethodResponseFilesItem);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          files: CheckUploadMethodResponseFilesList,
+          files: __S(6),
           commitOid: S.String,
         }),
       ).annotate({
@@ -2724,7 +1967,7 @@ function __c1(j: number): any {
           rev: S.String.pipe(T.Label()),
           create_pr: S.optional(S.String.pipe(T.Query())),
           hot_reload: S.optional(S.String.pipe(T.Query())),
-          contentType: S.optional(CommitRequestContentType.pipe(T.Header("Content-Type"))),
+          contentType: S.optional(S.String.pipe(T.Header("Content-Type"))),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/commit/{rev}", code: 200 }),
         ),
@@ -2806,7 +2049,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sha: DeleteLargeFilesRequestDeletionsShaList,
+          sha: __S(15),
           rewriteHistory: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2817,7 +2060,7 @@ function __c2(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          deletions: DeleteLargeFilesRequestDeletions,
+          deletions: __S(16),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2870,7 +2113,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: DuplicateXetFilesRequestTargetType,
+          type: S.String,
           name: S.String,
         }),
       ).annotate({
@@ -2891,14 +2134,14 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DuplicateXetFilesRequestFilesItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          target: DuplicateXetFilesRequestTarget,
-          files: DuplicateXetFilesRequestFilesList,
+          target: __S(22),
+          files: __S(24),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2918,14 +2161,14 @@ function __c3(j: number): any {
         identifier: "DuplicateXetFilesResponseFailedItem",
       });
     case 3:
-      return S.Array(DuplicateXetFilesResponseFailedItem);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
           processed: S.Number,
           succeeded: S.Number,
-          failed: DuplicateXetFilesResponseFailedList,
+          failed: __S(27),
         }),
       ).annotate({
         identifier: "DuplicateXetFilesResponse",
@@ -2969,7 +2212,7 @@ function __c4(j: number): any {
           accessToken: S.String.pipe(T.SensitiveValue({})),
           exp: S.optional(S.Number),
           token: S.String,
-          encryptedToken: S.optional(GenerateJwtResponseEncryptedToken),
+          encryptedToken: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "GenerateJwtResponse" });
     case 1:
@@ -3029,7 +2272,7 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetNotebookUrlRequest" });
     case 6:
-      return S.suspend(() => GetNotebookUrlResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetNotebookUrlResponse",
       });
     case 7:
@@ -3068,18 +2311,18 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.String,
-          level: GetSecurityStatusResponseFilesWithIssuesItemLevel,
+          level: S.String,
         }),
       ).annotate({
         identifier: "GetSecurityStatusResponseFilesWithIssuesItem",
       });
     case 3:
-      return S.Array(GetSecurityStatusResponseFilesWithIssuesItem);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
           scansDone: S.Boolean,
-          filesWithIssues: GetSecurityStatusResponseFilesWithIssuesList,
+          filesWithIssues: __S(43),
         }),
       ).annotate({
         identifier: "GetSecurityStatusResponse",
@@ -3106,7 +2349,7 @@ function __c5(j: number): any {
           current: S.Number,
           resetsAt: S.NullOr(S.String),
           overquotaUsed: S.optional(S.Number),
-          runs: S.optional(GetZeroGPUQuotaResponseRuns),
+          runs: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "GetZeroGPUQuotaResponse" });
   }
@@ -3114,7 +2357,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListCommitsRequestExpandItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3122,7 +2365,7 @@ function __c6(j: number): any {
           repo: S.String.pipe(T.Label()),
           rev: S.String.pipe(T.Label()),
           p: S.optional(S.Number.pipe(T.Query())),
-          expand: S.optional(ListCommitsRequestExpandList.pipe(T.Query())),
+          expand: S.optional(__S(48).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/commits/{rev}", code: 200 }),
@@ -3138,7 +2381,7 @@ function __c6(j: number): any {
         identifier: "ListCommitsResponseBodyItemAuthorsItem",
       });
     case 3:
-      return S.Array(ListCommitsResponseBodyItemAuthorsItem);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3154,17 +2397,17 @@ function __c6(j: number): any {
           id: S.String,
           title: S.String,
           message: S.String,
-          authors: ListCommitsResponseBodyItemAuthorsList,
+          authors: __S(51),
           date: S.String,
-          formatted: S.optional(ListCommitsResponseBodyItemFormatted),
+          formatted: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "ListCommitsResponseBodyItem",
       });
     case 6:
-      return S.Array(ListCommitsResponseBodyItem);
+      return S.Array(__S(53));
     case 7:
-      return S.suspend(() => ListCommitsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(54).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListCommitsResponse",
       });
   }
@@ -3215,24 +2458,21 @@ function __c7(j: number): any {
         S.Struct({
           module: S.String,
           name: S.String,
-          safety:
-            ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety,
+          safety: S.String,
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem",
       });
     case 4:
-      return S.Array(ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus,
+          status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(
-            ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList,
-          ),
+          pickleImports: S.optional(__S(60)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -3243,17 +2483,14 @@ function __c7(j: number): any {
         S.Struct({
           module: S.String,
           name: S.String,
-          safety:
-            ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety,
+          safety: S.String,
         }),
       ).annotate({
         identifier:
           "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem",
       });
     case 7:
-      return S.Array(
-        ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem,
-      );
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -3261,13 +2498,11 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus,
+          status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(
-            ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList,
-          ),
+          pickleImports: S.optional(__S(63)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -3278,27 +2513,22 @@ function __c8(j: number): any {
         S.Struct({
           module: S.String,
           name: S.String,
-          safety:
-            ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety,
+          safety: S.String,
         }),
       ).annotate({
         identifier:
           "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem",
       });
     case 2:
-      return S.Array(
-        ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem,
-      );
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus,
+          status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(
-            ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList,
-          ),
+          pickleImports: S.optional(__S(66)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -3307,16 +2537,12 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: ListFolderContentResponseBodyItemSecurityFileStatusStatus,
-          jFrogScan: S.optional(ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan),
-          protectAiScan: S.optional(
-            ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan,
-          ),
-          avScan: ListFolderContentResponseBodyItemSecurityFileStatusAvScan,
-          pickleImportScan: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan,
-          virusTotalScan: S.optional(
-            ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan,
-          ),
+          status: S.String,
+          jFrogScan: S.optional(__S(61)),
+          protectAiScan: S.optional(__S(64)),
+          avScan: __S(61),
+          pickleImportScan: __S(67),
+          virusTotalScan: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItemSecurityFileStatus",
@@ -3324,21 +2550,21 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: ListFolderContentResponseBodyItemType,
+          type: S.String,
           oid: S.String,
           size: S.optional(S.Number),
-          lfs: S.optional(ListFolderContentResponseBodyItemLfs),
+          lfs: S.optional(__S(57)),
           xetHash: S.optional(S.String),
-          lastCommit: S.optional(ListFolderContentResponseBodyItemLastCommit),
-          securityFileStatus: S.optional(ListFolderContentResponseBodyItemSecurityFileStatus),
+          lastCommit: S.optional(__S(58)),
+          securityFileStatus: S.optional(__S(68)),
         }),
       ).annotate({
         identifier: "ListFolderContentResponseBodyItem",
       });
     case 6:
-      return S.Array(ListFolderContentResponseBodyItem);
+      return S.Array(__S(69));
     case 7:
-      return S.suspend(() => ListFolderContentResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(70).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFolderContentResponse",
       });
   }
@@ -3351,9 +2577,9 @@ function __c9(j: number): any {
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(ListLargeFilesRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListLargeFilesRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           xet: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/lfs-files", code: 200 }),
@@ -3368,10 +2594,10 @@ function __c9(j: number): any {
           type: S.String,
           isHf: S.Boolean,
           isFollowing: S.optional(S.Boolean),
-          plan: S.optional(ListLargeFilesResponseBodyItemPusherPrimaryOrgPlan),
+          plan: S.optional(S.String),
           details: S.optional(S.String),
           hasPrivateMembersList: S.optional(S.Boolean),
-          userRole: S.optional(ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole),
+          userRole: S.optional(S.String),
           numUsers: S.optional(S.Number),
         }),
       ).annotate({
@@ -3391,7 +2617,7 @@ function __c9(j: number): any {
           type: S.String,
           isPro: S.Boolean,
           isUserFollowing: S.optional(S.Boolean),
-          primaryOrg: S.optional(ListLargeFilesResponseBodyItemPusherPrimaryOrg),
+          primaryOrg: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "ListLargeFilesResponseBodyItemPusher",
@@ -3399,7 +2625,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pusher: S.optional(ListLargeFilesResponseBodyItemPusher),
+          pusher: S.optional(__S(74)),
           ref: S.optional(S.String),
           fileOid: S.String,
           oid: S.String,
@@ -3412,9 +2638,9 @@ function __c9(j: number): any {
         identifier: "ListLargeFilesResponseBodyItem",
       });
     case 4:
-      return S.Array(ListLargeFilesResponseBodyItem);
+      return S.Array(__S(75));
     case 5:
-      return S.suspend(() => ListLargeFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(76).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLargeFilesResponse",
       });
     case 6:
@@ -3422,7 +2648,7 @@ function __c9(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          expand: S.optional(ListLikersRequestExpandList.pipe(T.Query())),
+          expand: S.optional(__S(48).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/{namespace}/{repo}/likers", code: 200 })),
       ).annotate({ identifier: "ListLikersRequest" });
     case 7:
@@ -3431,8 +2657,8 @@ function __c9(j: number): any {
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           rev: S.String.pipe(T.Label()),
-          paths: ListPathsInfoRequestPaths,
-          expand: S.optional(ListPathsInfoRequestExpand),
+          paths: S.Unknown,
+          expand: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3456,13 +2682,11 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus,
+          status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(
-            ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList,
-          ),
+          pickleImports: S.optional(__S(60)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -3471,13 +2695,11 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus,
+          status: S.String,
           message: S.optional(S.String),
           reportLink: S.optional(S.String),
           reportLabel: S.optional(S.String),
-          pickleImports: S.optional(
-            ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList,
-          ),
+          pickleImports: S.optional(__S(60)),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -3486,12 +2708,12 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: ListPathsInfoResponseBodyItemSecurityFileStatusStatus,
-          jFrogScan: S.optional(ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan),
-          protectAiScan: S.optional(ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan),
-          avScan: ListPathsInfoResponseBodyItemSecurityFileStatusAvScan,
-          pickleImportScan: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan,
-          virusTotalScan: S.optional(ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan),
+          status: S.String,
+          jFrogScan: S.optional(__S(61)),
+          protectAiScan: S.optional(__S(61)),
+          avScan: __S(81),
+          pickleImportScan: __S(64),
+          virusTotalScan: S.optional(__S(82)),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItemSecurityFileStatus",
@@ -3499,22 +2721,22 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ListPathsInfoResponseBodyItemType,
+          type: S.String,
           oid: S.String,
           size: S.Number,
-          lfs: S.optional(ListPathsInfoResponseBodyItemLfs),
+          lfs: S.optional(__S(80)),
           xetHash: S.optional(S.String),
           path: S.String,
-          lastCommit: S.optional(ListFolderContentResponseBodyItemLastCommit),
-          securityFileStatus: S.optional(ListPathsInfoResponseBodyItemSecurityFileStatus),
+          lastCommit: S.optional(__S(58)),
+          securityFileStatus: S.optional(__S(83)),
         }),
       ).annotate({
         identifier: "ListPathsInfoResponseBodyItem",
       });
     case 5:
-      return S.Array(ListPathsInfoResponseBodyItem);
+      return S.Array(__S(84));
     case 6:
-      return S.suspend(() => ListPathsInfoResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(85).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPathsInfoResponse",
       });
     case 7:
@@ -3540,14 +2762,14 @@ function __c11(j: number): any {
         identifier: "ListReferencesResponseTagsItem",
       });
     case 1:
-      return S.Array(ListReferencesResponseTagsItem);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tags: ListReferencesResponseTagsList,
-          branches: ListReferencesResponseBranchesList,
-          converts: ListReferencesResponseConvertsList,
-          pullRequests: S.optional(ListReferencesResponsePullRequestsList),
+          tags: __S(89),
+          branches: __S(89),
+          converts: __S(89),
+          pullRequests: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "ListReferencesResponse" });
     case 3:
@@ -3570,9 +2792,9 @@ function __c11(j: number): any {
         identifier: "ListSecretsResponseBodyValue",
       });
     case 5:
-      return S.Record(S.String, ListSecretsResponseBodyValue);
+      return S.Record(S.String, __S(92));
     case 6:
-      return S.suspend(() => ListSecretsResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(93).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSecretsResponse",
       });
     case 7:
@@ -3586,11 +2808,11 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: ListSpaceHardwareResponseBodyItemAcceleratorType,
+          type: S.String,
           model: S.String,
           quantity: S.String,
           vram: S.String,
-          manufacturer: ListSpaceHardwareResponseBodyItemAcceleratorManufacturer,
+          manufacturer: S.String,
         }),
       ).annotate({
         identifier: "ListSpaceHardwareResponseBodyItemAccelerator",
@@ -3602,7 +2824,7 @@ function __c12(j: number): any {
           prettyName: S.String,
           cpu: S.String,
           ram: S.String,
-          accelerator: S.NullOr(ListSpaceHardwareResponseBodyItemAccelerator),
+          accelerator: S.NullOr(__S(96)),
           unitCostMicroUSD: S.Number,
           unitCostUSD: S.Number,
           unitLabel: S.String,
@@ -3611,9 +2833,9 @@ function __c12(j: number): any {
         identifier: "ListSpaceHardwareResponseBodyItem",
       });
     case 2:
-      return S.Array(ListSpaceHardwareResponseBodyItem);
+      return S.Array(__S(97));
     case 3:
-      return S.suspend(() => ListSpaceHardwareResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(98).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSpaceHardwareResponse",
       });
     case 4:
@@ -3625,7 +2847,7 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sdk: ListSpaceTemplatesResponseTemplatesItemSdk,
+          sdk: S.String,
           name: S.String,
           repoId: S.String,
           preferredPrivate: S.Boolean,
@@ -3634,11 +2856,11 @@ function __c12(j: number): any {
         identifier: "ListSpaceTemplatesResponseTemplatesItem",
       });
     case 6:
-      return S.Array(ListSpaceTemplatesResponseTemplatesItem);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          templates: ListSpaceTemplatesResponseTemplatesList,
+          templates: __S(102),
         }),
       ).annotate({
         identifier: "ListSpaceTemplatesResponse",
@@ -3668,9 +2890,9 @@ function __c13(j: number): any {
         identifier: "ListVariablesResponseBodyValue",
       });
     case 2:
-      return S.Record(S.String, ListVariablesResponseBodyValue);
+      return S.Record(S.String, __S(105));
     case 3:
-      return S.suspend(() => ListVariablesResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(106).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVariablesResponse",
       });
     case 4:
@@ -3737,10 +2959,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
-          category: S.optional(SearchSemanticRequestCategory.pipe(T.Query())),
+          category: S.optional(S.String.pipe(T.Query())),
           includeNonRunning: S.optional(S.Boolean.pipe(T.Query())),
-          sdk: S.optional(SearchSemanticRequestSdkList.pipe(T.Query())),
-          filter: S.optional(SearchSemanticRequestFilterList.pipe(T.Query())),
+          sdk: S.optional(__S(48).pipe(T.Query())),
+          filter: S.optional(__S(15).pipe(T.Query())),
           agents: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/spaces/semantic-search", code: 200 })),
       ).annotate({ identifier: "SearchSemanticRequest" });
@@ -3763,7 +2985,7 @@ function __c14(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          seconds: SetSleepTimeRequestSeconds,
+          seconds: S.Unknown,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/sleeptime", code: 200 }),
         ),
@@ -3771,7 +2993,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: SetSpaceVolumesRequestVolumesItemType,
+          type: S.String,
           source: S.String,
           mountPath: S.String,
           revision: S.optional(S.String),
@@ -3782,13 +3004,13 @@ function __c14(j: number): any {
         identifier: "SetSpaceVolumesRequestVolumesItem",
       });
     case 4:
-      return S.Array(SetSpaceVolumesRequestVolumesItem);
+      return S.Array(__S(115));
     case 5:
       return S.suspend(() =>
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          volumes: SetSpaceVolumesRequestVolumesList,
+          volumes: __S(116),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/spaces/{namespace}/{repo}/volumes", code: 200 }),
         ),
@@ -3831,7 +3053,7 @@ function __c15(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          logType: StreamLogsRequestLogType.pipe(T.Label()),
+          logType: S.String.pipe(T.Label()),
           tail: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -3865,8 +3087,8 @@ function __c15(j: number): any {
         S.Struct({
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          flavor: UpdateHardwareFlavorRequestFlavor,
-          sleepTimeSeconds: S.optional(UpdateHardwareFlavorRequestSleepTimeSeconds),
+          flavor: S.String,
+          sleepTimeSeconds: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/spaces/{namespace}/{repo}/hardware", code: 200 }),
         ),
@@ -3879,13 +3101,13 @@ function __c15(j: number): any {
           namespace: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           private: S.optional(S.Boolean),
-          visibility: S.optional(UpdateRepoSettingsRequestVisibility),
+          visibility: S.optional(S.String),
           discussionsDisabled: S.optional(S.Boolean),
-          discussionsSorting: S.optional(UpdateRepoSettingsRequestDiscussionsSorting),
-          gated: S.optional(UpdateRepoSettingsRequestGated),
+          discussionsSorting: S.optional(S.String),
+          gated: S.optional(S.Unknown),
           orgMembersGated: S.optional(S.Boolean),
           gatedNotificationsEmail: S.optional(S.String),
-          gatedNotificationsMode: S.optional(UpdateRepoSettingsRequestGatedNotificationsMode),
+          gatedNotificationsMode: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/spaces/{namespace}/{repo}/settings", code: 200 }),
         ),
@@ -3896,13 +3118,13 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           private: S.optional(S.Boolean),
-          visibility: S.optional(UpdateRepoSettingsResponseVisibility),
+          visibility: S.optional(S.String),
           discussionsDisabled: S.optional(S.Boolean),
-          discussionsSorting: S.optional(UpdateRepoSettingsResponseDiscussionsSorting),
-          gated: S.optional(UpdateRepoSettingsResponseGated),
+          discussionsSorting: S.optional(S.String),
+          gated: S.optional(S.Unknown),
           orgMembersGated: S.optional(S.Boolean),
           gatedNotificationsEmail: S.optional(S.String),
-          gatedNotificationsMode: S.optional(UpdateRepoSettingsResponseGatedNotificationsMode),
+          gatedNotificationsMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateRepoSettingsResponse",
@@ -3971,5 +3193,48 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "XetWriteTokenRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
   }
 }

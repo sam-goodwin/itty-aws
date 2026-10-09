@@ -6,21 +6,17 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
 /** The type of landing page to display on the PayPal site for user checkout. To use the non-PayPal account landing page, set to `Billing`. To use the PayPal account login landing page, set to `Login`. */
 export type FlowConfigLandingPageType = "login" | "billing";
-const FlowConfigLandingPageType = S.String;
-
 /** Presents either the **Continue** or **Pay Now** checkout flow to the customer.<br/><br/>Default is **Continue**, or `user_action=continue`. When you do not know the final payment amount, accept this default flow, which redirects the customer to the PayPal payment page with the **Continue** button. When the customer clicks **Continue**, the customer can change the payment amount.<br/><br/> When you know the final payment amount, set `user_action=commit` to choose the **Pay Now** flow, which redirects the customer to the PayPal payment page with the **Pay Now** button. When the customer clicks **Pay Now**, the payment is processed immediately. */
 export type FlowConfigUserAction = "COMMIT";
-const FlowConfigUserAction = S.String;
-
 /** The HTTP method to use to redirect the customer to a return URL. Value is `GET` or `POST`. */
 export type FlowConfigReturnUriHttpMethod = "GET" | "POST";
-const FlowConfigReturnUriHttpMethod = S.String;
-
 /** The flow configuration parameters. */
 export interface FlowConfig {
   /** The type of landing page to display on the PayPal site for user checkout. To use the non-PayPal account landing page, set to `Billing`. To use the PayPal account login landing page, set to `Login`. */
@@ -32,8 +28,6 @@ export interface FlowConfig {
   /** The HTTP method to use to redirect the customer to a return URL. Value is `GET` or `POST`. */
   return_uri_http_method?: FlowConfigReturnUriHttpMethod | (string & {});
 }
-const FlowConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<FlowConfig>;
-
 /** The input field customization parameters. */
 export interface InputFields {
   /** Indicates whether PayPal displays shipping address fields on the experience pages. Value is:<ul><li><code>0</code>. Displays the shipping address on the PayPal pages.</li><li><code>1</code>. Redacts shipping address fields from the PayPal pages. For digital goods, this field is required and must be <code>1</code>.</li><li><code>2</code>. Gets the shipping address from the customer's account profile.</li></ul> */
@@ -41,8 +35,6 @@ export interface InputFields {
   /** Indicates whether to display the shipping address that is passed to this call rather than the one on file for this buyer on the PayPal experience pages. Value is:<ul><li><code>0</code>. Displays the shipping address on file.</li><li><code>1</code>. Displays the shipping address specified in this call. the customer cannot edit this shipping address.</li></ul> */
   address_override?: number;
 }
-const InputFields = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<InputFields>;
-
 /** The style and presentation parameters. */
 export interface Presentation {
   /** A label that overrides the business name in the PayPal account on the PayPal pages. Character length and limitations: 127 single-byte alphanumeric characters. */
@@ -52,8 +44,6 @@ export interface Presentation {
   /** The locale of pages that the PayPal payment experience displays. A valid value is `AU`, `AT`, `BE`, `BR`, `CA`, `CH`, `CN`, `DE`, `ES`, `GB`, `FR`, `IT`, `NL`, `PL`, `PT`, `RU`, or `US`. A 5-character code is also valid for languages in these countries: `da_DK`, `he_IL`, `id_ID`, `ja_JP`, `no_NO`, `pt_BR`, `ru_RU`, `sv_SE`, `th_TH`, `zh_CN`, `zh_HK`, or `zh_TW`. */
   locale_code?: string;
 }
-const Presentation = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Presentation>;
-
 export interface CreateWebProfileRequest {
   /** The server stores keys for three hours. */
   payPalRequestId: string;
@@ -65,11 +55,6 @@ export interface CreateWebProfileRequest {
   input_fields?: InputFields;
   presentation?: Presentation;
 }
-const CreateWebProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateWebProfileRequest>;
-
 /** A payment web experience profile. */
 export interface WebProfile {
   /** The ID of the web experience profile. */
@@ -82,29 +67,15 @@ export interface WebProfile {
   input_fields?: InputFields;
   presentation?: Presentation;
 }
-const WebProfile = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<WebProfile>;
-
 export interface DeleteWebProfileRequest {
   /** The ID of the profile to delete. */
   id: string;
 }
-const DeleteWebProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteWebProfileRequest>;
-
 export interface DeleteWebProfileResponse {}
-const DeleteWebProfileResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteWebProfileResponse>;
-
 export interface GetWebProfileRequest {
   /** The ID of the profile to delete. */
   id: string;
 }
-const GetWebProfileRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetWebProfileRequest>;
-
 export interface UpdateWebProfileRequest {
   /** The ID of the profile to delete. */
   id: string;
@@ -116,19 +87,9 @@ export interface UpdateWebProfileRequest {
   input_fields?: InputFields;
   presentation?: Presentation;
 }
-const UpdateWebProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateWebProfileRequest>;
-
 export interface UpdateWebProfileResponse {}
-const UpdateWebProfileResponse =
-  DeleteWebProfileResponse as any as S.Schema<UpdateWebProfileResponse>;
-
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-const PatchOp = S.String;
-
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
   /** The operation. */
@@ -140,44 +101,18 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-const Patch = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Patch>;
-
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-const PatchRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PatchRequest>;
-
 export interface UpdateWebProfilePartialRequest {
   /** The ID of the profile to delete. */
   id: string;
   body?: PatchRequest;
 }
-const UpdateWebProfilePartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateWebProfilePartialRequest>;
-
 export interface UpdateWebProfilePartialResponse {}
-const UpdateWebProfilePartialResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateWebProfilePartialResponse>;
-
 export interface WebProfileGetListRequest {}
-const WebProfileGetListRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<WebProfileGetListRequest>;
-
 /** An array of web profiles. */
 export type WebProfileList = Array<WebProfile>;
-const WebProfileList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<WebProfileList>;
-
 export type WebProfileGetListResponse = WebProfileList;
-const WebProfileGetListResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<WebProfileGetListResponse>;
-
 export type CreateWebProfileError = PaypalOpError;
 /** Create web experience profile Creates a web experience profile. In the JSON request body, specify the profile name and details. */
 export const createWebProfile: API.OperationMethod<
@@ -186,8 +121,8 @@ export const createWebProfile: API.OperationMethod<
   CreateWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebProfileRequest,
-  output: WebProfile,
+  input: __S(3) as any as S.Schema<CreateWebProfileRequest>,
+  output: __S(4) as any as S.Schema<WebProfile>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -201,8 +136,8 @@ export const deleteWebProfile: API.OperationMethod<
   DeleteWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebProfileRequest,
-  output: DeleteWebProfileResponse,
+  input: __S(5) as any as S.Schema<DeleteWebProfileRequest>,
+  output: __S(6) as any as S.Schema<DeleteWebProfileResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -216,8 +151,8 @@ export const getWebProfile: API.OperationMethod<
   GetWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebProfileRequest,
-  output: WebProfile,
+  input: __S(7) as any as S.Schema<GetWebProfileRequest>,
+  output: __S(4) as any as S.Schema<WebProfile>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -231,8 +166,8 @@ export const updateWebProfile: API.OperationMethod<
   UpdateWebProfileError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebProfileRequest,
-  output: UpdateWebProfileResponse,
+  input: __S(8) as any as S.Schema<UpdateWebProfileRequest>,
+  output: __S(6) as any as S.Schema<UpdateWebProfileResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -246,8 +181,8 @@ export const updateWebProfilePartial: API.OperationMethod<
   UpdateWebProfilePartialError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebProfilePartialRequest,
-  output: UpdateWebProfilePartialResponse,
+  input: __S(11) as any as S.Schema<UpdateWebProfilePartialRequest>,
+  output: __S(12) as any as S.Schema<UpdateWebProfilePartialResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -261,8 +196,8 @@ export const webProfileGetList: API.OperationMethod<
   WebProfileGetListError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebProfileGetListRequest,
-  output: WebProfileGetListResponse,
+  input: __S(13) as any as S.Schema<WebProfileGetListRequest>,
+  output: __S(15) as any as S.Schema<WebProfileGetListResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -274,10 +209,10 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          landing_page_type: S.optional(FlowConfigLandingPageType),
+          landing_page_type: S.optional(S.String),
           bank_txn_pending_url: S.optional(S.String),
-          user_action: S.optional(FlowConfigUserAction),
-          return_uri_http_method: S.optional(FlowConfigReturnUriHttpMethod),
+          user_action: S.optional(S.String),
+          return_uri_http_method: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlowConfig" });
     case 1:
@@ -301,9 +236,9 @@ function __c0(j: number): any {
           payPalRequestId: S.String.pipe(T.Header("PayPal-Request-Id")),
           name: S.String,
           temporary: S.optional(S.Boolean),
-          flow_config: S.optional(FlowConfig),
-          input_fields: S.optional(InputFields),
-          presentation: S.optional(Presentation),
+          flow_config: S.optional(__S(0)),
+          input_fields: S.optional(__S(1)),
+          presentation: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/payment-experience/web-profiles", code: 200 })),
       ).annotate({ identifier: "CreateWebProfileRequest" });
     case 4:
@@ -312,9 +247,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           temporary: S.optional(S.Boolean),
-          flow_config: S.optional(FlowConfig),
-          input_fields: S.optional(InputFields),
-          presentation: S.optional(Presentation),
+          flow_config: S.optional(__S(0)),
+          input_fields: S.optional(__S(1)),
+          presentation: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "WebProfile" });
     case 5:
@@ -347,9 +282,9 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.String,
           temporary: S.optional(S.Boolean),
-          flow_config: S.optional(FlowConfig),
-          input_fields: S.optional(InputFields),
-          presentation: S.optional(Presentation),
+          flow_config: S.optional(__S(0)),
+          input_fields: S.optional(__S(1)),
+          presentation: S.optional(__S(2)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 }),
         ),
@@ -357,19 +292,19 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          op: PatchOp,
+          op: S.String,
           path: S.optional(S.String),
           value: S.optional(S.NullOr(S.Unknown)),
           from: S.optional(S.String),
         }),
       ).annotate({ identifier: "Patch" });
     case 2:
-      return S.Array(Patch);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(PatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/payment-experience/web-profiles/{id}", code: 200 }),
         ),
@@ -387,10 +322,23 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "WebProfileGetListRequest" });
     case 6:
-      return S.Array(WebProfile);
+      return S.Array(__S(4));
     case 7:
-      return S.suspend(() => WebProfileList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
         identifier: "WebProfileGetListResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -22,19 +24,10 @@ export interface ApprovePipelineConnectionRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-const ApprovePipelineConnectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApprovePipelineConnectionRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -50,38 +43,18 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type ApprovePipelineConnectionResponseTagsMap = { [key: string]: string | undefined };
-const ApprovePipelineConnectionResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApprovePipelineConnectionResponseTagsMap>;
-
 /** Direction of data movement */
 export type Direction = "Send" | "Receive";
-const Direction = S.String;
-
 /** Status of the connection */
 export type ConnectionStatus = "InReview" | "Approved" | "Rejected" | "Accepted";
-const ConnectionStatus = S.String;
-
 /** Defines different disablement statuses and the circumstances in why they were disabled. */
 export type ForceDisabledStatus = "ConnectionForceDisabled" | "FlowTypeForceDisabled";
-const ForceDisabledStatus = S.String;
-
 /** Force disablement status of the current connection */
 export type ConnectionPropertiesForceDisabledStatusList = Array<ForceDisabledStatus>;
-const ConnectionPropertiesForceDisabledStatusList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ConnectionPropertiesForceDisabledStatusList>;
-
 /** Link status of the current pipeline, connection, flow. */
 export type LinkStatus = "Linked" | "Unlinked";
-const LinkStatus = S.String;
-
 /** Flow type for the specified resource. FlowType will be deprecated starting from version 2025_05_30_preview - please create a FlowProfile resource instead. */
 export type FlowType =
   | "Unknown"
@@ -98,37 +71,18 @@ export type FlowType =
   | "MissionOpaqueXML"
   | "DiskImages"
   | "API";
-const FlowType = S.String;
-
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type ConnectionPropertiesFlowTypesList = Array<FlowType>;
-const ConnectionPropertiesFlowTypesList =
-  ConnectionPropertiesForceDisabledStatusList as any as S.Schema<ConnectionPropertiesFlowTypesList>;
-
 /** The secondary contacts for this connection request */
 export type ConnectionPropertiesSecondaryContactsList = Array<string>;
-const ConnectionPropertiesSecondaryContactsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ConnectionPropertiesSecondaryContactsList>;
-
 /** Provisioning state of the pipeline, connection, flow. */
 export type ProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Accepted";
-const ProvisioningState = S.String;
-
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesPoliciesList = Array<string>;
-const ConnectionPropertiesPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesPoliciesList>;
-
 /** Status of the schema. */
 export type SchemaStatus = "New" | "Approved";
-const SchemaStatus = S.String;
-
 /** The Schema Type. */
 export type SchemaType = "Xsd" | "Zip";
-const SchemaType = S.String;
-
 /** The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
 export interface Schema {
   /** ID associated with this schema */
@@ -148,20 +102,10 @@ export interface Schema {
   /** The Schema Type */
   schemaType?: SchemaType | (string & {});
 }
-const Schema = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Schema>;
-
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesSchemasList = Array<Schema>;
-const ConnectionPropertiesSchemasList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ConnectionPropertiesSchemasList>;
-
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesSchemaUrisList = Array<string>;
-const ConnectionPropertiesSchemaUrisList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesSchemaUrisList>;
-
 /** Properties of connection */
 export interface ConnectionProperties {
   /** Pipeline to use to transfer data */
@@ -205,16 +149,12 @@ export interface ConnectionProperties {
   /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
   schemaUris?: ConnectionPropertiesSchemaUrisList;
 }
-const ConnectionProperties = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ConnectionProperties>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -222,15 +162,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ApprovePipelineConnectionResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -240,11 +173,6 @@ export interface ApprovePipelineConnectionResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const ApprovePipelineConnectionResponseIdentity = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ApprovePipelineConnectionResponseIdentity>;
-
 export interface ApprovePipelineConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -263,41 +191,18 @@ export interface ApprovePipelineConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const ApprovePipelineConnectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ApprovePipelineConnectionResponse>;
-
 /** Resource tags. */
 export type ConnectionsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ConnectionsCreateOrUpdateRequestTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ConnectionsCreateOrUpdateRequestTagsMap>;
-
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type ConnectionPropertiesInputFlowTypesList = Array<FlowType | (string & {})>;
-const ConnectionPropertiesInputFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<ConnectionPropertiesInputFlowTypesList>;
-
 /** The secondary contacts for this connection request */
 export type ConnectionPropertiesInputSecondaryContactsList = Array<string>;
-const ConnectionPropertiesInputSecondaryContactsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesInputSecondaryContactsList>;
-
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesInputPoliciesList = Array<string>;
-const ConnectionPropertiesInputPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesInputPoliciesList>;
-
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesInputSchemasList = Array<Schema>;
-const ConnectionPropertiesInputSchemasList =
-  ConnectionPropertiesSchemasList as any as S.Schema<ConnectionPropertiesInputSchemasList>;
-
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type ConnectionPropertiesInputSchemaUrisList = Array<string>;
-const ConnectionPropertiesInputSchemaUrisList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ConnectionPropertiesInputSchemaUrisList>;
-
 /** Properties of connection */
 export interface ConnectionPropertiesInput {
   /** Pipeline to use to transfer data */
@@ -325,37 +230,17 @@ export interface ConnectionPropertiesInput {
   /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
   schemaUris?: ConnectionPropertiesInputSchemaUrisList;
 }
-const ConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ConnectionPropertiesInput>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ConnectionsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const ConnectionsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ConnectionsCreateOrUpdateRequestIdentity>;
-
 export interface ConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -372,11 +257,6 @@ export interface ConnectionsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ConnectionsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ConnectionsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -399,9 +279,6 @@ export interface ConnectionsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const ConnectionsCreateOrUpdateResponse =
-  ApprovePipelineConnectionResponse as any as S.Schema<ConnectionsCreateOrUpdateResponse>;
-
 export interface ConnectionsLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -414,16 +291,8 @@ export interface ConnectionsLinkRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-const ConnectionsLinkRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ConnectionsLinkRequest>;
-
 /** Resource tags. */
 export type ConnectionsLinkResponseTagsMap = { [key: string]: string | undefined };
-const ConnectionsLinkResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ConnectionsLinkResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ConnectionsLinkResponseIdentity = ApprovePipelineConnectionResponseIdentity;
 export interface ConnectionsLinkResponse {
@@ -444,11 +313,6 @@ export interface ConnectionsLinkResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const ConnectionsLinkResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ConnectionsLinkResponse>;
-
 export interface DeleteConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -457,15 +321,7 @@ export interface DeleteConnectionRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteConnectionRequest>;
-
 export interface DeleteConnectionResponse {}
-const DeleteConnectionResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteConnectionResponse>;
-
 export interface DeleteFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -476,11 +332,7 @@ export interface DeleteFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const DeleteFlowRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteFlowRequest>;
-
 export interface DeleteFlowResponse {}
-const DeleteFlowResponse = UserAssignedIdentityInput as any as S.Schema<DeleteFlowResponse>;
-
 export interface DeletePipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -489,14 +341,7 @@ export interface DeletePipelineRequest {
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
 }
-const DeletePipelineRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeletePipelineRequest>;
-
 export interface DeletePipelineResponse {}
-const DeletePipelineResponse = UserAssignedIdentityInput as any as S.Schema<DeletePipelineResponse>;
-
 export interface DisableFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -507,13 +352,8 @@ export interface DisableFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const DisableFlowRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DisableFlowRequest>;
-
 /** Resource tags. */
 export type DisableFlowResponseTagsMap = { [key: string]: string | undefined };
-const DisableFlowResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<DisableFlowResponseTagsMap>;
-
 /** A resource selected from ARM */
 export interface SelectedResource {
   /** Name of the connection */
@@ -525,45 +365,25 @@ export interface SelectedResource {
   /** Name of the subscription with the connection */
   subscriptionName?: string;
 }
-const SelectedResource = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SelectedResource>;
-
 /** Status of the current flow. */
 export type FlowStatus = "Enabled" | "Disabled";
-const FlowStatus = S.String;
-
 /** Force disablement status of the current flow */
 export type FlowPropertiesForceDisabledStatusList = Array<ForceDisabledStatus>;
-const FlowPropertiesForceDisabledStatusList =
-  ConnectionPropertiesForceDisabledStatusList as any as S.Schema<FlowPropertiesForceDisabledStatusList>;
-
 /** Transfer Storage Blobs or Tables */
 export type DataType = "Blob" | "Table";
-const DataType = S.String;
-
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type FlowPropertiesPoliciesList = Array<string>;
-const FlowPropertiesPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesPoliciesList>;
-
 /** Billing tier for this messaging flow. */
 export type FlowBillingTier = "BlobTransport" | "Standard" | "Premium";
-const FlowBillingTier = S.String;
-
 /** The option associated with messaging flows. */
 export interface MessagingOptions {
   /** Billing tier for this messaging flow */
   billingTier?: FlowBillingTier | (string & {});
 }
-const MessagingOptions = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MessagingOptions>;
-
 /** Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked */
 export type ApiMode = "SDK" | "Endpoint";
-const ApiMode = S.String;
-
 /** Flag for if Azure Data Transfer API Flow should extract the user token */
 export type IdentityTranslation = "UserIdentity" | "ServiceIdentity";
-const IdentityTranslation = S.String;
-
 /** Properties specific to API Flow Type */
 export interface ApiFlowOptions {
   /** Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead. */
@@ -581,39 +401,19 @@ export interface ApiFlowOptions {
   /** Optional field to override the audience of the remote endpoint. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead. */
   audienceOverride?: string;
 }
-const ApiFlowOptions = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ApiFlowOptions>;
-
 /** The protocol of the stream */
 export type StreamProtocol = "UDP" | "SRT" | "RTP";
-const StreamProtocol = S.String;
-
 /** A source IP address or CIDR range */
 export type StreamSourceAddressesSourceAddressesList = Array<string>;
-const StreamSourceAddressesSourceAddressesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<StreamSourceAddressesSourceAddressesList>;
-
 /** The source IP address and CIDR ranges of the stream */
 export interface StreamSourceAddresses {
   /** A source IP address or CIDR range */
   sourceAddresses?: StreamSourceAddressesSourceAddressesList;
 }
-const StreamSourceAddresses = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<StreamSourceAddresses>;
-
 /** The destination endpoints of the stream */
 export type FlowPropertiesDestinationEndpointsList = Array<string>;
-const FlowPropertiesDestinationEndpointsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesDestinationEndpointsList>;
-
 /** The destination endpoint ports of the stream */
 export type FlowPropertiesDestinationEndpointPortsList = Array<number>;
-const FlowPropertiesDestinationEndpointPortsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<FlowPropertiesDestinationEndpointPortsList>;
-
 /** Properties of flow */
 export interface FlowProperties {
   /** The connection associated with this flow */
@@ -675,8 +475,6 @@ export interface FlowProperties {
   /** Event Hub Consumer Group */
   consumerGroup?: string;
 }
-const FlowProperties = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<FlowProperties>;
-
 /** Plan for the resource. */
 export interface DisableFlowResponsePlan {
   /** A user defined name of the 3rd Party Artifact that is being procured. */
@@ -690,11 +488,6 @@ export interface DisableFlowResponsePlan {
   /** The version of the desired product/artifact. */
   version?: string;
 }
-const DisableFlowResponsePlan = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DisableFlowResponsePlan>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type DisableFlowResponseIdentity = ApprovePipelineConnectionResponseIdentity;
 export interface DisableFlowResponse {
@@ -717,8 +510,6 @@ export interface DisableFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const DisableFlowResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DisableFlowResponse>;
-
 export interface EnableFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -729,8 +520,6 @@ export interface EnableFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const EnableFlowRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EnableFlowRequest>;
-
 /** Resource tags. */
 export type EnableFlowResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -757,21 +546,12 @@ export interface EnableFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const EnableFlowResponse = DisableFlowResponse as any as S.Schema<EnableFlowResponse>;
-
 /** The type of action to be executed. */
 export type ActionType = "AllowUpdates" | "ForceDisable";
-const ActionType = S.String;
-
 /** Type of target to execute the action on */
 export type TargetType = "Pipeline" | "Connection" | "FlowType";
-const TargetType = S.String;
-
 /** Targets for the action */
 export type ExecutePipelineActionRequestTargetsList = Array<string>;
-const ExecutePipelineActionRequestTargetsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ExecutePipelineActionRequestTargetsList>;
-
 export interface ExecutePipelineActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -788,32 +568,20 @@ export interface ExecutePipelineActionRequest {
   /** Business justification for the action */
   justification?: string;
 }
-const ExecutePipelineActionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ExecutePipelineActionRequest>;
-
 /** Resource tags. */
 export type ExecutePipelineActionResponseTagsMap = { [key: string]: string | undefined };
-const ExecutePipelineActionResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<ExecutePipelineActionResponseTagsMap>;
-
 /** The type of identity that created the resource. */
 export type ReadPipelineConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ReadPipelineConnectionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ReadPipelineConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ReadPipelineConnectionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ReadPipelineConnectionSystemData {
   /** The identity that created the resource. */
@@ -829,15 +597,8 @@ export interface ReadPipelineConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ReadPipelineConnectionSystemData = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ReadPipelineConnectionSystemData>;
-
 /** Operation status for the last patch request for this connection. */
 export type OperationStatusEnum = "Failed" | "Succeeded";
-const OperationStatusEnum = S.String;
-
 /** Operation status associated with the last patch request */
 export interface OperationStatusProperties {
   /** Operation status for the last patch request for this connection. */
@@ -847,11 +608,6 @@ export interface OperationStatusProperties {
   /** Message for the operation for the last patch request for this connection. */
   message?: string;
 }
-const OperationStatusProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<OperationStatusProperties>;
-
 /** Internal metadata of the connection inside pipeline. */
 export interface InternalMetadataProperties {
   /** Operation status associated with the last patch request */
@@ -859,21 +615,11 @@ export interface InternalMetadataProperties {
   /** User that last set the approved status for this connection */
   statusSetBy?: string;
 }
-const InternalMetadataProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<InternalMetadataProperties>;
-
 /** Connection properties inside pipeline */
 export interface PipelineConnectionProperties {
   /** Internal metadata of the connection inside pipeline. */
   internalMetadata?: InternalMetadataProperties;
 }
-const PipelineConnectionProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PipelineConnectionProperties>;
-
 /** The ReadPipelineconnection. */
 export interface ReadPipelineConnection {
   /** Connection id inside pipeline */
@@ -891,18 +637,8 @@ export interface ReadPipelineConnection {
   /** Connection properties inside pipeline */
   properties?: PipelineConnectionProperties;
 }
-const ReadPipelineConnection = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ReadPipelineConnection>;
-
 /** Connections associated with pipeline */
 export type PipelinePropertiesConnectionsList = Array<ReadPipelineConnection>;
-const PipelinePropertiesConnectionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PipelinePropertiesConnectionsList>;
-
 /** An individual that would like to subscribe to events that occur on a pipeline. */
 export interface Subscriber {
   /** Email of the subscriber */
@@ -910,34 +646,16 @@ export interface Subscriber {
   /** Number specifying what notifications to receive */
   notifications?: number;
 }
-const Subscriber = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Subscriber>;
-
 /** Subscribers of this resource */
 export type PipelinePropertiesSubscribersList = Array<Subscriber>;
-const PipelinePropertiesSubscribersList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PipelinePropertiesSubscribersList>;
-
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesPoliciesList = Array<string>;
-const PipelinePropertiesPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PipelinePropertiesPoliciesList>;
-
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesFlowTypesList = Array<FlowType>;
-const PipelinePropertiesFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesFlowTypesList>;
-
 /** The flow types that are disabled for this pipeline */
 export type PipelinePropertiesDisabledFlowTypesList = Array<FlowType>;
-const PipelinePropertiesDisabledFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesDisabledFlowTypesList>;
-
 /** Status of the current pipeline */
 export type PipelineStatus = "Enabled" | "Disabled";
-const PipelineStatus = S.String;
-
 /** Properties of pipeline */
 export interface PipelineProperties {
   /** Remote cloud of the data to be transferred or received */
@@ -963,8 +681,6 @@ export interface PipelineProperties {
   /** Status of the current pipeline */
   status?: PipelineStatus;
 }
-const PipelineProperties = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<PipelineProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ExecutePipelineActionResponseIdentity = ApprovePipelineConnectionResponseIdentity;
 export interface ExecutePipelineActionResponse {
@@ -985,31 +701,14 @@ export interface ExecutePipelineActionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const ExecutePipelineActionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ExecutePipelineActionResponse>;
-
 /** Resource tags. */
 export type FlowsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const FlowsCreateOrUpdateRequestTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<FlowsCreateOrUpdateRequestTagsMap>;
-
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type FlowPropertiesInputPoliciesList = Array<string>;
-const FlowPropertiesInputPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesInputPoliciesList>;
-
 /** The destination endpoints of the stream */
 export type FlowPropertiesInputDestinationEndpointsList = Array<string>;
-const FlowPropertiesInputDestinationEndpointsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<FlowPropertiesInputDestinationEndpointsList>;
-
 /** The destination endpoint ports of the stream */
 export type FlowPropertiesInputDestinationEndpointPortsList = Array<number>;
-const FlowPropertiesInputDestinationEndpointPortsList =
-  FlowPropertiesDestinationEndpointPortsList as any as S.Schema<FlowPropertiesInputDestinationEndpointPortsList>;
-
 /** Properties of flow */
 export interface FlowPropertiesInput {
   /** The connection associated with this flow */
@@ -1061,8 +760,6 @@ export interface FlowPropertiesInput {
   /** Event Hub Consumer Group */
   consumerGroup?: string;
 }
-const FlowPropertiesInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<FlowPropertiesInput>;
-
 /** Plan for the resource. */
 export type FlowsCreateOrUpdateRequestPlan = DisableFlowResponsePlan;
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1087,16 +784,8 @@ export interface FlowsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-const FlowsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<FlowsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type FlowsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const FlowsCreateOrUpdateResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<FlowsCreateOrUpdateResponseTagsMap>;
-
 /** Plan for the resource. */
 export type FlowsCreateOrUpdateResponsePlan = DisableFlowResponsePlan;
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1121,11 +810,6 @@ export interface FlowsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const FlowsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<FlowsCreateOrUpdateResponse>;
-
 export interface FlowsLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1140,8 +824,6 @@ export interface FlowsLinkRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-const FlowsLinkRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<FlowsLinkRequest>;
-
 /** Resource tags. */
 export type FlowsLinkResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -1168,8 +850,6 @@ export interface FlowsLinkResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const FlowsLinkResponse = DisableFlowResponse as any as S.Schema<FlowsLinkResponse>;
-
 export interface GenerateFlowPassphraseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1180,11 +860,6 @@ export interface GenerateFlowPassphraseRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const GenerateFlowPassphraseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GenerateFlowPassphraseRequest>;
-
 /** Resource tags. */
 export type GenerateFlowPassphraseResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -1211,9 +886,6 @@ export interface GenerateFlowPassphraseResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const GenerateFlowPassphraseResponse =
-  FlowsCreateOrUpdateResponse as any as S.Schema<GenerateFlowPassphraseResponse>;
-
 export interface GetConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1222,8 +894,6 @@ export interface GetConnectionRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetConnectionRequest>;
-
 /** Resource tags. */
 export type GetConnectionResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1246,8 +916,6 @@ export interface GetConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const GetConnectionResponse = ConnectionsLinkResponse as any as S.Schema<GetConnectionResponse>;
-
 export interface GetFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1258,8 +926,6 @@ export interface GetFlowRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const GetFlowRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetFlowRequest>;
-
 /** Resource tags. */
 export type GetFlowResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -1286,8 +952,6 @@ export interface GetFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const GetFlowResponse = DisableFlowResponse as any as S.Schema<GetFlowResponse>;
-
 export interface GetFlowDestinationEndpointPortsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1298,26 +962,13 @@ export interface GetFlowDestinationEndpointPortsRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const GetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetFlowDestinationEndpointPortsRequest>;
-
 /** The destination endpoint port for the flow stream */
 export type GetDestinationEndpointPortsResultPortsList = Array<number>;
-const GetDestinationEndpointPortsResultPortsList =
-  FlowPropertiesDestinationEndpointPortsList as any as S.Schema<GetDestinationEndpointPortsResultPortsList>;
-
 /** List of destination endpoint ports for the flow stream */
 export interface GetDestinationEndpointPortsResult {
   /** The destination endpoint port for the flow stream */
   ports?: GetDestinationEndpointPortsResultPortsList;
 }
-const GetDestinationEndpointPortsResult = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetDestinationEndpointPortsResult>;
-
 export interface GetFlowDestinationEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1328,26 +979,13 @@ export interface GetFlowDestinationEndpointsRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const GetFlowDestinationEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetFlowDestinationEndpointsRequest>;
-
 /** The destination endpoints for the flow stream */
 export type GetDestinationEndpointsResultEndpointsList = Array<string>;
-const GetDestinationEndpointsResultEndpointsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<GetDestinationEndpointsResultEndpointsList>;
-
 /** List of destination endpoints for the flow stream */
 export interface GetDestinationEndpointsResult {
   /** The destination endpoints for the flow stream */
   endpoints?: GetDestinationEndpointsResultEndpointsList;
 }
-const GetDestinationEndpointsResult = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetDestinationEndpointsResult>;
-
 export interface GetFlowSourceAddressesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1358,11 +996,6 @@ export interface GetFlowSourceAddressesRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const GetFlowSourceAddressesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetFlowSourceAddressesRequest>;
-
 export interface GetFlowStreamConnectionStringRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1373,21 +1006,11 @@ export interface GetFlowStreamConnectionStringRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
 }
-const GetFlowStreamConnectionStringRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetFlowStreamConnectionStringRequest>;
-
 /** The connection string for the specified streaming flow */
 export interface GetStreamConnectionStringResult {
   /** The connection string for the specified streaming flow */
   connectionString?: string | Redacted.Redacted<string>;
 }
-const GetStreamConnectionStringResult = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetStreamConnectionStringResult>;
-
 export interface GetPipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1396,13 +1019,8 @@ export interface GetPipelineRequest {
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
 }
-const GetPipelineRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetPipelineRequest>;
-
 /** Resource tags. */
 export type GetPipelineResponseTagsMap = { [key: string]: string | undefined };
-const GetPipelineResponseTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<GetPipelineResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetPipelineResponseIdentity = ApprovePipelineConnectionResponseIdentity;
 export interface GetPipelineResponse {
@@ -1423,42 +1041,25 @@ export interface GetPipelineResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const GetPipelineResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetPipelineResponse>;
-
 export interface ListAzureDataTransferApprovedSchemasRequest {
   /** The name of the pipeline to filter approved schemas. */
   pipeline?: string;
   /** The direction pipeline to filter approved schemas. */
   direction?: Direction | (string & {});
 }
-const ListAzureDataTransferApprovedSchemasRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListAzureDataTransferApprovedSchemasRequest>;
-
 /** Schemas array. */
 export type SchemasListResultValueList = Array<Schema>;
-const SchemasListResultValueList =
-  ConnectionPropertiesSchemasList as any as S.Schema<SchemasListResultValueList>;
-
 /** The schemas list result. SchemaListResults has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
 export interface SchemasListResult {
   /** Schemas array. */
   value?: SchemasListResultValueList;
 }
-const SchemasListResult = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SchemasListResult>;
-
 export interface ListConnectionByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListConnectionByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListConnectionByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ConnectionTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1482,15 +1083,8 @@ export interface Connection {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const Connection = ConnectionsLinkResponse as any as S.Schema<Connection>;
-
 /** The Connection items on this page */
 export type ConnectionListResultValueList = Array<Connection>;
-const ConnectionListResultValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ConnectionListResultValueList>;
-
 /** The response of a Connection list operation. */
 export interface ConnectionListResult {
   /** The Connection items on this page */
@@ -1498,17 +1092,10 @@ export interface ConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ConnectionListResult = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ConnectionListResult>;
-
 export interface ListConnectionBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListConnectionBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListConnectionBySubscriptionRequest>;
-
 export interface ListFlowByConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1517,11 +1104,6 @@ export interface ListFlowByConnectionRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-const ListFlowByConnectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListFlowByConnectionRequest>;
-
 /** Resource tags. */
 export type FlowTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -1549,15 +1131,8 @@ export interface Flow {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const Flow = DisableFlowResponse as any as S.Schema<Flow>;
-
 /** The Flow items on this page */
 export type FlowListResultValueList = Array<Flow>;
-const FlowListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<FlowListResultValueList>;
-
 /** The response of a Flow list operation. */
 export interface FlowListResult {
   /** The Flow items on this page */
@@ -1565,13 +1140,8 @@ export interface FlowListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FlowListResult = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<FlowListResult>;
-
 /** Connection ID to target */
 export type ListListFlowsByPipelineRequestValueList = Array<string>;
-const ListListFlowsByPipelineRequestValueList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<ListListFlowsByPipelineRequestValueList>;
-
 export interface ListListFlowsByPipelineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1582,16 +1152,8 @@ export interface ListListFlowsByPipelineRequest {
   /** Connection ID to target */
   value?: ListListFlowsByPipelineRequestValueList;
 }
-const ListListFlowsByPipelineRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListListFlowsByPipelineRequest>;
-
 /** List of flows associated with the connection. */
 export type ListFlowsByPipelineConnectionFlowsList = Array<Flow>;
-const ListFlowsByPipelineConnectionFlowsList =
-  FlowListResultValueList as any as S.Schema<ListFlowsByPipelineConnectionFlowsList>;
-
 /** A connection resource id in addition to all child flow resources under this connection. */
 export interface ListFlowsByPipelineConnection {
   /** ID of the connection. */
@@ -1599,28 +1161,13 @@ export interface ListFlowsByPipelineConnection {
   /** List of flows associated with the connection. */
   flows?: ListFlowsByPipelineConnectionFlowsList;
 }
-const ListFlowsByPipelineConnection = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListFlowsByPipelineConnection>;
-
 /** List flows by pipeline result by connection */
 export type ListFlowsByPipelineResultValueList = Array<ListFlowsByPipelineConnection>;
-const ListFlowsByPipelineResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListFlowsByPipelineResultValueList>;
-
 /** An array of flow resources. */
 export interface ListFlowsByPipelineResult {
   /** List flows by pipeline result by connection */
   value?: ListFlowsByPipelineResultValueList;
 }
-const ListFlowsByPipelineResult = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListFlowsByPipelineResult>;
-
 export interface ListListPendingConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1629,46 +1176,20 @@ export interface ListListPendingConnectionsRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-const ListListPendingConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListListPendingConnectionsRequest>;
-
 /** Force disablement status of the current connection */
 export type PendingConnectionForceDisabledStatusList = Array<ForceDisabledStatus>;
-const PendingConnectionForceDisabledStatusList =
-  ConnectionPropertiesForceDisabledStatusList as any as S.Schema<PendingConnectionForceDisabledStatusList>;
-
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
 export type PendingConnectionFlowTypesList = Array<FlowType>;
-const PendingConnectionFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<PendingConnectionFlowTypesList>;
-
 /** The secondary contacts for this connection request */
 export type PendingConnectionSecondaryContactsList = Array<string>;
-const PendingConnectionSecondaryContactsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingConnectionSecondaryContactsList>;
-
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingConnectionPoliciesList = Array<string>;
-const PendingConnectionPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingConnectionPoliciesList>;
-
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingConnectionSchemasList = Array<Schema>;
-const PendingConnectionSchemasList =
-  ConnectionPropertiesSchemasList as any as S.Schema<PendingConnectionSchemasList>;
-
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingConnectionSchemaUrisList = Array<string>;
-const PendingConnectionSchemaUrisList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingConnectionSchemaUrisList>;
-
 /** Resource tags. */
 export type PendingConnectionTagsMap = { [key: string]: string | undefined };
-const PendingConnectionTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PendingConnectionTagsMap>;
-
 /** The type of identity that created the resource. */
 export type PendingConnectionSystemDataCreatedByType =
   | "User"
@@ -1696,9 +1217,6 @@ export interface PendingConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const PendingConnectionSystemData =
-  ReadPipelineConnectionSystemData as any as S.Schema<PendingConnectionSystemData>;
-
 /** Pending connection object */
 export interface PendingConnection {
   /** Subscription ID of the pending connection. */
@@ -1756,15 +1274,8 @@ export interface PendingConnection {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PendingConnectionSystemData;
 }
-const PendingConnection = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<PendingConnection>;
-
 /** The items on this page */
 export type PendingConnectionListResultValueList = Array<PendingConnection>;
-const PendingConnectionListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<PendingConnectionListResultValueList>;
-
 /** The custom response of a list operation. */
 export interface PendingConnectionListResult {
   /** The items on this page */
@@ -1772,11 +1283,6 @@ export interface PendingConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PendingConnectionListResult = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<PendingConnectionListResult>;
-
 export interface ListListPendingFlowsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1785,36 +1291,16 @@ export interface ListListPendingFlowsRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
 }
-const ListListPendingFlowsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListListPendingFlowsRequest>;
-
 /** Force disablement status of the current flow */
 export type PendingFlowForceDisabledStatusList = Array<ForceDisabledStatus>;
-const PendingFlowForceDisabledStatusList =
-  ConnectionPropertiesForceDisabledStatusList as any as S.Schema<PendingFlowForceDisabledStatusList>;
-
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PendingFlowPoliciesList = Array<string>;
-const PendingFlowPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingFlowPoliciesList>;
-
 /** The destination endpoints of the stream */
 export type PendingFlowDestinationEndpointsList = Array<string>;
-const PendingFlowDestinationEndpointsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PendingFlowDestinationEndpointsList>;
-
 /** The destination endpoint ports of the stream */
 export type PendingFlowDestinationEndpointPortsList = Array<number>;
-const PendingFlowDestinationEndpointPortsList =
-  FlowPropertiesDestinationEndpointPortsList as any as S.Schema<PendingFlowDestinationEndpointPortsList>;
-
 /** Resource tags. */
 export type PendingFlowTagsMap = { [key: string]: string | undefined };
-const PendingFlowTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PendingFlowTagsMap>;
-
 /** The type of identity that created the resource. */
 export type PendingFlowSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
 /** The type of identity that last modified the resource. */
@@ -1838,8 +1324,6 @@ export interface PendingFlowSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const PendingFlowSystemData = SystemData as any as S.Schema<PendingFlowSystemData>;
-
 /** Pending flow object */
 export interface PendingFlow {
   /** Subscription ID of the pending flow. */
@@ -1917,15 +1401,8 @@ export interface PendingFlow {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PendingFlowSystemData;
 }
-const PendingFlow = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PendingFlow>;
-
 /** The items on this page */
 export type PendingFlowListResultValueList = Array<PendingFlow>;
-const PendingFlowListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<PendingFlowListResultValueList>;
-
 /** The custom response of a list operation. */
 export interface PendingFlowListResult {
   /** The items on this page */
@@ -1933,11 +1410,6 @@ export interface PendingFlowListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PendingFlowListResult = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PendingFlowListResult>;
-
 export interface ListListSchemasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1962,17 +1434,7 @@ export interface ListListSchemasRequest {
   /** The Schema Type */
   schemaType?: SchemaType | (string & {});
 }
-const ListListSchemasRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListListSchemasRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1984,16 +1446,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -2007,37 +1463,20 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPipelineByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListPipelineByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListPipelineByResourceGroupRequest>;
-
 /** Resource tags. */
 export type PipelineTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2061,15 +1500,8 @@ export interface Pipeline {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const Pipeline = GetPipelineResponse as any as S.Schema<Pipeline>;
-
 /** The Pipeline items on this page */
 export type PipelineListResultValueList = Array<Pipeline>;
-const PipelineListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PipelineListResultValueList>;
-
 /** The response of a Pipeline list operation. */
 export interface PipelineListResult {
   /** The Pipeline items on this page */
@@ -2077,42 +1509,20 @@ export interface PipelineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PipelineListResult = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<PipelineListResult>;
-
 export interface ListPipelineBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListPipelineBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListPipelineBySubscriptionRequest>;
-
 /** Resource tags. */
 export type PipelinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const PipelinesCreateOrUpdateRequestTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<PipelinesCreateOrUpdateRequestTagsMap>;
-
 /** Subscribers of this resource */
 export type PipelinePropertiesInputSubscribersList = Array<Subscriber>;
-const PipelinePropertiesInputSubscribersList =
-  PipelinePropertiesSubscribersList as any as S.Schema<PipelinePropertiesInputSubscribersList>;
-
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesInputPoliciesList = Array<string>;
-const PipelinePropertiesInputPoliciesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<PipelinePropertiesInputPoliciesList>;
-
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
 export type PipelinePropertiesInputFlowTypesList = Array<FlowType | (string & {})>;
-const PipelinePropertiesInputFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesInputFlowTypesList>;
-
 /** The flow types that are disabled for this pipeline */
 export type PipelinePropertiesInputDisabledFlowTypesList = Array<FlowType | (string & {})>;
-const PipelinePropertiesInputDisabledFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinePropertiesInputDisabledFlowTypesList>;
-
 /** Properties of pipeline */
 export interface PipelinePropertiesInput {
   /** Remote cloud of the data to be transferred or received */
@@ -2134,11 +1544,6 @@ export interface PipelinePropertiesInput {
   /** Status of the current pipeline */
   status?: PipelineStatus | (string & {});
 }
-const PipelinePropertiesInput = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<PipelinePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PipelinesCreateOrUpdateRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
 export interface PipelinesCreateOrUpdateRequest {
@@ -2157,11 +1562,6 @@ export interface PipelinesCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<PipelinesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type PipelinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2184,9 +1584,6 @@ export interface PipelinesCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const PipelinesCreateOrUpdateResponse =
-  ExecutePipelineActionResponse as any as S.Schema<PipelinesCreateOrUpdateResponse>;
-
 export interface RejectPipelineConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2199,11 +1596,6 @@ export interface RejectPipelineConnectionRequest {
   /** Reason for resource operation. */
   statusReason?: string;
 }
-const RejectPipelineConnectionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<RejectPipelineConnectionRequest>;
-
 /** Resource tags. */
 export type RejectPipelineConnectionResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2226,14 +1618,8 @@ export interface RejectPipelineConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const RejectPipelineConnectionResponse =
-  ApprovePipelineConnectionResponse as any as S.Schema<RejectPipelineConnectionResponse>;
-
 /** The specified flow destination endpoint ports */
 export type SetFlowDestinationEndpointPortsRequestPortsList = Array<number>;
-const SetFlowDestinationEndpointPortsRequestPortsList =
-  FlowPropertiesDestinationEndpointPortsList as any as S.Schema<SetFlowDestinationEndpointPortsRequestPortsList>;
-
 export interface SetFlowDestinationEndpointPortsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2246,11 +1632,6 @@ export interface SetFlowDestinationEndpointPortsRequest {
   /** The specified flow destination endpoint ports */
   ports?: SetFlowDestinationEndpointPortsRequestPortsList;
 }
-const SetFlowDestinationEndpointPortsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<SetFlowDestinationEndpointPortsRequest>;
-
 /** Resource tags. */
 export type SetFlowDestinationEndpointPortsResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -2278,14 +1659,8 @@ export interface SetFlowDestinationEndpointPortsResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const SetFlowDestinationEndpointPortsResponse =
-  FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowDestinationEndpointPortsResponse>;
-
 /** The specified flow destination endpoints. */
 export type SetFlowDestinationEndpointsRequestEndpointsList = Array<string>;
-const SetFlowDestinationEndpointsRequestEndpointsList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<SetFlowDestinationEndpointsRequestEndpointsList>;
-
 export interface SetFlowDestinationEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2298,11 +1673,6 @@ export interface SetFlowDestinationEndpointsRequest {
   /** The specified flow destination endpoints. */
   endpoints?: SetFlowDestinationEndpointsRequestEndpointsList;
 }
-const SetFlowDestinationEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<SetFlowDestinationEndpointsRequest>;
-
 /** Resource tags. */
 export type SetFlowDestinationEndpointsResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -2329,9 +1699,6 @@ export interface SetFlowDestinationEndpointsResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const SetFlowDestinationEndpointsResponse =
-  FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowDestinationEndpointsResponse>;
-
 export interface SetFlowPassphraseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2344,11 +1711,6 @@ export interface SetFlowPassphraseRequest {
   /** The passphrase used for SRT streams (non-secret) */
   value?: string;
 }
-const SetFlowPassphraseRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<SetFlowPassphraseRequest>;
-
 /** Resource tags. */
 export type SetFlowPassphraseResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -2375,14 +1737,8 @@ export interface SetFlowPassphraseResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const SetFlowPassphraseResponse =
-  FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowPassphraseResponse>;
-
 /** Source addresses */
 export type SetFlowSourceAddressesRequestValuesList = Array<string>;
-const SetFlowSourceAddressesRequestValuesList =
-  ConnectionPropertiesSecondaryContactsList as any as S.Schema<SetFlowSourceAddressesRequestValuesList>;
-
 export interface SetFlowSourceAddressesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2395,11 +1751,6 @@ export interface SetFlowSourceAddressesRequest {
   /** Source addresses */
   values?: SetFlowSourceAddressesRequestValuesList;
 }
-const SetFlowSourceAddressesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<SetFlowSourceAddressesRequest>;
-
 /** Resource tags. */
 export type SetFlowSourceAddressesResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -2426,16 +1777,10 @@ export interface SetFlowSourceAddressesResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const SetFlowSourceAddressesResponse =
-  FlowsCreateOrUpdateResponse as any as S.Schema<SetFlowSourceAddressesResponse>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateConnectionRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type UpdateConnectionRequestTagsMap = { [key: string]: string | undefined };
-const UpdateConnectionRequestTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdateConnectionRequestTagsMap>;
-
 export interface UpdateConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2448,11 +1793,6 @@ export interface UpdateConnectionRequest {
   /** Resource tags. */
   tags?: UpdateConnectionRequestTagsMap;
 }
-const UpdateConnectionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<UpdateConnectionRequest>;
-
 /** Resource tags. */
 export type UpdateConnectionResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2475,16 +1815,10 @@ export interface UpdateConnectionResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const UpdateConnectionResponse =
-  ConnectionsLinkResponse as any as S.Schema<UpdateConnectionResponse>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateFlowRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type UpdateFlowRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFlowRequestTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdateFlowRequestTagsMap>;
-
 export interface UpdateFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2499,8 +1833,6 @@ export interface UpdateFlowRequest {
   /** Resource tags. */
   tags?: UpdateFlowRequestTagsMap;
 }
-const UpdateFlowRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<UpdateFlowRequest>;
-
 /** Resource tags. */
 export type UpdateFlowResponseTagsMap = { [key: string]: string | undefined };
 /** Plan for the resource. */
@@ -2527,28 +1859,15 @@ export interface UpdateFlowResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const UpdateFlowResponse = DisableFlowResponse as any as S.Schema<UpdateFlowResponse>;
-
 /** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
 export type PipelinesPatchPropertiesFlowTypesList = Array<FlowType | (string & {})>;
-const PipelinesPatchPropertiesFlowTypesList =
-  ConnectionPropertiesFlowTypesList as any as S.Schema<PipelinesPatchPropertiesFlowTypesList>;
-
 /** Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile resource instead. */
 export interface PipelinesPatchProperties {
   /** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
   flowTypes?: PipelinesPatchPropertiesFlowTypesList;
 }
-const PipelinesPatchProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PipelinesPatchProperties>;
-
 /** Resource tags. */
 export type UpdatePipelineRequestTagsMap = { [key: string]: string | undefined };
-const UpdatePipelineRequestTagsMap =
-  ApprovePipelineConnectionResponseTagsMap as any as S.Schema<UpdatePipelineRequestTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdatePipelineRequestIdentity = ConnectionsCreateOrUpdateRequestIdentity;
 export interface UpdatePipelineRequest {
@@ -2565,11 +1884,6 @@ export interface UpdatePipelineRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
-const UpdatePipelineRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<UpdatePipelineRequest>;
-
 /** Resource tags. */
 export type UpdatePipelineResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2592,8 +1906,6 @@ export interface UpdatePipelineResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ApprovePipelineConnectionResponseIdentity;
 }
-const UpdatePipelineResponse = GetPipelineResponse as any as S.Schema<UpdatePipelineResponse>;
-
 export interface ValidateAzureDataTransferSchemaRequest {
   /** ID associated with this schema */
   id?: string;
@@ -2612,15 +1924,8 @@ export interface ValidateAzureDataTransferSchemaRequest {
   /** The Schema Type */
   schemaType?: SchemaType | (string & {});
 }
-const ValidateAzureDataTransferSchemaRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ValidateAzureDataTransferSchemaRequest>;
-
 /** Validation status of the schema */
 export type ValidateSchemaStatus = "Succeeded" | "Failed";
-const ValidateSchemaStatus = S.String;
-
 /** Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
 export interface ValidateSchemaResult {
   /** Validation status of the schema */
@@ -2628,11 +1933,6 @@ export interface ValidateSchemaResult {
   /** Message describing the schema validation */
   message?: string;
 }
-const ValidateSchemaResult = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ValidateSchemaResult>;
-
 export type ApprovePipelineConnectionError = AzureOpError;
 /** Approves a pending connection request associated with the specified Pipeline. */
 export const ApprovePipelineConnection: API.OperationMethod<
@@ -2641,8 +1941,8 @@ export const ApprovePipelineConnection: API.OperationMethod<
   ApprovePipelineConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApprovePipelineConnectionRequest,
-  output: ApprovePipelineConnectionResponse,
+  input: __S(0) as any as S.Schema<ApprovePipelineConnectionRequest>,
+  output: __S(11) as any as S.Schema<ApprovePipelineConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2656,8 +1956,8 @@ export const ConnectionsCreateOrUpdate: API.OperationMethod<
   ConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsCreateOrUpdateRequest,
-  output: ConnectionsCreateOrUpdateResponse,
+  input: __S(16) as any as S.Schema<ConnectionsCreateOrUpdateRequest>,
+  output: __S(11) as any as S.Schema<ConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2671,8 +1971,8 @@ export const ConnectionsLink: API.OperationMethod<
   ConnectionsLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsLinkRequest,
-  output: ConnectionsLinkResponse,
+  input: __S(17) as any as S.Schema<ConnectionsLinkRequest>,
+  output: __S(18) as any as S.Schema<ConnectionsLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2686,8 +1986,8 @@ export const DeleteConnection: API.OperationMethod<
   DeleteConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectionRequest,
-  output: DeleteConnectionResponse,
+  input: __S(19) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(13) as any as S.Schema<DeleteConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2701,8 +2001,8 @@ export const DeleteFlow: API.OperationMethod<
   DeleteFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFlowRequest,
-  output: DeleteFlowResponse,
+  input: __S(20) as any as S.Schema<DeleteFlowRequest>,
+  output: __S(13) as any as S.Schema<DeleteFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2716,8 +2016,8 @@ export const DeletePipeline: API.OperationMethod<
   DeletePipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePipelineRequest,
-  output: DeletePipelineResponse,
+  input: __S(21) as any as S.Schema<DeletePipelineRequest>,
+  output: __S(13) as any as S.Schema<DeletePipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2731,8 +2031,8 @@ export const DisableFlow: API.OperationMethod<
   DisableFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableFlowRequest,
-  output: DisableFlowResponse,
+  input: __S(22) as any as S.Schema<DisableFlowRequest>,
+  output: __S(30) as any as S.Schema<DisableFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2746,8 +2046,8 @@ export const EnableFlow: API.OperationMethod<
   EnableFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableFlowRequest,
-  output: EnableFlowResponse,
+  input: __S(31) as any as S.Schema<EnableFlowRequest>,
+  output: __S(30) as any as S.Schema<EnableFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2761,8 +2061,8 @@ export const ExecutePipelineAction: API.OperationMethod<
   ExecutePipelineActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecutePipelineActionRequest,
-  output: ExecutePipelineActionResponse,
+  input: __S(32) as any as S.Schema<ExecutePipelineActionRequest>,
+  output: __S(42) as any as S.Schema<ExecutePipelineActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2776,8 +2076,8 @@ export const FlowsCreateOrUpdate: API.OperationMethod<
   FlowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlowsCreateOrUpdateRequest,
-  output: FlowsCreateOrUpdateResponse,
+  input: __S(44) as any as S.Schema<FlowsCreateOrUpdateRequest>,
+  output: __S(45) as any as S.Schema<FlowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2791,8 +2091,8 @@ export const FlowsLink: API.OperationMethod<
   FlowsLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlowsLinkRequest,
-  output: FlowsLinkResponse,
+  input: __S(46) as any as S.Schema<FlowsLinkRequest>,
+  output: __S(30) as any as S.Schema<FlowsLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2806,8 +2106,8 @@ export const GenerateFlowPassphrase: API.OperationMethod<
   GenerateFlowPassphraseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateFlowPassphraseRequest,
-  output: GenerateFlowPassphraseResponse,
+  input: __S(47) as any as S.Schema<GenerateFlowPassphraseRequest>,
+  output: __S(45) as any as S.Schema<GenerateFlowPassphraseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2821,8 +2121,8 @@ export const GetConnection: API.OperationMethod<
   GetConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
+  input: __S(48) as any as S.Schema<GetConnectionRequest>,
+  output: __S(18) as any as S.Schema<GetConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2836,8 +2136,8 @@ export const GetFlow: API.OperationMethod<
   GetFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlowRequest,
-  output: GetFlowResponse,
+  input: __S(49) as any as S.Schema<GetFlowRequest>,
+  output: __S(30) as any as S.Schema<GetFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2851,8 +2151,8 @@ export const GetFlowDestinationEndpointPorts: API.OperationMethod<
   GetFlowDestinationEndpointPortsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlowDestinationEndpointPortsRequest,
-  output: GetDestinationEndpointPortsResult,
+  input: __S(50) as any as S.Schema<GetFlowDestinationEndpointPortsRequest>,
+  output: __S(51) as any as S.Schema<GetDestinationEndpointPortsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2866,8 +2166,8 @@ export const GetFlowDestinationEndpoints: API.OperationMethod<
   GetFlowDestinationEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlowDestinationEndpointsRequest,
-  output: GetDestinationEndpointsResult,
+  input: __S(52) as any as S.Schema<GetFlowDestinationEndpointsRequest>,
+  output: __S(53) as any as S.Schema<GetDestinationEndpointsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2881,8 +2181,8 @@ export const GetFlowSourceAddresses: API.OperationMethod<
   GetFlowSourceAddressesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlowSourceAddressesRequest,
-  output: StreamSourceAddresses,
+  input: __S(54) as any as S.Schema<GetFlowSourceAddressesRequest>,
+  output: __S(26) as any as S.Schema<StreamSourceAddresses>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2896,8 +2196,8 @@ export const GetFlowStreamConnectionString: API.OperationMethod<
   GetFlowStreamConnectionStringError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlowStreamConnectionStringRequest,
-  output: GetStreamConnectionStringResult,
+  input: __S(55) as any as S.Schema<GetFlowStreamConnectionStringRequest>,
+  output: __S(56) as any as S.Schema<GetStreamConnectionStringResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2911,8 +2211,8 @@ export const GetPipeline: API.OperationMethod<
   GetPipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPipelineRequest,
-  output: GetPipelineResponse,
+  input: __S(57) as any as S.Schema<GetPipelineRequest>,
+  output: __S(58) as any as S.Schema<GetPipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2926,8 +2226,8 @@ export const ListAzureDataTransferApprovedSchemas: API.OperationMethod<
   ListAzureDataTransferApprovedSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAzureDataTransferApprovedSchemasRequest,
-  output: SchemasListResult,
+  input: __S(59) as any as S.Schema<ListAzureDataTransferApprovedSchemasRequest>,
+  output: __S(60) as any as S.Schema<SchemasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2941,8 +2241,8 @@ export const ListConnectionByResourceGroup: API.OperationMethod<
   ListConnectionByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectionByResourceGroupRequest,
-  output: ConnectionListResult,
+  input: __S(61) as any as S.Schema<ListConnectionByResourceGroupRequest>,
+  output: __S(63) as any as S.Schema<ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2956,8 +2256,8 @@ export const ListConnectionBySubscription: API.OperationMethod<
   ListConnectionBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectionBySubscriptionRequest,
-  output: ConnectionListResult,
+  input: __S(64) as any as S.Schema<ListConnectionBySubscriptionRequest>,
+  output: __S(63) as any as S.Schema<ConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2971,8 +2271,8 @@ export const ListFlowByConnection: API.OperationMethod<
   ListFlowByConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFlowByConnectionRequest,
-  output: FlowListResult,
+  input: __S(65) as any as S.Schema<ListFlowByConnectionRequest>,
+  output: __S(67) as any as S.Schema<FlowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2986,8 +2286,8 @@ export const ListListFlowsByPipeline: API.OperationMethod<
   ListListFlowsByPipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListListFlowsByPipelineRequest,
-  output: ListFlowsByPipelineResult,
+  input: __S(68) as any as S.Schema<ListListFlowsByPipelineRequest>,
+  output: __S(71) as any as S.Schema<ListFlowsByPipelineResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3001,8 +2301,8 @@ export const ListListPendingConnections: API.OperationMethod<
   ListListPendingConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListListPendingConnectionsRequest,
-  output: PendingConnectionListResult,
+  input: __S(72) as any as S.Schema<ListListPendingConnectionsRequest>,
+  output: __S(75) as any as S.Schema<PendingConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3016,8 +2316,8 @@ export const ListListPendingFlows: API.OperationMethod<
   ListListPendingFlowsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListListPendingFlowsRequest,
-  output: PendingFlowListResult,
+  input: __S(76) as any as S.Schema<ListListPendingFlowsRequest>,
+  output: __S(79) as any as S.Schema<PendingFlowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3031,8 +2331,8 @@ export const ListListSchemas: API.OperationMethod<
   ListListSchemasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListListSchemasRequest,
-  output: SchemasListResult,
+  input: __S(80) as any as S.Schema<ListListSchemasRequest>,
+  output: __S(60) as any as S.Schema<SchemasListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3046,8 +2346,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(81) as any as S.Schema<ListOperationsRequest>,
+  output: __S(85) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3061,8 +2361,8 @@ export const ListPipelineByResourceGroup: API.OperationMethod<
   ListPipelineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPipelineByResourceGroupRequest,
-  output: PipelineListResult,
+  input: __S(86) as any as S.Schema<ListPipelineByResourceGroupRequest>,
+  output: __S(88) as any as S.Schema<PipelineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3076,8 +2376,8 @@ export const ListPipelineBySubscription: API.OperationMethod<
   ListPipelineBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPipelineBySubscriptionRequest,
-  output: PipelineListResult,
+  input: __S(89) as any as S.Schema<ListPipelineBySubscriptionRequest>,
+  output: __S(88) as any as S.Schema<PipelineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3091,8 +2391,8 @@ export const PipelinesCreateOrUpdate: API.OperationMethod<
   PipelinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PipelinesCreateOrUpdateRequest,
-  output: PipelinesCreateOrUpdateResponse,
+  input: __S(91) as any as S.Schema<PipelinesCreateOrUpdateRequest>,
+  output: __S(42) as any as S.Schema<PipelinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3106,8 +2406,8 @@ export const RejectPipelineConnection: API.OperationMethod<
   RejectPipelineConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectPipelineConnectionRequest,
-  output: RejectPipelineConnectionResponse,
+  input: __S(92) as any as S.Schema<RejectPipelineConnectionRequest>,
+  output: __S(11) as any as S.Schema<RejectPipelineConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3121,8 +2421,8 @@ export const SetFlowDestinationEndpointPorts: API.OperationMethod<
   SetFlowDestinationEndpointPortsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetFlowDestinationEndpointPortsRequest,
-  output: SetFlowDestinationEndpointPortsResponse,
+  input: __S(93) as any as S.Schema<SetFlowDestinationEndpointPortsRequest>,
+  output: __S(45) as any as S.Schema<SetFlowDestinationEndpointPortsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3136,8 +2436,8 @@ export const SetFlowDestinationEndpoints: API.OperationMethod<
   SetFlowDestinationEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetFlowDestinationEndpointsRequest,
-  output: SetFlowDestinationEndpointsResponse,
+  input: __S(94) as any as S.Schema<SetFlowDestinationEndpointsRequest>,
+  output: __S(45) as any as S.Schema<SetFlowDestinationEndpointsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3151,8 +2451,8 @@ export const SetFlowPassphrase: API.OperationMethod<
   SetFlowPassphraseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetFlowPassphraseRequest,
-  output: SetFlowPassphraseResponse,
+  input: __S(95) as any as S.Schema<SetFlowPassphraseRequest>,
+  output: __S(45) as any as S.Schema<SetFlowPassphraseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3166,8 +2466,8 @@ export const SetFlowSourceAddresses: API.OperationMethod<
   SetFlowSourceAddressesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetFlowSourceAddressesRequest,
-  output: SetFlowSourceAddressesResponse,
+  input: __S(96) as any as S.Schema<SetFlowSourceAddressesRequest>,
+  output: __S(45) as any as S.Schema<SetFlowSourceAddressesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3181,8 +2481,8 @@ export const UpdateConnection: API.OperationMethod<
   UpdateConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectionRequest,
-  output: UpdateConnectionResponse,
+  input: __S(97) as any as S.Schema<UpdateConnectionRequest>,
+  output: __S(18) as any as S.Schema<UpdateConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3196,8 +2496,8 @@ export const UpdateFlow: API.OperationMethod<
   UpdateFlowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFlowRequest,
-  output: UpdateFlowResponse,
+  input: __S(98) as any as S.Schema<UpdateFlowRequest>,
+  output: __S(30) as any as S.Schema<UpdateFlowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3211,8 +2511,8 @@ export const UpdatePipeline: API.OperationMethod<
   UpdatePipelineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePipelineRequest,
-  output: UpdatePipelineResponse,
+  input: __S(100) as any as S.Schema<UpdatePipelineRequest>,
+  output: __S(58) as any as S.Schema<UpdatePipelineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3226,8 +2526,8 @@ export const ValidateAzureDataTransferSchema: API.OperationMethod<
   ValidateAzureDataTransferSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAzureDataTransferSchemaRequest,
-  output: ValidateSchemaResult,
+  input: __S(101) as any as S.Schema<ValidateAzureDataTransferSchemaRequest>,
+  output: __S(102) as any as S.Schema<ValidateSchemaResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3259,17 +2559,17 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 2:
       return S.Record(S.String, S.String);
     case 3:
-      return S.Array(ForceDisabledStatus);
+      return S.Array(S.String);
     case 4:
       return S.Array(S.String);
     case 5:
@@ -3277,39 +2577,39 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           connectionId: S.optional(S.String),
-          status: S.optional(SchemaStatus),
+          status: S.optional(S.String),
           name: S.optional(S.String),
           content: S.optional(S.String),
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
           schemaUri: S.optional(S.String),
-          schemaType: S.optional(SchemaType),
+          schemaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schema" });
     case 6:
-      return S.Array(Schema);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           pipeline: S.String,
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
           justification: S.optional(S.String),
-          status: S.optional(ConnectionStatus),
-          forceDisabledStatus: S.optional(ConnectionPropertiesForceDisabledStatusList),
+          status: S.optional(S.String),
+          forceDisabledStatus: S.optional(__S(3)),
           statusReason: S.optional(S.String),
-          linkStatus: S.optional(LinkStatus),
+          linkStatus: S.optional(S.String),
           linkedConnectionId: S.optional(S.String),
-          flowTypes: S.optional(ConnectionPropertiesFlowTypesList),
+          flowTypes: S.optional(__S(3)),
           requirementId: S.optional(S.String),
           remoteSubscriptionId: S.optional(S.String),
           approver: S.optional(S.String),
           pin: S.optional(S.String),
           dateSubmitted: S.optional(S.String),
           primaryContact: S.optional(S.String),
-          secondaryContacts: S.optional(ConnectionPropertiesSecondaryContactsList),
-          provisioningState: S.optional(ProvisioningState),
-          policies: S.optional(ConnectionPropertiesPoliciesList),
-          schemas: S.optional(ConnectionPropertiesSchemasList),
-          schemaUris: S.optional(ConnectionPropertiesSchemaUrisList),
+          secondaryContacts: S.optional(__S(4)),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(4)),
+          schemas: S.optional(__S(6)),
+          schemaUris: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ConnectionProperties" });
   }
@@ -3324,14 +2624,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(8)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "ApprovePipelineConnectionResponseIdentity",
@@ -3342,11 +2642,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ApprovePipelineConnectionResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(ConnectionProperties),
-          identity: S.optional(ApprovePipelineConnectionResponseIdentity),
+          properties: S.optional(__S(7)),
+          identity: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "ApprovePipelineConnectionResponse",
@@ -3355,17 +2655,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pipeline: S.String,
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
           justification: S.optional(S.String),
-          flowTypes: S.optional(ConnectionPropertiesInputFlowTypesList),
+          flowTypes: S.optional(__S(3)),
           requirementId: S.optional(S.String),
           remoteSubscriptionId: S.optional(S.String),
           pin: S.optional(S.String),
           primaryContact: S.optional(S.String),
-          secondaryContacts: S.optional(ConnectionPropertiesInputSecondaryContactsList),
-          policies: S.optional(ConnectionPropertiesInputPoliciesList),
-          schemas: S.optional(ConnectionPropertiesInputSchemasList),
-          schemaUris: S.optional(ConnectionPropertiesInputSchemaUrisList),
+          secondaryContacts: S.optional(__S(4)),
+          policies: S.optional(__S(4)),
+          schemas: S.optional(__S(6)),
+          schemaUris: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "ConnectionPropertiesInput",
@@ -3375,12 +2675,12 @@ function __c1(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(13)));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "ConnectionsCreateOrUpdateRequestIdentity",
@@ -3395,10 +2695,10 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          tags: S.optional(ConnectionsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(ConnectionPropertiesInput),
-          identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(12)),
+          identity: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3433,11 +2733,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ConnectionsLinkResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(ConnectionProperties),
-          identity: S.optional(ApprovePipelineConnectionResponseIdentity),
+          properties: S.optional(__S(7)),
+          identity: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "ConnectionsLinkResponse" });
     case 3:
@@ -3518,7 +2818,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingTier: S.optional(FlowBillingTier),
+          billingTier: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessagingOptions" });
     case 1:
@@ -3526,8 +2826,8 @@ function __c3(j: number): any {
         S.Struct({
           remoteEndpoint: S.optional(S.String),
           cname: S.optional(S.String),
-          apiMode: S.optional(ApiMode),
-          identityTranslation: S.optional(IdentityTranslation),
+          apiMode: S.optional(S.String),
+          identityTranslation: S.optional(S.String),
           senderClientId: S.optional(S.String),
           remoteCallingModeClientId: S.optional(S.String),
           audienceOverride: S.optional(S.String),
@@ -3536,7 +2836,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceAddresses: S.optional(StreamSourceAddressesSourceAddressesList),
+          sourceAddresses: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "StreamSourceAddresses" });
     case 3:
@@ -3544,33 +2844,33 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connection: S.optional(SelectedResource),
+          connection: S.optional(__S(23)),
           flowId: S.optional(S.String),
           keyVaultUri: S.optional(S.String),
-          linkStatus: S.optional(LinkStatus),
+          linkStatus: S.optional(S.String),
           linkedFlowId: S.optional(S.String),
-          status: S.optional(FlowStatus),
-          forceDisabledStatus: S.optional(FlowPropertiesForceDisabledStatusList),
+          status: S.optional(S.String),
+          forceDisabledStatus: S.optional(__S(3)),
           storageAccountName: S.optional(S.String),
           storageAccountId: S.optional(S.String),
           storageContainerName: S.optional(S.String),
           storageTableName: S.optional(S.String),
           serviceBusQueueId: S.optional(S.String),
-          flowType: S.optional(FlowType),
-          dataType: S.optional(DataType),
-          provisioningState: S.optional(ProvisioningState),
-          policies: S.optional(FlowPropertiesPoliciesList),
-          schema: S.optional(Schema),
-          messagingOptions: S.optional(MessagingOptions),
-          apiFlowOptions: S.optional(ApiFlowOptions),
+          flowType: S.optional(S.String),
+          dataType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(4)),
+          schema: S.optional(__S(5)),
+          messagingOptions: S.optional(__S(24)),
+          apiFlowOptions: S.optional(__S(25)),
           customerManagedKeyVaultUri: S.optional(S.String),
           streamId: S.optional(S.String),
-          streamProtocol: S.optional(StreamProtocol),
+          streamProtocol: S.optional(S.String),
           streamLatency: S.optional(S.Number),
           passphrase: S.optional(S.String),
-          sourceAddresses: S.optional(StreamSourceAddresses),
-          destinationEndpoints: S.optional(FlowPropertiesDestinationEndpointsList),
-          destinationEndpointPorts: S.optional(FlowPropertiesDestinationEndpointPortsList),
+          sourceAddresses: S.optional(__S(26)),
+          destinationEndpoints: S.optional(__S(4)),
+          destinationEndpointPorts: S.optional(__S(27)),
           eventHubId: S.optional(S.String),
           consumerGroup: S.optional(S.String),
         }),
@@ -3591,12 +2891,12 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(DisableFlowResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(FlowProperties),
-          plan: S.optional(DisableFlowResponsePlan),
-          identity: S.optional(ApprovePipelineConnectionResponseIdentity),
+          properties: S.optional(__S(28)),
+          plan: S.optional(__S(29)),
+          identity: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "DisableFlowResponse" });
     case 7:
@@ -3625,9 +2925,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          actionType: ActionType,
-          targetType: TargetType,
-          targets: ExecutePipelineActionRequestTargetsList,
+          actionType: S.String,
+          targetType: S.String,
+          targets: __S(4),
           justification: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3644,10 +2944,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(ReadPipelineConnectionSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(ReadPipelineConnectionSystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -3656,7 +2956,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(OperationStatusEnum),
+          status: S.optional(S.String),
           id: S.optional(S.String),
           message: S.optional(S.String),
         }),
@@ -3666,7 +2966,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operationStatus: S.optional(OperationStatusProperties),
+          operationStatus: S.optional(__S(34)),
           statusSetBy: S.optional(S.String),
         }),
       ).annotate({
@@ -3675,7 +2975,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          internalMetadata: S.optional(InternalMetadataProperties),
+          internalMetadata: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "PipelineConnectionProperties",
@@ -3688,12 +2988,12 @@ function __c4(j: number): any {
           type: S.optional(S.String),
           location: S.optional(S.String),
           etag: S.optional(S.String),
-          systemData: S.optional(ReadPipelineConnectionSystemData),
-          properties: S.optional(PipelineConnectionProperties),
+          systemData: S.optional(__S(33)),
+          properties: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "ReadPipelineConnection" });
     case 6:
-      return S.Array(ReadPipelineConnection);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3706,21 +3006,21 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Subscriber);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           remoteCloud: S.String,
           displayName: S.optional(S.String),
-          connections: S.optional(PipelinePropertiesConnectionsList),
-          subscribers: S.optional(PipelinePropertiesSubscribersList),
-          provisioningState: S.optional(ProvisioningState),
-          policies: S.optional(PipelinePropertiesPoliciesList),
-          flowTypes: S.optional(PipelinePropertiesFlowTypesList),
-          disabledFlowTypes: S.optional(PipelinePropertiesDisabledFlowTypesList),
+          connections: S.optional(__S(38)),
+          subscribers: S.optional(__S(40)),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(4)),
+          flowTypes: S.optional(__S(3)),
+          disabledFlowTypes: S.optional(__S(3)),
           quarantineDownloadStorageAccount: S.optional(S.String),
           quarantineDownloadStorageContainer: S.optional(S.String),
-          status: S.optional(PipelineStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineProperties" });
     case 2:
@@ -3729,11 +3029,11 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ExecutePipelineActionResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(PipelineProperties),
-          identity: S.optional(ApprovePipelineConnectionResponseIdentity),
+          properties: S.optional(__S(41)),
+          identity: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "ExecutePipelineActionResponse",
@@ -3741,28 +3041,28 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connection: S.optional(SelectedResource),
+          connection: S.optional(__S(23)),
           keyVaultUri: S.optional(S.String),
-          status: S.optional(FlowStatus),
+          status: S.optional(S.String),
           storageAccountName: S.optional(S.String),
           storageAccountId: S.optional(S.String),
           storageContainerName: S.optional(S.String),
           storageTableName: S.optional(S.String),
           serviceBusQueueId: S.optional(S.String),
-          flowType: S.optional(FlowType),
-          dataType: S.optional(DataType),
-          policies: S.optional(FlowPropertiesInputPoliciesList),
-          schema: S.optional(Schema),
-          messagingOptions: S.optional(MessagingOptions),
-          apiFlowOptions: S.optional(ApiFlowOptions),
+          flowType: S.optional(S.String),
+          dataType: S.optional(S.String),
+          policies: S.optional(__S(4)),
+          schema: S.optional(__S(5)),
+          messagingOptions: S.optional(__S(24)),
+          apiFlowOptions: S.optional(__S(25)),
           customerManagedKeyVaultUri: S.optional(S.String),
           streamId: S.optional(S.String),
-          streamProtocol: S.optional(StreamProtocol),
+          streamProtocol: S.optional(S.String),
           streamLatency: S.optional(S.Number),
           passphrase: S.optional(S.String),
-          sourceAddresses: S.optional(StreamSourceAddresses),
-          destinationEndpoints: S.optional(FlowPropertiesInputDestinationEndpointsList),
-          destinationEndpointPorts: S.optional(FlowPropertiesInputDestinationEndpointPortsList),
+          sourceAddresses: S.optional(__S(26)),
+          destinationEndpoints: S.optional(__S(4)),
+          destinationEndpointPorts: S.optional(__S(27)),
           eventHubId: S.optional(S.String),
           consumerGroup: S.optional(S.String),
         }),
@@ -3774,11 +3074,11 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          tags: S.optional(FlowsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(FlowPropertiesInput),
-          plan: S.optional(DisableFlowResponsePlan),
-          identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(43)),
+          plan: S.optional(__S(29)),
+          identity: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3796,12 +3096,12 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(FlowsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(FlowProperties),
-          plan: S.optional(DisableFlowResponsePlan),
-          identity: S.optional(ApprovePipelineConnectionResponseIdentity),
+          properties: S.optional(__S(28)),
+          plan: S.optional(__S(29)),
+          identity: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "FlowsCreateOrUpdateResponse",
@@ -3898,7 +3198,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(GetDestinationEndpointPortsResultPortsList),
+          ports: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "GetDestinationEndpointPortsResult",
@@ -3924,7 +3224,7 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(GetDestinationEndpointsResultEndpointsList),
+          endpoints: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "GetDestinationEndpointsResult",
@@ -3998,18 +3298,18 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetPipelineResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(PipelineProperties),
-          identity: S.optional(ApprovePipelineConnectionResponseIdentity),
+          properties: S.optional(__S(41)),
+          identity: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "GetPipelineResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           pipeline: S.optional(S.String),
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4024,7 +3324,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SchemasListResultValueList),
+          value: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "SchemasListResult" });
     case 5:
@@ -4044,11 +3344,11 @@ function __c7(j: number): any {
         identifier: "ListConnectionByResourceGroupRequest",
       });
     case 6:
-      return S.Array(Connection);
+      return S.Array(__S(18));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: ConnectionListResultValueList,
+          value: __S(62),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionListResult" });
@@ -4089,11 +3389,11 @@ function __c8(j: number): any {
         identifier: "ListFlowByConnectionRequest",
       });
     case 2:
-      return S.Array(Flow);
+      return S.Array(__S(30));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: FlowListResultValueList,
+          value: __S(66),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlowListResult" });
@@ -4103,7 +3403,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          value: S.optional(ListListFlowsByPipelineRequestValueList),
+          value: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4119,17 +3419,17 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          flows: S.optional(ListFlowsByPipelineConnectionFlowsList),
+          flows: S.optional(__S(66)),
         }),
       ).annotate({
         identifier: "ListFlowsByPipelineConnection",
       });
     case 6:
-      return S.Array(ListFlowsByPipelineConnection);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListFlowsByPipelineResultValueList),
+          value: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "ListFlowsByPipelineResult",
@@ -4160,39 +3460,39 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.optional(S.String),
           pipeline: S.String,
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
           justification: S.optional(S.String),
-          status: S.optional(ConnectionStatus),
-          forceDisabledStatus: S.optional(PendingConnectionForceDisabledStatusList),
+          status: S.optional(S.String),
+          forceDisabledStatus: S.optional(__S(3)),
           statusReason: S.optional(S.String),
-          linkStatus: S.optional(LinkStatus),
+          linkStatus: S.optional(S.String),
           linkedConnectionId: S.optional(S.String),
-          flowTypes: S.optional(PendingConnectionFlowTypesList),
+          flowTypes: S.optional(__S(3)),
           requirementId: S.optional(S.String),
           remoteSubscriptionId: S.optional(S.String),
           approver: S.optional(S.String),
           pin: S.optional(S.String),
           dateSubmitted: S.optional(S.String),
           primaryContact: S.optional(S.String),
-          secondaryContacts: S.optional(PendingConnectionSecondaryContactsList),
-          provisioningState: S.optional(ProvisioningState),
-          policies: S.optional(PendingConnectionPoliciesList),
-          schemas: S.optional(PendingConnectionSchemasList),
-          schemaUris: S.optional(PendingConnectionSchemaUrisList),
-          tags: S.optional(PendingConnectionTagsMap),
+          secondaryContacts: S.optional(__S(4)),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(4)),
+          schemas: S.optional(__S(6)),
+          schemaUris: S.optional(__S(4)),
+          tags: S.optional(__S(2)),
           location: S.String,
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(PendingConnectionSystemData),
+          systemData: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "PendingConnection" });
     case 2:
-      return S.Array(PendingConnection);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: PendingConnectionListResultValueList,
+          value: __S(74),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4220,49 +3520,49 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.optional(S.String),
           connectionId: S.optional(S.String),
-          connection: S.optional(SelectedResource),
+          connection: S.optional(__S(23)),
           flowId: S.optional(S.String),
           keyVaultUri: S.optional(S.String),
-          linkStatus: S.optional(LinkStatus),
+          linkStatus: S.optional(S.String),
           linkedFlowId: S.optional(S.String),
-          status: S.optional(FlowStatus),
-          forceDisabledStatus: S.optional(PendingFlowForceDisabledStatusList),
+          status: S.optional(S.String),
+          forceDisabledStatus: S.optional(__S(3)),
           storageAccountName: S.optional(S.String),
           storageAccountId: S.optional(S.String),
           storageContainerName: S.optional(S.String),
           storageTableName: S.optional(S.String),
           serviceBusQueueId: S.optional(S.String),
-          flowType: S.optional(FlowType),
-          dataType: S.optional(DataType),
-          provisioningState: S.optional(ProvisioningState),
-          policies: S.optional(PendingFlowPoliciesList),
-          schema: S.optional(Schema),
-          messagingOptions: S.optional(MessagingOptions),
-          apiFlowOptions: S.optional(ApiFlowOptions),
+          flowType: S.optional(S.String),
+          dataType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          policies: S.optional(__S(4)),
+          schema: S.optional(__S(5)),
+          messagingOptions: S.optional(__S(24)),
+          apiFlowOptions: S.optional(__S(25)),
           customerManagedKeyVaultUri: S.optional(S.String),
           streamId: S.optional(S.String),
-          streamProtocol: S.optional(StreamProtocol),
+          streamProtocol: S.optional(S.String),
           streamLatency: S.optional(S.Number),
           passphrase: S.optional(S.String),
-          sourceAddresses: S.optional(StreamSourceAddresses),
-          destinationEndpoints: S.optional(PendingFlowDestinationEndpointsList),
-          destinationEndpointPorts: S.optional(PendingFlowDestinationEndpointPortsList),
+          sourceAddresses: S.optional(__S(26)),
+          destinationEndpoints: S.optional(__S(4)),
+          destinationEndpointPorts: S.optional(__S(27)),
           eventHubId: S.optional(S.String),
           consumerGroup: S.optional(S.String),
-          tags: S.optional(PendingFlowTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(PendingFlowSystemData),
+          systemData: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "PendingFlow" });
     case 6:
-      return S.Array(PendingFlow);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: PendingFlowListResultValueList,
+          value: __S(78),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PendingFlowListResult" });
@@ -4278,12 +3578,12 @@ function __c10(j: number): any {
           pipelineName: S.String.pipe(T.Label()),
           id: S.optional(S.String),
           connectionId: S.optional(S.String),
-          status: S.optional(SchemaStatus),
+          status: S.optional(S.String),
           name: S.optional(S.String),
           content: S.optional(S.String),
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
           schemaUri: S.optional(S.String),
-          schemaType: S.optional(SchemaType),
+          schemaType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4318,17 +3618,17 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(82)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(84)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -4349,7 +3649,7 @@ function __c10(j: number): any {
         identifier: "ListPipelineByResourceGroupRequest",
       });
     case 7:
-      return S.Array(Pipeline);
+      return S.Array(__S(58));
   }
 }
 function __c11(j: number): any {
@@ -4357,7 +3657,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: PipelineListResultValueList,
+          value: __S(87),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineListResult" });
@@ -4381,13 +3681,13 @@ function __c11(j: number): any {
         S.Struct({
           remoteCloud: S.String,
           displayName: S.optional(S.String),
-          subscribers: S.optional(PipelinePropertiesInputSubscribersList),
-          policies: S.optional(PipelinePropertiesInputPoliciesList),
-          flowTypes: S.optional(PipelinePropertiesInputFlowTypesList),
-          disabledFlowTypes: S.optional(PipelinePropertiesInputDisabledFlowTypesList),
+          subscribers: S.optional(__S(40)),
+          policies: S.optional(__S(4)),
+          flowTypes: S.optional(__S(3)),
+          disabledFlowTypes: S.optional(__S(3)),
           quarantineDownloadStorageAccount: S.optional(S.String),
           quarantineDownloadStorageContainer: S.optional(S.String),
-          status: S.optional(PipelineStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelinePropertiesInput" });
     case 3:
@@ -4396,10 +3696,10 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          tags: S.optional(PipelinesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(PipelinePropertiesInput),
-          identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(90)),
+          identity: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4437,7 +3737,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          ports: S.optional(SetFlowDestinationEndpointPortsRequestPortsList),
+          ports: S.optional(__S(27)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4456,7 +3756,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          endpoints: S.optional(SetFlowDestinationEndpointsRequestEndpointsList),
+          endpoints: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4496,7 +3796,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          values: S.optional(SetFlowSourceAddressesRequestValuesList),
+          values: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4514,8 +3814,8 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
-          tags: S.optional(UpdateConnectionRequestTagsMap),
+          identity: S.optional(__S(15)),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4532,8 +3832,8 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           flowName: S.String.pipe(T.Label()),
-          identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
-          tags: S.optional(UpdateFlowRequestTagsMap),
+          identity: S.optional(__S(15)),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4546,7 +3846,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          flowTypes: S.optional(PipelinesPatchPropertiesFlowTypesList),
+          flowTypes: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "PipelinesPatchProperties" });
     case 4:
@@ -4555,9 +3855,9 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           pipelineName: S.String.pipe(T.Label()),
-          properties: S.optional(PipelinesPatchProperties),
-          tags: S.optional(UpdatePipelineRequestTagsMap),
-          identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(99)),
+          tags: S.optional(__S(2)),
+          identity: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4572,12 +3872,12 @@ function __c12(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           connectionId: S.optional(S.String),
-          status: S.optional(SchemaStatus),
+          status: S.optional(S.String),
           name: S.optional(S.String),
           content: S.optional(S.String),
-          direction: S.optional(Direction),
+          direction: S.optional(S.String),
           schemaUri: S.optional(S.String),
-          schemaType: S.optional(SchemaType),
+          schemaType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4592,9 +3892,44 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ValidateSchemaStatus),
+          status: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValidateSchemaResult" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

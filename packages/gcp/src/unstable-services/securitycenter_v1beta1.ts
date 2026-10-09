@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,62 +65,32 @@ export class NotFound
   ) {}
 
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelOrganizationsOperationsRequest {
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOrganizationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelOrganizationsOperationsRequest>;
-
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export interface Source {
   name?: string;
   displayName?: string;
   description?: string;
 }
-const Source = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Source>;
-
 export interface CreateOrganizationsSourcesRequest {
   parent: string;
   /** Request body */
   body?: Source;
 }
-const CreateOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateOrganizationsSourcesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
-
 export type GoogleCloudSecuritycenterV1beta1FindingStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE";
-const GoogleCloudSecuritycenterV1beta1FindingStateEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringMap>;
-
 export interface GoogleCloudSecuritycenterV1beta1SecurityMarks {
   name?: string;
   marks?: StringMap;
 }
-const GoogleCloudSecuritycenterV1beta1SecurityMarks = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleCloudSecuritycenterV1beta1SecurityMarks>;
-
 export interface GoogleCloudSecuritycenterV1beta1Finding {
   parent?: string;
   createTime?: string;
@@ -131,149 +103,85 @@ export interface GoogleCloudSecuritycenterV1beta1Finding {
   securityMarks?: GoogleCloudSecuritycenterV1beta1SecurityMarks;
   eventTime?: string;
 }
-const GoogleCloudSecuritycenterV1beta1Finding = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudSecuritycenterV1beta1Finding>;
-
 export interface CreateOrganizationsSourcesFindingsRequest {
   parent: string;
   findingId?: string;
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1Finding;
 }
-const CreateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateOrganizationsSourcesFindingsRequest>;
-
 export interface DeleteOrganizationsOperationsRequest {
   name: string;
 }
-const DeleteOrganizationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteOrganizationsOperationsRequest>;
-
 export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
-const GetPolicyOptions = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetPolicyOptions>;
-
 export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
-const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetIamPolicyRequest>;
-
 export interface GetIamPolicyOrganizationsSourcesRequest {
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetIamPolicyOrganizationsSourcesRequest>;
-
 export interface Expr {
   expression?: string;
   location?: string;
   title?: string;
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Expr>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
-
 export interface Binding {
   condition?: Expr;
   members?: StringList;
   role?: string;
 }
-const Binding = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<BindingList>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum | (string & {});
   exemptedMembers?: StringList;
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AuditLogConfigList>;
-
 export interface AuditConfig {
   service?: string;
   auditLogConfigs?: AuditLogConfigList;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AuditConfigList>;
-
 export interface Policy {
   bindings?: BindingList;
   etag?: string;
   version?: number;
   auditConfigs?: AuditConfigList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Policy>;
-
 export interface GetOrganizationSettingsOrganizationsRequest {
   name: string;
 }
-const GetOrganizationSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetOrganizationSettingsOrganizationsRequest>;
-
 export type AssetDiscoveryConfigInclusionModeEnum =
   | "INCLUSION_MODE_UNSPECIFIED"
   | "INCLUDE_ONLY"
   | "EXCLUDE";
-const AssetDiscoveryConfigInclusionModeEnum = S.String;
-
 export interface AssetDiscoveryConfig {
   projectIds?: StringList;
   inclusionMode?: AssetDiscoveryConfigInclusionModeEnum | (string & {});
 }
-const AssetDiscoveryConfig = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AssetDiscoveryConfig>;
-
 export interface OrganizationSettings {
   assetDiscoveryConfig?: AssetDiscoveryConfig;
   name?: string;
   enableAssetDiscovery?: boolean;
 }
-const OrganizationSettings = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<OrganizationSettings>;
-
 export interface GetOrganizationsOperationsRequest {
   name: string;
 }
-const GetOrganizationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetOrganizationsOperationsRequest>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DocumentMapList>;
-
 export interface Status {
   details?: DocumentMapList;
   message?: string;
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Status>;
-
 export interface Operation {
   response?: DocumentMap;
   done?: boolean;
@@ -281,16 +189,9 @@ export interface Operation {
   metadata?: DocumentMap;
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Operation>;
-
 export interface GetOrganizationsSourcesRequest {
   name: string;
 }
-const GetOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetOrganizationsSourcesRequest>;
-
 export interface GroupAssetsRequest {
   readTime?: string;
   pageToken?: string;
@@ -299,34 +200,21 @@ export interface GroupAssetsRequest {
   groupBy?: string;
   compareDuration?: string;
 }
-const GroupAssetsRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GroupAssetsRequest>;
-
 export interface GroupOrganizationsAssetsRequest {
   parent: string;
   /** Request body */
   body?: GroupAssetsRequest;
 }
-const GroupOrganizationsAssetsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GroupOrganizationsAssetsRequest>;
-
 export interface GroupResult {
   count?: string;
   properties?: DocumentMap;
 }
-const GroupResult = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GroupResult>;
-
 export type GroupResultList = Array<GroupResult>;
-const GroupResultList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GroupResultList>;
-
 export interface GroupAssetsResponse {
   readTime?: string;
   groupByResults?: GroupResultList;
   nextPageToken?: string;
 }
-const GroupAssetsResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GroupAssetsResponse>;
-
 export interface GroupFindingsRequest {
   pageToken?: string;
   filter?: string;
@@ -334,28 +222,16 @@ export interface GroupFindingsRequest {
   readTime?: string;
   pageSize?: number;
 }
-const GroupFindingsRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GroupFindingsRequest>;
-
 export interface GroupOrganizationsSourcesFindingsRequest {
   parent: string;
   /** Request body */
   body?: GroupFindingsRequest;
 }
-const GroupOrganizationsSourcesFindingsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GroupOrganizationsSourcesFindingsRequest>;
-
 export interface GroupFindingsResponse {
   readTime?: string;
   nextPageToken?: string;
   groupByResults?: GroupResultList;
 }
-const GroupFindingsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GroupFindingsResponse>;
-
 export interface ListOrganizationsAssetsRequest {
   parent: string;
   pageToken?: string;
@@ -366,11 +242,6 @@ export interface ListOrganizationsAssetsRequest {
   filter?: string;
   pageSize?: number;
 }
-const ListOrganizationsAssetsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListOrganizationsAssetsRequest>;
-
 export interface SecurityCenterProperties {
   resourceName?: string;
   resourceType?: string;
@@ -378,11 +249,6 @@ export interface SecurityCenterProperties {
   resourceOwners?: StringList;
   resourceProject?: string;
 }
-const SecurityCenterProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SecurityCenterProperties>;
-
 export interface Asset {
   name?: string;
   createTime?: string;
@@ -391,33 +257,23 @@ export interface Asset {
   resourceProperties?: DocumentMap;
   securityCenterProperties?: SecurityCenterProperties;
 }
-const Asset = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Asset>;
-
 export type ListAssetsResultStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNUSED"
   | "ADDED"
   | "REMOVED"
   | "ACTIVE";
-const ListAssetsResultStateEnum = S.String;
-
 export interface ListAssetsResult {
   asset?: Asset;
   state?: ListAssetsResultStateEnum;
 }
-const ListAssetsResult = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListAssetsResult>;
-
 export type ListAssetsResultList = Array<ListAssetsResult>;
-const ListAssetsResultList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListAssetsResultList>;
-
 export interface ListAssetsResponse {
   nextPageToken?: string;
   totalSize?: number;
   readTime?: string;
   listAssetsResults?: ListAssetsResultList;
 }
-const ListAssetsResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListAssetsResponse>;
-
 export interface ListOrganizationsOperationsRequest {
   returnPartialSuccess?: boolean;
   filter?: string;
@@ -425,43 +281,22 @@ export interface ListOrganizationsOperationsRequest {
   pageToken?: string;
   name: string;
 }
-const ListOrganizationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListOrganizationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<OperationList>;
-
 export interface ListOperationsResponse {
   nextPageToken?: string;
   operations?: OperationList;
   unreachable?: StringList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListOrganizationsSourcesRequest {
   pageSize?: number;
   parent: string;
   pageToken?: string;
 }
-const ListOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListOrganizationsSourcesRequest>;
-
 export type SourceList = Array<Source>;
-const SourceList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SourceList>;
-
 export interface ListSourcesResponse {
   nextPageToken?: string;
   sources?: SourceList;
 }
-const ListSourcesResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ListSourcesResponse>;
-
 export interface ListOrganizationsSourcesFindingsRequest {
   fieldMask?: string;
   pageToken?: string;
@@ -471,132 +306,68 @@ export interface ListOrganizationsSourcesFindingsRequest {
   parent: string;
   readTime?: string;
 }
-const ListOrganizationsSourcesFindingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListOrganizationsSourcesFindingsRequest>;
-
 export type GoogleCloudSecuritycenterV1beta1FindingList =
   Array<GoogleCloudSecuritycenterV1beta1Finding>;
-const GoogleCloudSecuritycenterV1beta1FindingList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleCloudSecuritycenterV1beta1FindingList>;
-
 export interface ListFindingsResponse {
   readTime?: string;
   totalSize?: number;
   findings?: GoogleCloudSecuritycenterV1beta1FindingList;
   nextPageToken?: string;
 }
-const ListFindingsResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListFindingsResponse>;
-
 export interface PatchOrganizationsSourcesRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: Source;
 }
-const PatchOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PatchOrganizationsSourcesRequest>;
-
 export interface PatchOrganizationsSourcesFindingsRequest {
   name: string;
   updateMask?: string;
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1Finding;
 }
-const PatchOrganizationsSourcesFindingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<PatchOrganizationsSourcesFindingsRequest>;
-
 export type RunAssetDiscoveryRequest = CancelOperationRequest;
 export interface RunDiscoveryOrganizationsAssetsRequest {
   parent: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RunDiscoveryOrganizationsAssetsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<RunDiscoveryOrganizationsAssetsRequest>;
-
 export interface SetIamPolicyRequest {
   updateMask?: string;
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyOrganizationsSourcesRequest {
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<SetIamPolicyOrganizationsSourcesRequest>;
-
 export type SetFindingStateRequestStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-const SetFindingStateRequestStateEnum = S.String;
-
 export interface SetFindingStateRequest {
   state?: SetFindingStateRequestStateEnum | (string & {});
   startTime?: string;
 }
-const SetFindingStateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SetFindingStateRequest>;
-
 export interface SetStateOrganizationsSourcesFindingsRequest {
   name: string;
   /** Request body */
   body?: SetFindingStateRequest;
 }
-const SetStateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<SetStateOrganizationsSourcesFindingsRequest>;
-
 export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsOrganizationsSourcesRequest {
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsOrganizationsSourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<TestIamPermissionsOrganizationsSourcesRequest>;
-
 export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface UpdateOrganizationSettingsOrganizationsRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: OrganizationSettings;
 }
-const UpdateOrganizationSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UpdateOrganizationSettingsOrganizationsRequest>;
-
 export interface UpdateSecurityMarksOrganizationsAssetsRequest {
   updateMask?: string;
   startTime?: string;
@@ -604,11 +375,6 @@ export interface UpdateSecurityMarksOrganizationsAssetsRequest {
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1SecurityMarks;
 }
-const UpdateSecurityMarksOrganizationsAssetsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UpdateSecurityMarksOrganizationsAssetsRequest>;
-
 export interface UpdateSecurityMarksOrganizationsSourcesFindingsRequest {
   startTime?: string;
   name: string;
@@ -616,11 +382,6 @@ export interface UpdateSecurityMarksOrganizationsSourcesFindingsRequest {
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1SecurityMarks;
 }
-const UpdateSecurityMarksOrganizationsSourcesFindingsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UpdateSecurityMarksOrganizationsSourcesFindingsRequest>;
-
 export type CancelOrganizationsOperationsError =
   | NotFound
   | Forbidden
@@ -633,8 +394,8 @@ export const cancelOrganizationsOperations: API.OperationMethod<
   CancelOrganizationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOrganizationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelOrganizationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -652,8 +413,8 @@ export const createOrganizationsSources: API.OperationMethod<
   CreateOrganizationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsSourcesRequest,
-  output: Source,
+  input: __S(3) as any as S.Schema<CreateOrganizationsSourcesRequest>,
+  output: __S(2) as any as S.Schema<Source>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -671,8 +432,8 @@ export const createOrganizationsSourcesFindings: API.OperationMethod<
   CreateOrganizationsSourcesFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsSourcesFindingsRequest,
-  output: GoogleCloudSecuritycenterV1beta1Finding,
+  input: __S(8) as any as S.Schema<CreateOrganizationsSourcesFindingsRequest>,
+  output: __S(7) as any as S.Schema<GoogleCloudSecuritycenterV1beta1Finding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -690,8 +451,8 @@ export const deleteOrganizationsOperations: API.OperationMethod<
   DeleteOrganizationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsOperationsRequest,
-  output: Empty,
+  input: __S(9) as any as S.Schema<DeleteOrganizationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -709,8 +470,8 @@ export const getIamPolicyOrganizationsSources: API.OperationMethod<
   GetIamPolicyOrganizationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyOrganizationsSourcesRequest,
-  output: Policy,
+  input: __S(12) as any as S.Schema<GetIamPolicyOrganizationsSourcesRequest>,
+  output: __S(21) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,8 +484,8 @@ export const getOrganizationSettingsOrganizations: API.OperationMethod<
   GetOrganizationSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationSettingsOrganizationsRequest,
-  output: OrganizationSettings,
+  input: __S(22) as any as S.Schema<GetOrganizationSettingsOrganizationsRequest>,
+  output: __S(24) as any as S.Schema<OrganizationSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -737,8 +498,8 @@ export const getOrganizationsOperations: API.OperationMethod<
   GetOrganizationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsOperationsRequest,
-  output: Operation,
+  input: __S(25) as any as S.Schema<GetOrganizationsOperationsRequest>,
+  output: __S(28) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -751,8 +512,8 @@ export const getOrganizationsSources: API.OperationMethod<
   GetOrganizationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsSourcesRequest,
-  output: Source,
+  input: __S(29) as any as S.Schema<GetOrganizationsSourcesRequest>,
+  output: __S(2) as any as S.Schema<Source>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,8 +531,8 @@ export const groupOrganizationsAssets: API.OperationMethod<
   GroupOrganizationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupOrganizationsAssetsRequest,
-  output: GroupAssetsResponse,
+  input: __S(31) as any as S.Schema<GroupOrganizationsAssetsRequest>,
+  output: __S(34) as any as S.Schema<GroupAssetsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -789,8 +550,8 @@ export const groupOrganizationsSourcesFindings: API.OperationMethod<
   GroupOrganizationsSourcesFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupOrganizationsSourcesFindingsRequest,
-  output: GroupFindingsResponse,
+  input: __S(36) as any as S.Schema<GroupOrganizationsSourcesFindingsRequest>,
+  output: __S(37) as any as S.Schema<GroupFindingsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -804,8 +565,8 @@ export const listOrganizationsAssets: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAssetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsAssetsRequest,
-  output: ListAssetsResponse,
+  input: __S(38) as any as S.Schema<ListOrganizationsAssetsRequest>,
+  output: __S(43) as any as S.Schema<ListAssetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,8 +581,8 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(44) as any as S.Schema<ListOrganizationsOperationsRequest>,
+  output: __S(46) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -836,8 +597,8 @@ export const listOrganizationsSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsSourcesRequest,
-  output: ListSourcesResponse,
+  input: __S(47) as any as S.Schema<ListOrganizationsSourcesRequest>,
+  output: __S(49) as any as S.Schema<ListSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -852,8 +613,8 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
   GcpOpContext,
   ListFindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsSourcesFindingsRequest,
-  output: ListFindingsResponse,
+  input: __S(50) as any as S.Schema<ListOrganizationsSourcesFindingsRequest>,
+  output: __S(52) as any as S.Schema<ListFindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -872,8 +633,8 @@ export const patchOrganizationsSources: API.OperationMethod<
   PatchOrganizationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsSourcesRequest,
-  output: Source,
+  input: __S(53) as any as S.Schema<PatchOrganizationsSourcesRequest>,
+  output: __S(2) as any as S.Schema<Source>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -891,8 +652,8 @@ export const patchOrganizationsSourcesFindings: API.OperationMethod<
   PatchOrganizationsSourcesFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsSourcesFindingsRequest,
-  output: GoogleCloudSecuritycenterV1beta1Finding,
+  input: __S(54) as any as S.Schema<PatchOrganizationsSourcesFindingsRequest>,
+  output: __S(7) as any as S.Schema<GoogleCloudSecuritycenterV1beta1Finding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +671,8 @@ export const runDiscoveryOrganizationsAssets: API.OperationMethod<
   RunDiscoveryOrganizationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunDiscoveryOrganizationsAssetsRequest,
-  output: Operation,
+  input: __S(55) as any as S.Schema<RunDiscoveryOrganizationsAssetsRequest>,
+  output: __S(28) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -929,8 +690,8 @@ export const setIamPolicyOrganizationsSources: API.OperationMethod<
   SetIamPolicyOrganizationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyOrganizationsSourcesRequest,
-  output: Policy,
+  input: __S(57) as any as S.Schema<SetIamPolicyOrganizationsSourcesRequest>,
+  output: __S(21) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -948,8 +709,8 @@ export const setStateOrganizationsSourcesFindings: API.OperationMethod<
   SetStateOrganizationsSourcesFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetStateOrganizationsSourcesFindingsRequest,
-  output: GoogleCloudSecuritycenterV1beta1Finding,
+  input: __S(59) as any as S.Schema<SetStateOrganizationsSourcesFindingsRequest>,
+  output: __S(7) as any as S.Schema<GoogleCloudSecuritycenterV1beta1Finding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -967,8 +728,8 @@ export const testIamPermissionsOrganizationsSources: API.OperationMethod<
   TestIamPermissionsOrganizationsSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsOrganizationsSourcesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(61) as any as S.Schema<TestIamPermissionsOrganizationsSourcesRequest>,
+  output: __S(60) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -986,8 +747,8 @@ export const updateOrganizationSettingsOrganizations: API.OperationMethod<
   UpdateOrganizationSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationSettingsOrganizationsRequest,
-  output: OrganizationSettings,
+  input: __S(62) as any as S.Schema<UpdateOrganizationSettingsOrganizationsRequest>,
+  output: __S(24) as any as S.Schema<OrganizationSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1005,8 +766,8 @@ export const updateSecurityMarksOrganizationsAssets: API.OperationMethod<
   UpdateSecurityMarksOrganizationsAssetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecurityMarksOrganizationsAssetsRequest,
-  output: GoogleCloudSecuritycenterV1beta1SecurityMarks,
+  input: __S(63) as any as S.Schema<UpdateSecurityMarksOrganizationsAssetsRequest>,
+  output: __S(6) as any as S.Schema<GoogleCloudSecuritycenterV1beta1SecurityMarks>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1024,8 +785,8 @@ export const updateSecurityMarksOrganizationsSourcesFindings: API.OperationMetho
   UpdateSecurityMarksOrganizationsSourcesFindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecurityMarksOrganizationsSourcesFindingsRequest,
-  output: GoogleCloudSecuritycenterV1beta1SecurityMarks,
+  input: __S(64) as any as S.Schema<UpdateSecurityMarksOrganizationsSourcesFindingsRequest>,
+  output: __S(6) as any as S.Schema<GoogleCloudSecuritycenterV1beta1SecurityMarks>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1042,7 +803,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1065,7 +826,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Source.pipe(T.HttpBody())),
+          body: S.optional(__S(2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1084,7 +845,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          marks: S.optional(StringMap),
+          marks: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "GoogleCloudSecuritycenterV1beta1SecurityMarks",
@@ -1097,10 +858,10 @@ function __c0(j: number): any {
           category: S.optional(S.String),
           name: S.optional(S.String),
           externalUri: S.optional(S.String),
-          sourceProperties: S.optional(DocumentMap),
+          sourceProperties: S.optional(__S(4)),
           resourceName: S.optional(S.String),
-          state: S.optional(GoogleCloudSecuritycenterV1beta1FindingStateEnum),
-          securityMarks: S.optional(GoogleCloudSecuritycenterV1beta1SecurityMarks),
+          state: S.optional(S.String),
+          securityMarks: S.optional(__S(6)),
           eventTime: S.optional(S.String),
         }),
       ).annotate({
@@ -1115,7 +876,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           findingId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudSecuritycenterV1beta1Finding.pipe(T.HttpBody())),
+          body: S.optional(__S(7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1149,14 +910,14 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(GetPolicyOptions),
+          options: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1181,8 +942,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(13)),
+          members: S.optional(__S(14)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
@@ -1191,32 +952,32 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Binding);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 2:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 4:
-      return S.Array(AuditConfig);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(16)),
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(AuditConfigList),
+          auditConfigs: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "Policy" });
     case 6:
@@ -1236,8 +997,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          projectIds: S.optional(StringList),
-          inclusionMode: S.optional(AssetDiscoveryConfigInclusionModeEnum),
+          projectIds: S.optional(__S(14)),
+          inclusionMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssetDiscoveryConfig" });
   }
@@ -1247,7 +1008,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assetDiscoveryConfig: S.optional(AssetDiscoveryConfig),
+          assetDiscoveryConfig: S.optional(__S(23)),
           name: S.optional(S.String),
           enableAssetDiscovery: S.optional(S.Boolean),
         }),
@@ -1267,11 +1028,11 @@ function __c3(j: number): any {
         identifier: "GetOrganizationsOperationsRequest",
       });
     case 2:
-      return S.Array(DocumentMap);
+      return S.Array(__S(4));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(26)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -1279,11 +1040,11 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(4)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(4)),
+          error: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
@@ -1315,7 +1076,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GroupAssetsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1334,16 +1095,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          properties: S.optional(DocumentMap),
+          properties: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "GroupResult" });
     case 1:
-      return S.Array(GroupResult);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
           readTime: S.optional(S.String),
-          groupByResults: S.optional(GroupResultList),
+          groupByResults: S.optional(__S(33)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupAssetsResponse" });
@@ -1361,7 +1122,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GroupFindingsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1377,7 +1138,7 @@ function __c4(j: number): any {
         S.Struct({
           readTime: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          groupByResults: S.optional(GroupResultList),
+          groupByResults: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "GroupFindingsResponse" });
     case 6:
@@ -1407,7 +1168,7 @@ function __c4(j: number): any {
           resourceName: S.optional(S.String),
           resourceType: S.optional(S.String),
           resourceParent: S.optional(S.String),
-          resourceOwners: S.optional(StringList),
+          resourceOwners: S.optional(__S(14)),
           resourceProject: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityCenterProperties" });
@@ -1420,28 +1181,28 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          securityMarks: S.optional(GoogleCloudSecuritycenterV1beta1SecurityMarks),
+          securityMarks: S.optional(__S(6)),
           updateTime: S.optional(S.String),
-          resourceProperties: S.optional(DocumentMap),
-          securityCenterProperties: S.optional(SecurityCenterProperties),
+          resourceProperties: S.optional(__S(4)),
+          securityCenterProperties: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "Asset" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          asset: S.optional(Asset),
-          state: S.optional(ListAssetsResultStateEnum),
+          asset: S.optional(__S(40)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAssetsResult" });
     case 2:
-      return S.Array(ListAssetsResult);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
           readTime: S.optional(S.String),
-          listAssetsResults: S.optional(ListAssetsResultList),
+          listAssetsResults: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "ListAssetsResponse" });
     case 4:
@@ -1463,13 +1224,13 @@ function __c5(j: number): any {
         identifier: "ListOrganizationsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(45)),
+          unreachable: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -1493,12 +1254,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Source);
+      return S.Array(__S(2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sources: S.optional(SourceList),
+          sources: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "ListSourcesResponse" });
     case 2:
@@ -1522,13 +1283,13 @@ function __c6(j: number): any {
         identifier: "ListOrganizationsSourcesFindingsRequest",
       });
     case 3:
-      return S.Array(GoogleCloudSecuritycenterV1beta1Finding);
+      return S.Array(__S(7));
     case 4:
       return S.suspend(() =>
         S.Struct({
           readTime: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          findings: S.optional(GoogleCloudSecuritycenterV1beta1FindingList),
+          findings: S.optional(__S(51)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFindingsResponse" });
@@ -1537,7 +1298,7 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Source.pipe(T.HttpBody())),
+          body: S.optional(__S(2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1553,7 +1314,7 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudSecuritycenterV1beta1Finding.pipe(T.HttpBody())),
+          body: S.optional(__S(7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1568,7 +1329,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1587,14 +1348,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(Policy),
+          policy: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1608,7 +1369,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(SetFindingStateRequestStateEnum),
+          state: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetFindingStateRequest" });
@@ -1616,7 +1377,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SetFindingStateRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(58).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1630,7 +1391,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -1639,7 +1400,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(60).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1655,7 +1416,7 @@ function __c7(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(OrganizationSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1672,7 +1433,7 @@ function __c7(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           startTime: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudSecuritycenterV1beta1SecurityMarks.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1693,7 +1454,7 @@ function __c8(j: number): any {
           startTime: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudSecuritycenterV1beta1SecurityMarks.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1704,5 +1465,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateSecurityMarksOrganizationsSourcesFindingsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
   }
 }

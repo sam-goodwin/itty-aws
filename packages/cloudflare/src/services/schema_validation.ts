@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -84,64 +86,28 @@ export class ZonePurged
   ) {}
 
 export type SettingsOperationsBulkEditRequestBodyValueMitigationAction = "none" | "log" | "block";
-const SettingsOperationsBulkEditRequestBodyValueMitigationAction = S.String;
-
 export interface SettingsOperationsBulkEditRequestBodyValue {
   /** Mitigation actions are as follows: */
   mitigationAction?: SettingsOperationsBulkEditRequestBodyValueMitigationAction | (string & {});
 }
-const SettingsOperationsBulkEditRequestBodyValue = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<SettingsOperationsBulkEditRequestBodyValue>;
-
 export type SettingsOperationsBulkEditRequestBodyMap = {
   [key: string]: SettingsOperationsBulkEditRequestBodyValue | undefined;
 };
-const SettingsOperationsBulkEditRequestBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SettingsOperationsBulkEditRequestBodyMap>;
-
 export interface BulkPatchSettingOperationsRequest {
   /** Identifier. */
   zoneId: string;
   body: SettingsOperationsBulkEditRequestBodyMap;
 }
-const BulkPatchSettingOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BulkPatchSettingOperationsRequest>;
-
 export type SettingsOperationsBulkEditResultValueMitigationAction = "log" | "block" | "none";
-const SettingsOperationsBulkEditResultValueMitigationAction = S.String;
-
 export interface SettingsOperationsBulkEditResultValue {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction?: SettingsOperationsBulkEditResultValueMitigationAction | null;
 }
-const SettingsOperationsBulkEditResultValue = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<SettingsOperationsBulkEditResultValue>;
-
 export type SettingsOperationsBulkEditResultMap = {
   [key: string]: SettingsOperationsBulkEditResultValue | undefined;
 };
-const SettingsOperationsBulkEditResultMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SettingsOperationsBulkEditResultMap>;
-
 export type BulkPatchSettingOperationsResponse = SettingsOperationsBulkEditResultMap;
-const BulkPatchSettingOperationsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BulkPatchSettingOperationsResponse>;
-
 export type SchemasCreateRequestKind = "openapi_v3";
-const SchemasCreateRequestKind = S.String;
-
 export interface CreateSchemaRequest {
   /** Identifier. */
   zoneId: string;
@@ -154,11 +120,7 @@ export interface CreateSchemaRequest {
   /** An indicator if this schema is enabled */
   validationEnabled: boolean;
 }
-const CreateSchemaRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateSchemaRequest>;
-
 export type SchemasCreateResponseKind = "openapi_v3";
-const SchemasCreateResponseKind = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSchemaResponse {
   createdAt: string;
@@ -173,40 +135,24 @@ export interface CreateSchemaResponse {
   /** An indicator if this schema is enabled */
   validationEnabled?: boolean | null;
 }
-const CreateSchemaResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateSchemaResponse>;
-
 export interface DeleteSchemaRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   schemaId: string;
 }
-const DeleteSchemaRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteSchemaRequest>;
-
 export type DeleteSchemaResponse = unknown;
-const DeleteSchemaResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteSchemaResponse>;
-
 export interface DeleteSettingOperationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   operationId: string;
 }
-const DeleteSettingOperationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteSettingOperationRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingOperationResponse {
   /** UUID. */
   operationId?: string | null;
 }
-const DeleteSettingOperationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteSettingOperationResponse>;
-
 export interface GetSchemaRequest {
   /** Identifier. */
   zoneId: string;
@@ -215,8 +161,6 @@ export interface GetSchemaRequest {
   /** Omit the source-files of schemas and only retrieve their meta-data. */
   omitSource?: boolean;
 }
-const GetSchemaRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetSchemaRequest>;
-
 export type SchemasGetResponseKind = "openapi_v3";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSchemaResponse {
@@ -232,20 +176,12 @@ export interface GetSchemaResponse {
   /** An indicator if this schema is enabled */
   validationEnabled?: boolean | null;
 }
-const GetSchemaResponse = CreateSchemaResponse as any as S.Schema<GetSchemaResponse>;
-
 export interface GetSettingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetSettingRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetSettingRequest>;
-
 export type SettingsGetResponseValidationDefaultMitigationAction = "none" | "log" | "block";
-const SettingsGetResponseValidationDefaultMitigationAction = S.String;
-
 export type SettingsGetResponseValidationOverrideMitigationAction = "none";
-const SettingsGetResponseValidationOverrideMitigationAction = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingResponse {
   /** The default mitigation action used */
@@ -253,22 +189,13 @@ export interface GetSettingResponse {
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone. */
   validationOverrideMitigationAction?: SettingsGetResponseValidationOverrideMitigationAction | null;
 }
-const GetSettingResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetSettingResponse>;
-
 export interface GetSettingOperationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   operationId: string;
 }
-const GetSettingOperationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetSettingOperationRequest>;
-
 export type SettingsOperationsGetResponseMitigationAction = "log" | "block" | "none";
-const SettingsOperationsGetResponseMitigationAction = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingOperationResponse {
   /** When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation */
@@ -276,11 +203,6 @@ export interface GetSettingOperationResponse {
   /** UUID. */
   operationId: string;
 }
-const GetSettingOperationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetSettingOperationResponse>;
-
 export interface ListSchemasRequest {
   /** Identifier. */
   zoneId: string;
@@ -293,11 +215,7 @@ export interface ListSchemasRequest {
   /** Filter for enabled schemas */
   validationEnabled?: boolean;
 }
-const ListSchemasRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListSchemasRequest>;
-
 export type SchemasListResultItemKind = "openapi_v3";
-const SchemasListResultItemKind = S.String;
-
 export interface SchemasListResultItem {
   createdAt: string;
   /** The kind of the schema */
@@ -311,25 +229,13 @@ export interface SchemasListResultItem {
   /** An indicator if this schema is enabled */
   validationEnabled?: boolean | null;
 }
-const SchemasListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SchemasListResultItem>;
-
 export type SchemasListResultList = Array<SchemasListResultItem>;
-const SchemasListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SchemasListResultList>;
-
 export interface ListSchemasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SchemasListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSchemasResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListSchemasResponse>;
-
 export interface ListSettingOperationsRequest {
   /** Identifier. */
   zoneId: string;
@@ -338,42 +244,20 @@ export interface ListSettingOperationsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-const ListSettingOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListSettingOperationsRequest>;
-
 export type SettingsOperationsListResultItemMitigationAction = "log" | "block" | "none";
-const SettingsOperationsListResultItemMitigationAction = S.String;
-
 export interface SettingsOperationsListResultItem {
   /** When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation */
   mitigationAction: SettingsOperationsListResultItemMitigationAction;
   /** UUID. */
   operationId: string;
 }
-const SettingsOperationsListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SettingsOperationsListResultItem>;
-
 export type SettingsOperationsListResultList = Array<SettingsOperationsListResultItem>;
-const SettingsOperationsListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<SettingsOperationsListResultList>;
-
 export interface ListSettingOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SettingsOperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSettingOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListSettingOperationsResponse>;
-
 export interface PatchSchemaRequest {
   /** Identifier. */
   zoneId: string;
@@ -382,8 +266,6 @@ export interface PatchSchemaRequest {
   /** Flag whether schema is enabled for validation. */
   validationEnabled?: boolean;
 }
-const PatchSchemaRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PatchSchemaRequest>;
-
 export type SchemasEditResponseKind = "openapi_v3";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSchemaResponse {
@@ -399,14 +281,8 @@ export interface PatchSchemaResponse {
   /** An indicator if this schema is enabled */
   validationEnabled?: boolean | null;
 }
-const PatchSchemaResponse = CreateSchemaResponse as any as S.Schema<PatchSchemaResponse>;
-
 export type SettingsEditRequestValidationDefaultMitigationAction = "none" | "log" | "block";
-const SettingsEditRequestValidationDefaultMitigationAction = S.String;
-
 export type SettingsEditRequestValidationOverrideMitigationAction = "none";
-const SettingsEditRequestValidationOverrideMitigationAction = S.String;
-
 export interface PatchSettingRequest {
   /** Identifier. */
   zoneId: string;
@@ -420,8 +296,6 @@ export interface PatchSettingRequest {
     | (string & {})
     | null;
 }
-const PatchSettingRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PatchSettingRequest>;
-
 export type SettingsEditResponseValidationDefaultMitigationAction = "none" | "log" | "block";
 export type SettingsEditResponseValidationOverrideMitigationAction = "none";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -431,14 +305,8 @@ export interface PatchSettingResponse {
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone. */
   validationOverrideMitigationAction?: SettingsEditResponseValidationOverrideMitigationAction | null;
 }
-const PatchSettingResponse = GetSettingResponse as any as S.Schema<PatchSettingResponse>;
-
 export type SettingsUpdateRequestValidationDefaultMitigationAction = "none" | "log" | "block";
-const SettingsUpdateRequestValidationDefaultMitigationAction = S.String;
-
 export type SettingsUpdateRequestValidationOverrideMitigationAction = "none";
-const SettingsUpdateRequestValidationOverrideMitigationAction = S.String;
-
 export interface PutSettingRequest {
   /** Identifier. */
   zoneId: string;
@@ -452,8 +320,6 @@ export interface PutSettingRequest {
     | (string & {})
     | null;
 }
-const PutSettingRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PutSettingRequest>;
-
 export type SettingsUpdateResponseValidationDefaultMitigationAction = "none" | "log" | "block";
 export type SettingsUpdateResponseValidationOverrideMitigationAction = "none";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -463,11 +329,7 @@ export interface PutSettingResponse {
   /** When not null, this overrides global both zone level and operation level mitigation actions. This can serve as a quick way to disable schema validation for the whole zone. */
   validationOverrideMitigationAction?: SettingsUpdateResponseValidationOverrideMitigationAction | null;
 }
-const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
-
 export type SettingsOperationsUpdateRequestMitigationAction = "log" | "block" | "none";
-const SettingsOperationsUpdateRequestMitigationAction = S.String;
-
 export interface PutSettingOperationRequest {
   /** Identifier. */
   zoneId: string;
@@ -476,11 +338,6 @@ export interface PutSettingOperationRequest {
   /** When set, this applies a mitigation action to this operation */
   mitigationAction: SettingsOperationsUpdateRequestMitigationAction | (string & {});
 }
-const PutSettingOperationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PutSettingOperationRequest>;
-
 export type SettingsOperationsUpdateResponseMitigationAction = "log" | "block" | "none";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingOperationResponse {
@@ -489,9 +346,6 @@ export interface PutSettingOperationResponse {
   /** UUID. */
   operationId: string;
 }
-const PutSettingOperationResponse =
-  GetSettingOperationResponse as any as S.Schema<PutSettingOperationResponse>;
-
 export type BulkPatchSettingOperationsError = CloudflareOpError;
 /** Updates schema validation settings for multiple API operations in a single request. Efficient for applying consistent validation rules across endpoints. */
 export const bulkPatchSettingOperations: API.OperationMethod<
@@ -500,8 +354,8 @@ export const bulkPatchSettingOperations: API.OperationMethod<
   BulkPatchSettingOperationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkPatchSettingOperationsRequest,
-  output: BulkPatchSettingOperationsResponse,
+  input: __S(2) as any as S.Schema<BulkPatchSettingOperationsRequest>,
+  output: __S(5) as any as S.Schema<BulkPatchSettingOperationsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -515,8 +369,8 @@ export const createSchema: API.OperationMethod<
   CreateSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSchemaRequest,
-  output: CreateSchemaResponse,
+  input: __S(6) as any as S.Schema<CreateSchemaRequest>,
+  output: __S(7) as any as S.Schema<CreateSchemaResponse>,
   errors: [InvalidSchema, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -530,8 +384,8 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSchemaRequest,
-  output: DeleteSchemaResponse,
+  input: __S(8) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(9) as any as S.Schema<DeleteSchemaResponse>,
   errors: [SchemaNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -545,8 +399,8 @@ export const deleteSettingOperation: API.OperationMethod<
   DeleteSettingOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSettingOperationRequest,
-  output: DeleteSettingOperationResponse,
+  input: __S(10) as any as S.Schema<DeleteSettingOperationRequest>,
+  output: __S(11) as any as S.Schema<DeleteSettingOperationResponse>,
   errors: [OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -560,8 +414,8 @@ export const getSchema: API.OperationMethod<
   GetSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaRequest,
-  output: GetSchemaResponse,
+  input: __S(12) as any as S.Schema<GetSchemaRequest>,
+  output: __S(7) as any as S.Schema<GetSchemaResponse>,
   errors: [SchemaNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -575,8 +429,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingRequest,
-  output: GetSettingResponse,
+  input: __S(13) as any as S.Schema<GetSettingRequest>,
+  output: __S(14) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -590,8 +444,8 @@ export const getSettingOperation: API.OperationMethod<
   GetSettingOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingOperationRequest,
-  output: GetSettingOperationResponse,
+  input: __S(15) as any as S.Schema<GetSettingOperationRequest>,
+  output: __S(16) as any as S.Schema<GetSettingOperationResponse>,
   errors: [OperationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -607,8 +461,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   SchemasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSchemasRequest,
-    output: ListSchemasResponse,
+    input: __S(17) as any as S.Schema<ListSchemasRequest>,
+    output: __S(20) as any as S.Schema<ListSchemasResponse>,
     errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -633,8 +487,8 @@ export const listSettingOperations: API.PaginatedOperationMethod<
   SettingsOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSettingOperationsRequest,
-    output: ListSettingOperationsResponse,
+    input: __S(21) as any as S.Schema<ListSettingOperationsRequest>,
+    output: __S(24) as any as S.Schema<ListSettingOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -657,8 +511,8 @@ export const patchSchema: API.OperationMethod<
   PatchSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSchemaRequest,
-  output: PatchSchemaResponse,
+  input: __S(25) as any as S.Schema<PatchSchemaRequest>,
+  output: __S(7) as any as S.Schema<PatchSchemaResponse>,
   errors: [SchemaNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -672,8 +526,8 @@ export const patchSetting: API.OperationMethod<
   PatchSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSettingRequest,
-  output: PatchSettingResponse,
+  input: __S(26) as any as S.Schema<PatchSettingRequest>,
+  output: __S(14) as any as S.Schema<PatchSettingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -687,8 +541,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingRequest,
-  output: PutSettingResponse,
+  input: __S(27) as any as S.Schema<PutSettingRequest>,
+  output: __S(14) as any as S.Schema<PutSettingResponse>,
   errors: [UnentitledMitigationAction, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -705,8 +559,8 @@ export const putSettingOperation: API.OperationMethod<
   PutSettingOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingOperationRequest,
-  output: PutSettingOperationResponse,
+  input: __S(28) as any as S.Schema<PutSettingOperationRequest>,
+  output: __S(16) as any as S.Schema<PutSettingOperationResponse>,
   errors: [OperationNotFound, UnentitledMitigationAction, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -718,22 +572,18 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: S.optional(
-            SettingsOperationsBulkEditRequestBodyValueMitigationAction.pipe(
-              T.Body("mitigation_action"),
-            ),
-          ),
+          mitigationAction: S.optional(S.String.pipe(T.Body("mitigation_action"))),
         }),
       ).annotate({
         identifier: "SettingsOperationsBulkEditRequestBodyValue",
       });
     case 1:
-      return S.Record(S.String, SettingsOperationsBulkEditRequestBodyValue);
+      return S.Record(S.String, __S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: SettingsOperationsBulkEditRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(1).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -749,23 +599,16 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: S.optional(
-            S.NullOr(SettingsOperationsBulkEditResultValueMitigationAction).pipe(
-              T.Body("mitigation_action"),
-            ),
-          ),
+          mitigationAction: S.optional(S.NullOr(S.String).pipe(T.Body("mitigation_action"))),
         }),
       ).annotate({
         identifier: "SettingsOperationsBulkEditResultValue",
       });
     case 4:
-      return S.Record(S.String, SettingsOperationsBulkEditResultValue);
+      return S.Record(S.String, __S(3));
     case 5:
       return S.suspend(() =>
-        SettingsOperationsBulkEditResultMap.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "BulkPatchSettingOperationsResponse",
       });
@@ -773,7 +616,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          kind: SchemasCreateRequestKind,
+          kind: S.String,
           name: S.String,
           source: S.String,
           validationEnabled: S.Boolean.pipe(T.Body("validation_enabled")),
@@ -791,7 +634,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
-          kind: SchemasCreateResponseKind,
+          kind: S.String,
           name: S.String,
           schemaId: S.String.pipe(T.Body("schema_id")),
           source: S.String,
@@ -879,14 +722,11 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          validationDefaultMitigationAction:
-            SettingsGetResponseValidationDefaultMitigationAction.pipe(
-              T.Body("validation_default_mitigation_action"),
-            ),
+          validationDefaultMitigationAction: S.String.pipe(
+            T.Body("validation_default_mitigation_action"),
+          ),
           validationOverrideMitigationAction: S.optional(
-            S.NullOr(SettingsGetResponseValidationOverrideMitigationAction).pipe(
-              T.Body("validation_override_mitigation_action"),
-            ),
+            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSettingResponse" });
@@ -914,9 +754,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: SettingsOperationsGetResponseMitigationAction.pipe(
-            T.Body("mitigation_action"),
-          ),
+          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
           operationId: S.String.pipe(T.Body("operation_id")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -940,7 +778,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String.pipe(T.Body("created_at")),
-          kind: SchemasListResultItemKind,
+          kind: S.String,
           name: S.String,
           schemaId: S.String.pipe(T.Body("schema_id")),
           source: S.String,
@@ -948,11 +786,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SchemasListResultItem" });
     case 3:
-      return S.Array(SchemasListResultItem);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: SchemasListResultList.pipe(T.EnvelopePayload()),
+          result: __S(19).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSchemasResponse" });
@@ -977,16 +815,14 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mitigationAction: SettingsOperationsListResultItemMitigationAction.pipe(
-            T.Body("mitigation_action"),
-          ),
+          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
           operationId: S.String.pipe(T.Body("operation_id")),
         }),
       ).annotate({
         identifier: "SettingsOperationsListResultItem",
       });
     case 7:
-      return S.Array(SettingsOperationsListResultItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -994,7 +830,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: SettingsOperationsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(23).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1021,14 +857,10 @@ function __c3(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           validationDefaultMitigationAction: S.optional(
-            SettingsEditRequestValidationDefaultMitigationAction.pipe(
-              T.Body("validation_default_mitigation_action"),
-            ),
+            S.String.pipe(T.Body("validation_default_mitigation_action")),
           ),
           validationOverrideMitigationAction: S.optional(
-            S.NullOr(SettingsEditRequestValidationOverrideMitigationAction).pipe(
-              T.Body("validation_override_mitigation_action"),
-            ),
+            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
           ),
         })
           .pipe(
@@ -1044,14 +876,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          validationDefaultMitigationAction:
-            SettingsUpdateRequestValidationDefaultMitigationAction.pipe(
-              T.Body("validation_default_mitigation_action"),
-            ),
+          validationDefaultMitigationAction: S.String.pipe(
+            T.Body("validation_default_mitigation_action"),
+          ),
           validationOverrideMitigationAction: S.optional(
-            S.NullOr(SettingsUpdateRequestValidationOverrideMitigationAction).pipe(
-              T.Body("validation_override_mitigation_action"),
-            ),
+            S.NullOr(S.String).pipe(T.Body("validation_override_mitigation_action")),
           ),
         })
           .pipe(
@@ -1068,9 +897,7 @@ function __c3(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           operationId: S.String.pipe(T.Label("operation_id")),
-          mitigationAction: SettingsOperationsUpdateRequestMitigationAction.pipe(
-            T.Body("mitigation_action"),
-          ),
+          mitigationAction: S.String.pipe(T.Body("mitigation_action")),
         })
           .pipe(
             T.Http({
@@ -1083,5 +910,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PutSettingOperationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

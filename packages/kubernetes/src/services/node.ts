@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,31 +124,15 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** podFixed represents the fixed resource overhead associated with running a pod. */
 export type IoK8sApiNodeV1OverheadPodFixedMap = { [key: string]: string | undefined };
-const IoK8sApiNodeV1OverheadPodFixedMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiNodeV1OverheadPodFixedMap>;
-
 /** Overhead structure represents the resource overhead associated with running a pod. */
 export interface IoK8sApiNodeV1Overhead {
   /** podFixed represents the fixed resource overhead associated with running a pod. */
   podFixed?: IoK8sApiNodeV1OverheadPodFixedMap;
 }
-const IoK8sApiNodeV1Overhead = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiNodeV1Overhead>;
-
 /** nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission. */
 export type IoK8sApiNodeV1SchedulingNodeSelectorMap = { [key: string]: string | undefined };
-const IoK8sApiNodeV1SchedulingNodeSelectorMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiNodeV1SchedulingNodeSelectorMap>;
-
 /** The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export interface IoK8sApiCoreV1Toleration {
   /** effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute. */
@@ -193,18 +146,8 @@ export interface IoK8sApiCoreV1Toleration {
   /** value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string. */
   value?: string;
 }
-const IoK8sApiCoreV1Toleration = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1Toleration>;
-
 /** tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass. */
 export type IoK8sApiNodeV1SchedulingTolerationsList = Array<IoK8sApiCoreV1Toleration>;
-const IoK8sApiNodeV1SchedulingTolerationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IoK8sApiNodeV1SchedulingTolerationsList>;
-
 /** Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass. */
 export interface IoK8sApiNodeV1Scheduling {
   /** nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission. */
@@ -212,11 +155,6 @@ export interface IoK8sApiNodeV1Scheduling {
   /** tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass. */
   tolerations?: IoK8sApiNodeV1SchedulingTolerationsList;
 }
-const IoK8sApiNodeV1Scheduling = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IoK8sApiNodeV1Scheduling>;
-
 export interface CreateNodeV1RuntimeClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -239,11 +177,6 @@ export interface CreateNodeV1RuntimeClassRequest {
   /** scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes. */
   scheduling?: IoK8sApiNodeV1Scheduling;
 }
-const CreateNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateNodeV1RuntimeClassRequest>;
-
 /** RuntimeClass defines a class of container runtime supported in the cluster. The RuntimeClass is used to determine which container runtime is used to run all containers in a pod. RuntimeClasses are manually defined by a user or cluster provisioner, and referenced in the PodSpec. The Kubelet is responsible for resolving the RuntimeClassName reference before running the pod. For more details, see https://kubernetes.io/docs/concepts/containers/runtime-class/ */
 export interface IoK8sApiNodeV1RuntimeClass {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -259,11 +192,6 @@ export interface IoK8sApiNodeV1RuntimeClass {
   /** scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes. */
   scheduling?: IoK8sApiNodeV1Scheduling;
 }
-const IoK8sApiNodeV1RuntimeClass = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -271,11 +199,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteNodeV1CollectionRuntimeClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -314,11 +237,6 @@ export interface DeleteNodeV1CollectionRuntimeClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNodeV1CollectionRuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteNodeV1CollectionRuntimeClassRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -328,19 +246,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -356,21 +264,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -384,11 +282,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -408,11 +301,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteNodeV1RuntimeClassRequest {
   /** name of the RuntimeClass */
   name: string;
@@ -435,17 +323,7 @@ export interface DeleteNodeV1RuntimeClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteNodeV1RuntimeClassRequest>;
-
 export interface GetNodeAPIGroupRequest {}
-const GetNodeAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetNodeAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -453,11 +331,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -465,27 +338,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -501,32 +359,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetNodeV1APIResourcesRequest {}
-const GetNodeV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetNodeV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -550,19 +389,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -574,11 +403,6 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface ListNodeV1RuntimeClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -605,18 +429,8 @@ export interface ListNodeV1RuntimeClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListNodeV1RuntimeClassRequest>;
-
 /** items is a list of schema objects. */
 export type IoK8sApiNodeV1RuntimeClassListItemsList = Array<IoK8sApiNodeV1RuntimeClass>;
-const IoK8sApiNodeV1RuntimeClassListItemsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IoK8sApiNodeV1RuntimeClassListItemsList>;
-
 /** RuntimeClassList is a list of RuntimeClass objects. */
 export interface IoK8sApiNodeV1RuntimeClassList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -628,11 +442,6 @@ export interface IoK8sApiNodeV1RuntimeClassList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiNodeV1RuntimeClassList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IoK8sApiNodeV1RuntimeClassList>;
-
 export interface PatchNodeV1RuntimeClassRequest {
   /** name of the RuntimeClass */
   name: string;
@@ -647,22 +456,12 @@ export interface PatchNodeV1RuntimeClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<PatchNodeV1RuntimeClassRequest>;
-
 export interface ReadNodeV1RuntimeClassRequest {
   /** name of the RuntimeClass */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ReadNodeV1RuntimeClassRequest>;
-
 export interface ReplaceNodeV1RuntimeClassRequest {
   /** name of the RuntimeClass */
   name: string;
@@ -687,11 +486,6 @@ export interface ReplaceNodeV1RuntimeClassRequest {
   /** scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes. */
   scheduling?: IoK8sApiNodeV1Scheduling;
 }
-const ReplaceNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ReplaceNodeV1RuntimeClassRequest>;
-
 export interface WatchNodeV1RuntimeClassRequest {
   /** name of the RuntimeClass */
   name: string;
@@ -720,22 +514,12 @@ export interface WatchNodeV1RuntimeClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNodeV1RuntimeClassRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<WatchNodeV1RuntimeClassRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchNodeV1RuntimeClassListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -762,11 +546,6 @@ export interface WatchNodeV1RuntimeClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNodeV1RuntimeClassListRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<WatchNodeV1RuntimeClassListRequest>;
-
 export type CreateNodeV1RuntimeClassError = Conflict | UnprocessableEntity | KubernetesOpError;
 /** create a RuntimeClass */
 export const createNodeV1RuntimeClass: API.OperationMethod<
@@ -775,8 +554,8 @@ export const createNodeV1RuntimeClass: API.OperationMethod<
   CreateNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNodeV1RuntimeClassRequest,
-  output: IoK8sApiNodeV1RuntimeClass,
+  input: __S(11) as any as S.Schema<CreateNodeV1RuntimeClassRequest>,
+  output: __S(12) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -790,8 +569,8 @@ export const deleteNodeV1CollectionRuntimeClass: API.OperationMethod<
   DeleteNodeV1CollectionRuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNodeV1CollectionRuntimeClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(14) as any as S.Schema<DeleteNodeV1CollectionRuntimeClassRequest>,
+  output: __S(20) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -805,8 +584,8 @@ export const deleteNodeV1RuntimeClass: API.OperationMethod<
   DeleteNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNodeV1RuntimeClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(21) as any as S.Schema<DeleteNodeV1RuntimeClassRequest>,
+  output: __S(20) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -820,8 +599,8 @@ export const getNodeAPIGroup: API.OperationMethod<
   GetNodeAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNodeAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(22) as any as S.Schema<GetNodeAPIGroupRequest>,
+  output: __S(27) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -835,8 +614,8 @@ export const getNodeV1APIResources: API.OperationMethod<
   GetNodeV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNodeV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(28) as any as S.Schema<GetNodeV1APIResourcesRequest>,
+  output: __S(31) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -850,8 +629,8 @@ export const listNodeV1RuntimeClass: API.OperationMethod<
   ListNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNodeV1RuntimeClassRequest,
-  output: IoK8sApiNodeV1RuntimeClassList,
+  input: __S(32) as any as S.Schema<ListNodeV1RuntimeClassRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNodeV1RuntimeClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -869,8 +648,8 @@ export const patchNodeV1RuntimeClass: API.OperationMethod<
   PatchNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNodeV1RuntimeClassRequest,
-  output: IoK8sApiNodeV1RuntimeClass,
+  input: __S(35) as any as S.Schema<PatchNodeV1RuntimeClassRequest>,
+  output: __S(12) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -884,8 +663,8 @@ export const readNodeV1RuntimeClass: API.OperationMethod<
   ReadNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNodeV1RuntimeClassRequest,
-  output: IoK8sApiNodeV1RuntimeClass,
+  input: __S(36) as any as S.Schema<ReadNodeV1RuntimeClassRequest>,
+  output: __S(12) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -903,8 +682,8 @@ export const replaceNodeV1RuntimeClass: API.OperationMethod<
   ReplaceNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNodeV1RuntimeClassRequest,
-  output: IoK8sApiNodeV1RuntimeClass,
+  input: __S(37) as any as S.Schema<ReplaceNodeV1RuntimeClassRequest>,
+  output: __S(12) as any as S.Schema<IoK8sApiNodeV1RuntimeClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -918,8 +697,8 @@ export const watchNodeV1RuntimeClass: API.OperationMethod<
   WatchNodeV1RuntimeClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNodeV1RuntimeClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(38) as any as S.Schema<WatchNodeV1RuntimeClassRequest>,
+  output: __S(39) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -933,8 +712,8 @@ export const watchNodeV1RuntimeClassList: API.OperationMethod<
   WatchNodeV1RuntimeClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNodeV1RuntimeClassListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(40) as any as S.Schema<WatchNodeV1RuntimeClassListRequest>,
+  output: __S(39) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -962,7 +741,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -977,22 +756,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0)),
+          managedFields: S.optional(__S(3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -1003,7 +782,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          podFixed: S.optional(IoK8sApiNodeV1OverheadPodFixedMap),
+          podFixed: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "IoK8sApiNodeV1Overhead" });
   }
@@ -1021,12 +800,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1Toleration" });
     case 1:
-      return S.Array(IoK8sApiCoreV1Toleration);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          nodeSelector: S.optional(IoK8sApiNodeV1SchedulingNodeSelectorMap),
-          tolerations: S.optional(IoK8sApiNodeV1SchedulingTolerationsList),
+          nodeSelector: S.optional(__S(0)),
+          tolerations: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "IoK8sApiNodeV1Scheduling" });
     case 3:
@@ -1039,9 +818,9 @@ function __c1(j: number): any {
           apiVersion: S.optional(S.String),
           handler: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          overhead: S.optional(IoK8sApiNodeV1Overhead),
-          scheduling: S.optional(IoK8sApiNodeV1Scheduling),
+          metadata: S.optional(__S(6)),
+          overhead: S.optional(__S(7)),
+          scheduling: S.optional(__S(10)),
         }).pipe(T.Http({ method: "POST", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 })),
       ).annotate({
         identifier: "CreateNodeV1RuntimeClassRequest",
@@ -1052,9 +831,9 @@ function __c1(j: number): any {
           apiVersion: S.optional(S.String),
           handler: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          overhead: S.optional(IoK8sApiNodeV1Overhead),
-          scheduling: S.optional(IoK8sApiNodeV1Scheduling),
+          metadata: S.optional(__S(6)),
+          overhead: S.optional(__S(7)),
+          scheduling: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "IoK8sApiNodeV1RuntimeClass",
@@ -1088,7 +867,7 @@ function __c1(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(13)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/node.k8s.io/v1/runtimeclasses", code: 200 }),
         ),
@@ -1110,11 +889,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(16)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -1139,7 +918,7 @@ function __c2(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -1149,10 +928,10 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(17)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(19)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -1171,7 +950,7 @@ function __c2(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(13)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1209,20 +988,18 @@ function __c3(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 1:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(24));
     case 2:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(23));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(23)),
+          serverAddressByClientCIDRs: S.optional(__S(25)),
+          versions: __S(26),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -1236,29 +1013,29 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 6:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(30),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -1287,14 +1064,14 @@ function __c4(j: number): any {
         identifier: "ListNodeV1RuntimeClassRequest",
       });
     case 1:
-      return S.Array(IoK8sApiNodeV1RuntimeClass);
+      return S.Array(__S(12));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiNodeV1RuntimeClassListItemsList,
+          items: __S(33),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "IoK8sApiNodeV1RuntimeClassList",
@@ -1336,9 +1113,9 @@ function __c4(j: number): any {
           apiVersion: S.optional(S.String),
           handler: S.String,
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          overhead: S.optional(IoK8sApiNodeV1Overhead),
-          scheduling: S.optional(IoK8sApiNodeV1Scheduling),
+          metadata: S.optional(__S(6)),
+          overhead: S.optional(__S(7)),
+          scheduling: S.optional(__S(10)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/apis/node.k8s.io/v1/runtimeclasses/{name}", code: 200 }),
         ),
@@ -1405,5 +1182,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "WatchNodeV1RuntimeClassListRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

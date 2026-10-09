@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -59,17 +61,7 @@ export interface AddRepositoryForSecretForAuthenticatedUserRequest {
   secret_name: string;
   repository_id: number;
 }
-const AddRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddRepositoryForSecretForAuthenticatedUserRequest>;
-
 export interface AddRepositoryForSecretForAuthenticatedUserResponse {}
-const AddRepositoryForSecretForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddRepositoryForSecretForAuthenticatedUserResponse>;
-
 export interface AddSelectedRepoToOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -77,15 +69,7 @@ export interface AddSelectedRepoToOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
-
 export interface AddSelectedRepoToOrgSecretResponse {}
-const AddSelectedRepoToOrgSecretResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
-
 export interface CheckPermissionsForDevcontainerRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -96,34 +80,17 @@ export interface CheckPermissionsForDevcontainerRequest {
   /** Path to the devcontainer.json configuration to use for the permission check. */
   devcontainer_path: string;
 }
-const CheckPermissionsForDevcontainerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckPermissionsForDevcontainerRequest>;
-
 /** Permission check result for a given devcontainer config. */
 export interface CodespacesPermissionsCheckForDevcontainer {
   /** Whether the user has accepted the permissions defined by the devcontainer config */
   accepted: boolean;
 }
-const CodespacesPermissionsCheckForDevcontainer = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CodespacesPermissionsCheckForDevcontainer>;
-
 export interface CodespaceMachinesForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const CodespaceMachinesForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CodespaceMachinesForAuthenticatedUserRequest>;
-
 /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
 export type CodespaceMachinePrebuildAvailability = "none" | "ready" | "in_progress";
-const CodespaceMachinePrebuildAvailability = S.String;
-
 /** A description of the machine powering a codespace. */
 export interface CodespaceMachine {
   /** The name of the machine. */
@@ -141,23 +108,11 @@ export interface CodespaceMachine {
   /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
   prebuild_availability: CodespaceMachinePrebuildAvailability | null;
 }
-const CodespaceMachine = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CodespaceMachine>;
-
 export type CodespaceMachinesForAuthenticatedUserResponseMachinesList = Array<CodespaceMachine>;
-const CodespaceMachinesForAuthenticatedUserResponseMachinesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CodespaceMachinesForAuthenticatedUserResponseMachinesList>;
-
 export interface CodespaceMachinesForAuthenticatedUserResponse {
   total_count: number;
   machines: CodespaceMachinesForAuthenticatedUserResponseMachinesList;
 }
-const CodespaceMachinesForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CodespaceMachinesForAuthenticatedUserResponse>;
-
 /** The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down. */
 export type CreateForAuthenticatedUserRequestBodyCase0Geo =
   | "EuropeWest"
@@ -222,17 +177,9 @@ export interface CreateForAuthenticatedUserRequestBodyCase1 {
 export type CreateForAuthenticatedUserRequestBody =
   | CreateForAuthenticatedUserRequestBodyCase0
   | CreateForAuthenticatedUserRequestBodyCase1;
-const CreateForAuthenticatedUserRequestBody =
-  S.Unknown as any as S.Schema<CreateForAuthenticatedUserRequestBody>;
-
 export interface CreateForAuthenticatedUserRequest {
   body: CreateForAuthenticatedUserRequestBody;
 }
-const CreateForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateForAuthenticatedUserRequest>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -258,18 +205,9 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SimpleUser>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -277,11 +215,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -290,8 +223,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -299,30 +230,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -330,67 +246,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -399,28 +286,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -435,15 +307,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -540,8 +405,6 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MinimalRepository>;
-
 /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
 export type NullableCodespaceMachinePrebuildAvailability = "none" | "ready" | "in_progress";
 /** A description of the machine powering a codespace. */
@@ -561,8 +424,6 @@ export interface NullableCodespaceMachine {
   /** Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status. */
   prebuild_availability: NullableCodespaceMachinePrebuildAvailability | null;
 }
-const NullableCodespaceMachine = CodespaceMachine as any as S.Schema<NullableCodespaceMachine>;
-
 /** State of this codespace. */
 export type CodespaceState =
   | "Unknown"
@@ -582,8 +443,6 @@ export type CodespaceState =
   | "Exporting"
   | "Updating"
   | "Rebuilding";
-const CodespaceState = S.String;
-
 /** Details about the codespace's git repository. */
 export interface CodespaceGitStatus {
   /** The number of commits the local repository is ahead of the remote. */
@@ -597,30 +456,15 @@ export interface CodespaceGitStatus {
   /** The current branch (or SHA if in detached HEAD state) of the local repository. */
   ref?: string;
 }
-const CodespaceGitStatus = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CodespaceGitStatus>;
-
 /** The initally assigned location of a new codespace. */
 export type CodespaceLocation = "EastUs" | "SouthEastAsia" | "WestEurope" | "WestUs2";
-const CodespaceLocation = S.String;
-
 export type CodespaceRecentFoldersList = Array<string>;
-const CodespaceRecentFoldersList =
-  MinimalRepositoryTopicsList as any as S.Schema<CodespaceRecentFoldersList>;
-
 /** The privacy settings a user can select from when forwarding a port. */
 export type CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList = Array<string>;
-const CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList =
-  MinimalRepositoryTopicsList as any as S.Schema<CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList>;
-
 export interface CodespaceRuntimeConstraints {
   /** The privacy settings a user can select from when forwarding a port. */
   allowed_port_privacy_settings?: CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList | null;
 }
-const CodespaceRuntimeConstraints = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CodespaceRuntimeConstraints>;
-
 /** A codespace. */
 export interface Codespace {
   id: number;
@@ -679,19 +523,10 @@ export interface Codespace {
   /** The text to display to a user when a codespace has been stopped for a potentially actionable reason. */
   last_known_stop_notice?: string | null;
 }
-const Codespace = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Codespace>;
-
 /** Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret. */
 export type CreateOrUpdateOrgSecretRequestVisibility = "all" | "private" | "selected";
-const CreateOrUpdateOrgSecretRequestVisibility = S.String;
-
 /** An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
-
 export interface CreateOrUpdateOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -706,17 +541,7 @@ export interface CreateOrUpdateOrgSecretRequest {
   /** An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList;
 }
-const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
-
 export type CreateOrUpdateOrgSecretResponse = unknown;
-const CreateOrUpdateOrgSecretResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateOrUpdateOrgSecretResponse>;
-
 export interface CreateOrUpdateRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -729,30 +554,13 @@ export interface CreateOrUpdateRepoSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id?: string;
 }
-const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
-
 export type CreateOrUpdateRepoSecretResponse = unknown;
-const CreateOrUpdateRepoSecretResponse =
-  CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
-
 export type CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
   | number
   | string;
-const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem =
-  S.Unknown as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem>;
-
 /** An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
 export type CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
   Array<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem>;
-const CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    6,
-  ) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList>;
-
 export interface CreateOrUpdateSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
@@ -763,23 +571,13 @@ export interface CreateOrUpdateSecretForAuthenticatedUserRequest {
   /** An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList;
 }
-const CreateOrUpdateSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequest>;
-
 export type CreateOrUpdateSecretForAuthenticatedUserResponse = unknown;
-const CreateOrUpdateSecretForAuthenticatedUserResponse =
-  CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserResponse>;
-
 /** The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down. */
 export type CreateWithPrForAuthenticatedUserRequestGeo =
   | "EuropeWest"
   | "SoutheastAsia"
   | "UsEast"
   | "UsWest";
-const CreateWithPrForAuthenticatedUserRequestGeo = S.String;
-
 export interface CreateWithPrForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -808,19 +606,12 @@ export interface CreateWithPrForAuthenticatedUserRequest {
   /** Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days). */
   retention_period_minutes?: number;
 }
-const CreateWithPrForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateWithPrForAuthenticatedUserRequest>;
-
 /** The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is closing down. */
 export type CreateWithRepoForAuthenticatedUserRequestGeo =
   | "EuropeWest"
   | "SoutheastAsia"
   | "UsEast"
   | "UsWest";
-const CreateWithRepoForAuthenticatedUserRequestGeo = S.String;
-
 export interface CreateWithRepoForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -849,24 +640,11 @@ export interface CreateWithRepoForAuthenticatedUserRequest {
   /** Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days). */
   retention_period_minutes?: number;
 }
-const CreateWithRepoForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateWithRepoForAuthenticatedUserRequest>;
-
 export interface DeleteForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const DeleteForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteForAuthenticatedUserRequest>;
-
 export interface DeleteForAuthenticatedUserResponse {}
-const DeleteForAuthenticatedUserResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<DeleteForAuthenticatedUserResponse>;
-
 export interface DeleteFromOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -875,32 +653,14 @@ export interface DeleteFromOrganizationRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const DeleteFromOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteFromOrganizationRequest>;
-
 export interface DeleteFromOrganizationResponse {}
-const DeleteFromOrganizationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteFromOrganizationResponse>;
-
 export interface DeleteOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
-const DeleteOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteOrgSecretRequest>;
-
 export interface DeleteOrgSecretResponse {}
-const DeleteOrgSecretResponse =
-  DeleteFromOrganizationResponse as any as S.Schema<DeleteOrgSecretResponse>;
-
 export interface DeleteRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -909,41 +669,17 @@ export interface DeleteRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const DeleteRepoSecretRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteRepoSecretRequest>;
-
 export interface DeleteRepoSecretResponse {}
-const DeleteRepoSecretResponse =
-  DeleteFromOrganizationResponse as any as S.Schema<DeleteRepoSecretResponse>;
-
 export interface DeleteSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const DeleteSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteSecretForAuthenticatedUserRequest>;
-
 export interface DeleteSecretForAuthenticatedUserResponse {}
-const DeleteSecretForAuthenticatedUserResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<DeleteSecretForAuthenticatedUserResponse>;
-
 export interface ExportForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const ExportForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ExportForAuthenticatedUserRequest>;
-
 export interface ExportForAuthenticatedUserResponse {}
-const ExportForAuthenticatedUserResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<ExportForAuthenticatedUserResponse>;
-
 export interface GetCodespacesForUserInOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -954,37 +690,17 @@ export interface GetCodespacesForUserInOrgRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetCodespacesForUserInOrgRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetCodespacesForUserInOrgRequest>;
-
 export type GetCodespacesForUserInOrgResponseCodespacesList = Array<Codespace>;
-const GetCodespacesForUserInOrgResponseCodespacesList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetCodespacesForUserInOrgResponseCodespacesList>;
-
 export interface GetCodespacesForUserInOrgResponse {
   total_count: number;
   codespaces: GetCodespacesForUserInOrgResponseCodespacesList;
 }
-const GetCodespacesForUserInOrgResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetCodespacesForUserInOrgResponse>;
-
 export interface GetExportDetailsForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
   /** The ID of the export operation, or `latest`. Currently only `latest` is currently supported. */
   export_id: string;
 }
-const GetExportDetailsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetExportDetailsForAuthenticatedUserRequest>;
-
 /** An export of a codespace. Also, latest export details for a codespace can be fetched with id = latest */
 export interface CodespaceExportDetails {
   /** State of the latest export */
@@ -1002,29 +718,14 @@ export interface CodespaceExportDetails {
   /** Web url for the exported branch */
   html_url?: string | null;
 }
-const CodespaceExportDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CodespaceExportDetails>;
-
 export interface GetForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const GetForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetForAuthenticatedUserRequest>;
-
 export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetOrgPublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetOrgPublicKeyRequest>;
-
 /** The public key used for setting Codespaces secrets. */
 export interface CodespacesPublicKey {
   /** The identifier for the key. */
@@ -1036,20 +737,14 @@ export interface CodespacesPublicKey {
   title?: string;
   created_at?: string;
 }
-const CodespacesPublicKey = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<CodespacesPublicKey>;
-
 export interface GetOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
-const GetOrgSecretRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetOrgSecretRequest>;
-
 /** The type of repositories in the organization that the secret is visible to */
 export type CodespacesOrgSecretVisibility = "all" | "private" | "selected";
-const CodespacesOrgSecretVisibility = S.String;
-
 /** Secrets for a GitHub Codespace. */
 export interface CodespacesOrgSecret {
   /** The name of the secret */
@@ -1063,14 +758,7 @@ export interface CodespacesOrgSecret {
   /** The API URL at which the list of repositories this secret is visible to can be retrieved */
   selected_repositories_url?: string;
 }
-const CodespacesOrgSecret = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CodespacesOrgSecret>;
-
 export interface GetPublicKeyForAuthenticatedUserRequest {}
-const GetPublicKeyForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetPublicKeyForAuthenticatedUserRequest>;
-
 /** The public key used for setting user Codespaces' Secrets. */
 export interface CodespacesUserPublicKey {
   /** The identifier for the key. */
@@ -1078,22 +766,12 @@ export interface CodespacesUserPublicKey {
   /** The Base64 encoded public key. */
   key: string;
 }
-const CodespacesUserPublicKey = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CodespacesUserPublicKey>;
-
 export interface GetRepoPublicKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetRepoPublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetRepoPublicKeyRequest>;
-
 export interface GetRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1102,8 +780,6 @@ export interface GetRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const GetRepoSecretRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetRepoSecretRequest>;
-
 /** Set repository secrets for GitHub Codespaces. */
 export interface RepoCodespacesSecret {
   /** The name of the secret. */
@@ -1111,21 +787,12 @@ export interface RepoCodespacesSecret {
   created_at: string;
   updated_at: string;
 }
-const RepoCodespacesSecret = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<RepoCodespacesSecret>;
-
 export interface GetSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const GetSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetSecretForAuthenticatedUserRequest>;
-
 /** The type of repositories in the organization that the secret is visible to */
 export type CodespacesSecretVisibility = "all" | "private" | "selected";
-const CodespacesSecretVisibility = S.String;
-
 /** Secrets for a GitHub Codespace. */
 export interface CodespacesSecret {
   /** The name of the secret */
@@ -1139,8 +806,6 @@ export interface CodespacesSecret {
   /** The API URL at which the list of repositories this secret is visible to can be retrieved */
   selected_repositories_url: string;
 }
-const CodespacesSecret = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CodespacesSecret>;
-
 export interface ListDevcontainersInRepositoryForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1151,39 +816,17 @@ export interface ListDevcontainersInRepositoryForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListDevcontainersInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserRequest>;
-
 export interface ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem {
   path: string;
   name?: string;
   display_name?: string;
 }
-const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    3,
-  ) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem>;
-
 export type ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList =
   Array<ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem>;
-const ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    4,
-  ) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList>;
-
 export interface ListDevcontainersInRepositoryForAuthenticatedUserResponse {
   total_count: number;
   devcontainers: ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList;
 }
-const ListDevcontainersInRepositoryForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserResponse>;
-
 export interface ListForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
@@ -1192,19 +835,11 @@ export interface ListForAuthenticatedUserRequest {
   /** ID of the Repository to filter on */
   repository_id?: number;
 }
-const ListForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListForAuthenticatedUserRequest>;
-
 export type ListForAuthenticatedUserResponseCodespacesList = Array<Codespace>;
 export interface ListForAuthenticatedUserResponse {
   total_count: number;
   codespaces: ListForAuthenticatedUserResponseCodespacesList;
 }
-const ListForAuthenticatedUserResponse =
-  GetCodespacesForUserInOrgResponse as any as S.Schema<ListForAuthenticatedUserResponse>;
-
 export interface ListInOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1213,19 +848,11 @@ export interface ListInOrganizationRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListInOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListInOrganizationRequest>;
-
 export type ListInOrganizationResponseCodespacesList = Array<Codespace>;
 export interface ListInOrganizationResponse {
   total_count: number;
   codespaces: ListInOrganizationResponseCodespacesList;
 }
-const ListInOrganizationResponse =
-  GetCodespacesForUserInOrgResponse as any as S.Schema<ListInOrganizationResponse>;
-
 export interface ListInRepositoryForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1236,19 +863,11 @@ export interface ListInRepositoryForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListInRepositoryForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListInRepositoryForAuthenticatedUserRequest>;
-
 export type ListInRepositoryForAuthenticatedUserResponseCodespacesList = Array<Codespace>;
 export interface ListInRepositoryForAuthenticatedUserResponse {
   total_count: number;
   codespaces: ListInRepositoryForAuthenticatedUserResponseCodespacesList;
 }
-const ListInRepositoryForAuthenticatedUserResponse =
-  GetCodespacesForUserInOrgResponse as any as S.Schema<ListInRepositoryForAuthenticatedUserResponse>;
-
 export interface ListOrgSecretsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1257,26 +876,11 @@ export interface ListOrgSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOrgSecretsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListOrgSecretsRequest>;
-
 export type ListOrgSecretsResponseSecretsList = Array<CodespacesOrgSecret>;
-const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListOrgSecretsResponseSecretsList>;
-
 export interface ListOrgSecretsResponse {
   total_count: number;
   secrets: ListOrgSecretsResponseSecretsList;
 }
-const ListOrgSecretsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListOrgSecretsResponse>;
-
 export interface ListRepoSecretsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1287,77 +891,32 @@ export interface ListRepoSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListRepoSecretsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListRepoSecretsRequest>;
-
 export type ListRepoSecretsResponseSecretsList = Array<RepoCodespacesSecret>;
-const ListRepoSecretsResponseSecretsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListRepoSecretsResponseSecretsList>;
-
 export interface ListRepoSecretsResponse {
   total_count: number;
   secrets: ListRepoSecretsResponseSecretsList;
 }
-const ListRepoSecretsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListRepoSecretsResponse>;
-
 export interface ListRepositoriesForSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const ListRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserRequest>;
-
 export type ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList =
   Array<MinimalRepository>;
-const ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList>;
-
 export interface ListRepositoriesForSecretForAuthenticatedUserResponse {
   total_count: number;
   repositories: ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList;
 }
-const ListRepositoriesForSecretForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserResponse>;
-
 export interface ListSecretsForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListSecretsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListSecretsForAuthenticatedUserRequest>;
-
 export type ListSecretsForAuthenticatedUserResponseSecretsList = Array<CodespacesSecret>;
-const ListSecretsForAuthenticatedUserResponseSecretsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListSecretsForAuthenticatedUserResponseSecretsList>;
-
 export interface ListSecretsForAuthenticatedUserResponse {
   total_count: number;
   secrets: ListSecretsForAuthenticatedUserResponseSecretsList;
 }
-const ListSecretsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListSecretsForAuthenticatedUserResponse>;
-
 export interface ListSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1368,26 +927,11 @@ export interface ListSelectedReposForOrgSecretRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListSelectedReposForOrgSecretRequest>;
-
 export type ListSelectedReposForOrgSecretResponseRepositoriesList = Array<MinimalRepository>;
-const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListSelectedReposForOrgSecretResponseRepositoriesList>;
-
 export interface ListSelectedReposForOrgSecretResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgSecretResponseRepositoriesList;
 }
-const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListSelectedReposForOrgSecretResponse>;
-
 export interface PreFlightWithRepoForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1398,29 +942,14 @@ export interface PreFlightWithRepoForAuthenticatedUserRequest {
   /** An alternative IP for default location auto-detection, such as when proxying a request. */
   client_ip?: string;
 }
-const PreFlightWithRepoForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PreFlightWithRepoForAuthenticatedUserRequest>;
-
 export interface PreFlightWithRepoForAuthenticatedUserResponseDefaults {
   location: string;
   devcontainer_path: string | null;
 }
-const PreFlightWithRepoForAuthenticatedUserResponseDefaults = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<PreFlightWithRepoForAuthenticatedUserResponseDefaults>;
-
 export interface PreFlightWithRepoForAuthenticatedUserResponse {
   billable_owner?: SimpleUser;
   defaults?: PreFlightWithRepoForAuthenticatedUserResponseDefaults;
 }
-const PreFlightWithRepoForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PreFlightWithRepoForAuthenticatedUserResponse>;
-
 export interface PublishForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
@@ -1429,19 +958,9 @@ export interface PublishForAuthenticatedUserRequest {
   /** Whether the new repository should be private. */
   private?: boolean;
 }
-const PublishForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PublishForAuthenticatedUserRequest>;
-
 export type FullRepositoryTopicsList = Array<string>;
-const FullRepositoryTopicsList =
-  MinimalRepositoryTopicsList as any as S.Schema<FullRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type FullRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const FullRepositoryPullRequestCreationPolicy = S.String;
-
 export interface FullRepositoryPermissions {
   admin: boolean;
   maintain?: boolean;
@@ -1449,11 +968,6 @@ export interface FullRepositoryPermissions {
   triage?: boolean;
   pull: boolean;
 }
-const FullRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<FullRepositoryPermissions>;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -1463,11 +977,6 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-const NullableLicenseSimple = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<NullableLicenseSimple>;
-
 export interface NullableRepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -1475,45 +984,22 @@ export interface NullableRepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-const NullableRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<NullableRepositoryPermissions>;
-
 export type NullableRepositoryTopicsList = Array<string>;
-const NullableRepositoryTopicsList =
-  MinimalRepositoryTopicsList as any as S.Schema<NullableRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type NullableRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const NullableRepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type NullableRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const NullableRepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type NullableRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const NullableRepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type NullableRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const NullableRepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type NullableRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const NullableRepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export interface NullableRepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-const NullableRepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<NullableRepositoryCodeSearchIndexStatus>;
-
 /** A repository on GitHub. */
 export interface NullableRepository {
   /** Unique identifier of the repository */
@@ -1646,50 +1132,28 @@ export interface NullableRepository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-const NullableRepository = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<NullableRepository>;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type FullRepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const FullRepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type FullRepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const FullRepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type FullRepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const FullRepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type FullRepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const FullRepositoryMergeCommitMessage = S.String;
-
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
 export type RepositoryPermissions = NullableRepositoryPermissions;
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList = MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const RepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const RepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const RepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const RepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const RepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export type RepositoryCodeSearchIndexStatus = NullableRepositoryCodeSearchIndexStatus;
 /** A repository on GitHub. */
@@ -1824,8 +1288,6 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: NullableRepositoryCodeSearchIndexStatus;
 }
-const Repository = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Repository>;
-
 /** Code of Conduct Simple */
 export interface CodeOfConductSimple {
   url: string;
@@ -1833,13 +1295,8 @@ export interface CodeOfConductSimple {
   name: string;
   html_url: string | null;
 }
-const CodeOfConductSimple = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<CodeOfConductSimple>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type FullRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const FullRepositoryCustomPropertiesMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<FullRepositoryCustomPropertiesMap>;
-
 /** Full Repository */
 export interface FullRepository {
   id: number;
@@ -1958,8 +1415,6 @@ export interface FullRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: FullRepositoryCustomPropertiesMap;
 }
-const FullRepository = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<FullRepository>;
-
 /** State of this codespace. */
 export type CodespaceWithFullRepositoryState =
   | "Unknown"
@@ -1979,8 +1434,6 @@ export type CodespaceWithFullRepositoryState =
   | "Exporting"
   | "Updating"
   | "Rebuilding";
-const CodespaceWithFullRepositoryState = S.String;
-
 /** Details about the codespace's git repository. */
 export type CodespaceWithFullRepositoryGitStatus = CodespaceGitStatus;
 /** The initally assigned location of a new codespace. */
@@ -1989,30 +1442,14 @@ export type CodespaceWithFullRepositoryLocation =
   | "SouthEastAsia"
   | "WestEurope"
   | "WestUs2";
-const CodespaceWithFullRepositoryLocation = S.String;
-
 export type CodespaceWithFullRepositoryRecentFoldersList = Array<string>;
-const CodespaceWithFullRepositoryRecentFoldersList =
-  MinimalRepositoryTopicsList as any as S.Schema<CodespaceWithFullRepositoryRecentFoldersList>;
-
 /** The privacy settings a user can select from when forwarding a port. */
 export type CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList =
   Array<string>;
-const CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    4,
-  ) as any as S.Schema<CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList>;
-
 export interface CodespaceWithFullRepositoryRuntimeConstraints {
   /** The privacy settings a user can select from when forwarding a port. */
   allowed_port_privacy_settings?: CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList | null;
 }
-const CodespaceWithFullRepositoryRuntimeConstraints = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CodespaceWithFullRepositoryRuntimeConstraints>;
-
 /** A codespace. */
 export interface CodespaceWithFullRepository {
   id: number;
@@ -2069,25 +1506,12 @@ export interface CodespaceWithFullRepository {
   /** When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at" */
   retention_expires_at?: string | null;
 }
-const CodespaceWithFullRepository = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CodespaceWithFullRepository>;
-
 export interface RemoveRepositoryForSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
   repository_id: number;
 }
-const RemoveRepositoryForSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserRequest>;
-
 export interface RemoveRepositoryForSecretForAuthenticatedUserResponse {}
-const RemoveRepositoryForSecretForAuthenticatedUserResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserResponse>;
-
 export interface RemoveSelectedRepoFromOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2095,15 +1519,7 @@ export interface RemoveSelectedRepoFromOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
-
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-const RemoveSelectedRepoFromOrgSecretResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
-
 export interface RepoMachinesForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -2116,48 +1532,23 @@ export interface RepoMachinesForAuthenticatedUserRequest {
   /** The branch or commit to check for prebuild availability and devcontainer restrictions. */
   ref?: string;
 }
-const RepoMachinesForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<RepoMachinesForAuthenticatedUserRequest>;
-
 export type RepoMachinesForAuthenticatedUserResponseMachinesList = Array<CodespaceMachine>;
 export interface RepoMachinesForAuthenticatedUserResponse {
   total_count: number;
   machines: RepoMachinesForAuthenticatedUserResponseMachinesList;
 }
-const RepoMachinesForAuthenticatedUserResponse =
-  CodespaceMachinesForAuthenticatedUserResponse as any as S.Schema<RepoMachinesForAuthenticatedUserResponse>;
-
 /** An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
 export type SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
   Array<number>;
-const SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    2,
-  ) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList>;
-
 export interface SetRepositoriesForSecretForAuthenticatedUserRequest {
   /** The name of the secret. */
   secret_name: string;
   /** An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints. */
   selected_repository_ids: SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList;
 }
-const SetRepositoriesForSecretForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserRequest>;
-
 export interface SetRepositoriesForSecretForAuthenticatedUserResponse {}
-const SetRepositoriesForSecretForAuthenticatedUserResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserResponse>;
-
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
-  CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
-
 export interface SetSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2166,33 +1557,15 @@ export interface SetSelectedReposForOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList;
 }
-const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
-
 export interface SetSelectedReposForOrgSecretResponse {}
-const SetSelectedReposForOrgSecretResponse =
-  AddRepositoryForSecretForAuthenticatedUserResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
-
 export interface StartForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const StartForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<StartForAuthenticatedUserRequest>;
-
 export interface StopForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const StopForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<StopForAuthenticatedUserRequest>;
-
 export interface StopInOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2201,16 +1574,8 @@ export interface StopInOrganizationRequest {
   /** The name of the codespace. */
   codespace_name: string;
 }
-const StopInOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<StopInOrganizationRequest>;
-
 /** Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in. */
 export type UpdateForAuthenticatedUserRequestRecentFoldersList = Array<string>;
-const UpdateForAuthenticatedUserRequestRecentFoldersList =
-  MinimalRepositoryTopicsList as any as S.Schema<UpdateForAuthenticatedUserRequestRecentFoldersList>;
-
 export interface UpdateForAuthenticatedUserRequest {
   /** The name of the codespace. */
   codespace_name: string;
@@ -2221,11 +1586,6 @@ export interface UpdateForAuthenticatedUserRequest {
   /** Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in. */
   recent_folders?: UpdateForAuthenticatedUserRequestRecentFoldersList;
 }
-const UpdateForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<UpdateForAuthenticatedUserRequest>;
-
 export type AddRepositoryForSecretForAuthenticatedUserError = Forbidden | NotFound | GithubOpError;
 /** Add a selected repository to a user secret Adds a repository to the selected repositories for a user's development environment secret. The authenticated user must have Codespaces access to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint. */
 export const addRepositoryForSecretForAuthenticatedUser: API.OperationMethod<
@@ -2234,8 +1594,8 @@ export const addRepositoryForSecretForAuthenticatedUser: API.OperationMethod<
   AddRepositoryForSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddRepositoryForSecretForAuthenticatedUserRequest,
-  output: AddRepositoryForSecretForAuthenticatedUserResponse,
+  input: __S(0) as any as S.Schema<AddRepositoryForSecretForAuthenticatedUserRequest>,
+  output: __S(1) as any as S.Schema<AddRepositoryForSecretForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2253,8 +1613,8 @@ export const addSelectedRepoToOrgSecret: API.OperationMethod<
   AddSelectedRepoToOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSelectedRepoToOrgSecretRequest,
-  output: AddSelectedRepoToOrgSecretResponse,
+  input: __S(2) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>,
+  output: __S(1) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2272,8 +1632,8 @@ export const checkPermissionsForDevcontainer: API.OperationMethod<
   CheckPermissionsForDevcontainerError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckPermissionsForDevcontainerRequest,
-  output: CodespacesPermissionsCheckForDevcontainer,
+  input: __S(3) as any as S.Schema<CheckPermissionsForDevcontainerRequest>,
+  output: __S(4) as any as S.Schema<CodespacesPermissionsCheckForDevcontainer>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2287,8 +1647,8 @@ export const codespaceMachinesForAuthenticatedUser: API.OperationMethod<
   CodespaceMachinesForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CodespaceMachinesForAuthenticatedUserRequest,
-  output: CodespaceMachinesForAuthenticatedUserResponse,
+  input: __S(5) as any as S.Schema<CodespaceMachinesForAuthenticatedUserRequest>,
+  output: __S(8) as any as S.Schema<CodespaceMachinesForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2302,8 +1662,8 @@ export const createForAuthenticatedUser: API.OperationMethod<
   CreateForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(9) as any as S.Schema<CreateForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2317,8 +1677,8 @@ export const createOrUpdateOrgSecret: API.OperationMethod<
   CreateOrUpdateOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateOrgSecretRequest,
-  output: CreateOrUpdateOrgSecretResponse,
+  input: __S(27) as any as S.Schema<CreateOrUpdateOrgSecretRequest>,
+  output: __S(28) as any as S.Schema<CreateOrUpdateOrgSecretResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2332,8 +1692,8 @@ export const createOrUpdateRepoSecret: API.OperationMethod<
   CreateOrUpdateRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateRepoSecretRequest,
-  output: CreateOrUpdateRepoSecretResponse,
+  input: __S(29) as any as S.Schema<CreateOrUpdateRepoSecretRequest>,
+  output: __S(28) as any as S.Schema<CreateOrUpdateRepoSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2350,8 +1710,8 @@ export const createOrUpdateSecretForAuthenticatedUser: API.OperationMethod<
   CreateOrUpdateSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateSecretForAuthenticatedUserRequest,
-  output: CreateOrUpdateSecretForAuthenticatedUserResponse,
+  input: __S(31) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserRequest>,
+  output: __S(28) as any as S.Schema<CreateOrUpdateSecretForAuthenticatedUserResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2365,8 +1725,8 @@ export const createWithPrForAuthenticatedUser: API.OperationMethod<
   CreateWithPrForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWithPrForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(32) as any as S.Schema<CreateWithPrForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2384,8 +1744,8 @@ export const createWithRepoForAuthenticatedUser: API.OperationMethod<
   CreateWithRepoForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWithRepoForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(33) as any as S.Schema<CreateWithRepoForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2399,8 +1759,8 @@ export const deleteForAuthenticatedUser: API.OperationMethod<
   DeleteForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForAuthenticatedUserRequest,
-  output: DeleteForAuthenticatedUserResponse,
+  input: __S(34) as any as S.Schema<DeleteForAuthenticatedUserRequest>,
+  output: __S(1) as any as S.Schema<DeleteForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2414,8 +1774,8 @@ export const deleteFromOrganization: API.OperationMethod<
   DeleteFromOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFromOrganizationRequest,
-  output: DeleteFromOrganizationResponse,
+  input: __S(35) as any as S.Schema<DeleteFromOrganizationRequest>,
+  output: __S(36) as any as S.Schema<DeleteFromOrganizationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2429,8 +1789,8 @@ export const deleteOrgSecret: API.OperationMethod<
   DeleteOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrgSecretRequest,
-  output: DeleteOrgSecretResponse,
+  input: __S(37) as any as S.Schema<DeleteOrgSecretRequest>,
+  output: __S(36) as any as S.Schema<DeleteOrgSecretResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2444,8 +1804,8 @@ export const deleteRepoSecret: API.OperationMethod<
   DeleteRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoSecretRequest,
-  output: DeleteRepoSecretResponse,
+  input: __S(38) as any as S.Schema<DeleteRepoSecretRequest>,
+  output: __S(36) as any as S.Schema<DeleteRepoSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2459,8 +1819,8 @@ export const deleteSecretForAuthenticatedUser: API.OperationMethod<
   DeleteSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecretForAuthenticatedUserRequest,
-  output: DeleteSecretForAuthenticatedUserResponse,
+  input: __S(39) as any as S.Schema<DeleteSecretForAuthenticatedUserRequest>,
+  output: __S(1) as any as S.Schema<DeleteSecretForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2478,8 +1838,8 @@ export const exportForAuthenticatedUser: API.OperationMethod<
   ExportForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportForAuthenticatedUserRequest,
-  output: ExportForAuthenticatedUserResponse,
+  input: __S(40) as any as S.Schema<ExportForAuthenticatedUserRequest>,
+  output: __S(1) as any as S.Schema<ExportForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2493,8 +1853,8 @@ export const getCodespacesForUserInOrg: API.OperationMethod<
   GetCodespacesForUserInOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCodespacesForUserInOrgRequest,
-  output: GetCodespacesForUserInOrgResponse,
+  input: __S(41) as any as S.Schema<GetCodespacesForUserInOrgRequest>,
+  output: __S(43) as any as S.Schema<GetCodespacesForUserInOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2508,8 +1868,8 @@ export const getExportDetailsForAuthenticatedUser: API.OperationMethod<
   GetExportDetailsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportDetailsForAuthenticatedUserRequest,
-  output: CodespaceExportDetails,
+  input: __S(44) as any as S.Schema<GetExportDetailsForAuthenticatedUserRequest>,
+  output: __S(45) as any as S.Schema<CodespaceExportDetails>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2523,8 +1883,8 @@ export const getForAuthenticatedUser: API.OperationMethod<
   GetForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(46) as any as S.Schema<GetForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2538,8 +1898,8 @@ export const getOrgPublicKey: API.OperationMethod<
   GetOrgPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgPublicKeyRequest,
-  output: CodespacesPublicKey,
+  input: __S(47) as any as S.Schema<GetOrgPublicKeyRequest>,
+  output: __S(48) as any as S.Schema<CodespacesPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2553,8 +1913,8 @@ export const getOrgSecret: API.OperationMethod<
   GetOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgSecretRequest,
-  output: CodespacesOrgSecret,
+  input: __S(49) as any as S.Schema<GetOrgSecretRequest>,
+  output: __S(50) as any as S.Schema<CodespacesOrgSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2568,8 +1928,8 @@ export const getPublicKeyForAuthenticatedUser: API.OperationMethod<
   GetPublicKeyForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicKeyForAuthenticatedUserRequest,
-  output: CodespacesUserPublicKey,
+  input: __S(51) as any as S.Schema<GetPublicKeyForAuthenticatedUserRequest>,
+  output: __S(52) as any as S.Schema<CodespacesUserPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2583,8 +1943,8 @@ export const getRepoPublicKey: API.OperationMethod<
   GetRepoPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoPublicKeyRequest,
-  output: CodespacesPublicKey,
+  input: __S(53) as any as S.Schema<GetRepoPublicKeyRequest>,
+  output: __S(48) as any as S.Schema<CodespacesPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2598,8 +1958,8 @@ export const getRepoSecret: API.OperationMethod<
   GetRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoSecretRequest,
-  output: RepoCodespacesSecret,
+  input: __S(54) as any as S.Schema<GetRepoSecretRequest>,
+  output: __S(55) as any as S.Schema<RepoCodespacesSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2613,8 +1973,8 @@ export const getSecretForAuthenticatedUser: API.OperationMethod<
   GetSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecretForAuthenticatedUserRequest,
-  output: CodespacesSecret,
+  input: __S(56) as any as S.Schema<GetSecretForAuthenticatedUserRequest>,
+  output: __S(57) as any as S.Schema<CodespacesSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2632,8 +1992,8 @@ export const listDevcontainersInRepositoryForAuthenticatedUser: API.OperationMet
   ListDevcontainersInRepositoryForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDevcontainersInRepositoryForAuthenticatedUserRequest,
-  output: ListDevcontainersInRepositoryForAuthenticatedUserResponse,
+  input: __S(58) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserRequest>,
+  output: __S(61) as any as S.Schema<ListDevcontainersInRepositoryForAuthenticatedUserResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2647,8 +2007,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForAuthenticatedUserRequest,
-  output: ListForAuthenticatedUserResponse,
+  input: __S(62) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(43) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2662,8 +2022,8 @@ export const listInOrganization: API.OperationMethod<
   ListInOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInOrganizationRequest,
-  output: ListInOrganizationResponse,
+  input: __S(63) as any as S.Schema<ListInOrganizationRequest>,
+  output: __S(43) as any as S.Schema<ListInOrganizationResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2677,8 +2037,8 @@ export const listInRepositoryForAuthenticatedUser: API.OperationMethod<
   ListInRepositoryForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInRepositoryForAuthenticatedUserRequest,
-  output: ListInRepositoryForAuthenticatedUserResponse,
+  input: __S(64) as any as S.Schema<ListInRepositoryForAuthenticatedUserRequest>,
+  output: __S(43) as any as S.Schema<ListInRepositoryForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2692,8 +2052,8 @@ export const listOrgSecrets: API.OperationMethod<
   ListOrgSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgSecretsRequest,
-  output: ListOrgSecretsResponse,
+  input: __S(65) as any as S.Schema<ListOrgSecretsRequest>,
+  output: __S(67) as any as S.Schema<ListOrgSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2707,8 +2067,8 @@ export const listRepoSecrets: API.OperationMethod<
   ListRepoSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepoSecretsRequest,
-  output: ListRepoSecretsResponse,
+  input: __S(68) as any as S.Schema<ListRepoSecretsRequest>,
+  output: __S(70) as any as S.Schema<ListRepoSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2725,8 +2085,8 @@ export const listRepositoriesForSecretForAuthenticatedUser: API.OperationMethod<
   ListRepositoriesForSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepositoriesForSecretForAuthenticatedUserRequest,
-  output: ListRepositoriesForSecretForAuthenticatedUserResponse,
+  input: __S(71) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserRequest>,
+  output: __S(73) as any as S.Schema<ListRepositoriesForSecretForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2740,8 +2100,8 @@ export const listSecretsForAuthenticatedUser: API.OperationMethod<
   ListSecretsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecretsForAuthenticatedUserRequest,
-  output: ListSecretsForAuthenticatedUserResponse,
+  input: __S(74) as any as S.Schema<ListSecretsForAuthenticatedUserRequest>,
+  output: __S(76) as any as S.Schema<ListSecretsForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2755,8 +2115,8 @@ export const listSelectedReposForOrgSecret: API.OperationMethod<
   ListSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSelectedReposForOrgSecretRequest,
-  output: ListSelectedReposForOrgSecretResponse,
+  input: __S(77) as any as S.Schema<ListSelectedReposForOrgSecretRequest>,
+  output: __S(79) as any as S.Schema<ListSelectedReposForOrgSecretResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2770,8 +2130,8 @@ export const preFlightWithRepoForAuthenticatedUser: API.OperationMethod<
   PreFlightWithRepoForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreFlightWithRepoForAuthenticatedUserRequest,
-  output: PreFlightWithRepoForAuthenticatedUserResponse,
+  input: __S(80) as any as S.Schema<PreFlightWithRepoForAuthenticatedUserRequest>,
+  output: __S(82) as any as S.Schema<PreFlightWithRepoForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2789,8 +2149,8 @@ export const publishForAuthenticatedUser: API.OperationMethod<
   PublishForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishForAuthenticatedUserRequest,
-  output: CodespaceWithFullRepository,
+  input: __S(83) as any as S.Schema<PublishForAuthenticatedUserRequest>,
+  output: __S(94) as any as S.Schema<CodespaceWithFullRepository>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2807,8 +2167,8 @@ export const removeRepositoryForSecretForAuthenticatedUser: API.OperationMethod<
   RemoveRepositoryForSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRepositoryForSecretForAuthenticatedUserRequest,
-  output: RemoveRepositoryForSecretForAuthenticatedUserResponse,
+  input: __S(95) as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserRequest>,
+  output: __S(1) as any as S.Schema<RemoveRepositoryForSecretForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2826,8 +2186,8 @@ export const removeSelectedRepoFromOrgSecret: API.OperationMethod<
   RemoveSelectedRepoFromOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSelectedRepoFromOrgSecretRequest,
-  output: RemoveSelectedRepoFromOrgSecretResponse,
+  input: __S(96) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>,
+  output: __S(1) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2841,8 +2201,8 @@ export const repoMachinesForAuthenticatedUser: API.OperationMethod<
   RepoMachinesForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoMachinesForAuthenticatedUserRequest,
-  output: RepoMachinesForAuthenticatedUserResponse,
+  input: __S(97) as any as S.Schema<RepoMachinesForAuthenticatedUserRequest>,
+  output: __S(8) as any as S.Schema<RepoMachinesForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2859,8 +2219,8 @@ export const setRepositoriesForSecretForAuthenticatedUser: API.OperationMethod<
   SetRepositoriesForSecretForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetRepositoriesForSecretForAuthenticatedUserRequest,
-  output: SetRepositoriesForSecretForAuthenticatedUserResponse,
+  input: __S(99) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserRequest>,
+  output: __S(1) as any as S.Schema<SetRepositoriesForSecretForAuthenticatedUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2874,8 +2234,8 @@ export const setSelectedReposForOrgSecret: API.OperationMethod<
   SetSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSelectedReposForOrgSecretRequest,
-  output: SetSelectedReposForOrgSecretResponse,
+  input: __S(100) as any as S.Schema<SetSelectedReposForOrgSecretRequest>,
+  output: __S(1) as any as S.Schema<SetSelectedReposForOrgSecretResponse>,
   errors: [NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2894,8 +2254,8 @@ export const startForAuthenticatedUser: API.OperationMethod<
   StartForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(101) as any as S.Schema<StartForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2909,8 +2269,8 @@ export const stopForAuthenticatedUser: API.OperationMethod<
   StopForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(102) as any as S.Schema<StopForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2924,8 +2284,8 @@ export const stopInOrganization: API.OperationMethod<
   StopInOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopInOrganizationRequest,
-  output: Codespace,
+  input: __S(103) as any as S.Schema<StopInOrganizationRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -2939,8 +2299,8 @@ export const updateForAuthenticatedUser: API.OperationMethod<
   UpdateForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateForAuthenticatedUserRequest,
-  output: Codespace,
+  input: __S(104) as any as S.Schema<UpdateForAuthenticatedUserRequest>,
+  output: __S(25) as any as S.Schema<Codespace>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -3028,11 +2388,11 @@ function __c0(j: number): any {
           storage_in_bytes: S.Number,
           memory_in_bytes: S.Number,
           cpus: S.Number,
-          prebuild_availability: S.NullOr(CodespaceMachinePrebuildAvailability),
+          prebuild_availability: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CodespaceMachine" });
     case 7:
-      return S.Array(CodespaceMachine);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -3041,7 +2401,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          machines: CodespaceMachinesForAuthenticatedUserResponseMachinesList,
+          machines: __S(7),
         }),
       ).annotate({
         identifier: "CodespaceMachinesForAuthenticatedUserResponse",
@@ -3049,7 +2409,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: CreateForAuthenticatedUserRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/user/codespaces", code: 200 })),
       ).annotate({
         identifier: "CreateForAuthenticatedUserRequest",
@@ -3118,7 +2478,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -3130,7 +2490,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -3139,23 +2499,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 2:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -3163,26 +2518,16 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(15)),
+          code_security: S.optional(__S(15)),
+          dependabot_security_updates: S.optional(__S(15)),
+          secret_scanning: S.optional(__S(15)),
+          secret_scanning_push_protection: S.optional(__S(15)),
+          secret_scanning_non_provider_patterns: S.optional(__S(15)),
+          secret_scanning_ai_detection: S.optional(__S(15)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(16)),
+          secret_scanning_delegated_bypass: S.optional(__S(15)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 5:
@@ -3194,7 +2539,7 @@ function __c2(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(10),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -3250,7 +2595,7 @@ function __c2(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(11)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -3258,28 +2603,28 @@ function __c2(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(12)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(13)),
+          license: S.optional(S.NullOr(__S(14))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(20))),
+          custom_properties: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 7:
@@ -3299,9 +2644,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowed_port_privacy_settings: S.optional(
-            S.NullOr(CodespaceRuntimeConstraintsAllowedPortPrivacySettingsList),
-          ),
+          allowed_port_privacy_settings: S.optional(S.NullOr(__S(11))),
         }),
       ).annotate({
         identifier: "CodespaceRuntimeConstraints",
@@ -3313,19 +2656,19 @@ function __c3(j: number): any {
           name: S.String,
           display_name: S.optional(S.NullOr(S.String)),
           environment_id: S.NullOr(S.String),
-          owner: SimpleUser,
-          billable_owner: SimpleUser,
-          repository: MinimalRepository,
-          machine: S.NullOr(NullableCodespaceMachine),
+          owner: __S(10),
+          billable_owner: __S(10),
+          repository: __S(22),
+          machine: S.NullOr(__S(6)),
           devcontainer_path: S.optional(S.NullOr(S.String)),
           prebuild: S.NullOr(S.Boolean),
           created_at: S.String,
           updated_at: S.String,
           last_used_at: S.String,
-          state: CodespaceState,
+          state: S.String,
           url: S.String,
-          git_status: CodespaceGitStatus,
-          location: CodespaceLocation,
+          git_status: __S(23),
+          location: S.String,
           idle_timeout_minutes: S.NullOr(S.Number),
           web_url: S.String,
           machines_url: S.String,
@@ -3333,8 +2676,8 @@ function __c3(j: number): any {
           stop_url: S.String,
           publish_url: S.optional(S.NullOr(S.String)),
           pulls_url: S.NullOr(S.String),
-          recent_folders: CodespaceRecentFoldersList,
-          runtime_constraints: S.optional(CodespaceRuntimeConstraints),
+          recent_folders: __S(11),
+          runtime_constraints: S.optional(__S(24)),
           pending_operation: S.optional(S.NullOr(S.Boolean)),
           pending_operation_disabled_reason: S.optional(S.NullOr(S.String)),
           idle_timeout_notice: S.optional(S.NullOr(S.String)),
@@ -3352,10 +2695,8 @@ function __c3(j: number): any {
           secret_name: S.String.pipe(T.Label()),
           encrypted_value: S.optional(S.String),
           key_id: S.optional(S.String),
-          visibility: CreateOrUpdateOrgSecretRequestVisibility,
-          selected_repository_ids: S.optional(
-            CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList,
-          ),
+          visibility: S.String,
+          selected_repository_ids: S.optional(__S(26)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/codespaces/secrets/{secret_name}", code: 200 }),
         ),
@@ -3385,16 +2726,14 @@ function __c3(j: number): any {
         identifier: "CreateOrUpdateRepoSecretRequest",
       });
     case 6:
-      return S.Array(CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           secret_name: S.String.pipe(T.Label()),
           encrypted_value: S.optional(S.String),
           key_id: S.String,
-          selected_repository_ids: S.optional(
-            CreateOrUpdateSecretForAuthenticatedUserRequestSelectedRepositoryIdsList,
-          ),
+          selected_repository_ids: S.optional(__S(30)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/user/codespaces/secrets/{secret_name}", code: 200 }),
         ),
@@ -3412,7 +2751,7 @@ function __c4(j: number): any {
           repo: S.String.pipe(T.Label()),
           pull_number: S.Number.pipe(T.Label()),
           location: S.optional(S.String),
-          geo: S.optional(CreateWithPrForAuthenticatedUserRequestGeo),
+          geo: S.optional(S.String),
           client_ip: S.optional(S.String),
           machine: S.optional(S.String),
           devcontainer_path: S.optional(S.String),
@@ -3438,7 +2777,7 @@ function __c4(j: number): any {
           repo: S.String.pipe(T.Label()),
           ref: S.optional(S.String),
           location: S.optional(S.String),
-          geo: S.optional(CreateWithRepoForAuthenticatedUserRequestGeo),
+          geo: S.optional(S.String),
           client_ip: S.optional(S.String),
           machine: S.optional(S.String),
           devcontainer_path: S.optional(S.String),
@@ -3544,12 +2883,12 @@ function __c5(j: number): any {
         identifier: "GetCodespacesForUserInOrgRequest",
       });
     case 2:
-      return S.Array(Codespace);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          codespaces: GetCodespacesForUserInOrgResponseCodespacesList,
+          codespaces: __S(42),
         }),
       ).annotate({
         identifier: "GetCodespacesForUserInOrgResponse",
@@ -3627,7 +2966,7 @@ function __c6(j: number): any {
           name: S.String,
           created_at: S.String,
           updated_at: S.String,
-          visibility: CodespacesOrgSecretVisibility,
+          visibility: S.String,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodespacesOrgSecret" });
@@ -3701,7 +3040,7 @@ function __c7(j: number): any {
           name: S.String,
           created_at: S.String,
           updated_at: S.String,
-          visibility: CodespacesSecretVisibility,
+          visibility: S.String,
           selected_repositories_url: S.String,
         }),
       ).annotate({ identifier: "CodespacesSecret" });
@@ -3733,12 +3072,12 @@ function __c7(j: number): any {
         identifier: "ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem",
       });
     case 4:
-      return S.Array(ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersItem);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          devcontainers: ListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersList,
+          devcontainers: __S(60),
         }),
       ).annotate({
         identifier: "ListDevcontainersInRepositoryForAuthenticatedUserResponse",
@@ -3787,12 +3126,12 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/codespaces/secrets", code: 200 })),
       ).annotate({ identifier: "ListOrgSecretsRequest" });
     case 2:
-      return S.Array(CodespacesOrgSecret);
+      return S.Array(__S(50));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: ListOrgSecretsResponseSecretsList,
+          secrets: __S(66),
         }),
       ).annotate({ identifier: "ListOrgSecretsResponse" });
     case 4:
@@ -3807,12 +3146,12 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListRepoSecretsRequest" });
     case 5:
-      return S.Array(RepoCodespacesSecret);
+      return S.Array(__S(55));
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: ListRepoSecretsResponseSecretsList,
+          secrets: __S(69),
         }),
       ).annotate({ identifier: "ListRepoSecretsResponse" });
     case 7:
@@ -3834,12 +3173,12 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(22));
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: ListRepositoriesForSecretForAuthenticatedUserResponseRepositoriesList,
+          repositories: __S(72),
         }),
       ).annotate({
         identifier: "ListRepositoriesForSecretForAuthenticatedUserResponse",
@@ -3854,12 +3193,12 @@ function __c9(j: number): any {
         identifier: "ListSecretsForAuthenticatedUserRequest",
       });
     case 3:
-      return S.Array(CodespacesSecret);
+      return S.Array(__S(57));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: ListSecretsForAuthenticatedUserResponseSecretsList,
+          secrets: __S(75),
         }),
       ).annotate({
         identifier: "ListSecretsForAuthenticatedUserResponse",
@@ -3882,12 +3221,12 @@ function __c9(j: number): any {
         identifier: "ListSelectedReposForOrgSecretRequest",
       });
     case 6:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(22));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: ListSelectedReposForOrgSecretResponseRepositoriesList,
+          repositories: __S(78),
         }),
       ).annotate({
         identifier: "ListSelectedReposForOrgSecretResponse",
@@ -3919,8 +3258,8 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billable_owner: S.optional(SimpleUser),
-          defaults: S.optional(PreFlightWithRepoForAuthenticatedUserResponseDefaults),
+          billable_owner: S.optional(__S(10)),
+          defaults: S.optional(__S(81)),
         }),
       ).annotate({
         identifier: "PreFlightWithRepoForAuthenticatedUserResponse",
@@ -3992,10 +3331,10 @@ function __c11(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(85)),
           forks: S.Number,
-          permissions: S.optional(NullableRepositoryPermissions),
-          owner: SimpleUser,
+          permissions: S.optional(__S(86)),
+          owner: __S(10),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -4051,7 +3390,7 @@ function __c11(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(NullableRepositoryTopicsList),
+          topics: S.optional(__S(11)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -4059,7 +3398,7 @@ function __c11(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(NullableRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -4073,10 +3412,10 @@ function __c11(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(NullableRepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(NullableRepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(NullableRepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(NullableRepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -4085,7 +3424,7 @@ function __c11(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(NullableRepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "NullableRepository" });
     case 1:
@@ -4095,10 +3434,10 @@ function __c11(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(85)),
           forks: S.Number,
-          permissions: S.optional(NullableRepositoryPermissions),
-          owner: SimpleUser,
+          permissions: S.optional(__S(86)),
+          owner: __S(10),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -4154,7 +3493,7 @@ function __c11(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(11)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -4162,7 +3501,7 @@ function __c11(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -4176,10 +3515,10 @@ function __c11(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -4188,7 +3527,7 @@ function __c11(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(NullableRepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "Repository" });
     case 2:
@@ -4207,7 +3546,7 @@ function __c11(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(10),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -4263,7 +3602,7 @@ function __c11(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(FullRepositoryTopicsList),
+          topics: S.optional(__S(11)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -4271,16 +3610,16 @@ function __c11(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.Boolean,
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(FullRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
           pushed_at: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: S.optional(FullRepositoryPermissions),
+          permissions: S.optional(__S(84)),
           allow_rebase_merge: S.optional(S.Boolean),
-          template_repository: S.optional(S.NullOr(NullableRepository)),
+          template_repository: S.optional(S.NullOr(__S(88))),
           temp_clone_token: S.optional(S.NullOr(S.String)),
           allow_squash_merge: S.optional(S.Boolean),
           allow_auto_merge: S.optional(S.Boolean),
@@ -4288,26 +3627,26 @@ function __c11(j: number): any {
           allow_merge_commit: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(FullRepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(FullRepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(FullRepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(FullRepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
           subscribers_count: S.Number,
           network_count: S.Number,
-          license: S.NullOr(NullableLicenseSimple),
-          organization: S.optional(S.NullOr(SimpleUser)),
-          parent: S.optional(Repository),
-          source: S.optional(Repository),
+          license: S.NullOr(__S(85)),
+          organization: S.optional(S.NullOr(__S(10))),
+          parent: S.optional(__S(89)),
+          source: S.optional(__S(89)),
           forks: S.Number,
           master_branch: S.optional(S.String),
           open_issues: S.Number,
           watchers: S.Number,
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_of_conduct: S.optional(CodeOfConductSimple),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(FullRepositoryCustomPropertiesMap),
+          code_of_conduct: S.optional(__S(90)),
+          security_and_analysis: S.optional(S.NullOr(__S(20))),
+          custom_properties: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "FullRepository" });
     case 4:
@@ -4315,9 +3654,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowed_port_privacy_settings: S.optional(
-            S.NullOr(CodespaceWithFullRepositoryRuntimeConstraintsAllowedPortPrivacySettingsList),
-          ),
+          allowed_port_privacy_settings: S.optional(S.NullOr(__S(92))),
         }),
       ).annotate({
         identifier: "CodespaceWithFullRepositoryRuntimeConstraints",
@@ -4329,19 +3666,19 @@ function __c11(j: number): any {
           name: S.String,
           display_name: S.optional(S.NullOr(S.String)),
           environment_id: S.NullOr(S.String),
-          owner: SimpleUser,
-          billable_owner: SimpleUser,
-          repository: FullRepository,
-          machine: S.NullOr(NullableCodespaceMachine),
+          owner: __S(10),
+          billable_owner: __S(10),
+          repository: __S(91),
+          machine: S.NullOr(__S(6)),
           devcontainer_path: S.optional(S.NullOr(S.String)),
           prebuild: S.NullOr(S.Boolean),
           created_at: S.String,
           updated_at: S.String,
           last_used_at: S.String,
-          state: CodespaceWithFullRepositoryState,
+          state: S.String,
           url: S.String,
-          git_status: CodespaceGitStatus,
-          location: CodespaceWithFullRepositoryLocation,
+          git_status: __S(23),
+          location: S.String,
           idle_timeout_minutes: S.NullOr(S.Number),
           web_url: S.String,
           machines_url: S.String,
@@ -4349,8 +3686,8 @@ function __c11(j: number): any {
           stop_url: S.String,
           publish_url: S.optional(S.NullOr(S.String)),
           pulls_url: S.NullOr(S.String),
-          recent_folders: CodespaceWithFullRepositoryRecentFoldersList,
-          runtime_constraints: S.optional(CodespaceWithFullRepositoryRuntimeConstraints),
+          recent_folders: __S(11),
+          runtime_constraints: S.optional(__S(93)),
           pending_operation: S.optional(S.NullOr(S.Boolean)),
           pending_operation_disabled_reason: S.optional(S.NullOr(S.String)),
           idle_timeout_notice: S.optional(S.NullOr(S.String)),
@@ -4415,8 +3752,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           secret_name: S.String.pipe(T.Label()),
-          selected_repository_ids:
-            SetRepositoriesForSecretForAuthenticatedUserRequestSelectedRepositoryIdsList,
+          selected_repository_ids: __S(98),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4432,7 +3768,7 @@ function __c12(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           secret_name: S.String.pipe(T.Label()),
-          selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList,
+          selected_repository_ids: __S(26),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4489,10 +3825,47 @@ function __c13(j: number): any {
           codespace_name: S.String.pipe(T.Label()),
           machine: S.optional(S.String),
           display_name: S.optional(S.String),
-          recent_folders: S.optional(UpdateForAuthenticatedUserRequestRecentFoldersList),
+          recent_folders: S.optional(__S(11)),
         }).pipe(T.Http({ method: "PATCH", uri: "/user/codespaces/{codespace_name}", code: 200 })),
       ).annotate({
         identifier: "UpdateForAuthenticatedUserRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
   }
 }

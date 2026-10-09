@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -42,22 +44,13 @@ export type FindClosestBuildingInsightsRequiredQualityEnum =
   | "MEDIUM"
   | "LOW"
   | "BASE";
-const FindClosestBuildingInsightsRequiredQualityEnum = S.String;
-
 export type FindClosestBuildingInsightsExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
   | "EXPANDED_COVERAGE"
   | "ROOF_GEOMETRY_INSIGHTS";
-const FindClosestBuildingInsightsExperimentsEnum = S.String;
-
 export type FindClosestBuildingInsightsExperimentsEnumList = Array<
   FindClosestBuildingInsightsExperimentsEnum | (string & {})
 >;
-const FindClosestBuildingInsightsExperimentsEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<FindClosestBuildingInsightsExperimentsEnumList>;
-
 export type FindClosestBuildingInsightsAdditionalInsightsEnum =
   | "ADDITIONAL_INSIGHTS_UNSPECIFIED"
   | "ROOF_GEOMETRY"
@@ -65,9 +58,6 @@ export type FindClosestBuildingInsightsAdditionalInsightsEnum =
 export type FindClosestBuildingInsightsAdditionalInsightsEnumList = Array<
   FindClosestBuildingInsightsAdditionalInsightsEnum | (string & {})
 >;
-const FindClosestBuildingInsightsAdditionalInsightsEnumList =
-  FindClosestBuildingInsightsExperimentsEnumList as any as S.Schema<FindClosestBuildingInsightsAdditionalInsightsEnumList>;
-
 export interface FindClosestBuildingInsightsRequest {
   /** Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only. */
   requiredQuality?: FindClosestBuildingInsightsRequiredQualityEnum | (string & {});
@@ -82,26 +72,17 @@ export interface FindClosestBuildingInsightsRequest {
   /** Optional. A list of additional_insights to be included in the response. */
   additionalInsights?: FindClosestBuildingInsightsAdditionalInsightsEnumList;
 }
-const FindClosestBuildingInsightsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<FindClosestBuildingInsightsRequest>;
-
 export type BuildingInsightsImageryQualityEnum =
   | "IMAGERY_QUALITY_UNSPECIFIED"
   | "HIGH"
   | "MEDIUM"
   | "LOW"
   | "BASE";
-const BuildingInsightsImageryQualityEnum = S.String;
-
 export type BuildingInsightsDetectedArraysDetectionStatusEnum =
   | "DETECTION_STATUS_UNSPECIFIED"
   | "DETECTION_STATUS_DATA_UNAVAILABLE"
   | "DETECTION_STATUS_ARRAYS_DETECTED"
   | "DETECTION_STATUS_NO_ARRAYS_DETECTED";
-const BuildingInsightsDetectedArraysDetectionStatusEnum = S.String;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Solar_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -111,8 +92,6 @@ export interface Solar_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-const Solar_Date = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Solar_Date>;
-
 /** Information about solar arrays detected on the building. */
 export interface BuildingInsightsDetectedArrays {
   /** Indicates the detection status of solar arrays for this building. */
@@ -120,24 +99,13 @@ export interface BuildingInsightsDetectedArrays {
   /** The date indicating when the latest solar array data was captured. */
   latestCaptureDate?: Solar_Date;
 }
-const BuildingInsightsDetectedArrays = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BuildingInsightsDetectedArrays>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
-
 /** Details of a single detected obstacle. */
 export interface Obstacle {
   /** Output only. A GeoJSON representation of the obstacle. An obstacle is defined as any non-buildable area where solar panels cannot be placed due to physical barriers (vents, chimneys, dormers, etc.). The GeoJSON data must be in RFC 7946 format and represent a Polygon for a single contiguous area. The Polygon will be represented by several loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1, -1, 0], [-1, 0, 0], [0, 0, 0], [-1, -1, 0] ] ] } */
   polygonGeojson?: DocumentMap;
 }
-const Obstacle = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Obstacle>;
-
 export type ObstacleList = Array<Obstacle>;
-const ObstacleList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ObstacleList>;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
@@ -145,8 +113,6 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-const LatLng = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LatLng>;
-
 /** A bounding box in lat/lng coordinates. */
 export interface LatLngBox {
   /** The southwest corner of the box. */
@@ -154,11 +120,7 @@ export interface LatLngBox {
   /** The northeast corner of the box. */
   ne?: LatLng;
 }
-const LatLngBox = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LatLngBox>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DoubleList>;
-
 /** Size and sunniness quantiles of a roof, or part of a roof. */
 export interface SizeAndSunshineStats {
   /** The area of the roof or roof segment, in m^2. This is the roof area (accounting for tilt), not the ground footprint area. */
@@ -168,8 +130,6 @@ export interface SizeAndSunshineStats {
   /** The ground footprint area covered by the roof or roof segment, in m^2. */
   groundAreaMeters2?: number;
 }
-const SizeAndSunshineStats = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SizeAndSunshineStats>;
-
 /** Information about the size and sunniness quantiles of a roof segment. */
 export interface RoofSegmentSizeAndSunshineStats {
   /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
@@ -187,17 +147,7 @@ export interface RoofSegmentSizeAndSunshineStats {
   /** Output only. A GeoJSON representation of the detailed geometry for the roof segment plane. The polygon represents the physical roof facet, excluding overlapping vegetation and internal cutouts (e.g., courtyards). This field is only populated if ROOF_GEOMETRY is included in the request's FindClosestBuildingInsightsRequest.additional_insights parameter. The GeoJSON data must be in RFC 7946 format and represent a Polygon for a single contiguous area. The Polygon will be represented by several loops when it contains holes. Example: { "type": "Polygon", "coordinates": [ [ [-1, -1, 0], [-1, 0, 0], [0, 0, 0], [-1, -1, 0] ] ] } */
   polygonGeojson?: DocumentMap;
 }
-const RoofSegmentSizeAndSunshineStats = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RoofSegmentSizeAndSunshineStats>;
-
 export type RoofSegmentSizeAndSunshineStatsList = Array<RoofSegmentSizeAndSunshineStats>;
-const RoofSegmentSizeAndSunshineStatsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RoofSegmentSizeAndSunshineStatsList>;
-
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -207,8 +157,6 @@ export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Money>;
-
 /** Details of a financial analysis. Some of these details are already stored at higher levels (e.g., out of pocket cost). Total money amounts are over a lifetime period defined by the panel_lifetime_years field in SolarPotential. Note: The out of pocket cost of purchasing the panels is given in the out_of_pocket_cost field in CashPurchaseSavings. */
 export interface FinancialDetails {
   /** How many AC kWh we think the solar panels will generate in their first year. */
@@ -232,8 +180,6 @@ export interface FinancialDetails {
   /** Amount of money available from utility incentives; this applies if the user buys (with or without a loan) the panels. */
   utilityIncentive?: Money;
 }
-const FinancialDetails = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<FinancialDetails>;
-
 /** Financial information that's shared between different financing methods. */
 export interface SavingsOverTime {
   /** Savings in the first year after panel installation. */
@@ -249,8 +195,6 @@ export interface SavingsOverTime {
   /** Using the assumed discount rate, what is the present value of the cumulative lifetime savings? */
   presentValueOfSavingsLifetime?: Money;
 }
-const SavingsOverTime = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SavingsOverTime>;
-
 /** Cost and benefit of using a loan to buy a particular configuration of solar panels with a particular electricity usage. */
 export interface FinancedPurchaseSavings {
   /** The interest rate on loans assumed in this set of calculations. */
@@ -262,11 +206,6 @@ export interface FinancedPurchaseSavings {
   /** The value of all tax rebates (including Federal Investment Tax Credit (ITC)). */
   rebateValue?: Money;
 }
-const FinancedPurchaseSavings = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<FinancedPurchaseSavings>;
-
 /** Cost and benefit of leasing a particular configuration of solar panels with a particular electricity usage. */
 export interface LeasingSavings {
   /** Whether leases are supported in this juristiction by the financial calculation engine. If this field is false, then the values in this message should probably be ignored. This is independent of `leases_allowed`: in some areas leases are allowed, but under conditions that aren't handled by the financial models. */
@@ -278,8 +217,6 @@ export interface LeasingSavings {
   /** Estimated annual leasing cost. */
   annualLeasingCost?: Money;
 }
-const LeasingSavings = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LeasingSavings>;
-
 /** Cost and benefit of an outright purchase of a particular configuration of solar panels with a particular electricity usage. */
 export interface CashPurchaseSavings {
   /** Initial cost after tax incentives: it's the amount that must be paid during first year. Contrast with `out_of_pocket_cost`, which is before tax incentives. */
@@ -293,8 +230,6 @@ export interface CashPurchaseSavings {
   /** Number of years until payback occurs. A negative value means payback never occurs within the lifetime period. */
   paybackYears?: number;
 }
-const CashPurchaseSavings = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CashPurchaseSavings>;
-
 /** Analysis of the cost and benefits of the optimum solar layout for a particular electric bill size. */
 export interface FinancialAnalysis {
   /** The monthly electric bill this analysis assumes. */
@@ -314,14 +249,7 @@ export interface FinancialAnalysis {
   /** Cost and benefit of buying the solar panels with cash. */
   cashPurchaseSavings?: CashPurchaseSavings;
 }
-const FinancialAnalysis = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FinancialAnalysis>;
-
 export type FinancialAnalysisList = Array<FinancialAnalysis>;
-const FinancialAnalysisList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<FinancialAnalysisList>;
-
 /** Information about a roof segment on the building, with some number of panels placed on it. */
 export interface RoofSegmentSummary {
   /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
@@ -335,14 +263,7 @@ export interface RoofSegmentSummary {
   /** The total number of panels on this segment. */
   panelsCount?: number;
 }
-const RoofSegmentSummary = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RoofSegmentSummary>;
-
 export type RoofSegmentSummaryList = Array<RoofSegmentSummary>;
-const RoofSegmentSummaryList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<RoofSegmentSummaryList>;
-
 /** SolarPanelConfig describes a particular placement of solar panels on the roof. */
 export interface SolarPanelConfig {
   /** How much sunlight energy this layout captures over the course of a year, in DC kWh, assuming the panels described above. */
@@ -352,17 +273,11 @@ export interface SolarPanelConfig {
   /** Information about the production of each roof segment that is carrying at least one panel in this layout. `roof_segment_summaries[i]` describes the i-th roof segment, including its size, expected production and orientation. */
   roofSegmentSummaries?: RoofSegmentSummaryList;
 }
-const SolarPanelConfig = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SolarPanelConfig>;
-
 export type SolarPanelConfigList = Array<SolarPanelConfig>;
-const SolarPanelConfigList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SolarPanelConfigList>;
-
 export type SolarPanelOrientationEnum =
   | "SOLAR_PANEL_ORIENTATION_UNSPECIFIED"
   | "LANDSCAPE"
   | "PORTRAIT";
-const SolarPanelOrientationEnum = S.String;
-
 /** SolarPanel describes the position, orientation, and production of a single solar panel. See the panel_height_meters, panel_width_meters, and panel_capacity_watts fields in SolarPotential for information on the parameters of the panel. */
 export interface SolarPanel {
   /** How much sunlight energy this layout captures over the course of a year, in DC kWh. */
@@ -374,11 +289,7 @@ export interface SolarPanel {
   /** Index in roof_segment_stats of the `RoofSegmentSizeAndSunshineStats` which corresponds to the roof segment that this panel is placed on. */
   segmentIndex?: number;
 }
-const SolarPanel = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SolarPanel>;
-
 export type SolarPanelList = Array<SolarPanel>;
-const SolarPanelList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SolarPanelList>;
-
 /** Information about the solar potential of a building. A number of fields in this are defined in terms of "panels". The fields panel_capacity_watts, panel_height_meters, and panel_width_meters describe the parameters of the model of panel used in these calculations. */
 export interface SolarPotential {
   /** Equivalent amount of CO2 produced per MWh of grid electricity. This is a measure of the carbon intensity of grid electricity displaced by solar electricity. */
@@ -412,8 +323,6 @@ export interface SolarPotential {
   /** Each SolarPanel describes a single solar panel. They are listed in the order that the panel layout algorithm placed this. This is usually, though not always, in decreasing order of annual energy production. */
   solarPanels?: SolarPanelList;
 }
-const SolarPotential = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SolarPotential>;
-
 /** Response message for `Solar.FindClosestBuildingInsights`. Information about the location, dimensions, and solar potential of a building. */
 export interface BuildingInsights {
   /** The quality of the imagery used to compute the data for this building. */
@@ -441,24 +350,17 @@ export interface BuildingInsights {
   /** Administrative area 1 (e.g., in the US, the state) that contains this building. For example, in the US, the abbreviation might be "MA" or "CA." */
   administrativeArea?: string;
 }
-const BuildingInsights = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<BuildingInsights>;
-
 export type GetDataLayersExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
   | "EXPANDED_COVERAGE"
   | "ROOF_GEOMETRY_INSIGHTS";
 export type GetDataLayersExperimentsEnumList = Array<GetDataLayersExperimentsEnum | (string & {})>;
-const GetDataLayersExperimentsEnumList =
-  FindClosestBuildingInsightsExperimentsEnumList as any as S.Schema<GetDataLayersExperimentsEnumList>;
-
 export type GetDataLayersRequiredQualityEnum =
   | "IMAGERY_QUALITY_UNSPECIFIED"
   | "HIGH"
   | "MEDIUM"
   | "LOW"
   | "BASE";
-const GetDataLayersRequiredQualityEnum = S.String;
-
 export type GetDataLayersViewEnum =
   | "DATA_LAYER_VIEW_UNSPECIFIED"
   | "DSM_LAYER"
@@ -466,8 +368,6 @@ export type GetDataLayersViewEnum =
   | "IMAGERY_AND_ANNUAL_FLUX_LAYERS"
   | "IMAGERY_AND_ALL_FLUX_LAYERS"
   | "FULL_LAYERS";
-const GetDataLayersViewEnum = S.String;
-
 export interface GetDataLayersRequest {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   "location.latitude"?: number;
@@ -486,19 +386,13 @@ export interface GetDataLayersRequest {
   /** Required. The radius, in meters, defining the region surrounding that centre point for which data should be returned. The limitations on this value are: * Any value up to 100m can always be specified. * Values over 100m can be specified, as long as `radius_meters` <= `pixel_size_meters * 1000`. * However, for values over 175m, the `DataLayerView` in the request must not include monthly flux or hourly shade. */
   radiusMeters?: number;
 }
-const GetDataLayersRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetDataLayersRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<StringList>;
-
 export type DataLayersImageryQualityEnum =
   | "IMAGERY_QUALITY_UNSPECIFIED"
   | "HIGH"
   | "MEDIUM"
   | "LOW"
   | "BASE";
-const DataLayersImageryQualityEnum = S.String;
-
 /** Information about the solar potential of a region. The actual data are contained in a number of GeoTIFF files covering the requested region, for which this message contains URLs: Each string in the `DataLayers` message contains a URL from which the corresponding GeoTIFF can be fetched. These URLs are valid for a few hours after they've been generated. Most of the GeoTIFF files are at a resolution of 0.1m/pixel, but the monthly flux file is at 0.5m/pixel, and the hourly shade files are at 1m/pixel. If a `pixel_size_meters` value was specified in the `GetDataLayersRequest`, then the minimum resolution in the GeoTIFF files will be that value. */
 export interface DataLayers {
   /** Twelve URLs for hourly shade, corresponding to January...December, in order. Each GeoTIFF will contain 24 bands, corresponding to the 24 hours of the day. Each pixel is a 32 bit integer, corresponding to the (up to) 31 days of that month; a 1 bit means that the corresponding location is able to see the sun at that day, of that hour, of that month. Invalid locations are stored as -9999 (since this is negative, it has bit 31 set, and no valid value could have bit 31 set as that would correspond to the 32nd day of the month). An example may be useful. If you want to know whether a point (at pixel location (x, y)) saw sun at 4pm on the 22nd of June you would: 1. fetch the sixth URL in this list (corresponding to June). 1. look up the 17th channel (corresponding to 4pm). 1. read the 32-bit value at (x, y). 1. read bit 21 of the value (corresponding to the 22nd of the month). 1. if that bit is a 1, then that spot saw the sun at 4pm 22 June. More formally: Given `month` (1-12), `day` (1...month max; February has 28 days) and `hour` (0-23), the shade/sun for that month/day/hour at a position `(x, y)` is the bit ``` (hourly_shade[month - 1])(x, y)[hour] & (1 << (day - 1)) ``` where `(x, y)` is spatial indexing, `[month - 1]` refers to fetching the `month - 1`st URL (indexing from zero), `[hour]` is indexing into the channels, and a final non-zero result means "sunny". There are no leap days, and DST doesn't exist (all days are 24 hours long; noon is always "standard time" noon). */
@@ -520,17 +414,11 @@ export interface DataLayers {
   /** The URL for an image of RGB data (aerial or satellite photo) of the region. */
   rgbUrl?: string;
 }
-const DataLayers = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DataLayers>;
-
 export interface GetGeoTiffRequest {
   /** Required. The ID of the asset being requested. */
   id?: string;
 }
-const GetGeoTiffRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetGeoTiffRequest>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DocumentMapList>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -540,8 +428,6 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
-const HttpBody = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<HttpBody>;
-
 export type FindClosestBuildingInsightsError = NotFound | Forbidden | GcpOpError;
 /** Locates the building whose centroid is closest to a query point. Returns an error with code `NOT_FOUND` if there are no buildings within approximately 50m of the query point. */
 export const findClosestBuildingInsights: API.OperationMethod<
@@ -550,8 +436,8 @@ export const findClosestBuildingInsights: API.OperationMethod<
   FindClosestBuildingInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindClosestBuildingInsightsRequest,
-  output: BuildingInsights,
+  input: __S(1) as any as S.Schema<FindClosestBuildingInsightsRequest>,
+  output: __S(28) as any as S.Schema<BuildingInsights>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -565,8 +451,8 @@ export const getDataLayers: API.OperationMethod<
   GetDataLayersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataLayersRequest,
-  output: DataLayers,
+  input: __S(29) as any as S.Schema<GetDataLayersRequest>,
+  output: __S(31) as any as S.Schema<DataLayers>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -580,8 +466,8 @@ export const getGeoTiff: API.OperationMethod<
   GetGeoTiffError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeoTiffRequest,
-  output: HttpBody,
+  input: __S(32) as any as S.Schema<GetGeoTiffRequest>,
+  output: __S(34) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -591,20 +477,16 @@ export const getGeoTiff: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FindClosestBuildingInsightsExperimentsEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          requiredQuality: S.optional(
-            FindClosestBuildingInsightsRequiredQualityEnum.pipe(T.Query()),
-          ),
+          requiredQuality: S.optional(S.String.pipe(T.Query())),
           "location.latitude": S.optional(S.Number.pipe(T.Query())),
           "location.longitude": S.optional(S.Number.pipe(T.Query())),
-          experiments: S.optional(FindClosestBuildingInsightsExperimentsEnumList.pipe(T.Query())),
+          experiments: S.optional(__S(0).pipe(T.Query())),
           exactQualityRequired: S.optional(S.Boolean.pipe(T.Query())),
-          additionalInsights: S.optional(
-            FindClosestBuildingInsightsAdditionalInsightsEnumList.pipe(T.Query()),
-          ),
+          additionalInsights: S.optional(__S(0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -626,8 +508,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          detectionStatus: S.optional(BuildingInsightsDetectedArraysDetectionStatusEnum),
-          latestCaptureDate: S.optional(Solar_Date),
+          detectionStatus: S.optional(S.String),
+          latestCaptureDate: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "BuildingInsightsDetectedArrays",
@@ -637,11 +519,11 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          polygonGeojson: S.optional(DocumentMap),
+          polygonGeojson: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "Obstacle" });
     case 6:
-      return S.Array(Obstacle);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -656,8 +538,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sw: S.optional(LatLng),
-          ne: S.optional(LatLng),
+          sw: S.optional(__S(7)),
+          ne: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "LatLngBox" });
     case 1:
@@ -666,7 +548,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           areaMeters2: S.optional(S.Number),
-          sunshineQuantiles: S.optional(DoubleList),
+          sunshineQuantiles: S.optional(__S(9)),
           groundAreaMeters2: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SizeAndSunshineStats" });
@@ -674,18 +556,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pitchDegrees: S.optional(S.Number),
-          center: S.optional(LatLng),
-          boundingBox: S.optional(LatLngBox),
+          center: S.optional(__S(7)),
+          boundingBox: S.optional(__S(8)),
           planeHeightAtCenterMeters: S.optional(S.Number),
-          stats: S.optional(SizeAndSunshineStats),
+          stats: S.optional(__S(10)),
           azimuthDegrees: S.optional(S.Number),
-          polygonGeojson: S.optional(DocumentMap),
+          polygonGeojson: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RoofSegmentSizeAndSunshineStats",
       });
     case 4:
-      return S.Array(RoofSegmentSizeAndSunshineStats);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -701,23 +583,23 @@ function __c1(j: number): any {
           netMeteringAllowed: S.optional(S.Boolean),
           solarPercentage: S.optional(S.Number),
           percentageExportedToGrid: S.optional(S.Number),
-          stateIncentive: S.optional(Money),
-          remainingLifetimeUtilityBill: S.optional(Money),
-          costOfElectricityWithoutSolar: S.optional(Money),
-          federalIncentive: S.optional(Money),
-          lifetimeSrecTotal: S.optional(Money),
-          utilityIncentive: S.optional(Money),
+          stateIncentive: S.optional(__S(13)),
+          remainingLifetimeUtilityBill: S.optional(__S(13)),
+          costOfElectricityWithoutSolar: S.optional(__S(13)),
+          federalIncentive: S.optional(__S(13)),
+          lifetimeSrecTotal: S.optional(__S(13)),
+          utilityIncentive: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "FinancialDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          savingsYear1: S.optional(Money),
-          savingsLifetime: S.optional(Money),
+          savingsYear1: S.optional(__S(13)),
+          savingsLifetime: S.optional(__S(13)),
           financiallyViable: S.optional(S.Boolean),
-          presentValueOfSavingsYear20: S.optional(Money),
-          savingsYear20: S.optional(Money),
-          presentValueOfSavingsLifetime: S.optional(Money),
+          presentValueOfSavingsYear20: S.optional(__S(13)),
+          savingsYear20: S.optional(__S(13)),
+          presentValueOfSavingsLifetime: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "SavingsOverTime" });
   }
@@ -728,9 +610,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           loanInterestRate: S.optional(S.Number),
-          annualLoanPayment: S.optional(Money),
-          savings: S.optional(SavingsOverTime),
-          rebateValue: S.optional(Money),
+          annualLoanPayment: S.optional(__S(13)),
+          savings: S.optional(__S(15)),
+          rebateValue: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "FinancedPurchaseSavings" });
     case 1:
@@ -738,35 +620,35 @@ function __c2(j: number): any {
         S.Struct({
           leasesSupported: S.optional(S.Boolean),
           leasesAllowed: S.optional(S.Boolean),
-          savings: S.optional(SavingsOverTime),
-          annualLeasingCost: S.optional(Money),
+          savings: S.optional(__S(15)),
+          annualLeasingCost: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "LeasingSavings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upfrontCost: S.optional(Money),
-          rebateValue: S.optional(Money),
-          savings: S.optional(SavingsOverTime),
-          outOfPocketCost: S.optional(Money),
+          upfrontCost: S.optional(__S(13)),
+          rebateValue: S.optional(__S(13)),
+          savings: S.optional(__S(15)),
+          outOfPocketCost: S.optional(__S(13)),
           paybackYears: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CashPurchaseSavings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          monthlyBill: S.optional(Money),
+          monthlyBill: S.optional(__S(13)),
           panelConfigIndex: S.optional(S.Number),
           averageKwhPerMonth: S.optional(S.Number),
           defaultBill: S.optional(S.Boolean),
-          financialDetails: S.optional(FinancialDetails),
-          financedPurchaseSavings: S.optional(FinancedPurchaseSavings),
-          leasingSavings: S.optional(LeasingSavings),
-          cashPurchaseSavings: S.optional(CashPurchaseSavings),
+          financialDetails: S.optional(__S(14)),
+          financedPurchaseSavings: S.optional(__S(16)),
+          leasingSavings: S.optional(__S(17)),
+          cashPurchaseSavings: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "FinancialAnalysis" });
     case 4:
-      return S.Array(FinancialAnalysis);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -778,13 +660,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RoofSegmentSummary" });
     case 6:
-      return S.Array(RoofSegmentSummary);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           yearlyEnergyDcKwh: S.optional(S.Number),
           panelsCount: S.optional(S.Number),
-          roofSegmentSummaries: S.optional(RoofSegmentSummaryList),
+          roofSegmentSummaries: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "SolarPanelConfig" });
   }
@@ -792,52 +674,52 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SolarPanelConfig);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
           yearlyEnergyDcKwh: S.optional(S.Number),
-          orientation: S.optional(SolarPanelOrientationEnum),
-          center: S.optional(LatLng),
+          orientation: S.optional(S.String),
+          center: S.optional(__S(7)),
           segmentIndex: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SolarPanel" });
     case 2:
-      return S.Array(SolarPanel);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           carbonOffsetFactorKgPerMwh: S.optional(S.Number),
           maxSunshineHoursPerYear: S.optional(S.Number),
-          obstacles: S.optional(ObstacleList),
-          roofSegmentStats: S.optional(RoofSegmentSizeAndSunshineStatsList),
+          obstacles: S.optional(__S(6)),
+          roofSegmentStats: S.optional(__S(12)),
           panelLifetimeYears: S.optional(S.Number),
           panelHeightMeters: S.optional(S.Number),
           maxArrayPanelsCount: S.optional(S.Number),
-          buildingStats: S.optional(SizeAndSunshineStats),
-          financialAnalyses: S.optional(FinancialAnalysisList),
+          buildingStats: S.optional(__S(10)),
+          financialAnalyses: S.optional(__S(20)),
           panelWidthMeters: S.optional(S.Number),
           maxArrayAreaMeters2: S.optional(S.Number),
           panelCapacityWatts: S.optional(S.Number),
-          solarPanelConfigs: S.optional(SolarPanelConfigList),
-          wholeRoofStats: S.optional(SizeAndSunshineStats),
-          solarPanels: S.optional(SolarPanelList),
+          solarPanelConfigs: S.optional(__S(24)),
+          wholeRoofStats: S.optional(__S(10)),
+          solarPanels: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "SolarPotential" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          imageryQuality: S.optional(BuildingInsightsImageryQualityEnum),
-          detectedArrays: S.optional(BuildingInsightsDetectedArrays),
-          solarPotential: S.optional(SolarPotential),
+          imageryQuality: S.optional(S.String),
+          detectedArrays: S.optional(__S(3)),
+          solarPotential: S.optional(__S(27)),
           statisticalArea: S.optional(S.String),
-          imageryDate: S.optional(Solar_Date),
+          imageryDate: S.optional(__S(2)),
           name: S.optional(S.String),
-          boundingBox: S.optional(LatLngBox),
-          imageryProcessedDate: S.optional(Solar_Date),
+          boundingBox: S.optional(__S(8)),
+          imageryProcessedDate: S.optional(__S(2)),
           postalCode: S.optional(S.String),
           regionCode: S.optional(S.String),
-          center: S.optional(LatLng),
+          center: S.optional(__S(7)),
           administrativeArea: S.optional(S.String),
         }),
       ).annotate({ identifier: "BuildingInsights" });
@@ -845,9 +727,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           "location.latitude": S.optional(S.Number.pipe(T.Query())),
-          experiments: S.optional(GetDataLayersExperimentsEnumList.pipe(T.Query())),
-          requiredQuality: S.optional(GetDataLayersRequiredQualityEnum.pipe(T.Query())),
-          view: S.optional(GetDataLayersViewEnum.pipe(T.Query())),
+          experiments: S.optional(__S(0).pipe(T.Query())),
+          requiredQuality: S.optional(S.String.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           "location.longitude": S.optional(S.Number.pipe(T.Query())),
           exactQualityRequired: S.optional(S.Boolean.pipe(T.Query())),
           pixelSizeMeters: S.optional(S.Number.pipe(T.Query())),
@@ -865,11 +747,11 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          hourlyShadeUrls: S.optional(StringList),
+          hourlyShadeUrls: S.optional(__S(30)),
           monthlyFluxUrl: S.optional(S.String),
-          imageryQuality: S.optional(DataLayersImageryQualityEnum),
-          imageryProcessedDate: S.optional(Solar_Date),
-          imageryDate: S.optional(Solar_Date),
+          imageryQuality: S.optional(S.String),
+          imageryProcessedDate: S.optional(__S(2)),
+          imageryDate: S.optional(__S(2)),
           dsmUrl: S.optional(S.String),
           annualFluxUrl: S.optional(S.String),
           maskUrl: S.optional(S.String),
@@ -893,14 +775,33 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "GetGeoTiffRequest" });
     case 1:
-      return S.Array(DocumentMap);
+      return S.Array(__S(4));
     case 2:
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
           contentType: S.optional(S.String),
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "HttpBody" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Chime SDK Messaging",
   serviceShapeName: "ChimeMessagingService",
@@ -81,7 +83,7 @@ export class BadRequestException
     "BadRequestException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -92,7 +94,7 @@ export class ConflictException
     "ConflictException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -103,7 +105,7 @@ export class ForbiddenException
     "ForbiddenException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -114,7 +116,7 @@ export class NotFoundException
     "NotFoundException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -125,7 +127,7 @@ export class ResourceLimitExceededException
     "ResourceLimitExceededException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -136,7 +138,7 @@ export class ServiceFailureException
     "ServiceFailureException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -147,7 +149,7 @@ export class ServiceUnavailableException
     "ServiceUnavailableException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -158,7 +160,7 @@ export class ThrottledClientException
     "ThrottledClientException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -169,7 +171,7 @@ export class UnauthorizedClientException
     "UnauthorizedClientException",
     {
       Code: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({ identifier: "ErrorCode" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -181,20 +183,9 @@ export interface AssociateChannelFlowRequest {
   ChannelFlowArn: string;
   ChimeBearer: string;
 }
-const AssociateChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateChannelFlowRequest>;
 export interface AssociateChannelFlowResponse {}
-const AssociateChannelFlowResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateChannelFlowResponse>;
 export type ChannelMembershipType = "DEFAULT" | "HIDDEN" | (string & {});
-const ChannelMembershipType = S.String;
-
 export type MemberArns = string[];
-const MemberArns = /*@__PURE__*/ __L.at(__c0, 2);
 export type SubChannelId = string;
 export interface BatchCreateChannelMembershipRequest {
   ChannelArn: string;
@@ -203,18 +194,12 @@ export interface BatchCreateChannelMembershipRequest {
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const BatchCreateChannelMembershipRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BatchCreateChannelMembershipRequest>;
 export type ResourceName = string | redacted.Redacted<string>;
 export interface Identity {
   Arn?: string;
   Name?: string | redacted.Redacted<string>;
 }
-const Identity = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Identity>;
 export type Members = Identity[];
-const Members = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchChannelMemberships {
   InvitedBy?: Identity;
   Type?: ChannelMembershipType;
@@ -222,10 +207,6 @@ export interface BatchChannelMemberships {
   ChannelArn?: string;
   SubChannelId?: string;
 }
-const BatchChannelMemberships = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BatchChannelMemberships>;
 export type ErrorCode =
   | "BadRequest"
   | "Conflict"
@@ -243,27 +224,16 @@ export type ErrorCode =
   | "VoiceConnectorGroupAssociationsExist"
   | "PhoneNumberAssociationsExist"
   | (string & {});
-const ErrorCode = S.String;
-
 export interface BatchCreateChannelMembershipError_ {
   MemberArn?: string;
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-const BatchCreateChannelMembershipError_ = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchCreateChannelMembershipError_>;
 export type BatchCreateChannelMembershipErrors = BatchCreateChannelMembershipError_[];
-const BatchCreateChannelMembershipErrors = /*@__PURE__*/ __L.at(__c1, 0);
 export interface BatchCreateChannelMembershipResponse {
   BatchChannelMemberships?: BatchChannelMemberships;
   Errors?: BatchCreateChannelMembershipError_[];
 }
-const BatchCreateChannelMembershipResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchCreateChannelMembershipResponse>;
 export type CallbackIdType = string;
 export type NonNullableBoolean = boolean;
 export type MessageId = string;
@@ -272,30 +242,18 @@ export type Metadata = string | redacted.Redacted<string>;
 export type PushNotificationTitle = string | redacted.Redacted<string>;
 export type PushNotificationBody = string | redacted.Redacted<string>;
 export type PushNotificationType = "DEFAULT" | "VOIP" | (string & {});
-const PushNotificationType = S.String;
-
 export interface PushNotificationConfiguration {
   Title?: string | redacted.Redacted<string>;
   Body?: string | redacted.Redacted<string>;
   Type?: PushNotificationType;
 }
-const PushNotificationConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PushNotificationConfiguration>;
 export type MessageAttributeName = string | redacted.Redacted<string>;
 export type MessageAttributeStringValue = string | redacted.Redacted<string>;
 export type MessageAttributeStringValues = (string | redacted.Redacted<string>)[];
-const MessageAttributeStringValues = /*@__PURE__*/ __L.at(__c1, 3);
 export interface MessageAttributeValue {
   StringValues?: (string | redacted.Redacted<string>)[];
 }
-const MessageAttributeValue = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MessageAttributeValue>;
 export type MessageAttributeMap = { [key: string]: MessageAttributeValue | undefined };
-const MessageAttributeMap = /*@__PURE__*/ __L.at(__c1, 5);
 export type ContentType = string | redacted.Redacted<string>;
 export interface ChannelMessageCallback {
   MessageId: string;
@@ -306,35 +264,19 @@ export interface ChannelMessageCallback {
   SubChannelId?: string;
   ContentType?: string | redacted.Redacted<string>;
 }
-const ChannelMessageCallback = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ChannelMessageCallback>;
 export interface ChannelFlowCallbackRequest {
   CallbackId: string;
   ChannelArn: string;
   DeleteResource?: boolean;
   ChannelMessage: ChannelMessageCallback;
 }
-const ChannelFlowCallbackRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ChannelFlowCallbackRequest>;
 export interface ChannelFlowCallbackResponse {
   ChannelArn?: string;
   CallbackId?: string;
 }
-const ChannelFlowCallbackResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ChannelFlowCallbackResponse>;
 export type NonEmptyResourceName = string | redacted.Redacted<string>;
 export type ChannelMode = "UNRESTRICTED" | "RESTRICTED" | (string & {});
-const ChannelMode = S.String;
-
 export type ChannelPrivacy = "PUBLIC" | "PRIVATE" | (string & {});
-const ChannelPrivacy = S.String;
-
 export type ClientRequestToken = string | redacted.Redacted<string>;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
@@ -342,14 +284,10 @@ export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-const Tag = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c2, 2);
 export type ChannelId = string | redacted.Redacted<string>;
 export type ChannelMemberArns = string[];
-const ChannelMemberArns = MemberArns as any as S.Schema<ChannelMemberArns>;
 export type ChannelModeratorArns = string[];
-const ChannelModeratorArns = MemberArns as any as S.Schema<ChannelModeratorArns>;
 export type MaximumSubChannels = number;
 export type TargetMembershipsPerSubChannel = number;
 export type MinimumMembershipPercentage = number;
@@ -358,19 +296,12 @@ export interface ElasticChannelConfiguration {
   TargetMembershipsPerSubChannel: number;
   MinimumMembershipPercentage: number;
 }
-const ElasticChannelConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ElasticChannelConfiguration>;
 export type ExpirationDays = number;
 export type ExpirationCriterion = "CREATED_TIMESTAMP" | "LAST_MESSAGE_TIMESTAMP" | (string & {});
-const ExpirationCriterion = S.String;
-
 export interface ExpirationSettings {
   ExpirationDays: number;
   ExpirationCriterion: ExpirationCriterion;
 }
-const ExpirationSettings = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ExpirationSettings>;
 export interface CreateChannelRequest {
   AppInstanceArn: string;
   Name: string | redacted.Redacted<string>;
@@ -386,60 +317,36 @@ export interface CreateChannelRequest {
   ElasticChannelConfiguration?: ElasticChannelConfiguration;
   ExpirationSettings?: ExpirationSettings;
 }
-const CreateChannelRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateChannelRequest>;
 export interface CreateChannelResponse {
   ChannelArn?: string;
 }
-const CreateChannelResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateChannelResponse>;
 export interface CreateChannelBanRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
 }
-const CreateChannelBanRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateChannelBanRequest>;
 export interface CreateChannelBanResponse {
   ChannelArn?: string;
   Member?: Identity;
 }
-const CreateChannelBanResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateChannelBanResponse>;
 export type LambdaFunctionArn = string;
 export type InvocationType = "ASYNC" | (string & {});
-const InvocationType = S.String;
-
 export interface LambdaConfiguration {
   ResourceArn: string;
   InvocationType: InvocationType;
 }
-const LambdaConfiguration = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<LambdaConfiguration>;
 export interface ProcessorConfiguration {
   Lambda: LambdaConfiguration;
 }
-const ProcessorConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ProcessorConfiguration>;
 export type ChannelFlowExecutionOrder = number;
 export type FallbackAction = "CONTINUE" | "ABORT" | (string & {});
-const FallbackAction = S.String;
-
 export interface Processor {
   Name: string | redacted.Redacted<string>;
   Configuration: ProcessorConfiguration;
   ExecutionOrder: number;
   FallbackAction: FallbackAction;
 }
-const Processor = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Processor>;
 export type ProcessorList = Processor[];
-const ProcessorList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateChannelFlowRequest {
   AppInstanceArn: string;
   Processors: Processor[];
@@ -447,17 +354,9 @@ export interface CreateChannelFlowRequest {
   Tags?: Tag[];
   ClientRequestToken: string | redacted.Redacted<string>;
 }
-const CreateChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateChannelFlowRequest>;
 export interface CreateChannelFlowResponse {
   ChannelFlowArn?: string;
 }
-const CreateChannelFlowResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateChannelFlowResponse>;
 export interface CreateChannelMembershipRequest {
   ChannelArn: string;
   MemberArn: string;
@@ -465,126 +364,63 @@ export interface CreateChannelMembershipRequest {
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const CreateChannelMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateChannelMembershipRequest>;
 export interface CreateChannelMembershipResponse {
   ChannelArn?: string;
   Member?: Identity;
   SubChannelId?: string;
 }
-const CreateChannelMembershipResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateChannelMembershipResponse>;
 export interface CreateChannelModeratorRequest {
   ChannelArn: string;
   ChannelModeratorArn: string;
   ChimeBearer: string;
 }
-const CreateChannelModeratorRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateChannelModeratorRequest>;
 export interface CreateChannelModeratorResponse {
   ChannelArn?: string;
   ChannelModerator?: Identity;
 }
-const CreateChannelModeratorResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateChannelModeratorResponse>;
 export interface DeleteChannelRequest {
   ChannelArn: string;
   ChimeBearer: string;
 }
-const DeleteChannelRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-const DeleteChannelResponse =
-  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteChannelBanRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
 }
-const DeleteChannelBanRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteChannelBanRequest>;
 export interface DeleteChannelBanResponse {}
-const DeleteChannelBanResponse =
-  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelBanResponse>;
 export interface DeleteChannelFlowRequest {
   ChannelFlowArn: string;
 }
-const DeleteChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteChannelFlowRequest>;
 export interface DeleteChannelFlowResponse {}
-const DeleteChannelFlowResponse =
-  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelFlowResponse>;
 export interface DeleteChannelMembershipRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const DeleteChannelMembershipRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteChannelMembershipRequest>;
 export interface DeleteChannelMembershipResponse {}
-const DeleteChannelMembershipResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteChannelMembershipResponse>;
 export interface DeleteChannelMessageRequest {
   ChannelArn: string;
   MessageId: string;
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const DeleteChannelMessageRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeleteChannelMessageRequest>;
 export interface DeleteChannelMessageResponse {}
-const DeleteChannelMessageResponse =
-  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelMessageResponse>;
 export interface DeleteChannelModeratorRequest {
   ChannelArn: string;
   ChannelModeratorArn: string;
   ChimeBearer: string;
 }
-const DeleteChannelModeratorRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteChannelModeratorRequest>;
 export interface DeleteChannelModeratorResponse {}
-const DeleteChannelModeratorResponse =
-  AssociateChannelFlowResponse as any as S.Schema<DeleteChannelModeratorResponse>;
 export interface DeleteMessagingStreamingConfigurationsRequest {
   AppInstanceArn: string;
 }
-const DeleteMessagingStreamingConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteMessagingStreamingConfigurationsRequest>;
 export interface DeleteMessagingStreamingConfigurationsResponse {}
-const DeleteMessagingStreamingConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteMessagingStreamingConfigurationsResponse>;
 export interface DescribeChannelRequest {
   ChannelArn: string;
   ChimeBearer: string;
 }
-const DescribeChannelRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DescribeChannelRequest>;
 export interface Channel {
   Name?: string | redacted.Redacted<string>;
   ChannelArn?: string;
@@ -599,44 +435,26 @@ export interface Channel {
   ElasticChannelConfiguration?: ElasticChannelConfiguration;
   ExpirationSettings?: ExpirationSettings;
 }
-const Channel = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Channel>;
 export interface DescribeChannelResponse {
   Channel?: Channel;
 }
-const DescribeChannelResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DescribeChannelResponse>;
 export interface DescribeChannelBanRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
 }
-const DescribeChannelBanRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DescribeChannelBanRequest>;
 export interface ChannelBan {
   Member?: Identity;
   ChannelArn?: string;
   CreatedTimestamp?: Date;
   CreatedBy?: Identity;
 }
-const ChannelBan = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ChannelBan>;
 export interface DescribeChannelBanResponse {
   ChannelBan?: ChannelBan;
 }
-const DescribeChannelBanResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DescribeChannelBanResponse>;
 export interface DescribeChannelFlowRequest {
   ChannelFlowArn: string;
 }
-const DescribeChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DescribeChannelFlowRequest>;
 export interface ChannelFlow {
   ChannelFlowArn?: string;
   Processors?: Processor[];
@@ -644,24 +462,15 @@ export interface ChannelFlow {
   CreatedTimestamp?: Date;
   LastUpdatedTimestamp?: Date;
 }
-const ChannelFlow = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ChannelFlow>;
 export interface DescribeChannelFlowResponse {
   ChannelFlow?: ChannelFlow;
 }
-const DescribeChannelFlowResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DescribeChannelFlowResponse>;
 export interface DescribeChannelMembershipRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const DescribeChannelMembershipRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DescribeChannelMembershipRequest>;
 export interface ChannelMembership {
   InvitedBy?: Identity;
   Type?: ChannelMembershipType;
@@ -671,23 +480,14 @@ export interface ChannelMembership {
   LastUpdatedTimestamp?: Date;
   SubChannelId?: string;
 }
-const ChannelMembership = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ChannelMembership>;
 export interface DescribeChannelMembershipResponse {
   ChannelMembership?: ChannelMembership;
 }
-const DescribeChannelMembershipResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DescribeChannelMembershipResponse>;
 export interface DescribeChannelMembershipForAppInstanceUserRequest {
   ChannelArn: string;
   AppInstanceUserArn: string;
   ChimeBearer: string;
 }
-const DescribeChannelMembershipForAppInstanceUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserRequest>;
 export interface ChannelSummary {
   Name?: string | redacted.Redacted<string>;
   ChannelArn?: string;
@@ -696,161 +496,87 @@ export interface ChannelSummary {
   Metadata?: string | redacted.Redacted<string>;
   LastMessageTimestamp?: Date;
 }
-const ChannelSummary = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ChannelSummary>;
 export interface AppInstanceUserMembershipSummary {
   Type?: ChannelMembershipType;
   ReadMarkerTimestamp?: Date;
   SubChannelId?: string;
 }
-const AppInstanceUserMembershipSummary = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<AppInstanceUserMembershipSummary>;
 export interface ChannelMembershipForAppInstanceUserSummary {
   ChannelSummary?: ChannelSummary;
   AppInstanceUserMembershipSummary?: AppInstanceUserMembershipSummary;
 }
-const ChannelMembershipForAppInstanceUserSummary = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ChannelMembershipForAppInstanceUserSummary>;
 export interface DescribeChannelMembershipForAppInstanceUserResponse {
   ChannelMembership?: ChannelMembershipForAppInstanceUserSummary;
 }
-const DescribeChannelMembershipForAppInstanceUserResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserResponse>;
 export interface DescribeChannelModeratedByAppInstanceUserRequest {
   ChannelArn: string;
   AppInstanceUserArn: string;
   ChimeBearer: string;
 }
-const DescribeChannelModeratedByAppInstanceUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserRequest>;
 export interface ChannelModeratedByAppInstanceUserSummary {
   ChannelSummary?: ChannelSummary;
 }
-const ChannelModeratedByAppInstanceUserSummary = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ChannelModeratedByAppInstanceUserSummary>;
 export interface DescribeChannelModeratedByAppInstanceUserResponse {
   Channel?: ChannelModeratedByAppInstanceUserSummary;
 }
-const DescribeChannelModeratedByAppInstanceUserResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserResponse>;
 export interface DescribeChannelModeratorRequest {
   ChannelArn: string;
   ChannelModeratorArn: string;
   ChimeBearer: string;
 }
-const DescribeChannelModeratorRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DescribeChannelModeratorRequest>;
 export interface ChannelModerator {
   Moderator?: Identity;
   ChannelArn?: string;
   CreatedTimestamp?: Date;
   CreatedBy?: Identity;
 }
-const ChannelModerator = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ChannelModerator>;
 export interface DescribeChannelModeratorResponse {
   ChannelModerator?: ChannelModerator;
 }
-const DescribeChannelModeratorResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DescribeChannelModeratorResponse>;
 export interface DisassociateChannelFlowRequest {
   ChannelArn: string;
   ChannelFlowArn: string;
   ChimeBearer: string;
 }
-const DisassociateChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DisassociateChannelFlowRequest>;
 export interface DisassociateChannelFlowResponse {}
-const DisassociateChannelFlowResponse =
-  DeleteChannelMembershipResponse as any as S.Schema<DisassociateChannelFlowResponse>;
 export interface GetChannelMembershipPreferencesRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
 }
-const GetChannelMembershipPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetChannelMembershipPreferencesRequest>;
 export type AllowNotifications = "ALL" | "NONE" | "FILTERED" | (string & {});
-const AllowNotifications = S.String;
-
 export type FilterRule = string | redacted.Redacted<string>;
 export interface PushNotificationPreferences {
   AllowNotifications: AllowNotifications;
   FilterRule?: string | redacted.Redacted<string>;
 }
-const PushNotificationPreferences = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<PushNotificationPreferences>;
 export interface ChannelMembershipPreferences {
   PushNotifications?: PushNotificationPreferences;
 }
-const ChannelMembershipPreferences = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ChannelMembershipPreferences>;
 export interface GetChannelMembershipPreferencesResponse {
   ChannelArn?: string;
   Member?: Identity;
   Preferences?: ChannelMembershipPreferences;
 }
-const GetChannelMembershipPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetChannelMembershipPreferencesResponse>;
 export interface GetChannelMessageRequest {
   ChannelArn: string;
   MessageId: string;
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const GetChannelMessageRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetChannelMessageRequest>;
 export type Content = string | redacted.Redacted<string>;
 export type ChannelMessageType = "STANDARD" | "CONTROL" | (string & {});
-const ChannelMessageType = S.String;
-
 export type ChannelMessagePersistenceType = "PERSISTENT" | "NON_PERSISTENT" | (string & {});
-const ChannelMessagePersistenceType = S.String;
-
 export type ChannelMessageStatus = "SENT" | "PENDING" | "FAILED" | "DENIED" | (string & {});
-const ChannelMessageStatus = S.String;
-
 export type StatusDetail = string;
 export interface ChannelMessageStatusStructure {
   Value?: ChannelMessageStatus;
   Detail?: string;
 }
-const ChannelMessageStatusStructure = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ChannelMessageStatusStructure>;
 export interface Target {
   MemberArn?: string;
 }
-const Target = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Target>;
 export type TargetList = Target[];
-const TargetList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface ChannelMessage {
   ChannelArn?: string;
   MessageId?: string;
@@ -869,83 +595,41 @@ export interface ChannelMessage {
   ContentType?: string | redacted.Redacted<string>;
   Target?: Target[];
 }
-const ChannelMessage = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ChannelMessage>;
 export interface GetChannelMessageResponse {
   ChannelMessage?: ChannelMessage;
 }
-const GetChannelMessageResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetChannelMessageResponse>;
 export interface GetChannelMessageStatusRequest {
   ChannelArn: string;
   MessageId: string;
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const GetChannelMessageStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetChannelMessageStatusRequest>;
 export interface GetChannelMessageStatusResponse {
   Status?: ChannelMessageStatusStructure;
 }
-const GetChannelMessageStatusResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetChannelMessageStatusResponse>;
 export type NetworkType = "IPV4_ONLY" | "DUAL_STACK" | (string & {});
-const NetworkType = S.String;
-
 export interface GetMessagingSessionEndpointRequest {
   NetworkType?: NetworkType;
 }
-const GetMessagingSessionEndpointRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetMessagingSessionEndpointRequest>;
 export type UrlType = string;
 export interface MessagingSessionEndpoint {
   Url?: string;
 }
-const MessagingSessionEndpoint = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<MessagingSessionEndpoint>;
 export interface GetMessagingSessionEndpointResponse {
   Endpoint?: MessagingSessionEndpoint;
 }
-const GetMessagingSessionEndpointResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetMessagingSessionEndpointResponse>;
 export interface GetMessagingStreamingConfigurationsRequest {
   AppInstanceArn: string;
 }
-const GetMessagingStreamingConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetMessagingStreamingConfigurationsRequest>;
 export type MessagingDataType = "Channel" | "ChannelMessage" | (string & {});
-const MessagingDataType = S.String;
-
 export interface StreamingConfiguration {
   DataType: MessagingDataType;
   ResourceArn: string;
 }
-const StreamingConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<StreamingConfiguration>;
 export type StreamingConfigurationList = StreamingConfiguration[];
-const StreamingConfigurationList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface GetMessagingStreamingConfigurationsResponse {
   StreamingConfigurations?: StreamingConfiguration[];
 }
-const GetMessagingStreamingConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetMessagingStreamingConfigurationsResponse>;
 export type MaxResults = number;
 export type NextToken = string | redacted.Redacted<string>;
 export interface ListChannelBansRequest {
@@ -954,50 +638,30 @@ export interface ListChannelBansRequest {
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }
-const ListChannelBansRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListChannelBansRequest>;
 export interface ChannelBanSummary {
   Member?: Identity;
 }
-const ChannelBanSummary = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ChannelBanSummary>;
 export type ChannelBanSummaryList = ChannelBanSummary[];
-const ChannelBanSummaryList = /*@__PURE__*/ __L.at(__c11, 1);
 export interface ListChannelBansResponse {
   ChannelArn?: string;
   NextToken?: string | redacted.Redacted<string>;
   ChannelBans?: ChannelBanSummary[];
 }
-const ListChannelBansResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListChannelBansResponse>;
 export interface ListChannelFlowsRequest {
   AppInstanceArn: string;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelFlowsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListChannelFlowsRequest>;
 export interface ChannelFlowSummary {
   ChannelFlowArn?: string;
   Name?: string | redacted.Redacted<string>;
   Processors?: Processor[];
 }
-const ChannelFlowSummary = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ChannelFlowSummary>;
 export type ChannelFlowSummaryList = ChannelFlowSummary[];
-const ChannelFlowSummaryList = /*@__PURE__*/ __L.at(__c11, 5);
 export interface ListChannelFlowsResponse {
   ChannelFlows?: ChannelFlowSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelFlowsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListChannelFlowsResponse>;
 export interface ListChannelMembershipsRequest {
   ChannelArn: string;
   Type?: ChannelMembershipType;
@@ -1006,49 +670,28 @@ export interface ListChannelMembershipsRequest {
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const ListChannelMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListChannelMembershipsRequest>;
 export interface ChannelMembershipSummary {
   Member?: Identity;
 }
 export type ChannelMembershipSummaryList = ChannelMembershipSummary[];
-const ChannelMembershipSummaryList =
-  ChannelBanSummaryList as any as S.Schema<ChannelMembershipSummaryList>;
 export interface ListChannelMembershipsResponse {
   ChannelArn?: string;
   ChannelMemberships?: ChannelMembershipSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelMembershipsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListChannelMembershipsResponse>;
 export interface ListChannelMembershipsForAppInstanceUserRequest {
   AppInstanceUserArn?: string;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }
-const ListChannelMembershipsForAppInstanceUserRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListChannelMembershipsForAppInstanceUserRequest>;
 export type ChannelMembershipForAppInstanceUserSummaryList =
   ChannelMembershipForAppInstanceUserSummary[];
-const ChannelMembershipForAppInstanceUserSummaryList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListChannelMembershipsForAppInstanceUserResponse {
   ChannelMemberships?: ChannelMembershipForAppInstanceUserSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelMembershipsForAppInstanceUserResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListChannelMembershipsForAppInstanceUserResponse>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-const SortOrder = S.String;
-
 export interface ListChannelMessagesRequest {
   ChannelArn: string;
   SortOrder?: SortOrder;
@@ -1059,10 +702,6 @@ export interface ListChannelMessagesRequest {
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const ListChannelMessagesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListChannelMessagesRequest>;
 export interface ChannelMessageSummary {
   MessageId?: string;
   Content?: string | redacted.Redacted<string>;
@@ -1078,50 +717,28 @@ export interface ChannelMessageSummary {
   ContentType?: string | redacted.Redacted<string>;
   Target?: Target[];
 }
-const ChannelMessageSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ChannelMessageSummary>;
 export type ChannelMessageSummaryList = ChannelMessageSummary[];
-const ChannelMessageSummaryList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ListChannelMessagesResponse {
   ChannelArn?: string;
   NextToken?: string | redacted.Redacted<string>;
   ChannelMessages?: ChannelMessageSummary[];
   SubChannelId?: string;
 }
-const ListChannelMessagesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListChannelMessagesResponse>;
 export interface ListChannelModeratorsRequest {
   ChannelArn: string;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }
-const ListChannelModeratorsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListChannelModeratorsRequest>;
 export interface ChannelModeratorSummary {
   Moderator?: Identity;
 }
-const ChannelModeratorSummary = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ChannelModeratorSummary>;
 export type ChannelModeratorSummaryList = ChannelModeratorSummary[];
-const ChannelModeratorSummaryList = /*@__PURE__*/ __L.at(__c13, 2);
 export interface ListChannelModeratorsResponse {
   ChannelArn?: string;
   NextToken?: string | redacted.Redacted<string>;
   ChannelModerators?: ChannelModeratorSummary[];
 }
-const ListChannelModeratorsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListChannelModeratorsResponse>;
 export interface ListChannelsRequest {
   AppInstanceArn: string;
   Privacy?: ChannelPrivacy;
@@ -1129,26 +746,16 @@ export interface ListChannelsRequest {
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }
-const ListChannelsRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ListChannelsRequest>;
 export type ChannelSummaryList = ChannelSummary[];
-const ChannelSummaryList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ListChannelsResponse {
   Channels?: ChannelSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListChannelsResponse>;
 export interface ListChannelsAssociatedWithChannelFlowRequest {
   ChannelFlowArn: string;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelsAssociatedWithChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListChannelsAssociatedWithChannelFlowRequest>;
 export interface ChannelAssociatedWithFlowSummary {
   Name?: string | redacted.Redacted<string>;
   ChannelArn?: string;
@@ -1156,180 +763,104 @@ export interface ChannelAssociatedWithFlowSummary {
   Privacy?: ChannelPrivacy;
   Metadata?: string | redacted.Redacted<string>;
 }
-const ChannelAssociatedWithFlowSummary = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ChannelAssociatedWithFlowSummary>;
 export type ChannelAssociatedWithFlowSummaryList = ChannelAssociatedWithFlowSummary[];
-const ChannelAssociatedWithFlowSummaryList = /*@__PURE__*/ __L.at(__c14, 1);
 export interface ListChannelsAssociatedWithChannelFlowResponse {
   Channels?: ChannelAssociatedWithFlowSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelsAssociatedWithChannelFlowResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListChannelsAssociatedWithChannelFlowResponse>;
 export interface ListChannelsModeratedByAppInstanceUserRequest {
   AppInstanceUserArn?: string;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }
-const ListChannelsModeratedByAppInstanceUserRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListChannelsModeratedByAppInstanceUserRequest>;
 export type ChannelModeratedByAppInstanceUserSummaryList =
   ChannelModeratedByAppInstanceUserSummary[];
-const ChannelModeratedByAppInstanceUserSummaryList = /*@__PURE__*/ __L.at(__c14, 4);
 export interface ListChannelsModeratedByAppInstanceUserResponse {
   Channels?: ChannelModeratedByAppInstanceUserSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListChannelsModeratedByAppInstanceUserResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListChannelsModeratedByAppInstanceUserResponse>;
 export interface ListSubChannelsRequest {
   ChannelArn: string;
   ChimeBearer: string;
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListSubChannelsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListSubChannelsRequest>;
 export type MembershipCount = number;
 export interface SubChannelSummary {
   SubChannelId?: string;
   MembershipCount?: number;
 }
-const SubChannelSummary = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SubChannelSummary>;
 export type SubChannelSummaryList = SubChannelSummary[];
-const SubChannelSummaryList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListSubChannelsResponse {
   ChannelArn?: string;
   SubChannels?: SubChannelSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const ListSubChannelsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListSubChannelsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutChannelExpirationSettingsRequest {
   ChannelArn: string;
   ChimeBearer?: string;
   ExpirationSettings?: ExpirationSettings;
 }
-const PutChannelExpirationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<PutChannelExpirationSettingsRequest>;
 export interface PutChannelExpirationSettingsResponse {
   ChannelArn?: string;
   ExpirationSettings?: ExpirationSettings;
 }
-const PutChannelExpirationSettingsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PutChannelExpirationSettingsResponse>;
 export interface PutChannelMembershipPreferencesRequest {
   ChannelArn: string;
   MemberArn: string;
   ChimeBearer: string;
   Preferences: ChannelMembershipPreferences;
 }
-const PutChannelMembershipPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<PutChannelMembershipPreferencesRequest>;
 export interface PutChannelMembershipPreferencesResponse {
   ChannelArn?: string;
   Member?: Identity;
   Preferences?: ChannelMembershipPreferences;
 }
-const PutChannelMembershipPreferencesResponse =
-  GetChannelMembershipPreferencesResponse as any as S.Schema<PutChannelMembershipPreferencesResponse>;
 export interface PutMessagingStreamingConfigurationsRequest {
   AppInstanceArn: string;
   StreamingConfigurations: StreamingConfiguration[];
 }
-const PutMessagingStreamingConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<PutMessagingStreamingConfigurationsRequest>;
 export interface PutMessagingStreamingConfigurationsResponse {
   StreamingConfigurations?: StreamingConfiguration[];
 }
-const PutMessagingStreamingConfigurationsResponse =
-  GetMessagingStreamingConfigurationsResponse as any as S.Schema<PutMessagingStreamingConfigurationsResponse>;
 export interface RedactChannelMessageRequest {
   ChannelArn: string;
   MessageId: string;
   ChimeBearer: string;
   SubChannelId?: string;
 }
-const RedactChannelMessageRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<RedactChannelMessageRequest>;
 export interface RedactChannelMessageResponse {
   ChannelArn?: string;
   MessageId?: string;
   SubChannelId?: string;
 }
-const RedactChannelMessageResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<RedactChannelMessageResponse>;
 export type SearchFieldKey = "MEMBERS" | (string & {});
-const SearchFieldKey = S.String;
-
 export type SearchFieldValue = string;
 export type SearchFieldValues = string[];
-const SearchFieldValues = MemberArns as any as S.Schema<SearchFieldValues>;
 export type SearchFieldOperator = "EQUALS" | "INCLUDES" | (string & {});
-const SearchFieldOperator = S.String;
-
 export interface SearchField {
   Key: SearchFieldKey;
   Values: string[];
   Operator: SearchFieldOperator;
 }
-const SearchField = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<SearchField>;
 export type SearchFields = SearchField[];
-const SearchFields = /*@__PURE__*/ __L.at(__c16, 3);
 export interface SearchChannelsRequest {
   ChimeBearer?: string;
   Fields: SearchField[];
   MaxResults?: number;
   NextToken?: string | redacted.Redacted<string>;
 }
-const SearchChannelsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<SearchChannelsRequest>;
 export interface SearchChannelsResponse {
   Channels?: ChannelSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-const SearchChannelsResponse = ListChannelsResponse as any as S.Schema<SearchChannelsResponse>;
 export interface SendChannelMessageRequest {
   ChannelArn: string;
   Content: string | redacted.Redacted<string>;
@@ -1344,40 +875,23 @@ export interface SendChannelMessageRequest {
   ContentType?: string | redacted.Redacted<string>;
   Target?: Target[];
 }
-const SendChannelMessageRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<SendChannelMessageRequest>;
 export interface SendChannelMessageResponse {
   ChannelArn?: string;
   MessageId?: string;
   Status?: ChannelMessageStatusStructure;
   SubChannelId?: string;
 }
-const SendChannelMessageResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<SendChannelMessageResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = AssociateChannelFlowResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
-const TagKeyList = MessageAttributeStringValues as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: (string | redacted.Redacted<string>)[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  AssociateChannelFlowResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   ChannelArn: string;
   Name?: string | redacted.Redacted<string>;
@@ -1385,28 +899,17 @@ export interface UpdateChannelRequest {
   Metadata?: string | redacted.Redacted<string>;
   ChimeBearer: string;
 }
-const UpdateChannelRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<UpdateChannelRequest>;
 export interface UpdateChannelResponse {
   ChannelArn?: string;
 }
-const UpdateChannelResponse = CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateChannelFlowRequest {
   ChannelFlowArn: string;
   Processors: Processor[];
   Name: string | redacted.Redacted<string>;
 }
-const UpdateChannelFlowRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<UpdateChannelFlowRequest>;
 export interface UpdateChannelFlowResponse {
   ChannelFlowArn?: string;
 }
-const UpdateChannelFlowResponse =
-  CreateChannelFlowResponse as any as S.Schema<UpdateChannelFlowResponse>;
 export interface UpdateChannelMessageRequest {
   ChannelArn: string;
   MessageId: string;
@@ -1416,33 +919,19 @@ export interface UpdateChannelMessageRequest {
   SubChannelId?: string;
   ContentType?: string | redacted.Redacted<string>;
 }
-const UpdateChannelMessageRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<UpdateChannelMessageRequest>;
 export interface UpdateChannelMessageResponse {
   ChannelArn?: string;
   MessageId?: string;
   Status?: ChannelMessageStatusStructure;
   SubChannelId?: string;
 }
-const UpdateChannelMessageResponse =
-  SendChannelMessageResponse as any as S.Schema<UpdateChannelMessageResponse>;
 export interface UpdateChannelReadMarkerRequest {
   ChannelArn: string;
   ChimeBearer: string;
 }
-const UpdateChannelReadMarkerRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<UpdateChannelReadMarkerRequest>;
 export interface UpdateChannelReadMarkerResponse {
   ChannelArn?: string;
 }
-const UpdateChannelReadMarkerResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<UpdateChannelReadMarkerResponse>;
 export type AssociateChannelFlowError =
   | BadRequestException
   | ConflictException
@@ -1468,8 +957,8 @@ export const associateChannelFlow: API.OperationMethod<
   AssociateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateChannelFlowRequest,
-  output: AssociateChannelFlowResponse,
+  input: __S(0) as any as S.Schema<AssociateChannelFlowRequest>,
+  output: __S(1) as any as S.Schema<AssociateChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1504,8 +993,8 @@ export const batchCreateChannelMembership: API.OperationMethod<
   BatchCreateChannelMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateChannelMembershipRequest,
-  output: BatchCreateChannelMembershipResponse,
+  input: __S(3) as any as S.Schema<BatchCreateChannelMembershipRequest>,
+  output: __S(9) as any as S.Schema<BatchCreateChannelMembershipResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1547,8 +1036,8 @@ export const channelFlowCallback: API.OperationMethod<
   ChannelFlowCallbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChannelFlowCallbackRequest,
-  output: ChannelFlowCallbackResponse,
+  input: __S(15) as any as S.Schema<ChannelFlowCallbackRequest>,
+  output: __S(16) as any as S.Schema<ChannelFlowCallbackResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1589,8 +1078,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelRequest,
-  output: CreateChannelResponse,
+  input: __S(21) as any as S.Schema<CreateChannelRequest>,
+  output: __S(22) as any as S.Schema<CreateChannelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1635,8 +1124,8 @@ export const createChannelBan: API.OperationMethod<
   CreateChannelBanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelBanRequest,
-  output: CreateChannelBanResponse,
+  input: __S(23) as any as S.Schema<CreateChannelBanRequest>,
+  output: __S(24) as any as S.Schema<CreateChannelBanResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1685,8 +1174,8 @@ export const createChannelFlow: API.OperationMethod<
   CreateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelFlowRequest,
-  output: CreateChannelFlowResponse,
+  input: __S(29) as any as S.Schema<CreateChannelFlowRequest>,
+  output: __S(30) as any as S.Schema<CreateChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1744,8 +1233,8 @@ export const createChannelMembership: API.OperationMethod<
   CreateChannelMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelMembershipRequest,
-  output: CreateChannelMembershipResponse,
+  input: __S(31) as any as S.Schema<CreateChannelMembershipRequest>,
+  output: __S(32) as any as S.Schema<CreateChannelMembershipResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1795,8 +1284,8 @@ export const createChannelModerator: API.OperationMethod<
   CreateChannelModeratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelModeratorRequest,
-  output: CreateChannelModeratorResponse,
+  input: __S(33) as any as S.Schema<CreateChannelModeratorRequest>,
+  output: __S(34) as any as S.Schema<CreateChannelModeratorResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1835,8 +1324,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelRequest,
-  output: DeleteChannelResponse,
+  input: __S(35) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(1) as any as S.Schema<DeleteChannelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1872,8 +1361,8 @@ export const deleteChannelBan: API.OperationMethod<
   DeleteChannelBanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelBanRequest,
-  output: DeleteChannelBanResponse,
+  input: __S(36) as any as S.Schema<DeleteChannelBanRequest>,
+  output: __S(1) as any as S.Schema<DeleteChannelBanResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1908,8 +1397,8 @@ export const deleteChannelFlow: API.OperationMethod<
   DeleteChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelFlowRequest,
-  output: DeleteChannelFlowResponse,
+  input: __S(37) as any as S.Schema<DeleteChannelFlowRequest>,
+  output: __S(1) as any as S.Schema<DeleteChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1946,8 +1435,8 @@ export const deleteChannelMembership: API.OperationMethod<
   DeleteChannelMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelMembershipRequest,
-  output: DeleteChannelMembershipResponse,
+  input: __S(38) as any as S.Schema<DeleteChannelMembershipRequest>,
+  output: __S(39) as any as S.Schema<DeleteChannelMembershipResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1985,8 +1474,8 @@ export const deleteChannelMessage: API.OperationMethod<
   DeleteChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelMessageRequest,
-  output: DeleteChannelMessageResponse,
+  input: __S(40) as any as S.Schema<DeleteChannelMessageRequest>,
+  output: __S(1) as any as S.Schema<DeleteChannelMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2021,8 +1510,8 @@ export const deleteChannelModerator: API.OperationMethod<
   DeleteChannelModeratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelModeratorRequest,
-  output: DeleteChannelModeratorResponse,
+  input: __S(41) as any as S.Schema<DeleteChannelModeratorRequest>,
+  output: __S(1) as any as S.Schema<DeleteChannelModeratorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2054,8 +1543,8 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
   DeleteMessagingStreamingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMessagingStreamingConfigurationsRequest,
-  output: DeleteMessagingStreamingConfigurationsResponse,
+  input: __S(42) as any as S.Schema<DeleteMessagingStreamingConfigurationsRequest>,
+  output: __S(43) as any as S.Schema<DeleteMessagingStreamingConfigurationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2091,8 +1580,8 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelRequest,
-  output: DescribeChannelResponse,
+  input: __S(44) as any as S.Schema<DescribeChannelRequest>,
+  output: __S(46) as any as S.Schema<DescribeChannelResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2128,8 +1617,8 @@ export const describeChannelBan: API.OperationMethod<
   DescribeChannelBanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelBanRequest,
-  output: DescribeChannelBanResponse,
+  input: __S(47) as any as S.Schema<DescribeChannelBanRequest>,
+  output: __S(49) as any as S.Schema<DescribeChannelBanResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2161,8 +1650,8 @@ export const describeChannelFlow: API.OperationMethod<
   DescribeChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelFlowRequest,
-  output: DescribeChannelFlowResponse,
+  input: __S(50) as any as S.Schema<DescribeChannelFlowRequest>,
+  output: __S(52) as any as S.Schema<DescribeChannelFlowResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2198,8 +1687,8 @@ export const describeChannelMembership: API.OperationMethod<
   DescribeChannelMembershipError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelMembershipRequest,
-  output: DescribeChannelMembershipResponse,
+  input: __S(53) as any as S.Schema<DescribeChannelMembershipRequest>,
+  output: __S(55) as any as S.Schema<DescribeChannelMembershipResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2236,8 +1725,8 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
   DescribeChannelMembershipForAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelMembershipForAppInstanceUserRequest,
-  output: DescribeChannelMembershipForAppInstanceUserResponse,
+  input: __S(56) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserRequest>,
+  output: __S(60) as any as S.Schema<DescribeChannelMembershipForAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2273,8 +1762,8 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
   DescribeChannelModeratedByAppInstanceUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelModeratedByAppInstanceUserRequest,
-  output: DescribeChannelModeratedByAppInstanceUserResponse,
+  input: __S(61) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserRequest>,
+  output: __S(63) as any as S.Schema<DescribeChannelModeratedByAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2310,8 +1799,8 @@ export const describeChannelModerator: API.OperationMethod<
   DescribeChannelModeratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelModeratorRequest,
-  output: DescribeChannelModeratorResponse,
+  input: __S(64) as any as S.Schema<DescribeChannelModeratorRequest>,
+  output: __S(66) as any as S.Schema<DescribeChannelModeratorResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2352,8 +1841,8 @@ export const disassociateChannelFlow: API.OperationMethod<
   DisassociateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateChannelFlowRequest,
-  output: DisassociateChannelFlowResponse,
+  input: __S(67) as any as S.Schema<DisassociateChannelFlowRequest>,
+  output: __S(39) as any as S.Schema<DisassociateChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2394,8 +1883,8 @@ export const getChannelMembershipPreferences: API.OperationMethod<
   GetChannelMembershipPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelMembershipPreferencesRequest,
-  output: GetChannelMembershipPreferencesResponse,
+  input: __S(68) as any as S.Schema<GetChannelMembershipPreferencesRequest>,
+  output: __S(71) as any as S.Schema<GetChannelMembershipPreferencesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2431,8 +1920,8 @@ export const getChannelMessage: API.OperationMethod<
   GetChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelMessageRequest,
-  output: GetChannelMessageResponse,
+  input: __S(72) as any as S.Schema<GetChannelMessageRequest>,
+  output: __S(77) as any as S.Schema<GetChannelMessageResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2491,8 +1980,8 @@ export const getChannelMessageStatus: API.OperationMethod<
   GetChannelMessageStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelMessageStatusRequest,
-  output: GetChannelMessageStatusResponse,
+  input: __S(78) as any as S.Schema<GetChannelMessageStatusRequest>,
+  output: __S(79) as any as S.Schema<GetChannelMessageStatusResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2522,8 +2011,8 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
   GetMessagingSessionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMessagingSessionEndpointRequest,
-  output: GetMessagingSessionEndpointResponse,
+  input: __S(80) as any as S.Schema<GetMessagingSessionEndpointRequest>,
+  output: __S(82) as any as S.Schema<GetMessagingSessionEndpointResponse>,
   errors: [
     ForbiddenException,
     ServiceFailureException,
@@ -2555,8 +2044,8 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
   GetMessagingStreamingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMessagingStreamingConfigurationsRequest,
-  output: GetMessagingStreamingConfigurationsResponse,
+  input: __S(83) as any as S.Schema<GetMessagingStreamingConfigurationsRequest>,
+  output: __S(86) as any as S.Schema<GetMessagingStreamingConfigurationsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2593,8 +2082,8 @@ export const listChannelBans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelBansRequest,
-  output: ListChannelBansResponse,
+  input: __S(87) as any as S.Schema<ListChannelBansRequest>,
+  output: __S(90) as any as S.Schema<ListChannelBansResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2631,8 +2120,8 @@ export const listChannelFlows: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelFlowsRequest,
-  output: ListChannelFlowsResponse,
+  input: __S(91) as any as S.Schema<ListChannelFlowsRequest>,
+  output: __S(94) as any as S.Schema<ListChannelFlowsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2676,8 +2165,8 @@ export const listChannelMemberships: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelMembershipsRequest,
-  output: ListChannelMembershipsResponse,
+  input: __S(95) as any as S.Schema<ListChannelMembershipsRequest>,
+  output: __S(96) as any as S.Schema<ListChannelMembershipsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2719,8 +2208,8 @@ export const listChannelMembershipsForAppInstanceUser: API.PaginatedOperationMet
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelMembershipsForAppInstanceUserRequest,
-  output: ListChannelMembershipsForAppInstanceUserResponse,
+  input: __S(97) as any as S.Schema<ListChannelMembershipsForAppInstanceUserRequest>,
+  output: __S(99) as any as S.Schema<ListChannelMembershipsForAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2767,8 +2256,8 @@ export const listChannelMessages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelMessagesRequest,
-  output: ListChannelMessagesResponse,
+  input: __S(100) as any as S.Schema<ListChannelMessagesRequest>,
+  output: __S(103) as any as S.Schema<ListChannelMessagesResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2809,8 +2298,8 @@ export const listChannelModerators: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelModeratorsRequest,
-  output: ListChannelModeratorsResponse,
+  input: __S(104) as any as S.Schema<ListChannelModeratorsRequest>,
+  output: __S(107) as any as S.Schema<ListChannelModeratorsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2860,8 +2349,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelsRequest,
-  output: ListChannelsResponse,
+  input: __S(108) as any as S.Schema<ListChannelsRequest>,
+  output: __S(110) as any as S.Schema<ListChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2898,8 +2387,8 @@ export const listChannelsAssociatedWithChannelFlow: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelsAssociatedWithChannelFlowRequest,
-  output: ListChannelsAssociatedWithChannelFlowResponse,
+  input: __S(111) as any as S.Schema<ListChannelsAssociatedWithChannelFlowRequest>,
+  output: __S(114) as any as S.Schema<ListChannelsAssociatedWithChannelFlowResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2940,8 +2429,8 @@ export const listChannelsModeratedByAppInstanceUser: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelsModeratedByAppInstanceUserRequest,
-  output: ListChannelsModeratedByAppInstanceUserResponse,
+  input: __S(115) as any as S.Schema<ListChannelsModeratedByAppInstanceUserRequest>,
+  output: __S(117) as any as S.Schema<ListChannelsModeratedByAppInstanceUserResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -2978,8 +2467,8 @@ export const listSubChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSubChannelsRequest,
-  output: ListSubChannelsResponse,
+  input: __S(118) as any as S.Schema<ListSubChannelsRequest>,
+  output: __S(121) as any as S.Schema<ListSubChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3015,8 +2504,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(122) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(123) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3058,8 +2547,8 @@ export const putChannelExpirationSettings: API.OperationMethod<
   PutChannelExpirationSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutChannelExpirationSettingsRequest,
-  output: PutChannelExpirationSettingsResponse,
+  input: __S(124) as any as S.Schema<PutChannelExpirationSettingsRequest>,
+  output: __S(125) as any as S.Schema<PutChannelExpirationSettingsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3100,8 +2589,8 @@ export const putChannelMembershipPreferences: API.OperationMethod<
   PutChannelMembershipPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutChannelMembershipPreferencesRequest,
-  output: PutChannelMembershipPreferencesResponse,
+  input: __S(126) as any as S.Schema<PutChannelMembershipPreferencesRequest>,
+  output: __S(71) as any as S.Schema<PutChannelMembershipPreferencesResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3136,8 +2625,8 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
   PutMessagingStreamingConfigurationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMessagingStreamingConfigurationsRequest,
-  output: PutMessagingStreamingConfigurationsResponse,
+  input: __S(127) as any as S.Schema<PutMessagingStreamingConfigurationsRequest>,
+  output: __S(86) as any as S.Schema<PutMessagingStreamingConfigurationsResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3176,8 +2665,8 @@ export const redactChannelMessage: API.OperationMethod<
   RedactChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedactChannelMessageRequest,
-  output: RedactChannelMessageResponse,
+  input: __S(128) as any as S.Schema<RedactChannelMessageRequest>,
+  output: __S(129) as any as S.Schema<RedactChannelMessageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3218,8 +2707,8 @@ export const searchChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchChannelsRequest,
-  output: SearchChannelsResponse,
+  input: __S(132) as any as S.Schema<SearchChannelsRequest>,
+  output: __S(110) as any as S.Schema<SearchChannelsResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3265,8 +2754,8 @@ export const sendChannelMessage: API.OperationMethod<
   SendChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendChannelMessageRequest,
-  output: SendChannelMessageResponse,
+  input: __S(133) as any as S.Schema<SendChannelMessageRequest>,
+  output: __S(134) as any as S.Schema<SendChannelMessageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3299,8 +2788,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(135) as any as S.Schema<TagResourceRequest>,
+  output: __S(1) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3332,8 +2821,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(136) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -3371,8 +2860,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelRequest,
-  output: UpdateChannelResponse,
+  input: __S(137) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(22) as any as S.Schema<UpdateChannelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3405,8 +2894,8 @@ export const updateChannelFlow: API.OperationMethod<
   UpdateChannelFlowError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelFlowRequest,
-  output: UpdateChannelFlowResponse,
+  input: __S(138) as any as S.Schema<UpdateChannelFlowRequest>,
+  output: __S(30) as any as S.Schema<UpdateChannelFlowResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3443,8 +2932,8 @@ export const updateChannelMessage: API.OperationMethod<
   UpdateChannelMessageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelMessageRequest,
-  output: UpdateChannelMessageResponse,
+  input: __S(139) as any as S.Schema<UpdateChannelMessageRequest>,
+  output: __S(134) as any as S.Schema<UpdateChannelMessageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3481,8 +2970,8 @@ export const updateChannelReadMarker: API.OperationMethod<
   UpdateChannelReadMarkerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelReadMarkerRequest,
-  output: UpdateChannelReadMarkerResponse,
+  input: __S(140) as any as S.Schema<UpdateChannelReadMarkerRequest>,
+  output: __S(141) as any as S.Schema<UpdateChannelReadMarkerResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3529,8 +3018,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
-          Type: S.optional(ChannelMembershipType),
-          MemberArns: MemberArns,
+          Type: S.optional(S.String),
+          MemberArns: __S(2),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
           SubChannelId: S.optional(S.String),
         }).pipe(
@@ -3554,13 +3043,13 @@ function __c0(j: number): any {
         S.Struct({ Arn: S.optional(S.String), Name: S.optional(SensitiveString) }),
       ).annotate({ identifier: "Identity" });
     case 5:
-      return S.Array(Identity);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InvitedBy: S.optional(Identity),
-          Type: S.optional(ChannelMembershipType),
-          Members: S.optional(Members),
+          InvitedBy: S.optional(__S(4)),
+          Type: S.optional(S.String),
+          Members: S.optional(__S(5)),
           ChannelArn: S.optional(S.String),
           SubChannelId: S.optional(S.String),
         }),
@@ -3569,7 +3058,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MemberArn: S.optional(S.String),
-          ErrorCode: S.optional(ErrorCode),
+          ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -3580,12 +3069,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BatchCreateChannelMembershipError_);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          BatchChannelMemberships: S.optional(BatchChannelMemberships),
-          Errors: S.optional(BatchCreateChannelMembershipErrors),
+          BatchChannelMemberships: S.optional(__S(6)),
+          Errors: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "BatchCreateChannelMembershipResponse",
@@ -3595,7 +3084,7 @@ function __c1(j: number): any {
         S.Struct({
           Title: S.optional(SensitiveString),
           Body: S.optional(SensitiveString),
-          Type: S.optional(PushNotificationType),
+          Type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PushNotificationConfiguration",
@@ -3603,19 +3092,19 @@ function __c1(j: number): any {
     case 3:
       return S.Array(SensitiveString);
     case 4:
-      return S.suspend(() =>
-        S.Struct({ StringValues: S.optional(MessageAttributeStringValues) }),
-      ).annotate({ identifier: "MessageAttributeValue" });
+      return S.suspend(() => S.Struct({ StringValues: S.optional(__S(11)) })).annotate({
+        identifier: "MessageAttributeValue",
+      });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ MessageAttributeValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(12).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
           MessageId: S.String,
           Content: S.optional(SensitiveString),
           Metadata: S.optional(SensitiveString),
-          PushNotification: S.optional(PushNotificationConfiguration),
-          MessageAttributes: S.optional(MessageAttributeMap),
+          PushNotification: S.optional(__S(10)),
+          MessageAttributes: S.optional(__S(13)),
           SubChannelId: S.optional(S.String),
           ContentType: S.optional(SensitiveString),
         }),
@@ -3626,7 +3115,7 @@ function __c1(j: number): any {
           CallbackId: S.String.pipe(T.IdempotencyToken()),
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           DeleteResource: S.optional(S.Boolean),
-          ChannelMessage: ChannelMessageCallback,
+          ChannelMessage: __S(14),
         }).pipe(
           T.all(
             T.Http({
@@ -3658,7 +3147,7 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 2:
-      return S.Array(Tag);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3671,24 +3160,24 @@ function __c2(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ExpirationDays: S.Number, ExpirationCriterion: ExpirationCriterion }),
+        S.Struct({ ExpirationDays: S.Number, ExpirationCriterion: S.String }),
       ).annotate({ identifier: "ExpirationSettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String,
           Name: SensitiveString,
-          Mode: S.optional(ChannelMode),
-          Privacy: S.optional(ChannelPrivacy),
+          Mode: S.optional(S.String),
+          Privacy: S.optional(S.String),
           Metadata: S.optional(SensitiveString),
           ClientRequestToken: SensitiveString.pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(18)),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
           ChannelId: S.optional(SensitiveString),
-          MemberArns: S.optional(ChannelMemberArns),
-          ModeratorArns: S.optional(ChannelModeratorArns),
-          ElasticChannelConfiguration: S.optional(ElasticChannelConfiguration),
-          ExpirationSettings: S.optional(ExpirationSettings),
+          MemberArns: S.optional(__S(2)),
+          ModeratorArns: S.optional(__S(2)),
+          ElasticChannelConfiguration: S.optional(__S(19)),
+          ExpirationSettings: S.optional(__S(20)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/channels" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateChannelRequest" });
     case 6:
@@ -3718,34 +3207,34 @@ function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ChannelArn: S.optional(S.String), Member: S.optional(Identity) }),
+        S.Struct({ ChannelArn: S.optional(S.String), Member: S.optional(__S(4)) }),
       ).annotate({ identifier: "CreateChannelBanResponse" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, InvocationType: InvocationType }),
+        S.Struct({ ResourceArn: S.String, InvocationType: S.String }),
       ).annotate({ identifier: "LambdaConfiguration" });
     case 2:
-      return S.suspend(() => S.Struct({ Lambda: LambdaConfiguration })).annotate({
+      return S.suspend(() => S.Struct({ Lambda: __S(25) })).annotate({
         identifier: "ProcessorConfiguration",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: SensitiveString,
-          Configuration: ProcessorConfiguration,
+          Configuration: __S(26),
           ExecutionOrder: S.Number,
-          FallbackAction: FallbackAction,
+          FallbackAction: S.String,
         }),
       ).annotate({ identifier: "Processor" });
     case 4:
-      return S.Array(Processor);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String,
-          Processors: ProcessorList,
+          Processors: __S(28),
           Name: SensitiveString,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(18)),
           ClientRequestToken: SensitiveString.pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/channel-flows" }), svc, auth, proto, ver, rules),
@@ -3760,7 +3249,7 @@ function __c3(j: number): any {
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           MemberArn: S.String,
-          Type: ChannelMembershipType,
+          Type: S.String,
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
           SubChannelId: S.optional(S.String),
         }).pipe(
@@ -3784,7 +3273,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          Member: S.optional(Identity),
+          Member: S.optional(__S(4)),
           SubChannelId: S.optional(S.String),
         }),
       ).annotate({
@@ -3811,7 +3300,7 @@ function __c4(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ChannelArn: S.optional(S.String), ChannelModerator: S.optional(Identity) }),
+        S.Struct({ ChannelArn: S.optional(S.String), ChannelModerator: S.optional(__S(4)) }),
       ).annotate({
         identifier: "CreateChannelModeratorResponse",
       });
@@ -3974,20 +3463,20 @@ function __c5(j: number): any {
         S.Struct({
           Name: S.optional(SensitiveString),
           ChannelArn: S.optional(S.String),
-          Mode: S.optional(ChannelMode),
-          Privacy: S.optional(ChannelPrivacy),
+          Mode: S.optional(S.String),
+          Privacy: S.optional(S.String),
           Metadata: S.optional(SensitiveString),
-          CreatedBy: S.optional(Identity),
+          CreatedBy: S.optional(__S(4)),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastMessageTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ChannelFlowArn: S.optional(S.String),
-          ElasticChannelConfiguration: S.optional(ElasticChannelConfiguration),
-          ExpirationSettings: S.optional(ExpirationSettings),
+          ElasticChannelConfiguration: S.optional(__S(19)),
+          ExpirationSettings: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "Channel" });
     case 6:
-      return S.suspend(() => S.Struct({ Channel: S.optional(Channel) })).annotate({
+      return S.suspend(() => S.Struct({ Channel: S.optional(__S(45)) })).annotate({
         identifier: "DescribeChannelResponse",
       });
     case 7:
@@ -4016,14 +3505,14 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Member: S.optional(Identity),
+          Member: S.optional(__S(4)),
           ChannelArn: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedBy: S.optional(Identity),
+          CreatedBy: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ChannelBan" });
     case 1:
-      return S.suspend(() => S.Struct({ ChannelBan: S.optional(ChannelBan) })).annotate({
+      return S.suspend(() => S.Struct({ ChannelBan: S.optional(__S(48)) })).annotate({
         identifier: "DescribeChannelBanResponse",
       });
     case 2:
@@ -4045,14 +3534,14 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelFlowArn: S.optional(S.String),
-          Processors: S.optional(ProcessorList),
+          Processors: S.optional(__S(28)),
           Name: S.optional(SensitiveString),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ChannelFlow" });
     case 4:
-      return S.suspend(() => S.Struct({ ChannelFlow: S.optional(ChannelFlow) })).annotate({
+      return S.suspend(() => S.Struct({ ChannelFlow: S.optional(__S(51)) })).annotate({
         identifier: "DescribeChannelFlowResponse",
       });
     case 5:
@@ -4078,9 +3567,9 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InvitedBy: S.optional(Identity),
-          Type: S.optional(ChannelMembershipType),
-          Member: S.optional(Identity),
+          InvitedBy: S.optional(__S(4)),
+          Type: S.optional(S.String),
+          Member: S.optional(__S(4)),
           ChannelArn: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4088,9 +3577,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ChannelMembership" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ ChannelMembership: S.optional(ChannelMembership) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ChannelMembership: S.optional(__S(54)) })).annotate({
         identifier: "DescribeChannelMembershipResponse",
       });
   }
@@ -4124,8 +3611,8 @@ function __c7(j: number): any {
         S.Struct({
           Name: S.optional(SensitiveString),
           ChannelArn: S.optional(S.String),
-          Mode: S.optional(ChannelMode),
-          Privacy: S.optional(ChannelPrivacy),
+          Mode: S.optional(S.String),
+          Privacy: S.optional(S.String),
           Metadata: S.optional(SensitiveString),
           LastMessageTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -4133,7 +3620,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(ChannelMembershipType),
+          Type: S.optional(S.String),
           ReadMarkerTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SubChannelId: S.optional(S.String),
         }),
@@ -4143,16 +3630,14 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ChannelSummary: S.optional(ChannelSummary),
-          AppInstanceUserMembershipSummary: S.optional(AppInstanceUserMembershipSummary),
+          ChannelSummary: S.optional(__S(57)),
+          AppInstanceUserMembershipSummary: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "ChannelMembershipForAppInstanceUserSummary",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ ChannelMembership: S.optional(ChannelMembershipForAppInstanceUserSummary) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ChannelMembership: S.optional(__S(59)) })).annotate({
         identifier: "DescribeChannelMembershipForAppInstanceUserResponse",
       });
     case 5:
@@ -4178,13 +3663,11 @@ function __c7(j: number): any {
         identifier: "DescribeChannelModeratedByAppInstanceUserRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ChannelSummary: S.optional(ChannelSummary) })).annotate({
+      return S.suspend(() => S.Struct({ ChannelSummary: S.optional(__S(57)) })).annotate({
         identifier: "ChannelModeratedByAppInstanceUserSummary",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Channel: S.optional(ChannelModeratedByAppInstanceUserSummary) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Channel: S.optional(__S(62)) })).annotate({
         identifier: "DescribeChannelModeratedByAppInstanceUserResponse",
       });
   }
@@ -4216,18 +3699,16 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Moderator: S.optional(Identity),
+          Moderator: S.optional(__S(4)),
           ChannelArn: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          CreatedBy: S.optional(Identity),
+          CreatedBy: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ChannelModerator" });
     case 2:
-      return S.suspend(() => S.Struct({ ChannelModerator: S.optional(ChannelModerator) })).annotate(
-        {
-          identifier: "DescribeChannelModeratorResponse",
-        },
-      );
+      return S.suspend(() => S.Struct({ ChannelModerator: S.optional(__S(65)) })).annotate({
+        identifier: "DescribeChannelModeratorResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4275,24 +3756,22 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AllowNotifications: AllowNotifications,
+          AllowNotifications: S.String,
           FilterRule: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "PushNotificationPreferences",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ PushNotifications: S.optional(PushNotificationPreferences) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ PushNotifications: S.optional(__S(69)) })).annotate({
         identifier: "ChannelMembershipPreferences",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          Member: S.optional(Identity),
-          Preferences: S.optional(ChannelMembershipPreferences),
+          Member: S.optional(__S(4)),
+          Preferences: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "GetChannelMembershipPreferencesResponse",
@@ -4321,7 +3800,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetChannelMessageRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Value: S.optional(ChannelMessageStatus), Detail: S.optional(S.String) }),
+        S.Struct({ Value: S.optional(S.String), Detail: S.optional(S.String) }),
       ).annotate({
         identifier: "ChannelMessageStatusStructure",
       });
@@ -4330,7 +3809,7 @@ function __c9(j: number): any {
         identifier: "Target",
       });
     case 3:
-      return S.Array(Target);
+      return S.Array(__S(74));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4338,22 +3817,22 @@ function __c9(j: number): any {
           MessageId: S.optional(S.String),
           Content: S.optional(SensitiveString),
           Metadata: S.optional(SensitiveString),
-          Type: S.optional(ChannelMessageType),
+          Type: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastEditedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Sender: S.optional(Identity),
+          Sender: S.optional(__S(4)),
           Redacted: S.optional(S.Boolean),
-          Persistence: S.optional(ChannelMessagePersistenceType),
-          Status: S.optional(ChannelMessageStatusStructure),
-          MessageAttributes: S.optional(MessageAttributeMap),
+          Persistence: S.optional(S.String),
+          Status: S.optional(__S(73)),
+          MessageAttributes: S.optional(__S(13)),
           SubChannelId: S.optional(S.String),
           ContentType: S.optional(SensitiveString),
-          Target: S.optional(TargetList),
+          Target: S.optional(__S(75)),
         }),
       ).annotate({ identifier: "ChannelMessage" });
     case 5:
-      return S.suspend(() => S.Struct({ ChannelMessage: S.optional(ChannelMessage) })).annotate({
+      return S.suspend(() => S.Struct({ ChannelMessage: S.optional(__S(76)) })).annotate({
         identifier: "GetChannelMessageResponse",
       });
     case 6:
@@ -4380,9 +3859,7 @@ function __c9(j: number): any {
         identifier: "GetChannelMessageStatusRequest",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Status: S.optional(ChannelMessageStatusStructure) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(__S(73)) })).annotate({
         identifier: "GetChannelMessageStatusResponse",
       });
   }
@@ -4391,7 +3868,7 @@ function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ NetworkType: S.optional(NetworkType).pipe(T.HttpQuery("network-type")) }).pipe(
+        S.Struct({ NetworkType: S.optional(S.String).pipe(T.HttpQuery("network-type")) }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/endpoints/messaging-session" }),
             svc,
@@ -4409,11 +3886,9 @@ function __c10(j: number): any {
         identifier: "MessagingSessionEndpoint",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Endpoint: S.optional(MessagingSessionEndpoint) })).annotate(
-        {
-          identifier: "GetMessagingSessionEndpointResponse",
-        },
-      );
+      return S.suspend(() => S.Struct({ Endpoint: S.optional(__S(81)) })).annotate({
+        identifier: "GetMessagingSessionEndpointResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({ AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")) }).pipe(
@@ -4433,15 +3908,13 @@ function __c10(j: number): any {
         identifier: "GetMessagingStreamingConfigurationsRequest",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ DataType: MessagingDataType, ResourceArn: S.String }),
-      ).annotate({ identifier: "StreamingConfiguration" });
+      return S.suspend(() => S.Struct({ DataType: S.String, ResourceArn: S.String })).annotate({
+        identifier: "StreamingConfiguration",
+      });
     case 5:
-      return S.Array(StreamingConfiguration);
+      return S.Array(__S(84));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ StreamingConfigurations: S.optional(StreamingConfigurationList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ StreamingConfigurations: S.optional(__S(85)) })).annotate({
         identifier: "GetMessagingStreamingConfigurationsResponse",
       });
     case 7:
@@ -4467,17 +3940,17 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Member: S.optional(Identity) })).annotate({
+      return S.suspend(() => S.Struct({ Member: S.optional(__S(4)) })).annotate({
         identifier: "ChannelBanSummary",
       });
     case 1:
-      return S.Array(ChannelBanSummary);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
-          ChannelBans: S.optional(ChannelBanSummaryList),
+          ChannelBans: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "ListChannelBansResponse" });
     case 3:
@@ -4495,15 +3968,15 @@ function __c11(j: number): any {
         S.Struct({
           ChannelFlowArn: S.optional(S.String),
           Name: S.optional(SensitiveString),
-          Processors: S.optional(ProcessorList),
+          Processors: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "ChannelFlowSummary" });
     case 5:
-      return S.Array(ChannelFlowSummary);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ChannelFlows: S.optional(ChannelFlowSummaryList),
+          ChannelFlows: S.optional(__S(93)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListChannelFlowsResponse" });
@@ -4511,7 +3984,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
-          Type: S.optional(ChannelMembershipType).pipe(T.HttpQuery("type")),
+          Type: S.optional(S.String).pipe(T.HttpQuery("type")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
@@ -4537,7 +4010,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          ChannelMemberships: S.optional(ChannelMembershipSummaryList),
+          ChannelMemberships: S.optional(__S(89)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -4564,11 +4037,11 @@ function __c12(j: number): any {
         identifier: "ListChannelMembershipsForAppInstanceUserRequest",
       });
     case 2:
-      return S.Array(ChannelMembershipForAppInstanceUserSummary);
+      return S.Array(__S(59));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ChannelMemberships: S.optional(ChannelMembershipForAppInstanceUserSummaryList),
+          ChannelMemberships: S.optional(__S(98)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -4578,7 +4051,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
-          SortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sort-order")),
+          SortOrder: S.optional(S.String).pipe(T.HttpQuery("sort-order")),
           NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
             T.HttpQuery("not-before"),
           ),
@@ -4608,26 +4081,26 @@ function __c12(j: number): any {
           MessageId: S.optional(S.String),
           Content: S.optional(SensitiveString),
           Metadata: S.optional(SensitiveString),
-          Type: S.optional(ChannelMessageType),
+          Type: S.optional(S.String),
           CreatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastEditedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Sender: S.optional(Identity),
+          Sender: S.optional(__S(4)),
           Redacted: S.optional(S.Boolean),
-          Status: S.optional(ChannelMessageStatusStructure),
-          MessageAttributes: S.optional(MessageAttributeMap),
+          Status: S.optional(__S(73)),
+          MessageAttributes: S.optional(__S(13)),
           ContentType: S.optional(SensitiveString),
-          Target: S.optional(TargetList),
+          Target: S.optional(__S(75)),
         }),
       ).annotate({ identifier: "ChannelMessageSummary" });
     case 6:
-      return S.Array(ChannelMessageSummary);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
-          ChannelMessages: S.optional(ChannelMessageSummaryList),
+          ChannelMessages: S.optional(__S(102)),
           SubChannelId: S.optional(S.String),
         }),
       ).annotate({
@@ -4658,17 +4131,17 @@ function __c13(j: number): any {
         identifier: "ListChannelModeratorsRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Moderator: S.optional(Identity) })).annotate({
+      return S.suspend(() => S.Struct({ Moderator: S.optional(__S(4)) })).annotate({
         identifier: "ChannelModeratorSummary",
       });
     case 2:
-      return S.Array(ChannelModeratorSummary);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
           NextToken: S.optional(SensitiveString),
-          ChannelModerators: S.optional(ChannelModeratorSummaryList),
+          ChannelModerators: S.optional(__S(106)),
         }),
       ).annotate({
         identifier: "ListChannelModeratorsResponse",
@@ -4677,18 +4150,18 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpQuery("app-instance-arn")),
-          Privacy: S.optional(ChannelPrivacy).pipe(T.HttpQuery("privacy")),
+          Privacy: S.optional(S.String).pipe(T.HttpQuery("privacy")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/channels" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListChannelsRequest" });
     case 5:
-      return S.Array(ChannelSummary);
+      return S.Array(__S(57));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(ChannelSummaryList),
+          Channels: S.optional(__S(109)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListChannelsResponse" });
@@ -4720,19 +4193,19 @@ function __c14(j: number): any {
         S.Struct({
           Name: S.optional(SensitiveString),
           ChannelArn: S.optional(S.String),
-          Mode: S.optional(ChannelMode),
-          Privacy: S.optional(ChannelPrivacy),
+          Mode: S.optional(S.String),
+          Privacy: S.optional(S.String),
           Metadata: S.optional(SensitiveString),
         }),
       ).annotate({
         identifier: "ChannelAssociatedWithFlowSummary",
       });
     case 1:
-      return S.Array(ChannelAssociatedWithFlowSummary);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(ChannelAssociatedWithFlowSummaryList),
+          Channels: S.optional(__S(113)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -4759,11 +4232,11 @@ function __c14(j: number): any {
         identifier: "ListChannelsModeratedByAppInstanceUserRequest",
       });
     case 4:
-      return S.Array(ChannelModeratedByAppInstanceUserSummary);
+      return S.Array(__S(62));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Channels: S.optional(ChannelModeratedByAppInstanceUserSummaryList),
+          Channels: S.optional(__S(116)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({
@@ -4796,12 +4269,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SubChannelSummary);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          SubChannels: S.optional(SubChannelSummaryList),
+          SubChannels: S.optional(__S(120)),
           NextToken: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "ListSubChannelsResponse" });
@@ -4814,7 +4287,7 @@ function __c15(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(18)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -4822,7 +4295,7 @@ function __c15(j: number): any {
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           ChimeBearer: S.optional(S.String).pipe(T.HttpHeader("x-amz-chime-bearer")),
-          ExpirationSettings: S.optional(ExpirationSettings),
+          ExpirationSettings: S.optional(__S(20)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/channels/{ChannelArn}/expiration-settings" }),
@@ -4840,7 +4313,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelArn: S.optional(S.String),
-          ExpirationSettings: S.optional(ExpirationSettings),
+          ExpirationSettings: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "PutChannelExpirationSettingsResponse",
@@ -4851,7 +4324,7 @@ function __c15(j: number): any {
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           MemberArn: S.String.pipe(T.HttpLabel("MemberArn")),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
-          Preferences: ChannelMembershipPreferences,
+          Preferences: __S(70),
         }).pipe(
           T.all(
             T.Http({
@@ -4872,7 +4345,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AppInstanceArn: S.String.pipe(T.HttpLabel("AppInstanceArn")),
-          StreamingConfigurations: StreamingConfigurationList,
+          StreamingConfigurations: __S(85),
         }).pipe(
           T.all(
             T.Http({
@@ -4928,15 +4401,15 @@ function __c16(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Key: SearchFieldKey, Values: SearchFieldValues, Operator: SearchFieldOperator }),
+        S.Struct({ Key: S.String, Values: __S(2), Operator: S.String }),
       ).annotate({ identifier: "SearchField" });
     case 3:
-      return S.Array(SearchField);
+      return S.Array(__S(130));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ChimeBearer: S.optional(S.String).pipe(T.HttpHeader("x-amz-chime-bearer")),
-          Fields: SearchFields,
+          Fields: __S(131),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
           NextToken: S.optional(SensitiveString).pipe(T.HttpQuery("next-token")),
         }).pipe(
@@ -4955,16 +4428,16 @@ function __c16(j: number): any {
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           Content: SensitiveString,
-          Type: ChannelMessageType,
-          Persistence: ChannelMessagePersistenceType,
+          Type: S.String,
+          Persistence: S.String,
           Metadata: S.optional(SensitiveString),
           ClientRequestToken: SensitiveString.pipe(T.IdempotencyToken()),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
-          PushNotification: S.optional(PushNotificationConfiguration),
-          MessageAttributes: S.optional(MessageAttributeMap),
+          PushNotification: S.optional(__S(10)),
+          MessageAttributes: S.optional(__S(13)),
           SubChannelId: S.optional(S.String),
           ContentType: S.optional(SensitiveString),
-          Target: S.optional(TargetList),
+          Target: S.optional(__S(75)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/channels/{ChannelArn}/messages" }),
@@ -4983,7 +4456,7 @@ function __c16(j: number): any {
         S.Struct({
           ChannelArn: S.optional(S.String),
           MessageId: S.optional(S.String),
-          Status: S.optional(ChannelMessageStatusStructure),
+          Status: S.optional(__S(73)),
           SubChannelId: S.optional(S.String),
         }),
       ).annotate({
@@ -4991,7 +4464,7 @@ function __c16(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(18) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=tag-resource" }),
             svc,
@@ -5008,7 +4481,7 @@ function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(11) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags?operation=untag-resource" }),
             svc,
@@ -5024,7 +4497,7 @@ function __c17(j: number): any {
         S.Struct({
           ChannelArn: S.String.pipe(T.HttpLabel("ChannelArn")),
           Name: S.optional(SensitiveString),
-          Mode: S.optional(ChannelMode),
+          Mode: S.optional(S.String),
           Metadata: S.optional(SensitiveString),
           ChimeBearer: S.String.pipe(T.HttpHeader("x-amz-chime-bearer")),
         }).pipe(
@@ -5042,7 +4515,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelFlowArn: S.String.pipe(T.HttpLabel("ChannelFlowArn")),
-          Processors: ProcessorList,
+          Processors: __S(28),
           Name: SensitiveString,
         }).pipe(
           T.all(
@@ -5100,5 +4573,50 @@ function __c17(j: number): any {
       return S.suspend(() => S.Struct({ ChannelArn: S.optional(S.String) })).annotate({
         identifier: "UpdateChannelReadMarkerResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
   }
 }

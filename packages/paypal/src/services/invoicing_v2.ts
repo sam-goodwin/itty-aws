@@ -7,6 +7,8 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -48,8 +50,6 @@ export class UnprocessableEntity
 
 /** An array of one or more CC: emails to which notifications are sent. If you omit this parameter, a notification is sent to all CC: email addresses that are part of the invoice.<blockquote><strong>Note:</strong> Valid values are email addresses in the `additional_recipients` value associated with the invoice.</blockquote> */
 export type EmailAddressList = Array<string>;
-const EmailAddressList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<EmailAddressList>;
-
 export interface CancelInvoiceRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -63,14 +63,7 @@ export interface CancelInvoiceRequest {
   send_to_recipient?: boolean;
   additional_recipients?: EmailAddressList;
 }
-const CancelInvoiceRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelInvoiceRequest>;
-
 export interface CancelInvoiceResponse {}
-const CancelInvoiceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelInvoiceResponse>;
-
 /** The file reference. Can be a file in PayPal MediaServ, PayPal DMS, or other custom store. */
 export interface FileReference {
   /** The ID of the referenced file. */
@@ -84,12 +77,8 @@ export interface FileReference {
   /** The size of the file, in bytes. */
   size?: string;
 }
-const FileReference = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<FileReference>;
-
 /** An array of PayPal IDs for the files that are attached to an invoice. */
 export type FileReferenceList = Array<FileReference>;
-const FileReferenceList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FileReferenceList>;
-
 /** The payment term. Payment can be due upon receipt, a specified date, or in a set number of days. */
 export type PaymentTermType =
   | "DUE_ON_RECEIPT"
@@ -101,8 +90,6 @@ export type PaymentTermType =
   | "NET_60"
   | "NET_90"
   | "NO_DUE_DATE";
-const PaymentTermType = S.String;
-
 /** The payment term of the invoice. Payment can be due upon receipt, a specified date, or in a set number of days. */
 export interface InvoicePaymentTerm {
   /** The payment term. Payment can be due upon receipt, a specified date, or in a set number of days. */
@@ -110,8 +97,6 @@ export interface InvoicePaymentTerm {
   /** The date when the invoice payment is due, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). For example, *yyyy*-*MM*-*dd*T*z*. */
   due_date?: string;
 }
-const InvoicePaymentTerm = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<InvoicePaymentTerm>;
-
 /** The details of the invoice. Includes invoice number, date, payment terms, and audit metadata. */
 export interface InvoiceDetailInput {
   /** The reference data. Includes a Purchase Order (PO) number. */
@@ -132,8 +117,6 @@ export interface InvoiceDetailInput {
   /** The payment due date for the invoice. Value is either but not both <code>term_type</code> or <code>due_date</code>. */
   payment_term?: InvoicePaymentTerm;
 }
-const InvoiceDetailInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<InvoiceDetailInput>;
-
 /** The name of the party. */
 export interface Name {
   /** The prefix, or title, to the party's name. */
@@ -151,8 +134,6 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-const Name = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Name>;
-
 /** The non-portable additional address details that are sometimes needed for compliance, risk, or other scenarios where fine-grain address information might be needed. Not portable with common third party and open source. Redundant with core fields.<br/>For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export interface AddressDetails {
   /** The street number. */
@@ -168,8 +149,6 @@ export interface AddressDetails {
   /** The first-order entity below a named building or location that represents the sub-premises. Usually a single building within a collection of buildings with a common name. Can be a flat, story, floor, room, or apartment. */
   sub_building?: string;
 }
-const AddressDetails = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AddressDetails>;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export interface AddressPortable {
   /** The first line of the address. For example, number or street. For example, `173 Drury Lane`. Required for data entry and compliance and risk checks. Must contain the full address. */
@@ -191,12 +170,8 @@ export interface AddressPortable {
   country_code: string;
   address_details?: AddressDetails;
 }
-const AddressPortable = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AddressPortable>;
-
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-const PhoneType = S.String;
-
 /** The phone details. Includes the phone number and type. */
 export interface PhoneDetail {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
@@ -207,12 +182,8 @@ export interface PhoneDetail {
   extension_number?: string;
   phone_type: PhoneType | (string & {});
 }
-const PhoneDetail = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PhoneDetail>;
-
 /** An array of invoicer's phone numbers. The invoicer can choose to hide the phone number on the invoice. */
 export type PhoneDetailList = Array<PhoneDetail>;
-const PhoneDetailList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PhoneDetailList>;
-
 /** The invoicer business information that appears on the invoice. */
 export interface InvoicerInfo {
   /** Required. The business name of the party. */
@@ -233,12 +204,8 @@ export interface InvoicerInfo {
   /** The full URL to an external logo image. The logo image must not be larger than 250 pixels wide by 90 pixels high. */
   logo_url?: string;
 }
-const InvoicerInfo = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<InvoicerInfo>;
-
 /** The invoice recipient's phone numbers. Extension number is not supported. */
 export type DefinitionsPhoneDetailList = Array<PhoneDetail>;
-const DefinitionsPhoneDetailList = PhoneDetailList as any as S.Schema<DefinitionsPhoneDetailList>;
-
 /** The billing information of the invoice recipient. Includes name, address, email, phone, and language. */
 export interface BillingInfo {
   /** Required. The business name of the party. */
@@ -255,8 +222,6 @@ export interface BillingInfo {
   /** The language in which to show the invoice recipient's email message. Used only when the recipient does not have a PayPal account. If you omit the language and the recipient does not have a PayPal account, the email message is sent in the language of the merchant's PayPal account. */
   language?: string;
 }
-const BillingInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BillingInfo>;
-
 /** The contact information of the user. Includes name and address. */
 export interface ContactNameAddress {
   /** Required. The business name of the party. */
@@ -266,8 +231,6 @@ export interface ContactNameAddress {
   /** The address of the recipient. */
   address?: AddressPortable;
 }
-const ContactNameAddress = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ContactNameAddress>;
-
 /** The billing and shipping information. Includes name, email, address, phone, and language. */
 export interface RecipientInfo {
   /** The billing information for the invoice recipient. Includes name, address, email, phone, and language. */
@@ -275,20 +238,14 @@ export interface RecipientInfo {
   /** The recipient's shipping information. Includes the user's contact information, which includes name and address. */
   shipping_info?: ContactNameAddress;
 }
-const RecipientInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<RecipientInfo>;
-
 /** The billing and shipping information. Includes name, email, address, phone and language. */
 export type RecipientInfoList = Array<RecipientInfo>;
-const RecipientInfoList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RecipientInfoList>;
-
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
   currency_code: string;
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-codes/). */
   value: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Money>;
-
 /** The tax information. Includes the tax name and tax rate of invoice items. The tax amount is added to the item total. */
 export interface Tax {
   /** The name of the tax applied on the invoice items. */
@@ -300,8 +257,6 @@ export interface Tax {
   /** The tax note used to track the tax related data. */
   tax_note?: string;
 }
-const Tax = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Tax>;
-
 /** The discount as a percent or amount at invoice level. The invoice discount amount is subtracted from the item total. */
 export interface Discount {
   /** The discount as a percentage value. Value is from `0` to `100`. Supports up to five decimal places. */
@@ -309,12 +264,8 @@ export interface Discount {
   /** The invoice level discount amount. Value is from `0` to `1000000`. Supports up to two decimal places. */
   amount?: Money;
 }
-const Discount = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Discount>;
-
 /** The unit of measure for the invoiced item. */
 export type UnitOfMeasure = "QUANTITY" | "HOURS" | "AMOUNT";
-const UnitOfMeasure = S.String;
-
 /** An array of invoice line item information. The maximum items for an invoice is `100`. */
 export interface ItemInput {
   /** The item name for the invoice line item. */
@@ -334,12 +285,8 @@ export interface ItemInput {
   /** The unit of measure for the invoiced item. For `AMOUNT` the `unit_amount` and `quantity` are not shown on the invoice.<blockquote><strong>Note:</strong> If your specify different `unit_of_measure` values for the same invoice, the invoice uses the first value.</blockquote> */
   unit_of_measure?: UnitOfMeasure | (string & {});
 }
-const ItemInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ItemInput>;
-
 /** An array of invoice line item information. */
 export type ItemListInput = Array<ItemInput>;
-const ItemListInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ItemListInput>;
-
 /** The partial payment details. Includes the minimum amount that the invoicer expects from the payer. */
 export interface PartialPayment {
   /** Indicates whether the invoice allows a partial payment. If `false`, the invoice must be paid in full. If `true`, the invoice allows partial payments.<blockquote><strong>Note:</strong> This feature is not available for users in `India`, `Brazil`, or `Israel`.</blockquote> */
@@ -347,8 +294,6 @@ export interface PartialPayment {
   /** The minimum amount allowed for a partial payment. Valid only when `allow_partial_payment` is `true`. */
   minimum_amount_due?: Money;
 }
-const PartialPayment = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PartialPayment>;
-
 /** The invoice configuration details. Includes partial payment, tip, and tax calculated after discount. */
 export interface Configuration {
   /** Indicates whether the tax is calculated before or after a discount. If `false`, the tax is calculated before a discount. If `true`, the tax is calculated after a discount. */
@@ -364,8 +309,6 @@ export interface Configuration {
   /** The template ID. The template determines the layout of the invoice. Includes which fields to show and hide.<blockquote><strong>Note:</strong> This is an optional field. If you wish to customize the invoice layout using a specific template, provide a valid template ID here. You can either use an existing template ID or create a new template via the create template API and then use the newly created template's ID.</blockquote> */
   template_id?: string;
 }
-const Configuration = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Configuration>;
-
 /** The discount. Can be an item- or invoice-level discount, or both. Can be applied as a percent or amount. If you provide both amount and percent, amount takes precedent. */
 export interface AggregatedDiscount {
   /** The discount as a percent or amount at invoice level. The invoice discount amount is subtracted from the item total. */
@@ -373,8 +316,6 @@ export interface AggregatedDiscount {
   /** The discount as a percent or amount at item level. The item discount amount is subtracted from each item amount. */
   item_discount?: Money;
 }
-const AggregatedDiscount = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AggregatedDiscount>;
-
 /** The shipping fee for all items. Includes tax on shipping. */
 export interface ShippingCost {
   /** The shipping amount. Value is from `0` to `1000000`. Supports up to two decimal places. */
@@ -382,8 +323,6 @@ export interface ShippingCost {
   /** The tax associated with the shipping. */
   tax?: Tax;
 }
-const ShippingCost = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ShippingCost>;
-
 /** The custom amount to apply to an invoice. If you include a label, you must include a custom amount. */
 export interface CustomAmount {
   /** The label to the custom amount of the invoice. */
@@ -391,8 +330,6 @@ export interface CustomAmount {
   /** The custom amount value. Value is from `-1000000` to `1000000`. Supports up to two decimal places. */
   amount?: Money;
 }
-const CustomAmount = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CustomAmount>;
-
 /** The breakdown of the amount. Includes total item amount, total tax amount, custom amount, and shipping and discounts, if any. */
 export interface AmountWithBreakdown {
   /** The subtotal for all items. Must equal the sum of (`items[].unit_amount` * `items[].quantity`) for all items. */
@@ -406,8 +343,6 @@ export interface AmountWithBreakdown {
   /** The custom amount to apply to an invoice. If you include a label, you must include the custom amount. */
   custom?: CustomAmount;
 }
-const AmountWithBreakdown = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AmountWithBreakdown>;
-
 /** The invoice amount summary of item total, discount, tax total, and shipping. */
 export interface AmountSummaryDetail {
   currency_code?: string;
@@ -416,12 +351,8 @@ export interface AmountSummaryDetail {
   /** The breakdown of the amount. Breakdown provides details such as total item amount, total tax amount, custom amount, shipping and discounts, if any. */
   breakdown?: AmountWithBreakdown;
 }
-const AmountSummaryDetail = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AmountSummaryDetail>;
-
 /** An array of payments registered against the invoice. */
 export interface PaymentsInput {}
-const PaymentsInput = CancelInvoiceResponse as any as S.Schema<PaymentsInput>;
-
 /** The invoicing refund details. Includes the refund type, date, amount, and method. */
 export type RefundsInput = PaymentsInput;
 export interface CreateInvoiceRequest {
@@ -441,8 +372,6 @@ export interface CreateInvoiceRequest {
   /** List of refunds against this invoice. The invoicing refund details includes refund type, date, amount, and method. */
   refunds?: PaymentsInput;
 }
-const CreateInvoiceRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateInvoiceRequest>;
-
 /** The status of the invoice. */
 export type InvoiceStatus =
   | "DRAFT"
@@ -461,12 +390,8 @@ export type InvoiceStatus =
   | "PAID_EXTERNAL"
   | "REFUNDED_EXTERNAL"
   | "SHARED";
-const InvoiceStatus = S.String;
-
 /** The frequency at which the invoice is sent:<ul><li>Multiple recipient. Sent to multiple recipients.</li><li>Batch. Sent in a batch.</li><li>Regular single. Sent one time to a single recipient.</li></ul> */
 export type InvoiceCreationFlow = "MULTIPLE_RECIPIENTS_GROUP" | "BATCH" | "REGULAR_SINGLE";
-const InvoiceCreationFlow = S.String;
-
 /** The audit metadata. Captures all invoicing actions on create, send, update, and cancel. */
 export interface Metadata {
   /** The date and time when the resource was created, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
@@ -494,8 +419,6 @@ export interface Metadata {
   /** The URL for the invoice merchant view hosted on paypal.com. */
   invoicer_view_url?: string;
 }
-const Metadata = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Metadata>;
-
 /** The details of the invoice. Includes invoice number, date, payment terms, and audit metadata. */
 export interface InvoiceDetail {
   /** The reference data. Includes a Purchase Order (PO) number. */
@@ -518,8 +441,6 @@ export interface InvoiceDetail {
   /** The audit metadata. Captures all invoicing actions on create, send, update, and cancel. */
   metadata?: Metadata;
 }
-const InvoiceDetail = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<InvoiceDetail>;
-
 /** An array of invoice line item information. The maximum items for an invoice is `100`. */
 export interface Item {
   /** The ID of the invoice line item. */
@@ -541,16 +462,10 @@ export interface Item {
   /** The unit of measure for the invoiced item. For `AMOUNT` the `unit_amount` and `quantity` are not shown on the invoice.<blockquote><strong>Note:</strong> If your specify different `unit_of_measure` values for the same invoice, the invoice uses the first value.</blockquote> */
   unit_of_measure?: UnitOfMeasure;
 }
-const Item = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Item>;
-
 /** An array of invoice line item information. */
 export type ItemList = Array<Item>;
-const ItemList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ItemList>;
-
 /** The payment type. Can be PayPal or an external payment. Includes cash or a check. */
 export type PaymentType = "PAYPAL" | "EXTERNAL";
-const PaymentType = S.String;
-
 /** The payment mode or method through which the invoicer can accept the payments. */
 export type PaymentMethod =
   | "BANK_TRANSFER"
@@ -561,8 +476,6 @@ export type PaymentMethod =
   | "PAYPAL"
   | "WIRE_TRANSFER"
   | "OTHER";
-const PaymentMethod = S.String;
-
 /** The payment details of the invoice. Includes payment type, method, date, discount, and transaction type. */
 export interface PaymentDetail {
   /** The payment type in an invoicing flow which can be PayPal or an external cash or check payment. */
@@ -580,20 +493,14 @@ export interface PaymentDetail {
   /** The recipient's shipping information. Includes the user's contact information, which includes name and address. */
   shipping_info?: ContactNameAddress;
 }
-const PaymentDetail = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PaymentDetail>;
-
 /** An array of payment details for the invoice. The payment details of the invoice like payment type, method, date, discount and transaction type. */
 export type PaymentDetailList = Array<PaymentDetail>;
-const PaymentDetailList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PaymentDetailList>;
-
 /** An array of payments registered against the invoice. */
 export interface Payments {
   /** The aggregated payment amounts against this invoice. */
   paid_amount?: Money;
   transactions?: PaymentDetailList;
 }
-const Payments = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Payments>;
-
 /** The refund details of the invoice. Includes the refund type, date, amount, and method. */
 export interface RefundDetail {
   /** The PayPal refund type. Indicates whether the refund was paid through PayPal or externally in the invoicing flow. The record refund method supports the `EXTERNAL` refund type. The `PAYPAL` refund type is supported for backward compatibility. */
@@ -607,20 +514,14 @@ export interface RefundDetail {
   /** The payment mode or method through which the invoicer can accept the payments. */
   method: PaymentMethod;
 }
-const RefundDetail = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<RefundDetail>;
-
 /** An array of refund details for the invoice. Includes the refund type, date, amount, and method. */
 export type RefundDetailList = Array<RefundDetail>;
-const RefundDetailList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<RefundDetailList>;
-
 /** The invoicing refund details. Includes the refund type, date, amount, and method. */
 export interface Refunds {
   /** The aggregated refund amounts. */
   refund_amount?: Money;
   transactions?: RefundDetailList;
 }
-const Refunds = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Refunds>;
-
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -631,8 +532,6 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const LinkDescriptionMethod = S.String;
-
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -642,12 +541,8 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-const LinkDescription = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<LinkDescription>;
-
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-const LinkDescriptionList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<LinkDescriptionList>;
-
 /** The invoice details which includes all information of the invoice like items, billing information. */
 export interface Invoice {
   /** The ID of the invoice. */
@@ -676,15 +571,11 @@ export interface Invoice {
   refunds?: Refunds;
   links?: LinkDescriptionList;
 }
-const Invoice = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Invoice>;
-
 /** The payment term of the invoice. Payment can be due upon receipt, a specified date, or in a set number of days. */
 export interface PaymentTerm {
   /** The payment term. Payment can be due upon receipt, a specified date, or in a set number of days. */
   term_type?: PaymentTermType | (string & {});
 }
-const PaymentTerm = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PaymentTerm>;
-
 /** The audit metadata. Captures all template actions on create and update. */
 export type TemplateMetadataInput = PaymentsInput;
 /** The template-related details. Includes notes, terms and conditions, memo, and attachments. */
@@ -705,20 +596,10 @@ export interface TemplateDetailInput {
   /** The audit metadata. Captures all template actions on create and update. */
   metadata?: PaymentsInput;
 }
-const TemplateDetailInput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<TemplateDetailInput>;
-
 /** The billing and shipping information. Includes name, email, address, phone, and language. */
 export type DefinitionsRecipientInfoList = Array<RecipientInfo>;
-const DefinitionsRecipientInfoList =
-  RecipientInfoList as any as S.Schema<DefinitionsRecipientInfoList>;
-
 /** An array of invoice line-item information. */
 export type DefinitionsItemListInput = Array<ItemInput>;
-const DefinitionsItemListInput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DefinitionsItemListInput>;
-
 /** The template configuration details. Includes tax information, tip, and partial payment. */
 export interface TemplateConfiguration {
   /** Indicates whether the tax is calculated before or after a discount. If `false`, the tax is calculated before a discount. If `true`, the tax is calculated after a discount. */
@@ -732,11 +613,6 @@ export interface TemplateConfiguration {
   /** Indicates whether conditional pricing rules are applied to the invoice. If `true`, pricing rules (such as discounts or surcharges based on specific conditions) are applied. If `false`, no conditional pricing rules are applied. */
   has_conditional_rule?: boolean;
 }
-const TemplateConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<TemplateConfiguration>;
-
 /** The template details. Includes invoicer business information, invoice recipients, items, and configuration. */
 export interface TemplateInfoInput {
   /** The template-related details. Includes notes, terms and conditions, memo, and attachments. */
@@ -751,8 +627,6 @@ export interface TemplateInfoInput {
   /** The invoice amount summary of the item total, discount, tax total, and shipping. */
   amount?: AmountSummaryDetail;
 }
-const TemplateInfoInput = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TemplateInfoInput>;
-
 /** The field names for the invoice line items in the template. */
 export type TemplateItemField =
   | "ITEMS_QUANTITY"
@@ -760,18 +634,11 @@ export type TemplateItemField =
   | "ITEMS_DATE"
   | "ITEMS_DISCOUNT"
   | "ITEMS_TAX";
-const TemplateItemField = S.String;
-
 /** The template display preference. */
 export interface TemplateDisplayPreference {
   /** Indicates whether to show or hide this field. */
   hidden?: boolean;
 }
-const TemplateDisplayPreference = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<TemplateDisplayPreference>;
-
 /** The template item setting. Sets a template as the default template or edit template. */
 export interface TemplateItemSetting {
   /** The field name in `template_data` for which to map corresponding display preferences. */
@@ -779,15 +646,8 @@ export interface TemplateItemSetting {
   /** The display preference. */
   display_preference?: TemplateDisplayPreference;
 }
-const TemplateItemSetting = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TemplateItemSetting>;
-
 /** The template item headers display preference. */
 export type TemplateItemSettingList = Array<TemplateItemSetting>;
-const TemplateItemSettingList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<TemplateItemSettingList>;
-
 /** The field names in the template for discount, shipping, and custom amounts. */
 export type TemplateSubtotalField = "DISCOUNT" | "SHIPPING" | "CUSTOM";
 /** The template subtotal setting. Includes the field name and display preference. */
@@ -799,16 +659,11 @@ export interface TemplateSubtotalSetting {
 }
 /** The template subtotal headers display preference. */
 export type TemplateSubtotalSettingList = Array<TemplateSubtotalSetting>;
-const TemplateSubtotalSettingList =
-  TemplateItemSettingList as any as S.Schema<TemplateSubtotalSettingList>;
-
 /** The template settings. Sets a template as the default template or edit template. */
 export interface TemplateSettings {
   template_item_settings?: TemplateItemSettingList;
   template_subtotal_settings?: TemplateSubtotalSettingList;
 }
-const TemplateSettings = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TemplateSettings>;
-
 export interface CreateTemplateRequest {
   /** The template name.<blockquote><strong>Note:</strong> The template name must be unique.</blockquote> */
   name?: string;
@@ -821,11 +676,6 @@ export interface CreateTemplateRequest {
   /** The unit of measure for the template. Value is quantity, hours, or amount. */
   unit_of_measure?: UnitOfMeasure | (string & {});
 }
-const CreateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateTemplateRequest>;
-
 /** The audit metadata. Captures all template actions on create and update. */
 export interface TemplateMetadata {
   /** The date and time when the resource was created, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
@@ -837,8 +687,6 @@ export interface TemplateMetadata {
   /** The email address of the account that last edited the resource. */
   last_updated_by?: string;
 }
-const TemplateMetadata = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TemplateMetadata>;
-
 /** The template-related details. Includes notes, terms and conditions, memo, and attachments. */
 export interface TemplateDetail {
   /** The reference data. Includes a Purchase Order (PO) number. */
@@ -857,12 +705,8 @@ export interface TemplateDetail {
   /** The audit metadata. Captures all template actions on create and update. */
   metadata?: TemplateMetadata;
 }
-const TemplateDetail = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<TemplateDetail>;
-
 /** An array of invoice line-item information. */
 export type DefinitionsItemList = Array<Item>;
-const DefinitionsItemList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DefinitionsItemList>;
-
 /** The template details. Includes invoicer business information, invoice recipients, items, and configuration. */
 export interface TemplateInfo {
   /** The template-related details. Includes notes, terms and conditions, memo, and attachments. */
@@ -879,8 +723,6 @@ export interface TemplateInfo {
   /** The amount due for the invoice. */
   due_amount?: Money;
 }
-const TemplateInfo = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TemplateInfo>;
-
 /** The template with invoice details to load with all captured fields. */
 export interface Template {
   /** The ID of the template. */
@@ -899,66 +741,33 @@ export interface Template {
   standard_template?: boolean;
   links?: LinkDescriptionList;
 }
-const Template = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Template>;
-
 export interface DeleteInvoiceRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
 }
-const DeleteInvoiceRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeleteInvoiceRequest>;
-
 export interface DeleteInvoiceResponse {}
-const DeleteInvoiceResponse = CancelInvoiceResponse as any as S.Schema<DeleteInvoiceResponse>;
-
 export interface DeleteInvoicesPaymentRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
   /** The ID of the external refund transaction to delete. */
   transaction_id: string;
 }
-const DeleteInvoicesPaymentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteInvoicesPaymentRequest>;
-
 export interface DeleteInvoicesPaymentResponse {}
-const DeleteInvoicesPaymentResponse =
-  CancelInvoiceResponse as any as S.Schema<DeleteInvoicesPaymentResponse>;
-
 export interface DeleteInvoicesRefundRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
   /** The ID of the external refund transaction to delete. */
   transaction_id: string;
 }
-const DeleteInvoicesRefundRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteInvoicesRefundRequest>;
-
 export interface DeleteInvoicesRefundResponse {}
-const DeleteInvoicesRefundResponse =
-  CancelInvoiceResponse as any as S.Schema<DeleteInvoicesRefundResponse>;
-
 export interface DeleteTemplateRequest {
   /** The ID of the template to delete. */
   template_id: string;
 }
-const DeleteTemplateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteTemplateRequest>;
-
 export interface DeleteTemplateResponse {}
-const DeleteTemplateResponse = CancelInvoiceResponse as any as S.Schema<DeleteTemplateResponse>;
-
 export interface GetConnectionRequest {}
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetConnectionRequest>;
-
 /** The status of the last sync. This property supports Unicode. */
 export type ConnectionLastSyncStatus = "IN_PROGRESS" | "SUCCESS" | "FAILED";
-const ConnectionLastSyncStatus = S.String;
-
 /** This lists last sync status and connection platform name. */
 export interface Connection {
   /** The name of the platform. This property supports Unicode. The pattern is not provided because the value is defined by an external party. */
@@ -968,54 +777,32 @@ export interface Connection {
   /** The status of the last sync. This property supports Unicode. */
   last_sync_status?: ConnectionLastSyncStatus;
 }
-const Connection = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Connection>;
-
 /** An array of connection-level details. */
 export type ConnectionList = Array<Connection>;
-const ConnectionList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ConnectionList>;
-
 /** This object contains an array of connection details. It is used to load sync status for a user. */
 export interface Connections {
   connections?: ConnectionList;
 }
-const Connections = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Connections>;
-
 export interface GetInvoiceRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
 }
-const GetInvoiceRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetInvoiceRequest>;
-
 export interface GetTemplateRequest {
   /** The ID of the template to delete. */
   template_id: string;
 }
-const GetTemplateRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GetTemplateRequest>;
-
 export interface InvoiceConnectionDetailsGetRequest {
   /** The invoice id of the account. */
   id: string;
 }
-const InvoiceConnectionDetailsGetRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<InvoiceConnectionDetailsGetRequest>;
-
 /** An array of connection-level details. */
 export type ConnectionsList = Array<Connections>;
-const ConnectionsList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ConnectionsList>;
-
 /** Returns invoice connection status with timestamp per invoice. */
 export interface InvoiceConnectionDetails {
   /** The ID of the invoice. This property supports Unicode. */
   id?: string;
   connection_status?: ConnectionsList;
 }
-const InvoiceConnectionDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<InvoiceConnectionDetails>;
-
 export interface InvoicesGenerateQrCodeRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -1026,15 +813,7 @@ export interface InvoicesGenerateQrCodeRequest {
   /** The type of URL for which to generate a QR code. Valid values are `pay` and `details`. */
   action?: string;
 }
-const InvoicesGenerateQrCodeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<InvoicesGenerateQrCodeRequest>;
-
 export interface InvoicesGenerateQrCodeResponse {}
-const InvoicesGenerateQrCodeResponse =
-  CancelInvoiceResponse as any as S.Schema<InvoicesGenerateQrCodeResponse>;
-
 export interface InvoicesPaymentsRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -1051,18 +830,11 @@ export interface InvoicesPaymentsRequest {
   /** The recipient's shipping information. Includes the user's contact information, which includes name and address. */
   shipping_info?: ContactNameAddress;
 }
-const InvoicesPaymentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<InvoicesPaymentsRequest>;
-
 /** The reference to the payment detail. */
 export interface PaymentReference {
   /** The ID for the invoice payment. */
   payment_id?: string;
 }
-const PaymentReference = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<PaymentReference>;
-
 export interface InvoicesRefundsRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -1073,18 +845,11 @@ export interface InvoicesRefundsRequest {
   /** The payment mode or method through which the invoicer can accept the payments. */
   method: PaymentMethod | (string & {});
 }
-const InvoicesRefundsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<InvoicesRefundsRequest>;
-
 /** The reference to the refund payment detail. */
 export interface RefundReference {
   /** The ID of the refund of an invoice payment. */
   refund_id?: string;
 }
-const RefundReference = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<RefundReference>;
-
 export interface InvoicesRemindRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -1098,23 +863,11 @@ export interface InvoicesRemindRequest {
   send_to_recipient?: boolean;
   additional_recipients?: EmailAddressList;
 }
-const InvoicesRemindRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<InvoicesRemindRequest>;
-
 export interface InvoicesRemindResponse {}
-const InvoicesRemindResponse = CancelInvoiceResponse as any as S.Schema<InvoicesRemindResponse>;
-
 export interface InvoicingGenerateNextInvoiceNumberRequest {
   /** Optional to decide the number or ID. */
   fetch_id?: boolean;
 }
-const InvoicingGenerateNextInvoiceNumberRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<InvoicingGenerateNextInvoiceNumberRequest>;
-
 /** The invoice number. */
 export interface InvoiceNumber {
   /** The invoice number. If you omit this value, the default is the auto-incremented number from the last number. */
@@ -1122,8 +875,6 @@ export interface InvoiceNumber {
   /** Resource Id. */
   invoice_id?: string;
 }
-const InvoiceNumber = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<InvoiceNumber>;
-
 export interface ListInvoicesRequest {
   /** The page number to be retrieved, for the list of templates. So, a combination of `page=1` and `page_size=20` returns the first 20 templates. A combination of `page=2` and `page_size=20` returns the next 20 templates. */
   page?: number;
@@ -1134,12 +885,8 @@ export interface ListInvoicesRequest {
   /** The fields to return in the response. Value is `all` or `none`. To return only the template name, ID, and default attributes, specify `none`. */
   fields?: string;
 }
-const ListInvoicesRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListInvoicesRequest>;
-
 /** The list of invoices that match the search criteria. */
 export type InvoiceList = Array<Invoice>;
-const InvoiceList = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<InvoiceList>;
-
 /** An array of merchant invoices. Includes the total invoices count and [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links) for navigation. */
 export interface Invoices {
   /** The total number of pages that are available for the search criteria. <blockquote><strong>Note:</strong> Clients MUST NOT assume that the value of total_pages is constant. The value MAY change from one request to the next</blockquote> */
@@ -1149,8 +896,6 @@ export interface Invoices {
   items?: InvoiceList;
   links?: LinkDescriptionList;
 }
-const Invoices = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Invoices>;
-
 export interface ListTemplatesRequest {
   /** The fields to return in the response. Value is `all` or `none`. To return only the template name, ID, and default attributes, specify `none`. */
   fields?: string;
@@ -1159,24 +904,12 @@ export interface ListTemplatesRequest {
   /** The maximum number of templates to return in the response. */
   page_size?: number;
 }
-const ListTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListTemplatesRequest>;
-
 /** An array of addresses in the user's PayPal profile. */
 export type AddressPortableList = Array<AddressPortable>;
-const AddressPortableList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<AddressPortableList>;
-
 /** An array of phone numbers in the user's PayPal profile. */
 export type TemplatesDefinitionsPhoneDetailList = Array<PhoneDetail>;
-const TemplatesDefinitionsPhoneDetailList =
-  PhoneDetailList as any as S.Schema<TemplatesDefinitionsPhoneDetailList>;
-
 /** An array of details for each template. If `fields` is `none`, returns only the template name, ID, and default status. */
 export type TemplateList = Array<Template>;
-const TemplateList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<TemplateList>;
-
 /** An array of merchant-created templates with associated details that include the emails, addresses, and phone numbers from the user's PayPal profile. */
 export interface Templates {
   addresses?: AddressPortableList;
@@ -1186,12 +919,8 @@ export interface Templates {
   templates?: TemplateList;
   links?: LinkDescriptionList;
 }
-const Templates = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<Templates>;
-
 /** An array of status values. */
 export type InvoiceStatusList = Array<InvoiceStatus | (string & {})>;
-const InvoiceStatusList = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<InvoiceStatusList>;
-
 /** The amount range. */
 export interface AmountRange {
   /** The lower limit of the amount range. */
@@ -1199,8 +928,6 @@ export interface AmountRange {
   /** The upper limit of the amount range. */
   upper_amount: Money;
 }
-const AmountRange = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<AmountRange>;
-
 /** The date range. Filters invoices by creation date, invoice date, due date, and payment date. */
 export interface DateRange {
   /** The start date of the range. Filters invoices by creation date, invoice date, due date, and payment date. */
@@ -1208,8 +935,6 @@ export interface DateRange {
   /** The end date of the range. Filters invoices by creation date, invoice date, due date, and payment date. */
   end: string;
 }
-const DateRange = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<DateRange>;
-
 /** The date and time range. Filters invoices by creation date, invoice date, due date, and payment date. */
 export interface DateTimeRange {
   /** The start date of the range. Filters invoices by creation date, invoice date, due date, and payment date. */
@@ -1217,12 +942,8 @@ export interface DateTimeRange {
   /** The end date of the range. Filters invoices by creation date, invoice date, due date, and payment date. <blockquote><strong>Note: The regular expression provides guidance but does not reject all invalid dates.</strong></blockquote><br/>Minimum length: 20.<br/>Maximum length: 64<br/>Pattern: <code>^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])[T,t]([0-1][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)([.][0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})$</code> */
   end: string;
 }
-const DateTimeRange = DateRange as any as S.Schema<DateTimeRange>;
-
 /** A CSV file of fields to return for the user, if available. Because the invoice object can be very large, field filtering is required. Valid collection fields are <code>items</code>, <code>payments</code>, <code>refunds</code>, <code>additional_recipients_info</code>, and <code>attachments</code>. */
 export type FieldsList = Array<string>;
-const FieldsList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<FieldsList>;
-
 export interface SearchInvoicesRequest {
   /** The page number to be retrieved, for the list of templates. So, a combination of `page=1` and `page_size=20` returns the first 20 templates. A combination of `page=2` and `page_size=20` returns the next 20 templates. */
   page?: number;
@@ -1260,11 +981,6 @@ export interface SearchInvoicesRequest {
   archived?: boolean;
   fields?: FieldsList;
 }
-const SearchInvoicesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<SearchInvoicesRequest>;
-
 export interface SendInvoiceRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -1278,8 +994,6 @@ export interface SendInvoiceRequest {
   send_to_recipient?: boolean;
   additional_recipients?: EmailAddressList;
 }
-const SendInvoiceRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<SendInvoiceRequest>;
-
 export interface UpdateInvoiceRequest {
   /** The ID of the draft invoice to delete. */
   invoice_id: string;
@@ -1303,11 +1017,6 @@ export interface UpdateInvoiceRequest {
   /** List of refunds against this invoice. The invoicing refund details includes refund type, date, amount, and method. */
   refunds?: PaymentsInput;
 }
-const UpdateInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<UpdateInvoiceRequest>;
-
 export interface UpdateTemplateRequest {
   /** The ID of the template to delete. */
   template_id: string;
@@ -1322,11 +1031,6 @@ export interface UpdateTemplateRequest {
   /** The unit of measure for the template. Value is quantity, hours, or amount. */
   unit_of_measure?: UnitOfMeasure | (string & {});
 }
-const UpdateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UpdateTemplateRequest>;
-
 export type CancelInvoiceError =
   | BadRequest
   | Forbidden
@@ -1340,8 +1044,8 @@ export const cancelInvoice: API.OperationMethod<
   CancelInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelInvoiceRequest,
-  output: CancelInvoiceResponse,
+  input: __S(1) as any as S.Schema<CancelInvoiceRequest>,
+  output: __S(2) as any as S.Schema<CancelInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1355,8 +1059,8 @@ export const createInvoice: API.OperationMethod<
   CreateInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInvoiceRequest,
-  output: Invoice,
+  input: __S(29) as any as S.Schema<CreateInvoiceRequest>,
+  output: __S(42) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1074,8 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateRequest,
-  output: Template,
+  input: __S(52) as any as S.Schema<CreateTemplateRequest>,
+  output: __S(57) as any as S.Schema<Template>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1089,8 @@ export const deleteInvoice: API.OperationMethod<
   DeleteInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvoiceRequest,
-  output: DeleteInvoiceResponse,
+  input: __S(58) as any as S.Schema<DeleteInvoiceRequest>,
+  output: __S(2) as any as S.Schema<DeleteInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1405,8 +1109,8 @@ export const deleteInvoicesPayment: API.OperationMethod<
   DeleteInvoicesPaymentError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvoicesPaymentRequest,
-  output: DeleteInvoicesPaymentResponse,
+  input: __S(59) as any as S.Schema<DeleteInvoicesPaymentRequest>,
+  output: __S(2) as any as S.Schema<DeleteInvoicesPaymentResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1420,8 +1124,8 @@ export const deleteInvoicesRefund: API.OperationMethod<
   DeleteInvoicesRefundError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvoicesRefundRequest,
-  output: DeleteInvoicesRefundResponse,
+  input: __S(60) as any as S.Schema<DeleteInvoicesRefundRequest>,
+  output: __S(2) as any as S.Schema<DeleteInvoicesRefundResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1435,8 +1139,8 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTemplateRequest,
-  output: DeleteTemplateResponse,
+  input: __S(61) as any as S.Schema<DeleteTemplateRequest>,
+  output: __S(2) as any as S.Schema<DeleteTemplateResponse>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1154,8 @@ export const getConnection: API.OperationMethod<
   GetConnectionError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: Connections,
+  input: __S(62) as any as S.Schema<GetConnectionRequest>,
+  output: __S(65) as any as S.Schema<Connections>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1169,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInvoiceRequest,
-  output: Invoice,
+  input: __S(66) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(42) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1480,8 +1184,8 @@ export const getTemplate: API.OperationMethod<
   GetTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateRequest,
-  output: Template,
+  input: __S(67) as any as S.Schema<GetTemplateRequest>,
+  output: __S(57) as any as S.Schema<Template>,
   errors: [Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1495,8 +1199,8 @@ export const invoiceConnectionDetailsGet: API.OperationMethod<
   InvoiceConnectionDetailsGetError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoiceConnectionDetailsGetRequest,
-  output: InvoiceConnectionDetails,
+  input: __S(68) as any as S.Schema<InvoiceConnectionDetailsGetRequest>,
+  output: __S(70) as any as S.Schema<InvoiceConnectionDetails>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1510,8 +1214,8 @@ export const invoicesGenerateQrCode: API.OperationMethod<
   InvoicesGenerateQrCodeError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoicesGenerateQrCodeRequest,
-  output: InvoicesGenerateQrCodeResponse,
+  input: __S(71) as any as S.Schema<InvoicesGenerateQrCodeRequest>,
+  output: __S(2) as any as S.Schema<InvoicesGenerateQrCodeResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1530,8 +1234,8 @@ export const invoicesPayments: API.OperationMethod<
   InvoicesPaymentsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoicesPaymentsRequest,
-  output: PaymentReference,
+  input: __S(72) as any as S.Schema<InvoicesPaymentsRequest>,
+  output: __S(73) as any as S.Schema<PaymentReference>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1550,8 +1254,8 @@ export const invoicesRefunds: API.OperationMethod<
   InvoicesRefundsError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoicesRefundsRequest,
-  output: RefundReference,
+  input: __S(74) as any as S.Schema<InvoicesRefundsRequest>,
+  output: __S(75) as any as S.Schema<RefundReference>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1570,8 +1274,8 @@ export const invoicesRemind: API.OperationMethod<
   InvoicesRemindError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoicesRemindRequest,
-  output: InvoicesRemindResponse,
+  input: __S(76) as any as S.Schema<InvoicesRemindRequest>,
+  output: __S(2) as any as S.Schema<InvoicesRemindResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1585,8 +1289,8 @@ export const invoicingGenerateNextInvoiceNumber: API.OperationMethod<
   InvoicingGenerateNextInvoiceNumberError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoicingGenerateNextInvoiceNumberRequest,
-  output: InvoiceNumber,
+  input: __S(77) as any as S.Schema<InvoicingGenerateNextInvoiceNumberRequest>,
+  output: __S(78) as any as S.Schema<InvoiceNumber>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1600,8 +1304,8 @@ export const listInvoices: API.OperationMethod<
   ListInvoicesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvoicesRequest,
-  output: Invoices,
+  input: __S(79) as any as S.Schema<ListInvoicesRequest>,
+  output: __S(81) as any as S.Schema<Invoices>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1615,8 +1319,8 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTemplatesRequest,
-  output: Templates,
+  input: __S(82) as any as S.Schema<ListTemplatesRequest>,
+  output: __S(85) as any as S.Schema<Templates>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1630,8 +1334,8 @@ export const searchInvoices: API.OperationMethod<
   SearchInvoicesError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchInvoicesRequest,
-  output: Invoices,
+  input: __S(90) as any as S.Schema<SearchInvoicesRequest>,
+  output: __S(81) as any as S.Schema<Invoices>,
   errors: [BadRequest, Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1354,8 @@ export const sendInvoice: API.OperationMethod<
   SendInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendInvoiceRequest,
-  output: LinkDescription,
+  input: __S(91) as any as S.Schema<SendInvoiceRequest>,
+  output: __S(40) as any as S.Schema<LinkDescription>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1670,8 +1374,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInvoiceRequest,
-  output: Invoice,
+  input: __S(92) as any as S.Schema<UpdateInvoiceRequest>,
+  output: __S(42) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1685,8 +1389,8 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateRequest,
-  output: Template,
+  input: __S(93) as any as S.Schema<UpdateTemplateRequest>,
+  output: __S(57) as any as S.Schema<Template>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1705,7 +1409,7 @@ function __c0(j: number): any {
           note: S.optional(S.String),
           send_to_invoicer: S.optional(S.Boolean),
           send_to_recipient: S.optional(S.Boolean),
-          additional_recipients: S.optional(EmailAddressList),
+          additional_recipients: S.optional(__S(0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/cancel", code: 200 }),
         ),
@@ -1725,11 +1429,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FileReference" });
     case 4:
-      return S.Array(FileReference);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          term_type: S.optional(PaymentTermType),
+          term_type: S.optional(S.String),
           due_date: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvoicePaymentTerm" });
@@ -1741,10 +1445,10 @@ function __c0(j: number): any {
           note: S.optional(S.String),
           terms_and_conditions: S.optional(S.String),
           memo: S.optional(S.String),
-          attachments: S.optional(FileReferenceList),
+          attachments: S.optional(__S(4)),
           invoice_number: S.optional(S.String),
           invoice_date: S.optional(S.String),
-          payment_term: S.optional(InvoicePaymentTerm),
+          payment_term: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "InvoiceDetailInput" });
     case 7:
@@ -1786,7 +1490,7 @@ function __c1(j: number): any {
           admin_area_1: S.optional(S.String),
           postal_code: S.optional(S.String),
           country_code: S.String,
-          address_details: S.optional(AddressDetails),
+          address_details: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "AddressPortable" });
     case 2:
@@ -1795,19 +1499,19 @@ function __c1(j: number): any {
           country_code: S.String,
           national_number: S.String,
           extension_number: S.optional(S.String),
-          phone_type: PhoneType,
+          phone_type: S.String,
         }),
       ).annotate({ identifier: "PhoneDetail" });
     case 3:
-      return S.Array(PhoneDetail);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           business_name: S.optional(S.String),
-          name: S.optional(Name),
-          address: S.optional(AddressPortable),
+          name: S.optional(__S(7)),
+          address: S.optional(__S(9)),
           email_address: S.optional(S.String),
-          phones: S.optional(PhoneDetailList),
+          phones: S.optional(__S(11)),
           website: S.optional(S.String),
           tax_id: S.optional(S.String),
           additional_notes: S.optional(S.String),
@@ -1818,10 +1522,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           business_name: S.optional(S.String),
-          name: S.optional(Name),
-          address: S.optional(AddressPortable),
+          name: S.optional(__S(7)),
+          address: S.optional(__S(9)),
           email_address: S.optional(S.String),
-          phones: S.optional(DefinitionsPhoneDetailList),
+          phones: S.optional(__S(11)),
           additional_info: S.optional(S.String),
           language: S.optional(S.String),
         }),
@@ -1830,15 +1534,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           business_name: S.optional(S.String),
-          name: S.optional(Name),
-          address: S.optional(AddressPortable),
+          name: S.optional(__S(7)),
+          address: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "ContactNameAddress" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          billing_info: S.optional(BillingInfo),
-          shipping_info: S.optional(ContactNameAddress),
+          billing_info: S.optional(__S(13)),
+          shipping_info: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "RecipientInfo" });
   }
@@ -1846,7 +1550,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecipientInfo);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1859,7 +1563,7 @@ function __c2(j: number): any {
         S.Struct({
           name: S.String,
           percent: S.String,
-          amount: S.optional(Money),
+          amount: S.optional(__S(17)),
           tax_note: S.optional(S.String),
         }),
       ).annotate({ identifier: "Tax" });
@@ -1867,7 +1571,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           percent: S.optional(S.String),
-          amount: S.optional(Money),
+          amount: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "Discount" });
     case 4:
@@ -1876,20 +1580,20 @@ function __c2(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           quantity: S.String,
-          unit_amount: Money,
-          tax: S.optional(Tax),
+          unit_amount: __S(17),
+          tax: S.optional(__S(18)),
           item_date: S.optional(S.String),
-          discount: S.optional(Discount),
-          unit_of_measure: S.optional(UnitOfMeasure),
+          discount: S.optional(__S(19)),
+          unit_of_measure: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemInput" });
     case 5:
-      return S.Array(ItemInput);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           allow_partial_payment: S.optional(S.Boolean),
-          minimum_amount_due: S.optional(Money),
+          minimum_amount_due: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "PartialPayment" });
     case 7:
@@ -1898,7 +1602,7 @@ function __c2(j: number): any {
           tax_calculated_after_discount: S.optional(S.Boolean),
           tax_inclusive: S.optional(S.Boolean),
           allow_tip: S.optional(S.Boolean),
-          partial_payment: S.optional(PartialPayment),
+          partial_payment: S.optional(__S(22)),
           has_conditional_rule: S.optional(S.Boolean),
           template_id: S.optional(S.String),
         }),
@@ -1910,32 +1614,32 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          invoice_discount: S.optional(Discount),
-          item_discount: S.optional(Money),
+          invoice_discount: S.optional(__S(19)),
+          item_discount: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "AggregatedDiscount" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(Money),
-          tax: S.optional(Tax),
+          amount: S.optional(__S(17)),
+          tax: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "ShippingCost" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           label: S.String,
-          amount: S.optional(Money),
+          amount: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "CustomAmount" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          item_total: S.optional(Money),
-          discount: S.optional(AggregatedDiscount),
-          tax_total: S.optional(Money),
-          shipping: S.optional(ShippingCost),
-          custom: S.optional(CustomAmount),
+          item_total: S.optional(__S(17)),
+          discount: S.optional(__S(24)),
+          tax_total: S.optional(__S(17)),
+          shipping: S.optional(__S(25)),
+          custom: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "AmountWithBreakdown" });
     case 4:
@@ -1943,21 +1647,21 @@ function __c3(j: number): any {
         S.Struct({
           currency_code: S.optional(S.String),
           value: S.optional(S.String),
-          breakdown: S.optional(AmountWithBreakdown),
+          breakdown: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "AmountSummaryDetail" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          detail: InvoiceDetailInput,
-          invoicer: S.optional(InvoicerInfo),
-          primary_recipients: S.optional(RecipientInfoList),
-          additional_recipients: S.optional(EmailAddressList),
-          items: S.optional(ItemListInput),
-          configuration: S.optional(Configuration),
-          amount: S.optional(AmountSummaryDetail),
-          payments: S.optional(PaymentsInput),
-          refunds: S.optional(PaymentsInput),
+          detail: __S(6),
+          invoicer: S.optional(__S(12)),
+          primary_recipients: S.optional(__S(16)),
+          additional_recipients: S.optional(__S(0)),
+          items: S.optional(__S(21)),
+          configuration: S.optional(__S(23)),
+          amount: S.optional(__S(28)),
+          payments: S.optional(__S(2)),
+          refunds: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/invoices", code: 200 })),
       ).annotate({ identifier: "CreateInvoiceRequest" });
     case 6:
@@ -1972,7 +1676,7 @@ function __c3(j: number): any {
           first_sent_time: S.optional(S.String),
           last_sent_time: S.optional(S.String),
           last_sent_by: S.optional(S.String),
-          created_by_flow: S.optional(InvoiceCreationFlow),
+          created_by_flow: S.optional(S.String),
           recipient_view_url: S.optional(S.String),
           invoicer_view_url: S.optional(S.String),
         }),
@@ -1985,11 +1689,11 @@ function __c3(j: number): any {
           note: S.optional(S.String),
           terms_and_conditions: S.optional(S.String),
           memo: S.optional(S.String),
-          attachments: S.optional(FileReferenceList),
+          attachments: S.optional(__S(4)),
           invoice_number: S.optional(S.String),
           invoice_date: S.optional(S.String),
-          payment_term: S.optional(InvoicePaymentTerm),
-          metadata: S.optional(Metadata),
+          payment_term: S.optional(__S(5)),
+          metadata: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "InvoiceDetail" });
   }
@@ -2003,53 +1707,53 @@ function __c4(j: number): any {
           name: S.String,
           description: S.optional(S.String),
           quantity: S.String,
-          unit_amount: Money,
-          tax: S.optional(Tax),
+          unit_amount: __S(17),
+          tax: S.optional(__S(18)),
           item_date: S.optional(S.String),
-          discount: S.optional(Discount),
-          unit_of_measure: S.optional(UnitOfMeasure),
+          discount: S.optional(__S(19)),
+          unit_of_measure: S.optional(S.String),
         }),
       ).annotate({ identifier: "Item" });
     case 1:
-      return S.Array(Item);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(PaymentType),
+          type: S.optional(S.String),
           payment_id: S.optional(S.String),
           payment_date: S.optional(S.String),
-          method: PaymentMethod,
+          method: S.String,
           note: S.optional(S.String),
-          amount: S.optional(Money),
-          shipping_info: S.optional(ContactNameAddress),
+          amount: S.optional(__S(17)),
+          shipping_info: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "PaymentDetail" });
     case 3:
-      return S.Array(PaymentDetail);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          paid_amount: S.optional(Money),
-          transactions: S.optional(PaymentDetailList),
+          paid_amount: S.optional(__S(17)),
+          transactions: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "Payments" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(PaymentType),
+          type: S.optional(S.String),
           refund_id: S.optional(S.String),
           refund_date: S.optional(S.String),
-          amount: S.optional(Money),
-          method: PaymentMethod,
+          amount: S.optional(__S(17)),
+          method: S.String,
         }),
       ).annotate({ identifier: "RefundDetail" });
     case 6:
-      return S.Array(RefundDetail);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          refund_amount: S.optional(Money),
-          transactions: S.optional(RefundDetailList),
+          refund_amount: S.optional(__S(17)),
+          transactions: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "Refunds" });
   }
@@ -2061,35 +1765,35 @@ function __c5(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(LinkDescriptionMethod),
+          method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
     case 1:
-      return S.Array(LinkDescription);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           parent_id: S.optional(S.String),
-          status: S.optional(InvoiceStatus),
-          detail: InvoiceDetail,
-          invoicer: S.optional(InvoicerInfo),
-          primary_recipients: S.optional(RecipientInfoList),
-          additional_recipients: S.optional(EmailAddressList),
-          items: S.optional(ItemList),
-          configuration: S.optional(Configuration),
-          amount: S.optional(AmountSummaryDetail),
-          due_amount: S.optional(Money),
-          gratuity: S.optional(Money),
-          payments: S.optional(Payments),
-          refunds: S.optional(Refunds),
-          links: S.optional(LinkDescriptionList),
+          status: S.optional(S.String),
+          detail: __S(31),
+          invoicer: S.optional(__S(12)),
+          primary_recipients: S.optional(__S(16)),
+          additional_recipients: S.optional(__S(0)),
+          items: S.optional(__S(33)),
+          configuration: S.optional(__S(23)),
+          amount: S.optional(__S(28)),
+          due_amount: S.optional(__S(17)),
+          gratuity: S.optional(__S(17)),
+          payments: S.optional(__S(36)),
+          refunds: S.optional(__S(39)),
+          links: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "Invoice" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          term_type: S.optional(PaymentTermType),
+          term_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentTerm" });
     case 4:
@@ -2100,33 +1804,33 @@ function __c5(j: number): any {
           note: S.optional(S.String),
           terms_and_conditions: S.optional(S.String),
           memo: S.optional(S.String),
-          attachments: S.optional(FileReferenceList),
-          payment_term: S.optional(PaymentTerm),
-          metadata: S.optional(PaymentsInput),
+          attachments: S.optional(__S(4)),
+          payment_term: S.optional(__S(43)),
+          metadata: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "TemplateDetailInput" });
     case 5:
-      return S.Array(ItemInput);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           tax_calculated_after_discount: S.optional(S.Boolean),
           tax_inclusive: S.optional(S.Boolean),
           allow_tip: S.optional(S.Boolean),
-          partial_payment: S.optional(PartialPayment),
+          partial_payment: S.optional(__S(22)),
           has_conditional_rule: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TemplateConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          detail: S.optional(TemplateDetailInput),
-          invoicer: S.optional(InvoicerInfo),
-          primary_recipients: S.optional(DefinitionsRecipientInfoList),
-          additional_recipients: S.optional(EmailAddressList),
-          items: S.optional(DefinitionsItemListInput),
-          configuration: S.optional(TemplateConfiguration),
-          amount: S.optional(AmountSummaryDetail),
+          detail: S.optional(__S(44)),
+          invoicer: S.optional(__S(12)),
+          primary_recipients: S.optional(__S(16)),
+          additional_recipients: S.optional(__S(0)),
+          items: S.optional(__S(45)),
+          configuration: S.optional(__S(46)),
+          amount: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "TemplateInfoInput" });
   }
@@ -2144,17 +1848,17 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          field_name: S.optional(TemplateItemField),
-          display_preference: S.optional(TemplateDisplayPreference),
+          field_name: S.optional(S.String),
+          display_preference: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "TemplateItemSetting" });
     case 2:
-      return S.Array(TemplateItemSetting);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          template_item_settings: S.optional(TemplateItemSettingList),
-          template_subtotal_settings: S.optional(TemplateSubtotalSettingList),
+          template_item_settings: S.optional(__S(50)),
+          template_subtotal_settings: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "TemplateSettings" });
     case 4:
@@ -2162,9 +1866,9 @@ function __c6(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           default_template: S.optional(S.Boolean),
-          template_info: S.optional(TemplateInfoInput),
-          settings: S.optional(TemplateSettings),
-          unit_of_measure: S.optional(UnitOfMeasure),
+          template_info: S.optional(__S(47)),
+          settings: S.optional(__S(51)),
+          unit_of_measure: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/templates", code: 200 })),
       ).annotate({ identifier: "CreateTemplateRequest" });
     case 5:
@@ -2184,13 +1888,13 @@ function __c6(j: number): any {
           note: S.optional(S.String),
           terms_and_conditions: S.optional(S.String),
           memo: S.optional(S.String),
-          attachments: S.optional(FileReferenceList),
-          payment_term: S.optional(PaymentTerm),
-          metadata: S.optional(TemplateMetadata),
+          attachments: S.optional(__S(4)),
+          payment_term: S.optional(__S(43)),
+          metadata: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "TemplateDetail" });
     case 7:
-      return S.Array(Item);
+      return S.Array(__S(32));
   }
 }
 function __c7(j: number): any {
@@ -2198,14 +1902,14 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          detail: S.optional(TemplateDetail),
-          invoicer: S.optional(InvoicerInfo),
-          primary_recipients: S.optional(DefinitionsRecipientInfoList),
-          additional_recipients: S.optional(EmailAddressList),
-          items: S.optional(DefinitionsItemList),
-          configuration: S.optional(TemplateConfiguration),
-          amount: S.optional(AmountSummaryDetail),
-          due_amount: S.optional(Money),
+          detail: S.optional(__S(54)),
+          invoicer: S.optional(__S(12)),
+          primary_recipients: S.optional(__S(16)),
+          additional_recipients: S.optional(__S(0)),
+          items: S.optional(__S(55)),
+          configuration: S.optional(__S(46)),
+          amount: S.optional(__S(28)),
+          due_amount: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "TemplateInfo" });
     case 1:
@@ -2214,11 +1918,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           default_template: S.optional(S.Boolean),
-          template_info: S.optional(TemplateInfo),
-          settings: S.optional(TemplateSettings),
-          unit_of_measure: S.optional(UnitOfMeasure),
+          template_info: S.optional(__S(56)),
+          settings: S.optional(__S(51)),
+          unit_of_measure: S.optional(S.String),
           standard_template: S.optional(S.Boolean),
-          links: S.optional(LinkDescriptionList),
+          links: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "Template" });
     case 2:
@@ -2282,7 +1986,7 @@ function __c7(j: number): any {
         S.Struct({
           platform_name: S.optional(S.String),
           last_sync_time: S.optional(S.String),
-          last_sync_status: S.optional(ConnectionLastSyncStatus),
+          last_sync_status: S.optional(S.String),
         }),
       ).annotate({ identifier: "Connection" });
   }
@@ -2290,11 +1994,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Connection);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          connections: S.optional(ConnectionList),
+          connections: S.optional(__S(64)),
         }),
       ).annotate({ identifier: "Connections" });
     case 2:
@@ -2324,12 +2028,12 @@ function __c8(j: number): any {
         identifier: "InvoiceConnectionDetailsGetRequest",
       });
     case 5:
-      return S.Array(Connections);
+      return S.Array(__S(65));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          connection_status: S.optional(ConnectionsList),
+          connection_status: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "InvoiceConnectionDetails" });
     case 7:
@@ -2359,10 +2063,10 @@ function __c9(j: number): any {
           invoice_id: S.String.pipe(T.Label()),
           payment_id: S.optional(S.String),
           payment_date: S.optional(S.String),
-          method: PaymentMethod,
+          method: S.String,
           note: S.optional(S.String),
-          amount: S.optional(Money),
-          shipping_info: S.optional(ContactNameAddress),
+          amount: S.optional(__S(17)),
+          shipping_info: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2382,8 +2086,8 @@ function __c9(j: number): any {
         S.Struct({
           invoice_id: S.String.pipe(T.Label()),
           refund_date: S.optional(S.String),
-          amount: S.optional(Money),
-          method: PaymentMethod,
+          amount: S.optional(__S(17)),
+          method: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/refunds", code: 200 }),
         ),
@@ -2402,7 +2106,7 @@ function __c9(j: number): any {
           note: S.optional(S.String),
           send_to_invoicer: S.optional(S.Boolean),
           send_to_recipient: S.optional(S.Boolean),
-          additional_recipients: S.optional(EmailAddressList),
+          additional_recipients: S.optional(__S(0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/remind", code: 200 }),
         ),
@@ -2438,14 +2142,14 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Invoice);
+      return S.Array(__S(42));
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_pages: S.optional(S.Number),
           total_items: S.optional(S.Number),
-          items: S.optional(InvoiceList),
-          links: S.optional(LinkDescriptionList),
+          items: S.optional(__S(80)),
+          links: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "Invoices" });
     case 2:
@@ -2457,26 +2161,26 @@ function __c10(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v2/invoicing/templates", code: 200 })),
       ).annotate({ identifier: "ListTemplatesRequest" });
     case 3:
-      return S.Array(AddressPortable);
+      return S.Array(__S(9));
     case 4:
-      return S.Array(Template);
+      return S.Array(__S(57));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          addresses: S.optional(AddressPortableList),
+          addresses: S.optional(__S(83)),
           emails: S.optional(S.String),
-          phones: S.optional(TemplatesDefinitionsPhoneDetailList),
-          templates: S.optional(TemplateList),
-          links: S.optional(LinkDescriptionList),
+          phones: S.optional(__S(11)),
+          templates: S.optional(__S(84)),
+          links: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "Templates" });
     case 6:
-      return S.Array(InvoiceStatus);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          lower_amount: Money,
-          upper_amount: Money,
+          lower_amount: __S(17),
+          upper_amount: __S(17),
         }),
       ).annotate({ identifier: "AmountRange" });
   }
@@ -2503,17 +2207,17 @@ function __c11(j: number): any {
           recipient_last_name: S.optional(S.String),
           recipient_business_name: S.optional(S.String),
           invoice_number: S.optional(S.String),
-          status: S.optional(InvoiceStatusList),
+          status: S.optional(__S(86)),
           reference: S.optional(S.String),
           currency_code: S.optional(S.String),
           memo: S.optional(S.String),
-          total_amount_range: S.optional(AmountRange),
-          invoice_date_range: S.optional(DateRange),
-          due_date_range: S.optional(DateRange),
-          payment_date_range: S.optional(DateTimeRange),
-          creation_date_range: S.optional(DateTimeRange),
+          total_amount_range: S.optional(__S(87)),
+          invoice_date_range: S.optional(__S(88)),
+          due_date_range: S.optional(__S(88)),
+          payment_date_range: S.optional(__S(88)),
+          creation_date_range: S.optional(__S(88)),
           archived: S.optional(S.Boolean),
-          fields: S.optional(FieldsList),
+          fields: S.optional(__S(89)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/invoicing/search-invoices", code: 200 })),
       ).annotate({ identifier: "SearchInvoicesRequest" });
     case 3:
@@ -2524,7 +2228,7 @@ function __c11(j: number): any {
           note: S.optional(S.String),
           send_to_invoicer: S.optional(S.Boolean),
           send_to_recipient: S.optional(S.Boolean),
-          additional_recipients: S.optional(EmailAddressList),
+          additional_recipients: S.optional(__S(0)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/invoicing/invoices/{invoice_id}/send", code: 200 }),
         ),
@@ -2535,15 +2239,15 @@ function __c11(j: number): any {
           invoice_id: S.String.pipe(T.Label()),
           send_to_recipient: S.optional(S.Boolean.pipe(T.Query())),
           send_to_invoicer: S.optional(S.Boolean.pipe(T.Query())),
-          detail: InvoiceDetailInput,
-          invoicer: S.optional(InvoicerInfo),
-          primary_recipients: S.optional(RecipientInfoList),
-          additional_recipients: S.optional(EmailAddressList),
-          items: S.optional(ItemListInput),
-          configuration: S.optional(Configuration),
-          amount: S.optional(AmountSummaryDetail),
-          payments: S.optional(PaymentsInput),
-          refunds: S.optional(PaymentsInput),
+          detail: __S(6),
+          invoicer: S.optional(__S(12)),
+          primary_recipients: S.optional(__S(16)),
+          additional_recipients: S.optional(__S(0)),
+          items: S.optional(__S(21)),
+          configuration: S.optional(__S(23)),
+          amount: S.optional(__S(28)),
+          payments: S.optional(__S(2)),
+          refunds: S.optional(__S(2)),
         }).pipe(T.Http({ method: "PUT", uri: "/v2/invoicing/invoices/{invoice_id}", code: 200 })),
       ).annotate({ identifier: "UpdateInvoiceRequest" });
     case 5:
@@ -2552,10 +2256,43 @@ function __c11(j: number): any {
           template_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           default_template: S.optional(S.Boolean),
-          template_info: S.optional(TemplateInfoInput),
-          settings: S.optional(TemplateSettings),
-          unit_of_measure: S.optional(UnitOfMeasure),
+          template_info: S.optional(__S(47)),
+          settings: S.optional(__S(51)),
+          unit_of_measure: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v2/invoicing/templates/{template_id}", code: 200 })),
       ).annotate({ identifier: "UpdateTemplateRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

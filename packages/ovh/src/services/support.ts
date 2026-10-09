@@ -6,17 +6,15 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
 /** Ticket request category */
 export type SupportTicketCategoryEnum = "assistance" | "billing" | "incident";
-const SupportTicketCategoryEnum = S.String;
-
 /** Ticket level of impact or urgency (reserved for Business or Enterprise support level accounts) */
 export type SupportTicketImpactUrgencyEnum = "high" | "low" | "medium";
-const SupportTicketImpactUrgencyEnum = S.String;
-
 /** Ticket product */
 export type SupportTicketProductEnum =
   | "adsl"
@@ -44,8 +42,6 @@ export type SupportTicketProductEnum =
   | "vps"
   | "web-billing"
   | "web-other";
-const SupportTicketProductEnum = S.String;
-
 /** Ticket request subcategory */
 export type SupportTicketSubCategoryEnum =
   | "alerts"
@@ -58,19 +54,10 @@ export type SupportTicketSubCategoryEnum =
   | "perfs"
   | "start"
   | "usage";
-const SupportTicketSubCategoryEnum = S.String;
-
 /** DEPRECATED - Ticket type (criticalIntervention requires VIP support level) */
 export type SupportTicketTypeEnum = "criticalIntervention" | "genericRequest";
-const SupportTicketTypeEnum = S.String;
-
 /** List of e-mail addresses to notify on ticket updates (max. 10) */
 export type CreateSupportTicketRequestWatchersList = Array<string>;
-const CreateSupportTicketRequestWatchersList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateSupportTicketRequestWatchersList>;
-
 export interface CreateSupportTicketRequest {
   /** Ticket message body */
   body: string;
@@ -93,11 +80,6 @@ export interface CreateSupportTicketRequest {
   /** List of e-mail addresses to notify on ticket updates (max. 10) */
   watchers?: CreateSupportTicketRequestWatchersList;
 }
-const CreateSupportTicketRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateSupportTicketRequest>;
-
 /** Newly created support identifiers */
 export interface SupportNewMessageInfo {
   /** Notice or warning */
@@ -109,41 +91,18 @@ export interface SupportNewMessageInfo {
   /** Ticket external number */
   ticketNumber?: number;
 }
-const SupportNewMessageInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<SupportNewMessageInfo>;
-
 export interface CreateSupportTicketCloseRequest {
   /** internal ticket identifier */
   ticketId: number;
 }
-const CreateSupportTicketCloseRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateSupportTicketCloseRequest>;
-
 export interface CreateSupportTicketCloseResponse {}
-const CreateSupportTicketCloseResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateSupportTicketCloseResponse>;
-
 export interface CreateSupportTicketReopenRequest {
   /** internal ticket identifier */
   ticketId: number;
   /** ticket reopen reason */
   body: string;
 }
-const CreateSupportTicketReopenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateSupportTicketReopenRequest>;
-
 export interface CreateSupportTicketReopenResponse {}
-const CreateSupportTicketReopenResponse =
-  CreateSupportTicketCloseResponse as any as S.Schema<CreateSupportTicketReopenResponse>;
-
 export interface CreateSupportTicketScoreRequest {
   /** internal ticket identifier */
   ticketId: number;
@@ -152,32 +111,15 @@ export interface CreateSupportTicketScoreRequest {
   /** ticket comment about the score */
   scoreComment?: string;
 }
-const CreateSupportTicketScoreRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSupportTicketScoreRequest>;
-
 export interface CreateSupportTicketScoreResponse {}
-const CreateSupportTicketScoreResponse =
-  CreateSupportTicketCloseResponse as any as S.Schema<CreateSupportTicketScoreResponse>;
-
 export interface GetSupportTicketRequest {
   /** internal identifier ticket */
   ticketId: number;
 }
-const GetSupportTicketRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetSupportTicketRequest>;
-
 /** Message sender type */
 export type SupportMessageSenderEnum = "customer" | "support";
-const SupportMessageSenderEnum = S.String;
-
 /** Support ticket statuses */
 export type SupportTicketStatusEnum = "closed" | "open" | "unknown";
-const SupportTicketStatusEnum = S.String;
-
 /** Support Ticket */
 export interface SupportTicket {
   /** Customer account identifier */
@@ -209,32 +151,15 @@ export interface SupportTicket {
   /** Ticket last update date */
   updateDate?: string;
 }
-const SupportTicket = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SupportTicket>;
-
 export interface GetSupportTicketCanBeScoredRequest {
   /** internal ticket identifier */
   ticketId: number;
 }
-const GetSupportTicketCanBeScoredRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetSupportTicketCanBeScoredRequest>;
-
 export type GetSupportTicketCanBeScoredResponse = boolean;
-const GetSupportTicketCanBeScoredResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetSupportTicketCanBeScoredResponse>;
-
 export interface ListSupportTicketMessagesRequest {
   /** internal ticket identifier */
   ticketId: number;
 }
-const ListSupportTicketMessagesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListSupportTicketMessagesRequest>;
-
 /** Support ticket message */
 export interface SupportMessage {
   /** Message body */
@@ -250,20 +175,8 @@ export interface SupportMessage {
   /** Message last update date */
   updateDate?: string;
 }
-const SupportMessage = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SupportMessage>;
-
 export type ListSupportTicketMessagesResponseBodyList = Array<SupportMessage>;
-const ListSupportTicketMessagesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListSupportTicketMessagesResponseBodyList>;
-
 export type ListSupportTicketMessagesResponse = ListSupportTicketMessagesResponseBodyList;
-const ListSupportTicketMessagesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListSupportTicketMessagesResponse>;
-
 export interface ListSupportTicketsRequest {
   /** Search archived tickets */
   archived?: boolean;
@@ -292,40 +205,15 @@ export interface ListSupportTicketsRequest {
   /** Search by ticket number */
   ticketNumber?: string;
 }
-const ListSupportTicketsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListSupportTicketsRequest>;
-
 export type ListSupportTicketsResponseBodyList = Array<number>;
-const ListSupportTicketsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListSupportTicketsResponseBodyList>;
-
 export type ListSupportTicketsResponse = ListSupportTicketsResponseBodyList;
-const ListSupportTicketsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListSupportTicketsResponse>;
-
 export interface ReplySupportTicketRequest {
   /** internal ticket identifier */
   ticketId: number;
   /** text body of ticket response */
   body: string;
 }
-const ReplySupportTicketRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ReplySupportTicketRequest>;
-
 export interface ReplySupportTicketResponse {}
-const ReplySupportTicketResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ReplySupportTicketResponse>;
-
 export type CreateSupportTicketError = OvhOpError;
 /** Create a new ticket */
 export const createSupportTicket: API.OperationMethod<
@@ -334,8 +222,8 @@ export const createSupportTicket: API.OperationMethod<
   CreateSupportTicketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSupportTicketRequest,
-  output: SupportNewMessageInfo,
+  input: __S(1) as any as S.Schema<CreateSupportTicketRequest>,
+  output: __S(2) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -349,8 +237,8 @@ export const createSupportTicketClose: API.OperationMethod<
   CreateSupportTicketCloseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSupportTicketCloseRequest,
-  output: CreateSupportTicketCloseResponse,
+  input: __S(3) as any as S.Schema<CreateSupportTicketCloseRequest>,
+  output: __S(4) as any as S.Schema<CreateSupportTicketCloseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -364,8 +252,8 @@ export const createSupportTicketReopen: API.OperationMethod<
   CreateSupportTicketReopenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSupportTicketReopenRequest,
-  output: CreateSupportTicketReopenResponse,
+  input: __S(5) as any as S.Schema<CreateSupportTicketReopenRequest>,
+  output: __S(4) as any as S.Schema<CreateSupportTicketReopenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -379,8 +267,8 @@ export const createSupportTicketScore: API.OperationMethod<
   CreateSupportTicketScoreError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSupportTicketScoreRequest,
-  output: CreateSupportTicketScoreResponse,
+  input: __S(6) as any as S.Schema<CreateSupportTicketScoreRequest>,
+  output: __S(4) as any as S.Schema<CreateSupportTicketScoreResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -394,8 +282,8 @@ export const getSupportTicket: API.OperationMethod<
   GetSupportTicketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportTicketRequest,
-  output: SupportTicket,
+  input: __S(7) as any as S.Schema<GetSupportTicketRequest>,
+  output: __S(8) as any as S.Schema<SupportTicket>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -409,8 +297,8 @@ export const getSupportTicketCanBeScored: API.OperationMethod<
   GetSupportTicketCanBeScoredError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportTicketCanBeScoredRequest,
-  output: GetSupportTicketCanBeScoredResponse,
+  input: __S(9) as any as S.Schema<GetSupportTicketCanBeScoredRequest>,
+  output: __S(10) as any as S.Schema<GetSupportTicketCanBeScoredResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -424,8 +312,8 @@ export const listSupportTicketMessages: API.OperationMethod<
   ListSupportTicketMessagesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSupportTicketMessagesRequest,
-  output: ListSupportTicketMessagesResponse,
+  input: __S(11) as any as S.Schema<ListSupportTicketMessagesRequest>,
+  output: __S(14) as any as S.Schema<ListSupportTicketMessagesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -439,8 +327,8 @@ export const listSupportTickets: API.OperationMethod<
   ListSupportTicketsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSupportTicketsRequest,
-  output: ListSupportTicketsResponse,
+  input: __S(15) as any as S.Schema<ListSupportTicketsRequest>,
+  output: __S(17) as any as S.Schema<ListSupportTicketsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -454,8 +342,8 @@ export const replySupportTicket: API.OperationMethod<
   ReplySupportTicketError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplySupportTicketRequest,
-  output: ReplySupportTicketResponse,
+  input: __S(18) as any as S.Schema<ReplySupportTicketRequest>,
+  output: __S(19) as any as S.Schema<ReplySupportTicketResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -470,15 +358,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           body: S.String,
-          category: S.optional(SupportTicketCategoryEnum),
-          impact: S.optional(SupportTicketImpactUrgencyEnum),
-          product: S.optional(SupportTicketProductEnum),
+          category: S.optional(S.String),
+          impact: S.optional(S.String),
+          product: S.optional(S.String),
           serviceName: S.optional(S.String),
-          subcategory: S.optional(SupportTicketSubCategoryEnum),
+          subcategory: S.optional(S.String),
           subject: S.String,
-          type: S.optional(SupportTicketTypeEnum),
-          urgency: S.optional(SupportTicketImpactUrgencyEnum),
-          watchers: S.optional(CreateSupportTicketRequestWatchersList),
+          type: S.optional(S.String),
+          urgency: S.optional(S.String),
+          watchers: S.optional(__S(0)),
         }).pipe(T.Http({ method: "POST", uri: "/support/tickets/create", code: 200 })),
       ).annotate({
         identifier: "CreateSupportTicketRequest",
@@ -538,17 +426,17 @@ function __c1(j: number): any {
         S.Struct({
           accountId: S.optional(S.String),
           canBeClosed: S.optional(S.Boolean),
-          category: S.optional(S.NullOr(SupportTicketCategoryEnum)),
+          category: S.optional(S.NullOr(S.String)),
           creationDate: S.optional(S.String),
-          lastMessageFrom: S.optional(SupportMessageSenderEnum),
-          product: S.optional(S.NullOr(SupportTicketProductEnum)),
+          lastMessageFrom: S.optional(S.String),
+          product: S.optional(S.NullOr(S.String)),
           score: S.optional(S.String),
           serviceName: S.optional(S.NullOr(S.String)),
-          state: S.optional(SupportTicketStatusEnum),
+          state: S.optional(S.String),
           subject: S.optional(S.String),
           ticketId: S.optional(S.Number),
           ticketNumber: S.optional(S.Number),
-          type: S.optional(SupportTicketTypeEnum),
+          type: S.optional(S.String),
           updateDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportTicket" });
@@ -579,34 +467,32 @@ function __c1(j: number): any {
         S.Struct({
           body: S.optional(S.String),
           creationDate: S.optional(S.String),
-          from: S.optional(SupportMessageSenderEnum),
+          from: S.optional(S.String),
           messageId: S.optional(S.Number),
           ticketId: S.optional(S.Number),
           updateDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportMessage" });
     case 5:
-      return S.Array(SupportMessage);
+      return S.Array(__S(12));
     case 6:
-      return S.suspend(() =>
-        ListSupportTicketMessagesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(13).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSupportTicketMessagesResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           archived: S.optional(S.Boolean.pipe(T.Query())),
-          category: S.optional(SupportTicketCategoryEnum.pipe(T.Query())),
+          category: S.optional(S.String.pipe(T.Query())),
           customerReplyNeeded: S.optional(S.Boolean.pipe(T.Query())),
           excludeAutogenerated: S.optional(S.Boolean.pipe(T.Query())),
           maxCreationDate: S.optional(S.String.pipe(T.Query())),
           minCreationDate: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          product: S.optional(SupportTicketProductEnum.pipe(T.Query())),
+          product: S.optional(S.String.pipe(T.Query())),
           serviceName: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(SupportTicketStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           subject: S.optional(S.String.pipe(T.Query())),
           ticketNumber: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/support/tickets", code: 200 })),
@@ -620,11 +506,9 @@ function __c2(j: number): any {
     case 0:
       return S.Array(S.Number);
     case 1:
-      return S.suspend(() => ListSupportTicketsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListSupportTicketsResponse",
-        },
-      );
+      return S.suspend(() => __S(16).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListSupportTicketsResponse",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -638,5 +522,20 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ReplySupportTicketResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

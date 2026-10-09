@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -66,8 +68,6 @@ export interface DateTime {
   /** An ISO 8601 extended format date/time. Offset may or may not be required (refer to the parent field's documentation). Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the date/time is intended for a physical location in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. `1985-04-12T19:20:50.52` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985 with no offset information. Providing an offset makes this an absolute instant in time around the world. The date/time will be adjusted based on the user's time zone. For example, a time of `2018-06-19T18:30:00-04:00` will be 18:30:00 for a user in New York and 15:30:00 for a user in Los Angeles. Omitting the offset makes this a local date/time, representing several instants in time around the world. The date/time will always be in the user's current time zone. For example, a time of `2018-06-19T18:30:00` will be 18:30:00 for a user in New York and also 18:30:00 for a user in Los Angeles. This is useful when the same local date/time should apply to many physical locations across several time zones. */
   date?: string;
 }
-const DateTime = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DateTime>;
-
 export interface TimeInterval {
   /** Start time of the interval. Offset is not required. If an offset is provided and `end` time is set, `end` must also include an offset. */
   start?: DateTime;
@@ -76,8 +76,6 @@ export interface TimeInterval {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#timeInterval"`. */
   kind?: string;
 }
-const TimeInterval = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TimeInterval>;
-
 export interface TranslatedString {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#translatedString"`. */
   kind?: string;
@@ -86,11 +84,7 @@ export interface TranslatedString {
   /** The UTF-8 encoded translated string. */
   value?: string;
 }
-const TranslatedString = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TranslatedString>;
-
 export type TranslatedStringList = Array<TranslatedString>;
-const TranslatedStringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<TranslatedStringList>;
-
 export interface LocalizedString {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#localizedString"`. */
   kind?: string;
@@ -99,8 +93,6 @@ export interface LocalizedString {
   /** Contains the string to be displayed if no appropriate translation is available. */
   defaultValue?: TranslatedString;
 }
-const LocalizedString = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<LocalizedString>;
-
 export type MessageMessageTypeEnum =
   | "MESSAGE_TYPE_UNSPECIFIED"
   | "TEXT"
@@ -108,8 +100,6 @@ export type MessageMessageTypeEnum =
   | "EXPIRATION_NOTIFICATION"
   | "expirationNotification"
   | "TEXT_AND_NOTIFY";
-const MessageMessageTypeEnum = S.String;
-
 /** A message that will be displayed with a Valuable */
 export interface Message {
   /** The period of time that the message will be displayed to users. You can define both a `startTime` and `endTime` for each message. A message is displayed immediately after a Wallet Object is inserted unless a `startTime` is set. The message will appear in a list of messages indefinitely if `endTime` is not provided. */
@@ -129,25 +119,16 @@ export interface Message {
   /** The message header. */
   header?: string;
 }
-const Message = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Message>;
-
 /** Resource used when the AddMessage endpoints are called. */
 export interface AddMessageRequest {
   message?: Message;
 }
-const AddMessageRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AddMessageRequest>;
-
 export interface AddmessageEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageEventticketclassRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddmessageEventticketclassRequest>;
-
 export interface EventVenue {
   /** The address of the venue, such as "24 Willie Mays Plaza\nSan Francisco, CA 94107". Address lines are separated by line feed (`\n`) characters. This is required. */
   address?: LocalizedString;
@@ -156,8 +137,6 @@ export interface EventVenue {
   /** The name of the venue, such as "AT&T Park". This is required. */
   name?: LocalizedString;
 }
-const EventVenue = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EventVenue>;
-
 export type FieldReferenceDateFormatEnum =
   | "DATE_FORMAT_UNSPECIFIED"
   | "DATE_TIME"
@@ -172,8 +151,6 @@ export type FieldReferenceDateFormatEnum =
   | "dateYear"
   | "YEAR_MONTH"
   | "YEAR_MONTH_DAY";
-const FieldReferenceDateFormatEnum = S.String;
-
 /** Reference definition to use with field overrides. */
 export interface FieldReference {
   /** Path to the field being referenced, prefixed with "object" or "class" and separated with dots. For example, it may be the string "object.purchaseDetails.purchasePrice". */
@@ -181,26 +158,18 @@ export interface FieldReference {
   /** Only valid if the `fieldPath` references a date field. Chooses how the date field will be formatted and displayed in the UI. */
   dateFormat?: FieldReferenceDateFormatEnum | (string & {});
 }
-const FieldReference = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FieldReference>;
-
 export type FieldReferenceList = Array<FieldReference>;
-const FieldReferenceList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<FieldReferenceList>;
-
 /** Custom field selector to use with field overrides. */
 export interface FieldSelector {
   /** If more than one reference is supplied, then the first one that references a non-empty field will be displayed. */
   fields?: FieldReferenceList;
 }
-const FieldSelector = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<FieldSelector>;
-
 export type TemplateItemPredefinedItemEnum =
   | "PREDEFINED_ITEM_UNSPECIFIED"
   | "FREQUENT_FLYER_PROGRAM_NAME_AND_NUMBER"
   | "frequentFlyerProgramNameAndNumber"
   | "FLIGHT_NUMBER_AND_OPERATING_FLIGHT_NUMBER"
   | "flightNumberAndOperatingFlightNumber";
-const TemplateItemPredefinedItemEnum = S.String;
-
 export interface TemplateItem {
   /** A reference to a field to display. If both `firstValue` and `secondValue` are populated, they will both appear as one item with a slash between them. For example, values A and B would be shown as "A / B". */
   firstValue?: FieldSelector;
@@ -209,8 +178,6 @@ export interface TemplateItem {
   /** A predefined item to display. Only one of `firstValue` or `predefinedItem` may be set. */
   predefinedItem?: TemplateItemPredefinedItemEnum | (string & {});
 }
-const TemplateItem = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TemplateItem>;
-
 export interface CardRowThreeItems {
   /** The item to be displayed in the middle of the row. This item will be centered between the start and end items. */
   middleItem?: TemplateItem;
@@ -219,22 +186,16 @@ export interface CardRowThreeItems {
   /** The item to be displayed at the start of the row. This item will be aligned to the left. */
   startItem?: TemplateItem;
 }
-const CardRowThreeItems = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CardRowThreeItems>;
-
 export interface CardRowOneItem {
   /** The item to be displayed in the row. This item will be automatically centered. */
   item?: TemplateItem;
 }
-const CardRowOneItem = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CardRowOneItem>;
-
 export interface CardRowTwoItems {
   /** The item to be displayed at the start of the row. This item will be aligned to the left. */
   startItem?: TemplateItem;
   /** The item to be displayed at the end of the row. This item will be aligned to the right. */
   endItem?: TemplateItem;
 }
-const CardRowTwoItems = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CardRowTwoItems>;
-
 export interface CardRowTemplateInfo {
   /** Template for a row containing three items. Exactly one of "one_item", "two_items", "three_items" must be set. */
   threeItems?: CardRowThreeItems;
@@ -243,44 +204,24 @@ export interface CardRowTemplateInfo {
   /** Template for a row containing two items. Exactly one of "one_item", "two_items", "three_items" must be set. */
   twoItems?: CardRowTwoItems;
 }
-const CardRowTemplateInfo = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CardRowTemplateInfo>;
-
 export type CardRowTemplateInfoList = Array<CardRowTemplateInfo>;
-const CardRowTemplateInfoList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CardRowTemplateInfoList>;
-
 export interface CardTemplateOverride {
   /** Template information for rows in the card view. At most three rows are allowed to be specified. */
   cardRowTemplateInfos?: CardRowTemplateInfoList;
 }
-const CardTemplateOverride = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CardTemplateOverride>;
-
 export interface DetailsItemInfo {
   /** The item to be displayed in the details list. */
   item?: TemplateItem;
 }
-const DetailsItemInfo = CardRowOneItem as any as S.Schema<DetailsItemInfo>;
-
 export type DetailsItemInfoList = Array<DetailsItemInfo>;
-const DetailsItemInfoList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DetailsItemInfoList>;
-
 export interface DetailsTemplateOverride {
   /** Information for the "nth" item displayed in the details list. */
   detailsItemInfos?: DetailsItemInfoList;
 }
-const DetailsTemplateOverride = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DetailsTemplateOverride>;
-
 export interface BarcodeSectionDetail {
   /** A reference to an existing text-based or image field to display. */
   fieldSelector?: FieldSelector;
 }
-const BarcodeSectionDetail = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<BarcodeSectionDetail>;
-
 export interface CardBarcodeSectionDetails {
   /** Optional second piece of information to display above the barcode. If `firstTopDetail` is defined, this will be displayed to the end side of this detail section. */
   secondTopDetail?: BarcodeSectionDetail;
@@ -289,11 +230,6 @@ export interface CardBarcodeSectionDetails {
   /** Optional information to display below the barcode. */
   firstBottomDetail?: BarcodeSectionDetail;
 }
-const CardBarcodeSectionDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CardBarcodeSectionDetails>;
-
 export type FirstRowOptionTransitOptionEnum =
   | "TRANSIT_OPTION_UNSPECIFIED"
   | "ORIGIN_AND_DESTINATION_NAMES"
@@ -302,15 +238,11 @@ export type FirstRowOptionTransitOptionEnum =
   | "originAndDestinationCodes"
   | "ORIGIN_NAME"
   | "originName";
-const FirstRowOptionTransitOptionEnum = S.String;
-
 export interface FirstRowOption {
   /** A reference to the field to be displayed in the first row. */
   fieldOption?: FieldSelector;
   transitOption?: FirstRowOptionTransitOptionEnum | (string & {});
 }
-const FirstRowOption = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FirstRowOption>;
-
 export interface ListTemplateOverride {
   /** Specifies from a predefined set of options or from a reference to the field what will be displayed in the first row. To set this override, set the FirstRowOption.fieldOption to the FieldSelector of your choice. */
   firstRowOption?: FirstRowOption;
@@ -319,8 +251,6 @@ export interface ListTemplateOverride {
   /** A reference to the field to be displayed in the second row. This option is only displayed if there are not multiple user objects in a group. If there is a group, the second row will always display a field shared by all objects. To set this override, please set secondRowOption to the FieldSelector of you choice. */
   secondRowOption?: FieldSelector;
 }
-const ListTemplateOverride = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListTemplateOverride>;
-
 export interface ClassTemplateInfo {
   /** Override for the card view. */
   cardTemplateOverride?: CardTemplateOverride;
@@ -331,16 +261,12 @@ export interface ClassTemplateInfo {
   /** Override for the passes list view. */
   listTemplateOverride?: ListTemplateOverride;
 }
-const ClassTemplateInfo = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ClassTemplateInfo>;
-
 export type EventTicketClassSectionLabelEnum =
   | "SECTION_LABEL_UNSPECIFIED"
   | "SECTION"
   | "section"
   | "THEATER"
   | "theater";
-const EventTicketClassSectionLabelEnum = S.String;
-
 export interface ImageUri {
   /** Additional information about the image, which is unused and retained only for backward compatibility. */
   description?: string;
@@ -349,8 +275,6 @@ export interface ImageUri {
   /** Translated strings for the description, which are unused and retained only for backward compatibility. */
   localizedDescription?: LocalizedString;
 }
-const ImageUri = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ImageUri>;
-
 /** Wrapping type for Google hosted images. */
 export interface Image {
   /** A URI for the image. Either this or private_image_id should be set. Requests setting both or neither will be rejected. */
@@ -362,19 +286,13 @@ export interface Image {
   /** An ID for an already uploaded private image. Either this or source_uri should be set. Requests setting both or neither will be rejected. Please contact support to use private images. */
   privateImageId?: string;
 }
-const Image = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Image>;
-
 export interface ImageModuleData {
   /** A 100% width image. */
   mainImage?: Image;
   /** The ID associated with an image module. This field is here to enable ease of management of image modules. */
   id?: string;
 }
-const ImageModuleData = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ImageModuleData>;
-
 export type ImageModuleDataList = Array<ImageModuleData>;
-const ImageModuleDataList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ImageModuleDataList>;
-
 export type EventTicketClassConfirmationCodeLabelEnum =
   | "CONFIRMATION_CODE_LABEL_UNSPECIFIED"
   | "CONFIRMATION_CODE"
@@ -385,27 +303,19 @@ export type EventTicketClassConfirmationCodeLabelEnum =
   | "orderNumber"
   | "RESERVATION_NUMBER"
   | "reservationNumber";
-const EventTicketClassConfirmationCodeLabelEnum = S.String;
-
 export interface CallbackOptions {
   /** The HTTPS url configured by the merchant. The URL should be hosted on HTTPS and robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. */
   url?: string;
   /** URL for the merchant endpoint that would be called to request updates. The URL should be hosted on HTTPS and robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. Deprecated. */
   updateRequestUrl?: string;
 }
-const CallbackOptions = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CallbackOptions>;
-
 export type EventTicketClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const EventTicketClassNotifyPreferenceEnum = S.String;
-
 export type EventTicketClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const EventTicketClassViewUnlockRequirementEnum = S.String;
-
 export interface Uri {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#uri"`. */
   kind?: string;
@@ -418,19 +328,12 @@ export interface Uri {
   /** The URI's title appearing in the app as text. Recommended maximum is 20 characters to ensure full string is displayed on smaller screens. Note that in some contexts this text is not used, such as when `description` is part of an image. */
   description?: string;
 }
-const Uri = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Uri>;
-
 export interface AppLinkDataAppLinkInfoAppTarget {
   /** Package name for AppTarget. For example: com.google.android.gm */
   packageName?: string;
   /** URI for AppTarget. The description on the URI must be set. Prefer setting package field instead, if this target is defined for your application. */
   targetUri?: Uri;
 }
-const AppLinkDataAppLinkInfoAppTarget = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AppLinkDataAppLinkInfoAppTarget>;
-
 export interface AppLinkDataAppLinkInfo {
   /** Deprecated. Title isn't supported in the app link module. */
   title?: LocalizedString;
@@ -441,11 +344,6 @@ export interface AppLinkDataAppLinkInfo {
   /** Target to follow when opening the app link on clients. It will be used by partners to open their app or webpage. */
   appTarget?: AppLinkDataAppLinkInfoAppTarget;
 }
-const AppLinkDataAppLinkInfo = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AppLinkDataAppLinkInfo>;
-
 export interface AppLinkData {
   /** Optional display text for the app link button. Character limit is 30. */
   displayText?: LocalizedString;
@@ -456,16 +354,12 @@ export interface AppLinkData {
   /** Optional information about the partner web link. */
   webAppLinkInfo?: AppLinkDataAppLinkInfo;
 }
-const AppLinkData = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AppLinkData>;
-
 export type EventDateTimeDoorsOpenLabelEnum =
   | "DOORS_OPEN_LABEL_UNSPECIFIED"
   | "DOORS_OPEN"
   | "doorsOpen"
   | "GATES_OPEN"
   | "gatesOpen";
-const EventDateTimeDoorsOpenLabelEnum = S.String;
-
 export interface EventDateTime {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventDateTime"`. */
   kind?: string;
@@ -480,8 +374,6 @@ export interface EventDateTime {
   /** The label to use for the doors open value (`doorsOpen`) on the card detail view. Each available option maps to a set of localized strings, so that translations are shown to the user based on their locale. Both `doorsOpenLabel` and `customDoorsOpenLabel` may not be set. If neither is set, the label will default to "Doors Open", localized. If the doors open field is unset, this label will not be used. */
   doorsOpenLabel?: EventDateTimeDoorsOpenLabelEnum | (string & {});
 }
-const EventDateTime = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<EventDateTime>;
-
 /** A pair of text strings to be displayed in the details view. Note we no longer display LabelValue/LabelValueRow as a table, instead a list of items. */
 export interface LabelValue {
   /** Translated strings for the label. Recommended maximum is 15 characters for a two-column layout and 30 characters for a one-column layout. */
@@ -493,48 +385,27 @@ export interface LabelValue {
   /** Translated strings for the value. Recommended maximum is 15 characters for a two-column layout and 30 characters for a one-column layout. */
   localizedValue?: LocalizedString;
 }
-const LabelValue = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<LabelValue>;
-
 export type LabelValueList = Array<LabelValue>;
-const LabelValueList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LabelValueList>;
-
 export interface LabelValueRow {
   /** A list of labels and values. These will be displayed in a singular column, one after the other, not in multiple columns, despite the field name. */
   columns?: LabelValueList;
 }
-const LabelValueRow = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<LabelValueRow>;
-
 export type LabelValueRowList = Array<LabelValueRow>;
-const LabelValueRowList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<LabelValueRowList>;
-
 export interface InfoModuleData {
   showLastUpdateTime?: boolean;
   /** A list of collections of labels and values. These will be displayed one after the other in a singular column. */
   labelValueRows?: LabelValueRowList;
 }
-const InfoModuleData = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<InfoModuleData>;
-
 export type MessageList = Array<Message>;
-const MessageList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<MessageList>;
-
 export interface Review {
   comments?: string;
 }
-const Review = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Review>;
-
 export type EventTicketClassSeatLabelEnum = "SEAT_LABEL_UNSPECIFIED" | "SEAT" | "seat";
-const EventTicketClassSeatLabelEnum = S.String;
-
 /** Constraints that all must be met for the module to be shown. */
 export interface ModuleViewConstraints {
   /** The period of time that the module will be displayed to users. Can define both a `startTime` and `endTime`. The module is displayed immediately after insertion unless a `startTime` is set. The module is displayed indefinitely if `endTime` is not set. */
   displayInterval?: TimeInterval;
 }
-const ModuleViewConstraints = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ModuleViewConstraints>;
-
 /** Data for Value Added module. Required fields are header and uri. */
 export interface ValueAddedModuleData {
   /** Image to be displayed on the module. Recommended image ratio is 1:1. Images will be resized to fit this ratio. */
@@ -550,17 +421,8 @@ export interface ValueAddedModuleData {
   /** URI that the module leads to on click. This can be a web link or a deep link as mentioned in https://developer.android.com/training/app-links/deep-linking. */
   uri?: string;
 }
-const ValueAddedModuleData = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ValueAddedModuleData>;
-
 export type ValueAddedModuleDataList = Array<ValueAddedModuleData>;
-const ValueAddedModuleDataList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ValueAddedModuleDataList>;
-
 export type EventTicketClassRowLabelEnum = "ROW_LABEL_UNSPECIFIED" | "ROW" | "row";
-const EventTicketClassRowLabelEnum = S.String;
-
 /** Data for Text module. All fields are optional. Header will be displayed if available, different types of bodies will be concatenated if they are defined. */
 export interface TextModuleData {
   /** Translated strings for the header. Recommended maximum length is 35 characters to ensure full string is displayed on smaller screens. */
@@ -574,23 +436,15 @@ export interface TextModuleData {
   /** The body of the Text Module, which is defined as an uninterrupted string. Recommended maximum length is 500 characters to ensure full string is displayed on smaller screens. */
   body?: string;
 }
-const TextModuleData = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<TextModuleData>;
-
 export type TextModuleDataList = Array<TextModuleData>;
-const TextModuleDataList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TextModuleDataList>;
-
 export type SecurityAnimationAnimationTypeEnum =
   | "ANIMATION_UNSPECIFIED"
   | "FOIL_SHIMMER"
   | "foilShimmer";
-const SecurityAnimationAnimationTypeEnum = S.String;
-
 export interface SecurityAnimation {
   /** Type of animation. */
   animationType?: SecurityAnimationAnimationTypeEnum | (string & {});
 }
-const SecurityAnimation = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<SecurityAnimation>;
-
 export interface LatLongPoint {
   /** The longitude specified in the range -180.0 through +180.0, both inclusive. Values outside these bounds will be rejected. */
   longitude?: number;
@@ -599,11 +453,7 @@ export interface LatLongPoint {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
   latitude?: number;
 }
-const LatLongPoint = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<LatLongPoint>;
-
 export type LatLongPointList = Array<LatLongPoint>;
-const LatLongPointList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<LatLongPointList>;
-
 /** Locations of interest for this class or object. Currently, this location is used for geofenced notifications. When a user is within a set radius of this lat/long, and dwells there, Google will trigger a notification. When a user exits this radius, the notification will be hidden. */
 export interface MerchantLocation {
   /** The longitude specified in the range -180.0 through +180.0, both inclusive. Values outside these bounds will be rejected. */
@@ -611,11 +461,7 @@ export interface MerchantLocation {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
   latitude?: number;
 }
-const MerchantLocation = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<MerchantLocation>;
-
 export type MerchantLocationList = Array<MerchantLocation>;
-const MerchantLocationList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MerchantLocationList>;
-
 export type EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -624,8 +470,6 @@ export type EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type EventTicketClassGateLabelEnum =
   | "GATE_LABEL_UNSPECIFIED"
   | "GATE"
@@ -634,8 +478,6 @@ export type EventTicketClassGateLabelEnum =
   | "door"
   | "ENTRANCE"
   | "entrance";
-const EventTicketClassGateLabelEnum = S.String;
-
 export type EventTicketClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "UNDER_REVIEW"
@@ -646,20 +488,12 @@ export type EventTicketClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-const EventTicketClassReviewStatusEnum = S.String;
-
 export type UriList = Array<Uri>;
-const UriList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<UriList>;
-
 export interface LinksModuleData {
   /** The list of URIs. */
   uris?: UriList;
 }
-const LinksModuleData = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<LinksModuleData>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<StringList>;
-
 export interface EventTicketClass {
   /** A custom label to use for the gate value (`eventTicketObject.seatInfo.gate`) on the card detail view. This should only be used if the default "Gate" label or one of the `gateLabel` options is not sufficient. Both `gateLabel` and `customGateLabel` may not be set. If neither is set, the label will default to "Gate", localized. If the gate field is unset, this label will not be used. */
   customGateLabel?: LocalizedString;
@@ -758,28 +592,16 @@ export interface EventTicketClass {
   /** A custom label to use for the row value (`eventTicketObject.seatInfo.row`) on the card detail view. This should only be used if the default "Row" label or one of the `rowLabel` options is not sufficient. Both `rowLabel` and `customRowLabel` may not be set. If neither is set, the label will default to "Row", localized. If the row field is unset, this label will not be used. */
   customRowLabel?: LocalizedString;
 }
-const EventTicketClass = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<EventTicketClass>;
-
 export interface EventTicketClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: EventTicketClass;
 }
-const EventTicketClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<EventTicketClassAddMessageResponse>;
-
 export interface AddmessageEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<AddmessageEventticketobjectRequest>;
-
 export type EventTicketObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -790,8 +612,6 @@ export type EventTicketObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const EventTicketObjectStateEnum = S.String;
-
 export interface Money {
   /** The unit of money amount in micros. For example, $1 USD would be represented as 1000000 micros. */
   micros?: string;
@@ -800,23 +620,17 @@ export interface Money {
   /** The currency code, such as "USD" or "EUR." */
   currencyCode?: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Money>;
-
 /** Defines restrictions on the object that will be verified during save. Note: this is an advanced feature, please contact Google for implementation support. */
 export interface SaveRestrictions {
   /** Restrict the save of the referencing object to the given email address only. This is the hex output of SHA256 sum of the email address, all lowercase and without any notations like "." or "+", except "@". For example, for example@example.com, this value will be 31c5543c1734d25c7206f5fd591525d0295bec6fe84ff82f946a34fe970a1e66 and for Example@example.com, this value will be bc34f262c93ad7122763684ccea6f07fb7f5d8a2d11e60ce15a6f43fe70ce632 If email address of the logged-in user who tries to save this pass does not match with the defined value here, users won't be allowed to save this pass. They will instead be prompted with an error to contact the issuer. This information should be gathered from the user with an explicit consent via Sign in with Google integration https://developers.google.com/identity/authentication. Please contact with support before using Save Restrictions. */
   restrictToEmailSha256?: string;
 }
-const SaveRestrictions = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SaveRestrictions>;
-
 export interface GroupingInfo {
   /** Optional index for sorting the passes when they are grouped with other passes. Passes with lower sort index are shown before passes with higher sort index. If unspecified, the value is assumed to be INT_MAX. For two passes with the same sort index, the sorting behavior is undefined. */
   sortIndex?: number;
   /** Optional grouping ID for grouping the passes with the same ID visually together. Grouping with different types of passes is allowed. */
   groupingId?: string;
 }
-const GroupingInfo = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GroupingInfo>;
-
 export interface EventSeat {
   /** The row of the seat, such as "1", E", "BB", or "A5". This field is localizable so you may translate words or use different alphabets for the characters in an identifier. */
   row?: LocalizedString;
@@ -829,33 +643,20 @@ export interface EventSeat {
   /** The gate the ticket holder should enter to get to their seat, such as "A" or "West". This field is localizable so you may translate words or use different alphabets for the characters in an identifier. */
   gate?: LocalizedString;
 }
-const EventSeat = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<EventSeat>;
-
 export type EventTicketObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const EventTicketObjectNotifyPreferenceEnum = S.String;
-
 export type PassConstraintsScreenshotEligibilityEnum =
   | "SCREENSHOT_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
   | "INELIGIBLE";
-const PassConstraintsScreenshotEligibilityEnum = S.String;
-
 export type PassConstraintsNfcConstraintItemEnum =
   | "NFC_CONSTRAINT_UNSPECIFIED"
   | "BLOCK_PAYMENT"
   | "BLOCK_CLOSED_LOOP_TRANSIT";
-const PassConstraintsNfcConstraintItemEnum = S.String;
-
 export type PassConstraintsNfcConstraintItemEnumList = Array<
   PassConstraintsNfcConstraintItemEnum | (string & {})
 >;
-const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PassConstraintsNfcConstraintItemEnumList>;
-
 /** Container for any constraints that may be placed on passes. */
 export interface PassConstraints {
   /** The screenshot eligibility for the pass. */
@@ -863,19 +664,13 @@ export interface PassConstraints {
   /** The NFC constraints for the pass. */
   nfcConstraint?: PassConstraintsNfcConstraintItemEnumList;
 }
-const PassConstraints = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<PassConstraints>;
-
 export interface EventReservationInfo {
   /** The confirmation code of the event reservation. This may also take the form of an "order number", "confirmation number", "reservation number", or other equivalent. */
   confirmationCode?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventReservationInfo"`. */
   kind?: string;
 }
-const EventReservationInfo = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<EventReservationInfo>;
-
 export type RotatingBarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
-const RotatingBarcodeRenderEncodingEnum = S.String;
-
 /** Configuration for the key and value length. See https://www.rfc-editor.org/rfc/rfc4226#section-5.3 */
 export interface RotatingBarcodeTotpDetailsTotpParameters {
   /** The length of the TOTP value in decimal digits. */
@@ -883,21 +678,9 @@ export interface RotatingBarcodeTotpDetailsTotpParameters {
   /** The secret key used for the TOTP value generation, encoded as a Base16 string. */
   key?: string;
 }
-const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParameters>;
-
 export type RotatingBarcodeTotpDetailsTotpParametersList =
   Array<RotatingBarcodeTotpDetailsTotpParameters>;
-const RotatingBarcodeTotpDetailsTotpParametersList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParametersList>;
-
 export type RotatingBarcodeTotpDetailsAlgorithmEnum = "TOTP_ALGORITHM_UNSPECIFIED" | "TOTP_SHA1";
-const RotatingBarcodeTotpDetailsAlgorithmEnum = S.String;
-
 /** Configuration for the time-based OTP substitutions. See https://tools.ietf.org/html/rfc6238 */
 export interface RotatingBarcodeTotpDetails {
   /** The time interval used for the TOTP value generation, in milliseconds. */
@@ -907,11 +690,6 @@ export interface RotatingBarcodeTotpDetails {
   /** The TOTP algorithm used to generate the OTP. */
   algorithm?: RotatingBarcodeTotpDetailsAlgorithmEnum | (string & {});
 }
-const RotatingBarcodeTotpDetails = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<RotatingBarcodeTotpDetails>;
-
 /** A payload containing many barcode values and start date/time. */
 export interface RotatingBarcodeValues {
   /** Required. The date/time the first barcode is valid from. Barcodes will be rotated through using period_millis defined on the object's RotatingBarcodeValueInfo. This is an ISO 8601 extended format date/time, with an offset. Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the event were in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. */
@@ -921,11 +699,6 @@ export interface RotatingBarcodeValues {
   /** Required. The amount of time each barcode is valid for. */
   periodMillis?: string;
 }
-const RotatingBarcodeValues = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<RotatingBarcodeValues>;
-
 export type RotatingBarcodeTypeEnum =
   | "BARCODE_TYPE_UNSPECIFIED"
   | "AZTEC"
@@ -955,8 +728,6 @@ export type RotatingBarcodeTypeEnum =
   | "upcA"
   | "TEXT_ONLY"
   | "textOnly";
-const RotatingBarcodeTypeEnum = S.String;
-
 export interface RotatingBarcode {
   /** The render encoding for the barcode. When specified, barcode is rendered in the given encoding. Otherwise best known encoding is chosen by Google. */
   renderEncoding?: RotatingBarcodeRenderEncodingEnum | (string & {});
@@ -973,8 +744,6 @@ export interface RotatingBarcode {
   /** String encoded barcode value. This string supports the following substitutions: * {totp_value_n}: Replaced with the TOTP value (see TotpDetails.parameters). * {totp_timestamp_millis}: Replaced with the timestamp (millis since epoch) at which the barcode was generated. * {totp_timestamp_seconds}: Replaced with the timestamp (seconds since epoch) at which the barcode was generated. */
   valuePattern?: string;
 }
-const RotatingBarcode = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<RotatingBarcode>;
-
 export type BarcodeTypeEnum =
   | "BARCODE_TYPE_UNSPECIFIED"
   | "AZTEC"
@@ -1004,11 +773,7 @@ export type BarcodeTypeEnum =
   | "upcA"
   | "TEXT_ONLY"
   | "textOnly";
-const BarcodeTypeEnum = S.String;
-
 export type BarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
-const BarcodeRenderEncodingEnum = S.String;
-
 export interface Barcode {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#barcode"`. */
   kind?: string;
@@ -1023,8 +788,6 @@ export interface Barcode {
   /** An optional text that will override the default text that shows under the barcode. This field is intended for a human readable equivalent of the barcode value, used when the barcode cannot be scanned. */
   alternateText?: string;
 }
-const Barcode = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Barcode>;
-
 export interface EventTicketObject {
   /** A copy of the inherited fields of the parent class. These fields are retrieved during a GET. */
   classReference?: EventTicketClass;
@@ -1099,33 +862,19 @@ export interface EventTicketObject {
   /** The barcode type and value. */
   barcode?: Barcode;
 }
-const EventTicketObject = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<EventTicketObject>;
-
 export interface EventTicketObjectAddMessageResponse {
   /** The updated EventTicketObject resource. */
   resource?: EventTicketObject;
 }
-const EventTicketObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<EventTicketObjectAddMessageResponse>;
-
 export interface AddmessageFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageFlightclassRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<AddmessageFlightclassRequest>;
-
 export type FlightClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const FlightClassNotifyPreferenceEnum = S.String;
-
 export type FlightClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "UNDER_REVIEW"
@@ -1136,8 +885,6 @@ export type FlightClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-const FlightClassReviewStatusEnum = S.String;
-
 export interface FlightCarrier {
   /** Two character IATA airline code of the marketing carrier (as opposed to operating carrier). Exactly one of this or `carrierIcaoCode` needs to be provided for `carrier` and `operatingCarrier`. eg: "LX" for Swiss Air */
   carrierIataCode?: string;
@@ -1154,8 +901,6 @@ export interface FlightCarrier {
   /** Three character ICAO airline code of the marketing carrier (as opposed to operating carrier). Exactly one of this or `carrierIataCode` needs to be provided for `carrier` and `operatingCarrier`. eg: "EZY" for Easy Jet */
   carrierIcaoCode?: string;
 }
-const FlightCarrier = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<FlightCarrier>;
-
 export interface FlightHeader {
   /** Information about airline carrier. This is a required property of `flightHeader`. */
   carrier?: FlightCarrier;
@@ -1170,8 +915,6 @@ export interface FlightHeader {
   /** The flight number used by the operating carrier without IATA carrier code. This field should contain only digits. eg: "234" */
   operatingFlightNumber?: string;
 }
-const FlightHeader = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<FlightHeader>;
-
 export interface AirportInfo {
   /** Optional field that overrides the airport city name defined by IATA. By default, Google takes the `airportIataCode` provided and maps it to the official airport city name defined by IATA. Official IATA airport city names can be found at IATA airport city names website. For example, for the airport IATA code "LTN", IATA website tells us that the corresponding airport city is "London". If this field is not populated, Google would display "London". However, populating this field with a custom name (eg: "London Luton") would override it. */
   airportNameOverride?: LocalizedString;
@@ -1184,8 +927,6 @@ export interface AirportInfo {
   /** A name of the gate. Eg: "B59" or "59" */
   gate?: string;
 }
-const AirportInfo = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AirportInfo>;
-
 export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -1194,14 +935,10 @@ export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const FlightClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type FlightClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const FlightClassViewUnlockRequirementEnum = S.String;
-
 export type BoardingAndSeatingPolicySeatClassPolicyEnum =
   | "SEAT_CLASS_POLICY_UNSPECIFIED"
   | "CABIN_BASED"
@@ -1212,8 +949,6 @@ export type BoardingAndSeatingPolicySeatClassPolicyEnum =
   | "tierBased"
   | "SEAT_CLASS_POLICY_OTHER"
   | "seatClassPolicyOther";
-const BoardingAndSeatingPolicySeatClassPolicyEnum = S.String;
-
 export type BoardingAndSeatingPolicyBoardingPolicyEnum =
   | "BOARDING_POLICY_UNSPECIFIED"
   | "ZONE_BASED"
@@ -1222,8 +957,6 @@ export type BoardingAndSeatingPolicyBoardingPolicyEnum =
   | "groupBased"
   | "BOARDING_POLICY_OTHER"
   | "boardingPolicyOther";
-const BoardingAndSeatingPolicyBoardingPolicyEnum = S.String;
-
 export interface BoardingAndSeatingPolicy {
   /** Seating policy which dictates how we display the seat class. If unset, Google will default to `cabinBased`. */
   seatClassPolicy?: BoardingAndSeatingPolicySeatClassPolicyEnum | (string & {});
@@ -1232,11 +965,6 @@ export interface BoardingAndSeatingPolicy {
   /** Indicates the policy the airline uses for boarding. If unset, Google will default to `zoneBased`. */
   boardingPolicy?: BoardingAndSeatingPolicyBoardingPolicyEnum | (string & {});
 }
-const BoardingAndSeatingPolicy = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<BoardingAndSeatingPolicy>;
-
 export type FlightClassFlightStatusEnum =
   | "FLIGHT_STATUS_UNSPECIFIED"
   | "SCHEDULED"
@@ -1251,8 +979,6 @@ export type FlightClassFlightStatusEnum =
   | "redirected"
   | "DIVERTED"
   | "diverted";
-const FlightClassFlightStatusEnum = S.String;
-
 export interface FlightClass {
   /** The review comments set by the platform when a class is marked `approved` or `rejected`. */
   review?: Review;
@@ -1341,41 +1067,25 @@ export interface FlightClass {
   /** Merchant locations. There is a maximum of ten on the class. Any additional MerchantLocations added beyond the 10 will be rejected by the validator. These locations will trigger a notification when a user enters within a Google-set radius of the point. This field replaces the deprecated LatLongPoints. */
   merchantLocations?: MerchantLocationList;
 }
-const FlightClass = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<FlightClass>;
-
 export interface FlightClassAddMessageResponse {
   /** The updated FlightClass resource. */
   resource?: FlightClass;
 }
-const FlightClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<FlightClassAddMessageResponse>;
-
 export interface AddmessageFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageFlightobjectRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AddmessageFlightobjectRequest>;
-
 export type FlightObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const FlightObjectNotifyPreferenceEnum = S.String;
-
 export type BoardingAndSeatingInfoBoardingDoorEnum =
   | "BOARDING_DOOR_UNSPECIFIED"
   | "FRONT"
   | "front"
   | "BACK"
   | "back";
-const BoardingAndSeatingInfoBoardingDoorEnum = S.String;
-
 export interface BoardingAndSeatingInfo {
   /** The value of passenger seat. If there is no specific identifier, use `seatAssignment` instead. eg: "25A" */
   seatNumber?: string;
@@ -1396,11 +1106,6 @@ export interface BoardingAndSeatingInfo {
   /** A small image shown above the boarding barcode. Airlines can use it to communicate any special boarding privileges. In the event the security program logo is also set, this image might be rendered alongside the logo for that security program. */
   boardingPrivilegeImage?: Image;
 }
-const BoardingAndSeatingInfo = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<BoardingAndSeatingInfo>;
-
 export type FlightObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -1411,8 +1116,6 @@ export type FlightObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const FlightObjectStateEnum = S.String;
-
 export interface FrequentFlyerInfo {
   /** Frequent flyer program name. eg: "Lufthansa Miles & More" */
   frequentFlyerProgramName?: LocalizedString;
@@ -1421,8 +1124,6 @@ export interface FrequentFlyerInfo {
   /** Frequent flyer number. Required for each nested object of kind `walletobjects#frequentFlyerInfo`. */
   frequentFlyerNumber?: string;
 }
-const FrequentFlyerInfo = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<FrequentFlyerInfo>;
-
 export interface ReservationInfo {
   /** Frequent flyer membership information. */
   frequentFlyerInfo?: FrequentFlyerInfo;
@@ -1433,8 +1134,6 @@ export interface ReservationInfo {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#reservationInfo"`. */
   kind?: string;
 }
-const ReservationInfo = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ReservationInfo>;
-
 export interface FlightObject {
   /** Whether this object is currently linked to a single device. This field is set by the platform when a user saves the object, linking it to their device. Intended for use by select partners. Contact support for additional information. */
   hasLinkedDevice?: boolean;
@@ -1503,28 +1202,16 @@ export interface FlightObject {
   /** Required. Information about flight reservation. */
   reservationInfo?: ReservationInfo;
 }
-const FlightObject = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<FlightObject>;
-
 export interface FlightObjectAddMessageResponse {
   /** The updated FlightObject resource. */
   resource?: FlightObject;
 }
-const FlightObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<FlightObjectAddMessageResponse>;
-
 export interface AddmessageGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageGenericclassRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<AddmessageGenericclassRequest>;
-
 export type GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -1533,14 +1220,10 @@ export type GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const GenericClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type GenericClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const GenericClassViewUnlockRequirementEnum = S.String;
-
 /** Generic Class */
 export interface GenericClass {
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
@@ -1576,46 +1259,27 @@ export interface GenericClass {
   /** Text module data. If `textModulesData` is also defined on the object, both will be displayed. The maximum number of these fields displayed is 10 from class and 10 from object. */
   textModulesData?: TextModuleDataList;
 }
-const GenericClass = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GenericClass>;
-
 /** Response to adding a new issuer message to the class. This contains the entire updated GenericClass. */
 export interface GenericClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: GenericClass;
 }
-const GenericClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GenericClassAddMessageResponse>;
-
 export interface AddmessageGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageGenericobjectRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<AddmessageGenericobjectRequest>;
-
 /** Indicates that the issuer would like Google Wallet to send an upcoming card validity notification 1 day before card becomes valid/usable. */
 export interface UpcomingNotification {
   /** Indicates if the object needs to have upcoming notification enabled. */
   enableNotification?: boolean;
 }
-const UpcomingNotification = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UpcomingNotification>;
-
 /** Indicates that the issuer would like Google Wallet to send expiry notifications 2 days prior to the card expiration. */
 export interface ExpiryNotification {
   /** Indicates if the object needs to have expiry notification enabled. */
   enableNotification?: boolean;
 }
-const ExpiryNotification = UpcomingNotification as any as S.Schema<ExpiryNotification>;
-
 /** Indicates if the object needs to have notification enabled. We support only one of ExpiryNotification/UpcomingNotification. `expiryNotification` takes precedence over `upcomingNotification`. In other words if `expiryNotification` is set, we ignore the `upcomingNotification` field. */
 export interface Notifications {
   /** A notification would be triggered at a specific time before the card becomes usable. */
@@ -1623,8 +1287,6 @@ export interface Notifications {
   /** A notification would be triggered at a specific time before the card expires. */
   expiryNotification?: ExpiryNotification;
 }
-const Notifications = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Notifications>;
-
 export type GenericObjectGenericTypeEnum =
   | "GENERIC_TYPE_UNSPECIFIED"
   | "GENERIC_SEASON_PASS"
@@ -1646,8 +1308,6 @@ export type GenericObjectGenericTypeEnum =
   | "GENERIC_TRANSIT_PASS"
   | "GENERIC_VEHICLE_REGISTRATION"
   | "GENERIC_OTHER";
-const GenericObjectGenericTypeEnum = S.String;
-
 export type GenericObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -1658,8 +1318,6 @@ export type GenericObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const GenericObjectStateEnum = S.String;
-
 /** Generic Object */
 export interface GenericObject {
   /** Banner image displayed on the front of the card if present. The image will be displayed at 100% width. */
@@ -1719,34 +1377,20 @@ export interface GenericObject {
   /** The logo image of the pass. This image is displayed in the card detail view in upper left, and also on the list/thumbnail view. If the logo is not present, the first letter of `cardTitle` would be shown as logo. */
   logo?: Image;
 }
-const GenericObject = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GenericObject>;
-
 /** Response to adding a new issuer message to the object. This contains the entire updated GenericObject. */
 export interface GenericObjectAddMessageResponse {
   /** The updated GenericObject resource. */
   resource?: GenericObject;
 }
-const GenericObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GenericObjectAddMessageResponse>;
-
 export interface AddmessageGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageGiftcardclassRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<AddmessageGiftcardclassRequest>;
-
 export type GiftCardClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const GiftCardClassNotifyPreferenceEnum = S.String;
-
 export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -1755,14 +1399,10 @@ export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type GiftCardClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const GiftCardClassViewUnlockRequirementEnum = S.String;
-
 export type GiftCardClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "UNDER_REVIEW"
@@ -1773,8 +1413,6 @@ export type GiftCardClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-const GiftCardClassReviewStatusEnum = S.String;
-
 export interface GiftCardClass {
   /** The URI of your application's home page. Populating the URI in this field results in the exact same behavior as populating an URI in linksModuleData (when an object is rendered, a link to the homepage is shown in what would usually be thought of as the linksModuleData section of the object). */
   homepageUri?: Uri;
@@ -1861,28 +1499,16 @@ export interface GiftCardClass {
   /** Deprecated. */
   wordMark?: Image;
 }
-const GiftCardClass = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GiftCardClass>;
-
 export interface GiftCardClassAddMessageResponse {
   /** The updated GiftCardClass resource. */
   resource?: GiftCardClass;
 }
-const GiftCardClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GiftCardClassAddMessageResponse>;
-
 export interface AddmessageGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageGiftcardobjectRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<AddmessageGiftcardobjectRequest>;
-
 export type GiftCardObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -1893,13 +1519,9 @@ export type GiftCardObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const GiftCardObjectStateEnum = S.String;
-
 export type GiftCardObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const GiftCardObjectNotifyPreferenceEnum = S.String;
-
 export interface GiftCardObject {
   /** Required. The class associated with this object. The class must be of the same type as this object, must already exist, and must be approved. Class IDs should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. */
   classId?: string;
@@ -1968,28 +1590,16 @@ export interface GiftCardObject {
   /** Information that controls how passes are grouped together. */
   groupingInfo?: GroupingInfo;
 }
-const GiftCardObject = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GiftCardObject>;
-
 export interface GiftCardObjectAddMessageResponse {
   /** The updated GiftCardObject resource. */
   resource?: GiftCardObject;
 }
-const GiftCardObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GiftCardObjectAddMessageResponse>;
-
 export interface AddmessageLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageLoyaltyclassRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<AddmessageLoyaltyclassRequest>;
-
 export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
   | "SHARED_DATA_TYPE_UNSPECIFIED"
   | "FIRST_NAME"
@@ -2004,16 +1614,9 @@ export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
   | "COUNTRY"
   | "EMAIL"
   | "PHONE";
-const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum = S.String;
-
 export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList = Array<
   DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum | (string & {})
 >;
-const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList>;
-
 /** Information about the merchant hosted signup flow for a program. */
 export interface DiscoverableProgramMerchantSignupInfo {
   /** User data that is sent in a POST request to the signup website URL. This information is encoded and then shared so that the merchant's website can prefill fields used to enroll the user for the discoverable program. */
@@ -2021,21 +1624,11 @@ export interface DiscoverableProgramMerchantSignupInfo {
   /** The URL to direct the user to for the merchant's signup site. */
   signupWebsite?: Uri;
 }
-const DiscoverableProgramMerchantSignupInfo = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DiscoverableProgramMerchantSignupInfo>;
-
 /** Information about the merchant hosted signin flow for a program. */
 export interface DiscoverableProgramMerchantSigninInfo {
   /** The URL to direct the user to for the merchant's signin site. */
   signinWebsite?: Uri;
 }
-const DiscoverableProgramMerchantSigninInfo = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DiscoverableProgramMerchantSigninInfo>;
-
 export type DiscoverableProgramStateEnum =
   | "STATE_UNSPECIFIED"
   | "TRUSTED_TESTERS"
@@ -2044,8 +1637,6 @@ export type DiscoverableProgramStateEnum =
   | "live"
   | "DISABLED"
   | "disabled";
-const DiscoverableProgramStateEnum = S.String;
-
 /** Information about how a class may be discovered and instantiated from within the Google Wallet app. This is done by searching for a loyalty or gift card program and scanning or manually entering. */
 export interface DiscoverableProgram {
   /** Information about the ability to signup and add a valuable for this program through a merchant site. Used when MERCHANT_HOSTED_SIGNUP is enabled. */
@@ -2055,8 +1646,6 @@ export interface DiscoverableProgram {
   /** Visibility state of the discoverable program. */
   state?: DiscoverableProgramStateEnum | (string & {});
 }
-const DiscoverableProgram = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<DiscoverableProgram>;
-
 export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -2065,13 +1654,9 @@ export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type LoyaltyClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const LoyaltyClassNotifyPreferenceEnum = S.String;
-
 export type LoyaltyClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "UNDER_REVIEW"
@@ -2082,14 +1667,10 @@ export type LoyaltyClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-const LoyaltyClassReviewStatusEnum = S.String;
-
 export type LoyaltyClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const LoyaltyClassViewUnlockRequirementEnum = S.String;
-
 export interface LoyaltyClass {
   /** Information about how the class may be discovered and instantiated from within the Google Pay app. */
   discoverableProgram?: DiscoverableProgram;
@@ -2188,28 +1769,16 @@ export interface LoyaltyClass {
   /** Callback options to be used to call the issuer back for every save/delete of an object for this class by the end-user. All objects of this class are eligible for the callback. */
   callbackOptions?: CallbackOptions;
 }
-const LoyaltyClass = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<LoyaltyClass>;
-
 export interface LoyaltyClassAddMessageResponse {
   /** The updated LoyaltyClass resource. */
   resource?: LoyaltyClass;
 }
-const LoyaltyClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<LoyaltyClassAddMessageResponse>;
-
 export interface AddmessageLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<AddmessageLoyaltyobjectRequest>;
-
 export interface LoyaltyPointsBalance {
   /** The money form of a balance. Only one of these subtypes (string, int, double, money) should be populated. */
   money?: Money;
@@ -2220,11 +1789,6 @@ export interface LoyaltyPointsBalance {
   /** The integer form of a balance. Only one of these subtypes (string, int, double, money) should be populated. */
   int?: number;
 }
-const LoyaltyPointsBalance = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<LoyaltyPointsBalance>;
-
 export interface LoyaltyPoints {
   /** The account holder's loyalty point balance, such as "500" or "$10.00". Recommended maximum length is 7 characters. This is a required field of `loyaltyPoints` and `secondaryLoyaltyPoints`. */
   balance?: LoyaltyPointsBalance;
@@ -2233,8 +1797,6 @@ export interface LoyaltyPoints {
   /** The loyalty points label, such as "Points". Recommended maximum length is 9 characters. */
   label?: string;
 }
-const LoyaltyPoints = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<LoyaltyPoints>;
-
 export type LoyaltyObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2245,13 +1807,9 @@ export type LoyaltyObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const LoyaltyObjectStateEnum = S.String;
-
 export type LoyaltyObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const LoyaltyObjectNotifyPreferenceEnum = S.String;
-
 export interface LoyaltyObject {
   /** Optional value added module data. Maximum of fifteen on the object. For a pass only fifteen will be displayed. */
   valueAddedModuleData?: ValueAddedModuleDataList;
@@ -2320,28 +1878,16 @@ export interface LoyaltyObject {
   /** Deprecated. Use textModulesData instead. */
   infoModuleData?: InfoModuleData;
 }
-const LoyaltyObject = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<LoyaltyObject>;
-
 export interface LoyaltyObjectAddMessageResponse {
   /** The updated LoyaltyObject resource. */
   resource?: LoyaltyObject;
 }
-const LoyaltyObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<LoyaltyObjectAddMessageResponse>;
-
 export interface AddmessageOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageOfferclassRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<AddmessageOfferclassRequest>;
-
 export type OfferClassRedemptionChannelEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "INSTORE"
@@ -2352,13 +1898,9 @@ export type OfferClassRedemptionChannelEnum =
   | "both"
   | "TEMPORARY_PRICE_REDUCTION"
   | "temporaryPriceReduction";
-const OfferClassRedemptionChannelEnum = S.String;
-
 export type OfferClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const OfferClassNotifyPreferenceEnum = S.String;
-
 export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -2367,8 +1909,6 @@ export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const OfferClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type OfferClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "UNDER_REVIEW"
@@ -2379,14 +1919,10 @@ export type OfferClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-const OfferClassReviewStatusEnum = S.String;
-
 export type OfferClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const OfferClassViewUnlockRequirementEnum = S.String;
-
 export interface OfferClass {
   /** The help link for the offer, such as `http://myownpersonaldomain.com/help` */
   helpUri?: Uri;
@@ -2479,28 +2015,16 @@ export interface OfferClass {
   /** Deprecated. */
   wordMark?: Image;
 }
-const OfferClass = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<OfferClass>;
-
 export interface OfferClassAddMessageResponse {
   /** The updated OfferClass resource. */
   resource?: OfferClass;
 }
-const OfferClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<OfferClassAddMessageResponse>;
-
 export interface AddmessageOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageOfferobjectRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<AddmessageOfferobjectRequest>;
-
 export type OfferObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2511,13 +2035,9 @@ export type OfferObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const OfferObjectStateEnum = S.String;
-
 export type OfferObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const OfferObjectNotifyPreferenceEnum = S.String;
-
 export interface OfferObject {
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding class only object AppLinkData will be displayed. */
   appLinkData?: AppLinkData;
@@ -2576,28 +2096,16 @@ export interface OfferObject {
   /** Required. The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID.identifier where the former is issued by Google and latter is chosen by you. The unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   id?: string;
 }
-const OfferObject = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<OfferObject>;
-
 export interface OfferObjectAddMessageResponse {
   /** The updated OfferObject resource. */
   resource?: OfferObject;
 }
-const OfferObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<OfferObjectAddMessageResponse>;
-
 export interface AddmessageTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageTransitclassRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<AddmessageTransitclassRequest>;
-
 export type TransitClassTransitTypeEnum =
   | "TRANSIT_TYPE_UNSPECIFIED"
   | "BUS"
@@ -2610,8 +2118,6 @@ export type TransitClassTransitTypeEnum =
   | "ferry"
   | "OTHER"
   | "other";
-const TransitClassTransitTypeEnum = S.String;
-
 export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "MULTIPLE_HOLDERS"
@@ -2620,14 +2126,10 @@ export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "multipleHolders"
   | "oneUserAllDevices"
   | "oneUserOneDevice";
-const TransitClassMultipleDevicesAndHoldersAllowedStatusEnum = S.String;
-
 export type TransitClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
   | "UNLOCK_REQUIRED_TO_VIEW";
-const TransitClassViewUnlockRequirementEnum = S.String;
-
 /** ActivationOptions for the class */
 export interface ActivationOptions {
   /** HTTPS URL that supports REST semantics. Would be used for requesting activation from partners for given valuable, triggered by the users. */
@@ -2635,13 +2137,9 @@ export interface ActivationOptions {
   /** Flag to allow users to make activation call from different device. This allows client to render the activation button enabled even if the activationStatus is ACTIVATED but the requested device is different than the current device. */
   allowReactivation?: boolean;
 }
-const ActivationOptions = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ActivationOptions>;
-
 export type TransitClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const TransitClassNotifyPreferenceEnum = S.String;
-
 export type TransitClassReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "UNDER_REVIEW"
@@ -2652,8 +2150,6 @@ export type TransitClassReviewStatusEnum =
   | "rejected"
   | "DRAFT"
   | "draft";
-const TransitClassReviewStatusEnum = S.String;
-
 export interface TransitClass {
   /** Required. The issuer name. Recommended maximum length is 20 characters to ensure full string is displayed on smaller screens. */
   issuerName?: string;
@@ -2770,36 +2266,22 @@ export interface TransitClass {
   /** The name of the transit operator. */
   transitOperatorName?: LocalizedString;
 }
-const TransitClass = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<TransitClass>;
-
 export interface TransitClassAddMessageResponse {
   /** The updated TransitClass resource. */
   resource?: TransitClass;
 }
-const TransitClassAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<TransitClassAddMessageResponse>;
-
 export interface AddmessageTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: AddMessageRequest;
 }
-const AddmessageTransitobjectRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<AddmessageTransitobjectRequest>;
-
 export type TransitObjectTripTypeEnum =
   | "TRIP_TYPE_UNSPECIFIED"
   | "ROUND_TRIP"
   | "roundTrip"
   | "ONE_WAY"
   | "oneWay";
-const TransitObjectTripTypeEnum = S.String;
-
 export type TicketSeatFareClassEnum =
   | "FARE_CLASS_UNSPECIFIED"
   | "ECONOMY"
@@ -2808,8 +2290,6 @@ export type TicketSeatFareClassEnum =
   | "first"
   | "BUSINESS"
   | "business";
-const TicketSeatFareClassEnum = S.String;
-
 export interface TicketSeat {
   /** The identifier of where the ticketed seat is located. Eg. "42". If there is no specific identifier, use `seatAssigment` instead. */
   seat?: string;
@@ -2822,11 +2302,7 @@ export interface TicketSeat {
   /** A custome fare class to be used if no `fareClass` applies. Both `fareClass` and `customFareClass` may not be set. */
   customFareClass?: LocalizedString;
 }
-const TicketSeat = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<TicketSeat>;
-
 export type TicketSeatList = Array<TicketSeat>;
-const TicketSeatList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<TicketSeatList>;
-
 export interface TicketLeg {
   /** The name of the transit operator that is operating this leg of a trip. */
   transitOperatorName?: LocalizedString;
@@ -2857,15 +2333,11 @@ export interface TicketLeg {
   /** Short description/name of the fare for this leg of travel. Eg "Anytime Single Use". */
   fareName?: LocalizedString;
 }
-const TicketLeg = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<TicketLeg>;
-
 /** Device context associated with the object. */
 export interface DeviceContext {
   /** If set, redemption information will only be returned to the given device upon activation of the object. This should not be used as a stable identifier to trace a user's device. It can change across different passes for the same device or even across different activations for the same device. When setting this, callers must also set has_linked_device on the object being activated. */
   deviceToken?: string;
 }
-const DeviceContext = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<DeviceContext>;
-
 export interface TicketRestrictions {
   /** Restrictions about routes that may be taken. For example, this may be the string "Reserved CrossCountry trains only". */
   routeRestrictions?: LocalizedString;
@@ -2876,11 +2348,7 @@ export interface TicketRestrictions {
   /** More details about the above `routeRestrictions`. */
   routeRestrictionsDetails?: LocalizedString;
 }
-const TicketRestrictions = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<TicketRestrictions>;
-
 export type TicketLegList = Array<TicketLeg>;
-const TicketLegList = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<TicketLegList>;
-
 export type TransitObjectConcessionCategoryEnum =
   | "CONCESSION_CATEGORY_UNSPECIFIED"
   | "ADULT"
@@ -2889,22 +2357,16 @@ export type TransitObjectConcessionCategoryEnum =
   | "child"
   | "SENIOR"
   | "senior";
-const TransitObjectConcessionCategoryEnum = S.String;
-
 export type ActivationStatusStateEnum =
   | "UNKNOWN_STATE"
   | "NOT_ACTIVATED"
   | "not_activated"
   | "ACTIVATED"
   | "activated";
-const ActivationStatusStateEnum = S.String;
-
 /** The activation status of the object. This field includes activation status if valuable supports activation. */
 export interface ActivationStatus {
   state?: ActivationStatusStateEnum | (string & {});
 }
-const ActivationStatus = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ActivationStatus>;
-
 export interface TicketCost {
   /** The face value of the ticket. */
   faceValue?: Money;
@@ -2913,8 +2375,6 @@ export interface TicketCost {
   /** A message describing any kind of discount that was applied. */
   discountMessage?: LocalizedString;
 }
-const TicketCost = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TicketCost>;
-
 export interface PurchaseDetails {
   /** The cost of the ticket. */
   ticketCost?: TicketCost;
@@ -2927,13 +2387,9 @@ export interface PurchaseDetails {
   /** Receipt number/identifier for tracking the ticket purchase via the body that sold the ticket. */
   purchaseReceiptNumber?: string;
 }
-const PurchaseDetails = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<PurchaseDetails>;
-
 export type TransitObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
   | "NOTIFY_ON_UPDATE";
-const TransitObjectNotifyPreferenceEnum = S.String;
-
 export type TransitObjectTicketStatusEnum =
   | "TICKET_STATUS_UNSPECIFIED"
   | "USED"
@@ -2942,8 +2398,6 @@ export type TransitObjectTicketStatusEnum =
   | "refunded"
   | "EXCHANGED"
   | "exchanged";
-const TransitObjectTicketStatusEnum = S.String;
-
 export type TransitObjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2954,16 +2408,12 @@ export type TransitObjectStateEnum =
   | "expired"
   | "INACTIVE"
   | "inactive";
-const TransitObjectStateEnum = S.String;
-
 export type TransitObjectPassengerTypeEnum =
   | "PASSENGER_TYPE_UNSPECIFIED"
   | "SINGLE_PASSENGER"
   | "singlePassenger"
   | "MULTIPLE_PASSENGERS"
   | "multiplePassengers";
-const TransitObjectPassengerTypeEnum = S.String;
-
 export interface TransitObject {
   /** A copy of the inherited fields of the parent class. These fields are retrieved during a GET. */
   classReference?: TransitClass;
@@ -3052,34 +2502,20 @@ export interface TransitObject {
   /** A custom concession category to use when `concessionCategory` does not provide the right option. Both `concessionCategory` and `customConcessionCategory` may not be set. */
   customConcessionCategory?: LocalizedString;
 }
-const TransitObject = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<TransitObject>;
-
 export interface TransitObjectAddMessageResponse {
   /** The updated TransitObject resource. */
   resource?: TransitObject;
 }
-const TransitObjectAddMessageResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<TransitObjectAddMessageResponse>;
-
 export interface DownloadMediaRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const DownloadMediaRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DownloadMediaRequest>;
-
 export type CompositeMediaReferenceTypeEnum =
   | "PATH"
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
   | "COSMO_BINARY_REFERENCE";
-const CompositeMediaReferenceTypeEnum = S.String;
-
 /** Information to read/write to blobstore2. */
 export interface Blobstore2Info {
   /** A serialized Object Fragment List Creation Info passed from Bigstore -> Scotty for a GCS upload. This field must never be consumed outside of Bigstore, and is not applicable to non-GCS media uploads. */
@@ -3097,8 +2533,6 @@ export interface Blobstore2Info {
   /** The blob read token. Needed to read blobs that have not been replicated. Might not be available until the final call. */
   readToken?: string;
 }
-const Blobstore2Info = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<Blobstore2Info>;
-
 /** This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure issues with JavaScript support; see http://b/8801763. */
 export interface ObjectId {
   /** Generation of the object. Generations are monotonically increasing across writes, allowing them to be be compared to determine which generation is newer. If this is omitted in a request, then you are requesting the live object. See http://go/bigstore-versions */
@@ -3108,8 +2542,6 @@ export interface ObjectId {
   /** The name of the object. */
   objectName?: string;
 }
-const ObjectId = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ObjectId>;
-
 /** A sequence of media data references representing composite data. Introduced to support Bigstore composite objects. For details, visit http://go/bigstore-composites. */
 export interface CompositeMedia {
   /** Media data, set if reference_type is INLINE */
@@ -3135,11 +2567,7 @@ export interface CompositeMedia {
   /** Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will also be represented in this field as v1 BlobRef. */
   blobRef?: string;
 }
-const CompositeMedia = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<CompositeMedia>;
-
 export type CompositeMediaList = Array<CompositeMedia>;
-const CompositeMediaList = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<CompositeMediaList>;
-
 /** Backend response for a Diff get version response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffVersionResponse {
   /** The version of the object stored at the server. */
@@ -3147,8 +2575,6 @@ export interface DiffVersionResponse {
   /** The total size of the server object. */
   objectSizeBytes?: string;
 }
-const DiffVersionResponse = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<DiffVersionResponse>;
-
 /** A Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffUploadRequest {
   /** The object version of the object that is the base version the incoming diff script will be applied to. This field will always be filled in. */
@@ -3158,8 +2584,6 @@ export interface DiffUploadRequest {
   /** The location of the new object. Agents must clone the object located here, as the upload server will delete the contents once a response is received. */
   objectInfo?: CompositeMedia;
 }
-const DiffUploadRequest = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<DiffUploadRequest>;
-
 /** Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the header or Scotty's best_guess, but this extended information provides the backend with more information so that it can make a better decision if needed. This is only used on media upload requests from Scotty. */
 export interface ContentTypeInfo {
   /** The content type of the file as specified in the request headers, multipart headers, or RUPIO start request. */
@@ -3177,8 +2601,6 @@ export interface ContentTypeInfo {
   /** The content type of the file derived by looking at specific bytes (i.e. "magic bytes") of the actual file. */
   fromBytes?: string;
 }
-const ContentTypeInfo = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ContentTypeInfo>;
-
 /** Backend response for a Diff get checksums response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffChecksumsResponse {
   /** If set, calculate the checksums based on the contents and return them to the caller. */
@@ -3192,11 +2614,6 @@ export interface DiffChecksumsResponse {
   /** The object version of the object the checksums are being returned for. */
   objectVersion?: string;
 }
-const DiffChecksumsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DiffChecksumsResponse>;
-
 /** Backend response for a Diff upload request. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffUploadResponse {
   /** The location of the original file for a diff upload request. Must be filled in if responding to an upload start notification. */
@@ -3204,8 +2621,6 @@ export interface DiffUploadResponse {
   /** The object version of the object at the server. Must be included in the end notification response. The version in the end notification response must correspond to the new version of the object that is now stored at the server, after the upload. */
   objectVersion?: string;
 }
-const DiffUploadResponse = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<DiffUploadResponse>;
-
 /** Parameters specific to media downloads. */
 export interface DownloadParameters {
   /** Determining whether or not Apiary should skip the inclusion of any Content-Range header on its response to Scotty. */
@@ -3213,18 +2628,11 @@ export interface DownloadParameters {
   /** A boolean to be returned in the response to Scotty. Allows/disallows gzip encoding of the payload content when the server thinks it's advantageous (hence, does not guarantee compression) which allows Scotty to GZip the response to the client. */
   allowGzipCompression?: boolean;
 }
-const DownloadParameters = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<DownloadParameters>;
-
 /** Backend response for a Diff download response. For details on the Scotty Diff protocol, visit http://go/scotty-diff-protocol. */
 export interface DiffDownloadResponse {
   /** The original object location. */
   objectLocation?: CompositeMedia;
 }
-const DiffDownloadResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DiffDownloadResponse>;
-
 export type MediaReferenceTypeEnum =
   | "PATH"
   | "BLOB_REF"
@@ -3239,8 +2647,6 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
   | "ARBITRARY_BYTES";
-const MediaReferenceTypeEnum = S.String;
-
 /** A reference to data stored on the filesystem, on GFS or in blobstore. */
 export interface Media {
   /** A composite media composed of one or more media objects, set if reference_type is COMPOSITE_MEDIA. The media length field must be set to the sum of the lengths of all composite media objects. Note: All composite media must have length specified. */
@@ -3306,86 +2712,42 @@ export interface Media {
   /** Describes what the field reference contains. */
   referenceType?: MediaReferenceTypeEnum | (string & {});
 }
-const Media = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<Media>;
-
 export interface GetEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetEventticketclassRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetEventticketclassRequest>;
-
 export interface GetEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetEventticketobjectRequest>;
-
 export interface GetFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetFlightclassRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetFlightclassRequest>;
-
 export interface GetFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetFlightobjectRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetFlightobjectRequest>;
-
 export interface GetGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
 }
-const GetGenericclassRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetGenericclassRequest>;
-
 export interface GetGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
 }
-const GetGenericobjectRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetGenericobjectRequest>;
-
 export interface GetGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetGiftcardclassRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetGiftcardclassRequest>;
-
 export interface GetGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetGiftcardobjectRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetGiftcardobjectRequest>;
-
 export interface GetIssuerRequest {
   /** The unique identifier for an issuer. */
   resourceId: string;
 }
-const GetIssuerRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<GetIssuerRequest>;
-
 export interface IssuerContactInfo {
   /** The primary contact email address. */
   email?: string;
@@ -3396,33 +2758,19 @@ export interface IssuerContactInfo {
   /** The primary contact phone number. */
   phone?: string;
 }
-const IssuerContactInfo = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<IssuerContactInfo>;
-
 export interface AuthenticationKey {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   id?: number;
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   publicKeyPem?: string;
 }
-const AuthenticationKey = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<AuthenticationKey>;
-
 export type AuthenticationKeyList = Array<AuthenticationKey>;
-const AuthenticationKeyList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<AuthenticationKeyList>;
-
 export interface SmartTapMerchantData {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   smartTapMerchantId?: string;
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
   authenticationKeys?: AuthenticationKeyList;
 }
-const SmartTapMerchantData = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<SmartTapMerchantData>;
-
 export interface Issuer {
   /** The account name of the issuer. */
   name?: string;
@@ -3437,53 +2785,26 @@ export interface Issuer {
   /** Allows the issuer to provide their callback settings. */
   callbackOptions?: CallbackOptions;
 }
-const Issuer = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<Issuer>;
-
 export interface GetLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetLoyaltyclassRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetLoyaltyclassRequest>;
-
 export interface GetLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetLoyaltyobjectRequest>;
-
 export interface GetOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetOfferclassRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetOfferclassRequest>;
-
 export interface GetOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetOfferobjectRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetOfferobjectRequest>;
-
 export interface GetPermissionsRequest {
   /** The unique identifier for an issuer. This ID must be unique across all issuers. */
   resourceId: string;
 }
-const GetPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetPermissionsRequest>;
-
 export type PermissionRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "OWNER"
@@ -3492,184 +2813,86 @@ export type PermissionRoleEnum =
   | "reader"
   | "WRITER"
   | "writer";
-const PermissionRoleEnum = S.String;
-
 export interface Permission {
   /** The role granted by this permission. */
   role?: PermissionRoleEnum | (string & {});
   /** The email address of the user, group, or service account to which this permission refers to. */
   emailAddress?: string;
 }
-const Permission = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<Permission>;
-
 export type PermissionList = Array<Permission>;
-const PermissionList = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<PermissionList>;
-
 export interface Permissions {
   /** The complete list of permissions for the issuer account. */
   permissions?: PermissionList;
   /** ID of the issuer the list of permissions refer to. */
   issuerId?: string;
 }
-const Permissions = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Permissions>;
-
 export interface GetTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetTransitclassRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetTransitclassRequest>;
-
 export interface GetTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
 }
-const GetTransitobjectRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetTransitobjectRequest>;
-
 export interface InsertEventticketclassRequest {
   /** Request body */
   body?: EventTicketClass;
 }
-const InsertEventticketclassRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<InsertEventticketclassRequest>;
-
 export interface InsertEventticketobjectRequest {
   /** Request body */
   body?: EventTicketObject;
 }
-const InsertEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<InsertEventticketobjectRequest>;
-
 export interface InsertFlightclassRequest {
   /** Request body */
   body?: FlightClass;
 }
-const InsertFlightclassRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<InsertFlightclassRequest>;
-
 export interface InsertFlightobjectRequest {
   /** Request body */
   body?: FlightObject;
 }
-const InsertFlightobjectRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<InsertFlightobjectRequest>;
-
 export interface InsertGenericclassRequest {
   /** Request body */
   body?: GenericClass;
 }
-const InsertGenericclassRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<InsertGenericclassRequest>;
-
 export interface InsertGenericobjectRequest {
   /** Request body */
   body?: GenericObject;
 }
-const InsertGenericobjectRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<InsertGenericobjectRequest>;
-
 export interface InsertGiftcardclassRequest {
   /** Request body */
   body?: GiftCardClass;
 }
-const InsertGiftcardclassRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<InsertGiftcardclassRequest>;
-
 export interface InsertGiftcardobjectRequest {
   /** Request body */
   body?: GiftCardObject;
 }
-const InsertGiftcardobjectRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<InsertGiftcardobjectRequest>;
-
 export interface InsertIssuerRequest {
   /** Request body */
   body?: Issuer;
 }
-const InsertIssuerRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<InsertIssuerRequest>;
-
 /** A JWT representation of a pass. */
 export interface JwtResource {
   /** Required. A string representing a JWT of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt */
   jwt?: string;
 }
-const JwtResource = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<JwtResource>;
-
 export interface InsertJwtRequest {
   /** Request body */
   body?: JwtResource;
 }
-const InsertJwtRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<InsertJwtRequest>;
-
 export type LoyaltyClassList = Array<LoyaltyClass>;
-const LoyaltyClassList = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<LoyaltyClassList>;
-
 export type GenericClassList = Array<GenericClass>;
-const GenericClassList = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<GenericClassList>;
-
 export type GiftCardObjectList = Array<GiftCardObject>;
-const GiftCardObjectList = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<GiftCardObjectList>;
-
 export type GenericObjectList = Array<GenericObject>;
-const GenericObjectList = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<GenericObjectList>;
-
 export type OfferObjectList = Array<OfferObject>;
-const OfferObjectList = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<OfferObjectList>;
-
 export type EventTicketClassList = Array<EventTicketClass>;
-const EventTicketClassList = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<EventTicketClassList>;
-
 export type LoyaltyObjectList = Array<LoyaltyObject>;
-const LoyaltyObjectList = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<LoyaltyObjectList>;
-
 export type FlightObjectList = Array<FlightObject>;
-const FlightObjectList = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<FlightObjectList>;
-
 export type TransitObjectList = Array<TransitObject>;
-const TransitObjectList = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<TransitObjectList>;
-
 export type TransitClassList = Array<TransitClass>;
-const TransitClassList = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<TransitClassList>;
-
 export type FlightClassList = Array<FlightClass>;
-const FlightClassList = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<FlightClassList>;
-
 export type OfferClassList = Array<OfferClass>;
-const OfferClassList = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<OfferClassList>;
-
 export type GiftCardClassList = Array<GiftCardClass>;
-const GiftCardClassList = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<GiftCardClassList>;
-
 export type EventTicketObjectList = Array<EventTicketObject>;
-const EventTicketObjectList = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<EventTicketObjectList>;
-
 export interface Resources {
   /** A list of loyalty classes. */
   loyaltyClasses?: LoyaltyClassList;
@@ -3700,66 +2923,38 @@ export interface Resources {
   /** A list of event ticket objects. */
   eventTicketObjects?: EventTicketObjectList;
 }
-const Resources = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<Resources>;
-
 export interface JwtInsertResponse {
   /** A URI that, when opened, will allow the end user to save the object(s) identified in the JWT to their Google account. */
   saveUri?: string;
   /** Data that corresponds to the ids of the provided classes and objects in the JWT. resources will only include the non-empty arrays (i.e. if the JWT only includes eventTicketObjects, then that is the only field that will be present in resources). */
   resources?: Resources;
 }
-const JwtInsertResponse = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<JwtInsertResponse>;
-
 export interface InsertLoyaltyclassRequest {
   /** Request body */
   body?: LoyaltyClass;
 }
-const InsertLoyaltyclassRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<InsertLoyaltyclassRequest>;
-
 export interface InsertLoyaltyobjectRequest {
   /** Request body */
   body?: LoyaltyObject;
 }
-const InsertLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<InsertLoyaltyobjectRequest>;
-
 export interface InsertOfferclassRequest {
   /** Request body */
   body?: OfferClass;
 }
-const InsertOfferclassRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<InsertOfferclassRequest>;
-
 export interface InsertOfferobjectRequest {
   /** Request body */
   body?: OfferObject;
 }
-const InsertOfferobjectRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<InsertOfferobjectRequest>;
-
 export type IssuerToUserInfoActionEnum =
   | "ACTION_UNSPECIFIED"
   | "S2AP"
   | "s2ap"
   | "SIGN_UP"
   | "signUp";
-const IssuerToUserInfoActionEnum = S.String;
-
 export interface SignUpInfo {
   /** ID of the class the user can sign up for. */
   classId?: string;
 }
-const SignUpInfo = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<SignUpInfo>;
-
 export interface IssuerToUserInfo {
   action?: IssuerToUserInfoActionEnum | (string & {});
   /** Currently not used, consider deprecating. */
@@ -3768,14 +2963,7 @@ export interface IssuerToUserInfo {
   value?: string;
   signUpInfo?: SignUpInfo;
 }
-const IssuerToUserInfo = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<IssuerToUserInfo>;
-
 export type IssuerToUserInfoList = Array<IssuerToUserInfo>;
-const IssuerToUserInfoList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<IssuerToUserInfoList>;
-
 export interface SmartTap {
   /** Smart Tap merchant ID of who engaged in the Smart Tap interaction. */
   merchantId?: string;
@@ -3786,35 +2974,18 @@ export interface SmartTap {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#smartTap"`. */
   kind?: string;
 }
-const SmartTap = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<SmartTap>;
-
 export interface InsertSmarttapRequest {
   /** Request body */
   body?: SmartTap;
 }
-const InsertSmarttapRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<InsertSmarttapRequest>;
-
 export interface InsertTransitclassRequest {
   /** Request body */
   body?: TransitClass;
 }
-const InsertTransitclassRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<InsertTransitclassRequest>;
-
 export interface InsertTransitobjectRequest {
   /** Request body */
   body?: TransitObject;
 }
-const InsertTransitobjectRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<InsertTransitobjectRequest>;
-
 export interface ListEventticketclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
@@ -3823,11 +2994,6 @@ export interface ListEventticketclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
 }
-const ListEventticketclassRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListEventticketclassRequest>;
-
 export interface Pagination {
   /** Page token to send to fetch the next page. */
   nextPageToken?: string;
@@ -3836,19 +3002,12 @@ export interface Pagination {
   /** Number of results returned in this page. */
   resultsPerPage?: number;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<Pagination>;
-
 export interface EventTicketClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
   resources?: EventTicketClassList;
 }
-const EventTicketClassListResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<EventTicketClassListResponse>;
-
 export interface ListEventticketobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -3857,22 +3016,12 @@ export interface ListEventticketobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-const ListEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ListEventticketobjectRequest>;
-
 export interface EventTicketObjectListResponse {
   /** Resources corresponding to the list request. */
   resources?: EventTicketObjectList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const EventTicketObjectListResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<EventTicketObjectListResponse>;
-
 export interface ListFlightclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
@@ -3881,22 +3030,12 @@ export interface ListFlightclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
 }
-const ListFlightclassRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListFlightclassRequest>;
-
 export interface FlightClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: FlightClassList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const FlightClassListResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<FlightClassListResponse>;
-
 export interface ListFlightobjectRequest {
   /** The ID of the class whose objects will be listed. */
   classId?: string;
@@ -3905,22 +3044,12 @@ export interface ListFlightobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-const ListFlightobjectRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListFlightobjectRequest>;
-
 export interface FlightObjectListResponse {
   /** Resources corresponding to the list request. */
   resources?: FlightObjectList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const FlightObjectListResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<FlightObjectListResponse>;
-
 export interface ListGenericclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -3929,11 +3058,6 @@ export interface ListGenericclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
 }
-const ListGenericclassRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListGenericclassRequest>;
-
 /** List response which contains the list of all generic classes for a given issuer ID. */
 export interface GenericClassListResponse {
   /** Pagination of the response. */
@@ -3941,11 +3065,6 @@ export interface GenericClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: GenericClassList;
 }
-const GenericClassListResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<GenericClassListResponse>;
-
 export interface ListGenericobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
@@ -3954,11 +3073,6 @@ export interface ListGenericobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
 }
-const ListGenericobjectRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListGenericobjectRequest>;
-
 /** List response which contains the list of all generic objects for a given issuer ID. */
 export interface GenericObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -3966,11 +3080,6 @@ export interface GenericObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const GenericObjectListResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<GenericObjectListResponse>;
-
 export interface ListGiftcardclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -3979,22 +3088,12 @@ export interface ListGiftcardclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
 }
-const ListGiftcardclassRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListGiftcardclassRequest>;
-
 export interface GiftCardClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
   resources?: GiftCardClassList;
 }
-const GiftCardClassListResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GiftCardClassListResponse>;
-
 export interface ListGiftcardobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -4003,34 +3102,18 @@ export interface ListGiftcardobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-const ListGiftcardobjectRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ListGiftcardobjectRequest>;
-
 export interface GiftCardObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
   resources?: GiftCardObjectList;
 }
-const GiftCardObjectListResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GiftCardObjectListResponse>;
-
 export interface ListIssuerRequest {}
-const ListIssuerRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<ListIssuerRequest>;
-
 export type IssuerList = Array<Issuer>;
-const IssuerList = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<IssuerList>;
-
 export interface IssuerListResponse {
   /** Resources corresponding to the list request. */
   resources?: IssuerList;
 }
-const IssuerListResponse = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<IssuerListResponse>;
-
 export interface ListLoyaltyclassRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -4039,22 +3122,12 @@ export interface ListLoyaltyclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
 }
-const ListLoyaltyclassRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListLoyaltyclassRequest>;
-
 export interface LoyaltyClassListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
   resources?: LoyaltyClassList;
 }
-const LoyaltyClassListResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<LoyaltyClassListResponse>;
-
 export interface ListLoyaltyobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -4063,22 +3136,12 @@ export interface ListLoyaltyobjectRequest {
   /** The ID of the class whose objects will be listed. */
   classId?: string;
 }
-const ListLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ListLoyaltyobjectRequest>;
-
 export interface LoyaltyObjectListResponse {
   /** Resources corresponding to the list request. */
   resources?: LoyaltyObjectList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const LoyaltyObjectListResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<LoyaltyObjectListResponse>;
-
 export interface ListOfferclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
@@ -4087,22 +3150,12 @@ export interface ListOfferclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
 }
-const ListOfferclassRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ListOfferclassRequest>;
-
 export interface OfferClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: OfferClassList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const OfferClassListResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<OfferClassListResponse>;
-
 export interface ListOfferobjectRequest {
   /** The ID of the class whose objects will be listed. */
   classId?: string;
@@ -4111,22 +3164,12 @@ export interface ListOfferobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
 }
-const ListOfferobjectRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListOfferobjectRequest>;
-
 export interface OfferObjectListResponse {
   /** Pagination of the response. */
   pagination?: Pagination;
   /** Resources corresponding to the list request. */
   resources?: OfferObjectList;
 }
-const OfferObjectListResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<OfferObjectListResponse>;
-
 export interface ListTransitclassRequest {
   /** The ID of the issuer authorized to list classes. */
   issuerId?: string;
@@ -4135,22 +3178,12 @@ export interface ListTransitclassRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` classes are available in a list. For example, if you have a list of 200 classes and you call list with `maxResults` set to 20, list will return the first 20 classes and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 classes. */
   token?: string;
 }
-const ListTransitclassRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ListTransitclassRequest>;
-
 export interface TransitClassListResponse {
   /** Resources corresponding to the list request. */
   resources?: TransitClassList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const TransitClassListResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<TransitClassListResponse>;
-
 export interface ListTransitobjectRequest {
   /** Identifies the max number of results returned by a list. All results are returned if `maxResults` isn't defined. */
   maxResults?: number;
@@ -4159,226 +3192,124 @@ export interface ListTransitobjectRequest {
   /** Used to get the next set of results if `maxResults` is specified, but more than `maxResults` objects are available in a list. For example, if you have a list of 200 objects and you call list with `maxResults` set to 20, list will return the first 20 objects and a token. Call list again with `maxResults` set to 20 and the token to get the next 20 objects. */
   token?: string;
 }
-const ListTransitobjectRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListTransitobjectRequest>;
-
 export interface TransitObjectListResponse {
   /** Resources corresponding to the list request. */
   resources?: TransitObjectList;
   /** Pagination of the response. */
   pagination?: Pagination;
 }
-const TransitObjectListResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<TransitObjectListResponse>;
-
 export interface ModifyLinkedOfferObjects {
   /** The linked offer object ids to remove from the object. */
   removeLinkedOfferObjectIds?: StringList;
   /** The linked offer object ids to add to the object. */
   addLinkedOfferObjectIds?: StringList;
 }
-const ModifyLinkedOfferObjects = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ModifyLinkedOfferObjects>;
-
 export interface ModifyLinkedOfferObjectsRequest {
   /** The linked offer object ids to add or remove from the object. */
   linkedOfferObjectIds?: ModifyLinkedOfferObjects;
 }
-const ModifyLinkedOfferObjectsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ModifyLinkedOfferObjectsRequest>;
-
 export interface ModifylinkedofferobjectsEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: ModifyLinkedOfferObjectsRequest;
 }
-const ModifylinkedofferobjectsEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ModifylinkedofferobjectsEventticketobjectRequest>;
-
 export interface ModifylinkedofferobjectsLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: ModifyLinkedOfferObjectsRequest;
 }
-const ModifylinkedofferobjectsLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>;
-
 export interface PatchEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: EventTicketClass;
 }
-const PatchEventticketclassRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<PatchEventticketclassRequest>;
-
 export interface PatchEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: EventTicketObject;
 }
-const PatchEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<PatchEventticketobjectRequest>;
-
 export interface PatchFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: FlightClass;
 }
-const PatchFlightclassRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<PatchFlightclassRequest>;
-
 export interface PatchFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: FlightObject;
 }
-const PatchFlightobjectRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<PatchFlightobjectRequest>;
-
 export interface PatchGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
   /** Request body */
   body?: GenericClass;
 }
-const PatchGenericclassRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<PatchGenericclassRequest>;
-
 export interface PatchGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
   /** Request body */
   body?: GenericObject;
 }
-const PatchGenericobjectRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<PatchGenericobjectRequest>;
-
 export interface PatchGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: GiftCardClass;
 }
-const PatchGiftcardclassRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<PatchGiftcardclassRequest>;
-
 export interface PatchGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: GiftCardObject;
 }
-const PatchGiftcardobjectRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<PatchGiftcardobjectRequest>;
-
 export interface PatchIssuerRequest {
   /** The unique identifier for an issuer. */
   resourceId: string;
   /** Request body */
   body?: Issuer;
 }
-const PatchIssuerRequest = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<PatchIssuerRequest>;
-
 export interface PatchLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: LoyaltyClass;
 }
-const PatchLoyaltyclassRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<PatchLoyaltyclassRequest>;
-
 export interface PatchLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: LoyaltyObject;
 }
-const PatchLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<PatchLoyaltyobjectRequest>;
-
 export interface PatchOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: OfferClass;
 }
-const PatchOfferclassRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<PatchOfferclassRequest>;
-
 export interface PatchOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: OfferObject;
 }
-const PatchOfferobjectRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<PatchOfferobjectRequest>;
-
 export interface PatchTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: TransitClass;
 }
-const PatchTransitclassRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<PatchTransitclassRequest>;
-
 export interface PatchTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: TransitObject;
 }
-const PatchTransitobjectRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<PatchTransitobjectRequest>;
-
 /** Request to send a private pass update notice information to Google, so that devices can then fetch the notice prompting the user to update a pass. */
 export interface SetPassUpdateNoticeRequest {
   /** Required. The issuer endpoint URI the pass holder needs to follow in order to receive an updated pass JWT. It can not contain any sensitive information. The endpoint needs to authenticate the user before giving the user the updated JWT. Example update URI https://someissuer.com/update/passId=someExternalPassId */
@@ -4388,208 +3319,114 @@ export interface SetPassUpdateNoticeRequest {
   /** Required. The JWT signature of the updated pass that the issuer wants to notify Google about. Only devices that report a different JWT signature than this JWT signature will receive the update notification. */
   updatedPassJwtSignature?: string;
 }
-const SetPassUpdateNoticeRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<SetPassUpdateNoticeRequest>;
-
 export interface SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest {
   /** Request body */
   body?: SetPassUpdateNoticeRequest;
 }
-const SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>;
-
 /** A response to a request to notify Google of an awaiting update to a private pass. */
 export interface SetPassUpdateNoticeResponse {}
-const SetPassUpdateNoticeResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<SetPassUpdateNoticeResponse>;
-
 export interface UpdateEventticketclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: EventTicketClass;
 }
-const UpdateEventticketclassRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<UpdateEventticketclassRequest>;
-
 export interface UpdateEventticketobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: EventTicketObject;
 }
-const UpdateEventticketobjectRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<UpdateEventticketobjectRequest>;
-
 export interface UpdateFlightclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: FlightClass;
 }
-const UpdateFlightclassRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<UpdateFlightclassRequest>;
-
 export interface UpdateFlightobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: FlightObject;
 }
-const UpdateFlightobjectRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<UpdateFlightobjectRequest>;
-
 export interface UpdateGenericclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
   /** Request body */
   body?: GenericClass;
 }
-const UpdateGenericclassRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<UpdateGenericclassRequest>;
-
 export interface UpdateGenericobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. */
   resourceId: string;
   /** Request body */
   body?: GenericObject;
 }
-const UpdateGenericobjectRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<UpdateGenericobjectRequest>;
-
 export interface UpdateGiftcardclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: GiftCardClass;
 }
-const UpdateGiftcardclassRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<UpdateGiftcardclassRequest>;
-
 export interface UpdateGiftcardobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: GiftCardObject;
 }
-const UpdateGiftcardobjectRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<UpdateGiftcardobjectRequest>;
-
 export interface UpdateIssuerRequest {
   /** The unique identifier for an issuer. */
   resourceId: string;
   /** Request body */
   body?: Issuer;
 }
-const UpdateIssuerRequest = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<UpdateIssuerRequest>;
-
 export interface UpdateLoyaltyclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: LoyaltyClass;
 }
-const UpdateLoyaltyclassRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<UpdateLoyaltyclassRequest>;
-
 export interface UpdateLoyaltyobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: LoyaltyObject;
 }
-const UpdateLoyaltyobjectRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<UpdateLoyaltyobjectRequest>;
-
 export interface UpdateOfferclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: OfferClass;
 }
-const UpdateOfferclassRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<UpdateOfferclassRequest>;
-
 export interface UpdateOfferobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: OfferObject;
 }
-const UpdateOfferobjectRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<UpdateOfferobjectRequest>;
-
 export interface UpdatePermissionsRequest {
   /** The unique identifier for an issuer. This ID must be unique across all issuers. */
   resourceId: string;
   /** Request body */
   body?: Permissions;
 }
-const UpdatePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<UpdatePermissionsRequest>;
-
 export interface UpdateTransitclassRequest {
   /** The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: TransitClass;
 }
-const UpdateTransitclassRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<UpdateTransitclassRequest>;
-
 export interface UpdateTransitobjectRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: TransitObject;
 }
-const UpdateTransitobjectRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<UpdateTransitobjectRequest>;
-
 export type MediaRequestInfoNotificationTypeEnum =
   | "START"
   | "PROGRESS"
   | "END"
   | "RESPONSE_SENT"
   | "ERROR";
-const MediaRequestInfoNotificationTypeEnum = S.String;
-
 /** Extra information added to operations that support Scotty media requests. */
 export interface MediaRequestInfo {
   /** The existence of the final_status field indicates that this is the last call to the agent for this request_id. http://google3/uploader/agent/scotty_agent.proto?l=737&rcl=347601929 */
@@ -4613,8 +3450,6 @@ export interface MediaRequestInfo {
   /** The Scotty request ID. */
   requestId?: string;
 }
-const MediaRequestInfo = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<MediaRequestInfo>;
-
 /** Request to upload rotating barcode values. */
 export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   /** A reference to the rotating barcode values payload that was uploaded. */
@@ -4622,33 +3457,19 @@ export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   /** Extra information about the uploaded media. */
   mediaRequestInfo?: MediaRequestInfo;
 }
-const TransitObjectUploadRotatingBarcodeValuesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesRequest>;
-
 export interface UploadMediaRequest {
   /** The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
   resourceId: string;
   /** Request body */
   body?: TransitObjectUploadRotatingBarcodeValuesRequest;
 }
-const UploadMediaRequest = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<UploadMediaRequest>;
-
 /** Response for uploading rotating barcode values. */
 export interface TransitObjectUploadRotatingBarcodeValuesResponse {}
-const TransitObjectUploadRotatingBarcodeValuesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>;
-
 /** A JSON representation of a pass. */
 export interface JsonResource {
   /** Required. A JSON string representing the unencoded JWT payload for a pass of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt. This can be set to either the entire JSON representation described at this link or just the contents of the payload field holding the relevant classes and objects. */
   json?: string;
 }
-const JsonResource = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<JsonResource>;
-
 /** Request to validate the JWT or JSON representation of a pass. */
 export interface JwtValidateRequest {
   /** Optional. A JSON representation of a pass to be validated. Either this or jwt_resource should be set. Requests setting both or neither will be rejected. */
@@ -4656,18 +3477,12 @@ export interface JwtValidateRequest {
   /** Optional. A JWT representation of a pass to be validated. Either this or json_resource should be set. Requests setting both or neither will be rejected. */
   jwtResource?: JwtResource;
 }
-const JwtValidateRequest = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<JwtValidateRequest>;
-
 export interface ValidateJwtRequest {
   /** Request body */
   body?: JwtValidateRequest;
 }
-const ValidateJwtRequest = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<ValidateJwtRequest>;
-
 /** Empty if the resource in the request is valid. Returns exception if invalid. */
 export interface JwtValidateResponse {}
-const JwtValidateResponse = SetPassUpdateNoticeResponse as any as S.Schema<JwtValidateResponse>;
-
 export type AddmessageEventticketclassError =
   | NotFound
   | Forbidden
@@ -4681,8 +3496,8 @@ export const addmessageEventticketclass: API.OperationMethod<
   AddmessageEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageEventticketclassRequest,
-  output: EventTicketClassAddMessageResponse,
+  input: __S(7) as any as S.Schema<AddmessageEventticketclassRequest>,
+  output: __S(57) as any as S.Schema<EventTicketClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4701,8 +3516,8 @@ export const addmessageEventticketobject: API.OperationMethod<
   AddmessageEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageEventticketobjectRequest,
-  output: EventTicketObjectAddMessageResponse,
+  input: __S(58) as any as S.Schema<AddmessageEventticketobjectRequest>,
+  output: __S(73) as any as S.Schema<EventTicketObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4716,8 +3531,8 @@ export const addmessageFlightclass: API.OperationMethod<
   AddmessageFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageFlightclassRequest,
-  output: FlightClassAddMessageResponse,
+  input: __S(74) as any as S.Schema<AddmessageFlightclassRequest>,
+  output: __S(80) as any as S.Schema<FlightClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4731,8 +3546,8 @@ export const addmessageFlightobject: API.OperationMethod<
   AddmessageFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageFlightobjectRequest,
-  output: FlightObjectAddMessageResponse,
+  input: __S(81) as any as S.Schema<AddmessageFlightobjectRequest>,
+  output: __S(86) as any as S.Schema<FlightObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4746,8 +3561,8 @@ export const addmessageGenericclass: API.OperationMethod<
   AddmessageGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageGenericclassRequest,
-  output: GenericClassAddMessageResponse,
+  input: __S(87) as any as S.Schema<AddmessageGenericclassRequest>,
+  output: __S(89) as any as S.Schema<GenericClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4766,8 +3581,8 @@ export const addmessageGenericobject: API.OperationMethod<
   AddmessageGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageGenericobjectRequest,
-  output: GenericObjectAddMessageResponse,
+  input: __S(90) as any as S.Schema<AddmessageGenericobjectRequest>,
+  output: __S(94) as any as S.Schema<GenericObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4786,8 +3601,8 @@ export const addmessageGiftcardclass: API.OperationMethod<
   AddmessageGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageGiftcardclassRequest,
-  output: GiftCardClassAddMessageResponse,
+  input: __S(95) as any as S.Schema<AddmessageGiftcardclassRequest>,
+  output: __S(97) as any as S.Schema<GiftCardClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4806,8 +3621,8 @@ export const addmessageGiftcardobject: API.OperationMethod<
   AddmessageGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageGiftcardobjectRequest,
-  output: GiftCardObjectAddMessageResponse,
+  input: __S(98) as any as S.Schema<AddmessageGiftcardobjectRequest>,
+  output: __S(100) as any as S.Schema<GiftCardObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4821,8 +3636,8 @@ export const addmessageLoyaltyclass: API.OperationMethod<
   AddmessageLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageLoyaltyclassRequest,
-  output: LoyaltyClassAddMessageResponse,
+  input: __S(101) as any as S.Schema<AddmessageLoyaltyclassRequest>,
+  output: __S(107) as any as S.Schema<LoyaltyClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4841,8 +3656,8 @@ export const addmessageLoyaltyobject: API.OperationMethod<
   AddmessageLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageLoyaltyobjectRequest,
-  output: LoyaltyObjectAddMessageResponse,
+  input: __S(108) as any as S.Schema<AddmessageLoyaltyobjectRequest>,
+  output: __S(112) as any as S.Schema<LoyaltyObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4856,8 +3671,8 @@ export const addmessageOfferclass: API.OperationMethod<
   AddmessageOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageOfferclassRequest,
-  output: OfferClassAddMessageResponse,
+  input: __S(113) as any as S.Schema<AddmessageOfferclassRequest>,
+  output: __S(115) as any as S.Schema<OfferClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4871,8 +3686,8 @@ export const addmessageOfferobject: API.OperationMethod<
   AddmessageOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageOfferobjectRequest,
-  output: OfferObjectAddMessageResponse,
+  input: __S(116) as any as S.Schema<AddmessageOfferobjectRequest>,
+  output: __S(118) as any as S.Schema<OfferObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4886,8 +3701,8 @@ export const addmessageTransitclass: API.OperationMethod<
   AddmessageTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageTransitclassRequest,
-  output: TransitClassAddMessageResponse,
+  input: __S(119) as any as S.Schema<AddmessageTransitclassRequest>,
+  output: __S(122) as any as S.Schema<TransitClassAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4906,8 +3721,8 @@ export const addmessageTransitobject: API.OperationMethod<
   AddmessageTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddmessageTransitobjectRequest,
-  output: TransitObjectAddMessageResponse,
+  input: __S(123) as any as S.Schema<AddmessageTransitobjectRequest>,
+  output: __S(134) as any as S.Schema<TransitObjectAddMessageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4921,8 +3736,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadMediaRequest,
-  output: Media,
+  input: __S(135) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(147) as any as S.Schema<Media>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4936,8 +3751,8 @@ export const getEventticketclass: API.OperationMethod<
   GetEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventticketclassRequest,
-  output: EventTicketClass,
+  input: __S(148) as any as S.Schema<GetEventticketclassRequest>,
+  output: __S(56) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4951,8 +3766,8 @@ export const getEventticketobject: API.OperationMethod<
   GetEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventticketobjectRequest,
-  output: EventTicketObject,
+  input: __S(149) as any as S.Schema<GetEventticketobjectRequest>,
+  output: __S(72) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4966,8 +3781,8 @@ export const getFlightclass: API.OperationMethod<
   GetFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlightclassRequest,
-  output: FlightClass,
+  input: __S(150) as any as S.Schema<GetFlightclassRequest>,
+  output: __S(79) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4981,8 +3796,8 @@ export const getFlightobject: API.OperationMethod<
   GetFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlightobjectRequest,
-  output: FlightObject,
+  input: __S(151) as any as S.Schema<GetFlightobjectRequest>,
+  output: __S(85) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4996,8 +3811,8 @@ export const getGenericclass: API.OperationMethod<
   GetGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGenericclassRequest,
-  output: GenericClass,
+  input: __S(152) as any as S.Schema<GetGenericclassRequest>,
+  output: __S(88) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5011,8 +3826,8 @@ export const getGenericobject: API.OperationMethod<
   GetGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGenericobjectRequest,
-  output: GenericObject,
+  input: __S(153) as any as S.Schema<GetGenericobjectRequest>,
+  output: __S(93) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5026,8 +3841,8 @@ export const getGiftcardclass: API.OperationMethod<
   GetGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGiftcardclassRequest,
-  output: GiftCardClass,
+  input: __S(154) as any as S.Schema<GetGiftcardclassRequest>,
+  output: __S(96) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5041,8 +3856,8 @@ export const getGiftcardobject: API.OperationMethod<
   GetGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGiftcardobjectRequest,
-  output: GiftCardObject,
+  input: __S(155) as any as S.Schema<GetGiftcardobjectRequest>,
+  output: __S(99) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5056,8 +3871,8 @@ export const getIssuer: API.OperationMethod<
   GetIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIssuerRequest,
-  output: Issuer,
+  input: __S(156) as any as S.Schema<GetIssuerRequest>,
+  output: __S(161) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5071,8 +3886,8 @@ export const getLoyaltyclass: API.OperationMethod<
   GetLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoyaltyclassRequest,
-  output: LoyaltyClass,
+  input: __S(162) as any as S.Schema<GetLoyaltyclassRequest>,
+  output: __S(106) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5086,8 +3901,8 @@ export const getLoyaltyobject: API.OperationMethod<
   GetLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoyaltyobjectRequest,
-  output: LoyaltyObject,
+  input: __S(163) as any as S.Schema<GetLoyaltyobjectRequest>,
+  output: __S(111) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5101,8 +3916,8 @@ export const getOfferclass: API.OperationMethod<
   GetOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOfferclassRequest,
-  output: OfferClass,
+  input: __S(164) as any as S.Schema<GetOfferclassRequest>,
+  output: __S(114) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5116,8 +3931,8 @@ export const getOfferobject: API.OperationMethod<
   GetOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOfferobjectRequest,
-  output: OfferObject,
+  input: __S(165) as any as S.Schema<GetOfferobjectRequest>,
+  output: __S(117) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5131,8 +3946,8 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsRequest,
-  output: Permissions,
+  input: __S(166) as any as S.Schema<GetPermissionsRequest>,
+  output: __S(169) as any as S.Schema<Permissions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5146,8 +3961,8 @@ export const getTransitclass: API.OperationMethod<
   GetTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransitclassRequest,
-  output: TransitClass,
+  input: __S(170) as any as S.Schema<GetTransitclassRequest>,
+  output: __S(121) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5161,8 +3976,8 @@ export const getTransitobject: API.OperationMethod<
   GetTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransitobjectRequest,
-  output: TransitObject,
+  input: __S(171) as any as S.Schema<GetTransitobjectRequest>,
+  output: __S(133) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5176,8 +3991,8 @@ export const insertEventticketclass: API.OperationMethod<
   InsertEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertEventticketclassRequest,
-  output: EventTicketClass,
+  input: __S(172) as any as S.Schema<InsertEventticketclassRequest>,
+  output: __S(56) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5196,8 +4011,8 @@ export const insertEventticketobject: API.OperationMethod<
   InsertEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertEventticketobjectRequest,
-  output: EventTicketObject,
+  input: __S(173) as any as S.Schema<InsertEventticketobjectRequest>,
+  output: __S(72) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5211,8 +4026,8 @@ export const insertFlightclass: API.OperationMethod<
   InsertFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertFlightclassRequest,
-  output: FlightClass,
+  input: __S(174) as any as S.Schema<InsertFlightclassRequest>,
+  output: __S(79) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5226,8 +4041,8 @@ export const insertFlightobject: API.OperationMethod<
   InsertFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertFlightobjectRequest,
-  output: FlightObject,
+  input: __S(175) as any as S.Schema<InsertFlightobjectRequest>,
+  output: __S(85) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5241,8 +4056,8 @@ export const insertGenericclass: API.OperationMethod<
   InsertGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertGenericclassRequest,
-  output: GenericClass,
+  input: __S(176) as any as S.Schema<InsertGenericclassRequest>,
+  output: __S(88) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5256,8 +4071,8 @@ export const insertGenericobject: API.OperationMethod<
   InsertGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertGenericobjectRequest,
-  output: GenericObject,
+  input: __S(177) as any as S.Schema<InsertGenericobjectRequest>,
+  output: __S(93) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5271,8 +4086,8 @@ export const insertGiftcardclass: API.OperationMethod<
   InsertGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertGiftcardclassRequest,
-  output: GiftCardClass,
+  input: __S(178) as any as S.Schema<InsertGiftcardclassRequest>,
+  output: __S(96) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5286,8 +4101,8 @@ export const insertGiftcardobject: API.OperationMethod<
   InsertGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertGiftcardobjectRequest,
-  output: GiftCardObject,
+  input: __S(179) as any as S.Schema<InsertGiftcardobjectRequest>,
+  output: __S(99) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5301,8 +4116,8 @@ export const insertIssuer: API.OperationMethod<
   InsertIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertIssuerRequest,
-  output: Issuer,
+  input: __S(180) as any as S.Schema<InsertIssuerRequest>,
+  output: __S(161) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5316,8 +4131,8 @@ export const insertJwt: API.OperationMethod<
   InsertJwtError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertJwtRequest,
-  output: JwtInsertResponse,
+  input: __S(182) as any as S.Schema<InsertJwtRequest>,
+  output: __S(198) as any as S.Schema<JwtInsertResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5331,8 +4146,8 @@ export const insertLoyaltyclass: API.OperationMethod<
   InsertLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertLoyaltyclassRequest,
-  output: LoyaltyClass,
+  input: __S(199) as any as S.Schema<InsertLoyaltyclassRequest>,
+  output: __S(106) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5346,8 +4161,8 @@ export const insertLoyaltyobject: API.OperationMethod<
   InsertLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertLoyaltyobjectRequest,
-  output: LoyaltyObject,
+  input: __S(200) as any as S.Schema<InsertLoyaltyobjectRequest>,
+  output: __S(111) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5361,8 +4176,8 @@ export const insertOfferclass: API.OperationMethod<
   InsertOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertOfferclassRequest,
-  output: OfferClass,
+  input: __S(201) as any as S.Schema<InsertOfferclassRequest>,
+  output: __S(114) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5376,8 +4191,8 @@ export const insertOfferobject: API.OperationMethod<
   InsertOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertOfferobjectRequest,
-  output: OfferObject,
+  input: __S(202) as any as S.Schema<InsertOfferobjectRequest>,
+  output: __S(117) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5391,8 +4206,8 @@ export const insertSmarttap: API.OperationMethod<
   InsertSmarttapError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertSmarttapRequest,
-  output: SmartTap,
+  input: __S(207) as any as S.Schema<InsertSmarttapRequest>,
+  output: __S(206) as any as S.Schema<SmartTap>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5406,8 +4221,8 @@ export const insertTransitclass: API.OperationMethod<
   InsertTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertTransitclassRequest,
-  output: TransitClass,
+  input: __S(208) as any as S.Schema<InsertTransitclassRequest>,
+  output: __S(121) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5421,8 +4236,8 @@ export const insertTransitobject: API.OperationMethod<
   InsertTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertTransitobjectRequest,
-  output: TransitObject,
+  input: __S(209) as any as S.Schema<InsertTransitobjectRequest>,
+  output: __S(133) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5436,8 +4251,8 @@ export const listEventticketclass: API.OperationMethod<
   ListEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventticketclassRequest,
-  output: EventTicketClassListResponse,
+  input: __S(210) as any as S.Schema<ListEventticketclassRequest>,
+  output: __S(212) as any as S.Schema<EventTicketClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5451,8 +4266,8 @@ export const listEventticketobject: API.OperationMethod<
   ListEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventticketobjectRequest,
-  output: EventTicketObjectListResponse,
+  input: __S(213) as any as S.Schema<ListEventticketobjectRequest>,
+  output: __S(214) as any as S.Schema<EventTicketObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5466,8 +4281,8 @@ export const listFlightclass: API.OperationMethod<
   ListFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFlightclassRequest,
-  output: FlightClassListResponse,
+  input: __S(215) as any as S.Schema<ListFlightclassRequest>,
+  output: __S(216) as any as S.Schema<FlightClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5481,8 +4296,8 @@ export const listFlightobject: API.OperationMethod<
   ListFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFlightobjectRequest,
-  output: FlightObjectListResponse,
+  input: __S(217) as any as S.Schema<ListFlightobjectRequest>,
+  output: __S(218) as any as S.Schema<FlightObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5496,8 +4311,8 @@ export const listGenericclass: API.OperationMethod<
   ListGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGenericclassRequest,
-  output: GenericClassListResponse,
+  input: __S(219) as any as S.Schema<ListGenericclassRequest>,
+  output: __S(220) as any as S.Schema<GenericClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5511,8 +4326,8 @@ export const listGenericobject: API.OperationMethod<
   ListGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGenericobjectRequest,
-  output: GenericObjectListResponse,
+  input: __S(221) as any as S.Schema<ListGenericobjectRequest>,
+  output: __S(222) as any as S.Schema<GenericObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5526,8 +4341,8 @@ export const listGiftcardclass: API.OperationMethod<
   ListGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGiftcardclassRequest,
-  output: GiftCardClassListResponse,
+  input: __S(223) as any as S.Schema<ListGiftcardclassRequest>,
+  output: __S(224) as any as S.Schema<GiftCardClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5541,8 +4356,8 @@ export const listGiftcardobject: API.OperationMethod<
   ListGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGiftcardobjectRequest,
-  output: GiftCardObjectListResponse,
+  input: __S(225) as any as S.Schema<ListGiftcardobjectRequest>,
+  output: __S(226) as any as S.Schema<GiftCardObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5556,8 +4371,8 @@ export const listIssuer: API.OperationMethod<
   ListIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIssuerRequest,
-  output: IssuerListResponse,
+  input: __S(227) as any as S.Schema<ListIssuerRequest>,
+  output: __S(229) as any as S.Schema<IssuerListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5571,8 +4386,8 @@ export const listLoyaltyclass: API.OperationMethod<
   ListLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLoyaltyclassRequest,
-  output: LoyaltyClassListResponse,
+  input: __S(230) as any as S.Schema<ListLoyaltyclassRequest>,
+  output: __S(231) as any as S.Schema<LoyaltyClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5586,8 +4401,8 @@ export const listLoyaltyobject: API.OperationMethod<
   ListLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLoyaltyobjectRequest,
-  output: LoyaltyObjectListResponse,
+  input: __S(232) as any as S.Schema<ListLoyaltyobjectRequest>,
+  output: __S(233) as any as S.Schema<LoyaltyObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5601,8 +4416,8 @@ export const listOfferclass: API.OperationMethod<
   ListOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOfferclassRequest,
-  output: OfferClassListResponse,
+  input: __S(234) as any as S.Schema<ListOfferclassRequest>,
+  output: __S(235) as any as S.Schema<OfferClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5616,8 +4431,8 @@ export const listOfferobject: API.OperationMethod<
   ListOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOfferobjectRequest,
-  output: OfferObjectListResponse,
+  input: __S(236) as any as S.Schema<ListOfferobjectRequest>,
+  output: __S(237) as any as S.Schema<OfferObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5631,8 +4446,8 @@ export const listTransitclass: API.OperationMethod<
   ListTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransitclassRequest,
-  output: TransitClassListResponse,
+  input: __S(238) as any as S.Schema<ListTransitclassRequest>,
+  output: __S(239) as any as S.Schema<TransitClassListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5646,8 +4461,8 @@ export const listTransitobject: API.OperationMethod<
   ListTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransitobjectRequest,
-  output: TransitObjectListResponse,
+  input: __S(240) as any as S.Schema<ListTransitobjectRequest>,
+  output: __S(241) as any as S.Schema<TransitObjectListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5666,8 +4481,8 @@ export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
   ModifylinkedofferobjectsEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifylinkedofferobjectsEventticketobjectRequest,
-  output: EventTicketObject,
+  input: __S(244) as any as S.Schema<ModifylinkedofferobjectsEventticketobjectRequest>,
+  output: __S(72) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5686,8 +4501,8 @@ export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
   ModifylinkedofferobjectsLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifylinkedofferobjectsLoyaltyobjectRequest,
-  output: LoyaltyObject,
+  input: __S(245) as any as S.Schema<ModifylinkedofferobjectsLoyaltyobjectRequest>,
+  output: __S(111) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5701,8 +4516,8 @@ export const patchEventticketclass: API.OperationMethod<
   PatchEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchEventticketclassRequest,
-  output: EventTicketClass,
+  input: __S(246) as any as S.Schema<PatchEventticketclassRequest>,
+  output: __S(56) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5716,8 +4531,8 @@ export const patchEventticketobject: API.OperationMethod<
   PatchEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchEventticketobjectRequest,
-  output: EventTicketObject,
+  input: __S(247) as any as S.Schema<PatchEventticketobjectRequest>,
+  output: __S(72) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5731,8 +4546,8 @@ export const patchFlightclass: API.OperationMethod<
   PatchFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFlightclassRequest,
-  output: FlightClass,
+  input: __S(248) as any as S.Schema<PatchFlightclassRequest>,
+  output: __S(79) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5746,8 +4561,8 @@ export const patchFlightobject: API.OperationMethod<
   PatchFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchFlightobjectRequest,
-  output: FlightObject,
+  input: __S(249) as any as S.Schema<PatchFlightobjectRequest>,
+  output: __S(85) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5761,8 +4576,8 @@ export const patchGenericclass: API.OperationMethod<
   PatchGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchGenericclassRequest,
-  output: GenericClass,
+  input: __S(250) as any as S.Schema<PatchGenericclassRequest>,
+  output: __S(88) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5776,8 +4591,8 @@ export const patchGenericobject: API.OperationMethod<
   PatchGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchGenericobjectRequest,
-  output: GenericObject,
+  input: __S(251) as any as S.Schema<PatchGenericobjectRequest>,
+  output: __S(93) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5791,8 +4606,8 @@ export const patchGiftcardclass: API.OperationMethod<
   PatchGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchGiftcardclassRequest,
-  output: GiftCardClass,
+  input: __S(252) as any as S.Schema<PatchGiftcardclassRequest>,
+  output: __S(96) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5806,8 +4621,8 @@ export const patchGiftcardobject: API.OperationMethod<
   PatchGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchGiftcardobjectRequest,
-  output: GiftCardObject,
+  input: __S(253) as any as S.Schema<PatchGiftcardobjectRequest>,
+  output: __S(99) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5821,8 +4636,8 @@ export const patchIssuer: API.OperationMethod<
   PatchIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchIssuerRequest,
-  output: Issuer,
+  input: __S(254) as any as S.Schema<PatchIssuerRequest>,
+  output: __S(161) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5836,8 +4651,8 @@ export const patchLoyaltyclass: API.OperationMethod<
   PatchLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLoyaltyclassRequest,
-  output: LoyaltyClass,
+  input: __S(255) as any as S.Schema<PatchLoyaltyclassRequest>,
+  output: __S(106) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5851,8 +4666,8 @@ export const patchLoyaltyobject: API.OperationMethod<
   PatchLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLoyaltyobjectRequest,
-  output: LoyaltyObject,
+  input: __S(256) as any as S.Schema<PatchLoyaltyobjectRequest>,
+  output: __S(111) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5866,8 +4681,8 @@ export const patchOfferclass: API.OperationMethod<
   PatchOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOfferclassRequest,
-  output: OfferClass,
+  input: __S(257) as any as S.Schema<PatchOfferclassRequest>,
+  output: __S(114) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5881,8 +4696,8 @@ export const patchOfferobject: API.OperationMethod<
   PatchOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOfferobjectRequest,
-  output: OfferObject,
+  input: __S(258) as any as S.Schema<PatchOfferobjectRequest>,
+  output: __S(117) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5896,8 +4711,8 @@ export const patchTransitclass: API.OperationMethod<
   PatchTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchTransitclassRequest,
-  output: TransitClass,
+  input: __S(259) as any as S.Schema<PatchTransitclassRequest>,
+  output: __S(121) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5911,8 +4726,8 @@ export const patchTransitobject: API.OperationMethod<
   PatchTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchTransitobjectRequest,
-  output: TransitObject,
+  input: __S(260) as any as S.Schema<PatchTransitobjectRequest>,
+  output: __S(133) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5931,8 +4746,8 @@ export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMeth
   SetPassUpdateNoticeWalletobjectsV1PrivateContentError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest,
-  output: SetPassUpdateNoticeResponse,
+  input: __S(262) as any as S.Schema<SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest>,
+  output: __S(263) as any as S.Schema<SetPassUpdateNoticeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5946,8 +4761,8 @@ export const updateEventticketclass: API.OperationMethod<
   UpdateEventticketclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventticketclassRequest,
-  output: EventTicketClass,
+  input: __S(264) as any as S.Schema<UpdateEventticketclassRequest>,
+  output: __S(56) as any as S.Schema<EventTicketClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5966,8 +4781,8 @@ export const updateEventticketobject: API.OperationMethod<
   UpdateEventticketobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventticketobjectRequest,
-  output: EventTicketObject,
+  input: __S(265) as any as S.Schema<UpdateEventticketobjectRequest>,
+  output: __S(72) as any as S.Schema<EventTicketObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5981,8 +4796,8 @@ export const updateFlightclass: API.OperationMethod<
   UpdateFlightclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFlightclassRequest,
-  output: FlightClass,
+  input: __S(266) as any as S.Schema<UpdateFlightclassRequest>,
+  output: __S(79) as any as S.Schema<FlightClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5996,8 +4811,8 @@ export const updateFlightobject: API.OperationMethod<
   UpdateFlightobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFlightobjectRequest,
-  output: FlightObject,
+  input: __S(267) as any as S.Schema<UpdateFlightobjectRequest>,
+  output: __S(85) as any as S.Schema<FlightObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6011,8 +4826,8 @@ export const updateGenericclass: API.OperationMethod<
   UpdateGenericclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGenericclassRequest,
-  output: GenericClass,
+  input: __S(268) as any as S.Schema<UpdateGenericclassRequest>,
+  output: __S(88) as any as S.Schema<GenericClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6026,8 +4841,8 @@ export const updateGenericobject: API.OperationMethod<
   UpdateGenericobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGenericobjectRequest,
-  output: GenericObject,
+  input: __S(269) as any as S.Schema<UpdateGenericobjectRequest>,
+  output: __S(93) as any as S.Schema<GenericObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6041,8 +4856,8 @@ export const updateGiftcardclass: API.OperationMethod<
   UpdateGiftcardclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGiftcardclassRequest,
-  output: GiftCardClass,
+  input: __S(270) as any as S.Schema<UpdateGiftcardclassRequest>,
+  output: __S(96) as any as S.Schema<GiftCardClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6056,8 +4871,8 @@ export const updateGiftcardobject: API.OperationMethod<
   UpdateGiftcardobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGiftcardobjectRequest,
-  output: GiftCardObject,
+  input: __S(271) as any as S.Schema<UpdateGiftcardobjectRequest>,
+  output: __S(99) as any as S.Schema<GiftCardObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6071,8 +4886,8 @@ export const updateIssuer: API.OperationMethod<
   UpdateIssuerError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIssuerRequest,
-  output: Issuer,
+  input: __S(272) as any as S.Schema<UpdateIssuerRequest>,
+  output: __S(161) as any as S.Schema<Issuer>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6086,8 +4901,8 @@ export const updateLoyaltyclass: API.OperationMethod<
   UpdateLoyaltyclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoyaltyclassRequest,
-  output: LoyaltyClass,
+  input: __S(273) as any as S.Schema<UpdateLoyaltyclassRequest>,
+  output: __S(106) as any as S.Schema<LoyaltyClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6101,8 +4916,8 @@ export const updateLoyaltyobject: API.OperationMethod<
   UpdateLoyaltyobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLoyaltyobjectRequest,
-  output: LoyaltyObject,
+  input: __S(274) as any as S.Schema<UpdateLoyaltyobjectRequest>,
+  output: __S(111) as any as S.Schema<LoyaltyObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6116,8 +4931,8 @@ export const updateOfferclass: API.OperationMethod<
   UpdateOfferclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOfferclassRequest,
-  output: OfferClass,
+  input: __S(275) as any as S.Schema<UpdateOfferclassRequest>,
+  output: __S(114) as any as S.Schema<OfferClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6131,8 +4946,8 @@ export const updateOfferobject: API.OperationMethod<
   UpdateOfferobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOfferobjectRequest,
-  output: OfferObject,
+  input: __S(276) as any as S.Schema<UpdateOfferobjectRequest>,
+  output: __S(117) as any as S.Schema<OfferObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6146,8 +4961,8 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePermissionsRequest,
-  output: Permissions,
+  input: __S(277) as any as S.Schema<UpdatePermissionsRequest>,
+  output: __S(169) as any as S.Schema<Permissions>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6161,8 +4976,8 @@ export const updateTransitclass: API.OperationMethod<
   UpdateTransitclassError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTransitclassRequest,
-  output: TransitClass,
+  input: __S(278) as any as S.Schema<UpdateTransitclassRequest>,
+  output: __S(121) as any as S.Schema<TransitClass>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6176,8 +4991,8 @@ export const updateTransitobject: API.OperationMethod<
   UpdateTransitobjectError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTransitobjectRequest,
-  output: TransitObject,
+  input: __S(279) as any as S.Schema<UpdateTransitobjectRequest>,
+  output: __S(133) as any as S.Schema<TransitObject>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6191,8 +5006,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadMediaRequest,
-  output: TransitObjectUploadRotatingBarcodeValuesResponse,
+  input: __S(282) as any as S.Schema<UploadMediaRequest>,
+  output: __S(283) as any as S.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6206,8 +5021,8 @@ export const validateJwt: API.OperationMethod<
   ValidateJwtError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateJwtRequest,
-  output: JwtValidateResponse,
+  input: __S(286) as any as S.Schema<ValidateJwtRequest>,
+  output: __S(263) as any as S.Schema<JwtValidateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6225,8 +5040,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(DateTime),
-          end: S.optional(DateTime),
+          start: S.optional(__S(0)),
+          end: S.optional(__S(0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeInterval" });
@@ -6239,39 +5054,39 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "TranslatedString" });
     case 3:
-      return S.Array(TranslatedString);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          translatedValues: S.optional(TranslatedStringList),
-          defaultValue: S.optional(TranslatedString),
+          translatedValues: S.optional(__S(3)),
+          defaultValue: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "LocalizedString" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          displayInterval: S.optional(TimeInterval),
+          displayInterval: S.optional(__S(1)),
           id: S.optional(S.String),
           body: S.optional(S.String),
           kind: S.optional(S.String),
-          localizedBody: S.optional(LocalizedString),
-          localizedHeader: S.optional(LocalizedString),
-          messageType: S.optional(MessageMessageTypeEnum),
+          localizedBody: S.optional(__S(4)),
+          localizedHeader: S.optional(__S(4)),
+          messageType: S.optional(S.String),
           header: S.optional(S.String),
         }),
       ).annotate({ identifier: "Message" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(Message),
+          message: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "AddMessageRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6289,53 +5104,53 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(LocalizedString),
+          address: S.optional(__S(4)),
           kind: S.optional(S.String),
-          name: S.optional(LocalizedString),
+          name: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "EventVenue" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           fieldPath: S.optional(S.String),
-          dateFormat: S.optional(FieldReferenceDateFormatEnum),
+          dateFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldReference" });
     case 2:
-      return S.Array(FieldReference);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(FieldReferenceList),
+          fields: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "FieldSelector" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          firstValue: S.optional(FieldSelector),
-          secondValue: S.optional(FieldSelector),
-          predefinedItem: S.optional(TemplateItemPredefinedItemEnum),
+          firstValue: S.optional(__S(11)),
+          secondValue: S.optional(__S(11)),
+          predefinedItem: S.optional(S.String),
         }),
       ).annotate({ identifier: "TemplateItem" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          middleItem: S.optional(TemplateItem),
-          endItem: S.optional(TemplateItem),
-          startItem: S.optional(TemplateItem),
+          middleItem: S.optional(__S(12)),
+          endItem: S.optional(__S(12)),
+          startItem: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "CardRowThreeItems" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          item: S.optional(TemplateItem),
+          item: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "CardRowOneItem" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          startItem: S.optional(TemplateItem),
-          endItem: S.optional(TemplateItem),
+          startItem: S.optional(__S(12)),
+          endItem: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "CardRowTwoItems" });
   }
@@ -6345,39 +5160,39 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          threeItems: S.optional(CardRowThreeItems),
-          oneItem: S.optional(CardRowOneItem),
-          twoItems: S.optional(CardRowTwoItems),
+          threeItems: S.optional(__S(13)),
+          oneItem: S.optional(__S(14)),
+          twoItems: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "CardRowTemplateInfo" });
     case 1:
-      return S.Array(CardRowTemplateInfo);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cardRowTemplateInfos: S.optional(CardRowTemplateInfoList),
+          cardRowTemplateInfos: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "CardTemplateOverride" });
     case 3:
-      return S.Array(DetailsItemInfo);
+      return S.Array(__S(14));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          detailsItemInfos: S.optional(DetailsItemInfoList),
+          detailsItemInfos: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "DetailsTemplateOverride" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldSelector: S.optional(FieldSelector),
+          fieldSelector: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "BarcodeSectionDetail" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          secondTopDetail: S.optional(BarcodeSectionDetail),
-          firstTopDetail: S.optional(BarcodeSectionDetail),
-          firstBottomDetail: S.optional(BarcodeSectionDetail),
+          secondTopDetail: S.optional(__S(21)),
+          firstTopDetail: S.optional(__S(21)),
+          firstBottomDetail: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "CardBarcodeSectionDetails",
@@ -6385,8 +5200,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fieldOption: S.optional(FieldSelector),
-          transitOption: S.optional(FirstRowOptionTransitOptionEnum),
+          fieldOption: S.optional(__S(11)),
+          transitOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirstRowOption" });
   }
@@ -6396,18 +5211,18 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          firstRowOption: S.optional(FirstRowOption),
-          thirdRowOption: S.optional(FieldSelector),
-          secondRowOption: S.optional(FieldSelector),
+          firstRowOption: S.optional(__S(23)),
+          thirdRowOption: S.optional(__S(11)),
+          secondRowOption: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "ListTemplateOverride" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cardTemplateOverride: S.optional(CardTemplateOverride),
-          detailsTemplateOverride: S.optional(DetailsTemplateOverride),
-          cardBarcodeSectionDetails: S.optional(CardBarcodeSectionDetails),
-          listTemplateOverride: S.optional(ListTemplateOverride),
+          cardTemplateOverride: S.optional(__S(18)),
+          detailsTemplateOverride: S.optional(__S(20)),
+          cardBarcodeSectionDetails: S.optional(__S(22)),
+          listTemplateOverride: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ClassTemplateInfo" });
     case 2:
@@ -6415,14 +5230,14 @@ function __c3(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           uri: S.optional(S.String),
-          localizedDescription: S.optional(LocalizedString),
+          localizedDescription: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ImageUri" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceUri: S.optional(ImageUri),
-          contentDescription: S.optional(LocalizedString),
+          sourceUri: S.optional(__S(26)),
+          contentDescription: S.optional(__S(4)),
           kind: S.optional(S.String),
           privateImageId: S.optional(S.String),
         }),
@@ -6430,12 +5245,12 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          mainImage: S.optional(Image),
+          mainImage: S.optional(__S(27)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageModuleData" });
     case 5:
-      return S.Array(ImageModuleData);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6449,7 +5264,7 @@ function __c3(j: number): any {
           kind: S.optional(S.String),
           uri: S.optional(S.String),
           id: S.optional(S.String),
-          localizedDescription: S.optional(LocalizedString),
+          localizedDescription: S.optional(__S(4)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Uri" });
@@ -6461,7 +5276,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
-          targetUri: S.optional(Uri),
+          targetUri: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "AppLinkDataAppLinkInfoAppTarget",
@@ -6469,51 +5284,51 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          title: S.optional(LocalizedString),
-          description: S.optional(LocalizedString),
-          appLogoImage: S.optional(Image),
-          appTarget: S.optional(AppLinkDataAppLinkInfoAppTarget),
+          title: S.optional(__S(4)),
+          description: S.optional(__S(4)),
+          appLogoImage: S.optional(__S(27)),
+          appTarget: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "AppLinkDataAppLinkInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          displayText: S.optional(LocalizedString),
-          androidAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
-          iosAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
-          webAppLinkInfo: S.optional(AppLinkDataAppLinkInfo),
+          displayText: S.optional(__S(4)),
+          androidAppLinkInfo: S.optional(__S(33)),
+          iosAppLinkInfo: S.optional(__S(33)),
+          webAppLinkInfo: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "AppLinkData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          customDoorsOpenLabel: S.optional(LocalizedString),
+          customDoorsOpenLabel: S.optional(__S(4)),
           start: S.optional(S.String),
           end: S.optional(S.String),
           doorsOpen: S.optional(S.String),
-          doorsOpenLabel: S.optional(EventDateTimeDoorsOpenLabelEnum),
+          doorsOpenLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventDateTime" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          localizedLabel: S.optional(LocalizedString),
+          localizedLabel: S.optional(__S(4)),
           label: S.optional(S.String),
           value: S.optional(S.String),
-          localizedValue: S.optional(LocalizedString),
+          localizedValue: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "LabelValue" });
     case 5:
-      return S.Array(LabelValue);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(LabelValueList),
+          columns: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "LabelValueRow" });
     case 7:
-      return S.Array(LabelValueRow);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -6522,11 +5337,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           showLastUpdateTime: S.optional(S.Boolean),
-          labelValueRows: S.optional(LabelValueRowList),
+          labelValueRows: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "InfoModuleData" });
     case 1:
-      return S.Array(Message);
+      return S.Array(__S(5));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6536,34 +5351,34 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          displayInterval: S.optional(TimeInterval),
+          displayInterval: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "ModuleViewConstraints" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(Image),
-          header: S.optional(LocalizedString),
+          image: S.optional(__S(27)),
+          header: S.optional(__S(4)),
           sortIndex: S.optional(S.Number),
-          viewConstraints: S.optional(ModuleViewConstraints),
-          body: S.optional(LocalizedString),
+          viewConstraints: S.optional(__S(43)),
+          body: S.optional(__S(4)),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValueAddedModuleData" });
     case 5:
-      return S.Array(ValueAddedModuleData);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          localizedHeader: S.optional(LocalizedString),
+          localizedHeader: S.optional(__S(4)),
           id: S.optional(S.String),
           header: S.optional(S.String),
-          localizedBody: S.optional(LocalizedString),
+          localizedBody: S.optional(__S(4)),
           body: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextModuleData" });
     case 7:
-      return S.Array(TextModuleData);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -6571,7 +5386,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          animationType: S.optional(SecurityAnimationAnimationTypeEnum),
+          animationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityAnimation" });
     case 1:
@@ -6583,7 +5398,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "LatLongPoint" });
     case 2:
-      return S.Array(LatLongPoint);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6592,13 +5407,13 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MerchantLocation" });
     case 4:
-      return S.Array(MerchantLocation);
+      return S.Array(__S(51));
     case 5:
-      return S.Array(Uri);
+      return S.Array(__S(31));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          uris: S.optional(UriList),
+          uris: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "LinksModuleData" });
     case 7:
@@ -6610,61 +5425,59 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customGateLabel: S.optional(LocalizedString),
-          venue: S.optional(EventVenue),
-          customSeatLabel: S.optional(LocalizedString),
+          customGateLabel: S.optional(__S(4)),
+          venue: S.optional(__S(8)),
+          customSeatLabel: S.optional(__S(4)),
           issuerName: S.optional(S.String),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
-          sectionLabel: S.optional(EventTicketClassSectionLabelEnum),
-          localizedIssuerName: S.optional(LocalizedString),
-          imageModulesData: S.optional(ImageModuleDataList),
-          finePrint: S.optional(LocalizedString),
-          confirmationCodeLabel: S.optional(EventTicketClassConfirmationCodeLabelEnum),
+          classTemplateInfo: S.optional(__S(25)),
+          sectionLabel: S.optional(S.String),
+          localizedIssuerName: S.optional(__S(4)),
+          imageModulesData: S.optional(__S(29)),
+          finePrint: S.optional(__S(4)),
+          confirmationCodeLabel: S.optional(S.String),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          callbackOptions: S.optional(CallbackOptions),
-          notifyPreference: S.optional(EventTicketClassNotifyPreferenceEnum),
+          callbackOptions: S.optional(__S(30)),
+          notifyPreference: S.optional(S.String),
           eventId: S.optional(S.String),
-          logo: S.optional(Image),
-          viewUnlockRequirement: S.optional(EventTicketClassViewUnlockRequirementEnum),
+          logo: S.optional(__S(27)),
+          viewUnlockRequirement: S.optional(S.String),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
-          dateTime: S.optional(EventDateTime),
-          infoModuleData: S.optional(InfoModuleData),
-          messages: S.optional(MessageList),
+          appLinkData: S.optional(__S(34)),
+          dateTime: S.optional(__S(35)),
+          infoModuleData: S.optional(__S(40)),
+          messages: S.optional(__S(41)),
           version: S.optional(S.String),
           kind: S.optional(S.String),
-          review: S.optional(Review),
-          seatLabel: S.optional(EventTicketClassSeatLabelEnum),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          rowLabel: S.optional(EventTicketClassRowLabelEnum),
-          textModulesData: S.optional(TextModuleDataList),
-          customSectionLabel: S.optional(LocalizedString),
-          securityAnimation: S.optional(SecurityAnimation),
-          eventName: S.optional(LocalizedString),
-          locations: S.optional(LatLongPointList),
-          wideLogo: S.optional(Image),
+          review: S.optional(__S(42)),
+          seatLabel: S.optional(S.String),
+          valueAddedModuleData: S.optional(__S(45)),
+          rowLabel: S.optional(S.String),
+          textModulesData: S.optional(__S(47)),
+          customSectionLabel: S.optional(__S(4)),
+          securityAnimation: S.optional(__S(48)),
+          eventName: S.optional(__S(4)),
+          locations: S.optional(__S(50)),
+          wideLogo: S.optional(__S(27)),
           hexBackgroundColor: S.optional(S.String),
-          customConfirmationCodeLabel: S.optional(LocalizedString),
+          customConfirmationCodeLabel: S.optional(__S(4)),
           id: S.optional(S.String),
-          homepageUri: S.optional(Uri),
+          homepageUri: S.optional(__S(31)),
           enableSmartTap: S.optional(S.Boolean),
-          merchantLocations: S.optional(MerchantLocationList),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
-          gateLabel: S.optional(EventTicketClassGateLabelEnum),
-          reviewStatus: S.optional(EventTicketClassReviewStatusEnum),
-          wordMark: S.optional(Image),
-          heroImage: S.optional(Image),
-          linksModuleData: S.optional(LinksModuleData),
-          redemptionIssuers: S.optional(StringList),
-          customRowLabel: S.optional(LocalizedString),
+          merchantLocations: S.optional(__S(52)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          gateLabel: S.optional(S.String),
+          reviewStatus: S.optional(S.String),
+          wordMark: S.optional(__S(27)),
+          heroImage: S.optional(__S(27)),
+          linksModuleData: S.optional(__S(54)),
+          redemptionIssuers: S.optional(__S(55)),
+          customRowLabel: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "EventTicketClass" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(EventTicketClass),
+          resource: S.optional(__S(56)),
         }),
       ).annotate({
         identifier: "EventTicketClassAddMessageResponse",
@@ -6673,7 +5486,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6708,15 +5521,15 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          row: S.optional(LocalizedString),
-          section: S.optional(LocalizedString),
-          seat: S.optional(LocalizedString),
+          row: S.optional(__S(4)),
+          section: S.optional(__S(4)),
+          seat: S.optional(__S(4)),
           kind: S.optional(S.String),
-          gate: S.optional(LocalizedString),
+          gate: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "EventSeat" });
     case 7:
-      return S.Array(PassConstraintsNfcConstraintItemEnum);
+      return S.Array(S.String);
   }
 }
 function __c8(j: number): any {
@@ -6724,8 +5537,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          screenshotEligibility: S.optional(PassConstraintsScreenshotEligibilityEnum),
-          nfcConstraint: S.optional(PassConstraintsNfcConstraintItemEnumList),
+          screenshotEligibility: S.optional(S.String),
+          nfcConstraint: S.optional(__S(63)),
         }),
       ).annotate({ identifier: "PassConstraints" });
     case 1:
@@ -6745,13 +5558,13 @@ function __c8(j: number): any {
         identifier: "RotatingBarcodeTotpDetailsTotpParameters",
       });
     case 3:
-      return S.Array(RotatingBarcodeTotpDetailsTotpParameters);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           periodMillis: S.optional(S.String),
-          parameters: S.optional(RotatingBarcodeTotpDetailsTotpParametersList),
-          algorithm: S.optional(RotatingBarcodeTotpDetailsAlgorithmEnum),
+          parameters: S.optional(__S(67)),
+          algorithm: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RotatingBarcodeTotpDetails",
@@ -6760,18 +5573,18 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startDateTime: S.optional(S.String),
-          values: S.optional(StringList),
+          values: S.optional(__S(55)),
           periodMillis: S.optional(S.String),
         }),
       ).annotate({ identifier: "RotatingBarcodeValues" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          renderEncoding: S.optional(RotatingBarcodeRenderEncodingEnum),
-          totpDetails: S.optional(RotatingBarcodeTotpDetails),
-          initialRotatingBarcodeValues: S.optional(RotatingBarcodeValues),
-          type: S.optional(RotatingBarcodeTypeEnum),
-          showCodeText: S.optional(LocalizedString),
+          renderEncoding: S.optional(S.String),
+          totpDetails: S.optional(__S(68)),
+          initialRotatingBarcodeValues: S.optional(__S(69)),
+          type: S.optional(S.String),
+          showCodeText: S.optional(__S(4)),
           alternateText: S.optional(S.String),
           valuePattern: S.optional(S.String),
         }),
@@ -6780,10 +5593,10 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          showCodeText: S.optional(LocalizedString),
+          showCodeText: S.optional(__S(4)),
           value: S.optional(S.String),
-          type: S.optional(BarcodeTypeEnum),
-          renderEncoding: S.optional(BarcodeRenderEncodingEnum),
+          type: S.optional(S.String),
+          renderEncoding: S.optional(S.String),
           alternateText: S.optional(S.String),
         }),
       ).annotate({ identifier: "Barcode" });
@@ -6794,48 +5607,48 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          classReference: S.optional(EventTicketClass),
+          classReference: S.optional(__S(56)),
           id: S.optional(S.String),
-          infoModuleData: S.optional(InfoModuleData),
+          infoModuleData: S.optional(__S(40)),
           hasLinkedDevice: S.optional(S.Boolean),
-          locations: S.optional(LatLongPointList),
+          locations: S.optional(__S(50)),
           kind: S.optional(S.String),
           classId: S.optional(S.String),
-          state: S.optional(EventTicketObjectStateEnum),
+          state: S.optional(S.String),
           disableExpirationNotification: S.optional(S.Boolean),
-          faceValue: S.optional(Money),
-          heroImage: S.optional(Image),
-          appLinkData: S.optional(AppLinkData),
-          saveRestrictions: S.optional(SaveRestrictions),
-          groupingInfo: S.optional(GroupingInfo),
-          linkedObjectIds: S.optional(StringList),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+          faceValue: S.optional(__S(59)),
+          heroImage: S.optional(__S(27)),
+          appLinkData: S.optional(__S(34)),
+          saveRestrictions: S.optional(__S(60)),
+          groupingInfo: S.optional(__S(61)),
+          linkedObjectIds: S.optional(__S(55)),
+          valueAddedModuleData: S.optional(__S(45)),
           ticketNumber: S.optional(S.String),
-          validTimeInterval: S.optional(TimeInterval),
-          messages: S.optional(MessageList),
+          validTimeInterval: S.optional(__S(1)),
+          messages: S.optional(__S(41)),
           hasUsers: S.optional(S.Boolean),
-          linkedOfferIds: S.optional(StringList),
-          merchantLocations: S.optional(MerchantLocationList),
-          textModulesData: S.optional(TextModuleDataList),
-          seatInfo: S.optional(EventSeat),
-          notifyPreference: S.optional(EventTicketObjectNotifyPreferenceEnum),
-          ticketType: S.optional(LocalizedString),
-          passConstraints: S.optional(PassConstraints),
-          reservationInfo: S.optional(EventReservationInfo),
+          linkedOfferIds: S.optional(__S(55)),
+          merchantLocations: S.optional(__S(52)),
+          textModulesData: S.optional(__S(47)),
+          seatInfo: S.optional(__S(62)),
+          notifyPreference: S.optional(S.String),
+          ticketType: S.optional(__S(4)),
+          passConstraints: S.optional(__S(64)),
+          reservationInfo: S.optional(__S(65)),
           version: S.optional(S.String),
-          imageModulesData: S.optional(ImageModuleDataList),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
+          imageModulesData: S.optional(__S(29)),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
           smartTapRedemptionValue: S.optional(S.String),
           hexBackgroundColor: S.optional(S.String),
           ticketHolderName: S.optional(S.String),
-          barcode: S.optional(Barcode),
+          barcode: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "EventTicketObject" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(EventTicketObject),
+          resource: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "EventTicketObjectAddMessageResponse",
@@ -6844,7 +5657,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6859,29 +5672,29 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           carrierIataCode: S.optional(S.String),
-          wideAirlineLogo: S.optional(Image),
+          wideAirlineLogo: S.optional(__S(27)),
           kind: S.optional(S.String),
-          airlineName: S.optional(LocalizedString),
-          airlineLogo: S.optional(Image),
-          airlineAllianceLogo: S.optional(Image),
+          airlineName: S.optional(__S(4)),
+          airlineLogo: S.optional(__S(27)),
+          airlineAllianceLogo: S.optional(__S(27)),
           carrierIcaoCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlightCarrier" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          carrier: S.optional(FlightCarrier),
+          carrier: S.optional(__S(75)),
           flightNumberDisplayOverride: S.optional(S.String),
           flightNumber: S.optional(S.String),
           kind: S.optional(S.String),
-          operatingCarrier: S.optional(FlightCarrier),
+          operatingCarrier: S.optional(__S(75)),
           operatingFlightNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "FlightHeader" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          airportNameOverride: S.optional(LocalizedString),
+          airportNameOverride: S.optional(__S(4)),
           terminal: S.optional(S.String),
           kind: S.optional(S.String),
           airportIataCode: S.optional(S.String),
@@ -6891,58 +5704,56 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          seatClassPolicy: S.optional(BoardingAndSeatingPolicySeatClassPolicyEnum),
+          seatClassPolicy: S.optional(S.String),
           kind: S.optional(S.String),
-          boardingPolicy: S.optional(BoardingAndSeatingPolicyBoardingPolicyEnum),
+          boardingPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "BoardingAndSeatingPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          review: S.optional(Review),
+          review: S.optional(__S(42)),
           hexBackgroundColor: S.optional(S.String),
-          notifyPreference: S.optional(FlightClassNotifyPreferenceEnum),
-          textModulesData: S.optional(TextModuleDataList),
-          messages: S.optional(MessageList),
-          locations: S.optional(LatLongPointList),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
+          notifyPreference: S.optional(S.String),
+          textModulesData: S.optional(__S(47)),
+          messages: S.optional(__S(41)),
+          locations: S.optional(__S(50)),
+          classTemplateInfo: S.optional(__S(25)),
           id: S.optional(S.String),
-          reviewStatus: S.optional(FlightClassReviewStatusEnum),
-          flightHeader: S.optional(FlightHeader),
-          linksModuleData: S.optional(LinksModuleData),
-          imageModulesData: S.optional(ImageModuleDataList),
+          reviewStatus: S.optional(S.String),
+          flightHeader: S.optional(__S(76)),
+          linksModuleData: S.optional(__S(54)),
+          imageModulesData: S.optional(__S(29)),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
-          origin: S.optional(AirportInfo),
-          infoModuleData: S.optional(InfoModuleData),
-          heroImage: S.optional(Image),
-          wordMark: S.optional(Image),
+          appLinkData: S.optional(__S(34)),
+          origin: S.optional(__S(77)),
+          infoModuleData: S.optional(__S(40)),
+          heroImage: S.optional(__S(27)),
+          wordMark: S.optional(__S(27)),
           localEstimatedOrActualArrivalDateTime: S.optional(S.String),
           localScheduledArrivalDateTime: S.optional(S.String),
-          securityAnimation: S.optional(SecurityAnimation),
-          destination: S.optional(AirportInfo),
+          securityAnimation: S.optional(__S(48)),
+          destination: S.optional(__S(77)),
           languageOverride: S.optional(S.String),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            FlightClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
-          viewUnlockRequirement: S.optional(FlightClassViewUnlockRequirementEnum),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          viewUnlockRequirement: S.optional(S.String),
           localBoardingDateTime: S.optional(S.String),
           version: S.optional(S.String),
-          localizedIssuerName: S.optional(LocalizedString),
-          boardingAndSeatingPolicy: S.optional(BoardingAndSeatingPolicy),
+          localizedIssuerName: S.optional(__S(4)),
+          boardingAndSeatingPolicy: S.optional(__S(78)),
           localScheduledDepartureDateTime: S.optional(S.String),
           localEstimatedOrActualDepartureDateTime: S.optional(S.String),
-          redemptionIssuers: S.optional(StringList),
+          redemptionIssuers: S.optional(__S(55)),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          homepageUri: S.optional(Uri),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          callbackOptions: S.optional(CallbackOptions),
+          homepageUri: S.optional(__S(31)),
+          valueAddedModuleData: S.optional(__S(45)),
+          callbackOptions: S.optional(__S(30)),
           enableSmartTap: S.optional(S.Boolean),
-          flightStatus: S.optional(FlightClassFlightStatusEnum),
+          flightStatus: S.optional(S.String),
           issuerName: S.optional(S.String),
           localGateClosingDateTime: S.optional(S.String),
-          merchantLocations: S.optional(MerchantLocationList),
+          merchantLocations: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "FlightClass" });
   }
@@ -6952,7 +5763,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(FlightClass),
+          resource: S.optional(__S(79)),
         }),
       ).annotate({
         identifier: "FlightClassAddMessageResponse",
@@ -6961,7 +5772,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6979,17 +5790,17 @@ function __c10(j: number): any {
           boardingPosition: S.optional(S.String),
           boardingGroup: S.optional(S.String),
           kind: S.optional(S.String),
-          seatAssignment: S.optional(LocalizedString),
+          seatAssignment: S.optional(__S(4)),
           seatClass: S.optional(S.String),
-          boardingDoor: S.optional(BoardingAndSeatingInfoBoardingDoorEnum),
+          boardingDoor: S.optional(S.String),
           sequenceNumber: S.optional(S.String),
-          boardingPrivilegeImage: S.optional(Image),
+          boardingPrivilegeImage: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "BoardingAndSeatingInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          frequentFlyerProgramName: S.optional(LocalizedString),
+          frequentFlyerProgramName: S.optional(__S(4)),
           kind: S.optional(S.String),
           frequentFlyerNumber: S.optional(S.String),
         }),
@@ -6997,7 +5808,7 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          frequentFlyerInfo: S.optional(FrequentFlyerInfo),
+          frequentFlyerInfo: S.optional(__S(83)),
           eticketNumber: S.optional(S.String),
           confirmationCode: S.optional(S.String),
           kind: S.optional(S.String),
@@ -7007,44 +5818,44 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hasLinkedDevice: S.optional(S.Boolean),
-          validTimeInterval: S.optional(TimeInterval),
-          messages: S.optional(MessageList),
-          saveRestrictions: S.optional(SaveRestrictions),
-          infoModuleData: S.optional(InfoModuleData),
+          validTimeInterval: S.optional(__S(1)),
+          messages: S.optional(__S(41)),
+          saveRestrictions: S.optional(__S(60)),
+          infoModuleData: S.optional(__S(40)),
           hasUsers: S.optional(S.Boolean),
-          appLinkData: S.optional(AppLinkData),
-          notifyPreference: S.optional(FlightObjectNotifyPreferenceEnum),
-          classReference: S.optional(FlightClass),
-          merchantLocations: S.optional(MerchantLocationList),
+          appLinkData: S.optional(__S(34)),
+          notifyPreference: S.optional(S.String),
+          classReference: S.optional(__S(79)),
+          merchantLocations: S.optional(__S(52)),
           kind: S.optional(S.String),
           classId: S.optional(S.String),
-          groupingInfo: S.optional(GroupingInfo),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          imageModulesData: S.optional(ImageModuleDataList),
-          textModulesData: S.optional(TextModuleDataList),
+          groupingInfo: S.optional(__S(61)),
+          valueAddedModuleData: S.optional(__S(45)),
+          imageModulesData: S.optional(__S(29)),
+          textModulesData: S.optional(__S(47)),
           smartTapRedemptionValue: S.optional(S.String),
-          locations: S.optional(LatLongPointList),
+          locations: S.optional(__S(50)),
           id: S.optional(S.String),
-          linkedObjectIds: S.optional(StringList),
-          securityProgramLogo: S.optional(Image),
-          boardingAndSeatingInfo: S.optional(BoardingAndSeatingInfo),
+          linkedObjectIds: S.optional(__S(55)),
+          securityProgramLogo: S.optional(__S(27)),
+          boardingAndSeatingInfo: S.optional(__S(82)),
           passengerName: S.optional(S.String),
           version: S.optional(S.String),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
           hexBackgroundColor: S.optional(S.String),
-          state: S.optional(FlightObjectStateEnum),
+          state: S.optional(S.String),
           disableExpirationNotification: S.optional(S.Boolean),
-          passConstraints: S.optional(PassConstraints),
-          barcode: S.optional(Barcode),
-          heroImage: S.optional(Image),
-          reservationInfo: S.optional(ReservationInfo),
+          passConstraints: S.optional(__S(64)),
+          barcode: S.optional(__S(71)),
+          heroImage: S.optional(__S(27)),
+          reservationInfo: S.optional(__S(84)),
         }),
       ).annotate({ identifier: "FlightObject" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(FlightObject),
+          resource: S.optional(__S(85)),
         }),
       ).annotate({
         identifier: "FlightObjectAddMessageResponse",
@@ -7053,7 +5864,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7071,29 +5882,27 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(MessageList),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            GenericClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
+          messages: S.optional(__S(41)),
+          valueAddedModuleData: S.optional(__S(45)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
           enableSmartTap: S.optional(S.Boolean),
-          redemptionIssuers: S.optional(StringList),
-          linksModuleData: S.optional(LinksModuleData),
-          appLinkData: S.optional(AppLinkData),
-          imageModulesData: S.optional(ImageModuleDataList),
-          merchantLocations: S.optional(MerchantLocationList),
-          callbackOptions: S.optional(CallbackOptions),
-          viewUnlockRequirement: S.optional(GenericClassViewUnlockRequirementEnum),
+          redemptionIssuers: S.optional(__S(55)),
+          linksModuleData: S.optional(__S(54)),
+          appLinkData: S.optional(__S(34)),
+          imageModulesData: S.optional(__S(29)),
+          merchantLocations: S.optional(__S(52)),
+          callbackOptions: S.optional(__S(30)),
+          viewUnlockRequirement: S.optional(S.String),
           id: S.optional(S.String),
-          securityAnimation: S.optional(SecurityAnimation),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
-          textModulesData: S.optional(TextModuleDataList),
+          securityAnimation: S.optional(__S(48)),
+          classTemplateInfo: S.optional(__S(25)),
+          textModulesData: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "GenericClass" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(GenericClass),
+          resource: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "GenericClassAddMessageResponse",
@@ -7102,7 +5911,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7122,47 +5931,47 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          upcomingNotification: S.optional(UpcomingNotification),
-          expiryNotification: S.optional(ExpiryNotification),
+          upcomingNotification: S.optional(__S(91)),
+          expiryNotification: S.optional(__S(91)),
         }),
       ).annotate({ identifier: "Notifications" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          heroImage: S.optional(Image),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
-          wideLogo: S.optional(Image),
-          subheader: S.optional(LocalizedString),
-          notifications: S.optional(Notifications),
-          appLinkData: S.optional(AppLinkData),
-          messages: S.optional(MessageList),
-          groupingInfo: S.optional(GroupingInfo),
+          heroImage: S.optional(__S(27)),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
+          wideLogo: S.optional(__S(27)),
+          subheader: S.optional(__S(4)),
+          notifications: S.optional(__S(92)),
+          appLinkData: S.optional(__S(34)),
+          messages: S.optional(__S(41)),
+          groupingInfo: S.optional(__S(61)),
           hasUsers: S.optional(S.Boolean),
-          passConstraints: S.optional(PassConstraints),
-          textModulesData: S.optional(TextModuleDataList),
+          passConstraints: S.optional(__S(64)),
+          textModulesData: S.optional(__S(47)),
           classId: S.optional(S.String),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          linkedObjectIds: S.optional(StringList),
-          merchantLocations: S.optional(MerchantLocationList),
-          imageModulesData: S.optional(ImageModuleDataList),
+          valueAddedModuleData: S.optional(__S(45)),
+          linkedObjectIds: S.optional(__S(55)),
+          merchantLocations: S.optional(__S(52)),
+          imageModulesData: S.optional(__S(29)),
           id: S.optional(S.String),
           hexBackgroundColor: S.optional(S.String),
-          validTimeInterval: S.optional(TimeInterval),
-          genericType: S.optional(GenericObjectGenericTypeEnum),
-          state: S.optional(GenericObjectStateEnum),
-          header: S.optional(LocalizedString),
-          saveRestrictions: S.optional(SaveRestrictions),
+          validTimeInterval: S.optional(__S(1)),
+          genericType: S.optional(S.String),
+          state: S.optional(S.String),
+          header: S.optional(__S(4)),
+          saveRestrictions: S.optional(__S(60)),
           smartTapRedemptionValue: S.optional(S.String),
-          barcode: S.optional(Barcode),
-          cardTitle: S.optional(LocalizedString),
-          logo: S.optional(Image),
+          barcode: S.optional(__S(71)),
+          cardTitle: S.optional(__S(4)),
+          logo: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "GenericObject" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(GenericObject),
+          resource: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "GenericObjectAddMessageResponse",
@@ -7171,7 +5980,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7189,55 +5998,53 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          homepageUri: S.optional(Uri),
-          callbackOptions: S.optional(CallbackOptions),
+          homepageUri: S.optional(__S(31)),
+          callbackOptions: S.optional(__S(30)),
           hexBackgroundColor: S.optional(S.String),
-          programLogo: S.optional(Image),
-          notifyPreference: S.optional(GiftCardClassNotifyPreferenceEnum),
+          programLogo: S.optional(__S(27)),
+          notifyPreference: S.optional(S.String),
           enableSmartTap: S.optional(S.Boolean),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          redemptionIssuers: S.optional(StringList),
-          merchantLocations: S.optional(MerchantLocationList),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
+          valueAddedModuleData: S.optional(__S(45)),
+          redemptionIssuers: S.optional(__S(55)),
+          merchantLocations: S.optional(__S(52)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
           issuerName: S.optional(S.String),
-          localizedIssuerName: S.optional(LocalizedString),
-          review: S.optional(Review),
-          heroImage: S.optional(Image),
-          viewUnlockRequirement: S.optional(GiftCardClassViewUnlockRequirementEnum),
+          localizedIssuerName: S.optional(__S(4)),
+          review: S.optional(__S(42)),
+          heroImage: S.optional(__S(27)),
+          viewUnlockRequirement: S.optional(S.String),
           eventNumberLabel: S.optional(S.String),
           merchantName: S.optional(S.String),
-          localizedEventNumberLabel: S.optional(LocalizedString),
-          localizedPinLabel: S.optional(LocalizedString),
-          localizedMerchantName: S.optional(LocalizedString),
-          localizedCardNumberLabel: S.optional(LocalizedString),
-          imageModulesData: S.optional(ImageModuleDataList),
-          securityAnimation: S.optional(SecurityAnimation),
-          locations: S.optional(LatLongPointList),
-          wideProgramLogo: S.optional(Image),
+          localizedEventNumberLabel: S.optional(__S(4)),
+          localizedPinLabel: S.optional(__S(4)),
+          localizedMerchantName: S.optional(__S(4)),
+          localizedCardNumberLabel: S.optional(__S(4)),
+          imageModulesData: S.optional(__S(29)),
+          securityAnimation: S.optional(__S(48)),
+          locations: S.optional(__S(50)),
+          wideProgramLogo: S.optional(__S(27)),
           cardNumberLabel: S.optional(S.String),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          linksModuleData: S.optional(LinksModuleData),
+          linksModuleData: S.optional(__S(54)),
           pinLabel: S.optional(S.String),
-          messages: S.optional(MessageList),
+          messages: S.optional(__S(41)),
           allowBarcodeRedemption: S.optional(S.Boolean),
-          infoModuleData: S.optional(InfoModuleData),
+          infoModuleData: S.optional(__S(40)),
           id: S.optional(S.String),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
-          reviewStatus: S.optional(GiftCardClassReviewStatusEnum),
-          textModulesData: S.optional(TextModuleDataList),
+          appLinkData: S.optional(__S(34)),
+          reviewStatus: S.optional(S.String),
+          textModulesData: S.optional(__S(47)),
           version: S.optional(S.String),
           kind: S.optional(S.String),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
-          wordMark: S.optional(Image),
+          classTemplateInfo: S.optional(__S(25)),
+          wordMark: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "GiftCardClass" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(GiftCardClass),
+          resource: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "GiftCardClassAddMessageResponse",
@@ -7246,7 +6053,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7261,44 +6068,44 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           classId: S.optional(S.String),
-          classReference: S.optional(GiftCardClass),
-          validTimeInterval: S.optional(TimeInterval),
+          classReference: S.optional(__S(96)),
+          validTimeInterval: S.optional(__S(1)),
           kind: S.optional(S.String),
-          textModulesData: S.optional(TextModuleDataList),
-          merchantLocations: S.optional(MerchantLocationList),
+          textModulesData: S.optional(__S(47)),
+          merchantLocations: S.optional(__S(52)),
           smartTapRedemptionValue: S.optional(S.String),
-          infoModuleData: S.optional(InfoModuleData),
-          messages: S.optional(MessageList),
+          infoModuleData: S.optional(__S(40)),
+          messages: S.optional(__S(41)),
           hasUsers: S.optional(S.Boolean),
-          linkedObjectIds: S.optional(StringList),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
+          linkedObjectIds: S.optional(__S(55)),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
           cardNumber: S.optional(S.String),
-          passConstraints: S.optional(PassConstraints),
-          heroImage: S.optional(Image),
+          passConstraints: S.optional(__S(64)),
+          heroImage: S.optional(__S(27)),
           id: S.optional(S.String),
           pin: S.optional(S.String),
-          balance: S.optional(Money),
-          imageModulesData: S.optional(ImageModuleDataList),
+          balance: S.optional(__S(59)),
+          imageModulesData: S.optional(__S(29)),
           hasLinkedDevice: S.optional(S.Boolean),
           version: S.optional(S.String),
-          state: S.optional(GiftCardObjectStateEnum),
-          barcode: S.optional(Barcode),
+          state: S.optional(S.String),
+          barcode: S.optional(__S(71)),
           eventNumber: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
-          balanceUpdateTime: S.optional(DateTime),
+          appLinkData: S.optional(__S(34)),
+          balanceUpdateTime: S.optional(__S(0)),
           disableExpirationNotification: S.optional(S.Boolean),
-          locations: S.optional(LatLongPointList),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          notifyPreference: S.optional(GiftCardObjectNotifyPreferenceEnum),
-          saveRestrictions: S.optional(SaveRestrictions),
-          groupingInfo: S.optional(GroupingInfo),
+          locations: S.optional(__S(50)),
+          valueAddedModuleData: S.optional(__S(45)),
+          notifyPreference: S.optional(S.String),
+          saveRestrictions: S.optional(__S(60)),
+          groupingInfo: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "GiftCardObject" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(GiftCardObject),
+          resource: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "GiftCardObjectAddMessageResponse",
@@ -7307,7 +6114,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7319,14 +6126,12 @@ function __c12(j: number): any {
         identifier: "AddmessageLoyaltyclassRequest",
       });
     case 6:
-      return S.Array(DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          signupSharedDatas: S.optional(
-            DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList,
-          ),
-          signupWebsite: S.optional(Uri),
+          signupSharedDatas: S.optional(__S(102)),
+          signupWebsite: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "DiscoverableProgramMerchantSignupInfo",
@@ -7338,7 +6143,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          signinWebsite: S.optional(Uri),
+          signinWebsite: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "DiscoverableProgramMerchantSigninInfo",
@@ -7346,69 +6151,67 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          merchantSignupInfo: S.optional(DiscoverableProgramMerchantSignupInfo),
-          merchantSigninInfo: S.optional(DiscoverableProgramMerchantSigninInfo),
-          state: S.optional(DiscoverableProgramStateEnum),
+          merchantSignupInfo: S.optional(__S(103)),
+          merchantSigninInfo: S.optional(__S(104)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscoverableProgram" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          discoverableProgram: S.optional(DiscoverableProgram),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          localizedAccountIdLabel: S.optional(LocalizedString),
+          discoverableProgram: S.optional(__S(105)),
+          classTemplateInfo: S.optional(__S(25)),
+          valueAddedModuleData: S.optional(__S(45)),
+          localizedAccountIdLabel: S.optional(__S(4)),
           accountNameLabel: S.optional(S.String),
-          localizedIssuerName: S.optional(LocalizedString),
-          heroImage: S.optional(Image),
-          programLogo: S.optional(Image),
-          homepageUri: S.optional(Uri),
-          textModulesData: S.optional(TextModuleDataList),
+          localizedIssuerName: S.optional(__S(4)),
+          heroImage: S.optional(__S(27)),
+          programLogo: S.optional(__S(27)),
+          homepageUri: S.optional(__S(31)),
+          textModulesData: S.optional(__S(47)),
           kind: S.optional(S.String),
-          locations: S.optional(LatLongPointList),
-          infoModuleData: S.optional(InfoModuleData),
+          locations: S.optional(__S(50)),
+          infoModuleData: S.optional(__S(40)),
           hexBackgroundColor: S.optional(S.String),
-          localizedSecondaryRewardsTier: S.optional(LocalizedString),
-          localizedRewardsTier: S.optional(LocalizedString),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
+          localizedSecondaryRewardsTier: S.optional(__S(4)),
+          localizedRewardsTier: S.optional(__S(4)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
           programName: S.optional(S.String),
-          linksModuleData: S.optional(LinksModuleData),
+          linksModuleData: S.optional(__S(54)),
           accountIdLabel: S.optional(S.String),
           rewardsTierLabel: S.optional(S.String),
           id: S.optional(S.String),
-          wideProgramLogo: S.optional(Image),
-          localizedAccountNameLabel: S.optional(LocalizedString),
+          wideProgramLogo: S.optional(__S(27)),
+          localizedAccountNameLabel: S.optional(__S(4)),
           secondaryRewardsTier: S.optional(S.String),
-          notifyPreference: S.optional(LoyaltyClassNotifyPreferenceEnum),
+          notifyPreference: S.optional(S.String),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
+          appLinkData: S.optional(__S(34)),
           secondaryRewardsTierLabel: S.optional(S.String),
-          securityAnimation: S.optional(SecurityAnimation),
+          securityAnimation: S.optional(__S(48)),
           issuerName: S.optional(S.String),
-          localizedProgramName: S.optional(LocalizedString),
-          wordMark: S.optional(Image),
+          localizedProgramName: S.optional(__S(4)),
+          wordMark: S.optional(__S(27)),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          localizedRewardsTierLabel: S.optional(LocalizedString),
-          reviewStatus: S.optional(LoyaltyClassReviewStatusEnum),
-          viewUnlockRequirement: S.optional(LoyaltyClassViewUnlockRequirementEnum),
-          imageModulesData: S.optional(ImageModuleDataList),
-          merchantLocations: S.optional(MerchantLocationList),
-          messages: S.optional(MessageList),
+          localizedRewardsTierLabel: S.optional(__S(4)),
+          reviewStatus: S.optional(S.String),
+          viewUnlockRequirement: S.optional(S.String),
+          imageModulesData: S.optional(__S(29)),
+          merchantLocations: S.optional(__S(52)),
+          messages: S.optional(__S(41)),
           version: S.optional(S.String),
-          localizedSecondaryRewardsTierLabel: S.optional(LocalizedString),
-          redemptionIssuers: S.optional(StringList),
-          review: S.optional(Review),
+          localizedSecondaryRewardsTierLabel: S.optional(__S(4)),
+          redemptionIssuers: S.optional(__S(55)),
+          review: S.optional(__S(42)),
           enableSmartTap: S.optional(S.Boolean),
           rewardsTier: S.optional(S.String),
-          callbackOptions: S.optional(CallbackOptions),
+          callbackOptions: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "LoyaltyClass" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(LoyaltyClass),
+          resource: S.optional(__S(106)),
         }),
       ).annotate({
         identifier: "LoyaltyClassAddMessageResponse",
@@ -7417,7 +6220,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7431,7 +6234,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          money: S.optional(Money),
+          money: S.optional(__S(59)),
           string: S.optional(S.String),
           double: S.optional(S.Number),
           int: S.optional(S.Number),
@@ -7440,47 +6243,47 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          balance: S.optional(LoyaltyPointsBalance),
-          localizedLabel: S.optional(LocalizedString),
+          balance: S.optional(__S(109)),
+          localizedLabel: S.optional(__S(4)),
           label: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoyaltyPoints" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          locations: S.optional(LatLongPointList),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
-          groupingInfo: S.optional(GroupingInfo),
-          passConstraints: S.optional(PassConstraints),
+          valueAddedModuleData: S.optional(__S(45)),
+          locations: S.optional(__S(50)),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
+          groupingInfo: S.optional(__S(61)),
+          passConstraints: S.optional(__S(64)),
           accountId: S.optional(S.String),
-          linkedOfferIds: S.optional(StringList),
-          textModulesData: S.optional(TextModuleDataList),
-          merchantLocations: S.optional(MerchantLocationList),
-          heroImage: S.optional(Image),
-          appLinkData: S.optional(AppLinkData),
-          messages: S.optional(MessageList),
+          linkedOfferIds: S.optional(__S(55)),
+          textModulesData: S.optional(__S(47)),
+          merchantLocations: S.optional(__S(52)),
+          heroImage: S.optional(__S(27)),
+          appLinkData: S.optional(__S(34)),
+          messages: S.optional(__S(41)),
           classId: S.optional(S.String),
           smartTapRedemptionValue: S.optional(S.String),
           hasUsers: S.optional(S.Boolean),
-          linkedObjectIds: S.optional(StringList),
-          validTimeInterval: S.optional(TimeInterval),
-          imageModulesData: S.optional(ImageModuleDataList),
-          loyaltyPoints: S.optional(LoyaltyPoints),
-          state: S.optional(LoyaltyObjectStateEnum),
-          secondaryLoyaltyPoints: S.optional(LoyaltyPoints),
+          linkedObjectIds: S.optional(__S(55)),
+          validTimeInterval: S.optional(__S(1)),
+          imageModulesData: S.optional(__S(29)),
+          loyaltyPoints: S.optional(__S(110)),
+          state: S.optional(S.String),
+          secondaryLoyaltyPoints: S.optional(__S(110)),
           hasLinkedDevice: S.optional(S.Boolean),
           disableExpirationNotification: S.optional(S.Boolean),
-          notifyPreference: S.optional(LoyaltyObjectNotifyPreferenceEnum),
+          notifyPreference: S.optional(S.String),
           kind: S.optional(S.String),
-          barcode: S.optional(Barcode),
-          classReference: S.optional(LoyaltyClass),
+          barcode: S.optional(__S(71)),
+          classReference: S.optional(__S(106)),
           accountName: S.optional(S.String),
-          saveRestrictions: S.optional(SaveRestrictions),
+          saveRestrictions: S.optional(__S(60)),
           version: S.optional(S.String),
           id: S.optional(S.String),
-          infoModuleData: S.optional(InfoModuleData),
+          infoModuleData: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "LoyaltyObject" });
   }
@@ -7490,7 +6293,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(LoyaltyObject),
+          resource: S.optional(__S(111)),
         }),
       ).annotate({
         identifier: "LoyaltyObjectAddMessageResponse",
@@ -7499,7 +6302,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7513,58 +6316,56 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          helpUri: S.optional(Uri),
+          helpUri: S.optional(__S(31)),
           title: S.optional(S.String),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          review: S.optional(Review),
-          redemptionChannel: S.optional(OfferClassRedemptionChannelEnum),
-          notifyPreference: S.optional(OfferClassNotifyPreferenceEnum),
-          textModulesData: S.optional(TextModuleDataList),
-          securityAnimation: S.optional(SecurityAnimation),
+          review: S.optional(__S(42)),
+          redemptionChannel: S.optional(S.String),
+          notifyPreference: S.optional(S.String),
+          textModulesData: S.optional(__S(47)),
+          securityAnimation: S.optional(__S(48)),
           issuerName: S.optional(S.String),
           enableSmartTap: S.optional(S.Boolean),
-          locations: S.optional(LatLongPointList),
-          localizedTitle: S.optional(LocalizedString),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            OfferClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
-          merchantLocations: S.optional(MerchantLocationList),
-          heroImage: S.optional(Image),
-          redemptionIssuers: S.optional(StringList),
-          reviewStatus: S.optional(OfferClassReviewStatusEnum),
-          homepageUri: S.optional(Uri),
+          locations: S.optional(__S(50)),
+          localizedTitle: S.optional(__S(4)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          merchantLocations: S.optional(__S(52)),
+          heroImage: S.optional(__S(27)),
+          redemptionIssuers: S.optional(__S(55)),
+          reviewStatus: S.optional(S.String),
+          homepageUri: S.optional(__S(31)),
           provider: S.optional(S.String),
-          imageModulesData: S.optional(ImageModuleDataList),
-          linksModuleData: S.optional(LinksModuleData),
+          imageModulesData: S.optional(__S(29)),
+          linksModuleData: S.optional(__S(54)),
           shortTitle: S.optional(S.String),
-          titleImage: S.optional(Image),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
-          infoModuleData: S.optional(InfoModuleData),
-          messages: S.optional(MessageList),
+          titleImage: S.optional(__S(27)),
+          classTemplateInfo: S.optional(__S(25)),
+          infoModuleData: S.optional(__S(40)),
+          messages: S.optional(__S(41)),
           kind: S.optional(S.String),
-          wideTitleImage: S.optional(Image),
-          localizedFinePrint: S.optional(LocalizedString),
+          wideTitleImage: S.optional(__S(27)),
+          localizedFinePrint: S.optional(__S(4)),
           finePrint: S.optional(S.String),
-          viewUnlockRequirement: S.optional(OfferClassViewUnlockRequirementEnum),
-          localizedIssuerName: S.optional(LocalizedString),
+          viewUnlockRequirement: S.optional(S.String),
+          localizedIssuerName: S.optional(__S(4)),
           version: S.optional(S.String),
-          localizedProvider: S.optional(LocalizedString),
+          localizedProvider: S.optional(__S(4)),
           details: S.optional(S.String),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
+          appLinkData: S.optional(__S(34)),
           id: S.optional(S.String),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+          valueAddedModuleData: S.optional(__S(45)),
           hexBackgroundColor: S.optional(S.String),
-          localizedDetails: S.optional(LocalizedString),
-          localizedShortTitle: S.optional(LocalizedString),
-          callbackOptions: S.optional(CallbackOptions),
-          wordMark: S.optional(Image),
+          localizedDetails: S.optional(__S(4)),
+          localizedShortTitle: S.optional(__S(4)),
+          callbackOptions: S.optional(__S(30)),
+          wordMark: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "OfferClass" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(OfferClass),
+          resource: S.optional(__S(114)),
         }),
       ).annotate({
         identifier: "OfferClassAddMessageResponse",
@@ -7573,7 +6374,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7587,40 +6388,40 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          appLinkData: S.optional(AppLinkData),
+          appLinkData: S.optional(__S(34)),
           classId: S.optional(S.String),
           hasLinkedDevice: S.optional(S.Boolean),
-          messages: S.optional(MessageList),
+          messages: S.optional(__S(41)),
           smartTapRedemptionValue: S.optional(S.String),
           hasUsers: S.optional(S.Boolean),
-          validTimeInterval: S.optional(TimeInterval),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          merchantLocations: S.optional(MerchantLocationList),
+          validTimeInterval: S.optional(__S(1)),
+          valueAddedModuleData: S.optional(__S(45)),
+          merchantLocations: S.optional(__S(52)),
           kind: S.optional(S.String),
-          state: S.optional(OfferObjectStateEnum),
-          barcode: S.optional(Barcode),
-          classReference: S.optional(OfferClass),
-          linkedObjectIds: S.optional(StringList),
+          state: S.optional(S.String),
+          barcode: S.optional(__S(71)),
+          classReference: S.optional(__S(114)),
+          linkedObjectIds: S.optional(__S(55)),
           version: S.optional(S.String),
-          infoModuleData: S.optional(InfoModuleData),
+          infoModuleData: S.optional(__S(40)),
           disableExpirationNotification: S.optional(S.Boolean),
-          imageModulesData: S.optional(ImageModuleDataList),
-          locations: S.optional(LatLongPointList),
-          textModulesData: S.optional(TextModuleDataList),
-          groupingInfo: S.optional(GroupingInfo),
-          passConstraints: S.optional(PassConstraints),
-          saveRestrictions: S.optional(SaveRestrictions),
-          notifyPreference: S.optional(OfferObjectNotifyPreferenceEnum),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
-          heroImage: S.optional(Image),
+          imageModulesData: S.optional(__S(29)),
+          locations: S.optional(__S(50)),
+          textModulesData: S.optional(__S(47)),
+          groupingInfo: S.optional(__S(61)),
+          passConstraints: S.optional(__S(64)),
+          saveRestrictions: S.optional(__S(60)),
+          notifyPreference: S.optional(S.String),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
+          heroImage: S.optional(__S(27)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferObject" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(OfferObject),
+          resource: S.optional(__S(117)),
         }),
       ).annotate({
         identifier: "OfferObjectAddMessageResponse",
@@ -7629,7 +6430,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7657,67 +6458,65 @@ function __c15(j: number): any {
           issuerName: S.optional(S.String),
           hexBackgroundColor: S.optional(S.String),
           allowMultipleUsersPerObject: S.optional(S.Boolean),
-          customTransitTerminusNameLabel: S.optional(LocalizedString),
-          customTicketNumberLabel: S.optional(LocalizedString),
-          messages: S.optional(MessageList),
-          homepageUri: S.optional(Uri),
-          linksModuleData: S.optional(LinksModuleData),
-          customDiscountMessageLabel: S.optional(LocalizedString),
+          customTransitTerminusNameLabel: S.optional(__S(4)),
+          customTicketNumberLabel: S.optional(__S(4)),
+          messages: S.optional(__S(41)),
+          homepageUri: S.optional(__S(31)),
+          linksModuleData: S.optional(__S(54)),
+          customDiscountMessageLabel: S.optional(__S(4)),
           id: S.optional(S.String),
-          customRouteRestrictionsLabel: S.optional(LocalizedString),
-          transitType: S.optional(TransitClassTransitTypeEnum),
-          customFareNameLabel: S.optional(LocalizedString),
-          heroImage: S.optional(Image),
-          redemptionIssuers: S.optional(StringList),
-          multipleDevicesAndHoldersAllowedStatus: S.optional(
-            TransitClassMultipleDevicesAndHoldersAllowedStatusEnum,
-          ),
-          viewUnlockRequirement: S.optional(TransitClassViewUnlockRequirementEnum),
-          customSeatLabel: S.optional(LocalizedString),
-          customCarriageLabel: S.optional(LocalizedString),
-          customZoneLabel: S.optional(LocalizedString),
-          infoModuleData: S.optional(InfoModuleData),
-          securityAnimation: S.optional(SecurityAnimation),
+          customRouteRestrictionsLabel: S.optional(__S(4)),
+          transitType: S.optional(S.String),
+          customFareNameLabel: S.optional(__S(4)),
+          heroImage: S.optional(__S(27)),
+          redemptionIssuers: S.optional(__S(55)),
+          multipleDevicesAndHoldersAllowedStatus: S.optional(S.String),
+          viewUnlockRequirement: S.optional(S.String),
+          customSeatLabel: S.optional(__S(4)),
+          customCarriageLabel: S.optional(__S(4)),
+          customZoneLabel: S.optional(__S(4)),
+          infoModuleData: S.optional(__S(40)),
+          securityAnimation: S.optional(__S(48)),
           enableSingleLegItinerary: S.optional(S.Boolean),
-          callbackOptions: S.optional(CallbackOptions),
-          imageModulesData: S.optional(ImageModuleDataList),
-          customConcessionCategoryLabel: S.optional(LocalizedString),
-          customFareClassLabel: S.optional(LocalizedString),
+          callbackOptions: S.optional(__S(30)),
+          imageModulesData: S.optional(__S(29)),
+          customConcessionCategoryLabel: S.optional(__S(4)),
+          customFareClassLabel: S.optional(__S(4)),
           countryCode: S.optional(S.String),
-          appLinkData: S.optional(AppLinkData),
-          activationOptions: S.optional(ActivationOptions),
-          textModulesData: S.optional(TextModuleDataList),
+          appLinkData: S.optional(__S(34)),
+          activationOptions: S.optional(__S(120)),
+          textModulesData: S.optional(__S(47)),
           languageOverride: S.optional(S.String),
-          customPurchaseReceiptNumberLabel: S.optional(LocalizedString),
-          wordMark: S.optional(Image),
-          customRouteRestrictionsDetailsLabel: S.optional(LocalizedString),
-          customPurchasePriceLabel: S.optional(LocalizedString),
-          classTemplateInfo: S.optional(ClassTemplateInfo),
+          customPurchaseReceiptNumberLabel: S.optional(__S(4)),
+          wordMark: S.optional(__S(27)),
+          customRouteRestrictionsDetailsLabel: S.optional(__S(4)),
+          customPurchasePriceLabel: S.optional(__S(4)),
+          classTemplateInfo: S.optional(__S(25)),
           version: S.optional(S.String),
           enableSmartTap: S.optional(S.Boolean),
-          wideLogo: S.optional(Image),
-          review: S.optional(Review),
-          notifyPreference: S.optional(TransitClassNotifyPreferenceEnum),
-          customPlatformLabel: S.optional(LocalizedString),
-          reviewStatus: S.optional(TransitClassReviewStatusEnum),
-          customConfirmationCodeLabel: S.optional(LocalizedString),
-          merchantLocations: S.optional(MerchantLocationList),
-          customTimeRestrictionsLabel: S.optional(LocalizedString),
-          localizedIssuerName: S.optional(LocalizedString),
-          watermark: S.optional(Image),
-          logo: S.optional(Image),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
-          locations: S.optional(LatLongPointList),
-          customCoachLabel: S.optional(LocalizedString),
-          customOtherRestrictionsLabel: S.optional(LocalizedString),
-          customPurchaseFaceValueLabel: S.optional(LocalizedString),
-          transitOperatorName: S.optional(LocalizedString),
+          wideLogo: S.optional(__S(27)),
+          review: S.optional(__S(42)),
+          notifyPreference: S.optional(S.String),
+          customPlatformLabel: S.optional(__S(4)),
+          reviewStatus: S.optional(S.String),
+          customConfirmationCodeLabel: S.optional(__S(4)),
+          merchantLocations: S.optional(__S(52)),
+          customTimeRestrictionsLabel: S.optional(__S(4)),
+          localizedIssuerName: S.optional(__S(4)),
+          watermark: S.optional(__S(27)),
+          logo: S.optional(__S(27)),
+          valueAddedModuleData: S.optional(__S(45)),
+          locations: S.optional(__S(50)),
+          customCoachLabel: S.optional(__S(4)),
+          customOtherRestrictionsLabel: S.optional(__S(4)),
+          customPurchaseFaceValueLabel: S.optional(__S(4)),
+          transitOperatorName: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "TransitClass" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(TransitClass),
+          resource: S.optional(__S(121)),
         }),
       ).annotate({
         identifier: "TransitClassAddMessageResponse",
@@ -7726,7 +6525,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(AddMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7741,31 +6540,31 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           seat: S.optional(S.String),
-          seatAssignment: S.optional(LocalizedString),
+          seatAssignment: S.optional(__S(4)),
           coach: S.optional(S.String),
-          fareClass: S.optional(TicketSeatFareClassEnum),
-          customFareClass: S.optional(LocalizedString),
+          fareClass: S.optional(S.String),
+          customFareClass: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "TicketSeat" });
     case 5:
-      return S.Array(TicketSeat);
+      return S.Array(__S(124));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          transitOperatorName: S.optional(LocalizedString),
+          transitOperatorName: S.optional(__S(4)),
           departureDateTime: S.optional(S.String),
           destinationStationCode: S.optional(S.String),
           platform: S.optional(S.String),
-          destinationName: S.optional(LocalizedString),
+          destinationName: S.optional(__S(4)),
           arrivalDateTime: S.optional(S.String),
           zone: S.optional(S.String),
           carriage: S.optional(S.String),
-          originName: S.optional(LocalizedString),
-          ticketSeat: S.optional(TicketSeat),
-          transitTerminusName: S.optional(LocalizedString),
-          ticketSeats: S.optional(TicketSeatList),
+          originName: S.optional(__S(4)),
+          ticketSeat: S.optional(__S(124)),
+          transitTerminusName: S.optional(__S(4)),
+          ticketSeats: S.optional(__S(125)),
           originStationCode: S.optional(S.String),
-          fareName: S.optional(LocalizedString),
+          fareName: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "TicketLeg" });
     case 7:
@@ -7781,32 +6580,32 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          routeRestrictions: S.optional(LocalizedString),
-          otherRestrictions: S.optional(LocalizedString),
-          timeRestrictions: S.optional(LocalizedString),
-          routeRestrictionsDetails: S.optional(LocalizedString),
+          routeRestrictions: S.optional(__S(4)),
+          otherRestrictions: S.optional(__S(4)),
+          timeRestrictions: S.optional(__S(4)),
+          routeRestrictionsDetails: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "TicketRestrictions" });
     case 1:
-      return S.Array(TicketLeg);
+      return S.Array(__S(126));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ActivationStatusStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivationStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          faceValue: S.optional(Money),
-          purchasePrice: S.optional(Money),
-          discountMessage: S.optional(LocalizedString),
+          faceValue: S.optional(__S(59)),
+          purchasePrice: S.optional(__S(59)),
+          discountMessage: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "TicketCost" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ticketCost: S.optional(TicketCost),
+          ticketCost: S.optional(__S(131)),
           confirmationCode: S.optional(S.String),
           accountId: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
@@ -7816,55 +6615,55 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          classReference: S.optional(TransitClass),
-          tripType: S.optional(TransitObjectTripTypeEnum),
-          ticketLeg: S.optional(TicketLeg),
+          classReference: S.optional(__S(121)),
+          tripType: S.optional(S.String),
+          ticketLeg: S.optional(__S(126)),
           disableExpirationNotification: S.optional(S.Boolean),
-          deviceContext: S.optional(DeviceContext),
-          ticketRestrictions: S.optional(TicketRestrictions),
-          infoModuleData: S.optional(InfoModuleData),
-          ticketLegs: S.optional(TicketLegList),
-          concessionCategory: S.optional(TransitObjectConcessionCategoryEnum),
-          merchantLocations: S.optional(MerchantLocationList),
-          activationStatus: S.optional(ActivationStatus),
-          validTimeInterval: S.optional(TimeInterval),
-          valueAddedModuleData: S.optional(ValueAddedModuleDataList),
+          deviceContext: S.optional(__S(127)),
+          ticketRestrictions: S.optional(__S(128)),
+          infoModuleData: S.optional(__S(40)),
+          ticketLegs: S.optional(__S(129)),
+          concessionCategory: S.optional(S.String),
+          merchantLocations: S.optional(__S(52)),
+          activationStatus: S.optional(__S(130)),
+          validTimeInterval: S.optional(__S(1)),
+          valueAddedModuleData: S.optional(__S(45)),
           smartTapRedemptionValue: S.optional(S.String),
-          purchaseDetails: S.optional(PurchaseDetails),
+          purchaseDetails: S.optional(__S(132)),
           hasLinkedDevice: S.optional(S.Boolean),
           classId: S.optional(S.String),
-          groupingInfo: S.optional(GroupingInfo),
+          groupingInfo: S.optional(__S(61)),
           ticketNumber: S.optional(S.String),
-          notifyPreference: S.optional(TransitObjectNotifyPreferenceEnum),
-          passConstraints: S.optional(PassConstraints),
-          ticketStatus: S.optional(TransitObjectTicketStatusEnum),
-          linksModuleData: S.optional(LinksModuleData),
-          rotatingBarcode: S.optional(RotatingBarcode),
-          state: S.optional(TransitObjectStateEnum),
-          saveRestrictions: S.optional(SaveRestrictions),
-          locations: S.optional(LatLongPointList),
+          notifyPreference: S.optional(S.String),
+          passConstraints: S.optional(__S(64)),
+          ticketStatus: S.optional(S.String),
+          linksModuleData: S.optional(__S(54)),
+          rotatingBarcode: S.optional(__S(70)),
+          state: S.optional(S.String),
+          saveRestrictions: S.optional(__S(60)),
+          locations: S.optional(__S(50)),
           passengerNames: S.optional(S.String),
-          imageModulesData: S.optional(ImageModuleDataList),
-          appLinkData: S.optional(AppLinkData),
-          barcode: S.optional(Barcode),
+          imageModulesData: S.optional(__S(29)),
+          appLinkData: S.optional(__S(34)),
+          barcode: S.optional(__S(71)),
           id: S.optional(S.String),
-          linkedObjectIds: S.optional(StringList),
+          linkedObjectIds: S.optional(__S(55)),
           hasUsers: S.optional(S.Boolean),
-          passengerType: S.optional(TransitObjectPassengerTypeEnum),
-          customTicketStatus: S.optional(LocalizedString),
+          passengerType: S.optional(S.String),
+          customTicketStatus: S.optional(__S(4)),
           version: S.optional(S.String),
-          messages: S.optional(MessageList),
+          messages: S.optional(__S(41)),
           hexBackgroundColor: S.optional(S.String),
-          heroImage: S.optional(Image),
+          heroImage: S.optional(__S(27)),
           tripId: S.optional(S.String),
-          textModulesData: S.optional(TextModuleDataList),
-          customConcessionCategory: S.optional(LocalizedString),
+          textModulesData: S.optional(__S(47)),
+          customConcessionCategory: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "TransitObject" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(TransitObject),
+          resource: S.optional(__S(133)),
         }),
       ).annotate({
         identifier: "TransitObjectAddMessageResponse",
@@ -7909,20 +6708,20 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inline: S.optional(S.String),
-          referenceType: S.optional(CompositeMediaReferenceTypeEnum),
+          referenceType: S.optional(S.String),
           md5Hash: S.optional(S.String),
           length: S.optional(S.String),
           cosmoBinaryReference: S.optional(S.String),
-          blobstore2Info: S.optional(Blobstore2Info),
+          blobstore2Info: S.optional(__S(136)),
           path: S.optional(S.String),
-          objectId: S.optional(ObjectId),
+          objectId: S.optional(__S(137)),
           sha1Hash: S.optional(S.String),
           crc32cHash: S.optional(S.Number),
           blobRef: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompositeMedia" });
     case 3:
-      return S.Array(CompositeMedia);
+      return S.Array(__S(138));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7934,8 +6733,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           objectVersion: S.optional(S.String),
-          checksumsInfo: S.optional(CompositeMedia),
-          objectInfo: S.optional(CompositeMedia),
+          checksumsInfo: S.optional(__S(138)),
+          objectInfo: S.optional(__S(138)),
         }),
       ).annotate({ identifier: "DiffUploadRequest" });
     case 6:
@@ -7953,9 +6752,9 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          objectLocation: S.optional(CompositeMedia),
+          objectLocation: S.optional(__S(138)),
           chunkSizeBytes: S.optional(S.String),
-          checksumsLocation: S.optional(CompositeMedia),
+          checksumsLocation: S.optional(__S(138)),
           objectSizeBytes: S.optional(S.String),
           objectVersion: S.optional(S.String),
         }),
@@ -7967,7 +6766,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          originalObject: S.optional(CompositeMedia),
+          originalObject: S.optional(__S(138)),
           objectVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiffUploadResponse" });
@@ -7981,29 +6780,29 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          objectLocation: S.optional(CompositeMedia),
+          objectLocation: S.optional(__S(138)),
         }),
       ).annotate({ identifier: "DiffDownloadResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          compositeMedia: S.optional(CompositeMediaList),
+          compositeMedia: S.optional(__S(139)),
           sha256Hash: S.optional(S.String),
           path: S.optional(S.String),
-          diffVersionResponse: S.optional(DiffVersionResponse),
-          diffUploadRequest: S.optional(DiffUploadRequest),
-          objectId: S.optional(ObjectId),
+          diffVersionResponse: S.optional(__S(140)),
+          diffUploadRequest: S.optional(__S(141)),
+          objectId: S.optional(__S(137)),
           sha1Hash: S.optional(S.String),
           token: S.optional(S.String),
-          contentTypeInfo: S.optional(ContentTypeInfo),
+          contentTypeInfo: S.optional(__S(142)),
           hash: S.optional(S.String),
-          diffChecksumsResponse: S.optional(DiffChecksumsResponse),
-          diffUploadResponse: S.optional(DiffUploadResponse),
+          diffChecksumsResponse: S.optional(__S(143)),
+          diffUploadResponse: S.optional(__S(144)),
           md5Hash: S.optional(S.String),
           blobRef: S.optional(S.String),
-          downloadParameters: S.optional(DownloadParameters),
-          blobstore2Info: S.optional(Blobstore2Info),
-          diffDownloadResponse: S.optional(DiffDownloadResponse),
+          downloadParameters: S.optional(__S(145)),
+          blobstore2Info: S.optional(__S(136)),
+          diffDownloadResponse: S.optional(__S(146)),
           isPotentialRetry: S.optional(S.Boolean),
           bigstoreObjectRef: S.optional(S.String),
           sha512Hash: S.optional(S.String),
@@ -8017,7 +6816,7 @@ function __c18(j: number): any {
           filename: S.optional(S.String),
           algorithm: S.optional(S.String),
           mediaId: S.optional(S.String),
-          referenceType: S.optional(MediaReferenceTypeEnum),
+          referenceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Media" });
     case 4:
@@ -8141,7 +6940,7 @@ function __c19(j: number): any {
         S.Struct({
           email: S.optional(S.String),
           name: S.optional(S.String),
-          alertsEmails: S.optional(StringList),
+          alertsEmails: S.optional(__S(55)),
           phone: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssuerContactInfo" });
@@ -8153,7 +6952,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "AuthenticationKey" });
     case 7:
-      return S.Array(AuthenticationKey);
+      return S.Array(__S(158));
   }
 }
 function __c20(j: number): any {
@@ -8162,18 +6961,18 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           smartTapMerchantId: S.optional(S.String),
-          authenticationKeys: S.optional(AuthenticationKeyList),
+          authenticationKeys: S.optional(__S(159)),
         }),
       ).annotate({ identifier: "SmartTapMerchantData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          contactInfo: S.optional(IssuerContactInfo),
+          contactInfo: S.optional(__S(157)),
           homepageUrl: S.optional(S.String),
-          smartTapMerchantData: S.optional(SmartTapMerchantData),
+          smartTapMerchantData: S.optional(__S(160)),
           issuerId: S.optional(S.String),
-          callbackOptions: S.optional(CallbackOptions),
+          callbackOptions: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "Issuer" });
     case 2:
@@ -8239,7 +7038,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(PermissionRoleEnum),
+          role: S.optional(S.String),
           emailAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "Permission" });
@@ -8248,11 +7047,11 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Permission);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(PermissionList),
+          permissions: S.optional(__S(168)),
           issuerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Permissions" });
@@ -8283,7 +7082,7 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(EventTicketClass.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8297,7 +7096,7 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(EventTicketObject.pipe(T.HttpBody())),
+          body: S.optional(__S(72).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8311,7 +7110,7 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(FlightClass.pipe(T.HttpBody())),
+          body: S.optional(__S(79).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8323,7 +7122,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(FlightObject.pipe(T.HttpBody())),
+          body: S.optional(__S(85).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8341,7 +7140,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GenericClass.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8355,7 +7154,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GenericObject.pipe(T.HttpBody())),
+          body: S.optional(__S(93).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8369,7 +7168,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GiftCardClass.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8383,7 +7182,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GiftCardObject.pipe(T.HttpBody())),
+          body: S.optional(__S(99).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8397,7 +7196,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Issuer.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8415,7 +7214,7 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(JwtResource.pipe(T.HttpBody())),
+          body: S.optional(__S(181).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8425,71 +7224,71 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "InsertJwtRequest" });
     case 7:
-      return S.Array(LoyaltyClass);
+      return S.Array(__S(106));
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GenericClass);
+      return S.Array(__S(88));
     case 1:
-      return S.Array(GiftCardObject);
+      return S.Array(__S(99));
     case 2:
-      return S.Array(GenericObject);
+      return S.Array(__S(93));
     case 3:
-      return S.Array(OfferObject);
+      return S.Array(__S(117));
     case 4:
-      return S.Array(EventTicketClass);
+      return S.Array(__S(56));
     case 5:
-      return S.Array(LoyaltyObject);
+      return S.Array(__S(111));
     case 6:
-      return S.Array(FlightObject);
+      return S.Array(__S(85));
     case 7:
-      return S.Array(TransitObject);
+      return S.Array(__S(133));
   }
 }
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TransitClass);
+      return S.Array(__S(121));
     case 1:
-      return S.Array(FlightClass);
+      return S.Array(__S(79));
     case 2:
-      return S.Array(OfferClass);
+      return S.Array(__S(114));
     case 3:
-      return S.Array(GiftCardClass);
+      return S.Array(__S(96));
     case 4:
-      return S.Array(EventTicketObject);
+      return S.Array(__S(72));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          loyaltyClasses: S.optional(LoyaltyClassList),
-          genericClasses: S.optional(GenericClassList),
-          giftCardObjects: S.optional(GiftCardObjectList),
-          genericObjects: S.optional(GenericObjectList),
-          offerObjects: S.optional(OfferObjectList),
-          eventTicketClasses: S.optional(EventTicketClassList),
-          loyaltyObjects: S.optional(LoyaltyObjectList),
-          flightObjects: S.optional(FlightObjectList),
-          transitObjects: S.optional(TransitObjectList),
-          transitClasses: S.optional(TransitClassList),
-          flightClasses: S.optional(FlightClassList),
-          offerClasses: S.optional(OfferClassList),
-          giftCardClasses: S.optional(GiftCardClassList),
-          eventTicketObjects: S.optional(EventTicketObjectList),
+          loyaltyClasses: S.optional(__S(183)),
+          genericClasses: S.optional(__S(184)),
+          giftCardObjects: S.optional(__S(185)),
+          genericObjects: S.optional(__S(186)),
+          offerObjects: S.optional(__S(187)),
+          eventTicketClasses: S.optional(__S(188)),
+          loyaltyObjects: S.optional(__S(189)),
+          flightObjects: S.optional(__S(190)),
+          transitObjects: S.optional(__S(191)),
+          transitClasses: S.optional(__S(192)),
+          flightClasses: S.optional(__S(193)),
+          offerClasses: S.optional(__S(194)),
+          giftCardClasses: S.optional(__S(195)),
+          eventTicketObjects: S.optional(__S(196)),
         }),
       ).annotate({ identifier: "Resources" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           saveUri: S.optional(S.String),
-          resources: S.optional(Resources),
+          resources: S.optional(__S(197)),
         }),
       ).annotate({ identifier: "JwtInsertResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
+          body: S.optional(__S(106).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8507,7 +7306,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8521,7 +7320,7 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(OfferClass.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8533,7 +7332,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(OfferObject.pipe(T.HttpBody())),
+          body: S.optional(__S(117).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8551,19 +7350,19 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(IssuerToUserInfoActionEnum),
+          action: S.optional(S.String),
           url: S.optional(S.String),
           value: S.optional(S.String),
-          signUpInfo: S.optional(SignUpInfo),
+          signUpInfo: S.optional(__S(203)),
         }),
       ).annotate({ identifier: "IssuerToUserInfo" });
     case 5:
-      return S.Array(IssuerToUserInfo);
+      return S.Array(__S(204));
     case 6:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.optional(S.String),
-          infos: S.optional(IssuerToUserInfoList),
+          infos: S.optional(__S(205)),
           id: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -8571,7 +7370,7 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(SmartTap.pipe(T.HttpBody())),
+          body: S.optional(__S(206).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8587,7 +7386,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(TransitClass.pipe(T.HttpBody())),
+          body: S.optional(__S(121).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8601,7 +7400,7 @@ function __c26(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(TransitObject.pipe(T.HttpBody())),
+          body: S.optional(__S(133).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8639,8 +7438,8 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(Pagination),
-          resources: S.optional(EventTicketClassList),
+          pagination: S.optional(__S(211)),
+          resources: S.optional(__S(188)),
         }),
       ).annotate({
         identifier: "EventTicketClassListResponse",
@@ -8664,8 +7463,8 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(EventTicketObjectList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(196)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({
         identifier: "EventTicketObjectListResponse",
@@ -8691,8 +7490,8 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(FlightClassList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(193)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({ identifier: "FlightClassListResponse" });
     case 1:
@@ -8712,8 +7511,8 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(FlightObjectList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(190)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({ identifier: "FlightObjectListResponse" });
     case 3:
@@ -8733,8 +7532,8 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(Pagination),
-          resources: S.optional(GenericClassList),
+          pagination: S.optional(__S(211)),
+          resources: S.optional(__S(184)),
         }),
       ).annotate({ identifier: "GenericClassListResponse" });
     case 5:
@@ -8754,8 +7553,8 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(GenericObjectList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(186)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({
         identifier: "GenericObjectListResponse",
@@ -8781,8 +7580,8 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(Pagination),
-          resources: S.optional(GiftCardClassList),
+          pagination: S.optional(__S(211)),
+          resources: S.optional(__S(195)),
         }),
       ).annotate({
         identifier: "GiftCardClassListResponse",
@@ -8806,8 +7605,8 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(Pagination),
-          resources: S.optional(GiftCardObjectList),
+          pagination: S.optional(__S(211)),
+          resources: S.optional(__S(185)),
         }),
       ).annotate({
         identifier: "GiftCardObjectListResponse",
@@ -8823,11 +7622,11 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListIssuerRequest" });
     case 4:
-      return S.Array(Issuer);
+      return S.Array(__S(161));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(IssuerList),
+          resources: S.optional(__S(228)),
         }),
       ).annotate({ identifier: "IssuerListResponse" });
     case 6:
@@ -8847,8 +7646,8 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(Pagination),
-          resources: S.optional(LoyaltyClassList),
+          pagination: S.optional(__S(211)),
+          resources: S.optional(__S(183)),
         }),
       ).annotate({ identifier: "LoyaltyClassListResponse" });
   }
@@ -8872,8 +7671,8 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(LoyaltyObjectList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(189)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({
         identifier: "LoyaltyObjectListResponse",
@@ -8895,8 +7694,8 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(OfferClassList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(194)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({ identifier: "OfferClassListResponse" });
     case 4:
@@ -8916,8 +7715,8 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(Pagination),
-          resources: S.optional(OfferObjectList),
+          pagination: S.optional(__S(211)),
+          resources: S.optional(__S(187)),
         }),
       ).annotate({ identifier: "OfferObjectListResponse" });
     case 6:
@@ -8937,8 +7736,8 @@ function __c29(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(TransitClassList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(192)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({ identifier: "TransitClassListResponse" });
   }
@@ -8962,8 +7761,8 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(TransitObjectList),
-          pagination: S.optional(Pagination),
+          resources: S.optional(__S(191)),
+          pagination: S.optional(__S(211)),
         }),
       ).annotate({
         identifier: "TransitObjectListResponse",
@@ -8971,14 +7770,14 @@ function __c30(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          removeLinkedOfferObjectIds: S.optional(StringList),
-          addLinkedOfferObjectIds: S.optional(StringList),
+          removeLinkedOfferObjectIds: S.optional(__S(55)),
+          addLinkedOfferObjectIds: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "ModifyLinkedOfferObjects" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          linkedOfferObjectIds: S.optional(ModifyLinkedOfferObjects),
+          linkedOfferObjectIds: S.optional(__S(242)),
         }),
       ).annotate({
         identifier: "ModifyLinkedOfferObjectsRequest",
@@ -8987,7 +7786,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(243).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9002,7 +7801,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(ModifyLinkedOfferObjectsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(243).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9017,7 +7816,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(EventTicketClass.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9032,7 +7831,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(EventTicketObject.pipe(T.HttpBody())),
+          body: S.optional(__S(72).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9051,7 +7850,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(FlightClass.pipe(T.HttpBody())),
+          body: S.optional(__S(79).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9064,7 +7863,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(FlightObject.pipe(T.HttpBody())),
+          body: S.optional(__S(85).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9077,7 +7876,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GenericClass.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9090,7 +7889,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GenericObject.pipe(T.HttpBody())),
+          body: S.optional(__S(93).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9105,7 +7904,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GiftCardClass.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9120,7 +7919,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GiftCardObject.pipe(T.HttpBody())),
+          body: S.optional(__S(99).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9135,7 +7934,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(Issuer.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9148,7 +7947,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
+          body: S.optional(__S(106).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9165,7 +7964,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9180,7 +7979,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(OfferClass.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9193,7 +7992,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(OfferObject.pipe(T.HttpBody())),
+          body: S.optional(__S(117).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9206,7 +8005,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(TransitClass.pipe(T.HttpBody())),
+          body: S.optional(__S(121).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9219,7 +8018,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(TransitObject.pipe(T.HttpBody())),
+          body: S.optional(__S(133).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9243,7 +8042,7 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(SetPassUpdateNoticeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(261).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9266,7 +8065,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(EventTicketClass.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9281,7 +8080,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(EventTicketObject.pipe(T.HttpBody())),
+          body: S.optional(__S(72).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9296,7 +8095,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(FlightClass.pipe(T.HttpBody())),
+          body: S.optional(__S(79).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9309,7 +8108,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(FlightObject.pipe(T.HttpBody())),
+          body: S.optional(__S(85).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9324,7 +8123,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GenericClass.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9339,7 +8138,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GenericObject.pipe(T.HttpBody())),
+          body: S.optional(__S(93).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9354,7 +8153,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GiftCardClass.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9369,7 +8168,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(GiftCardObject.pipe(T.HttpBody())),
+          body: S.optional(__S(99).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9388,7 +8187,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(Issuer.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9401,7 +8200,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(LoyaltyClass.pipe(T.HttpBody())),
+          body: S.optional(__S(106).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9416,7 +8215,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(LoyaltyObject.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9431,7 +8230,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(OfferClass.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9444,7 +8243,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(OfferObject.pipe(T.HttpBody())),
+          body: S.optional(__S(117).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9457,7 +8256,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(Permissions.pipe(T.HttpBody())),
+          body: S.optional(__S(169).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9470,7 +8269,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(TransitClass.pipe(T.HttpBody())),
+          body: S.optional(__S(121).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9485,7 +8284,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(TransitObject.pipe(T.HttpBody())),
+          body: S.optional(__S(133).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9505,7 +8304,7 @@ function __c35(j: number): any {
         S.Struct({
           finalStatus: S.optional(S.Number),
           physicalHeaders: S.optional(S.String),
-          notificationType: S.optional(MediaRequestInfoNotificationTypeEnum),
+          notificationType: S.optional(S.String),
           diffObjectVersion: S.optional(S.String),
           totalBytesIsEstimated: S.optional(S.Boolean),
           customData: S.optional(S.String),
@@ -9518,8 +8317,8 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          blob: S.optional(Media),
-          mediaRequestInfo: S.optional(MediaRequestInfo),
+          blob: S.optional(__S(147)),
+          mediaRequestInfo: S.optional(__S(280)),
         }),
       ).annotate({
         identifier: "TransitObjectUploadRotatingBarcodeValuesRequest",
@@ -9528,7 +8327,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          body: S.optional(TransitObjectUploadRotatingBarcodeValuesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(281).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9550,14 +8349,14 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          jsonResource: S.optional(JsonResource),
-          jwtResource: S.optional(JwtResource),
+          jsonResource: S.optional(__S(284)),
+          jwtResource: S.optional(__S(181)),
         }),
       ).annotate({ identifier: "JwtValidateRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(JwtValidateRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(285).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9566,5 +8365,86 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateJwtRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
   }
 }

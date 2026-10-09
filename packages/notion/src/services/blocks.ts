@@ -8,6 +8,8 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -1142,14 +1144,7 @@ export type BlockObjectRequest =
   | BlockObjectRequestCase28
   | BlockObjectRequestCase29
   | BlockObjectRequestCase30;
-const BlockObjectRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<BlockObjectRequest>;
-
 export type AppendBlockChildrenRequestChildrenList = Array<BlockObjectRequest>;
-const AppendBlockChildrenRequestChildrenList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AppendBlockChildrenRequestChildrenList>;
-
 export type ContentPositionSchemaCase0AfterBlock = FileUploadIdRequest;
 export interface ContentPositionSchemaCase0 {
   type: string;
@@ -1163,18 +1158,11 @@ export type ContentPositionSchema =
   | ContentPositionSchemaCase0
   | ContentPositionSchemaCase1
   | ContentPositionSchemaCase1;
-const ContentPositionSchema = /*@__PURE__*/ S.Unknown as any as S.Schema<ContentPositionSchema>;
-
 export interface AppendBlockChildrenRequest {
   block_id: string;
   children: AppendBlockChildrenRequestChildrenList;
   position?: ContentPositionSchema;
 }
-const AppendBlockChildrenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AppendBlockChildrenRequest>;
-
 export interface PartialBlockObjectResponse {
   object: string;
   id: string;
@@ -2189,15 +2177,7 @@ export type BlockObjectResponse =
 export type AppendBlockChildrenResponseResultsItem =
   | PartialBlockObjectResponse
   | BlockObjectResponse;
-const AppendBlockChildrenResponseResultsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<AppendBlockChildrenResponseResultsItem>;
-
 export type AppendBlockChildrenResponseResultsList = Array<AppendBlockChildrenResponseResultsItem>;
-const AppendBlockChildrenResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AppendBlockChildrenResponseResultsList>;
-
 export interface AppendBlockChildrenResponse {
   type: string;
   block: unknown;
@@ -2206,53 +2186,23 @@ export interface AppendBlockChildrenResponse {
   has_more: boolean;
   results: AppendBlockChildrenResponseResultsList;
 }
-const AppendBlockChildrenResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AppendBlockChildrenResponse>;
-
 export interface DeleteBlockRequest {
   block_id: string;
 }
-const DeleteBlockRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteBlockRequest>;
-
 export type DeleteBlockResponseBody = PartialBlockObjectResponse | BlockObjectResponse;
-const DeleteBlockResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<DeleteBlockResponseBody>;
-
 export type DeleteBlockResponse = DeleteBlockResponseBody;
-const DeleteBlockResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteBlockResponse>;
-
 export interface GetBlockRequest {
   block_id: string;
 }
-const GetBlockRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetBlockRequest>;
-
 export type GetBlockResponseBody = PartialBlockObjectResponse | BlockObjectResponse;
-const GetBlockResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetBlockResponseBody>;
-
 export type GetBlockResponse = GetBlockResponseBody;
-const GetBlockResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetBlockResponse>;
-
 export interface ListBlockChildrenRequest {
   block_id: string;
   start_cursor?: string;
   page_size?: number;
 }
-const ListBlockChildrenRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListBlockChildrenRequest>;
-
 export type ListBlockChildrenResponseResultsItem = PartialBlockObjectResponse | BlockObjectResponse;
-const ListBlockChildrenResponseResultsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ListBlockChildrenResponseResultsItem>;
-
 export type ListBlockChildrenResponseResultsList = Array<ListBlockChildrenResponseResultsItem>;
-const ListBlockChildrenResponseResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListBlockChildrenResponseResultsList>;
-
 export interface ListBlockChildrenResponse {
   type: string;
   block: unknown;
@@ -2261,11 +2211,6 @@ export interface ListBlockChildrenResponse {
   has_more: boolean;
   results: ListBlockChildrenResponseResultsList;
 }
-const ListBlockChildrenResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListBlockChildrenResponse>;
-
 export type UpdateMediaContentWithUrlAndCaptionRequestCaptionList = Array<RichTextItemRequest>;
 export interface UpdateMediaContentWithUrlAndCaptionRequest {
   url?: string;
@@ -2523,20 +2468,12 @@ export interface UpdateBlockRequestBodyCase1 {
   in_trash?: boolean;
 }
 export type UpdateBlockRequestBody = UpdateBlockRequestBodyCase0 | UpdateBlockRequestBodyCase1;
-const UpdateBlockRequestBody = /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateBlockRequestBody>;
-
 export interface UpdateBlockRequest {
   block_id: string;
   body: UpdateBlockRequestBody;
 }
-const UpdateBlockRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UpdateBlockRequest>;
-
 export type UpdateBlockResponseBody = PartialBlockObjectResponse | BlockObjectResponse;
-const UpdateBlockResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateBlockResponseBody>;
-
 export type UpdateBlockResponse = UpdateBlockResponseBody;
-const UpdateBlockResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UpdateBlockResponse>;
-
 export type AppendBlockChildrenError = NotionOpError;
 /** Append block children */
 export const appendBlockChildren: API.OperationMethod<
@@ -2545,8 +2482,8 @@ export const appendBlockChildren: API.OperationMethod<
   AppendBlockChildrenError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppendBlockChildrenRequest,
-  output: AppendBlockChildrenResponse,
+  input: __S(1) as any as S.Schema<AppendBlockChildrenRequest>,
+  output: __S(3) as any as S.Schema<AppendBlockChildrenResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2560,8 +2497,8 @@ export const deleteBlock: API.OperationMethod<
   DeleteBlockError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBlockRequest,
-  output: DeleteBlockResponse,
+  input: __S(4) as any as S.Schema<DeleteBlockRequest>,
+  output: __S(5) as any as S.Schema<DeleteBlockResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2575,8 +2512,8 @@ export const getBlock: API.OperationMethod<
   GetBlockError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBlockRequest,
-  output: GetBlockResponse,
+  input: __S(6) as any as S.Schema<GetBlockRequest>,
+  output: __S(7) as any as S.Schema<GetBlockResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2529,8 @@ export const listBlockChildren: API.PaginatedOperationMethod<
   ListBlockChildrenResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListBlockChildrenRequest,
-    output: ListBlockChildrenResponse,
+    input: __S(8) as any as S.Schema<ListBlockChildrenRequest>,
+    output: __S(10) as any as S.Schema<ListBlockChildrenResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2615,8 +2552,8 @@ export const updateBlock: API.OperationMethod<
   UpdateBlockError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBlockRequest,
-  output: UpdateBlockResponse,
+  input: __S(11) as any as S.Schema<UpdateBlockRequest>,
+  output: __S(12) as any as S.Schema<UpdateBlockResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2626,19 +2563,19 @@ export const updateBlock: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BlockObjectRequest);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           block_id: S.String.pipe(T.Label()),
-          children: AppendBlockChildrenRequestChildrenList,
-          position: S.optional(ContentPositionSchema),
+          children: __S(0),
+          position: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/blocks/{block_id}/children", code: 200 })),
       ).annotate({
         identifier: "AppendBlockChildrenRequest",
       });
     case 2:
-      return S.Array(AppendBlockChildrenResponseResultsItem);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2647,7 +2584,7 @@ function __c0(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: AppendBlockChildrenResponseResultsList,
+          results: __S(2),
         }),
       ).annotate({
         identifier: "AppendBlockChildrenResponse",
@@ -2659,7 +2596,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/blocks/{block_id}", code: 200 })),
       ).annotate({ identifier: "DeleteBlockRequest" });
     case 5:
-      return S.suspend(() => DeleteBlockResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "DeleteBlockResponse",
       });
     case 6:
@@ -2669,7 +2606,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/blocks/{block_id}", code: 200 })),
       ).annotate({ identifier: "GetBlockRequest" });
     case 7:
-      return S.suspend(() => GetBlockResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetBlockResponse",
       });
   }
@@ -2685,7 +2622,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/blocks/{block_id}/children", code: 200 })),
       ).annotate({ identifier: "ListBlockChildrenRequest" });
     case 1:
-      return S.Array(ListBlockChildrenResponseResultsItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2694,7 +2631,7 @@ function __c1(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: ListBlockChildrenResponseResultsList,
+          results: __S(9),
         }),
       ).annotate({
         identifier: "ListBlockChildrenResponse",
@@ -2703,12 +2640,25 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           block_id: S.String.pipe(T.Label()),
-          body: UpdateBlockRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/blocks/{block_id}", code: 200 })),
       ).annotate({ identifier: "UpdateBlockRequest" });
     case 4:
-      return S.suspend(() => UpdateBlockResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateBlockResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,11 +124,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** ClusterTrustBundleSpec contains the signer and trust anchors. */
 export interface IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec {
   /** signerName indicates the associated signer, if any. In order to create or update a ClusterTrustBundle that sets signerName, you must have the following cluster-scoped permission: group=certificates.k8s.io resource=signers resourceName=<the signer name> verb=attest. If signerName is not empty, then the ClusterTrustBundle object must be named with the signer name as a prefix (translating slashes to colons). For example, for the signer name `example.com/foo`, valid ClusterTrustBundle object names include `example.com:foo:abc` and `example.com:foo:v1`. If signerName is empty, then the ClusterTrustBundle object's name must not have such a prefix. List/watch requests for ClusterTrustBundles can filter on this field using a `spec.signerName=NAME` field selector. */
@@ -167,11 +131,6 @@ export interface IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec {
   /** trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates. The data must consist only of PEM certificate blocks that parse as valid X.509 certificates. Each certificate must include a basic constraints extension with the CA bit set. The API server will reject objects that contain duplicate certificates, or that use PEM block headers. Users of ClusterTrustBundles, including Kubelet, are free to reorder and deduplicate certificate blocks in this file according to their own logic, as well as to drop PEM block headers and inter-block data. */
   trustBundle: string;
 }
-const IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec>;
-
 export interface CreateCertificatesV1beta1ClusterTrustBundleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -190,11 +149,6 @@ export interface CreateCertificatesV1beta1ClusterTrustBundleRequest {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-const CreateCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateCertificatesV1beta1ClusterTrustBundleRequest>;
-
 /** ClusterTrustBundle is a cluster-scoped container for X.509 trust anchors (root certificates). ClusterTrustBundle objects are considered to be readable by any authenticated user in the cluster, because they can be mounted by pods using the `clusterTrustBundle` projection. All service accounts have read access to ClusterTrustBundles by default. Users who only have namespace-level access to a cluster can read ClusterTrustBundles by impersonating a serviceaccount that they have access to. It can be optionally associated with a particular signer, in which case it contains one valid set of trust anchors for that signer. Signers may have multiple associated ClusterTrustBundles; each is an independent set of trust anchors for that signer. Admission control is used to enforce that only users with permissions on the signer can create or modify the corresponding bundle. */
 export interface IoK8sApiCertificatesV1beta1ClusterTrustBundle {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -206,21 +160,10 @@ export interface IoK8sApiCertificatesV1beta1ClusterTrustBundle {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-const IoK8sApiCertificatesV1beta1ClusterTrustBundle = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundle>;
-
 /** unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
 export type IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    2,
-  ) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap>;
-
 /** PodCertificateRequestSpec describes the certificate request. All fields are immutable after creation. */
 export interface IoK8sApiCertificatesV1beta1PodCertificateRequestSpec {
   /** maxExpirationSeconds is the maximum lifetime permitted for the certificate. If omitted, kube-apiserver will set it to 86400(24 hours). kube-apiserver will reject values shorter than 3600 (1 hour). The maximum allowable value is 7862400 (91 days). The signer implementation is then free to issue a certificate with any lifetime *shorter* than MaxExpirationSeconds, but no shorter than 3600 seconds (1 hour). This constraint is enforced by kube-apiserver. `kubernetes.io` signers will never issue certificates with a lifetime longer than 24 hours. */
@@ -248,11 +191,6 @@ export interface IoK8sApiCertificatesV1beta1PodCertificateRequestSpec {
   /** unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
   unverifiedUserAnnotations?: IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap;
 }
-const IoK8sApiCertificatesV1beta1PodCertificateRequestSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestSpec>;
-
 /** Condition contains details for one aspect of the current state of this API Resource. */
 export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable. */
@@ -268,19 +206,9 @@ export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** type of condition in CamelCase or in foo.example.com/CamelCase. */
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Condition>;
-
 /** conditions applied to the request. The types "Issued", "Denied", and "Failed" have special handling. At most one of these conditions may be present, and they must have status "True". If the request is denied with `Reason=UnsupportedKeyType`, the signer may suggest a key type that will work in the message field. */
 export type IoK8sApiCertificatesV1beta1PodCertificateRequestStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-const IoK8sApiCertificatesV1beta1PodCertificateRequestStatusConditionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestStatusConditionsList>;
-
 /** PodCertificateRequestStatus describes the status of the request, and holds the certificate data if the request is issued. */
 export interface IoK8sApiCertificatesV1beta1PodCertificateRequestStatus {
   /** beginRefreshAt is the time at which the kubelet should begin trying to refresh the certificate. This field is set via the /status subresource, and must be set at the same time as certificateChain. Once populated, this field is immutable. This field is only a hint. Kubelet may start refreshing before or after this time if necessary. */
@@ -294,11 +222,6 @@ export interface IoK8sApiCertificatesV1beta1PodCertificateRequestStatus {
   /** notBefore is the time at which the certificate becomes valid. The value must be the same as the notBefore value in the leaf certificate in certificateChain. This field is set via the /status subresource. Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain. */
   notBefore?: string;
 }
-const IoK8sApiCertificatesV1beta1PodCertificateRequestStatus = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestStatus>;
-
 export interface CreateCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -321,11 +244,6 @@ export interface CreateCertificatesV1beta1NamespacedPodCertificateRequestRequest
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1beta1PodCertificateRequestStatus;
 }
-const CreateCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 /** PodCertificateRequest encodes a pod requesting a certificate from a given signer. Kubelets use this API to implement podCertificate projected volumes */
 export interface IoK8sApiCertificatesV1beta1PodCertificateRequest {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -339,36 +257,15 @@ export interface IoK8sApiCertificatesV1beta1PodCertificateRequest {
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1beta1PodCertificateRequestStatus;
 }
-const IoK8sApiCertificatesV1beta1PodCertificateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>;
-
 export type IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraValueList = Array<string>;
-const IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraValueList>;
-
 /** extra contains extra attributes of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable. */
 export type IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraMap = {
   [key: string]: IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraValueList | undefined;
 };
-const IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraMap = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraMap>;
-
 /** groups contains group membership of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable. */
 export type IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList = Array<string>;
-const IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList>;
-
 /** usages specifies a set of key usages requested in the issued certificate. Requests for TLS client certificates typically request: "digital signature", "client auth". Requests for TLS serving certificates typically request: "digital signature", "server auth". Valid values are: "signing", "digital signature", "content commitment", "key encipherment", "key agreement", "data encipherment", "cert sign", "crl sign", "encipher only", "decipher only", "any", "server auth", "client auth", "code signing", "email protection", "s/mime", "ipsec end system", "ipsec tunnel", "ipsec user", "timestamping", "ocsp signing", "microsoft sgc", "netscape sgc" When request contains a x509 certificate signing request signed with an ML-DSA key, usages must contain at least one of "digital signature", "content commitment", "cert sign", or "crl sign" and must not contain "key encipherment", "key agreement", "data encipherment", "encipher only", or "decipher only". */
 export type IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList = Array<string>;
-const IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList>;
-
 /** CertificateSigningRequestSpec contains the certificate request. */
 export interface IoK8sApiCertificatesV1CertificateSigningRequestSpec {
   /** expirationSeconds is the requested duration of validity of the issued certificate. The certificate signer may issue a certificate with a different validity duration so a client must check the delta between the notBefore and and notAfter fields in the issued certificate to determine the actual duration. The v1.22+ in-tree implementations of the well-known Kubernetes signers will honor this field as long as the requested duration is not greater than the maximum duration they will honor per the --cluster-signing-duration CLI flag to the Kubernetes controller manager. Certificate signers may not honor this field for various reasons: 1. Old signer that is unaware of the field (such as the in-tree implementations prior to v1.22) 2. Signer whose configured maximum is shorter than the requested duration 3. Signer whose configured minimum is longer than the requested duration The minimum valid value for expirationSeconds is 600, i.e. 10 minutes. */
@@ -388,11 +285,6 @@ export interface IoK8sApiCertificatesV1CertificateSigningRequestSpec {
   /** username contains the name of the user that created the CertificateSigningRequest. Populated by the API server on creation and immutable. */
   username?: string;
 }
-const IoK8sApiCertificatesV1CertificateSigningRequestSpec = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestSpec>;
-
 /** CertificateSigningRequestCondition describes a condition of a CertificateSigningRequest object */
 export interface IoK8sApiCertificatesV1CertificateSigningRequestCondition {
   /** lastTransitionTime is the time the condition last transitioned from one status to another. If unset, when a new condition type is added or an existing condition's status is changed, the server defaults this to the current time. */
@@ -408,19 +300,9 @@ export interface IoK8sApiCertificatesV1CertificateSigningRequestCondition {
   /** type of the condition. Known conditions are "Approved", "Denied", and "Failed". An "Approved" condition is added via the /approval subresource, indicating the request was approved and should be issued by the signer. A "Denied" condition is added via the /approval subresource, indicating the request was denied and should not be issued by the signer. A "Failed" condition is added via the /status subresource, indicating the signer failed to issue the certificate. Approved and Denied conditions are mutually exclusive. Approved, Denied, and Failed conditions cannot be removed once added. Only one condition of a given type is allowed. */
   type: string;
 }
-const IoK8sApiCertificatesV1CertificateSigningRequestCondition = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestCondition>;
-
 /** conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed". */
 export type IoK8sApiCertificatesV1CertificateSigningRequestStatusConditionsList =
   Array<IoK8sApiCertificatesV1CertificateSigningRequestCondition>;
-const IoK8sApiCertificatesV1CertificateSigningRequestStatusConditionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestStatusConditionsList>;
-
 /** CertificateSigningRequestStatus contains conditions used to indicate approved/denied/failed status of the request, and the issued certificate. */
 export interface IoK8sApiCertificatesV1CertificateSigningRequestStatus {
   /** certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable. If the certificate signing request is denied, a condition of type "Denied" is added and this field remains empty. If the signer cannot issue the certificate, a condition of type "Failed" is added and this field remains empty. Validation requirements: 1. certificate must contain one or more PEM blocks. 2. All PEM blocks must have the "CERTIFICATE" label, contain no headers, and the encoded data must be a BER-encoded ASN.1 Certificate structure as described in section 4 of RFC5280. 3. Non-PEM content may appear before or after the "CERTIFICATE" PEM blocks and is unvalidated, to allow for explanatory text as described in section 5.2 of RFC7468. If more than one PEM block is present, and the definition of the requested spec.signerName does not indicate otherwise, the first block is the issued certificate, and subsequent blocks should be treated as intermediate certificates and presented in TLS handshakes. The certificate is encoded in PEM format. When serialized as JSON or YAML, the data is additionally base64-encoded, so it consists of: base64( -----BEGIN CERTIFICATE----- ... -----END CERTIFICATE----- ) */
@@ -428,11 +310,6 @@ export interface IoK8sApiCertificatesV1CertificateSigningRequestStatus {
   /** conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed". */
   conditions?: IoK8sApiCertificatesV1CertificateSigningRequestStatusConditionsList;
 }
-const IoK8sApiCertificatesV1CertificateSigningRequestStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestStatus>;
-
 export interface CreateCertificatesV1CertificateSigningRequestRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -453,11 +330,6 @@ export interface CreateCertificatesV1CertificateSigningRequestRequest {
   /** status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure. */
   status?: IoK8sApiCertificatesV1CertificateSigningRequestStatus;
 }
-const CreateCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateCertificatesV1CertificateSigningRequestRequest>;
-
 /** CertificateSigningRequest objects provide a mechanism to obtain x509 certificates by submitting a certificate signing request, and having it asynchronously approved and issued. Kubelets use this API to obtain: 1. client certificates to authenticate to kube-apiserver (with the "kubernetes.io/kube-apiserver-client-kubelet" signerName). 2. serving certificates for TLS endpoints kube-apiserver can connect to securely (with the "kubernetes.io/kubelet-serving" signerName). This API can be used to request client certificates to authenticate to kube-apiserver (with the "kubernetes.io/kube-apiserver-client" signerName), or to obtain certificates from custom non-Kubernetes signers. */
 export interface IoK8sApiCertificatesV1CertificateSigningRequest {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -471,11 +343,6 @@ export interface IoK8sApiCertificatesV1CertificateSigningRequest {
   /** status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure. */
   status?: IoK8sApiCertificatesV1CertificateSigningRequestStatus;
 }
-const IoK8sApiCertificatesV1CertificateSigningRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>;
-
 /** ClusterTrustBundleSpec contains the signer and trust anchors. */
 export type IoK8sApiCertificatesV1ClusterTrustBundleSpec =
   IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
@@ -497,11 +364,6 @@ export interface CreateCertificatesV1ClusterTrustBundleRequest {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-const CreateCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateCertificatesV1ClusterTrustBundleRequest>;
-
 /** ClusterTrustBundle is a cluster-scoped container for X.509 trust anchors (root certificates). ClusterTrustBundle objects are considered to be readable by any authenticated user in the cluster, because they can be mounted by pods using the `clusterTrustBundle` projection. All service accounts have read access to ClusterTrustBundles by default. Users who only have namespace-level access to a cluster can read ClusterTrustBundles by impersonating a serviceaccount that they have access to. It can be optionally associated with a particular signer, in which case it contains one valid set of trust anchors for that signer. Signers may have multiple associated ClusterTrustBundles; each is an independent set of trust anchors for that signer. Admission control is used to enforce that only users with permissions on the signer can create or modify the corresponding bundle. */
 export interface IoK8sApiCertificatesV1ClusterTrustBundle {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -513,16 +375,10 @@ export interface IoK8sApiCertificatesV1ClusterTrustBundle {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-const IoK8sApiCertificatesV1ClusterTrustBundle =
-  IoK8sApiCertificatesV1beta1ClusterTrustBundle as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>;
-
 /** unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
 export type IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap =
-  IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap>;
-
 /** PodCertificateRequestSpec describes the certificate request. All fields are immutable after creation. */
 export interface IoK8sApiCertificatesV1PodCertificateRequestSpec {
   /** maxExpirationSeconds is the maximum lifetime permitted for the certificate. If omitted, kube-apiserver will set it to 86400(24 hours). kube-apiserver will reject values shorter than 3600 (1 hour). The maximum allowable value is 7862400 (91 days). The signer implementation is then free to issue a certificate with any lifetime *shorter* than MaxExpirationSeconds, but no shorter than 3600 seconds (1 hour). This constraint is enforced by kube-apiserver. `kubernetes.io` signers will never issue certificates with a lifetime longer than 24 hours. */
@@ -546,11 +402,6 @@ export interface IoK8sApiCertificatesV1PodCertificateRequestSpec {
   /** unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
   unverifiedUserAnnotations?: IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap;
 }
-const IoK8sApiCertificatesV1PodCertificateRequestSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestSpec>;
-
 /** conditions applied to the request. The types "Issued", "Denied", and "Failed" have special handling. At most one of these conditions may be present, and they must have status "True". If the request is denied with `Reason=UnsupportedKeyType`, the signer may suggest a key type that will work in the message field. */
 export type IoK8sApiCertificatesV1PodCertificateRequestStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
@@ -567,9 +418,6 @@ export interface IoK8sApiCertificatesV1PodCertificateRequestStatus {
   /** notBefore is the time at which the certificate becomes valid. The value must be the same as the notBefore value in the leaf certificate in certificateChain. This field is set via the /status subresource. Once populated, it is immutable. The signer must set this field at the same time it sets certificateChain. */
   notBefore?: string;
 }
-const IoK8sApiCertificatesV1PodCertificateRequestStatus =
-  IoK8sApiCertificatesV1beta1PodCertificateRequestStatus as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestStatus>;
-
 export interface CreateCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -592,11 +440,6 @@ export interface CreateCertificatesV1NamespacedPodCertificateRequestRequest {
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1PodCertificateRequestStatus;
 }
-const CreateCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 /** PodCertificateRequest encodes a pod requesting a certificate from a given signer. Kubelets use this API to implement podCertificate projected volumes */
 export interface IoK8sApiCertificatesV1PodCertificateRequest {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -610,11 +453,6 @@ export interface IoK8sApiCertificatesV1PodCertificateRequest {
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1PodCertificateRequestStatus;
 }
-const IoK8sApiCertificatesV1PodCertificateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -622,11 +460,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteCertificatesV1beta1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -649,11 +482,6 @@ export interface DeleteCertificatesV1beta1ClusterTrustBundleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteCertificatesV1beta1ClusterTrustBundleRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -663,19 +491,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -691,21 +509,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -719,11 +527,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -743,11 +546,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteCertificatesV1beta1CollectionClusterTrustBundleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -786,11 +584,6 @@ export interface DeleteCertificatesV1beta1CollectionClusterTrustBundleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1beta1CollectionClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteCertificatesV1beta1CollectionClusterTrustBundleRequest>;
-
 export interface DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -831,12 +624,6 @@ export interface DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequ
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestRequest =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    6,
-  ) as any as S.Schema<DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestRequest>;
-
 export interface DeleteCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -861,11 +648,6 @@ export interface DeleteCertificatesV1beta1NamespacedPodCertificateRequestRequest
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 export interface DeleteCertificatesV1CertificateSigningRequestRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -888,11 +670,6 @@ export interface DeleteCertificatesV1CertificateSigningRequestRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeleteCertificatesV1CertificateSigningRequestRequest>;
-
 export interface DeleteCertificatesV1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -915,11 +692,6 @@ export interface DeleteCertificatesV1ClusterTrustBundleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteCertificatesV1ClusterTrustBundleRequest>;
-
 export interface DeleteCertificatesV1CollectionCertificateSigningRequestRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -958,11 +730,6 @@ export interface DeleteCertificatesV1CollectionCertificateSigningRequestRequest 
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1CollectionCertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteCertificatesV1CollectionCertificateSigningRequestRequest>;
-
 export interface DeleteCertificatesV1CollectionClusterTrustBundleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1001,11 +768,6 @@ export interface DeleteCertificatesV1CollectionClusterTrustBundleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1CollectionClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteCertificatesV1CollectionClusterTrustBundleRequest>;
-
 export interface DeleteCertificatesV1CollectionNamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1046,11 +808,6 @@ export interface DeleteCertificatesV1CollectionNamespacedPodCertificateRequestRe
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1CollectionNamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteCertificatesV1CollectionNamespacedPodCertificateRequestRequest>;
-
 export interface DeleteCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1075,17 +832,7 @@ export interface DeleteCertificatesV1NamespacedPodCertificateRequestRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 export interface GetCertificatesAPIGroupRequest {}
-const GetCertificatesAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetCertificatesAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -1093,11 +840,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -1105,27 +847,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1141,32 +868,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetCertificatesV1APIResourcesRequest {}
-const GetCertificatesV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetCertificatesV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -1190,19 +898,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1214,17 +912,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface GetCertificatesV1beta1APIResourcesRequest {}
-const GetCertificatesV1beta1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetCertificatesV1beta1APIResourcesRequest>;
-
 export interface ListCertificatesV1beta1ClusterTrustBundleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1251,19 +939,9 @@ export interface ListCertificatesV1beta1ClusterTrustBundleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListCertificatesV1beta1ClusterTrustBundleRequest>;
-
 /** items is a collection of ClusterTrustBundle objects */
 export type IoK8sApiCertificatesV1beta1ClusterTrustBundleListItemsList =
   Array<IoK8sApiCertificatesV1beta1ClusterTrustBundle>;
-const IoK8sApiCertificatesV1beta1ClusterTrustBundleListItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundleListItemsList>;
-
 /** ClusterTrustBundleList is a collection of ClusterTrustBundle objects */
 export interface IoK8sApiCertificatesV1beta1ClusterTrustBundleList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1275,11 +953,6 @@ export interface IoK8sApiCertificatesV1beta1ClusterTrustBundleList {
   /** metadata contains the list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiCertificatesV1beta1ClusterTrustBundleList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundleList>;
-
 export interface ListCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1308,19 +981,9 @@ export interface ListCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 /** items is a collection of PodCertificateRequest objects */
 export type IoK8sApiCertificatesV1beta1PodCertificateRequestListItemsList =
   Array<IoK8sApiCertificatesV1beta1PodCertificateRequest>;
-const IoK8sApiCertificatesV1beta1PodCertificateRequestListItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestListItemsList>;
-
 /** PodCertificateRequestList is a collection of PodCertificateRequest objects */
 export interface IoK8sApiCertificatesV1beta1PodCertificateRequestList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1332,11 +995,6 @@ export interface IoK8sApiCertificatesV1beta1PodCertificateRequestList {
   /** metadata contains the list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiCertificatesV1beta1PodCertificateRequestList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestList>;
-
 export interface ListCertificatesV1beta1PodCertificateRequestForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1363,11 +1021,6 @@ export interface ListCertificatesV1beta1PodCertificateRequestForAllNamespacesReq
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1beta1PodCertificateRequestForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListCertificatesV1beta1PodCertificateRequestForAllNamespacesRequest>;
-
 export interface ListCertificatesV1CertificateSigningRequestRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1394,19 +1047,9 @@ export interface ListCertificatesV1CertificateSigningRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListCertificatesV1CertificateSigningRequestRequest>;
-
 /** items is a collection of CertificateSigningRequest objects */
 export type IoK8sApiCertificatesV1CertificateSigningRequestListItemsList =
   Array<IoK8sApiCertificatesV1CertificateSigningRequest>;
-const IoK8sApiCertificatesV1CertificateSigningRequestListItemsList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestListItemsList>;
-
 /** CertificateSigningRequestList is a collection of CertificateSigningRequest objects */
 export interface IoK8sApiCertificatesV1CertificateSigningRequestList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1417,11 +1060,6 @@ export interface IoK8sApiCertificatesV1CertificateSigningRequestList {
   kind?: string;
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiCertificatesV1CertificateSigningRequestList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestList>;
-
 export interface ListCertificatesV1ClusterTrustBundleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1448,11 +1086,6 @@ export interface ListCertificatesV1ClusterTrustBundleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListCertificatesV1ClusterTrustBundleRequest>;
-
 /** items is a collection of ClusterTrustBundle objects */
 export type IoK8sApiCertificatesV1ClusterTrustBundleListItemsList =
   Array<IoK8sApiCertificatesV1ClusterTrustBundle>;
@@ -1467,9 +1100,6 @@ export interface IoK8sApiCertificatesV1ClusterTrustBundleList {
   /** metadata contains the list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiCertificatesV1ClusterTrustBundleList =
-  IoK8sApiCertificatesV1beta1ClusterTrustBundleList as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundleList>;
-
 export interface ListCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1498,19 +1128,9 @@ export interface ListCertificatesV1NamespacedPodCertificateRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 /** items is a collection of PodCertificateRequest objects */
 export type IoK8sApiCertificatesV1PodCertificateRequestListItemsList =
   Array<IoK8sApiCertificatesV1PodCertificateRequest>;
-const IoK8sApiCertificatesV1PodCertificateRequestListItemsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestListItemsList>;
-
 /** PodCertificateRequestList is a collection of PodCertificateRequest objects */
 export interface IoK8sApiCertificatesV1PodCertificateRequestList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1522,11 +1142,6 @@ export interface IoK8sApiCertificatesV1PodCertificateRequestList {
   /** metadata contains the list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiCertificatesV1PodCertificateRequestList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestList>;
-
 export interface ListCertificatesV1PodCertificateRequestForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1553,11 +1168,6 @@ export interface ListCertificatesV1PodCertificateRequestForAllNamespacesRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListCertificatesV1PodCertificateRequestForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListCertificatesV1PodCertificateRequestForAllNamespacesRequest>;
-
 export interface PatchCertificatesV1beta1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -1572,11 +1182,6 @@ export interface PatchCertificatesV1beta1ClusterTrustBundleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<PatchCertificatesV1beta1ClusterTrustBundleRequest>;
-
 export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1593,11 +1198,6 @@ export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestRequest 
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PatchCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1614,11 +1214,6 @@ export interface PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusRe
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest>;
-
 export interface PatchCertificatesV1CertificateSigningRequestRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -1633,11 +1228,6 @@ export interface PatchCertificatesV1CertificateSigningRequestRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<PatchCertificatesV1CertificateSigningRequestRequest>;
-
 export interface PatchCertificatesV1CertificateSigningRequestApprovalRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -1652,11 +1242,6 @@ export interface PatchCertificatesV1CertificateSigningRequestApprovalRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1CertificateSigningRequestApprovalRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<PatchCertificatesV1CertificateSigningRequestApprovalRequest>;
-
 export interface PatchCertificatesV1CertificateSigningRequestStatusRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -1671,11 +1256,6 @@ export interface PatchCertificatesV1CertificateSigningRequestStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1CertificateSigningRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<PatchCertificatesV1CertificateSigningRequestStatusRequest>;
-
 export interface PatchCertificatesV1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -1690,11 +1270,6 @@ export interface PatchCertificatesV1ClusterTrustBundleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<PatchCertificatesV1ClusterTrustBundleRequest>;
-
 export interface PatchCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1711,11 +1286,6 @@ export interface PatchCertificatesV1NamespacedPodCertificateRequestRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<PatchCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 export interface PatchCertificatesV1NamespacedPodCertificateRequestStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1732,22 +1302,12 @@ export interface PatchCertificatesV1NamespacedPodCertificateRequestStatusRequest
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchCertificatesV1NamespacedPodCertificateRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PatchCertificatesV1NamespacedPodCertificateRequestStatusRequest>;
-
 export interface ReadCertificatesV1beta1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ReadCertificatesV1beta1ClusterTrustBundleRequest>;
-
 export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1756,11 +1316,6 @@ export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1769,55 +1324,30 @@ export interface ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusReq
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest>;
-
 export interface ReadCertificatesV1CertificateSigningRequestRequest {
   /** name of the CertificateSigningRequest */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ReadCertificatesV1CertificateSigningRequestRequest>;
-
 export interface ReadCertificatesV1CertificateSigningRequestApprovalRequest {
   /** name of the CertificateSigningRequest */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1CertificateSigningRequestApprovalRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ReadCertificatesV1CertificateSigningRequestApprovalRequest>;
-
 export interface ReadCertificatesV1CertificateSigningRequestStatusRequest {
   /** name of the CertificateSigningRequest */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1CertificateSigningRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ReadCertificatesV1CertificateSigningRequestStatusRequest>;
-
 export interface ReadCertificatesV1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ReadCertificatesV1ClusterTrustBundleRequest>;
-
 export interface ReadCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1826,11 +1356,6 @@ export interface ReadCertificatesV1NamespacedPodCertificateRequestRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ReadCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 export interface ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1839,11 +1364,6 @@ export interface ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest 
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest>;
-
 export interface ReplaceCertificatesV1beta1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -1864,11 +1384,6 @@ export interface ReplaceCertificatesV1beta1ClusterTrustBundleRequest {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-const ReplaceCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ReplaceCertificatesV1beta1ClusterTrustBundleRequest>;
-
 export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1893,11 +1408,6 @@ export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestReques
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1beta1PodCertificateRequestStatus;
 }
-const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1922,11 +1432,6 @@ export interface ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatus
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1beta1PodCertificateRequestStatus;
 }
-const ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest>;
-
 export interface ReplaceCertificatesV1CertificateSigningRequestRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -1949,11 +1454,6 @@ export interface ReplaceCertificatesV1CertificateSigningRequestRequest {
   /** status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure. */
   status?: IoK8sApiCertificatesV1CertificateSigningRequestStatus;
 }
-const ReplaceCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ReplaceCertificatesV1CertificateSigningRequestRequest>;
-
 export interface ReplaceCertificatesV1CertificateSigningRequestApprovalRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -1976,11 +1476,6 @@ export interface ReplaceCertificatesV1CertificateSigningRequestApprovalRequest {
   /** status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure. */
   status?: IoK8sApiCertificatesV1CertificateSigningRequestStatus;
 }
-const ReplaceCertificatesV1CertificateSigningRequestApprovalRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ReplaceCertificatesV1CertificateSigningRequestApprovalRequest>;
-
 export interface ReplaceCertificatesV1CertificateSigningRequestStatusRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -2003,11 +1498,6 @@ export interface ReplaceCertificatesV1CertificateSigningRequestStatusRequest {
   /** status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure. */
   status?: IoK8sApiCertificatesV1CertificateSigningRequestStatus;
 }
-const ReplaceCertificatesV1CertificateSigningRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ReplaceCertificatesV1CertificateSigningRequestStatusRequest>;
-
 export interface ReplaceCertificatesV1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -2028,11 +1518,6 @@ export interface ReplaceCertificatesV1ClusterTrustBundleRequest {
   /** spec contains the signer (if any) and trust anchors. */
   spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec;
 }
-const ReplaceCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ReplaceCertificatesV1ClusterTrustBundleRequest>;
-
 export interface ReplaceCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2057,11 +1542,6 @@ export interface ReplaceCertificatesV1NamespacedPodCertificateRequestRequest {
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1PodCertificateRequestStatus;
 }
-const ReplaceCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ReplaceCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 export interface ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2086,11 +1566,6 @@ export interface ReplaceCertificatesV1NamespacedPodCertificateRequestStatusReque
   /** status contains the issued certificate, and a standard set of conditions. */
   status?: IoK8sApiCertificatesV1PodCertificateRequestStatus;
 }
-const ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest>;
-
 export interface WatchCertificatesV1beta1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -2119,22 +1594,12 @@ export interface WatchCertificatesV1beta1ClusterTrustBundleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1beta1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<WatchCertificatesV1beta1ClusterTrustBundleRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchCertificatesV1beta1ClusterTrustBundleListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2161,11 +1626,6 @@ export interface WatchCertificatesV1beta1ClusterTrustBundleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1beta1ClusterTrustBundleListRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<WatchCertificatesV1beta1ClusterTrustBundleListRequest>;
-
 export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2196,11 +1656,6 @@ export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest>;
-
 export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2229,11 +1684,6 @@ export interface WatchCertificatesV1beta1NamespacedPodCertificateRequestListRequ
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1beta1NamespacedPodCertificateRequestListRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<WatchCertificatesV1beta1NamespacedPodCertificateRequestListRequest>;
-
 export interface WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2260,12 +1710,6 @@ export interface WatchCertificatesV1beta1PodCertificateRequestListForAllNamespac
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesRequest =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    0,
-  ) as any as S.Schema<WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesRequest>;
-
 export interface WatchCertificatesV1CertificateSigningRequestRequest {
   /** name of the CertificateSigningRequest */
   name: string;
@@ -2294,11 +1738,6 @@ export interface WatchCertificatesV1CertificateSigningRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1CertificateSigningRequestRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<WatchCertificatesV1CertificateSigningRequestRequest>;
-
 export interface WatchCertificatesV1CertificateSigningRequestListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2325,11 +1764,6 @@ export interface WatchCertificatesV1CertificateSigningRequestListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1CertificateSigningRequestListRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<WatchCertificatesV1CertificateSigningRequestListRequest>;
-
 export interface WatchCertificatesV1ClusterTrustBundleRequest {
   /** name of the ClusterTrustBundle */
   name: string;
@@ -2358,11 +1792,6 @@ export interface WatchCertificatesV1ClusterTrustBundleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1ClusterTrustBundleRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<WatchCertificatesV1ClusterTrustBundleRequest>;
-
 export interface WatchCertificatesV1ClusterTrustBundleListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2389,11 +1818,6 @@ export interface WatchCertificatesV1ClusterTrustBundleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1ClusterTrustBundleListRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<WatchCertificatesV1ClusterTrustBundleListRequest>;
-
 export interface WatchCertificatesV1NamespacedPodCertificateRequestRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2424,11 +1848,6 @@ export interface WatchCertificatesV1NamespacedPodCertificateRequestRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1NamespacedPodCertificateRequestRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<WatchCertificatesV1NamespacedPodCertificateRequestRequest>;
-
 export interface WatchCertificatesV1NamespacedPodCertificateRequestListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2457,11 +1876,6 @@ export interface WatchCertificatesV1NamespacedPodCertificateRequestListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1NamespacedPodCertificateRequestListRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<WatchCertificatesV1NamespacedPodCertificateRequestListRequest>;
-
 export interface WatchCertificatesV1PodCertificateRequestListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2488,11 +1902,6 @@ export interface WatchCertificatesV1PodCertificateRequestListForAllNamespacesReq
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchCertificatesV1PodCertificateRequestListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<WatchCertificatesV1PodCertificateRequestListForAllNamespacesRequest>;
-
 export type CreateCertificatesV1beta1ClusterTrustBundleError =
   | Conflict
   | UnprocessableEntity
@@ -2504,8 +1913,8 @@ export const createCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   CreateCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1beta1ClusterTrustBundle,
+  input: __S(8) as any as S.Schema<CreateCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundle>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2522,8 +1931,10 @@ export const createCertificatesV1beta1NamespacedPodCertificateRequest: API.Opera
   CreateCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(
+    15,
+  ) as any as S.Schema<CreateCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2540,8 +1951,8 @@ export const createCertificatesV1CertificateSigningRequest: API.OperationMethod<
   CreateCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(23) as any as S.Schema<CreateCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2555,8 +1966,8 @@ export const createCertificatesV1ClusterTrustBundle: API.OperationMethod<
   CreateCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1ClusterTrustBundle,
+  input: __S(25) as any as S.Schema<CreateCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2570,8 +1981,8 @@ export const createCertificatesV1NamespacedPodCertificateRequest: API.OperationM
   CreateCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(27) as any as S.Schema<CreateCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2588,8 +1999,8 @@ export const deleteCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   DeleteCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(30) as any as S.Schema<DeleteCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2603,8 +2014,8 @@ export const deleteCertificatesV1beta1CollectionClusterTrustBundle: API.Operatio
   DeleteCertificatesV1beta1CollectionClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1beta1CollectionClusterTrustBundleRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(37) as any as S.Schema<DeleteCertificatesV1beta1CollectionClusterTrustBundleRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2619,8 +2030,10 @@ export const deleteCertificatesV1beta1CollectionNamespacedPodCertificateRequest:
   DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    38,
+  ) as any as S.Schema<DeleteCertificatesV1beta1CollectionNamespacedPodCertificateRequestRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2637,8 +2050,10 @@ export const deleteCertificatesV1beta1NamespacedPodCertificateRequest: API.Opera
   DeleteCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    39,
+  ) as any as S.Schema<DeleteCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2070,8 @@ export const deleteCertificatesV1CertificateSigningRequest: API.OperationMethod<
   DeleteCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(40) as any as S.Schema<DeleteCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2085,8 @@ export const deleteCertificatesV1ClusterTrustBundle: API.OperationMethod<
   DeleteCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(41) as any as S.Schema<DeleteCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2100,8 @@ export const deleteCertificatesV1CollectionCertificateSigningRequest: API.Operat
   DeleteCertificatesV1CollectionCertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1CollectionCertificateSigningRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(42) as any as S.Schema<DeleteCertificatesV1CollectionCertificateSigningRequestRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2115,8 @@ export const deleteCertificatesV1CollectionClusterTrustBundle: API.OperationMeth
   DeleteCertificatesV1CollectionClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1CollectionClusterTrustBundleRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(43) as any as S.Schema<DeleteCertificatesV1CollectionClusterTrustBundleRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2130,10 @@ export const deleteCertificatesV1CollectionNamespacedPodCertificateRequest: API.
   DeleteCertificatesV1CollectionNamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1CollectionNamespacedPodCertificateRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    44,
+  ) as any as S.Schema<DeleteCertificatesV1CollectionNamespacedPodCertificateRequestRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2147,8 @@ export const deleteCertificatesV1NamespacedPodCertificateRequest: API.OperationM
   DeleteCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(45) as any as S.Schema<DeleteCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(36) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2745,8 +2162,8 @@ export const getCertificatesAPIGroup: API.OperationMethod<
   GetCertificatesAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificatesAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(46) as any as S.Schema<GetCertificatesAPIGroupRequest>,
+  output: __S(51) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2177,8 @@ export const getCertificatesV1APIResources: API.OperationMethod<
   GetCertificatesV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificatesV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(52) as any as S.Schema<GetCertificatesV1APIResourcesRequest>,
+  output: __S(55) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2192,8 @@ export const getCertificatesV1beta1APIResources: API.OperationMethod<
   GetCertificatesV1beta1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificatesV1beta1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(56) as any as S.Schema<GetCertificatesV1beta1APIResourcesRequest>,
+  output: __S(55) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2207,8 @@ export const listCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   ListCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1beta1ClusterTrustBundleList,
+  input: __S(57) as any as S.Schema<ListCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(59) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundleList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2222,8 @@ export const listCertificatesV1beta1NamespacedPodCertificateRequest: API.Operati
   ListCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequestList,
+  input: __S(60) as any as S.Schema<ListCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(62) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2237,10 @@ export const listCertificatesV1beta1PodCertificateRequestForAllNamespaces: API.O
   ListCertificatesV1beta1PodCertificateRequestForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1beta1PodCertificateRequestForAllNamespacesRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequestList,
+  input: __S(
+    63,
+  ) as any as S.Schema<ListCertificatesV1beta1PodCertificateRequestForAllNamespacesRequest>,
+  output: __S(62) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequestList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2254,8 @@ export const listCertificatesV1CertificateSigningRequest: API.OperationMethod<
   ListCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequestList,
+  input: __S(64) as any as S.Schema<ListCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(66) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequestList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2269,8 @@ export const listCertificatesV1ClusterTrustBundle: API.OperationMethod<
   ListCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1ClusterTrustBundleList,
+  input: __S(67) as any as S.Schema<ListCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(59) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundleList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2284,8 @@ export const listCertificatesV1NamespacedPodCertificateRequest: API.OperationMet
   ListCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequestList,
+  input: __S(68) as any as S.Schema<ListCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(70) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2880,8 +2299,8 @@ export const listCertificatesV1PodCertificateRequestForAllNamespaces: API.Operat
   ListCertificatesV1PodCertificateRequestForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesV1PodCertificateRequestForAllNamespacesRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequestList,
+  input: __S(71) as any as S.Schema<ListCertificatesV1PodCertificateRequestForAllNamespacesRequest>,
+  output: __S(70) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequestList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2899,8 +2318,8 @@ export const patchCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   PatchCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1beta1ClusterTrustBundle,
+  input: __S(72) as any as S.Schema<PatchCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundle>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2337,8 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequest: API.Operat
   PatchCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(73) as any as S.Schema<PatchCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2937,8 +2356,10 @@ export const patchCertificatesV1beta1NamespacedPodCertificateRequestStatus: API.
   PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(
+    74,
+  ) as any as S.Schema<PatchCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2956,8 +2377,8 @@ export const patchCertificatesV1CertificateSigningRequest: API.OperationMethod<
   PatchCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(75) as any as S.Schema<PatchCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2396,8 @@ export const patchCertificatesV1CertificateSigningRequestApproval: API.Operation
   PatchCertificatesV1CertificateSigningRequestApprovalError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1CertificateSigningRequestApprovalRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(76) as any as S.Schema<PatchCertificatesV1CertificateSigningRequestApprovalRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2994,8 +2415,8 @@ export const patchCertificatesV1CertificateSigningRequestStatus: API.OperationMe
   PatchCertificatesV1CertificateSigningRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1CertificateSigningRequestStatusRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(77) as any as S.Schema<PatchCertificatesV1CertificateSigningRequestStatusRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3009,8 +2430,8 @@ export const patchCertificatesV1ClusterTrustBundle: API.OperationMethod<
   PatchCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1ClusterTrustBundle,
+  input: __S(78) as any as S.Schema<PatchCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3024,8 +2445,8 @@ export const patchCertificatesV1NamespacedPodCertificateRequest: API.OperationMe
   PatchCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(79) as any as S.Schema<PatchCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3039,8 +2460,10 @@ export const patchCertificatesV1NamespacedPodCertificateRequestStatus: API.Opera
   PatchCertificatesV1NamespacedPodCertificateRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCertificatesV1NamespacedPodCertificateRequestStatusRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(
+    80,
+  ) as any as S.Schema<PatchCertificatesV1NamespacedPodCertificateRequestStatusRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3054,8 +2477,8 @@ export const readCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   ReadCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1beta1ClusterTrustBundle,
+  input: __S(81) as any as S.Schema<ReadCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundle>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3071,8 +2494,8 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequest: API.Operati
   ReadCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(82) as any as S.Schema<ReadCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3088,8 +2511,10 @@ export const readCertificatesV1beta1NamespacedPodCertificateRequestStatus: API.O
   ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(
+    83,
+  ) as any as S.Schema<ReadCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3103,8 +2528,8 @@ export const readCertificatesV1CertificateSigningRequest: API.OperationMethod<
   ReadCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(84) as any as S.Schema<ReadCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3118,8 +2543,8 @@ export const readCertificatesV1CertificateSigningRequestApproval: API.OperationM
   ReadCertificatesV1CertificateSigningRequestApprovalError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1CertificateSigningRequestApprovalRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(85) as any as S.Schema<ReadCertificatesV1CertificateSigningRequestApprovalRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3133,8 +2558,8 @@ export const readCertificatesV1CertificateSigningRequestStatus: API.OperationMet
   ReadCertificatesV1CertificateSigningRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1CertificateSigningRequestStatusRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(86) as any as S.Schema<ReadCertificatesV1CertificateSigningRequestStatusRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3148,8 +2573,8 @@ export const readCertificatesV1ClusterTrustBundle: API.OperationMethod<
   ReadCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1ClusterTrustBundle,
+  input: __S(87) as any as S.Schema<ReadCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3163,8 +2588,8 @@ export const readCertificatesV1NamespacedPodCertificateRequest: API.OperationMet
   ReadCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(88) as any as S.Schema<ReadCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3178,8 +2603,8 @@ export const readCertificatesV1NamespacedPodCertificateRequestStatus: API.Operat
   ReadCertificatesV1NamespacedPodCertificateRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(89) as any as S.Schema<ReadCertificatesV1NamespacedPodCertificateRequestStatusRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3197,8 +2622,8 @@ export const replaceCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   ReplaceCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1beta1ClusterTrustBundle,
+  input: __S(90) as any as S.Schema<ReplaceCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1beta1ClusterTrustBundle>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3216,8 +2641,10 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequest: API.Oper
   ReplaceCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(
+    91,
+  ) as any as S.Schema<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3235,8 +2662,10 @@ export const replaceCertificatesV1beta1NamespacedPodCertificateRequestStatus: AP
   ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest,
-  output: IoK8sApiCertificatesV1beta1PodCertificateRequest,
+  input: __S(
+    92,
+  ) as any as S.Schema<ReplaceCertificatesV1beta1NamespacedPodCertificateRequestStatusRequest>,
+  output: __S(16) as any as S.Schema<IoK8sApiCertificatesV1beta1PodCertificateRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3254,8 +2683,8 @@ export const replaceCertificatesV1CertificateSigningRequest: API.OperationMethod
   ReplaceCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(93) as any as S.Schema<ReplaceCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3273,8 +2702,8 @@ export const replaceCertificatesV1CertificateSigningRequestApproval: API.Operati
   ReplaceCertificatesV1CertificateSigningRequestApprovalError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1CertificateSigningRequestApprovalRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(94) as any as S.Schema<ReplaceCertificatesV1CertificateSigningRequestApprovalRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3292,8 +2721,8 @@ export const replaceCertificatesV1CertificateSigningRequestStatus: API.Operation
   ReplaceCertificatesV1CertificateSigningRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1CertificateSigningRequestStatusRequest,
-  output: IoK8sApiCertificatesV1CertificateSigningRequest,
+  input: __S(95) as any as S.Schema<ReplaceCertificatesV1CertificateSigningRequestStatusRequest>,
+  output: __S(24) as any as S.Schema<IoK8sApiCertificatesV1CertificateSigningRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3307,8 +2736,8 @@ export const replaceCertificatesV1ClusterTrustBundle: API.OperationMethod<
   ReplaceCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApiCertificatesV1ClusterTrustBundle,
+  input: __S(96) as any as S.Schema<ReplaceCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(9) as any as S.Schema<IoK8sApiCertificatesV1ClusterTrustBundle>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3322,8 +2751,8 @@ export const replaceCertificatesV1NamespacedPodCertificateRequest: API.Operation
   ReplaceCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(97) as any as S.Schema<ReplaceCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3337,8 +2766,10 @@ export const replaceCertificatesV1NamespacedPodCertificateRequestStatus: API.Ope
   ReplaceCertificatesV1NamespacedPodCertificateRequestStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest,
-  output: IoK8sApiCertificatesV1PodCertificateRequest,
+  input: __S(
+    98,
+  ) as any as S.Schema<ReplaceCertificatesV1NamespacedPodCertificateRequestStatusRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiCertificatesV1PodCertificateRequest>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3352,8 +2783,8 @@ export const watchCertificatesV1beta1ClusterTrustBundle: API.OperationMethod<
   WatchCertificatesV1beta1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1beta1ClusterTrustBundleRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(99) as any as S.Schema<WatchCertificatesV1beta1ClusterTrustBundleRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3367,8 +2798,8 @@ export const watchCertificatesV1beta1ClusterTrustBundleList: API.OperationMethod
   WatchCertificatesV1beta1ClusterTrustBundleListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1beta1ClusterTrustBundleListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(101) as any as S.Schema<WatchCertificatesV1beta1ClusterTrustBundleListRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3382,8 +2813,10 @@ export const watchCertificatesV1beta1NamespacedPodCertificateRequest: API.Operat
   WatchCertificatesV1beta1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    102,
+  ) as any as S.Schema<WatchCertificatesV1beta1NamespacedPodCertificateRequestRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3397,8 +2830,10 @@ export const watchCertificatesV1beta1NamespacedPodCertificateRequestList: API.Op
   WatchCertificatesV1beta1NamespacedPodCertificateRequestListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1beta1NamespacedPodCertificateRequestListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    103,
+  ) as any as S.Schema<WatchCertificatesV1beta1NamespacedPodCertificateRequestListRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3413,8 +2848,10 @@ export const watchCertificatesV1beta1PodCertificateRequestListForAllNamespaces: 
   WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    104,
+  ) as any as S.Schema<WatchCertificatesV1beta1PodCertificateRequestListForAllNamespacesRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3428,8 +2865,8 @@ export const watchCertificatesV1CertificateSigningRequest: API.OperationMethod<
   WatchCertificatesV1CertificateSigningRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1CertificateSigningRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(105) as any as S.Schema<WatchCertificatesV1CertificateSigningRequestRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3443,8 +2880,8 @@ export const watchCertificatesV1CertificateSigningRequestList: API.OperationMeth
   WatchCertificatesV1CertificateSigningRequestListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1CertificateSigningRequestListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(106) as any as S.Schema<WatchCertificatesV1CertificateSigningRequestListRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3458,8 +2895,8 @@ export const watchCertificatesV1ClusterTrustBundle: API.OperationMethod<
   WatchCertificatesV1ClusterTrustBundleError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1ClusterTrustBundleRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(107) as any as S.Schema<WatchCertificatesV1ClusterTrustBundleRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3473,8 +2910,8 @@ export const watchCertificatesV1ClusterTrustBundleList: API.OperationMethod<
   WatchCertificatesV1ClusterTrustBundleListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1ClusterTrustBundleListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(108) as any as S.Schema<WatchCertificatesV1ClusterTrustBundleListRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3488,8 +2925,8 @@ export const watchCertificatesV1NamespacedPodCertificateRequest: API.OperationMe
   WatchCertificatesV1NamespacedPodCertificateRequestError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1NamespacedPodCertificateRequestRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(109) as any as S.Schema<WatchCertificatesV1NamespacedPodCertificateRequestRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3503,8 +2940,8 @@ export const watchCertificatesV1NamespacedPodCertificateRequestList: API.Operati
   WatchCertificatesV1NamespacedPodCertificateRequestListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1NamespacedPodCertificateRequestListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(110) as any as S.Schema<WatchCertificatesV1NamespacedPodCertificateRequestListRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3518,8 +2955,10 @@ export const watchCertificatesV1PodCertificateRequestListForAllNamespaces: API.O
   WatchCertificatesV1PodCertificateRequestListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchCertificatesV1PodCertificateRequestListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    111,
+  ) as any as S.Schema<WatchCertificatesV1PodCertificateRequestListForAllNamespacesRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3547,7 +2986,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3562,22 +3001,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0)),
+          managedFields: S.optional(__S(3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -3607,8 +3046,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3624,8 +3063,8 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(7),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1beta1ClusterTrustBundle",
@@ -3646,9 +3085,7 @@ function __c1(j: number): any {
           serviceAccountUID: S.String,
           signerName: S.String,
           stubPKCS10Request: S.String,
-          unverifiedUserAnnotations: S.optional(
-            IoK8sApiCertificatesV1beta1PodCertificateRequestSpecUnverifiedUserAnnotationsMap,
-          ),
+          unverifiedUserAnnotations: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1beta1PodCertificateRequestSpec",
@@ -3667,15 +3104,13 @@ function __c1(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1Condition);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           beginRefreshAt: S.optional(S.String),
           certificateChain: S.optional(S.String),
-          conditions: S.optional(
-            IoK8sApiCertificatesV1beta1PodCertificateRequestStatusConditionsList,
-          ),
+          conditions: S.optional(__S(13)),
           notAfter: S.optional(S.String),
           notBefore: S.optional(S.String),
         }),
@@ -3692,9 +3127,9 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1beta1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(11),
+          status: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3714,9 +3149,9 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1beta1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(11),
+          status: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1beta1PodCertificateRequest",
@@ -3724,17 +3159,17 @@ function __c2(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Record(S.String, IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraValueList);
+      return S.Record(S.String, __S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           expirationSeconds: S.optional(S.Number),
-          extra: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestSpecExtraMap),
-          groups: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestSpecGroupsList),
+          extra: S.optional(__S(18)),
+          groups: S.optional(__S(1)),
           request: S.String,
           signerName: S.String,
           uid: S.optional(S.String),
-          usages: IoK8sApiCertificatesV1CertificateSigningRequestSpecUsagesList,
+          usages: __S(1),
           username: S.optional(S.String),
         }),
       ).annotate({
@@ -3754,14 +3189,12 @@ function __c2(j: number): any {
         identifier: "IoK8sApiCertificatesV1CertificateSigningRequestCondition",
       });
     case 5:
-      return S.Array(IoK8sApiCertificatesV1CertificateSigningRequestCondition);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           certificate: S.optional(S.String),
-          conditions: S.optional(
-            IoK8sApiCertificatesV1CertificateSigningRequestStatusConditionsList,
-          ),
+          conditions: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1CertificateSigningRequestStatus",
@@ -3775,9 +3208,9 @@ function __c2(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1CertificateSigningRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(19),
+          status: S.optional(__S(22)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3797,9 +3230,9 @@ function __c3(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1CertificateSigningRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(19),
+          status: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1CertificateSigningRequest",
@@ -3813,8 +3246,8 @@ function __c3(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3837,9 +3270,7 @@ function __c3(j: number): any {
           serviceAccountUID: S.String,
           signerName: S.String,
           stubPKCS10Request: S.String,
-          unverifiedUserAnnotations: S.optional(
-            IoK8sApiCertificatesV1PodCertificateRequestSpecUnverifiedUserAnnotationsMap,
-          ),
+          unverifiedUserAnnotations: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1PodCertificateRequestSpec",
@@ -3854,9 +3285,9 @@ function __c3(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(26),
+          status: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3872,9 +3303,9 @@ function __c3(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(26),
+          status: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1PodCertificateRequest",
@@ -3900,7 +3331,7 @@ function __c3(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3926,11 +3357,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(32)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -3955,7 +3386,7 @@ function __c4(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -3965,10 +3396,10 @@ function __c4(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(33)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(35)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -3995,7 +3426,7 @@ function __c4(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4027,7 +3458,7 @@ function __c4(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4051,7 +3482,7 @@ function __c4(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4078,7 +3509,7 @@ function __c5(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4101,7 +3532,7 @@ function __c5(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4132,7 +3563,7 @@ function __c5(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4163,7 +3594,7 @@ function __c5(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4195,7 +3626,7 @@ function __c5(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4219,7 +3650,7 @@ function __c5(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(29)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4259,20 +3690,18 @@ function __c6(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 1:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(48));
     case 2:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(47));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(47)),
+          serverAddressByClientCIDRs: S.optional(__S(49)),
+          versions: __S(50),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -4288,29 +3717,29 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 6:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(54),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -4353,14 +3782,14 @@ function __c7(j: number): any {
         identifier: "ListCertificatesV1beta1ClusterTrustBundleRequest",
       });
     case 2:
-      return S.Array(IoK8sApiCertificatesV1beta1ClusterTrustBundle);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiCertificatesV1beta1ClusterTrustBundleListItemsList,
+          items: __S(58),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1beta1ClusterTrustBundleList",
@@ -4392,14 +3821,14 @@ function __c7(j: number): any {
         identifier: "ListCertificatesV1beta1NamespacedPodCertificateRequestRequest",
       });
     case 5:
-      return S.Array(IoK8sApiCertificatesV1beta1PodCertificateRequest);
+      return S.Array(__S(16));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiCertificatesV1beta1PodCertificateRequestListItemsList,
+          items: __S(61),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1beta1PodCertificateRequestList",
@@ -4459,14 +3888,14 @@ function __c8(j: number): any {
         identifier: "ListCertificatesV1CertificateSigningRequestRequest",
       });
     case 1:
-      return S.Array(IoK8sApiCertificatesV1CertificateSigningRequest);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiCertificatesV1CertificateSigningRequestListItemsList,
+          items: __S(65),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1CertificateSigningRequestList",
@@ -4523,14 +3952,14 @@ function __c8(j: number): any {
         identifier: "ListCertificatesV1NamespacedPodCertificateRequestRequest",
       });
     case 5:
-      return S.Array(IoK8sApiCertificatesV1PodCertificateRequest);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiCertificatesV1PodCertificateRequestListItemsList,
+          items: __S(69),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "IoK8sApiCertificatesV1PodCertificateRequestList",
@@ -4896,8 +4325,8 @@ function __c11(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4919,9 +4348,9 @@ function __c11(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1beta1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(11),
+          status: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4943,9 +4372,9 @@ function __c11(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1beta1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(11),
+          status: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4966,9 +4395,9 @@ function __c11(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1CertificateSigningRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(19),
+          status: S.optional(__S(22)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4989,9 +4418,9 @@ function __c11(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1CertificateSigningRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(19),
+          status: S.optional(__S(22)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5012,9 +4441,9 @@ function __c11(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1CertificateSigningRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1CertificateSigningRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(19),
+          status: S.optional(__S(22)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5039,8 +4468,8 @@ function __c12(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1beta1ClusterTrustBundleSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(7),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5062,9 +4491,9 @@ function __c12(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(26),
+          status: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5086,9 +4515,9 @@ function __c12(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCertificatesV1PodCertificateRequestSpec,
-          status: S.optional(IoK8sApiCertificatesV1PodCertificateRequestStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(26),
+          status: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5421,5 +4850,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "WatchCertificatesV1PodCertificateRequestListForAllNamespacesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
   }
 }

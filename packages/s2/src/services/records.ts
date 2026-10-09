@@ -6,22 +6,15 @@ import { UnknownS2Error } from "../errors.ts";
 import { S2Protocol, type S2OpError, type S2OpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { S2OpError, S2OpContext };
 
 export type Format = "raw" | "base64";
-const Format = S.String;
-
 export type Header = Array<string>;
-const Header = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Header>;
-
 /** Series of name-value pairs for this record. */
 export type AppendRecordHeadersList = Array<Header>;
-const AppendRecordHeadersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AppendRecordHeadersList>;
-
 /** Record to be appended to a stream. */
 export interface AppendRecord {
   /** Body of the record. */
@@ -30,15 +23,8 @@ export interface AppendRecord {
   headers?: AppendRecordHeadersList;
   timestamp?: number | null;
 }
-const AppendRecord = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AppendRecord>;
-
 /** Batch of records to append atomically, which must contain at least one record, and no more than 1000. The total size of a batch of records may not exceed 1 MiB of metered bytes. */
 export type AppendRequestRecordsList = Array<AppendRecord>;
-const AppendRequestRecordsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AppendRequestRecordsList>;
-
 export interface AppendRequest {
   /** Stream name. */
   stream: string;
@@ -53,8 +39,6 @@ export interface AppendRequest {
   /** Batch of records to append atomically, which must contain at least one record, and no more than 1000. The total size of a batch of records may not exceed 1 MiB of metered bytes. */
   records: AppendRequestRecordsList;
 }
-const AppendRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AppendRequest>;
-
 /** Position of a record in a stream. */
 export interface StreamPosition {
   /** Sequence number assigned by the service. */
@@ -62,8 +46,6 @@ export interface StreamPosition {
   /** Timestamp, which may be client-specified or assigned by the service. If it is assigned by the service, it will represent milliseconds since Unix epoch. */
   timestamp: number;
 }
-const StreamPosition = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StreamPosition>;
-
 /** Success response to an `append` request. */
 export interface AppendAck {
   /** Sequence number of the last record that was appended `+ 1`, and timestamp of the last record that was appended. The difference between `end.seq_num` and `start.seq_num` will be the number of records appended. */
@@ -73,20 +55,14 @@ export interface AppendAck {
   /** Sequence number that will be assigned to the next record on the stream, and timestamp of the last record on the stream. This can be greater than the `end` position in case of concurrent appends. */
   tail: StreamPosition;
 }
-const AppendAck = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AppendAck>;
-
 export interface CheckTailRequest {
   /** Stream name. */
   stream: string;
 }
-const CheckTailRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CheckTailRequest>;
-
 export interface TailResponse {
   /** Sequence number that will be assigned to the next record on the stream, and timestamp of the last record. */
   tail: StreamPosition;
 }
-const TailResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TailResponse>;
-
 export interface ReadRequest {
   /** Stream name. */
   stream: string;
@@ -113,13 +89,8 @@ export interface ReadRequest {
   /** JSON-encoded `StreamConfig` to apply if the stream is created on append or read. Unset fields inherit the basin's default stream configuration. Ignored if the stream already exists. Compact JSON is preferred. */
   s2StreamConfig?: string;
 }
-const ReadRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ReadRequest>;
-
 /** Series of name-value pairs for this record. */
 export type SequencedRecordHeadersList = Array<Header>;
-const SequencedRecordHeadersList =
-  AppendRecordHeadersList as any as S.Schema<SequencedRecordHeadersList>;
-
 /** Record that is durably sequenced on a stream. */
 export interface SequencedRecord {
   /** Body of the record. */
@@ -131,25 +102,19 @@ export interface SequencedRecord {
   /** Timestamp for this record. */
   timestamp: number;
 }
-const SequencedRecord = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SequencedRecord>;
-
 /** Records that are durably sequenced on the stream, retrieved based on the requested criteria. This can only be empty in response to a unary read (i.e. not SSE), if the request cannot be satisfied without violating an explicit bound (`count`, `bytes`, or `until`). */
 export type ReadBatchRecordsList = Array<SequencedRecord>;
-const ReadBatchRecordsList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ReadBatchRecordsList>;
-
 export interface ReadBatch {
   /** Records that are durably sequenced on the stream, retrieved based on the requested criteria. This can only be empty in response to a unary read (i.e. not SSE), if the request cannot be satisfied without violating an explicit bound (`count`, `bytes`, or `until`). */
   records: ReadBatchRecordsList;
   tail?: StreamPosition | null;
 }
-const ReadBatch = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ReadBatch>;
-
 export type AppendError = S2OpError;
 /** Append records. */
 export const append: API.OperationMethod<AppendRequest, AppendAck, AppendError, S2OpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: AppendRequest,
-    output: AppendAck,
+    input: __S(4) as any as S.Schema<AppendRequest>,
+    output: __S(6) as any as S.Schema<AppendAck>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -163,8 +128,8 @@ export const checkTail: API.OperationMethod<
   CheckTailError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckTailRequest,
-  output: TailResponse,
+  input: __S(7) as any as S.Schema<CheckTailRequest>,
+  output: __S(8) as any as S.Schema<TailResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -174,8 +139,8 @@ export type ReadError = S2OpError;
 /** Read records. */
 export const read: API.OperationMethod<ReadRequest, ReadBatch, ReadError, S2OpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ReadRequest,
-    output: ReadBatch,
+    input: __S(9) as any as S.Schema<ReadRequest>,
+    output: __S(12) as any as S.Schema<ReadBatch>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -187,27 +152,27 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(Header);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          headers: S.optional(AppendRecordHeadersList),
+          headers: S.optional(__S(1)),
           timestamp: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "AppendRecord" });
     case 3:
-      return S.Array(AppendRecord);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
-          s2Format: S.optional(Format.pipe(T.Header("s2-format"))),
+          s2Format: S.optional(S.String.pipe(T.Header("s2-format"))),
           s2EncryptionKey: S.optional(S.String.pipe(T.Header("s2-encryption-key"))),
           s2StreamConfig: S.optional(S.String.pipe(T.Header("s2-stream-config"))),
           fencing_token: S.optional(S.NullOr(S.String)),
           match_seq_num: S.optional(S.NullOr(S.Number)),
-          records: AppendRequestRecordsList,
+          records: __S(3),
         }).pipe(T.Http({ method: "POST", uri: "/streams/{stream}/records", code: 200 })),
       ).annotate({ identifier: "AppendRequest" });
     case 5:
@@ -220,9 +185,9 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          end: StreamPosition,
-          start: StreamPosition,
-          tail: StreamPosition,
+          end: __S(5),
+          start: __S(5),
+          tail: __S(5),
         }),
       ).annotate({ identifier: "AppendAck" });
     case 7:
@@ -238,7 +203,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tail: StreamPosition,
+          tail: __S(5),
         }),
       ).annotate({ identifier: "TailResponse" });
     case 1:
@@ -253,7 +218,7 @@ function __c1(j: number): any {
           bytes: S.optional(S.Number.pipe(T.Query())),
           until: S.optional(S.Number.pipe(T.Query())),
           wait: S.optional(S.Number.pipe(T.Query())),
-          s2Format: S.optional(Format.pipe(T.Header("s2-format"))),
+          s2Format: S.optional(S.String.pipe(T.Header("s2-format"))),
           s2EncryptionKey: S.optional(S.String.pipe(T.Header("s2-encryption-key"))),
           s2StreamConfig: S.optional(S.String.pipe(T.Header("s2-stream-config"))),
         }).pipe(T.Http({ method: "GET", uri: "/streams/{stream}/records", code: 200 })),
@@ -262,19 +227,32 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           body: S.optional(S.String),
-          headers: S.optional(SequencedRecordHeadersList),
+          headers: S.optional(__S(1)),
           seq_num: S.Number,
           timestamp: S.Number,
         }),
       ).annotate({ identifier: "SequencedRecord" });
     case 3:
-      return S.Array(SequencedRecord);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          records: ReadBatchRecordsList,
-          tail: S.optional(S.NullOr(StreamPosition)),
+          records: __S(11),
+          tail: S.optional(S.NullOr(__S(5))),
         }),
       ).annotate({ identifier: "ReadBatch" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

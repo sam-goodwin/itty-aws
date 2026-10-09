@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -79,8 +81,6 @@ export interface CreateEdgeRequest {
   /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
   sample?: number;
 }
-const CreateEdgeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateEdgeRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEdgeResponse {
   /** Unique WebSocket address that will receive messages from Cloudflare's edge. */
@@ -94,8 +94,6 @@ export interface CreateEdgeResponse {
   /** Unique session id of the job. */
   sessionId?: string | null;
 }
-const CreateEdgeResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateEdgeResponse>;
-
 export type JobsCreateRequestDataset =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -134,31 +132,16 @@ export type JobsCreateRequestDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const JobsCreateRequestDataset = S.String;
-
 export type JobsCreateRequestFrequency = "high" | "low";
-const JobsCreateRequestFrequency = S.String;
-
 export type JobsCreateRequestKind = "" | "edge";
-const JobsCreateRequestKind = S.String;
-
 export type JobsCreateRequestOutputOptionsFieldNamesList = Array<string>;
-const JobsCreateRequestOutputOptionsFieldNamesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<JobsCreateRequestOutputOptionsFieldNamesList>;
-
 export type JobsCreateRequestOutputOptionsOutputType = "ndjson" | "csv";
-const JobsCreateRequestOutputOptionsOutputType = S.String;
-
 export type JobsCreateRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const JobsCreateRequestOutputOptionsTimestampFormat = S.String;
-
 export interface JobsCreateRequestOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
@@ -187,11 +170,6 @@ export interface JobsCreateRequestOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean;
 }
-const JobsCreateRequestOutputOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<JobsCreateRequestOutputOptions>;
-
 export interface CreateJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -224,11 +202,6 @@ export interface CreateJobForAccountRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-const CreateJobForAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateJobForAccountRequest>;
-
 export type JobsCreateResponseDataset =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -267,29 +240,16 @@ export type JobsCreateResponseDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const JobsCreateResponseDataset = S.String;
-
 export type JobsCreateResponseFrequency = "high" | "low";
-const JobsCreateResponseFrequency = S.String;
-
 export type JobsCreateResponseKind = "" | "edge";
-const JobsCreateResponseKind = S.String;
-
 export type JobsCreateResponseOutputOptionsFieldNamesList = Array<string>;
-const JobsCreateResponseOutputOptionsFieldNamesList =
-  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsCreateResponseOutputOptionsFieldNamesList>;
-
 export type JobsCreateResponseOutputOptionsOutputType = "ndjson" | "csv";
-const JobsCreateResponseOutputOptionsOutputType = S.String;
-
 export type JobsCreateResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const JobsCreateResponseOutputOptionsTimestampFormat = S.String;
-
 export interface JobsCreateResponseOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string | null;
@@ -318,11 +278,6 @@ export interface JobsCreateResponseOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-const JobsCreateResponseOutputOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<JobsCreateResponseOutputOptions>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateJobResponse {
   /** Unique id of the job. */
@@ -358,8 +313,6 @@ export interface CreateJobResponse {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsCreateResponseOutputOptions | null;
 }
-const CreateJobResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateJobResponse>;
-
 export interface CreateJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -392,44 +345,24 @@ export interface CreateJobForZoneRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-const CreateJobForZoneRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateJobForZoneRequest>;
-
 export interface CreateOwnershipForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-const CreateOwnershipForAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateOwnershipForAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOwnershipResponse {
   filename?: string | null;
   message?: string | null;
   valid?: boolean | null;
 }
-const CreateOwnershipResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateOwnershipResponse>;
-
 export interface CreateOwnershipForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-const CreateOwnershipForZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateOwnershipForZoneRequest>;
-
 export interface CreateTransformerRequest {
   /** Identifier. */
   accountId: string;
@@ -440,14 +373,7 @@ export interface CreateTransformerRequest {
   /** Optional customer-provided description. */
   description?: string;
 }
-const CreateTransformerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateTransformerRequest>;
-
 export type CreateTransformerResponseAssociatedJobsItemObjectType = "zone" | "account";
-const CreateTransformerResponseAssociatedJobsItemObjectType = S.String;
-
 export interface CreateTransformerResponseAssociatedJobsItem {
   /** The logpush job ID. */
   id?: number | null;
@@ -458,18 +384,8 @@ export interface CreateTransformerResponseAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: CreateTransformerResponseAssociatedJobsItemObjectType | null;
 }
-const CreateTransformerResponseAssociatedJobsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateTransformerResponseAssociatedJobsItem>;
-
 export type CreateTransformerResponseAssociatedJobsList =
   Array<CreateTransformerResponseAssociatedJobsItem>;
-const CreateTransformerResponseAssociatedJobsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateTransformerResponseAssociatedJobsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTransformerResponse {
   /** The transformer ID. */
@@ -487,124 +403,67 @@ export interface CreateTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-const CreateTransformerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateTransformerResponse>;
-
 export interface DeleteJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Unique id of the job. */
   jobId: number;
 }
-const DeleteJobForAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteJobForAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteJobResponse {
   /** Unique id of the job. */
   id?: number | null;
 }
-const DeleteJobResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteJobResponse>;
-
 export interface DeleteJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Unique id of the job. */
   jobId: number;
 }
-const DeleteJobForZoneRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteJobForZoneRequest>;
-
 export interface DeleteTransformerRequest {
   /** Identifier. */
   accountId: string;
   /** The transformer ID. */
   transformerId: number;
 }
-const DeleteTransformerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteTransformerRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteTransformerResponse {
   /** The deleted transformer's ID. */
   id?: number | null;
 }
-const DeleteTransformerResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteTransformerResponse>;
-
 export interface DestinationExistsValidateForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-const DestinationExistsValidateForAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DestinationExistsValidateForAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationExistsValidateResponse {
   exists?: boolean | null;
 }
-const DestinationExistsValidateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DestinationExistsValidateResponse>;
-
 export interface DestinationExistsValidateForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-const DestinationExistsValidateForZoneRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DestinationExistsValidateForZoneRequest>;
-
 export interface DestinationValidateForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-const DestinationValidateForAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DestinationValidateForAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DestinationValidateResponse {
   message?: string | null;
   valid?: boolean | null;
 }
-const DestinationValidateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DestinationValidateResponse>;
-
 export interface DestinationValidateForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-const DestinationValidateForZoneRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DestinationValidateForZoneRequest>;
-
 export type DatasetsFieldsGetRequestDatasetId =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -643,42 +502,20 @@ export type DatasetsFieldsGetRequestDatasetId =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const DatasetsFieldsGetRequestDatasetId = S.String;
-
 export interface GetDatasetFieldForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsFieldsGetRequestDatasetId | (string & {});
 }
-const GetDatasetFieldForAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetDatasetFieldForAccountRequest>;
-
 export type DatasetsFieldsGetResultMap = { [key: string]: string | undefined };
-const DatasetsFieldsGetResultMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DatasetsFieldsGetResultMap>;
-
 export type GetDatasetFieldResponse = DatasetsFieldsGetResultMap;
-const GetDatasetFieldResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDatasetFieldResponse>;
-
 export interface GetDatasetFieldForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsFieldsGetRequestDatasetId | (string & {});
 }
-const GetDatasetFieldForZoneRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDatasetFieldForZoneRequest>;
-
 export type DatasetsJobsGetRequestDatasetId =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -717,19 +554,12 @@ export type DatasetsJobsGetRequestDatasetId =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const DatasetsJobsGetRequestDatasetId = S.String;
-
 export interface GetDatasetJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsJobsGetRequestDatasetId | (string & {});
 }
-const GetDatasetJobForAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetDatasetJobForAccountRequest>;
-
 export type DatasetsJobsGetResultItemDataset =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -768,29 +598,16 @@ export type DatasetsJobsGetResultItemDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const DatasetsJobsGetResultItemDataset = S.String;
-
 export type DatasetsJobsGetResultItemFrequency = "high" | "low";
-const DatasetsJobsGetResultItemFrequency = S.String;
-
 export type DatasetsJobsGetResultItemKind = "" | "edge";
-const DatasetsJobsGetResultItemKind = S.String;
-
 export type DatasetsJobsGetResultItemOutputOptionsFieldNamesList = Array<string>;
-const DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
-  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<DatasetsJobsGetResultItemOutputOptionsFieldNamesList>;
-
 export type DatasetsJobsGetResultItemOutputOptionsOutputType = "ndjson" | "csv";
-const DatasetsJobsGetResultItemOutputOptionsOutputType = S.String;
-
 export type DatasetsJobsGetResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const DatasetsJobsGetResultItemOutputOptionsTimestampFormat = S.String;
-
 export interface DatasetsJobsGetResultItemOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string | null;
@@ -819,11 +636,6 @@ export interface DatasetsJobsGetResultItemOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-const DatasetsJobsGetResultItemOutputOptions = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DatasetsJobsGetResultItemOutputOptions>;
-
 export interface DatasetsJobsGetResultItem {
   /** Unique id of the job. */
   id?: number | null;
@@ -858,45 +670,23 @@ export interface DatasetsJobsGetResultItem {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: DatasetsJobsGetResultItemOutputOptions | null;
 }
-const DatasetsJobsGetResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DatasetsJobsGetResultItem>;
-
 export type DatasetsJobsGetResultList = Array<DatasetsJobsGetResultItem>;
-const DatasetsJobsGetResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DatasetsJobsGetResultList>;
-
 export interface GetDatasetJobResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DatasetsJobsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetDatasetJobResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetDatasetJobResponse>;
-
 export interface GetDatasetJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsJobsGetRequestDatasetId | (string & {});
 }
-const GetDatasetJobForZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetDatasetJobForZoneRequest>;
-
 export interface GetEdgeRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetEdgeRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetEdgeRequest>;
-
 export interface EdgeGetResultItem {
   /** Unique WebSocket address that will receive messages from Cloudflare's edge. */
   destinationConf?: string | null;
@@ -909,30 +699,19 @@ export interface EdgeGetResultItem {
   /** Unique session id of the job. */
   sessionId?: string | null;
 }
-const EdgeGetResultItem = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<EdgeGetResultItem>;
-
 export type EdgeGetResultList = Array<EdgeGetResultItem>;
-const EdgeGetResultList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<EdgeGetResultList>;
-
 export interface GetEdgeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: EdgeGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetEdgeResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetEdgeResponse>;
-
 export interface GetJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** Unique id of the job. */
   jobId: number;
 }
-const GetJobForAccountRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetJobForAccountRequest>;
-
 export type JobsGetResponseDataset =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -971,29 +750,16 @@ export type JobsGetResponseDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const JobsGetResponseDataset = S.String;
-
 export type JobsGetResponseFrequency = "high" | "low";
-const JobsGetResponseFrequency = S.String;
-
 export type JobsGetResponseKind = "" | "edge";
-const JobsGetResponseKind = S.String;
-
 export type JobsGetResponseOutputOptionsFieldNamesList = Array<string>;
-const JobsGetResponseOutputOptionsFieldNamesList =
-  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsGetResponseOutputOptionsFieldNamesList>;
-
 export type JobsGetResponseOutputOptionsOutputType = "ndjson" | "csv";
-const JobsGetResponseOutputOptionsOutputType = S.String;
-
 export type JobsGetResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const JobsGetResponseOutputOptionsTimestampFormat = S.String;
-
 export interface JobsGetResponseOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string | null;
@@ -1022,11 +788,6 @@ export interface JobsGetResponseOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-const JobsGetResponseOutputOptions = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<JobsGetResponseOutputOptions>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetJobResponse {
   /** Unique id of the job. */
@@ -1062,27 +823,18 @@ export interface GetJobResponse {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsGetResponseOutputOptions | null;
 }
-const GetJobResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetJobResponse>;
-
 export interface GetJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** Unique id of the job. */
   jobId: number;
 }
-const GetJobForZoneRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetJobForZoneRequest>;
-
 export interface GetTransformerRequest {
   /** Identifier. */
   accountId: string;
   /** The transformer ID. */
   transformerId: number;
 }
-const GetTransformerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetTransformerRequest>;
-
 export type GetTransformerResponseAssociatedJobsItemObjectType = "zone" | "account";
 export interface GetTransformerResponseAssociatedJobsItem {
   /** The logpush job ID. */
@@ -1096,9 +848,6 @@ export interface GetTransformerResponseAssociatedJobsItem {
 }
 export type GetTransformerResponseAssociatedJobsList =
   Array<GetTransformerResponseAssociatedJobsItem>;
-const GetTransformerResponseAssociatedJobsList =
-  CreateTransformerResponseAssociatedJobsList as any as S.Schema<GetTransformerResponseAssociatedJobsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTransformerResponse {
   /** The transformer ID. */
@@ -1116,11 +865,6 @@ export interface GetTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-const GetTransformerResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetTransformerResponse>;
-
 export interface GetTransformersContentRequest {
   /** Identifier. */
   accountId: string;
@@ -1129,30 +873,15 @@ export interface GetTransformersContentRequest {
   /** Specific version ID to retrieve. When omitted, the latest version is returned. */
   versionId?: number;
 }
-const GetTransformersContentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetTransformersContentRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTransformersContentResponse {
   /** The SQL query content. */
   content?: string | null;
 }
-const GetTransformersContentResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetTransformersContentResponse>;
-
 export interface ListJobsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-const ListJobsForAccountRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListJobsForAccountRequest>;
-
 export type JobsListResultItemDataset =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -1191,29 +920,16 @@ export type JobsListResultItemDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const JobsListResultItemDataset = S.String;
-
 export type JobsListResultItemFrequency = "high" | "low";
-const JobsListResultItemFrequency = S.String;
-
 export type JobsListResultItemKind = "" | "edge";
-const JobsListResultItemKind = S.String;
-
 export type JobsListResultItemOutputOptionsFieldNamesList = Array<string>;
-const JobsListResultItemOutputOptionsFieldNamesList =
-  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsListResultItemOutputOptionsFieldNamesList>;
-
 export type JobsListResultItemOutputOptionsOutputType = "ndjson" | "csv";
-const JobsListResultItemOutputOptionsOutputType = S.String;
-
 export type JobsListResultItemOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const JobsListResultItemOutputOptionsTimestampFormat = S.String;
-
 export interface JobsListResultItemOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string | null;
@@ -1242,11 +958,6 @@ export interface JobsListResultItemOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-const JobsListResultItemOutputOptions = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<JobsListResultItemOutputOptions>;
-
 export interface JobsListResultItem {
   /** Unique id of the job. */
   id?: number | null;
@@ -1281,37 +992,21 @@ export interface JobsListResultItem {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsListResultItemOutputOptions | null;
 }
-const JobsListResultItem = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<JobsListResultItem>;
-
 export type JobsListResultList = Array<JobsListResultItem>;
-const JobsListResultList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<JobsListResultList>;
-
 export interface ListJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: JobsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListJobsResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListJobsResponse>;
-
 export interface ListJobsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
-const ListJobsForZoneRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListJobsForZoneRequest>;
-
 export interface ListTransformersRequest {
   /** Identifier. */
   accountId: string;
 }
-const ListTransformersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListTransformersRequest>;
-
 export type ListTransformersResultItemAssociatedJobsItemObjectType = "zone" | "account";
 export interface ListTransformersResultItemAssociatedJobsItem {
   /** The logpush job ID. */
@@ -1325,9 +1020,6 @@ export interface ListTransformersResultItemAssociatedJobsItem {
 }
 export type ListTransformersResultItemAssociatedJobsList =
   Array<ListTransformersResultItemAssociatedJobsItem>;
-const ListTransformersResultItemAssociatedJobsList =
-  CreateTransformerResponseAssociatedJobsList as any as S.Schema<ListTransformersResultItemAssociatedJobsList>;
-
 export interface ListTransformersResultItem {
   /** The transformer ID. */
   id?: number | null;
@@ -1344,23 +1036,8 @@ export interface ListTransformersResultItem {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-const ListTransformersResultItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListTransformersResultItem>;
-
 export type ListTransformersResultList = Array<ListTransformersResultItem>;
-const ListTransformersResultList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListTransformersResultList>;
-
 export type ListTransformersResponse = ListTransformersResultList;
-const ListTransformersResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListTransformersResponse>;
-
 export interface ListTransformersVersionsRequest {
   /** Identifier. */
   accountId: string;
@@ -1369,11 +1046,6 @@ export interface ListTransformersVersionsRequest {
   /** Maximum number of versions to return. */
   limit?: number;
 }
-const ListTransformersVersionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListTransformersVersionsRequest>;
-
 export interface ListTransformersVersionsResultItem {
   /** Unique identifier for this version. */
   id?: number | null;
@@ -1382,61 +1054,26 @@ export interface ListTransformersVersionsResultItem {
   /** Sequential version number. */
   version?: number | null;
 }
-const ListTransformersVersionsResultItem = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListTransformersVersionsResultItem>;
-
 export type ListTransformersVersionsResultList = Array<ListTransformersVersionsResultItem>;
-const ListTransformersVersionsResultList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListTransformersVersionsResultList>;
-
 export type ListTransformersVersionsResponse = ListTransformersVersionsResultList;
-const ListTransformersVersionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListTransformersVersionsResponse>;
-
 export interface OriginValidateForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions: string;
 }
-const OriginValidateForAccountRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<OriginValidateForAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface OriginValidateResponse {
   message?: string | null;
   valid?: boolean | null;
 }
-const OriginValidateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<OriginValidateResponse>;
-
 export interface OriginValidateForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions: string;
 }
-const OriginValidateForZoneRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<OriginValidateForZoneRequest>;
-
 export type PreviewTransformerRequestInputMap = { [key: string]: unknown | undefined };
-const PreviewTransformerRequestInputMap = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PreviewTransformerRequestInputMap>;
-
 export interface PreviewTransformerRequest {
   /** Identifier. */
   accountId: string;
@@ -1445,48 +1082,19 @@ export interface PreviewTransformerRequest {
   /** The SQL transformer query. Maximum 32 KB. The query must contain a FROM clause referencing a valid logpush dataset. */
   sql: string;
 }
-const PreviewTransformerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<PreviewTransformerRequest>;
-
 export type PreviewTransformerResultItemMap = { [key: string]: unknown | undefined };
-const PreviewTransformerResultItemMap =
-  PreviewTransformerRequestInputMap as any as S.Schema<PreviewTransformerResultItemMap>;
-
 export type PreviewTransformerResultList = Array<PreviewTransformerResultItemMap>;
-const PreviewTransformerResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<PreviewTransformerResultList>;
-
 export type PreviewTransformerResponse = PreviewTransformerResultList;
-const PreviewTransformerResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<PreviewTransformerResponse>;
-
 export type JobsUpdateRequestFrequency = "high" | "low";
-const JobsUpdateRequestFrequency = S.String;
-
 export type JobsUpdateRequestKind = "" | "edge";
-const JobsUpdateRequestKind = S.String;
-
 export type JobsUpdateRequestOutputOptionsFieldNamesList = Array<string>;
-const JobsUpdateRequestOutputOptionsFieldNamesList =
-  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsUpdateRequestOutputOptionsFieldNamesList>;
-
 export type JobsUpdateRequestOutputOptionsOutputType = "ndjson" | "csv";
-const JobsUpdateRequestOutputOptionsOutputType = S.String;
-
 export type JobsUpdateRequestOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const JobsUpdateRequestOutputOptionsTimestampFormat = S.String;
-
 export interface JobsUpdateRequestOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string;
@@ -1515,11 +1123,6 @@ export interface JobsUpdateRequestOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean;
 }
-const JobsUpdateRequestOutputOptions = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<JobsUpdateRequestOutputOptions>;
-
 export interface UpdateJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -1552,11 +1155,6 @@ export interface UpdateJobForAccountRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-const UpdateJobForAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UpdateJobForAccountRequest>;
-
 export type JobsUpdateResponseDataset =
   | "access_requests"
   | "account_abuse_protection_events"
@@ -1595,29 +1193,16 @@ export type JobsUpdateResponseDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-const JobsUpdateResponseDataset = S.String;
-
 export type JobsUpdateResponseFrequency = "high" | "low";
-const JobsUpdateResponseFrequency = S.String;
-
 export type JobsUpdateResponseKind = "" | "edge";
-const JobsUpdateResponseKind = S.String;
-
 export type JobsUpdateResponseOutputOptionsFieldNamesList = Array<string>;
-const JobsUpdateResponseOutputOptionsFieldNamesList =
-  JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsUpdateResponseOutputOptionsFieldNamesList>;
-
 export type JobsUpdateResponseOutputOptionsOutputType = "ndjson" | "csv";
-const JobsUpdateResponseOutputOptionsOutputType = S.String;
-
 export type JobsUpdateResponseOutputOptionsTimestampFormat =
   | "unixnano"
   | "unix"
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-const JobsUpdateResponseOutputOptionsTimestampFormat = S.String;
-
 export interface JobsUpdateResponseOutputOptions {
   /** String to be prepended before each batch. */
   batchPrefix?: string | null;
@@ -1646,11 +1231,6 @@ export interface JobsUpdateResponseOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-const JobsUpdateResponseOutputOptions = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<JobsUpdateResponseOutputOptions>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateJobResponse {
   /** Unique id of the job. */
@@ -1686,8 +1266,6 @@ export interface UpdateJobResponse {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsUpdateResponseOutputOptions | null;
 }
-const UpdateJobResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UpdateJobResponse>;
-
 export interface UpdateJobForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -1720,11 +1298,6 @@ export interface UpdateJobForZoneRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-const UpdateJobForZoneRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateJobForZoneRequest>;
-
 export interface UpdateTransformerRequest {
   /** Identifier. */
   accountId: string;
@@ -1737,11 +1310,6 @@ export interface UpdateTransformerRequest {
   /** Optional customer-provided description. */
   description?: string;
 }
-const UpdateTransformerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateTransformerRequest>;
-
 export type UpdateTransformerResponseAssociatedJobsItemObjectType = "zone" | "account";
 export interface UpdateTransformerResponseAssociatedJobsItem {
   /** The logpush job ID. */
@@ -1772,9 +1340,6 @@ export interface UpdateTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-const UpdateTransformerResponse =
-  CreateTransformerResponse as any as S.Schema<UpdateTransformerResponse>;
-
 export interface ValidateOwnershipForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -1783,20 +1348,10 @@ export interface ValidateOwnershipForAccountRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge: string;
 }
-const ValidateOwnershipForAccountRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ValidateOwnershipForAccountRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ValidateOwnershipResponse {
   valid?: boolean | null;
 }
-const ValidateOwnershipResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ValidateOwnershipResponse>;
-
 export interface ValidateOwnershipForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -1805,11 +1360,6 @@ export interface ValidateOwnershipForZoneRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge: string;
 }
-const ValidateOwnershipForZoneRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ValidateOwnershipForZoneRequest>;
-
 export type CreateEdgeError = CloudflareOpError;
 /** Creates a new Instant Logs job for a zone. */
 export const createEdge: API.OperationMethod<
@@ -1818,8 +1368,8 @@ export const createEdge: API.OperationMethod<
   CreateEdgeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEdgeRequest,
-  output: CreateEdgeResponse,
+  input: __S(0) as any as S.Schema<CreateEdgeRequest>,
+  output: __S(1) as any as S.Schema<CreateEdgeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1833,8 +1383,8 @@ export const createJobForAccount: API.OperationMethod<
   CreateJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJobForAccountRequest,
-  output: CreateJobResponse,
+  input: __S(4) as any as S.Schema<CreateJobForAccountRequest>,
+  output: __S(6) as any as S.Schema<CreateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1848,8 +1398,8 @@ export const createJobForZone: API.OperationMethod<
   CreateJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJobForZoneRequest,
-  output: CreateJobResponse,
+  input: __S(7) as any as S.Schema<CreateJobForZoneRequest>,
+  output: __S(6) as any as S.Schema<CreateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1863,8 +1413,8 @@ export const createOwnershipForAccount: API.OperationMethod<
   CreateOwnershipForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOwnershipForAccountRequest,
-  output: CreateOwnershipResponse,
+  input: __S(8) as any as S.Schema<CreateOwnershipForAccountRequest>,
+  output: __S(9) as any as S.Schema<CreateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1878,8 +1428,8 @@ export const createOwnershipForZone: API.OperationMethod<
   CreateOwnershipForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOwnershipForZoneRequest,
-  output: CreateOwnershipResponse,
+  input: __S(10) as any as S.Schema<CreateOwnershipForZoneRequest>,
+  output: __S(9) as any as S.Schema<CreateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1893,8 +1443,8 @@ export const createTransformer: API.OperationMethod<
   CreateTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformerRequest,
-  output: CreateTransformerResponse,
+  input: __S(11) as any as S.Schema<CreateTransformerRequest>,
+  output: __S(14) as any as S.Schema<CreateTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1908,8 +1458,8 @@ export const deleteJobForAccount: API.OperationMethod<
   DeleteJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJobForAccountRequest,
-  output: DeleteJobResponse,
+  input: __S(15) as any as S.Schema<DeleteJobForAccountRequest>,
+  output: __S(16) as any as S.Schema<DeleteJobResponse>,
   errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1923,8 +1473,8 @@ export const deleteJobForZone: API.OperationMethod<
   DeleteJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJobForZoneRequest,
-  output: DeleteJobResponse,
+  input: __S(17) as any as S.Schema<DeleteJobForZoneRequest>,
+  output: __S(16) as any as S.Schema<DeleteJobResponse>,
   errors: [JobNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1488,8 @@ export const deleteTransformer: API.OperationMethod<
   DeleteTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTransformerRequest,
-  output: DeleteTransformerResponse,
+  input: __S(18) as any as S.Schema<DeleteTransformerRequest>,
+  output: __S(19) as any as S.Schema<DeleteTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1503,8 @@ export const destinationExistsValidateForAccount: API.OperationMethod<
   DestinationExistsValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestinationExistsValidateForAccountRequest,
-  output: DestinationExistsValidateResponse,
+  input: __S(20) as any as S.Schema<DestinationExistsValidateForAccountRequest>,
+  output: __S(21) as any as S.Schema<DestinationExistsValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1518,8 @@ export const destinationExistsValidateForZone: API.OperationMethod<
   DestinationExistsValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestinationExistsValidateForZoneRequest,
-  output: DestinationExistsValidateResponse,
+  input: __S(22) as any as S.Schema<DestinationExistsValidateForZoneRequest>,
+  output: __S(21) as any as S.Schema<DestinationExistsValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1533,8 @@ export const destinationValidateForAccount: API.OperationMethod<
   DestinationValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestinationValidateForAccountRequest,
-  output: DestinationValidateResponse,
+  input: __S(23) as any as S.Schema<DestinationValidateForAccountRequest>,
+  output: __S(24) as any as S.Schema<DestinationValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1548,8 @@ export const destinationValidateForZone: API.OperationMethod<
   DestinationValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestinationValidateForZoneRequest,
-  output: DestinationValidateResponse,
+  input: __S(25) as any as S.Schema<DestinationValidateForZoneRequest>,
+  output: __S(24) as any as S.Schema<DestinationValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2013,8 +1563,8 @@ export const getDatasetFieldForAccount: API.OperationMethod<
   GetDatasetFieldForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetFieldForAccountRequest,
-  output: GetDatasetFieldResponse,
+  input: __S(26) as any as S.Schema<GetDatasetFieldForAccountRequest>,
+  output: __S(28) as any as S.Schema<GetDatasetFieldResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2028,8 +1578,8 @@ export const getDatasetFieldForZone: API.OperationMethod<
   GetDatasetFieldForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetFieldForZoneRequest,
-  output: GetDatasetFieldResponse,
+  input: __S(29) as any as S.Schema<GetDatasetFieldForZoneRequest>,
+  output: __S(28) as any as S.Schema<GetDatasetFieldResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2045,8 +1595,8 @@ export const getDatasetJobForAccount: API.PaginatedOperationMethod<
   DatasetsJobsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetDatasetJobForAccountRequest,
-    output: GetDatasetJobResponse,
+    input: __S(30) as any as S.Schema<GetDatasetJobForAccountRequest>,
+    output: __S(34) as any as S.Schema<GetDatasetJobResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2065,8 +1615,8 @@ export const getDatasetJobForZone: API.PaginatedOperationMethod<
   DatasetsJobsGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetDatasetJobForZoneRequest,
-    output: GetDatasetJobResponse,
+    input: __S(35) as any as S.Schema<GetDatasetJobForZoneRequest>,
+    output: __S(34) as any as S.Schema<GetDatasetJobResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2085,8 +1635,8 @@ export const getEdge: API.PaginatedOperationMethod<
   EdgeGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetEdgeRequest,
-    output: GetEdgeResponse,
+    input: __S(36) as any as S.Schema<GetEdgeRequest>,
+    output: __S(39) as any as S.Schema<GetEdgeResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2103,8 +1653,8 @@ export const getJobForAccount: API.OperationMethod<
   GetJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobForAccountRequest,
-  output: GetJobResponse,
+  input: __S(40) as any as S.Schema<GetJobForAccountRequest>,
+  output: __S(42) as any as S.Schema<GetJobResponse>,
   errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2118,8 +1668,8 @@ export const getJobForZone: API.OperationMethod<
   GetJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobForZoneRequest,
-  output: GetJobResponse,
+  input: __S(43) as any as S.Schema<GetJobForZoneRequest>,
+  output: __S(42) as any as S.Schema<GetJobResponse>,
   errors: [JobNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2133,8 +1683,8 @@ export const getTransformer: API.OperationMethod<
   GetTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformerRequest,
-  output: GetTransformerResponse,
+  input: __S(44) as any as S.Schema<GetTransformerRequest>,
+  output: __S(45) as any as S.Schema<GetTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2148,8 +1698,8 @@ export const getTransformersContent: API.OperationMethod<
   GetTransformersContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformersContentRequest,
-  output: GetTransformersContentResponse,
+  input: __S(46) as any as S.Schema<GetTransformersContentRequest>,
+  output: __S(47) as any as S.Schema<GetTransformersContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2165,8 +1715,8 @@ export const listJobsForAccount: API.PaginatedOperationMethod<
   JobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListJobsForAccountRequest,
-    output: ListJobsResponse,
+    input: __S(48) as any as S.Schema<ListJobsForAccountRequest>,
+    output: __S(52) as any as S.Schema<ListJobsResponse>,
     errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2185,8 +1735,8 @@ export const listJobsForZone: API.PaginatedOperationMethod<
   JobsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListJobsForZoneRequest,
-    output: ListJobsResponse,
+    input: __S(53) as any as S.Schema<ListJobsForZoneRequest>,
+    output: __S(52) as any as S.Schema<ListJobsResponse>,
     errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2203,8 +1753,8 @@ export const listTransformers: API.OperationMethod<
   ListTransformersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransformersRequest,
-  output: ListTransformersResponse,
+  input: __S(54) as any as S.Schema<ListTransformersRequest>,
+  output: __S(57) as any as S.Schema<ListTransformersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2218,8 +1768,8 @@ export const listTransformersVersions: API.OperationMethod<
   ListTransformersVersionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransformersVersionsRequest,
-  output: ListTransformersVersionsResponse,
+  input: __S(58) as any as S.Schema<ListTransformersVersionsRequest>,
+  output: __S(61) as any as S.Schema<ListTransformersVersionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2233,8 +1783,8 @@ export const originValidateForAccount: API.OperationMethod<
   OriginValidateForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginValidateForAccountRequest,
-  output: OriginValidateResponse,
+  input: __S(62) as any as S.Schema<OriginValidateForAccountRequest>,
+  output: __S(63) as any as S.Schema<OriginValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2248,8 +1798,8 @@ export const originValidateForZone: API.OperationMethod<
   OriginValidateForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginValidateForZoneRequest,
-  output: OriginValidateResponse,
+  input: __S(64) as any as S.Schema<OriginValidateForZoneRequest>,
+  output: __S(63) as any as S.Schema<OriginValidateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2263,8 +1813,8 @@ export const previewTransformer: API.OperationMethod<
   PreviewTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewTransformerRequest,
-  output: PreviewTransformerResponse,
+  input: __S(66) as any as S.Schema<PreviewTransformerRequest>,
+  output: __S(68) as any as S.Schema<PreviewTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2278,8 +1828,8 @@ export const updateJobForAccount: API.OperationMethod<
   UpdateJobForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJobForAccountRequest,
-  output: UpdateJobResponse,
+  input: __S(70) as any as S.Schema<UpdateJobForAccountRequest>,
+  output: __S(72) as any as S.Schema<UpdateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2293,8 +1843,8 @@ export const updateJobForZone: API.OperationMethod<
   UpdateJobForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJobForZoneRequest,
-  output: UpdateJobResponse,
+  input: __S(73) as any as S.Schema<UpdateJobForZoneRequest>,
+  output: __S(72) as any as S.Schema<UpdateJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2308,8 +1858,8 @@ export const updateTransformer: API.OperationMethod<
   UpdateTransformerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTransformerRequest,
-  output: UpdateTransformerResponse,
+  input: __S(74) as any as S.Schema<UpdateTransformerRequest>,
+  output: __S(14) as any as S.Schema<UpdateTransformerResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2323,8 +1873,8 @@ export const validateOwnershipForAccount: API.OperationMethod<
   ValidateOwnershipForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateOwnershipForAccountRequest,
-  output: ValidateOwnershipResponse,
+  input: __S(75) as any as S.Schema<ValidateOwnershipForAccountRequest>,
+  output: __S(76) as any as S.Schema<ValidateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2338,8 +1888,8 @@ export const validateOwnershipForZone: API.OperationMethod<
   ValidateOwnershipForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateOwnershipForZoneRequest,
-  output: ValidateOwnershipResponse,
+  input: __S(77) as any as S.Schema<ValidateOwnershipForZoneRequest>,
+  output: __S(76) as any as S.Schema<ValidateOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2377,21 +1927,15 @@ function __c0(j: number): any {
           batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            JobsCreateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
-          ),
+          fieldNames: S.optional(__S(2).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            JobsCreateRequestOutputOptionsOutputType.pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.String.pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            JobsCreateRequestOutputOptionsTimestampFormat.pipe(T.Body("timestamp_format")),
-          ),
+          timestampFormat: S.optional(S.String.pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -2402,12 +1946,12 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           destinationConf: S.String.pipe(T.Body("destination_conf")),
-          dataset: S.optional(JobsCreateRequestDataset),
+          dataset: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-          frequency: S.optional(JobsCreateRequestFrequency),
-          kind: S.optional(JobsCreateRequestKind),
+          frequency: S.optional(S.String),
+          kind: S.optional(S.String),
           logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
           maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
           maxUploadIntervalSeconds: S.optional(
@@ -2415,7 +1959,7 @@ function __c0(j: number): any {
           ),
           maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
           name: S.optional(S.String),
-          outputOptions: S.optional(JobsCreateRequestOutputOptions.pipe(T.Body("output_options"))),
+          outputOptions: S.optional(__S(3).pipe(T.Body("output_options"))),
           ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/logpush/jobs", code: 200 }))
@@ -2429,23 +1973,15 @@ function __c0(j: number): any {
           batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            S.NullOr(JobsCreateResponseOutputOptionsFieldNamesList).pipe(T.Body("field_names")),
-          ),
+          fieldNames: S.optional(S.NullOr(__S(2)).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            S.NullOr(JobsCreateResponseOutputOptionsOutputType).pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            S.NullOr(JobsCreateResponseOutputOptionsTimestampFormat).pipe(
-              T.Body("timestamp_format"),
-            ),
-          ),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -2455,15 +1991,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(JobsCreateResponseDataset)),
+          dataset: S.optional(S.NullOr(S.String)),
           destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
           filterAttackTraffic: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
           ),
-          frequency: S.optional(S.NullOr(JobsCreateResponseFrequency)),
-          kind: S.optional(S.NullOr(JobsCreateResponseKind)),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
           lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
           lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
           logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
@@ -2473,9 +2009,7 @@ function __c0(j: number): any {
           ),
           maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
           name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(
-            S.NullOr(JobsCreateResponseOutputOptions).pipe(T.Body("output_options")),
-          ),
+          outputOptions: S.optional(S.NullOr(__S(5)).pipe(T.Body("output_options"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateJobResponse" });
     case 7:
@@ -2483,12 +2017,12 @@ function __c0(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           destinationConf: S.String.pipe(T.Body("destination_conf")),
-          dataset: S.optional(JobsCreateRequestDataset),
+          dataset: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-          frequency: S.optional(JobsCreateRequestFrequency),
-          kind: S.optional(JobsCreateRequestKind),
+          frequency: S.optional(S.String),
+          kind: S.optional(S.String),
           logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
           maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
           maxUploadIntervalSeconds: S.optional(
@@ -2496,7 +2030,7 @@ function __c0(j: number): any {
           ),
           maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
           name: S.optional(S.String),
-          outputOptions: S.optional(JobsCreateRequestOutputOptions.pipe(T.Body("output_options"))),
+          outputOptions: S.optional(__S(3).pipe(T.Body("output_options"))),
           ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/logpush/jobs", code: 200 }))
@@ -2561,24 +2095,18 @@ function __c1(j: number): any {
           id: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
           objectTag: S.optional(S.NullOr(S.String).pipe(T.Body("object_tag"))),
-          objectType: S.optional(
-            S.NullOr(CreateTransformerResponseAssociatedJobsItemObjectType).pipe(
-              T.Body("object_type"),
-            ),
-          ),
+          objectType: S.optional(S.NullOr(S.String).pipe(T.Body("object_type"))),
         }),
       ).annotate({
         identifier: "CreateTransformerResponseAssociatedJobsItem",
       });
     case 5:
-      return S.Array(CreateTransformerResponseAssociatedJobsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          associatedJobs: S.optional(
-            S.NullOr(CreateTransformerResponseAssociatedJobsList).pipe(T.Body("associated_jobs")),
-          ),
+          associatedJobs: S.optional(S.NullOr(__S(13)).pipe(T.Body("associated_jobs"))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dataset: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
@@ -2742,7 +2270,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: DatasetsFieldsGetRequestDatasetId.pipe(T.Label("dataset_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
         })
           .pipe(
             T.Http({
@@ -2759,13 +2287,13 @@ function __c3(j: number): any {
       return S.Record(S.String, S.String);
     case 4:
       return S.suspend(() =>
-        DatasetsFieldsGetResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(27).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDatasetFieldResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: DatasetsFieldsGetRequestDatasetId.pipe(T.Label("dataset_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
         })
           .pipe(
             T.Http({
@@ -2782,7 +2310,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          datasetId: DatasetsJobsGetRequestDatasetId.pipe(T.Label("dataset_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
         })
           .pipe(
             T.Http({
@@ -2801,25 +2329,15 @@ function __c3(j: number): any {
           batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            S.NullOr(DatasetsJobsGetResultItemOutputOptionsFieldNamesList).pipe(
-              T.Body("field_names"),
-            ),
-          ),
+          fieldNames: S.optional(S.NullOr(__S(2)).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            S.NullOr(DatasetsJobsGetResultItemOutputOptionsOutputType).pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            S.NullOr(DatasetsJobsGetResultItemOutputOptionsTimestampFormat).pipe(
-              T.Body("timestamp_format"),
-            ),
-          ),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -2833,15 +2351,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(DatasetsJobsGetResultItemDataset)),
+          dataset: S.optional(S.NullOr(S.String)),
           destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
           filterAttackTraffic: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
           ),
-          frequency: S.optional(S.NullOr(DatasetsJobsGetResultItemFrequency)),
-          kind: S.optional(S.NullOr(DatasetsJobsGetResultItemKind)),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
           lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
           lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
           logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
@@ -2851,19 +2369,17 @@ function __c4(j: number): any {
           ),
           maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
           name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(
-            S.NullOr(DatasetsJobsGetResultItemOutputOptions).pipe(T.Body("output_options")),
-          ),
+          outputOptions: S.optional(S.NullOr(__S(31)).pipe(T.Body("output_options"))),
         }),
       ).annotate({
         identifier: "DatasetsJobsGetResultItem",
       });
     case 1:
-      return S.Array(DatasetsJobsGetResultItem);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: DatasetsJobsGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(33).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDatasetJobResponse" });
@@ -2871,7 +2387,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          datasetId: DatasetsJobsGetRequestDatasetId.pipe(T.Label("dataset_id")),
+          datasetId: S.String.pipe(T.Label("dataset_id")),
         })
           .pipe(
             T.Http({
@@ -2903,11 +2419,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "EdgeGetResultItem" });
     case 6:
-      return S.Array(EdgeGetResultItem);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: EdgeGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(38).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEdgeResponse" });
@@ -2936,21 +2452,15 @@ function __c5(j: number): any {
           batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            S.NullOr(JobsGetResponseOutputOptionsFieldNamesList).pipe(T.Body("field_names")),
-          ),
+          fieldNames: S.optional(S.NullOr(__S(2)).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            S.NullOr(JobsGetResponseOutputOptionsOutputType).pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            S.NullOr(JobsGetResponseOutputOptionsTimestampFormat).pipe(T.Body("timestamp_format")),
-          ),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -2960,15 +2470,15 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(JobsGetResponseDataset)),
+          dataset: S.optional(S.NullOr(S.String)),
           destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
           filterAttackTraffic: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
           ),
-          frequency: S.optional(S.NullOr(JobsGetResponseFrequency)),
-          kind: S.optional(S.NullOr(JobsGetResponseKind)),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
           lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
           lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
           logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
@@ -2978,9 +2488,7 @@ function __c5(j: number): any {
           ),
           maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
           name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(
-            S.NullOr(JobsGetResponseOutputOptions).pipe(T.Body("output_options")),
-          ),
+          outputOptions: S.optional(S.NullOr(__S(41)).pipe(T.Body("output_options"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetJobResponse" });
     case 3:
@@ -3011,9 +2519,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          associatedJobs: S.optional(
-            S.NullOr(GetTransformerResponseAssociatedJobsList).pipe(T.Body("associated_jobs")),
-          ),
+          associatedJobs: S.optional(S.NullOr(__S(13)).pipe(T.Body("associated_jobs"))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dataset: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
@@ -3067,23 +2573,15 @@ function __c6(j: number): any {
           batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            S.NullOr(JobsListResultItemOutputOptionsFieldNamesList).pipe(T.Body("field_names")),
-          ),
+          fieldNames: S.optional(S.NullOr(__S(2)).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            S.NullOr(JobsListResultItemOutputOptionsOutputType).pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            S.NullOr(JobsListResultItemOutputOptionsTimestampFormat).pipe(
-              T.Body("timestamp_format"),
-            ),
-          ),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -3093,15 +2591,15 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(JobsListResultItemDataset)),
+          dataset: S.optional(S.NullOr(S.String)),
           destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
           filterAttackTraffic: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
           ),
-          frequency: S.optional(S.NullOr(JobsListResultItemFrequency)),
-          kind: S.optional(S.NullOr(JobsListResultItemKind)),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
           lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
           lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
           logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
@@ -3111,17 +2609,15 @@ function __c6(j: number): any {
           ),
           maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
           name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(
-            S.NullOr(JobsListResultItemOutputOptions).pipe(T.Body("output_options")),
-          ),
+          outputOptions: S.optional(S.NullOr(__S(49)).pipe(T.Body("output_options"))),
         }),
       ).annotate({ identifier: "JobsListResultItem" });
     case 3:
-      return S.Array(JobsListResultItem);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: JobsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(51).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListJobsResponse" });
@@ -3151,9 +2647,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          associatedJobs: S.optional(
-            S.NullOr(ListTransformersResultItemAssociatedJobsList).pipe(T.Body("associated_jobs")),
-          ),
+          associatedJobs: S.optional(S.NullOr(__S(13)).pipe(T.Body("associated_jobs"))),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           dataset: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
@@ -3168,10 +2662,10 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListTransformersResultItem);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
-        ListTransformersResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(56).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListTransformersResponse" });
     case 2:
       return S.suspend(() =>
@@ -3202,13 +2696,10 @@ function __c7(j: number): any {
         identifier: "ListTransformersVersionsResultItem",
       });
     case 4:
-      return S.Array(ListTransformersVersionsResultItem);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
-        ListTransformersVersionsResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(60).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListTransformersVersionsResponse",
       });
@@ -3259,7 +2750,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          input: PreviewTransformerRequestInputMap,
+          input: __S(65) as any as S.Schema<PreviewTransformerRequestInputMap>,
           sql: S.String,
         })
           .pipe(
@@ -3274,10 +2765,10 @@ function __c8(j: number): any {
         identifier: "PreviewTransformerRequest",
       });
     case 3:
-      return S.Array(PreviewTransformerResultItemMap);
+      return S.Array(__S(65));
     case 4:
       return S.suspend(() =>
-        PreviewTransformerResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(67).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PreviewTransformerResponse",
       });
@@ -3287,21 +2778,15 @@ function __c8(j: number): any {
           batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.String.pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            JobsUpdateRequestOutputOptionsFieldNamesList.pipe(T.Body("field_names")),
-          ),
+          fieldNames: S.optional(__S(2).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.Boolean.pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            JobsUpdateRequestOutputOptionsOutputType.pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.String.pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.String.pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.String.pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.String.pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.String.pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.Number.pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            JobsUpdateRequestOutputOptionsTimestampFormat.pipe(T.Body("timestamp_format")),
-          ),
+          timestampFormat: S.optional(S.String.pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.Boolean.pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -3316,8 +2801,8 @@ function __c8(j: number): any {
           enabled: S.optional(S.Boolean),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-          frequency: S.optional(JobsUpdateRequestFrequency),
-          kind: S.optional(JobsUpdateRequestKind),
+          frequency: S.optional(S.String),
+          kind: S.optional(S.String),
           logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
           maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
           maxUploadIntervalSeconds: S.optional(
@@ -3325,7 +2810,7 @@ function __c8(j: number): any {
           ),
           maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
           name: S.optional(S.String),
-          outputOptions: S.optional(JobsUpdateRequestOutputOptions.pipe(T.Body("output_options"))),
+          outputOptions: S.optional(__S(69).pipe(T.Body("output_options"))),
           ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
         })
           .pipe(
@@ -3345,23 +2830,15 @@ function __c8(j: number): any {
           batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
           batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
           fieldDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("field_delimiter"))),
-          fieldNames: S.optional(
-            S.NullOr(JobsUpdateResponseOutputOptionsFieldNamesList).pipe(T.Body("field_names")),
-          ),
+          fieldNames: S.optional(S.NullOr(__S(2)).pipe(T.Body("field_names"))),
           mergeSubrequests: S.optional(S.NullOr(S.Boolean).pipe(T.Body("merge_subrequests"))),
-          outputType: S.optional(
-            S.NullOr(JobsUpdateResponseOutputOptionsOutputType).pipe(T.Body("output_type")),
-          ),
+          outputType: S.optional(S.NullOr(S.String).pipe(T.Body("output_type"))),
           recordDelimiter: S.optional(S.NullOr(S.String).pipe(T.Body("record_delimiter"))),
           recordPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("record_prefix"))),
           recordSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("record_suffix"))),
           recordTemplate: S.optional(S.NullOr(S.String).pipe(T.Body("record_template"))),
           sampleRate: S.optional(S.NullOr(S.Number).pipe(T.Body("sample_rate"))),
-          timestampFormat: S.optional(
-            S.NullOr(JobsUpdateResponseOutputOptionsTimestampFormat).pipe(
-              T.Body("timestamp_format"),
-            ),
-          ),
+          timestampFormat: S.optional(S.NullOr(S.String).pipe(T.Body("timestamp_format"))),
           "cve-2021-44228": S.optional(S.NullOr(S.Boolean).pipe(T.Body("CVE-2021-44228"))),
         }),
       ).annotate({
@@ -3375,15 +2852,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.Number)),
-          dataset: S.optional(S.NullOr(JobsUpdateResponseDataset)),
+          dataset: S.optional(S.NullOr(S.String)),
           destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
           errorMessage: S.optional(S.NullOr(S.String).pipe(T.Body("error_message"))),
           filterAttackTraffic: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("filter_attack_traffic")),
           ),
-          frequency: S.optional(S.NullOr(JobsUpdateResponseFrequency)),
-          kind: S.optional(S.NullOr(JobsUpdateResponseKind)),
+          frequency: S.optional(S.NullOr(S.String)),
+          kind: S.optional(S.NullOr(S.String)),
           lastComplete: S.optional(S.NullOr(S.String).pipe(T.Body("last_complete"))),
           lastError: S.optional(S.NullOr(S.String).pipe(T.Body("last_error"))),
           logpullOptions: S.optional(S.NullOr(S.String).pipe(T.Body("logpull_options"))),
@@ -3393,9 +2870,7 @@ function __c9(j: number): any {
           ),
           maxUploadRecords: S.optional(S.NullOr(S.Number).pipe(T.Body("max_upload_records"))),
           name: S.optional(S.NullOr(S.String)),
-          outputOptions: S.optional(
-            S.NullOr(JobsUpdateResponseOutputOptions).pipe(T.Body("output_options")),
-          ),
+          outputOptions: S.optional(S.NullOr(__S(71)).pipe(T.Body("output_options"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateJobResponse" });
     case 1:
@@ -3407,8 +2882,8 @@ function __c9(j: number): any {
           enabled: S.optional(S.Boolean),
           filter: S.optional(S.String),
           filterAttackTraffic: S.optional(S.Boolean.pipe(T.Body("filter_attack_traffic"))),
-          frequency: S.optional(JobsUpdateRequestFrequency),
-          kind: S.optional(JobsUpdateRequestKind),
+          frequency: S.optional(S.String),
+          kind: S.optional(S.String),
           logpullOptions: S.optional(S.String.pipe(T.Body("logpull_options"))),
           maxUploadBytes: S.optional(S.Number.pipe(T.Body("max_upload_bytes"))),
           maxUploadIntervalSeconds: S.optional(
@@ -3416,7 +2891,7 @@ function __c9(j: number): any {
           ),
           maxUploadRecords: S.optional(S.Number.pipe(T.Body("max_upload_records"))),
           name: S.optional(S.String),
-          outputOptions: S.optional(JobsUpdateRequestOutputOptions.pipe(T.Body("output_options"))),
+          outputOptions: S.optional(__S(69).pipe(T.Body("output_options"))),
           ownershipChallenge: S.optional(S.String.pipe(T.Body("ownership_challenge"))),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/logpush/jobs/{job_id}", code: 200 }))
@@ -3484,5 +2959,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "ValidateOwnershipForZoneRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

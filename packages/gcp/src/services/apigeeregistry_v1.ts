@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,29 +66,15 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
-
 /** A top-level description of an API. Produced by producers and are commitments to provide services. */
 export interface Api {
   /** The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` */
@@ -110,8 +98,6 @@ export interface Api {
   /** Human-meaningful name. */
   displayName?: string;
 }
-const Api = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Api>;
-
 export interface CreateProjectsLocationsApisRequest {
   /** Required. The parent, which owns this collection of APIs. Format: `projects/*\/locations/*` */
   parent: string;
@@ -120,11 +106,6 @@ export interface CreateProjectsLocationsApisRequest {
   /** Request body */
   body?: Api;
 }
-const CreateProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateProjectsLocationsApisRequest>;
-
 /** Artifacts of resources. Artifacts are unique (single-value) per resource and are used to store metadata that is too large or numerous to be stored directly on the resource. Since artifacts are stored separately from parent resources, they should generally be used for metadata that is needed infrequently, i.e., not for display in primary views of the resource but perhaps displayed or downloaded upon request. The `ListArtifacts` method allows artifacts to be quickly enumerated and checked for presence without downloading their (potentially-large) contents. */
 export interface Artifact {
   /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
@@ -146,8 +127,6 @@ export interface Artifact {
   /** Resource name. */
   name?: string;
 }
-const Artifact = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Artifact>;
-
 export interface CreateProjectsLocationsApisArtifactsRequest {
   /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   artifactId?: string;
@@ -156,11 +135,6 @@ export interface CreateProjectsLocationsApisArtifactsRequest {
   /** Request body */
   body?: Artifact;
 }
-const CreateProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateProjectsLocationsApisArtifactsRequest>;
-
 /** Describes a service running at particular address that provides a particular version of an API. ApiDeployments have revisions which correspond to different configurations of a single deployment in time. Revision identifiers should be updated whenever the served API spec or endpoint address changes. */
 export interface ApiDeployment {
   /** The address where the deployment is serving. Changes to this value will update the revision. */
@@ -192,8 +166,6 @@ export interface ApiDeployment {
   /** Output only. Last update timestamp: when the represented revision was last modified. */
   revisionUpdateTime?: string;
 }
-const ApiDeployment = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ApiDeployment>;
-
 export interface CreateProjectsLocationsApisDeploymentsRequest {
   /** Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   apiDeploymentId?: string;
@@ -202,11 +174,6 @@ export interface CreateProjectsLocationsApisDeploymentsRequest {
   /** Request body */
   body?: ApiDeployment;
 }
-const CreateProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateProjectsLocationsApisDeploymentsRequest>;
-
 export interface CreateProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
@@ -215,11 +182,6 @@ export interface CreateProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Request body */
   body?: Artifact;
 }
-const CreateProjectsLocationsApisDeploymentsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateProjectsLocationsApisDeploymentsArtifactsRequest>;
-
 /** Describes a particular version of an API. ApiVersions are what consumers actually use. */
 export interface ApiVersion {
   /** Output only. Creation timestamp. */
@@ -241,8 +203,6 @@ export interface ApiVersion {
   /** The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec} */
   primarySpec?: string;
 }
-const ApiVersion = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ApiVersion>;
-
 export interface CreateProjectsLocationsApisVersionsRequest {
   /** Required. The ID to use for the version, which will become the final component of the version's resource name. This value should be 1-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   apiVersionId?: string;
@@ -251,11 +211,6 @@ export interface CreateProjectsLocationsApisVersionsRequest {
   /** Request body */
   body?: ApiVersion;
 }
-const CreateProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProjectsLocationsApisVersionsRequest>;
-
 export interface CreateProjectsLocationsApisVersionsArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
@@ -264,11 +219,6 @@ export interface CreateProjectsLocationsApisVersionsArtifactsRequest {
   /** Request body */
   body?: Artifact;
 }
-const CreateProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateProjectsLocationsApisVersionsArtifactsRequest>;
-
 /** Describes a version of an API in a structured way. ApiSpecs provide formal descriptions that consumers can use to use a version. ApiSpec resources are intended to be fully-resolved descriptions of an ApiVersion. When specs consist of multiple files, these should be bundled together (e.g., in a zip archive) and stored as a unit. Multiple specs can exist to provide representations in different API description formats. Synchronization of these representations would be provided by tooling and background services. */
 export interface ApiSpec {
   /** A detailed description. */
@@ -300,8 +250,6 @@ export interface ApiSpec {
   /** Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts. */
   annotations?: StringMap;
 }
-const ApiSpec = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ApiSpec>;
-
 export interface CreateProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The ID to use for the spec, which will become the final component of the spec's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   apiSpecId?: string;
@@ -310,11 +258,6 @@ export interface CreateProjectsLocationsApisVersionsSpecsRequest {
   /** Request body */
   body?: ApiSpec;
 }
-const CreateProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface CreateProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
@@ -323,11 +266,6 @@ export interface CreateProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Request body */
   body?: Artifact;
 }
-const CreateProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface CreateProjectsLocationsArtifactsRequest {
   /** Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID. */
   artifactId?: string;
@@ -336,11 +274,6 @@ export interface CreateProjectsLocationsArtifactsRequest {
   /** Request body */
   body?: Artifact;
 }
-const CreateProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateProjectsLocationsArtifactsRequest>;
-
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
   | "INACTIVE"
@@ -349,8 +282,6 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "DELETING"
   | "FAILED";
-const InstanceStateEnum = /*@__PURE__*/ S.String;
-
 /** Available configurations to provision an Instance. */
 export interface Config {
   /** Output only. The GCP location where the Instance resides. */
@@ -358,8 +289,6 @@ export interface Config {
   /** Required. The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location. */
   cmekKeyName?: string;
 }
-const Config = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Config>;
-
 /** Build information of the Instance if it's in `ACTIVE` state. */
 export interface Build {
   /** Output only. Path of the open source repository: github.com/apigee/registry. */
@@ -369,8 +298,6 @@ export interface Build {
   /** Output only. Commit time of the latest commit in the build. */
   commitTime?: string;
 }
-const Build = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Build>;
-
 /** An Instance represents the instance resources of the Registry. Currently, only one instance is allowed for each project. */
 export interface Instance {
   /** Output only. Last update timestamp. */
@@ -388,8 +315,6 @@ export interface Instance {
   /** Output only. Build info of the Instance if it's in `ACTIVE` state. */
   build?: Build;
 }
-const Instance = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Instance>;
-
 export interface CreateProjectsLocationsInstancesRequest {
   /** Required. Parent resource of the Instance, of the form: `projects/*\/locations/*` */
   parent: string;
@@ -398,17 +323,8 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -418,8 +334,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -433,142 +347,70 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsApisRequest {
   /** Required. The name of the API to delete. Format: `projects/*\/locations/*\/apis/*` */
   name: string;
   /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
   force?: boolean;
 }
-const DeleteProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsApisRequest>;
-
 export interface DeleteProjectsLocationsApisArtifactsRequest {
   /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const DeleteProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsApisArtifactsRequest>;
-
 export interface DeleteProjectsLocationsApisDeploymentsRequest {
   /** Required. The name of the deployment to delete. Format: `projects/*\/locations/*\/apis/*\/deployments/*` */
   name: string;
   /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
   force?: boolean;
 }
-const DeleteProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsApisDeploymentsRequest>;
-
 export interface DeleteProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const DeleteProjectsLocationsApisDeploymentsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsApisDeploymentsArtifactsRequest>;
-
 export interface DeleteProjectsLocationsApisVersionsRequest {
   /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
   force?: boolean;
   /** Required. The name of the version to delete. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
   name: string;
 }
-const DeleteProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsApisVersionsRequest>;
-
 export interface DeleteProjectsLocationsApisVersionsArtifactsRequest {
   /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const DeleteProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface DeleteProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec to delete. Format: `projects/*\/locations/*\/apis/*\/versions/*\/specs/*` */
   name: string;
   /** If set to true, any child resources will also be deleted. (Otherwise, the request will only work if there are no child resources.) */
   force?: boolean;
 }
-const DeleteProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface DeleteProjectsLocationsArtifactsRequest {
   /** Required. The name of the artifact to delete. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const DeleteProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsArtifactsRequest>;
-
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The name of the Instance to delete. Format: `projects/*\/locations/*\/instances/*`. */
   name: string;
 }
-const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteRevisionProjectsLocationsApisDeploymentsRequest {
   /** Required. The name of the deployment revision to be deleted, with a revision ID explicitly included. Example: `projects/sample/locations/global/apis/petstore/deployments/prod@c7cfa2a8` */
   name: string;
 }
-const DeleteRevisionProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteRevisionProjectsLocationsApisDeploymentsRequest>;
-
 export interface DeleteRevisionProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec revision to be deleted, with a revision ID explicitly included. Example: `projects/sample/locations/global/apis/petstore/versions/1.0.0/specs/openapi.yaml@c7cfa2a8` */
   name: string;
 }
-const DeleteRevisionProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteRevisionProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface GetContentsProjectsLocationsApisArtifactsRequest {
   /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetContentsProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetContentsProjectsLocationsApisArtifactsRequest>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -578,64 +420,32 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-const HttpBody = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<HttpBody>;
-
 export interface GetContentsProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetContentsProjectsLocationsApisDeploymentsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetContentsProjectsLocationsApisDeploymentsArtifactsRequest>;
-
 export interface GetContentsProjectsLocationsApisVersionsArtifactsRequest {
   /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetContentsProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetContentsProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface GetContentsProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec whose contents should be retrieved. Format: `projects/*\/locations/*\/apis/*\/versions/*\/specs/*` */
   name: string;
 }
-const GetContentsProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface GetContentsProjectsLocationsArtifactsRequest {
   /** Required. The name of the artifact whose contents should be retrieved. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetContentsProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetContentsProjectsLocationsArtifactsRequest>;
-
 export interface GetIamPolicyProjectsLocationsApisRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -647,11 +457,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Expr>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<StringList>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. */
@@ -661,11 +467,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -675,127 +477,70 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyProjectsLocationsApisArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisArtifactsRequest>;
-
 export interface GetIamPolicyProjectsLocationsApisDeploymentsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisDeploymentsRequest>;
-
 export interface GetIamPolicyProjectsLocationsApisVersionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsRequest>;
-
 export interface GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface GetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface GetIamPolicyProjectsLocationsArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetIamPolicyProjectsLocationsArtifactsRequest>;
-
 export interface GetIamPolicyProjectsLocationsDocumentsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsLocationsDocumentsRequest>;
-
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
-
 export interface GetIamPolicyProjectsLocationsRuntimeRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetIamPolicyProjectsLocationsRuntimeRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -809,107 +554,50 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsApisRequest {
   /** Required. The name of the API to retrieve. Format: `projects/*\/locations/*\/apis/*` */
   name: string;
 }
-const GetProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetProjectsLocationsApisRequest>;
-
 export interface GetProjectsLocationsApisArtifactsRequest {
   /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetProjectsLocationsApisArtifactsRequest>;
-
 export interface GetProjectsLocationsApisDeploymentsRequest {
   /** Required. The name of the deployment to retrieve. Format: `projects/*\/locations/*\/apis/*\/deployments/*` */
   name: string;
 }
-const GetProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetProjectsLocationsApisDeploymentsRequest>;
-
 export interface GetProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetProjectsLocationsApisDeploymentsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetProjectsLocationsApisDeploymentsArtifactsRequest>;
-
 export interface GetProjectsLocationsApisVersionsRequest {
   /** Required. The name of the version to retrieve. Format: `projects/*\/locations/*\/apis/*\/versions/*` */
   name: string;
 }
-const GetProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetProjectsLocationsApisVersionsRequest>;
-
 export interface GetProjectsLocationsApisVersionsArtifactsRequest {
   /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface GetProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The name of the spec to retrieve. Format: `projects/*\/locations/*\/apis/*\/versions/*\/specs/*` */
   name: string;
 }
-const GetProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface GetProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface GetProjectsLocationsArtifactsRequest {
   /** Required. The name of the artifact to retrieve. Format: `{parent}/artifacts/*` */
   name: string;
 }
-const GetProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetProjectsLocationsArtifactsRequest>;
-
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The name of the Instance to retrieve. Format: `projects/*\/locations/*\/instances/*`. */
   name: string;
 }
-const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -920,14 +608,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -935,11 +616,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsApisRequest {
   /** The maximum number of APIs to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -952,14 +628,7 @@ export interface ListProjectsLocationsApisRequest {
   /** Required. The parent, which owns this collection of APIs. Format: `projects/*\/locations/*` */
   parent: string;
 }
-const ListProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListProjectsLocationsApisRequest>;
-
 export type ApiList = Array<Api>;
-const ApiList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<ApiList>;
-
 /** Response message for ListApis. */
 export interface ListApisResponse {
   /** The APIs from the specified publisher. */
@@ -967,8 +636,6 @@ export interface ListApisResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApisResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListApisResponse>;
-
 export interface ListProjectsLocationsApisArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
@@ -981,14 +648,7 @@ export interface ListProjectsLocationsApisArtifactsRequest {
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListProjectsLocationsApisArtifactsRequest>;
-
 export type ArtifactList = Array<Artifact>;
-const ArtifactList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ArtifactList>;
-
 /** Response message for ListArtifacts. */
 export interface ListArtifactsResponse {
   /** The artifacts from the specified publisher. */
@@ -996,11 +656,6 @@ export interface ListArtifactsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListArtifactsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListArtifactsResponse>;
-
 export interface ListProjectsLocationsApisDeploymentsRequest {
   /** A page token, received from a previous `ListApiDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiDeployments` must match the call that provided the page token. */
   pageToken?: string;
@@ -1013,14 +668,7 @@ export interface ListProjectsLocationsApisDeploymentsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
 }
-const ListProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListProjectsLocationsApisDeploymentsRequest>;
-
 export type ApiDeploymentList = Array<ApiDeployment>;
-const ApiDeploymentList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ApiDeploymentList>;
-
 /** Response message for ListApiDeployments. */
 export interface ListApiDeploymentsResponse {
   /** The deployments from the specified publisher. */
@@ -1028,11 +676,6 @@ export interface ListApiDeploymentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApiDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListApiDeploymentsResponse>;
-
 export interface ListProjectsLocationsApisDeploymentsArtifactsRequest {
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -1045,11 +688,6 @@ export interface ListProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
 }
-const ListProjectsLocationsApisDeploymentsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListProjectsLocationsApisDeploymentsArtifactsRequest>;
-
 export interface ListProjectsLocationsApisVersionsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
@@ -1062,14 +700,7 @@ export interface ListProjectsLocationsApisVersionsRequest {
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
 }
-const ListProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListProjectsLocationsApisVersionsRequest>;
-
 export type ApiVersionList = Array<ApiVersion>;
-const ApiVersionList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ApiVersionList>;
-
 /** Response message for ListApiVersions. */
 export interface ListApiVersionsResponse {
   /** The versions from the specified publisher. */
@@ -1077,11 +708,6 @@ export interface ListApiVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApiVersionsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListApiVersionsResponse>;
-
 export interface ListProjectsLocationsApisVersionsArtifactsRequest {
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
@@ -1094,11 +720,6 @@ export interface ListProjectsLocationsApisVersionsArtifactsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
   filter?: string;
 }
-const ListProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface ListProjectsLocationsApisVersionsSpecsRequest {
   /** A comma-separated list of fields, e.g. "foo,bar" Fields can be sorted in descending order using the "desc" identifier, e.g. "foo desc,bar" */
   orderBy?: string;
@@ -1111,14 +732,7 @@ export interface ListProjectsLocationsApisVersionsSpecsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields except contents. */
   filter?: string;
 }
-const ListProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
-
 export type ApiSpecList = Array<ApiSpec>;
-const ApiSpecList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ApiSpecList>;
-
 /** Response message for ListApiSpecs. */
 export interface ListApiSpecsResponse {
   /** The specs from the specified publisher. */
@@ -1126,11 +740,6 @@ export interface ListApiSpecsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApiSpecsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListApiSpecsResponse>;
-
 export interface ListProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -1143,11 +752,6 @@ export interface ListProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
 }
-const ListProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface ListProjectsLocationsArtifactsRequest {
   /** Required. The parent, which owns this collection of artifacts. Format: `{parent}` */
   parent: string;
@@ -1160,11 +764,6 @@ export interface ListProjectsLocationsArtifactsRequest {
   /** The maximum number of artifacts to return. The service may return fewer than this value. If unspecified, at most 50 values will be returned. The maximum is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListProjectsLocationsArtifactsRequest>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -1175,14 +774,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -1190,11 +782,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListRevisionsProjectsLocationsApisDeploymentsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
@@ -1205,11 +792,6 @@ export interface ListRevisionsProjectsLocationsApisDeploymentsRequest {
   /** The page token, received from a previous ListApiDeploymentRevisions call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListRevisionsProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListRevisionsProjectsLocationsApisDeploymentsRequest>;
-
 /** Response message for ListApiDeploymentRevisionsResponse. */
 export interface ListApiDeploymentRevisionsResponse {
   /** The revisions of the deployment. */
@@ -1217,9 +799,6 @@ export interface ListApiDeploymentRevisionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApiDeploymentRevisionsResponse =
-  ListApiDeploymentsResponse as any as S.Schema<ListApiDeploymentRevisionsResponse>;
-
 export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
   /** An expression that can be used to filter the list. Filters use the Common Expression Language and can refer to all message fields. */
   filter?: string;
@@ -1230,11 +809,6 @@ export interface ListRevisionsProjectsLocationsApisVersionsSpecsRequest {
   /** The page token, received from a previous ListApiSpecRevisions call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListRevisionsProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListRevisionsProjectsLocationsApisVersionsSpecsRequest>;
-
 /** Response message for ListApiSpecRevisionsResponse. */
 export interface ListApiSpecRevisionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1242,11 +816,6 @@ export interface ListApiSpecRevisionsResponse {
   /** The revisions of the spec. */
   apiSpecs?: ApiSpecList;
 }
-const ListApiSpecRevisionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListApiSpecRevisionsResponse>;
-
 export interface PatchProjectsLocationsApisRequest {
   /** The list of fields to be updated. If omitted, all fields are updated that are set in the request message (fields set to default values are ignored). If an asterisk "*" is specified, all fields are updated, including fields that are unspecified/default in the request. */
   updateMask?: string;
@@ -1257,11 +826,6 @@ export interface PatchProjectsLocationsApisRequest {
   /** Request body */
   body?: Api;
 }
-const PatchProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<PatchProjectsLocationsApisRequest>;
-
 export interface PatchProjectsLocationsApisDeploymentsRequest {
   /** Resource name. */
   name: string;
@@ -1272,11 +836,6 @@ export interface PatchProjectsLocationsApisDeploymentsRequest {
   /** Request body */
   body?: ApiDeployment;
 }
-const PatchProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<PatchProjectsLocationsApisDeploymentsRequest>;
-
 export interface PatchProjectsLocationsApisVersionsRequest {
   /** Resource name. */
   name: string;
@@ -1287,11 +846,6 @@ export interface PatchProjectsLocationsApisVersionsRequest {
   /** Request body */
   body?: ApiVersion;
 }
-const PatchProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<PatchProjectsLocationsApisVersionsRequest>;
-
 export interface PatchProjectsLocationsApisVersionsSpecsRequest {
   /** Resource name. */
   name: string;
@@ -1302,255 +856,140 @@ export interface PatchProjectsLocationsApisVersionsSpecsRequest {
   /** Request body */
   body?: ApiSpec;
 }
-const PatchProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface ReplaceArtifactProjectsLocationsApisArtifactsRequest {
   /** Resource name. */
   name: string;
   /** Request body */
   body?: Artifact;
 }
-const ReplaceArtifactProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ReplaceArtifactProjectsLocationsApisArtifactsRequest>;
-
 export interface ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest {
   /** Resource name. */
   name: string;
   /** Request body */
   body?: Artifact;
 }
-const ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest>;
-
 export interface ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest {
   /** Resource name. */
   name: string;
   /** Request body */
   body?: Artifact;
 }
-const ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** Resource name. */
   name: string;
   /** Request body */
   body?: Artifact;
 }
-const ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface ReplaceArtifactProjectsLocationsArtifactsRequest {
   /** Resource name. */
   name: string;
   /** Request body */
   body?: Artifact;
 }
-const ReplaceArtifactProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ReplaceArtifactProjectsLocationsArtifactsRequest>;
-
 /** Request message for RollbackApiDeployment. */
 export interface RollbackApiDeploymentRequest {
   /** Required. The revision ID to roll back to. It must be a revision of the same deployment. Example: `c7cfa2a8` */
   revisionId?: string;
 }
-const RollbackApiDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<RollbackApiDeploymentRequest>;
-
 export interface RollbackProjectsLocationsApisDeploymentsRequest {
   /** Required. The deployment being rolled back. */
   name: string;
   /** Request body */
   body?: RollbackApiDeploymentRequest;
 }
-const RollbackProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<RollbackProjectsLocationsApisDeploymentsRequest>;
-
 /** Request message for RollbackApiSpec. */
 export interface RollbackApiSpecRequest {
   /** Required. The revision ID to roll back to. It must be a revision of the same spec. Example: `c7cfa2a8` */
   revisionId?: string;
 }
-const RollbackApiSpecRequest =
-  RollbackApiDeploymentRequest as any as S.Schema<RollbackApiSpecRequest>;
-
 export interface RollbackProjectsLocationsApisVersionsSpecsRequest {
   /** Required. The spec being rolled back. */
   name: string;
   /** Request body */
   body?: RollbackApiSpecRequest;
 }
-const RollbackProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<RollbackProjectsLocationsApisVersionsSpecsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisArtifactsRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisDeploymentsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisDeploymentsRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisVersionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisVersionsSpecsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface SetIamPolicyProjectsLocationsArtifactsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<SetIamPolicyProjectsLocationsArtifactsRequest>;
-
 export interface SetIamPolicyProjectsLocationsDocumentsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsDocumentsRequest>;
-
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
-
 export interface SetIamPolicyProjectsLocationsRuntimeRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsLocationsRuntimeRequest>;
-
 /** Request message for TagApiDeploymentRevision. */
 export interface TagApiDeploymentRevisionRequest {
   /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
   tag?: string;
 }
-const TagApiDeploymentRevisionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<TagApiDeploymentRevisionRequest>;
-
 export interface TagRevisionProjectsLocationsApisDeploymentsRequest {
   /** Required. The name of the deployment to be tagged, including the revision ID is optional. If a revision is not specified, it will tag the latest revision. */
   name: string;
   /** Request body */
   body?: TagApiDeploymentRevisionRequest;
 }
-const TagRevisionProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<TagRevisionProjectsLocationsApisDeploymentsRequest>;
-
 /** Request message for TagApiSpecRevision. */
 export type TagApiSpecRevisionRequest = TagApiDeploymentRevisionRequest;
 export interface TagRevisionProjectsLocationsApisVersionsSpecsRequest {
@@ -1559,150 +998,82 @@ export interface TagRevisionProjectsLocationsApisVersionsSpecsRequest {
   /** Request body */
   body?: TagApiDeploymentRevisionRequest;
 }
-const TagRevisionProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<TagRevisionProjectsLocationsApisVersionsSpecsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApisRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsApisArtifactsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisArtifactsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApisDeploymentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisDeploymentsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApisVersionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsArtifactsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsArtifactsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsDocumentsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsDocumentsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsRuntimeRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsRuntimeRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1716,8 +1087,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1107,8 @@ export const createProjectsLocationsApis: API.OperationMethod<
   CreateProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisRequest,
-  output: Api,
+  input: __S(4) as any as S.Schema<CreateProjectsLocationsApisRequest>,
+  output: __S(3) as any as S.Schema<Api>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1127,8 @@ export const createProjectsLocationsApisArtifacts: API.OperationMethod<
   CreateProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisArtifactsRequest,
-  output: Artifact,
+  input: __S(6) as any as S.Schema<CreateProjectsLocationsApisArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1147,8 @@ export const createProjectsLocationsApisDeployments: API.OperationMethod<
   CreateProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisDeploymentsRequest,
-  output: ApiDeployment,
+  input: __S(8) as any as S.Schema<CreateProjectsLocationsApisDeploymentsRequest>,
+  output: __S(7) as any as S.Schema<ApiDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1796,8 +1167,8 @@ export const createProjectsLocationsApisDeploymentsArtifacts: API.OperationMetho
   CreateProjectsLocationsApisDeploymentsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: Artifact,
+  input: __S(9) as any as S.Schema<CreateProjectsLocationsApisDeploymentsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1187,8 @@ export const createProjectsLocationsApisVersions: API.OperationMethod<
   CreateProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsRequest,
-  output: ApiVersion,
+  input: __S(11) as any as S.Schema<CreateProjectsLocationsApisVersionsRequest>,
+  output: __S(10) as any as S.Schema<ApiVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1836,8 +1207,8 @@ export const createProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
   CreateProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsArtifactsRequest,
-  output: Artifact,
+  input: __S(12) as any as S.Schema<CreateProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1227,8 @@ export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   CreateProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsSpecsRequest,
-  output: ApiSpec,
+  input: __S(14) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(13) as any as S.Schema<ApiSpec>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1247,8 @@ export const createProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMet
   CreateProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: Artifact,
+  input: __S(15) as any as S.Schema<CreateProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1267,8 @@ export const createProjectsLocationsArtifacts: API.OperationMethod<
   CreateProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsArtifactsRequest,
-  output: Artifact,
+  input: __S(16) as any as S.Schema<CreateProjectsLocationsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1287,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(20) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1307,8 @@ export const deleteProjectsLocationsApis: API.OperationMethod<
   DeleteProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisRequest,
-  output: Empty,
+  input: __S(25) as any as S.Schema<DeleteProjectsLocationsApisRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1327,8 @@ export const deleteProjectsLocationsApisArtifacts: API.OperationMethod<
   DeleteProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisArtifactsRequest,
-  output: Empty,
+  input: __S(26) as any as S.Schema<DeleteProjectsLocationsApisArtifactsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1347,8 @@ export const deleteProjectsLocationsApisDeployments: API.OperationMethod<
   DeleteProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisDeploymentsRequest,
-  output: Empty,
+  input: __S(27) as any as S.Schema<DeleteProjectsLocationsApisDeploymentsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1996,8 +1367,8 @@ export const deleteProjectsLocationsApisDeploymentsArtifacts: API.OperationMetho
   DeleteProjectsLocationsApisDeploymentsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: Empty,
+  input: __S(28) as any as S.Schema<DeleteProjectsLocationsApisDeploymentsArtifactsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2016,8 +1387,8 @@ export const deleteProjectsLocationsApisVersions: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsRequest,
-  output: Empty,
+  input: __S(29) as any as S.Schema<DeleteProjectsLocationsApisVersionsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2036,8 +1407,8 @@ export const deleteProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsArtifactsRequest,
-  output: Empty,
+  input: __S(30) as any as S.Schema<DeleteProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2056,8 +1427,8 @@ export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   DeleteProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsSpecsRequest,
-  output: Empty,
+  input: __S(31) as any as S.Schema<DeleteProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2076,8 +1447,8 @@ export const deleteProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMet
   DeleteProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: Empty,
+  input: __S(32) as any as S.Schema<DeleteProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2096,8 +1467,8 @@ export const deleteProjectsLocationsArtifacts: API.OperationMethod<
   DeleteProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsArtifactsRequest,
-  output: Empty,
+  input: __S(33) as any as S.Schema<DeleteProjectsLocationsArtifactsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2116,8 +1487,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(34) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2136,8 +1507,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(35) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2156,8 +1527,8 @@ export const deleteRevisionProjectsLocationsApisDeployments: API.OperationMethod
   DeleteRevisionProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRevisionProjectsLocationsApisDeploymentsRequest,
-  output: ApiDeployment,
+  input: __S(36) as any as S.Schema<DeleteRevisionProjectsLocationsApisDeploymentsRequest>,
+  output: __S(7) as any as S.Schema<ApiDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2176,8 +1547,8 @@ export const deleteRevisionProjectsLocationsApisVersionsSpecs: API.OperationMeth
   DeleteRevisionProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRevisionProjectsLocationsApisVersionsSpecsRequest,
-  output: ApiSpec,
+  input: __S(37) as any as S.Schema<DeleteRevisionProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(13) as any as S.Schema<ApiSpec>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2191,8 +1562,8 @@ export const getContentsProjectsLocationsApisArtifacts: API.OperationMethod<
   GetContentsProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisArtifactsRequest,
-  output: HttpBody,
+  input: __S(38) as any as S.Schema<GetContentsProjectsLocationsApisArtifactsRequest>,
+  output: __S(39) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2209,8 +1580,8 @@ export const getContentsProjectsLocationsApisDeploymentsArtifacts: API.Operation
   GetContentsProjectsLocationsApisDeploymentsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: HttpBody,
+  input: __S(40) as any as S.Schema<GetContentsProjectsLocationsApisDeploymentsArtifactsRequest>,
+  output: __S(39) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2227,8 +1598,8 @@ export const getContentsProjectsLocationsApisVersionsArtifacts: API.OperationMet
   GetContentsProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisVersionsArtifactsRequest,
-  output: HttpBody,
+  input: __S(41) as any as S.Schema<GetContentsProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(39) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2242,8 +1613,8 @@ export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   GetContentsProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisVersionsSpecsRequest,
-  output: HttpBody,
+  input: __S(42) as any as S.Schema<GetContentsProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(39) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2260,8 +1631,8 @@ export const getContentsProjectsLocationsApisVersionsSpecsArtifacts: API.Operati
   GetContentsProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: HttpBody,
+  input: __S(43) as any as S.Schema<GetContentsProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(39) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2275,8 +1646,8 @@ export const getContentsProjectsLocationsArtifacts: API.OperationMethod<
   GetContentsProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentsProjectsLocationsArtifactsRequest,
-  output: HttpBody,
+  input: __S(44) as any as S.Schema<GetContentsProjectsLocationsArtifactsRequest>,
+  output: __S(39) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2290,8 +1661,8 @@ export const getIamPolicyProjectsLocationsApis: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisRequest,
-  output: Policy,
+  input: __S(45) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2305,8 +1676,8 @@ export const getIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisArtifactsRequest,
-  output: Policy,
+  input: __S(51) as any as S.Schema<GetIamPolicyProjectsLocationsApisArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2320,8 +1691,8 @@ export const getIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisDeploymentsRequest,
-  output: Policy,
+  input: __S(52) as any as S.Schema<GetIamPolicyProjectsLocationsApisDeploymentsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2335,8 +1706,8 @@ export const getIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
   GetIamPolicyProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsRequest,
-  output: Policy,
+  input: __S(53) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2353,8 +1724,8 @@ export const getIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMe
   GetIamPolicyProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
-  output: Policy,
+  input: __S(54) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2368,8 +1739,8 @@ export const getIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod
   GetIamPolicyProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
-  output: Policy,
+  input: __S(55) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2386,8 +1757,8 @@ export const getIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.Operat
   GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: Policy,
+  input: __S(56) as any as S.Schema<GetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2401,8 +1772,8 @@ export const getIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
   GetIamPolicyProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsArtifactsRequest,
-  output: Policy,
+  input: __S(57) as any as S.Schema<GetIamPolicyProjectsLocationsArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2416,8 +1787,8 @@ export const getIamPolicyProjectsLocationsDocuments: API.OperationMethod<
   GetIamPolicyProjectsLocationsDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsDocumentsRequest,
-  output: Policy,
+  input: __S(58) as any as S.Schema<GetIamPolicyProjectsLocationsDocumentsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2431,8 +1802,8 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsInstancesRequest,
-  output: Policy,
+  input: __S(59) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2446,8 +1817,8 @@ export const getIamPolicyProjectsLocationsRuntime: API.OperationMethod<
   GetIamPolicyProjectsLocationsRuntimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRuntimeRequest,
-  output: Policy,
+  input: __S(60) as any as S.Schema<GetIamPolicyProjectsLocationsRuntimeRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2461,8 +1832,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(61) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(62) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2476,8 +1847,8 @@ export const getProjectsLocationsApis: API.OperationMethod<
   GetProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisRequest,
-  output: Api,
+  input: __S(63) as any as S.Schema<GetProjectsLocationsApisRequest>,
+  output: __S(3) as any as S.Schema<Api>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2491,8 +1862,8 @@ export const getProjectsLocationsApisArtifacts: API.OperationMethod<
   GetProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisArtifactsRequest,
-  output: Artifact,
+  input: __S(64) as any as S.Schema<GetProjectsLocationsApisArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2506,8 +1877,8 @@ export const getProjectsLocationsApisDeployments: API.OperationMethod<
   GetProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisDeploymentsRequest,
-  output: ApiDeployment,
+  input: __S(65) as any as S.Schema<GetProjectsLocationsApisDeploymentsRequest>,
+  output: __S(7) as any as S.Schema<ApiDeployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2521,8 +1892,8 @@ export const getProjectsLocationsApisDeploymentsArtifacts: API.OperationMethod<
   GetProjectsLocationsApisDeploymentsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: Artifact,
+  input: __S(66) as any as S.Schema<GetProjectsLocationsApisDeploymentsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2536,8 +1907,8 @@ export const getProjectsLocationsApisVersions: API.OperationMethod<
   GetProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsRequest,
-  output: ApiVersion,
+  input: __S(67) as any as S.Schema<GetProjectsLocationsApisVersionsRequest>,
+  output: __S(10) as any as S.Schema<ApiVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2551,8 +1922,8 @@ export const getProjectsLocationsApisVersionsArtifacts: API.OperationMethod<
   GetProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsArtifactsRequest,
-  output: Artifact,
+  input: __S(68) as any as S.Schema<GetProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2566,8 +1937,8 @@ export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   GetProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsSpecsRequest,
-  output: ApiSpec,
+  input: __S(69) as any as S.Schema<GetProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(13) as any as S.Schema<ApiSpec>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2581,8 +1952,8 @@ export const getProjectsLocationsApisVersionsSpecsArtifacts: API.OperationMethod
   GetProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: Artifact,
+  input: __S(70) as any as S.Schema<GetProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2596,8 +1967,8 @@ export const getProjectsLocationsArtifacts: API.OperationMethod<
   GetProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsArtifactsRequest,
-  output: Artifact,
+  input: __S(71) as any as S.Schema<GetProjectsLocationsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2611,8 +1982,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: Instance,
+  input: __S(72) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(19) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2626,8 +1997,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(73) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(24) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2642,8 +2013,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(74) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(76) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2662,8 +2033,8 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisRequest,
-  output: ListApisResponse,
+  input: __S(77) as any as S.Schema<ListProjectsLocationsApisRequest>,
+  output: __S(79) as any as S.Schema<ListApisResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2682,8 +2053,8 @@ export const listProjectsLocationsApisArtifacts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisArtifactsRequest,
-  output: ListArtifactsResponse,
+  input: __S(80) as any as S.Schema<ListProjectsLocationsApisArtifactsRequest>,
+  output: __S(82) as any as S.Schema<ListArtifactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2702,8 +2073,8 @@ export const listProjectsLocationsApisDeployments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApiDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisDeploymentsRequest,
-  output: ListApiDeploymentsResponse,
+  input: __S(83) as any as S.Schema<ListProjectsLocationsApisDeploymentsRequest>,
+  output: __S(85) as any as S.Schema<ListApiDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2722,8 +2093,8 @@ export const listProjectsLocationsApisDeploymentsArtifacts: API.PaginatedOperati
   GcpOpContext,
   ListArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: ListArtifactsResponse,
+  input: __S(86) as any as S.Schema<ListProjectsLocationsApisDeploymentsArtifactsRequest>,
+  output: __S(82) as any as S.Schema<ListArtifactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2742,8 +2113,8 @@ export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApiVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsRequest,
-  output: ListApiVersionsResponse,
+  input: __S(87) as any as S.Schema<ListProjectsLocationsApisVersionsRequest>,
+  output: __S(89) as any as S.Schema<ListApiVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2762,8 +2133,8 @@ export const listProjectsLocationsApisVersionsArtifacts: API.PaginatedOperationM
   GcpOpContext,
   ListArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsArtifactsRequest,
-  output: ListArtifactsResponse,
+  input: __S(90) as any as S.Schema<ListProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(82) as any as S.Schema<ListArtifactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2782,8 +2153,8 @@ export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMetho
   GcpOpContext,
   ListApiSpecsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsSpecsRequest,
-  output: ListApiSpecsResponse,
+  input: __S(91) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(93) as any as S.Schema<ListApiSpecsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2176,8 @@ export const listProjectsLocationsApisVersionsSpecsArtifacts: API.PaginatedOpera
   GcpOpContext,
   ListArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: ListArtifactsResponse,
+  input: __S(94) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(82) as any as S.Schema<ListArtifactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2825,8 +2196,8 @@ export const listProjectsLocationsArtifacts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListArtifactsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsArtifactsRequest,
-  output: ListArtifactsResponse,
+  input: __S(95) as any as S.Schema<ListProjectsLocationsArtifactsRequest>,
+  output: __S(82) as any as S.Schema<ListArtifactsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2845,8 +2216,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(96) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(98) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2236,8 @@ export const listRevisionsProjectsLocationsApisDeployments: API.PaginatedOperati
   GcpOpContext,
   ListApiDeploymentRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRevisionsProjectsLocationsApisDeploymentsRequest,
-  output: ListApiDeploymentRevisionsResponse,
+  input: __S(99) as any as S.Schema<ListRevisionsProjectsLocationsApisDeploymentsRequest>,
+  output: __S(85) as any as S.Schema<ListApiDeploymentRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2259,8 @@ export const listRevisionsProjectsLocationsApisVersionsSpecs: API.PaginatedOpera
   GcpOpContext,
   ListApiSpecRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRevisionsProjectsLocationsApisVersionsSpecsRequest,
-  output: ListApiSpecRevisionsResponse,
+  input: __S(100) as any as S.Schema<ListRevisionsProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(101) as any as S.Schema<ListApiSpecRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2912,8 +2283,8 @@ export const patchProjectsLocationsApis: API.OperationMethod<
   PatchProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisRequest,
-  output: Api,
+  input: __S(102) as any as S.Schema<PatchProjectsLocationsApisRequest>,
+  output: __S(3) as any as S.Schema<Api>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2932,8 +2303,8 @@ export const patchProjectsLocationsApisDeployments: API.OperationMethod<
   PatchProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisDeploymentsRequest,
-  output: ApiDeployment,
+  input: __S(103) as any as S.Schema<PatchProjectsLocationsApisDeploymentsRequest>,
+  output: __S(7) as any as S.Schema<ApiDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2952,8 +2323,8 @@ export const patchProjectsLocationsApisVersions: API.OperationMethod<
   PatchProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisVersionsRequest,
-  output: ApiVersion,
+  input: __S(104) as any as S.Schema<PatchProjectsLocationsApisVersionsRequest>,
+  output: __S(10) as any as S.Schema<ApiVersion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2972,8 +2343,8 @@ export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   PatchProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsApisVersionsSpecsRequest,
-  output: ApiSpec,
+  input: __S(105) as any as S.Schema<PatchProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(13) as any as S.Schema<ApiSpec>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2992,8 +2363,8 @@ export const replaceArtifactProjectsLocationsApisArtifacts: API.OperationMethod<
   ReplaceArtifactProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisArtifactsRequest,
-  output: Artifact,
+  input: __S(106) as any as S.Schema<ReplaceArtifactProjectsLocationsApisArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3012,8 +2383,10 @@ export const replaceArtifactProjectsLocationsApisDeploymentsArtifacts: API.Opera
   ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest,
-  output: Artifact,
+  input: __S(
+    107,
+  ) as any as S.Schema<ReplaceArtifactProjectsLocationsApisDeploymentsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3032,8 +2405,8 @@ export const replaceArtifactProjectsLocationsApisVersionsArtifacts: API.Operatio
   ReplaceArtifactProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest,
-  output: Artifact,
+  input: __S(108) as any as S.Schema<ReplaceArtifactProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3052,8 +2425,10 @@ export const replaceArtifactProjectsLocationsApisVersionsSpecsArtifacts: API.Ope
   ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: Artifact,
+  input: __S(
+    109,
+  ) as any as S.Schema<ReplaceArtifactProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3072,8 +2447,8 @@ export const replaceArtifactProjectsLocationsArtifacts: API.OperationMethod<
   ReplaceArtifactProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceArtifactProjectsLocationsArtifactsRequest,
-  output: Artifact,
+  input: __S(110) as any as S.Schema<ReplaceArtifactProjectsLocationsArtifactsRequest>,
+  output: __S(5) as any as S.Schema<Artifact>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3092,8 +2467,8 @@ export const rollbackProjectsLocationsApisDeployments: API.OperationMethod<
   RollbackProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RollbackProjectsLocationsApisDeploymentsRequest,
-  output: ApiDeployment,
+  input: __S(112) as any as S.Schema<RollbackProjectsLocationsApisDeploymentsRequest>,
+  output: __S(7) as any as S.Schema<ApiDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3112,8 +2487,8 @@ export const rollbackProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   RollbackProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RollbackProjectsLocationsApisVersionsSpecsRequest,
-  output: ApiSpec,
+  input: __S(113) as any as S.Schema<RollbackProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(13) as any as S.Schema<ApiSpec>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3132,8 +2507,8 @@ export const setIamPolicyProjectsLocationsApis: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisRequest,
-  output: Policy,
+  input: __S(115) as any as S.Schema<SetIamPolicyProjectsLocationsApisRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3152,8 +2527,8 @@ export const setIamPolicyProjectsLocationsApisArtifacts: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisArtifactsRequest,
-  output: Policy,
+  input: __S(116) as any as S.Schema<SetIamPolicyProjectsLocationsApisArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3172,8 +2547,8 @@ export const setIamPolicyProjectsLocationsApisDeployments: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisDeploymentsRequest,
-  output: Policy,
+  input: __S(117) as any as S.Schema<SetIamPolicyProjectsLocationsApisDeploymentsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3192,8 +2567,8 @@ export const setIamPolicyProjectsLocationsApisVersions: API.OperationMethod<
   SetIamPolicyProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsRequest,
-  output: Policy,
+  input: __S(118) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3212,8 +2587,8 @@ export const setIamPolicyProjectsLocationsApisVersionsArtifacts: API.OperationMe
   SetIamPolicyProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest,
-  output: Policy,
+  input: __S(119) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3232,8 +2607,8 @@ export const setIamPolicyProjectsLocationsApisVersionsSpecs: API.OperationMethod
   SetIamPolicyProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsSpecsRequest,
-  output: Policy,
+  input: __S(120) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3252,8 +2627,10 @@ export const setIamPolicyProjectsLocationsApisVersionsSpecsArtifacts: API.Operat
   SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: Policy,
+  input: __S(
+    121,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3272,8 +2649,8 @@ export const setIamPolicyProjectsLocationsArtifacts: API.OperationMethod<
   SetIamPolicyProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsArtifactsRequest,
-  output: Policy,
+  input: __S(122) as any as S.Schema<SetIamPolicyProjectsLocationsArtifactsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3292,8 +2669,8 @@ export const setIamPolicyProjectsLocationsDocuments: API.OperationMethod<
   SetIamPolicyProjectsLocationsDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsDocumentsRequest,
-  output: Policy,
+  input: __S(123) as any as S.Schema<SetIamPolicyProjectsLocationsDocumentsRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3312,8 +2689,8 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsInstancesRequest,
-  output: Policy,
+  input: __S(124) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3332,8 +2709,8 @@ export const setIamPolicyProjectsLocationsRuntime: API.OperationMethod<
   SetIamPolicyProjectsLocationsRuntimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRuntimeRequest,
-  output: Policy,
+  input: __S(125) as any as S.Schema<SetIamPolicyProjectsLocationsRuntimeRequest>,
+  output: __S(50) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3352,8 +2729,8 @@ export const tagRevisionProjectsLocationsApisDeployments: API.OperationMethod<
   TagRevisionProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagRevisionProjectsLocationsApisDeploymentsRequest,
-  output: ApiDeployment,
+  input: __S(127) as any as S.Schema<TagRevisionProjectsLocationsApisDeploymentsRequest>,
+  output: __S(7) as any as S.Schema<ApiDeployment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3372,8 +2749,8 @@ export const tagRevisionProjectsLocationsApisVersionsSpecs: API.OperationMethod<
   TagRevisionProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagRevisionProjectsLocationsApisVersionsSpecsRequest,
-  output: ApiSpec,
+  input: __S(128) as any as S.Schema<TagRevisionProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(13) as any as S.Schema<ApiSpec>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3392,8 +2769,8 @@ export const testIamPermissionsProjectsLocationsApis: API.OperationMethod<
   TestIamPermissionsProjectsLocationsApisError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(130) as any as S.Schema<TestIamPermissionsProjectsLocationsApisRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3412,8 +2789,8 @@ export const testIamPermissionsProjectsLocationsApisArtifacts: API.OperationMeth
   TestIamPermissionsProjectsLocationsApisArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisArtifactsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(131) as any as S.Schema<TestIamPermissionsProjectsLocationsApisArtifactsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3432,8 +2809,8 @@ export const testIamPermissionsProjectsLocationsApisDeployments: API.OperationMe
   TestIamPermissionsProjectsLocationsApisDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisDeploymentsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(132) as any as S.Schema<TestIamPermissionsProjectsLocationsApisDeploymentsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3452,8 +2829,8 @@ export const testIamPermissionsProjectsLocationsApisVersions: API.OperationMetho
   TestIamPermissionsProjectsLocationsApisVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(133) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3472,8 +2849,10 @@ export const testIamPermissionsProjectsLocationsApisVersionsArtifacts: API.Opera
   TestIamPermissionsProjectsLocationsApisVersionsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    134,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsArtifactsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3492,8 +2871,8 @@ export const testIamPermissionsProjectsLocationsApisVersionsSpecs: API.Operation
   TestIamPermissionsProjectsLocationsApisVersionsSpecsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(135) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3512,8 +2891,10 @@ export const testIamPermissionsProjectsLocationsApisVersionsSpecsArtifacts: API.
   TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    136,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsApisVersionsSpecsArtifactsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3532,8 +2913,8 @@ export const testIamPermissionsProjectsLocationsArtifacts: API.OperationMethod<
   TestIamPermissionsProjectsLocationsArtifactsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsArtifactsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(137) as any as S.Schema<TestIamPermissionsProjectsLocationsArtifactsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3552,8 +2933,8 @@ export const testIamPermissionsProjectsLocationsDocuments: API.OperationMethod<
   TestIamPermissionsProjectsLocationsDocumentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsDocumentsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(138) as any as S.Schema<TestIamPermissionsProjectsLocationsDocumentsRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3572,8 +2953,8 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsInstancesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(139) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3592,8 +2973,8 @@ export const testIamPermissionsProjectsLocationsRuntime: API.OperationMethod<
   TestIamPermissionsProjectsLocationsRuntimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRuntimeRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(140) as any as S.Schema<TestIamPermissionsProjectsLocationsRuntimeRequest>,
+  output: __S(129) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3610,7 +2991,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3632,8 +3013,8 @@ function __c0(j: number): any {
           availability: S.optional(S.String),
           name: S.optional(S.String),
           recommendedDeployment: S.optional(S.String),
-          labels: S.optional(StringMap),
-          annotations: S.optional(StringMap),
+          labels: S.optional(__S(2)),
+          annotations: S.optional(__S(2)),
           updateTime: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -3643,7 +3024,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           apiId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Api.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3657,14 +3038,14 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(2)),
           sizeBytes: S.optional(S.Number),
           updateTime: S.optional(S.String),
           mimeType: S.optional(S.String),
           createTime: S.optional(S.String),
           hash: S.optional(S.String),
           contents: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(2)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Artifact" });
@@ -3673,7 +3054,7 @@ function __c0(j: number): any {
         S.Struct({
           artifactId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3692,10 +3073,10 @@ function __c0(j: number): any {
           displayName: S.optional(S.String),
           revisionId: S.optional(S.String),
           apiSpecRevision: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(2)),
           description: S.optional(S.String),
           intendedAudience: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(2)),
           createTime: S.optional(S.String),
           externalChannelUri: S.optional(S.String),
           name: S.optional(S.String),
@@ -3712,7 +3093,7 @@ function __c1(j: number): any {
         S.Struct({
           apiDeploymentId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ApiDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3728,7 +3109,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           artifactId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3746,8 +3127,8 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           state: S.optional(S.String),
-          labels: S.optional(StringMap),
-          annotations: S.optional(StringMap),
+          labels: S.optional(__S(2)),
+          annotations: S.optional(__S(2)),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
           primarySpec: S.optional(S.String),
@@ -3758,7 +3139,7 @@ function __c1(j: number): any {
         S.Struct({
           apiVersionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ApiVersion.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3774,7 +3155,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           artifactId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3789,7 +3170,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(2)),
           hash: S.optional(S.String),
           revisionId: S.optional(S.String),
           mimeType: S.optional(S.String),
@@ -3801,7 +3182,7 @@ function __c1(j: number): any {
           createTime: S.optional(S.String),
           filename: S.optional(S.String),
           sourceUri: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ApiSpec" });
     case 6:
@@ -3809,7 +3190,7 @@ function __c1(j: number): any {
         S.Struct({
           apiSpecId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ApiSpec.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3825,7 +3206,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           artifactId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3845,7 +3226,7 @@ function __c2(j: number): any {
         S.Struct({
           artifactId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3875,12 +3256,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          state: S.optional(InstanceStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
-          config: S.optional(Config),
+          config: S.optional(__S(17)),
           stateMessage: S.optional(S.String),
           createTime: S.optional(S.String),
-          build: S.optional(Build),
+          build: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "Instance" });
     case 4:
@@ -3888,7 +3269,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           instanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3902,11 +3283,11 @@ function __c2(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(DocumentMap);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(22)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -3918,11 +3299,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(21)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(23)),
+          response: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
@@ -4133,7 +3514,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(22)),
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpBody" });
@@ -4245,18 +3626,18 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(46)),
+          members: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "Binding" });
     case 1:
-      return S.Array(Binding);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           version: S.optional(S.Number),
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "Policy" });
     case 3:
@@ -4432,8 +3813,8 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(StringMap),
-          metadata: S.optional(DocumentMap),
+          labels: S.optional(__S(2)),
+          metadata: S.optional(__S(21)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -4617,11 +3998,11 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 3:
-      return S.Array(Location);
+      return S.Array(__S(62));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(75)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4646,11 +4027,11 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsApisRequest",
       });
     case 6:
-      return S.Array(Api);
+      return S.Array(__S(3));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          apis: S.optional(ApiList),
+          apis: S.optional(__S(78)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4679,11 +4060,11 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsApisArtifactsRequest",
       });
     case 1:
-      return S.Array(Artifact);
+      return S.Array(__S(5));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(ArtifactList),
+          artifacts: S.optional(__S(81)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4708,11 +4089,11 @@ function __c10(j: number): any {
         identifier: "ListProjectsLocationsApisDeploymentsRequest",
       });
     case 4:
-      return S.Array(ApiDeployment);
+      return S.Array(__S(7));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          apiDeployments: S.optional(ApiDeploymentList),
+          apiDeployments: S.optional(__S(84)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4759,11 +4140,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApiVersion);
+      return S.Array(__S(10));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apiVersions: S.optional(ApiVersionList),
+          apiVersions: S.optional(__S(88)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4806,11 +4187,11 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsApisVersionsSpecsRequest",
       });
     case 4:
-      return S.Array(ApiSpec);
+      return S.Array(__S(13));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          apiSpecs: S.optional(ApiSpecList),
+          apiSpecs: S.optional(__S(92)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4874,12 +4255,12 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(97)),
         }),
       ).annotate({
         identifier: "ListOperationsResponse",
@@ -4922,7 +4303,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apiSpecs: S.optional(ApiSpecList),
+          apiSpecs: S.optional(__S(92)),
         }),
       ).annotate({
         identifier: "ListApiSpecRevisionsResponse",
@@ -4933,7 +4314,7 @@ function __c12(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Api.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4950,7 +4331,7 @@ function __c12(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(ApiDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4971,7 +4352,7 @@ function __c13(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(ApiVersion.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4988,7 +4369,7 @@ function __c13(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(ApiSpec.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5003,7 +4384,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5018,7 +4399,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5033,7 +4414,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5048,7 +4429,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5063,7 +4444,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Artifact.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5090,7 +4471,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RollbackApiDeploymentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5105,7 +4486,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RollbackApiSpecRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5119,7 +4500,7 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "SetIamPolicyRequest",
@@ -5128,7 +4509,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5143,7 +4524,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5158,7 +4539,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5173,7 +4554,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5188,7 +4569,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5207,7 +4588,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5222,7 +4603,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5237,7 +4618,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5252,7 +4633,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5267,7 +4648,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5282,7 +4663,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5305,7 +4686,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(TagApiDeploymentRevisionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(126).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5324,7 +4705,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(TagApiDeploymentRevisionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(126).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5338,7 +4719,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -5347,7 +4728,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5362,7 +4743,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5377,7 +4758,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5392,7 +4773,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5407,7 +4788,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5422,7 +4803,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5441,7 +4822,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5456,7 +4837,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5471,7 +4852,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5486,7 +4867,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5501,7 +4882,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5512,5 +4893,50 @@ function __c17(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsRuntimeRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
   }
 }

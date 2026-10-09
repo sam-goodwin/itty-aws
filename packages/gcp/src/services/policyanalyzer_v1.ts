@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -46,11 +48,6 @@ export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
   /** Optional. Filter expression to restrict the activities returned. For serviceAccountLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account. For serviceAccountKeyLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account key. */
   filter?: string;
 }
-const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
-
 /** Represents data observation period. */
 export interface GoogleCloudPolicyanalyzerV1ObservationPeriod {
   /** The observation start time. The time in this timestamp is always `07:00:00Z`. */
@@ -58,14 +55,7 @@ export interface GoogleCloudPolicyanalyzerV1ObservationPeriod {
   /** The observation end time. The time in this timestamp is always `07:00:00Z`. */
   endTime?: string;
 }
-const GoogleCloudPolicyanalyzerV1ObservationPeriod = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GoogleCloudPolicyanalyzerV1ObservationPeriod>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 /** Represents Activity on a GCP resource over specific observation period. */
 export interface GoogleCloudPolicyanalyzerV1Activity {
   /** The data observation period to build the activity. */
@@ -77,17 +67,7 @@ export interface GoogleCloudPolicyanalyzerV1Activity {
   /** A struct of custom fields to explain the activity. */
   activity?: DocumentMap;
 }
-const GoogleCloudPolicyanalyzerV1Activity = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleCloudPolicyanalyzerV1Activity>;
-
 export type GoogleCloudPolicyanalyzerV1ActivityList = Array<GoogleCloudPolicyanalyzerV1Activity>;
-const GoogleCloudPolicyanalyzerV1ActivityList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleCloudPolicyanalyzerV1ActivityList>;
-
 /** Response to the `QueryActivity` method. */
 export interface GoogleCloudPolicyanalyzerV1QueryActivityResponse {
   /** If there might be more results than those appearing in this response, then `nextPageToken` is included. To get the next set of results, call this method again using the value of `nextPageToken` as `pageToken`. */
@@ -95,11 +75,6 @@ export interface GoogleCloudPolicyanalyzerV1QueryActivityResponse {
   /** The set of activities that match the filter included in the request. */
   activities?: GoogleCloudPolicyanalyzerV1ActivityList;
 }
-const GoogleCloudPolicyanalyzerV1QueryActivityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>;
-
 export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
   /** Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to Google Cloud Locations: https://cloud.google.com/about/locations/ */
   parent: string;
@@ -110,11 +85,6 @@ export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
   /** Optional. Filter expression to restrict the activities returned. For serviceAccountLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account. For serviceAccountKeyLastAuthentication activities, supported filters are: - `activities.full_resource_name {=} [STRING]` - `activities.fullResourceName {=} [STRING]` where `[STRING]` is the full resource name of the service account key. */
   filter?: string;
 }
-const QueryOrganizationsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
-
 export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -125,11 +95,6 @@ export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
 }
-const QueryProjectsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>;
-
 export type QueryFoldersLocationsActivityTypesActivitiesError = NotFound | Forbidden | GcpOpError;
 /** Queries policy activities on Google Cloud resources. */
 export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperationMethod<
@@ -139,8 +104,8 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryFoldersLocationsActivityTypesActivitiesRequest,
-  output: GoogleCloudPolicyanalyzerV1QueryActivityResponse,
+  input: __S(0) as any as S.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>,
+  output: __S(5) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -159,8 +124,8 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryOrganizationsLocationsActivityTypesActivitiesRequest,
-  output: GoogleCloudPolicyanalyzerV1QueryActivityResponse,
+  input: __S(6) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>,
+  output: __S(5) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -176,8 +141,8 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudPolicyanalyzerV1QueryActivityResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryProjectsLocationsActivityTypesActivitiesRequest,
-  output: GoogleCloudPolicyanalyzerV1QueryActivityResponse,
+  input: __S(7) as any as S.Schema<QueryProjectsLocationsActivityTypesActivitiesRequest>,
+  output: __S(5) as any as S.Schema<GoogleCloudPolicyanalyzerV1QueryActivityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -218,21 +183,21 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          observationPeriod: S.optional(GoogleCloudPolicyanalyzerV1ObservationPeriod),
+          observationPeriod: S.optional(__S(1)),
           activityType: S.optional(S.String),
           fullResourceName: S.optional(S.String),
-          activity: S.optional(DocumentMap),
+          activity: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1Activity",
       });
     case 4:
-      return S.Array(GoogleCloudPolicyanalyzerV1Activity);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          activities: S.optional(GoogleCloudPolicyanalyzerV1ActivityList),
+          activities: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "GoogleCloudPolicyanalyzerV1QueryActivityResponse",
@@ -271,5 +236,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "QueryProjectsLocationsActivityTypesActivitiesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

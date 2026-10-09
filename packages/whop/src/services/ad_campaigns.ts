@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -39,16 +41,10 @@ export class NotFound
 
 /** How delivery bids in the ad auction: `minimum_cost` gets the most results for the budget, `average_target` holds an average cost per result, `maximum_target` never bids above a cap. Only for campaigns that own the budget. */
 export type CreateAdCampaignRequestBidType = "minimum_cost" | "average_target" | "maximum_target";
-const CreateAdCampaignRequestBidType = S.String;
-
 /** Which level owns the budget: the whole campaign (`ad_campaign`) or each ad group individually (`ad_group`). Defaults to `ad_group`. */
 export type CreateAdCampaignRequestBudgetOptimization = "ad_campaign" | "ad_group";
-const CreateAdCampaignRequestBudgetOptimization = S.String;
-
 /** Whether the budget is spent per day (`daily`) or over the campaign's full run (`lifetime`). Defaults to `daily`. */
 export type CreateAdCampaignRequestBudgetType = "daily" | "lifetime";
-const CreateAdCampaignRequestBudgetType = S.String;
-
 /** The goal the campaign optimizes toward. */
 export type CreateAdCampaignRequestObjective =
   | "awareness"
@@ -56,28 +52,17 @@ export type CreateAdCampaignRequestObjective =
   | "engagement"
   | "leads"
   | "sales";
-const CreateAdCampaignRequestObjective = S.String;
-
 /** The ad network the campaign runs on. */
 export type CreateAdCampaignRequestPlatform = "meta";
-const CreateAdCampaignRequestPlatform = S.String;
-
 export type CreateAdCampaignRequestSpecialAdCategoriesItem =
   | "housing"
   | "employment"
   | "financial_products"
   | "politics";
-const CreateAdCampaignRequestSpecialAdCategoriesItem = S.String;
-
 /** Regulated categories the campaign falls under. Ads in these categories are subject to extra targeting restrictions. */
 export type CreateAdCampaignRequestSpecialAdCategoriesList = Array<
   CreateAdCampaignRequestSpecialAdCategoriesItem | (string & {})
 >;
-const CreateAdCampaignRequestSpecialAdCategoriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateAdCampaignRequestSpecialAdCategoriesList>;
-
 export interface CreateAdCampaignRequest {
   /** The account to create the campaign under. Defaults to the account-scoped key's own account. */
   account_id?: string;
@@ -108,23 +93,12 @@ export interface CreateAdCampaignRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateAdCampaignRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAdCampaignRequest>;
-
 /** How delivery bids in the ad auction: `minimum_cost` gets the most results for the budget, `average_target` holds an average cost per result, and `maximum_target` never bids above a cap. */
 export type AdCampaignBidType = "minimum_cost" | "average_target" | "maximum_target";
-const AdCampaignBidType = S.String;
-
 /** Which level owns the budget: the whole campaign (`ad_campaign`) or each ad group individually (`ad_group`). */
 export type AdCampaignBudgetOptimization = "ad_campaign" | "ad_group";
-const AdCampaignBudgetOptimization = S.String;
-
 /** Whether `budget_amount` is spent per day (`daily`) or over the campaign's full run (`lifetime`). */
 export type AdCampaignBudgetType = "daily" | "lifetime";
-const AdCampaignBudgetType = S.String;
-
 /** Whether the campaign's ads are delivering right now, and if not, why. Account billing failures set payment_failed without changing the configured status. Successful payment retry clears that block and recalculates delivery. When several states apply at once, the highest-precedence one is returned. */
 export type AdCampaignDeliveryStatus =
   | "payment_failed"
@@ -140,12 +114,8 @@ export type AdCampaignDeliveryStatus =
   | "completed"
   | "ad_groups_off"
   | "active";
-const AdCampaignDeliveryStatus = S.String;
-
 /** The type of resource the issue is attached to. */
 export type AdPlatformIssueResourceType = "ad_campaign" | "ad_group" | "ad";
-const AdPlatformIssueResourceType = S.String;
-
 export interface AdPlatformIssue {
   /** Unique identifier for the issue. */
   id: string;
@@ -156,19 +126,11 @@ export interface AdPlatformIssue {
   /** The type of resource the issue is attached to. */
   resource_type: AdPlatformIssueResourceType;
 }
-const AdPlatformIssue = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AdPlatformIssue>;
-
 export type AdCampaignIssuesList = Array<AdPlatformIssue>;
-const AdCampaignIssuesList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AdCampaignIssuesList>;
-
 /** The goal the campaign optimizes toward. */
 export type AdCampaignObjective = "awareness" | "traffic" | "engagement" | "leads" | "sales";
-const AdCampaignObjective = S.String;
-
 /** The ad network the campaign runs on. */
 export type AdCampaignPlatform = "meta" | "tiktok" | "google";
-const AdCampaignPlatform = S.String;
-
 /** The Whop pixel conversion event whose attributed count represents results -- the optimization goal, or the highest-volume attributed event for campaigns that budget per ad group. Null when the goal isn't a Whop-attributed event. */
 export type AdCampaignResultEvent =
   | "purchase"
@@ -181,8 +143,6 @@ export type AdCampaignResultEvent =
   | "add_to_cart"
   | "custom"
   | "messaging_conversation";
-const AdCampaignResultEvent = S.String;
-
 /** Regulated categories the campaign is declared under. Ads in these categories are subject to extra targeting restrictions. Empty when none apply. */
 export type AdCampaignSpecialAdCategoriesItem =
   | "housing"
@@ -190,9 +150,6 @@ export type AdCampaignSpecialAdCategoriesItem =
   | "financial_products"
   | "politics";
 export type AdCampaignSpecialAdCategoriesList = Array<AdCampaignSpecialAdCategoriesItem>;
-const AdCampaignSpecialAdCategoriesList =
-  CreateAdCampaignRequestSpecialAdCategoriesList as any as S.Schema<AdCampaignSpecialAdCategoriesList>;
-
 /** The configured lifecycle status of the ad campaign. Billing failures preserve active or paused here and set delivery_status to payment_failed. */
 export type AdCampaignStatus =
   | "active"
@@ -207,8 +164,6 @@ export type AdCampaignStatus =
   | "importing"
   | "imported"
   | "duplicating";
-const AdCampaignStatus = S.String;
-
 export interface AdCampaign {
   /** USD value attributed to add-to-cart events. Sums the value sent with each event, normalized to USD; events without a value contribute 0. */
   added_to_cart_value: number;
@@ -339,28 +294,16 @@ export interface AdCampaign {
   /** Whop pixel-attributed view-content events, last-click. */
   viewed_contents: number;
 }
-const AdCampaign = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AdCampaign>;
-
 export interface DeleteAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
 }
-const DeleteAdCampaignRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteAdCampaignRequest>;
-
 export interface DeleteAdCampaignResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the deleted ad campaign. */
   id: string;
 }
-const DeleteAdCampaignResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteAdCampaignResponse>;
-
 export interface DuplicateAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
@@ -371,28 +314,11 @@ export interface DuplicateAdCampaignRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const DuplicateAdCampaignRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DuplicateAdCampaignRequest>;
-
 export type DuplicateAdCampaignResponseDataList = Array<AdCampaign>;
-const DuplicateAdCampaignResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DuplicateAdCampaignResponseDataList>;
-
 export interface DuplicateAdCampaignResponse {
   data: DuplicateAdCampaignResponseDataList;
 }
-const DuplicateAdCampaignResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DuplicateAdCampaignResponse>;
-
 export type GetAdCampaignRequestAttributionModel = "last_touch" | "first_touch";
-const GetAdCampaignRequestAttributionModel = S.String;
-
 export interface GetAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
@@ -405,11 +331,7 @@ export interface GetAdCampaignRequest {
   /** Attribution model the conversion stats count under (defaults to last_touch). Under both models a journey with any whop ad touch attributes to whop; the model picks which whop touch credits the entity and which non-whop source wins otherwise. */
   attribution_model?: GetAdCampaignRequestAttributionModel | (string & {});
 }
-const GetAdCampaignRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetAdCampaignRequest>;
-
 export type ListAdCampaignsRequestStatus = "draft" | "active" | "paused" | "payment_failed";
-const ListAdCampaignsRequestStatus = S.String;
-
 export type ListAdCampaignsRequestOrder =
   | "created_at"
   | "updated_at"
@@ -426,14 +348,8 @@ export type ListAdCampaignsRequestOrder =
   | "cost_per_click"
   | "cost_per_result"
   | "return_on_ad_spend";
-const ListAdCampaignsRequestOrder = S.String;
-
 export type ListAdCampaignsRequestDirection = "asc" | "desc";
-const ListAdCampaignsRequestDirection = S.String;
-
 export type ListAdCampaignsRequestAttributionModel = "last_touch" | "first_touch";
-const ListAdCampaignsRequestAttributionModel = S.String;
-
 export interface ListAdCampaignsRequest {
   /** The account the campaigns belong to. Defaults to the account-scoped key's own account. */
   account_id?: string;
@@ -466,69 +382,35 @@ export interface ListAdCampaignsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListAdCampaignsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListAdCampaignsRequest>;
-
 export type ListAdCampaignsResponseDataList = Array<AdCampaign>;
-const ListAdCampaignsResponseDataList =
-  DuplicateAdCampaignResponseDataList as any as S.Schema<ListAdCampaignsResponseDataList>;
-
 export interface ListAdCampaignsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListAdCampaignsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListAdCampaignsResponsePageInfo>;
-
 export interface ListAdCampaignsResponse {
   data: ListAdCampaignsResponseDataList;
   page_info: ListAdCampaignsResponsePageInfo;
 }
-const ListAdCampaignsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListAdCampaignsResponse>;
-
 export interface PauseAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const PauseAdCampaignRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PauseAdCampaignRequest>;
-
 export interface UnpauseAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const UnpauseAdCampaignRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UnpauseAdCampaignRequest>;
-
 /** How delivery bids in the ad auction: `minimum_cost` gets the most results for the budget, `average_target` holds an average cost per result, `maximum_target` never bids above a cap. Switching to `minimum_cost` clears the cap amounts stored on the campaign's ad groups. Only for campaigns that own the budget. */
 export type UpdateAdCampaignRequestBidType = "minimum_cost" | "average_target" | "maximum_target";
-const UpdateAdCampaignRequestBidType = S.String;
-
 /** Which level owns the budget: the whole campaign (`ad_campaign`) or each ad group individually (`ad_group`). Only changeable before the campaign is live on the ad network; switching to `ad_campaign` requires budget_amount in the same request, and switching to `ad_group` clears the campaign budget. */
 export type UpdateAdCampaignRequestBudgetOptimization = "ad_campaign" | "ad_group";
-const UpdateAdCampaignRequestBudgetOptimization = S.String;
-
 /** Whether `budget_amount` is spent per day (`daily`) or over the campaign's full run (`lifetime`). Only changeable while the campaign is a draft; send budget_amount in the same request so the amount lands on the new type. */
 export type UpdateAdCampaignRequestBudgetType = "daily" | "lifetime";
-const UpdateAdCampaignRequestBudgetType = S.String;
-
 export type UpdateAdCampaignRequestSpecialAdCategoriesItem =
   | "housing"
   | "employment"
@@ -538,13 +420,8 @@ export type UpdateAdCampaignRequestSpecialAdCategoriesItem =
 export type UpdateAdCampaignRequestSpecialAdCategoriesList = Array<
   UpdateAdCampaignRequestSpecialAdCategoriesItem | (string & {})
 >;
-const UpdateAdCampaignRequestSpecialAdCategoriesList =
-  CreateAdCampaignRequestSpecialAdCategoriesList as any as S.Schema<UpdateAdCampaignRequestSpecialAdCategoriesList>;
-
 /** Set to active to launch a draft campaign (moderates and pushes it live). Live-campaign pause and resume use the pause and unpause actions. */
 export type UpdateAdCampaignRequestStatus = "active";
-const UpdateAdCampaignRequestStatus = S.String;
-
 export interface UpdateAdCampaignRequest {
   /** The ad campaign ID. */
   id: string;
@@ -569,11 +446,6 @@ export interface UpdateAdCampaignRequest {
   /** The name of the campaign. */
   title?: string;
 }
-const UpdateAdCampaignRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UpdateAdCampaignRequest>;
-
 export type CreateAdCampaignError = BadRequest | Conflict | WhopOpError;
 /** Create an Ad Campaign Creates an ad campaign for an account. */
 export const createAdCampaign: API.OperationMethod<
@@ -582,8 +454,8 @@ export const createAdCampaign: API.OperationMethod<
   CreateAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdCampaignRequest,
-  output: AdCampaign,
+  input: __S(1) as any as S.Schema<CreateAdCampaignRequest>,
+  output: __S(4) as any as S.Schema<AdCampaign>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -597,8 +469,8 @@ export const deleteAdCampaign: API.OperationMethod<
   DeleteAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdCampaignRequest,
-  output: DeleteAdCampaignResponse,
+  input: __S(5) as any as S.Schema<DeleteAdCampaignRequest>,
+  output: __S(6) as any as S.Schema<DeleteAdCampaignResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -612,8 +484,8 @@ export const duplicateAdCampaign: API.OperationMethod<
   DuplicateAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DuplicateAdCampaignRequest,
-  output: DuplicateAdCampaignResponse,
+  input: __S(7) as any as S.Schema<DuplicateAdCampaignRequest>,
+  output: __S(9) as any as S.Schema<DuplicateAdCampaignResponse>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -627,8 +499,8 @@ export const getAdCampaign: API.OperationMethod<
   GetAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdCampaignRequest,
-  output: AdCampaign,
+  input: __S(10) as any as S.Schema<GetAdCampaignRequest>,
+  output: __S(4) as any as S.Schema<AdCampaign>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -644,8 +516,8 @@ export const listAdCampaigns: API.PaginatedOperationMethod<
   AdCampaign
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAdCampaignsRequest,
-    output: ListAdCampaignsResponse,
+    input: __S(11) as any as S.Schema<ListAdCampaignsRequest>,
+    output: __S(13) as any as S.Schema<ListAdCampaignsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -669,8 +541,8 @@ export const pauseAdCampaign: API.OperationMethod<
   PauseAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseAdCampaignRequest,
-  output: AdCampaign,
+  input: __S(14) as any as S.Schema<PauseAdCampaignRequest>,
+  output: __S(4) as any as S.Schema<AdCampaign>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -684,8 +556,8 @@ export const unpauseAdCampaign: API.OperationMethod<
   UnpauseAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnpauseAdCampaignRequest,
-  output: AdCampaign,
+  input: __S(15) as any as S.Schema<UnpauseAdCampaignRequest>,
+  output: __S(4) as any as S.Schema<AdCampaign>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -699,8 +571,8 @@ export const updateAdCampaign: API.OperationMethod<
   UpdateAdCampaignError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAdCampaignRequest,
-  output: AdCampaign,
+  input: __S(16) as any as S.Schema<UpdateAdCampaignRequest>,
+  output: __S(4) as any as S.Schema<AdCampaign>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -710,21 +582,21 @@ export const updateAdCampaign: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateAdCampaignRequestSpecialAdCategoriesItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String),
-          bid_type: S.optional(CreateAdCampaignRequestBidType),
+          bid_type: S.optional(S.String),
           budget_amount: S.optional(S.Number),
           budget_amount_local: S.optional(S.Number),
-          budget_optimization: S.optional(CreateAdCampaignRequestBudgetOptimization),
-          budget_type: S.optional(CreateAdCampaignRequestBudgetType),
+          budget_optimization: S.optional(S.String),
+          budget_type: S.optional(S.String),
           desired_cost_per_result: S.optional(S.Number),
           ends_at: S.optional(S.String),
-          objective: CreateAdCampaignRequestObjective,
-          platform: CreateAdCampaignRequestPlatform,
-          special_ad_categories: S.optional(CreateAdCampaignRequestSpecialAdCategoriesList),
+          objective: S.String,
+          platform: S.String,
+          special_ad_categories: S.optional(__S(0)),
           starts_at: S.optional(S.String),
           title: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -736,22 +608,22 @@ function __c0(j: number): any {
           id: S.String,
           message: S.String,
           resource_id: S.NullOr(S.String),
-          resource_type: AdPlatformIssueResourceType,
+          resource_type: S.String,
         }),
       ).annotate({ identifier: "AdPlatformIssue" });
     case 3:
-      return S.Array(AdPlatformIssue);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           added_to_cart_value: S.Number,
           added_to_carts: S.Number,
-          bid_type: S.optional(S.NullOr(AdCampaignBidType)),
+          bid_type: S.optional(S.NullOr(S.String)),
           budget_amount: S.NullOr(S.Number),
           budget_amount_local: S.NullOr(S.Number),
           budget_currency: S.String,
-          budget_optimization: S.NullOr(AdCampaignBudgetOptimization),
-          budget_type: S.NullOr(AdCampaignBudgetType),
+          budget_optimization: S.NullOr(S.String),
+          budget_type: S.NullOr(S.String),
           click_through_rate: S.Number,
           clicks: S.Number,
           completed_registration_value: S.Number,
@@ -774,33 +646,33 @@ function __c0(j: number): any {
           custom_conversions: S.Number,
           custom_event_counts: S.Unknown,
           custom_event_values: S.Unknown,
-          delivery_status: AdCampaignDeliveryStatus,
+          delivery_status: S.String,
           desired_cost_per_result: S.optional(S.NullOr(S.Number)),
           ends_at: S.optional(S.NullOr(S.String)),
           frequency: S.NullOr(S.Number),
           id: S.String,
           impressions: S.Number,
-          issues: AdCampaignIssuesList,
+          issues: __S(3),
           lead_value: S.Number,
           leads: S.Number,
           link_clicks: S.Number,
-          objective: S.NullOr(AdCampaignObjective),
+          objective: S.NullOr(S.String),
           optimization_goal: S.NullOr(S.String),
-          platform: AdCampaignPlatform,
+          platform: S.String,
           purchase_value: S.Number,
           purchases: S.Number,
           reach: S.Number,
-          result_event: S.NullOr(AdCampaignResultEvent),
+          result_event: S.NullOr(S.String),
           result_event_name: S.NullOr(S.String),
           results: S.NullOr(S.Number),
           return_on_ad_spend: S.Number,
           schedule_value: S.Number,
           schedules: S.Number,
-          special_ad_categories: AdCampaignSpecialAdCategoriesList,
+          special_ad_categories: __S(0),
           spend: S.Number,
           spend_currency: S.NullOr(S.String),
           starts_at: S.optional(S.NullOr(S.String)),
-          status: AdCampaignStatus,
+          status: S.String,
           submitted_application_value: S.Number,
           submitted_applications: S.Number,
           title: S.String,
@@ -840,11 +712,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AdCampaign);
+      return S.Array(__S(4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: DuplicateAdCampaignResponseDataList,
+          data: __S(8),
         }),
       ).annotate({
         identifier: "DuplicateAdCampaignResponse",
@@ -856,23 +728,23 @@ function __c1(j: number): any {
           stats_from: S.optional(S.String.pipe(T.Query())),
           stats_to: S.optional(S.String.pipe(T.Query())),
           time_zone: S.optional(S.String.pipe(T.Query())),
-          attribution_model: S.optional(GetAdCampaignRequestAttributionModel.pipe(T.Query())),
+          attribution_model: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ad_campaigns/{id}", code: 200 })),
       ).annotate({ identifier: "GetAdCampaignRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListAdCampaignsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListAdCampaignsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListAdCampaignsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           stats_from: S.optional(S.String.pipe(T.Query())),
           stats_to: S.optional(S.String.pipe(T.Query())),
           time_zone: S.optional(S.String.pipe(T.Query())),
-          attribution_model: S.optional(ListAdCampaignsRequestAttributionModel.pipe(T.Query())),
+          attribution_model: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -893,8 +765,8 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListAdCampaignsResponseDataList,
-          page_info: ListAdCampaignsResponsePageInfo,
+          data: __S(8),
+          page_info: __S(12),
         }),
       ).annotate({ identifier: "ListAdCampaignsResponse" });
     case 6:
@@ -919,17 +791,32 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          bid_type: S.optional(UpdateAdCampaignRequestBidType),
+          bid_type: S.optional(S.String),
           budget_amount: S.optional(S.Number),
           budget_amount_local: S.optional(S.Number),
-          budget_optimization: S.optional(UpdateAdCampaignRequestBudgetOptimization),
-          budget_type: S.optional(UpdateAdCampaignRequestBudgetType),
+          budget_optimization: S.optional(S.String),
+          budget_type: S.optional(S.String),
           ends_at: S.optional(S.String),
-          special_ad_categories: S.optional(UpdateAdCampaignRequestSpecialAdCategoriesList),
+          special_ad_categories: S.optional(__S(0)),
           starts_at: S.optional(S.String),
-          status: S.optional(UpdateAdCampaignRequestStatus),
+          status: S.optional(S.String),
           title: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/ad_campaigns/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateAdCampaignRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

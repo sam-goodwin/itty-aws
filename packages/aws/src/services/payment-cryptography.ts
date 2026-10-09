@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Payment Cryptography",
   serviceShapeName: "PaymentCryptographyControlPlane",
@@ -138,15 +140,10 @@ export class ValidationException
 export type KeyArnOrKeyAliasType = string;
 export type Region = string;
 export type Regions = string[];
-const Regions = /*@__PURE__*/ __L.at(__c0, 0);
 export interface AddKeyReplicationRegionsInput {
   KeyIdentifier: string;
   ReplicationRegions: string[];
 }
-const AddKeyReplicationRegionsInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddKeyReplicationRegionsInput>;
 export type KeyArn = string;
 export type KeyUsage = string;
 export type KeyClass = string;
@@ -162,14 +159,12 @@ export interface KeyModesOfUse {
   DeriveKey?: boolean;
   NoRestrictions?: boolean;
 }
-const KeyModesOfUse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<KeyModesOfUse>;
 export interface KeyAttributes {
   KeyUsage: string;
   KeyClass: string;
   KeyAlgorithm: string;
   KeyModesOfUse: KeyModesOfUse;
 }
-const KeyAttributes = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<KeyAttributes>;
 export type KeyCheckValue = string;
 export type KeyCheckValueAlgorithm = string;
 export type KeyState = string;
@@ -181,12 +176,7 @@ export interface ReplicationStatusType {
   Status: string;
   StatusMessage?: string;
 }
-const ReplicationStatusType = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ReplicationStatusType>;
 export type ReplicationStatus = { [key: string]: ReplicationStatusType | undefined };
-const ReplicationStatus = /*@__PURE__*/ __L.at(__c0, 5);
 export type MpaSessionArn = string;
 export type SessionStatus = string;
 export type MpaStatusMessage = string;
@@ -196,7 +186,6 @@ export interface MpaStatus {
   InitiationDate: Date;
   StatusMessage?: string;
 }
-const MpaStatus = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MpaStatus>;
 export interface Key {
   KeyArn: string;
   KeyAttributes: KeyAttributes;
@@ -218,14 +207,9 @@ export interface Key {
   UsingDefaultReplicationRegions?: boolean;
   MpaStatus?: MpaStatus;
 }
-const Key = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Key>;
 export interface AddKeyReplicationRegionsOutput {
   Key: Key;
 }
-const AddKeyReplicationRegionsOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddKeyReplicationRegionsOutput>;
 export type MpaOperation = string;
 export type MpaTeamArn = string;
 export type MpaRequesterComment = string | redacted.Redacted<string>;
@@ -234,10 +218,6 @@ export interface AssociateMpaTeamInput {
   MpaTeamArn: string;
   RequesterComment?: string | redacted.Redacted<string>;
 }
-const AssociateMpaTeamInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AssociateMpaTeamInput>;
 export type AssociationState = string;
 export interface MpaTeamAssociation {
   Action: string;
@@ -245,38 +225,28 @@ export interface MpaTeamAssociation {
   AssociationState: string;
   MpaStatus?: MpaStatus;
 }
-const MpaTeamAssociation = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MpaTeamAssociation>;
 export interface AssociateMpaTeamOutput {
   MpaTeamAssociation: MpaTeamAssociation;
 }
-const AssociateMpaTeamOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AssociateMpaTeamOutput>;
 export type AliasName = string;
 export interface CreateAliasInput {
   AliasName: string;
   KeyArn?: string;
 }
-const CreateAliasInput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateAliasInput>;
 export interface Alias {
   AliasName: string;
   KeyArn?: string;
 }
-const Alias = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Alias>;
 export interface CreateAliasOutput {
   Alias: Alias;
 }
-const CreateAliasOutput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateAliasOutput>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ __L.at(__c2, 0);
 export interface CreateKeyInput {
   KeyAttributes: KeyAttributes;
   KeyCheckValueAlgorithm?: string;
@@ -286,95 +256,59 @@ export interface CreateKeyInput {
   DeriveKeyUsage?: string;
   ReplicationRegions?: string[];
 }
-const CreateKeyInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateKeyInput>;
 export interface CreateKeyOutput {
   Key: Key;
 }
-const CreateKeyOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateKeyOutput>;
 export interface DeleteAliasInput {
   AliasName: string;
 }
-const DeleteAliasInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteAliasInput>;
 export interface DeleteAliasOutput {}
-const DeleteAliasOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteAliasOutput>;
 export interface DeleteKeyInput {
   KeyIdentifier: string;
   DeleteKeyInDays?: number;
 }
-const DeleteKeyInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeleteKeyInput>;
 export interface DeleteKeyOutput {
   Key: Key;
 }
-const DeleteKeyOutput = CreateKeyOutput as any as S.Schema<DeleteKeyOutput>;
 export type ResourceArn = string;
 export interface DeleteResourcePolicyInput {
   ResourceArn: string;
 }
-const DeleteResourcePolicyInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {}
-const DeleteResourcePolicyOutput = DeleteAliasOutput as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DisableDefaultKeyReplicationRegionsInput {
   ReplicationRegions: string[];
 }
-const DisableDefaultKeyReplicationRegionsInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DisableDefaultKeyReplicationRegionsInput>;
 export interface DisableDefaultKeyReplicationRegionsOutput {
   EnabledReplicationRegions: string[];
 }
-const DisableDefaultKeyReplicationRegionsOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DisableDefaultKeyReplicationRegionsOutput>;
 export interface DisassociateMpaTeamInput {
   Action: string;
   RequesterComment?: string | redacted.Redacted<string>;
 }
-const DisassociateMpaTeamInput = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DisassociateMpaTeamInput>;
 export interface DisassociateMpaTeamOutput {
   MpaTeamAssociation: MpaTeamAssociation;
 }
-const DisassociateMpaTeamOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DisassociateMpaTeamOutput>;
 export interface EnableDefaultKeyReplicationRegionsInput {
   ReplicationRegions: string[];
 }
-const EnableDefaultKeyReplicationRegionsInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<EnableDefaultKeyReplicationRegionsInput>;
 export interface EnableDefaultKeyReplicationRegionsOutput {
   EnabledReplicationRegions: string[];
 }
-const EnableDefaultKeyReplicationRegionsOutput =
-  DisableDefaultKeyReplicationRegionsOutput as any as S.Schema<EnableDefaultKeyReplicationRegionsOutput>;
 export type KeyExportability = string;
 export type KeyVersion = string;
 export type OptionalBlockId = string | redacted.Redacted<string>;
 export type OptionalBlockValue = string | redacted.Redacted<string>;
 export type OptionalBlocks = { [key: string]: string | redacted.Redacted<string> | undefined };
-const OptionalBlocks = /*@__PURE__*/ __L.at(__c3, 4);
 export interface KeyBlockHeaders {
   KeyModesOfUse?: KeyModesOfUse;
   KeyExportability?: string;
   KeyVersion?: string;
   OptionalBlocks?: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-const KeyBlockHeaders = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<KeyBlockHeaders>;
 export interface ExportTr31KeyBlock {
   WrappingKeyIdentifier: string;
   KeyBlockHeaders?: KeyBlockHeaders;
 }
-const ExportTr31KeyBlock = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ExportTr31KeyBlock>;
 export type CertificateType = string;
 export type ExportTokenId = string;
 export type Tr34KeyBlockFormat = string;
@@ -389,14 +323,12 @@ export interface ExportTr34KeyBlock {
   RandomNonce?: string;
   KeyBlockHeaders?: KeyBlockHeaders;
 }
-const ExportTr34KeyBlock = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ExportTr34KeyBlock>;
 export type WrappingKeySpec = string;
 export interface ExportKeyCryptogram {
   CertificateAuthorityPublicKeyIdentifier: string;
   WrappingKeyCertificate: string;
   WrappingSpec?: string;
 }
-const ExportKeyCryptogram = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ExportKeyCryptogram>;
 export type SymmetricKeyAlgorithm =
   | "TDES_2KEY"
   | "TDES_3KEY"
@@ -408,17 +340,10 @@ export type SymmetricKeyAlgorithm =
   | "HMAC_SHA512"
   | "HMAC_SHA224"
   | (string & {});
-const SymmetricKeyAlgorithm = S.String;
-
 export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963" | (string & {});
-const KeyDerivationFunction = S.String;
-
 export type KeyDerivationHashAlgorithm = "SHA_256" | "SHA_384" | "SHA_512" | (string & {});
-const KeyDerivationHashAlgorithm = S.String;
-
 export type SharedInformation = string;
 export type DiffieHellmanDerivationData = { SharedInformation: string };
-const DiffieHellmanDerivationData = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ExportDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
   CertificateAuthorityPublicKeyIdentifier: string;
@@ -429,26 +354,16 @@ export interface ExportDiffieHellmanTr31KeyBlock {
   DerivationData: DiffieHellmanDerivationData;
   KeyBlockHeaders?: KeyBlockHeaders;
 }
-const ExportDiffieHellmanTr31KeyBlock = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ExportDiffieHellmanTr31KeyBlock>;
 export type As2805KeyVariant =
   | "TERMINAL_MAJOR_KEY_VARIANT_00"
   | "PIN_ENCRYPTION_KEY_VARIANT_28"
   | "MESSAGE_AUTHENTICATION_KEY_VARIANT_24"
   | "DATA_ENCRYPTION_KEY_VARIANT_22"
   | (string & {});
-const As2805KeyVariant = S.String;
-
 export interface ExportAs2805KeyCryptogram {
   WrappingKeyIdentifier: string;
   As2805KeyVariant: As2805KeyVariant;
 }
-const ExportAs2805KeyCryptogram = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ExportAs2805KeyCryptogram>;
 export type ExportKeyMaterial =
   | {
       Tr31KeyBlock: ExportTr31KeyBlock;
@@ -485,26 +400,19 @@ export type ExportKeyMaterial =
       DiffieHellmanTr31KeyBlock?: never;
       As2805KeyCryptogram: ExportAs2805KeyCryptogram;
     };
-const ExportKeyMaterial = /*@__PURE__*/ __L.at(__c4, 4);
 export type HexLength20Or24 = string;
 export interface ExportDukptInitialKey {
   KeySerialNumber: string;
 }
-const ExportDukptInitialKey = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ExportDukptInitialKey>;
 export interface ExportAttributes {
   ExportDukptInitialKey?: ExportDukptInitialKey;
   KeyCheckValueAlgorithm?: string;
 }
-const ExportAttributes = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ExportAttributes>;
 export interface ExportKeyInput {
   KeyMaterial: ExportKeyMaterial;
   ExportKeyIdentifier: string;
   ExportAttributes?: ExportAttributes;
 }
-const ExportKeyInput = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ExportKeyInput>;
 export type WrappedKeyMaterialFormat = string;
 export type KeyMaterial = string | redacted.Redacted<string>;
 export interface WrappedKey {
@@ -514,19 +422,15 @@ export interface WrappedKey {
   KeyCheckValue?: string;
   KeyCheckValueAlgorithm?: string;
 }
-const WrappedKey = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<WrappedKey>;
 export interface ExportKeyOutput {
   WrappedKey?: WrappedKey;
 }
-const ExportKeyOutput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ExportKeyOutput>;
 export interface GetAliasInput {
   AliasName: string;
 }
-const GetAliasInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetAliasInput>;
 export interface GetAliasOutput {
   Alias: Alias;
 }
-const GetAliasOutput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetAliasOutput>;
 export type SigningAlgorithmType = string;
 export interface CertificateSubjectType {
   CommonName: string;
@@ -537,67 +441,37 @@ export interface CertificateSubjectType {
   StateOrProvince?: string;
   EmailAddress?: string;
 }
-const CertificateSubjectType = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CertificateSubjectType>;
 export interface GetCertificateSigningRequestInput {
   KeyIdentifier: string;
   SigningAlgorithm: string;
   CertificateSubject: CertificateSubjectType;
 }
-const GetCertificateSigningRequestInput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetCertificateSigningRequestInput>;
 export type CertificateSigningRequestType = string | redacted.Redacted<string>;
 export interface GetCertificateSigningRequestOutput {
   CertificateSigningRequest: string | redacted.Redacted<string>;
 }
-const GetCertificateSigningRequestOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetCertificateSigningRequestOutput>;
 export interface GetDefaultKeyReplicationRegionsInput {}
-const GetDefaultKeyReplicationRegionsInput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetDefaultKeyReplicationRegionsInput>;
 export interface GetDefaultKeyReplicationRegionsOutput {
   EnabledReplicationRegions: string[];
 }
-const GetDefaultKeyReplicationRegionsOutput =
-  DisableDefaultKeyReplicationRegionsOutput as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>;
 export interface GetKeyInput {
   KeyIdentifier: string;
 }
-const GetKeyInput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetKeyInput>;
 export interface GetKeyOutput {
   Key: Key;
 }
-const GetKeyOutput = CreateKeyOutput as any as S.Schema<GetKeyOutput>;
 export interface GetMpaTeamAssociationInput {
   Action: string;
 }
-const GetMpaTeamAssociationInput = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetMpaTeamAssociationInput>;
 export interface GetMpaTeamAssociationOutput {
   MpaTeamAssociation: MpaTeamAssociation;
 }
-const GetMpaTeamAssociationOutput =
-  DisassociateMpaTeamOutput as any as S.Schema<GetMpaTeamAssociationOutput>;
 export type KeyMaterialType = string;
 export interface GetParametersForExportInput {
   KeyMaterialType: string;
   SigningKeyAlgorithm: string;
   ReuseLastGeneratedToken?: boolean;
 }
-const GetParametersForExportInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetParametersForExportInput>;
 export interface GetParametersForExportOutput {
   SigningKeyCertificate: string;
   SigningKeyCertificateChain: string;
@@ -605,19 +479,11 @@ export interface GetParametersForExportOutput {
   ExportToken: string;
   ParametersValidUntilTimestamp: Date;
 }
-const GetParametersForExportOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetParametersForExportOutput>;
 export interface GetParametersForImportInput {
   KeyMaterialType: string;
   WrappingKeyAlgorithm: string;
   ReuseLastGeneratedToken?: boolean;
 }
-const GetParametersForImportInput = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetParametersForImportInput>;
 export type ImportTokenId = string;
 export interface GetParametersForImportOutput {
   WrappingKeyCertificate: string;
@@ -626,64 +492,35 @@ export interface GetParametersForImportOutput {
   ImportToken: string;
   ParametersValidUntilTimestamp: Date;
 }
-const GetParametersForImportOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetParametersForImportOutput>;
 export interface GetPublicKeyCertificateInput {
   KeyIdentifier: string;
 }
-const GetPublicKeyCertificateInput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetPublicKeyCertificateInput>;
 export interface GetPublicKeyCertificateOutput {
   KeyCertificate: string;
   KeyCertificateChain: string;
 }
-const GetPublicKeyCertificateOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetPublicKeyCertificateOutput>;
 export interface GetResourcePolicyInput {
   ResourceArn: string;
 }
-const GetResourcePolicyInput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetResourcePolicyInput>;
 export type ResourcePolicy = string;
 export interface GetResourcePolicyOutput {
   ResourceArn: string;
   Policy: string;
 }
-const GetResourcePolicyOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetResourcePolicyOutput>;
 export interface RootCertificatePublicKey {
   KeyAttributes: KeyAttributes;
   PublicKeyCertificate: string;
 }
-const RootCertificatePublicKey = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RootCertificatePublicKey>;
 export interface TrustedCertificatePublicKey {
   KeyAttributes: KeyAttributes;
   PublicKeyCertificate: string;
   CertificateAuthorityPublicKeyIdentifier: string;
 }
-const TrustedCertificatePublicKey = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<TrustedCertificatePublicKey>;
 export type Tr31WrappedKeyBlock = string | redacted.Redacted<string>;
 export interface ImportTr31KeyBlock {
   WrappingKeyIdentifier: string;
   WrappedKeyBlock: string | redacted.Redacted<string>;
 }
-const ImportTr31KeyBlock = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ImportTr31KeyBlock>;
 export type Tr34WrappedKeyBlock = string | redacted.Redacted<string>;
 export interface ImportTr34KeyBlock {
   CertificateAuthorityPublicKeyIdentifier: string;
@@ -695,7 +532,6 @@ export interface ImportTr34KeyBlock {
   KeyBlockFormat: string;
   RandomNonce?: string;
 }
-const ImportTr34KeyBlock = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ImportTr34KeyBlock>;
 export type WrappedKeyCryptogram = string | redacted.Redacted<string>;
 export interface ImportKeyCryptogram {
   KeyAttributes: KeyAttributes;
@@ -704,7 +540,6 @@ export interface ImportKeyCryptogram {
   ImportToken: string;
   WrappingSpec?: string;
 }
-const ImportKeyCryptogram = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ImportKeyCryptogram>;
 export interface ImportDiffieHellmanTr31KeyBlock {
   PrivateKeyIdentifier: string;
   CertificateAuthorityPublicKeyIdentifier: string;
@@ -715,10 +550,6 @@ export interface ImportDiffieHellmanTr31KeyBlock {
   DerivationData: DiffieHellmanDerivationData;
   WrappedKeyBlock: string | redacted.Redacted<string>;
 }
-const ImportDiffieHellmanTr31KeyBlock = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ImportDiffieHellmanTr31KeyBlock>;
 export interface ImportAs2805KeyCryptogram {
   As2805KeyVariant: As2805KeyVariant;
   KeyModesOfUse: KeyModesOfUse;
@@ -727,10 +558,6 @@ export interface ImportAs2805KeyCryptogram {
   WrappingKeyIdentifier: string;
   WrappedKeyCryptogram: string | redacted.Redacted<string>;
 }
-const ImportAs2805KeyCryptogram = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ImportAs2805KeyCryptogram>;
 export type ImportKeyMaterial =
   | {
       RootCertificatePublicKey: RootCertificatePublicKey;
@@ -795,7 +622,6 @@ export type ImportKeyMaterial =
       DiffieHellmanTr31KeyBlock?: never;
       As2805KeyCryptogram: ImportAs2805KeyCryptogram;
     };
-const ImportKeyMaterial = /*@__PURE__*/ __L.at(__c8, 1);
 export interface ImportKeyInput {
   KeyMaterial: ImportKeyMaterial;
   KeyCheckValueAlgorithm?: string;
@@ -804,11 +630,9 @@ export interface ImportKeyInput {
   ReplicationRegions?: string[];
   RequesterComment?: string | redacted.Redacted<string>;
 }
-const ImportKeyInput = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ImportKeyInput>;
 export interface ImportKeyOutput {
   Key: Key;
 }
-const ImportKeyOutput = CreateKeyOutput as any as S.Schema<ImportKeyOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListAliasesInput {
@@ -816,20 +640,16 @@ export interface ListAliasesInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAliasesInput = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListAliasesInput>;
 export type Aliases = Alias[];
-const Aliases = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ListAliasesOutput {
   Aliases: Alias[];
   NextToken?: string;
 }
-const ListAliasesOutput = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListAliasesOutput>;
 export interface ListKeysInput {
   KeyState?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListKeysInput = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListKeysInput>;
 export interface KeySummary {
   KeyArn: string;
   KeyState: string;
@@ -840,106 +660,71 @@ export interface KeySummary {
   MultiRegionKeyType?: string;
   PrimaryRegion?: string;
 }
-const KeySummary = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<KeySummary>;
 export type KeySummaryList = KeySummary[];
-const KeySummaryList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface ListKeysOutput {
   Keys: KeySummary[];
   NextToken?: string;
 }
-const ListKeysOutput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListKeysOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags: (Tag & { Value: TagValue })[];
   NextToken?: string;
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export interface PutResourcePolicyInput {
   ResourceArn: string;
   Policy: string;
 }
-const PutResourcePolicyInput = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<PutResourcePolicyInput>;
 export interface PutResourcePolicyOutput {
   ResourceArn: string;
   Policy: string;
 }
-const PutResourcePolicyOutput = GetResourcePolicyOutput as any as S.Schema<PutResourcePolicyOutput>;
 export interface RemoveKeyReplicationRegionsInput {
   KeyIdentifier: string;
   ReplicationRegions: string[];
 }
-const RemoveKeyReplicationRegionsInput = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<RemoveKeyReplicationRegionsInput>;
 export interface RemoveKeyReplicationRegionsOutput {
   Key: Key;
 }
-const RemoveKeyReplicationRegionsOutput =
-  AddKeyReplicationRegionsOutput as any as S.Schema<RemoveKeyReplicationRegionsOutput>;
 export interface RestoreKeyInput {
   KeyIdentifier: string;
 }
-const RestoreKeyInput = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<RestoreKeyInput>;
 export interface RestoreKeyOutput {
   Key: Key;
 }
-const RestoreKeyOutput = CreateKeyOutput as any as S.Schema<RestoreKeyOutput>;
 export interface StartKeyUsageInput {
   KeyIdentifier: string;
 }
-const StartKeyUsageInput = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<StartKeyUsageInput>;
 export interface StartKeyUsageOutput {
   Key: Key;
 }
-const StartKeyUsageOutput = CreateKeyOutput as any as S.Schema<StartKeyUsageOutput>;
 export interface StopKeyUsageInput {
   KeyIdentifier: string;
 }
-const StopKeyUsageInput = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<StopKeyUsageInput>;
 export interface StopKeyUsageOutput {
   Key: Key;
 }
-const StopKeyUsageOutput = CreateKeyOutput as any as S.Schema<StopKeyUsageOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = DeleteAliasOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-const TagKeys = Regions as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = DeleteAliasOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateAliasInput {
   AliasName: string;
   KeyArn?: string;
 }
-const UpdateAliasInput = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<UpdateAliasInput>;
 export interface UpdateAliasOutput {
   Alias: Alias;
 }
-const UpdateAliasOutput = CreateAliasOutput as any as S.Schema<UpdateAliasOutput>;
 export type AddKeyReplicationRegionsError =
   | AccessDeniedException
   | ConflictException
@@ -972,8 +757,8 @@ export const addKeyReplicationRegions: API.OperationMethod<
   AddKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddKeyReplicationRegionsInput,
-  output: AddKeyReplicationRegionsOutput,
+  input: __S(1) as any as S.Schema<AddKeyReplicationRegionsInput>,
+  output: __S(8) as any as S.Schema<AddKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1015,8 +800,8 @@ export const associateMpaTeam: API.OperationMethod<
   AssociateMpaTeamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateMpaTeamInput,
-  output: AssociateMpaTeamOutput,
+  input: __S(9) as any as S.Schema<AssociateMpaTeamInput>,
+  output: __S(11) as any as S.Schema<AssociateMpaTeamOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1067,8 +852,8 @@ export const createAlias: API.OperationMethod<
   CreateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAliasInput,
-  output: CreateAliasOutput,
+  input: __S(12) as any as S.Schema<CreateAliasInput>,
+  output: __S(14) as any as S.Schema<CreateAliasOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1123,8 +908,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyInput,
-  output: CreateKeyOutput,
+  input: __S(17) as any as S.Schema<CreateKeyInput>,
+  output: __S(18) as any as S.Schema<CreateKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1172,8 +957,8 @@ export const deleteAlias: API.OperationMethod<
   DeleteAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAliasInput,
-  output: DeleteAliasOutput,
+  input: __S(19) as any as S.Schema<DeleteAliasInput>,
+  output: __S(20) as any as S.Schema<DeleteAliasOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1220,8 +1005,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyInput,
-  output: DeleteKeyOutput,
+  input: __S(21) as any as S.Schema<DeleteKeyInput>,
+  output: __S(18) as any as S.Schema<DeleteKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1262,8 +1047,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePolicyInput,
-  output: DeleteResourcePolicyOutput,
+  input: __S(22) as any as S.Schema<DeleteResourcePolicyInput>,
+  output: __S(20) as any as S.Schema<DeleteResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1308,8 +1093,8 @@ export const disableDefaultKeyReplicationRegions: API.OperationMethod<
   DisableDefaultKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableDefaultKeyReplicationRegionsInput,
-  output: DisableDefaultKeyReplicationRegionsOutput,
+  input: __S(23) as any as S.Schema<DisableDefaultKeyReplicationRegionsInput>,
+  output: __S(24) as any as S.Schema<DisableDefaultKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1351,8 +1136,8 @@ export const disassociateMpaTeam: API.OperationMethod<
   DisassociateMpaTeamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateMpaTeamInput,
-  output: DisassociateMpaTeamOutput,
+  input: __S(25) as any as S.Schema<DisassociateMpaTeamInput>,
+  output: __S(26) as any as S.Schema<DisassociateMpaTeamOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1398,8 +1183,8 @@ export const enableDefaultKeyReplicationRegions: API.OperationMethod<
   EnableDefaultKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableDefaultKeyReplicationRegionsInput,
-  output: EnableDefaultKeyReplicationRegionsOutput,
+  input: __S(27) as any as S.Schema<EnableDefaultKeyReplicationRegionsInput>,
+  output: __S(24) as any as S.Schema<EnableDefaultKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1520,8 +1305,8 @@ export const exportKey: API.OperationMethod<
   ExportKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportKeyInput,
-  output: ExportKeyOutput,
+  input: __S(39) as any as S.Schema<ExportKeyInput>,
+  output: __S(41) as any as S.Schema<ExportKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1565,8 +1350,8 @@ export const getAlias: API.OperationMethod<
   GetAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAliasInput,
-  output: GetAliasOutput,
+  input: __S(42) as any as S.Schema<GetAliasInput>,
+  output: __S(43) as any as S.Schema<GetAliasOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1597,8 +1382,8 @@ export const getCertificateSigningRequest: API.OperationMethod<
   GetCertificateSigningRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateSigningRequestInput,
-  output: GetCertificateSigningRequestOutput,
+  input: __S(45) as any as S.Schema<GetCertificateSigningRequestInput>,
+  output: __S(46) as any as S.Schema<GetCertificateSigningRequestOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1640,8 +1425,8 @@ export const getDefaultKeyReplicationRegions: API.OperationMethod<
   GetDefaultKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultKeyReplicationRegionsInput,
-  output: GetDefaultKeyReplicationRegionsOutput,
+  input: __S(47) as any as S.Schema<GetDefaultKeyReplicationRegionsInput>,
+  output: __S(24) as any as S.Schema<GetDefaultKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1683,8 +1468,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyInput,
-  output: GetKeyOutput,
+  input: __S(48) as any as S.Schema<GetKeyInput>,
+  output: __S(18) as any as S.Schema<GetKeyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1725,8 +1510,8 @@ export const getMpaTeamAssociation: API.OperationMethod<
   GetMpaTeamAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMpaTeamAssociationInput,
-  output: GetMpaTeamAssociationOutput,
+  input: __S(49) as any as S.Schema<GetMpaTeamAssociationInput>,
+  output: __S(26) as any as S.Schema<GetMpaTeamAssociationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1773,8 +1558,8 @@ export const getParametersForExport: API.OperationMethod<
   GetParametersForExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetParametersForExportInput,
-  output: GetParametersForExportOutput,
+  input: __S(50) as any as S.Schema<GetParametersForExportInput>,
+  output: __S(51) as any as S.Schema<GetParametersForExportOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1821,8 +1606,8 @@ export const getParametersForImport: API.OperationMethod<
   GetParametersForImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetParametersForImportInput,
-  output: GetParametersForImportOutput,
+  input: __S(52) as any as S.Schema<GetParametersForImportInput>,
+  output: __S(53) as any as S.Schema<GetParametersForImportOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1859,8 +1644,8 @@ export const getPublicKeyCertificate: API.OperationMethod<
   GetPublicKeyCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicKeyCertificateInput,
-  output: GetPublicKeyCertificateOutput,
+  input: __S(54) as any as S.Schema<GetPublicKeyCertificateInput>,
+  output: __S(55) as any as S.Schema<GetPublicKeyCertificateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1899,8 +1684,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePolicyInput,
-  output: GetResourcePolicyOutput,
+  input: __S(56) as any as S.Schema<GetResourcePolicyInput>,
+  output: __S(57) as any as S.Schema<GetResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2027,8 +1812,8 @@ export const importKey: API.OperationMethod<
   ImportKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportKeyInput,
-  output: ImportKeyOutput,
+  input: __S(66) as any as S.Schema<ImportKeyInput>,
+  output: __S(18) as any as S.Schema<ImportKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2076,8 +1861,8 @@ export const listAliases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Alias
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAliasesInput,
-  output: ListAliasesOutput,
+  input: __S(67) as any as S.Schema<ListAliasesInput>,
+  output: __S(69) as any as S.Schema<ListAliasesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2127,8 +1912,8 @@ export const listKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   KeySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListKeysInput,
-  output: ListKeysOutput,
+  input: __S(70) as any as S.Schema<ListKeysInput>,
+  output: __S(73) as any as S.Schema<ListKeysOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2176,8 +1961,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(74) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(75) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2229,8 +2014,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutResourcePolicyInput,
-  output: PutResourcePolicyOutput,
+  input: __S(76) as any as S.Schema<PutResourcePolicyInput>,
+  output: __S(57) as any as S.Schema<PutResourcePolicyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2277,8 +2062,8 @@ export const removeKeyReplicationRegions: API.OperationMethod<
   RemoveKeyReplicationRegionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveKeyReplicationRegionsInput,
-  output: RemoveKeyReplicationRegionsOutput,
+  input: __S(77) as any as S.Schema<RemoveKeyReplicationRegionsInput>,
+  output: __S(8) as any as S.Schema<RemoveKeyReplicationRegionsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2324,8 +2109,8 @@ export const restoreKey: API.OperationMethod<
   RestoreKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreKeyInput,
-  output: RestoreKeyOutput,
+  input: __S(78) as any as S.Schema<RestoreKeyInput>,
+  output: __S(18) as any as S.Schema<RestoreKeyOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2366,8 +2151,8 @@ export const startKeyUsage: API.OperationMethod<
   StartKeyUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartKeyUsageInput,
-  output: StartKeyUsageOutput,
+  input: __S(79) as any as S.Schema<StartKeyUsageInput>,
+  output: __S(18) as any as S.Schema<StartKeyUsageOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2412,8 +2197,8 @@ export const stopKeyUsage: API.OperationMethod<
   StopKeyUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopKeyUsageInput,
-  output: StopKeyUsageOutput,
+  input: __S(80) as any as S.Schema<StopKeyUsageInput>,
+  output: __S(18) as any as S.Schema<StopKeyUsageOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2460,8 +2245,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(81) as any as S.Schema<TagResourceInput>,
+  output: __S(20) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2505,8 +2290,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(82) as any as S.Schema<UntagResourceInput>,
+  output: __S(20) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2551,8 +2336,8 @@ export const updateAlias: API.OperationMethod<
   UpdateAliasError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAliasInput,
-  output: UpdateAliasOutput,
+  input: __S(83) as any as S.Schema<UpdateAliasInput>,
+  output: __S(14) as any as S.Schema<UpdateAliasOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2574,7 +2359,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: Regions }).pipe(
+        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2600,7 +2385,7 @@ function __c0(j: number): any {
           KeyUsage: S.String,
           KeyClass: S.String,
           KeyAlgorithm: S.String,
-          KeyModesOfUse: KeyModesOfUse,
+          KeyModesOfUse: __S(2),
         }),
       ).annotate({ identifier: "KeyAttributes" });
     case 4:
@@ -2608,7 +2393,7 @@ function __c0(j: number): any {
         S.Struct({ Status: S.String, StatusMessage: S.optional(S.String) }),
       ).annotate({ identifier: "ReplicationStatusType" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ ReplicationStatusType.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(4).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2622,7 +2407,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           KeyArn: S.String,
-          KeyAttributes: KeyAttributes,
+          KeyAttributes: __S(3),
           KeyCheckValue: S.String,
           KeyCheckValueAlgorithm: S.String,
           Enabled: S.Boolean,
@@ -2637,9 +2422,9 @@ function __c0(j: number): any {
           DeriveKeyUsage: S.optional(S.String),
           MultiRegionKeyType: S.optional(S.String),
           PrimaryRegion: S.optional(S.String),
-          ReplicationStatus: S.optional(ReplicationStatus),
+          ReplicationStatus: S.optional(__S(5)),
           UsingDefaultReplicationRegions: S.optional(S.Boolean),
-          MpaStatus: S.optional(MpaStatus),
+          MpaStatus: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Key" });
   }
@@ -2647,7 +2432,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Key: Key })).annotate({
+      return S.suspend(() => S.Struct({ Key: __S(7) })).annotate({
         identifier: "AddKeyReplicationRegionsOutput",
       });
     case 1:
@@ -2664,11 +2449,11 @@ function __c1(j: number): any {
           Action: S.String,
           MpaTeamArn: S.String,
           AssociationState: S.String,
-          MpaStatus: S.optional(MpaStatus),
+          MpaStatus: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "MpaTeamAssociation" });
     case 3:
-      return S.suspend(() => S.Struct({ MpaTeamAssociation: MpaTeamAssociation })).annotate({
+      return S.suspend(() => S.Struct({ MpaTeamAssociation: __S(10) })).annotate({
         identifier: "AssociateMpaTeamOutput",
       });
     case 4:
@@ -2682,7 +2467,7 @@ function __c1(j: number): any {
         S.Struct({ AliasName: S.String, KeyArn: S.optional(S.String) }),
       ).annotate({ identifier: "Alias" });
     case 6:
-      return S.suspend(() => S.Struct({ Alias: Alias })).annotate({
+      return S.suspend(() => S.Struct({ Alias: __S(13) })).annotate({
         identifier: "CreateAliasOutput",
       });
     case 7:
@@ -2694,21 +2479,21 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Tag);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          KeyAttributes: KeyAttributes,
+          KeyAttributes: __S(3),
           KeyCheckValueAlgorithm: S.optional(S.String),
           Exportable: S.Boolean,
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(16)),
           DeriveKeyUsage: S.optional(S.String),
-          ReplicationRegions: S.optional(Regions),
+          ReplicationRegions: S.optional(__S(0)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateKeyInput" });
     case 2:
-      return S.suspend(() => S.Struct({ Key: Key })).annotate({
+      return S.suspend(() => S.Struct({ Key: __S(7) })).annotate({
         identifier: "CreateKeyOutput",
       });
     case 3:
@@ -2737,7 +2522,7 @@ function __c2(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ReplicationRegions: Regions }).pipe(
+        S.Struct({ ReplicationRegions: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2748,7 +2533,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ EnabledReplicationRegions: Regions })).annotate({
+      return S.suspend(() => S.Struct({ EnabledReplicationRegions: __S(0) })).annotate({
         identifier: "DisableDefaultKeyReplicationRegionsOutput",
       });
     case 1:
@@ -2758,12 +2543,12 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "DisassociateMpaTeamInput" });
     case 2:
-      return S.suspend(() => S.Struct({ MpaTeamAssociation: MpaTeamAssociation })).annotate({
+      return S.suspend(() => S.Struct({ MpaTeamAssociation: __S(10) })).annotate({
         identifier: "DisassociateMpaTeamOutput",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ ReplicationRegions: Regions }).pipe(
+        S.Struct({ ReplicationRegions: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2774,15 +2559,15 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          KeyModesOfUse: S.optional(KeyModesOfUse),
+          KeyModesOfUse: S.optional(__S(2)),
           KeyExportability: S.optional(S.String),
           KeyVersion: S.optional(S.String),
-          OptionalBlocks: S.optional(OptionalBlocks),
+          OptionalBlocks: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "KeyBlockHeaders" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ WrappingKeyIdentifier: S.String, KeyBlockHeaders: S.optional(KeyBlockHeaders) }),
+        S.Struct({ WrappingKeyIdentifier: S.String, KeyBlockHeaders: S.optional(__S(29)) }),
       ).annotate({ identifier: "ExportTr31KeyBlock" });
     case 7:
       return S.suspend(() =>
@@ -2794,7 +2579,7 @@ function __c3(j: number): any {
           SigningKeyCertificate: S.optional(S.String),
           KeyBlockFormat: S.String,
           RandomNonce: S.optional(S.String),
-          KeyBlockHeaders: S.optional(KeyBlockHeaders),
+          KeyBlockHeaders: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "ExportTr34KeyBlock" });
   }
@@ -2817,28 +2602,28 @@ function __c4(j: number): any {
           PrivateKeyIdentifier: S.String,
           CertificateAuthorityPublicKeyIdentifier: S.String,
           PublicKeyCertificate: S.String,
-          DeriveKeyAlgorithm: SymmetricKeyAlgorithm,
-          KeyDerivationFunction: KeyDerivationFunction,
-          KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm,
-          DerivationData: DiffieHellmanDerivationData,
-          KeyBlockHeaders: S.optional(KeyBlockHeaders),
+          DeriveKeyAlgorithm: S.String,
+          KeyDerivationFunction: S.String,
+          KeyDerivationHashAlgorithm: S.String,
+          DerivationData: __S(33),
+          KeyBlockHeaders: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "ExportDiffieHellmanTr31KeyBlock",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ WrappingKeyIdentifier: S.String, As2805KeyVariant: As2805KeyVariant }),
+        S.Struct({ WrappingKeyIdentifier: S.String, As2805KeyVariant: S.String }),
       ).annotate({
         identifier: "ExportAs2805KeyCryptogram",
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: ExportTr31KeyBlock }),
-        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: ExportTr34KeyBlock }),
-        /*@__PURE__*/ S.Struct({ KeyCryptogram: ExportKeyCryptogram }),
-        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: ExportDiffieHellmanTr31KeyBlock }),
-        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: ExportAs2805KeyCryptogram }),
+        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(30) }),
+        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: __S(31) }),
+        /*@__PURE__*/ S.Struct({ KeyCryptogram: __S(32) }),
+        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(34) }),
+        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: __S(35) }),
       ]);
     case 5:
       return S.suspend(() => S.Struct({ KeySerialNumber: S.String })).annotate({
@@ -2847,16 +2632,16 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ExportDukptInitialKey: S.optional(ExportDukptInitialKey),
+          ExportDukptInitialKey: S.optional(__S(37)),
           KeyCheckValueAlgorithm: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportAttributes" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          KeyMaterial: ExportKeyMaterial,
+          KeyMaterial: __S(36),
           ExportKeyIdentifier: S.String,
-          ExportAttributes: S.optional(ExportAttributes),
+          ExportAttributes: S.optional(__S(38)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ExportKeyInput" });
   }
@@ -2874,7 +2659,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "WrappedKey" });
     case 1:
-      return S.suspend(() => S.Struct({ WrappedKey: S.optional(WrappedKey) })).annotate({
+      return S.suspend(() => S.Struct({ WrappedKey: S.optional(__S(40)) })).annotate({
         identifier: "ExportKeyOutput",
       });
     case 2:
@@ -2884,7 +2669,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "GetAliasInput" });
     case 3:
-      return S.suspend(() => S.Struct({ Alias: Alias })).annotate({
+      return S.suspend(() => S.Struct({ Alias: __S(13) })).annotate({
         identifier: "GetAliasOutput",
       });
     case 4:
@@ -2904,7 +2689,7 @@ function __c5(j: number): any {
         S.Struct({
           KeyIdentifier: S.String,
           SigningAlgorithm: S.String,
-          CertificateSubject: CertificateSubjectType,
+          CertificateSubject: __S(44),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetCertificateSigningRequestInput",
@@ -3013,12 +2798,12 @@ function __c7(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ KeyAttributes: KeyAttributes, PublicKeyCertificate: S.String }),
+        S.Struct({ KeyAttributes: __S(3), PublicKeyCertificate: S.String }),
       ).annotate({ identifier: "RootCertificatePublicKey" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          KeyAttributes: KeyAttributes,
+          KeyAttributes: __S(3),
           PublicKeyCertificate: S.String,
           CertificateAuthorityPublicKeyIdentifier: S.String,
         }),
@@ -3045,7 +2830,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          KeyAttributes: KeyAttributes,
+          KeyAttributes: __S(3),
           Exportable: S.Boolean,
           WrappedKeyCryptogram: SensitiveString,
           ImportToken: S.String,
@@ -3058,10 +2843,10 @@ function __c7(j: number): any {
           PrivateKeyIdentifier: S.String,
           CertificateAuthorityPublicKeyIdentifier: S.String,
           PublicKeyCertificate: S.String,
-          DeriveKeyAlgorithm: SymmetricKeyAlgorithm,
-          KeyDerivationFunction: KeyDerivationFunction,
-          KeyDerivationHashAlgorithm: KeyDerivationHashAlgorithm,
-          DerivationData: DiffieHellmanDerivationData,
+          DeriveKeyAlgorithm: S.String,
+          KeyDerivationFunction: S.String,
+          KeyDerivationHashAlgorithm: S.String,
+          DerivationData: __S(33),
           WrappedKeyBlock: SensitiveString,
         }),
       ).annotate({
@@ -3074,8 +2859,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          As2805KeyVariant: As2805KeyVariant,
-          KeyModesOfUse: KeyModesOfUse,
+          As2805KeyVariant: S.String,
+          KeyModesOfUse: __S(2),
           KeyAlgorithm: S.String,
           Exportable: S.Boolean,
           WrappingKeyIdentifier: S.String,
@@ -3086,22 +2871,22 @@ function __c8(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ RootCertificatePublicKey: RootCertificatePublicKey }),
-        /*@__PURE__*/ S.Struct({ TrustedCertificatePublicKey: TrustedCertificatePublicKey }),
-        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: ImportTr31KeyBlock }),
-        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: ImportTr34KeyBlock }),
-        /*@__PURE__*/ S.Struct({ KeyCryptogram: ImportKeyCryptogram }),
-        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: ImportDiffieHellmanTr31KeyBlock }),
-        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: ImportAs2805KeyCryptogram }),
+        /*@__PURE__*/ S.Struct({ RootCertificatePublicKey: __S(58) }),
+        /*@__PURE__*/ S.Struct({ TrustedCertificatePublicKey: __S(59) }),
+        /*@__PURE__*/ S.Struct({ Tr31KeyBlock: __S(60) }),
+        /*@__PURE__*/ S.Struct({ Tr34KeyBlock: __S(61) }),
+        /*@__PURE__*/ S.Struct({ KeyCryptogram: __S(62) }),
+        /*@__PURE__*/ S.Struct({ DiffieHellmanTr31KeyBlock: __S(63) }),
+        /*@__PURE__*/ S.Struct({ As2805KeyCryptogram: __S(64) }),
       ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          KeyMaterial: ImportKeyMaterial,
+          KeyMaterial: __S(65),
           KeyCheckValueAlgorithm: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          Tags: S.optional(Tags),
-          ReplicationRegions: S.optional(Regions),
+          Tags: S.optional(__S(16)),
+          ReplicationRegions: S.optional(__S(0)),
           RequesterComment: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportKeyInput" });
@@ -3114,10 +2899,10 @@ function __c8(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAliasesInput" });
     case 4:
-      return S.Array(Alias);
+      return S.Array(__S(13));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Aliases: Aliases, NextToken: S.optional(S.String) }),
+        S.Struct({ Aliases: __S(68), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAliasesOutput" });
     case 6:
       return S.suspend(() =>
@@ -3132,7 +2917,7 @@ function __c8(j: number): any {
         S.Struct({
           KeyArn: S.String,
           KeyState: S.String,
-          KeyAttributes: KeyAttributes,
+          KeyAttributes: __S(3),
           KeyCheckValue: S.String,
           Exportable: S.Boolean,
           Enabled: S.Boolean,
@@ -3145,11 +2930,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(KeySummary);
+      return S.Array(__S(71));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ Keys: KeySummaryList, NextToken: S.optional(S.String) }),
-      ).annotate({ identifier: "ListKeysOutput" });
+      return S.suspend(() => S.Struct({ Keys: __S(72), NextToken: S.optional(S.String) })).annotate(
+        { identifier: "ListKeysOutput" },
+      );
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3159,9 +2944,11 @@ function __c9(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: Tags, NextToken: S.optional(S.String) })).annotate({
-        identifier: "ListTagsForResourceOutput",
-      });
+      return S.suspend(() => S.Struct({ Tags: __S(16), NextToken: S.optional(S.String) })).annotate(
+        {
+          identifier: "ListTagsForResourceOutput",
+        },
+      );
     case 4:
       return S.suspend(() =>
         S.Struct({ ResourceArn: S.String, Policy: S.String }).pipe(
@@ -3170,7 +2957,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "PutResourcePolicyInput" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: Regions }).pipe(
+        S.Struct({ KeyIdentifier: S.String, ReplicationRegions: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3200,13 +2987,13 @@ function __c10(j: number): any {
       ).annotate({ identifier: "StopKeyUsageInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: Tags }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(16) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: TagKeys }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceInput" });
@@ -3216,5 +3003,36 @@ function __c10(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateAliasInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

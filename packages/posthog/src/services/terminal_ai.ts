@@ -5,66 +5,38 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 export type CreateTerminalAiRequestFormat = "json" | "txt";
-const CreateTerminalAiRequestFormat = S.String;
-
 export type TerminalAIModel =
   | "claude-opus-5"
   | "claude-sonnet-5"
   | "claude-sonnet-4-6"
   | "claude-haiku-4-5";
-const TerminalAIModel = S.String;
-
 export type TerminalAIMessageRoleEnum = "user" | "assistant";
-const TerminalAIMessageRoleEnum = S.String;
-
 export type TerminalAIMessageContentCase1ItemMap = { [key: string]: unknown | undefined };
-const TerminalAIMessageContentCase1ItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<TerminalAIMessageContentCase1ItemMap>;
-
 export type TerminalAIMessageContentCase1List = Array<TerminalAIMessageContentCase1ItemMap>;
 /** Anthropic text, image, or tool content blocks. */
 export type TerminalAIMessageContent = string | TerminalAIMessageContentCase1List;
-const TerminalAIMessageContent = S.Unknown as any as S.Schema<TerminalAIMessageContent>;
-
 export interface TerminalAIMessage {
   /** Author of this conversation message. */
   role: TerminalAIMessageRoleEnum | (string & {});
   /** Anthropic text, image, or tool content blocks. */
   content: TerminalAIMessageContent;
 }
-const TerminalAIMessage = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TerminalAIMessage>;
-
 /** Conversation and tool results. */
 export type CreateTerminalAiRequestMessagesList = Array<TerminalAIMessage>;
-const CreateTerminalAiRequestMessagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateTerminalAiRequestMessagesList>;
-
 export type CreateTerminalAiRequestSystemCase1ItemMap = { [key: string]: unknown | undefined };
 export type CreateTerminalAiRequestSystemCase1List =
   Array<CreateTerminalAiRequestSystemCase1ItemMap>;
 /** Agent instructions. */
 export type CreateTerminalAiRequestSystem = string | CreateTerminalAiRequestSystemCase1List;
-const CreateTerminalAiRequestSystem = S.Unknown as any as S.Schema<CreateTerminalAiRequestSystem>;
-
 /** JSON schema for the tool's arguments. */
 export type TerminalAIToolInputSchemaMap = { [key: string]: unknown | undefined };
-const TerminalAIToolInputSchemaMap =
-  TerminalAIMessageContentCase1ItemMap as any as S.Schema<TerminalAIToolInputSchemaMap>;
-
 export type TerminalAIToolCacheControlMap = { [key: string]: string | undefined };
-const TerminalAIToolCacheControlMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<TerminalAIToolCacheControlMap>;
-
 export interface TerminalAITool {
   /** Name of a tool executed inside the terminal. */
   name: string;
@@ -77,15 +49,8 @@ export interface TerminalAITool {
   /** Stream tool arguments as they are generated. */
   eager_input_streaming?: boolean | null;
 }
-const TerminalAITool = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TerminalAITool>;
-
 /** Tools executed by pi. */
 export type CreateTerminalAiRequestToolsList = Array<TerminalAITool>;
-const CreateTerminalAiRequestToolsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateTerminalAiRequestToolsList>;
-
 export interface CreateTerminalAiRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -105,17 +70,7 @@ export interface CreateTerminalAiRequest {
   /** Sampling temperature. */
   temperature?: number | null;
 }
-const CreateTerminalAiRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateTerminalAiRequest>;
-
 export interface CreateTerminalAiResponse {}
-const CreateTerminalAiResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateTerminalAiResponse>;
-
 export type CreateTerminalAiError = PosthogOpError;
 /** Stream a terminal model response through PostHog AI. Requires organization approval for AI data processing. SDK consumers must use getTerminalAiCreateUrl() with streaming fetch. The generated JSON client buffers the response and cannot parse SSE. */
 export const createTerminalAi: API.OperationMethod<
@@ -124,8 +79,8 @@ export const createTerminalAi: API.OperationMethod<
   CreateTerminalAiError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTerminalAiRequest,
-  output: CreateTerminalAiResponse,
+  input: __S(6) as any as S.Schema<CreateTerminalAiRequest>,
+  output: __S(7) as any as S.Schema<CreateTerminalAiResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -139,12 +94,12 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          role: TerminalAIMessageRoleEnum,
-          content: TerminalAIMessageContent,
+          role: S.String,
+          content: S.Unknown,
         }),
       ).annotate({ identifier: "TerminalAIMessage" });
     case 2:
-      return S.Array(TerminalAIMessage);
+      return S.Array(__S(1));
     case 3:
       return S.Record(S.String, S.String);
     case 4:
@@ -152,24 +107,24 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          input_schema: TerminalAIToolInputSchemaMap,
-          cache_control: S.optional(S.NullOr(TerminalAIToolCacheControlMap)),
+          input_schema: __S(0),
+          cache_control: S.optional(S.NullOr(__S(3))),
           eager_input_streaming: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "TerminalAITool" });
     case 5:
-      return S.Array(TerminalAITool);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          format: S.optional(CreateTerminalAiRequestFormat.pipe(T.Query())),
-          model: TerminalAIModel,
-          messages: CreateTerminalAiRequestMessagesList,
+          format: S.optional(S.String.pipe(T.Query())),
+          model: S.String,
+          messages: __S(2),
           max_tokens: S.Number,
           stream: S.optional(S.Boolean),
-          system: S.optional(S.NullOr(CreateTerminalAiRequestSystem)),
-          tools: S.optional(CreateTerminalAiRequestToolsList),
+          system: S.optional(S.NullOr(S.Unknown)),
+          tools: S.optional(__S(5)),
           temperature: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/terminal_ai/", code: 200 }),
@@ -179,5 +134,16 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "CreateTerminalAiResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

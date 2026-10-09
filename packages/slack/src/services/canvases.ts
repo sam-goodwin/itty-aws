@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -17,31 +19,16 @@ export interface CreateCanvaseRequest {
   /** Channel ID of the channel the canvas will be tabbed in. This is a required field for free teams. */
   channel_id?: string;
 }
-const CreateCanvaseRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateCanvaseRequest>;
-
 export interface CreateCanvaseResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** Encoded ID of the canvas */
   canvas_id: string;
 }
-const CreateCanvaseResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCanvaseResponse>;
-
 /** List of channels you wish to update access for */
 export type DeleteAccessRequestChannelIdsList = Array<string>;
-const DeleteAccessRequestChannelIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteAccessRequestChannelIdsList>;
-
 /** List of users you wish to update access for */
 export type DeleteAccessRequestUserIdsList = Array<string>;
-const DeleteAccessRequestUserIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessRequestUserIdsList>;
-
 export interface DeleteAccessRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
@@ -50,18 +37,10 @@ export interface DeleteAccessRequest {
   /** List of users you wish to update access for */
   user_ids?: DeleteAccessRequestUserIdsList;
 }
-const DeleteAccessRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteAccessRequest>;
-
 /** The channel IDs that could not be updated */
 export type DeleteAccessResponseFailedToUpdateChannelIdsList = Array<string>;
-const DeleteAccessResponseFailedToUpdateChannelIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateChannelIdsList>;
-
 /** The user IDs that could not be updated */
 export type DeleteAccessResponseFailedToUpdateUserIdsList = Array<string>;
-const DeleteAccessResponseFailedToUpdateUserIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateUserIdsList>;
-
 export interface DeleteAccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -70,115 +49,65 @@ export interface DeleteAccessResponse {
   /** The user IDs that could not be updated */
   failed_to_update_user_ids?: DeleteAccessResponseFailedToUpdateUserIdsList;
 }
-const DeleteAccessResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteAccessResponse>;
-
 export interface DeleteCanvaseRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
 }
-const DeleteCanvaseRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteCanvaseRequest>;
-
 export interface DeleteCanvaseResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DeleteCanvaseResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteCanvaseResponse>;
-
 /** List of changes to apply on the specified canvas. The markdown content of each change is limited to 1 MiB (1,048,576 characters). */
 export type EditCanvaseRequestChangesList = Array<unknown>;
-const EditCanvaseRequestChangesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EditCanvaseRequestChangesList>;
-
 export interface EditCanvaseRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
   /** List of changes to apply on the specified canvas. The markdown content of each change is limited to 1 MiB (1,048,576 characters). */
   changes: EditCanvaseRequestChangesList;
 }
-const EditCanvaseRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EditCanvaseRequest>;
-
 export interface EditCanvaseResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const EditCanvaseResponse = DeleteCanvaseResponse as any as S.Schema<EditCanvaseResponse>;
-
 /** Format in which to return the canvas content. Defaults to markdown. */
 export type GetContentRequestContentType = "html" | "markdown";
-const GetContentRequestContentType = S.String;
-
 export interface GetContentRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
   /** Format in which to return the canvas content. Defaults to markdown. */
   content_type?: GetContentRequestContentType | (string & {});
 }
-const GetContentRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetContentRequest>;
-
 export interface GetContentResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** The content of the canvas in the requested content_type. */
   content: string;
 }
-const GetContentResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetContentResponse>;
-
 export interface LookupSectionRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
   /** Filtering criteria */
   criteria: unknown;
 }
-const LookupSectionRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LookupSectionRequest>;
-
 /** IDs of child sections within a layout container (blockquote, callout, flexbox, or table). */
 export type LookupSectionResponseSectionsItemChildSectionIdsList = Array<string>;
-const LookupSectionResponseSectionsItemChildSectionIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<LookupSectionResponseSectionsItemChildSectionIdsList>;
-
 export interface LookupSectionResponseSectionsItem {
   id: string;
   /** IDs of child sections within a layout container (blockquote, callout, flexbox, or table). */
   child_section_ids?: LookupSectionResponseSectionsItemChildSectionIdsList;
 }
-const LookupSectionResponseSectionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<LookupSectionResponseSectionsItem>;
-
 /** Sections in the canvas that match the provided criteria */
 export type LookupSectionResponseSectionsList = Array<LookupSectionResponseSectionsItem>;
-const LookupSectionResponseSectionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<LookupSectionResponseSectionsList>;
-
 export interface LookupSectionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** Sections in the canvas that match the provided criteria */
   sections: LookupSectionResponseSectionsList;
 }
-const LookupSectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<LookupSectionResponse>;
-
 /** List of channels you wish to update access for. Can only be used if user_ids is not provided. */
 export type SetAccessRequestChannelIdsList = Array<string>;
-const SetAccessRequestChannelIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestChannelIdsList>;
-
 /** List of users you wish to update access for. Can only be used if channel_ids is not provided. */
 export type SetAccessRequestUserIdsList = Array<string>;
-const SetAccessRequestUserIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestUserIdsList>;
-
 export interface SetAccessRequest {
   /** Encoded ID of the canvas */
   canvas_id: string;
@@ -189,8 +118,6 @@ export interface SetAccessRequest {
   /** List of users you wish to update access for. Can only be used if channel_ids is not provided. */
   user_ids?: SetAccessRequestUserIdsList;
 }
-const SetAccessRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SetAccessRequest>;
-
 /** The channel IDs that could not be updated */
 export type SetAccessResponseFailedToUpdateChannelIdsList = Array<string>;
 /** The user IDs that could not be updated */
@@ -203,8 +130,6 @@ export interface SetAccessResponse {
   /** The user IDs that could not be updated */
   failed_to_update_user_ids?: SetAccessResponseFailedToUpdateUserIdsList;
 }
-const SetAccessResponse = DeleteAccessResponse as any as S.Schema<SetAccessResponse>;
-
 export type CreateCanvaseError = SlackOpError;
 /** Create canvas for a user Required scopes -- bot: `canvases:write`; user: `canvases:write`; seamless_user: `seamless.user` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `canvas_disabled_user_team` -- Canvas is disabled on user's team - `restricted_action` -- User does not have permission to perform this action. - `canvas_creation_failed` -- Canvas was unable to be created. - `free_team_canvas_tab_already_exists` -- Free teams are limited to one canvas tab per channel - `free_teams_cannot_create_standalone_canvases` -- Free teams cannot create standalone canvases See https://docs.slack.dev/reference/methods/canvases.create */
 export const createCanvase: API.OperationMethod<
@@ -213,8 +138,8 @@ export const createCanvase: API.OperationMethod<
   CreateCanvaseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCanvaseRequest,
-  output: CreateCanvaseResponse,
+  input: __S(0) as any as S.Schema<CreateCanvaseRequest>,
+  output: __S(1) as any as S.Schema<CreateCanvaseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -228,8 +153,8 @@ export const deleteAccess: API.OperationMethod<
   DeleteAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessRequest,
-  output: DeleteAccessResponse,
+  input: __S(3) as any as S.Schema<DeleteAccessRequest>,
+  output: __S(4) as any as S.Schema<DeleteAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -243,8 +168,8 @@ export const deleteCanvase: API.OperationMethod<
   DeleteCanvaseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCanvaseRequest,
-  output: DeleteCanvaseResponse,
+  input: __S(5) as any as S.Schema<DeleteCanvaseRequest>,
+  output: __S(6) as any as S.Schema<DeleteCanvaseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -258,8 +183,8 @@ export const editCanvase: API.OperationMethod<
   EditCanvaseError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditCanvaseRequest,
-  output: EditCanvaseResponse,
+  input: __S(8) as any as S.Schema<EditCanvaseRequest>,
+  output: __S(6) as any as S.Schema<EditCanvaseResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -273,8 +198,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentRequest,
-  output: GetContentResponse,
+  input: __S(9) as any as S.Schema<GetContentRequest>,
+  output: __S(10) as any as S.Schema<GetContentResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -288,8 +213,8 @@ export const lookupSection: API.OperationMethod<
   LookupSectionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupSectionRequest,
-  output: LookupSectionResponse,
+  input: __S(11) as any as S.Schema<LookupSectionRequest>,
+  output: __S(14) as any as S.Schema<LookupSectionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -303,8 +228,8 @@ export const setAccess: API.OperationMethod<
   SetAccessError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAccessRequest,
-  output: SetAccessResponse,
+  input: __S(15) as any as S.Schema<SetAccessRequest>,
+  output: __S(4) as any as S.Schema<SetAccessResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -334,18 +259,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
-          channel_ids: S.optional(DeleteAccessRequestChannelIdsList),
-          user_ids: S.optional(DeleteAccessRequestUserIdsList),
+          channel_ids: S.optional(__S(2)),
+          user_ids: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.access.delete", code: 200 })),
       ).annotate({ identifier: "DeleteAccessRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          failed_to_update_channel_ids: S.optional(
-            DeleteAccessResponseFailedToUpdateChannelIdsList,
-          ),
-          failed_to_update_user_ids: S.optional(DeleteAccessResponseFailedToUpdateUserIdsList),
+          failed_to_update_channel_ids: S.optional(__S(2)),
+          failed_to_update_user_ids: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "DeleteAccessResponse" });
     case 5:
@@ -370,14 +293,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
-          changes: EditCanvaseRequestChangesList,
+          changes: __S(7),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.edit", code: 200 })),
       ).annotate({ identifier: "EditCanvaseRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           canvas_id: S.String,
-          content_type: S.optional(GetContentRequestContentType),
+          content_type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.getContent", code: 200 })),
       ).annotate({ identifier: "GetContentRequest" });
     case 2:
@@ -398,18 +321,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          child_section_ids: S.optional(LookupSectionResponseSectionsItemChildSectionIdsList),
+          child_section_ids: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "LookupSectionResponseSectionsItem",
       });
     case 5:
-      return S.Array(LookupSectionResponseSectionsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          sections: LookupSectionResponseSectionsList,
+          sections: __S(13),
         }),
       ).annotate({ identifier: "LookupSectionResponse" });
     case 7:
@@ -417,9 +340,22 @@ function __c1(j: number): any {
         S.Struct({
           canvas_id: S.String,
           access_level: S.String,
-          channel_ids: S.optional(SetAccessRequestChannelIdsList),
-          user_ids: S.optional(SetAccessRequestUserIdsList),
+          channel_ids: S.optional(__S(2)),
+          user_ids: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/canvases.access.set", code: 200 })),
       ).annotate({ identifier: "SetAccessRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -44,85 +46,46 @@ export interface GetAiSecurityRequest {
   /** Defines the zone. */
   zoneId: string;
 }
-const GetAiSecurityRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetAiSecurityRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean | null;
 }
-const GetAiSecurityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetAiSecurityResponse>;
-
 export interface GetCustomTopicRequest {
   /** Defines the zone. */
   zoneId: string;
 }
-const GetCustomTopicRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetCustomTopicRequest>;
-
 export interface CustomTopicsGetResponseTopicsItem {
   /** Unique label identifier. Must contain only lowercase letters (a-z), digits (0-9), and hyphens. */
   label: string;
   /** Description of the topic category. Must contain only printable ASCII characters. */
   topic: string;
 }
-const CustomTopicsGetResponseTopicsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CustomTopicsGetResponseTopicsItem>;
-
 export type CustomTopicsGetResponseTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CustomTopicsGetResponseTopicsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsGetResponseTopicsList | null;
 }
-const GetCustomTopicResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetCustomTopicResponse>;
-
 export interface PutAiSecurityRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean;
 }
-const PutAiSecurityRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PutAiSecurityRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutAiSecurityResponse {
   /** Whether AI Security for Apps is enabled on the zone. */
   enabled?: boolean | null;
 }
-const PutAiSecurityResponse = GetAiSecurityResponse as any as S.Schema<PutAiSecurityResponse>;
-
 export type CustomTopicsUpdateRequestTopicsItem = CustomTopicsGetResponseTopicsItem;
 export type CustomTopicsUpdateRequestTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
-const CustomTopicsUpdateRequestTopicsList =
-  CustomTopicsGetResponseTopicsList as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
-
 export interface PutCustomTopicRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateRequestTopicsList;
 }
-const PutCustomTopicRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PutCustomTopicRequest>;
-
 export type CustomTopicsUpdateResponseTopicsItem = CustomTopicsGetResponseTopicsItem;
 export type CustomTopicsUpdateResponseTopicsList = Array<CustomTopicsGetResponseTopicsItem>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -130,8 +93,6 @@ export interface PutCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateResponseTopicsList | null;
 }
-const PutCustomTopicResponse = GetCustomTopicResponse as any as S.Schema<PutCustomTopicResponse>;
-
 export type GetAiSecurityError =
   | AiSecurityNotEntitled
   | ZoneNotAuthorized
@@ -144,8 +105,8 @@ export const getAiSecurity: API.OperationMethod<
   GetAiSecurityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAiSecurityRequest,
-  output: GetAiSecurityResponse,
+  input: __S(0) as any as S.Schema<GetAiSecurityRequest>,
+  output: __S(1) as any as S.Schema<GetAiSecurityResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -169,8 +130,8 @@ export const getCustomTopic: API.OperationMethod<
   GetCustomTopicError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomTopicRequest,
-  output: GetCustomTopicResponse,
+  input: __S(2) as any as S.Schema<GetCustomTopicRequest>,
+  output: __S(5) as any as S.Schema<GetCustomTopicResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -194,8 +155,8 @@ export const putAiSecurity: API.OperationMethod<
   PutAiSecurityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAiSecurityRequest,
-  output: PutAiSecurityResponse,
+  input: __S(6) as any as S.Schema<PutAiSecurityRequest>,
+  output: __S(1) as any as S.Schema<PutAiSecurityResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -219,8 +180,8 @@ export const putCustomTopic: API.OperationMethod<
   PutCustomTopicError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCustomTopicRequest,
-  output: PutCustomTopicResponse,
+  input: __S(7) as any as S.Schema<PutCustomTopicRequest>,
+  output: __S(5) as any as S.Schema<PutCustomTopicResponse>,
   errors: [
     AiSecurityNotEntitled,
     ZoneNotAuthorized,
@@ -265,11 +226,11 @@ function __c0(j: number): any {
         identifier: "CustomTopicsGetResponseTopicsItem",
       });
     case 4:
-      return S.Array(CustomTopicsGetResponseTopicsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(S.NullOr(CustomTopicsGetResponseTopicsList)),
+          topics: S.optional(S.NullOr(__S(4))),
         }),
       ).annotate({ identifier: "GetCustomTopicResponse" });
     case 6:
@@ -283,10 +244,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          topics: S.optional(CustomTopicsUpdateRequestTopicsList),
+          topics: S.optional(__S(4)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/zones/{zone_id}/ai-security/custom-topics", code: 200 }),
         ),
       ).annotate({ identifier: "PutCustomTopicRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

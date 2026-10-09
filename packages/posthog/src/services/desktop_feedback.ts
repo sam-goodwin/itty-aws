@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -29,12 +31,8 @@ export class NotFound
 
 /** * `Generic (Leave feedback button)` - Leave Feedback * `Visiting PostHog web` - Posthog Web */
 export type DesktopFeedbackSourceEnum = "Generic (Leave feedback button)" | "Visiting PostHog web";
-const DesktopFeedbackSourceEnum = S.String;
-
 /** * `bug` - Bug * `feature` - Feature * `general` - General */
 export type DesktopFeedbackTypeEnum = "bug" | "feature" | "general";
-const DesktopFeedbackTypeEnum = S.String;
-
 export interface CreateDesktopFeedbackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -63,39 +61,19 @@ export interface CreateDesktopFeedbackRequest {
   /** Second image that the user attached. */
   image_2?: string;
 }
-const CreateDesktopFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDesktopFeedbackRequest>;
-
 export interface DesktopFeedbackResponse {
   /** Whether the feedback response was accepted. */
   accepted: boolean;
   /** Identifier of the survey response event. */
   response_id: string;
 }
-const DesktopFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DesktopFeedbackResponse>;
-
 export interface GetDesktopFeedbackAttachmentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Feedback attachment identifier. */
   media_id: string;
 }
-const GetDesktopFeedbackAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetDesktopFeedbackAttachmentRequest>;
-
 export interface GetDesktopFeedbackAttachmentResponse {}
-const GetDesktopFeedbackAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetDesktopFeedbackAttachmentResponse>;
-
 export type CreateDesktopFeedbackError = BadRequest | PosthogOpError;
 /** Submit Desktop feedback Stores selected attachments and submits one response to the PostHog Desktop feedback survey. */
 export const createDesktopFeedback: API.OperationMethod<
@@ -104,8 +82,8 @@ export const createDesktopFeedback: API.OperationMethod<
   CreateDesktopFeedbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDesktopFeedbackRequest,
-  output: DesktopFeedbackResponse,
+  input: __S(0) as any as S.Schema<CreateDesktopFeedbackRequest>,
+  output: __S(1) as any as S.Schema<DesktopFeedbackResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -119,8 +97,8 @@ export const getDesktopFeedbackAttachment: API.OperationMethod<
   GetDesktopFeedbackAttachmentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDesktopFeedbackAttachmentRequest,
-  output: GetDesktopFeedbackAttachmentResponse,
+  input: __S(2) as any as S.Schema<GetDesktopFeedbackAttachmentRequest>,
+  output: __S(3) as any as S.Schema<GetDesktopFeedbackAttachmentResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -134,9 +112,9 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           response: S.String,
-          source: DesktopFeedbackSourceEnum,
+          source: S.String,
           feedback_view: S.String,
-          feedback_type: S.optional(DesktopFeedbackTypeEnum),
+          feedback_type: S.optional(S.String),
           feedback_task_id: S.optional(S.String),
           feedback_folder_id: S.optional(S.String),
           feedback_app_logs: S.optional(S.String),
@@ -182,5 +160,16 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "GetDesktopFeedbackAttachmentResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

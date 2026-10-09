@@ -9,6 +9,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
@@ -198,8 +200,6 @@ export type QuickSearchPostRequestLangCase0 =
   | "zh"
   | "zu";
 export type QuickSearchPostRequestLang = QuickSearchPostRequestLangCase0 | string;
-const QuickSearchPostRequestLang = S.Unknown as any as S.Schema<QuickSearchPostRequestLang>;
-
 export type QuickSearchPostRequestLibraryCase0 =
   | "aadya-neural"
   | "acestep"
@@ -461,8 +461,6 @@ export type QuickSearchPostRequestLibraryCase0 =
   | "zonos"
   | "3dtopia-xl";
 export type QuickSearchPostRequestLibrary = QuickSearchPostRequestLibraryCase0 | string;
-const QuickSearchPostRequestLibrary = S.Unknown as any as S.Schema<QuickSearchPostRequestLibrary>;
-
 export type QuickSearchPostRequestTypeCase0Item =
   | "model"
   | "dataset"
@@ -479,16 +477,9 @@ export type QuickSearchPostRequestTypeCase0List = Array<
   QuickSearchPostRequestTypeCase0Item | (string & {})
 >;
 export type QuickSearchPostRequestTypeCase1List = Array<string>;
-const QuickSearchPostRequestTypeCase1List = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<QuickSearchPostRequestTypeCase1List>;
-
 export type QuickSearchPostRequestType =
   | QuickSearchPostRequestTypeCase0List
   | QuickSearchPostRequestTypeCase1List;
-const QuickSearchPostRequestType = S.Unknown as any as S.Schema<QuickSearchPostRequestType>;
-
 export type QuickSearchPostRequestOrgsFilterCase0Item = "own" | "unwatched";
 export type QuickSearchPostRequestOrgsFilterCase0List = Array<
   QuickSearchPostRequestOrgsFilterCase0Item | (string & {})
@@ -497,9 +488,6 @@ export type QuickSearchPostRequestOrgsFilterCase1List = Array<string>;
 export type QuickSearchPostRequestOrgsFilter =
   | QuickSearchPostRequestOrgsFilterCase0List
   | QuickSearchPostRequestOrgsFilterCase1List;
-const QuickSearchPostRequestOrgsFilter =
-  S.Unknown as any as S.Schema<QuickSearchPostRequestOrgsFilter>;
-
 export type QuickSearchPostRequestReposFilterCase0Item =
   | "skip_disabled"
   | "skip_gated"
@@ -513,9 +501,6 @@ export type QuickSearchPostRequestReposFilterCase1List = Array<string>;
 export type QuickSearchPostRequestReposFilter =
   | QuickSearchPostRequestReposFilterCase0List
   | QuickSearchPostRequestReposFilterCase1List;
-const QuickSearchPostRequestReposFilter =
-  S.Unknown as any as S.Schema<QuickSearchPostRequestReposFilter>;
-
 export type QuickSearchPostRequestPipelinesCase0Item =
   | "text-classification"
   | "token-classification"
@@ -585,14 +570,8 @@ export type QuickSearchPostRequestPipelinesCase1 =
 export type QuickSearchPostRequestPipelines =
   | QuickSearchPostRequestPipelinesCase0List
   | QuickSearchPostRequestPipelinesCase1;
-const QuickSearchPostRequestPipelines =
-  S.Unknown as any as S.Schema<QuickSearchPostRequestPipelines>;
-
 /** Array of excluded resources: spaces/repo, models/repo, datasets/repo, papers/paperId, collections/collectionId, users/username, orgs/orgName, buckets/bucketName, containers/containerName, kernels/repo, blog/blogSlug */
 export type QuickSearchPostRequestExcludeList = Array<string>;
-const QuickSearchPostRequestExcludeList =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestExcludeList>;
-
 export type QuickSearchPostRequestRepoTypeCase0 =
   | "dataset"
   | "model"
@@ -601,12 +580,7 @@ export type QuickSearchPostRequestRepoTypeCase0 =
   | "kernel"
   | "container";
 export type QuickSearchPostRequestRepoType = QuickSearchPostRequestRepoTypeCase0 | string;
-const QuickSearchPostRequestRepoType = S.Unknown as any as S.Schema<QuickSearchPostRequestRepoType>;
-
 export type QuickSearchPostRequestSpacesTagsList = Array<string>;
-const QuickSearchPostRequestSpacesTagsList =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<QuickSearchPostRequestSpacesTagsList>;
-
 export interface QuickSearchPostRequest {
   q?: string;
   limit?: number;
@@ -625,50 +599,22 @@ export interface QuickSearchPostRequest {
   discussionCollectionName?: string;
   spacesTags?: QuickSearchPostRequestSpacesTagsList;
 }
-const QuickSearchPostRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<QuickSearchPostRequest>;
-
 export interface QuickSearchPostResponseDatasetsItem {
   _id: string;
   id: string;
   private?: boolean;
   trendingWeight: number;
 }
-const QuickSearchPostResponseDatasetsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<QuickSearchPostResponseDatasetsItem>;
-
 export type QuickSearchPostResponseDatasetsList = Array<QuickSearchPostResponseDatasetsItem>;
-const QuickSearchPostResponseDatasetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<QuickSearchPostResponseDatasetsList>;
-
 export type QuickSearchPostResponseModelsItem = QuickSearchPostResponseDatasetsItem;
 export type QuickSearchPostResponseModelsList = Array<QuickSearchPostResponseDatasetsItem>;
-const QuickSearchPostResponseModelsList =
-  QuickSearchPostResponseDatasetsList as any as S.Schema<QuickSearchPostResponseModelsList>;
-
 export interface QuickSearchPostResponseOrgsItem {
   _id: string;
   avatarUrl: string;
   fullname: string;
   name: string;
 }
-const QuickSearchPostResponseOrgsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<QuickSearchPostResponseOrgsItem>;
-
 export type QuickSearchPostResponseOrgsList = Array<QuickSearchPostResponseOrgsItem>;
-const QuickSearchPostResponseOrgsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<QuickSearchPostResponseOrgsList>;
-
 export interface QuickSearchPostResponseSpacesItem {
   _id: string;
   id: string;
@@ -676,98 +622,39 @@ export interface QuickSearchPostResponseSpacesItem {
   emoji: string;
   trendingWeight: number;
 }
-const QuickSearchPostResponseSpacesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<QuickSearchPostResponseSpacesItem>;
-
 export type QuickSearchPostResponseSpacesList = Array<QuickSearchPostResponseSpacesItem>;
-const QuickSearchPostResponseSpacesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<QuickSearchPostResponseSpacesList>;
-
 export interface QuickSearchPostResponseUsersItem {
   _id: string;
   avatarUrl: string;
   fullname: string;
   user: string;
 }
-const QuickSearchPostResponseUsersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<QuickSearchPostResponseUsersItem>;
-
 export type QuickSearchPostResponseUsersList = Array<QuickSearchPostResponseUsersItem>;
-const QuickSearchPostResponseUsersList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<QuickSearchPostResponseUsersList>;
-
 export interface QuickSearchPostResponsePapersItem {
   _id: string;
   id: string;
   private?: boolean;
 }
-const QuickSearchPostResponsePapersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<QuickSearchPostResponsePapersItem>;
-
 export type QuickSearchPostResponsePapersList = Array<QuickSearchPostResponsePapersItem>;
-const QuickSearchPostResponsePapersList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<QuickSearchPostResponsePapersList>;
-
 export interface QuickSearchPostResponseCollectionsItem {
   _id: string;
   title: string;
   description?: string;
 }
-const QuickSearchPostResponseCollectionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<QuickSearchPostResponseCollectionsItem>;
-
 export type QuickSearchPostResponseCollectionsList = Array<QuickSearchPostResponseCollectionsItem>;
-const QuickSearchPostResponseCollectionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<QuickSearchPostResponseCollectionsList>;
-
 export type QuickSearchPostResponseBucketsItem = QuickSearchPostResponsePapersItem;
 export type QuickSearchPostResponseBucketsList = Array<QuickSearchPostResponsePapersItem>;
-const QuickSearchPostResponseBucketsList =
-  QuickSearchPostResponsePapersList as any as S.Schema<QuickSearchPostResponseBucketsList>;
-
 export type QuickSearchPostResponseContainersItem = QuickSearchPostResponsePapersItem;
 export type QuickSearchPostResponseContainersList = Array<QuickSearchPostResponsePapersItem>;
-const QuickSearchPostResponseContainersList =
-  QuickSearchPostResponsePapersList as any as S.Schema<QuickSearchPostResponseContainersList>;
-
 export type QuickSearchPostResponseKernelsItem = QuickSearchPostResponsePapersItem;
 export type QuickSearchPostResponseKernelsList = Array<QuickSearchPostResponsePapersItem>;
-const QuickSearchPostResponseKernelsList =
-  QuickSearchPostResponsePapersList as any as S.Schema<QuickSearchPostResponseKernelsList>;
-
 export interface QuickSearchPostResponseBlogsItem {
   _id: string;
   slug: string;
   title: string;
   private: boolean;
 }
-const QuickSearchPostResponseBlogsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<QuickSearchPostResponseBlogsItem>;
-
 export type QuickSearchPostResponseBlogsList = Array<QuickSearchPostResponseBlogsItem>;
-const QuickSearchPostResponseBlogsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<QuickSearchPostResponseBlogsList>;
-
 export interface QuickSearchPostResponse {
   datasets: QuickSearchPostResponseDatasetsList;
   datasetsCount: number;
@@ -791,11 +678,6 @@ export interface QuickSearchPostResponse {
   blogs: QuickSearchPostResponseBlogsList;
   blogsCount: number;
 }
-const QuickSearchPostResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<QuickSearchPostResponse>;
-
 export type SearchFullTextRequestTypeCase0 =
   | "dataset"
   | "model"
@@ -816,8 +698,6 @@ export type SearchFullTextRequestTypeCase1List = Array<
 export type SearchFullTextRequestType =
   | SearchFullTextRequestTypeCase0
   | SearchFullTextRequestTypeCase1List;
-const SearchFullTextRequestType = S.Unknown as any as S.Schema<SearchFullTextRequestType>;
-
 export interface SearchFullTextRequest {
   q?: string;
   limit?: number;
@@ -825,17 +705,7 @@ export interface SearchFullTextRequest {
   type?: SearchFullTextRequestType;
   filter?: string;
 }
-const SearchFullTextRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SearchFullTextRequest>;
-
 export interface SearchFullTextResponse {}
-const SearchFullTextResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SearchFullTextResponse>;
-
 export type SearchQuickRequestLangCase0 =
   | "aa"
   | "ab"
@@ -1022,8 +892,6 @@ export type SearchQuickRequestLangCase0 =
   | "zh"
   | "zu";
 export type SearchQuickRequestLang = SearchQuickRequestLangCase0 | string;
-const SearchQuickRequestLang = S.Unknown as any as S.Schema<SearchQuickRequestLang>;
-
 export type SearchQuickRequestLibraryCase0 =
   | "aadya-neural"
   | "acestep"
@@ -1285,8 +1153,6 @@ export type SearchQuickRequestLibraryCase0 =
   | "zonos"
   | "3dtopia-xl";
 export type SearchQuickRequestLibrary = SearchQuickRequestLibraryCase0 | string;
-const SearchQuickRequestLibrary = S.Unknown as any as S.Schema<SearchQuickRequestLibrary>;
-
 export type SearchQuickRequestTypeCase0Item =
   | "model"
   | "dataset"
@@ -1306,8 +1172,6 @@ export type SearchQuickRequestTypeCase1List = Array<string>;
 export type SearchQuickRequestType =
   | SearchQuickRequestTypeCase0List
   | SearchQuickRequestTypeCase1List;
-const SearchQuickRequestType = S.Unknown as any as S.Schema<SearchQuickRequestType>;
-
 export type SearchQuickRequestOrgsFilterCase0Item = "own" | "unwatched";
 export type SearchQuickRequestOrgsFilterCase0List = Array<
   SearchQuickRequestOrgsFilterCase0Item | (string & {})
@@ -1316,8 +1180,6 @@ export type SearchQuickRequestOrgsFilterCase1List = Array<string>;
 export type SearchQuickRequestOrgsFilter =
   | SearchQuickRequestOrgsFilterCase0List
   | SearchQuickRequestOrgsFilterCase1List;
-const SearchQuickRequestOrgsFilter = S.Unknown as any as S.Schema<SearchQuickRequestOrgsFilter>;
-
 export type SearchQuickRequestReposFilterCase0Item =
   | "skip_disabled"
   | "skip_gated"
@@ -1331,8 +1193,6 @@ export type SearchQuickRequestReposFilterCase1List = Array<string>;
 export type SearchQuickRequestReposFilter =
   | SearchQuickRequestReposFilterCase0List
   | SearchQuickRequestReposFilterCase1List;
-const SearchQuickRequestReposFilter = S.Unknown as any as S.Schema<SearchQuickRequestReposFilter>;
-
 export type SearchQuickRequestPipelinesCase0Item =
   | "text-classification"
   | "token-classification"
@@ -1400,13 +1260,8 @@ export type SearchQuickRequestPipelinesCase1 = string | SearchQuickRequestPipeli
 export type SearchQuickRequestPipelines =
   | SearchQuickRequestPipelinesCase0List
   | SearchQuickRequestPipelinesCase1;
-const SearchQuickRequestPipelines = S.Unknown as any as S.Schema<SearchQuickRequestPipelines>;
-
 /** Array of excluded resources: spaces/repo, models/repo, datasets/repo, papers/paperId, collections/collectionId, users/username, orgs/orgName, buckets/bucketName, containers/containerName, kernels/repo, blog/blogSlug */
 export type SearchQuickRequestExcludeList = Array<string>;
-const SearchQuickRequestExcludeList =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestExcludeList>;
-
 export type SearchQuickRequestRepoTypeCase0 =
   | "dataset"
   | "model"
@@ -1415,12 +1270,7 @@ export type SearchQuickRequestRepoTypeCase0 =
   | "kernel"
   | "container";
 export type SearchQuickRequestRepoType = SearchQuickRequestRepoTypeCase0 | string;
-const SearchQuickRequestRepoType = S.Unknown as any as S.Schema<SearchQuickRequestRepoType>;
-
 export type SearchQuickRequestSpacesTagsList = Array<string>;
-const SearchQuickRequestSpacesTagsList =
-  QuickSearchPostRequestTypeCase1List as any as S.Schema<SearchQuickRequestSpacesTagsList>;
-
 export interface SearchQuickRequest {
   q?: string;
   limit?: number;
@@ -1439,8 +1289,6 @@ export interface SearchQuickRequest {
   discussionCollectionName?: string;
   spacesTags?: SearchQuickRequestSpacesTagsList;
 }
-const SearchQuickRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SearchQuickRequest>;
-
 export type SearchQuickResponseDatasetsItem = QuickSearchPostResponseDatasetsItem;
 export type SearchQuickResponseDatasetsList = Array<QuickSearchPostResponseDatasetsItem>;
 export type SearchQuickResponseModelsItem = QuickSearchPostResponseDatasetsItem;
@@ -1486,8 +1334,6 @@ export interface SearchQuickResponse {
   blogs: SearchQuickResponseBlogsList;
   blogsCount: number;
 }
-const SearchQuickResponse = QuickSearchPostResponse as any as S.Schema<SearchQuickResponse>;
-
 export type QuickSearchPostError = HuggingFaceOpError;
 /** Quick search Quick search for models, datasets, spaces, orgs, users, papers, collections, and buckets */
 export const quickSearchPost: API.OperationMethod<
@@ -1496,8 +1342,8 @@ export const quickSearchPost: API.OperationMethod<
   QuickSearchPostError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QuickSearchPostRequest,
-  output: QuickSearchPostResponse,
+  input: __S(1) as any as S.Schema<QuickSearchPostRequest>,
+  output: __S(16) as any as S.Schema<QuickSearchPostResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1511,8 +1357,8 @@ export const searchFullText: API.OperationMethod<
   SearchFullTextError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchFullTextRequest,
-  output: SearchFullTextResponse,
+  input: __S(17) as any as S.Schema<SearchFullTextRequest>,
+  output: __S(18) as any as S.Schema<SearchFullTextResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1526,8 +1372,8 @@ export const searchQuick: API.OperationMethod<
   SearchQuickError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchQuickRequest,
-  output: SearchQuickResponse,
+  input: __S(19) as any as S.Schema<SearchQuickRequest>,
+  output: __S(16) as any as S.Schema<SearchQuickResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -1543,20 +1389,20 @@ function __c0(j: number): any {
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          lang: S.optional(QuickSearchPostRequestLang.pipe(T.Query())),
-          library: S.optional(QuickSearchPostRequestLibrary.pipe(T.Query())),
-          type: S.optional(QuickSearchPostRequestType.pipe(T.Query())),
-          orgsFilter: S.optional(QuickSearchPostRequestOrgsFilter.pipe(T.Query())),
-          reposFilter: S.optional(QuickSearchPostRequestReposFilter.pipe(T.Query())),
-          pipelines: S.optional(QuickSearchPostRequestPipelines.pipe(T.Query())),
-          exclude: S.optional(QuickSearchPostRequestExcludeList.pipe(T.Query())),
+          lang: S.optional(S.Unknown.pipe(T.Query())),
+          library: S.optional(S.Unknown.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
+          orgsFilter: S.optional(S.Unknown.pipe(T.Query())),
+          reposFilter: S.optional(S.Unknown.pipe(T.Query())),
+          pipelines: S.optional(S.Unknown.pipe(T.Query())),
+          exclude: S.optional(__S(0).pipe(T.Query())),
           namespace: S.optional(S.String.pipe(T.Query())),
           includeInvitees: S.optional(S.Unknown.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
-          repoType: S.optional(QuickSearchPostRequestRepoType.pipe(T.Query())),
+          repoType: S.optional(S.Unknown.pipe(T.Query())),
           discussionId: S.optional(S.String.pipe(T.Query())),
           discussionCollectionName: S.optional(S.String.pipe(T.Query())),
-          spacesTags: S.optional(QuickSearchPostRequestSpacesTagsList.pipe(T.Query())),
+          spacesTags: S.optional(__S(0).pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/api/quicksearch", code: 200 })),
       ).annotate({ identifier: "QuickSearchPostRequest" });
     case 2:
@@ -1571,7 +1417,7 @@ function __c0(j: number): any {
         identifier: "QuickSearchPostResponseDatasetsItem",
       });
     case 3:
-      return S.Array(QuickSearchPostResponseDatasetsItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1584,7 +1430,7 @@ function __c0(j: number): any {
         identifier: "QuickSearchPostResponseOrgsItem",
       });
     case 5:
-      return S.Array(QuickSearchPostResponseOrgsItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1598,7 +1444,7 @@ function __c0(j: number): any {
         identifier: "QuickSearchPostResponseSpacesItem",
       });
     case 7:
-      return S.Array(QuickSearchPostResponseSpacesItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -1615,7 +1461,7 @@ function __c1(j: number): any {
         identifier: "QuickSearchPostResponseUsersItem",
       });
     case 1:
-      return S.Array(QuickSearchPostResponseUsersItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1627,7 +1473,7 @@ function __c1(j: number): any {
         identifier: "QuickSearchPostResponsePapersItem",
       });
     case 3:
-      return S.Array(QuickSearchPostResponsePapersItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1639,7 +1485,7 @@ function __c1(j: number): any {
         identifier: "QuickSearchPostResponseCollectionsItem",
       });
     case 5:
-      return S.Array(QuickSearchPostResponseCollectionsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1652,7 +1498,7 @@ function __c1(j: number): any {
         identifier: "QuickSearchPostResponseBlogsItem",
       });
     case 7:
-      return S.Array(QuickSearchPostResponseBlogsItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1660,26 +1506,26 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          datasets: QuickSearchPostResponseDatasetsList,
+          datasets: __S(3),
           datasetsCount: S.Number,
-          models: QuickSearchPostResponseModelsList,
+          models: __S(3),
           modelsCount: S.Number,
-          orgs: QuickSearchPostResponseOrgsList,
+          orgs: __S(5),
           q: S.String,
-          spaces: QuickSearchPostResponseSpacesList,
+          spaces: __S(7),
           spacesCount: S.Number,
-          users: QuickSearchPostResponseUsersList,
-          papers: QuickSearchPostResponsePapersList,
+          users: __S(9),
+          papers: __S(11),
           papersCount: S.Number,
-          collections: QuickSearchPostResponseCollectionsList,
+          collections: __S(13),
           collectionsCount: S.Number,
-          buckets: QuickSearchPostResponseBucketsList,
+          buckets: __S(11),
           bucketsCount: S.Number,
-          containers: QuickSearchPostResponseContainersList,
+          containers: __S(11),
           containersCount: S.Number,
-          kernels: QuickSearchPostResponseKernelsList,
+          kernels: __S(11),
           kernelsCount: S.Number,
-          blogs: QuickSearchPostResponseBlogsList,
+          blogs: __S(15),
           blogsCount: S.Number,
         }),
       ).annotate({ identifier: "QuickSearchPostResponse" });
@@ -1689,7 +1535,7 @@ function __c2(j: number): any {
           q: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           skip: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(SearchFullTextRequestType.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/search/full-text", code: 200 })),
       ).annotate({ identifier: "SearchFullTextRequest" });
@@ -1702,21 +1548,36 @@ function __c2(j: number): any {
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          lang: S.optional(SearchQuickRequestLang.pipe(T.Query())),
-          library: S.optional(SearchQuickRequestLibrary.pipe(T.Query())),
-          type: S.optional(SearchQuickRequestType.pipe(T.Query())),
-          orgsFilter: S.optional(SearchQuickRequestOrgsFilter.pipe(T.Query())),
-          reposFilter: S.optional(SearchQuickRequestReposFilter.pipe(T.Query())),
-          pipelines: S.optional(SearchQuickRequestPipelines.pipe(T.Query())),
-          exclude: S.optional(SearchQuickRequestExcludeList.pipe(T.Query())),
+          lang: S.optional(S.Unknown.pipe(T.Query())),
+          library: S.optional(S.Unknown.pipe(T.Query())),
+          type: S.optional(S.Unknown.pipe(T.Query())),
+          orgsFilter: S.optional(S.Unknown.pipe(T.Query())),
+          reposFilter: S.optional(S.Unknown.pipe(T.Query())),
+          pipelines: S.optional(S.Unknown.pipe(T.Query())),
+          exclude: S.optional(__S(0).pipe(T.Query())),
           namespace: S.optional(S.String.pipe(T.Query())),
           includeInvitees: S.optional(S.Unknown.pipe(T.Query())),
           repoName: S.optional(S.String.pipe(T.Query())),
-          repoType: S.optional(SearchQuickRequestRepoType.pipe(T.Query())),
+          repoType: S.optional(S.Unknown.pipe(T.Query())),
           discussionId: S.optional(S.String.pipe(T.Query())),
           discussionCollectionName: S.optional(S.String.pipe(T.Query())),
-          spacesTags: S.optional(SearchQuickRequestSpacesTagsList.pipe(T.Query())),
+          spacesTags: S.optional(__S(0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/quicksearch", code: 200 })),
       ).annotate({ identifier: "SearchQuickRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

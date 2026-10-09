@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -114,20 +116,9 @@ export interface EnvironmentVariable {
   name: string;
   value: string;
 }
-const EnvironmentVariable = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<EnvironmentVariable>;
-
 export type EnvironmentVariableList = Array<EnvironmentVariable>;
-const EnvironmentVariableList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EnvironmentVariableList>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentList>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
-
 export interface ContainerConfiguration {
   image: string;
   instanceType?: string;
@@ -147,16 +138,9 @@ export interface ContainerConfiguration {
   dns?: unknown;
   sshPublicKeyIds?: StringList;
 }
-const ContainerConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ContainerConfiguration>;
-
 export interface DurableObjectsRef {
   namespaceId: string;
 }
-const DurableObjectsRef = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DurableObjectsRef>;
-
 export interface CreateContainerApplicationRequest {
   accountId: string;
   name: string;
@@ -169,31 +153,17 @@ export interface CreateContainerApplicationRequest {
   affinities?: unknown;
   jobs?: boolean;
 }
-const CreateContainerApplicationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateContainerApplicationRequest>;
-
 /** Configuration for connecting to a container over SSH with Wrangler. Source: https://github.com/cloudflare/workers-sdk/blob/main/packages/containers-shared/src/client/models/WranglerSSHConfig.ts (2026-09-30). */
 export interface WranglerSSHConfiguration {
   enabled: boolean;
   port?: number | null;
 }
-const WranglerSSHConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<WranglerSSHConfiguration>;
-
 /** An SSH public key provided by the user. Source: https://github.com/cloudflare/workers-sdk/blob/main/packages/containers-shared/src/client/models/UserSSHPublicKey.ts (2026-09-30). */
 export interface UserSSHPublicKey {
   name?: string | null;
   publicKey: string;
 }
-const UserSSHPublicKey = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UserSSHPublicKey>;
-
 export type UserSSHPublicKeyList = Array<UserSSHPublicKey>;
-const UserSSHPublicKeyList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UserSSHPublicKeyList>;
-
 export interface ContainerApplicationConfiguration {
   image?: string | null;
   instanceType?: string | null;
@@ -216,27 +186,12 @@ export interface ContainerApplicationConfiguration {
   authorizedKeys?: UserSSHPublicKeyList | null;
   experimentalFlags?: StringList | null;
 }
-const ContainerApplicationConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ContainerApplicationConfiguration>;
-
 export interface ContainerApplicationLogs {
   enabled?: boolean | null;
 }
-const ContainerApplicationLogs = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ContainerApplicationLogs>;
-
 export interface ContainerApplicationObservability {
   logs?: ContainerApplicationLogs | null;
 }
-const ContainerApplicationObservability = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ContainerApplicationObservability>;
-
 export interface ContainerApplicationItem {
   id: string;
   name: string;
@@ -254,17 +209,7 @@ export interface ContainerApplicationItem {
   version?: number | null;
   observability?: ContainerApplicationObservability | null;
 }
-const ContainerApplicationItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ContainerApplicationItem>;
-
 export type CreateContainerApplicationResponse = ContainerApplicationItem;
-const CreateContainerApplicationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateContainerApplicationResponse>;
-
 export interface CreateContainerApplicationRolloutRequest {
   accountId: string;
   applicationId: string;
@@ -274,56 +219,26 @@ export interface CreateContainerApplicationRolloutRequest {
   stepPercentage?: number;
   targetConfiguration?: ContainerConfiguration;
 }
-const CreateContainerApplicationRolloutRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateContainerApplicationRolloutRequest>;
-
 export type CreateContainerApplicationRolloutResponse = ContainerApplicationItem;
-const CreateContainerApplicationRolloutResponse =
-  CreateContainerApplicationResponse as any as S.Schema<CreateContainerApplicationRolloutResponse>;
-
 export interface CreateContainerRegistryCredentialsRequest {
   accountId: string;
   registryId: string;
   permissions: StringList;
   expirationMinutes: number;
 }
-const CreateContainerRegistryCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateContainerRegistryCredentialsRequest>;
-
 /** Registry credentials (transcribed from the distilled SDK -- endpoint is docs-absent). */
 export interface CreateContainerRegistryCredentialsResult {
   user?: string | null;
   username?: string | null;
   password: string;
 }
-const CreateContainerRegistryCredentialsResult = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateContainerRegistryCredentialsResult>;
-
 export type CreateContainerRegistryCredentialsResponse = CreateContainerRegistryCredentialsResult;
-const CreateContainerRegistryCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateContainerRegistryCredentialsResponse>;
-
 export type DurableObjectSchedulingPolicy = "durable_object";
-const DurableObjectSchedulingPolicy = S.String;
-
 export interface DurableObjectContainerConfiguration {
   wranglerSsh?: WranglerSSHConfiguration;
   authorizedKeys?: UserSSHPublicKeyList;
   experimentalFlags?: StringList;
 }
-const DurableObjectContainerConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DurableObjectContainerConfiguration>;
-
 export interface CreateDurableObjectContainerApplicationRequest {
   accountId: string;
   name: string;
@@ -332,104 +247,38 @@ export interface CreateDurableObjectContainerApplicationRequest {
   configuration?: DurableObjectContainerConfiguration;
   observability?: ContainerApplicationObservability;
 }
-const CreateDurableObjectContainerApplicationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateDurableObjectContainerApplicationRequest>;
-
 export type CreateDurableObjectContainerApplicationResponse = ContainerApplicationItem;
-const CreateDurableObjectContainerApplicationResponse =
-  CreateContainerApplicationResponse as any as S.Schema<CreateDurableObjectContainerApplicationResponse>;
-
 export interface DeleteContainerApplicationRequest {
   accountId: string;
   applicationId: string;
 }
-const DeleteContainerApplicationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteContainerApplicationRequest>;
-
 export type DeleteContainerApplicationResponse = unknown;
-const DeleteContainerApplicationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteContainerApplicationResponse>;
-
 export interface GetContainerApplicationRequest {
   accountId: string;
   applicationId: string;
 }
-const GetContainerApplicationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetContainerApplicationRequest>;
-
 export type GetContainerApplicationResponse = ContainerApplicationItem;
-const GetContainerApplicationResponse =
-  CreateContainerApplicationResponse as any as S.Schema<GetContainerApplicationResponse>;
-
 export interface GetContainerIdentityRequest {
   accountId: string;
 }
-const GetContainerIdentityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetContainerIdentityRequest>;
-
 export type GetContainerIdentityResponse = unknown;
-const GetContainerIdentityResponse =
-  DeleteContainerApplicationResponse as any as S.Schema<GetContainerIdentityResponse>;
-
 export interface ListContainerApplicationsRequest {
   accountId: string;
 }
-const ListContainerApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListContainerApplicationsRequest>;
-
 export type ContainerApplicationItemList = Array<ContainerApplicationItem>;
-const ContainerApplicationItemList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ContainerApplicationItemList>;
-
 export type ListContainerApplicationsResponse = ContainerApplicationItemList;
-const ListContainerApplicationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListContainerApplicationsResponse>;
-
 export interface PrepareContainerImageRequest {
   accountId: string;
   image: string;
 }
-const PrepareContainerImageRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PrepareContainerImageRequest>;
-
 export type ContainerImagePreparationStatus = "pending" | "ready" | "error";
-const ContainerImagePreparationStatus = S.String;
-
 export interface ContainerImagePreparation {
   image: string;
   status: ContainerImagePreparationStatus;
   artifactDigest?: string | null;
   reason?: string | null;
 }
-const ContainerImagePreparation = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ContainerImagePreparation>;
-
 export type PrepareContainerImageResponse = ContainerImagePreparation;
-const PrepareContainerImageResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PrepareContainerImageResponse>;
-
 export interface UpdateContainerApplicationRequest {
   accountId: string;
   applicationId: string;
@@ -441,15 +290,7 @@ export interface UpdateContainerApplicationRequest {
   affinities?: unknown;
   observability?: ContainerApplicationObservability;
 }
-const UpdateContainerApplicationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UpdateContainerApplicationRequest>;
-
 export type UpdateContainerApplicationResponse = ContainerApplicationItem;
-const UpdateContainerApplicationResponse =
-  CreateContainerApplicationResponse as any as S.Schema<UpdateContainerApplicationResponse>;
-
 export type CreateContainerApplicationError =
   | InvalidRoute
   | DurableObjectAlreadyHasApplication
@@ -462,8 +303,8 @@ export const createContainerApplication: API.OperationMethod<
   CreateContainerApplicationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateContainerApplicationRequest,
-  output: CreateContainerApplicationResponse,
+  input: __S(6) as any as S.Schema<CreateContainerApplicationRequest>,
+  output: __S(14) as any as S.Schema<CreateContainerApplicationResponse>,
   errors: [
     InvalidRoute,
     DurableObjectAlreadyHasApplication,
@@ -486,8 +327,8 @@ export const createContainerApplicationRollout: API.OperationMethod<
   CreateContainerApplicationRolloutError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateContainerApplicationRolloutRequest,
-  output: CreateContainerApplicationRolloutResponse,
+  input: __S(15) as any as S.Schema<CreateContainerApplicationRolloutRequest>,
+  output: __S(14) as any as S.Schema<CreateContainerApplicationRolloutResponse>,
   errors: [InvalidRoute, ContainerApplicationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -500,8 +341,8 @@ export const createContainerRegistryCredentials: API.OperationMethod<
   CreateContainerRegistryCredentialsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateContainerRegistryCredentialsRequest,
-  output: CreateContainerRegistryCredentialsResponse,
+  input: __S(16) as any as S.Schema<CreateContainerRegistryCredentialsRequest>,
+  output: __S(18) as any as S.Schema<CreateContainerRegistryCredentialsResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -520,8 +361,8 @@ export const createDurableObjectContainerApplication: API.OperationMethod<
   CreateDurableObjectContainerApplicationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDurableObjectContainerApplicationRequest,
-  output: CreateDurableObjectContainerApplicationResponse,
+  input: __S(20) as any as S.Schema<CreateDurableObjectContainerApplicationRequest>,
+  output: __S(14) as any as S.Schema<CreateDurableObjectContainerApplicationResponse>,
   errors: [
     InvalidRoute,
     DurableObjectAlreadyHasApplication,
@@ -544,8 +385,8 @@ export const deleteContainerApplication: API.OperationMethod<
   DeleteContainerApplicationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteContainerApplicationRequest,
-  output: DeleteContainerApplicationResponse,
+  input: __S(21) as any as S.Schema<DeleteContainerApplicationRequest>,
+  output: __S(22) as any as S.Schema<DeleteContainerApplicationResponse>,
   errors: [InvalidRoute, ContainerApplicationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -561,8 +402,8 @@ export const getContainerApplication: API.OperationMethod<
   GetContainerApplicationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContainerApplicationRequest,
-  output: GetContainerApplicationResponse,
+  input: __S(23) as any as S.Schema<GetContainerApplicationRequest>,
+  output: __S(14) as any as S.Schema<GetContainerApplicationResponse>,
   errors: [InvalidRoute, ContainerApplicationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -575,8 +416,8 @@ export const getContainerIdentity: API.OperationMethod<
   GetContainerIdentityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContainerIdentityRequest,
-  output: GetContainerIdentityResponse,
+  input: __S(24) as any as S.Schema<GetContainerIdentityRequest>,
+  output: __S(22) as any as S.Schema<GetContainerIdentityResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -589,8 +430,8 @@ export const listContainerApplications: API.OperationMethod<
   ListContainerApplicationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContainerApplicationsRequest,
-  output: ListContainerApplicationsResponse,
+  input: __S(25) as any as S.Schema<ListContainerApplicationsRequest>,
+  output: __S(27) as any as S.Schema<ListContainerApplicationsResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -608,8 +449,8 @@ export const prepareContainerImage: API.OperationMethod<
   PrepareContainerImageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrepareContainerImageRequest,
-  output: PrepareContainerImageResponse,
+  input: __S(28) as any as S.Schema<PrepareContainerImageRequest>,
+  output: __S(30) as any as S.Schema<PrepareContainerImageResponse>,
   errors: [
     ContainerImagePreparationInvalidImage,
     BadRequest,
@@ -631,8 +472,8 @@ export const updateContainerApplication: API.OperationMethod<
   UpdateContainerApplicationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateContainerApplicationRequest,
-  output: UpdateContainerApplicationResponse,
+  input: __S(31) as any as S.Schema<UpdateContainerApplicationRequest>,
+  output: __S(14) as any as S.Schema<UpdateContainerApplicationResponse>,
   errors: [InvalidRoute, ContainerApplicationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -649,7 +490,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentVariable" });
     case 1:
-      return S.Array(EnvironmentVariable);
+      return S.Array(__S(0));
     case 2:
       return S.Array(S.Unknown);
     case 3:
@@ -663,19 +504,17 @@ function __c0(j: number): any {
           memory: S.optional(S.String),
           memoryMib: S.optional(S.Number.pipe(T.Body("memory_mib"))),
           disk: S.optional(S.Unknown),
-          environmentVariables: S.optional(
-            EnvironmentVariableList.pipe(T.Body("environment_variables")),
-          ),
-          secrets: S.optional(DocumentList),
-          labels: S.optional(DocumentList),
-          ports: S.optional(DocumentList),
+          environmentVariables: S.optional(__S(1).pipe(T.Body("environment_variables"))),
+          secrets: S.optional(__S(2)),
+          labels: S.optional(__S(2)),
+          ports: S.optional(__S(2)),
           network: S.optional(S.Unknown),
-          command: S.optional(StringList),
-          entrypoint: S.optional(StringList),
+          command: S.optional(__S(3)),
+          entrypoint: S.optional(__S(3)),
           observability: S.optional(S.Unknown),
-          checks: S.optional(DocumentList),
+          checks: S.optional(__S(2)),
           dns: S.optional(S.Unknown),
-          sshPublicKeyIds: S.optional(StringList.pipe(T.Body("ssh_public_key_ids"))),
+          sshPublicKeyIds: S.optional(__S(3).pipe(T.Body("ssh_public_key_ids"))),
         }),
       ).annotate({ identifier: "ContainerConfiguration" });
     case 5:
@@ -690,8 +529,8 @@ function __c0(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
           maxInstances: S.Number.pipe(T.Body("max_instances")),
-          configuration: ContainerConfiguration,
-          durableObjects: S.optional(DurableObjectsRef.pipe(T.Body("durable_objects"))),
+          configuration: __S(4),
+          durableObjects: S.optional(__S(5).pipe(T.Body("durable_objects"))),
           instances: S.optional(S.Number),
           schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
           constraints: S.optional(S.Unknown),
@@ -726,7 +565,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserSSHPublicKey" });
     case 1:
-      return S.Array(UserSSHPublicKey);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -736,24 +575,20 @@ function __c1(j: number): any {
           memory: S.optional(S.NullOr(S.String)),
           memoryMib: S.optional(S.NullOr(S.Number).pipe(T.Body("memory_mib"))),
           disk: S.optional(S.NullOr(S.Unknown)),
-          environmentVariables: S.optional(
-            S.NullOr(EnvironmentVariableList).pipe(T.Body("environment_variables")),
-          ),
-          secrets: S.optional(S.NullOr(DocumentList)),
-          labels: S.optional(S.NullOr(DocumentList)),
-          ports: S.optional(S.NullOr(DocumentList)),
+          environmentVariables: S.optional(S.NullOr(__S(1)).pipe(T.Body("environment_variables"))),
+          secrets: S.optional(S.NullOr(__S(2))),
+          labels: S.optional(S.NullOr(__S(2))),
+          ports: S.optional(S.NullOr(__S(2))),
           network: S.optional(S.NullOr(S.Unknown)),
-          command: S.optional(S.NullOr(StringList)),
-          entrypoint: S.optional(S.NullOr(StringList)),
+          command: S.optional(S.NullOr(__S(3))),
+          entrypoint: S.optional(S.NullOr(__S(3))),
           observability: S.optional(S.NullOr(S.Unknown)),
-          checks: S.optional(S.NullOr(DocumentList)),
+          checks: S.optional(S.NullOr(__S(2))),
           dns: S.optional(S.NullOr(S.Unknown)),
-          sshPublicKeyIds: S.optional(S.NullOr(StringList).pipe(T.Body("ssh_public_key_ids"))),
-          wranglerSsh: S.optional(S.NullOr(WranglerSSHConfiguration).pipe(T.Body("wrangler_ssh"))),
-          authorizedKeys: S.optional(
-            S.NullOr(UserSSHPublicKeyList).pipe(T.Body("authorized_keys")),
-          ),
-          experimentalFlags: S.optional(S.NullOr(StringList).pipe(T.Body("experimental_flags"))),
+          sshPublicKeyIds: S.optional(S.NullOr(__S(3)).pipe(T.Body("ssh_public_key_ids"))),
+          wranglerSsh: S.optional(S.NullOr(__S(7)).pipe(T.Body("wrangler_ssh"))),
+          authorizedKeys: S.optional(S.NullOr(__S(9)).pipe(T.Body("authorized_keys"))),
+          experimentalFlags: S.optional(S.NullOr(__S(3)).pipe(T.Body("experimental_flags"))),
         }),
       ).annotate({
         identifier: "ContainerApplicationConfiguration",
@@ -767,7 +602,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(S.NullOr(ContainerApplicationLogs)),
+          logs: S.optional(S.NullOr(__S(11))),
         }),
       ).annotate({
         identifier: "ContainerApplicationObservability",
@@ -783,15 +618,15 @@ function __c1(j: number): any {
           maxInstances: S.optional(S.NullOr(S.Number).pipe(T.Body("max_instances"))),
           constraints: S.optional(S.NullOr(S.Unknown)),
           affinities: S.optional(S.NullOr(S.Unknown)),
-          configuration: ContainerApplicationConfiguration,
-          durableObjects: S.optional(S.NullOr(DurableObjectsRef).pipe(T.Body("durable_objects"))),
+          configuration: __S(10),
+          durableObjects: S.optional(S.NullOr(__S(5)).pipe(T.Body("durable_objects"))),
           createdAt: S.String.pipe(T.Body("created_at")),
           version: S.optional(S.NullOr(S.Number)),
-          observability: S.optional(S.NullOr(ContainerApplicationObservability)),
+          observability: S.optional(S.NullOr(__S(12))),
         }),
       ).annotate({ identifier: "ContainerApplicationItem" });
     case 6:
-      return S.suspend(() => ContainerApplicationItem.pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(13).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "CreateContainerApplicationResponse",
       });
     case 7:
@@ -803,9 +638,7 @@ function __c1(j: number): any {
           strategy: S.String,
           kind: S.optional(S.String),
           stepPercentage: S.optional(S.Number.pipe(T.Body("step_percentage"))),
-          targetConfiguration: S.optional(
-            ContainerConfiguration.pipe(T.Body("target_configuration")),
-          ),
+          targetConfiguration: S.optional(__S(4).pipe(T.Body("target_configuration"))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -825,7 +658,7 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           registryId: S.String.pipe(T.Label("registry_id")),
-          permissions: StringList,
+          permissions: __S(3),
           expirationMinutes: S.Number.pipe(T.Body("expiration_minutes")),
         }).pipe(
           T.Http({
@@ -848,17 +681,15 @@ function __c2(j: number): any {
         identifier: "CreateContainerRegistryCredentialsResult",
       });
     case 2:
-      return S.suspend(() =>
-        CreateContainerRegistryCredentialsResult.pipe(T.EnvelopePayloadRoot()),
-      ).annotate({
+      return S.suspend(() => __S(17).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "CreateContainerRegistryCredentialsResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          wranglerSsh: S.optional(WranglerSSHConfiguration.pipe(T.Body("wrangler_ssh"))),
-          authorizedKeys: S.optional(UserSSHPublicKeyList.pipe(T.Body("authorized_keys"))),
-          experimentalFlags: S.optional(StringList.pipe(T.Body("experimental_flags"))),
+          wranglerSsh: S.optional(__S(7).pipe(T.Body("wrangler_ssh"))),
+          authorizedKeys: S.optional(__S(9).pipe(T.Body("authorized_keys"))),
+          experimentalFlags: S.optional(__S(3).pipe(T.Body("experimental_flags"))),
         }),
       ).annotate({
         identifier: "DurableObjectContainerConfiguration",
@@ -868,10 +699,10 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String,
-          schedulingPolicy: DurableObjectSchedulingPolicy.pipe(T.Body("scheduling_policy")),
-          durableObjects: DurableObjectsRef.pipe(T.Body("durable_objects")),
-          configuration: S.optional(DurableObjectContainerConfiguration),
-          observability: S.optional(ContainerApplicationObservability),
+          schedulingPolicy: S.String.pipe(T.Body("scheduling_policy")),
+          durableObjects: __S(5).pipe(T.Body("durable_objects")),
+          configuration: S.optional(__S(19)),
+          observability: S.optional(__S(12)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -943,9 +774,9 @@ function __c3(j: number): any {
         identifier: "ListContainerApplicationsRequest",
       });
     case 2:
-      return S.Array(ContainerApplicationItem);
+      return S.Array(__S(13));
     case 3:
-      return S.suspend(() => ContainerApplicationItemList.pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(26).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListContainerApplicationsResponse",
       });
     case 4:
@@ -967,7 +798,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           image: S.String,
-          status: ContainerImagePreparationStatus,
+          status: S.String,
           artifactDigest: S.optional(S.NullOr(S.String).pipe(T.Body("artifact_digest"))),
           reason: S.optional(S.NullOr(S.String)),
         }),
@@ -975,7 +806,7 @@ function __c3(j: number): any {
         identifier: "ContainerImagePreparation",
       });
     case 6:
-      return S.suspend(() => ContainerImagePreparation.pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(29).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "PrepareContainerImageResponse",
       });
     case 7:
@@ -984,12 +815,12 @@ function __c3(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           applicationId: S.String.pipe(T.Label("application_id")),
           maxInstances: S.optional(S.Number.pipe(T.Body("max_instances"))),
-          configuration: S.optional(ContainerApplicationConfiguration),
+          configuration: S.optional(__S(10)),
           instances: S.optional(S.Number),
           schedulingPolicy: S.optional(S.String.pipe(T.Body("scheduling_policy"))),
           constraints: S.optional(S.Unknown),
           affinities: S.optional(S.Unknown),
-          observability: S.optional(ContainerApplicationObservability),
+          observability: S.optional(__S(12)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1000,5 +831,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateContainerApplicationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

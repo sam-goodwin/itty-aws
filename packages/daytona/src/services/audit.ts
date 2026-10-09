@@ -7,15 +7,12 @@ import { paginateToken } from "../pagination.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetAuditScenariosRequest {}
-const GetAuditScenariosRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetAuditScenariosRequest>;
-
 /** Resource type the actions apply to. Scenarios that are not scoped to a specific resource type (e.g. leaving an organization) are grouped under "other". */
 export type AuditTargetScenarioTargetType =
   | "api_key"
@@ -34,8 +31,6 @@ export type AuditTargetScenarioTargetType =
   | "secret"
   | "other"
   | "identity_provider";
-const AuditTargetScenarioTargetType = S.String;
-
 export type AuditTargetScenarioActionsItem =
   | "create"
   | "read"
@@ -105,44 +100,24 @@ export type AuditTargetScenarioActionsItem =
   | "ttl_expire"
   | "queue_timeout_expire"
   | "spot_evict";
-const AuditTargetScenarioActionsItem = S.String;
-
 /** Actions that can be audited against this target type, sorted alphabetically. */
 export type AuditTargetScenarioActionsList = Array<AuditTargetScenarioActionsItem>;
-const AuditTargetScenarioActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AuditTargetScenarioActionsList>;
-
 export interface AuditTargetScenario {
   /** Resource type the actions apply to. Scenarios that are not scoped to a specific resource type (e.g. leaving an organization) are grouped under "other". */
   targetType: AuditTargetScenarioTargetType;
   /** Actions that can be audited against this target type, sorted alphabetically. */
   actions: AuditTargetScenarioActionsList;
 }
-const AuditTargetScenario = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AuditTargetScenario>;
-
 /** Supported audit log scenarios grouped by target type. Derived at runtime from the audited routes and system events, sorted by target type. */
 export type AuditScenariosTargetsList = Array<AuditTargetScenario>;
-const AuditScenariosTargetsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AuditScenariosTargetsList>;
-
 export interface AuditScenarios {
   /** Supported audit log scenarios grouped by target type. Derived at runtime from the audited routes and system events, sorted by target type. */
   targets: AuditScenariosTargetsList;
 }
-const AuditScenarios = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AuditScenarios>;
-
 /** Match values present in this list. Accepts comma-separated values or repeated query parameters. Maximum 100 entries. */
 export type StringFilterInList = Array<string>;
-const StringFilterInList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringFilterInList>;
-
 /** Match values not present in this list. Accepts comma-separated values or repeated query parameters. Maximum 100 entries. */
 export type StringFilterNotInList = Array<string>;
-const StringFilterNotInList = StringFilterInList as any as S.Schema<StringFilterNotInList>;
-
 export interface StringFilter {
   /** Match values equal to this value. */
   eq?: string;
@@ -153,16 +128,10 @@ export interface StringFilter {
   /** Match values not present in this list. Accepts comma-separated values or repeated query parameters. Maximum 100 entries. */
   notIn?: StringFilterNotInList;
 }
-const StringFilter = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringFilter>;
-
 /** Match values present in this list. Accepts comma-separated values or repeated query parameters. Maximum 100 entries. */
 export type IntFilterInList = Array<number>;
-const IntFilterInList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<IntFilterInList>;
-
 /** Match values not present in this list. Accepts comma-separated values or repeated query parameters. Maximum 100 entries. */
 export type IntFilterNotInList = Array<number>;
-const IntFilterNotInList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IntFilterNotInList>;
-
 export interface IntFilter {
   /** Match values equal to this value. */
   eq?: number;
@@ -181,8 +150,6 @@ export interface IntFilter {
   /** Match values strictly less than this value. */
   lt?: number;
 }
-const IntFilter = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IntFilter>;
-
 export interface DateFilter {
   /** Match values greater than or equal to this timestamp (ISO 8601). */
   gte?: string;
@@ -193,8 +160,6 @@ export interface DateFilter {
   /** Match values strictly less than this timestamp (ISO 8601). */
   lt?: string;
 }
-const DateFilter = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DateFilter>;
-
 export interface GetOrganizationAuditLogsRequest {
   /** Organization ID */
   organizationId: string;
@@ -229,14 +194,7 @@ export interface GetOrganizationAuditLogsRequest {
   /** Filter by creation timestamp. */
   createdAt?: DateFilter;
 }
-const GetOrganizationAuditLogsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetOrganizationAuditLogsRequest>;
-
 export type AuditLogMetadataMap = { [key: string]: unknown | undefined };
-const AuditLogMetadataMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<AuditLogMetadataMap>;
-
 export interface AuditLog {
   id: string;
   actorId: string;
@@ -255,14 +213,7 @@ export interface AuditLog {
   metadata?: AuditLogMetadataMap;
   createdAt: string;
 }
-const AuditLog = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AuditLog>;
-
 export type PaginatedAuditLogsItemsList = Array<AuditLog>;
-const PaginatedAuditLogsItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PaginatedAuditLogsItemsList>;
-
 export interface PaginatedAuditLogs {
   items: PaginatedAuditLogsItemsList;
   total: number;
@@ -271,8 +222,6 @@ export interface PaginatedAuditLogs {
   /** Token for next page in cursor-based pagination */
   nextToken?: string;
 }
-const PaginatedAuditLogs = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PaginatedAuditLogs>;
-
 export type GetAuditScenariosError = DaytonaOpError;
 /** Get supported audit log scenarios Returns the supported audit log actions grouped by target type. The list is derived at runtime from the audited routes and system events, so it always reflects what can actually appear in the audit log. */
 export const getAuditScenarios: API.OperationMethod<
@@ -281,8 +230,8 @@ export const getAuditScenarios: API.OperationMethod<
   GetAuditScenariosError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuditScenariosRequest,
-  output: AuditScenarios,
+  input: __S(0) as any as S.Schema<GetAuditScenariosRequest>,
+  output: __S(4) as any as S.Schema<AuditScenarios>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -298,8 +247,8 @@ export const getOrganizationAuditLogs: API.PaginatedOperationMethod<
   AuditLog
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetOrganizationAuditLogsRequest,
-    output: PaginatedAuditLogs,
+    input: __S(11) as any as S.Schema<GetOrganizationAuditLogsRequest>,
+    output: __S(15) as any as S.Schema<PaginatedAuditLogs>,
     errors: [UnknownDaytonaError],
     protocol: DaytonaProtocol,
     retry: Retry.Retry,
@@ -321,20 +270,20 @@ function __c0(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/audit/scenarios", code: 200 })),
       ).annotate({ identifier: "GetAuditScenariosRequest" });
     case 1:
-      return S.Array(AuditTargetScenarioActionsItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          targetType: AuditTargetScenarioTargetType,
-          actions: AuditTargetScenarioActionsList,
+          targetType: S.String,
+          actions: __S(1),
         }),
       ).annotate({ identifier: "AuditTargetScenario" });
     case 3:
-      return S.Array(AuditTargetScenario);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targets: AuditScenariosTargetsList,
+          targets: __S(3),
         }),
       ).annotate({ identifier: "AuditScenarios" });
     case 5:
@@ -344,8 +293,8 @@ function __c0(j: number): any {
         S.Struct({
           eq: S.optional(S.String),
           not: S.optional(S.String),
-          in: S.optional(StringFilterInList),
-          notIn: S.optional(StringFilterNotInList),
+          in: S.optional(__S(5)),
+          notIn: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "StringFilter" });
     case 7:
@@ -361,8 +310,8 @@ function __c1(j: number): any {
         S.Struct({
           eq: S.optional(S.Number),
           not: S.optional(S.Number),
-          in: S.optional(IntFilterInList),
-          notIn: S.optional(IntFilterNotInList),
+          in: S.optional(__S(7)),
+          notIn: S.optional(__S(8)),
           gte: S.optional(S.Number),
           lte: S.optional(S.Number),
           gt: S.optional(S.Number),
@@ -387,16 +336,16 @@ function __c1(j: number): any {
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
           nextToken: S.optional(S.String.pipe(T.Query())),
-          id: S.optional(StringFilter.pipe(T.Query())),
-          actorId: S.optional(StringFilter.pipe(T.Query())),
-          actorEmail: S.optional(StringFilter.pipe(T.Query())),
-          actorApiKeyPrefix: S.optional(StringFilter.pipe(T.Query())),
-          actorApiKeySuffix: S.optional(StringFilter.pipe(T.Query())),
-          action: S.optional(StringFilter.pipe(T.Query())),
-          targetType: S.optional(StringFilter.pipe(T.Query())),
-          targetId: S.optional(StringFilter.pipe(T.Query())),
-          statusCode: S.optional(IntFilter.pipe(T.Query())),
-          createdAt: S.optional(DateFilter.pipe(T.Query())),
+          id: S.optional(__S(6).pipe(T.Query())),
+          actorId: S.optional(__S(6).pipe(T.Query())),
+          actorEmail: S.optional(__S(6).pipe(T.Query())),
+          actorApiKeyPrefix: S.optional(__S(6).pipe(T.Query())),
+          actorApiKeySuffix: S.optional(__S(6).pipe(T.Query())),
+          action: S.optional(__S(6).pipe(T.Query())),
+          targetType: S.optional(__S(6).pipe(T.Query())),
+          targetId: S.optional(__S(6).pipe(T.Query())),
+          statusCode: S.optional(__S(9).pipe(T.Query())),
+          createdAt: S.optional(__S(10).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audit/organizations/{organizationId}", code: 200 })),
       ).annotate({
         identifier: "GetOrganizationAuditLogsRequest",
@@ -420,21 +369,34 @@ function __c1(j: number): any {
           ipAddress: S.optional(S.String),
           userAgent: S.optional(S.String),
           source: S.optional(S.String),
-          metadata: S.optional(AuditLogMetadataMap),
+          metadata: S.optional(__S(12)),
           createdAt: S.String,
         }),
       ).annotate({ identifier: "AuditLog" });
     case 6:
-      return S.Array(AuditLog);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: PaginatedAuditLogsItemsList,
+          items: __S(14),
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaginatedAuditLogs" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

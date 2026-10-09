@@ -8,6 +8,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -141,15 +143,8 @@ export type CreateWebhookRequestEventsItem =
   | "refund.updated"
   | "dispute_alert.created"
   | "membership.cancel_at_period_end_changed";
-const CreateWebhookRequestEventsItem = S.String;
-
 /** The events to send the webhook for, in dot form (for example `payment.succeeded`). */
 export type CreateWebhookRequestEventsList = Array<CreateWebhookRequestEventsItem | (string & {})>;
-const CreateWebhookRequestEventsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
-
 export interface CreateWebhookRequest {
   /** The dated API version (Api-Version-Date) to pin this webhook's payloads to. Omit to leave the webhook unpinned, tracking the current payload shape. */
   api_version_date?: string | null;
@@ -166,16 +161,10 @@ export interface CreateWebhookRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateWebhookRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateWebhookRequest>;
-
 /** The API version used to format payloads sent to this webhook endpoint. */
 export type WebhookApiVersion = "v1" | "v2" | "v5";
-const WebhookApiVersion = S.String;
-
 /** Why Whop disabled this webhook. `delivery_failures` means every delivery failed for 3 days straight. `null` when `disabled_at` is `null`. */
 export type WebhookDisabledReason = "delivery_failures";
-const WebhookDisabledReason = S.String;
-
 /** Event types this webhook is subscribed to, in dot form (for example `payment.succeeded`). */
 export type WebhookEventsItem =
   | "account.updated"
@@ -282,8 +271,6 @@ export type WebhookEventsItem =
   | "app_payment.requires_action"
   | "app_membership.cancel_at_period_end_changed";
 export type WebhookEventsList = Array<WebhookEventsItem>;
-const WebhookEventsList = CreateWebhookRequestEventsList as any as S.Schema<WebhookEventsList>;
-
 /** The subset of subscribed event types that support sending test payloads, in dot form. */
 export type WebhookTestableEventsItem =
   | "account.updated"
@@ -390,9 +377,6 @@ export type WebhookTestableEventsItem =
   | "app_payment.requires_action"
   | "app_membership.cancel_at_period_end_changed";
 export type WebhookTestableEventsList = Array<WebhookTestableEventsItem>;
-const WebhookTestableEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<WebhookTestableEventsList>;
-
 export interface Webhook {
   /** The API version used to format payloads sent to this webhook endpoint. */
   api_version: WebhookApiVersion;
@@ -425,25 +409,16 @@ export interface Webhook {
   /** Secret key used to sign webhook payloads for verification. Include this in your HMAC validation logic. Returned on the create response and to interactive dashboard sessions; `null` for API-key and OAuth callers on later reads. */
   webhook_secret: string | Redacted.Redacted<string> | null;
 }
-const Webhook = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Webhook>;
-
 export interface DeleteWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteWebhookRequest>;
-
 export interface DeleteWebhookResponse {
   /** Always `true`: the resource was deleted. */
   deleted: boolean;
   /** The ID of the deleted resource. */
   id: string;
 }
-const DeleteWebhookResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteWebhookResponse>;
-
 export interface DeliveriesWebhookRequest {
   /** The unique identifier of the webhook to list deliveries for. */
   webhook_id: string;
@@ -452,27 +427,14 @@ export interface DeliveriesWebhookRequest {
   first?: number;
   last?: number;
 }
-const DeliveriesWebhookRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeliveriesWebhookRequest>;
-
 /** The request body sent to the webhook endpoint */
 export type DeliveriesWebhookResponseDataItemRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-const DeliveriesWebhookResponseDataItemRequestBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeliveriesWebhookResponseDataItemRequestBodyMap>;
-
 /** The response body received from the webhook endpoint */
 export type DeliveriesWebhookResponseDataItemResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-const DeliveriesWebhookResponseDataItemResponseBodyMap =
-  DeliveriesWebhookResponseDataItemRequestBodyMap as any as S.Schema<DeliveriesWebhookResponseDataItemResponseBodyMap>;
-
 /** A webhook log entry containing the request and response details */
 export interface DeliveriesWebhookResponseDataItem {
   /** The request body sent to the webhook endpoint */
@@ -488,18 +450,8 @@ export interface DeliveriesWebhookResponseDataItem {
   /** The total time taken to send the webhook request in seconds */
   total_time: number;
 }
-const DeliveriesWebhookResponseDataItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeliveriesWebhookResponseDataItem>;
-
 /** A list of nodes. */
 export type DeliveriesWebhookResponseDataList = Array<DeliveriesWebhookResponseDataItem>;
-const DeliveriesWebhookResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeliveriesWebhookResponseDataList>;
-
 /** Information to aid in pagination. */
 export interface DeliveriesWebhookResponsePageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -507,28 +459,16 @@ export interface DeliveriesWebhookResponsePageInfo {
   /** When paginating forwards, are there more items? */
   has_next_page: boolean;
 }
-const DeliveriesWebhookResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeliveriesWebhookResponsePageInfo>;
-
 export interface DeliveriesWebhookResponse {
   /** A list of nodes. */
   data: DeliveriesWebhookResponseDataList;
   /** Information to aid in pagination. */
   page_info: DeliveriesWebhookResponsePageInfo;
 }
-const DeliveriesWebhookResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeliveriesWebhookResponse>;
-
 export interface GetWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetWebhookRequest>;
-
 export interface ListWebhookDeliveriesRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
@@ -537,11 +477,6 @@ export interface ListWebhookDeliveriesRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-const ListWebhookDeliveriesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListWebhookDeliveriesRequest>;
-
 export interface WebhookDelivery {
   /** The event type this delivery carried, for example `payment.succeeded`. */
   event: string | null;
@@ -564,34 +499,17 @@ export interface WebhookDelivery {
   /** Total time taken to send the webhook request, in seconds. */
   total_time: number;
 }
-const WebhookDelivery = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<WebhookDelivery>;
-
 export type ListWebhookDeliveriesResponseDataList = Array<WebhookDelivery>;
-const ListWebhookDeliveriesResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListWebhookDeliveriesResponseDataList>;
-
 export interface ListWebhookDeliveriesResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListWebhookDeliveriesResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListWebhookDeliveriesResponsePageInfo>;
-
 export interface ListWebhookDeliveriesResponse {
   data: ListWebhookDeliveriesResponseDataList;
   page_info: ListWebhookDeliveriesResponsePageInfo;
 }
-const ListWebhookDeliveriesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListWebhookDeliveriesResponse>;
-
 export interface ListWebhooksRequest {
   /** The unique identifier of the account to list webhooks for. */
   account_id: string;
@@ -610,16 +528,10 @@ export interface ListWebhooksRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListWebhooksRequest>;
-
 /** The API version used to format payloads sent to this webhook endpoint. */
 export type WebhookListItemApiVersion = "v1" | "v2" | "v5";
-const WebhookListItemApiVersion = S.String;
-
 /** Why Whop disabled this webhook. `delivery_failures` means every delivery failed for 3 days straight. `null` when `disabled_at` is `null`. */
 export type WebhookListItemDisabledReason = "delivery_failures";
-const WebhookListItemDisabledReason = S.String;
-
 /** Event types this webhook is subscribed to, in dot form (for example `payment.succeeded`). */
 export type WebhookListItemEventsItem =
   | "account.updated"
@@ -726,9 +638,6 @@ export type WebhookListItemEventsItem =
   | "app_payment.requires_action"
   | "app_membership.cancel_at_period_end_changed";
 export type WebhookListItemEventsList = Array<WebhookListItemEventsItem>;
-const WebhookListItemEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<WebhookListItemEventsList>;
-
 export interface WebhookListItem {
   /** The API version used to format payloads sent to this webhook endpoint. */
   api_version: WebhookListItemApiVersion;
@@ -760,28 +669,14 @@ export interface WebhookListItem {
   /** Secret key used to sign webhook payloads for verification. Include this in your HMAC validation logic. Returned on the create response and to interactive dashboard sessions; `null` for API-key and OAuth callers on later reads. */
   webhook_secret: string | Redacted.Redacted<string> | null;
 }
-const WebhookListItem = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<WebhookListItem>;
-
 export type ListWebhooksResponseDataList = Array<WebhookListItem>;
-const ListWebhooksResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListWebhooksResponseDataList>;
-
 export type ListWebhooksResponsePageInfo = ListWebhookDeliveriesResponsePageInfo;
 export interface ListWebhooksResponse {
   data: ListWebhooksResponseDataList;
   page_info: ListWebhookDeliveriesResponsePageInfo;
 }
-const ListWebhooksResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListWebhooksResponse>;
-
 /** Only replay these event types, in dot form (for example `payment.succeeded`). Omit to include every event. */
 export type ReplayWebhookRequestEventsList = Array<string>;
-const ReplayWebhookRequestEventsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ReplayWebhookRequestEventsList>;
-
 export interface ReplayWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
@@ -798,17 +693,10 @@ export interface ReplayWebhookRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ReplayWebhookRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ReplayWebhookRequest>;
-
 export interface ReplayWebhookResponse {
   /** Whether the replay was accepted. Watch the webhook's delivery log for the re-sends. */
   queued: boolean;
 }
-const ReplayWebhookResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ReplayWebhookResponse>;
-
 export interface ReplayWebhookDeliveryRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
@@ -819,11 +707,6 @@ export interface ReplayWebhookDeliveryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ReplayWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ReplayWebhookDeliveryRequest>;
-
 export interface ReplayWebhookDeliveryResponse {
   /** The body your endpoint returned for the replayed request, as raw text. Empty when the endpoint could not be reached. */
   body: string;
@@ -832,11 +715,6 @@ export interface ReplayWebhookDeliveryResponse {
   /** Whether your endpoint acknowledged the replay with a 2xx response. */
   success: boolean;
 }
-const ReplayWebhookDeliveryResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ReplayWebhookDeliveryResponse>;
-
 export interface TestWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
@@ -845,8 +723,6 @@ export interface TestWebhookRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const TestWebhookRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TestWebhookRequest>;
-
 export interface TestWebhookResponse {
   /** The body of the webhook response. */
   body: unknown;
@@ -855,8 +731,6 @@ export interface TestWebhookResponse {
   /** Whether or not the webhook test was successful. */
   success: boolean;
 }
-const TestWebhookResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TestWebhookResponse>;
-
 export type UpdateWebhookRequestEventsItem =
   | "account.updated"
   | "account.financing_approved"
@@ -944,9 +818,6 @@ export type UpdateWebhookRequestEventsItem =
   | "membership.cancel_at_period_end_changed";
 /** The events to send the webhook for, in dot form (for example `payment.succeeded`). */
 export type UpdateWebhookRequestEventsList = Array<UpdateWebhookRequestEventsItem | (string & {})>;
-const UpdateWebhookRequestEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
-
 export interface UpdateWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
@@ -961,8 +832,6 @@ export interface UpdateWebhookRequest {
   /** The URL to send the webhook to. */
   url?: string;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UpdateWebhookRequest>;
-
 export type CreateWebhookError = BadRequest | Forbidden | NotFound | Conflict | WhopOpError;
 /** Create Webhook Creates a webhook endpoint that receives event notifications via HTTP POST. */
 export const createWebhook: API.OperationMethod<
@@ -971,8 +840,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookRequest,
-  output: Webhook,
+  input: __S(1) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(2) as any as S.Schema<Webhook>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -986,8 +855,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(3) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(4) as any as S.Schema<DeleteWebhookResponse>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1008,8 +877,8 @@ export const deliveriesWebhook: API.PaginatedOperationMethod<
   DeliveriesWebhookResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: DeliveriesWebhookRequest,
-    output: DeliveriesWebhookResponse,
+    input: __S(5) as any as S.Schema<DeliveriesWebhookRequest>,
+    output: __S(10) as any as S.Schema<DeliveriesWebhookResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1033,8 +902,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: Webhook,
+  input: __S(11) as any as S.Schema<GetWebhookRequest>,
+  output: __S(2) as any as S.Schema<Webhook>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1050,8 +919,8 @@ export const listWebhookDeliveries: API.PaginatedOperationMethod<
   WebhookDelivery
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListWebhookDeliveriesRequest,
-    output: ListWebhookDeliveriesResponse,
+    input: __S(12) as any as S.Schema<ListWebhookDeliveriesRequest>,
+    output: __S(16) as any as S.Schema<ListWebhookDeliveriesResponse>,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1077,8 +946,8 @@ export const listWebhooks: API.PaginatedOperationMethod<
   WebhookListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListWebhooksRequest,
-    output: ListWebhooksResponse,
+    input: __S(17) as any as S.Schema<ListWebhooksRequest>,
+    output: __S(20) as any as S.Schema<ListWebhooksResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1102,8 +971,8 @@ export const replayWebhook: API.OperationMethod<
   ReplayWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplayWebhookRequest,
-  output: ReplayWebhookResponse,
+  input: __S(22) as any as S.Schema<ReplayWebhookRequest>,
+  output: __S(23) as any as S.Schema<ReplayWebhookResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1117,8 +986,8 @@ export const replayWebhookDelivery: API.OperationMethod<
   ReplayWebhookDeliveryError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplayWebhookDeliveryRequest,
-  output: ReplayWebhookDeliveryResponse,
+  input: __S(24) as any as S.Schema<ReplayWebhookDeliveryRequest>,
+  output: __S(25) as any as S.Schema<ReplayWebhookDeliveryResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1132,8 +1001,8 @@ export const testWebhook: API.OperationMethod<
   TestWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestWebhookRequest,
-  output: TestWebhookResponse,
+  input: __S(26) as any as S.Schema<TestWebhookRequest>,
+  output: __S(27) as any as S.Schema<TestWebhookResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1147,8 +1016,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: Webhook,
+  input: __S(28) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(2) as any as S.Schema<Webhook>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1158,14 +1027,14 @@ export const updateWebhook: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateWebhookRequestEventsItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           api_version_date: S.optional(S.NullOr(S.String)),
           child_resource_events: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
-          events: S.optional(CreateWebhookRequestEventsList),
+          events: S.optional(__S(0)),
           resource_id: S.optional(S.NullOr(S.String)),
           url: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -1174,20 +1043,20 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          api_version: WebhookApiVersion,
+          api_version: S.String,
           api_version_date: S.NullOr(S.String),
           child_resource_events: S.Boolean,
           consecutive_failures: S.Number,
           created_at: S.String,
           disabled_at: S.NullOr(S.String),
-          disabled_reason: S.NullOr(WebhookDisabledReason),
+          disabled_reason: S.NullOr(S.String),
           enabled: S.Boolean,
-          events: WebhookEventsList,
+          events: __S(0),
           failing_since: S.NullOr(S.String),
           id: S.String,
           last_failure_at: S.NullOr(S.String),
           resource_id: S.String,
-          testable_events: WebhookTestableEventsList,
+          testable_events: __S(0),
           url: S.String,
           webhook_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
         }),
@@ -1220,9 +1089,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          request_body: DeliveriesWebhookResponseDataItemRequestBodyMap,
+          request_body: __S(6),
           resource_id: S.String,
-          response_body: DeliveriesWebhookResponseDataItemResponseBodyMap,
+          response_body: __S(6),
           response_code: S.Number,
           sent_at: S.String,
           total_time: S.Number,
@@ -1235,7 +1104,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeliveriesWebhookResponseDataItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1248,8 +1117,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: DeliveriesWebhookResponseDataList,
-          page_info: DeliveriesWebhookResponsePageInfo,
+          data: __S(8),
+          page_info: __S(9),
         }),
       ).annotate({
         identifier: "DeliveriesWebhookResponse",
@@ -1286,7 +1155,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "WebhookDelivery" });
     case 6:
-      return S.Array(WebhookDelivery);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1305,8 +1174,8 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ListWebhookDeliveriesResponseDataList,
-          page_info: ListWebhookDeliveriesResponsePageInfo,
+          data: __S(14),
+          page_info: __S(15),
         }),
       ).annotate({
         identifier: "ListWebhookDeliveriesResponse",
@@ -1327,15 +1196,15 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          api_version: WebhookListItemApiVersion,
+          api_version: S.String,
           api_version_date: S.NullOr(S.String),
           child_resource_events: S.Boolean,
           consecutive_failures: S.Number,
           created_at: S.String,
           disabled_at: S.NullOr(S.String),
-          disabled_reason: S.NullOr(WebhookListItemDisabledReason),
+          disabled_reason: S.NullOr(S.String),
           enabled: S.Boolean,
-          events: WebhookListItemEventsList,
+          events: __S(0),
           failing_since: S.NullOr(S.String),
           id: S.String,
           last_failure_at: S.NullOr(S.String),
@@ -1345,12 +1214,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "WebhookListItem" });
     case 3:
-      return S.Array(WebhookListItem);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListWebhooksResponseDataList,
-          page_info: ListWebhookDeliveriesResponsePageInfo,
+          data: __S(19),
+          page_info: __S(15),
         }),
       ).annotate({ identifier: "ListWebhooksResponse" });
     case 5:
@@ -1359,7 +1228,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          events: S.optional(ReplayWebhookRequestEventsList),
+          events: S.optional(__S(21)),
           failed_only: S.optional(S.Boolean),
           regenerate_ids: S.optional(S.Boolean),
           sent_after: S.String,
@@ -1427,9 +1296,26 @@ function __c3(j: number): any {
           api_version_date: S.optional(S.NullOr(S.String)),
           child_resource_events: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
-          events: S.optional(UpdateWebhookRequestEventsList),
+          events: S.optional(__S(0)),
           url: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

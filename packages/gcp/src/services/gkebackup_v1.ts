@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,29 +66,15 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Empty>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
-
 /** A BackupChannel imposes constraints on where clusters can be backed up. The BackupChannel should be in the same project and region as the cluster being backed up. The backup can be created only in destination_project. */
 export interface BackupChannel {
   /** Required. Immutable. The project where Backups are allowed to be stored. The format is `projects/{projectId}` or `projects/{projectNumber}`. */
@@ -108,8 +96,6 @@ export interface BackupChannel {
   /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a BackupChannel from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupChannel updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupChannel`, and systems are expected to put that etag in the request to `UpdateBackupChannel` or `DeleteBackupChannel` to ensure that their change will be applied to the same version of the resource. */
   etag?: string;
 }
-const BackupChannel = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BackupChannel>;
-
 export interface CreateProjectsLocationsBackupChannelsRequest {
   /** Required. The location within which to create the BackupChannel. Format: `projects/*\/locations/*` */
   parent: string;
@@ -118,17 +104,8 @@ export interface CreateProjectsLocationsBackupChannelsRequest {
   /** Request body */
   body?: BackupChannel;
 }
-const CreateProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateProjectsLocationsBackupChannelsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -138,8 +115,6 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -153,11 +128,6 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 /** RetentionPolicy defines a Backup retention policy for a BackupPlan. */
 export interface RetentionPolicy {
   /** Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. If cron_schedule is defined, then this must be <= 360 * the creation interval. If rpo_config is defined, then this must be <= 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion) */
@@ -167,18 +137,12 @@ export interface RetentionPolicy {
   /** Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False */
   locked?: boolean;
 }
-const RetentionPolicy = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<RetentionPolicy>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringList>;
-
 /** A list of Kubernetes Namespaces. */
 export interface Namespaces {
   /** Optional. A list of Kubernetes Namespaces. */
   namespaces?: StringList;
 }
-const Namespaces = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Namespaces>;
-
 /** A reference to a namespaced resource in Kubernetes. */
 export interface NamespacedName {
   /** Optional. The name of the Kubernetes resource. */
@@ -186,18 +150,12 @@ export interface NamespacedName {
   /** Optional. The Namespace of the Kubernetes resource. */
   namespace?: string;
 }
-const NamespacedName = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NamespacedName>;
-
 export type NamespacedNameList = Array<NamespacedName>;
-const NamespacedNameList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<NamespacedNameList>;
-
 /** A list of namespaced Kubernetes resources. */
 export interface NamespacedNames {
   /** Optional. A list of namespaced Kubernetes resources. */
   namespacedNames?: NamespacedNameList;
 }
-const NamespacedNames = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<NamespacedNames>;
-
 /** A single Kubernetes label-value pair. */
 export interface Label {
   /** Optional. The value of the label. */
@@ -205,25 +163,17 @@ export interface Label {
   /** Optional. The key/name of the label. */
   key?: string;
 }
-const Label = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Label>;
-
 export type LabelList = Array<Label>;
-const LabelList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LabelList>;
-
 /** A list of Kubernetes labels. */
 export interface ResourceLabels {
   /** Optional. A list of Kubernetes label-value pairs. */
   resourceLabels?: LabelList;
 }
-const ResourceLabels = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ResourceLabels>;
-
 /** Defined a customer managed encryption key that will be used to encrypt Backup artifacts. */
 export interface EncryptionKey {
   /** Optional. Google Cloud KMS encryption key. Format: `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*` */
   gcpKmsEncryptionKey?: string;
 }
-const EncryptionKey = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<EncryptionKey>;
-
 /** BackupConfig defines the configuration of Backups created via this BackupPlan. */
 export interface BackupConfig {
   /** If set, include just the resources in the listed namespaces. */
@@ -243,8 +193,6 @@ export interface BackupConfig {
   /** If True, include all namespaced resources */
   allNamespaces?: boolean;
 }
-const BackupConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<BackupConfig>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Gkebackup_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -254,8 +202,6 @@ export interface Gkebackup_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const Gkebackup_Date = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Gkebackup_Date>;
-
 export type DayOfWeekListDaysOfWeekItemEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -265,23 +211,14 @@ export type DayOfWeekListDaysOfWeekItemEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-const DayOfWeekListDaysOfWeekItemEnum = S.String;
-
 export type DayOfWeekListDaysOfWeekItemEnumList = Array<
   DayOfWeekListDaysOfWeekItemEnum | (string & {})
 >;
-const DayOfWeekListDaysOfWeekItemEnumList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DayOfWeekListDaysOfWeekItemEnumList>;
-
 /** Holds repeated DaysOfWeek values as a container. */
 export interface DayOfWeekList {
   /** Optional. A list of days of week. */
   daysOfWeek?: DayOfWeekListDaysOfWeekItemEnumList;
 }
-const DayOfWeekList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DayOfWeekList>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -293,8 +230,6 @@ export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
   minutes?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TimeOfDay>;
-
 /** Defines a time window during which no backup should happen. All time and date are in UTC. */
 export interface ExclusionWindow {
   /** No recurrence. The exclusion window occurs only once and on this date in UTC. */
@@ -308,11 +243,7 @@ export interface ExclusionWindow {
   /** Optional. Specifies the start time of the window using time of the day in UTC. */
   startTime?: TimeOfDay;
 }
-const ExclusionWindow = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ExclusionWindow>;
-
 export type ExclusionWindowList = Array<ExclusionWindow>;
-const ExclusionWindowList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ExclusionWindowList>;
-
 /** Defines RPO scheduling configuration for automatically creating Backups via this BackupPlan. */
 export interface RpoConfig {
   /** Required. Defines the target RPO for the BackupPlan in minutes, which means the target maximum data loss in time that is acceptable for this BackupPlan. This must be at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days. */
@@ -320,8 +251,6 @@ export interface RpoConfig {
   /** Optional. User specified time windows during which backup can NOT happen for this BackupPlan - backups should start and finish outside of any given exclusion window. Note: backup jobs will be scheduled to start and finish outside the duration of the window as much as possible, but running jobs will not get canceled when it runs into the window. All the time and date values in exclusion_windows entry in the API are in UTC. We only allow <=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no restriction on number of single occurrence windows. */
   exclusionWindows?: ExclusionWindowList;
 }
-const RpoConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<RpoConfig>;
-
 /** Defines scheduling parameters for automatically creating Backups via this BackupPlan. */
 export interface Schedule {
   /** Optional. Defines the RPO schedule configuration for this BackupPlan. This is mutually exclusive with the cron_schedule field since at most one schedule can be defined for a BackupPLan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur. */
@@ -333,8 +262,6 @@ export interface Schedule {
   /** Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur. */
   cronSchedule?: string;
 }
-const Schedule = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Schedule>;
-
 export type BackupPlanStateEnum =
   | "STATE_UNSPECIFIED"
   | "CLUSTER_PENDING"
@@ -343,8 +270,6 @@ export type BackupPlanStateEnum =
   | "FAILED"
   | "DEACTIVATED"
   | "DELETING";
-const BackupPlanStateEnum = S.String;
-
 /** Defines the configuration and scheduling for a "line" of Backups. */
 export interface BackupPlan {
   /** Output only. The number of user managed namespaces backed up in the last successful Backup created via this BackupPlan. */
@@ -388,8 +313,6 @@ export interface BackupPlan {
   /** Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1 being no risk and 5 being highest risk. */
   rpoRiskLevel?: number;
 }
-const BackupPlan = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<BackupPlan>;
-
 export interface CreateProjectsLocationsBackupPlansRequest {
   /** Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location */
   backupPlanId?: string;
@@ -398,11 +321,6 @@ export interface CreateProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: BackupPlan;
 }
-const CreateProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateProjectsLocationsBackupPlansRequest>;
-
 export type BackupStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -410,8 +328,6 @@ export type BackupStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "DELETING";
-const BackupStateEnum = S.String;
-
 /** Information about the GKE cluster from which this Backup was created. */
 export interface ClusterMetadata {
   /** Output only. A list of the Backup for GKE CRD versions found in the cluster. */
@@ -425,8 +341,6 @@ export interface ClusterMetadata {
   /** Output only. Anthos version */
   anthosVersion?: string;
 }
-const ClusterMetadata = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ClusterMetadata>;
-
 /** Stores information about troubleshooting doc for debugging a particular state of an operation (eg - backup/restore). This will be used by the end user to debug their operation failure scenario easily. */
 export interface TroubleshootingInfo {
   /** Output only. Unique code for each backup/restore operation failure message which helps user identify the failure. */
@@ -434,8 +348,6 @@ export interface TroubleshootingInfo {
   /** Output only. URL for the troubleshooting doc which will help the user fix the failing backup/restore operation. */
   stateReasonUri?: string;
 }
-const TroubleshootingInfo = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TroubleshootingInfo>;
-
 /** Represents a request to perform a single point-in-time capture of some portion of the state of a GKE cluster, the record of the backup operation itself, and an anchor for the underlying artifacts that comprise the Backup (the config backup and VolumeBackups). */
 export interface Backup {
   /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource. */
@@ -505,8 +417,6 @@ export interface Backup {
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzi?: boolean;
 }
-const Backup = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Backup>;
-
 export interface CreateProjectsLocationsBackupPlansBackupsRequest {
   /** Required. The BackupPlan within which to create the Backup. Format: `projects/*\/locations/*\/backupPlans/*` */
   parent: string;
@@ -515,11 +425,6 @@ export interface CreateProjectsLocationsBackupPlansBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-const CreateProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateProjectsLocationsBackupPlansBackupsRequest>;
-
 /** A RestoreChannel imposes constraints on where backups can be restored. The RestoreChannel should be in the same project and region as the backups. The backups can only be restored in the `destination_project`. */
 export interface RestoreChannel {
   /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
@@ -541,8 +446,6 @@ export interface RestoreChannel {
   /** Optional. A set of custom labels supplied by user. */
   labels?: StringMap;
 }
-const RestoreChannel = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RestoreChannel>;
-
 export interface CreateProjectsLocationsRestoreChannelsRequest {
   /** Required. The location within which to create the RestoreChannel. Format: `projects/*\/locations/*` */
   parent: string;
@@ -551,19 +454,12 @@ export interface CreateProjectsLocationsRestoreChannelsRequest {
   /** Request body */
   body?: RestoreChannel;
 }
-const CreateProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateProjectsLocationsRestoreChannelsRequest>;
-
 export type RestorePlanStateEnum =
   | "STATE_UNSPECIFIED"
   | "CLUSTER_PENDING"
   | "READY"
   | "FAILED"
   | "DELETING";
-const RestorePlanStateEnum = S.String;
-
 /** This is a direct map to the Kubernetes GroupKind type [GroupKind](https://godoc.org/k8s.io/apimachinery/pkg/runtime/schema#GroupKind) and is used for identifying specific "types" of resources to restore. */
 export interface GroupKind {
   /** Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group. */
@@ -571,11 +467,7 @@ export interface GroupKind {
   /** Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc. */
   resourceKind?: string;
 }
-const GroupKind = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GroupKind>;
-
 export type GroupKindList = Array<GroupKind>;
-const GroupKindList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GroupKindList>;
-
 /** Defines the scope of cluster-scoped resources to restore. Some group kinds are not reasonable choices for a restore, and will cause an error if selected here. Any scope selection that would restore "all valid" resources automatically excludes these group kinds. - Node - ComponentStatus - gkebackup.gke.io/BackupJob - gkebackup.gke.io/RestoreJob - metrics.k8s.io/NodeMetrics - migration.k8s.io/StorageState - migration.k8s.io/StorageVersionMigration - snapshot.storage.k8s.io/VolumeSnapshotContent - storage.k8s.io/CSINode - storage.k8s.io/VolumeAttachment Some group kinds are driven by restore configuration elsewhere, and will cause an error if selected here. - Namespace - PersistentVolume */
 export interface ClusterResourceRestoreScope {
   /** Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is not defined. Mutually exclusive to any other field in the message. */
@@ -587,11 +479,6 @@ export interface ClusterResourceRestoreScope {
   /** Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the message. */
   allGroupKinds?: boolean;
 }
-const ClusterResourceRestoreScope = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ClusterResourceRestoreScope>;
-
 export type RestoreConfigNamespacedResourceRestoreModeEnum =
   | "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"
   | "DELETE_AND_RESTORE"
@@ -599,8 +486,6 @@ export type RestoreConfigNamespacedResourceRestoreModeEnum =
   | "MERGE_SKIP_ON_CONFLICT"
   | "MERGE_REPLACE_VOLUME_ON_CONFLICT"
   | "MERGE_REPLACE_ON_CONFLICT";
-const RestoreConfigNamespacedResourceRestoreModeEnum = S.String;
-
 /** A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic. */
 export interface SubstitutionRule {
   /** Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string (""). */
@@ -614,24 +499,16 @@ export interface SubstitutionRule {
   /** Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as one of the target namespaces. */
   targetNamespaces?: StringList;
 }
-const SubstitutionRule = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SubstitutionRule>;
-
 export type SubstitutionRuleList = Array<SubstitutionRule>;
-const SubstitutionRuleList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SubstitutionRuleList>;
-
 export type RestoreConfigClusterResourceConflictPolicyEnum =
   | "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"
   | "USE_EXISTING_VERSION"
   | "USE_BACKUP_VERSION";
-const RestoreConfigClusterResourceConflictPolicyEnum = S.String;
-
 export type RestoreConfigVolumeDataRestorePolicyEnum =
   | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
   | "RESTORE_VOLUME_DATA_FROM_BACKUP"
   | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
   | "NO_VOLUME_DATA_RESTORATION";
-const RestoreConfigVolumeDataRestorePolicyEnum = S.String;
-
 export type TransformationRuleActionOpEnum =
   | "OP_UNSPECIFIED"
   | "REMOVE"
@@ -640,8 +517,6 @@ export type TransformationRuleActionOpEnum =
   | "ADD"
   | "TEST"
   | "REPLACE";
-const TransformationRuleActionOpEnum = S.String;
-
 /** TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902) */
 export interface TransformationRuleAction {
   /** Optional. A string containing a JSON Pointer value that references the location in the target document to move the value from. */
@@ -653,17 +528,7 @@ export interface TransformationRuleAction {
   /** Optional. A string containing a JSON-Pointer value that references a location within the target document where the operation is performed. */
   path?: string;
 }
-const TransformationRuleAction = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TransformationRuleAction>;
-
 export type TransformationRuleActionList = Array<TransformationRuleAction>;
-const TransformationRuleActionList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<TransformationRuleActionList>;
-
 /** ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes resources that are selected for restoration from a backup. */
 export interface ResourceFilter {
   /** Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation). */
@@ -673,8 +538,6 @@ export interface ResourceFilter {
   /** Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation). */
   groupKinds?: GroupKindList;
 }
-const ResourceFilter = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ResourceFilter>;
-
 /** A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic. */
 export interface TransformationRule {
   /** Optional. The description is a user specified string description of the transformation rule. */
@@ -684,14 +547,7 @@ export interface TransformationRule {
   /** Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions. */
   resourceFilter?: ResourceFilter;
 }
-const TransformationRule = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<TransformationRule>;
-
 export type TransformationRuleList = Array<TransformationRule>;
-const TransformationRuleList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<TransformationRuleList>;
-
 /** Defines a dependency between two group kinds. */
 export interface GroupKindDependency {
   /** Required. The satisfying group kind must be restored first in order to satisfy the dependency. */
@@ -699,33 +555,20 @@ export interface GroupKindDependency {
   /** Required. The requiring group kind requires that the other group kind be restored first. */
   requiring?: GroupKind;
 }
-const GroupKindDependency = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GroupKindDependency>;
-
 export type GroupKindDependencyList = Array<GroupKindDependency>;
-const GroupKindDependencyList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GroupKindDependencyList>;
-
 /** Allows customers to specify dependencies between resources that Backup for GKE can use to compute a resasonable restore order. */
 export interface RestoreOrder {
   /** Optional. Contains a list of group kind dependency pairs provided by the customer, that is used by Backup for GKE to generate a group kind restore order. */
   groupKindDependencies?: GroupKindDependencyList;
 }
-const RestoreOrder = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<RestoreOrder>;
-
 export type VolumeDataRestorePolicyBindingVolumeTypeEnum =
   | "VOLUME_TYPE_UNSPECIFIED"
   | "GCE_PERSISTENT_DISK";
-const VolumeDataRestorePolicyBindingVolumeTypeEnum = S.String;
-
 export type VolumeDataRestorePolicyBindingPolicyEnum =
   | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
   | "RESTORE_VOLUME_DATA_FROM_BACKUP"
   | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
   | "NO_VOLUME_DATA_RESTORATION";
-const VolumeDataRestorePolicyBindingPolicyEnum = S.String;
-
 /** Binds resources in the scope to the given VolumeDataRestorePolicy. */
 export interface VolumeDataRestorePolicyBinding {
   /** The volume type, as determined by the PVC's bound PV, to apply the policy to. */
@@ -733,17 +576,7 @@ export interface VolumeDataRestorePolicyBinding {
   /** Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope. */
   policy?: VolumeDataRestorePolicyBindingPolicyEnum | (string & {});
 }
-const VolumeDataRestorePolicyBinding = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<VolumeDataRestorePolicyBinding>;
-
 export type VolumeDataRestorePolicyBindingList = Array<VolumeDataRestorePolicyBinding>;
-const VolumeDataRestorePolicyBindingList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<VolumeDataRestorePolicyBindingList>;
-
 /** Configuration of a restore. */
 export interface RestoreConfig {
   /** Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored. */
@@ -773,8 +606,6 @@ export interface RestoreConfig {
   /** Optional. A table that binds volumes by their scope to a restore policy. Bindings must have a unique scope. Any volumes not scoped in the bindings are subject to the policy defined in volume_data_restore_policy. */
   volumeDataRestorePolicyBindings?: VolumeDataRestorePolicyBindingList;
 }
-const RestoreConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<RestoreConfig>;
-
 /** The configuration of a potential series of Restore operations to be performed against Backups belong to a particular BackupPlan. */
 export interface RestorePlan {
   /** Output only. The timestamp when this RestorePlan resource was last updated. */
@@ -804,8 +635,6 @@ export interface RestorePlan {
   /** Output only. Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format. */
   uid?: string;
 }
-const RestorePlan = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<RestorePlan>;
-
 export interface CreateProjectsLocationsRestorePlansRequest {
   /** Required. The location within which to create the RestorePlan. Format: `projects/*\/locations/*` */
   parent: string;
@@ -814,11 +643,6 @@ export interface CreateProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: RestorePlan;
 }
-const CreateProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateProjectsLocationsRestorePlansRequest>;
-
 /** Defines a selector to identify a single or a group of resources. Conditions in the selector are optional, but at least one field should be set to a non-empty value. If a condition is not specified, no restrictions will be applied on that dimension. If more than one condition is specified, a resource will be selected if and only if all conditions are met. */
 export interface ResourceSelector {
   /** Optional. Selects resources using Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). If specified, a resource will be selected if and only if the resource has all of the provided labels and all the label values match. */
@@ -830,11 +654,7 @@ export interface ResourceSelector {
   /** Optional. Selects resources using their resource names. If specified, only resources with the provided name will be selected. */
   name?: string;
 }
-const ResourceSelector = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ResourceSelector>;
-
 export type ResourceSelectorList = Array<ResourceSelector>;
-const ResourceSelectorList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ResourceSelectorList>;
-
 /** Defines the filter for `Restore`. This filter can be used to further refine the resource selection of the `Restore` beyond the coarse-grained scope defined in the `RestorePlan`. `exclusion_filters` take precedence over `inclusion_filters`. If a resource matches both `inclusion_filters` and `exclusion_filters`, it will not be restored. */
 export interface Filter {
   /** Optional. Excludes resources from restoration. If specified, a resource will not be restored if it matches any `ResourceSelector` of the `exclusion_filters`. */
@@ -842,8 +662,6 @@ export interface Filter {
   /** Optional. Selects resources for restoration. If specified, only resources which match `inclusion_filters` will be selected for restoration. A resource will be selected if it matches any `ResourceSelector` of the `inclusion_filters`. */
   inclusionFilters?: ResourceSelectorList;
 }
-const Filter = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Filter>;
-
 export type RestoreStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -852,15 +670,11 @@ export type RestoreStateEnum =
   | "FAILED"
   | "DELETING"
   | "VALIDATING";
-const RestoreStateEnum = S.String;
-
 export type VolumeDataRestorePolicyOverridePolicyEnum =
   | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
   | "RESTORE_VOLUME_DATA_FROM_BACKUP"
   | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
   | "NO_VOLUME_DATA_RESTORATION";
-const VolumeDataRestorePolicyOverridePolicyEnum = S.String;
-
 /** Defines an override to apply a VolumeDataRestorePolicy for scoped resources. */
 export interface VolumeDataRestorePolicyOverride {
   /** Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope. */
@@ -868,17 +682,7 @@ export interface VolumeDataRestorePolicyOverride {
   /** A list of PVCs to apply the policy override to. */
   selectedPvcs?: NamespacedNames;
 }
-const VolumeDataRestorePolicyOverride = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<VolumeDataRestorePolicyOverride>;
-
 export type VolumeDataRestorePolicyOverrideList = Array<VolumeDataRestorePolicyOverride>;
-const VolumeDataRestorePolicyOverrideList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<VolumeDataRestorePolicyOverrideList>;
-
 /** Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the restore operation itself. */
 export interface Restore {
   /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource. */
@@ -922,8 +726,6 @@ export interface Restore {
   /** Output only. Identifier. The full name of the Restore resource. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
   name?: string;
 }
-const Restore = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Restore>;
-
 export interface CreateProjectsLocationsRestorePlansRestoresRequest {
   /** Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan. */
   restoreId?: string;
@@ -932,11 +734,6 @@ export interface CreateProjectsLocationsRestorePlansRestoresRequest {
   /** Request body */
   body?: Restore;
 }
-const CreateProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateProjectsLocationsRestorePlansRestoresRequest>;
-
 export interface DeleteProjectsLocationsBackupChannelsRequest {
   /** Optional. If set to true, any BackupPlanAssociations below this BackupChannel will also be deleted. Otherwise, the request will only succeed if the BackupChannel has no BackupPlanAssociations. */
   force?: boolean;
@@ -945,22 +742,12 @@ export interface DeleteProjectsLocationsBackupChannelsRequest {
   /** Optional. If provided, this value must match the current value of the target BackupChannel's etag field or the request is rejected. */
   etag?: string;
 }
-const DeleteProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsBackupChannelsRequest>;
-
 export interface DeleteProjectsLocationsBackupPlansRequest {
   /** Required. Fully qualified BackupPlan name. Format: `projects/*\/locations/*\/backupPlans/*` */
   name: string;
   /** Optional. If provided, this value must match the current value of the target BackupPlan's etag field or the request is rejected. */
   etag?: string;
 }
-const DeleteProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsBackupPlansRequest>;
-
 export interface DeleteProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. If provided, this value must match the current value of the target Backup's etag field or the request is rejected. */
   etag?: string;
@@ -969,31 +756,16 @@ export interface DeleteProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. If set to true, any VolumeBackups below this Backup will also be deleted. Otherwise, the request will only succeed if the Backup has no VolumeBackups. */
   force?: boolean;
 }
-const DeleteProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsBackupPlansBackupsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsRestoreChannelsRequest {
   /** Required. Fully qualified RestoreChannel name. Format: `projects/*\/locations/*\/restoreChannels/*` */
   name: string;
   /** Optional. If provided, this value must match the current value of the target RestoreChannel's etag field or the request is rejected. */
   etag?: string;
 }
-const DeleteProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsRestoreChannelsRequest>;
-
 export interface DeleteProjectsLocationsRestorePlansRequest {
   /** Required. Fully qualified RestorePlan name. Format: `projects/*\/locations/*\/restorePlans/*` */
   name: string;
@@ -1002,11 +774,6 @@ export interface DeleteProjectsLocationsRestorePlansRequest {
   /** Optional. If provided, this value must match the current value of the target RestorePlan's etag field or the request is rejected. */
   etag?: string;
 }
-const DeleteProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsRestorePlansRequest>;
-
 export interface DeleteProjectsLocationsRestorePlansRestoresRequest {
   /** Required. Full name of the Restore Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
   name: string;
@@ -1015,41 +782,21 @@ export interface DeleteProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. If provided, this value must match the current value of the target Restore's etag field or the request is rejected. */
   etag?: string;
 }
-const DeleteProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsRestorePlansRestoresRequest>;
-
 export interface GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest {
   /** Required. Full name of Backup resource. Format: projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup} */
   backup: string;
 }
-const GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest>;
-
 /** Response message for GetBackupIndexDownloadUrl. */
 export interface GetBackupIndexDownloadUrlResponse {
   /** Required. The signed URL for downloading the backup index. */
   signedUrl?: string;
 }
-const GetBackupIndexDownloadUrlResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetBackupIndexDownloadUrlResponse>;
-
 export interface GetIamPolicyProjectsLocationsBackupPlansRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -1061,8 +808,6 @@ export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1072,18 +817,12 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<BindingList>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -1091,11 +830,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -1103,11 +838,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<AuditConfigList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -1119,72 +850,40 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-const Policy = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
-
 export interface GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
 export interface GetIamPolicyProjectsLocationsRestorePlansRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRequest>;
-
 export interface GetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
-
 export interface GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -1198,26 +897,14 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsBackupChannelsRequest {
   /** Required. Fully qualified BackupChannel name. Format: `projects/*\/locations/*\/backupChannels/*` */
   name: string;
 }
-const GetProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetProjectsLocationsBackupChannelsRequest>;
-
 export interface GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
   /** Required. Fully qualified BackupPlanBinding name. Format: `projects/*\/locations/*\/backupChannels/*\/backupPlanBindings/*` */
   name: string;
 }
-const GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
-
 /** BackupConfigDetails defines the configuration of Backups created via this BackupPlan. */
 export interface BackupConfigDetails {
   /** Output only. If set, include just the resources referenced by the listed ProtectedApplications. */
@@ -1233,8 +920,6 @@ export interface BackupConfigDetails {
   /** Output only. This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False */
   includeSecrets?: boolean;
 }
-const BackupConfigDetails = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<BackupConfigDetails>;
-
 export type BackupPlanDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "CLUSTER_PENDING"
@@ -1243,8 +928,6 @@ export type BackupPlanDetailsStateEnum =
   | "FAILED"
   | "DEACTIVATED"
   | "DELETING";
-const BackupPlanDetailsStateEnum = S.String;
-
 /** RetentionPolicyDetails defines a Backup retention policy for a BackupPlan. */
 export interface RetentionPolicyDetails {
   /** Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking) */
@@ -1252,11 +935,6 @@ export interface RetentionPolicyDetails {
   /** Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0 and <= 365. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Default: 0 (no automatic deletion) */
   backupRetainDays?: number;
 }
-const RetentionPolicyDetails = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<RetentionPolicyDetails>;
-
 /** Contains metadata about the backup plan/backup. */
 export interface BackupPlanDetails {
   /** Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo config. This is sourced from BackupPlan. */
@@ -1276,8 +954,6 @@ export interface BackupPlanDetails {
   /** Output only. The fully qualified name of the last successful Backup created under this BackupPlan. `projects/*\/locations/*\/backupPlans/*\/backups/*` */
   lastSuccessfulBackup?: string;
 }
-const BackupPlanDetails = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<BackupPlanDetails>;
-
 /** A BackupPlanBinding binds a BackupPlan with a BackupChannel. This resource is created automatically when a BackupPlan is created using a BackupChannel. This also serves as a holder for cross-project fields that need to be displayed in the current project. */
 export interface BackupPlanBinding {
   /** Output only. The timestamp when this binding was created. */
@@ -1297,38 +973,19 @@ export interface BackupPlanBinding {
   /** Output only. The timestamp when this binding was created. */
   createTime?: string;
 }
-const BackupPlanBinding = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<BackupPlanBinding>;
-
 export interface GetProjectsLocationsBackupPlansRequest {
   /** Required. Fully qualified BackupPlan name. Format: `projects/*\/locations/*\/backupPlans/*` */
   name: string;
 }
-const GetProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetProjectsLocationsBackupPlansRequest>;
-
 export interface GetProjectsLocationsBackupPlansBackupsRequest {
   /** Required. Full name of the Backup resource. Format: `projects/*\/locations/*\/backupPlans/*\/backups/*` */
   name: string;
 }
-const GetProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsRequest>;
-
 export interface GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** Required. Full name of the VolumeBackup resource. Format: `projects/*\/locations/*\/backupPlans/*\/backups/*\/volumeBackups/*` */
   name: string;
 }
-const GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
 export type VolumeBackupFormatEnum = "VOLUME_BACKUP_FORMAT_UNSPECIFIED" | "GCE_PERSISTENT_DISK";
-const VolumeBackupFormatEnum = S.String;
-
 export type VolumeBackupStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1338,8 +995,6 @@ export type VolumeBackupStateEnum =
   | "FAILED"
   | "DELETING"
   | "CLEANED_UP";
-const VolumeBackupStateEnum = S.String;
-
 /** Represents the backup of a specific persistent volume as a component of a Backup - both the record of the operation and a pointer to the underlying storage-specific artifacts. */
 export interface VolumeBackup {
   /** Output only. The format used for the volume backup. */
@@ -1373,35 +1028,18 @@ export interface VolumeBackup {
   /** Output only. [Output Only] Reserved for future use. */
   satisfiesPzi?: boolean;
 }
-const VolumeBackup = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<VolumeBackup>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRestoreChannelsRequest {
   /** Required. Fully qualified RestoreChannel name. Format: `projects/*\/locations/*\/restoreChannels/*` */
   name: string;
 }
-const GetProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetProjectsLocationsRestoreChannelsRequest>;
-
 export interface GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
   /** Required. Fully qualified RestorePlanBinding name. Format: `projects/*\/locations/*\/restoreChannels/*\/restorePlanBindings/*` */
   name: string;
 }
-const GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
-
 /** A RestorePlanBinding binds a RestorePlan with a RestoreChannel. This resource is created automatically when a RestorePlan is created using a RestoreChannel. This also serves as a holder for cross-project fields that need to be displayed in the current project. */
 export interface RestorePlanBinding {
   /** Identifier. The fully qualified name of the RestorePlanBinding. `projects/*\/locations/*\/restoreChannels/*\/restorePlanBindings/*` */
@@ -1419,38 +1057,19 @@ export interface RestorePlanBinding {
   /** Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a RestorePlanBinding from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform RestorePlanBinding updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlanBinding`, and systems are expected to put that etag in the request to `UpdateRestorePlanBinding` or `DeleteRestorePlanBinding` to ensure that their change will be applied to the same version of the resource. */
   etag?: string;
 }
-const RestorePlanBinding = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<RestorePlanBinding>;
-
 export interface GetProjectsLocationsRestorePlansRequest {
   /** Required. Fully qualified RestorePlan name. Format: `projects/*\/locations/*\/restorePlans/*` */
   name: string;
 }
-const GetProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetProjectsLocationsRestorePlansRequest>;
-
 export interface GetProjectsLocationsRestorePlansRestoresRequest {
   /** Required. Name of the restore resource. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
   name: string;
 }
-const GetProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresRequest>;
-
 export interface GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** Required. Full name of the VolumeRestore resource. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*\/volumeRestores/*` */
   name: string;
 }
-const GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
 export type VolumeRestoreVolumeTypeEnum = "VOLUME_TYPE_UNSPECIFIED" | "GCE_PERSISTENT_DISK";
-const VolumeRestoreVolumeTypeEnum = S.String;
-
 export type VolumeRestoreStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1458,8 +1077,6 @@ export type VolumeRestoreStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "DELETING";
-const VolumeRestoreStateEnum = S.String;
-
 /** Represents the operation of restoring a volume from a VolumeBackup. */
 export interface VolumeRestore {
   /** Output only. The timestamp when this VolumeRestore resource was last updated. */
@@ -1487,17 +1104,10 @@ export interface VolumeRestore {
   /** Output only. The current state of this VolumeRestore. */
   state?: VolumeRestoreStateEnum;
 }
-const VolumeRestore = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<VolumeRestore>;
-
 export interface GetTagsProjectsLocationsBackupPlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
 }
-const GetTagsProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetTagsProjectsLocationsBackupPlansRequest>;
-
 /** Response message for GetTags. */
 export interface GetTagsResponse {
   /** A checksum based on the current bindings. This field is always set in server responses. */
@@ -1507,17 +1117,10 @@ export interface GetTagsResponse {
   /** Required. Tag keys/values directly bound to this resource. Each item in the map must be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" */
   tags?: StringMap;
 }
-const GetTagsResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetTagsResponse>;
-
 export interface GetTagsProjectsLocationsRestorePlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
 }
-const GetTagsProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetTagsProjectsLocationsRestorePlansRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -1530,14 +1133,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1545,11 +1141,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsBackupChannelsRequest {
   /** Optional. Field by which to sort the results. */
   orderBy?: string;
@@ -1562,14 +1153,7 @@ export interface ListProjectsLocationsBackupChannelsRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-const ListProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListProjectsLocationsBackupChannelsRequest>;
-
 export type BackupChannelList = Array<BackupChannel>;
-const BackupChannelList = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<BackupChannelList>;
-
 /** Response message for ListBackupChannels. */
 export interface ListBackupChannelsResponse {
   /** Locations that could not be reached. */
@@ -1579,11 +1163,6 @@ export interface ListBackupChannelsResponse {
   /** A token which may be sent as page_token in a subsequent `ListBackupChannels` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
   nextPageToken?: string;
 }
-const ListBackupChannelsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListBackupChannelsResponse>;
-
 export interface ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
@@ -1596,17 +1175,7 @@ export interface ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest {
   /** Required. The BackupChannel that contains the BackupPlanBindings to list. Format: `projects/*\/locations/*\/backupChannels/*` */
   parent: string;
 }
-const ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
-
 export type BackupPlanBindingList = Array<BackupPlanBinding>;
-const BackupPlanBindingList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<BackupPlanBindingList>;
-
 /** Response message for ListBackupPlanBindings. */
 export interface ListBackupPlanBindingsResponse {
   /** A token which may be sent as page_token in a subsequent `ListBackupPlanBindingss` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1616,11 +1185,6 @@ export interface ListBackupPlanBindingsResponse {
   /** The list of BackupPlanBindings matching the given criteria. */
   backupPlanBindings?: BackupPlanBindingList;
 }
-const ListBackupPlanBindingsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListBackupPlanBindingsResponse>;
-
 export interface ListProjectsLocationsBackupPlansRequest {
   /** Required. The location that contains the BackupPlans to list. Format: `projects/*\/locations/*` */
   parent: string;
@@ -1633,14 +1197,7 @@ export interface ListProjectsLocationsBackupPlansRequest {
   /** Optional. The value of next_page_token received from a previous `ListBackupPlans` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListBackupPlans` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>;
-
 export type BackupPlanList = Array<BackupPlan>;
-const BackupPlanList = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<BackupPlanList>;
-
 /** Response message for ListBackupPlans. */
 export interface ListBackupPlansResponse {
   /** A token which may be sent as page_token in a subsequent `ListBackupPlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1650,11 +1207,6 @@ export interface ListBackupPlansResponse {
   /** The list of BackupPlans matching the given criteria. */
   backupPlans?: BackupPlanList;
 }
-const ListBackupPlansResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListBackupPlansResponse>;
-
 export interface ListProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
@@ -1669,14 +1221,7 @@ export interface ListProjectsLocationsBackupPlansBackupsRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-const ListProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsRequest>;
-
 export type BackupList = Array<Backup>;
-const BackupList = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<BackupList>;
-
 /** Response message for ListBackups. */
 export interface ListBackupsResponse {
   /** A token which may be sent as page_token in a subsequent `ListBackups` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1686,8 +1231,6 @@ export interface ListBackupsResponse {
   /** The list of Backups matching the given criteria. */
   backups?: BackupList;
 }
-const ListBackupsResponse = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ListBackupsResponse>;
-
 export interface ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** Optional. The value of next_page_token received from a previous `ListVolumeBackups` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListVolumeBackups` must match the call that provided the page token. */
   pageToken?: string;
@@ -1700,14 +1243,7 @@ export interface ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
 }
-const ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
 export type VolumeBackupList = Array<VolumeBackup>;
-const VolumeBackupList = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<VolumeBackupList>;
-
 /** Response message for ListVolumeBackups. */
 export interface ListVolumeBackupsResponse {
   /** A token which may be sent as page_token in a subsequent `ListVolumeBackups` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1715,11 +1251,6 @@ export interface ListVolumeBackupsResponse {
   /** The list of VolumeBackups matching the given criteria. */
   volumeBackups?: VolumeBackupList;
 }
-const ListVolumeBackupsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListVolumeBackupsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -1732,17 +1263,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -1752,11 +1273,6 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export interface ListProjectsLocationsRestoreChannelsRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
@@ -1769,14 +1285,7 @@ export interface ListProjectsLocationsRestoreChannelsRequest {
   /** Optional. Field by which to sort the results. */
   orderBy?: string;
 }
-const ListProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListProjectsLocationsRestoreChannelsRequest>;
-
 export type RestoreChannelList = Array<RestoreChannel>;
-const RestoreChannelList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<RestoreChannelList>;
-
 /** Response message for ListRestoreChannels. */
 export interface ListRestoreChannelsResponse {
   /** Locations that could not be reached. */
@@ -1786,11 +1295,6 @@ export interface ListRestoreChannelsResponse {
   /** A token which may be sent as page_token in a subsequent `ListRestoreChannels` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
   nextPageToken?: string;
 }
-const ListRestoreChannelsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListRestoreChannelsResponse>;
-
 export interface ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest {
   /** Optional. The target number of results to return in a single response. If not specified, a default value will be chosen by the service. Note that the response may include a partial list and a caller should only rely on the response's next_page_token to determine if there are more instances left to be queried. */
   pageSize?: number;
@@ -1803,17 +1307,7 @@ export interface ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest 
   /** Required. The RestoreChannel that contains the ListRestorePlanBindings to list. Format: `projects/*\/locations/*\/restoreChannels/*` */
   parent: string;
 }
-const ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
-
 export type RestorePlanBindingList = Array<RestorePlanBinding>;
-const RestorePlanBindingList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<RestorePlanBindingList>;
-
 /** Response message for ListRestorePlanBindings. */
 export interface ListRestorePlanBindingsResponse {
   /** A token which may be sent as page_token in a subsequent `ListRestorePlanBindings` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1823,11 +1317,6 @@ export interface ListRestorePlanBindingsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListRestorePlanBindingsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListRestorePlanBindingsResponse>;
-
 export interface ListProjectsLocationsRestorePlansRequest {
   /** Optional. The value of next_page_token received from a previous `ListRestorePlans` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestorePlans` must match the call that provided the page token. */
   pageToken?: string;
@@ -1840,14 +1329,7 @@ export interface ListProjectsLocationsRestorePlansRequest {
   /** Required. The location that contains the RestorePlans to list. Format: `projects/*\/locations/*` */
   parent: string;
 }
-const ListProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListProjectsLocationsRestorePlansRequest>;
-
 export type RestorePlanList = Array<RestorePlan>;
-const RestorePlanList = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<RestorePlanList>;
-
 /** Response message for ListRestorePlans. */
 export interface ListRestorePlansResponse {
   /** A token which may be sent as page_token in a subsequent `ListRestorePlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1857,11 +1339,6 @@ export interface ListRestorePlansResponse {
   /** The list of RestorePlans matching the given criteria. */
   restorePlans?: RestorePlanList;
 }
-const ListRestorePlansResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListRestorePlansResponse>;
-
 export interface ListProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. The value of next_page_token received from a previous `ListRestores` call. Provide this to retrieve the subsequent page in a multi-page list of results. When paginating, all other parameters provided to `ListRestores` must match the call that provided the page token. */
   pageToken?: string;
@@ -1874,14 +1351,7 @@ export interface ListProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-const ListProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresRequest>;
-
 export type RestoreList = Array<Restore>;
-const RestoreList = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<RestoreList>;
-
 /** Response message for ListRestores. */
 export interface ListRestoresResponse {
   /** A token which may be sent as page_token in a subsequent `ListRestores` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1891,11 +1361,6 @@ export interface ListRestoresResponse {
   /** The list of Restores matching the given criteria. */
   restores?: RestoreList;
 }
-const ListRestoresResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListRestoresResponse>;
-
 export interface ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** Required. The Restore that contains the VolumeRestores to list. Format: `projects/*\/locations/*\/restorePlans/*\/restores/*` */
   parent: string;
@@ -1908,14 +1373,7 @@ export interface ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest 
   /** Optional. Field match expression used to filter the results. */
   filter?: string;
 }
-const ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
 export type VolumeRestoreList = Array<VolumeRestore>;
-const VolumeRestoreList = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<VolumeRestoreList>;
-
 /** Response message for ListVolumeRestores. */
 export interface ListVolumeRestoresResponse {
   /** A token which may be sent as page_token in a subsequent `ListVolumeRestores` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -1923,11 +1381,6 @@ export interface ListVolumeRestoresResponse {
   /** The list of VolumeRestores matching the given criteria. */
   volumeRestores?: VolumeRestoreList;
 }
-const ListVolumeRestoresResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListVolumeRestoresResponse>;
-
 export interface PatchProjectsLocationsBackupChannelsRequest {
   /** Identifier. The fully qualified name of the BackupChannel. `projects/*\/locations/*\/backupChannels/*` */
   name: string;
@@ -1936,11 +1389,6 @@ export interface PatchProjectsLocationsBackupChannelsRequest {
   /** Request body */
   body?: BackupChannel;
 }
-const PatchProjectsLocationsBackupChannelsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<PatchProjectsLocationsBackupChannelsRequest>;
-
 export interface PatchProjectsLocationsBackupPlansRequest {
   /** Optional. This is used to specify the fields to be overwritten in the BackupPlan targeted for update. The values for each of these updated fields will be taken from the `backup_plan` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `backup_config.include_volume_data`, etc.) If no `update_mask` is provided, all fields in `backup_plan` will be written to the target BackupPlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup_plan` are ignored and are not used to update the target BackupPlan. */
   updateMask?: string;
@@ -1949,11 +1397,6 @@ export interface PatchProjectsLocationsBackupPlansRequest {
   /** Request body */
   body?: BackupPlan;
 }
-const PatchProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<PatchProjectsLocationsBackupPlansRequest>;
-
 export interface PatchProjectsLocationsBackupPlansBackupsRequest {
   /** Output only. Identifier. The fully qualified name of the Backup. `projects/*\/locations/*\/backupPlans/*\/backups/*` */
   name: string;
@@ -1962,11 +1405,6 @@ export interface PatchProjectsLocationsBackupPlansBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-const PatchProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<PatchProjectsLocationsBackupPlansBackupsRequest>;
-
 export interface PatchProjectsLocationsRestoreChannelsRequest {
   /** Optional. This is used to specify the fields to be overwritten in the RestoreChannel targeted for update. The values for each of these updated fields will be taken from the `restore_channel` provided with this request. Field names are relative to the root of the resource (e.g., `description`, `destination_project_id`, etc.) If no `update_mask` is provided, all fields in `restore_channel` will be written to the target RestoreChannel resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_channel` are ignored and are not used to update the target RestoreChannel. */
   updateMask?: string;
@@ -1975,11 +1413,6 @@ export interface PatchProjectsLocationsRestoreChannelsRequest {
   /** Request body */
   body?: RestoreChannel;
 }
-const PatchProjectsLocationsRestoreChannelsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<PatchProjectsLocationsRestoreChannelsRequest>;
-
 export interface PatchProjectsLocationsRestorePlansRequest {
   /** Output only. Identifier. The full name of the RestorePlan resource. Format: `projects/*\/locations/*\/restorePlans/*`. */
   name: string;
@@ -1988,11 +1421,6 @@ export interface PatchProjectsLocationsRestorePlansRequest {
   /** Request body */
   body?: RestorePlan;
 }
-const PatchProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<PatchProjectsLocationsRestorePlansRequest>;
-
 export interface PatchProjectsLocationsRestorePlansRestoresRequest {
   /** Optional. This is used to specify the fields to be overwritten in the Restore targeted for update. The values for each of these updated fields will be taken from the `restore` provided with this request. Field names are relative to the root of the resource. If no `update_mask` is provided, all fields in `restore` will be written to the target Restore resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and are not used to update the target Restore. */
   updateMask?: string;
@@ -2001,11 +1429,6 @@ export interface PatchProjectsLocationsRestorePlansRestoresRequest {
   /** Request body */
   body?: Restore;
 }
-const PatchProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -2013,74 +1436,42 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansRequest>;
-
 export interface SetIamPolicyProjectsLocationsBackupPlansBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsRequest>;
-
 export interface SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
 export interface SetIamPolicyProjectsLocationsRestorePlansRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRequest>;
-
 export interface SetIamPolicyProjectsLocationsRestorePlansRestoresRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresRequest>;
-
 export interface SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
 /** Request message for SetTags. */
 export interface SetTagsRequest {
   /** Optional. A unique identifier for this request. Must be a valid UUID. This request is only idempotent if a `request_id` is provided. */
@@ -2092,19 +1483,12 @@ export interface SetTagsRequest {
   /** Optional. A checksum based on the current bindings which can be passed to prevent race conditions. If not passed, etag check would be skipped. */
   etag?: string;
 }
-const SetTagsRequest = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<SetTagsRequest>;
-
 export interface SetTagsProjectsLocationsBackupPlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
   /** Request body */
   body?: SetTagsRequest;
 }
-const SetTagsProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<SetTagsProjectsLocationsBackupPlansRequest>;
-
 /** Response message for SetTags. */
 export interface SetTagsResponse {
   /** Required. The full resource name of the service resource. */
@@ -2114,105 +1498,58 @@ export interface SetTagsResponse {
   /** A checksum based on the current bindings. This field is always set in server responses. */
   etag?: string;
 }
-const SetTagsResponse = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<SetTagsResponse>;
-
 export interface SetTagsProjectsLocationsRestorePlansRequest {
   /** Required. The full resource name of the service resource. */
   name: string;
   /** Request body */
   body?: SetTagsRequest;
 }
-const SetTagsProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<SetTagsProjectsLocationsRestorePlansRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsBackupPlansRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    4,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsRestorePlansRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsRestorePlansRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>;
-
 export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>;
-
 export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    7,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -2226,8 +1563,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2246,8 +1583,8 @@ export const createProjectsLocationsBackupChannels: API.OperationMethod<
   CreateProjectsLocationsBackupChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackupChannelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(5) as any as S.Schema<CreateProjectsLocationsBackupChannelsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2266,8 +1603,8 @@ export const createProjectsLocationsBackupPlans: API.OperationMethod<
   CreateProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackupPlansRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(30) as any as S.Schema<CreateProjectsLocationsBackupPlansRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2286,8 +1623,8 @@ export const createProjectsLocationsBackupPlansBackups: API.OperationMethod<
   CreateProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackupPlansBackupsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(34) as any as S.Schema<CreateProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2306,8 +1643,8 @@ export const createProjectsLocationsRestoreChannels: API.OperationMethod<
   CreateProjectsLocationsRestoreChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRestoreChannelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(36) as any as S.Schema<CreateProjectsLocationsRestoreChannelsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2326,8 +1663,8 @@ export const createProjectsLocationsRestorePlans: API.OperationMethod<
   CreateProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRestorePlansRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(54) as any as S.Schema<CreateProjectsLocationsRestorePlansRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2346,8 +1683,8 @@ export const createProjectsLocationsRestorePlansRestores: API.OperationMethod<
   CreateProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRestorePlansRestoresRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(61) as any as S.Schema<CreateProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2366,8 +1703,8 @@ export const deleteProjectsLocationsBackupChannels: API.OperationMethod<
   DeleteProjectsLocationsBackupChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupChannelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(62) as any as S.Schema<DeleteProjectsLocationsBackupChannelsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2386,8 +1723,8 @@ export const deleteProjectsLocationsBackupPlans: API.OperationMethod<
   DeleteProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupPlansRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(63) as any as S.Schema<DeleteProjectsLocationsBackupPlansRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2406,8 +1743,8 @@ export const deleteProjectsLocationsBackupPlansBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupPlansBackupsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(64) as any as S.Schema<DeleteProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2426,8 +1763,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(65) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2446,8 +1783,8 @@ export const deleteProjectsLocationsRestoreChannels: API.OperationMethod<
   DeleteProjectsLocationsRestoreChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRestoreChannelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(66) as any as S.Schema<DeleteProjectsLocationsRestoreChannelsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2466,8 +1803,8 @@ export const deleteProjectsLocationsRestorePlans: API.OperationMethod<
   DeleteProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRestorePlansRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(67) as any as S.Schema<DeleteProjectsLocationsRestorePlansRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2486,8 +1823,8 @@ export const deleteProjectsLocationsRestorePlansRestores: API.OperationMethod<
   DeleteProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRestorePlansRestoresRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(68) as any as S.Schema<DeleteProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2504,8 +1841,10 @@ export const getBackupIndexDownloadUrlProjectsLocationsBackupPlansBackups: API.O
   GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest,
-  output: GetBackupIndexDownloadUrlResponse,
+  input: __S(
+    69,
+  ) as any as S.Schema<GetBackupIndexDownloadUrlProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(70) as any as S.Schema<GetBackupIndexDownloadUrlResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2519,8 +1858,8 @@ export const getIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
   GetIamPolicyProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsBackupPlansRequest,
-  output: Policy,
+  input: __S(71) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2537,8 +1876,8 @@ export const getIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMetho
   GetIamPolicyProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
-  output: Policy,
+  input: __S(80) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2555,8 +1894,10 @@ export const getIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.O
   GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: Policy,
+  input: __S(
+    81,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2570,8 +1911,8 @@ export const getIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
   GetIamPolicyProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRestorePlansRequest,
-  output: Policy,
+  input: __S(82) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2588,8 +1929,8 @@ export const getIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMet
   GetIamPolicyProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
-  output: Policy,
+  input: __S(83) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2606,8 +1947,10 @@ export const getIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: AP
   GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: Policy,
+  input: __S(
+    84,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2621,8 +1964,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(85) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(86) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2636,8 +1979,8 @@ export const getProjectsLocationsBackupChannels: API.OperationMethod<
   GetProjectsLocationsBackupChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupChannelsRequest,
-  output: BackupChannel,
+  input: __S(87) as any as S.Schema<GetProjectsLocationsBackupChannelsRequest>,
+  output: __S(4) as any as S.Schema<BackupChannel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2654,8 +1997,8 @@ export const getProjectsLocationsBackupChannelsBackupPlanBindings: API.Operation
   GetProjectsLocationsBackupChannelsBackupPlanBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest,
-  output: BackupPlanBinding,
+  input: __S(88) as any as S.Schema<GetProjectsLocationsBackupChannelsBackupPlanBindingsRequest>,
+  output: __S(92) as any as S.Schema<BackupPlanBinding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2669,8 +2012,8 @@ export const getProjectsLocationsBackupPlans: API.OperationMethod<
   GetProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupPlansRequest,
-  output: BackupPlan,
+  input: __S(93) as any as S.Schema<GetProjectsLocationsBackupPlansRequest>,
+  output: __S(29) as any as S.Schema<BackupPlan>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2684,8 +2027,8 @@ export const getProjectsLocationsBackupPlansBackups: API.OperationMethod<
   GetProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupPlansBackupsRequest,
-  output: Backup,
+  input: __S(94) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(33) as any as S.Schema<Backup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2702,8 +2045,8 @@ export const getProjectsLocationsBackupPlansBackupsVolumeBackups: API.OperationM
   GetProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: VolumeBackup,
+  input: __S(95) as any as S.Schema<GetProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>,
+  output: __S(96) as any as S.Schema<VolumeBackup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2717,8 +2060,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(97) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2732,8 +2075,8 @@ export const getProjectsLocationsRestoreChannels: API.OperationMethod<
   GetProjectsLocationsRestoreChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestoreChannelsRequest,
-  output: RestoreChannel,
+  input: __S(98) as any as S.Schema<GetProjectsLocationsRestoreChannelsRequest>,
+  output: __S(35) as any as S.Schema<RestoreChannel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2750,8 +2093,8 @@ export const getProjectsLocationsRestoreChannelsRestorePlanBindings: API.Operati
   GetProjectsLocationsRestoreChannelsRestorePlanBindingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
-  output: RestorePlanBinding,
+  input: __S(99) as any as S.Schema<GetProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>,
+  output: __S(100) as any as S.Schema<RestorePlanBinding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2765,8 +2108,8 @@ export const getProjectsLocationsRestorePlans: API.OperationMethod<
   GetProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestorePlansRequest,
-  output: RestorePlan,
+  input: __S(101) as any as S.Schema<GetProjectsLocationsRestorePlansRequest>,
+  output: __S(53) as any as S.Schema<RestorePlan>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2780,8 +2123,8 @@ export const getProjectsLocationsRestorePlansRestores: API.OperationMethod<
   GetProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestorePlansRestoresRequest,
-  output: Restore,
+  input: __S(102) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(60) as any as S.Schema<Restore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2798,8 +2141,8 @@ export const getProjectsLocationsRestorePlansRestoresVolumeRestores: API.Operati
   GetProjectsLocationsRestorePlansRestoresVolumeRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: VolumeRestore,
+  input: __S(103) as any as S.Schema<GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>,
+  output: __S(104) as any as S.Schema<VolumeRestore>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2156,8 @@ export const getTagsProjectsLocationsBackupPlans: API.OperationMethod<
   GetTagsProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagsProjectsLocationsBackupPlansRequest,
-  output: GetTagsResponse,
+  input: __S(105) as any as S.Schema<GetTagsProjectsLocationsBackupPlansRequest>,
+  output: __S(106) as any as S.Schema<GetTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2171,8 @@ export const getTagsProjectsLocationsRestorePlans: API.OperationMethod<
   GetTagsProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagsProjectsLocationsRestorePlansRequest,
-  output: GetTagsResponse,
+  input: __S(107) as any as S.Schema<GetTagsProjectsLocationsRestorePlansRequest>,
+  output: __S(106) as any as S.Schema<GetTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2844,8 +2187,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(108) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(110) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2861,8 +2204,8 @@ export const listProjectsLocationsBackupChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackupChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupChannelsRequest,
-  output: ListBackupChannelsResponse,
+  input: __S(111) as any as S.Schema<ListProjectsLocationsBackupChannelsRequest>,
+  output: __S(113) as any as S.Schema<ListBackupChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2881,8 +2224,8 @@ export const listProjectsLocationsBackupChannelsBackupPlanBindings: API.Paginate
   GcpOpContext,
   ListBackupPlanBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest,
-  output: ListBackupPlanBindingsResponse,
+  input: __S(114) as any as S.Schema<ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest>,
+  output: __S(116) as any as S.Schema<ListBackupPlanBindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2898,8 +2241,8 @@ export const listProjectsLocationsBackupPlans: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackupPlansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupPlansRequest,
-  output: ListBackupPlansResponse,
+  input: __S(117) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>,
+  output: __S(119) as any as S.Schema<ListBackupPlansResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2915,8 +2258,8 @@ export const listProjectsLocationsBackupPlansBackups: API.PaginatedOperationMeth
   GcpOpContext,
   ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupPlansBackupsRequest,
-  output: ListBackupsResponse,
+  input: __S(120) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(122) as any as S.Schema<ListBackupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2278,8 @@ export const listProjectsLocationsBackupPlansBackupsVolumeBackups: API.Paginated
   GcpOpContext,
   ListVolumeBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: ListVolumeBackupsResponse,
+  input: __S(123) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>,
+  output: __S(125) as any as S.Schema<ListVolumeBackupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2952,8 +2295,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(126) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(128) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2969,8 +2312,8 @@ export const listProjectsLocationsRestoreChannels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRestoreChannelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestoreChannelsRequest,
-  output: ListRestoreChannelsResponse,
+  input: __S(129) as any as S.Schema<ListProjectsLocationsRestoreChannelsRequest>,
+  output: __S(131) as any as S.Schema<ListRestoreChannelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2989,8 +2332,10 @@ export const listProjectsLocationsRestoreChannelsRestorePlanBindings: API.Pagina
   GcpOpContext,
   ListRestorePlanBindingsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest,
-  output: ListRestorePlanBindingsResponse,
+  input: __S(
+    132,
+  ) as any as S.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>,
+  output: __S(134) as any as S.Schema<ListRestorePlanBindingsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3006,8 +2351,8 @@ export const listProjectsLocationsRestorePlans: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRestorePlansResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestorePlansRequest,
-  output: ListRestorePlansResponse,
+  input: __S(135) as any as S.Schema<ListProjectsLocationsRestorePlansRequest>,
+  output: __S(137) as any as S.Schema<ListRestorePlansResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3023,8 +2368,8 @@ export const listProjectsLocationsRestorePlansRestores: API.PaginatedOperationMe
   GcpOpContext,
   ListRestoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestorePlansRestoresRequest,
-  output: ListRestoresResponse,
+  input: __S(138) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(140) as any as S.Schema<ListRestoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3043,8 +2388,10 @@ export const listProjectsLocationsRestorePlansRestoresVolumeRestores: API.Pagina
   GcpOpContext,
   ListVolumeRestoresResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: ListVolumeRestoresResponse,
+  input: __S(
+    141,
+  ) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>,
+  output: __S(143) as any as S.Schema<ListVolumeRestoresResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3064,8 +2411,8 @@ export const patchProjectsLocationsBackupChannels: API.OperationMethod<
   PatchProjectsLocationsBackupChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupChannelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(144) as any as S.Schema<PatchProjectsLocationsBackupChannelsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3084,8 +2431,8 @@ export const patchProjectsLocationsBackupPlans: API.OperationMethod<
   PatchProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupPlansRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(145) as any as S.Schema<PatchProjectsLocationsBackupPlansRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3104,8 +2451,8 @@ export const patchProjectsLocationsBackupPlansBackups: API.OperationMethod<
   PatchProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupPlansBackupsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(146) as any as S.Schema<PatchProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3124,8 +2471,8 @@ export const patchProjectsLocationsRestoreChannels: API.OperationMethod<
   PatchProjectsLocationsRestoreChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRestoreChannelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(147) as any as S.Schema<PatchProjectsLocationsRestoreChannelsRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3144,8 +2491,8 @@ export const patchProjectsLocationsRestorePlans: API.OperationMethod<
   PatchProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRestorePlansRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(148) as any as S.Schema<PatchProjectsLocationsRestorePlansRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3164,8 +2511,8 @@ export const patchProjectsLocationsRestorePlansRestores: API.OperationMethod<
   PatchProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRestorePlansRestoresRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(149) as any as S.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(9) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3184,8 +2531,8 @@ export const setIamPolicyProjectsLocationsBackupPlans: API.OperationMethod<
   SetIamPolicyProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBackupPlansRequest,
-  output: Policy,
+  input: __S(151) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3204,8 +2551,8 @@ export const setIamPolicyProjectsLocationsBackupPlansBackups: API.OperationMetho
   SetIamPolicyProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBackupPlansBackupsRequest,
-  output: Policy,
+  input: __S(152) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3224,8 +2571,10 @@ export const setIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackups: API.O
   SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: Policy,
+  input: __S(
+    153,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3244,8 +2593,8 @@ export const setIamPolicyProjectsLocationsRestorePlans: API.OperationMethod<
   SetIamPolicyProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRestorePlansRequest,
-  output: Policy,
+  input: __S(154) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3264,8 +2613,8 @@ export const setIamPolicyProjectsLocationsRestorePlansRestores: API.OperationMet
   SetIamPolicyProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRestorePlansRestoresRequest,
-  output: Policy,
+  input: __S(155) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3284,8 +2633,10 @@ export const setIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestores: AP
   SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: Policy,
+  input: __S(
+    156,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>,
+  output: __S(79) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3304,8 +2655,8 @@ export const setTagsProjectsLocationsBackupPlans: API.OperationMethod<
   SetTagsProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetTagsProjectsLocationsBackupPlansRequest,
-  output: SetTagsResponse,
+  input: __S(158) as any as S.Schema<SetTagsProjectsLocationsBackupPlansRequest>,
+  output: __S(159) as any as S.Schema<SetTagsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3324,8 +2675,8 @@ export const setTagsProjectsLocationsRestorePlans: API.OperationMethod<
   SetTagsProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetTagsProjectsLocationsRestorePlansRequest,
-  output: SetTagsResponse,
+  input: __S(160) as any as S.Schema<SetTagsProjectsLocationsRestorePlansRequest>,
+  output: __S(159) as any as S.Schema<SetTagsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3344,8 +2695,8 @@ export const testIamPermissionsProjectsLocationsBackupPlans: API.OperationMethod
   TestIamPermissionsProjectsLocationsBackupPlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsBackupPlansRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(162) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansRequest>,
+  output: __S(161) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3364,8 +2715,8 @@ export const testIamPermissionsProjectsLocationsBackupPlansBackups: API.Operatio
   TestIamPermissionsProjectsLocationsBackupPlansBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(163) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest>,
+  output: __S(161) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3384,8 +2735,10 @@ export const testIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackups:
   TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    164,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>,
+  output: __S(161) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3404,8 +2757,8 @@ export const testIamPermissionsProjectsLocationsRestorePlans: API.OperationMetho
   TestIamPermissionsProjectsLocationsRestorePlansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(165) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>,
+  output: __S(161) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3424,8 +2777,10 @@ export const testIamPermissionsProjectsLocationsRestorePlansRestores: API.Operat
   TestIamPermissionsProjectsLocationsRestorePlansRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    166,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>,
+  output: __S(161) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3444,8 +2799,10 @@ export const testIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestor
   TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    167,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>,
+  output: __S(161) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3462,7 +2819,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3487,7 +2844,7 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           destinationProjectId: S.optional(S.String),
           updateTime: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           uid: S.optional(S.String),
           createTime: S.optional(S.String),
           etag: S.optional(S.String),
@@ -3498,7 +2855,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           backupChannelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BackupChannel.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3512,7 +2869,7 @@ function __c0(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -3521,18 +2878,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(7)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(GoogleRpcStatus),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(8)),
+          response: S.optional(__S(6)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -3550,7 +2907,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespaces: S.optional(StringList),
+          namespaces: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "Namespaces" });
     case 5:
@@ -3561,11 +2918,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "NamespacedName" });
     case 6:
-      return S.Array(NamespacedName);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          namespacedNames: S.optional(NamespacedNameList),
+          namespacedNames: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "NamespacedNames" });
   }
@@ -3580,11 +2937,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Label" });
     case 1:
-      return S.Array(Label);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceLabels: S.optional(LabelList),
+          resourceLabels: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "ResourceLabels" });
     case 3:
@@ -3596,11 +2953,11 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          selectedNamespaces: S.optional(Namespaces),
-          selectedApplications: S.optional(NamespacedNames),
-          selectedNamespaceLabels: S.optional(ResourceLabels),
+          selectedNamespaces: S.optional(__S(12)),
+          selectedApplications: S.optional(__S(15)),
+          selectedNamespaceLabels: S.optional(__S(18)),
           includeVolumeData: S.optional(S.Boolean),
-          encryptionKey: S.optional(EncryptionKey),
+          encryptionKey: S.optional(__S(19)),
           permissiveMode: S.optional(S.Boolean),
           includeSecrets: S.optional(S.Boolean),
           allNamespaces: S.optional(S.Boolean),
@@ -3615,11 +2972,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Gkebackup_Date" });
     case 6:
-      return S.Array(DayOfWeekListDaysOfWeekItemEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          daysOfWeek: S.optional(DayOfWeekListDaysOfWeekItemEnumList),
+          daysOfWeek: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "DayOfWeekList" });
   }
@@ -3638,26 +2995,26 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          singleOccurrenceDate: S.optional(Gkebackup_Date),
+          singleOccurrenceDate: S.optional(__S(21)),
           duration: S.optional(S.String),
           daily: S.optional(S.Boolean),
-          daysOfWeek: S.optional(DayOfWeekList),
-          startTime: S.optional(TimeOfDay),
+          daysOfWeek: S.optional(__S(23)),
+          startTime: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ExclusionWindow" });
     case 2:
-      return S.Array(ExclusionWindow);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           targetRpoMinutes: S.optional(S.Number),
-          exclusionWindows: S.optional(ExclusionWindowList),
+          exclusionWindows: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "RpoConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rpoConfig: S.optional(RpoConfig),
+          rpoConfig: S.optional(__S(27)),
           paused: S.optional(S.Boolean),
           nextScheduledBackupTime: S.optional(S.String),
           cronSchedule: S.optional(S.String),
@@ -3671,18 +3028,18 @@ function __c3(j: number): any {
           deactivated: S.optional(S.Boolean),
           description: S.optional(S.String),
           stateReason: S.optional(S.String),
-          retentionPolicy: S.optional(RetentionPolicy),
+          retentionPolicy: S.optional(__S(10)),
           lastSuccessfulBackupTime: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           uid: S.optional(S.String),
-          backupConfig: S.optional(BackupConfig),
+          backupConfig: S.optional(__S(20)),
           backupChannel: S.optional(S.String),
           createTime: S.optional(S.String),
           protectedPodCount: S.optional(S.Number),
           cluster: S.optional(S.String),
-          backupSchedule: S.optional(Schedule),
+          backupSchedule: S.optional(__S(28)),
           rpoRiskReason: S.optional(S.String),
-          state: S.optional(BackupPlanStateEnum),
+          state: S.optional(S.String),
           etag: S.optional(S.String),
           updateTime: S.optional(S.String),
           rpoRiskLevel: S.optional(S.Number),
@@ -3693,7 +3050,7 @@ function __c3(j: number): any {
         S.Struct({
           backupPlanId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BackupPlan.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3707,7 +3064,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          backupCrdVersions: S.optional(StringMap),
+          backupCrdVersions: S.optional(__S(3)),
           gkeVersion: S.optional(S.String),
           k8sVersion: S.optional(S.String),
           cluster: S.optional(S.String),
@@ -3729,16 +3086,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
-          labels: S.optional(StringMap),
-          selectedNamespaces: S.optional(Namespaces),
+          labels: S.optional(__S(3)),
+          selectedNamespaces: S.optional(__S(12)),
           deleteLockExpireTime: S.optional(S.String),
           volumeCount: S.optional(S.Number),
           completeTime: S.optional(S.String),
           stateReason: S.optional(S.String),
           description: S.optional(S.String),
-          selectedNamespaceLabels: S.optional(ResourceLabels),
+          selectedNamespaceLabels: S.optional(__S(18)),
           deleteLockDays: S.optional(S.Number),
-          selectedApplications: S.optional(NamespacedNames),
+          selectedApplications: S.optional(__S(15)),
           retainExpireTime: S.optional(S.String),
           resourceCount: S.optional(S.Number),
           sizeBytes: S.optional(S.String),
@@ -3747,9 +3104,9 @@ function __c4(j: number): any {
           uid: S.optional(S.String),
           name: S.optional(S.String),
           retainDays: S.optional(S.Number),
-          state: S.optional(BackupStateEnum),
-          clusterMetadata: S.optional(ClusterMetadata),
-          encryptionKey: S.optional(EncryptionKey),
+          state: S.optional(S.String),
+          clusterMetadata: S.optional(__S(31)),
+          encryptionKey: S.optional(__S(19)),
           manual: S.optional(S.Boolean),
           permissiveMode: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
@@ -3759,7 +3116,7 @@ function __c4(j: number): any {
           containsSecrets: S.optional(S.Boolean),
           configBackupSizeBytes: S.optional(S.String),
           namespaceCount: S.optional(S.Number),
-          troubleshootingInfo: S.optional(TroubleshootingInfo),
+          troubleshootingInfo: S.optional(__S(32)),
           satisfiesPzi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Backup" });
@@ -3768,7 +3125,7 @@ function __c4(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           backupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Backup.pipe(T.HttpBody())),
+          body: S.optional(__S(33).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3790,7 +3147,7 @@ function __c4(j: number): any {
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "RestoreChannel" });
     case 4:
@@ -3798,7 +3155,7 @@ function __c4(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           restoreChannelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RestoreChannel.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3817,13 +3174,13 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "GroupKind" });
     case 6:
-      return S.Array(GroupKind);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
           noGroupKinds: S.optional(S.Boolean),
-          excludedGroupKinds: S.optional(GroupKindList),
-          selectedGroupKinds: S.optional(GroupKindList),
+          excludedGroupKinds: S.optional(__S(38)),
+          selectedGroupKinds: S.optional(__S(38)),
           allGroupKinds: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3837,48 +3194,48 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           newValue: S.optional(S.String),
-          targetGroupKinds: S.optional(GroupKindList),
+          targetGroupKinds: S.optional(__S(38)),
           originalValuePattern: S.optional(S.String),
           targetJsonPath: S.optional(S.String),
-          targetNamespaces: S.optional(StringList),
+          targetNamespaces: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "SubstitutionRule" });
     case 1:
-      return S.Array(SubstitutionRule);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           fromPath: S.optional(S.String),
-          op: S.optional(TransformationRuleActionOpEnum),
+          op: S.optional(S.String),
           value: S.optional(S.String),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransformationRuleAction" });
     case 3:
-      return S.Array(TransformationRuleAction);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          namespaces: S.optional(StringList),
+          namespaces: S.optional(__S(11)),
           jsonPath: S.optional(S.String),
-          groupKinds: S.optional(GroupKindList),
+          groupKinds: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "ResourceFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          fieldActions: S.optional(TransformationRuleActionList),
-          resourceFilter: S.optional(ResourceFilter),
+          fieldActions: S.optional(__S(43)),
+          resourceFilter: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "TransformationRule" });
     case 6:
-      return S.Array(TransformationRule);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          satisfying: S.optional(GroupKind),
-          requiring: S.optional(GroupKind),
+          satisfying: S.optional(__S(37)),
+          requiring: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "GroupKindDependency" });
   }
@@ -3886,40 +3243,40 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GroupKindDependency);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          groupKindDependencies: S.optional(GroupKindDependencyList),
+          groupKindDependencies: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "RestoreOrder" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volumeType: S.optional(VolumeDataRestorePolicyBindingVolumeTypeEnum),
-          policy: S.optional(VolumeDataRestorePolicyBindingPolicyEnum),
+          volumeType: S.optional(S.String),
+          policy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VolumeDataRestorePolicyBinding",
       });
     case 3:
-      return S.Array(VolumeDataRestorePolicyBinding);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          clusterResourceRestoreScope: S.optional(ClusterResourceRestoreScope),
-          namespacedResourceRestoreMode: S.optional(RestoreConfigNamespacedResourceRestoreModeEnum),
-          selectedApplications: S.optional(NamespacedNames),
-          substitutionRules: S.optional(SubstitutionRuleList),
+          clusterResourceRestoreScope: S.optional(__S(39)),
+          namespacedResourceRestoreMode: S.optional(S.String),
+          selectedApplications: S.optional(__S(15)),
+          substitutionRules: S.optional(__S(41)),
           allNamespaces: S.optional(S.Boolean),
-          selectedNamespaces: S.optional(Namespaces),
-          clusterResourceConflictPolicy: S.optional(RestoreConfigClusterResourceConflictPolicyEnum),
-          volumeDataRestorePolicy: S.optional(RestoreConfigVolumeDataRestorePolicyEnum),
-          transformationRules: S.optional(TransformationRuleList),
+          selectedNamespaces: S.optional(__S(12)),
+          clusterResourceConflictPolicy: S.optional(S.String),
+          volumeDataRestorePolicy: S.optional(S.String),
+          transformationRules: S.optional(__S(46)),
           noNamespaces: S.optional(S.Boolean),
-          restoreOrder: S.optional(RestoreOrder),
-          excludedNamespaces: S.optional(Namespaces),
-          volumeDataRestorePolicyBindings: S.optional(VolumeDataRestorePolicyBindingList),
+          restoreOrder: S.optional(__S(49)),
+          excludedNamespaces: S.optional(__S(12)),
+          volumeDataRestorePolicyBindings: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "RestoreConfig" });
     case 5:
@@ -3929,11 +3286,11 @@ function __c6(j: number): any {
           restoreChannel: S.optional(S.String),
           createTime: S.optional(S.String),
           etag: S.optional(S.String),
-          state: S.optional(RestorePlanStateEnum),
+          state: S.optional(S.String),
           backupPlan: S.optional(S.String),
           description: S.optional(S.String),
-          restoreConfig: S.optional(RestoreConfig),
-          labels: S.optional(StringMap),
+          restoreConfig: S.optional(__S(52)),
+          labels: S.optional(__S(3)),
           name: S.optional(S.String),
           stateReason: S.optional(S.String),
           cluster: S.optional(S.String),
@@ -3945,7 +3302,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           restorePlanId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RestorePlan.pipe(T.HttpBody())),
+          body: S.optional(__S(53).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3959,8 +3316,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
-          groupKind: S.optional(GroupKind),
+          labels: S.optional(__S(3)),
+          groupKind: S.optional(__S(37)),
           namespace: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -3970,42 +3327,42 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceSelector);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exclusionFilters: S.optional(ResourceSelectorList),
-          inclusionFilters: S.optional(ResourceSelectorList),
+          exclusionFilters: S.optional(__S(56)),
+          inclusionFilters: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "Filter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(VolumeDataRestorePolicyOverridePolicyEnum),
-          selectedPvcs: S.optional(NamespacedNames),
+          policy: S.optional(S.String),
+          selectedPvcs: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "VolumeDataRestorePolicyOverride",
       });
     case 3:
-      return S.Array(VolumeDataRestorePolicyOverride);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
           etag: S.optional(S.String),
           cluster: S.optional(S.String),
-          labels: S.optional(StringMap),
-          filter: S.optional(Filter),
+          labels: S.optional(__S(3)),
+          filter: S.optional(__S(57)),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          troubleshootingInfo: S.optional(TroubleshootingInfo),
-          restoreConfig: S.optional(RestoreConfig),
-          state: S.optional(RestoreStateEnum),
+          troubleshootingInfo: S.optional(__S(32)),
+          restoreConfig: S.optional(__S(52)),
+          state: S.optional(S.String),
           resourcesExcludedCount: S.optional(S.Number),
           volumesRestoredCount: S.optional(S.Number),
           resourcesRestoredCount: S.optional(S.Number),
           uid: S.optional(S.String),
-          volumeDataRestorePolicyOverrides: S.optional(VolumeDataRestorePolicyOverrideList),
+          volumeDataRestorePolicyOverrides: S.optional(__S(59)),
           resourcesFailedCount: S.optional(S.Number),
           description: S.optional(S.String),
           completeTime: S.optional(S.String),
@@ -4019,7 +3376,7 @@ function __c7(j: number): any {
         S.Struct({
           restoreId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Restore.pipe(T.HttpBody())),
+          body: S.optional(__S(60).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4195,36 +3552,36 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
+          condition: S.optional(__S(72)),
           role: S.optional(S.String),
-          members: S.optional(StringList),
+          members: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "Binding" });
     case 2:
-      return S.Array(Binding);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 4:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(76)),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 6:
-      return S.Array(AuditConfig);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(BindingList),
-          auditConfigs: S.optional(AuditConfigList),
+          bindings: S.optional(__S(74)),
+          auditConfigs: S.optional(__S(78)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
         }),
@@ -4327,9 +3684,9 @@ function __c10(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(6)),
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Location" });
     case 7:
@@ -4367,11 +3724,11 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          selectedApplications: S.optional(NamespacedNames),
-          encryptionKey: S.optional(EncryptionKey),
+          selectedApplications: S.optional(__S(15)),
+          encryptionKey: S.optional(__S(19)),
           includeVolumeData: S.optional(S.Boolean),
           allNamespaces: S.optional(S.Boolean),
-          selectedNamespaces: S.optional(Namespaces),
+          selectedNamespaces: S.optional(__S(12)),
           includeSecrets: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "BackupConfigDetails" });
@@ -4386,12 +3743,12 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextScheduledBackupTime: S.optional(S.String),
-          backupConfigDetails: S.optional(BackupConfigDetails),
+          backupConfigDetails: S.optional(__S(89)),
           lastSuccessfulBackupTime: S.optional(S.String),
           rpoRiskLevel: S.optional(S.Number),
           protectedPodCount: S.optional(S.Number),
-          state: S.optional(BackupPlanDetailsStateEnum),
-          retentionPolicyDetails: S.optional(RetentionPolicyDetails),
+          state: S.optional(S.String),
+          retentionPolicyDetails: S.optional(__S(90)),
           lastSuccessfulBackup: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupPlanDetails" });
@@ -4403,7 +3760,7 @@ function __c11(j: number): any {
           uid: S.optional(S.String),
           backupPlan: S.optional(S.String),
           cluster: S.optional(S.String),
-          backupPlanDetails: S.optional(BackupPlanDetails),
+          backupPlanDetails: S.optional(__S(91)),
           etag: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -4457,15 +3814,15 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          format: S.optional(VolumeBackupFormatEnum),
+          format: S.optional(S.String),
           uid: S.optional(S.String),
           name: S.optional(S.String),
           stateMessage: S.optional(S.String),
           completeTime: S.optional(S.String),
           volumeBackupHandle: S.optional(S.String),
-          sourcePvc: S.optional(NamespacedName),
+          sourcePvc: S.optional(__S(13)),
           createTime: S.optional(S.String),
-          state: S.optional(VolumeBackupStateEnum),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           storageBytes: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
@@ -4582,13 +3939,13 @@ function __c13(j: number): any {
           createTime: S.optional(S.String),
           volumeBackup: S.optional(S.String),
           uid: S.optional(S.String),
-          targetPvc: S.optional(NamespacedName),
-          volumeType: S.optional(VolumeRestoreVolumeTypeEnum),
+          targetPvc: S.optional(__S(13)),
+          volumeType: S.optional(S.String),
           completeTime: S.optional(S.String),
           etag: S.optional(S.String),
           stateMessage: S.optional(S.String),
           volumeHandle: S.optional(S.String),
-          state: S.optional(VolumeRestoreStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeRestore" });
     case 1:
@@ -4610,7 +3967,7 @@ function __c13(j: number): any {
         S.Struct({
           etag: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(StringMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetTagsResponse" });
     case 3:
@@ -4632,7 +3989,7 @@ function __c13(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(11).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
@@ -4646,11 +4003,11 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 5:
-      return S.Array(Location);
+      return S.Array(__S(86));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(109)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -4677,12 +4034,12 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BackupChannel);
+      return S.Array(__S(4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          backupChannels: S.optional(BackupChannelList),
+          unreachable: S.optional(__S(11)),
+          backupChannels: S.optional(__S(112)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4707,13 +4064,13 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest",
       });
     case 3:
-      return S.Array(BackupPlanBinding);
+      return S.Array(__S(92));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          backupPlanBindings: S.optional(BackupPlanBindingList),
+          unreachable: S.optional(__S(11)),
+          backupPlanBindings: S.optional(__S(115)),
         }),
       ).annotate({
         identifier: "ListBackupPlanBindingsResponse",
@@ -4737,13 +4094,13 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsBackupPlansRequest",
       });
     case 6:
-      return S.Array(BackupPlan);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          backupPlans: S.optional(BackupPlanList),
+          unreachable: S.optional(__S(11)),
+          backupPlans: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "ListBackupPlansResponse" });
   }
@@ -4770,13 +4127,13 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsBackupPlansBackupsRequest",
       });
     case 1:
-      return S.Array(Backup);
+      return S.Array(__S(33));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          backups: S.optional(BackupList),
+          unreachable: S.optional(__S(11)),
+          backups: S.optional(__S(121)),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
     case 3:
@@ -4798,12 +4155,12 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
       });
     case 4:
-      return S.Array(VolumeBackup);
+      return S.Array(__S(96));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          volumeBackups: S.optional(VolumeBackupList),
+          volumeBackups: S.optional(__S(124)),
         }),
       ).annotate({
         identifier: "ListVolumeBackupsResponse",
@@ -4827,7 +4184,7 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(9));
   }
 }
 function __c16(j: number): any {
@@ -4836,8 +4193,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(GoogleLongrunningOperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(127)),
+          unreachable: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -4861,12 +4218,12 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsRestoreChannelsRequest",
       });
     case 2:
-      return S.Array(RestoreChannel);
+      return S.Array(__S(35));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          restoreChannels: S.optional(RestoreChannelList),
+          unreachable: S.optional(__S(11)),
+          restoreChannels: S.optional(__S(130)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4891,13 +4248,13 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest",
       });
     case 5:
-      return S.Array(RestorePlanBinding);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          restorePlanBindings: S.optional(RestorePlanBindingList),
-          unreachable: S.optional(StringList),
+          restorePlanBindings: S.optional(__S(133)),
+          unreachable: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ListRestorePlanBindingsResponse",
@@ -4925,13 +4282,13 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RestorePlan);
+      return S.Array(__S(53));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          restorePlans: S.optional(RestorePlanList),
+          unreachable: S.optional(__S(11)),
+          restorePlans: S.optional(__S(136)),
         }),
       ).annotate({ identifier: "ListRestorePlansResponse" });
     case 2:
@@ -4953,13 +4310,13 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRestorePlansRestoresRequest",
       });
     case 3:
-      return S.Array(Restore);
+      return S.Array(__S(60));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          restores: S.optional(RestoreList),
+          unreachable: S.optional(__S(11)),
+          restores: S.optional(__S(139)),
         }),
       ).annotate({ identifier: "ListRestoresResponse" });
     case 5:
@@ -4981,12 +4338,12 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
       });
     case 6:
-      return S.Array(VolumeRestore);
+      return S.Array(__S(104));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          volumeRestores: S.optional(VolumeRestoreList),
+          volumeRestores: S.optional(__S(142)),
         }),
       ).annotate({
         identifier: "ListVolumeRestoresResponse",
@@ -5000,7 +4357,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BackupChannel.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5016,7 +4373,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(BackupPlan.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5032,7 +4389,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Backup.pipe(T.HttpBody())),
+          body: S.optional(__S(33).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5048,7 +4405,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(RestoreChannel.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5064,7 +4421,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RestorePlan.pipe(T.HttpBody())),
+          body: S.optional(__S(53).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5080,7 +4437,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Restore.pipe(T.HttpBody())),
+          body: S.optional(__S(60).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5094,7 +4451,7 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(79)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -5102,7 +4459,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5121,7 +4478,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5136,7 +4493,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5151,7 +4508,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5166,7 +4523,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5181,7 +4538,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5197,7 +4554,7 @@ function __c19(j: number): any {
         S.Struct({
           requestId: S.optional(S.String),
           name: S.optional(S.String),
-          tags: S.optional(StringMap),
+          tags: S.optional(__S(3)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetTagsRequest" });
@@ -5205,7 +4562,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SetTagsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(157).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5220,7 +4577,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          tags: S.optional(StringMap),
+          tags: S.optional(__S(3)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetTagsResponse" });
@@ -5232,7 +4589,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SetTagsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(157).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5246,7 +4603,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -5255,7 +4612,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5270,7 +4627,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5285,7 +4642,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5300,7 +4657,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5315,7 +4672,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5330,7 +4687,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5341,5 +4698,56 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
   }
 }

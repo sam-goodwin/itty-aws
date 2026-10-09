@@ -8,16 +8,13 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** IDs of items to be deleted */
 export type BulkDeleteRequestIdsList = Array<string>;
-const BulkDeleteRequestIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BulkDeleteRequestIdsList>;
-
 export interface BulkDeleteRequest {
   /** name of the datastore */
   datastore: string;
@@ -25,25 +22,16 @@ export interface BulkDeleteRequest {
   ids: BulkDeleteRequestIdsList;
   app_id?: string;
 }
-const BulkDeleteRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<BulkDeleteRequest>;
-
 /** attribute names and values of the items that failed to be processed */
 export type BulkDeleteResponseFailedItemsList = Array<string>;
-const BulkDeleteResponseFailedItemsList =
-  BulkDeleteRequestIdsList as any as S.Schema<BulkDeleteResponseFailedItemsList>;
-
 export interface BulkDeleteResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** attribute names and values of the items that failed to be processed */
   failed_items?: BulkDeleteResponseFailedItemsList;
 }
-const BulkDeleteResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BulkDeleteResponse>;
-
 /** items' ids */
 export type BulkGetRequestIdsList = Array<string>;
-const BulkGetRequestIdsList = BulkDeleteRequestIdsList as any as S.Schema<BulkGetRequestIdsList>;
-
 export interface BulkGetRequest {
   /** name of the datastore */
   datastore: string;
@@ -51,26 +39,11 @@ export interface BulkGetRequest {
   ids: BulkGetRequestIdsList;
   app_id?: string;
 }
-const BulkGetRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BulkGetRequest>;
-
 export type BulkGetResponseItemsItemMap = { [key: string]: unknown | undefined };
-const BulkGetResponseItemsItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BulkGetResponseItemsItemMap>;
-
 /** array of attribute names and values of each item */
 export type BulkGetResponseItemsList = Array<BulkGetResponseItemsItemMap>;
-const BulkGetResponseItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BulkGetResponseItemsList>;
-
 /** attribute names and values of the items that failed to be processed */
 export type BulkGetResponseFailedItemsList = Array<string>;
-const BulkGetResponseFailedItemsList =
-  BulkDeleteRequestIdsList as any as S.Schema<BulkGetResponseFailedItemsList>;
-
 export interface BulkGetResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -79,14 +52,9 @@ export interface BulkGetResponse {
   /** attribute names and values of the items that failed to be processed */
   failed_items?: BulkGetResponseFailedItemsList;
 }
-const BulkGetResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BulkGetResponse>;
-
 export type BulkPutRequestItemsItemMap = { [key: string]: unknown | undefined };
 /** attribute names and values of the items; limit of 25 */
 export type BulkPutRequestItemsList = Array<BulkPutRequestItemsItemMap>;
-const BulkPutRequestItemsList =
-  BulkGetResponseItemsList as any as S.Schema<BulkPutRequestItemsList>;
-
 export interface BulkPutRequest {
   /** name of the datastore */
   datastore: string;
@@ -94,14 +62,9 @@ export interface BulkPutRequest {
   items: BulkPutRequestItemsList;
   app_id?: string;
 }
-const BulkPutRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BulkPutRequest>;
-
 export type BulkPutResponseFailedItemsItemMap = { [key: string]: unknown | undefined };
 /** attribute names and values of the items that failed to be processed */
 export type BulkPutResponseFailedItemsList = Array<BulkPutResponseFailedItemsItemMap>;
-const BulkPutResponseFailedItemsList =
-  BulkGetResponseItemsList as any as S.Schema<BulkPutResponseFailedItemsList>;
-
 export interface BulkPutResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -110,47 +73,25 @@ export interface BulkPutResponse {
   /** attribute names and values of the items that failed to be processed */
   failed_items?: BulkPutResponseFailedItemsList;
 }
-const BulkPutResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<BulkPutResponse>;
-
 export interface ConnectionsOpenRequest {}
-const ConnectionsOpenRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ConnectionsOpenRequest>;
-
 export interface ConnectionsOpenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   /** The URL to connect to. */
   url: string;
 }
-const ConnectionsOpenResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ConnectionsOpenResponse>;
-
 export interface CreateManifestRequest {
   /** A JSON app manifest encoded as a string. This manifest **must** use a valid [app manifest schema - read our guide to creating one](/app-manifests/configuring-apps-with-app-manifests#fields). */
   manifest: string;
   /** When called with an org token, which specific team to create app on */
   team_id?: string;
 }
-const CreateManifestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateManifestRequest>;
-
 export interface CreateManifestResponseCredentials {
   client_id?: string;
   client_secret?: string | Redacted.Redacted<string>;
   verification_token?: string;
   signing_secret?: string | Redacted.Redacted<string>;
 }
-const CreateManifestResponseCredentials = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateManifestResponseCredentials>;
-
 export interface CreateManifestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -163,21 +104,10 @@ export interface CreateManifestResponse {
   team_domain?: string;
   app_token?: string;
 }
-const CreateManifestResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateManifestResponse>;
-
 /** A map of attributes referenced in expression */
 export type DatastoreCountRequestExpressionAttributesMap = { [key: string]: unknown | undefined };
-const DatastoreCountRequestExpressionAttributesMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreCountRequestExpressionAttributesMap>;
-
 /** A map of values referenced in expression */
 export type DatastoreCountRequestExpressionValuesMap = { [key: string]: unknown | undefined };
-const DatastoreCountRequestExpressionValuesMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreCountRequestExpressionValuesMap>;
-
 export interface DatastoreCountRequest {
   /** Name of the datastore */
   datastore: string;
@@ -190,11 +120,6 @@ export interface DatastoreCountRequest {
   /** Required if calling with user token */
   app_id?: string;
 }
-const DatastoreCountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DatastoreCountRequest>;
-
 export interface DatastoreCountResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -203,21 +128,10 @@ export interface DatastoreCountResponse {
   /** number of matching items */
   count?: number;
 }
-const DatastoreCountResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DatastoreCountResponse>;
-
 /** A map of attributes referenced in expression */
 export type DatastoreQueryRequestExpressionAttributesMap = { [key: string]: unknown | undefined };
-const DatastoreQueryRequestExpressionAttributesMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreQueryRequestExpressionAttributesMap>;
-
 /** A map of values referenced in expression */
 export type DatastoreQueryRequestExpressionValuesMap = { [key: string]: unknown | undefined };
-const DatastoreQueryRequestExpressionValuesMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<DatastoreQueryRequestExpressionValuesMap>;
-
 export interface DatastoreQueryRequest {
   /** Name of the datastore */
   datastore: string;
@@ -234,27 +148,14 @@ export interface DatastoreQueryRequest {
   /** The maximum number of items to evaluate for a given request (not necessarily the number of matching items). If the given request dataset size exceeds 1 MB before reaching the limit, the returned item count will likely be less than the limit. In any case where there are more items available beyond an imposed limit, a `next_cursor` value will be provided for use in subsequent requests. */
   limit?: number;
 }
-const DatastoreQueryRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DatastoreQueryRequest>;
-
 export type DatastoreQueryResponseItemsItemMap = { [key: string]: unknown | undefined };
 /** attribute names and values of the items */
 export type DatastoreQueryResponseItemsList = Array<DatastoreQueryResponseItemsItemMap>;
-const DatastoreQueryResponseItemsList =
-  BulkGetResponseItemsList as any as S.Schema<DatastoreQueryResponseItemsList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface DatastoreQueryResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-const DatastoreQueryResponseResponseMetadata = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DatastoreQueryResponseResponseMetadata>;
-
 export interface DatastoreQueryResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -265,11 +166,6 @@ export interface DatastoreQueryResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: DatastoreQueryResponseResponseMetadata;
 }
-const DatastoreQueryResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DatastoreQueryResponse>;
-
 export interface DeleteAuthExternalRequest {
   /** The id of the app whose tokens you want to delete */
   app_id?: string;
@@ -278,20 +174,10 @@ export interface DeleteAuthExternalRequest {
   /** The id of the token that you want to delete */
   external_token_id?: string;
 }
-const DeleteAuthExternalRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteAuthExternalRequest>;
-
 export interface DeleteAuthExternalResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DeleteAuthExternalResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteAuthExternalResponse>;
-
 export interface DeleteDatastoreRequest {
   /** name of the datastore */
   datastore: string;
@@ -299,76 +185,39 @@ export interface DeleteDatastoreRequest {
   id: string;
   app_id?: string;
 }
-const DeleteDatastoreRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteDatastoreRequest>;
-
 export interface DeleteDatastoreResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DeleteDatastoreResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteDatastoreResponse>;
-
 export interface DeleteManifestRequest {
   /** The ID of the app you want to delete. */
   app_id: string;
 }
-const DeleteManifestRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteManifestRequest>;
-
 export interface DeleteManifestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DeleteManifestResponse = DeleteDatastoreResponse as any as S.Schema<DeleteManifestResponse>;
-
 export interface ExportManifestRequest {
   /** The ID of the app whose configuration you want to export as a manifest. */
   app_id: string;
 }
-const ExportManifestRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ExportManifestRequest>;
-
 export interface ExportManifestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   manifest: unknown;
 }
-const ExportManifestResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ExportManifestResponse>;
-
 export interface GetAuthExternalRequest {
   /** The id of the token you want to get the token for */
   external_token_id: string;
   /** Always refresh existing token before returning even when the token has not expired */
   force_refresh?: boolean;
 }
-const GetAuthExternalRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetAuthExternalRequest>;
-
 export interface GetAuthExternalResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   external_token: string;
   token_response_extras: unknown;
 }
-const GetAuthExternalResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetAuthExternalResponse>;
-
 export interface GetDatastoreRequest {
   /** name of the datastore */
   datastore: string;
@@ -376,13 +225,8 @@ export interface GetDatastoreRequest {
   id: string;
   app_id?: string;
 }
-const GetDatastoreRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetDatastoreRequest>;
-
 /** attribute names and values of the item */
 export type GetDatastoreResponseItemMap = { [key: string]: unknown | undefined };
-const GetDatastoreResponseItemMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<GetDatastoreResponseItemMap>;
-
 export interface GetDatastoreResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -391,12 +235,8 @@ export interface GetDatastoreResponse {
   /** attribute names and values of the item */
   item?: GetDatastoreResponseItemMap;
 }
-const GetDatastoreResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetDatastoreResponse>;
-
 /** The direction you want the data sorted by (always by timestamp) */
 export type ListActivitiesRequestSortDirection = "asc" | "desc";
-const ListActivitiesRequestSortDirection = S.String;
-
 export interface ListActivitiesRequest {
   /** The id of the app to get activities from. */
   app_id: string;
@@ -425,17 +265,7 @@ export interface ListActivitiesRequest {
   /** The direction you want the data sorted by (always by timestamp) */
   sort_direction?: ListActivitiesRequestSortDirection | (string & {});
 }
-const ListActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListActivitiesRequest>;
-
 export type ListActivitiesResponseActivitiesList = Array<unknown>;
-const ListActivitiesResponseActivitiesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListActivitiesResponseActivitiesList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListActivitiesResponseResponseMetadata = DatastoreQueryResponseResponseMetadata;
 export interface ListActivitiesResponse {
@@ -445,21 +275,11 @@ export interface ListActivitiesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: DatastoreQueryResponseResponseMetadata;
 }
-const ListActivitiesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListActivitiesResponse>;
-
 export interface ListEventAuthorizationsRequest {
   event_context: string;
   cursor?: string;
   limit?: number;
 }
-const ListEventAuthorizationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListEventAuthorizationsRequest>;
-
 export interface ListEventAuthorizationsResponseAuthorizationsItem {
   enterprise_id: string | null;
   team_id: string | null;
@@ -467,18 +287,8 @@ export interface ListEventAuthorizationsResponseAuthorizationsItem {
   is_bot: boolean;
   is_enterprise_install: boolean;
 }
-const ListEventAuthorizationsResponseAuthorizationsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListEventAuthorizationsResponseAuthorizationsItem>;
-
 export type ListEventAuthorizationsResponseAuthorizationsList =
   Array<ListEventAuthorizationsResponseAuthorizationsItem>;
-const ListEventAuthorizationsResponseAuthorizationsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListEventAuthorizationsResponseAuthorizationsList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export type ListEventAuthorizationsResponseResponseMetadata =
   DatastoreQueryResponseResponseMetadata;
@@ -491,16 +301,8 @@ export interface ListEventAuthorizationsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: DatastoreQueryResponseResponseMetadata;
 }
-const ListEventAuthorizationsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListEventAuthorizationsResponse>;
-
 /** attribute names and values of the item */
 export type PutDatastoreRequestItemMap = { [key: string]: unknown | undefined };
-const PutDatastoreRequestItemMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<PutDatastoreRequestItemMap>;
-
 export interface PutDatastoreRequest {
   /** name of the datastore */
   datastore: string;
@@ -508,8 +310,6 @@ export interface PutDatastoreRequest {
   item: PutDatastoreRequestItemMap;
   app_id?: string;
 }
-const PutDatastoreRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PutDatastoreRequest>;
-
 /** attribute names and values of the item */
 export type PutDatastoreResponseItemMap = { [key: string]: unknown | undefined };
 export interface PutDatastoreResponse {
@@ -520,8 +320,6 @@ export interface PutDatastoreResponse {
   /** attribute names and values of the item */
   item?: PutDatastoreResponseItemMap;
 }
-const PutDatastoreResponse = GetDatastoreResponse as any as S.Schema<PutDatastoreResponse>;
-
 export interface SetIconRequest {
   /** The ID of the app whose icon you want to set. */
   app_id: string;
@@ -530,56 +328,35 @@ export interface SetIconRequest {
   /** URL of a publicly hosted image */
   url?: string;
 }
-const SetIconRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SetIconRequest>;
-
 export interface SetIconResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const SetIconResponse = DeleteDatastoreResponse as any as S.Schema<SetIconResponse>;
-
 /** Who can interact with the app. Use everyone to allow all members, or app_owner to restrict access to the app's owner. */
 export type SetManagedPermissionsRequestPermissions = "everyone" | "app_owner";
-const SetManagedPermissionsRequestPermissions = S.String;
-
 export interface SetManagedPermissionsRequest {
   /** Encoded ID of the managed app to configure */
   app_id: string;
   /** Who can interact with the app. Use everyone to allow all members, or app_owner to restrict access to the app's owner. */
   permissions: SetManagedPermissionsRequestPermissions | (string & {});
 }
-const SetManagedPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SetManagedPermissionsRequest>;
-
 export interface SetManagedPermissionsResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const SetManagedPermissionsResponse =
-  DeleteAuthExternalResponse as any as S.Schema<SetManagedPermissionsResponse>;
-
 export interface UninstallAppRequest {
   /** Issued when you created your application. */
   client_id: string;
   /** Issued when you created your application. */
   client_secret: string | Redacted.Redacted<string>;
 }
-const UninstallAppRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UninstallAppRequest>;
-
 export interface UninstallAppResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   uninstalled: boolean;
 }
-const UninstallAppResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UninstallAppResponse>;
-
 /** attribute names and values to be updated */
 export type UpdateDatastoreRequestItemMap = { [key: string]: unknown | undefined };
-const UpdateDatastoreRequestItemMap =
-  BulkGetResponseItemsItemMap as any as S.Schema<UpdateDatastoreRequestItemMap>;
-
 export interface UpdateDatastoreRequest {
   /** name of the datastore */
   datastore: string;
@@ -587,11 +364,6 @@ export interface UpdateDatastoreRequest {
   item: UpdateDatastoreRequestItemMap;
   app_id?: string;
 }
-const UpdateDatastoreRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateDatastoreRequest>;
-
 /** attribute names and values of the item, including those updated */
 export type UpdateDatastoreResponseItemMap = { [key: string]: unknown | undefined };
 export interface UpdateDatastoreResponse {
@@ -602,84 +374,44 @@ export interface UpdateDatastoreResponse {
   /** attribute names and values of the item, including those updated */
   item?: UpdateDatastoreResponseItemMap;
 }
-const UpdateDatastoreResponse = GetDatastoreResponse as any as S.Schema<UpdateDatastoreResponse>;
-
 export interface UpdateManifestRequest {
   /** A JSON app manifest encoded as a string. This manifest **must** use a valid [app manifest schema - read our guide to creating one](/app-manifests/configuring-apps-with-app-manifests#fields). As this method entirely _replaces_ any previous configuration, manifest must contain both unmodified and modified fields. */
   manifest: string;
   /** The ID of the app whose configuration you want to update. */
   app_id: string;
 }
-const UpdateManifestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateManifestRequest>;
-
 export interface UpdateManifestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   app_id: string;
   permissions_updated?: boolean;
 }
-const UpdateManifestResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateManifestResponse>;
-
 /** The status that should be set for the user. */
 export type UpdateUserConnectionRequestStatus = "connected" | "disconnected";
-const UpdateUserConnectionRequestStatus = S.String;
-
 export interface UpdateUserConnectionRequest {
   /** The ID of the user for the status update. */
   user_id: string;
   /** The status that should be set for the user. */
   status: UpdateUserConnectionRequestStatus | (string & {});
 }
-const UpdateUserConnectionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UpdateUserConnectionRequest>;
-
 export interface UpdateUserConnectionResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const UpdateUserConnectionResponse =
-  DeleteAuthExternalResponse as any as S.Schema<UpdateUserConnectionResponse>;
-
 export interface ValidateManifestRequest {
   /** The manifest to be validated. Will be validated against the [app manifest schema - read our guide](/app-manifests/configuring-apps-with-app-manifests#fields). */
   manifest: string;
   /** The ID of the app whose configuration you want to validate. */
   app_id?: string;
 }
-const ValidateManifestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ValidateManifestRequest>;
-
 export type ValidateManifestResponseErrorsList = Array<string>;
-const ValidateManifestResponseErrorsList =
-  BulkDeleteRequestIdsList as any as S.Schema<ValidateManifestResponseErrorsList>;
-
 export interface ValidateManifestResponseWarningsItem {
   code: string;
   message: string;
   pointer?: string;
 }
-const ValidateManifestResponseWarningsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ValidateManifestResponseWarningsItem>;
-
 /** Non-blocking warnings from app manifest validation. */
 export type ValidateManifestResponseWarningsList = Array<ValidateManifestResponseWarningsItem>;
-const ValidateManifestResponseWarningsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ValidateManifestResponseWarningsList>;
-
 export interface ValidateManifestResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -687,11 +419,6 @@ export interface ValidateManifestResponse {
   /** Non-blocking warnings from app manifest validation. */
   warnings?: ValidateManifestResponseWarningsList;
 }
-const ValidateManifestResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ValidateManifestResponse>;
-
 export type BulkDeleteError = SlackOpError;
 /** Delete items from a datastore in bulk Required scopes -- bot: `datastore:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `invalid_arguments` -- The request is missing required arguments. - `invalid_datastore` -- The provided datastore is invalid. - `invalid_auth` -- Not authorized to create datastore items. - `app_not_hosted` -- The app developer is not using a Slack-hosted environment. App datastores are exclusively available for Slack-hosted apps. - `datastore_error` -- Datastore error - `access_denied` -- Not authorized to access the datastore. - `invalid_app_id` -- The app_id provided is not valid for team and user. - `free_team_not_allowed` -- Datastore put not allowed on a free team. - `team_quota_exceeded` -- Total number of requests exceeded team quota. - `datastore_migration_in_progress` -- The datastore is currently unavailable due to an in progress Enterprise org migration. - `unknown_method` -- This method does not exist - `partial_failure` -- some items failed to be deleted - `restricted_plan_level` -- Feature is not available on this team See https://docs.slack.dev/reference/methods/apps.datastore.bulkDelete */
 export const bulkDelete: API.OperationMethod<
@@ -700,8 +427,8 @@ export const bulkDelete: API.OperationMethod<
   BulkDeleteError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteRequest,
-  output: BulkDeleteResponse,
+  input: __S(1) as any as S.Schema<BulkDeleteRequest>,
+  output: __S(2) as any as S.Schema<BulkDeleteResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -715,8 +442,8 @@ export const bulkGet: API.OperationMethod<
   BulkGetError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkGetRequest,
-  output: BulkGetResponse,
+  input: __S(3) as any as S.Schema<BulkGetRequest>,
+  output: __S(6) as any as S.Schema<BulkGetResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -730,8 +457,8 @@ export const bulkPut: API.OperationMethod<
   BulkPutError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkPutRequest,
-  output: BulkPutResponse,
+  input: __S(7) as any as S.Schema<BulkPutRequest>,
+  output: __S(8) as any as S.Schema<BulkPutResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -745,8 +472,8 @@ export const connectionsOpen: API.OperationMethod<
   ConnectionsOpenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsOpenRequest,
-  output: ConnectionsOpenResponse,
+  input: __S(9) as any as S.Schema<ConnectionsOpenRequest>,
+  output: __S(10) as any as S.Schema<ConnectionsOpenResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -760,8 +487,8 @@ export const createManifest: API.OperationMethod<
   CreateManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateManifestRequest,
-  output: CreateManifestResponse,
+  input: __S(11) as any as S.Schema<CreateManifestRequest>,
+  output: __S(13) as any as S.Schema<CreateManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -775,8 +502,8 @@ export const datastoreCount: API.OperationMethod<
   DatastoreCountError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatastoreCountRequest,
-  output: DatastoreCountResponse,
+  input: __S(14) as any as S.Schema<DatastoreCountRequest>,
+  output: __S(15) as any as S.Schema<DatastoreCountResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -792,8 +519,8 @@ export const datastoreQuery: API.PaginatedOperationMethod<
   DatastoreQueryResponseItemsItemMap
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: DatastoreQueryRequest,
-    output: DatastoreQueryResponse,
+    input: __S(16) as any as S.Schema<DatastoreQueryRequest>,
+    output: __S(18) as any as S.Schema<DatastoreQueryResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -816,8 +543,8 @@ export const deleteAuthExternal: API.OperationMethod<
   DeleteAuthExternalError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthExternalRequest,
-  output: DeleteAuthExternalResponse,
+  input: __S(19) as any as S.Schema<DeleteAuthExternalRequest>,
+  output: __S(20) as any as S.Schema<DeleteAuthExternalResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -831,8 +558,8 @@ export const deleteDatastore: API.OperationMethod<
   DeleteDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatastoreRequest,
-  output: DeleteDatastoreResponse,
+  input: __S(21) as any as S.Schema<DeleteDatastoreRequest>,
+  output: __S(22) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -846,8 +573,8 @@ export const deleteManifest: API.OperationMethod<
   DeleteManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManifestRequest,
-  output: DeleteManifestResponse,
+  input: __S(23) as any as S.Schema<DeleteManifestRequest>,
+  output: __S(22) as any as S.Schema<DeleteManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -861,8 +588,8 @@ export const exportManifest: API.OperationMethod<
   ExportManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportManifestRequest,
-  output: ExportManifestResponse,
+  input: __S(24) as any as S.Schema<ExportManifestRequest>,
+  output: __S(25) as any as S.Schema<ExportManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -876,8 +603,8 @@ export const getAuthExternal: API.OperationMethod<
   GetAuthExternalError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthExternalRequest,
-  output: GetAuthExternalResponse,
+  input: __S(26) as any as S.Schema<GetAuthExternalRequest>,
+  output: __S(27) as any as S.Schema<GetAuthExternalResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -891,8 +618,8 @@ export const getDatastore: API.OperationMethod<
   GetDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatastoreRequest,
-  output: GetDatastoreResponse,
+  input: __S(28) as any as S.Schema<GetDatastoreRequest>,
+  output: __S(29) as any as S.Schema<GetDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -908,8 +635,8 @@ export const listActivities: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListActivitiesRequest,
-    output: ListActivitiesResponse,
+    input: __S(30) as any as S.Schema<ListActivitiesRequest>,
+    output: __S(32) as any as S.Schema<ListActivitiesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -934,8 +661,8 @@ export const listEventAuthorizations: API.PaginatedOperationMethod<
   ListEventAuthorizationsResponseAuthorizationsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListEventAuthorizationsRequest,
-    output: ListEventAuthorizationsResponse,
+    input: __S(33) as any as S.Schema<ListEventAuthorizationsRequest>,
+    output: __S(36) as any as S.Schema<ListEventAuthorizationsResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -958,8 +685,8 @@ export const putDatastore: API.OperationMethod<
   PutDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDatastoreRequest,
-  output: PutDatastoreResponse,
+  input: __S(37) as any as S.Schema<PutDatastoreRequest>,
+  output: __S(29) as any as S.Schema<PutDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -973,8 +700,8 @@ export const setIcon: API.OperationMethod<
   SetIconError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIconRequest,
-  output: SetIconResponse,
+  input: __S(38) as any as S.Schema<SetIconRequest>,
+  output: __S(22) as any as S.Schema<SetIconResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -988,8 +715,8 @@ export const setManagedPermissions: API.OperationMethod<
   SetManagedPermissionsError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetManagedPermissionsRequest,
-  output: SetManagedPermissionsResponse,
+  input: __S(39) as any as S.Schema<SetManagedPermissionsRequest>,
+  output: __S(20) as any as S.Schema<SetManagedPermissionsResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -1003,8 +730,8 @@ export const uninstallApp: API.OperationMethod<
   UninstallAppError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UninstallAppRequest,
-  output: UninstallAppResponse,
+  input: __S(40) as any as S.Schema<UninstallAppRequest>,
+  output: __S(41) as any as S.Schema<UninstallAppResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -1018,8 +745,8 @@ export const updateDatastore: API.OperationMethod<
   UpdateDatastoreError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatastoreRequest,
-  output: UpdateDatastoreResponse,
+  input: __S(42) as any as S.Schema<UpdateDatastoreRequest>,
+  output: __S(29) as any as S.Schema<UpdateDatastoreResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -1033,8 +760,8 @@ export const updateManifest: API.OperationMethod<
   UpdateManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManifestRequest,
-  output: UpdateManifestResponse,
+  input: __S(43) as any as S.Schema<UpdateManifestRequest>,
+  output: __S(44) as any as S.Schema<UpdateManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -1048,8 +775,8 @@ export const updateUserConnection: API.OperationMethod<
   UpdateUserConnectionError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserConnectionRequest,
-  output: UpdateUserConnectionResponse,
+  input: __S(45) as any as S.Schema<UpdateUserConnectionRequest>,
+  output: __S(20) as any as S.Schema<UpdateUserConnectionResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -1063,8 +790,8 @@ export const validateManifest: API.OperationMethod<
   ValidateManifestError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateManifestRequest,
-  output: ValidateManifestResponse,
+  input: __S(46) as any as S.Schema<ValidateManifestRequest>,
+  output: __S(49) as any as S.Schema<ValidateManifestResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -1079,7 +806,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          ids: BulkDeleteRequestIdsList,
+          ids: __S(0),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkDelete", code: 200 })),
       ).annotate({ identifier: "BulkDeleteRequest" });
@@ -1087,34 +814,34 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          failed_items: S.optional(BulkDeleteResponseFailedItemsList),
+          failed_items: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "BulkDeleteResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          ids: BulkGetRequestIdsList,
+          ids: __S(0),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkGet", code: 200 })),
       ).annotate({ identifier: "BulkGetRequest" });
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(BulkGetResponseItemsItemMap);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          items: S.optional(BulkGetResponseItemsList),
-          failed_items: S.optional(BulkGetResponseFailedItemsList),
+          items: S.optional(__S(5)),
+          failed_items: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "BulkGetResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          items: BulkPutRequestItemsList,
+          items: __S(5),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.bulkPut", code: 200 })),
       ).annotate({ identifier: "BulkPutRequest" });
@@ -1127,7 +854,7 @@ function __c1(j: number): any {
         S.Struct({
           ok: S.Boolean,
           datastore: S.optional(S.String),
-          failed_items: S.optional(BulkPutResponseFailedItemsList),
+          failed_items: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "BulkPutResponse" });
     case 1:
@@ -1164,7 +891,7 @@ function __c1(j: number): any {
         S.Struct({
           ok: S.Boolean,
           app_id: S.String,
-          credentials: CreateManifestResponseCredentials,
+          credentials: __S(12),
           oauth_authorize_url: S.optional(S.String),
           team_id: S.optional(S.String),
           team_domain: S.optional(S.String),
@@ -1176,8 +903,8 @@ function __c1(j: number): any {
         S.Struct({
           datastore: S.String,
           expression: S.optional(S.String),
-          expression_attributes: S.optional(DatastoreCountRequestExpressionAttributesMap),
-          expression_values: S.optional(DatastoreCountRequestExpressionValuesMap),
+          expression_attributes: S.optional(__S(4)),
+          expression_values: S.optional(__S(4)),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.count", code: 200 })),
       ).annotate({ identifier: "DatastoreCountRequest" });
@@ -1198,8 +925,8 @@ function __c2(j: number): any {
         S.Struct({
           datastore: S.String,
           expression: S.optional(S.String),
-          expression_attributes: S.optional(DatastoreQueryRequestExpressionAttributesMap),
-          expression_values: S.optional(DatastoreQueryRequestExpressionValuesMap),
+          expression_attributes: S.optional(__S(4)),
+          expression_values: S.optional(__S(4)),
           app_id: S.optional(S.String),
           cursor: S.optional(S.String),
           limit: S.optional(S.Number),
@@ -1218,8 +945,8 @@ function __c2(j: number): any {
         S.Struct({
           ok: S.Boolean,
           datastore: S.optional(S.String),
-          items: DatastoreQueryResponseItemsList,
-          response_metadata: S.optional(DatastoreQueryResponseResponseMetadata),
+          items: __S(5),
+          response_metadata: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "DatastoreQueryResponse" });
     case 3:
@@ -1305,7 +1032,7 @@ function __c3(j: number): any {
         S.Struct({
           ok: S.Boolean,
           datastore: S.optional(S.String),
-          item: S.optional(GetDatastoreResponseItemMap),
+          item: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "GetDatastoreResponse" });
     case 6:
@@ -1323,7 +1050,7 @@ function __c3(j: number): any {
           trace_id: S.optional(S.String),
           min_date_created: S.optional(S.Number),
           max_date_created: S.optional(S.Number),
-          sort_direction: S.optional(ListActivitiesRequestSortDirection),
+          sort_direction: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1343,8 +1070,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          activities: ListActivitiesResponseActivitiesList,
-          response_metadata: S.optional(DatastoreQueryResponseResponseMetadata),
+          activities: __S(31),
+          response_metadata: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "ListActivitiesResponse" });
     case 1:
@@ -1370,14 +1097,14 @@ function __c4(j: number): any {
         identifier: "ListEventAuthorizationsResponseAuthorizationsItem",
       });
     case 3:
-      return S.Array(ListEventAuthorizationsResponseAuthorizationsItem);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           cursor_next: S.optional(S.String),
-          authorizations: ListEventAuthorizationsResponseAuthorizationsList,
-          response_metadata: S.optional(DatastoreQueryResponseResponseMetadata),
+          authorizations: __S(35),
+          response_metadata: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "ListEventAuthorizationsResponse",
@@ -1386,7 +1113,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          item: PutDatastoreRequestItemMap,
+          item: __S(4),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.put", code: 200 })),
       ).annotate({ identifier: "PutDatastoreRequest" });
@@ -1402,7 +1129,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           app_id: S.String,
-          permissions: SetManagedPermissionsRequestPermissions,
+          permissions: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/apps.managed.permissions.set", code: 200 })),
       ).annotate({
         identifier: "SetManagedPermissionsRequest",
@@ -1436,7 +1163,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           datastore: S.String,
-          item: UpdateDatastoreRequestItemMap,
+          item: __S(4),
           app_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/apps.datastore.update", code: 200 })),
       ).annotate({ identifier: "UpdateDatastoreRequest" });
@@ -1459,7 +1186,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user_id: S.String,
-          status: UpdateUserConnectionRequestStatus,
+          status: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/apps.user.connection.update", code: 200 })),
       ).annotate({
         identifier: "UpdateUserConnectionRequest",
@@ -1486,14 +1213,37 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ValidateManifestResponseWarningsItem);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          errors: ValidateManifestResponseErrorsList,
-          warnings: S.optional(ValidateManifestResponseWarningsList),
+          errors: __S(0),
+          warnings: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "ValidateManifestResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

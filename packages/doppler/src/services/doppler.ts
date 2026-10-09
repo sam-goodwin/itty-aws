@@ -14,6 +14,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DopplerOpError, DopplerOpContext };
 
@@ -50,21 +52,11 @@ export interface ActivityLogsListRequest {
   /** Items per page */
   per_page?: number;
 }
-const ActivityLogsListRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivityLogsListRequest>;
-
 export interface ActivityLogsListResponseLogsItemUser {
   email?: string;
   name?: string;
   profile_image_url?: string;
 }
-const ActivityLogsListResponseLogsItemUser = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ActivityLogsListResponseLogsItemUser>;
-
 export interface ActivityLogsListResponseLogsItem {
   id?: string;
   text?: string;
@@ -75,48 +67,21 @@ export interface ActivityLogsListResponseLogsItem {
   project?: string;
   user?: ActivityLogsListResponseLogsItemUser;
 }
-const ActivityLogsListResponseLogsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ActivityLogsListResponseLogsItem>;
-
 export type ActivityLogsListResponseLogsList = Array<ActivityLogsListResponseLogsItem>;
-const ActivityLogsListResponseLogsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ActivityLogsListResponseLogsList>;
-
 export interface ActivityLogsListResponse {
   page?: number;
   logs?: ActivityLogsListResponseLogsList;
 }
-const ActivityLogsListResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ActivityLogsListResponse>;
-
 export interface ActivityLogsRetrieveRequest {
   /** Unique identifier for the log object. */
   log: string;
 }
-const ActivityLogsRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ActivityLogsRetrieveRequest>;
-
 export type ActivityLogsRetrieveResponseLogUser = ActivityLogsListResponseLogsItemUser;
 export type ActivityLogsRetrieveResponseLog = ActivityLogsListResponseLogsItem;
 export interface ActivityLogsRetrieveResponse {
   log?: ActivityLogsListResponseLogsItem;
 }
-const ActivityLogsRetrieveResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ActivityLogsRetrieveResponse>;
-
 export type AddWebhookRequestAuthenticationType = "None" | "Bearer" | "Basic";
-const AddWebhookRequestAuthenticationType = S.String;
-
 export interface AddWebhookRequestAuthentication {
   type?: AddWebhookRequestAuthenticationType | (string & {});
   /** Used when type = Bearer */
@@ -126,18 +91,8 @@ export interface AddWebhookRequestAuthentication {
   /** Used when type = Basic */
   password?: string | Redacted.Redacted<string>;
 }
-const AddWebhookRequestAuthentication = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddWebhookRequestAuthentication>;
-
 /** Config slugs that the webhook should be enabled for */
 export type AddWebhookRequestEnableConfigsList = Array<string>;
-const AddWebhookRequestEnableConfigsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddWebhookRequestEnableConfigsList>;
-
 export interface AddWebhookRequest {
   /** The project's name */
   project?: string;
@@ -153,19 +108,13 @@ export interface AddWebhookRequest {
   /** The name of the webhook. */
   name?: string;
 }
-const AddWebhookRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AddWebhookRequest>;
-
 export type AddWebhookResponse = unknown;
-const AddWebhookResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AddWebhookResponse>;
-
 export interface AuditGetUserRequest {
   /** The ID of the workplace user */
   workplace_user_id: string;
   /** If true, the api will return more information if the user has e.g. SAML enabled and/or Multi Factor Auth enabled */
   settings?: boolean;
 }
-const AuditGetUserRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AuditGetUserRequest>;
-
 export interface AuditGetUserResponseWorkplaceUserUser {
   email?: string;
   name?: string;
@@ -175,49 +124,25 @@ export interface AuditGetUserResponseWorkplaceUserUser {
   thirdparty_sso_enabled?: boolean;
   saml_sso_enabled?: boolean;
 }
-const AuditGetUserResponseWorkplaceUserUser = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AuditGetUserResponseWorkplaceUserUser>;
-
 export interface AuditGetUserResponseWorkplaceUser {
   id?: string;
   access?: string;
   created_at?: string;
   user?: AuditGetUserResponseWorkplaceUserUser;
 }
-const AuditGetUserResponseWorkplaceUser = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AuditGetUserResponseWorkplaceUser>;
-
 export interface AuditGetUserResponse {
   workplace_user?: AuditGetUserResponseWorkplaceUser;
   success?: boolean;
 }
-const AuditGetUserResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AuditGetUserResponse>;
-
 export interface AuthMeRequest {}
-const AuthMeRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AuthMeRequest>;
-
 export interface AuthMeResponseWorkplace {
   slug?: string;
   name?: string;
 }
-const AuthMeResponseWorkplace = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AuthMeResponseWorkplace>;
-
 export interface AuthMeResponsePrincipal {
   type?: string;
   slug?: string;
 }
-const AuthMeResponsePrincipal = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AuthMeResponsePrincipal>;
-
 export interface AuthMeResponse {
   slug?: string;
   name?: string;
@@ -228,40 +153,24 @@ export interface AuthMeResponse {
   workplace?: AuthMeResponseWorkplace;
   principal?: AuthMeResponsePrincipal;
 }
-const AuthMeResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AuthMeResponse>;
-
 export interface AuthOidcRequest {
   /** the OIDC token string from your OIDC provider (likely CI) */
   token: string;
   /** Identity ID from the Doppler Dashboard */
   identity: string;
 }
-const AuthOidcRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AuthOidcRequest>;
-
 export interface AuthOidcResponse {
   token: string | Redacted.Redacted<string>;
   expires_at: string;
 }
-const AuthOidcResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AuthOidcResponse>;
-
 export interface AuthorizeCliAuthRequest {
   code: string | Redacted.Redacted<string>;
 }
-const AuthorizeCliAuthRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AuthorizeCliAuthRequest>;
-
 export interface AuthorizeCliAuthResponse {
   token: string | Redacted.Redacted<string>;
   name: string;
   dashboard_url: string;
 }
-const AuthorizeCliAuthResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AuthorizeCliAuthResponse>;
-
 export interface CloneConfigRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -270,8 +179,6 @@ export interface CloneConfigRequest {
   /** Name of the new branch config. */
   name: string;
 }
-const CloneConfigRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CloneConfigRequest>;
-
 export interface CloneConfigResponseConfig {
   name?: string;
   root?: boolean;
@@ -282,16 +189,9 @@ export interface CloneConfigResponseConfig {
   environment?: string;
   project?: string;
 }
-const CloneConfigResponseConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CloneConfigResponseConfig>;
-
 export interface CloneConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-const CloneConfigResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CloneConfigResponse>;
-
 export interface ConfigLogsGetRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -300,34 +200,17 @@ export interface ConfigLogsGetRequest {
   /** Unique identifier for the log object. */
   log: string;
 }
-const ConfigLogsGetRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ConfigLogsGetRequest>;
-
 export interface ConfigLogsGetResponseLogDiffItem {
   name?: string;
   added?: string;
 }
-const ConfigLogsGetResponseLogDiffItem = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ConfigLogsGetResponseLogDiffItem>;
-
 export type ConfigLogsGetResponseLogDiffList = Array<ConfigLogsGetResponseLogDiffItem>;
-const ConfigLogsGetResponseLogDiffList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ConfigLogsGetResponseLogDiffList>;
-
 export interface ConfigLogsGetResponseLogUser {
   email?: string;
   name?: string;
   username?: string;
   profile_image_url?: string;
 }
-const ConfigLogsGetResponseLogUser = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ConfigLogsGetResponseLogUser>;
-
 export interface ConfigLogsGetResponseLog {
   id?: string;
   text?: string;
@@ -340,19 +223,9 @@ export interface ConfigLogsGetResponseLog {
   project?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-const ConfigLogsGetResponseLog = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ConfigLogsGetResponseLog>;
-
 export interface ConfigLogsGetResponse {
   log?: ConfigLogsGetResponseLog;
 }
-const ConfigLogsGetResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ConfigLogsGetResponse>;
-
 export interface ConfigLogsListRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -363,11 +236,6 @@ export interface ConfigLogsListRequest {
   /** Items per page */
   per_page?: number;
 }
-const ConfigLogsListRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ConfigLogsListRequest>;
-
 export type ConfigLogsListResponseLogsItemUser = ConfigLogsGetResponseLogUser;
 export interface ConfigLogsListResponseLogsItem {
   id?: string;
@@ -380,26 +248,11 @@ export interface ConfigLogsListResponseLogsItem {
   project?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-const ConfigLogsListResponseLogsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ConfigLogsListResponseLogsItem>;
-
 export type ConfigLogsListResponseLogsList = Array<ConfigLogsListResponseLogsItem>;
-const ConfigLogsListResponseLogsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ConfigLogsListResponseLogsList>;
-
 export interface ConfigLogsListResponse {
   page?: number;
   logs?: ConfigLogsListResponseLogsList;
 }
-const ConfigLogsListResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ConfigLogsListResponse>;
-
 export interface ConfigLogsRollbackRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -408,26 +261,11 @@ export interface ConfigLogsRollbackRequest {
   /** Unique identifier for the log object. */
   log: string;
 }
-const ConfigLogsRollbackRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ConfigLogsRollbackRequest>;
-
 export interface ConfigLogsRollbackResponseLogDiffItem {
   name?: string;
   removed?: string;
 }
-const ConfigLogsRollbackResponseLogDiffItem = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ConfigLogsRollbackResponseLogDiffItem>;
-
 export type ConfigLogsRollbackResponseLogDiffList = Array<ConfigLogsRollbackResponseLogDiffItem>;
-const ConfigLogsRollbackResponseLogDiffList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ConfigLogsRollbackResponseLogDiffList>;
-
 export type ConfigLogsRollbackResponseLogUser = ConfigLogsGetResponseLogUser;
 export interface ConfigLogsRollbackResponseLog {
   id?: string;
@@ -441,55 +279,25 @@ export interface ConfigLogsRollbackResponseLog {
   project?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-const ConfigLogsRollbackResponseLog = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ConfigLogsRollbackResponseLog>;
-
 export interface ConfigLogsRollbackResponse {
   log?: ConfigLogsRollbackResponseLog;
 }
-const ConfigLogsRollbackResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ConfigLogsRollbackResponse>;
-
 export interface ConfigsAddTrustedIpRequest {
   project: string;
   config: string;
   /** An IP address or CIDR range */
   ip: string;
 }
-const ConfigsAddTrustedIpRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ConfigsAddTrustedIpRequest>;
-
 export interface ConfigsAddTrustedIpResponse {
   ip?: string;
 }
-const ConfigsAddTrustedIpResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ConfigsAddTrustedIpResponse>;
-
 export interface ConfigsDeleteTrustedIpRequest {
   project: string;
   config: string;
   /** An IP address or CIDR range */
   ip: string;
 }
-const ConfigsDeleteTrustedIpRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ConfigsDeleteTrustedIpRequest>;
-
 export interface ConfigsDeleteTrustedIpResponse {}
-const ConfigsDeleteTrustedIpResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ConfigsDeleteTrustedIpResponse>;
-
 export interface ConfigsInheritableRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -498,21 +306,8 @@ export interface ConfigsInheritableRequest {
   /** Boolean determining if the config is inheritable or not. */
   inheritable: boolean;
 }
-const ConfigsInheritableRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ConfigsInheritableRequest>;
-
 export type ConfigsInheritableResponseConfigInheritsList = Array<unknown>;
-const ConfigsInheritableResponseConfigInheritsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ConfigsInheritableResponseConfigInheritsList>;
-
 export type ConfigsInheritableResponseConfigInheritedByList = Array<unknown>;
-const ConfigsInheritableResponseConfigInheritedByList =
-  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ConfigsInheritableResponseConfigInheritedByList>;
-
 export interface ConfigsInheritableResponseConfig {
   name?: string;
   root?: boolean;
@@ -528,38 +323,18 @@ export interface ConfigsInheritableResponseConfig {
   project?: string;
   slug?: string;
 }
-const ConfigsInheritableResponseConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ConfigsInheritableResponseConfig>;
-
 export interface ConfigsInheritableResponse {
   config?: ConfigsInheritableResponseConfig;
   success?: boolean;
 }
-const ConfigsInheritableResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ConfigsInheritableResponse>;
-
 export interface ConfigsInheritsRequestInheritsItem {
   /** Unique identifier for the project object of the config being inherited. */
   project: string;
   /** Name of the config object being inherited. */
   config: string;
 }
-const ConfigsInheritsRequestInheritsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ConfigsInheritsRequestInheritsItem>;
-
 /** Array of objects indicating which configs are being inherited. */
 export type ConfigsInheritsRequestInheritsList = Array<ConfigsInheritsRequestInheritsItem>;
-const ConfigsInheritsRequestInheritsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ConfigsInheritsRequestInheritsList>;
-
 export interface ConfigsInheritsRequest {
   /** Unique identifier for the project object of the config doing the inheriting. */
   project: string;
@@ -568,31 +343,13 @@ export interface ConfigsInheritsRequest {
   /** Array of objects indicating which configs are being inherited. */
   inherits: ConfigsInheritsRequestInheritsList;
 }
-const ConfigsInheritsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ConfigsInheritsRequest>;
-
 export interface ConfigsInheritsResponseConfigInheritsItem {
   project?: string;
   config?: string;
 }
-const ConfigsInheritsResponseConfigInheritsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ConfigsInheritsResponseConfigInheritsItem>;
-
 export type ConfigsInheritsResponseConfigInheritsList =
   Array<ConfigsInheritsResponseConfigInheritsItem>;
-const ConfigsInheritsResponseConfigInheritsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ConfigsInheritsResponseConfigInheritsList>;
-
 export type ConfigsInheritsResponseConfigInheritedByList = Array<unknown>;
-const ConfigsInheritsResponseConfigInheritedByList =
-  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ConfigsInheritsResponseConfigInheritedByList>;
-
 export interface ConfigsInheritsResponseConfig {
   name?: string;
   root?: boolean;
@@ -608,71 +365,34 @@ export interface ConfigsInheritsResponseConfig {
   project?: string;
   slug?: string;
 }
-const ConfigsInheritsResponseConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ConfigsInheritsResponseConfig>;
-
 export interface ConfigsInheritsResponse {
   config?: ConfigsInheritsResponseConfig;
   success?: boolean;
 }
-const ConfigsInheritsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ConfigsInheritsResponse>;
-
 export interface ConfigsListTrustedIpsRequest {
   project: string;
   config: string;
 }
-const ConfigsListTrustedIpsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ConfigsListTrustedIpsRequest>;
-
 export type ConfigsListTrustedIpsResponseIpsList = Array<string>;
-const ConfigsListTrustedIpsResponseIpsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ConfigsListTrustedIpsResponseIpsList>;
-
 export interface ConfigsListTrustedIpsResponse {
   ips?: ConfigsListTrustedIpsResponseIpsList;
 }
-const ConfigsListTrustedIpsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ConfigsListTrustedIpsResponse>;
-
 export type CreateChangeRequestPolicyRequestRulesItemType =
   | '"RequiredReviewer"'
   | '"DisallowSelfReview"';
-const CreateChangeRequestPolicyRequestRulesItemType = S.String;
-
 /** The type of the subject. */
 export type CreateChangeRequestPolicyRequestRulesItemSubjectsItemType =
   | '"WorkplaceUser"'
   | '"Group"';
-const CreateChangeRequestPolicyRequestRulesItemSubjectsItemType = S.String;
-
 export interface CreateChangeRequestPolicyRequestRulesItemSubjectsItem {
   /** The type of the subject. */
   type: CreateChangeRequestPolicyRequestRulesItemSubjectsItemType | (string & {});
   /** The unique identifier of the subject. */
   slug: string;
 }
-const CreateChangeRequestPolicyRequestRulesItemSubjectsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateChangeRequestPolicyRequestRulesItemSubjectsItem>;
-
 /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
 export type CreateChangeRequestPolicyRequestRulesItemSubjectsList =
   Array<CreateChangeRequestPolicyRequestRulesItemSubjectsItem>;
-const CreateChangeRequestPolicyRequestRulesItemSubjectsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateChangeRequestPolicyRequestRulesItemSubjectsList>;
-
 export interface CreateChangeRequestPolicyRequestRulesItem {
   type: CreateChangeRequestPolicyRequestRulesItemType | (string & {});
   /** The number of required reviewers. Only applies to "RequiredReviewer" rules. */
@@ -680,19 +400,9 @@ export interface CreateChangeRequestPolicyRequestRulesItem {
   /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
   subjects?: CreateChangeRequestPolicyRequestRulesItemSubjectsList;
 }
-const CreateChangeRequestPolicyRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateChangeRequestPolicyRequestRulesItem>;
-
 /** A list of rules the policy enforces. */
 export type CreateChangeRequestPolicyRequestRulesList =
   Array<CreateChangeRequestPolicyRequestRulesItem>;
-const CreateChangeRequestPolicyRequestRulesList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateChangeRequestPolicyRequestRulesList>;
-
 /** Describes the which projects, environments, and configs the policy applies to. */
 export interface CreateChangeRequestPolicyRequestTargets {
   /** If true, the policy will apply to every config in the workplace. */
@@ -700,11 +410,6 @@ export interface CreateChangeRequestPolicyRequestTargets {
   /** A dictionary where the key is the project name, and the value contains information about what within the project the policy should apply to. */
   projects?: string;
 }
-const CreateChangeRequestPolicyRequestTargets = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateChangeRequestPolicyRequestTargets>;
-
 export interface CreateChangeRequestPolicyRequest {
   /** The name of the policy. */
   name: string;
@@ -715,24 +420,11 @@ export interface CreateChangeRequestPolicyRequest {
   /** Describes the which projects, environments, and configs the policy applies to. */
   targets: CreateChangeRequestPolicyRequestTargets;
 }
-const CreateChangeRequestPolicyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateChangeRequestPolicyRequest>;
-
 export type CreateChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-const CreateChangeRequestPolicyResponsePolicyRulesList =
-  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<CreateChangeRequestPolicyResponsePolicyRulesList>;
-
 export interface CreateChangeRequestPolicyResponsePolicyTargets {
   allProjects?: boolean;
   projects?: unknown;
 }
-const CreateChangeRequestPolicyResponsePolicyTargets = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateChangeRequestPolicyResponsePolicyTargets>;
-
 export interface CreateChangeRequestPolicyResponsePolicy {
   id?: string;
   name?: string;
@@ -740,20 +432,10 @@ export interface CreateChangeRequestPolicyResponsePolicy {
   rules?: CreateChangeRequestPolicyResponsePolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-const CreateChangeRequestPolicyResponsePolicy = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateChangeRequestPolicyResponsePolicy>;
-
 export interface CreateChangeRequestPolicyResponse {
   policy?: CreateChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-const CreateChangeRequestPolicyResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateChangeRequestPolicyResponse>;
-
 export interface CreateConfigRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -762,14 +444,10 @@ export interface CreateConfigRequest {
   /** Name of the new branch config. */
   name: string;
 }
-const CreateConfigRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CreateConfigRequest>;
-
 export type CreateConfigResponseConfig = CloneConfigResponseConfig;
 export interface CreateConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-const CreateConfigResponse = CloneConfigResponse as any as S.Schema<CreateConfigResponse>;
-
 export interface CreateEnvironmentRequest {
   /** The project's name */
   project: string;
@@ -778,11 +456,6 @@ export interface CreateEnvironmentRequest {
   /** Whether or not to enable personal configs for the environment */
   personal_configs?: boolean;
 }
-const CreateEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateEnvironmentRequest>;
-
 export interface CreateEnvironmentResponseEnvironment {
   id?: string;
   name?: string;
@@ -790,58 +463,26 @@ export interface CreateEnvironmentResponseEnvironment {
   created_at?: string;
   project?: string;
 }
-const CreateEnvironmentResponseEnvironment = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateEnvironmentResponseEnvironment>;
-
 export interface CreateEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-const CreateEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateEnvironmentResponse>;
-
 export interface CreateGroupRequest {
   name: string;
   /** Identifier of the project role */
   default_project_role?: string;
 }
-const CreateGroupRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreateGroupRequest>;
-
 export interface CreateGroupResponseGroupDefaultProjectRole {
   identifier?: string;
 }
-const CreateGroupResponseGroupDefaultProjectRole = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateGroupResponseGroupDefaultProjectRole>;
-
 export type CreateGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
 export interface CreateGroupResponseGroupProjectsItem {
   name?: string;
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-const CreateGroupResponseGroupProjectsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateGroupResponseGroupProjectsItem>;
-
 export type CreateGroupResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-const CreateGroupResponseGroupProjectsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateGroupResponseGroupProjectsList>;
-
 export type CreateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
 export type CreateGroupResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-const CreateGroupResponseGroupMembersList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateGroupResponseGroupMembersList>;
-
 export interface CreateGroupResponseGroup {
   name?: string;
   slug?: string;
@@ -850,16 +491,9 @@ export interface CreateGroupResponseGroup {
   projects?: CreateGroupResponseGroupProjectsList;
   members?: CreateGroupResponseGroupMembersList;
 }
-const CreateGroupResponseGroup = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateGroupResponseGroup>;
-
 export interface CreateGroupResponse {
   group?: CreateGroupResponseGroup;
 }
-const CreateGroupResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<CreateGroupResponse>;
-
 export interface CreateIntegrationRequest {
   /** The integration type */
   type: string;
@@ -868,11 +502,6 @@ export interface CreateIntegrationRequest {
   /** The authentication data for the integration */
   data?: unknown;
 }
-const CreateIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateIntegrationRequest>;
-
 export interface CreateIntegrationResponseIntegrationFederationCase0 {
   kind: string;
   /** The IAM principal to grant roles to. */
@@ -891,9 +520,6 @@ export interface CreateIntegrationResponseIntegrationFederationCase1 {
 export type CreateIntegrationResponseIntegrationFederation =
   | CreateIntegrationResponseIntegrationFederationCase0
   | CreateIntegrationResponseIntegrationFederationCase1;
-const CreateIntegrationResponseIntegrationFederation =
-  S.Unknown as any as S.Schema<CreateIntegrationResponseIntegrationFederation>;
-
 export interface CreateIntegrationResponseIntegration {
   slug?: string;
   name?: string;
@@ -901,26 +527,14 @@ export interface CreateIntegrationResponseIntegration {
   /** The keyless federation identity Doppler presents to your cloud, or null if this connection does not use keyless authentication. Grant this identity access after creating the connection. */
   federation?: CreateIntegrationResponseIntegrationFederation | null;
 }
-const CreateIntegrationResponseIntegration = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateIntegrationResponseIntegration>;
-
 export interface CreateIntegrationResponse {
   integration?: CreateIntegrationResponseIntegration;
 }
-const CreateIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateIntegrationResponse>;
-
 export type CreateIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
   | "invite"
   | "group"
   | "service_account";
-const CreateIntegrationsIntegrationMemberRequestType = S.String;
-
 export interface CreateIntegrationsIntegrationMemberRequest {
   /** Integration slug */
   integration: string;
@@ -928,18 +542,11 @@ export interface CreateIntegrationsIntegrationMemberRequest {
   slug: string;
   role: string;
 }
-const CreateIntegrationsIntegrationMemberRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateIntegrationsIntegrationMemberRequest>;
-
 export type CreateIntegrationsIntegrationMemberResponseMemberType =
   | "workplace_user"
   | "invite"
   | "group"
   | "service_account";
-const CreateIntegrationsIntegrationMemberResponseMemberType = S.String;
-
 export type CreateIntegrationsIntegrationMemberResponseMemberRole =
   CreateGroupResponseGroupDefaultProjectRole;
 export interface CreateIntegrationsIntegrationMemberResponseMember {
@@ -947,53 +554,26 @@ export interface CreateIntegrationsIntegrationMemberResponseMember {
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-const CreateIntegrationsIntegrationMemberResponseMember = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateIntegrationsIntegrationMemberResponseMember>;
-
 export interface CreateIntegrationsIntegrationMemberResponse {
   member?: CreateIntegrationsIntegrationMemberResponseMember;
 }
-const CreateIntegrationsIntegrationMemberResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateIntegrationsIntegrationMemberResponse>;
-
 export interface CreateProjectRequest {
   /** Name of project */
   name: string;
   /** Description of project */
   description?: string;
 }
-const CreateProjectRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateProjectRequest>;
-
 export interface CreateProjectResponseProject {
   id?: string;
   name?: string;
   description?: string;
   created_at?: string;
 }
-const CreateProjectResponseProject = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateProjectResponseProject>;
-
 export interface CreateProjectResponse {
   project?: CreateProjectResponseProject;
 }
-const CreateProjectResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CreateProjectResponse>;
-
 /** An option indicating if and how Doppler should attempt to import secrets from the sync destination */
 export type CreateSyncRequestImportOption = "none" | "prefer_doppler" | "prefer_integration";
-const CreateSyncRequestImportOption = S.String;
-
 export interface CreateSyncRequest {
   /** The project slug */
   project: string;
@@ -1008,8 +588,6 @@ export interface CreateSyncRequest {
   /** Causes sync creation to wait for the initial sync to complete before returning. */
   await_initial_sync?: boolean;
 }
-const CreateSyncRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<CreateSyncRequest>;
-
 export interface CreateSyncResponseSync {
   slug?: string;
   integration?: string;
@@ -1018,101 +596,47 @@ export interface CreateSyncResponseSync {
   enabled?: boolean;
   lastSyncedAt?: string;
 }
-const CreateSyncResponseSync = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CreateSyncResponseSync>;
-
 export interface CreateSyncResponse {
   sync?: CreateSyncResponseSync;
 }
-const CreateSyncResponse = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<CreateSyncResponse>;
-
 export interface DeleteChangeRequestPolicyRequest {
   /** The unique identifier of the policy. */
   slug: string;
 }
-const DeleteChangeRequestPolicyRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteChangeRequestPolicyRequest>;
-
 export interface DeleteChangeRequestPolicyResponse {
   success?: boolean;
 }
-const DeleteChangeRequestPolicyResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteChangeRequestPolicyResponse>;
-
 export interface DeleteConfigRequest {
   /** Unique identifier for the project. */
   project: string;
   /** Name of the config. */
   config: string;
 }
-const DeleteConfigRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<DeleteConfigRequest>;
-
 export interface DeleteConfigResponse {
   success?: boolean;
 }
-const DeleteConfigResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteConfigResponse>;
-
 export interface DeleteEnvironmentRequest {
   /** The project's name */
   project: string;
   /** The environment's slug */
   environment: string;
 }
-const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteEnvironmentRequest>;
-
 export interface DeleteEnvironmentResponse {}
-const DeleteEnvironmentResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteEnvironmentResponse>;
-
 export interface DeleteGroupRequest {
   /** The group's slug */
   slug: string;
 }
-const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DeleteGroupRequest>;
-
 export interface DeleteGroupResponse {}
-const DeleteGroupResponse = ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteGroupResponse>;
-
 export interface DeleteIntegrationRequest {
   /** The slug of the integration to delete */
   integration: string;
 }
-const DeleteIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteIntegrationRequest>;
-
 export type DeleteIntegrationResponse = unknown;
-const DeleteIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DeleteIntegrationResponse>;
-
 export interface DeleteProjectRequest {
   /** Unique identifier for the project object. */
   project: string;
 }
-const DeleteProjectRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DeleteProjectRequest>;
-
 export interface DeleteProjectResponse {}
-const DeleteProjectResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteProjectResponse>;
-
 export interface DeleteSecretRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -1121,12 +645,7 @@ export interface DeleteSecretRequest {
   /** Name of the secret. */
   name: string;
 }
-const DeleteSecretRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<DeleteSecretRequest>;
-
 export interface DeleteSecretResponse {}
-const DeleteSecretResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteSecretResponse>;
-
 export interface DeleteSyncRequest {
   /** The project slug */
   project: string;
@@ -1137,85 +656,39 @@ export interface DeleteSyncRequest {
   /** Whether or not to delete the synced data from the target integration */
   delete_from_target: boolean;
 }
-const DeleteSyncRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<DeleteSyncRequest>;
-
 export type DeleteSyncResponse = unknown;
-const DeleteSyncResponse = AddWebhookResponse as any as S.Schema<DeleteSyncResponse>;
-
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest {
   change_request_id: string;
   unit_id: string;
 }
-const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    5,
-  ) as any as S.Schema<DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest>;
-
 export type DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus =
   | "draft"
   | "open"
   | "canceled";
-const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus =
-  S.String;
-
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit {
   id?: string;
   status?: DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus;
 }
-const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    6,
-  ) as any as S.Schema<DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit>;
-
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse {
   unit?: DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit;
 }
-const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    7,
-  ) as any as S.Schema<DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>;
-
 export interface DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest {
   service_account: string;
   identity: string;
 }
-const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    0,
-  ) as any as S.Schema<DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>;
-
 export interface DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse {}
-const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    1,
-  ) as any as S.Schema<DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse>;
-
 export interface DeleteWebhookRequest {
   /** Webhook's slug */
   slug: string;
   /** The project's name */
   project?: string;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteWebhookRequest>;
-
 export type DeleteWebhookResponse = unknown;
-const DeleteWebhookResponse = AddWebhookResponse as any as S.Schema<DeleteWebhookResponse>;
-
 export type DeleteWorkplaceIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
   | "invite"
   | "group"
   | "service_account";
-const DeleteWorkplaceIntegrationsIntegrationMemberRequestType = S.String;
-
 export interface DeleteWorkplaceIntegrationsIntegrationMemberRequest {
   type: DeleteWorkplaceIntegrationsIntegrationMemberRequestType | (string & {});
   /** Member's slug */
@@ -1223,31 +696,14 @@ export interface DeleteWorkplaceIntegrationsIntegrationMemberRequest {
   /** Integration slug */
   integration: string;
 }
-const DeleteWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteWorkplaceIntegrationsIntegrationMemberRequest>;
-
 export interface DeleteWorkplaceIntegrationsIntegrationMemberResponse {}
-const DeleteWorkplaceIntegrationsIntegrationMemberResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteWorkplaceIntegrationsIntegrationMemberResponse>;
-
 export interface DisableWebhookRequest {
   /** Webhook's slug */
   slug: string;
   /** The project's name */
   project?: string;
 }
-const DisableWebhookRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DisableWebhookRequest>;
-
 export type DisableWebhookResponse = unknown;
-const DisableWebhookResponse = AddWebhookResponse as any as S.Schema<DisableWebhookResponse>;
-
 export type DownloadSecretRequestFormat =
   | "json"
   | "dotnet-json"
@@ -1255,8 +711,6 @@ export type DownloadSecretRequestFormat =
   | "yaml"
   | "docker"
   | "env-no-quotes";
-const DownloadSecretRequestFormat = S.String;
-
 export type DownloadSecretRequestNameTransformer =
   | "camel"
   | "upper-camel"
@@ -1265,8 +719,6 @@ export type DownloadSecretRequestNameTransformer =
   | "dotnet"
   | "dotnet-env"
   | "lower-kebab";
-const DownloadSecretRequestNameTransformer = S.String;
-
 export interface DownloadSecretRequest {
   /** Unique identifier for the project object. Not required if using a Service Token. */
   project?: string;
@@ -1282,23 +734,8 @@ export interface DownloadSecretRequest {
   /** Comma-delimited list of secrets to include in the download. Defaults to all secrets if left unspecified. */
   secrets?: string;
 }
-const DownloadSecretRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DownloadSecretRequest>;
-
 export type DownloadSecretResponseBodyMap = { [key: string]: string | undefined };
-const DownloadSecretResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DownloadSecretResponseBodyMap>;
-
 export type DownloadSecretResponse = DownloadSecretResponseBodyMap;
-const DownloadSecretResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DownloadSecretResponse>;
-
 export interface DynamicSecretsIssueLeaseRequest {
   /** The project where the dynamic secret is located */
   project: string;
@@ -1309,22 +746,12 @@ export interface DynamicSecretsIssueLeaseRequest {
   /** The number of seconds until this lease is automatically revoked */
   ttl_sec: number;
 }
-const DynamicSecretsIssueLeaseRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DynamicSecretsIssueLeaseRequest>;
-
 export interface DynamicSecretsIssueLeaseResponse {
   success?: boolean;
   id?: string;
   expires_at?: string;
   value?: unknown;
 }
-const DynamicSecretsIssueLeaseResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DynamicSecretsIssueLeaseResponse>;
-
 export interface DynamicSecretsRevokeLeaseRequest {
   /** The project where the dynamic secret is located */
   project: string;
@@ -1335,31 +762,16 @@ export interface DynamicSecretsRevokeLeaseRequest {
   /** The slug of the lease to revoke */
   slug: string;
 }
-const DynamicSecretsRevokeLeaseRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DynamicSecretsRevokeLeaseRequest>;
-
 export interface DynamicSecretsRevokeLeaseResponse {
   success?: boolean;
 }
-const DynamicSecretsRevokeLeaseResponse =
-  DeleteChangeRequestPolicyResponse as any as S.Schema<DynamicSecretsRevokeLeaseResponse>;
-
 export interface EnableWebhookRequest {
   /** Webhook's slug */
   slug: string;
   /** The project's name */
   project?: string;
 }
-const EnableWebhookRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<EnableWebhookRequest>;
-
 export type EnableWebhookResponse = unknown;
-const EnableWebhookResponse = AddWebhookResponse as any as S.Schema<EnableWebhookResponse>;
-
 export interface GenerateCliAuthRequest {
   hostname: string;
   /** CLI version in vMAJOR.MINOR.PATCH format. Other formats, including prerelease suffixes, are rejected. */
@@ -1367,30 +779,15 @@ export interface GenerateCliAuthRequest {
   os: string;
   arch: string;
 }
-const GenerateCliAuthRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GenerateCliAuthRequest>;
-
 export interface GenerateCliAuthResponse {
   code: string;
   polling_code: string | Redacted.Redacted<string>;
   auth_url: string;
 }
-const GenerateCliAuthResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GenerateCliAuthResponse>;
-
 export interface GetChangeRequestPolicyRequest {
   /** Unique id of the policy */
   slug: string;
 }
-const GetChangeRequestPolicyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetChangeRequestPolicyRequest>;
-
 export type GetChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
 export type GetChangeRequestPolicyResponsePolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
@@ -1405,49 +802,30 @@ export interface GetChangeRequestPolicyResponse {
   policy?: GetChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-const GetChangeRequestPolicyResponse =
-  CreateChangeRequestPolicyResponse as any as S.Schema<GetChangeRequestPolicyResponse>;
-
 export interface GetConfigRequest {
   /** Unique identifier for the project object. */
   project: string;
   /** Name of the config object. */
   config: string;
 }
-const GetConfigRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<GetConfigRequest>;
-
 export type GetConfigResponseConfig = CloneConfigResponseConfig;
 export interface GetConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-const GetConfigResponse = CloneConfigResponse as any as S.Schema<GetConfigResponse>;
-
 export interface GetEnvironmentRequest {
   /** The project's name */
   project: string;
   /** The environment's slug */
   environment: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetEnvironmentRequest>;
-
 export type GetEnvironmentResponseEnvironment = CreateEnvironmentResponseEnvironment;
 export interface GetEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-const GetEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetEnvironmentResponse>;
-
 export interface GetGroupRequest {
   /** The group's slug */
   slug: string;
 }
-const GetGroupRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetGroupRequest>;
-
 export type GetGroupResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
 export type GetGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
 export type GetGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
@@ -1465,17 +843,10 @@ export interface GetGroupResponseGroup {
 export interface GetGroupResponse {
   group?: GetGroupResponseGroup;
 }
-const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
-
 export interface GetIntegrationRequest {
   /** The integration slug */
   integration: string;
 }
-const GetIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetIntegrationRequest>;
-
 export type GetIntegrationResponseIntegrationFederationCase0 =
   CreateIntegrationResponseIntegrationFederationCase0;
 export type GetIntegrationResponseIntegrationFederationCase1 =
@@ -1484,9 +855,6 @@ export type GetIntegrationResponseIntegrationFederationCase1 =
 export type GetIntegrationResponseIntegrationFederation =
   | CreateIntegrationResponseIntegrationFederationCase0
   | CreateIntegrationResponseIntegrationFederationCase1;
-const GetIntegrationResponseIntegrationFederation =
-  S.Unknown as any as S.Schema<GetIntegrationResponseIntegrationFederation>;
-
 export interface GetIntegrationResponseIntegration {
   slug?: string;
   name?: string;
@@ -1494,30 +862,15 @@ export interface GetIntegrationResponseIntegration {
   /** The keyless federation identity Doppler presents to your cloud, or null if this connection does not use keyless authentication. Grant this identity access after creating the connection. */
   federation?: GetIntegrationResponseIntegrationFederation | null;
 }
-const GetIntegrationResponseIntegration = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetIntegrationResponseIntegration>;
-
 export interface GetIntegrationResponse {
   integration?: GetIntegrationResponseIntegration;
 }
-const GetIntegrationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetIntegrationResponse>;
-
 export interface GetIntegrationsIntegrationMembersRequest {
   /** Integration slug */
   integration: string;
   page?: number;
   per_page?: number;
 }
-const GetIntegrationsIntegrationMembersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetIntegrationsIntegrationMembersRequest>;
-
 export type GetIntegrationsIntegrationMembersResponseMembersItemType =
   | "workplace_user"
   | "invite"
@@ -1530,27 +883,12 @@ export interface GetIntegrationsIntegrationMembersResponseMembersItem {
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-const GetIntegrationsIntegrationMembersResponseMembersItem =
-  CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<GetIntegrationsIntegrationMembersResponseMembersItem>;
-
 export type GetIntegrationsIntegrationMembersResponseMembersList =
   Array<GetIntegrationsIntegrationMembersResponseMembersItem>;
-const GetIntegrationsIntegrationMembersResponseMembersList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetIntegrationsIntegrationMembersResponseMembersList>;
-
 export interface GetIntegrationsIntegrationMembersResponse {
   members?: GetIntegrationsIntegrationMembersResponseMembersList;
 }
-const GetIntegrationsIntegrationMembersResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetIntegrationsIntegrationMembersResponse>;
-
 export type GetMemberRequestMemberType = "workplace_user";
-const GetMemberRequestMemberType = S.String;
-
 export interface GetMemberRequest {
   /** The group's slug */
   group_slug: string;
@@ -1558,8 +896,6 @@ export interface GetMemberRequest {
   /** The member's slug */
   member_slug: string;
 }
-const GetMemberRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetMemberRequest>;
-
 export type GetMemberResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
 export type GetMemberResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
 export type GetMemberResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
@@ -1577,29 +913,19 @@ export interface GetMemberResponseGroup {
 export interface GetMemberResponse {
   group?: GetMemberResponseGroup;
 }
-const GetMemberResponse = CreateGroupResponse as any as S.Schema<GetMemberResponse>;
-
 export interface GetOptionsRequest {
   /** The integration slug */
   integration: string;
 }
-const GetOptionsRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<GetOptionsRequest>;
-
 export type GetOptionsResponse = unknown;
-const GetOptionsResponse = AddWebhookResponse as any as S.Schema<GetOptionsResponse>;
-
 export interface GetProjectRequest {
   /** Unique identifier for the project object. */
   project: string;
 }
-const GetProjectRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GetProjectRequest>;
-
 export type GetProjectResponseProject = CreateProjectResponseProject;
 export interface GetProjectResponse {
   project?: CreateProjectResponseProject;
 }
-const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
-
 export interface GetSecretRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -1608,19 +934,10 @@ export interface GetSecretRequest {
   /** Name of the secret. */
   name: string;
 }
-const GetSecretRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<GetSecretRequest>;
-
 export type GetSecretResponseValueRawVisibility = "unmasked" | "masked" | "restricted";
-const GetSecretResponseValueRawVisibility = S.String;
-
 export interface GetSecretResponseValueRawValueType {
   type?: string;
 }
-const GetSecretResponseValueRawValueType = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetSecretResponseValueRawValueType>;
-
 export type GetSecretResponseValueComputedValueType = GetSecretResponseValueRawValueType;
 export interface GetSecretResponseValue {
   raw?: string;
@@ -1631,17 +948,10 @@ export interface GetSecretResponseValue {
   rawValueType?: GetSecretResponseValueRawValueType;
   computedValueType?: GetSecretResponseValueRawValueType;
 }
-const GetSecretResponseValue = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetSecretResponseValue>;
-
 export interface GetSecretResponse {
   name?: string;
   value?: GetSecretResponseValue;
 }
-const GetSecretResponse = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<GetSecretResponse>;
-
 export interface GetSyncRequest {
   /** The project slug */
   project: string;
@@ -1650,20 +960,14 @@ export interface GetSyncRequest {
   /** The sync slug */
   sync: string;
 }
-const GetSyncRequest = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<GetSyncRequest>;
-
 export type GetSyncResponseSync = CreateSyncResponseSync;
 export interface GetSyncResponse {
   sync?: CreateSyncResponseSync;
 }
-const GetSyncResponse = CreateSyncResponse as any as S.Schema<GetSyncResponse>;
-
 export interface GetUserRequest {
   /** The slug of the workplace user */
   slug: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetUserRequest>;
-
 export type GetUserResponseWorkplaceUserUser = ConfigLogsGetResponseLogUser;
 export interface GetUserResponseWorkplaceUser {
   id?: string;
@@ -1671,38 +975,19 @@ export interface GetUserResponseWorkplaceUser {
   created_at?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-const GetUserResponseWorkplaceUser = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetUserResponseWorkplaceUser>;
-
 export interface GetUserResponse {
   workplace_user?: GetUserResponseWorkplaceUser;
   success?: boolean;
 }
-const GetUserResponse = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GetUserResponse>;
-
 export type GetV3workplacechangeRequestsRequestStatusList = Array<string>;
-const GetV3workplacechangeRequestsRequestStatusList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<GetV3workplacechangeRequestsRequestStatusList>;
-
 export interface GetV3workplacechangeRequestsRequest {
   page?: number;
   per_page?: number;
   status?: GetV3workplacechangeRequestsRequestStatusList;
   title?: string;
 }
-const GetV3workplacechangeRequestsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetV3workplacechangeRequestsRequest>;
-
 export type GetV3workplacechangeRequestsResponseBodyItemStatus = "open" | "closed";
-const GetV3workplacechangeRequestsResponseBodyItemStatus = S.String;
-
 export type GetV3workplacechangeRequestsResponseBodyItemCreatedByType = "User" | "ServiceAccount";
-const GetV3workplacechangeRequestsResponseBodyItemCreatedByType = S.String;
-
 export interface GetV3workplacechangeRequestsResponseBodyItemCreatedBy {
   slug?: string;
   type?: GetV3workplacechangeRequestsResponseBodyItemCreatedByType;
@@ -1710,18 +995,11 @@ export interface GetV3workplacechangeRequestsResponseBodyItemCreatedBy {
   isActive?: boolean;
   image?: string;
 }
-const GetV3workplacechangeRequestsResponseBodyItemCreatedBy = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemCreatedBy>;
-
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus =
   | "draft"
   | "open"
   | "applied"
   | "canceled";
-const GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus = S.String;
-
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetProject =
   AuthMeResponseWorkplace;
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetEnvironment =
@@ -1733,33 +1011,16 @@ export interface GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget {
   environment?: AuthMeResponseWorkplace;
   config?: AuthMeResponseWorkplace;
 }
-const GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget>;
-
 export interface GetV3workplacechangeRequestsResponseBodyItemUnitsItem {
   id?: string;
   status?: GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus;
   target?: GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget;
 }
-const GetV3workplacechangeRequestsResponseBodyItemUnitsItem = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemUnitsItem>;
-
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsList =
   Array<GetV3workplacechangeRequestsResponseBodyItemUnitsItem>;
-const GetV3workplacechangeRequestsResponseBodyItemUnitsList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemUnitsList>;
-
 export type GetV3workplacechangeRequestsResponseBodyItemAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-const GetV3workplacechangeRequestsResponseBodyItemAssignedItemType = S.String;
-
 export interface GetV3workplacechangeRequestsResponseBodyItemAssignedItem {
   type?: GetV3workplacechangeRequestsResponseBodyItemAssignedItemType;
   slug?: string;
@@ -1767,18 +1028,8 @@ export interface GetV3workplacechangeRequestsResponseBodyItemAssignedItem {
   email?: string;
   image?: string;
 }
-const GetV3workplacechangeRequestsResponseBodyItemAssignedItem = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemAssignedItem>;
-
 export type GetV3workplacechangeRequestsResponseBodyItemAssignedList =
   Array<GetV3workplacechangeRequestsResponseBodyItemAssignedItem>;
-const GetV3workplacechangeRequestsResponseBodyItemAssignedList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemAssignedList>;
-
 export interface GetV3workplacechangeRequestsResponseBodyItem {
   id?: string;
   title?: string;
@@ -1788,46 +1039,20 @@ export interface GetV3workplacechangeRequestsResponseBodyItem {
   units?: GetV3workplacechangeRequestsResponseBodyItemUnitsList;
   assigned?: GetV3workplacechangeRequestsResponseBodyItemAssignedList;
 }
-const GetV3workplacechangeRequestsResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItem>;
-
 export type GetV3workplacechangeRequestsResponseBodyList =
   Array<GetV3workplacechangeRequestsResponseBodyItem>;
-const GetV3workplacechangeRequestsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyList>;
-
 export type GetV3workplacechangeRequestsResponse = GetV3workplacechangeRequestsResponseBodyList;
-const GetV3workplacechangeRequestsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetV3workplacechangeRequestsResponse>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest {
   change_request_id: string;
   /** Whether to reveal secret values. If defined, any value except "false" is treated as true */
   reveal?: string;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestStatus =
   | "open"
   | "closed";
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestStatus =
-  S.String;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType =
   | "User"
   | "ServiceAccount";
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType =
-  S.String;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy {
   slug?: string;
   type?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType;
@@ -1835,20 +1060,11 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   isActive?: boolean;
   image?: string;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    0,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemStatus =
   | "draft"
   | "open"
   | "canceled"
   | "applied";
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemStatus =
-  S.String;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetProject =
   AuthMeResponseWorkplace;
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetEnvironment =
@@ -1860,24 +1076,12 @@ export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChan
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog {
   slug?: string;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    1,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedActivityLog =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied {
   configLog?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
   activityLog?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    2,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedByType =
   | "User"
   | "ServiceAccount";
@@ -1888,17 +1092,11 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   isActive?: boolean;
   image?: string;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy>;
-
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemVisType =
   | 0
   | 1
   | 2;
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemVisType =
-  S.Number;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem {
@@ -1910,20 +1108,8 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   valueType?: GetSecretResponseValueRawValueType;
   generationSettings?: unknown;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    3,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem>;
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    4,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem {
   id?: string;
   status?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemStatus;
@@ -1933,26 +1119,11 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   createdBy?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy;
   updates?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    5,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem>;
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    6,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType =
-  S.String;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem {
   type?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType;
   slug?: string;
@@ -1960,20 +1131,8 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   email?: string;
   image?: string;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    7,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem>;
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    0,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest {
   id?: string;
   title?: string;
@@ -1984,32 +1143,15 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   units?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList;
   assigned?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    1,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse {
   changeRequest?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest {
   change_request_id: string;
   unit_id: string;
   /** Whether to reveal secret values. If defined, any value except "false" is treated as true */
   reveal?: string;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    3,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitStatus =
   | "draft"
   | "open"
@@ -2066,69 +1208,30 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   createdBy?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy;
   updates?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse {
   unit?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit;
 }
-const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    4,
-  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest {
   service_account: string;
   page?: number;
   per_page?: number;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    5,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest>;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType =
   | "wildcard"
   | "exact";
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType =
-  S.String;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList =
   Array<string>;
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    6,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList>;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
   Array<string>;
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims {
   aud?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList;
   sub?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    7,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfig {
   discovery_url?: string;
   claims_type?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType;
   claims?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfig =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    0,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfig>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem {
   slug?: string;
   name?: string;
@@ -2138,51 +1241,21 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   created_at?: string;
   last_seen_at?: string;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    1,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem>;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList =
   Array<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem>;
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    2,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse {
   identities?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList;
   success?: boolean;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    3,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest {
   service_account: string;
   identity: string;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    4,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
   "oidc";
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
-  S.String;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
   | "exact"
   | "wildcard";
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
-  S.String;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
   Array<string>;
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
@@ -2191,20 +1264,11 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   aud?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList;
   sub?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig {
   discovery_url?: string;
   claims_type?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType;
   claims?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    5,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity {
   slug?: string;
   name?: string;
@@ -2214,46 +1278,22 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   created_at?: string;
   last_seen_at?: string;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    6,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse {
   identity?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity;
 }
-const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    7,
-  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse>;
-
 export interface GetWebhookRequest {
   /** Webhook's slug */
   slug: string;
   /** The project's name */
   project?: string;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<GetWebhookRequest>;
-
 export type GetWebhookResponseWebhookAuthenticationType = "None" | "Basic" | "Bearer";
-const GetWebhookResponseWebhookAuthenticationType = S.String;
-
 /** Webhook's authentication type */
 export interface GetWebhookResponseWebhookAuthentication {
   type?: GetWebhookResponseWebhookAuthenticationType;
 }
-const GetWebhookResponseWebhookAuthentication = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetWebhookResponseWebhookAuthentication>;
-
 /** The configs the webhook will trigger for */
 export type GetWebhookResponseWebhookEnabledConfigsList = Array<string>;
-const GetWebhookResponseWebhookEnabledConfigsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<GetWebhookResponseWebhookEnabledConfigsList>;
-
 export interface GetWebhookResponseWebhook {
   /** Webhook's slug */
   id?: string;
@@ -2272,45 +1312,24 @@ export interface GetWebhookResponseWebhook {
   /** Whether the requestor has permission to modify the webhook */
   canManage?: boolean;
 }
-const GetWebhookResponseWebhook = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetWebhookResponseWebhook>;
-
 export interface GetWebhookResponse {
   webhook: GetWebhookResponseWebhook;
 }
-const GetWebhookResponse = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<GetWebhookResponse>;
-
 export interface GetWorkplaceRequest {}
-const GetWorkplaceRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<GetWorkplaceRequest>;
-
 export interface GetWorkplaceResponseWorkplace {
   id?: string;
   name?: string;
   billing_email?: string;
   security_email?: string;
 }
-const GetWorkplaceResponseWorkplace = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetWorkplaceResponseWorkplace>;
-
 export interface GetWorkplaceResponse {
   workplace?: GetWorkplaceResponseWorkplace;
 }
-const GetWorkplaceResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetWorkplaceResponse>;
-
 export type GetWorkplaceIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
   | "invite"
   | "group"
   | "service_account";
-const GetWorkplaceIntegrationsIntegrationMemberRequestType = S.String;
-
 export interface GetWorkplaceIntegrationsIntegrationMemberRequest {
   type: GetWorkplaceIntegrationsIntegrationMemberRequestType | (string & {});
   /** Member's slug */
@@ -2318,11 +1337,6 @@ export interface GetWorkplaceIntegrationsIntegrationMemberRequest {
   /** Integration slug */
   integration: string;
 }
-const GetWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberRequest>;
-
 export type GetWorkplaceIntegrationsIntegrationMemberResponseMemberType =
   | "workplace_user"
   | "invite"
@@ -2338,29 +1352,14 @@ export interface GetWorkplaceIntegrationsIntegrationMemberResponseMember {
 export interface GetWorkplaceIntegrationsIntegrationMemberResponse {
   member?: GetWorkplaceIntegrationsIntegrationMemberResponseMember;
 }
-const GetWorkplaceIntegrationsIntegrationMemberResponse =
-  CreateIntegrationsIntegrationMemberResponse as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponse>;
-
 export type GroupsAddMemberRequestType = "workplace_user";
-const GroupsAddMemberRequestType = S.String;
-
 export interface GroupsAddMemberRequest {
   /** The group's slug */
   slug: string;
   type: GroupsAddMemberRequestType | (string & {});
 }
-const GroupsAddMemberRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GroupsAddMemberRequest>;
-
 export interface GroupsAddMemberResponse {}
-const GroupsAddMemberResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<GroupsAddMemberResponse>;
-
 export type GroupsDeleteMemberRequestType = "workplace_user";
-const GroupsDeleteMemberRequestType = S.String;
-
 export interface GroupsDeleteMemberRequest {
   /** The group's slug */
   slug: string;
@@ -2368,21 +1367,8 @@ export interface GroupsDeleteMemberRequest {
   /** The member's slug */
   member_slug: string;
 }
-const GroupsDeleteMemberRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GroupsDeleteMemberRequest>;
-
 export interface GroupsDeleteMemberResponse {}
-const GroupsDeleteMemberResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<GroupsDeleteMemberResponse>;
-
 export interface ListChangeRequestPoliciesRequest {}
-const ListChangeRequestPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListChangeRequestPoliciesRequest>;
-
 export type ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList = Array<unknown>;
 export type ListChangeRequestPoliciesResponsePoliciesItemPolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
@@ -2393,33 +1379,15 @@ export interface ListChangeRequestPoliciesResponsePoliciesItemPolicy {
   rules?: ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-const ListChangeRequestPoliciesResponsePoliciesItemPolicy =
-  CreateChangeRequestPolicyResponsePolicy as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicy>;
-
 export interface ListChangeRequestPoliciesResponsePoliciesItem {
   policy?: ListChangeRequestPoliciesResponsePoliciesItemPolicy;
 }
-const ListChangeRequestPoliciesResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItem>;
-
 export type ListChangeRequestPoliciesResponsePoliciesList =
   Array<ListChangeRequestPoliciesResponsePoliciesItem>;
-const ListChangeRequestPoliciesResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesList>;
-
 export interface ListChangeRequestPoliciesResponse {
   policies?: ListChangeRequestPoliciesResponsePoliciesList;
   success?: boolean;
 }
-const ListChangeRequestPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListChangeRequestPoliciesResponse>;
-
 export interface ListConfigsRequest {
   /** The project's name */
   project: string;
@@ -2430,52 +1398,26 @@ export interface ListConfigsRequest {
   /** Items per page */
   per_page?: number;
 }
-const ListConfigsRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ListConfigsRequest>;
-
 export type ListConfigsResponseConfigsItem = CloneConfigResponseConfig;
 export type ListConfigsResponseConfigsList = Array<CloneConfigResponseConfig>;
-const ListConfigsResponseConfigsList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListConfigsResponseConfigsList>;
-
 export interface ListConfigsResponse {
   page?: number;
   configs?: ListConfigsResponseConfigsList;
 }
-const ListConfigsResponse = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ListConfigsResponse>;
-
 export interface ListEnvironmentsRequest {
   /** The project's name */
   project: string;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListEnvironmentsRequest>;
-
 export type ListEnvironmentsResponseEnvironmentsItem = CreateEnvironmentResponseEnvironment;
 export type ListEnvironmentsResponseEnvironmentsList = Array<CreateEnvironmentResponseEnvironment>;
-const ListEnvironmentsResponseEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListEnvironmentsResponseEnvironmentsList>;
-
 export interface ListEnvironmentsResponse {
   environments?: ListEnvironmentsResponseEnvironmentsList;
   page?: number;
 }
-const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListEnvironmentsResponse>;
-
 export interface ListGroupsRequest {
   page?: number;
   per_page?: number;
 }
-const ListGroupsRequest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<ListGroupsRequest>;
-
 export type ListGroupsResponseGroupsItemDefaultProjectRole =
   CreateGroupResponseGroupDefaultProjectRole;
 export interface ListGroupsResponseGroupsItem {
@@ -2484,28 +1426,11 @@ export interface ListGroupsResponseGroupsItem {
   created_at?: string;
   default_project_role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-const ListGroupsResponseGroupsItem = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListGroupsResponseGroupsItem>;
-
 export type ListGroupsResponseGroupsList = Array<ListGroupsResponseGroupsItem>;
-const ListGroupsResponseGroupsList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ListGroupsResponseGroupsList>;
-
 export interface ListGroupsResponse {
   groups?: ListGroupsResponseGroupsList;
 }
-const ListGroupsResponse = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<ListGroupsResponse>;
-
 export interface ListIntegrationsRequest {}
-const ListIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListIntegrationsRequest>;
-
 export interface ListIntegrationsResponseIntegrationsItem {
   slug?: string;
   name?: string;
@@ -2513,37 +1438,17 @@ export interface ListIntegrationsResponseIntegrationsItem {
   kind?: string;
   enabled?: boolean;
 }
-const ListIntegrationsResponseIntegrationsItem = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListIntegrationsResponseIntegrationsItem>;
-
 export type ListIntegrationsResponseIntegrationsList =
   Array<ListIntegrationsResponseIntegrationsItem>;
-const ListIntegrationsResponseIntegrationsList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListIntegrationsResponseIntegrationsList>;
-
 export interface ListIntegrationsResponse {
   integrations?: ListIntegrationsResponseIntegrationsList;
   success?: boolean;
 }
-const ListIntegrationsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListIntegrationsResponse>;
-
 export interface ListInvitesRequest {
   page?: number;
   per_page?: number;
 }
-const ListInvitesRequest = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ListInvitesRequest>;
-
 export type ListInvitesResponseInvitesItemWorkplaceRolePermissionsList = Array<string>;
-const ListInvitesResponseInvitesItemWorkplaceRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ListInvitesResponseInvitesItemWorkplaceRolePermissionsList>;
-
 export interface ListInvitesResponseInvitesItemWorkplaceRole {
   name?: string;
   permissions?: ListInvitesResponseInvitesItemWorkplaceRolePermissionsList;
@@ -2552,41 +1457,22 @@ export interface ListInvitesResponseInvitesItemWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-const ListInvitesResponseInvitesItemWorkplaceRole = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListInvitesResponseInvitesItemWorkplaceRole>;
-
 export interface ListInvitesResponseInvitesItem {
   slug?: string;
   email?: string;
   created_at?: string;
   workplace_role?: ListInvitesResponseInvitesItemWorkplaceRole;
 }
-const ListInvitesResponseInvitesItem = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListInvitesResponseInvitesItem>;
-
 export type ListInvitesResponseInvitesList = Array<ListInvitesResponseInvitesItem>;
-const ListInvitesResponseInvitesList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListInvitesResponseInvitesList>;
-
 export interface ListInvitesResponse {
   invites?: ListInvitesResponseInvitesList;
 }
-const ListInvitesResponse = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ListInvitesResponse>;
-
 export interface ListProjectsRequest {
   /** Page number */
   page?: number;
   /** Items per page */
   per_page?: number;
 }
-const ListProjectsRequest = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ListProjectsRequest>;
-
 export interface ListProjectsResponseProjectsItem {
   id?: string;
   slug?: string;
@@ -2594,26 +1480,11 @@ export interface ListProjectsResponseProjectsItem {
   description?: string;
   created_at?: string;
 }
-const ListProjectsResponseProjectsItem = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListProjectsResponseProjectsItem>;
-
 export type ListProjectsResponseProjectsList = Array<ListProjectsResponseProjectsItem>;
-const ListProjectsResponseProjectsList = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListProjectsResponseProjectsList>;
-
 export interface ListProjectsResponse {
   page?: number;
   projects?: ListProjectsResponseProjectsList;
 }
-const ListProjectsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListProjectsResponse>;
-
 export interface ListSecretsRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -2628,11 +1499,7 @@ export interface ListSecretsRequest {
   /** Whether to include Doppler's auto-generated (managed) secrets */
   include_managed_secrets?: boolean;
 }
-const ListSecretsRequest = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<ListSecretsRequest>;
-
 export type ListSecretsResponseSecretsSTRIPERawVisibility = "unmasked" | "masked" | "restricted";
-const ListSecretsResponseSecretsSTRIPERawVisibility = S.String;
-
 export interface ListSecretsResponseSecretsSTRIPE {
   raw?: string;
   computed?: string;
@@ -2640,11 +1507,6 @@ export interface ListSecretsResponseSecretsSTRIPE {
   rawVisibility?: ListSecretsResponseSecretsSTRIPERawVisibility;
   computedVisibility?: string;
 }
-const ListSecretsResponseSecretsSTRIPE = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListSecretsResponseSecretsSTRIPE>;
-
 export type ListSecretsResponseSecretsALGOLIARawVisibility = "unmasked" | "masked" | "restricted";
 export interface ListSecretsResponseSecretsALGOLIA {
   raw?: string;
@@ -2653,9 +1515,6 @@ export interface ListSecretsResponseSecretsALGOLIA {
   rawVisibility?: ListSecretsResponseSecretsALGOLIARawVisibility;
   computedVisibility?: string;
 }
-const ListSecretsResponseSecretsALGOLIA =
-  ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsALGOLIA>;
-
 export type ListSecretsResponseSecretsDATABASERawVisibility = "unmasked" | "masked" | "restricted";
 export interface ListSecretsResponseSecretsDATABASE {
   raw?: string;
@@ -2664,9 +1523,6 @@ export interface ListSecretsResponseSecretsDATABASE {
   rawVisibility?: ListSecretsResponseSecretsDATABASERawVisibility;
   computedVisibility?: string;
 }
-const ListSecretsResponseSecretsDATABASE =
-  ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsDATABASE>;
-
 export type ListSecretsResponseSecretsUSERRawVisibility = "unmasked" | "masked" | "restricted";
 export interface ListSecretsResponseSecretsUSER {
   raw?: string;
@@ -2675,67 +1531,40 @@ export interface ListSecretsResponseSecretsUSER {
   rawVisibility?: ListSecretsResponseSecretsUSERRawVisibility;
   computedVisibility?: string;
 }
-const ListSecretsResponseSecretsUSER =
-  ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsUSER>;
-
 export interface ListSecretsResponseSecrets {
   STRIPE?: ListSecretsResponseSecretsSTRIPE;
   ALGOLIA?: ListSecretsResponseSecretsALGOLIA;
   DATABASE?: ListSecretsResponseSecretsDATABASE;
   USER?: ListSecretsResponseSecretsUSER;
 }
-const ListSecretsResponseSecrets = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListSecretsResponseSecrets>;
-
 export interface ListSecretsResponse {
   secrets?: ListSecretsResponseSecrets;
 }
-const ListSecretsResponse = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<ListSecretsResponse>;
-
 export interface ListUsersRequest {
   /** The page of users to fetch */
   page?: number;
   /** Filter results to only include the user with the provided email address */
   email?: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<ListUsersRequest>;
-
 export type ListUsersResponseWorkplaceUsersItemUser = ConfigLogsGetResponseLogUser;
 export type ListUsersResponseWorkplaceUsersItem = GetUserResponseWorkplaceUser;
 export type ListUsersResponseWorkplaceUsersList = Array<GetUserResponseWorkplaceUser>;
-const ListUsersResponseWorkplaceUsersList = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListUsersResponseWorkplaceUsersList>;
-
 export interface ListUsersResponse {
   workplace_users?: ListUsersResponseWorkplaceUsersList;
   page?: number;
   success?: boolean;
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<ListUsersResponse>;
-
 export interface ListWebhooksRequest {
   /** The project's name */
   project?: string;
 }
-const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<ListWebhooksRequest>;
-
 export type ListWebhooksResponseWebhooksItemAuthenticationType = "None" | "Basic" | "Bearer";
 /** Webhook's authentication type */
 export interface ListWebhooksResponseWebhooksItemAuthentication {
   type?: ListWebhooksResponseWebhooksItemAuthenticationType;
 }
-const ListWebhooksResponseWebhooksItemAuthentication =
-  GetWebhookResponseWebhookAuthentication as any as S.Schema<ListWebhooksResponseWebhooksItemAuthentication>;
-
 /** The configs the webhook will trigger for */
 export type ListWebhooksResponseWebhooksItemEnabledConfigsList = Array<string>;
-const ListWebhooksResponseWebhooksItemEnabledConfigsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ListWebhooksResponseWebhooksItemEnabledConfigsList>;
-
 export interface ListWebhooksResponseWebhooksItem {
   /** Webhook's slug */
   id?: string;
@@ -2754,39 +1583,20 @@ export interface ListWebhooksResponseWebhooksItem {
   /** Whether the requestor has permission to modify the webhook */
   canManage?: boolean;
 }
-const ListWebhooksResponseWebhooksItem = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListWebhooksResponseWebhooksItem>;
-
 export type ListWebhooksResponseWebhooksList = Array<ListWebhooksResponseWebhooksItem>;
-const ListWebhooksResponseWebhooksList = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListWebhooksResponseWebhooksList>;
-
 export interface ListWebhooksResponse {
   webhooks: ListWebhooksResponseWebhooksList;
 }
-const ListWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListWebhooksResponse>;
-
 export interface LockConfigRequest {
   /** Unique identifier for the project object. */
   project: string;
   /** Name of the config. */
   config: string;
 }
-const LockConfigRequest = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<LockConfigRequest>;
-
 export type LockConfigResponseConfig = CloneConfigResponseConfig;
 export interface LockConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-const LockConfigResponse = CloneConfigResponse as any as S.Schema<LockConfigResponse>;
-
 export type PostV3workplacechangeRequestsRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
@@ -2796,26 +1606,14 @@ export interface PostV3workplacechangeRequestsRequestAssignedItem {
 }
 export type PostV3workplacechangeRequestsRequestAssignedList =
   Array<PostV3workplacechangeRequestsRequestAssignedItem>;
-const PostV3workplacechangeRequestsRequestAssignedList =
-  CreateChangeRequestPolicyRequestRulesItemSubjectsList as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedList>;
-
 export type PostV3workplacechangeRequestsRequestUnitsItemAction = "create";
-const PostV3workplacechangeRequestsRequestUnitsItemAction = S.String;
-
 export interface PostV3workplacechangeRequestsRequestUnitsItemTarget {
   project: string;
   config: string;
 }
-const PostV3workplacechangeRequestsRequestUnitsItemTarget =
-  ConfigsInheritsRequestInheritsItem as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemTarget>;
-
 export type PostV3workplacechangeRequestsRequestUnitsItemStatus = "draft" | "open";
-const PostV3workplacechangeRequestsRequestUnitsItemStatus = S.String;
-
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType = 0 | 1 | 2;
-const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType = S.Number;
-
 export type PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
 export interface PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem {
@@ -2829,18 +1627,8 @@ export interface PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem {
   generationSettings?: unknown;
   originalSecretUpdateName?: string;
 }
-const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem>;
-
 export type PostV3workplacechangeRequestsRequestUnitsItemUpdatesList =
   Array<PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem>;
-const PostV3workplacechangeRequestsRequestUnitsItemUpdatesList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemUpdatesList>;
-
 export interface PostV3workplacechangeRequestsRequestUnitsItem {
   action: PostV3workplacechangeRequestsRequestUnitsItemAction | (string & {});
   id?: string;
@@ -2848,84 +1636,38 @@ export interface PostV3workplacechangeRequestsRequestUnitsItem {
   status?: PostV3workplacechangeRequestsRequestUnitsItemStatus | (string & {});
   updates: PostV3workplacechangeRequestsRequestUnitsItemUpdatesList;
 }
-const PostV3workplacechangeRequestsRequestUnitsItem = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItem>;
-
 export type PostV3workplacechangeRequestsRequestUnitsList =
   Array<PostV3workplacechangeRequestsRequestUnitsItem>;
-const PostV3workplacechangeRequestsRequestUnitsList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsList>;
-
 export interface PostV3workplacechangeRequestsRequest {
   title: string;
   description?: string;
   assigned: PostV3workplacechangeRequestsRequestAssignedList;
   units: PostV3workplacechangeRequestsRequestUnitsList;
 }
-const PostV3workplacechangeRequestsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<PostV3workplacechangeRequestsRequest>;
-
 export interface PostV3workplacechangeRequestsResponseChangeRequest {
   id?: string;
 }
-const PostV3workplacechangeRequestsResponseChangeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<PostV3workplacechangeRequestsResponseChangeRequest>;
-
 export interface PostV3workplacechangeRequestsResponse {
   changeRequest?: PostV3workplacechangeRequestsResponseChangeRequest;
 }
-const PostV3workplacechangeRequestsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<PostV3workplacechangeRequestsResponse>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType = S.String;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem {
   type:
     | PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType
     | (string & {});
   slug: string;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    0,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   Array<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    1,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest {
   change_request_id: string;
   assigned: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType = S.String;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem {
   type?: PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType;
   slug?: string;
@@ -2933,54 +1675,21 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdRespon
   email?: string;
   image?: string;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    3,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList =
   Array<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem>;
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList =
-  /*@__PURE__*/ __L.at(
-    __c29,
-    4,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse {
   assigned?: PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest {
   change_request_id: string;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse {
   success?: boolean;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest {
   change_request_id: string;
   unit_id: string;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    0,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnitStatus =
   "applied";
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit {
@@ -2990,19 +1699,10 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse =
-  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest {
   change_request_id: string;
   unit_id: string;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    1,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus =
   | "draft"
   | "open"
@@ -3014,16 +1714,10 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
-  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus =
   | "draft"
   | "open"
   | "canceled";
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus =
-  S.String;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest {
   change_request_id: string;
   unit_id: string;
@@ -3031,12 +1725,6 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
     | PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus
     | (string & {});
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    2,
-  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest>;
-
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnitStatus =
   | "draft"
   | "open"
@@ -3048,39 +1736,19 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit;
 }
-const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse =
-  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse>;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod =
   "oidc";
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod = S.String;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsType =
   | "exact"
   | "wildcard";
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsType =
-  S.String;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
   Array<string>;
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList>;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
   Array<string>;
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims {
   aud: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList;
   sub: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    3,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig {
   discovery_url: string;
   claims_type:
@@ -3088,12 +1756,6 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
     | (string & {});
   claims: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    4,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest {
   service_account: string;
   name: string;
@@ -3103,17 +1765,8 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
   config: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig;
   ttl_seconds: number;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    5,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest>;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod =
   "oidc";
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod =
-  S.String;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList =
   Array<string>;
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList =
@@ -3122,9 +1775,6 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
   aud?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList;
   sub?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig {
   discovery_url?: string;
   claims_type?: string;
@@ -3133,45 +1783,22 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
   created_at?: string;
   last_seen_at?: string;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    6,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity {
   slug?: string;
   name?: string;
   method?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod;
   config?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    7,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse {
   identity?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity;
 }
-const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse =
-  /*@__PURE__*/ __L.at(
-    __c31,
-    0,
-  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse>;
-
 export type ProjectMembersAddRequestType =
   | "workplace_user"
   | "group"
   | "invite"
   | "service_account";
-const ProjectMembersAddRequestType = S.String;
-
 /** Environment slugs to grant the member access to */
 export type ProjectMembersAddRequestEnvironmentsList = Array<string>;
-const ProjectMembersAddRequestEnvironmentsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersAddRequestEnvironmentsList>;
-
 export interface ProjectMembersAddRequest {
   /** Project slug */
   project: string;
@@ -3183,16 +1810,8 @@ export interface ProjectMembersAddRequest {
   /** Environment slugs to grant the member access to */
   environments?: ProjectMembersAddRequestEnvironmentsList;
 }
-const ProjectMembersAddRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ProjectMembersAddRequest>;
-
 export type ProjectMembersAddResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
 export type ProjectMembersAddResponseMemberEnvironmentsList = Array<string>;
-const ProjectMembersAddResponseMemberEnvironmentsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersAddResponseMemberEnvironmentsList>;
-
 export interface ProjectMembersAddResponseMember {
   type?: string;
   slug?: string;
@@ -3200,26 +1819,14 @@ export interface ProjectMembersAddResponseMember {
   access_all_environments?: boolean;
   environments?: ProjectMembersAddResponseMemberEnvironmentsList;
 }
-const ProjectMembersAddResponseMember = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ProjectMembersAddResponseMember>;
-
 export interface ProjectMembersAddResponse {
   member?: ProjectMembersAddResponseMember;
 }
-const ProjectMembersAddResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ProjectMembersAddResponse>;
-
 export type ProjectMembersDeleteRequestType =
   | "workplace_user"
   | "group"
   | "invite"
   | "service_account";
-const ProjectMembersDeleteRequestType = S.String;
-
 export interface ProjectMembersDeleteRequest {
   type: ProjectMembersDeleteRequestType | (string & {});
   /** Member's slug */
@@ -3227,22 +1834,12 @@ export interface ProjectMembersDeleteRequest {
   /** Project slug */
   project: string;
 }
-const ProjectMembersDeleteRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ProjectMembersDeleteRequest>;
-
 export interface ProjectMembersDeleteResponse {}
-const ProjectMembersDeleteResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<ProjectMembersDeleteResponse>;
-
 export type ProjectMembersGetRequestType =
   | "workplace_user"
   | "group"
   | "invite"
   | "service_account";
-const ProjectMembersGetRequestType = S.String;
-
 export interface ProjectMembersGetRequest {
   type: ProjectMembersGetRequestType | (string & {});
   /** Member's slug */
@@ -3250,11 +1847,6 @@ export interface ProjectMembersGetRequest {
   /** Project slug */
   project: string;
 }
-const ProjectMembersGetRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ProjectMembersGetRequest>;
-
 export type ProjectMembersGetResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
 export type ProjectMembersGetResponseMemberEnvironmentsList = Array<string>;
 export interface ProjectMembersGetResponseMember {
@@ -3267,20 +1859,12 @@ export interface ProjectMembersGetResponseMember {
 export interface ProjectMembersGetResponse {
   member?: ProjectMembersGetResponseMember;
 }
-const ProjectMembersGetResponse =
-  ProjectMembersAddResponse as any as S.Schema<ProjectMembersGetResponse>;
-
 export interface ProjectMembersListRequest {
   /** Project slug */
   project: string;
   page?: number;
   per_page?: number;
 }
-const ProjectMembersListRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ProjectMembersListRequest>;
-
 export type ProjectMembersListResponseMembersItemRole = CreateGroupResponseGroupDefaultProjectRole;
 export type ProjectMembersListResponseMembersItemEnvironmentsList = Array<string>;
 export interface ProjectMembersListResponseMembersItem {
@@ -3290,35 +1874,17 @@ export interface ProjectMembersListResponseMembersItem {
   access_all_environments?: boolean;
   environments?: ProjectMembersListResponseMembersItemEnvironmentsList;
 }
-const ProjectMembersListResponseMembersItem =
-  ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersListResponseMembersItem>;
-
 export type ProjectMembersListResponseMembersList = Array<ProjectMembersListResponseMembersItem>;
-const ProjectMembersListResponseMembersList = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ProjectMembersListResponseMembersList>;
-
 export interface ProjectMembersListResponse {
   members?: ProjectMembersListResponseMembersList;
 }
-const ProjectMembersListResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ProjectMembersListResponse>;
-
 export type ProjectMembersUpdateRequestType =
   | "workplace_user"
   | "group"
   | "invite"
   | "service_account";
-const ProjectMembersUpdateRequestType = S.String;
-
 /** Environment slugs to grant the member access to */
 export type ProjectMembersUpdateRequestEnvironmentsList = Array<string>;
-const ProjectMembersUpdateRequestEnvironmentsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersUpdateRequestEnvironmentsList>;
-
 export interface ProjectMembersUpdateRequest {
   type: ProjectMembersUpdateRequestType | (string & {});
   /** Member's slug */
@@ -3330,11 +1896,6 @@ export interface ProjectMembersUpdateRequest {
   /** Environment slugs to grant the member access to */
   environments?: ProjectMembersUpdateRequestEnvironmentsList;
 }
-const ProjectMembersUpdateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ProjectMembersUpdateRequest>;
-
 export type ProjectMembersUpdateResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
 export type ProjectMembersUpdateResponseMemberEnvironmentsList = Array<string>;
 export interface ProjectMembersUpdateResponseMember {
@@ -3347,29 +1908,15 @@ export interface ProjectMembersUpdateResponseMember {
 export interface ProjectMembersUpdateResponse {
   member?: ProjectMembersUpdateResponseMember;
 }
-const ProjectMembersUpdateResponse =
-  ProjectMembersAddResponse as any as S.Schema<ProjectMembersUpdateResponse>;
-
 /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
 export type ProjectRolesCreateRequestPermissionsList = Array<string>;
-const ProjectRolesCreateRequestPermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesCreateRequestPermissionsList>;
-
 export interface ProjectRolesCreateRequest {
   /** The name of the role */
   name: string;
   /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
   permissions: ProjectRolesCreateRequestPermissionsList;
 }
-const ProjectRolesCreateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ProjectRolesCreateRequest>;
-
 export type ProjectRolesCreateResponseRolePermissionsList = Array<string>;
-const ProjectRolesCreateResponseRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesCreateResponseRolePermissionsList>;
-
 export interface ProjectRolesCreateResponseRole {
   name?: string;
   permissions?: ProjectRolesCreateResponseRolePermissionsList;
@@ -3377,41 +1924,18 @@ export interface ProjectRolesCreateResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-const ProjectRolesCreateResponseRole = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ProjectRolesCreateResponseRole>;
-
 export interface ProjectRolesCreateResponse {
   role?: ProjectRolesCreateResponseRole;
 }
-const ProjectRolesCreateResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ProjectRolesCreateResponse>;
-
 export interface ProjectRolesDeleteRequest {
   /** The role's unique identifier */
   role: string;
 }
-const ProjectRolesDeleteRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ProjectRolesDeleteRequest>;
-
 export interface ProjectRolesDeleteResponse {}
-const ProjectRolesDeleteResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<ProjectRolesDeleteResponse>;
-
 export interface ProjectRolesGetRequest {
   /** The role's unique identifier */
   role: string;
 }
-const ProjectRolesGetRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ProjectRolesGetRequest>;
-
 export type ProjectRolesGetResponseRolePermissionsList = Array<string>;
 export interface ProjectRolesGetResponseRole {
   name?: string;
@@ -3420,23 +1944,10 @@ export interface ProjectRolesGetResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-const ProjectRolesGetResponseRole =
-  ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesGetResponseRole>;
-
 export interface ProjectRolesGetResponse {
   role?: ProjectRolesGetResponseRole;
 }
-const ProjectRolesGetResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<ProjectRolesGetResponse>;
-
 export interface ProjectRolesListRequest {}
-const ProjectRolesListRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ProjectRolesListRequest>;
-
 export type ProjectRolesListResponseRolesItemPermissionsList = Array<string>;
 export interface ProjectRolesListResponseRolesItem {
   name?: string;
@@ -3445,46 +1956,17 @@ export interface ProjectRolesListResponseRolesItem {
   created_at?: string;
   is_custom_role?: boolean;
 }
-const ProjectRolesListResponseRolesItem =
-  ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesListResponseRolesItem>;
-
 export type ProjectRolesListResponseRolesList = Array<ProjectRolesListResponseRolesItem>;
-const ProjectRolesListResponseRolesList = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<ProjectRolesListResponseRolesList>;
-
 export interface ProjectRolesListResponse {
   roles?: ProjectRolesListResponseRolesList;
 }
-const ProjectRolesListResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ProjectRolesListResponse>;
-
 export interface ProjectRolesListPermissionsRequest {}
-const ProjectRolesListPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<ProjectRolesListPermissionsRequest>;
-
 export type ProjectRolesListPermissionsResponsePermissionsList = Array<string>;
-const ProjectRolesListPermissionsResponsePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesListPermissionsResponsePermissionsList>;
-
 export interface ProjectRolesListPermissionsResponse {
   permissions?: ProjectRolesListPermissionsResponsePermissionsList;
 }
-const ProjectRolesListPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ProjectRolesListPermissionsResponse>;
-
 /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
 export type ProjectRolesUpdateRequestPermissionsList = Array<string>;
-const ProjectRolesUpdateRequestPermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesUpdateRequestPermissionsList>;
-
 export interface ProjectRolesUpdateRequest {
   /** The role's unique identifier */
   role: string;
@@ -3493,11 +1975,6 @@ export interface ProjectRolesUpdateRequest {
   /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
   permissions?: ProjectRolesUpdateRequestPermissionsList;
 }
-const ProjectRolesUpdateRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<ProjectRolesUpdateRequest>;
-
 export type ProjectRolesUpdateResponseRolePermissionsList = Array<string>;
 export interface ProjectRolesUpdateResponseRole {
   name?: string;
@@ -3509,9 +1986,6 @@ export interface ProjectRolesUpdateResponseRole {
 export interface ProjectRolesUpdateResponse {
   role?: ProjectRolesUpdateResponseRole;
 }
-const ProjectRolesUpdateResponse =
-  ProjectRolesCreateResponse as any as S.Schema<ProjectRolesUpdateResponse>;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
@@ -3523,33 +1997,20 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
 }
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
-  PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList>;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction =
   | "create"
   | "update";
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction = S.String;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemStatus =
   | "draft"
   | "open";
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemStatus = S.String;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction =
   | "upsert"
   | "delete";
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction =
-  S.String;
-
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemVisType =
   | 0
   | 1
   | 2;
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemVisType =
-  S.Number;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem {
@@ -3568,20 +2029,8 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
   generationSettings?: unknown;
   originalSecretUpdateName?: string;
 }
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    6,
-  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem>;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem>;
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    7,
-  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList>;
-
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem {
   action:
     | PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction
@@ -3592,20 +2041,8 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
     | (string & {});
   updates: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList;
 }
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    0,
-  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem>;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem>;
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    1,
-  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList>;
-
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest {
   change_request_id: string;
   title?: string;
@@ -3613,32 +2050,16 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
   assigned?: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList;
   units?: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList;
 }
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest =
   PostV3workplacechangeRequestsResponseChangeRequest;
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse {
   changeRequest?: PostV3workplacechangeRequestsResponseChangeRequest;
 }
-const PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestMethod =
   "oidc";
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestMethod =
-  S.String;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsType =
   | "exact"
   | "wildcard";
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsType =
-  S.String;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList =
   Array<string>;
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList =
@@ -3647,9 +2068,6 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   aud: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList;
   sub: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims =
-  PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig {
   discovery_url: string;
   claims_type:
@@ -3657,12 +2075,6 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
     | (string & {});
   claims: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    4,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest {
   service_account: string;
   identity: string;
@@ -3673,23 +2085,11 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   config: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig;
   ttl_seconds: number;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    5,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
   "oidc";
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
-  S.String;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
   | "wildcard"
   | "exact";
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
-  S.String;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
   Array<string>;
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
@@ -3698,20 +2098,11 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   aud?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList;
   sub?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig {
   discovery_url?: string;
   claims_type?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType;
   claims?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    6,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity {
   slug?: string;
   name?: string;
@@ -3721,21 +2112,9 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   created_at?: string;
   last_seen_at?: string;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    7,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse {
   identity?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity;
 }
-const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    0,
-  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse>;
-
 export interface RenameEnvironmentRequest {
   /** The project's name */
   project: string;
@@ -3748,37 +2127,18 @@ export interface RenameEnvironmentRequest {
   /** Whether or not to enable personal configs for the environment */
   personal_configs?: boolean;
 }
-const RenameEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<RenameEnvironmentRequest>;
-
 export type RenameEnvironmentResponseEnvironment = CreateEnvironmentResponseEnvironment;
 export interface RenameEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-const RenameEnvironmentResponse =
-  CreateEnvironmentResponse as any as S.Schema<RenameEnvironmentResponse>;
-
 export interface RevokeAuthRequest {
   token: string;
 }
-const RevokeAuthRequest = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<RevokeAuthRequest>;
-
 export interface RevokeAuthResponse {}
-const RevokeAuthResponse = ConfigsDeleteTrustedIpResponse as any as S.Schema<RevokeAuthResponse>;
-
 export interface RevokeCliAuthRequest {
   token: string | Redacted.Redacted<string>;
 }
-const RevokeCliAuthRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<RevokeCliAuthRequest>;
-
 export type RevokeCliAuthResponse = unknown;
-const RevokeCliAuthResponse = AddWebhookResponse as any as S.Schema<RevokeCliAuthResponse>;
-
 export interface SecretsNamesRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -3789,20 +2149,10 @@ export interface SecretsNamesRequest {
   /** Whether to include Doppler's auto-generated (managed) secrets */
   include_managed_secrets?: boolean;
 }
-const SecretsNamesRequest = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<SecretsNamesRequest>;
-
 export type SecretsNamesResponseNamesList = Array<string>;
-const SecretsNamesResponseNamesList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<SecretsNamesResponseNamesList>;
-
 export interface SecretsNamesResponse {
   names?: SecretsNamesResponseNamesList;
 }
-const SecretsNamesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<SecretsNamesResponse>;
-
 export interface SecretsUpdateNoteRequest {
   /** Unique identifier for the project object. */
   project?: string;
@@ -3811,25 +2161,12 @@ export interface SecretsUpdateNoteRequest {
   /** The note you want to set on the secret. This note will be applied to the specified secret in all environments. */
   note: string;
 }
-const SecretsUpdateNoteRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<SecretsUpdateNoteRequest>;
-
 export interface SecretsUpdateNoteResponse {
   secret?: string | Redacted.Redacted<string>;
   note?: string;
 }
-const SecretsUpdateNoteResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<SecretsUpdateNoteResponse>;
-
 /** Workplace permissions to grant */
 export type ServiceAccountsCreateRequestWorkplaceRolePermissionsList = Array<string>;
-const ServiceAccountsCreateRequestWorkplaceRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ServiceAccountsCreateRequestWorkplaceRolePermissionsList>;
-
 /** You may provide an identifier OR permissions, but not both */
 export interface ServiceAccountsCreateRequestWorkplaceRole {
   /** Identifier of an existing workplace role */
@@ -3837,25 +2174,12 @@ export interface ServiceAccountsCreateRequestWorkplaceRole {
   /** Workplace permissions to grant */
   permissions?: ServiceAccountsCreateRequestWorkplaceRolePermissionsList;
 }
-const ServiceAccountsCreateRequestWorkplaceRole = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<ServiceAccountsCreateRequestWorkplaceRole>;
-
 export interface ServiceAccountsCreateRequest {
   name?: string;
   /** You may provide an identifier OR permissions, but not both */
   workplace_role?: ServiceAccountsCreateRequestWorkplaceRole;
 }
-const ServiceAccountsCreateRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<ServiceAccountsCreateRequest>;
-
 export type ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList = Array<string>;
-const ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList>;
-
 export interface ServiceAccountsCreateResponseServiceAccountWorkplaceRole {
   name?: string;
   permissions?: ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList;
@@ -3864,56 +2188,25 @@ export interface ServiceAccountsCreateResponseServiceAccountWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-const ServiceAccountsCreateResponseServiceAccountWorkplaceRole = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<ServiceAccountsCreateResponseServiceAccountWorkplaceRole>;
-
 export interface ServiceAccountsCreateResponseServiceAccount {
   name?: string;
   slug?: string;
   created_at?: string;
   workplace_role?: ServiceAccountsCreateResponseServiceAccountWorkplaceRole;
 }
-const ServiceAccountsCreateResponseServiceAccount = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ServiceAccountsCreateResponseServiceAccount>;
-
 export interface ServiceAccountsCreateResponse {
   service_account?: ServiceAccountsCreateResponseServiceAccount;
 }
-const ServiceAccountsCreateResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<ServiceAccountsCreateResponse>;
-
 export interface ServiceAccountsDeleteRequest {
   /** Slug of the service account */
   slug: string;
 }
-const ServiceAccountsDeleteRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<ServiceAccountsDeleteRequest>;
-
 export interface ServiceAccountsDeleteResponse {}
-const ServiceAccountsDeleteResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<ServiceAccountsDeleteResponse>;
-
 export interface ServiceAccountsGetRequest {
   /** Slug of the service account */
   slug: string;
 }
-const ServiceAccountsGetRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<ServiceAccountsGetRequest>;
-
 export type ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList = Array<string>;
-const ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList>;
-
 export interface ServiceAccountsGetResponseServiceAccountWorkplaceRole {
   name?: string;
   permissions?: ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList;
@@ -3922,39 +2215,19 @@ export interface ServiceAccountsGetResponseServiceAccountWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-const ServiceAccountsGetResponseServiceAccountWorkplaceRole = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ServiceAccountsGetResponseServiceAccountWorkplaceRole>;
-
 export interface ServiceAccountsGetResponseServiceAccount {
   name?: string;
   slug?: string;
   created_at?: string;
   workplace_role?: ServiceAccountsGetResponseServiceAccountWorkplaceRole;
 }
-const ServiceAccountsGetResponseServiceAccount = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<ServiceAccountsGetResponseServiceAccount>;
-
 export interface ServiceAccountsGetResponse {
   service_account?: ServiceAccountsGetResponseServiceAccount;
 }
-const ServiceAccountsGetResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<ServiceAccountsGetResponse>;
-
 export interface ServiceAccountsListRequest {
   page?: number;
   per_page?: number;
 }
-const ServiceAccountsListRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ServiceAccountsListRequest>;
-
 export type ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList =
   Array<string>;
 export interface ServiceAccountsListResponseServiceAccountsItemWorkplaceRole {
@@ -3971,24 +2244,11 @@ export interface ServiceAccountsListResponseServiceAccountsItem {
   created_at?: string;
   workplace_role?: ServiceAccountsListResponseServiceAccountsItemWorkplaceRole;
 }
-const ServiceAccountsListResponseServiceAccountsItem =
-  ServiceAccountsCreateResponseServiceAccount as any as S.Schema<ServiceAccountsListResponseServiceAccountsItem>;
-
 export type ServiceAccountsListResponseServiceAccountsList =
   Array<ServiceAccountsListResponseServiceAccountsItem>;
-const ServiceAccountsListResponseServiceAccountsList = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<ServiceAccountsListResponseServiceAccountsList>;
-
 export interface ServiceAccountsListResponse {
   service_accounts?: ServiceAccountsListResponseServiceAccountsList;
 }
-const ServiceAccountsListResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<ServiceAccountsListResponse>;
-
 /** Workplace permissions to grant */
 export type ServiceAccountsUpdateRequestWorkplaceRolePermissionsList = Array<string>;
 /** You may provide an identifier OR permissions, but not both */
@@ -3998,9 +2258,6 @@ export interface ServiceAccountsUpdateRequestWorkplaceRole {
   /** Workplace permissions to grant */
   permissions?: ServiceAccountsUpdateRequestWorkplaceRolePermissionsList;
 }
-const ServiceAccountsUpdateRequestWorkplaceRole =
-  ServiceAccountsCreateRequestWorkplaceRole as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRole>;
-
 export interface ServiceAccountsUpdateRequest {
   /** Slug of the service account */
   slug: string;
@@ -4008,19 +2265,8 @@ export interface ServiceAccountsUpdateRequest {
   /** You may provide an identifier OR permissions, but not both */
   workplace_role?: ServiceAccountsUpdateRequestWorkplaceRole;
 }
-const ServiceAccountsUpdateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<ServiceAccountsUpdateRequest>;
-
 export type ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList =
   Array<unknown>;
-const ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList =
-  /*@__PURE__*/ __L.at(
-    __c37,
-    6,
-  ) as any as S.Schema<ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList>;
-
 export interface ServiceAccountsUpdateResponseServiceAccountWorkplaceRole {
   name?: string;
   permissions?: ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList;
@@ -4029,30 +2275,15 @@ export interface ServiceAccountsUpdateResponseServiceAccountWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-const ServiceAccountsUpdateResponseServiceAccountWorkplaceRole = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<ServiceAccountsUpdateResponseServiceAccountWorkplaceRole>;
-
 export interface ServiceAccountsUpdateResponseServiceAccount {
   name?: string;
   slug?: string;
   created_at?: string;
   workplace_role?: ServiceAccountsUpdateResponseServiceAccountWorkplaceRole;
 }
-const ServiceAccountsUpdateResponseServiceAccount = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<ServiceAccountsUpdateResponseServiceAccount>;
-
 export interface ServiceAccountsUpdateResponse {
   service_account?: ServiceAccountsUpdateResponseServiceAccount;
 }
-const ServiceAccountsUpdateResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<ServiceAccountsUpdateResponse>;
-
 export interface ServiceAccountTokensCreateRequest {
   /** Slug of the service account */
   service_account: string;
@@ -4061,11 +2292,6 @@ export interface ServiceAccountTokensCreateRequest {
   /** The datetime at which the API token should expire. If not provided, the API token will remain vaild indefinitely unless manually revoked */
   expires_at?: string;
 }
-const ServiceAccountTokensCreateRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<ServiceAccountTokensCreateRequest>;
-
 export interface ServiceAccountTokensCreateResponseApiToken {
   name?: string;
   slug?: string;
@@ -4073,47 +2299,24 @@ export interface ServiceAccountTokensCreateResponseApiToken {
   last_seen_at?: unknown;
   expires_at?: string;
 }
-const ServiceAccountTokensCreateResponseApiToken = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<ServiceAccountTokensCreateResponseApiToken>;
-
 export interface ServiceAccountTokensCreateResponse {
   api_token?: ServiceAccountTokensCreateResponseApiToken;
   api_key?: string | Redacted.Redacted<string>;
   success?: boolean;
 }
-const ServiceAccountTokensCreateResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<ServiceAccountTokensCreateResponse>;
-
 export interface ServiceAccountTokensDeleteRequest {
   /** Slug of the service account */
   service_account: string;
   /** Slug of the API token */
   api_token: string;
 }
-const ServiceAccountTokensDeleteRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<ServiceAccountTokensDeleteRequest>;
-
 export interface ServiceAccountTokensDeleteResponse {}
-const ServiceAccountTokensDeleteResponse =
-  DeleteWorkplaceIntegrationsIntegrationMemberResponse as any as S.Schema<ServiceAccountTokensDeleteResponse>;
-
 export interface ServiceAccountTokensGetRequest {
   /** Slug of the service account */
   service_account: string;
   /** Slug of the API token */
   api_token: string;
 }
-const ServiceAccountTokensGetRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<ServiceAccountTokensGetRequest>;
-
 export interface ServiceAccountTokensGetResponseApiToken {
   name?: string;
   slug?: string;
@@ -4121,52 +2324,25 @@ export interface ServiceAccountTokensGetResponseApiToken {
   last_seen_at?: string;
   expires_at?: string;
 }
-const ServiceAccountTokensGetResponseApiToken = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<ServiceAccountTokensGetResponseApiToken>;
-
 export interface ServiceAccountTokensGetResponse {
   api_token?: ServiceAccountTokensGetResponseApiToken;
   success?: boolean;
 }
-const ServiceAccountTokensGetResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<ServiceAccountTokensGetResponse>;
-
 export interface ServiceAccountTokensListRequest {
   /** Slug of the service account */
   service_account: string;
   page?: number;
   per_page?: number;
 }
-const ServiceAccountTokensListRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<ServiceAccountTokensListRequest>;
-
 export type ServiceAccountTokensListResponseApiTokensItem = ServiceAccountTokensGetResponseApiToken;
 export type ServiceAccountTokensListResponseApiTokensList =
   Array<ServiceAccountTokensGetResponseApiToken>;
-const ServiceAccountTokensListResponseApiTokensList = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<ServiceAccountTokensListResponseApiTokensList>;
-
 export interface ServiceAccountTokensListResponse {
   api_tokens?: ServiceAccountTokensListResponseApiTokensList;
   success?: boolean;
 }
-const ServiceAccountTokensListResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<ServiceAccountTokensListResponse>;
-
 /** Token's capabilities. */
 export type ServiceTokensCreateRequestAccess = "read" | "read/write";
-const ServiceTokensCreateRequestAccess = S.String;
-
 export interface ServiceTokensCreateRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -4179,11 +2355,6 @@ export interface ServiceTokensCreateRequest {
   /** Token's capabilities. */
   access?: ServiceTokensCreateRequestAccess | (string & {});
 }
-const ServiceTokensCreateRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<ServiceTokensCreateRequest>;
-
 export interface ServiceTokensCreateResponseToken {
   name?: string;
   slug?: string;
@@ -4195,19 +2366,9 @@ export interface ServiceTokensCreateResponseToken {
   expires_at?: unknown;
   access?: string;
 }
-const ServiceTokensCreateResponseToken = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<ServiceTokensCreateResponseToken>;
-
 export interface ServiceTokensCreateResponse {
   token?: ServiceTokensCreateResponseToken;
 }
-const ServiceTokensCreateResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<ServiceTokensCreateResponse>;
-
 export interface ServiceTokensDeleteRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -4218,28 +2379,15 @@ export interface ServiceTokensDeleteRequest {
   /** The token value. */
   token?: string;
 }
-const ServiceTokensDeleteRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<ServiceTokensDeleteRequest>;
-
 export interface ServiceTokensDeleteResponse {
   success?: boolean;
 }
-const ServiceTokensDeleteResponse =
-  DeleteChangeRequestPolicyResponse as any as S.Schema<ServiceTokensDeleteResponse>;
-
 export interface ServiceTokensListRequest {
   /** Unique identifier for the project object. */
   project: string;
   /** Name of the config object. */
   config: string;
 }
-const ServiceTokensListRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<ServiceTokensListRequest>;
-
 export interface ServiceTokensListResponseTokensItem {
   name?: string;
   slug?: string;
@@ -4249,25 +2397,10 @@ export interface ServiceTokensListResponseTokensItem {
   project?: string;
   expires_at?: unknown;
 }
-const ServiceTokensListResponseTokensItem = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<ServiceTokensListResponseTokensItem>;
-
 export type ServiceTokensListResponseTokensList = Array<ServiceTokensListResponseTokensItem>;
-const ServiceTokensListResponseTokensList = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<ServiceTokensListResponseTokensList>;
-
 export interface ServiceTokensListResponse {
   tokens?: ServiceTokensListResponseTokensList;
 }
-const ServiceTokensListResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ServiceTokensListResponse>;
-
 export interface ShareSecretRequest {
   /** Plain text secret to share. */
   secret: string | Redacted.Redacted<string>;
@@ -4276,16 +2409,12 @@ export interface ShareSecretRequest {
   /** Number of days before the link expires. Valid range: 1 to 90. */
   expire_days?: number;
 }
-const ShareSecretRequest = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<ShareSecretRequest>;
-
 export interface ShareSecretResponse {
   url?: string;
   authenticated_url?: string;
   password?: string | Redacted.Redacted<string>;
   success?: boolean;
 }
-const ShareSecretResponse = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<ShareSecretResponse>;
-
 export interface ShareSecretEncryptedRequest {
   /** Ecrypted secret using AES-GCM with a symmetric key derived from a cryptographically random 64 character passphrase using PBKDF2. 1,000,000 salt rounds required. Then base64 encode the encrypted secret. */
   encrypted_secret: string | Redacted.Redacted<string>;
@@ -4300,34 +2429,20 @@ export interface ShareSecretEncryptedRequest {
   /** Number of salt rounds used by KDF. Must be "1000000". */
   encryption_salt_rounds: number;
 }
-const ShareSecretEncryptedRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<ShareSecretEncryptedRequest>;
-
 export interface ShareSecretEncryptedResponse {
   url?: string;
   success?: boolean;
 }
-const ShareSecretEncryptedResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<ShareSecretEncryptedResponse>;
-
 export interface UnlockConfigRequest {
   /** Unique identifier for the project object. */
   project: string;
   /** Name of the config. */
   config: string;
 }
-const UnlockConfigRequest = /*@__PURE__*/ __L.at(__c41, 0) as any as S.Schema<UnlockConfigRequest>;
-
 export type UnlockConfigResponseConfig = CloneConfigResponseConfig;
 export interface UnlockConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-const UnlockConfigResponse = CloneConfigResponse as any as S.Schema<UnlockConfigResponse>;
-
 export type UpdateChangeRequestPolicyRequestRulesItemType =
   | '"RequiredReviewer"'
   | '"DisallowSelfReview"';
@@ -4354,9 +2469,6 @@ export interface UpdateChangeRequestPolicyRequestRulesItem {
 /** A list of rules the policy enforces. */
 export type UpdateChangeRequestPolicyRequestRulesList =
   Array<UpdateChangeRequestPolicyRequestRulesItem>;
-const UpdateChangeRequestPolicyRequestRulesList =
-  CreateChangeRequestPolicyRequestRulesList as any as S.Schema<UpdateChangeRequestPolicyRequestRulesList>;
-
 /** Describes the which projects, environments, and configs the policy applies to. */
 export type UpdateChangeRequestPolicyRequestTargets = CreateChangeRequestPolicyRequestTargets;
 export interface UpdateChangeRequestPolicyRequest {
@@ -4371,11 +2483,6 @@ export interface UpdateChangeRequestPolicyRequest {
   /** Describes the which projects, environments, and configs the policy applies to. */
   targets: CreateChangeRequestPolicyRequestTargets;
 }
-const UpdateChangeRequestPolicyRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<UpdateChangeRequestPolicyRequest>;
-
 export type UpdateChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
 export type UpdateChangeRequestPolicyResponsePolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
@@ -4390,9 +2497,6 @@ export interface UpdateChangeRequestPolicyResponse {
   policy?: UpdateChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-const UpdateChangeRequestPolicyResponse =
-  CreateChangeRequestPolicyResponse as any as S.Schema<UpdateChangeRequestPolicyResponse>;
-
 export interface UpdateConfigRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -4401,14 +2505,10 @@ export interface UpdateConfigRequest {
   /** The new name of config. */
   name: string;
 }
-const UpdateConfigRequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<UpdateConfigRequest>;
-
 export type UpdateConfigResponseConfig = CloneConfigResponseConfig;
 export interface UpdateConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-const UpdateConfigResponse = CloneConfigResponse as any as S.Schema<UpdateConfigResponse>;
-
 export interface UpdateGroupRequest {
   /** The group's slug */
   slug: string;
@@ -4416,8 +2516,6 @@ export interface UpdateGroupRequest {
   /** Identifier of the project role */
   default_project_role?: string;
 }
-const UpdateGroupRequest = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<UpdateGroupRequest>;
-
 export type UpdateGroupResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
 export type UpdateGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
 export type UpdateGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
@@ -4435,8 +2533,6 @@ export interface UpdateGroupResponseGroup {
 export interface UpdateGroupResponse {
   group?: UpdateGroupResponseGroup;
 }
-const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
-
 export interface UpdateIntegrationRequest {
   /** The slug of the integration to update */
   integration: string;
@@ -4445,22 +2541,12 @@ export interface UpdateIntegrationRequest {
   /** The new authentication data for the integration */
   data?: string;
 }
-const UpdateIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<UpdateIntegrationRequest>;
-
 export type UpdateIntegrationResponse = unknown;
-const UpdateIntegrationResponse =
-  DeleteIntegrationResponse as any as S.Schema<UpdateIntegrationResponse>;
-
 export type UpdateIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
   | "invite"
   | "group"
   | "service_account";
-const UpdateIntegrationsIntegrationMemberRequestType = S.String;
-
 export interface UpdateIntegrationsIntegrationMemberRequest {
   type: UpdateIntegrationsIntegrationMemberRequestType | (string & {});
   /** Member's slug */
@@ -4469,11 +2555,6 @@ export interface UpdateIntegrationsIntegrationMemberRequest {
   integration: string;
   role: string;
 }
-const UpdateIntegrationsIntegrationMemberRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<UpdateIntegrationsIntegrationMemberRequest>;
-
 export type UpdateIntegrationsIntegrationMemberResponseMemberType =
   | "workplace_user"
   | "invite"
@@ -4489,9 +2570,6 @@ export interface UpdateIntegrationsIntegrationMemberResponseMember {
 export interface UpdateIntegrationsIntegrationMemberResponse {
   member?: UpdateIntegrationsIntegrationMemberResponseMember;
 }
-const UpdateIntegrationsIntegrationMemberResponse =
-  CreateIntegrationsIntegrationMemberResponse as any as S.Schema<UpdateIntegrationsIntegrationMemberResponse>;
-
 export interface UpdateProjectRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -4500,28 +2578,16 @@ export interface UpdateProjectRequest {
   /** Description of the project. */
   description?: string;
 }
-const UpdateProjectRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<UpdateProjectRequest>;
-
 export type UpdateProjectResponseProject = CreateProjectResponseProject;
 export interface UpdateProjectResponse {
   project?: CreateProjectResponseProject;
 }
-const UpdateProjectResponse = CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
-
 /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
 export interface UpdateSecretRequestSecrets {
   STRIPE?: string;
   ALGOLIA?: string;
   DATABASE?: string;
 }
-const UpdateSecretRequestSecrets = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<UpdateSecretRequestSecrets>;
-
 export type UpdateSecretRequestChangeRequestsItemValueTypeType =
   | "string"
   | "json"
@@ -4541,9 +2607,6 @@ export type UpdateSecretRequestChangeRequestsItemValueTypeType =
 export interface UpdateSecretRequestChangeRequestsItemValueType {
   type?: UpdateSecretRequestChangeRequestsItemValueTypeType | (string & {});
 }
-const UpdateSecretRequestChangeRequestsItemValueType =
-  GetWebhookResponseWebhookAuthentication as any as S.Schema<UpdateSecretRequestChangeRequestsItemValueType>;
-
 export type UpdateSecretRequestChangeRequestsItemOriginalValueTypeType =
   | "string"
   | "json"
@@ -4563,9 +2626,6 @@ export type UpdateSecretRequestChangeRequestsItemOriginalValueTypeType =
 export interface UpdateSecretRequestChangeRequestsItemOriginalValueType {
   type?: UpdateSecretRequestChangeRequestsItemOriginalValueTypeType | (string & {});
 }
-const UpdateSecretRequestChangeRequestsItemOriginalValueType =
-  GetWebhookResponseWebhookAuthentication as any as S.Schema<UpdateSecretRequestChangeRequestsItemOriginalValueType>;
-
 export interface UpdateSecretRequestChangeRequestsItem {
   /** The name of the secret. */
   name: string;
@@ -4590,18 +2650,8 @@ export interface UpdateSecretRequestChangeRequestsItem {
   /** The valueType you expect the secret to have before `valueType` is applied. If specified, the request will only be processed if the provided valueType matches what's found in Doppler. */
   originalValueType?: UpdateSecretRequestChangeRequestsItemOriginalValueType;
 }
-const UpdateSecretRequestChangeRequestsItem = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<UpdateSecretRequestChangeRequestsItem>;
-
 /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
 export type UpdateSecretRequestChangeRequestsList = Array<UpdateSecretRequestChangeRequestsItem>;
-const UpdateSecretRequestChangeRequestsList = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<UpdateSecretRequestChangeRequestsList>;
-
 export interface UpdateSecretRequest {
   /** Unique identifier for the project object. */
   project: string;
@@ -4612,18 +2662,11 @@ export interface UpdateSecretRequest {
   /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
   change_requests?: UpdateSecretRequestChangeRequestsList;
 }
-const UpdateSecretRequest = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<UpdateSecretRequest>;
-
 export interface UpdateSecretResponseSecretsSTRIPE {
   raw?: string;
   computed?: string;
   note?: string;
 }
-const UpdateSecretResponseSecretsSTRIPE = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<UpdateSecretResponseSecretsSTRIPE>;
-
 export type UpdateSecretResponseSecretsALGOLIA = UpdateSecretResponseSecretsSTRIPE;
 export type UpdateSecretResponseSecretsDATABASE = UpdateSecretResponseSecretsSTRIPE;
 export interface UpdateSecretResponseSecrets {
@@ -4631,35 +2674,21 @@ export interface UpdateSecretResponseSecrets {
   ALGOLIA?: UpdateSecretResponseSecretsSTRIPE;
   DATABASE?: UpdateSecretResponseSecretsSTRIPE;
 }
-const UpdateSecretResponseSecrets = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<UpdateSecretResponseSecrets>;
-
 export interface UpdateSecretResponse {
   secrets?: UpdateSecretResponseSecrets;
 }
-const UpdateSecretResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<UpdateSecretResponse>;
-
 export interface UpdateUserRequest {
   /** The slug of the workplace user. */
   slug: string;
   /** The identifier of the workplace role. E.g., `owner`, `collaborator`, etc. */
   access?: string;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<UpdateUserRequest>;
-
 export type UpdateUserResponseWorkplaceUserUser = ConfigLogsGetResponseLogUser;
 export type UpdateUserResponseWorkplaceUser = GetUserResponseWorkplaceUser;
 export interface UpdateUserResponse {
   workplace_user?: GetUserResponseWorkplaceUser;
   success?: boolean;
 }
-const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
-
 export type UpdateWebhookRequestAuthenticationType = "None" | "Bearer" | "Basic";
 export interface UpdateWebhookRequestAuthentication {
   type?: UpdateWebhookRequestAuthenticationType | (string & {});
@@ -4670,19 +2699,10 @@ export interface UpdateWebhookRequestAuthentication {
   /** Used when type = Basic */
   password?: string | Redacted.Redacted<string>;
 }
-const UpdateWebhookRequestAuthentication =
-  AddWebhookRequestAuthentication as any as S.Schema<UpdateWebhookRequestAuthentication>;
-
 /** Config slugs that the webhook should be enabled for */
 export type UpdateWebhookRequestEnableConfigsList = Array<string>;
-const UpdateWebhookRequestEnableConfigsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<UpdateWebhookRequestEnableConfigsList>;
-
 /** Config slugs that the webhook should be disabled for */
 export type UpdateWebhookRequestDisableConfigsList = Array<string>;
-const UpdateWebhookRequestDisableConfigsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<UpdateWebhookRequestDisableConfigsList>;
-
 export interface UpdateWebhookRequest {
   /** Webhook's slug */
   slug: string;
@@ -4702,47 +2722,25 @@ export interface UpdateWebhookRequest {
   /** Config slugs that the webhook should be disabled for */
   disableConfigs?: UpdateWebhookRequestDisableConfigsList;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<UpdateWebhookRequest>;
-
 export type UpdateWebhookResponse = unknown;
-const UpdateWebhookResponse = AddWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
-
 export interface UpdateWorkplaceRequest {
   /** Workplace name */
   name?: string;
   billing_email?: string;
   security_email?: string;
 }
-const UpdateWorkplaceRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<UpdateWorkplaceRequest>;
-
 export type UpdateWorkplaceResponseWorkplace = GetWorkplaceResponseWorkplace;
 export interface UpdateWorkplaceResponse {
   workplace?: GetWorkplaceResponseWorkplace;
 }
-const UpdateWorkplaceResponse = GetWorkplaceResponse as any as S.Schema<UpdateWorkplaceResponse>;
-
 /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
 export type WorkplaceRolesCreateRequestPermissionsList = Array<string>;
-const WorkplaceRolesCreateRequestPermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesCreateRequestPermissionsList>;
-
 export interface WorkplaceRolesCreateRequest {
   /** The name of the role */
   name: string;
   /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
   permissions: WorkplaceRolesCreateRequestPermissionsList;
 }
-const WorkplaceRolesCreateRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<WorkplaceRolesCreateRequest>;
-
 export type WorkplaceRolesCreateResponseRolePermissionsList = Array<string>;
 export interface WorkplaceRolesCreateResponseRole {
   name?: string;
@@ -4752,39 +2750,18 @@ export interface WorkplaceRolesCreateResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-const WorkplaceRolesCreateResponseRole =
-  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesCreateResponseRole>;
-
 export interface WorkplaceRolesCreateResponse {
   role?: WorkplaceRolesCreateResponseRole;
 }
-const WorkplaceRolesCreateResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<WorkplaceRolesCreateResponse>;
-
 export interface WorkplaceRolesDeleteRequest {
   /** The role's unique identifier */
   role: string;
 }
-const WorkplaceRolesDeleteRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<WorkplaceRolesDeleteRequest>;
-
 export interface WorkplaceRolesDeleteResponse {}
-const WorkplaceRolesDeleteResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<WorkplaceRolesDeleteResponse>;
-
 export interface WorkplaceRolesGetRequest {
   /** The role's unique identifier */
   role: string;
 }
-const WorkplaceRolesGetRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<WorkplaceRolesGetRequest>;
-
 export type WorkplaceRolesGetResponseRolePermissionsList = Array<string>;
 export interface WorkplaceRolesGetResponseRole {
   name?: string;
@@ -4797,15 +2774,7 @@ export interface WorkplaceRolesGetResponseRole {
 export interface WorkplaceRolesGetResponse {
   role?: WorkplaceRolesGetResponseRole;
 }
-const WorkplaceRolesGetResponse =
-  WorkplaceRolesCreateResponse as any as S.Schema<WorkplaceRolesGetResponse>;
-
 export interface WorkplaceRolesListRequest {}
-const WorkplaceRolesListRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<WorkplaceRolesListRequest>;
-
 export type WorkplaceRolesListResponseRolesItemPermissionsList = Array<string>;
 export interface WorkplaceRolesListResponseRolesItem {
   name?: string;
@@ -4815,41 +2784,17 @@ export interface WorkplaceRolesListResponseRolesItem {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-const WorkplaceRolesListResponseRolesItem =
-  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesListResponseRolesItem>;
-
 export type WorkplaceRolesListResponseRolesList = Array<WorkplaceRolesListResponseRolesItem>;
-const WorkplaceRolesListResponseRolesList = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<WorkplaceRolesListResponseRolesList>;
-
 export interface WorkplaceRolesListResponse {
   roles?: WorkplaceRolesListResponseRolesList;
 }
-const WorkplaceRolesListResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<WorkplaceRolesListResponse>;
-
 export interface WorkplaceRolesListPermissionsRequest {}
-const WorkplaceRolesListPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<WorkplaceRolesListPermissionsRequest>;
-
 export type WorkplaceRolesListPermissionsResponsePermissionsList = Array<string>;
 export interface WorkplaceRolesListPermissionsResponse {
   permissions?: WorkplaceRolesListPermissionsResponsePermissionsList;
 }
-const WorkplaceRolesListPermissionsResponse =
-  ProjectRolesListPermissionsResponse as any as S.Schema<WorkplaceRolesListPermissionsResponse>;
-
 /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
 export type WorkplaceRolesUpdateRequestPermissionsList = Array<string>;
-const WorkplaceRolesUpdateRequestPermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesUpdateRequestPermissionsList>;
-
 export interface WorkplaceRolesUpdateRequest {
   /** The role's unique identifier, which is the initial name the role was given */
   role: string;
@@ -4858,11 +2803,6 @@ export interface WorkplaceRolesUpdateRequest {
   /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
   permissions?: WorkplaceRolesUpdateRequestPermissionsList;
 }
-const WorkplaceRolesUpdateRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<WorkplaceRolesUpdateRequest>;
-
 export type WorkplaceRolesUpdateResponseRolePermissionsList = Array<string>;
 export interface WorkplaceRolesUpdateResponseRole {
   name?: string;
@@ -4875,9 +2815,6 @@ export interface WorkplaceRolesUpdateResponseRole {
 export interface WorkplaceRolesUpdateResponse {
   role?: WorkplaceRolesUpdateResponseRole;
 }
-const WorkplaceRolesUpdateResponse =
-  WorkplaceRolesCreateResponse as any as S.Schema<WorkplaceRolesUpdateResponse>;
-
 export type ActivityLogsListError = DopplerOpError;
 /** List Activity Logs */
 export const activityLogsList: API.OperationMethod<
@@ -4886,8 +2823,8 @@ export const activityLogsList: API.OperationMethod<
   ActivityLogsListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivityLogsListRequest,
-  output: ActivityLogsListResponse,
+  input: __S(0) as any as S.Schema<ActivityLogsListRequest>,
+  output: __S(4) as any as S.Schema<ActivityLogsListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -4901,8 +2838,8 @@ export const activityLogsRetrieve: API.OperationMethod<
   ActivityLogsRetrieveError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivityLogsRetrieveRequest,
-  output: ActivityLogsRetrieveResponse,
+  input: __S(5) as any as S.Schema<ActivityLogsRetrieveRequest>,
+  output: __S(6) as any as S.Schema<ActivityLogsRetrieveResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -4916,8 +2853,8 @@ export const addWebhook: API.OperationMethod<
   AddWebhookError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddWebhookRequest,
-  output: AddWebhookResponse,
+  input: __S(9) as any as S.Schema<AddWebhookRequest>,
+  output: __S(10) as any as S.Schema<AddWebhookResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -4931,8 +2868,8 @@ export const auditGetUser: API.OperationMethod<
   AuditGetUserError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuditGetUserRequest,
-  output: AuditGetUserResponse,
+  input: __S(11) as any as S.Schema<AuditGetUserRequest>,
+  output: __S(14) as any as S.Schema<AuditGetUserResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -4946,8 +2883,8 @@ export const authMe: API.OperationMethod<
   AuthMeError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthMeRequest,
-  output: AuthMeResponse,
+  input: __S(15) as any as S.Schema<AuthMeRequest>,
+  output: __S(18) as any as S.Schema<AuthMeResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -4961,8 +2898,8 @@ export const authOidc: API.OperationMethod<
   AuthOidcError,
   DopplerPublicOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthOidcRequest,
-  output: AuthOidcResponse,
+  input: __S(19) as any as S.Schema<AuthOidcRequest>,
+  output: __S(20) as any as S.Schema<AuthOidcResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerPublicProtocol,
   retry: Retry.Retry,
@@ -4976,8 +2913,8 @@ export const authorizeCliAuth: API.OperationMethod<
   AuthorizeCliAuthError,
   DopplerPublicOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeCliAuthRequest,
-  output: AuthorizeCliAuthResponse,
+  input: __S(21) as any as S.Schema<AuthorizeCliAuthRequest>,
+  output: __S(22) as any as S.Schema<AuthorizeCliAuthResponse>,
   errors: [Conflict, UnknownDopplerError],
   protocol: DopplerPublicProtocol,
   retry: Retry.Retry,
@@ -4991,8 +2928,8 @@ export const cloneConfig: API.OperationMethod<
   CloneConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloneConfigRequest,
-  output: CloneConfigResponse,
+  input: __S(23) as any as S.Schema<CloneConfigRequest>,
+  output: __S(25) as any as S.Schema<CloneConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5006,8 +2943,8 @@ export const configLogsGet: API.OperationMethod<
   ConfigLogsGetError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigLogsGetRequest,
-  output: ConfigLogsGetResponse,
+  input: __S(26) as any as S.Schema<ConfigLogsGetRequest>,
+  output: __S(31) as any as S.Schema<ConfigLogsGetResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5021,8 +2958,8 @@ export const configLogsList: API.OperationMethod<
   ConfigLogsListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigLogsListRequest,
-  output: ConfigLogsListResponse,
+  input: __S(32) as any as S.Schema<ConfigLogsListRequest>,
+  output: __S(35) as any as S.Schema<ConfigLogsListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5036,8 +2973,8 @@ export const configLogsRollback: API.OperationMethod<
   ConfigLogsRollbackError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigLogsRollbackRequest,
-  output: ConfigLogsRollbackResponse,
+  input: __S(36) as any as S.Schema<ConfigLogsRollbackRequest>,
+  output: __S(40) as any as S.Schema<ConfigLogsRollbackResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5051,8 +2988,8 @@ export const configsAddTrustedIp: API.OperationMethod<
   ConfigsAddTrustedIpError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigsAddTrustedIpRequest,
-  output: ConfigsAddTrustedIpResponse,
+  input: __S(41) as any as S.Schema<ConfigsAddTrustedIpRequest>,
+  output: __S(42) as any as S.Schema<ConfigsAddTrustedIpResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5066,8 +3003,8 @@ export const configsDeleteTrustedIp: API.OperationMethod<
   ConfigsDeleteTrustedIpError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigsDeleteTrustedIpRequest,
-  output: ConfigsDeleteTrustedIpResponse,
+  input: __S(43) as any as S.Schema<ConfigsDeleteTrustedIpRequest>,
+  output: __S(44) as any as S.Schema<ConfigsDeleteTrustedIpResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5081,8 +3018,8 @@ export const configsInheritable: API.OperationMethod<
   ConfigsInheritableError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigsInheritableRequest,
-  output: ConfigsInheritableResponse,
+  input: __S(45) as any as S.Schema<ConfigsInheritableRequest>,
+  output: __S(48) as any as S.Schema<ConfigsInheritableResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5096,8 +3033,8 @@ export const configsInherits: API.OperationMethod<
   ConfigsInheritsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigsInheritsRequest,
-  output: ConfigsInheritsResponse,
+  input: __S(51) as any as S.Schema<ConfigsInheritsRequest>,
+  output: __S(55) as any as S.Schema<ConfigsInheritsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5111,8 +3048,8 @@ export const configsListTrustedIps: API.OperationMethod<
   ConfigsListTrustedIpsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigsListTrustedIpsRequest,
-  output: ConfigsListTrustedIpsResponse,
+  input: __S(56) as any as S.Schema<ConfigsListTrustedIpsRequest>,
+  output: __S(57) as any as S.Schema<ConfigsListTrustedIpsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5126,8 +3063,8 @@ export const createChangeRequestPolicy: API.OperationMethod<
   CreateChangeRequestPolicyError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChangeRequestPolicyRequest,
-  output: CreateChangeRequestPolicyResponse,
+  input: __S(63) as any as S.Schema<CreateChangeRequestPolicyRequest>,
+  output: __S(66) as any as S.Schema<CreateChangeRequestPolicyResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5141,8 +3078,8 @@ export const createConfig: API.OperationMethod<
   CreateConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigRequest,
-  output: CreateConfigResponse,
+  input: __S(67) as any as S.Schema<CreateConfigRequest>,
+  output: __S(25) as any as S.Schema<CreateConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5156,8 +3093,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentRequest,
-  output: CreateEnvironmentResponse,
+  input: __S(68) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(70) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5171,8 +3108,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupRequest,
-  output: CreateGroupResponse,
+  input: __S(71) as any as S.Schema<CreateGroupRequest>,
+  output: __S(77) as any as S.Schema<CreateGroupResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5186,8 +3123,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationRequest,
-  output: CreateIntegrationResponse,
+  input: __S(78) as any as S.Schema<CreateIntegrationRequest>,
+  output: __S(80) as any as S.Schema<CreateIntegrationResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5201,8 +3138,8 @@ export const createIntegrationsIntegrationMember: API.OperationMethod<
   CreateIntegrationsIntegrationMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationsIntegrationMemberRequest,
-  output: CreateIntegrationsIntegrationMemberResponse,
+  input: __S(81) as any as S.Schema<CreateIntegrationsIntegrationMemberRequest>,
+  output: __S(83) as any as S.Schema<CreateIntegrationsIntegrationMemberResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5216,8 +3153,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectRequest,
-  output: CreateProjectResponse,
+  input: __S(84) as any as S.Schema<CreateProjectRequest>,
+  output: __S(86) as any as S.Schema<CreateProjectResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5231,8 +3168,8 @@ export const createSync: API.OperationMethod<
   CreateSyncError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSyncRequest,
-  output: CreateSyncResponse,
+  input: __S(87) as any as S.Schema<CreateSyncRequest>,
+  output: __S(89) as any as S.Schema<CreateSyncResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5246,8 +3183,8 @@ export const deleteChangeRequestPolicy: API.OperationMethod<
   DeleteChangeRequestPolicyError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChangeRequestPolicyRequest,
-  output: DeleteChangeRequestPolicyResponse,
+  input: __S(90) as any as S.Schema<DeleteChangeRequestPolicyRequest>,
+  output: __S(91) as any as S.Schema<DeleteChangeRequestPolicyResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5261,8 +3198,8 @@ export const deleteConfig: API.OperationMethod<
   DeleteConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigRequest,
-  output: DeleteConfigResponse,
+  input: __S(92) as any as S.Schema<DeleteConfigRequest>,
+  output: __S(93) as any as S.Schema<DeleteConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5276,8 +3213,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentRequest,
-  output: DeleteEnvironmentResponse,
+  input: __S(94) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(44) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5291,8 +3228,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupRequest,
-  output: DeleteGroupResponse,
+  input: __S(95) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(44) as any as S.Schema<DeleteGroupResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5306,8 +3243,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationRequest,
-  output: DeleteIntegrationResponse,
+  input: __S(96) as any as S.Schema<DeleteIntegrationRequest>,
+  output: __S(97) as any as S.Schema<DeleteIntegrationResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5321,8 +3258,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectRequest,
-  output: DeleteProjectResponse,
+  input: __S(98) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(44) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5336,8 +3273,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecretRequest,
-  output: DeleteSecretResponse,
+  input: __S(99) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(44) as any as S.Schema<DeleteSecretResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5351,8 +3288,8 @@ export const deleteSync: API.OperationMethod<
   DeleteSyncError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSyncRequest,
-  output: DeleteSyncResponse,
+  input: __S(100) as any as S.Schema<DeleteSyncRequest>,
+  output: __S(10) as any as S.Schema<DeleteSyncResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5366,8 +3303,12 @@ export const deleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsuni
   DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest,
-  output: DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse,
+  input: __S(
+    101,
+  ) as any as S.Schema<DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest>,
+  output: __S(
+    103,
+  ) as any as S.Schema<DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5381,10 +3322,12 @@ export const deleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentit
   DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest,
-  output:
-    DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse,
+  input: __S(
+    104,
+  ) as any as S.Schema<DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>,
+  output: __S(
+    105,
+  ) as any as S.Schema<DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5398,8 +3341,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(106) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(10) as any as S.Schema<DeleteWebhookResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5413,8 +3356,8 @@ export const deleteWorkplaceIntegrationsIntegrationMember: API.OperationMethod<
   DeleteWorkplaceIntegrationsIntegrationMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkplaceIntegrationsIntegrationMemberRequest,
-  output: DeleteWorkplaceIntegrationsIntegrationMemberResponse,
+  input: __S(107) as any as S.Schema<DeleteWorkplaceIntegrationsIntegrationMemberRequest>,
+  output: __S(108) as any as S.Schema<DeleteWorkplaceIntegrationsIntegrationMemberResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5428,8 +3371,8 @@ export const disableWebhook: API.OperationMethod<
   DisableWebhookError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableWebhookRequest,
-  output: DisableWebhookResponse,
+  input: __S(109) as any as S.Schema<DisableWebhookRequest>,
+  output: __S(10) as any as S.Schema<DisableWebhookResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5443,8 +3386,8 @@ export const downloadSecret: API.OperationMethod<
   DownloadSecretError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadSecretRequest,
-  output: DownloadSecretResponse,
+  input: __S(110) as any as S.Schema<DownloadSecretRequest>,
+  output: __S(112) as any as S.Schema<DownloadSecretResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5458,8 +3401,8 @@ export const dynamicSecretsIssueLease: API.OperationMethod<
   DynamicSecretsIssueLeaseError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DynamicSecretsIssueLeaseRequest,
-  output: DynamicSecretsIssueLeaseResponse,
+  input: __S(113) as any as S.Schema<DynamicSecretsIssueLeaseRequest>,
+  output: __S(114) as any as S.Schema<DynamicSecretsIssueLeaseResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5473,8 +3416,8 @@ export const dynamicSecretsRevokeLease: API.OperationMethod<
   DynamicSecretsRevokeLeaseError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DynamicSecretsRevokeLeaseRequest,
-  output: DynamicSecretsRevokeLeaseResponse,
+  input: __S(115) as any as S.Schema<DynamicSecretsRevokeLeaseRequest>,
+  output: __S(91) as any as S.Schema<DynamicSecretsRevokeLeaseResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5488,8 +3431,8 @@ export const enableWebhook: API.OperationMethod<
   EnableWebhookError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableWebhookRequest,
-  output: EnableWebhookResponse,
+  input: __S(116) as any as S.Schema<EnableWebhookRequest>,
+  output: __S(10) as any as S.Schema<EnableWebhookResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5503,8 +3446,8 @@ export const generateCliAuth: API.OperationMethod<
   GenerateCliAuthError,
   DopplerPublicOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateCliAuthRequest,
-  output: GenerateCliAuthResponse,
+  input: __S(117) as any as S.Schema<GenerateCliAuthRequest>,
+  output: __S(118) as any as S.Schema<GenerateCliAuthResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerPublicProtocol,
   retry: Retry.Retry,
@@ -5518,8 +3461,8 @@ export const getChangeRequestPolicy: API.OperationMethod<
   GetChangeRequestPolicyError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChangeRequestPolicyRequest,
-  output: GetChangeRequestPolicyResponse,
+  input: __S(119) as any as S.Schema<GetChangeRequestPolicyRequest>,
+  output: __S(66) as any as S.Schema<GetChangeRequestPolicyResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5533,8 +3476,8 @@ export const getConfig: API.OperationMethod<
   GetConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigRequest,
-  output: GetConfigResponse,
+  input: __S(120) as any as S.Schema<GetConfigRequest>,
+  output: __S(25) as any as S.Schema<GetConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5548,8 +3491,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: GetEnvironmentResponse,
+  input: __S(121) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(122) as any as S.Schema<GetEnvironmentResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5563,8 +3506,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupRequest,
-  output: GetGroupResponse,
+  input: __S(123) as any as S.Schema<GetGroupRequest>,
+  output: __S(77) as any as S.Schema<GetGroupResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5578,8 +3521,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRequest,
-  output: GetIntegrationResponse,
+  input: __S(124) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(126) as any as S.Schema<GetIntegrationResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5593,8 +3536,8 @@ export const getIntegrationsIntegrationMembers: API.OperationMethod<
   GetIntegrationsIntegrationMembersError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsIntegrationMembersRequest,
-  output: GetIntegrationsIntegrationMembersResponse,
+  input: __S(127) as any as S.Schema<GetIntegrationsIntegrationMembersRequest>,
+  output: __S(129) as any as S.Schema<GetIntegrationsIntegrationMembersResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5608,8 +3551,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMemberRequest,
-  output: GetMemberResponse,
+  input: __S(130) as any as S.Schema<GetMemberRequest>,
+  output: __S(77) as any as S.Schema<GetMemberResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5623,8 +3566,8 @@ export const getOptions: API.OperationMethod<
   GetOptionsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOptionsRequest,
-  output: GetOptionsResponse,
+  input: __S(131) as any as S.Schema<GetOptionsRequest>,
+  output: __S(10) as any as S.Schema<GetOptionsResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5638,8 +3581,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectRequest,
-  output: GetProjectResponse,
+  input: __S(132) as any as S.Schema<GetProjectRequest>,
+  output: __S(86) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5653,8 +3596,8 @@ export const getSecret: API.OperationMethod<
   GetSecretError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecretRequest,
-  output: GetSecretResponse,
+  input: __S(133) as any as S.Schema<GetSecretRequest>,
+  output: __S(136) as any as S.Schema<GetSecretResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5668,8 +3611,8 @@ export const getSync: API.OperationMethod<
   GetSyncError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSyncRequest,
-  output: GetSyncResponse,
+  input: __S(137) as any as S.Schema<GetSyncRequest>,
+  output: __S(89) as any as S.Schema<GetSyncResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5683,8 +3626,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: GetUserResponse,
+  input: __S(138) as any as S.Schema<GetUserRequest>,
+  output: __S(140) as any as S.Schema<GetUserResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5697,8 +3640,8 @@ export const getV3workplacechangeRequests: API.OperationMethod<
   GetV3workplacechangeRequestsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV3workplacechangeRequestsRequest,
-  output: GetV3workplacechangeRequestsResponse,
+  input: __S(141) as any as S.Schema<GetV3workplacechangeRequestsRequest>,
+  output: __S(150) as any as S.Schema<GetV3workplacechangeRequestsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5711,8 +3654,12 @@ export const getV3workplacechangeRequestschangeRequestChangeRequestId: API.Opera
   GetV3workplacechangeRequestschangeRequestChangeRequestIdError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest,
-  output: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse,
+  input: __S(
+    151,
+  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest>,
+  output: __S(
+    162,
+  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5726,8 +3673,12 @@ export const getV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUn
   GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest,
-  output: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse,
+  input: __S(
+    163,
+  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest>,
+  output: __S(
+    164,
+  ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5741,8 +3692,12 @@ export const getV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest,
-  output: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse,
+  input: __S(
+    165,
+  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest>,
+  output: __S(
+    171,
+  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5756,9 +3711,12 @@ export const getV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest,
-  output:
-    GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse,
+  input: __S(
+    172,
+  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>,
+  output: __S(
+    175,
+  ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5772,8 +3730,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: GetWebhookResponse,
+  input: __S(176) as any as S.Schema<GetWebhookRequest>,
+  output: __S(179) as any as S.Schema<GetWebhookResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5787,8 +3745,8 @@ export const getWorkplace: API.OperationMethod<
   GetWorkplaceError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkplaceRequest,
-  output: GetWorkplaceResponse,
+  input: __S(180) as any as S.Schema<GetWorkplaceRequest>,
+  output: __S(182) as any as S.Schema<GetWorkplaceResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5802,8 +3760,8 @@ export const getWorkplaceIntegrationsIntegrationMember: API.OperationMethod<
   GetWorkplaceIntegrationsIntegrationMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkplaceIntegrationsIntegrationMemberRequest,
-  output: GetWorkplaceIntegrationsIntegrationMemberResponse,
+  input: __S(183) as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberRequest>,
+  output: __S(83) as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5817,8 +3775,8 @@ export const groupsAddMember: API.OperationMethod<
   GroupsAddMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupsAddMemberRequest,
-  output: GroupsAddMemberResponse,
+  input: __S(184) as any as S.Schema<GroupsAddMemberRequest>,
+  output: __S(44) as any as S.Schema<GroupsAddMemberResponse>,
   errors: [Conflict, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5832,8 +3790,8 @@ export const groupsDeleteMember: API.OperationMethod<
   GroupsDeleteMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupsDeleteMemberRequest,
-  output: GroupsDeleteMemberResponse,
+  input: __S(185) as any as S.Schema<GroupsDeleteMemberRequest>,
+  output: __S(44) as any as S.Schema<GroupsDeleteMemberResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5847,8 +3805,8 @@ export const listChangeRequestPolicies: API.OperationMethod<
   ListChangeRequestPoliciesError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChangeRequestPoliciesRequest,
-  output: ListChangeRequestPoliciesResponse,
+  input: __S(186) as any as S.Schema<ListChangeRequestPoliciesRequest>,
+  output: __S(189) as any as S.Schema<ListChangeRequestPoliciesResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5862,8 +3820,8 @@ export const listConfigs: API.OperationMethod<
   ListConfigsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigsRequest,
-  output: ListConfigsResponse,
+  input: __S(190) as any as S.Schema<ListConfigsRequest>,
+  output: __S(192) as any as S.Schema<ListConfigsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5877,8 +3835,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnvironmentsRequest,
-  output: ListEnvironmentsResponse,
+  input: __S(193) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(195) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5892,8 +3850,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupsRequest,
-  output: ListGroupsResponse,
+  input: __S(196) as any as S.Schema<ListGroupsRequest>,
+  output: __S(199) as any as S.Schema<ListGroupsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5907,8 +3865,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntegrationsRequest,
-  output: ListIntegrationsResponse,
+  input: __S(200) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(203) as any as S.Schema<ListIntegrationsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5922,8 +3880,8 @@ export const listInvites: API.OperationMethod<
   ListInvitesError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvitesRequest,
-  output: ListInvitesResponse,
+  input: __S(204) as any as S.Schema<ListInvitesRequest>,
+  output: __S(208) as any as S.Schema<ListInvitesResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5937,8 +3895,8 @@ export const listProjects: API.OperationMethod<
   ListProjectsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsRequest,
-  output: ListProjectsResponse,
+  input: __S(209) as any as S.Schema<ListProjectsRequest>,
+  output: __S(212) as any as S.Schema<ListProjectsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5952,8 +3910,8 @@ export const listSecrets: API.OperationMethod<
   ListSecretsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecretsRequest,
-  output: ListSecretsResponse,
+  input: __S(213) as any as S.Schema<ListSecretsRequest>,
+  output: __S(216) as any as S.Schema<ListSecretsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5967,8 +3925,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: ListUsersResponse,
+  input: __S(217) as any as S.Schema<ListUsersRequest>,
+  output: __S(219) as any as S.Schema<ListUsersResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5982,8 +3940,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhooksRequest,
-  output: ListWebhooksResponse,
+  input: __S(220) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(223) as any as S.Schema<ListWebhooksResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -5997,8 +3955,8 @@ export const lockConfig: API.OperationMethod<
   LockConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LockConfigRequest,
-  output: LockConfigResponse,
+  input: __S(224) as any as S.Schema<LockConfigRequest>,
+  output: __S(25) as any as S.Schema<LockConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6011,8 +3969,8 @@ export const postV3workplacechangeRequests: API.OperationMethod<
   PostV3workplacechangeRequestsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplacechangeRequestsRequest,
-  output: PostV3workplacechangeRequestsResponse,
+  input: __S(229) as any as S.Schema<PostV3workplacechangeRequestsRequest>,
+  output: __S(231) as any as S.Schema<PostV3workplacechangeRequestsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6025,8 +3983,12 @@ export const postV3workplacechangeRequestschangeRequestChangeRequestId: API.Oper
   PostV3workplacechangeRequestschangeRequestChangeRequestIdError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest,
-  output: PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse,
+  input: __S(
+    234,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest>,
+  output: __S(
+    237,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6039,8 +4001,12 @@ export const postV3workplacechangeRequestschangeRequestChangeRequestIdClose: API
   PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest,
-  output: PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse,
+  input: __S(
+    238,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest>,
+  output: __S(
+    239,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6054,8 +4020,12 @@ export const postV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitU
   PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest,
-  output: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse,
+  input: __S(
+    240,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest>,
+  output: __S(
+    103,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6069,8 +4039,12 @@ export const postV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitU
   PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest,
-  output: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse,
+  input: __S(
+    241,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest>,
+  output: __S(
+    103,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6084,8 +4058,12 @@ export const postV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitU
   PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest,
-  output: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse,
+  input: __S(
+    242,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest>,
+  output: __S(
+    103,
+  ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6099,8 +4077,12 @@ export const postV3workplaceserviceAccountsserviceAccountServiceAccountIdentitie
   PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest,
-  output: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse,
+  input: __S(
+    245,
+  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest>,
+  output: __S(
+    248,
+  ) as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6114,8 +4096,8 @@ export const projectMembersAdd: API.OperationMethod<
   ProjectMembersAddError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectMembersAddRequest,
-  output: ProjectMembersAddResponse,
+  input: __S(249) as any as S.Schema<ProjectMembersAddRequest>,
+  output: __S(251) as any as S.Schema<ProjectMembersAddResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6129,8 +4111,8 @@ export const projectMembersDelete: API.OperationMethod<
   ProjectMembersDeleteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectMembersDeleteRequest,
-  output: ProjectMembersDeleteResponse,
+  input: __S(252) as any as S.Schema<ProjectMembersDeleteRequest>,
+  output: __S(44) as any as S.Schema<ProjectMembersDeleteResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6144,8 +4126,8 @@ export const projectMembersGet: API.OperationMethod<
   ProjectMembersGetError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectMembersGetRequest,
-  output: ProjectMembersGetResponse,
+  input: __S(253) as any as S.Schema<ProjectMembersGetRequest>,
+  output: __S(251) as any as S.Schema<ProjectMembersGetResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6159,8 +4141,8 @@ export const projectMembersList: API.OperationMethod<
   ProjectMembersListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectMembersListRequest,
-  output: ProjectMembersListResponse,
+  input: __S(254) as any as S.Schema<ProjectMembersListRequest>,
+  output: __S(256) as any as S.Schema<ProjectMembersListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6174,8 +4156,8 @@ export const projectMembersUpdate: API.OperationMethod<
   ProjectMembersUpdateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectMembersUpdateRequest,
-  output: ProjectMembersUpdateResponse,
+  input: __S(257) as any as S.Schema<ProjectMembersUpdateRequest>,
+  output: __S(251) as any as S.Schema<ProjectMembersUpdateResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6189,8 +4171,8 @@ export const projectRolesCreate: API.OperationMethod<
   ProjectRolesCreateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectRolesCreateRequest,
-  output: ProjectRolesCreateResponse,
+  input: __S(258) as any as S.Schema<ProjectRolesCreateRequest>,
+  output: __S(260) as any as S.Schema<ProjectRolesCreateResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6204,8 +4186,8 @@ export const projectRolesDelete: API.OperationMethod<
   ProjectRolesDeleteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectRolesDeleteRequest,
-  output: ProjectRolesDeleteResponse,
+  input: __S(261) as any as S.Schema<ProjectRolesDeleteRequest>,
+  output: __S(44) as any as S.Schema<ProjectRolesDeleteResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6219,8 +4201,8 @@ export const projectRolesGet: API.OperationMethod<
   ProjectRolesGetError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectRolesGetRequest,
-  output: ProjectRolesGetResponse,
+  input: __S(262) as any as S.Schema<ProjectRolesGetRequest>,
+  output: __S(263) as any as S.Schema<ProjectRolesGetResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6234,8 +4216,8 @@ export const projectRolesList: API.OperationMethod<
   ProjectRolesListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectRolesListRequest,
-  output: ProjectRolesListResponse,
+  input: __S(264) as any as S.Schema<ProjectRolesListRequest>,
+  output: __S(266) as any as S.Schema<ProjectRolesListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6249,8 +4231,8 @@ export const projectRolesListPermissions: API.OperationMethod<
   ProjectRolesListPermissionsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectRolesListPermissionsRequest,
-  output: ProjectRolesListPermissionsResponse,
+  input: __S(267) as any as S.Schema<ProjectRolesListPermissionsRequest>,
+  output: __S(268) as any as S.Schema<ProjectRolesListPermissionsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6264,8 +4246,8 @@ export const projectRolesUpdate: API.OperationMethod<
   ProjectRolesUpdateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectRolesUpdateRequest,
-  output: ProjectRolesUpdateResponse,
+  input: __S(269) as any as S.Schema<ProjectRolesUpdateRequest>,
+  output: __S(260) as any as S.Schema<ProjectRolesUpdateResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6278,8 +4260,12 @@ export const putV3workplacechangeRequestschangeRequestChangeRequestId: API.Opera
   PutV3workplacechangeRequestschangeRequestChangeRequestIdError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest,
-  output: PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse,
+  input: __S(
+    274,
+  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest>,
+  output: __S(
+    275,
+  ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6293,9 +4279,12 @@ export const putV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
   PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest,
-  output:
-    PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse,
+  input: __S(
+    277,
+  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>,
+  output: __S(
+    280,
+  ) as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6309,8 +4298,8 @@ export const renameEnvironment: API.OperationMethod<
   RenameEnvironmentError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenameEnvironmentRequest,
-  output: RenameEnvironmentResponse,
+  input: __S(281) as any as S.Schema<RenameEnvironmentRequest>,
+  output: __S(70) as any as S.Schema<RenameEnvironmentResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6324,8 +4313,8 @@ export const revokeAuth: API.OperationMethod<
   RevokeAuthError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAuthRequest,
-  output: RevokeAuthResponse,
+  input: __S(282) as any as S.Schema<RevokeAuthRequest>,
+  output: __S(44) as any as S.Schema<RevokeAuthResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6339,8 +4328,8 @@ export const revokeCliAuth: API.OperationMethod<
   RevokeCliAuthError,
   DopplerPublicOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeCliAuthRequest,
-  output: RevokeCliAuthResponse,
+  input: __S(283) as any as S.Schema<RevokeCliAuthRequest>,
+  output: __S(10) as any as S.Schema<RevokeCliAuthResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerPublicProtocol,
   retry: Retry.Retry,
@@ -6354,8 +4343,8 @@ export const secretsNames: API.OperationMethod<
   SecretsNamesError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecretsNamesRequest,
-  output: SecretsNamesResponse,
+  input: __S(284) as any as S.Schema<SecretsNamesRequest>,
+  output: __S(285) as any as S.Schema<SecretsNamesResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6369,8 +4358,8 @@ export const secretsUpdateNote: API.OperationMethod<
   SecretsUpdateNoteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecretsUpdateNoteRequest,
-  output: SecretsUpdateNoteResponse,
+  input: __S(286) as any as S.Schema<SecretsUpdateNoteRequest>,
+  output: __S(287) as any as S.Schema<SecretsUpdateNoteResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6384,8 +4373,8 @@ export const serviceAccountsCreate: API.OperationMethod<
   ServiceAccountsCreateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountsCreateRequest,
-  output: ServiceAccountsCreateResponse,
+  input: __S(289) as any as S.Schema<ServiceAccountsCreateRequest>,
+  output: __S(292) as any as S.Schema<ServiceAccountsCreateResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6399,8 +4388,8 @@ export const serviceAccountsDelete: API.OperationMethod<
   ServiceAccountsDeleteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountsDeleteRequest,
-  output: ServiceAccountsDeleteResponse,
+  input: __S(293) as any as S.Schema<ServiceAccountsDeleteRequest>,
+  output: __S(44) as any as S.Schema<ServiceAccountsDeleteResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6414,8 +4403,8 @@ export const serviceAccountsGet: API.OperationMethod<
   ServiceAccountsGetError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountsGetRequest,
-  output: ServiceAccountsGetResponse,
+  input: __S(294) as any as S.Schema<ServiceAccountsGetRequest>,
+  output: __S(297) as any as S.Schema<ServiceAccountsGetResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6429,8 +4418,8 @@ export const serviceAccountsList: API.OperationMethod<
   ServiceAccountsListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountsListRequest,
-  output: ServiceAccountsListResponse,
+  input: __S(298) as any as S.Schema<ServiceAccountsListRequest>,
+  output: __S(300) as any as S.Schema<ServiceAccountsListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6444,8 +4433,8 @@ export const serviceAccountsUpdate: API.OperationMethod<
   ServiceAccountsUpdateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountsUpdateRequest,
-  output: ServiceAccountsUpdateResponse,
+  input: __S(301) as any as S.Schema<ServiceAccountsUpdateRequest>,
+  output: __S(305) as any as S.Schema<ServiceAccountsUpdateResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6459,8 +4448,8 @@ export const serviceAccountTokensCreate: API.OperationMethod<
   ServiceAccountTokensCreateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountTokensCreateRequest,
-  output: ServiceAccountTokensCreateResponse,
+  input: __S(306) as any as S.Schema<ServiceAccountTokensCreateRequest>,
+  output: __S(308) as any as S.Schema<ServiceAccountTokensCreateResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6474,8 +4463,8 @@ export const serviceAccountTokensDelete: API.OperationMethod<
   ServiceAccountTokensDeleteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountTokensDeleteRequest,
-  output: ServiceAccountTokensDeleteResponse,
+  input: __S(309) as any as S.Schema<ServiceAccountTokensDeleteRequest>,
+  output: __S(108) as any as S.Schema<ServiceAccountTokensDeleteResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6489,8 +4478,8 @@ export const serviceAccountTokensGet: API.OperationMethod<
   ServiceAccountTokensGetError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountTokensGetRequest,
-  output: ServiceAccountTokensGetResponse,
+  input: __S(310) as any as S.Schema<ServiceAccountTokensGetRequest>,
+  output: __S(312) as any as S.Schema<ServiceAccountTokensGetResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6504,8 +4493,8 @@ export const serviceAccountTokensList: API.OperationMethod<
   ServiceAccountTokensListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceAccountTokensListRequest,
-  output: ServiceAccountTokensListResponse,
+  input: __S(313) as any as S.Schema<ServiceAccountTokensListRequest>,
+  output: __S(315) as any as S.Schema<ServiceAccountTokensListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6519,8 +4508,8 @@ export const serviceTokensCreate: API.OperationMethod<
   ServiceTokensCreateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTokensCreateRequest,
-  output: ServiceTokensCreateResponse,
+  input: __S(316) as any as S.Schema<ServiceTokensCreateRequest>,
+  output: __S(318) as any as S.Schema<ServiceTokensCreateResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6534,8 +4523,8 @@ export const serviceTokensDelete: API.OperationMethod<
   ServiceTokensDeleteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTokensDeleteRequest,
-  output: ServiceTokensDeleteResponse,
+  input: __S(319) as any as S.Schema<ServiceTokensDeleteRequest>,
+  output: __S(91) as any as S.Schema<ServiceTokensDeleteResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6549,8 +4538,8 @@ export const serviceTokensList: API.OperationMethod<
   ServiceTokensListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTokensListRequest,
-  output: ServiceTokensListResponse,
+  input: __S(320) as any as S.Schema<ServiceTokensListRequest>,
+  output: __S(323) as any as S.Schema<ServiceTokensListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6564,8 +4553,8 @@ export const shareSecret: API.OperationMethod<
   ShareSecretError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ShareSecretRequest,
-  output: ShareSecretResponse,
+  input: __S(324) as any as S.Schema<ShareSecretRequest>,
+  output: __S(325) as any as S.Schema<ShareSecretResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6579,8 +4568,8 @@ export const shareSecretEncrypted: API.OperationMethod<
   ShareSecretEncryptedError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ShareSecretEncryptedRequest,
-  output: ShareSecretEncryptedResponse,
+  input: __S(326) as any as S.Schema<ShareSecretEncryptedRequest>,
+  output: __S(327) as any as S.Schema<ShareSecretEncryptedResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6594,8 +4583,8 @@ export const unlockConfig: API.OperationMethod<
   UnlockConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlockConfigRequest,
-  output: UnlockConfigResponse,
+  input: __S(328) as any as S.Schema<UnlockConfigRequest>,
+  output: __S(25) as any as S.Schema<UnlockConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6609,8 +4598,8 @@ export const updateChangeRequestPolicy: API.OperationMethod<
   UpdateChangeRequestPolicyError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChangeRequestPolicyRequest,
-  output: UpdateChangeRequestPolicyResponse,
+  input: __S(329) as any as S.Schema<UpdateChangeRequestPolicyRequest>,
+  output: __S(66) as any as S.Schema<UpdateChangeRequestPolicyResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6624,8 +4613,8 @@ export const updateConfig: API.OperationMethod<
   UpdateConfigError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigRequest,
-  output: UpdateConfigResponse,
+  input: __S(330) as any as S.Schema<UpdateConfigRequest>,
+  output: __S(25) as any as S.Schema<UpdateConfigResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6639,8 +4628,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupRequest,
-  output: UpdateGroupResponse,
+  input: __S(331) as any as S.Schema<UpdateGroupRequest>,
+  output: __S(77) as any as S.Schema<UpdateGroupResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6654,8 +4643,8 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationRequest,
-  output: UpdateIntegrationResponse,
+  input: __S(332) as any as S.Schema<UpdateIntegrationRequest>,
+  output: __S(97) as any as S.Schema<UpdateIntegrationResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6669,8 +4658,8 @@ export const updateIntegrationsIntegrationMember: API.OperationMethod<
   UpdateIntegrationsIntegrationMemberError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationsIntegrationMemberRequest,
-  output: UpdateIntegrationsIntegrationMemberResponse,
+  input: __S(333) as any as S.Schema<UpdateIntegrationsIntegrationMemberRequest>,
+  output: __S(83) as any as S.Schema<UpdateIntegrationsIntegrationMemberResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6684,8 +4673,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectRequest,
-  output: UpdateProjectResponse,
+  input: __S(334) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(86) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6699,8 +4688,8 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecretRequest,
-  output: UpdateSecretResponse,
+  input: __S(338) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(341) as any as S.Schema<UpdateSecretResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6714,8 +4703,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UpdateUserResponse,
+  input: __S(342) as any as S.Schema<UpdateUserRequest>,
+  output: __S(140) as any as S.Schema<UpdateUserResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6729,8 +4718,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: UpdateWebhookResponse,
+  input: __S(343) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(10) as any as S.Schema<UpdateWebhookResponse>,
   errors: [BadRequest, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6744,8 +4733,8 @@ export const updateWorkplace: API.OperationMethod<
   UpdateWorkplaceError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkplaceRequest,
-  output: UpdateWorkplaceResponse,
+  input: __S(344) as any as S.Schema<UpdateWorkplaceRequest>,
+  output: __S(182) as any as S.Schema<UpdateWorkplaceResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6759,8 +4748,8 @@ export const workplaceRolesCreate: API.OperationMethod<
   WorkplaceRolesCreateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkplaceRolesCreateRequest,
-  output: WorkplaceRolesCreateResponse,
+  input: __S(345) as any as S.Schema<WorkplaceRolesCreateRequest>,
+  output: __S(346) as any as S.Schema<WorkplaceRolesCreateResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6774,8 +4763,8 @@ export const workplaceRolesDelete: API.OperationMethod<
   WorkplaceRolesDeleteError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkplaceRolesDeleteRequest,
-  output: WorkplaceRolesDeleteResponse,
+  input: __S(347) as any as S.Schema<WorkplaceRolesDeleteRequest>,
+  output: __S(44) as any as S.Schema<WorkplaceRolesDeleteResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6789,8 +4778,8 @@ export const workplaceRolesGet: API.OperationMethod<
   WorkplaceRolesGetError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkplaceRolesGetRequest,
-  output: WorkplaceRolesGetResponse,
+  input: __S(348) as any as S.Schema<WorkplaceRolesGetRequest>,
+  output: __S(346) as any as S.Schema<WorkplaceRolesGetResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6804,8 +4793,8 @@ export const workplaceRolesList: API.OperationMethod<
   WorkplaceRolesListError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkplaceRolesListRequest,
-  output: WorkplaceRolesListResponse,
+  input: __S(349) as any as S.Schema<WorkplaceRolesListRequest>,
+  output: __S(351) as any as S.Schema<WorkplaceRolesListResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6819,8 +4808,8 @@ export const workplaceRolesListPermissions: API.OperationMethod<
   WorkplaceRolesListPermissionsError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkplaceRolesListPermissionsRequest,
-  output: WorkplaceRolesListPermissionsResponse,
+  input: __S(352) as any as S.Schema<WorkplaceRolesListPermissionsRequest>,
+  output: __S(268) as any as S.Schema<WorkplaceRolesListPermissionsResponse>,
   errors: [UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6834,8 +4823,8 @@ export const workplaceRolesUpdate: API.OperationMethod<
   WorkplaceRolesUpdateError,
   DopplerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkplaceRolesUpdateRequest,
-  output: WorkplaceRolesUpdateResponse,
+  input: __S(353) as any as S.Schema<WorkplaceRolesUpdateRequest>,
+  output: __S(346) as any as S.Schema<WorkplaceRolesUpdateResponse>,
   errors: [NotFound, UnknownDopplerError],
   protocol: DopplerProtocol,
   retry: Retry.Retry,
@@ -6871,18 +4860,18 @@ function __c0(j: number): any {
           config: S.optional(S.Unknown),
           environment: S.optional(S.String),
           project: S.optional(S.String),
-          user: S.optional(ActivityLogsListResponseLogsItemUser),
+          user: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "ActivityLogsListResponseLogsItem",
       });
     case 3:
-      return S.Array(ActivityLogsListResponseLogsItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number),
-          logs: S.optional(ActivityLogsListResponseLogsList),
+          logs: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ActivityLogsListResponse" });
     case 5:
@@ -6896,7 +4885,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          log: S.optional(ActivityLogsListResponseLogsItem),
+          log: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ActivityLogsRetrieveResponse",
@@ -6904,7 +4893,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(AddWebhookRequestAuthenticationType),
+          type: S.optional(S.String),
           token: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -6924,9 +4913,9 @@ function __c1(j: number): any {
           project: S.optional(S.String.pipe(T.Query())),
           url: S.String,
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          authentication: S.optional(AddWebhookRequestAuthentication),
+          authentication: S.optional(__S(7)),
           payload: S.optional(S.String),
-          enableConfigs: S.optional(AddWebhookRequestEnableConfigsList),
+          enableConfigs: S.optional(__S(8)),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v3/webhooks", code: 200 })),
       ).annotate({ identifier: "AddWebhookRequest" });
@@ -6963,7 +4952,7 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           access: S.optional(S.String),
           created_at: S.optional(S.String),
-          user: S.optional(AuditGetUserResponseWorkplaceUserUser),
+          user: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "AuditGetUserResponseWorkplaceUser",
@@ -6971,7 +4960,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workplace_user: S.optional(AuditGetUserResponseWorkplaceUser),
+          workplace_user: S.optional(__S(13)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AuditGetUserResponse" });
@@ -7006,8 +4995,8 @@ function __c2(j: number): any {
           last_seen_at: S.optional(S.String),
           type: S.optional(S.String),
           token_preview: S.optional(S.String),
-          workplace: S.optional(AuthMeResponseWorkplace),
-          principal: S.optional(AuthMeResponsePrincipal),
+          workplace: S.optional(__S(16)),
+          principal: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "AuthMeResponse" });
     case 3:
@@ -7068,7 +5057,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(CloneConfigResponseConfig),
+          config: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "CloneConfigResponse" });
     case 2:
@@ -7089,7 +5078,7 @@ function __c3(j: number): any {
         identifier: "ConfigLogsGetResponseLogDiffItem",
       });
     case 4:
-      return S.Array(ConfigLogsGetResponseLogDiffItem);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7107,19 +5096,19 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           text: S.optional(S.String),
           html: S.optional(S.String),
-          diff: S.optional(ConfigLogsGetResponseLogDiffList),
+          diff: S.optional(__S(28)),
           rollback: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           config: S.optional(S.String),
           environment: S.optional(S.String),
           project: S.optional(S.String),
-          user: S.optional(ConfigLogsGetResponseLogUser),
+          user: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "ConfigLogsGetResponseLog" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          log: S.optional(ConfigLogsGetResponseLog),
+          log: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "ConfigLogsGetResponse" });
   }
@@ -7146,18 +5135,18 @@ function __c4(j: number): any {
           config: S.optional(S.String),
           environment: S.optional(S.String),
           project: S.optional(S.String),
-          user: S.optional(ConfigLogsGetResponseLogUser),
+          user: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "ConfigLogsListResponseLogsItem",
       });
     case 2:
-      return S.Array(ConfigLogsListResponseLogsItem);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number),
-          logs: S.optional(ConfigLogsListResponseLogsList),
+          logs: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "ConfigLogsListResponse" });
     case 4:
@@ -7180,20 +5169,20 @@ function __c4(j: number): any {
         identifier: "ConfigLogsRollbackResponseLogDiffItem",
       });
     case 6:
-      return S.Array(ConfigLogsRollbackResponseLogDiffItem);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           text: S.optional(S.String),
           html: S.optional(S.String),
-          diff: S.optional(ConfigLogsRollbackResponseLogDiffList),
+          diff: S.optional(__S(38)),
           rollback: S.optional(S.Boolean),
           created_at: S.optional(S.String),
           config: S.optional(S.String),
           environment: S.optional(S.String),
           project: S.optional(S.String),
-          user: S.optional(ConfigLogsGetResponseLogUser),
+          user: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "ConfigLogsRollbackResponseLog",
@@ -7205,7 +5194,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          log: S.optional(ConfigLogsRollbackResponseLog),
+          log: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "ConfigLogsRollbackResponse",
@@ -7261,8 +5250,8 @@ function __c5(j: number): any {
           root: S.optional(S.Boolean),
           inheritable: S.optional(S.Boolean),
           inheriting: S.optional(S.Boolean),
-          inherits: S.optional(ConfigsInheritableResponseConfigInheritsList),
-          inheritedBy: S.optional(ConfigsInheritableResponseConfigInheritedByList),
+          inherits: S.optional(__S(46)),
+          inheritedBy: S.optional(__S(46)),
           locked: S.optional(S.Boolean),
           initial_fetch_at: S.optional(S.String),
           last_fetch_at: S.optional(S.String),
@@ -7281,7 +5270,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(ConfigsInheritableResponseConfig),
+          config: S.optional(__S(47)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7297,13 +5286,13 @@ function __c6(j: number): any {
         identifier: "ConfigsInheritsRequestInheritsItem",
       });
     case 2:
-      return S.Array(ConfigsInheritsRequestInheritsItem);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
           project: S.String,
           config: S.String,
-          inherits: ConfigsInheritsRequestInheritsList,
+          inherits: __S(50),
         }).pipe(T.Http({ method: "POST", uri: "/v3/configs/config/inherits", code: 200 })),
       ).annotate({ identifier: "ConfigsInheritsRequest" });
     case 4:
@@ -7316,7 +5305,7 @@ function __c6(j: number): any {
         identifier: "ConfigsInheritsResponseConfigInheritsItem",
       });
     case 5:
-      return S.Array(ConfigsInheritsResponseConfigInheritsItem);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7324,8 +5313,8 @@ function __c6(j: number): any {
           root: S.optional(S.Boolean),
           inheritable: S.optional(S.Boolean),
           inheriting: S.optional(S.Boolean),
-          inherits: S.optional(ConfigsInheritsResponseConfigInheritsList),
-          inheritedBy: S.optional(ConfigsInheritsResponseConfigInheritedByList),
+          inherits: S.optional(__S(53)),
+          inheritedBy: S.optional(__S(46)),
           locked: S.optional(S.Boolean),
           initial_fetch_at: S.optional(S.String),
           last_fetch_at: S.optional(S.String),
@@ -7340,7 +5329,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(ConfigsInheritsResponseConfig),
+          config: S.optional(__S(54)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConfigsInheritsResponse" });
@@ -7360,7 +5349,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ips: S.optional(ConfigsListTrustedIpsResponseIpsList),
+          ips: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ConfigsListTrustedIpsResponse",
@@ -7368,26 +5357,26 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: CreateChangeRequestPolicyRequestRulesItemSubjectsItemType,
+          type: S.String,
           slug: S.String,
         }),
       ).annotate({
         identifier: "CreateChangeRequestPolicyRequestRulesItemSubjectsItem",
       });
     case 3:
-      return S.Array(CreateChangeRequestPolicyRequestRulesItemSubjectsItem);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: CreateChangeRequestPolicyRequestRulesItemType,
+          type: S.String,
           count: S.optional(S.Number),
-          subjects: S.optional(CreateChangeRequestPolicyRequestRulesItemSubjectsList),
+          subjects: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "CreateChangeRequestPolicyRequestRulesItem",
       });
     case 5:
-      return S.Array(CreateChangeRequestPolicyRequestRulesItem);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7402,8 +5391,8 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          rules: CreateChangeRequestPolicyRequestRulesList,
-          targets: CreateChangeRequestPolicyRequestTargets,
+          rules: __S(61),
+          targets: __S(62),
         }).pipe(
           T.Http({ method: "POST", uri: "/v3/workplace/change_request_policies", code: 200 }),
         ),
@@ -7429,8 +5418,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(CreateChangeRequestPolicyResponsePolicyRulesList),
-          targets: S.optional(CreateChangeRequestPolicyResponsePolicyTargets),
+          rules: S.optional(__S(46)),
+          targets: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "CreateChangeRequestPolicyResponsePolicy",
@@ -7438,7 +5427,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(CreateChangeRequestPolicyResponsePolicy),
+          policy: S.optional(__S(65)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7476,7 +5465,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(CreateEnvironmentResponseEnvironment),
+          environment: S.optional(__S(69)),
         }),
       ).annotate({
         identifier: "CreateEnvironmentResponse",
@@ -7505,30 +5494,30 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           slug: S.optional(S.String),
-          role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
+          role: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "CreateGroupResponseGroupProjectsItem",
       });
     case 2:
-      return S.Array(CreateGroupResponseGroupProjectsItem);
+      return S.Array(__S(73));
     case 3:
-      return S.Array(AuthMeResponsePrincipal);
+      return S.Array(__S(17));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           slug: S.optional(S.String),
           created_at: S.optional(S.String),
-          default_project_role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
-          projects: S.optional(CreateGroupResponseGroupProjectsList),
-          members: S.optional(CreateGroupResponseGroupMembersList),
+          default_project_role: S.optional(__S(72)),
+          projects: S.optional(__S(74)),
+          members: S.optional(__S(75)),
         }),
       ).annotate({ identifier: "CreateGroupResponseGroup" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          group: S.optional(CreateGroupResponseGroup),
+          group: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "CreateGroupResponse" });
     case 6:
@@ -7545,7 +5534,7 @@ function __c9(j: number): any {
           slug: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          federation: S.optional(S.NullOr(CreateIntegrationResponseIntegrationFederation)),
+          federation: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({
         identifier: "CreateIntegrationResponseIntegration",
@@ -7557,7 +5546,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          integration: S.optional(CreateIntegrationResponseIntegration),
+          integration: S.optional(__S(79)),
         }),
       ).annotate({
         identifier: "CreateIntegrationResponse",
@@ -7566,7 +5555,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           integration: S.String.pipe(T.Query()),
-          type: CreateIntegrationsIntegrationMemberRequestType,
+          type: S.String,
           slug: S.String,
           role: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v3/integrations/integration/members", code: 200 })),
@@ -7576,9 +5565,9 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CreateIntegrationsIntegrationMemberResponseMemberType),
+          type: S.optional(S.String),
           slug: S.optional(S.String),
-          role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
+          role: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "CreateIntegrationsIntegrationMemberResponseMember",
@@ -7586,7 +5575,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          member: S.optional(CreateIntegrationsIntegrationMemberResponseMember),
+          member: S.optional(__S(82)),
         }),
       ).annotate({
         identifier: "CreateIntegrationsIntegrationMemberResponse",
@@ -7612,7 +5601,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          project: S.optional(CreateProjectResponseProject),
+          project: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "CreateProjectResponse" });
     case 7:
@@ -7622,7 +5611,7 @@ function __c10(j: number): any {
           config: S.String.pipe(T.Query()),
           integration: S.String,
           data: S.Unknown,
-          import_option: S.optional(CreateSyncRequestImportOption),
+          import_option: S.optional(S.String),
           await_initial_sync: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v3/configs/config/syncs", code: 200 })),
       ).annotate({ identifier: "CreateSyncRequest" });
@@ -7644,7 +5633,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sync: S.optional(CreateSyncResponseSync),
+          sync: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "CreateSyncResponse" });
     case 2:
@@ -7752,9 +5741,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(
-            DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus,
-          ),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier:
@@ -7763,9 +5750,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(
-            DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit,
-          ),
+          unit: S.optional(__S(102)),
         }),
       ).annotate({
         identifier:
@@ -7806,7 +5791,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: DeleteWorkplaceIntegrationsIntegrationMemberRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           integration: S.String.pipe(T.Query()),
         }).pipe(
@@ -7835,8 +5820,8 @@ function __c13(j: number): any {
         S.Struct({
           project: S.optional(S.String.pipe(T.Query())),
           config: S.optional(S.String.pipe(T.Query())),
-          format: S.optional(DownloadSecretRequestFormat.pipe(T.Query())),
-          name_transformer: S.optional(DownloadSecretRequestNameTransformer.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
+          name_transformer: S.optional(S.String.pipe(T.Query())),
           include_dynamic_secrets: S.optional(S.Boolean.pipe(T.Query())),
           dynamic_secrets_ttl_sec: S.optional(S.Number.pipe(T.Query())),
           secrets: S.optional(S.String.pipe(T.Query())),
@@ -7849,7 +5834,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => DownloadSecretResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(111).pipe(T.RawResponseRoot())).annotate({
         identifier: "DownloadSecretResponse",
       });
     case 1:
@@ -7956,7 +5941,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(CreateEnvironmentResponseEnvironment),
+          environment: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "GetEnvironmentResponse" });
     case 3:
@@ -7977,7 +5962,7 @@ function __c15(j: number): any {
           slug: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          federation: S.optional(S.NullOr(GetIntegrationResponseIntegrationFederation)),
+          federation: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({
         identifier: "GetIntegrationResponseIntegration",
@@ -7985,7 +5970,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          integration: S.optional(GetIntegrationResponseIntegration),
+          integration: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "GetIntegrationResponse" });
     case 7:
@@ -8003,11 +5988,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetIntegrationsIntegrationMembersResponseMembersItem);
+      return S.Array(__S(82));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(GetIntegrationsIntegrationMembersResponseMembersList),
+          members: S.optional(__S(128)),
         }),
       ).annotate({
         identifier: "GetIntegrationsIntegrationMembersResponse",
@@ -8016,7 +6001,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group_slug: S.String.pipe(T.Label()),
-          member_type: GetMemberRequestMemberType.pipe(T.Label()),
+          member_type: S.String.pipe(T.Label()),
           member_slug: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -8060,10 +6045,10 @@ function __c16(j: number): any {
           raw: S.optional(S.String),
           computed: S.optional(S.String),
           note: S.optional(S.String),
-          rawVisibility: S.optional(GetSecretResponseValueRawVisibility),
+          rawVisibility: S.optional(S.String),
           computedVisibility: S.optional(S.String),
-          rawValueType: S.optional(GetSecretResponseValueRawValueType),
-          computedValueType: S.optional(GetSecretResponseValueRawValueType),
+          rawValueType: S.optional(__S(134)),
+          computedValueType: S.optional(__S(134)),
         }),
       ).annotate({ identifier: "GetSecretResponseValue" });
   }
@@ -8074,7 +6059,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(GetSecretResponseValue),
+          value: S.optional(__S(135)),
         }),
       ).annotate({ identifier: "GetSecretResponse" });
     case 1:
@@ -8097,7 +6082,7 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           access: S.optional(S.String),
           created_at: S.optional(S.String),
-          user: S.optional(ConfigLogsGetResponseLogUser),
+          user: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "GetUserResponseWorkplaceUser",
@@ -8105,7 +6090,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workplace_user: S.optional(GetUserResponseWorkplaceUser),
+          workplace_user: S.optional(__S(139)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetUserResponse" });
@@ -8114,7 +6099,7 @@ function __c17(j: number): any {
         S.Struct({
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(GetV3workplacechangeRequestsRequestStatusList.pipe(T.Query())),
+          status: S.optional(__S(8).pipe(T.Query())),
           title: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v3/workplace/change_requests", code: 200 })),
       ).annotate({
@@ -8124,7 +6109,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
-          type: S.optional(GetV3workplacechangeRequestsResponseBodyItemCreatedByType),
+          type: S.optional(S.String),
           name: S.optional(S.String),
           isActive: S.optional(S.Boolean),
           image: S.optional(S.String),
@@ -8135,9 +6120,9 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          project: S.optional(AuthMeResponseWorkplace),
-          environment: S.optional(AuthMeResponseWorkplace),
-          config: S.optional(AuthMeResponseWorkplace),
+          project: S.optional(__S(16)),
+          environment: S.optional(__S(16)),
+          config: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget",
@@ -8150,18 +6135,18 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus),
-          target: S.optional(GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget),
+          status: S.optional(S.String),
+          target: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "GetV3workplacechangeRequestsResponseBodyItemUnitsItem",
       });
     case 1:
-      return S.Array(GetV3workplacechangeRequestsResponseBodyItemUnitsItem);
+      return S.Array(__S(144));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(GetV3workplacechangeRequestsResponseBodyItemAssignedItemType),
+          type: S.optional(S.String),
           slug: S.optional(S.String),
           name: S.optional(S.String),
           email: S.optional(S.String),
@@ -8171,27 +6156,25 @@ function __c18(j: number): any {
         identifier: "GetV3workplacechangeRequestsResponseBodyItemAssignedItem",
       });
     case 3:
-      return S.Array(GetV3workplacechangeRequestsResponseBodyItemAssignedItem);
+      return S.Array(__S(146));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
-          status: S.optional(GetV3workplacechangeRequestsResponseBodyItemStatus),
+          status: S.optional(S.String),
           createdAt: S.optional(S.String),
-          createdBy: S.optional(GetV3workplacechangeRequestsResponseBodyItemCreatedBy),
-          units: S.optional(GetV3workplacechangeRequestsResponseBodyItemUnitsList),
-          assigned: S.optional(GetV3workplacechangeRequestsResponseBodyItemAssignedList),
+          createdBy: S.optional(__S(142)),
+          units: S.optional(__S(145)),
+          assigned: S.optional(__S(147)),
         }),
       ).annotate({
         identifier: "GetV3workplacechangeRequestsResponseBodyItem",
       });
     case 5:
-      return S.Array(GetV3workplacechangeRequestsResponseBodyItem);
+      return S.Array(__S(148));
     case 6:
-      return S.suspend(() =>
-        GetV3workplacechangeRequestsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(149).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetV3workplacechangeRequestsResponse",
       });
     case 7:
@@ -8217,9 +6200,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.optional(S.String),
-          type: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType,
-          ),
+          type: S.optional(S.String),
           name: S.optional(S.String),
           isActive: S.optional(S.Boolean),
           image: S.optional(S.String),
@@ -8240,12 +6221,8 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          configLog: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog,
-          ),
-          activityLog: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog,
-          ),
+          configLog: S.optional(__S(153)),
+          activityLog: S.optional(__S(153)),
         }),
       ).annotate({
         identifier:
@@ -8257,10 +6234,8 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           value: S.optional(S.String),
           shouldDelete: S.optional(S.Boolean),
-          visType: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemVisType,
-          ),
-          valueType: S.optional(GetSecretResponseValueRawValueType),
+          visType: S.optional(S.Number),
+          valueType: S.optional(__S(134)),
           generationSettings: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -8268,42 +6243,28 @@ function __c19(j: number): any {
           "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem",
       });
     case 4:
-      return S.Array(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem,
-      );
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemStatus,
-          ),
-          target: S.optional(GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget),
-          applied: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied,
-          ),
+          status: S.optional(S.String),
+          target: S.optional(__S(143)),
+          applied: S.optional(__S(154)),
           createdAt: S.optional(S.String),
-          createdBy: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy,
-          ),
-          updates: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList,
-          ),
+          createdBy: S.optional(__S(152)),
+          updates: S.optional(__S(156)),
         }),
       ).annotate({
         identifier:
           "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem",
       });
     case 6:
-      return S.Array(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem,
-      );
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType,
-          ),
+          type: S.optional(S.String),
           slug: S.optional(S.String),
           name: S.optional(S.String),
           email: S.optional(S.String),
@@ -8318,28 +6279,18 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem,
-      );
+      return S.Array(__S(159));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          status: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestStatus,
-          ),
+          status: S.optional(S.String),
           createdAt: S.optional(S.String),
-          createdBy: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy,
-          ),
-          units: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList,
-          ),
-          assigned: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList,
-          ),
+          createdBy: S.optional(__S(152)),
+          units: S.optional(__S(158)),
+          assigned: S.optional(__S(160)),
         }),
       ).annotate({
         identifier: "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest",
@@ -8347,9 +6298,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          changeRequest: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest,
-          ),
+          changeRequest: S.optional(__S(161)),
         }),
       ).annotate({
         identifier: "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
@@ -8374,9 +6323,7 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(
-            GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit,
-          ),
+          unit: S.optional(__S(157)),
         }),
       ).annotate({
         identifier:
@@ -8403,12 +6350,8 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          aud: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList,
-          ),
-          sub: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList,
-          ),
+          aud: S.optional(__S(166)),
+          sub: S.optional(__S(166)),
         }),
       ).annotate({
         identifier:
@@ -8422,12 +6365,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           discovery_url: S.optional(S.String),
-          claims_type: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType,
-          ),
-          claims: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims,
-          ),
+          claims_type: S.optional(S.String),
+          claims: S.optional(__S(167)),
         }),
       ).annotate({
         identifier:
@@ -8439,9 +6378,7 @@ function __c21(j: number): any {
           slug: S.optional(S.String),
           name: S.optional(S.String),
           method: S.optional(S.String),
-          config: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfig,
-          ),
+          config: S.optional(__S(168)),
           ttl_seconds: S.optional(S.Number),
           created_at: S.optional(S.String),
           last_seen_at: S.optional(S.String),
@@ -8451,15 +6388,11 @@ function __c21(j: number): any {
           "GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem",
       });
     case 2:
-      return S.Array(
-        GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem,
-      );
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          identities: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList,
-          ),
+          identities: S.optional(__S(170)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -8485,12 +6418,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           discovery_url: S.optional(S.String),
-          claims_type: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType,
-          ),
-          claims: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims,
-          ),
+          claims_type: S.optional(S.String),
+          claims: S.optional(__S(167)),
         }),
       ).annotate({
         identifier:
@@ -8501,12 +6430,8 @@ function __c21(j: number): any {
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          method: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod,
-          ),
-          config: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig,
-          ),
+          method: S.optional(S.String),
+          config: S.optional(__S(173)),
           ttl_seconds: S.optional(S.Number),
           created_at: S.optional(S.String),
           last_seen_at: S.optional(S.String),
@@ -8518,9 +6443,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(
-            GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity,
-          ),
+          identity: S.optional(__S(174)),
         }),
       ).annotate({
         identifier:
@@ -8540,7 +6463,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(GetWebhookResponseWebhookAuthenticationType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetWebhookResponseWebhookAuthentication",
@@ -8553,8 +6476,8 @@ function __c22(j: number): any {
           url: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           hasSecret: S.optional(S.Boolean),
-          authentication: S.optional(GetWebhookResponseWebhookAuthentication),
-          enabledConfigs: S.optional(GetWebhookResponseWebhookEnabledConfigsList),
+          authentication: S.optional(__S(177)),
+          enabledConfigs: S.optional(__S(8)),
           canManage: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -8563,7 +6486,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          webhook: GetWebhookResponseWebhook,
+          webhook: __S(178),
         }),
       ).annotate({ identifier: "GetWebhookResponse" });
     case 4:
@@ -8584,13 +6507,13 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          workplace: S.optional(GetWorkplaceResponseWorkplace),
+          workplace: S.optional(__S(181)),
         }),
       ).annotate({ identifier: "GetWorkplaceResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: GetWorkplaceIntegrationsIntegrationMemberRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           integration: S.String.pipe(T.Query()),
         }).pipe(
@@ -8611,7 +6534,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
-          type: GroupsAddMemberRequestType,
+          type: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/v3/workplace/groups/group/{slug}/members", code: 200 }),
         ),
@@ -8620,7 +6543,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
-          type: GroupsDeleteMemberRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           member_slug: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -8643,17 +6566,17 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(ListChangeRequestPoliciesResponsePoliciesItemPolicy),
+          policy: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "ListChangeRequestPoliciesResponsePoliciesItem",
       });
     case 4:
-      return S.Array(ListChangeRequestPoliciesResponsePoliciesItem);
+      return S.Array(__S(187));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(ListChangeRequestPoliciesResponsePoliciesList),
+          policies: S.optional(__S(188)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -8669,7 +6592,7 @@ function __c23(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v3/configs", code: 200 })),
       ).annotate({ identifier: "ListConfigsRequest" });
     case 7:
-      return S.Array(CloneConfigResponseConfig);
+      return S.Array(__S(24));
   }
 }
 function __c24(j: number): any {
@@ -8678,7 +6601,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number),
-          configs: S.optional(ListConfigsResponseConfigsList),
+          configs: S.optional(__S(191)),
         }),
       ).annotate({ identifier: "ListConfigsResponse" });
     case 1:
@@ -8688,11 +6611,11 @@ function __c24(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v3/environments", code: 200 })),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 2:
-      return S.Array(CreateEnvironmentResponseEnvironment);
+      return S.Array(__S(69));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          environments: S.optional(ListEnvironmentsResponseEnvironmentsList),
+          environments: S.optional(__S(194)),
           page: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
@@ -8709,17 +6632,17 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           slug: S.optional(S.String),
           created_at: S.optional(S.String),
-          default_project_role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
+          default_project_role: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "ListGroupsResponseGroupsItem",
       });
     case 6:
-      return S.Array(ListGroupsResponseGroupsItem);
+      return S.Array(__S(197));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          groups: S.optional(ListGroupsResponseGroupsList),
+          groups: S.optional(__S(198)),
         }),
       ).annotate({ identifier: "ListGroupsResponse" });
   }
@@ -8743,11 +6666,11 @@ function __c25(j: number): any {
         identifier: "ListIntegrationsResponseIntegrationsItem",
       });
     case 2:
-      return S.Array(ListIntegrationsResponseIntegrationsItem);
+      return S.Array(__S(201));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          integrations: S.optional(ListIntegrationsResponseIntegrationsList),
+          integrations: S.optional(__S(202)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ListIntegrationsResponse" });
@@ -8762,7 +6685,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          permissions: S.optional(ListInvitesResponseInvitesItemWorkplaceRolePermissionsList),
+          permissions: S.optional(__S(8)),
           identifier: S.optional(S.String),
           created_at: S.optional(S.String),
           is_custom_role: S.optional(S.Boolean),
@@ -8777,13 +6700,13 @@ function __c25(j: number): any {
           slug: S.optional(S.String),
           email: S.optional(S.String),
           created_at: S.optional(S.String),
-          workplace_role: S.optional(ListInvitesResponseInvitesItemWorkplaceRole),
+          workplace_role: S.optional(__S(205)),
         }),
       ).annotate({
         identifier: "ListInvitesResponseInvitesItem",
       });
     case 7:
-      return S.Array(ListInvitesResponseInvitesItem);
+      return S.Array(__S(206));
   }
 }
 function __c26(j: number): any {
@@ -8791,7 +6714,7 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          invites: S.optional(ListInvitesResponseInvitesList),
+          invites: S.optional(__S(207)),
         }),
       ).annotate({ identifier: "ListInvitesResponse" });
     case 1:
@@ -8814,12 +6737,12 @@ function __c26(j: number): any {
         identifier: "ListProjectsResponseProjectsItem",
       });
     case 3:
-      return S.Array(ListProjectsResponseProjectsItem);
+      return S.Array(__S(210));
     case 4:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number),
-          projects: S.optional(ListProjectsResponseProjectsList),
+          projects: S.optional(__S(211)),
         }),
       ).annotate({ identifier: "ListProjectsResponse" });
     case 5:
@@ -8839,7 +6762,7 @@ function __c26(j: number): any {
           raw: S.optional(S.String),
           computed: S.optional(S.String),
           note: S.optional(S.String),
-          rawVisibility: S.optional(ListSecretsResponseSecretsSTRIPERawVisibility),
+          rawVisibility: S.optional(S.String),
           computedVisibility: S.optional(S.String),
         }),
       ).annotate({
@@ -8848,10 +6771,10 @@ function __c26(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          STRIPE: S.optional(ListSecretsResponseSecretsSTRIPE),
-          ALGOLIA: S.optional(ListSecretsResponseSecretsALGOLIA),
-          DATABASE: S.optional(ListSecretsResponseSecretsDATABASE),
-          USER: S.optional(ListSecretsResponseSecretsUSER),
+          STRIPE: S.optional(__S(214)),
+          ALGOLIA: S.optional(__S(214)),
+          DATABASE: S.optional(__S(214)),
+          USER: S.optional(__S(214)),
         }),
       ).annotate({
         identifier: "ListSecretsResponseSecrets",
@@ -8863,7 +6786,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(ListSecretsResponseSecrets),
+          secrets: S.optional(__S(215)),
         }),
       ).annotate({ identifier: "ListSecretsResponse" });
     case 1:
@@ -8874,11 +6797,11 @@ function __c27(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v3/workplace/users", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
     case 2:
-      return S.Array(GetUserResponseWorkplaceUser);
+      return S.Array(__S(139));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          workplace_users: S.optional(ListUsersResponseWorkplaceUsersList),
+          workplace_users: S.optional(__S(218)),
           page: S.optional(S.Number),
           success: S.optional(S.Boolean),
         }),
@@ -8897,19 +6820,19 @@ function __c27(j: number): any {
           url: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           hasSecret: S.optional(S.Boolean),
-          authentication: S.optional(ListWebhooksResponseWebhooksItemAuthentication),
-          enabledConfigs: S.optional(ListWebhooksResponseWebhooksItemEnabledConfigsList),
+          authentication: S.optional(__S(177)),
+          enabledConfigs: S.optional(__S(8)),
           canManage: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ListWebhooksResponseWebhooksItem",
       });
     case 6:
-      return S.Array(ListWebhooksResponseWebhooksItem);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          webhooks: ListWebhooksResponseWebhooksList,
+          webhooks: __S(222),
         }),
       ).annotate({ identifier: "ListWebhooksResponse" });
   }
@@ -8929,8 +6852,8 @@ function __c28(j: number): any {
           name: S.String,
           value: S.optional(S.String),
           shouldDelete: S.optional(S.Boolean),
-          visType: S.optional(PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType),
-          valueType: S.optional(GetSecretResponseValueRawValueType),
+          visType: S.optional(S.Number),
+          valueType: S.optional(__S(134)),
           generationSettings: S.optional(S.Unknown),
           originalSecretUpdateName: S.optional(S.String),
         }),
@@ -8938,28 +6861,28 @@ function __c28(j: number): any {
         identifier: "PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem",
       });
     case 2:
-      return S.Array(PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: PostV3workplacechangeRequestsRequestUnitsItemAction,
+          action: S.String,
           id: S.optional(S.String),
-          target: PostV3workplacechangeRequestsRequestUnitsItemTarget,
-          status: S.optional(PostV3workplacechangeRequestsRequestUnitsItemStatus),
-          updates: PostV3workplacechangeRequestsRequestUnitsItemUpdatesList,
+          target: __S(49),
+          status: S.optional(S.String),
+          updates: __S(226),
         }),
       ).annotate({
         identifier: "PostV3workplacechangeRequestsRequestUnitsItem",
       });
     case 4:
-      return S.Array(PostV3workplacechangeRequestsRequestUnitsItem);
+      return S.Array(__S(227));
     case 5:
       return S.suspend(() =>
         S.Struct({
           title: S.String,
           description: S.optional(S.String),
-          assigned: PostV3workplacechangeRequestsRequestAssignedList,
-          units: PostV3workplacechangeRequestsRequestUnitsList,
+          assigned: __S(59),
+          units: __S(228),
         }).pipe(T.Http({ method: "POST", uri: "/v3/workplace/change_requests", code: 200 })),
       ).annotate({
         identifier: "PostV3workplacechangeRequestsRequest",
@@ -8975,7 +6898,7 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          changeRequest: S.optional(PostV3workplacechangeRequestsResponseChangeRequest),
+          changeRequest: S.optional(__S(230)),
         }),
       ).annotate({
         identifier: "PostV3workplacechangeRequestsResponse",
@@ -8987,19 +6910,19 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType,
+          type: S.String,
           slug: S.String,
         }),
       ).annotate({
         identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem",
       });
     case 1:
-      return S.Array(PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem);
+      return S.Array(__S(232));
     case 2:
       return S.suspend(() =>
         S.Struct({
           change_request_id: S.String.pipe(T.Label()),
-          assigned: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList,
+          assigned: __S(233),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9013,9 +6936,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(
-            PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType,
-          ),
+          type: S.optional(S.String),
           slug: S.optional(S.String),
           name: S.optional(S.String),
           email: S.optional(S.String),
@@ -9025,13 +6946,11 @@ function __c29(j: number): any {
         identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem",
       });
     case 4:
-      return S.Array(PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem);
+      return S.Array(__S(235));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assigned: S.optional(
-            PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList,
-          ),
+          assigned: S.optional(__S(236)),
         }),
       ).annotate({
         identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
@@ -9099,8 +7018,7 @@ function __c30(j: number): any {
         S.Struct({
           change_request_id: S.String.pipe(T.Label()),
           unit_id: S.String.pipe(T.Label()),
-          status:
-            PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus,
+          status: S.String,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9115,8 +7033,8 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          aud: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList,
-          sub: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList,
+          aud: __S(166),
+          sub: __S(166),
         }),
       ).annotate({
         identifier:
@@ -9126,10 +7044,8 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           discovery_url: S.String,
-          claims_type:
-            PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsType,
-          claims:
-            PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims,
+          claims_type: S.String,
+          claims: __S(243),
         }),
       ).annotate({
         identifier:
@@ -9140,8 +7056,8 @@ function __c30(j: number): any {
         S.Struct({
           service_account: S.String.pipe(T.Label()),
           name: S.String,
-          method: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod,
-          config: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig,
+          method: S.String,
+          config: __S(244),
           ttl_seconds: S.Number,
         }).pipe(
           T.Http({
@@ -9158,9 +7074,7 @@ function __c30(j: number): any {
         S.Struct({
           discovery_url: S.optional(S.String),
           claims_type: S.optional(S.String),
-          claims: S.optional(
-            PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims,
-          ),
+          claims: S.optional(__S(167)),
           ttl_seconds: S.optional(S.Number),
           created_at: S.optional(S.String),
           last_seen_at: S.optional(S.String),
@@ -9174,12 +7088,8 @@ function __c30(j: number): any {
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          method: S.optional(
-            PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod,
-          ),
-          config: S.optional(
-            PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig,
-          ),
+          method: S.optional(S.String),
+          config: S.optional(__S(246)),
         }),
       ).annotate({
         identifier:
@@ -9192,9 +7102,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(
-            PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity,
-          ),
+          identity: S.optional(__S(247)),
         }),
       ).annotate({
         identifier: "PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse",
@@ -9203,10 +7111,10 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project: S.String.pipe(T.Query()),
-          type: ProjectMembersAddRequestType,
+          type: S.String,
           slug: S.String,
           role: S.optional(S.String),
-          environments: S.optional(ProjectMembersAddRequestEnvironmentsList),
+          environments: S.optional(__S(8)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/projects/project/members", code: 200 })),
       ).annotate({ identifier: "ProjectMembersAddRequest" });
     case 2:
@@ -9214,9 +7122,9 @@ function __c31(j: number): any {
         S.Struct({
           type: S.optional(S.String),
           slug: S.optional(S.String),
-          role: S.optional(CreateGroupResponseGroupDefaultProjectRole),
+          role: S.optional(__S(72)),
           access_all_environments: S.optional(S.Boolean),
-          environments: S.optional(ProjectMembersAddResponseMemberEnvironmentsList),
+          environments: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ProjectMembersAddResponseMember",
@@ -9224,7 +7132,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          member: S.optional(ProjectMembersAddResponseMember),
+          member: S.optional(__S(250)),
         }),
       ).annotate({
         identifier: "ProjectMembersAddResponse",
@@ -9232,7 +7140,7 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ProjectMembersDeleteRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Query()),
         }).pipe(
@@ -9248,7 +7156,7 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: ProjectMembersGetRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Query()),
         }).pipe(
@@ -9270,7 +7178,7 @@ function __c31(j: number): any {
         identifier: "ProjectMembersListRequest",
       });
     case 7:
-      return S.Array(ProjectMembersListResponseMembersItem);
+      return S.Array(__S(250));
   }
 }
 function __c32(j: number): any {
@@ -9278,7 +7186,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(ProjectMembersListResponseMembersList),
+          members: S.optional(__S(255)),
         }),
       ).annotate({
         identifier: "ProjectMembersListResponse",
@@ -9286,11 +7194,11 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: ProjectMembersUpdateRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           project: S.String.pipe(T.Query()),
           role: S.optional(S.String),
-          environments: S.optional(ProjectMembersUpdateRequestEnvironmentsList),
+          environments: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9305,7 +7213,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          permissions: ProjectRolesCreateRequestPermissionsList,
+          permissions: __S(8),
         }).pipe(T.Http({ method: "POST", uri: "/v3/projects/roles", code: 200 })),
       ).annotate({
         identifier: "ProjectRolesCreateRequest",
@@ -9314,7 +7222,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          permissions: S.optional(ProjectRolesCreateResponseRolePermissionsList),
+          permissions: S.optional(__S(8)),
           identifier: S.optional(S.String),
           created_at: S.optional(S.String),
           is_custom_role: S.optional(S.Boolean),
@@ -9325,7 +7233,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(ProjectRolesCreateResponseRole),
+          role: S.optional(__S(259)),
         }),
       ).annotate({
         identifier: "ProjectRolesCreateResponse",
@@ -9347,7 +7255,7 @@ function __c32(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(ProjectRolesGetResponseRole),
+          role: S.optional(__S(259)),
         }),
       ).annotate({ identifier: "ProjectRolesGetResponse" });
   }
@@ -9359,11 +7267,11 @@ function __c33(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/projects/roles", code: 200 })),
       ).annotate({ identifier: "ProjectRolesListRequest" });
     case 1:
-      return S.Array(ProjectRolesListResponseRolesItem);
+      return S.Array(__S(259));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(ProjectRolesListResponseRolesList),
+          roles: S.optional(__S(265)),
         }),
       ).annotate({ identifier: "ProjectRolesListResponse" });
     case 3:
@@ -9375,7 +7283,7 @@ function __c33(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(ProjectRolesListPermissionsResponsePermissionsList),
+          permissions: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ProjectRolesListPermissionsResponse",
@@ -9385,7 +7293,7 @@ function __c33(j: number): any {
         S.Struct({
           role: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          permissions: S.optional(ProjectRolesUpdateRequestPermissionsList),
+          permissions: S.optional(__S(8)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v3/projects/roles/role/{role}", code: 200 })),
       ).annotate({
         identifier: "ProjectRolesUpdateRequest",
@@ -9393,16 +7301,12 @@ function __c33(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(
-            PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction,
-          ),
+          action: S.optional(S.String),
           name: S.String,
           value: S.optional(S.String),
           shouldDelete: S.optional(S.Boolean),
-          visType: S.optional(
-            PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemVisType,
-          ),
-          valueType: S.optional(GetSecretResponseValueRawValueType),
+          visType: S.optional(S.Number),
+          valueType: S.optional(__S(134)),
           generationSettings: S.optional(S.Unknown),
           originalSecretUpdateName: S.optional(S.String),
         }),
@@ -9411,9 +7315,7 @@ function __c33(j: number): any {
           "PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem",
       });
     case 7:
-      return S.Array(
-        PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem,
-      );
+      return S.Array(__S(270));
   }
 }
 function __c34(j: number): any {
@@ -9421,31 +7323,24 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction,
+          action: S.String,
           id: S.optional(S.String),
-          status: S.optional(
-            PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemStatus,
-          ),
-          updates:
-            PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList,
+          status: S.optional(S.String),
+          updates: __S(271),
         }),
       ).annotate({
         identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem",
       });
     case 1:
-      return S.Array(PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem);
+      return S.Array(__S(272));
     case 2:
       return S.suspend(() =>
         S.Struct({
           change_request_id: S.String.pipe(T.Label()),
           title: S.optional(S.String),
           description: S.optional(S.String),
-          assigned: S.optional(
-            PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList,
-          ),
-          units: S.optional(
-            PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList,
-          ),
+          assigned: S.optional(__S(233)),
+          units: S.optional(__S(273)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9459,7 +7354,7 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          changeRequest: S.optional(PostV3workplacechangeRequestsResponseChangeRequest),
+          changeRequest: S.optional(__S(230)),
         }),
       ).annotate({
         identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
@@ -9468,10 +7363,8 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           discovery_url: S.String,
-          claims_type:
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsType,
-          claims:
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims,
+          claims_type: S.String,
+          claims: __S(243),
         }),
       ).annotate({
         identifier:
@@ -9483,10 +7376,8 @@ function __c34(j: number): any {
           service_account: S.String.pipe(T.Label()),
           identity: S.String.pipe(T.Label()),
           name: S.String,
-          method:
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestMethod,
-          config:
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig,
+          method: S.String,
+          config: __S(276),
           ttl_seconds: S.Number,
         }).pipe(
           T.Http({
@@ -9503,12 +7394,8 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           discovery_url: S.optional(S.String),
-          claims_type: S.optional(
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType,
-          ),
-          claims: S.optional(
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims,
-          ),
+          claims_type: S.optional(S.String),
+          claims: S.optional(__S(167)),
         }),
       ).annotate({
         identifier:
@@ -9519,12 +7406,8 @@ function __c34(j: number): any {
         S.Struct({
           slug: S.optional(S.String),
           name: S.optional(S.String),
-          method: S.optional(
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod,
-          ),
-          config: S.optional(
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig,
-          ),
+          method: S.optional(S.String),
+          config: S.optional(__S(278)),
           ttl_seconds: S.optional(S.Number),
           created_at: S.optional(S.String),
           last_seen_at: S.optional(S.String),
@@ -9540,9 +7423,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(
-            PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity,
-          ),
+          identity: S.optional(__S(279)),
         }),
       ).annotate({
         identifier:
@@ -9582,7 +7463,7 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(SecretsNamesResponseNamesList),
+          names: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "SecretsNamesResponse" });
     case 6:
@@ -9610,7 +7491,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
-          permissions: S.optional(ServiceAccountsCreateRequestWorkplaceRolePermissionsList),
+          permissions: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ServiceAccountsCreateRequestWorkplaceRole",
@@ -9619,7 +7500,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          workplace_role: S.optional(ServiceAccountsCreateRequestWorkplaceRole),
+          workplace_role: S.optional(__S(288)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/workplace/service_accounts", code: 200 })),
       ).annotate({
         identifier: "ServiceAccountsCreateRequest",
@@ -9628,9 +7509,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          permissions: S.optional(
-            ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList,
-          ),
+          permissions: S.optional(__S(166)),
           identifier: S.optional(S.String),
           created_at: S.optional(S.String),
           is_custom_role: S.optional(S.Boolean),
@@ -9645,7 +7524,7 @@ function __c36(j: number): any {
           name: S.optional(S.String),
           slug: S.optional(S.String),
           created_at: S.optional(S.String),
-          workplace_role: S.optional(ServiceAccountsCreateResponseServiceAccountWorkplaceRole),
+          workplace_role: S.optional(__S(290)),
         }),
       ).annotate({
         identifier: "ServiceAccountsCreateResponseServiceAccount",
@@ -9653,7 +7532,7 @@ function __c36(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          service_account: S.optional(ServiceAccountsCreateResponseServiceAccount),
+          service_account: S.optional(__S(291)),
         }),
       ).annotate({
         identifier: "ServiceAccountsCreateResponse",
@@ -9690,9 +7569,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          permissions: S.optional(
-            ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList,
-          ),
+          permissions: S.optional(__S(166)),
           identifier: S.optional(S.String),
           created_at: S.optional(S.String),
           is_custom_role: S.optional(S.Boolean),
@@ -9711,7 +7588,7 @@ function __c37(j: number): any {
           name: S.optional(S.String),
           slug: S.optional(S.String),
           created_at: S.optional(S.String),
-          workplace_role: S.optional(ServiceAccountsGetResponseServiceAccountWorkplaceRole),
+          workplace_role: S.optional(__S(295)),
         }),
       ).annotate({
         identifier: "ServiceAccountsGetResponseServiceAccount",
@@ -9719,7 +7596,7 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          service_account: S.optional(ServiceAccountsGetResponseServiceAccount),
+          service_account: S.optional(__S(296)),
         }),
       ).annotate({
         identifier: "ServiceAccountsGetResponse",
@@ -9734,11 +7611,11 @@ function __c37(j: number): any {
         identifier: "ServiceAccountsListRequest",
       });
     case 3:
-      return S.Array(ServiceAccountsListResponseServiceAccountsItem);
+      return S.Array(__S(291));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          service_accounts: S.optional(ServiceAccountsListResponseServiceAccountsList),
+          service_accounts: S.optional(__S(299)),
         }),
       ).annotate({
         identifier: "ServiceAccountsListResponse",
@@ -9748,7 +7625,7 @@ function __c37(j: number): any {
         S.Struct({
           slug: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          workplace_role: S.optional(ServiceAccountsUpdateRequestWorkplaceRole),
+          workplace_role: S.optional(__S(288)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9765,9 +7642,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          permissions: S.optional(
-            ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList,
-          ),
+          permissions: S.optional(__S(302)),
           identifier: S.optional(S.String),
           created_at: S.optional(S.String),
           is_custom_role: S.optional(S.Boolean),
@@ -9786,7 +7661,7 @@ function __c38(j: number): any {
           name: S.optional(S.String),
           slug: S.optional(S.String),
           created_at: S.optional(S.String),
-          workplace_role: S.optional(ServiceAccountsUpdateResponseServiceAccountWorkplaceRole),
+          workplace_role: S.optional(__S(303)),
         }),
       ).annotate({
         identifier: "ServiceAccountsUpdateResponseServiceAccount",
@@ -9794,7 +7669,7 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          service_account: S.optional(ServiceAccountsUpdateResponseServiceAccount),
+          service_account: S.optional(__S(304)),
         }),
       ).annotate({
         identifier: "ServiceAccountsUpdateResponse",
@@ -9830,7 +7705,7 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          api_token: S.optional(ServiceAccountTokensCreateResponseApiToken),
+          api_token: S.optional(__S(307)),
           api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
           success: S.optional(S.Boolean),
         }),
@@ -9886,7 +7761,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          api_token: S.optional(ServiceAccountTokensGetResponseApiToken),
+          api_token: S.optional(__S(311)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9909,11 +7784,11 @@ function __c39(j: number): any {
         identifier: "ServiceAccountTokensListRequest",
       });
     case 2:
-      return S.Array(ServiceAccountTokensGetResponseApiToken);
+      return S.Array(__S(311));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          api_tokens: S.optional(ServiceAccountTokensListResponseApiTokensList),
+          api_tokens: S.optional(__S(314)),
           success: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9926,7 +7801,7 @@ function __c39(j: number): any {
           config: S.String,
           name: S.String,
           expire_at: S.optional(S.String),
-          access: S.optional(ServiceTokensCreateRequestAccess),
+          access: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v3/configs/config/tokens", code: 200 })),
       ).annotate({
         identifier: "ServiceTokensCreateRequest",
@@ -9950,7 +7825,7 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          token: S.optional(ServiceTokensCreateResponseToken),
+          token: S.optional(__S(317)),
         }),
       ).annotate({
         identifier: "ServiceTokensCreateResponse",
@@ -9992,11 +7867,11 @@ function __c40(j: number): any {
         identifier: "ServiceTokensListResponseTokensItem",
       });
     case 2:
-      return S.Array(ServiceTokensListResponseTokensItem);
+      return S.Array(__S(321));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tokens: S.optional(ServiceTokensListResponseTokensList),
+          tokens: S.optional(__S(322)),
         }),
       ).annotate({
         identifier: "ServiceTokensListResponse",
@@ -10057,8 +7932,8 @@ function __c41(j: number): any {
           slug: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          rules: UpdateChangeRequestPolicyRequestRulesList,
-          targets: CreateChangeRequestPolicyRequestTargets,
+          rules: __S(61),
+          targets: __S(62),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10096,7 +7971,7 @@ function __c41(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: UpdateIntegrationsIntegrationMemberRequestType.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           integration: S.String.pipe(T.Query()),
           role: S.String,
@@ -10144,21 +8019,21 @@ function __c42(j: number): any {
           shouldPromote: S.optional(S.Boolean),
           shouldDelete: S.optional(S.Boolean),
           shouldConverge: S.optional(S.Boolean),
-          valueType: S.optional(UpdateSecretRequestChangeRequestsItemValueType),
-          originalValueType: S.optional(UpdateSecretRequestChangeRequestsItemOriginalValueType),
+          valueType: S.optional(__S(177)),
+          originalValueType: S.optional(__S(177)),
         }),
       ).annotate({
         identifier: "UpdateSecretRequestChangeRequestsItem",
       });
     case 1:
-      return S.Array(UpdateSecretRequestChangeRequestsItem);
+      return S.Array(__S(336));
     case 2:
       return S.suspend(() =>
         S.Struct({
           project: S.String,
           config: S.String,
-          secrets: S.optional(UpdateSecretRequestSecrets),
-          change_requests: S.optional(UpdateSecretRequestChangeRequestsList),
+          secrets: S.optional(__S(335)),
+          change_requests: S.optional(__S(337)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/configs/config/secrets", code: 200 })),
       ).annotate({ identifier: "UpdateSecretRequest" });
     case 3:
@@ -10174,9 +8049,9 @@ function __c42(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          STRIPE: S.optional(UpdateSecretResponseSecretsSTRIPE),
-          ALGOLIA: S.optional(UpdateSecretResponseSecretsSTRIPE),
-          DATABASE: S.optional(UpdateSecretResponseSecretsSTRIPE),
+          STRIPE: S.optional(__S(339)),
+          ALGOLIA: S.optional(__S(339)),
+          DATABASE: S.optional(__S(339)),
         }),
       ).annotate({
         identifier: "UpdateSecretResponseSecrets",
@@ -10184,7 +8059,7 @@ function __c42(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          secrets: S.optional(UpdateSecretResponseSecrets),
+          secrets: S.optional(__S(340)),
         }),
       ).annotate({ identifier: "UpdateSecretResponse" });
     case 6:
@@ -10201,11 +8076,11 @@ function __c42(j: number): any {
           project: S.optional(S.String.pipe(T.Query())),
           url: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          authentication: S.optional(UpdateWebhookRequestAuthentication),
+          authentication: S.optional(__S(7)),
           payload: S.optional(S.String),
           name: S.optional(S.String),
-          enableConfigs: S.optional(UpdateWebhookRequestEnableConfigsList),
-          disableConfigs: S.optional(UpdateWebhookRequestDisableConfigsList),
+          enableConfigs: S.optional(__S(8)),
+          disableConfigs: S.optional(__S(8)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v3/webhooks/webhook/{slug}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
   }
@@ -10224,7 +8099,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          permissions: WorkplaceRolesCreateRequestPermissionsList,
+          permissions: __S(8),
         }).pipe(T.Http({ method: "POST", uri: "/v3/workplace/roles", code: 200 })),
       ).annotate({
         identifier: "WorkplaceRolesCreateRequest",
@@ -10232,7 +8107,7 @@ function __c43(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(WorkplaceRolesCreateResponseRole),
+          role: S.optional(__S(205)),
         }),
       ).annotate({
         identifier: "WorkplaceRolesCreateResponse",
@@ -10258,11 +8133,11 @@ function __c43(j: number): any {
         identifier: "WorkplaceRolesListRequest",
       });
     case 6:
-      return S.Array(WorkplaceRolesListResponseRolesItem);
+      return S.Array(__S(205));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(WorkplaceRolesListResponseRolesList),
+          roles: S.optional(__S(350)),
         }),
       ).annotate({
         identifier: "WorkplaceRolesListResponse",
@@ -10282,10 +8157,109 @@ function __c44(j: number): any {
         S.Struct({
           role: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          permissions: S.optional(WorkplaceRolesUpdateRequestPermissionsList),
+          permissions: S.optional(__S(8)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v3/workplace/roles/role/{role}", code: 200 })),
       ).annotate({
         identifier: "WorkplaceRolesUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
   }
 }

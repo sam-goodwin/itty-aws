@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -23,37 +25,18 @@ export interface GetUserCustomerAnalyticsConfigRequest {
   project_id: string;
   id: string;
 }
-const GetUserCustomerAnalyticsConfigRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetUserCustomerAnalyticsConfigRequest>;
-
 /** * `custom_property` - Custom property * `relationship` - Relationship */
 export type AccountPropertyPinKindEnum = "custom_property" | "relationship";
-const AccountPropertyPinKindEnum = S.String;
-
 export interface PinnedAccountProperty {
   /** Definition type for this pinned account property. * `custom_property` - Custom property * `relationship` - Relationship */
   kind: AccountPropertyPinKindEnum | (string & {});
   /** Team-scoped custom property or relationship definition UUID. */
   id: string;
 }
-const PinnedAccountProperty = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PinnedAccountProperty>;
-
 /** Account properties pinned in sidebar display order. */
 export type UserCustomerAnalyticsConfigPinnedPropertiesList = Array<PinnedAccountProperty>;
-const UserCustomerAnalyticsConfigPinnedPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserCustomerAnalyticsConfigPinnedPropertiesList>;
-
 /** * `weekdays` - Weekdays * `every_day` - Every day */
 export type TaskDigestCadenceEnum = "weekdays" | "every_day";
-const TaskDigestCadenceEnum = S.String;
-
 export interface TaskDigestPreferences {
   /** Whether the task digest email is sent to this user. */
   enabled: boolean;
@@ -62,23 +45,10 @@ export interface TaskDigestPreferences {
   /** How often the digest is sent. * `weekdays` - Weekdays * `every_day` - Every day */
   cadence: TaskDigestCadenceEnum;
 }
-const TaskDigestPreferences = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<TaskDigestPreferences>;
-
 /** Tab identifiers in the user's preferred order. */
 export type AccountDetailTabsConfigOrderedTabIdsList = Array<string>;
-const AccountDetailTabsConfigOrderedTabIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountDetailTabsConfigOrderedTabIdsList>;
-
 /** Tab identifiers hidden from the tab strip. */
 export type AccountDetailTabsConfigHiddenTabIdsList = Array<string>;
-const AccountDetailTabsConfigHiddenTabIdsList =
-  AccountDetailTabsConfigOrderedTabIdsList as any as S.Schema<AccountDetailTabsConfigHiddenTabIdsList>;
-
 export interface AccountDetailTabsConfig {
   /** Tab identifiers in the user's preferred order. */
   ordered_tab_ids: AccountDetailTabsConfigOrderedTabIdsList;
@@ -87,11 +57,6 @@ export interface AccountDetailTabsConfig {
   /** Tab identifier opened by default. Null uses the first available system tab. */
   default_tab_id: string | null;
 }
-const AccountDetailTabsConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccountDetailTabsConfig>;
-
 export interface UserCustomerAnalyticsConfig2 {
   /** Account properties pinned in sidebar display order. */
   pinned_properties: UserCustomerAnalyticsConfigPinnedPropertiesList;
@@ -100,19 +65,9 @@ export interface UserCustomerAnalyticsConfig2 {
   /** Personal order, visibility, and default for account tabs. */
   account_detail_tabs: AccountDetailTabsConfig;
 }
-const UserCustomerAnalyticsConfig2 = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<UserCustomerAnalyticsConfig2>;
-
 /** Complete ordered list of account properties to pin. Omit to keep the current pins; pass an empty list to clear them. */
 export type UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList =
   Array<PinnedAccountProperty>;
-const UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList>;
-
 export interface TaskDigestPreferencesUpdate {
   /** Whether the task digest email is sent to this user. */
   enabled?: boolean;
@@ -121,11 +76,6 @@ export interface TaskDigestPreferencesUpdate {
   /** How often the digest is sent. * `weekdays` - Weekdays * `every_day` - Every day */
   cadence?: TaskDigestCadenceEnum | (string & {});
 }
-const TaskDigestPreferencesUpdate = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<TaskDigestPreferencesUpdate>;
-
 export interface UpdateUserCustomerAnalyticsConfigPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -137,11 +87,6 @@ export interface UpdateUserCustomerAnalyticsConfigPartialRequest {
   /** Complete personal account tab configuration. Omit to keep it unchanged. */
   account_detail_tabs?: AccountDetailTabsConfig;
 }
-const UpdateUserCustomerAnalyticsConfigPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequest>;
-
 export type GetUserCustomerAnalyticsConfigError = PosthogOpError;
 /** Get account sidebar configuration Get the requesting user's account sidebar and task digest configuration for this project. Project defaults are returned until the user saves a personal pinned-property selection. */
 export const getUserCustomerAnalyticsConfig: API.OperationMethod<
@@ -150,8 +95,8 @@ export const getUserCustomerAnalyticsConfig: API.OperationMethod<
   GetUserCustomerAnalyticsConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserCustomerAnalyticsConfigRequest,
-  output: UserCustomerAnalyticsConfig2,
+  input: __S(0) as any as S.Schema<GetUserCustomerAnalyticsConfigRequest>,
+  output: __S(6) as any as S.Schema<UserCustomerAnalyticsConfig2>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -165,8 +110,8 @@ export const updateUserCustomerAnalyticsConfigPartial: API.OperationMethod<
   UpdateUserCustomerAnalyticsConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserCustomerAnalyticsConfigPartialRequest,
-  output: UserCustomerAnalyticsConfig2,
+  input: __S(9) as any as S.Schema<UpdateUserCustomerAnalyticsConfigPartialRequest>,
+  output: __S(6) as any as S.Schema<UserCustomerAnalyticsConfig2>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -193,18 +138,18 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: AccountPropertyPinKindEnum,
+          kind: S.String,
           id: S.String,
         }),
       ).annotate({ identifier: "PinnedAccountProperty" });
     case 2:
-      return S.Array(PinnedAccountProperty);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
           send_time: S.String,
-          cadence: TaskDigestCadenceEnum,
+          cadence: S.String,
         }),
       ).annotate({ identifier: "TaskDigestPreferences" });
     case 4:
@@ -212,23 +157,23 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ordered_tab_ids: AccountDetailTabsConfigOrderedTabIdsList,
-          hidden_tab_ids: AccountDetailTabsConfigHiddenTabIdsList,
+          ordered_tab_ids: __S(4),
+          hidden_tab_ids: __S(4),
           default_tab_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "AccountDetailTabsConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pinned_properties: UserCustomerAnalyticsConfigPinnedPropertiesList,
-          task_digest: TaskDigestPreferences,
-          account_detail_tabs: AccountDetailTabsConfig,
+          pinned_properties: __S(2),
+          task_digest: __S(3),
+          account_detail_tabs: __S(5),
         }),
       ).annotate({
         identifier: "UserCustomerAnalyticsConfig2",
       });
     case 7:
-      return S.Array(PinnedAccountProperty);
+      return S.Array(__S(1));
   }
 }
 function __c1(j: number): any {
@@ -238,7 +183,7 @@ function __c1(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           send_time: S.optional(S.String),
-          cadence: S.optional(TaskDigestCadenceEnum),
+          cadence: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TaskDigestPreferencesUpdate",
@@ -248,11 +193,9 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          pinned_properties: S.optional(
-            UpdateUserCustomerAnalyticsConfigPartialRequestPinnedPropertiesList,
-          ),
-          task_digest: S.optional(TaskDigestPreferencesUpdate),
-          account_detail_tabs: S.optional(AccountDetailTabsConfig),
+          pinned_properties: S.optional(__S(7)),
+          task_digest: S.optional(__S(8)),
+          account_detail_tabs: S.optional(__S(5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -263,5 +206,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateUserCustomerAnalyticsConfigPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -86,50 +88,30 @@ export type ProductAccountAccountTypeEnum =
   | "GOOGLE_AD_MANAGER_AUDIENCE_LINK"
   | "FLOODLIGHT_CONFIG"
   | "GOOGLE_AD_MANAGER";
-const ProductAccountAccountTypeEnum = S.String;
-
 export type ProductAccountProductEnum =
   | "PRODUCT_UNSPECIFIED"
   | "GOOGLE_ADS"
   | "DISPLAY_VIDEO_PARTNER"
   | "DISPLAY_VIDEO_ADVERTISER"
   | "DATA_PARTNER";
-const ProductAccountProductEnum = S.String;
-
 export interface ProductAccount {
   accountType?: ProductAccountAccountTypeEnum | (string & {});
   accountId?: string;
   product?: ProductAccountProductEnum | (string & {});
 }
-const ProductAccount = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ProductAccount>;
-
 export type PartnerLinkFeatureSetEnum =
   | "FEATURE_SET_UNSPECIFIED"
   | "FEATURE_SET_AUDIENCE_AND_EVENT_MANAGEMENT"
   | "FEATURE_SET_AD_EVENT_MANAGEMENT";
-const PartnerLinkFeatureSetEnum = S.String;
-
 export interface PartnerCustomerAccount {
   accountId?: string;
   accountName?: string;
   accountType?: string;
 }
-const PartnerCustomerAccount = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PartnerCustomerAccount>;
-
 export type PartnerCustomerAccountList = Array<PartnerCustomerAccount>;
-const PartnerCustomerAccountList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PartnerCustomerAccountList>;
-
 export interface PartnerLinkMetadata {
   implicitAccounts?: PartnerCustomerAccountList;
 }
-const PartnerLinkMetadata = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PartnerLinkMetadata>;
-
 export interface PartnerLink {
   partnerAccount?: ProductAccount;
   featureSet?: PartnerLinkFeatureSetEnum | (string & {});
@@ -139,32 +121,21 @@ export interface PartnerLink {
   name?: string;
   partnerLinkMetadata?: PartnerLinkMetadata;
 }
-const PartnerLink = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PartnerLink>;
-
 export interface CreateAccountTypesAccountsPartnerLinksRequest {
   parent: string;
   /** Request body */
   body?: PartnerLink;
 }
-const CreateAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateAccountTypesAccountsPartnerLinksRequest>;
-
 export type UserListDirectLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
   | "USER_LIST_LICENSE_STATUS_DISABLED";
-const UserListDirectLicenseStatusEnum = S.String;
-
 export type UserListDirectLicenseClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_UNKNOWN"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_ADS"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK";
-const UserListDirectLicenseClientAccountTypeEnum = S.String;
-
 export interface UserListLicenseMetrics {
   impressionCount?: string;
   endDate?: string;
@@ -172,25 +143,16 @@ export interface UserListLicenseMetrics {
   revenueUsdMicros?: string;
   startDate?: string;
 }
-const UserListLicenseMetrics = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<UserListLicenseMetrics>;
-
 export type UserListLicensePricingCostTypeEnum =
   | "USER_LIST_PRICING_COST_TYPE_UNSPECIFIED"
   | "CPC"
   | "CPM"
   | "MEDIA_SHARE";
-const UserListLicensePricingCostTypeEnum = S.String;
-
 export type UserListLicensePricingBuyerApprovalStateEnum =
   | "USER_LIST_PRICING_BUYER_APPROVAL_STATE_UNSPECIFIED"
   | "PENDING"
   | "APPROVED"
   | "REJECTED";
-const UserListLicensePricingBuyerApprovalStateEnum = S.String;
-
 export interface UserListLicensePricing {
   maxCostMicros?: string;
   pricingId?: string;
@@ -202,17 +164,7 @@ export interface UserListLicensePricing {
   buyerApprovalState?: UserListLicensePricingBuyerApprovalStateEnum | (string & {});
   endTime?: string;
 }
-const UserListLicensePricing = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UserListLicensePricing>;
-
 export type UserListLicensePricingList = Array<UserListLicensePricing>;
-const UserListLicensePricingList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UserListLicensePricingList>;
-
 export interface UserListDirectLicense {
   status?: UserListDirectLicenseStatusEnum | (string & {});
   userListId?: string;
@@ -225,34 +177,20 @@ export interface UserListDirectLicense {
   userListDisplayName?: string;
   name?: string;
 }
-const UserListDirectLicense = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UserListDirectLicense>;
-
 export interface CreateAccountTypesAccountsUserListDirectLicensesRequest {
   parent: string;
   /** Request body */
   body?: UserListDirectLicense;
 }
-const CreateAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateAccountTypesAccountsUserListDirectLicensesRequest>;
-
 export type UserListGlobalLicenseStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
   | "USER_LIST_LICENSE_STATUS_DISABLED";
-const UserListGlobalLicenseStatusEnum = S.String;
-
 export type UserListGlobalLicenseLicenseTypeEnum =
   | "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE";
-const UserListGlobalLicenseLicenseTypeEnum = S.String;
-
 export interface UserListGlobalLicense {
   userListDisplayName?: string;
   pricing?: UserListLicensePricing;
@@ -263,21 +201,11 @@ export interface UserListGlobalLicense {
   metrics?: UserListLicenseMetrics;
   licenseType?: UserListGlobalLicenseLicenseTypeEnum | (string & {});
 }
-const UserListGlobalLicense = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UserListGlobalLicense>;
-
 export interface CreateAccountTypesAccountsUserListGlobalLicensesRequest {
   parent: string;
   /** Request body */
   body?: UserListGlobalLicense;
 }
-const CreateAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateAccountTypesAccountsUserListGlobalLicensesRequest>;
-
 export type UserListAccessReasonEnum =
   | "ACCESS_REASON_UNSPECIFIED"
   | "OWNED"
@@ -285,44 +213,28 @@ export type UserListAccessReasonEnum =
   | "LICENSED"
   | "SUBSCRIBED"
   | "AFFILIATED";
-const UserListAccessReasonEnum = S.String;
-
 export type UserListClosingReasonEnum = "CLOSING_REASON_UNSPECIFIED" | "UNUSED";
-const UserListClosingReasonEnum = S.String;
-
 export interface SizeInfo {
   gmailMembersCount?: string;
   youtubeMembersCount?: string;
   displayNetworkMembersCount?: string;
   searchNetworkMembersCount?: string;
 }
-const SizeInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SizeInfo>;
-
 export type UserListMembershipStatusEnum = "MEMBERSHIP_STATUS_UNSPECIFIED" | "OPEN" | "CLOSED";
-const UserListMembershipStatusEnum = S.String;
-
 export type UserListAccountAccessStatusEnum = "ACCESS_STATUS_UNSPECIFIED" | "ENABLED" | "DISABLED";
-const UserListAccountAccessStatusEnum = S.String;
-
 export interface TargetNetworkInfo {
   eligibleForDisplay?: boolean;
   eligibleForSearch?: boolean;
 }
-const TargetNetworkInfo = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<TargetNetworkInfo>;
-
 export type PartnerAudienceInfoPartnerAudienceSourceEnum =
   | "PARTNER_AUDIENCE_SOURCE_UNSPECIFIED"
   | "COMMERCE_AUDIENCE"
   | "LINEAR_TV_AUDIENCE"
   | "AGENCY_PROVIDER_AUDIENCE";
-const PartnerAudienceInfoPartnerAudienceSourceEnum = S.String;
-
 export interface PartnerAudienceInfo {
   partnerAudienceSource?: PartnerAudienceInfoPartnerAudienceSourceEnum | (string & {});
   commercePartner?: string;
 }
-const PartnerAudienceInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PartnerAudienceInfo>;
-
 export interface PairIdInfo {
   matchRatePercentage?: number;
   cleanRoomIdentifier?: string;
@@ -330,66 +242,46 @@ export interface PairIdInfo {
   advertiserIdentifierCount?: string;
   publisherName?: string;
 }
-const PairIdInfo = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PairIdInfo>;
-
 export type MobileIdInfoKeySpaceEnum = "KEY_SPACE_UNSPECIFIED" | "IOS" | "ANDROID";
-const MobileIdInfoKeySpaceEnum = S.String;
-
 export type MobileIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_UNSPECIFIED"
   | "DATA_SOURCE_TYPE_FIRST_PARTY"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
-const MobileIdInfoDataSourceTypeEnum = S.String;
-
 export interface MobileIdInfo {
   keySpace?: MobileIdInfoKeySpaceEnum | (string & {});
   dataSourceType?: MobileIdInfoDataSourceTypeEnum | (string & {});
   appId?: string;
 }
-const MobileIdInfo = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MobileIdInfo>;
-
 export type ContactIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_UNSPECIFIED"
   | "DATA_SOURCE_TYPE_FIRST_PARTY"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
-const ContactIdInfoDataSourceTypeEnum = S.String;
-
 export interface ContactIdInfo {
   dataSourceType?: ContactIdInfoDataSourceTypeEnum | (string & {});
   matchRatePercentage?: number;
 }
-const ContactIdInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ContactIdInfo>;
-
 export type PseudonymousIdInfoSyncStatusEnum =
   | "SYNC_STATUS_UNSPECIFIED"
   | "CREATED"
   | "READY_FOR_USE"
   | "FAILED";
-const PseudonymousIdInfoSyncStatusEnum = S.String;
-
 export interface PseudonymousIdInfo {
   syncStatus?: PseudonymousIdInfoSyncStatusEnum | (string & {});
   billableRecordCount?: string;
 }
-const PseudonymousIdInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<PseudonymousIdInfo>;
-
 export type UserIdInfoDataSourceTypeEnum =
   | "DATA_SOURCE_TYPE_UNSPECIFIED"
   | "DATA_SOURCE_TYPE_FIRST_PARTY"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_CREDIT_BUREAU"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_VOTER_FILE"
   | "DATA_SOURCE_TYPE_THIRD_PARTY_PARTNER_DATA";
-const UserIdInfoDataSourceTypeEnum = S.String;
-
 export interface UserIdInfo {
   dataSourceType?: UserIdInfoDataSourceTypeEnum | (string & {});
 }
-const UserIdInfo = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UserIdInfo>;
-
 export type IngestedUserListInfoUploadKeyTypesItemEnum =
   | "UPLOAD_KEY_TYPE_UNSPECIFIED"
   | "CONTACT_ID"
@@ -397,16 +289,9 @@ export type IngestedUserListInfoUploadKeyTypesItemEnum =
   | "USER_ID"
   | "PAIR_ID"
   | "PSEUDONYMOUS_ID";
-const IngestedUserListInfoUploadKeyTypesItemEnum = S.String;
-
 export type IngestedUserListInfoUploadKeyTypesItemEnumList = Array<
   IngestedUserListInfoUploadKeyTypesItemEnum | (string & {})
 >;
-const IngestedUserListInfoUploadKeyTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IngestedUserListInfoUploadKeyTypesItemEnumList>;
-
 export interface IngestedUserListInfo {
   partnerAudienceInfo?: PartnerAudienceInfo;
   pairIdInfo?: PairIdInfo;
@@ -416,8 +301,6 @@ export interface IngestedUserListInfo {
   userIdInfo?: UserIdInfo;
   uploadKeyTypes?: IngestedUserListInfoUploadKeyTypesItemEnumList;
 }
-const IngestedUserListInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IngestedUserListInfo>;
-
 export interface UserList {
   accessReason?: UserListAccessReasonEnum | (string & {});
   displayName?: string;
@@ -434,72 +317,37 @@ export interface UserList {
   ingestedUserListInfo?: IngestedUserListInfo;
   readOnly?: boolean;
 }
-const UserList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UserList>;
-
 export interface CreateAccountTypesAccountsUserListsRequest {
   validateOnly?: boolean;
   parent: string;
   /** Request body */
   body?: UserList;
 }
-const CreateAccountTypesAccountsUserListsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateAccountTypesAccountsUserListsRequest>;
-
 export interface DeleteAccountTypesAccountsPartnerLinksRequest {
   name: string;
 }
-const DeleteAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>;
-
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Empty>;
-
 export interface DeleteAccountTypesAccountsUserListsRequest {
   validateOnly?: boolean;
   name: string;
 }
-const DeleteAccountTypesAccountsUserListsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteAccountTypesAccountsUserListsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<StringList>;
-
 export interface Location {
   regionCodes?: StringList;
 }
-const Location = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Location>;
-
 export interface Baseline {
   baselineLocation?: Location;
   locationAutoDetectionEnabled?: boolean;
 }
-const Baseline = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Baseline>;
-
 export interface RetrieveInsightsRequest {
   userListId?: string;
   baseline?: Baseline;
 }
-const RetrieveInsightsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<RetrieveInsightsRequest>;
-
 export interface GetAccountTypesAccountsInsightsRequest {
   parent: string;
   /** Request body */
   body?: RetrieveInsightsRequest;
 }
-const GetAccountTypesAccountsInsightsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetAccountTypesAccountsInsightsRequest>;
-
 export type MarketingDataInsightsAttributeAgeRangeEnum =
   | "AGE_RANGE_UNSPECIFIED"
   | "AGE_RANGE_UNKNOWN"
@@ -509,32 +357,18 @@ export type MarketingDataInsightsAttributeAgeRangeEnum =
   | "AGE_RANGE_45_54"
   | "AGE_RANGE_55_64"
   | "AGE_RANGE_65_UP";
-const MarketingDataInsightsAttributeAgeRangeEnum = S.String;
-
 export type MarketingDataInsightsAttributeGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_UNKNOWN"
   | "GENDER_MALE"
   | "GENDER_FEMALE";
-const MarketingDataInsightsAttributeGenderEnum = S.String;
-
 export interface MarketingDataInsightsAttribute {
   ageRange?: MarketingDataInsightsAttributeAgeRangeEnum;
   gender?: MarketingDataInsightsAttributeGenderEnum;
   userInterestId?: string;
   lift?: number;
 }
-const MarketingDataInsightsAttribute = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<MarketingDataInsightsAttribute>;
-
 export type MarketingDataInsightsAttributeList = Array<MarketingDataInsightsAttribute>;
-const MarketingDataInsightsAttributeList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<MarketingDataInsightsAttributeList>;
-
 export type MarketingDataInsightDimensionEnum =
   | "AUDIENCE_INSIGHTS_DIMENSION_UNSPECIFIED"
   | "AUDIENCE_INSIGHTS_DIMENSION_UNKNOWN"
@@ -542,68 +376,32 @@ export type MarketingDataInsightDimensionEnum =
   | "IN_MARKET_USER_INTEREST"
   | "AGE_RANGE"
   | "GENDER";
-const MarketingDataInsightDimensionEnum = S.String;
-
 export interface MarketingDataInsight {
   attributes?: MarketingDataInsightsAttributeList;
   dimension?: MarketingDataInsightDimensionEnum;
 }
-const MarketingDataInsight = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MarketingDataInsight>;
-
 export type MarketingDataInsightList = Array<MarketingDataInsight>;
-const MarketingDataInsightList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<MarketingDataInsightList>;
-
 export interface RetrieveInsightsResponse {
   marketingDataInsights?: MarketingDataInsightList;
 }
-const RetrieveInsightsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<RetrieveInsightsResponse>;
-
 export interface GetAccountTypesAccountsUserListDirectLicensesRequest {
   name: string;
 }
-const GetAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetAccountTypesAccountsUserListDirectLicensesRequest>;
-
 export interface GetAccountTypesAccountsUserListGlobalLicensesRequest {
   name: string;
 }
-const GetAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetAccountTypesAccountsUserListGlobalLicensesRequest>;
-
 export interface GetAccountTypesAccountsUserListsRequest {
   name: string;
 }
-const GetAccountTypesAccountsUserListsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetAccountTypesAccountsUserListsRequest>;
-
 export interface GetRequestStatusRequest {
   requestId?: string;
 }
-const GetRequestStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetRequestStatusRequest>;
-
 export type RequestStatusPerDestinationRequestStatusEnum =
   | "REQUEST_STATUS_UNKNOWN"
   | "SUCCESS"
   | "PROCESSING"
   | "FAILED"
   | "PARTIAL_SUCCESS";
-const RequestStatusPerDestinationRequestStatusEnum = S.String;
-
 export type WarningCountReasonEnum =
   | "PROCESSING_WARNING_REASON_UNSPECIFIED"
   | "PROCESSING_WARNING_REASON_KEK_PERMISSION_DENIED"
@@ -615,102 +413,57 @@ export type WarningCountReasonEnum =
   | "PROCESSING_WARNING_REASON_USER_IDENTIFIER_DECRYPTION_ERROR"
   | "PROCESSING_WARNING_REASON_INTERNAL_ERROR"
   | "PROCESSING_WARNING_REASON_AWS_AUTH_FAILED";
-const WarningCountReasonEnum = S.String;
-
 export interface WarningCount {
   recordCount?: string;
   reason?: WarningCountReasonEnum;
 }
-const WarningCount = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<WarningCount>;
-
 export type WarningCountList = Array<WarningCount>;
-const WarningCountList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<WarningCountList>;
-
 export interface WarningInfo {
   warningCounts?: WarningCountList;
 }
-const WarningInfo = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<WarningInfo>;
-
 export interface RemoveUserIdDataStatus {
   recordCount?: string;
   userIdCount?: string;
 }
-const RemoveUserIdDataStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<RemoveUserIdDataStatus>;
-
 export interface RemoveUserDataStatus {
   recordCount?: string;
   userIdentifierCount?: string;
 }
-const RemoveUserDataStatus = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<RemoveUserDataStatus>;
-
 export interface RemovePairDataStatus {
   recordCount?: string;
   pairIdCount?: string;
 }
-const RemovePairDataStatus = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<RemovePairDataStatus>;
-
 export interface RemovePpidDataStatus {
   ppidCount?: string;
   recordCount?: string;
 }
-const RemovePpidDataStatus = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<RemovePpidDataStatus>;
-
 export type DataTypeCountTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "EMAIL"
   | "PHONE_NUMBER"
   | "ADDRESS"
   | "IP_ADDRESS";
-const DataTypeCountTypeEnum = S.String;
-
 export interface DataTypeCount {
   type?: DataTypeCountTypeEnum;
   count?: string;
 }
-const DataTypeCount = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DataTypeCount>;
-
 export type DataTypeCountList = Array<DataTypeCount>;
-const DataTypeCountList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DataTypeCountList>;
-
 export interface RemoveCompositeDataStatus {
   dataTypeCounts?: DataTypeCountList;
   recordCount?: string;
 }
-const RemoveCompositeDataStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<RemoveCompositeDataStatus>;
-
 export interface RemoveGoogleUserIdDataStatus {
   googleUserIdCount?: string;
   recordCount?: string;
 }
-const RemoveGoogleUserIdDataStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<RemoveGoogleUserIdDataStatus>;
-
 export interface RemoveMobileDataStatus {
   recordCount?: string;
   mobileIdCount?: string;
 }
-const RemoveMobileDataStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<RemoveMobileDataStatus>;
-
 export interface RemovePartnerProvidedIdDataStatus {
   recordCount?: string;
   partnerProvidedIdCount?: string;
 }
-const RemovePartnerProvidedIdDataStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<RemovePartnerProvidedIdDataStatus>;
-
 export interface RemoveAudienceMembersStatus {
   userIdDataRemovalStatus?: RemoveUserIdDataStatus;
   userDataRemovalStatus?: RemoveUserDataStatus;
@@ -721,33 +474,16 @@ export interface RemoveAudienceMembersStatus {
   mobileDataRemovalStatus?: RemoveMobileDataStatus;
   partnerProvidedIdDataRemovalStatus?: RemovePartnerProvidedIdDataStatus;
 }
-const RemoveAudienceMembersStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<RemoveAudienceMembersStatus>;
-
 export interface RemoveAllAudienceMembersStatus {}
-const RemoveAllAudienceMembersStatus = Empty as any as S.Schema<RemoveAllAudienceMembersStatus>;
-
 export interface IngestMobileDataStatus {
   mobileIdCount?: string;
   recordCount?: string;
 }
-const IngestMobileDataStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IngestMobileDataStatus>;
-
 export type IngestUserIdDataStatus = RemoveUserIdDataStatus;
 export interface IngestPartnerProvidedIdDataStatus {
   partnerProvidedIdCount?: string;
   recordCount?: string;
 }
-const IngestPartnerProvidedIdDataStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IngestPartnerProvidedIdDataStatus>;
-
 export type IngestUserDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_UNKNOWN"
   | "MATCH_RATE_RANGE_NOT_ELIGIBLE"
@@ -760,21 +496,15 @@ export type IngestUserDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_71_TO_80"
   | "MATCH_RATE_RANGE_81_TO_90"
   | "MATCH_RATE_RANGE_91_TO_100";
-const IngestUserDataStatusUploadMatchRateRangeEnum = S.String;
-
 export interface IngestUserDataStatus {
   uploadMatchRateRange?: IngestUserDataStatusUploadMatchRateRangeEnum;
   userIdentifierCount?: string;
   recordCount?: string;
 }
-const IngestUserDataStatus = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<IngestUserDataStatus>;
-
 export interface IngestPairDataStatus {
   pairIdCount?: string;
   recordCount?: string;
 }
-const IngestPairDataStatus = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<IngestPairDataStatus>;
-
 export type IngestPpidDataStatus = RemovePpidDataStatus;
 export type IngestCompositeDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_UNKNOWN"
@@ -788,18 +518,11 @@ export type IngestCompositeDataStatusUploadMatchRateRangeEnum =
   | "MATCH_RATE_RANGE_71_TO_80"
   | "MATCH_RATE_RANGE_81_TO_90"
   | "MATCH_RATE_RANGE_91_TO_100";
-const IngestCompositeDataStatusUploadMatchRateRangeEnum = S.String;
-
 export interface IngestCompositeDataStatus {
   uploadMatchRateRange?: IngestCompositeDataStatusUploadMatchRateRangeEnum;
   recordCount?: string;
   dataTypeCounts?: DataTypeCountList;
 }
-const IngestCompositeDataStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<IngestCompositeDataStatus>;
-
 export type IngestGoogleUserIdDataStatus = RemoveGoogleUserIdDataStatus;
 export interface IngestAudienceMembersStatus {
   mobileDataIngestionStatus?: IngestMobileDataStatus;
@@ -811,11 +534,6 @@ export interface IngestAudienceMembersStatus {
   compositeDataIngestionStatus?: IngestCompositeDataStatus;
   googleUserIdDataIngestionStatus?: RemoveGoogleUserIdDataStatus;
 }
-const IngestAudienceMembersStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IngestAudienceMembersStatus>;
-
 export interface Destination {
   reference?: string;
   productDestinationId?: string;
@@ -823,13 +541,9 @@ export interface Destination {
   operatingAccount?: ProductAccount;
   linkedAccount?: ProductAccount;
 }
-const Destination = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Destination>;
-
 export interface IngestEventsStatus {
   recordCount?: string;
 }
-const IngestEventsStatus = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<IngestEventsStatus>;
-
 export type ErrorCountReasonEnum =
   | "PROCESSING_ERROR_REASON_UNSPECIFIED"
   | "PROCESSING_ERROR_REASON_INVALID_CUSTOM_VARIABLE"
@@ -882,16 +596,10 @@ export interface ErrorCount {
   recordCount?: string;
   reason?: ErrorCountReasonEnum;
 }
-const ErrorCount = WarningCount as any as S.Schema<ErrorCount>;
-
 export type ErrorCountList = Array<ErrorCount>;
-const ErrorCountList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ErrorCountList>;
-
 export interface ErrorInfo {
   errorCounts?: ErrorCountList;
 }
-const ErrorInfo = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ErrorInfo>;
-
 export interface RequestStatusPerDestination {
   requestStatus?: RequestStatusPerDestinationRequestStatusEnum;
   warningInfo?: WarningInfo;
@@ -902,37 +610,18 @@ export interface RequestStatusPerDestination {
   eventsIngestionStatus?: IngestEventsStatus;
   errorInfo?: ErrorInfo;
 }
-const RequestStatusPerDestination = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RequestStatusPerDestination>;
-
 export type RequestStatusPerDestinationList = Array<RequestStatusPerDestination>;
-const RequestStatusPerDestinationList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<RequestStatusPerDestinationList>;
-
 export interface GetRequestStatusResponse {
   requestStatusPerDestination?: RequestStatusPerDestinationList;
 }
-const GetRequestStatusResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetRequestStatusResponse>;
-
 export type AdEventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "EVENT_TYPE_VIEW"
   | "EVENT_TYPE_CLICK";
-const AdEventEventTypeEnum = S.String;
-
 export type AdEventAttributionHintEnum =
   | "ATTRIBUTION_HINT_UNSPECIFIED"
   | "ATTRIBUTION_HINT_CONVERTED"
   | "ATTRIBUTION_HINT_NOT_CONVERTED";
-const AdEventAttributionHintEnum = S.String;
-
 export type AdEventAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
@@ -942,16 +631,12 @@ export type AdEventAdTypeEnum =
   | "AD_TYPE_HTML"
   | "AD_TYPE_AUDIO"
   | "AD_TYPE_VIDEO";
-const AdEventAdTypeEnum = S.String;
-
 export type AdEventEventSubtypeEnum =
   | "EVENT_SUBTYPE_UNSPECIFIED"
   | "EVENT_SUBTYPE_IMPRESSION"
   | "EVENT_SUBTYPE_ENGAGED_VIEW"
   | "EVENT_SUBTYPE_ONSITE_CLICK"
   | "EVENT_SUBTYPE_OUTBOUND_CLICK";
-const AdEventEventSubtypeEnum = S.String;
-
 export type AdEventPlatformTypeEnum =
   | "PLATFORM_TYPE_UNSPECIFIED"
   | "PLATFORM_TYPE_MOBILE"
@@ -959,8 +644,6 @@ export type AdEventPlatformTypeEnum =
   | "PLATFORM_TYPE_CTV"
   | "PLATFORM_TYPE_PHONE"
   | "PLATFORM_TYPE_TABLET";
-const AdEventPlatformTypeEnum = S.String;
-
 export interface AddressInfo {
   addressLine?: string;
   city?: string;
@@ -970,23 +653,15 @@ export interface AddressInfo {
   givenName?: string;
   regionCode?: string;
 }
-const AddressInfo = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AddressInfo>;
-
 export interface UserIdentifier {
   emailAddress?: string;
   phoneNumber?: string;
   address?: AddressInfo;
 }
-const UserIdentifier = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<UserIdentifier>;
-
 export type UserIdentifierList = Array<UserIdentifier>;
-const UserIdentifierList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<UserIdentifierList>;
-
 export interface UserData {
   userIdentifiers?: UserIdentifierList;
 }
-const UserData = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UserData>;
-
 export type AdEventTargetingTypeEnum =
   | "TARGETING_TYPE_UNSPECIFIED"
   | "TARGETING_TYPE_AUDIENCE"
@@ -997,8 +672,6 @@ export type AdEventTargetingTypeEnum =
   | "TARGETING_TYPE_INTEREST"
   | "TARGETING_TYPE_PURCHASE_INTENT"
   | "TARGETING_TYPE_REMARKETING";
-const AdEventTargetingTypeEnum = S.String;
-
 export type ViewabilityInfoMediaQuartileEnum =
   | "MEDIA_QUARTILE_UNSPECIFIED"
   | "MEDIA_QUARTILE_START"
@@ -1006,14 +679,10 @@ export type ViewabilityInfoMediaQuartileEnum =
   | "MEDIA_QUARTILE_MIDPOINT"
   | "MEDIA_QUARTILE_THIRD_QUARTILE"
   | "MEDIA_QUARTILE_COMPLETE";
-const ViewabilityInfoMediaQuartileEnum = S.String;
-
 export type ViewabilityInfoViewTypeEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "VIEW_TYPE_MRC_VIEWED"
   | "VIEW_TYPE_MRC_RENDERED";
-const ViewabilityInfoViewTypeEnum = S.String;
-
 export interface ViewabilityInfo {
   mediaQuartile?: ViewabilityInfoMediaQuartileEnum | (string & {});
   mediaVolumePercent?: number;
@@ -1024,8 +693,6 @@ export interface ViewabilityInfo {
   mediaSkippable?: boolean;
   playbackDuration?: string;
 }
-const ViewabilityInfo = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ViewabilityInfo>;
-
 export type AdEventAdPlacementEnum =
   | "AD_PLACEMENT_UNSPECIFIED"
   | "AD_PLACEMENT_DISCOVER"
@@ -1037,8 +704,6 @@ export type AdEventAdPlacementEnum =
   | "AD_PLACEMENT_PROMOTED"
   | "AD_PLACEMENT_SEARCH"
   | "AD_PLACEMENT_STORY";
-const AdEventAdPlacementEnum = S.String;
-
 export type AdEventAdFormatEnum =
   | "AD_FORMAT_UNSPECIFIED"
   | "AD_FORMAT_AR"
@@ -1059,15 +724,11 @@ export type AdEventAdFormatEnum =
   | "AD_FORMAT_STORY"
   | "AD_FORMAT_SPONSORED"
   | "AD_FORMAT_VIDEO";
-const AdEventAdFormatEnum = S.String;
-
 export type AdEventPlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "PLATFORM_IOS"
   | "PLATFORM_ANDROID"
   | "PLATFORM_WEB";
-const AdEventPlatformEnum = S.String;
-
 export interface DeviceInfo {
   browser?: string;
   screenWidth?: number;
@@ -1082,8 +743,6 @@ export interface DeviceInfo {
   model?: string;
   languageCode?: string;
 }
-const DeviceInfo = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DeviceInfo>;
-
 export interface AdEvent {
   regionCode?: string;
   measurementAllowed?: boolean;
@@ -1120,134 +779,79 @@ export interface AdEvent {
   eventId?: string;
   adWidth?: number;
 }
-const AdEvent = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<AdEvent>;
-
 export type AdEventList = Array<AdEvent>;
-const AdEventList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AdEventList>;
-
 export type AwsWrappedKeyInfoKeyTypeEnum = "KEY_TYPE_UNSPECIFIED" | "XCHACHA20_POLY1305";
-const AwsWrappedKeyInfoKeyTypeEnum = S.String;
-
 export interface AwsWrappedKeyInfo {
   roleArn?: string;
   kekUri?: string;
   keyType?: AwsWrappedKeyInfoKeyTypeEnum | (string & {});
   encryptedDek?: string;
 }
-const AwsWrappedKeyInfo = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AwsWrappedKeyInfo>;
-
 export type GcpWrappedKeyInfoKeyTypeEnum = "KEY_TYPE_UNSPECIFIED" | "XCHACHA20_POLY1305";
-const GcpWrappedKeyInfoKeyTypeEnum = S.String;
-
 export interface GcpWrappedKeyInfo {
   encryptedDek?: string;
   wipProvider?: string;
   keyType?: GcpWrappedKeyInfoKeyTypeEnum | (string & {});
   kekUri?: string;
 }
-const GcpWrappedKeyInfo = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GcpWrappedKeyInfo>;
-
 export interface CoordinatorKeyInfo {
   keyId?: string;
 }
-const CoordinatorKeyInfo = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CoordinatorKeyInfo>;
-
 export interface EncryptionInfo {
   awsWrappedKeyInfo?: AwsWrappedKeyInfo;
   gcpWrappedKeyInfo?: GcpWrappedKeyInfo;
   coordinatorKeyInfo?: CoordinatorKeyInfo;
 }
-const EncryptionInfo = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<EncryptionInfo>;
-
 export interface IngestAdEventsRequest {
   adEvents?: AdEventList;
   validateOnly?: boolean;
   encryptionInfo?: EncryptionInfo;
 }
-const IngestAdEventsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<IngestAdEventsRequest>;
-
 export interface IngestAdEventsRequest_ {
   /** Request body */
   body?: IngestAdEventsRequest;
 }
-const IngestAdEventsRequest_ = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<IngestAdEventsRequest_>;
-
 export interface IngestAdEventsResponse {}
-const IngestAdEventsResponse = Empty as any as S.Schema<IngestAdEventsResponse>;
-
 export interface PartnerProvidedIdData {
   partnerProvidedIds?: StringList;
 }
-const PartnerProvidedIdData = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PartnerProvidedIdData>;
-
 export interface GoogleUserIdData {
   googleUserIds?: StringList;
 }
-const GoogleUserIdData = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GoogleUserIdData>;
-
 export interface PairData {
   pairIds?: StringList;
 }
-const PairData = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<PairData>;
-
 export interface MobileData {
   mobileIds?: StringList;
 }
-const MobileData = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<MobileData>;
-
 export interface PpidData {
   ppids?: StringList;
 }
-const PpidData = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<PpidData>;
-
 export type ConsentAdUserDataEnum =
   | "CONSENT_STATUS_UNSPECIFIED"
   | "CONSENT_GRANTED"
   | "CONSENT_DENIED";
-const ConsentAdUserDataEnum = S.String;
-
 export type ConsentAdPersonalizationEnum =
   | "CONSENT_STATUS_UNSPECIFIED"
   | "CONSENT_GRANTED"
   | "CONSENT_DENIED";
-const ConsentAdPersonalizationEnum = S.String;
-
 export interface Consent {
   adUserData?: ConsentAdUserDataEnum | (string & {});
   adPersonalization?: ConsentAdPersonalizationEnum | (string & {});
 }
-const Consent = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Consent>;
-
 export interface IpData {
   ipAddress?: string;
   observeStartTime?: string;
   observeEndTime?: string;
 }
-const IpData = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<IpData>;
-
 export type IpDataList = Array<IpData>;
-const IpDataList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<IpDataList>;
-
 export interface CompositeData {
   ipData?: IpDataList;
   userData?: UserData;
 }
-const CompositeData = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<CompositeData>;
-
 export interface UserIdData {
   userId?: string;
 }
-const UserIdData = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<UserIdData>;
-
 export interface AudienceMember {
   destinationReferences?: StringList;
   partnerProvidedIdData?: PartnerProvidedIdData;
@@ -1260,30 +864,18 @@ export interface AudienceMember {
   compositeData?: CompositeData;
   userIdData?: UserIdData;
 }
-const AudienceMember = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<AudienceMember>;
-
 export type AudienceMemberList = Array<AudienceMember>;
-const AudienceMemberList = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<AudienceMemberList>;
-
 export type IngestAudienceMembersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-const IngestAudienceMembersRequestEncodingEnum = S.String;
-
 export type DestinationList = Array<Destination>;
-const DestinationList = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DestinationList>;
-
 export type TermsOfServiceCustomerMatchTermsOfServiceStatusEnum =
   | "TERMS_OF_SERVICE_STATUS_UNSPECIFIED"
   | "ACCEPTED"
   | "REJECTED";
-const TermsOfServiceCustomerMatchTermsOfServiceStatusEnum = S.String;
-
 export interface TermsOfService {
   customerMatchTermsOfServiceStatus?:
     | TermsOfServiceCustomerMatchTermsOfServiceStatusEnum
     | (string & {});
 }
-const TermsOfService = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TermsOfService>;
-
 export interface IngestAudienceMembersRequest {
   audienceMembers?: AudienceMemberList;
   encoding?: IngestAudienceMembersRequestEncodingEnum | (string & {});
@@ -1293,20 +885,10 @@ export interface IngestAudienceMembersRequest {
   validateOnly?: boolean;
   encryptionInfo?: EncryptionInfo;
 }
-const IngestAudienceMembersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<IngestAudienceMembersRequest>;
-
 export interface IngestAudienceMembersRequest_ {
   /** Request body */
   body?: IngestAudienceMembersRequest;
 }
-const IngestAudienceMembersRequest_ = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<IngestAudienceMembersRequest_>;
-
 export type FieldWarningReasonEnum =
   | "WARNING_REASON_UNSPECIFIED"
   | "WARNING_REASON_CUSTOM_VARIABLE_NOT_ENABLED"
@@ -1323,27 +905,16 @@ export type FieldWarningReasonEnum =
   | "WARNING_REASON_INVALID_DEVICE_CATEGORY"
   | "WARNING_REASON_INVALID_DEVICE_SCREEN_RESOLUTION"
   | "WARNING_REASON_INVALID_MERCHANT_ID";
-const FieldWarningReasonEnum = S.String;
-
 export interface FieldWarning {
   reason?: FieldWarningReasonEnum;
   field?: string;
   description?: string;
 }
-const FieldWarning = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<FieldWarning>;
-
 export type FieldWarningList = Array<FieldWarning>;
-const FieldWarningList = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<FieldWarningList>;
-
 export interface IngestAudienceMembersResponse {
   fieldWarnings?: FieldWarningList;
   requestId?: string;
 }
-const IngestAudienceMembersResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<IngestAudienceMembersResponse>;
-
 export type EventEventSourceEnum =
   | "EVENT_SOURCE_UNSPECIFIED"
   | "WEB"
@@ -1352,70 +923,43 @@ export type EventEventSourceEnum =
   | "PHONE"
   | "MESSAGE"
   | "OTHER";
-const EventEventSourceEnum = S.String;
-
 export type UserPropertiesCustomerValueBucketEnum =
   | "CUSTOMER_VALUE_BUCKET_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-const UserPropertiesCustomerValueBucketEnum = S.String;
-
 export type UserPropertiesCustomerTypeEnum =
   | "CUSTOMER_TYPE_UNSPECIFIED"
   | "NEW"
   | "RETURNING"
   | "REENGAGED";
-const UserPropertiesCustomerTypeEnum = S.String;
-
 export interface UserProperty {
   propertyName?: string;
   value?: string;
 }
-const UserProperty = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<UserProperty>;
-
 export type UserPropertyList = Array<UserProperty>;
-const UserPropertyList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<UserPropertyList>;
-
 export interface UserProperties {
   customerValueBucket?: UserPropertiesCustomerValueBucketEnum | (string & {});
   customerType?: UserPropertiesCustomerTypeEnum | (string & {});
   additionalUserProperties?: UserPropertyList;
 }
-const UserProperties = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<UserProperties>;
-
 export interface CustomVariable {
   variable?: string;
   value?: string;
   destinationReferences?: StringList;
 }
-const CustomVariable = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CustomVariable>;
-
 export type CustomVariableList = Array<CustomVariable>;
-const CustomVariableList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<CustomVariableList>;
-
 export interface ItemParameter {
   parameterName?: string;
   value?: string;
 }
-const ItemParameter = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ItemParameter>;
-
 export type ItemParameterList = Array<ItemParameter>;
-const ItemParameterList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<ItemParameterList>;
-
 export interface ItemCustomVariable {
   destinationReferences?: StringList;
   value?: string;
   variable?: string;
 }
-const ItemCustomVariable = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ItemCustomVariable>;
-
 export type ItemCustomVariableList = Array<ItemCustomVariable>;
-const ItemCustomVariableList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ItemCustomVariableList>;
-
 export interface Item {
   conversionValue?: number;
   additionalItemParameters?: ItemParameterList;
@@ -1428,11 +972,7 @@ export interface Item {
   merchantFeedLanguageCode?: string;
   merchantId?: string;
 }
-const Item = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<Item>;
-
 export type ItemList = Array<Item>;
-const ItemList = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ItemList>;
-
 export interface CartData {
   couponCodes?: StringList;
   merchantFeedLanguageCode?: string;
@@ -1441,29 +981,16 @@ export interface CartData {
   items?: ItemList;
   merchantFeedLabel?: string;
 }
-const CartData = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<CartData>;
-
 export interface ExperimentalField {
   field?: string;
   value?: string;
 }
-const ExperimentalField = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ExperimentalField>;
-
 export type ExperimentalFieldList = Array<ExperimentalField>;
-const ExperimentalFieldList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ExperimentalFieldList>;
-
 export interface EventParameter {
   value?: string;
   parameterName?: string;
 }
-const EventParameter = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<EventParameter>;
-
 export type EventParameterList = Array<EventParameter>;
-const EventParameterList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<EventParameterList>;
-
 export type EncryptedUserIdEntityTypeEnum =
   | "ENCRYPTION_ENTITY_TYPE_UNSPECIFIED"
   | "CAMPAIGN_MANAGER_ACCOUNT"
@@ -1472,25 +999,17 @@ export type EncryptedUserIdEntityTypeEnum =
   | "DISPLAY_VIDEO_ADVERTISER"
   | "GOOGLE_ADS_CUSTOMER"
   | "GOOGLE_AD_MANAGER_NETWORK_CODE";
-const EncryptedUserIdEntityTypeEnum = S.String;
-
 export type EncryptedUserIdSourceEnum =
   | "ENCRYPTION_SOURCE_UNSPECIFIED"
   | "AD_SERVING"
   | "DATA_TRANSFER";
-const EncryptedUserIdSourceEnum = S.String;
-
 export interface EncryptedUserId {
   entityType?: EncryptedUserIdEntityTypeEnum | (string & {});
   source?: EncryptedUserIdSourceEnum | (string & {});
   entityId?: string;
   encryptedId?: string;
 }
-const EncryptedUserId = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<EncryptedUserId>;
-
 export type EncryptedUserIdList = Array<EncryptedUserId>;
-const EncryptedUserIdList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<EncryptedUserIdList>;
-
 export interface AdIdentifiers {
   sessionAttributes?: string;
   visitorPpid?: string;
@@ -1505,8 +1024,6 @@ export interface AdIdentifiers {
   matchId?: string;
   ppid?: string;
 }
-const AdIdentifiers = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<AdIdentifiers>;
-
 export interface EventLocation {
   city?: string;
   subcontinentCode?: string;
@@ -1515,8 +1032,6 @@ export interface EventLocation {
   regionCode?: string;
   continentCode?: string;
 }
-const EventLocation = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<EventLocation>;
-
 export interface Event {
   eventName?: string;
   userId?: string;
@@ -1542,14 +1057,8 @@ export interface Event {
   eventDeviceInfo?: DeviceInfo;
   transactionId?: string;
 }
-const Event = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Event>;
-
 export type EventList = Array<Event>;
-const EventList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<EventList>;
-
 export type IngestEventsRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-const IngestEventsRequestEncodingEnum = S.String;
-
 export interface IngestEventsRequest {
   events?: EventList;
   destinations?: DestinationList;
@@ -1558,38 +1067,20 @@ export interface IngestEventsRequest {
   validateOnly?: boolean;
   encryptionInfo?: EncryptionInfo;
 }
-const IngestEventsRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<IngestEventsRequest>;
-
 export interface IngestEventsRequest_ {
   /** Request body */
   body?: IngestEventsRequest;
 }
-const IngestEventsRequest_ = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<IngestEventsRequest_>;
-
 export interface IngestEventsResponse {
   fieldWarnings?: FieldWarningList;
   requestId?: string;
 }
-const IngestEventsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<IngestEventsResponse>;
-
 export interface User {
   mobileData?: MobileData;
   userData?: UserData;
 }
-const User = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<User>;
-
 export type UserList_ = Array<User>;
-const UserList_ = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<UserList_>;
-
 export type IngestUsersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-const IngestUsersRequestEncodingEnum = S.String;
-
 export interface IngestUsersRequest {
   encryptionInfo?: EncryptionInfo;
   users?: UserList_;
@@ -1597,104 +1088,56 @@ export interface IngestUsersRequest {
   encoding?: IngestUsersRequestEncodingEnum | (string & {});
   validateOnly?: boolean;
 }
-const IngestUsersRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<IngestUsersRequest>;
-
 export interface IngestUsersRequest_ {
   /** Request body */
   body?: IngestUsersRequest;
 }
-const IngestUsersRequest_ = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<IngestUsersRequest_>;
-
 export interface IngestUsersResponse {
   requestId?: string;
 }
-const IngestUsersResponse = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<IngestUsersResponse>;
-
 export interface ListAccountTypesAccountsUserListDirectLicensesRequest {
   pageSize?: number;
   filter?: string;
   parent: string;
   pageToken?: string;
 }
-const ListAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>;
-
 export type UserListDirectLicenseList = Array<UserListDirectLicense>;
-const UserListDirectLicenseList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<UserListDirectLicenseList>;
-
 export interface ListUserListDirectLicensesResponse {
   userListDirectLicenses?: UserListDirectLicenseList;
   nextPageToken?: string;
 }
-const ListUserListDirectLicensesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListUserListDirectLicensesResponse>;
-
 export interface ListAccountTypesAccountsUserListGlobalLicensesRequest {
   parent: string;
   pageToken?: string;
   pageSize?: number;
   filter?: string;
 }
-const ListAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>;
-
 export type UserListGlobalLicenseList = Array<UserListGlobalLicense>;
-const UserListGlobalLicenseList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<UserListGlobalLicenseList>;
-
 export interface ListUserListGlobalLicensesResponse {
   userListGlobalLicenses?: UserListGlobalLicenseList;
   nextPageToken?: string;
 }
-const ListUserListGlobalLicensesResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListUserListGlobalLicensesResponse>;
-
 export interface ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest {
   parent: string;
   pageSize?: number;
   pageToken?: string;
   filter?: string;
 }
-const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    2,
-  ) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest>;
-
 export type UserListGlobalLicenseCustomerInfoStatusEnum =
   | "USER_LIST_LICENSE_STATUS_UNSPECIFIED"
   | "USER_LIST_LICENSE_STATUS_ENABLED"
   | "USER_LIST_LICENSE_STATUS_DISABLED";
-const UserListGlobalLicenseCustomerInfoStatusEnum = S.String;
-
 export type UserListGlobalLicenseCustomerInfoClientAccountTypeEnum =
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_UNKNOWN"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_ADS"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_PARTNER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_DISPLAY_VIDEO_ADVERTISER"
   | "USER_LIST_LICENSE_CLIENT_ACCOUNT_TYPE_GOOGLE_AD_MANAGER_AUDIENCE_LINK";
-const UserListGlobalLicenseCustomerInfoClientAccountTypeEnum = S.String;
-
 export type UserListGlobalLicenseCustomerInfoLicenseTypeEnum =
   | "USER_LIST_GLOBAL_LICENSE_TYPE_UNSPECIFIED"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_RESELLER"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_SELL_SIDE"
   | "USER_LIST_GLOBAL_LICENSE_TYPE_DATA_MART_BUY_SIDE";
-const UserListGlobalLicenseCustomerInfoLicenseTypeEnum = S.String;
-
 export interface UserListGlobalLicenseCustomerInfo {
   userListId?: string;
   status?: UserListGlobalLicenseCustomerInfoStatusEnum;
@@ -1708,71 +1151,34 @@ export interface UserListGlobalLicenseCustomerInfo {
   clientAccountType?: UserListGlobalLicenseCustomerInfoClientAccountTypeEnum;
   licenseType?: UserListGlobalLicenseCustomerInfoLicenseTypeEnum;
 }
-const UserListGlobalLicenseCustomerInfo = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<UserListGlobalLicenseCustomerInfo>;
-
 export type UserListGlobalLicenseCustomerInfoList = Array<UserListGlobalLicenseCustomerInfo>;
-const UserListGlobalLicenseCustomerInfoList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<UserListGlobalLicenseCustomerInfoList>;
-
 export interface ListUserListGlobalLicenseCustomerInfosResponse {
   userListGlobalLicenseCustomerInfos?: UserListGlobalLicenseCustomerInfoList;
   nextPageToken?: string;
 }
-const ListUserListGlobalLicenseCustomerInfosResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListUserListGlobalLicenseCustomerInfosResponse>;
-
 export interface ListAccountTypesAccountsUserListsRequest {
   pageToken?: string;
   filter?: string;
   parent: string;
   pageSize?: number;
 }
-const ListAccountTypesAccountsUserListsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>;
-
 export type UserListList = Array<UserList>;
-const UserListList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<UserListList>;
-
 export interface ListUserListsResponse {
   userLists?: UserListList;
   nextPageToken?: string;
 }
-const ListUserListsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListUserListsResponse>;
-
 export interface PatchAccountTypesAccountsUserListDirectLicensesRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: UserListDirectLicense;
 }
-const PatchAccountTypesAccountsUserListDirectLicensesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<PatchAccountTypesAccountsUserListDirectLicensesRequest>;
-
 export interface PatchAccountTypesAccountsUserListGlobalLicensesRequest {
   updateMask?: string;
   name: string;
   /** Request body */
   body?: UserListGlobalLicense;
 }
-const PatchAccountTypesAccountsUserListGlobalLicensesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<PatchAccountTypesAccountsUserListGlobalLicensesRequest>;
-
 export interface PatchAccountTypesAccountsUserListsRequest {
   validateOnly?: boolean;
   name: string;
@@ -1780,41 +1186,19 @@ export interface PatchAccountTypesAccountsUserListsRequest {
   /** Request body */
   body?: UserList;
 }
-const PatchAccountTypesAccountsUserListsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<PatchAccountTypesAccountsUserListsRequest>;
-
 export interface RemoveAllAudienceMembersRequest {
   destinations?: DestinationList;
   validateOnly?: boolean;
   removeAsOfTime?: string;
 }
-const RemoveAllAudienceMembersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<RemoveAllAudienceMembersRequest>;
-
 export interface RemoveAllAudienceMembersRequest_ {
   /** Request body */
   body?: RemoveAllAudienceMembersRequest;
 }
-const RemoveAllAudienceMembersRequest_ = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<RemoveAllAudienceMembersRequest_>;
-
 export interface RemoveAllAudienceMembersResponse {
   requestId?: string;
 }
-const RemoveAllAudienceMembersResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<RemoveAllAudienceMembersResponse>;
-
 export type RemoveAudienceMembersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-const RemoveAudienceMembersRequestEncodingEnum = S.String;
-
 export interface RemoveAudienceMembersRequest {
   destinations?: DestinationList;
   encryptionInfo?: EncryptionInfo;
@@ -1822,32 +1206,15 @@ export interface RemoveAudienceMembersRequest {
   validateOnly?: boolean;
   encoding?: RemoveAudienceMembersRequestEncodingEnum | (string & {});
 }
-const RemoveAudienceMembersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<RemoveAudienceMembersRequest>;
-
 export interface RemoveAudienceMembersRequest_ {
   /** Request body */
   body?: RemoveAudienceMembersRequest;
 }
-const RemoveAudienceMembersRequest_ = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<RemoveAudienceMembersRequest_>;
-
 export interface RemoveAudienceMembersResponse {
   requestId?: string;
 }
-const RemoveAudienceMembersResponse =
-  RemoveAllAudienceMembersResponse as any as S.Schema<RemoveAudienceMembersResponse>;
-
 export type RemoveUsersRequestEncodingEnum = "ENCODING_UNSPECIFIED" | "HEX" | "BASE64";
-const RemoveUsersRequestEncodingEnum = S.String;
-
 export type UserDataList = Array<UserData>;
-const UserDataList = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<UserDataList>;
-
 export interface RemoveUsersRequest {
   destinations?: DestinationList;
   encoding?: RemoveUsersRequestEncodingEnum | (string & {});
@@ -1855,42 +1222,24 @@ export interface RemoveUsersRequest {
   validateOnly?: boolean;
   userData?: UserDataList;
 }
-const RemoveUsersRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<RemoveUsersRequest>;
-
 export interface RemoveUsersRequest_ {
   /** Request body */
   body?: RemoveUsersRequest;
 }
-const RemoveUsersRequest_ = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<RemoveUsersRequest_>;
-
 export interface RemoveUsersResponse {
   requestId?: string;
 }
-const RemoveUsersResponse = IngestUsersResponse as any as S.Schema<RemoveUsersResponse>;
-
 export interface SearchAccountTypesAccountsPartnerLinksRequest {
   filter?: string;
   pageToken?: string;
   pageSize?: number;
   parent: string;
 }
-const SearchAccountTypesAccountsPartnerLinksRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>;
-
 export type PartnerLinkList = Array<PartnerLink>;
-const PartnerLinkList = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<PartnerLinkList>;
-
 export interface SearchPartnerLinksResponse {
   nextPageToken?: string;
   partnerLinks?: PartnerLinkList;
 }
-const SearchPartnerLinksResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<SearchPartnerLinksResponse>;
-
 export type CreateAccountTypesAccountsPartnerLinksError =
   | NotFound
   | Forbidden
@@ -1903,8 +1252,8 @@ export const createAccountTypesAccountsPartnerLinks: API.OperationMethod<
   CreateAccountTypesAccountsPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountTypesAccountsPartnerLinksRequest,
-  output: PartnerLink,
+  input: __S(5) as any as S.Schema<CreateAccountTypesAccountsPartnerLinksRequest>,
+  output: __S(4) as any as S.Schema<PartnerLink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1922,8 +1271,8 @@ export const createAccountTypesAccountsUserListDirectLicenses: API.OperationMeth
   CreateAccountTypesAccountsUserListDirectLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountTypesAccountsUserListDirectLicensesRequest,
-  output: UserListDirectLicense,
+  input: __S(10) as any as S.Schema<CreateAccountTypesAccountsUserListDirectLicensesRequest>,
+  output: __S(9) as any as S.Schema<UserListDirectLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1941,8 +1290,8 @@ export const createAccountTypesAccountsUserListGlobalLicenses: API.OperationMeth
   CreateAccountTypesAccountsUserListGlobalLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountTypesAccountsUserListGlobalLicensesRequest,
-  output: UserListGlobalLicense,
+  input: __S(12) as any as S.Schema<CreateAccountTypesAccountsUserListGlobalLicensesRequest>,
+  output: __S(11) as any as S.Schema<UserListGlobalLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1310,8 @@ export const createAccountTypesAccountsUserLists: API.OperationMethod<
   CreateAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountTypesAccountsUserListsRequest,
-  output: UserList,
+  input: __S(24) as any as S.Schema<CreateAccountTypesAccountsUserListsRequest>,
+  output: __S(23) as any as S.Schema<UserList>,
   errors: [
     NotFound,
     Forbidden,
@@ -1987,8 +1336,8 @@ export const deleteAccountTypesAccountsPartnerLinks: API.OperationMethod<
   DeleteAccountTypesAccountsPartnerLinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountTypesAccountsPartnerLinksRequest,
-  output: Empty,
+  input: __S(25) as any as S.Schema<DeleteAccountTypesAccountsPartnerLinksRequest>,
+  output: __S(26) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2007,8 +1356,8 @@ export const deleteAccountTypesAccountsUserLists: API.OperationMethod<
   DeleteAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountTypesAccountsUserListsRequest,
-  output: Empty,
+  input: __S(27) as any as S.Schema<DeleteAccountTypesAccountsUserListsRequest>,
+  output: __S(26) as any as S.Schema<Empty>,
   errors: [
     NotFound,
     Forbidden,
@@ -2033,8 +1382,8 @@ export const getAccountTypesAccountsInsights: API.OperationMethod<
   GetAccountTypesAccountsInsightsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountTypesAccountsInsightsRequest,
-  output: RetrieveInsightsResponse,
+  input: __S(32) as any as S.Schema<GetAccountTypesAccountsInsightsRequest>,
+  output: __S(37) as any as S.Schema<RetrieveInsightsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2047,8 +1396,8 @@ export const getAccountTypesAccountsUserListDirectLicenses: API.OperationMethod<
   GetAccountTypesAccountsUserListDirectLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountTypesAccountsUserListDirectLicensesRequest,
-  output: UserListDirectLicense,
+  input: __S(38) as any as S.Schema<GetAccountTypesAccountsUserListDirectLicensesRequest>,
+  output: __S(9) as any as S.Schema<UserListDirectLicense>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2061,8 +1410,8 @@ export const getAccountTypesAccountsUserListGlobalLicenses: API.OperationMethod<
   GetAccountTypesAccountsUserListGlobalLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountTypesAccountsUserListGlobalLicensesRequest,
-  output: UserListGlobalLicense,
+  input: __S(39) as any as S.Schema<GetAccountTypesAccountsUserListGlobalLicensesRequest>,
+  output: __S(11) as any as S.Schema<UserListGlobalLicense>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2079,8 +1428,8 @@ export const getAccountTypesAccountsUserLists: API.OperationMethod<
   GetAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountTypesAccountsUserListsRequest,
-  output: UserList,
+  input: __S(40) as any as S.Schema<GetAccountTypesAccountsUserListsRequest>,
+  output: __S(23) as any as S.Schema<UserList>,
   errors: [NotFound, Forbidden, DataManagerScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2093,8 +1442,8 @@ export const getRequestStatus: API.OperationMethod<
   GetRequestStatusError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequestStatusRequest,
-  output: GetRequestStatusResponse,
+  input: __S(41) as any as S.Schema<GetRequestStatusRequest>,
+  output: __S(68) as any as S.Schema<GetRequestStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2107,8 +1456,8 @@ export const ingestAdEvents: API.OperationMethod<
   IngestAdEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestAdEventsRequest_,
-  output: IngestAdEventsResponse,
+  input: __S(82) as any as S.Schema<IngestAdEventsRequest_>,
+  output: __S(26) as any as S.Schema<IngestAdEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2121,8 +1470,8 @@ export const ingestAudienceMembers: API.OperationMethod<
   IngestAudienceMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestAudienceMembersRequest_,
-  output: IngestAudienceMembersResponse,
+  input: __S(98) as any as S.Schema<IngestAudienceMembersRequest_>,
+  output: __S(101) as any as S.Schema<IngestAudienceMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2135,8 +1484,8 @@ export const ingestEvents: API.OperationMethod<
   IngestEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestEventsRequest_,
-  output: IngestEventsResponse,
+  input: __S(125) as any as S.Schema<IngestEventsRequest_>,
+  output: __S(126) as any as S.Schema<IngestEventsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2149,8 +1498,8 @@ export const ingestUsers: API.OperationMethod<
   IngestUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestUsersRequest_,
-  output: IngestUsersResponse,
+  input: __S(130) as any as S.Schema<IngestUsersRequest_>,
+  output: __S(131) as any as S.Schema<IngestUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2164,8 +1513,8 @@ export const listAccountTypesAccountsUserListDirectLicenses: API.PaginatedOperat
   GcpOpContext,
   ListUserListDirectLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountTypesAccountsUserListDirectLicensesRequest,
-  output: ListUserListDirectLicensesResponse,
+  input: __S(132) as any as S.Schema<ListAccountTypesAccountsUserListDirectLicensesRequest>,
+  output: __S(134) as any as S.Schema<ListUserListDirectLicensesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2180,8 +1529,8 @@ export const listAccountTypesAccountsUserListGlobalLicenses: API.PaginatedOperat
   GcpOpContext,
   ListUserListGlobalLicensesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountTypesAccountsUserListGlobalLicensesRequest,
-  output: ListUserListGlobalLicensesResponse,
+  input: __S(135) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesRequest>,
+  output: __S(137) as any as S.Schema<ListUserListGlobalLicensesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2199,8 +1548,10 @@ export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   GcpOpContext,
   ListUserListGlobalLicenseCustomerInfosResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest,
-  output: ListUserListGlobalLicenseCustomerInfosResponse,
+  input: __S(
+    138,
+  ) as any as S.Schema<ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest>,
+  output: __S(141) as any as S.Schema<ListUserListGlobalLicenseCustomerInfosResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2219,8 +1570,8 @@ export const listAccountTypesAccountsUserLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUserListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountTypesAccountsUserListsRequest,
-  output: ListUserListsResponse,
+  input: __S(142) as any as S.Schema<ListAccountTypesAccountsUserListsRequest>,
+  output: __S(144) as any as S.Schema<ListUserListsResponse>,
   errors: [NotFound, Forbidden, DataManagerScopeInsufficient, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2239,8 +1590,8 @@ export const patchAccountTypesAccountsUserListDirectLicenses: API.OperationMetho
   PatchAccountTypesAccountsUserListDirectLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountTypesAccountsUserListDirectLicensesRequest,
-  output: UserListDirectLicense,
+  input: __S(145) as any as S.Schema<PatchAccountTypesAccountsUserListDirectLicensesRequest>,
+  output: __S(9) as any as S.Schema<UserListDirectLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2258,8 +1609,8 @@ export const patchAccountTypesAccountsUserListGlobalLicenses: API.OperationMetho
   PatchAccountTypesAccountsUserListGlobalLicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountTypesAccountsUserListGlobalLicensesRequest,
-  output: UserListGlobalLicense,
+  input: __S(146) as any as S.Schema<PatchAccountTypesAccountsUserListGlobalLicensesRequest>,
+  output: __S(11) as any as S.Schema<UserListGlobalLicense>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2278,8 +1629,8 @@ export const patchAccountTypesAccountsUserLists: API.OperationMethod<
   PatchAccountTypesAccountsUserListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountTypesAccountsUserListsRequest,
-  output: UserList,
+  input: __S(147) as any as S.Schema<PatchAccountTypesAccountsUserListsRequest>,
+  output: __S(23) as any as S.Schema<UserList>,
   errors: [
     NotFound,
     Forbidden,
@@ -2304,8 +1655,8 @@ export const removeAllAudienceMembers: API.OperationMethod<
   RemoveAllAudienceMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAllAudienceMembersRequest_,
-  output: RemoveAllAudienceMembersResponse,
+  input: __S(149) as any as S.Schema<RemoveAllAudienceMembersRequest_>,
+  output: __S(150) as any as S.Schema<RemoveAllAudienceMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2318,8 +1669,8 @@ export const removeAudienceMembers: API.OperationMethod<
   RemoveAudienceMembersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAudienceMembersRequest_,
-  output: RemoveAudienceMembersResponse,
+  input: __S(152) as any as S.Schema<RemoveAudienceMembersRequest_>,
+  output: __S(150) as any as S.Schema<RemoveAudienceMembersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2332,8 +1683,8 @@ export const removeUsers: API.OperationMethod<
   RemoveUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveUsersRequest_,
-  output: RemoveUsersResponse,
+  input: __S(155) as any as S.Schema<RemoveUsersRequest_>,
+  output: __S(131) as any as S.Schema<RemoveUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2347,8 +1698,8 @@ export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMetho
   GcpOpContext,
   SearchPartnerLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchAccountTypesAccountsPartnerLinksRequest,
-  output: SearchPartnerLinksResponse,
+  input: __S(156) as any as S.Schema<SearchAccountTypesAccountsPartnerLinksRequest>,
+  output: __S(158) as any as S.Schema<SearchPartnerLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2361,9 +1712,9 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountType: S.optional(ProductAccountAccountTypeEnum),
+          accountType: S.optional(S.String),
           accountId: S.optional(S.String),
-          product: S.optional(ProductAccountProductEnum),
+          product: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductAccount" });
     case 1:
@@ -2375,30 +1726,30 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PartnerCustomerAccount" });
     case 2:
-      return S.Array(PartnerCustomerAccount);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          implicitAccounts: S.optional(PartnerCustomerAccountList),
+          implicitAccounts: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "PartnerLinkMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          partnerAccount: S.optional(ProductAccount),
-          featureSet: S.optional(PartnerLinkFeatureSetEnum),
+          partnerAccount: S.optional(__S(0)),
+          featureSet: S.optional(S.String),
           partnerLinkId: S.optional(S.String),
-          owningAccount: S.optional(ProductAccount),
-          partnerCustomerAccount: S.optional(PartnerCustomerAccount),
+          owningAccount: S.optional(__S(0)),
+          partnerCustomerAccount: S.optional(__S(1)),
           name: S.optional(S.String),
-          partnerLinkMetadata: S.optional(PartnerLinkMetadata),
+          partnerLinkMetadata: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "PartnerLink" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(PartnerLink.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2425,11 +1776,11 @@ function __c0(j: number): any {
           maxCostMicros: S.optional(S.String),
           pricingId: S.optional(S.String),
           currencyCode: S.optional(S.String),
-          costType: S.optional(UserListLicensePricingCostTypeEnum),
+          costType: S.optional(S.String),
           costMicros: S.optional(S.String),
           pricingActive: S.optional(S.Boolean),
           startTime: S.optional(S.String),
-          buyerApprovalState: S.optional(UserListLicensePricingBuyerApprovalStateEnum),
+          buyerApprovalState: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserListLicensePricing" });
@@ -2438,18 +1789,18 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserListLicensePricing);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UserListDirectLicenseStatusEnum),
+          status: S.optional(S.String),
           userListId: S.optional(S.String),
           clientAccountId: S.optional(S.String),
-          clientAccountType: S.optional(UserListDirectLicenseClientAccountTypeEnum),
-          metrics: S.optional(UserListLicenseMetrics),
+          clientAccountType: S.optional(S.String),
+          metrics: S.optional(__S(6)),
           clientAccountDisplayName: S.optional(S.String),
-          historicalPricings: S.optional(UserListLicensePricingList),
-          pricing: S.optional(UserListLicensePricing),
+          historicalPricings: S.optional(__S(8)),
+          pricing: S.optional(__S(7)),
           userListDisplayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -2458,7 +1809,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserListDirectLicense.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2473,20 +1824,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userListDisplayName: S.optional(S.String),
-          pricing: S.optional(UserListLicensePricing),
+          pricing: S.optional(__S(7)),
           name: S.optional(S.String),
-          historicalPricings: S.optional(UserListLicensePricingList),
+          historicalPricings: S.optional(__S(8)),
           userListId: S.optional(S.String),
-          status: S.optional(UserListGlobalLicenseStatusEnum),
-          metrics: S.optional(UserListLicenseMetrics),
-          licenseType: S.optional(UserListGlobalLicenseLicenseTypeEnum),
+          status: S.optional(S.String),
+          metrics: S.optional(__S(6)),
+          licenseType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserListGlobalLicense" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserListGlobalLicense.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2516,7 +1867,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          partnerAudienceSource: S.optional(PartnerAudienceInfoPartnerAudienceSourceEnum),
+          partnerAudienceSource: S.optional(S.String),
           commercePartner: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerAudienceInfo" });
@@ -2537,61 +1888,61 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keySpace: S.optional(MobileIdInfoKeySpaceEnum),
-          dataSourceType: S.optional(MobileIdInfoDataSourceTypeEnum),
+          keySpace: S.optional(S.String),
+          dataSourceType: S.optional(S.String),
           appId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MobileIdInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataSourceType: S.optional(ContactIdInfoDataSourceTypeEnum),
+          dataSourceType: S.optional(S.String),
           matchRatePercentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContactIdInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          syncStatus: S.optional(PseudonymousIdInfoSyncStatusEnum),
+          syncStatus: S.optional(S.String),
           billableRecordCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "PseudonymousIdInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataSourceType: S.optional(UserIdInfoDataSourceTypeEnum),
+          dataSourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserIdInfo" });
     case 5:
-      return S.Array(IngestedUserListInfoUploadKeyTypesItemEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          partnerAudienceInfo: S.optional(PartnerAudienceInfo),
-          pairIdInfo: S.optional(PairIdInfo),
-          mobileIdInfo: S.optional(MobileIdInfo),
-          contactIdInfo: S.optional(ContactIdInfo),
-          pseudonymousIdInfo: S.optional(PseudonymousIdInfo),
-          userIdInfo: S.optional(UserIdInfo),
-          uploadKeyTypes: S.optional(IngestedUserListInfoUploadKeyTypesItemEnumList),
+          partnerAudienceInfo: S.optional(__S(15)),
+          pairIdInfo: S.optional(__S(16)),
+          mobileIdInfo: S.optional(__S(17)),
+          contactIdInfo: S.optional(__S(18)),
+          pseudonymousIdInfo: S.optional(__S(19)),
+          userIdInfo: S.optional(__S(20)),
+          uploadKeyTypes: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "IngestedUserListInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accessReason: S.optional(UserListAccessReasonEnum),
+          accessReason: S.optional(S.String),
           displayName: S.optional(S.String),
           integrationCode: S.optional(S.String),
-          closingReason: S.optional(UserListClosingReasonEnum),
+          closingReason: S.optional(S.String),
           membershipDuration: S.optional(S.String),
-          sizeInfo: S.optional(SizeInfo),
-          membershipStatus: S.optional(UserListMembershipStatusEnum),
-          accountAccessStatus: S.optional(UserListAccountAccessStatusEnum),
+          sizeInfo: S.optional(__S(13)),
+          membershipStatus: S.optional(S.String),
+          accountAccessStatus: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          targetNetworkInfo: S.optional(TargetNetworkInfo),
+          targetNetworkInfo: S.optional(__S(14)),
           id: S.optional(S.String),
-          ingestedUserListInfo: S.optional(IngestedUserListInfo),
+          ingestedUserListInfo: S.optional(__S(22)),
           readOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UserList" });
@@ -2604,7 +1955,7 @@ function __c3(j: number): any {
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UserList.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2653,13 +2004,13 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          regionCodes: S.optional(StringList),
+          regionCodes: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "Location" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          baselineLocation: S.optional(Location),
+          baselineLocation: S.optional(__S(29)),
           locationAutoDetectionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Baseline" });
@@ -2667,7 +2018,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userListId: S.optional(S.String),
-          baseline: S.optional(Baseline),
+          baseline: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "RetrieveInsightsRequest" });
   }
@@ -2678,7 +2029,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RetrieveInsightsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2692,8 +2043,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ageRange: S.optional(MarketingDataInsightsAttributeAgeRangeEnum),
-          gender: S.optional(MarketingDataInsightsAttributeGenderEnum),
+          ageRange: S.optional(S.String),
+          gender: S.optional(S.String),
           userInterestId: S.optional(S.String),
           lift: S.optional(S.Number),
         }),
@@ -2701,20 +2052,20 @@ function __c4(j: number): any {
         identifier: "MarketingDataInsightsAttribute",
       });
     case 2:
-      return S.Array(MarketingDataInsightsAttribute);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(MarketingDataInsightsAttributeList),
-          dimension: S.optional(MarketingDataInsightDimensionEnum),
+          attributes: S.optional(__S(34)),
+          dimension: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketingDataInsight" });
     case 4:
-      return S.Array(MarketingDataInsight);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          marketingDataInsights: S.optional(MarketingDataInsightList),
+          marketingDataInsights: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "RetrieveInsightsResponse" });
     case 6:
@@ -2779,15 +2130,15 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           recordCount: S.optional(S.String),
-          reason: S.optional(WarningCountReasonEnum),
+          reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "WarningCount" });
     case 3:
-      return S.Array(WarningCount);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          warningCounts: S.optional(WarningCountList),
+          warningCounts: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "WarningInfo" });
     case 5:
@@ -2825,16 +2176,16 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(DataTypeCountTypeEnum),
+          type: S.optional(S.String),
           count: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataTypeCount" });
     case 2:
-      return S.Array(DataTypeCount);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dataTypeCounts: S.optional(DataTypeCountList),
+          dataTypeCounts: S.optional(__S(50)),
           recordCount: S.optional(S.String),
         }),
       ).annotate({
@@ -2868,14 +2219,14 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userIdDataRemovalStatus: S.optional(RemoveUserIdDataStatus),
-          userDataRemovalStatus: S.optional(RemoveUserDataStatus),
-          pairDataRemovalStatus: S.optional(RemovePairDataStatus),
-          ppidDataRemovalStatus: S.optional(RemovePpidDataStatus),
-          compositeDataRemovalStatus: S.optional(RemoveCompositeDataStatus),
-          googleUserIdDataRemovalStatus: S.optional(RemoveGoogleUserIdDataStatus),
-          mobileDataRemovalStatus: S.optional(RemoveMobileDataStatus),
-          partnerProvidedIdDataRemovalStatus: S.optional(RemovePartnerProvidedIdDataStatus),
+          userIdDataRemovalStatus: S.optional(__S(45)),
+          userDataRemovalStatus: S.optional(__S(46)),
+          pairDataRemovalStatus: S.optional(__S(47)),
+          ppidDataRemovalStatus: S.optional(__S(48)),
+          compositeDataRemovalStatus: S.optional(__S(51)),
+          googleUserIdDataRemovalStatus: S.optional(__S(52)),
+          mobileDataRemovalStatus: S.optional(__S(53)),
+          partnerProvidedIdDataRemovalStatus: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "RemoveAudienceMembersStatus",
@@ -2903,7 +2254,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          uploadMatchRateRange: S.optional(IngestUserDataStatusUploadMatchRateRangeEnum),
+          uploadMatchRateRange: S.optional(S.String),
           userIdentifierCount: S.optional(S.String),
           recordCount: S.optional(S.String),
         }),
@@ -2918,9 +2269,9 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uploadMatchRateRange: S.optional(IngestCompositeDataStatusUploadMatchRateRangeEnum),
+          uploadMatchRateRange: S.optional(S.String),
           recordCount: S.optional(S.String),
-          dataTypeCounts: S.optional(DataTypeCountList),
+          dataTypeCounts: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "IngestCompositeDataStatus",
@@ -2928,14 +2279,14 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mobileDataIngestionStatus: S.optional(IngestMobileDataStatus),
-          userIdDataIngestionStatus: S.optional(RemoveUserIdDataStatus),
-          partnerProvidedIdDataIngestionStatus: S.optional(IngestPartnerProvidedIdDataStatus),
-          userDataIngestionStatus: S.optional(IngestUserDataStatus),
-          pairDataIngestionStatus: S.optional(IngestPairDataStatus),
-          ppidDataIngestionStatus: S.optional(RemovePpidDataStatus),
-          compositeDataIngestionStatus: S.optional(IngestCompositeDataStatus),
-          googleUserIdDataIngestionStatus: S.optional(RemoveGoogleUserIdDataStatus),
+          mobileDataIngestionStatus: S.optional(__S(56)),
+          userIdDataIngestionStatus: S.optional(__S(45)),
+          partnerProvidedIdDataIngestionStatus: S.optional(__S(57)),
+          userDataIngestionStatus: S.optional(__S(58)),
+          pairDataIngestionStatus: S.optional(__S(59)),
+          ppidDataIngestionStatus: S.optional(__S(48)),
+          compositeDataIngestionStatus: S.optional(__S(60)),
+          googleUserIdDataIngestionStatus: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "IngestAudienceMembersStatus",
@@ -2945,9 +2296,9 @@ function __c7(j: number): any {
         S.Struct({
           reference: S.optional(S.String),
           productDestinationId: S.optional(S.String),
-          loginAccount: S.optional(ProductAccount),
-          operatingAccount: S.optional(ProductAccount),
-          linkedAccount: S.optional(ProductAccount),
+          loginAccount: S.optional(__S(0)),
+          operatingAccount: S.optional(__S(0)),
+          linkedAccount: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "Destination" });
     case 7:
@@ -2961,34 +2312,34 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ErrorCount);
+      return S.Array(__S(42));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          errorCounts: S.optional(ErrorCountList),
+          errorCounts: S.optional(__S(64)),
         }),
       ).annotate({ identifier: "ErrorInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requestStatus: S.optional(RequestStatusPerDestinationRequestStatusEnum),
-          warningInfo: S.optional(WarningInfo),
-          audienceMembersRemovalStatus: S.optional(RemoveAudienceMembersStatus),
-          removeAllAudienceMembersStatus: S.optional(RemoveAllAudienceMembersStatus),
-          audienceMembersIngestionStatus: S.optional(IngestAudienceMembersStatus),
-          destination: S.optional(Destination),
-          eventsIngestionStatus: S.optional(IngestEventsStatus),
-          errorInfo: S.optional(ErrorInfo),
+          requestStatus: S.optional(S.String),
+          warningInfo: S.optional(__S(44)),
+          audienceMembersRemovalStatus: S.optional(__S(55)),
+          removeAllAudienceMembersStatus: S.optional(__S(26)),
+          audienceMembersIngestionStatus: S.optional(__S(61)),
+          destination: S.optional(__S(62)),
+          eventsIngestionStatus: S.optional(__S(63)),
+          errorInfo: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "RequestStatusPerDestination",
       });
     case 3:
-      return S.Array(RequestStatusPerDestination);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requestStatusPerDestination: S.optional(RequestStatusPerDestinationList),
+          requestStatusPerDestination: S.optional(__S(67)),
         }),
       ).annotate({ identifier: "GetRequestStatusResponse" });
     case 5:
@@ -3008,11 +2359,11 @@ function __c8(j: number): any {
         S.Struct({
           emailAddress: S.optional(S.String),
           phoneNumber: S.optional(S.String),
-          address: S.optional(AddressInfo),
+          address: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "UserIdentifier" });
     case 7:
-      return S.Array(UserIdentifier);
+      return S.Array(__S(70));
   }
 }
 function __c9(j: number): any {
@@ -3020,17 +2371,17 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userIdentifiers: S.optional(UserIdentifierList),
+          userIdentifiers: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "UserData" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mediaQuartile: S.optional(ViewabilityInfoMediaQuartileEnum),
+          mediaQuartile: S.optional(S.String),
           mediaVolumePercent: S.optional(S.Number),
           viewableDuration: S.optional(S.String),
           viewablePercent: S.optional(S.Number),
-          viewType: S.optional(ViewabilityInfoViewTypeEnum),
+          viewType: S.optional(S.String),
           mediaDuration: S.optional(S.String),
           mediaSkippable: S.optional(S.Boolean),
           playbackDuration: S.optional(S.String),
@@ -3061,29 +2412,29 @@ function __c9(j: number): any {
           adHeight: S.optional(S.Number),
           campaignName: S.optional(S.String),
           adTypeString: S.optional(S.String),
-          eventType: S.optional(AdEventEventTypeEnum),
-          attributionHint: S.optional(AdEventAttributionHintEnum),
-          adType: S.optional(AdEventAdTypeEnum),
+          eventType: S.optional(S.String),
+          attributionHint: S.optional(S.String),
+          adType: S.optional(S.String),
           ipAddress: S.optional(S.String),
           platformString: S.optional(S.String),
-          eventSubtype: S.optional(AdEventEventSubtypeEnum),
-          platformType: S.optional(AdEventPlatformTypeEnum),
+          eventSubtype: S.optional(S.String),
+          platformType: S.optional(S.String),
           advertiserId: S.optional(S.String),
-          userData: S.optional(UserData),
+          userData: S.optional(__S(72)),
           eventSubtypeString: S.optional(S.String),
-          targetingType: S.optional(AdEventTargetingTypeEnum),
+          targetingType: S.optional(S.String),
           adGroupId: S.optional(S.String),
-          viewabilityInfo: S.optional(ViewabilityInfo),
+          viewabilityInfo: S.optional(__S(73)),
           adFormatString: S.optional(S.String),
-          adPlacement: S.optional(AdEventAdPlacementEnum),
-          adFormat: S.optional(AdEventAdFormatEnum),
+          adPlacement: S.optional(S.String),
+          adFormat: S.optional(S.String),
           platformTypeString: S.optional(S.String),
           timestamp: S.optional(S.String),
           targetingTypeString: S.optional(S.String),
           source: S.optional(S.String),
-          platform: S.optional(AdEventPlatformEnum),
+          platform: S.optional(S.String),
           adPlacementString: S.optional(S.String),
-          deviceInfo: S.optional(DeviceInfo),
+          deviceInfo: S.optional(__S(74)),
           campaignId: S.optional(S.String),
           mobileDeviceId: S.optional(S.String),
           adId: S.optional(S.String),
@@ -3093,13 +2444,13 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "AdEvent" });
     case 4:
-      return S.Array(AdEvent);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
           roleArn: S.optional(S.String),
           kekUri: S.optional(S.String),
-          keyType: S.optional(AwsWrappedKeyInfoKeyTypeEnum),
+          keyType: S.optional(S.String),
           encryptedDek: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsWrappedKeyInfo" });
@@ -3108,7 +2459,7 @@ function __c9(j: number): any {
         S.Struct({
           encryptedDek: S.optional(S.String),
           wipProvider: S.optional(S.String),
-          keyType: S.optional(GcpWrappedKeyInfoKeyTypeEnum),
+          keyType: S.optional(S.String),
           kekUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "GcpWrappedKeyInfo" });
@@ -3125,23 +2476,23 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          awsWrappedKeyInfo: S.optional(AwsWrappedKeyInfo),
-          gcpWrappedKeyInfo: S.optional(GcpWrappedKeyInfo),
-          coordinatorKeyInfo: S.optional(CoordinatorKeyInfo),
+          awsWrappedKeyInfo: S.optional(__S(77)),
+          gcpWrappedKeyInfo: S.optional(__S(78)),
+          coordinatorKeyInfo: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "EncryptionInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          adEvents: S.optional(AdEventList),
+          adEvents: S.optional(__S(76)),
           validateOnly: S.optional(S.Boolean),
-          encryptionInfo: S.optional(EncryptionInfo),
+          encryptionInfo: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "IngestAdEventsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(IngestAdEventsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(81).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3153,31 +2504,31 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          partnerProvidedIds: S.optional(StringList),
+          partnerProvidedIds: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "PartnerProvidedIdData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          googleUserIds: S.optional(StringList),
+          googleUserIds: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "GoogleUserIdData" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pairIds: S.optional(StringList),
+          pairIds: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "PairData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mobileIds: S.optional(StringList),
+          mobileIds: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "MobileData" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ppids: S.optional(StringList),
+          ppids: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "PpidData" });
   }
@@ -3187,8 +2538,8 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          adUserData: S.optional(ConsentAdUserDataEnum),
-          adPersonalization: S.optional(ConsentAdPersonalizationEnum),
+          adUserData: S.optional(S.String),
+          adPersonalization: S.optional(S.String),
         }),
       ).annotate({ identifier: "Consent" });
     case 1:
@@ -3200,12 +2551,12 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "IpData" });
     case 2:
-      return S.Array(IpData);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipData: S.optional(IpDataList),
-          userData: S.optional(UserData),
+          ipData: S.optional(__S(90)),
+          userData: S.optional(__S(72)),
         }),
       ).annotate({ identifier: "CompositeData" });
     case 4:
@@ -3217,22 +2568,22 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinationReferences: S.optional(StringList),
-          partnerProvidedIdData: S.optional(PartnerProvidedIdData),
-          googleUserIdData: S.optional(GoogleUserIdData),
-          userData: S.optional(UserData),
-          pairData: S.optional(PairData),
-          mobileData: S.optional(MobileData),
-          ppidData: S.optional(PpidData),
-          consent: S.optional(Consent),
-          compositeData: S.optional(CompositeData),
-          userIdData: S.optional(UserIdData),
+          destinationReferences: S.optional(__S(28)),
+          partnerProvidedIdData: S.optional(__S(83)),
+          googleUserIdData: S.optional(__S(84)),
+          userData: S.optional(__S(72)),
+          pairData: S.optional(__S(85)),
+          mobileData: S.optional(__S(86)),
+          ppidData: S.optional(__S(87)),
+          consent: S.optional(__S(88)),
+          compositeData: S.optional(__S(91)),
+          userIdData: S.optional(__S(92)),
         }),
       ).annotate({ identifier: "AudienceMember" });
     case 6:
-      return S.Array(AudienceMember);
+      return S.Array(__S(93));
     case 7:
-      return S.Array(Destination);
+      return S.Array(__S(62));
   }
 }
 function __c12(j: number): any {
@@ -3240,21 +2591,19 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customerMatchTermsOfServiceStatus: S.optional(
-            TermsOfServiceCustomerMatchTermsOfServiceStatusEnum,
-          ),
+          customerMatchTermsOfServiceStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "TermsOfService" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          audienceMembers: S.optional(AudienceMemberList),
-          encoding: S.optional(IngestAudienceMembersRequestEncodingEnum),
-          destinations: S.optional(DestinationList),
-          consent: S.optional(Consent),
-          termsOfService: S.optional(TermsOfService),
+          audienceMembers: S.optional(__S(94)),
+          encoding: S.optional(S.String),
+          destinations: S.optional(__S(95)),
+          consent: S.optional(__S(88)),
+          termsOfService: S.optional(__S(96)),
           validateOnly: S.optional(S.Boolean),
-          encryptionInfo: S.optional(EncryptionInfo),
+          encryptionInfo: S.optional(__S(80)),
         }),
       ).annotate({
         identifier: "IngestAudienceMembersRequest",
@@ -3262,7 +2611,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(IngestAudienceMembersRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(97).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3276,17 +2625,17 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(FieldWarningReasonEnum),
+          reason: S.optional(S.String),
           field: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldWarning" });
     case 4:
-      return S.Array(FieldWarning);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldWarnings: S.optional(FieldWarningList),
+          fieldWarnings: S.optional(__S(100)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -3300,7 +2649,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "UserProperty" });
     case 7:
-      return S.Array(UserProperty);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
@@ -3308,9 +2657,9 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customerValueBucket: S.optional(UserPropertiesCustomerValueBucketEnum),
-          customerType: S.optional(UserPropertiesCustomerTypeEnum),
-          additionalUserProperties: S.optional(UserPropertyList),
+          customerValueBucket: S.optional(S.String),
+          customerType: S.optional(S.String),
+          additionalUserProperties: S.optional(__S(103)),
         }),
       ).annotate({ identifier: "UserProperties" });
     case 1:
@@ -3318,11 +2667,11 @@ function __c13(j: number): any {
         S.Struct({
           variable: S.optional(S.String),
           value: S.optional(S.String),
-          destinationReferences: S.optional(StringList),
+          destinationReferences: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "CustomVariable" });
     case 2:
-      return S.Array(CustomVariable);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3331,28 +2680,28 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "ItemParameter" });
     case 4:
-      return S.Array(ItemParameter);
+      return S.Array(__S(107));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinationReferences: S.optional(StringList),
+          destinationReferences: S.optional(__S(28)),
           value: S.optional(S.String),
           variable: S.optional(S.String),
         }),
       ).annotate({ identifier: "ItemCustomVariable" });
     case 6:
-      return S.Array(ItemCustomVariable);
+      return S.Array(__S(109));
     case 7:
       return S.suspend(() =>
         S.Struct({
           conversionValue: S.optional(S.Number),
-          additionalItemParameters: S.optional(ItemParameterList),
+          additionalItemParameters: S.optional(__S(108)),
           merchantFeedLabel: S.optional(S.String),
           quantity: S.optional(S.String),
           merchantProductId: S.optional(S.String),
           unitPrice: S.optional(S.Number),
           itemId: S.optional(S.String),
-          customVariables: S.optional(ItemCustomVariableList),
+          customVariables: S.optional(__S(110)),
           merchantFeedLanguageCode: S.optional(S.String),
           merchantId: S.optional(S.String),
         }),
@@ -3362,15 +2711,15 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Item);
+      return S.Array(__S(111));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          couponCodes: S.optional(StringList),
+          couponCodes: S.optional(__S(28)),
           merchantFeedLanguageCode: S.optional(S.String),
           merchantId: S.optional(S.String),
           transactionDiscount: S.optional(S.Number),
-          items: S.optional(ItemList),
+          items: S.optional(__S(112)),
           merchantFeedLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "CartData" });
@@ -3382,7 +2731,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "ExperimentalField" });
     case 3:
-      return S.Array(ExperimentalField);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3391,18 +2740,18 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "EventParameter" });
     case 5:
-      return S.Array(EventParameter);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entityType: S.optional(EncryptedUserIdEntityTypeEnum),
-          source: S.optional(EncryptedUserIdSourceEnum),
+          entityType: S.optional(S.String),
+          source: S.optional(S.String),
           entityId: S.optional(S.String),
           encryptedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptedUserId" });
     case 7:
-      return S.Array(EncryptedUserId);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -3412,14 +2761,14 @@ function __c15(j: number): any {
         S.Struct({
           sessionAttributes: S.optional(S.String),
           visitorPpid: S.optional(S.String),
-          encryptedUserIds: S.optional(EncryptedUserIdList),
+          encryptedUserIds: S.optional(__S(119)),
           gclid: S.optional(S.String),
           dclid: S.optional(S.String),
           wbraid: S.optional(S.String),
           impressionId: S.optional(S.String),
           mobileDeviceId: S.optional(S.String),
           gbraid: S.optional(S.String),
-          landingPageDeviceInfo: S.optional(DeviceInfo),
+          landingPageDeviceInfo: S.optional(__S(74)),
           matchId: S.optional(S.String),
           ppid: S.optional(S.String),
         }),
@@ -3441,45 +2790,45 @@ function __c15(j: number): any {
           eventName: S.optional(S.String),
           userId: S.optional(S.String),
           conversionCount: S.optional(S.Number),
-          eventSource: S.optional(EventEventSourceEnum),
-          userProperties: S.optional(UserProperties),
-          thirdPartyUserData: S.optional(UserData),
+          eventSource: S.optional(S.String),
+          userProperties: S.optional(__S(104)),
+          thirdPartyUserData: S.optional(__S(72)),
           currency: S.optional(S.String),
           clientId: S.optional(S.String),
-          customVariables: S.optional(CustomVariableList),
+          customVariables: S.optional(__S(106)),
           appInstanceId: S.optional(S.String),
           eventTimestamp: S.optional(S.String),
-          cartData: S.optional(CartData),
+          cartData: S.optional(__S(113)),
           conversionValue: S.optional(S.Number),
           lastUpdatedTimestamp: S.optional(S.String),
-          experimentalFields: S.optional(ExperimentalFieldList),
-          userData: S.optional(UserData),
-          additionalEventParameters: S.optional(EventParameterList),
-          adIdentifiers: S.optional(AdIdentifiers),
-          consent: S.optional(Consent),
-          eventLocation: S.optional(EventLocation),
-          destinationReferences: S.optional(StringList),
-          eventDeviceInfo: S.optional(DeviceInfo),
+          experimentalFields: S.optional(__S(115)),
+          userData: S.optional(__S(72)),
+          additionalEventParameters: S.optional(__S(117)),
+          adIdentifiers: S.optional(__S(120)),
+          consent: S.optional(__S(88)),
+          eventLocation: S.optional(__S(121)),
+          destinationReferences: S.optional(__S(28)),
+          eventDeviceInfo: S.optional(__S(74)),
           transactionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
     case 3:
-      return S.Array(Event);
+      return S.Array(__S(122));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          events: S.optional(EventList),
-          destinations: S.optional(DestinationList),
-          consent: S.optional(Consent),
-          encoding: S.optional(IngestEventsRequestEncodingEnum),
+          events: S.optional(__S(123)),
+          destinations: S.optional(__S(95)),
+          consent: S.optional(__S(88)),
+          encoding: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
-          encryptionInfo: S.optional(EncryptionInfo),
+          encryptionInfo: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "IngestEventsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(IngestEventsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(124).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3491,15 +2840,15 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          fieldWarnings: S.optional(FieldWarningList),
+          fieldWarnings: S.optional(__S(100)),
           requestId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IngestEventsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mobileData: S.optional(MobileData),
-          userData: S.optional(UserData),
+          mobileData: S.optional(__S(86)),
+          userData: S.optional(__S(72)),
         }),
       ).annotate({ identifier: "User" });
   }
@@ -3507,21 +2856,21 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(User);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          encryptionInfo: S.optional(EncryptionInfo),
-          users: S.optional(UserList_),
-          destinations: S.optional(DestinationList),
-          encoding: S.optional(IngestUsersRequestEncodingEnum),
+          encryptionInfo: S.optional(__S(80)),
+          users: S.optional(__S(128)),
+          destinations: S.optional(__S(95)),
+          encoding: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IngestUsersRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(IngestUsersRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3554,11 +2903,11 @@ function __c16(j: number): any {
         identifier: "ListAccountTypesAccountsUserListDirectLicensesRequest",
       });
     case 5:
-      return S.Array(UserListDirectLicense);
+      return S.Array(__S(9));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          userListDirectLicenses: S.optional(UserListDirectLicenseList),
+          userListDirectLicenses: S.optional(__S(133)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3586,11 +2935,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserListGlobalLicense);
+      return S.Array(__S(11));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          userListGlobalLicenses: S.optional(UserListGlobalLicenseList),
+          userListGlobalLicenses: S.optional(__S(136)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3618,26 +2967,26 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userListId: S.optional(S.String),
-          status: S.optional(UserListGlobalLicenseCustomerInfoStatusEnum),
+          status: S.optional(S.String),
           clientAccountId: S.optional(S.String),
           clientAccountDisplayName: S.optional(S.String),
-          historicalPricings: S.optional(UserListLicensePricingList),
+          historicalPricings: S.optional(__S(8)),
           userListDisplayName: S.optional(S.String),
-          pricing: S.optional(UserListLicensePricing),
+          pricing: S.optional(__S(7)),
           name: S.optional(S.String),
-          metrics: S.optional(UserListLicenseMetrics),
-          clientAccountType: S.optional(UserListGlobalLicenseCustomerInfoClientAccountTypeEnum),
-          licenseType: S.optional(UserListGlobalLicenseCustomerInfoLicenseTypeEnum),
+          metrics: S.optional(__S(6)),
+          clientAccountType: S.optional(S.String),
+          licenseType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UserListGlobalLicenseCustomerInfo",
       });
     case 4:
-      return S.Array(UserListGlobalLicenseCustomerInfo);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          userListGlobalLicenseCustomerInfos: S.optional(UserListGlobalLicenseCustomerInfoList),
+          userListGlobalLicenseCustomerInfos: S.optional(__S(140)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3661,7 +3010,7 @@ function __c17(j: number): any {
         identifier: "ListAccountTypesAccountsUserListsRequest",
       });
     case 7:
-      return S.Array(UserList);
+      return S.Array(__S(23));
   }
 }
 function __c18(j: number): any {
@@ -3669,7 +3018,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userLists: S.optional(UserListList),
+          userLists: S.optional(__S(143)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUserListsResponse" });
@@ -3678,7 +3027,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(UserListDirectLicense.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3694,7 +3043,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(UserListGlobalLicense.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3711,7 +3060,7 @@ function __c18(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(UserList.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3725,7 +3074,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(DestinationList),
+          destinations: S.optional(__S(95)),
           validateOnly: S.optional(S.Boolean),
           removeAsOfTime: S.optional(S.String),
         }),
@@ -3735,7 +3084,7 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RemoveAllAudienceMembersRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(148).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3757,11 +3106,11 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(DestinationList),
-          encryptionInfo: S.optional(EncryptionInfo),
-          audienceMembers: S.optional(AudienceMemberList),
+          destinations: S.optional(__S(95)),
+          encryptionInfo: S.optional(__S(80)),
+          audienceMembers: S.optional(__S(94)),
           validateOnly: S.optional(S.Boolean),
-          encoding: S.optional(RemoveAudienceMembersRequestEncodingEnum),
+          encoding: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RemoveAudienceMembersRequest",
@@ -3773,7 +3122,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RemoveAudienceMembersRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(151).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3785,21 +3134,21 @@ function __c19(j: number): any {
         identifier: "RemoveAudienceMembersRequest_",
       });
     case 1:
-      return S.Array(UserData);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(DestinationList),
-          encoding: S.optional(RemoveUsersRequestEncodingEnum),
-          encryptionInfo: S.optional(EncryptionInfo),
+          destinations: S.optional(__S(95)),
+          encoding: S.optional(S.String),
+          encryptionInfo: S.optional(__S(80)),
           validateOnly: S.optional(S.Boolean),
-          userData: S.optional(UserDataList),
+          userData: S.optional(__S(153)),
         }),
       ).annotate({ identifier: "RemoveUsersRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RemoveUsersRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3826,15 +3175,64 @@ function __c19(j: number): any {
         identifier: "SearchAccountTypesAccountsPartnerLinksRequest",
       });
     case 5:
-      return S.Array(PartnerLink);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          partnerLinks: S.optional(PartnerLinkList),
+          partnerLinks: S.optional(__S(157)),
         }),
       ).annotate({
         identifier: "SearchPartnerLinksResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -43,12 +45,8 @@ export interface GetTrackerRequest {
   /** Encrypted PayPal Account ID of the buyer or seller. */
   account_id?: string;
 }
-const GetTrackerRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetTrackerRequest>;
-
 /** The tracking number type. */
 export type TrackingNumberType = "CARRIER_PROVIDED" | "E2E_PARTNER_PROVIDED";
-const TrackingNumberType = S.String;
-
 /** The status of the item shipment. For allowed values, see <a href="/docs/tracking/reference/shipping-status/">Shipping Statuses</a>. */
 export type TrackingStatus =
   | "CANCELLED"
@@ -74,8 +72,6 @@ export type TrackingStatus =
   | "PROCESSED"
   | "NOT_SHIPPED"
   | "COMPLETED";
-const TrackingStatus = S.String;
-
 /** The carrier for the shipment. Carrier information is required when tracking_number is provided. Some carriers have a global version as well as local subsidiaries. The subsidiaries are repeated over many countries and might also have an entry in the global list. Choose the carrier for your country. If the carrier is not available for your country, choose the global version of the carrier. If your carrier name is not in the list, set `carrier` to `OTHER` and set carrier name in `carrier_name_other`. For allowed values, see <a href="/docs/tracking/reference/carriers/">Carriers</a>. */
 export type Carrier =
   | "2EBOX"
@@ -888,16 +884,10 @@ export type Carrier =
   | "ZJS_EXPRESS"
   | "ZTO_EXPRESS"
   | "ZYLLEM";
-const Carrier = S.String;
-
 /** To denote whether the shipment is sent forward to the receiver or returned back. */
 export type TrackerShipmentDirection = "FORWARD" | "RETURN";
-const TrackerShipmentDirection = S.String;
-
 /** To denote which party uploaded the shipment tracking info. */
 export type TrackerShipmentUploader = "MERCHANT" | "CONSUMER" | "PARTNER";
-const TrackerShipmentUploader = S.String;
-
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -908,8 +898,6 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const LinkDescriptionMethod = S.String;
-
 /** A request-related [HATEOAS link](/api/rest/responses/#hateoas-links). */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this link, in [URI template format](https://tools.ietf.org/html/rfc6570). Include the `$`, `(`, and `)` characters for pre-processing. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -919,12 +907,8 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-const LinkDescription = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<LinkDescription>;
-
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-const LinkDescriptionList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LinkDescriptionList>;
-
 /** The tracking information for a shipment. */
 export interface Tracker {
   /** The PayPal transaction ID. */
@@ -959,8 +943,6 @@ export interface Tracker {
   tracking_url?: string;
   links?: LinkDescriptionList;
 }
-const Tracker = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Tracker>;
-
 export interface GetTrackerBatchRequest {
   /** Filters the tracking information that appears in the response by a PayPal transaction ID. */
   transaction_id: string;
@@ -969,15 +951,8 @@ export interface GetTrackerBatchRequest {
   /** Encrypted PayPal Account ID of the buyer or seller. */
   account_id?: string;
 }
-const GetTrackerBatchRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetTrackerBatchRequest>;
-
 /** To denote whether the shipment is sent forward to the receiver or returned back. */
 export type TrackerInputShipmentDirection = "FORWARD" | "RETURN";
-const TrackerInputShipmentDirection = S.String;
-
 /** The tracking information for a shipment. */
 export interface TrackerInput {
   /** The PayPal transaction ID. */
@@ -1001,17 +976,11 @@ export interface TrackerInput {
   /** Tracking Link of the shipment. */
   tracking_url?: string;
 }
-const TrackerInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TrackerInput>;
-
 /** An array of tracking information for shipments. */
 export type TrackerListInput = Array<TrackerInput>;
-const TrackerListInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TrackerListInput>;
-
 export interface PostTrackerRequest {
   trackers?: TrackerListInput;
 }
-const PostTrackerRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PostTrackerRequest>;
-
 /** The tracking identifiers for a shipment. */
 export interface TrackerIdentifier {
   /** The PayPal transaction ID. */
@@ -1020,43 +989,20 @@ export interface TrackerIdentifier {
   tracking_number?: string;
   links?: LinkDescriptionList;
 }
-const TrackerIdentifier = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<TrackerIdentifier>;
-
 /** An array of tracking IDs. */
 export type DefinitionsTrackerIdentifierList = Array<TrackerIdentifier>;
-const DefinitionsTrackerIdentifierList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DefinitionsTrackerIdentifierList>;
-
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type TrackerIdentifierCollectionDefinitionsLinkDescriptionList = Array<LinkDescription>;
-const TrackerIdentifierCollectionDefinitionsLinkDescriptionList =
-  LinkDescriptionList as any as S.Schema<TrackerIdentifierCollectionDefinitionsLinkDescriptionList>;
-
 /** The add tracking information for a PayPal transaction response details. */
 export interface TrackerIdentifierCollection {
   tracker_identifiers?: DefinitionsTrackerIdentifierList;
   links?: TrackerIdentifierCollectionDefinitionsLinkDescriptionList;
 }
-const TrackerIdentifierCollection = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<TrackerIdentifierCollection>;
-
 export interface PostTrackerBatchRequest {
   trackers?: TrackerListInput;
 }
-const PostTrackerBatchRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PostTrackerBatchRequest>;
-
 /** The batch header. */
 export type TrackerIdentifierList = Array<TrackerIdentifier>;
-const TrackerIdentifierList =
-  DefinitionsTrackerIdentifierList as any as S.Schema<TrackerIdentifierList>;
-
 /** The HTTP method required to make the related call. */
 export type LinkDescription2Method =
   | "GET"
@@ -1078,9 +1024,6 @@ export interface LinkDescription2 {
 }
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links) that are either relevant to the issue by providing additional information or offering potential resolutions. */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription2>;
-const DefinitionsLinkDescriptionList =
-  LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
-
 /** The error details. Required for client-side `4XX` errors. */
 export interface ErrorDetails2 {
   /** The field that caused the error. If this field is in the body, set this value to the field's JSON pointer value. Required for client-side errors. */
@@ -1095,17 +1038,10 @@ export interface ErrorDetails2 {
   description?: string;
   links?: DefinitionsLinkDescriptionList;
 }
-const ErrorDetails2 = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ErrorDetails2>;
-
 /** An array of additional details about the error. */
 export type ErrorDetailsList = Array<ErrorDetails2>;
-const ErrorDetailsList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ErrorDetailsList>;
-
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type ErrorDefinitionsLinkDescriptionList = Array<LinkDescription2>;
-const ErrorDefinitionsLinkDescriptionList =
-  DefinitionsLinkDescriptionList as any as S.Schema<ErrorDefinitionsLinkDescriptionList>;
-
 /** The error details. */
 export interface Error {
   /** The human-readable, unique name of the error. */
@@ -1119,32 +1055,18 @@ export interface Error {
   details?: ErrorDetailsList;
   links?: ErrorDefinitionsLinkDescriptionList;
 }
-const Error = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Error>;
-
 /** An array of error responses. */
 export type ErrorList = Array<Error>;
-const ErrorList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ErrorList>;
-
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type BatchTrackerCollectionDefinitionsLinkDescriptionList = Array<LinkDescription>;
-const BatchTrackerCollectionDefinitionsLinkDescriptionList =
-  LinkDescriptionList as any as S.Schema<BatchTrackerCollectionDefinitionsLinkDescriptionList>;
-
 /** The add tracking information for multiple PayPal transactions response details. */
 export interface BatchTrackerCollection {
   tracker_identifiers?: TrackerIdentifierList;
   errors?: ErrorList;
   links?: BatchTrackerCollectionDefinitionsLinkDescriptionList;
 }
-const BatchTrackerCollection = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BatchTrackerCollection>;
-
 /** To denote whether the shipment is sent forward to the receiver or returned back. */
 export type PutTrackerRequestShipmentDirection = "FORWARD" | "RETURN";
-const PutTrackerRequestShipmentDirection = S.String;
-
 export interface PutTrackerRequest {
   /** The ID of the tracker in the <code><var>transaction_id</var>-<var>tracking_number</var></code> format. */
   id: string;
@@ -1169,11 +1091,7 @@ export interface PutTrackerRequest {
   /** Tracking Link of the shipment. */
   tracking_url?: string;
 }
-const PutTrackerRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PutTrackerRequest>;
-
 export interface PutTrackerResponse {}
-const PutTrackerResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PutTrackerResponse>;
-
 export type GetTrackerError = PaypalOpError;
 /** Show tracking information Shows tracking information, by tracker ID, for a PayPal transaction. */
 export const getTracker: API.OperationMethod<
@@ -1182,8 +1100,8 @@ export const getTracker: API.OperationMethod<
   GetTrackerError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrackerRequest,
-  output: Tracker,
+  input: __S(0) as any as S.Schema<GetTrackerRequest>,
+  output: __S(3) as any as S.Schema<Tracker>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1197,8 +1115,8 @@ export const getTrackerBatch: API.OperationMethod<
   GetTrackerBatchError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrackerBatchRequest,
-  output: Tracker,
+  input: __S(4) as any as S.Schema<GetTrackerBatchRequest>,
+  output: __S(3) as any as S.Schema<Tracker>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1130,8 @@ export const postTracker: API.OperationMethod<
   PostTrackerError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostTrackerRequest,
-  output: TrackerIdentifierCollection,
+  input: __S(7) as any as S.Schema<PostTrackerRequest>,
+  output: __S(10) as any as S.Schema<TrackerIdentifierCollection>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1227,8 +1145,8 @@ export const postTrackerBatch: API.OperationMethod<
   PostTrackerBatchError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostTrackerBatchRequest,
-  output: BatchTrackerCollection,
+  input: __S(11) as any as S.Schema<PostTrackerBatchRequest>,
+  output: __S(16) as any as S.Schema<BatchTrackerCollection>,
   errors: [BadRequest, Forbidden, NotFound, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1242,8 +1160,8 @@ export const putTracker: API.OperationMethod<
   PutTrackerError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTrackerRequest,
-  output: PutTrackerResponse,
+  input: __S(17) as any as S.Schema<PutTrackerRequest>,
+  output: __S(18) as any as S.Schema<PutTrackerResponse>,
   errors: [UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1264,31 +1182,31 @@ function __c0(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(LinkDescriptionMethod),
+          method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
     case 2:
-      return S.Array(LinkDescription);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           transaction_id: S.String,
           tracking_number: S.optional(S.String),
-          tracking_number_type: S.optional(TrackingNumberType),
-          status: TrackingStatus,
+          tracking_number_type: S.optional(S.String),
+          status: S.String,
           shipment_date: S.optional(S.String),
-          carrier: S.optional(Carrier),
+          carrier: S.optional(S.String),
           carrier_name_other: S.optional(S.String),
           postage_payment_id: S.optional(S.String),
           notify_buyer: S.optional(S.Boolean),
           quantity: S.optional(S.Number),
           tracking_number_validated: S.optional(S.Boolean),
           last_updated_time: S.optional(S.String),
-          shipment_direction: S.optional(TrackerShipmentDirection),
-          shipment_uploader: S.optional(TrackerShipmentUploader),
+          shipment_direction: S.optional(S.String),
+          shipment_uploader: S.optional(S.String),
           account_id: S.optional(S.String),
           tracking_url: S.optional(S.String),
-          links: S.optional(LinkDescriptionList),
+          links: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Tracker" });
     case 4:
@@ -1304,23 +1222,23 @@ function __c0(j: number): any {
         S.Struct({
           transaction_id: S.String,
           tracking_number: S.optional(S.String),
-          tracking_number_type: S.optional(TrackingNumberType),
-          status: TrackingStatus,
+          tracking_number_type: S.optional(S.String),
+          status: S.String,
           shipment_date: S.optional(S.String),
-          carrier: S.optional(Carrier),
+          carrier: S.optional(S.String),
           carrier_name_other: S.optional(S.String),
           notify_buyer: S.optional(S.Boolean),
           last_updated_time: S.optional(S.String),
-          shipment_direction: S.optional(TrackerInputShipmentDirection),
+          shipment_direction: S.optional(S.String),
           tracking_url: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrackerInput" });
     case 6:
-      return S.Array(TrackerInput);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          trackers: S.optional(TrackerListInput),
+          trackers: S.optional(__S(6)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/shipping/trackers", code: 200 })),
       ).annotate({ identifier: "PostTrackerRequest" });
   }
@@ -1332,16 +1250,16 @@ function __c1(j: number): any {
         S.Struct({
           transaction_id: S.String,
           tracking_number: S.optional(S.String),
-          links: S.optional(LinkDescriptionList),
+          links: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "TrackerIdentifier" });
     case 1:
-      return S.Array(TrackerIdentifier);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tracker_identifiers: S.optional(DefinitionsTrackerIdentifierList),
-          links: S.optional(TrackerIdentifierCollectionDefinitionsLinkDescriptionList),
+          tracker_identifiers: S.optional(__S(9)),
+          links: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "TrackerIdentifierCollection",
@@ -1349,7 +1267,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          trackers: S.optional(TrackerListInput),
+          trackers: S.optional(__S(6)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/shipping/trackers-batch", code: 200 })),
       ).annotate({ identifier: "PostTrackerBatchRequest" });
     case 4:
@@ -1360,11 +1278,11 @@ function __c1(j: number): any {
           location: S.optional(S.String),
           issue: S.String,
           description: S.optional(S.String),
-          links: S.optional(DefinitionsLinkDescriptionList),
+          links: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ErrorDetails2" });
     case 5:
-      return S.Array(ErrorDetails2);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1372,12 +1290,12 @@ function __c1(j: number): any {
           message: S.String,
           debug_id: S.String,
           information_link: S.optional(S.String),
-          details: S.optional(ErrorDetailsList),
-          links: S.optional(ErrorDefinitionsLinkDescriptionList),
+          details: S.optional(__S(13)),
+          links: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Error" });
     case 7:
-      return S.Array(Error);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1385,9 +1303,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tracker_identifiers: S.optional(TrackerIdentifierList),
-          errors: S.optional(ErrorList),
-          links: S.optional(BatchTrackerCollectionDefinitionsLinkDescriptionList),
+          tracker_identifiers: S.optional(__S(9)),
+          errors: S.optional(__S(15)),
+          links: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "BatchTrackerCollection" });
     case 1:
@@ -1396,14 +1314,14 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           transaction_id: S.String,
           tracking_number: S.optional(S.String),
-          tracking_number_type: S.optional(TrackingNumberType),
-          status: TrackingStatus,
+          tracking_number_type: S.optional(S.String),
+          status: S.String,
           shipment_date: S.optional(S.String),
-          carrier: S.optional(Carrier),
+          carrier: S.optional(S.String),
           carrier_name_other: S.optional(S.String),
           notify_buyer: S.optional(S.Boolean),
           last_updated_time: S.optional(S.String),
-          shipment_direction: S.optional(PutTrackerRequestShipmentDirection),
+          shipment_direction: S.optional(S.String),
           tracking_url: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/shipping/trackers/{id}", code: 200 })),
       ).annotate({ identifier: "PutTrackerRequest" });
@@ -1411,5 +1329,20 @@ function __c2(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PutTrackerResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

@@ -7,15 +7,12 @@ import { UnknownNotionError } from "../errors.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
 export type CreatePageRequestFilterPropertiesList = Array<string>;
-const CreatePageRequestFilterPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreatePageRequestFilterPropertiesList>;
-
 export interface CreatePageRequestParentCase0 {
   page_id: string;
   type?: string;
@@ -37,8 +34,6 @@ export type CreatePageRequestParent =
   | CreatePageRequestParentCase1
   | CreatePageRequestParentCase2
   | CreatePageRequestParentCase3;
-const CreatePageRequestParent = /*@__PURE__*/ S.Unknown as any as S.Schema<CreatePageRequestParent>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`, `default_background`, `gray_background`, `brown_background`, `orange_background`, `yellow_background`, `green_background`, `blue_background`, `purple_background`, `pink_background`, `red_background` */
 export type ApiColor =
   | "default"
@@ -389,17 +384,9 @@ export type CreatePageRequestPropertiesValue =
   | CreatePageRequestPropertiesValueCase13
   | CreatePageRequestPropertiesValueCase14
   | CreatePageRequestPropertiesValueCase15;
-const CreatePageRequestPropertiesValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreatePageRequestPropertiesValue>;
-
 export type CreatePageRequestPropertiesMap = {
   [key: string]: CreatePageRequestPropertiesValue | undefined;
 };
-const CreatePageRequestPropertiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreatePageRequestPropertiesMap>;
-
 export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
@@ -461,8 +448,6 @@ export type PageIconRequest =
   | ExternalPageIconRequest
   | CustomEmojiPageIconRequest
   | IconPageIconRequest;
-const PageIconRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageIconRequest>;
-
 /** The file upload for the cover. */
 export type FileUploadPageCoverRequestFileUpload = FileUploadPageIconRequestFileUpload;
 export interface FileUploadPageCoverRequest {
@@ -480,8 +465,6 @@ export interface ExternalPageCoverRequest {
   external: ExternalPageIconRequestExternal;
 }
 export type PageCoverRequest = FileUploadPageCoverRequest | ExternalPageCoverRequest;
-const PageCoverRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverRequest>;
-
 export type MediaContentWithUrlAndCaptionRequestCaptionList = Array<RichTextItemRequest>;
 export interface MediaContentWithUrlAndCaptionRequest {
   url: string;
@@ -1378,18 +1361,8 @@ export type BlockObjectRequest =
   | BlockObjectRequestCase28
   | BlockObjectRequestCase29
   | BlockObjectRequestCase30;
-const BlockObjectRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<BlockObjectRequest>;
-
 export type CreatePageRequestContentList = Array<BlockObjectRequest>;
-const CreatePageRequestContentList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreatePageRequestContentList>;
-
 export type CreatePageRequestChildrenList = Array<BlockObjectRequest>;
-const CreatePageRequestChildrenList =
-  CreatePageRequestContentList as any as S.Schema<CreatePageRequestChildrenList>;
-
 export interface CreatePageRequestTemplateCase0 {
   type: string;
 }
@@ -1406,9 +1379,6 @@ export type CreatePageRequestTemplate =
   | CreatePageRequestTemplateCase0
   | CreatePageRequestTemplateCase1
   | CreatePageRequestTemplateCase2;
-const CreatePageRequestTemplate =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreatePageRequestTemplate>;
-
 export type PagePositionSchemaCase0AfterBlock = RelationItemPropertyValueResponse;
 export interface PagePositionSchemaCase0 {
   type: string;
@@ -1420,8 +1390,6 @@ export type PagePositionSchema =
   | PagePositionSchemaCase0
   | CreatePageRequestTemplateCase0
   | CreatePageRequestTemplateCase0;
-const PagePositionSchema = /*@__PURE__*/ S.Unknown as any as S.Schema<PagePositionSchema>;
-
 export interface CreatePageRequest {
   filter_properties?: CreatePageRequestFilterPropertiesList;
   parent?: CreatePageRequestParent;
@@ -1437,8 +1405,6 @@ export interface CreatePageRequest {
   template?: CreatePageRequestTemplate;
   position?: PagePositionSchema;
 }
-const CreatePageRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreatePageRequest>;
-
 export interface DatabaseParentResponse {
   /** The parent type. */
   type: string;
@@ -2146,42 +2112,21 @@ export interface PartialPageObjectResponse {
   id: string;
 }
 export type CreatePageResponseBody = PageObjectResponse | PartialPageObjectResponse;
-const CreatePageResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<CreatePageResponseBody>;
-
 export type CreatePageResponse = CreatePageResponseBody;
-const CreatePageResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreatePageResponse>;
-
 /** Supply a list of property IDs to filter properties in the response. Note that if a page doesn't have a property, it won't be included in the filtered response. */
 export type GetPageRequestFilterPropertiesList = Array<string>;
-const GetPageRequestFilterPropertiesList =
-  CreatePageRequestFilterPropertiesList as any as S.Schema<GetPageRequestFilterPropertiesList>;
-
 export interface GetPageRequest {
   page_id: string;
   filter_properties?: GetPageRequestFilterPropertiesList;
 }
-const GetPageRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetPageRequest>;
-
 export type GetPageResponseBody = PartialPageObjectResponse | PageObjectResponse;
-const GetPageResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetPageResponseBody>;
-
 export type GetPageResponse = GetPageResponseBody;
-const GetPageResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetPageResponse>;
-
 export interface GetPageMarkdownRequest {
   page_id: string;
   include_transcript?: boolean;
 }
-const GetPageMarkdownRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetPageMarkdownRequest>;
-
 /** Block IDs that could not be loaded (appeared as <unknown> tags in the markdown). Pass these IDs back to this endpoint to fetch their content separately. */
 export type PageMarkdownResponseUnknownBlockIdsList = Array<string>;
-const PageMarkdownResponseUnknownBlockIdsList =
-  CreatePageRequestFilterPropertiesList as any as S.Schema<PageMarkdownResponseUnknownBlockIdsList>;
-
 export interface PageMarkdownResponse {
   /** The type of object, always 'page_markdown'. */
   object: string;
@@ -2194,19 +2139,12 @@ export interface PageMarkdownResponse {
   /** Block IDs that could not be loaded (appeared as <unknown> tags in the markdown). Pass these IDs back to this endpoint to fetch their content separately. */
   unknown_block_ids: PageMarkdownResponseUnknownBlockIdsList;
 }
-const PageMarkdownResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PageMarkdownResponse>;
-
 export interface GetPagePropertyRequest {
   page_id: string;
   property_id: string;
   start_cursor?: string;
   page_size?: number;
 }
-const GetPagePropertyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetPagePropertyRequest>;
-
 export interface NumberPropertyItemObjectResponse {
   type: string;
   number: number | null;
@@ -2521,15 +2459,7 @@ export interface PropertyItemPropertyItemListResponse {
 export type GetPagePropertyResponseBody =
   | PropertyItemObjectResponse
   | PropertyItemPropertyItemListResponse;
-const GetPagePropertyResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetPagePropertyResponseBody>;
-
 export type GetPagePropertyResponse = GetPagePropertyResponseBody;
-const GetPagePropertyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetPagePropertyResponse>;
-
 export interface MovePageRequestParentCase0 {
   /** The ID of the parent page (with or without dashes), for example, 195de9221179449fab8075a27c979105 */
   page_id: string;
@@ -2544,25 +2474,14 @@ export interface MovePageRequestParentCase1 {
 }
 /** The new parent of the page. */
 export type MovePageRequestParent = MovePageRequestParentCase0 | MovePageRequestParentCase1;
-const MovePageRequestParent = /*@__PURE__*/ S.Unknown as any as S.Schema<MovePageRequestParent>;
-
 export interface MovePageRequest {
   page_id: string;
   /** The new parent of the page. */
   parent: MovePageRequestParent;
 }
-const MovePageRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MovePageRequest>;
-
 export type MovePageResponseBody = PartialPageObjectResponse | PageObjectResponse;
-const MovePageResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<MovePageResponseBody>;
-
 export type MovePageResponse = MovePageResponseBody;
-const MovePageResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MovePageResponse>;
-
 export type UpdatePageRequestFilterPropertiesList = Array<string>;
-const UpdatePageRequestFilterPropertiesList =
-  CreatePageRequestFilterPropertiesList as any as S.Schema<UpdatePageRequestFilterPropertiesList>;
-
 export type UpdatePageRequestPropertiesValueCase0TitleList = Array<RichTextItemRequest>;
 export interface UpdatePageRequestPropertiesValueCase0 {
   title: UpdatePageRequestPropertiesValueCase0TitleList;
@@ -2669,25 +2588,14 @@ export type UpdatePageRequestPropertiesValue =
   | UpdatePageRequestPropertiesValueCase13
   | CreatePageRequestPropertiesValueCase14
   | UpdatePageRequestPropertiesValueCase15;
-const UpdatePageRequestPropertiesValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdatePageRequestPropertiesValue>;
-
 export type UpdatePageRequestPropertiesMap = {
   [key: string]: UpdatePageRequestPropertiesValue | undefined;
 };
-const UpdatePageRequestPropertiesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UpdatePageRequestPropertiesMap>;
-
 export type UpdatePageRequestTemplateCase0 = CreatePageRequestTemplateCase1;
 export type UpdatePageRequestTemplateCase1 = CreatePageRequestTemplateCase2;
 export type UpdatePageRequestTemplate =
   | CreatePageRequestTemplateCase1
   | CreatePageRequestTemplateCase2;
-const UpdatePageRequestTemplate =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdatePageRequestTemplate>;
-
 export interface UpdatePageRequest {
   page_id: string;
   filter_properties?: UpdatePageRequestFilterPropertiesList;
@@ -2702,14 +2610,8 @@ export interface UpdatePageRequest {
   in_trash?: boolean;
   is_archived?: boolean;
 }
-const UpdatePageRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UpdatePageRequest>;
-
 export type UpdatePageResponseBody = PageObjectResponse | PartialPageObjectResponse;
-const UpdatePageResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<UpdatePageResponseBody>;
-
 export type UpdatePageResponse = UpdatePageResponseBody;
-const UpdatePageResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UpdatePageResponse>;
-
 export interface UpdatePageMarkdownRequestInsertContentPositionCase0 {
   /** Insert the content at the start of the page. */
   type: string;
@@ -2722,9 +2624,6 @@ export interface UpdatePageMarkdownRequestInsertContentPositionCase1 {
 export type UpdatePageMarkdownRequestInsertContentPosition =
   | UpdatePageMarkdownRequestInsertContentPositionCase0
   | UpdatePageMarkdownRequestInsertContentPositionCase1;
-const UpdatePageMarkdownRequestInsertContentPosition =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdatePageMarkdownRequestInsertContentPosition>;
-
 /** Insert new content into the page. */
 export interface UpdatePageMarkdownRequestInsertContent {
   /** The enhanced markdown content to insert into the page. */
@@ -2734,11 +2633,6 @@ export interface UpdatePageMarkdownRequestInsertContent {
   /** Explicit position for inserted content. Use {"type":"start"} to prepend or {"type":"end"} to append. Cannot be combined with after. */
   position?: UpdatePageMarkdownRequestInsertContentPosition;
 }
-const UpdatePageMarkdownRequestInsertContent = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UpdatePageMarkdownRequestInsertContent>;
-
 /** Replace a range of content in the page. */
 export interface UpdatePageMarkdownRequestReplaceContentRange {
   /** The new enhanced markdown content to replace the matched range. */
@@ -2748,11 +2642,6 @@ export interface UpdatePageMarkdownRequestReplaceContentRange {
   /** Set to true to allow the operation to delete child pages or databases. Defaults to false. */
   allow_deleting_content?: boolean;
 }
-const UpdatePageMarkdownRequestReplaceContentRange = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<UpdatePageMarkdownRequestReplaceContentRange>;
-
 export interface UpdatePageMarkdownRequestUpdateContentContentUpdatesItem {
   /** The existing content string to find and replace. Must exactly match the page content. */
   old_str: string;
@@ -2761,19 +2650,9 @@ export interface UpdatePageMarkdownRequestUpdateContentContentUpdatesItem {
   /** If true, replaces all occurrences of old_str. If false (default), the operation fails if there are multiple matches. */
   replace_all_matches?: boolean;
 }
-const UpdatePageMarkdownRequestUpdateContentContentUpdatesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdatePageMarkdownRequestUpdateContentContentUpdatesItem>;
-
 /** An array of search-and-replace operations, each with old_str (content to find) and new_str (replacement content). */
 export type UpdatePageMarkdownRequestUpdateContentContentUpdatesList =
   Array<UpdatePageMarkdownRequestUpdateContentContentUpdatesItem>;
-const UpdatePageMarkdownRequestUpdateContentContentUpdatesList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdatePageMarkdownRequestUpdateContentContentUpdatesList>;
-
 /** Update specific content using search-and-replace operations. */
 export interface UpdatePageMarkdownRequestUpdateContent {
   /** An array of search-and-replace operations, each with old_str (content to find) and new_str (replacement content). */
@@ -2781,11 +2660,6 @@ export interface UpdatePageMarkdownRequestUpdateContent {
   /** Set to true to allow the operation to delete child pages or databases. Defaults to false. */
   allow_deleting_content?: boolean;
 }
-const UpdatePageMarkdownRequestUpdateContent = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UpdatePageMarkdownRequestUpdateContent>;
-
 /** Replace the entire page content with new markdown. */
 export interface UpdatePageMarkdownRequestReplaceContent {
   /** The new enhanced markdown content to replace the entire page content. */
@@ -2793,11 +2667,6 @@ export interface UpdatePageMarkdownRequestReplaceContent {
   /** Set to true to allow the operation to delete child pages or databases. Defaults to false. */
   allow_deleting_content?: boolean;
 }
-const UpdatePageMarkdownRequestReplaceContent = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<UpdatePageMarkdownRequestReplaceContent>;
-
 export interface UpdatePageMarkdownRequest {
   page_id: string;
   /** Set to true to opt into receiving an async_task result when this update operation is accepted for background execution. If omitted or false, the endpoint keeps the existing synchronous response shape. */
@@ -2813,11 +2682,6 @@ export interface UpdatePageMarkdownRequest {
   /** Replace the entire page content with new markdown. */
   replace_content?: UpdatePageMarkdownRequestReplaceContent;
 }
-const UpdatePageMarkdownRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<UpdatePageMarkdownRequest>;
-
 export type CreatePageError = NotionOpError;
 /** Create a page */
 export const createPage: API.OperationMethod<
@@ -2826,8 +2690,8 @@ export const createPage: API.OperationMethod<
   CreatePageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePageRequest,
-  output: CreatePageResponse,
+  input: __S(3) as any as S.Schema<CreatePageRequest>,
+  output: __S(4) as any as S.Schema<CreatePageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2841,8 +2705,8 @@ export const getPage: API.OperationMethod<
   GetPageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPageRequest,
-  output: GetPageResponse,
+  input: __S(5) as any as S.Schema<GetPageRequest>,
+  output: __S(6) as any as S.Schema<GetPageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2720,8 @@ export const getPageMarkdown: API.OperationMethod<
   GetPageMarkdownError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPageMarkdownRequest,
-  output: PageMarkdownResponse,
+  input: __S(7) as any as S.Schema<GetPageMarkdownRequest>,
+  output: __S(8) as any as S.Schema<PageMarkdownResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2871,8 +2735,8 @@ export const getPageProperty: API.OperationMethod<
   GetPagePropertyError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPagePropertyRequest,
-  output: GetPagePropertyResponse,
+  input: __S(9) as any as S.Schema<GetPagePropertyRequest>,
+  output: __S(10) as any as S.Schema<GetPagePropertyResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2886,8 +2750,8 @@ export const movePage: API.OperationMethod<
   MovePageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MovePageRequest,
-  output: MovePageResponse,
+  input: __S(11) as any as S.Schema<MovePageRequest>,
+  output: __S(12) as any as S.Schema<MovePageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2901,8 +2765,8 @@ export const updatePage: API.OperationMethod<
   UpdatePageError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePageRequest,
-  output: UpdatePageResponse,
+  input: __S(14) as any as S.Schema<UpdatePageRequest>,
+  output: __S(15) as any as S.Schema<UpdatePageResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2916,8 +2780,8 @@ export const updatePageMarkdown: API.OperationMethod<
   UpdatePageMarkdownError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePageMarkdownRequest,
-  output: PageMarkdownResponse,
+  input: __S(22) as any as S.Schema<UpdatePageMarkdownRequest>,
+  output: __S(8) as any as S.Schema<PageMarkdownResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2929,38 +2793,38 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Record(S.String, CreatePageRequestPropertiesValue);
+      return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(BlockObjectRequest);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          filter_properties: S.optional(CreatePageRequestFilterPropertiesList.pipe(T.Query())),
-          parent: S.optional(CreatePageRequestParent),
-          properties: S.optional(CreatePageRequestPropertiesMap),
-          icon: S.optional(S.NullOr(PageIconRequest)),
-          cover: S.optional(S.NullOr(PageCoverRequest)),
-          content: S.optional(CreatePageRequestContentList),
-          children: S.optional(CreatePageRequestChildrenList),
+          filter_properties: S.optional(__S(0).pipe(T.Query())),
+          parent: S.optional(S.Unknown),
+          properties: S.optional(__S(1)),
+          icon: S.optional(S.NullOr(S.Unknown)),
+          cover: S.optional(S.NullOr(S.Unknown)),
+          content: S.optional(__S(2)),
+          children: S.optional(__S(2)),
           markdown: S.optional(S.String),
           allow_async: S.optional(S.Boolean),
-          template: S.optional(CreatePageRequestTemplate),
-          position: S.optional(PagePositionSchema),
+          template: S.optional(S.Unknown),
+          position: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/pages", code: 200 })),
       ).annotate({ identifier: "CreatePageRequest" });
     case 4:
-      return S.suspend(() => CreatePageResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreatePageResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
-          filter_properties: S.optional(GetPageRequestFilterPropertiesList.pipe(T.Query())),
+          filter_properties: S.optional(__S(0).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/pages/{page_id}", code: 200 })),
       ).annotate({ identifier: "GetPageRequest" });
     case 6:
-      return S.suspend(() => GetPageResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPageResponse",
       });
     case 7:
@@ -2981,7 +2845,7 @@ function __c1(j: number): any {
           id: S.String,
           markdown: S.String,
           truncated: S.Boolean,
-          unknown_block_ids: PageMarkdownResponseUnknownBlockIdsList,
+          unknown_block_ids: __S(0),
         }),
       ).annotate({ identifier: "PageMarkdownResponse" });
     case 1:
@@ -2996,39 +2860,39 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "GetPagePropertyRequest" });
     case 2:
-      return S.suspend(() => GetPagePropertyResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPagePropertyResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
-          parent: MovePageRequestParent,
+          parent: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/pages/{page_id}/move", code: 200 })),
       ).annotate({ identifier: "MovePageRequest" });
     case 4:
-      return S.suspend(() => MovePageResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "MovePageResponse",
       });
     case 5:
-      return S.Record(S.String, UpdatePageRequestPropertiesValue);
+      return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           page_id: S.String.pipe(T.Label()),
-          filter_properties: S.optional(UpdatePageRequestFilterPropertiesList.pipe(T.Query())),
-          properties: S.optional(UpdatePageRequestPropertiesMap),
-          icon: S.optional(S.NullOr(PageIconRequest)),
-          cover: S.optional(S.NullOr(PageCoverRequest)),
+          filter_properties: S.optional(__S(0).pipe(T.Query())),
+          properties: S.optional(__S(13)),
+          icon: S.optional(S.NullOr(S.Unknown)),
+          cover: S.optional(S.NullOr(S.Unknown)),
           is_locked: S.optional(S.Boolean),
-          template: S.optional(UpdatePageRequestTemplate),
+          template: S.optional(S.Unknown),
           erase_content: S.optional(S.Boolean),
           in_trash: S.optional(S.Boolean),
           is_archived: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/pages/{page_id}", code: 200 })),
       ).annotate({ identifier: "UpdatePageRequest" });
     case 7:
-      return S.suspend(() => UpdatePageResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdatePageResponse",
       });
   }
@@ -3040,7 +2904,7 @@ function __c2(j: number): any {
         S.Struct({
           content: S.String,
           after: S.optional(S.String),
-          position: S.optional(UpdatePageMarkdownRequestInsertContentPosition),
+          position: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdatePageMarkdownRequestInsertContent",
@@ -3066,11 +2930,11 @@ function __c2(j: number): any {
         identifier: "UpdatePageMarkdownRequestUpdateContentContentUpdatesItem",
       });
     case 3:
-      return S.Array(UpdatePageMarkdownRequestUpdateContentContentUpdatesItem);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content_updates: UpdatePageMarkdownRequestUpdateContentContentUpdatesList,
+          content_updates: __S(19),
           allow_deleting_content: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -3091,13 +2955,28 @@ function __c2(j: number): any {
           page_id: S.String.pipe(T.Label()),
           allow_async: S.optional(S.Boolean),
           type: S.optional(S.String),
-          insert_content: S.optional(UpdatePageMarkdownRequestInsertContent),
-          replace_content_range: S.optional(UpdatePageMarkdownRequestReplaceContentRange),
-          update_content: S.optional(UpdatePageMarkdownRequestUpdateContent),
-          replace_content: S.optional(UpdatePageMarkdownRequestReplaceContent),
+          insert_content: S.optional(__S(16)),
+          replace_content_range: S.optional(__S(17)),
+          update_content: S.optional(__S(20)),
+          replace_content: S.optional(__S(21)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/pages/{page_id}/markdown", code: 200 })),
       ).annotate({
         identifier: "UpdatePageMarkdownRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

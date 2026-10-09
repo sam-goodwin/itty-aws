@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -42,23 +44,8 @@ export interface GetPropertyDefinitionRequest {
   /** A UUID string identifying this property definition. */
   id: string;
 }
-const GetPropertyDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetPropertyDefinitionRequest>;
-
 export type EnterprisePropertyDefinitionTagsList = Array<unknown>;
-const EnterprisePropertyDefinitionTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EnterprisePropertyDefinitionTagsList>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -72,8 +59,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -85,14 +70,9 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
-
 /** * `DateTime` - DateTime * `String` - String * `Numeric` - Numeric * `Boolean` - Boolean * `Duration` - Duration */
 export type PropertyTypeEnum = "DateTime" | "String" | "Numeric" | "Boolean" | "Duration";
 export type EnterprisePropertyDefinitionPropertyType = PropertyTypeEnum | BlankEnum;
-const EnterprisePropertyDefinitionPropertyType =
-  S.Unknown as any as S.Schema<EnterprisePropertyDefinitionPropertyType>;
-
 /** Serializer mixin that handles tags for objects. */
 export interface EnterprisePropertyDefinition {
   id?: string;
@@ -111,29 +91,12 @@ export interface EnterprisePropertyDefinition {
   /** Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only. */
   warehouse_origin?: unknown;
 }
-const EnterprisePropertyDefinition = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EnterprisePropertyDefinition>;
-
 export interface GetPropertyDefinitionsSeenTogetherRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetPropertyDefinitionsSeenTogetherRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetPropertyDefinitionsSeenTogetherRequest>;
-
 export interface GetPropertyDefinitionsSeenTogetherResponse {}
-const GetPropertyDefinitionsSeenTogetherResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetPropertyDefinitionsSeenTogetherResponse>;
-
 export type ListPropertyDefinitionsRequestType = "event" | "person" | "group" | "session";
-const ListPropertyDefinitionsRequestType = S.String;
-
 export interface ListPropertyDefinitionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -168,47 +131,20 @@ export interface ListPropertyDefinitionsRequest {
   /** Filter by verified status. True returns only verified, false returns only unverified. */
   verified?: boolean;
 }
-const ListPropertyDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListPropertyDefinitionsRequest>;
-
 export type PaginatedEnterprisePropertyDefinitionListResultsList =
   Array<EnterprisePropertyDefinition>;
-const PaginatedEnterprisePropertyDefinitionListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PaginatedEnterprisePropertyDefinitionListResultsList>;
-
 export interface PaginatedEnterprisePropertyDefinitionList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEnterprisePropertyDefinitionListResultsList;
 }
-const PaginatedEnterprisePropertyDefinitionList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>;
-
 /** List of object IDs to update tags on. */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-const PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList>;
-
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-const BulkUpdateTagsActionEnum = S.String;
-
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-const PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList>;
-
 export interface PropertyDefinitionsBulkUpdateTagsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -219,71 +155,30 @@ export interface PropertyDefinitionsBulkUpdateTagsCreateRequest {
   /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
   tags?: PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList;
 }
-const PropertyDefinitionsBulkUpdateTagsCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>;
-
 export type BulkUpdateTagsItemTagsList = Array<string>;
-const BulkUpdateTagsItemTagsList =
-  PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList as any as S.Schema<BulkUpdateTagsItemTagsList>;
-
 export interface BulkUpdateTagsItem {
   id?: number;
   tags?: BulkUpdateTagsItemTagsList;
 }
-const BulkUpdateTagsItem = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BulkUpdateTagsItem>;
-
 export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
-
 export interface BulkUpdateTagsError {
   id?: number;
   reason?: string;
 }
-const BulkUpdateTagsError = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<BulkUpdateTagsError>;
-
 export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
-
 export interface BulkUpdateTagsResponse {
   updated?: BulkUpdateTagsResponseUpdatedList;
   skipped?: BulkUpdateTagsResponseSkippedList;
 }
-const BulkUpdateTagsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BulkUpdateTagsResponse>;
-
 export interface PropertyDefinitionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this property definition. */
   id: string;
 }
-const PropertyDefinitionsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PropertyDefinitionsDestroyRequest>;
-
 export interface PropertyDefinitionsDestroyResponse {}
-const PropertyDefinitionsDestroyResponse =
-  GetPropertyDefinitionsSeenTogetherResponse as any as S.Schema<PropertyDefinitionsDestroyResponse>;
-
 export type UpdatePropertyDefinitionRequestTagsList = Array<unknown>;
-const UpdatePropertyDefinitionRequestTagsList =
-  EnterprisePropertyDefinitionTagsList as any as S.Schema<UpdatePropertyDefinitionRequestTagsList>;
-
 export type UpdatePropertyDefinitionRequestPropertyType = PropertyTypeEnum | BlankEnum;
-const UpdatePropertyDefinitionRequestPropertyType =
-  S.Unknown as any as S.Schema<UpdatePropertyDefinitionRequestPropertyType>;
-
 export interface UpdatePropertyDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -295,19 +190,8 @@ export interface UpdatePropertyDefinitionRequest {
   verified?: boolean;
   hidden?: boolean | null;
 }
-const UpdatePropertyDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdatePropertyDefinitionRequest>;
-
 export type UpdatePropertyDefinitionsPartialRequestTagsList = Array<unknown>;
-const UpdatePropertyDefinitionsPartialRequestTagsList =
-  EnterprisePropertyDefinitionTagsList as any as S.Schema<UpdatePropertyDefinitionsPartialRequestTagsList>;
-
 export type UpdatePropertyDefinitionsPartialRequestPropertyType = PropertyTypeEnum | BlankEnum;
-const UpdatePropertyDefinitionsPartialRequestPropertyType =
-  S.Unknown as any as S.Schema<UpdatePropertyDefinitionsPartialRequestPropertyType>;
-
 export interface UpdatePropertyDefinitionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -319,11 +203,6 @@ export interface UpdatePropertyDefinitionsPartialRequest {
   verified?: boolean;
   hidden?: boolean | null;
 }
-const UpdatePropertyDefinitionsPartialRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UpdatePropertyDefinitionsPartialRequest>;
-
 export type GetPropertyDefinitionError = Forbidden | NotFound | PosthogOpError;
 export const getPropertyDefinition: API.OperationMethod<
   GetPropertyDefinitionRequest,
@@ -331,8 +210,8 @@ export const getPropertyDefinition: API.OperationMethod<
   GetPropertyDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPropertyDefinitionRequest,
-  output: EnterprisePropertyDefinition,
+  input: __S(0) as any as S.Schema<GetPropertyDefinitionRequest>,
+  output: __S(4) as any as S.Schema<EnterprisePropertyDefinition>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -346,8 +225,8 @@ export const getPropertyDefinitionsSeenTogether: API.OperationMethod<
   GetPropertyDefinitionsSeenTogetherError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPropertyDefinitionsSeenTogetherRequest,
-  output: GetPropertyDefinitionsSeenTogetherResponse,
+  input: __S(5) as any as S.Schema<GetPropertyDefinitionsSeenTogetherRequest>,
+  output: __S(6) as any as S.Schema<GetPropertyDefinitionsSeenTogetherResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -360,8 +239,8 @@ export const listPropertyDefinitions: API.OperationMethod<
   ListPropertyDefinitionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPropertyDefinitionsRequest,
-  output: PaginatedEnterprisePropertyDefinitionList,
+  input: __S(7) as any as S.Schema<ListPropertyDefinitionsRequest>,
+  output: __S(9) as any as S.Schema<PaginatedEnterprisePropertyDefinitionList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -379,8 +258,8 @@ export const propertyDefinitionsBulkUpdateTagsCreate: API.OperationMethod<
   PropertyDefinitionsBulkUpdateTagsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PropertyDefinitionsBulkUpdateTagsCreateRequest,
-  output: BulkUpdateTagsResponse,
+  input: __S(12) as any as S.Schema<PropertyDefinitionsBulkUpdateTagsCreateRequest>,
+  output: __S(17) as any as S.Schema<BulkUpdateTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -393,8 +272,8 @@ export const propertyDefinitionsDestroy: API.OperationMethod<
   PropertyDefinitionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PropertyDefinitionsDestroyRequest,
-  output: PropertyDefinitionsDestroyResponse,
+  input: __S(18) as any as S.Schema<PropertyDefinitionsDestroyRequest>,
+  output: __S(6) as any as S.Schema<PropertyDefinitionsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -407,8 +286,8 @@ export const updatePropertyDefinition: API.OperationMethod<
   UpdatePropertyDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePropertyDefinitionRequest,
-  output: EnterprisePropertyDefinition,
+  input: __S(19) as any as S.Schema<UpdatePropertyDefinitionRequest>,
+  output: __S(4) as any as S.Schema<EnterprisePropertyDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -425,8 +304,8 @@ export const updatePropertyDefinitionsPartial: API.OperationMethod<
   UpdatePropertyDefinitionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePropertyDefinitionsPartialRequest,
-  output: EnterprisePropertyDefinition,
+  input: __S(20) as any as S.Schema<UpdatePropertyDefinitionsPartialRequest>,
+  output: __S(4) as any as S.Schema<EnterprisePropertyDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -464,8 +343,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(2))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
@@ -474,15 +353,15 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(EnterprisePropertyDefinitionTagsList),
+          tags: S.optional(__S(1)),
           is_numerical: S.optional(S.Boolean),
           updated_at: S.optional(S.String),
-          updated_by: S.optional(S.NullOr(UserBasic)),
+          updated_by: S.optional(S.NullOr(__S(3))),
           is_seen_on_filtered_events: S.optional(S.NullOr(S.Boolean)),
-          property_type: S.optional(S.NullOr(EnterprisePropertyDefinitionPropertyType)),
+          property_type: S.optional(S.NullOr(S.Unknown)),
           verified: S.optional(S.Boolean),
           verified_at: S.optional(S.NullOr(S.String)),
-          verified_by: S.optional(S.NullOr(UserBasic)),
+          verified_by: S.optional(S.NullOr(__S(3))),
           hidden: S.optional(S.NullOr(S.Boolean)),
           warehouse_origin: S.optional(S.Unknown),
         }),
@@ -524,7 +403,7 @@ function __c0(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListPropertyDefinitionsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -541,14 +420,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EnterprisePropertyDefinition);
+      return S.Array(__S(4));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedEnterprisePropertyDefinitionListResultsList),
+          results: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "PaginatedEnterprisePropertyDefinitionList",
@@ -561,9 +440,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestIdsList),
-          action: S.optional(BulkUpdateTagsActionEnum),
-          tags: S.optional(PropertyDefinitionsBulkUpdateTagsCreateRequestTagsList),
+          ids: S.optional(__S(10)),
+          action: S.optional(S.String),
+          tags: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -578,11 +457,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          tags: S.optional(BulkUpdateTagsItemTagsList),
+          tags: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsItem" });
     case 6:
-      return S.Array(BulkUpdateTagsItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -595,12 +474,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BulkUpdateTagsError);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          updated: S.optional(BulkUpdateTagsResponseUpdatedList),
-          skipped: S.optional(BulkUpdateTagsResponseSkippedList),
+          updated: S.optional(__S(14)),
+          skipped: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "BulkUpdateTagsResponse" });
     case 2:
@@ -624,8 +503,8 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(UpdatePropertyDefinitionRequestTagsList),
-          property_type: S.optional(S.NullOr(UpdatePropertyDefinitionRequestPropertyType)),
+          tags: S.optional(__S(1)),
+          property_type: S.optional(S.NullOr(S.Unknown)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -644,8 +523,8 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(UpdatePropertyDefinitionsPartialRequestTagsList),
-          property_type: S.optional(S.NullOr(UpdatePropertyDefinitionsPartialRequestPropertyType)),
+          tags: S.optional(__S(1)),
+          property_type: S.optional(S.NullOr(S.Unknown)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -658,5 +537,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdatePropertyDefinitionsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

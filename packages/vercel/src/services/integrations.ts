@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -61,16 +63,8 @@ export type ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItemCase
 export type ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem =
   | ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItemCase0
   | string;
-const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem =
-  S.Unknown as any as S.Schema<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem>;
-
 export type ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList =
   Array<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem>;
-const ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList>;
-
 export interface ConnectIntegrationResourceToProjectRequest {
   integrationConfigurationId: string;
   resourceId: string;
@@ -82,17 +76,7 @@ export interface ConnectIntegrationResourceToProjectRequest {
   envVarEnvironments?: ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList;
   makeEnvVarsSensitive?: boolean;
 }
-const ConnectIntegrationResourceToProjectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConnectIntegrationResourceToProjectRequest>;
-
 export interface ConnectIntegrationResourceToProjectResponse {}
-const ConnectIntegrationResourceToProjectResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ConnectIntegrationResourceToProjectResponse>;
-
 export type CreateIntegrationStoreDirectRequestMetadataValueCase3List = Array<string>;
 export type CreateIntegrationStoreDirectRequestMetadataValueCase4List = Array<number>;
 export type CreateIntegrationStoreDirectRequestMetadataValue =
@@ -101,27 +85,14 @@ export type CreateIntegrationStoreDirectRequestMetadataValue =
   | boolean
   | CreateIntegrationStoreDirectRequestMetadataValueCase3List
   | CreateIntegrationStoreDirectRequestMetadataValueCase4List;
-const CreateIntegrationStoreDirectRequestMetadataValue =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectRequestMetadataValue>;
-
 /** Optional key-value pairs for resource metadata */
 export type CreateIntegrationStoreDirectRequestMetadataMap = {
   [key: string]: CreateIntegrationStoreDirectRequestMetadataValue | undefined;
 };
-const CreateIntegrationStoreDirectRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateIntegrationStoreDirectRequestMetadataMap>;
-
 /** Protocol-specific configuration settings */
 export type CreateIntegrationStoreDirectRequestProtocolSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const CreateIntegrationStoreDirectRequestProtocolSettingsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateIntegrationStoreDirectRequestProtocolSettingsMap>;
-
 /** Source of the store creation request */
 export type CreateIntegrationStoreDirectRequestSource =
   | "marketplace"
@@ -134,8 +105,6 @@ export type CreateIntegrationStoreDirectRequestSource =
   | "backoffice"
   | "import-recommended-integrations"
   | "organization";
-const CreateIntegrationStoreDirectRequestSource = S.String;
-
 export interface CreateIntegrationStoreDirectRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -162,103 +131,42 @@ export interface CreateIntegrationStoreDirectRequest {
   /** Amount in cents for prepayment billing plans. Required only for prepayment plans with variable amounts. */
   prepaymentAmountCents?: number;
 }
-const CreateIntegrationStoreDirectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateIntegrationStoreDirectRequest>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList = Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item =
   | "bitbucket"
   | "github"
   | "gitlab";
-const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List =
   Array<CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item>;
-const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    7,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase1 = "*";
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders =
   | CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List
   | CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase1;
-const CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList = Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProjectFilterGit {
   owners?: CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList;
   providers: CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders;
   repos?: CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList;
 }
-const CreateIntegrationStoreDirectResponseStoreProjectFilterGit = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilterGit>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProjectFilter {
   git?: CreateIntegrationStoreDirectResponseStoreProjectFilterGit;
 }
-const CreateIntegrationStoreDirectResponseStoreProjectFilter = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectFilter>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
   Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem {
   environments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList;
   slug: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    2,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem>;
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    3,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments {
   actions: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList;
   required: boolean;
 }
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    4,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
   Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
   Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework =
   | "actix-web"
   | "angular"
@@ -334,8 +242,6 @@ export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramewo
   | "vuepress"
   | "xmcp"
   | "zola";
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework = S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
   deployments?: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments;
   environments: CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList;
@@ -348,18 +254,8 @@ export interface CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem {
   name: string;
   projectId: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProjectsMetadataList =
   Array<CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem>;
-const CreateIntegrationStoreDirectResponseStoreProjectsMetadataList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProjectsMetadataList>;
-
 export type CreateIntegrationStoreDirectResponseStoreStatus =
   | "available"
   | "error"
@@ -369,55 +265,26 @@ export type CreateIntegrationStoreDirectResponseStoreStatus =
   | "onboarding"
   | "suspended"
   | "uninstalled";
-const CreateIntegrationStoreDirectResponseStoreStatus = S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem {
   label: string;
   value?: string;
 }
-const CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-const CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-const CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList =
-  CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem {
   amount: string;
   line: string;
 }
-const CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
-const CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList>;
-
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanScope = "installation" | "resource";
-const CreateIntegrationStoreDirectResponseStoreBillingPlanScope = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreBillingPlanType =
   | "prepayment"
   | "subscription";
-const CreateIntegrationStoreDirectResponseStoreBillingPlanType = S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreBillingPlan {
   cost?: string;
   description: string;
@@ -437,11 +304,6 @@ export interface CreateIntegrationStoreDirectResponseStoreBillingPlan {
   scope: CreateIntegrationStoreDirectResponseStoreBillingPlanScope;
   type: CreateIntegrationStoreDirectResponseStoreBillingPlanType;
 }
-const CreateIntegrationStoreDirectResponseStoreBillingPlan = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreBillingPlan>;
-
 export interface CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0 {
   customRotationWarning?: string;
   maxDelayHours: number;
@@ -449,9 +311,6 @@ export interface CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRota
 export type CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation =
   | CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0
   | boolean;
-const CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation>;
-
 export interface CreateIntegrationStoreDirectResponseStoreCapabilities {
   agentTools?: boolean;
   autoSensitive?: boolean;
@@ -465,11 +324,6 @@ export interface CreateIntegrationStoreDirectResponseStoreCapabilities {
   transferable?: boolean;
   v0?: boolean;
 }
-const CreateIntegrationStoreDirectResponseStoreCapabilities = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreCapabilities>;
-
 export type CreateIntegrationStoreDirectResponseStoreExternalResourceStatus =
   | "error"
   | "onboarding"
@@ -478,8 +332,6 @@ export type CreateIntegrationStoreDirectResponseStoreExternalResourceStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-const CreateIntegrationStoreDirectResponseStoreExternalResourceStatus = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List = Array<string>;
 export type CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List = Array<number>;
 export type CreateIntegrationStoreDirectResponseStoreMetadataValue =
@@ -488,47 +340,24 @@ export type CreateIntegrationStoreDirectResponseStoreMetadataValue =
   | CreateIntegrationStoreDirectResponseStoreMetadataValueCase2List
   | CreateIntegrationStoreDirectResponseStoreMetadataValueCase3List
   | boolean;
-const CreateIntegrationStoreDirectResponseStoreMetadataValue =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataValue>;
-
 export type CreateIntegrationStoreDirectResponseStoreMetadataMap = {
   [key: string]: CreateIntegrationStoreDirectResponseStoreMetadataValue | undefined;
 };
-const CreateIntegrationStoreDirectResponseStoreMetadataMap = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreMetadataMap>;
-
 export type CreateIntegrationStoreDirectResponseStoreNotificationLevel = "error" | "info" | "warn";
-const CreateIntegrationStoreDirectResponseStoreNotificationLevel = S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreNotification {
   href?: string;
   level: CreateIntegrationStoreDirectResponseStoreNotificationLevel;
   message?: string;
   title: string;
 }
-const CreateIntegrationStoreDirectResponseStoreNotification = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreNotification>;
-
 export type CreateIntegrationStoreDirectResponseStoreOwnership = "linked" | "owned" | "sandbox";
-const CreateIntegrationStoreDirectResponseStoreOwnership = S.String;
-
 /** URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration. */
 export type CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList = Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotationCase0 =
   CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
 export type CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation =
   | CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0
   | boolean;
-const CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductCapabilities {
   agentTools?: boolean;
   autoSensitive?: boolean;
@@ -549,11 +378,6 @@ export interface CreateIntegrationStoreDirectResponseStoreProductCapabilities {
   v0?: boolean;
   v0Flavors?: boolean;
 }
-const CreateIntegrationStoreDirectResponseStoreProductCapabilities = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductCapabilities>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0EnumList =
   Array<string>;
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase0Type =
@@ -1549,44 +1373,22 @@ export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaProper
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase9
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase10
   | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValueCase11;
-const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap = {
   [key: string]:
     | CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue
     | undefined;
 };
-const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    0,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
   Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = "object";
-const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
   Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductMetadataSchema {
   properties: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap;
   required?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList;
   type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType;
   ui_order?: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList;
 }
-const CreateIntegrationStoreDirectResponseStoreProductMetadataSchema = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductMetadataSchema>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem =
   | "read-write:deployment"
   | "read-write:deployment-check"
@@ -1602,25 +1404,12 @@ export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionSco
   | "read:project";
 export type CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
   Array<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesItem>;
-const CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem {
   href: string;
   title: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductResourceLinksList =
   Array<CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem>;
-const CreateIntegrationStoreDirectResponseStoreProductResourceLinksList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductResourceLinksList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductTagsItem =
   | "ai"
   | "authentication"
@@ -1679,90 +1468,41 @@ export type CreateIntegrationStoreDirectResponseStoreProductTagsItem =
   | "vector"
   | "video"
   | "workflow";
-const CreateIntegrationStoreDirectResponseStoreProductTagsItem = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductTagsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductTagsItem>;
-const CreateIntegrationStoreDirectResponseStoreProductTagsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductTagsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductRepl {
   enabled: boolean;
   supportsReadOnlyMode: boolean;
   welcomeMessage?: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProductRepl = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductRepl>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType =
   | "add_drain"
   | "configure_project_connections"
   | "connect_to_project";
-const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType = S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem {
   type: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType;
 }
-const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    6,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem>;
-const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    7,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem {
   actions?: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList;
   content: string;
   title: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem>;
-const CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductGuidesItem {
   framework: string;
   steps: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList;
   title: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProductGuidesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductGuidesList =
   Array<CreateIntegrationStoreDirectResponseStoreProductGuidesItem>;
-const CreateIntegrationStoreDirectResponseStoreProductGuidesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductGuidesList>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotationCase0 =
   CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0;
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation =
   | CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotationCase0
   | boolean;
-const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation =
-  S.Unknown as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities {
   billable?: boolean;
   checks?: boolean;
@@ -1784,16 +1524,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProductIntegrationCapa
   updateConfiguration?: boolean;
   v0Flavors?: boolean;
 }
-const CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    4,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList = Array<string>;
-const CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProductIntegration {
   capabilities?: CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities;
   flags?: CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList;
@@ -1803,14 +1534,7 @@ export interface CreateIntegrationStoreDirectResponseStoreProductIntegration {
   slug: string;
   supportsInstallationBillingPlans?: boolean;
 }
-const CreateIntegrationStoreDirectResponseStoreProductIntegration = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductIntegration>;
-
 export type CreateIntegrationStoreDirectResponseStoreProductLogDrainStatus = "disabled" | "enabled";
-const CreateIntegrationStoreDirectResponseStoreProductLogDrainStatus = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol =
   | "ai"
   | "authentication"
@@ -1824,8 +1548,6 @@ export type CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol =
   | "traceDrain"
   | "video"
   | "workflow";
-const CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol = S.String;
-
 export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem =
   | "ai"
   | "authentication"
@@ -1841,9 +1563,6 @@ export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsIt
   | "workflow";
 export type CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
   Array<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsItem>;
-const CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0List as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProduct {
   /** URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration. */
   agentSkills?: CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList;
@@ -1869,45 +1588,19 @@ export interface CreateIntegrationStoreDirectResponseStoreProduct {
   primaryProtocol?: CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol;
   supportedProtocols: CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList;
 }
-const CreateIntegrationStoreDirectResponseStoreProduct = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProduct>;
-
 export type CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget =
   | "development"
   | "preview"
   | "production";
-const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget =
-  S.String;
-
 export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem {
   target: CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget;
   url: string;
 }
-const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    7,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList =
   Array<CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem>;
-const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    0,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication {
   appUrls?: CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList;
 }
-const CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    1,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation {
   edgeConfigId?: string;
   edgeConfigSyncingEnabled?: boolean;
@@ -1915,38 +1608,17 @@ export interface CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperi
   globalConfigId?: string;
   globalConfigSyncingEnabled?: boolean;
 }
-const CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    2,
-  ) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation>;
-
 export interface CreateIntegrationStoreDirectResponseStoreProtocolSettings {
   authentication?: CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication;
   experimentation?: CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation;
 }
-const CreateIntegrationStoreDirectResponseStoreProtocolSettings = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreProtocolSettings>;
-
 export interface CreateIntegrationStoreDirectResponseStoreSecretsItem {
   frameworkPublishable?: boolean;
   length: number;
   name: string;
 }
-const CreateIntegrationStoreDirectResponseStoreSecretsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreSecretsItem>;
-
 export type CreateIntegrationStoreDirectResponseStoreSecretsList =
   Array<CreateIntegrationStoreDirectResponseStoreSecretsItem>;
-const CreateIntegrationStoreDirectResponseStoreSecretsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStoreSecretsList>;
-
 /** The deployment targets that this resource is available for. */
 export type CreateIntegrationStoreDirectResponseStoreTargetsItem =
   | "development"
@@ -1955,9 +1627,6 @@ export type CreateIntegrationStoreDirectResponseStoreTargetsItem =
 /** The deployment targets that this resource is available for. */
 export type CreateIntegrationStoreDirectResponseStoreTargetsList =
   Array<CreateIntegrationStoreDirectResponseStoreTargetsItem>;
-const CreateIntegrationStoreDirectResponseStoreTargetsList =
-  CreateIntegrationStoreDirectResponseStoreProductTagsList as any as S.Schema<CreateIntegrationStoreDirectResponseStoreTargetsList>;
-
 export interface CreateIntegrationStoreDirectResponseStore {
   projectFilter?: CreateIntegrationStoreDirectResponseStoreProjectFilter;
   projectsMetadata: CreateIntegrationStoreDirectResponseStoreProjectsMetadataList;
@@ -1988,19 +1657,9 @@ export interface CreateIntegrationStoreDirectResponseStore {
   /** The deployment targets that this resource is available for. */
   targets?: CreateIntegrationStoreDirectResponseStoreTargetsList;
 }
-const CreateIntegrationStoreDirectResponseStore = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateIntegrationStoreDirectResponseStore>;
-
 export interface CreateIntegrationStoreDirectResponse {
   store: CreateIntegrationStoreDirectResponseStore | null;
 }
-const CreateIntegrationStoreDirectResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateIntegrationStoreDirectResponse>;
-
 export interface DeleteConfigurationRequest {
   id: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -2008,17 +1667,7 @@ export interface DeleteConfigurationRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteConfigurationRequest>;
-
 export interface DeleteConfigurationResponse {}
-const DeleteConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteConfigurationResponse>;
-
 export type GetBillingPlansRequestSource =
   | "marketplace"
   | "deploy-button"
@@ -2030,8 +1679,6 @@ export type GetBillingPlansRequestSource =
   | "backoffice"
   | "import-recommended-integrations"
   | "organization";
-const GetBillingPlansRequestSource = S.String;
-
 export interface GetBillingPlansRequest {
   integrationIdOrSlug: string;
   productIdOrSlug: string;
@@ -2043,40 +1690,20 @@ export interface GetBillingPlansRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetBillingPlansRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetBillingPlansRequest>;
-
 export type GetBillingPlansResponsePlansItemDetailsItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
 export type GetBillingPlansResponsePlansItemDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-const GetBillingPlansResponsePlansItemDetailsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetBillingPlansResponsePlansItemDetailsList>;
-
 export type GetBillingPlansResponsePlansItemHighlightedDetailsItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem;
 export type GetBillingPlansResponsePlansItemHighlightedDetailsList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem>;
-const GetBillingPlansResponsePlansItemHighlightedDetailsList =
-  GetBillingPlansResponsePlansItemDetailsList as any as S.Schema<GetBillingPlansResponsePlansItemHighlightedDetailsList>;
-
 export type GetBillingPlansResponsePlansItemQuoteItem =
   CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem;
 export type GetBillingPlansResponsePlansItemQuoteList =
   Array<CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem>;
-const GetBillingPlansResponsePlansItemQuoteList =
-  CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList as any as S.Schema<GetBillingPlansResponsePlansItemQuoteList>;
-
 export type GetBillingPlansResponsePlansItemScope = "installation" | "resource";
-const GetBillingPlansResponsePlansItemScope = S.String;
-
 export type GetBillingPlansResponsePlansItemType = "prepayment" | "subscription";
-const GetBillingPlansResponsePlansItemType = S.String;
-
 export interface GetBillingPlansResponsePlansItem {
   cost?: string;
   description: string;
@@ -2096,25 +1723,10 @@ export interface GetBillingPlansResponsePlansItem {
   scope: GetBillingPlansResponsePlansItemScope;
   type: GetBillingPlansResponsePlansItemType;
 }
-const GetBillingPlansResponsePlansItem = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetBillingPlansResponsePlansItem>;
-
 export type GetBillingPlansResponsePlansList = Array<GetBillingPlansResponsePlansItem>;
-const GetBillingPlansResponsePlansList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetBillingPlansResponsePlansList>;
-
 export interface GetBillingPlansResponse {
   plans: GetBillingPlansResponsePlansList;
 }
-const GetBillingPlansResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetBillingPlansResponse>;
-
 export interface GetConfigurationRequest {
   /** ID of the configuration to check */
   id: string;
@@ -2123,11 +1735,6 @@ export interface GetConfigurationRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetConfigurationRequest>;
-
 export type GetConfigurationResponseBodyCase0DisabledReason =
   | "account-plan-downgrade"
   | "disabled-by-admin"
@@ -2442,14 +2049,7 @@ export type GetConfigurationResponseBody =
   | GetConfigurationResponseBodyCase0
   | GetConfigurationResponseBodyCase1
   | GetConfigurationResponseBodyCase2;
-const GetConfigurationResponseBody = S.Unknown as any as S.Schema<GetConfigurationResponseBody>;
-
 export type GetConfigurationResponse = GetConfigurationResponseBody;
-const GetConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetConfigurationResponse>;
-
 export interface GetConfigurationProductsRequest {
   /** ID of the integration configuration */
   id: string;
@@ -2458,29 +2058,14 @@ export interface GetConfigurationProductsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetConfigurationProductsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetConfigurationProductsRequest>;
-
 export interface GetConfigurationProductsResponseConfiguration {
   id: string;
 }
-const GetConfigurationProductsResponseConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetConfigurationProductsResponseConfiguration>;
-
 export interface GetConfigurationProductsResponseIntegration {
   id: string;
   name: string;
   slug: string;
 }
-const GetConfigurationProductsResponseIntegration = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetConfigurationProductsResponseIntegration>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0EnumList =
   Array<string>;
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase0Type =
@@ -3475,42 +3060,20 @@ export type GetConfigurationProductsResponseProductsItemMetadataSchemaProperties
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase9
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase10
   | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValueCase11;
-const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue =
-  S.Unknown as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap = {
   [key: string]:
     | GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue
     | undefined;
 };
-const GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    4,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList = Array<string>;
-const GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList>;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaType = "object";
-const GetConfigurationProductsResponseProductsItemMetadataSchemaType = S.String;
-
 export type GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList = Array<string>;
-const GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList =
-  CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList>;
-
 export interface GetConfigurationProductsResponseProductsItemMetadataSchema {
   properties: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap;
   required?: GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList;
   type: GetConfigurationProductsResponseProductsItemMetadataSchemaType;
   ui_order?: GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList;
 }
-const GetConfigurationProductsResponseProductsItemMetadataSchema = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemMetadataSchema>;
-
 export type GetConfigurationProductsResponseProductsItemPrimaryProtocol =
   | "ai"
   | "authentication"
@@ -3524,181 +3087,98 @@ export type GetConfigurationProductsResponseProductsItemPrimaryProtocol =
   | "traceDrain"
   | "video"
   | "workflow";
-const GetConfigurationProductsResponseProductsItemPrimaryProtocol = S.String;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsAiStatus = "disabled" | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsAiStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsAi {
   status: GetConfigurationProductsResponseProductsItemProtocolsAiStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsAi = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsAi>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsAuthentication {
   status: GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus;
   /** The partner accepts Vercel-managed app URLs via `protocolSettings.authentication.appUrls` on provision-resource and update-resource, and reconciles them into its trusted-origin / redirect-URL allowlist. When absent, consumers surface the URL for a one-time manual registration instead. */
   appUrlRegistrationSupport?: boolean;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsAuthentication = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsAuthentication>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsChecksStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsChecksStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsChecks {
   status: GetConfigurationProductsResponseProductsItemProtocolsChecksStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsChecks = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsChecks>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsExperimentation {
   status: GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus;
   edgeConfigSyncingSupport?: boolean;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsExperimentation = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsExperimentation>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus = S.String;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap = {
   [key: string]: string | undefined;
 };
-const GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    2,
-  ) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat = "json" | "ndjson";
-const GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsLogDrain {
   status: GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus;
   endpoint: string;
   headers?: GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap;
   format: GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsLogDrain = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsLogDrain>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsMessaging {
   status: GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsMessaging = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsMessaging>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus =
   | "disabled"
   | "enabled";
 export interface GetConfigurationProductsResponseProductsItemProtocolsObservability {
   status: GetConfigurationProductsResponseProductsItemProtocolsObservabilityStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsObservability =
-  GetConfigurationProductsResponseProductsItemProtocolsMessaging as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsObservability>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsOtherStatus =
   | "disabled"
   | "enabled";
 export interface GetConfigurationProductsResponseProductsItemProtocolsOther {
   status: GetConfigurationProductsResponseProductsItemProtocolsOtherStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsOther =
-  GetConfigurationProductsResponseProductsItemProtocolsChecks as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsOther>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsStorageStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsStorageStatus = S.String;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsStorageRepl =
   CreateIntegrationStoreDirectResponseStoreProductRepl;
 export interface GetConfigurationProductsResponseProductsItemProtocolsStorage {
   status: GetConfigurationProductsResponseProductsItemProtocolsStorageStatus;
   repl?: CreateIntegrationStoreDirectResponseStoreProductRepl;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsStorage = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsStorage>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus =
   | "disabled"
   | "enabled";
-const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus = S.String;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap = {
   [key: string]: string | undefined;
 };
-const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap =
-  GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat =
   | "json"
   | "proto";
-const GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat = S.String;
-
 export interface GetConfigurationProductsResponseProductsItemProtocolsTraceDrain {
   status: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus;
   endpoint: string;
   headers?: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap;
   format: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsTraceDrain = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsTraceDrain>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsVideoStatus =
   | "disabled"
   | "enabled";
 export interface GetConfigurationProductsResponseProductsItemProtocolsVideo {
   status: GetConfigurationProductsResponseProductsItemProtocolsVideoStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsVideo =
-  GetConfigurationProductsResponseProductsItemProtocolsChecks as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsVideo>;
-
 export type GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus =
   | "disabled"
   | "enabled";
 export interface GetConfigurationProductsResponseProductsItemProtocolsWorkflow {
   status: GetConfigurationProductsResponseProductsItemProtocolsWorkflowStatus;
 }
-const GetConfigurationProductsResponseProductsItemProtocolsWorkflow =
-  GetConfigurationProductsResponseProductsItemProtocolsMessaging as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocolsWorkflow>;
-
 export interface GetConfigurationProductsResponseProductsItemProtocols {
   ai?: GetConfigurationProductsResponseProductsItemProtocolsAi;
   authentication?: GetConfigurationProductsResponseProductsItemProtocolsAuthentication;
@@ -3713,11 +3193,6 @@ export interface GetConfigurationProductsResponseProductsItemProtocols {
   video?: GetConfigurationProductsResponseProductsItemProtocolsVideo;
   workflow?: GetConfigurationProductsResponseProductsItemProtocolsWorkflow;
 }
-const GetConfigurationProductsResponseProductsItemProtocols = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItemProtocols>;
-
 export interface GetConfigurationProductsResponseProductsItem {
   id: string;
   metadataSchema: GetConfigurationProductsResponseProductsItemMetadataSchema;
@@ -3726,34 +3201,15 @@ export interface GetConfigurationProductsResponseProductsItem {
   protocols: GetConfigurationProductsResponseProductsItemProtocols;
   slug: string;
 }
-const GetConfigurationProductsResponseProductsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetConfigurationProductsResponseProductsItem>;
-
 export type GetConfigurationProductsResponseProductsList =
   Array<GetConfigurationProductsResponseProductsItem>;
-const GetConfigurationProductsResponseProductsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetConfigurationProductsResponseProductsList>;
-
 export interface GetConfigurationProductsResponse {
   configuration: GetConfigurationProductsResponseConfiguration;
   integration: GetConfigurationProductsResponseIntegration;
   products: GetConfigurationProductsResponseProductsList;
 }
-const GetConfigurationProductsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetConfigurationProductsResponse>;
-
 export type GetConfigurationsRequestView = "account" | "project";
-const GetConfigurationsRequestView = S.String;
-
 export type GetConfigurationsRequestInstallationType = "marketplace" | "external" | "provisioning";
-const GetConfigurationsRequestInstallationType = S.String;
-
 export interface GetConfigurationsRequest {
   view: GetConfigurationsRequestView | (string & {});
   installationType?: GetConfigurationsRequestInstallationType | (string & {});
@@ -3764,11 +3220,6 @@ export interface GetConfigurationsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetConfigurationsRequest>;
-
 export type GetConfigurationsResponseBodyCase0ItemDisabledReason =
   | "account-plan-downgrade"
   | "disabled-by-admin"
@@ -3975,22 +3426,13 @@ export type GetConfigurationsResponseBodyCase1List = Array<GetConfigurationsResp
 export type GetConfigurationsResponseBody =
   | GetConfigurationsResponseBodyCase0List
   | GetConfigurationsResponseBodyCase1List;
-const GetConfigurationsResponseBody = S.Unknown as any as S.Schema<GetConfigurationsResponseBody>;
-
 export type GetConfigurationsResponse = GetConfigurationsResponseBody;
-const GetConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetConfigurationsResponse>;
-
 export type GitNamespacesRequestProvider =
   | "github"
   | "github-limited"
   | "github-custom-host"
   | "gitlab"
   | "bitbucket";
-const GitNamespacesRequestProvider = S.String;
-
 export interface GitNamespacesRequest {
   /** The custom Git host if using a custom Git provider, like GitHub Enterprise Server */
   host?: string;
@@ -3998,25 +3440,12 @@ export interface GitNamespacesRequest {
   /** When true, includes the viewer object for each namespace. */
   viewerMetadata?: boolean;
 }
-const GitNamespacesRequest = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GitNamespacesRequest>;
-
 export type GitNamespacesResponseBodyItemId = string | number;
-const GitNamespacesResponseBodyItemId =
-  S.Unknown as any as S.Schema<GitNamespacesResponseBodyItemId>;
-
 export type GitNamespacesResponseBodyItemViewerRole = string | number;
-const GitNamespacesResponseBodyItemViewerRole =
-  S.Unknown as any as S.Schema<GitNamespacesResponseBodyItemViewerRole>;
-
 export interface GitNamespacesResponseBodyItemViewer {
   canCreateApp?: boolean;
   role?: GitNamespacesResponseBodyItemViewerRole;
 }
-const GitNamespacesResponseBodyItemViewer = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GitNamespacesResponseBodyItemViewer>;
-
 export interface GitNamespacesResponseBodyItem {
   id: GitNamespacesResponseBodyItemId;
   installationId?: number;
@@ -4028,26 +3457,9 @@ export interface GitNamespacesResponseBodyItem {
   slug: string;
   viewer?: GitNamespacesResponseBodyItemViewer;
 }
-const GitNamespacesResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GitNamespacesResponseBodyItem>;
-
 export type GitNamespacesResponseBodyList = Array<GitNamespacesResponseBodyItem>;
-const GitNamespacesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GitNamespacesResponseBodyList>;
-
 export type GitNamespacesResponse = GitNamespacesResponseBodyList;
-const GitNamespacesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GitNamespacesResponse>;
-
 export type SearchRepoRequestNamespaceId = string | number;
-const SearchRepoRequestNamespaceId = S.Unknown as any as S.Schema<SearchRepoRequestNamespaceId>;
-
 export type SearchRepoRequestProvider =
   | "github"
   | "github-limited"
@@ -4055,8 +3467,6 @@ export type SearchRepoRequestProvider =
   | "gitlab"
   | "bitbucket"
   | "cursor-origin";
-const SearchRepoRequestProvider = S.String;
-
 export interface SearchRepoRequest {
   query?: string;
   namespaceId?: SearchRepoRequestNamespaceId;
@@ -4069,8 +3479,6 @@ export interface SearchRepoRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const SearchRepoRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SearchRepoRequest>;
-
 export type SearchRepoResponseBodyCase1ErrorCode = "installation_not_found";
 export interface SearchRepoResponseBodyCase1Error {
   code: SearchRepoResponseBodyCase1ErrorCode;
@@ -4158,11 +3566,7 @@ export type SearchRepoResponseBody =
   | SearchRepoResponseBodyCase1
   | SearchRepoResponseBodyCase2
   | SearchRepoResponseBodyCase3;
-const SearchRepoResponseBody = S.Unknown as any as S.Schema<SearchRepoResponseBody>;
-
 export type SearchRepoResponse = SearchRepoResponseBody;
-const SearchRepoResponse = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<SearchRepoResponse>;
-
 export type ConnectIntegrationResourceToProjectError =
   | BadRequest
   | Forbidden
@@ -4175,8 +3579,8 @@ export const connectIntegrationResourceToProject: API.OperationMethod<
   ConnectIntegrationResourceToProjectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectIntegrationResourceToProjectRequest,
-  output: ConnectIntegrationResourceToProjectResponse,
+  input: __S(1) as any as S.Schema<ConnectIntegrationResourceToProjectRequest>,
+  output: __S(2) as any as S.Schema<ConnectIntegrationResourceToProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4196,8 +3600,8 @@ export const createIntegrationStoreDirect: API.OperationMethod<
   CreateIntegrationStoreDirectError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationStoreDirectRequest,
-  output: CreateIntegrationStoreDirectResponse,
+  input: __S(5) as any as S.Schema<CreateIntegrationStoreDirectRequest>,
+  output: __S(47) as any as S.Schema<CreateIntegrationStoreDirectResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4211,8 +3615,8 @@ export const deleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationRequest,
-  output: DeleteConfigurationResponse,
+  input: __S(48) as any as S.Schema<DeleteConfigurationRequest>,
+  output: __S(49) as any as S.Schema<DeleteConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4226,8 +3630,8 @@ export const getBillingPlans: API.OperationMethod<
   GetBillingPlansError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingPlansRequest,
-  output: GetBillingPlansResponse,
+  input: __S(50) as any as S.Schema<GetBillingPlansRequest>,
+  output: __S(54) as any as S.Schema<GetBillingPlansResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4241,8 +3645,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationRequest,
-  output: GetConfigurationResponse,
+  input: __S(55) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(56) as any as S.Schema<GetConfigurationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4256,8 +3660,8 @@ export const getConfigurationProducts: API.OperationMethod<
   GetConfigurationProductsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationProductsRequest,
-  output: GetConfigurationProductsResponse,
+  input: __S(57) as any as S.Schema<GetConfigurationProductsRequest>,
+  output: __S(74) as any as S.Schema<GetConfigurationProductsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4271,8 +3675,8 @@ export const getConfigurations: API.OperationMethod<
   GetConfigurationsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationsRequest,
-  output: GetConfigurationsResponse,
+  input: __S(75) as any as S.Schema<GetConfigurationsRequest>,
+  output: __S(76) as any as S.Schema<GetConfigurationsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4286,8 +3690,8 @@ export const gitNamespaces: API.OperationMethod<
   GitNamespacesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GitNamespacesRequest,
-  output: GitNamespacesResponse,
+  input: __S(77) as any as S.Schema<GitNamespacesRequest>,
+  output: __S(81) as any as S.Schema<GitNamespacesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4301,8 +3705,8 @@ export const searchRepo: API.OperationMethod<
   SearchRepoError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchRepoRequest,
-  output: SearchRepoResponse,
+  input: __S(82) as any as S.Schema<SearchRepoRequest>,
+  output: __S(83) as any as S.Schema<SearchRepoResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4312,7 +3716,7 @@ export const searchRepo: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4321,9 +3725,7 @@ function __c0(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           projectId: S.String,
-          envVarEnvironments: S.optional(
-            ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList,
-          ),
+          envVarEnvironments: S.optional(__S(0)),
           makeEnvVarsSensitive: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -4340,7 +3742,7 @@ function __c0(j: number): any {
         identifier: "ConnectIntegrationResourceToProjectResponse",
       });
     case 3:
-      return S.Record(S.String, CreateIntegrationStoreDirectRequestMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
@@ -4351,10 +3753,10 @@ function __c0(j: number): any {
           name: S.String,
           integrationConfigurationId: S.String,
           integrationProductIdOrSlug: S.Unknown,
-          metadata: S.optional(CreateIntegrationStoreDirectRequestMetadataMap),
+          metadata: S.optional(__S(3)),
           externalId: S.optional(S.String),
-          protocolSettings: S.optional(CreateIntegrationStoreDirectRequestProtocolSettingsMap),
-          source: S.optional(CreateIntegrationStoreDirectRequestSource),
+          protocolSettings: S.optional(__S(4)),
+          source: S.optional(S.String),
           billingPlanId: S.optional(S.String),
           paymentMethodId: S.optional(S.String),
           prepaymentAmountCents: S.optional(S.Number),
@@ -4367,7 +3769,7 @@ function __c0(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreProjectFilterGitProvidersCase0Item);
+      return S.Array(S.String);
   }
 }
 function __c1(j: number): any {
@@ -4375,9 +3777,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          owners: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGitOwnersList),
-          providers: CreateIntegrationStoreDirectResponseStoreProjectFilterGitProviders,
-          repos: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGitReposList),
+          owners: S.optional(__S(6)),
+          providers: S.Unknown,
+          repos: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectFilterGit",
@@ -4385,7 +3787,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          git: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilterGit),
+          git: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectFilter",
@@ -4393,8 +3795,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          environments:
-            CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItemEnvironmentsList,
+          environments: __S(6),
           slug: S.String,
         }),
       ).annotate({
@@ -4402,14 +3803,11 @@ function __c1(j: number): any {
           "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem",
       });
     case 3:
-      return S.Array(
-        CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsItem,
-      );
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          actions:
-            CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeploymentsActionsList,
+          actions: __S(11),
           required: S.Boolean,
         }),
       ).annotate({
@@ -4418,17 +3816,11 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deployments: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemDeployments,
-          ),
-          environments:
-            CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentsList,
-          environmentVariables:
-            CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemEnvironmentVariablesList,
+          deployments: S.optional(__S(12)),
+          environments: __S(6),
+          environmentVariables: __S(6),
           envVarPrefix: S.NullOr(S.String),
-          framework: S.optional(
-            S.NullOr(CreateIntegrationStoreDirectResponseStoreProjectsMetadataItemFramework),
-          ),
+          framework: S.optional(S.NullOr(S.String)),
           id: S.String,
           latestDeployment: S.optional(S.String),
           makeEnvVarsSensitive: S.optional(S.Boolean),
@@ -4439,7 +3831,7 @@ function __c1(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem",
       });
     case 6:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreProjectsMetadataItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4454,7 +3846,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4465,18 +3857,16 @@ function __c2(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem",
       });
     case 2:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           cost: S.optional(S.String),
           description: S.String,
-          details: S.optional(CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsList),
+          details: S.optional(__S(16)),
           disabled: S.optional(S.Boolean),
           effectiveDate: S.optional(S.String),
-          highlightedDetails: S.optional(
-            CreateIntegrationStoreDirectResponseStoreBillingPlanHighlightedDetailsList,
-          ),
+          highlightedDetails: S.optional(__S(16)),
           id: S.String,
           initialCharge: S.optional(S.String),
           maximumAmount: S.optional(S.String),
@@ -4485,9 +3875,9 @@ function __c2(j: number): any {
           name: S.String,
           paymentMethodRequired: S.Boolean,
           preauthorizationAmount: S.optional(S.Number),
-          quote: S.optional(CreateIntegrationStoreDirectResponseStoreBillingPlanQuoteList),
-          scope: CreateIntegrationStoreDirectResponseStoreBillingPlanScope,
-          type: CreateIntegrationStoreDirectResponseStoreBillingPlanType,
+          quote: S.optional(__S(18)),
+          scope: S.String,
+          type: S.String,
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreBillingPlan",
@@ -4501,9 +3891,7 @@ function __c2(j: number): any {
           mcp: S.optional(S.Boolean),
           mcpReadonly: S.optional(S.Boolean),
           projects: S.optional(S.Boolean),
-          secretRotation: S.optional(
-            CreateIntegrationStoreDirectResponseStoreCapabilitiesSecretRotation,
-          ),
+          secretRotation: S.optional(S.Unknown),
           secretsSync: S.optional(S.Boolean),
           sso: S.optional(S.Boolean),
           transferable: S.optional(S.Boolean),
@@ -4513,12 +3901,12 @@ function __c2(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreCapabilities",
       });
     case 5:
-      return S.Record(S.String, CreateIntegrationStoreDirectResponseStoreMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
-          level: CreateIntegrationStoreDirectResponseStoreNotificationLevel,
+          level: S.String,
           message: S.optional(S.String),
           title: S.String,
         }),
@@ -4540,9 +3928,7 @@ function __c2(j: number): any {
           nativeImportResource: S.optional(S.Boolean),
           projects: S.optional(S.Boolean),
           sandbox: S.optional(S.Boolean),
-          secretRotation: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductCapabilitiesSecretRotation,
-          ),
+          secretRotation: S.optional(S.Unknown),
           secretsSync: S.optional(S.Boolean),
           sso: S.optional(S.Boolean),
           transferable: S.optional(S.Boolean),
@@ -4557,23 +3943,14 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(
-        S.String,
-        CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesValue,
-      );
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaPropertiesMap,
-          required: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaRequiredList,
-          ),
-          type: CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaType,
-          ui_order: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductMetadataSchemaUiOrderList.pipe(
-              T.Body("ui:order"),
-            ),
-          ),
+          properties: __S(24),
+          required: S.optional(__S(6)),
+          type: S.String,
+          ui_order: S.optional(__S(6).pipe(T.Body("ui:order"))),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductMetadataSchema",
@@ -4588,9 +3965,9 @@ function __c3(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem",
       });
     case 3:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreProductResourceLinksItem);
+      return S.Array(__S(26));
     case 4:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreProductTagsItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4604,16 +3981,14 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItemType,
+          type: S.String,
         }),
       ).annotate({
         identifier:
           "CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem",
       });
     case 7:
-      return S.Array(
-        CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsItem,
-      );
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -4621,9 +3996,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItemActionsList,
-          ),
+          actions: S.optional(__S(31)),
           content: S.String,
           title: S.String,
         }),
@@ -4631,19 +4004,19 @@ function __c4(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem",
       });
     case 1:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsItem);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
           framework: S.String,
-          steps: CreateIntegrationStoreDirectResponseStoreProductGuidesItemStepsList,
+          steps: __S(33),
           title: S.String,
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProductGuidesItem",
       });
     case 3:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreProductGuidesItem);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4660,9 +4033,7 @@ function __c4(j: number): any {
           nativeImportResource: S.optional(S.Boolean),
           provisioning: S.optional(S.Boolean),
           requiresBrowserInstall: S.optional(S.Boolean),
-          secretRotation: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilitiesSecretRotation,
-          ),
+          secretRotation: S.optional(S.Unknown),
           sso: S.optional(S.Boolean),
           templateCloneOnly: S.optional(S.Boolean),
           transferable: S.optional(S.Boolean),
@@ -4675,10 +4046,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductIntegrationCapabilities,
-          ),
-          flags: S.optional(CreateIntegrationStoreDirectResponseStoreProductIntegrationFlagsList),
+          capabilities: S.optional(__S(36)),
+          flags: S.optional(__S(6)),
           icon: S.String,
           id: S.String,
           name: S.String,
@@ -4691,38 +4060,27 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          agentSkills: S.optional(CreateIntegrationStoreDirectResponseStoreProductAgentSkillsList),
-          capabilities: S.optional(CreateIntegrationStoreDirectResponseStoreProductCapabilities),
+          agentSkills: S.optional(__S(6)),
+          capabilities: S.optional(__S(23)),
           disableResourceRenaming: S.optional(S.Boolean),
           iconUrl: S.optional(S.String),
           id: S.optional(S.String),
-          metadataSchema: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductMetadataSchema,
-          ),
+          metadataSchema: S.optional(__S(25)),
           name: S.optional(S.String),
-          projectConnectionScopes: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductProjectConnectionScopesList,
-          ),
-          resourceLinks: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductResourceLinksList,
-          ),
+          projectConnectionScopes: S.optional(__S(7)),
+          resourceLinks: S.optional(__S(27)),
           resourceTitle: S.optional(S.String),
           shortDescription: S.optional(S.String),
           showSSOLinkOnProjectConnection: S.optional(S.Boolean),
           slug: S.optional(S.String),
-          tags: S.optional(CreateIntegrationStoreDirectResponseStoreProductTagsList),
-          repl: S.optional(CreateIntegrationStoreDirectResponseStoreProductRepl),
-          guides: S.optional(CreateIntegrationStoreDirectResponseStoreProductGuidesList),
-          integration: CreateIntegrationStoreDirectResponseStoreProductIntegration,
+          tags: S.optional(__S(28)),
+          repl: S.optional(__S(29)),
+          guides: S.optional(__S(35)),
+          integration: __S(37),
           integrationConfigurationId: S.String,
-          logDrainStatus: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductLogDrainStatus,
-          ),
-          primaryProtocol: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProductPrimaryProtocol,
-          ),
-          supportedProtocols:
-            CreateIntegrationStoreDirectResponseStoreProductSupportedProtocolsList,
+          logDrainStatus: S.optional(S.String),
+          primaryProtocol: S.optional(S.String),
+          supportedProtocols: __S(7),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProduct",
@@ -4730,8 +4088,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          target:
-            CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItemTarget,
+          target: S.String,
           url: S.String,
         }),
       ).annotate({
@@ -4743,15 +4100,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsItem,
-      );
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          appUrls: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthenticationAppUrlsList,
-          ),
+          appUrls: S.optional(__S(40)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication",
@@ -4771,12 +4124,8 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProtocolSettingsAuthentication,
-          ),
-          experimentation: S.optional(
-            CreateIntegrationStoreDirectResponseStoreProtocolSettingsExperimentation,
-          ),
+          authentication: S.optional(__S(41)),
+          experimentation: S.optional(__S(42)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStoreProtocolSettings",
@@ -4792,34 +4141,32 @@ function __c5(j: number): any {
         identifier: "CreateIntegrationStoreDirectResponseStoreSecretsItem",
       });
     case 5:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreSecretsItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          projectFilter: S.optional(CreateIntegrationStoreDirectResponseStoreProjectFilter),
-          projectsMetadata: CreateIntegrationStoreDirectResponseStoreProjectsMetadataList,
-          status: S.NullOr(CreateIntegrationStoreDirectResponseStoreStatus),
+          projectFilter: S.optional(__S(9)),
+          projectsMetadata: __S(14),
+          status: S.NullOr(S.String),
           totalConnectedProjects: S.optional(S.Number),
           usageQuotaExceeded: S.Boolean,
-          billingPlan: S.optional(CreateIntegrationStoreDirectResponseStoreBillingPlan),
-          capabilities: S.optional(CreateIntegrationStoreDirectResponseStoreCapabilities),
+          billingPlan: S.optional(__S(19)),
+          capabilities: S.optional(__S(20)),
           directPartnerConsoleUrl: S.optional(S.String),
           externalResourceId: S.String,
-          externalResourceStatus: S.optional(
-            S.NullOr(CreateIntegrationStoreDirectResponseStoreExternalResourceStatus),
-          ),
-          metadata: S.optional(CreateIntegrationStoreDirectResponseStoreMetadataMap),
-          notification: S.optional(CreateIntegrationStoreDirectResponseStoreNotification),
-          ownership: S.optional(CreateIntegrationStoreDirectResponseStoreOwnership),
+          externalResourceStatus: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(__S(21)),
+          notification: S.optional(__S(22)),
+          ownership: S.optional(S.String),
           parentId: S.optional(S.String),
-          product: CreateIntegrationStoreDirectResponseStoreProduct,
-          protocolSettings: S.optional(CreateIntegrationStoreDirectResponseStoreProtocolSettings),
+          product: __S(38),
+          protocolSettings: S.optional(__S(43)),
           secretRotationCompletedAt: S.optional(S.Number),
           secretRotationRequestedAt: S.optional(S.Number),
           secretRotationRequestedBy: S.optional(S.String),
           secretRotationRequestedReason: S.optional(S.String),
-          secrets: CreateIntegrationStoreDirectResponseStoreSecretsList,
-          targets: S.optional(CreateIntegrationStoreDirectResponseStoreTargetsList),
+          secrets: __S(45),
+          targets: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponseStore",
@@ -4827,7 +4174,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          store: S.NullOr(CreateIntegrationStoreDirectResponseStore),
+          store: S.NullOr(__S(46)),
         }),
       ).annotate({
         identifier: "CreateIntegrationStoreDirectResponse",
@@ -4859,7 +4206,7 @@ function __c6(j: number): any {
           productIdOrSlug: S.String.pipe(T.Label()),
           integrationConfigurationId: S.optional(S.String.pipe(T.Query())),
           metadata: S.optional(S.String.pipe(T.Query())),
-          source: S.optional(GetBillingPlansRequestSource.pipe(T.Query())),
+          source: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -4871,16 +4218,16 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "GetBillingPlansRequest" });
     case 3:
-      return S.Array(CreateIntegrationStoreDirectResponseStoreBillingPlanDetailsItem);
+      return S.Array(__S(15));
     case 4:
       return S.suspend(() =>
         S.Struct({
           cost: S.optional(S.String),
           description: S.String,
-          details: S.optional(GetBillingPlansResponsePlansItemDetailsList),
+          details: S.optional(__S(51)),
           disabled: S.optional(S.Boolean),
           effectiveDate: S.optional(S.String),
-          highlightedDetails: S.optional(GetBillingPlansResponsePlansItemHighlightedDetailsList),
+          highlightedDetails: S.optional(__S(51)),
           id: S.String,
           initialCharge: S.optional(S.String),
           maximumAmount: S.optional(S.String),
@@ -4889,19 +4236,19 @@ function __c6(j: number): any {
           name: S.String,
           paymentMethodRequired: S.Boolean,
           preauthorizationAmount: S.optional(S.Number),
-          quote: S.optional(GetBillingPlansResponsePlansItemQuoteList),
-          scope: GetBillingPlansResponsePlansItemScope,
-          type: GetBillingPlansResponsePlansItemType,
+          quote: S.optional(__S(18)),
+          scope: S.String,
+          type: S.String,
         }),
       ).annotate({
         identifier: "GetBillingPlansResponsePlansItem",
       });
     case 5:
-      return S.Array(GetBillingPlansResponsePlansItem);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          plans: GetBillingPlansResponsePlansList,
+          plans: __S(53),
         }),
       ).annotate({ identifier: "GetBillingPlansResponse" });
     case 7:
@@ -4917,7 +4264,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => GetConfigurationResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetConfigurationResponse",
       });
     case 1:
@@ -4951,23 +4298,14 @@ function __c7(j: number): any {
         identifier: "GetConfigurationProductsResponseIntegration",
       });
     case 4:
-      return S.Record(
-        S.String,
-        GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesValue,
-      );
+      return S.Record(S.String, S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: GetConfigurationProductsResponseProductsItemMetadataSchemaPropertiesMap,
-          required: S.optional(
-            GetConfigurationProductsResponseProductsItemMetadataSchemaRequiredList,
-          ),
-          type: GetConfigurationProductsResponseProductsItemMetadataSchemaType,
-          ui_order: S.optional(
-            GetConfigurationProductsResponseProductsItemMetadataSchemaUiOrderList.pipe(
-              T.Body("ui:order"),
-            ),
-          ),
+          properties: __S(60),
+          required: S.optional(__S(6)),
+          type: S.String,
+          ui_order: S.optional(__S(6).pipe(T.Body("ui:order"))),
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemMetadataSchema",
@@ -4975,7 +4313,7 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsAiStatus,
+          status: S.String,
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocolsAi",
@@ -4983,7 +4321,7 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsAuthenticationStatus,
+          status: S.String,
           appUrlRegistrationSupport: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4996,7 +4334,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsChecksStatus,
+          status: S.String,
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocolsChecks",
@@ -5004,7 +4342,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsExperimentationStatus,
+          status: S.String,
           edgeConfigSyncingSupport: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5015,12 +4353,10 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsLogDrainStatus,
+          status: S.String,
           endpoint: S.String,
-          headers: S.optional(
-            GetConfigurationProductsResponseProductsItemProtocolsLogDrainHeadersMap,
-          ),
-          format: GetConfigurationProductsResponseProductsItemProtocolsLogDrainFormat,
+          headers: S.optional(__S(66)),
+          format: S.String,
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocolsLogDrain",
@@ -5028,7 +4364,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsMessagingStatus,
+          status: S.String,
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocolsMessaging",
@@ -5036,8 +4372,8 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsStorageStatus,
-          repl: S.optional(CreateIntegrationStoreDirectResponseStoreProductRepl),
+          status: S.String,
+          repl: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocolsStorage",
@@ -5045,12 +4381,10 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainStatus,
+          status: S.String,
           endpoint: S.String,
-          headers: S.optional(
-            GetConfigurationProductsResponseProductsItemProtocolsTraceDrainHeadersMap,
-          ),
-          format: GetConfigurationProductsResponseProductsItemProtocolsTraceDrainFormat,
+          headers: S.optional(__S(66)),
+          format: S.String,
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocolsTraceDrain",
@@ -5058,24 +4392,18 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ai: S.optional(GetConfigurationProductsResponseProductsItemProtocolsAi),
-          authentication: S.optional(
-            GetConfigurationProductsResponseProductsItemProtocolsAuthentication,
-          ),
-          checks: S.optional(GetConfigurationProductsResponseProductsItemProtocolsChecks),
-          experimentation: S.optional(
-            GetConfigurationProductsResponseProductsItemProtocolsExperimentation,
-          ),
-          logDrain: S.optional(GetConfigurationProductsResponseProductsItemProtocolsLogDrain),
-          messaging: S.optional(GetConfigurationProductsResponseProductsItemProtocolsMessaging),
-          observability: S.optional(
-            GetConfigurationProductsResponseProductsItemProtocolsObservability,
-          ),
-          other: S.optional(GetConfigurationProductsResponseProductsItemProtocolsOther),
-          storage: S.optional(GetConfigurationProductsResponseProductsItemProtocolsStorage),
-          traceDrain: S.optional(GetConfigurationProductsResponseProductsItemProtocolsTraceDrain),
-          video: S.optional(GetConfigurationProductsResponseProductsItemProtocolsVideo),
-          workflow: S.optional(GetConfigurationProductsResponseProductsItemProtocolsWorkflow),
+          ai: S.optional(__S(62)),
+          authentication: S.optional(__S(63)),
+          checks: S.optional(__S(64)),
+          experimentation: S.optional(__S(65)),
+          logDrain: S.optional(__S(67)),
+          messaging: S.optional(__S(68)),
+          observability: S.optional(__S(68)),
+          other: S.optional(__S(64)),
+          storage: S.optional(__S(69)),
+          traceDrain: S.optional(__S(70)),
+          video: S.optional(__S(64)),
+          workflow: S.optional(__S(68)),
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItemProtocols",
@@ -5088,23 +4416,23 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadataSchema: GetConfigurationProductsResponseProductsItemMetadataSchema,
+          metadataSchema: __S(61),
           name: S.String,
-          primaryProtocol: S.optional(GetConfigurationProductsResponseProductsItemPrimaryProtocol),
-          protocols: GetConfigurationProductsResponseProductsItemProtocols,
+          primaryProtocol: S.optional(S.String),
+          protocols: __S(71),
           slug: S.String,
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponseProductsItem",
       });
     case 1:
-      return S.Array(GetConfigurationProductsResponseProductsItem);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          configuration: GetConfigurationProductsResponseConfiguration,
-          integration: GetConfigurationProductsResponseIntegration,
-          products: GetConfigurationProductsResponseProductsList,
+          configuration: __S(58),
+          integration: __S(59),
+          products: __S(73),
         }),
       ).annotate({
         identifier: "GetConfigurationProductsResponse",
@@ -5112,22 +4440,22 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          view: GetConfigurationsRequestView.pipe(T.Query()),
-          installationType: S.optional(GetConfigurationsRequestInstallationType.pipe(T.Query())),
+          view: S.String.pipe(T.Query()),
+          installationType: S.optional(S.String.pipe(T.Query())),
           integrationIdOrSlug: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/configurations", code: 200 })),
       ).annotate({ identifier: "GetConfigurationsRequest" });
     case 4:
-      return S.suspend(() => GetConfigurationsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetConfigurationsResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String.pipe(T.Query())),
-          provider: S.optional(GitNamespacesRequestProvider.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
           viewerMetadata: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/git-namespaces", code: 200 })),
       ).annotate({ identifier: "GitNamespacesRequest" });
@@ -5135,7 +4463,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canCreateApp: S.optional(S.Boolean),
-          role: S.optional(GitNamespacesResponseBodyItemViewerRole),
+          role: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "GitNamespacesResponseBodyItemViewer",
@@ -5143,7 +4471,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: GitNamespacesResponseBodyItemId,
+          id: S.Unknown,
           installationId: S.optional(S.Number),
           isAccessRestricted: S.optional(S.Boolean),
           name: S.optional(S.String),
@@ -5151,7 +4479,7 @@ function __c9(j: number): any {
           provider: S.String,
           requireReauth: S.optional(S.Boolean),
           slug: S.String,
-          viewer: S.optional(GitNamespacesResponseBodyItemViewer),
+          viewer: S.optional(__S(78)),
         }),
       ).annotate({
         identifier: "GitNamespacesResponseBodyItem",
@@ -5161,17 +4489,17 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GitNamespacesResponseBodyItem);
+      return S.Array(__S(79));
     case 1:
-      return S.suspend(() => GitNamespacesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(80).pipe(T.RawResponseRoot())).annotate({
         identifier: "GitNamespacesResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String.pipe(T.Query())),
-          namespaceId: S.optional(SearchRepoRequestNamespaceId.pipe(T.Query())),
-          provider: S.optional(SearchRepoRequestProvider.pipe(T.Query())),
+          namespaceId: S.optional(S.Unknown.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
           installationId: S.optional(S.String.pipe(T.Query())),
           host: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
@@ -5179,8 +4507,39 @@ function __c10(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/integrations/search-repo", code: 200 })),
       ).annotate({ identifier: "SearchRepoRequest" });
     case 3:
-      return S.suspend(() => SearchRepoResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "SearchRepoResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

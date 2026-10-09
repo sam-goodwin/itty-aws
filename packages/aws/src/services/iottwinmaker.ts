@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoTTwinMaker",
   serviceShapeName: "AWSIoTTwinMaker",
@@ -144,7 +146,6 @@ export type Id = string;
 export type Name = string;
 export type ComponentPath = string;
 export type ExternalIdProperty = { [key: string]: string | undefined };
-const ExternalIdProperty = /*@__PURE__*/ __L.at(__c0, 0);
 export type EntityId = string;
 export interface EntityPropertyReference {
   componentName?: string;
@@ -153,19 +154,12 @@ export interface EntityPropertyReference {
   entityId?: string;
   propertyName: string;
 }
-const EntityPropertyReference = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EntityPropertyReference>;
 export type DataValueList = DataValue[];
-const DataValueList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataValueList>;
 export type DataValueMap = { [key: string]: DataValue | undefined };
-const DataValueMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DataValueMap>;
 export interface RelationshipValue {
   targetEntityId?: string;
   targetComponentName?: string;
 }
-const RelationshipValue = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<RelationshipValue>;
 export type Expression = string;
 export interface DataValue {
   booleanValue?: boolean;
@@ -178,64 +172,37 @@ export interface DataValue {
   relationshipValue?: RelationshipValue;
   expression?: string;
 }
-const DataValue = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DataValue>;
 export interface PropertyValue {
   timestamp?: Date;
   value: DataValue;
   time?: string;
 }
-const PropertyValue = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PropertyValue>;
 export type PropertyValues = PropertyValue[];
-const PropertyValues = /*@__PURE__*/ __L.at(__c0, 7);
 export interface PropertyValueEntry {
   entityPropertyReference: EntityPropertyReference;
   propertyValues?: PropertyValue[];
 }
-const PropertyValueEntry = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PropertyValueEntry>;
 export type Entries = PropertyValueEntry[];
-const Entries = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BatchPutPropertyValuesRequest {
   workspaceId: string;
   entries: PropertyValueEntry[];
 }
-const BatchPutPropertyValuesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BatchPutPropertyValuesRequest>;
 export interface BatchPutPropertyError {
   errorCode: string;
   errorMessage: string;
   entry: PropertyValueEntry;
 }
-const BatchPutPropertyError = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchPutPropertyError>;
 export type Errors = BatchPutPropertyError[];
-const Errors = /*@__PURE__*/ __L.at(__c1, 4);
 export interface BatchPutPropertyErrorEntry {
   errors: BatchPutPropertyError[];
 }
-const BatchPutPropertyErrorEntry = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchPutPropertyErrorEntry>;
 export type ErrorEntries = BatchPutPropertyErrorEntry[];
-const ErrorEntries = /*@__PURE__*/ __L.at(__c1, 6);
 export interface BatchPutPropertyValuesResponse {
   errorEntries: BatchPutPropertyErrorEntry[];
 }
-const BatchPutPropertyValuesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BatchPutPropertyValuesResponse>;
 export interface CancelMetadataTransferJobRequest {
   metadataTransferJobId: string;
 }
-const CancelMetadataTransferJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CancelMetadataTransferJobRequest>;
 export type TwinMakerArn = string;
 export type MetadataTransferJobState = string;
 export type ErrorCode = string;
@@ -244,26 +211,17 @@ export interface ErrorDetails {
   code?: string;
   message?: string;
 }
-const ErrorDetails = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ErrorDetails>;
 export interface MetadataTransferJobStatus {
   state?: string;
   error?: ErrorDetails;
   queuedPosition?: number;
 }
-const MetadataTransferJobStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<MetadataTransferJobStatus>;
 export interface MetadataTransferJobProgress {
   totalCount?: number;
   succeededCount?: number;
   skippedCount?: number;
   failedCount?: number;
 }
-const MetadataTransferJobProgress = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MetadataTransferJobProgress>;
 export interface CancelMetadataTransferJobResponse {
   metadataTransferJobId: string;
   arn: string;
@@ -271,10 +229,6 @@ export interface CancelMetadataTransferJobResponse {
   status: MetadataTransferJobStatus;
   progress?: MetadataTransferJobProgress;
 }
-const CancelMetadataTransferJobResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CancelMetadataTransferJobResponse>;
 export type ComponentTypeId = string;
 export type Description = string;
 export type Type = string;
@@ -282,7 +236,6 @@ export interface Relationship {
   targetComponentTypeId?: string;
   relationshipType?: string;
 }
-const Relationship = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Relationship>;
 export interface DataType {
   type: string;
   nestedType?: DataType;
@@ -290,10 +243,8 @@ export interface DataType {
   unitOfMeasure?: string;
   relationship?: Relationship;
 }
-const DataType = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DataType>;
 export type Value = string;
 export type Configuration = { [key: string]: string | undefined };
-const Configuration = ExternalIdProperty as any as S.Schema<Configuration>;
 export type PropertyDisplayName = string;
 export interface PropertyDefinitionRequest {
   dataType?: DataType;
@@ -305,61 +256,41 @@ export interface PropertyDefinitionRequest {
   configuration?: { [key: string]: string | undefined };
   displayName?: string;
 }
-const PropertyDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PropertyDefinitionRequest>;
 export type PropertyDefinitionsRequest = { [key: string]: PropertyDefinitionRequest | undefined };
-const PropertyDefinitionsRequest = /*@__PURE__*/ __L.at(__c3, 0);
 export type ExtendsFrom = string[];
-const ExtendsFrom = /*@__PURE__*/ __L.at(__c3, 1);
 export type RequiredProperties = string[];
-const RequiredProperties = ExtendsFrom as any as S.Schema<RequiredProperties>;
 export type Scope = string;
 export type LambdaArn = string;
 export interface LambdaFunction {
   arn: string;
 }
-const LambdaFunction = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LambdaFunction>;
 export interface DataConnector {
   lambda?: LambdaFunction;
   isNative?: boolean;
 }
-const DataConnector = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DataConnector>;
 export interface FunctionRequest {
   requiredProperties?: string[];
   scope?: string;
   implementedBy?: DataConnector;
 }
-const FunctionRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<FunctionRequest>;
 export type FunctionsRequest = { [key: string]: FunctionRequest | undefined };
-const FunctionsRequest = /*@__PURE__*/ __L.at(__c3, 5);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c3, 6);
 export type GroupType = string;
 export type PropertyNames = string[];
-const PropertyNames = ExtendsFrom as any as S.Schema<PropertyNames>;
 export interface PropertyGroupRequest {
   groupType?: string;
   propertyNames?: string[];
 }
-const PropertyGroupRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PropertyGroupRequest>;
 export type PropertyGroupsRequest = { [key: string]: PropertyGroupRequest | undefined };
-const PropertyGroupsRequest = /*@__PURE__*/ __L.at(__c4, 0);
 export type ComponentTypeName = string;
 export interface CompositeComponentTypeRequest {
   componentTypeId?: string;
 }
-const CompositeComponentTypeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CompositeComponentTypeRequest>;
 export type CompositeComponentTypesRequest = {
   [key: string]: CompositeComponentTypeRequest | undefined;
 };
-const CompositeComponentTypesRequest = /*@__PURE__*/ __L.at(__c4, 2);
 export interface CreateComponentTypeRequest {
   workspaceId: string;
   isSingleton?: boolean;
@@ -373,20 +304,12 @@ export interface CreateComponentTypeRequest {
   componentTypeName?: string;
   compositeComponentTypes?: { [key: string]: CompositeComponentTypeRequest | undefined };
 }
-const CreateComponentTypeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateComponentTypeRequest>;
 export type State = string;
 export interface CreateComponentTypeResponse {
   arn: string;
   creationDateTime: Date;
   state: string;
 }
-const CreateComponentTypeResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateComponentTypeResponse>;
 export type EntityName = string;
 export type PropertyUpdateType = string;
 export interface PropertyRequest {
@@ -394,45 +317,31 @@ export interface PropertyRequest {
   value?: DataValue;
   updateType?: string;
 }
-const PropertyRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PropertyRequest>;
 export type PropertyRequests = { [key: string]: PropertyRequest | undefined };
-const PropertyRequests = /*@__PURE__*/ __L.at(__c4, 6);
 export type PropertyGroupUpdateType = string;
 export interface ComponentPropertyGroupRequest {
   groupType?: string;
   propertyNames?: string[];
   updateType?: string;
 }
-const ComponentPropertyGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ComponentPropertyGroupRequest>;
 export type ComponentPropertyGroupRequests = {
   [key: string]: ComponentPropertyGroupRequest | undefined;
 };
-const ComponentPropertyGroupRequests = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ComponentRequest {
   description?: string;
   componentTypeId?: string;
   properties?: { [key: string]: PropertyRequest | undefined };
   propertyGroups?: { [key: string]: ComponentPropertyGroupRequest | undefined };
 }
-const ComponentRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ComponentRequest>;
 export type ComponentsMapRequest = { [key: string]: ComponentRequest | undefined };
-const ComponentsMapRequest = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CompositeComponentRequest {
   description?: string;
   properties?: { [key: string]: PropertyRequest | undefined };
   propertyGroups?: { [key: string]: ComponentPropertyGroupRequest | undefined };
 }
-const CompositeComponentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CompositeComponentRequest>;
 export type CompositeComponentsMapRequest = {
   [key: string]: CompositeComponentRequest | undefined;
 };
-const CompositeComponentsMapRequest = /*@__PURE__*/ __L.at(__c5, 4);
 export type ParentEntityId = string;
 export interface CreateEntityRequest {
   workspaceId: string;
@@ -444,23 +353,17 @@ export interface CreateEntityRequest {
   parentEntityId?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateEntityRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CreateEntityRequest>;
 export interface CreateEntityResponse {
   entityId: string;
   arn: string;
   creationDateTime: Date;
   state: string;
 }
-const CreateEntityResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CreateEntityResponse>;
 export type SourceType = string;
 export type S3SourceLocation = string;
 export interface S3SourceConfiguration {
   location: string;
 }
-const S3SourceConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<S3SourceConfiguration>;
 export type Uuid = string;
 export type SiteWiseExternalId = string;
 export interface FilterByAssetModel {
@@ -469,113 +372,70 @@ export interface FilterByAssetModel {
   includeOffspring?: boolean;
   includeAssets?: boolean;
 }
-const FilterByAssetModel = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<FilterByAssetModel>;
 export interface FilterByAsset {
   assetId?: string;
   assetExternalId?: string;
   includeOffspring?: boolean;
   includeAssetModel?: boolean;
 }
-const FilterByAsset = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<FilterByAsset>;
 export type IotSiteWiseSourceConfigurationFilter =
   | { filterByAssetModel: FilterByAssetModel; filterByAsset?: never }
   | { filterByAssetModel?: never; filterByAsset: FilterByAsset };
-const IotSiteWiseSourceConfigurationFilter = /*@__PURE__*/ __L.at(__c6, 2);
 export type IotSiteWiseSourceConfigurationFilters = IotSiteWiseSourceConfigurationFilter[];
-const IotSiteWiseSourceConfigurationFilters = /*@__PURE__*/ __L.at(__c6, 3);
 export interface IotSiteWiseSourceConfiguration {
   filters?: IotSiteWiseSourceConfigurationFilter[];
 }
-const IotSiteWiseSourceConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<IotSiteWiseSourceConfiguration>;
 export interface FilterByComponentType {
   componentTypeId: string;
 }
-const FilterByComponentType = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<FilterByComponentType>;
 export interface FilterByEntity {
   entityId: string;
 }
-const FilterByEntity = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<FilterByEntity>;
 export type IotTwinMakerSourceConfigurationFilter =
   | { filterByComponentType: FilterByComponentType; filterByEntity?: never }
   | { filterByComponentType?: never; filterByEntity: FilterByEntity };
-const IotTwinMakerSourceConfigurationFilter = /*@__PURE__*/ __L.at(__c6, 7);
 export type IotTwinMakerSourceConfigurationFilters = IotTwinMakerSourceConfigurationFilter[];
-const IotTwinMakerSourceConfigurationFilters = /*@__PURE__*/ __L.at(__c7, 0);
 export interface IotTwinMakerSourceConfiguration {
   workspace: string;
   filters?: IotTwinMakerSourceConfigurationFilter[];
 }
-const IotTwinMakerSourceConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IotTwinMakerSourceConfiguration>;
 export interface SourceConfiguration {
   type: string;
   s3Configuration?: S3SourceConfiguration;
   iotSiteWiseConfiguration?: IotSiteWiseSourceConfiguration;
   iotTwinMakerConfiguration?: IotTwinMakerSourceConfiguration;
 }
-const SourceConfiguration = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<SourceConfiguration>;
 export type SourceConfigurations = SourceConfiguration[];
-const SourceConfigurations = /*@__PURE__*/ __L.at(__c7, 3);
 export type DestinationType = string;
 export type S3DestinationLocation = string;
 export interface S3DestinationConfiguration {
   location: string;
 }
-const S3DestinationConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<S3DestinationConfiguration>;
 export interface IotTwinMakerDestinationConfiguration {
   workspace: string;
 }
-const IotTwinMakerDestinationConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IotTwinMakerDestinationConfiguration>;
 export interface DestinationConfiguration {
   type: string;
   s3Configuration?: S3DestinationConfiguration;
   iotTwinMakerConfiguration?: IotTwinMakerDestinationConfiguration;
 }
-const DestinationConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DestinationConfiguration>;
 export interface CreateMetadataTransferJobRequest {
   metadataTransferJobId?: string;
   description?: string;
   sources: SourceConfiguration[];
   destination: DestinationConfiguration;
 }
-const CreateMetadataTransferJobRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateMetadataTransferJobRequest>;
 export interface CreateMetadataTransferJobResponse {
   metadataTransferJobId: string;
   arn: string;
   creationDateTime: Date;
   status: MetadataTransferJobStatus;
 }
-const CreateMetadataTransferJobResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateMetadataTransferJobResponse>;
 export type S3Url = string;
 export type SceneCapability = string;
 export type SceneCapabilities = string[];
-const SceneCapabilities = ExtendsFrom as any as S.Schema<SceneCapabilities>;
 export type SceneMetadataValue = string;
 export type SceneMetadataMap = { [key: string]: string | undefined };
-const SceneMetadataMap = ExternalIdProperty as any as S.Schema<SceneMetadataMap>;
 export interface CreateSceneRequest {
   workspaceId: string;
   sceneId: string;
@@ -585,12 +445,10 @@ export interface CreateSceneRequest {
   tags?: { [key: string]: string | undefined };
   sceneMetadata?: { [key: string]: string | undefined };
 }
-const CreateSceneRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<CreateSceneRequest>;
 export interface CreateSceneResponse {
   arn: string;
   creationDateTime: Date;
 }
-const CreateSceneResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<CreateSceneResponse>;
 export type SyncSource = string;
 export type RoleArn = string;
 export interface CreateSyncJobRequest {
@@ -599,17 +457,12 @@ export interface CreateSyncJobRequest {
   syncRole: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateSyncJobRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CreateSyncJobRequest>;
 export type SyncJobState = string;
 export interface CreateSyncJobResponse {
   arn: string;
   creationDateTime: Date;
   state: string;
 }
-const CreateSyncJobResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateSyncJobResponse>;
 export type S3Location = string;
 export interface CreateWorkspaceRequest {
   workspaceId: string;
@@ -618,71 +471,44 @@ export interface CreateWorkspaceRequest {
   role?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateWorkspaceRequest>;
 export interface CreateWorkspaceResponse {
   arn: string;
   creationDateTime: Date;
 }
-const CreateWorkspaceResponse = CreateSceneResponse as any as S.Schema<CreateWorkspaceResponse>;
 export interface DeleteComponentTypeRequest {
   workspaceId: string;
   componentTypeId: string;
 }
-const DeleteComponentTypeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteComponentTypeRequest>;
 export interface DeleteComponentTypeResponse {
   state: string;
 }
-const DeleteComponentTypeResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteComponentTypeResponse>;
 export interface DeleteEntityRequest {
   workspaceId: string;
   entityId: string;
   isRecursive?: boolean;
 }
-const DeleteEntityRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DeleteEntityRequest>;
 export interface DeleteEntityResponse {
   state: string;
 }
-const DeleteEntityResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteEntityResponse>;
 export interface DeleteSceneRequest {
   workspaceId: string;
   sceneId: string;
 }
-const DeleteSceneRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DeleteSceneRequest>;
 export interface DeleteSceneResponse {}
-const DeleteSceneResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DeleteSceneResponse>;
 export interface DeleteSyncJobRequest {
   workspaceId: string;
   syncSource: string;
 }
-const DeleteSyncJobRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<DeleteSyncJobRequest>;
 export interface DeleteSyncJobResponse {
   state: string;
 }
-const DeleteSyncJobResponse = DeleteEntityResponse as any as S.Schema<DeleteSyncJobResponse>;
 export interface DeleteWorkspaceRequest {
   workspaceId: string;
 }
-const DeleteWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteWorkspaceRequest>;
 export type WorkspaceDeleteMessage = string;
 export interface DeleteWorkspaceResponse {
   message?: string;
 }
-const DeleteWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteWorkspaceResponse>;
 export type QueryStatement = string;
 export type QueryServiceMaxResults = number;
 export type NextToken = string;
@@ -692,42 +518,28 @@ export interface ExecuteQueryRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ExecuteQueryRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ExecuteQueryRequest>;
 export type ColumnName = string;
 export type ColumnType = string;
 export interface ColumnDescription {
   name?: string;
   type?: string;
 }
-const ColumnDescription = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ColumnDescription>;
 export type ColumnDescriptions = ColumnDescription[];
-const ColumnDescriptions = /*@__PURE__*/ __L.at(__c10, 1);
 export type QueryResultValue = unknown;
 export type RowData = any[];
-const RowData = /*@__PURE__*/ __L.at(__c10, 2);
 export interface Row {
   rowData?: any[];
 }
-const Row = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Row>;
 export type Rows = Row[];
-const Rows = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ExecuteQueryResponse {
   columnDescriptions?: ColumnDescription[];
   rows?: Row[];
   nextToken?: string;
 }
-const ExecuteQueryResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ExecuteQueryResponse>;
 export interface GetComponentTypeRequest {
   workspaceId: string;
   componentTypeId: string;
 }
-const GetComponentTypeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetComponentTypeRequest>;
 export interface PropertyDefinitionResponse {
   dataType: DataType;
   isTimeSeries: boolean;
@@ -741,49 +553,31 @@ export interface PropertyDefinitionResponse {
   configuration?: { [key: string]: string | undefined };
   displayName?: string;
 }
-const PropertyDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PropertyDefinitionResponse>;
 export type PropertyDefinitionsResponse = { [key: string]: PropertyDefinitionResponse | undefined };
-const PropertyDefinitionsResponse = /*@__PURE__*/ __L.at(__c11, 0);
 export interface FunctionResponse {
   requiredProperties?: string[];
   scope?: string;
   implementedBy?: DataConnector;
   isInherited?: boolean;
 }
-const FunctionResponse = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<FunctionResponse>;
 export type FunctionsResponse = { [key: string]: FunctionResponse | undefined };
-const FunctionsResponse = /*@__PURE__*/ __L.at(__c11, 2);
 export interface Status {
   state?: string;
   error?: ErrorDetails;
 }
-const Status = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Status>;
 export interface PropertyGroupResponse {
   groupType: string;
   propertyNames: string[];
   isInherited: boolean;
 }
-const PropertyGroupResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PropertyGroupResponse>;
 export type PropertyGroupsResponse = { [key: string]: PropertyGroupResponse | undefined };
-const PropertyGroupsResponse = /*@__PURE__*/ __L.at(__c11, 5);
 export interface CompositeComponentTypeResponse {
   componentTypeId?: string;
   isInherited?: boolean;
 }
-const CompositeComponentTypeResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CompositeComponentTypeResponse>;
 export type CompositeComponentTypesResponse = {
   [key: string]: CompositeComponentTypeResponse | undefined;
 };
-const CompositeComponentTypesResponse = /*@__PURE__*/ __L.at(__c11, 7);
 export interface GetComponentTypeResponse {
   workspaceId: string;
   isSingleton?: boolean;
@@ -803,36 +597,24 @@ export interface GetComponentTypeResponse {
   componentTypeName?: string;
   compositeComponentTypes?: { [key: string]: CompositeComponentTypeResponse | undefined };
 }
-const GetComponentTypeResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetComponentTypeResponse>;
 export interface GetEntityRequest {
   workspaceId: string;
   entityId: string;
 }
-const GetEntityRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<GetEntityRequest>;
 export interface PropertyResponse {
   definition?: PropertyDefinitionResponse;
   value?: DataValue;
   areAllPropertyValuesReturned?: boolean;
 }
-const PropertyResponse = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<PropertyResponse>;
 export type PropertyResponses = { [key: string]: PropertyResponse | undefined };
-const PropertyResponses = /*@__PURE__*/ __L.at(__c12, 3);
 export interface ComponentPropertyGroupResponse {
   groupType: string;
   propertyNames: string[];
   isInherited: boolean;
 }
-const ComponentPropertyGroupResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ComponentPropertyGroupResponse>;
 export type ComponentPropertyGroupResponses = {
   [key: string]: ComponentPropertyGroupResponse | undefined;
 };
-const ComponentPropertyGroupResponses = /*@__PURE__*/ __L.at(__c12, 5);
 export interface ComponentSummary {
   componentName: string;
   componentTypeId: string;
@@ -843,9 +625,7 @@ export interface ComponentSummary {
   syncSource?: string;
   componentPath?: string;
 }
-const ComponentSummary = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ComponentSummary>;
 export type CompositeComponentResponse = { [key: string]: ComponentSummary | undefined };
-const CompositeComponentResponse = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ComponentResponse {
   componentName?: string;
   description?: string;
@@ -859,9 +639,7 @@ export interface ComponentResponse {
   compositeComponents?: { [key: string]: ComponentSummary | undefined };
   areAllCompositeComponentsReturned?: boolean;
 }
-const ComponentResponse = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ComponentResponse>;
 export type ComponentsMap = { [key: string]: ComponentResponse | undefined };
-const ComponentsMap = /*@__PURE__*/ __L.at(__c13, 1);
 export interface GetEntityResponse {
   entityId: string;
   entityName: string;
@@ -877,14 +655,9 @@ export interface GetEntityResponse {
   syncSource?: string;
   areAllComponentsReturned?: boolean;
 }
-const GetEntityResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetEntityResponse>;
 export interface GetMetadataTransferJobRequest {
   metadataTransferJobId: string;
 }
-const GetMetadataTransferJobRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetMetadataTransferJobRequest>;
 export interface GetMetadataTransferJobResponse {
   metadataTransferJobId: string;
   arn: string;
@@ -898,24 +671,14 @@ export interface GetMetadataTransferJobResponse {
   status: MetadataTransferJobStatus;
   progress?: MetadataTransferJobProgress;
 }
-const GetMetadataTransferJobResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetMetadataTransferJobResponse>;
 export interface GetPricingPlanRequest {}
-const GetPricingPlanRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetPricingPlanRequest>;
 export type BundleName = string;
 export type PricingBundles = string[];
-const PricingBundles = ExtendsFrom as any as S.Schema<PricingBundles>;
 export type PricingTier = string;
 export interface BundleInformation {
   bundleNames: string[];
   pricingTier?: string;
 }
-const BundleInformation = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<BundleInformation>;
 export type PricingMode = string;
 export type UpdateReason = string;
 export interface PricingPlan {
@@ -926,39 +689,28 @@ export interface PricingPlan {
   updateDateTime: Date;
   updateReason: string;
 }
-const PricingPlan = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<PricingPlan>;
 export interface GetPricingPlanResponse {
   currentPricingPlan: PricingPlan;
   pendingPricingPlan?: PricingPlan;
 }
-const GetPricingPlanResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetPricingPlanResponse>;
 export type SelectedPropertyList = string[];
-const SelectedPropertyList = ExtendsFrom as any as S.Schema<SelectedPropertyList>;
 export type MaxResults = number;
 export type Order = string;
 export interface OrderBy {
   order?: string;
   propertyName: string;
 }
-const OrderBy = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<OrderBy>;
 export type OrderByList = OrderBy[];
-const OrderByList = /*@__PURE__*/ __L.at(__c14, 2);
 export interface PropertyFilter {
   propertyName?: string;
   operator?: string;
   value?: DataValue;
 }
-const PropertyFilter = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<PropertyFilter>;
 export type PropertyFilters = PropertyFilter[];
-const PropertyFilters = /*@__PURE__*/ __L.at(__c14, 4);
 export interface TabularConditions {
   orderBy?: OrderBy[];
   propertyFilters?: PropertyFilter[];
 }
-const TabularConditions = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<TabularConditions>;
 export interface GetPropertyValueRequest {
   componentName?: string;
   componentPath?: string;
@@ -971,42 +723,25 @@ export interface GetPropertyValueRequest {
   propertyGroupName?: string;
   tabularConditions?: TabularConditions;
 }
-const GetPropertyValueRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetPropertyValueRequest>;
 export interface PropertyLatestValue {
   propertyReference: EntityPropertyReference;
   propertyValue?: DataValue;
 }
-const PropertyLatestValue = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<PropertyLatestValue>;
 export type PropertyLatestValueMap = { [key: string]: PropertyLatestValue | undefined };
-const PropertyLatestValueMap = /*@__PURE__*/ __L.at(__c15, 0);
 export type PropertyTableValue = { [key: string]: DataValue | undefined };
-const PropertyTableValue = /*@__PURE__*/ __L.at(__c15, 1);
 export type TabularPropertyValue = { [key: string]: DataValue | undefined }[];
-const TabularPropertyValue = /*@__PURE__*/ __L.at(__c15, 2);
 export type TabularPropertyValues = { [key: string]: DataValue | undefined }[][];
-const TabularPropertyValues = /*@__PURE__*/ __L.at(__c15, 3);
 export interface GetPropertyValueResponse {
   propertyValues?: { [key: string]: PropertyLatestValue | undefined };
   nextToken?: string;
   tabularPropertyValues?: { [key: string]: DataValue | undefined }[][];
 }
-const GetPropertyValueResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetPropertyValueResponse>;
 export type InterpolationType = string;
 export type IntervalInSeconds = number;
 export interface InterpolationParameters {
   interpolationType?: string;
   intervalInSeconds?: number;
 }
-const InterpolationParameters = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<InterpolationParameters>;
 export type OrderByTime = string;
 export interface GetPropertyValueHistoryRequest {
   workspaceId: string;
@@ -1025,43 +760,26 @@ export interface GetPropertyValueHistoryRequest {
   startTime?: string;
   endTime?: string;
 }
-const GetPropertyValueHistoryRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetPropertyValueHistoryRequest>;
 export type Values = PropertyValue[];
-const Values = PropertyValues as any as S.Schema<Values>;
 export interface PropertyValueHistory {
   entityPropertyReference: EntityPropertyReference;
   values?: PropertyValue[];
 }
-const PropertyValueHistory = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<PropertyValueHistory>;
 export type PropertyValueList = PropertyValueHistory[];
-const PropertyValueList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface GetPropertyValueHistoryResponse {
   propertyValues: PropertyValueHistory[];
   nextToken?: string;
 }
-const GetPropertyValueHistoryResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetPropertyValueHistoryResponse>;
 export interface GetSceneRequest {
   workspaceId: string;
   sceneId: string;
 }
-const GetSceneRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetSceneRequest>;
 export type GeneratedSceneMetadataMap = { [key: string]: string | undefined };
-const GeneratedSceneMetadataMap = ExternalIdProperty as any as S.Schema<GeneratedSceneMetadataMap>;
 export type SceneErrorCode = string;
 export interface SceneError {
   code?: string;
   message?: string;
 }
-const SceneError = ErrorDetails as any as S.Schema<SceneError>;
 export interface GetSceneResponse {
   workspaceId: string;
   sceneId: string;
@@ -1075,17 +793,14 @@ export interface GetSceneResponse {
   generatedSceneMetadata?: { [key: string]: string | undefined };
   error?: SceneError;
 }
-const GetSceneResponse = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<GetSceneResponse>;
 export interface GetSyncJobRequest {
   syncSource: string;
   workspaceId?: string;
 }
-const GetSyncJobRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GetSyncJobRequest>;
 export interface SyncJobStatus {
   state?: string;
   error?: ErrorDetails;
 }
-const SyncJobStatus = Status as any as S.Schema<SyncJobStatus>;
 export interface GetSyncJobResponse {
   arn: string;
   workspaceId: string;
@@ -1095,15 +810,12 @@ export interface GetSyncJobResponse {
   creationDateTime: Date;
   updateDateTime: Date;
 }
-const GetSyncJobResponse = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<GetSyncJobResponse>;
 export type IdOrArn = string;
 export interface GetWorkspaceRequest {
   workspaceId: string;
 }
-const GetWorkspaceRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetWorkspaceRequest>;
 export type LinkedService = string;
 export type LinkedServices = string[];
-const LinkedServices = ExtendsFrom as any as S.Schema<LinkedServices>;
 export interface GetWorkspaceResponse {
   workspaceId: string;
   arn: string;
@@ -1114,10 +826,6 @@ export interface GetWorkspaceResponse {
   creationDateTime: Date;
   updateDateTime: Date;
 }
-const GetWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetWorkspaceResponse>;
 export interface ListComponentsRequest {
   workspaceId: string;
   entityId: string;
@@ -1125,37 +833,22 @@ export interface ListComponentsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListComponentsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListComponentsRequest>;
 export type ComponentSummaries = ComponentSummary[];
-const ComponentSummaries = /*@__PURE__*/ __L.at(__c17, 1);
 export interface ListComponentsResponse {
   componentSummaries: ComponentSummary[];
   nextToken?: string;
 }
-const ListComponentsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListComponentsResponse>;
 export type ListComponentTypesFilter =
   | { extendsFrom: string; namespace?: never; isAbstract?: never }
   | { extendsFrom?: never; namespace: string; isAbstract?: never }
   | { extendsFrom?: never; namespace?: never; isAbstract: boolean };
-const ListComponentTypesFilter = /*@__PURE__*/ __L.at(__c17, 3);
 export type ListComponentTypesFilters = ListComponentTypesFilter[];
-const ListComponentTypesFilters = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListComponentTypesRequest {
   workspaceId: string;
   filters?: ListComponentTypesFilter[];
   nextToken?: string;
   maxResults?: number;
 }
-const ListComponentTypesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListComponentTypesRequest>;
 export interface ComponentTypeSummary {
   arn: string;
   componentTypeId: string;
@@ -1165,36 +858,24 @@ export interface ComponentTypeSummary {
   status?: Status;
   componentTypeName?: string;
 }
-const ComponentTypeSummary = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ComponentTypeSummary>;
 export type ComponentTypeSummaries = ComponentTypeSummary[];
-const ComponentTypeSummaries = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListComponentTypesResponse {
   workspaceId: string;
   componentTypeSummaries: ComponentTypeSummary[];
   nextToken?: string;
   maxResults?: number;
 }
-const ListComponentTypesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListComponentTypesResponse>;
 export type ListEntitiesFilter =
   | { parentEntityId: string; componentTypeId?: never; externalId?: never }
   | { parentEntityId?: never; componentTypeId: string; externalId?: never }
   | { parentEntityId?: never; componentTypeId?: never; externalId: string };
-const ListEntitiesFilter = /*@__PURE__*/ __L.at(__c18, 1);
 export type ListEntitiesFilters = ListEntitiesFilter[];
-const ListEntitiesFilters = /*@__PURE__*/ __L.at(__c18, 2);
 export interface ListEntitiesRequest {
   workspaceId: string;
   filters?: ListEntitiesFilter[];
   maxResults?: number;
   nextToken?: string;
 }
-const ListEntitiesRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListEntitiesRequest>;
 export interface EntitySummary {
   entityId: string;
   entityName: string;
@@ -1206,23 +887,15 @@ export interface EntitySummary {
   creationDateTime: Date;
   updateDateTime: Date;
 }
-const EntitySummary = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<EntitySummary>;
 export type EntitySummaries = EntitySummary[];
-const EntitySummaries = /*@__PURE__*/ __L.at(__c18, 5);
 export interface ListEntitiesResponse {
   entitySummaries?: EntitySummary[];
   nextToken?: string;
 }
-const ListEntitiesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListEntitiesResponse>;
 export type ListMetadataTransferJobsFilter =
   | { workspaceId: string; state?: never }
   | { workspaceId?: never; state: string };
-const ListMetadataTransferJobsFilter = /*@__PURE__*/ __L.at(__c18, 7);
 export type ListMetadataTransferJobsFilters = ListMetadataTransferJobsFilter[];
-const ListMetadataTransferJobsFilters = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListMetadataTransferJobsRequest {
   sourceType: string;
   destinationType: string;
@@ -1230,10 +903,6 @@ export interface ListMetadataTransferJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListMetadataTransferJobsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListMetadataTransferJobsRequest>;
 export interface MetadataTransferJobSummary {
   metadataTransferJobId: string;
   arn: string;
@@ -1242,20 +911,11 @@ export interface MetadataTransferJobSummary {
   status: MetadataTransferJobStatus;
   progress?: MetadataTransferJobProgress;
 }
-const MetadataTransferJobSummary = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<MetadataTransferJobSummary>;
 export type MetadataTransferJobSummaries = MetadataTransferJobSummary[];
-const MetadataTransferJobSummaries = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListMetadataTransferJobsResponse {
   metadataTransferJobSummaries: MetadataTransferJobSummary[];
   nextToken?: string;
 }
-const ListMetadataTransferJobsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListMetadataTransferJobsResponse>;
 export interface ListPropertiesRequest {
   workspaceId: string;
   componentName?: string;
@@ -1264,33 +924,22 @@ export interface ListPropertiesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListPropertiesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListPropertiesRequest>;
 export interface PropertySummary {
   definition?: PropertyDefinitionResponse;
   propertyName: string;
   value?: DataValue;
   areAllPropertyValuesReturned?: boolean;
 }
-const PropertySummary = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<PropertySummary>;
 export type PropertySummaries = PropertySummary[];
-const PropertySummaries = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListPropertiesResponse {
   propertySummaries: PropertySummary[];
   nextToken?: string;
 }
-const ListPropertiesResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListPropertiesResponse>;
 export interface ListScenesRequest {
   workspaceId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListScenesRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<ListScenesRequest>;
 export interface SceneSummary {
   sceneId: string;
   contentLocation: string;
@@ -1299,20 +948,16 @@ export interface SceneSummary {
   updateDateTime: Date;
   description?: string;
 }
-const SceneSummary = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<SceneSummary>;
 export type SceneSummaries = SceneSummary[];
-const SceneSummaries = /*@__PURE__*/ __L.at(__c20, 3);
 export interface ListScenesResponse {
   sceneSummaries?: SceneSummary[];
   nextToken?: string;
 }
-const ListScenesResponse = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ListScenesResponse>;
 export interface ListSyncJobsRequest {
   workspaceId: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListSyncJobsRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ListSyncJobsRequest>;
 export interface SyncJobSummary {
   arn?: string;
   workspaceId?: string;
@@ -1321,17 +966,11 @@ export interface SyncJobSummary {
   creationDateTime?: Date;
   updateDateTime?: Date;
 }
-const SyncJobSummary = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<SyncJobSummary>;
 export type SyncJobSummaries = SyncJobSummary[];
-const SyncJobSummaries = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListSyncJobsResponse {
   syncJobSummaries?: SyncJobSummary[];
   nextToken?: string;
 }
-const ListSyncJobsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListSyncJobsResponse>;
 export type SyncResourceState = string;
 export type SyncResourceType = string;
 export type SyncResourceFilter =
@@ -1339,9 +978,7 @@ export type SyncResourceFilter =
   | { state?: never; resourceType: string; resourceId?: never; externalId?: never }
   | { state?: never; resourceType?: never; resourceId: string; externalId?: never }
   | { state?: never; resourceType?: never; resourceId?: never; externalId: string };
-const SyncResourceFilter = /*@__PURE__*/ __L.at(__c21, 1);
 export type SyncResourceFilters = SyncResourceFilter[];
-const SyncResourceFilters = /*@__PURE__*/ __L.at(__c21, 2);
 export interface ListSyncResourcesRequest {
   workspaceId: string;
   syncSource: string;
@@ -1349,15 +986,10 @@ export interface ListSyncResourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListSyncResourcesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListSyncResourcesRequest>;
 export interface SyncResourceStatus {
   state?: string;
   error?: ErrorDetails;
 }
-const SyncResourceStatus = Status as any as S.Schema<SyncResourceStatus>;
 export interface SyncResourceSummary {
   resourceType?: string;
   externalId?: string;
@@ -1365,42 +997,24 @@ export interface SyncResourceSummary {
   status?: SyncResourceStatus;
   updateDateTime?: Date;
 }
-const SyncResourceSummary = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<SyncResourceSummary>;
 export type SyncResourceSummaries = SyncResourceSummary[];
-const SyncResourceSummaries = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListSyncResourcesResponse {
   syncResources?: SyncResourceSummary[];
   nextToken?: string;
 }
-const ListSyncResourcesResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListSyncResourcesResponse>;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
   nextToken?: string;
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWorkspacesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListWorkspacesRequest>;
 export interface WorkspaceSummary {
   workspaceId: string;
   arn: string;
@@ -1409,36 +1023,22 @@ export interface WorkspaceSummary {
   creationDateTime: Date;
   updateDateTime: Date;
 }
-const WorkspaceSummary = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<WorkspaceSummary>;
 export type WorkspaceSummaries = WorkspaceSummary[];
-const WorkspaceSummaries = /*@__PURE__*/ __L.at(__c22, 3);
 export interface ListWorkspacesResponse {
   workspaceSummaries?: WorkspaceSummary[];
   nextToken?: string;
 }
-const ListWorkspacesResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ListWorkspacesResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteSceneResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ExtendsFrom as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteSceneResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateComponentTypeRequest {
   workspaceId: string;
   isSingleton?: boolean;
@@ -1451,20 +1051,12 @@ export interface UpdateComponentTypeRequest {
   componentTypeName?: string;
   compositeComponentTypes?: { [key: string]: CompositeComponentTypeRequest | undefined };
 }
-const UpdateComponentTypeRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<UpdateComponentTypeRequest>;
 export interface UpdateComponentTypeResponse {
   workspaceId: string;
   arn: string;
   componentTypeId: string;
   state: string;
 }
-const UpdateComponentTypeResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<UpdateComponentTypeResponse>;
 export type ComponentUpdateType = string;
 export interface ComponentUpdateRequest {
   updateType?: string;
@@ -1473,35 +1065,21 @@ export interface ComponentUpdateRequest {
   propertyUpdates?: { [key: string]: PropertyRequest | undefined };
   propertyGroupUpdates?: { [key: string]: ComponentPropertyGroupRequest | undefined };
 }
-const ComponentUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ComponentUpdateRequest>;
 export type ComponentUpdatesMapRequest = { [key: string]: ComponentUpdateRequest | undefined };
-const ComponentUpdatesMapRequest = /*@__PURE__*/ __L.at(__c23, 2);
 export interface CompositeComponentUpdateRequest {
   updateType?: string;
   description?: string;
   propertyUpdates?: { [key: string]: PropertyRequest | undefined };
   propertyGroupUpdates?: { [key: string]: ComponentPropertyGroupRequest | undefined };
 }
-const CompositeComponentUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<CompositeComponentUpdateRequest>;
 export type CompositeComponentUpdatesMapRequest = {
   [key: string]: CompositeComponentUpdateRequest | undefined;
 };
-const CompositeComponentUpdatesMapRequest = /*@__PURE__*/ __L.at(__c23, 4);
 export type ParentEntityUpdateType = string;
 export interface ParentEntityUpdateRequest {
   updateType: string;
   parentEntityId?: string;
 }
-const ParentEntityUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ParentEntityUpdateRequest>;
 export interface UpdateEntityRequest {
   workspaceId: string;
   entityId: string;
@@ -1511,31 +1089,18 @@ export interface UpdateEntityRequest {
   compositeComponentUpdates?: { [key: string]: CompositeComponentUpdateRequest | undefined };
   parentEntityUpdate?: ParentEntityUpdateRequest;
 }
-const UpdateEntityRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<UpdateEntityRequest>;
 export interface UpdateEntityResponse {
   updateDateTime: Date;
   state: string;
 }
-const UpdateEntityResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<UpdateEntityResponse>;
 export interface UpdatePricingPlanRequest {
   pricingMode: string;
   bundleNames?: string[];
 }
-const UpdatePricingPlanRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdatePricingPlanRequest>;
 export interface UpdatePricingPlanResponse {
   currentPricingPlan: PricingPlan;
   pendingPricingPlan?: PricingPlan;
 }
-const UpdatePricingPlanResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdatePricingPlanResponse>;
 export interface UpdateSceneRequest {
   workspaceId: string;
   sceneId: string;
@@ -1544,25 +1109,18 @@ export interface UpdateSceneRequest {
   capabilities?: string[];
   sceneMetadata?: { [key: string]: string | undefined };
 }
-const UpdateSceneRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<UpdateSceneRequest>;
 export interface UpdateSceneResponse {
   updateDateTime: Date;
 }
-const UpdateSceneResponse = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<UpdateSceneResponse>;
 export interface UpdateWorkspaceRequest {
   workspaceId: string;
   description?: string;
   role?: string;
   s3Location?: string;
 }
-const UpdateWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<UpdateWorkspaceRequest>;
 export interface UpdateWorkspaceResponse {
   updateDateTime: Date;
 }
-const UpdateWorkspaceResponse = UpdateSceneResponse as any as S.Schema<UpdateWorkspaceResponse>;
 export type ExceptionMessage = string;
 export type BatchPutPropertyValuesError =
   | InternalServerException
@@ -1579,8 +1137,8 @@ export const batchPutPropertyValues: API.OperationMethod<
   BatchPutPropertyValuesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchPutPropertyValuesRequest,
-  output: BatchPutPropertyValuesResponse,
+  input: __S(10) as any as S.Schema<BatchPutPropertyValuesRequest>,
+  output: __S(15) as any as S.Schema<BatchPutPropertyValuesResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1610,8 +1168,8 @@ export const cancelMetadataTransferJob: API.OperationMethod<
   CancelMetadataTransferJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelMetadataTransferJobRequest,
-  output: CancelMetadataTransferJobResponse,
+  input: __S(16) as any as S.Schema<CancelMetadataTransferJobRequest>,
+  output: __S(20) as any as S.Schema<CancelMetadataTransferJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1643,8 +1201,8 @@ export const createComponentType: API.OperationMethod<
   CreateComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateComponentTypeRequest,
-  output: CreateComponentTypeResponse,
+  input: __S(35) as any as S.Schema<CreateComponentTypeRequest>,
+  output: __S(36) as any as S.Schema<CreateComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1676,8 +1234,8 @@ export const createEntity: API.OperationMethod<
   CreateEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEntityRequest,
-  output: CreateEntityResponse,
+  input: __S(45) as any as S.Schema<CreateEntityRequest>,
+  output: __S(46) as any as S.Schema<CreateEntityResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1710,8 +1268,8 @@ export const createMetadataTransferJob: API.OperationMethod<
   CreateMetadataTransferJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetadataTransferJobRequest,
-  output: CreateMetadataTransferJobResponse,
+  input: __S(63) as any as S.Schema<CreateMetadataTransferJobRequest>,
+  output: __S(64) as any as S.Schema<CreateMetadataTransferJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1744,8 +1302,8 @@ export const createScene: API.OperationMethod<
   CreateSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSceneRequest,
-  output: CreateSceneResponse,
+  input: __S(65) as any as S.Schema<CreateSceneRequest>,
+  output: __S(66) as any as S.Schema<CreateSceneResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1777,8 +1335,8 @@ export const createSyncJob: API.OperationMethod<
   CreateSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSyncJobRequest,
-  output: CreateSyncJobResponse,
+  input: __S(67) as any as S.Schema<CreateSyncJobRequest>,
+  output: __S(68) as any as S.Schema<CreateSyncJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1810,8 +1368,8 @@ export const createWorkspace: API.OperationMethod<
   CreateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWorkspaceRequest,
-  output: CreateWorkspaceResponse,
+  input: __S(69) as any as S.Schema<CreateWorkspaceRequest>,
+  output: __S(66) as any as S.Schema<CreateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1842,8 +1400,8 @@ export const deleteComponentType: API.OperationMethod<
   DeleteComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComponentTypeRequest,
-  output: DeleteComponentTypeResponse,
+  input: __S(70) as any as S.Schema<DeleteComponentTypeRequest>,
+  output: __S(71) as any as S.Schema<DeleteComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1873,8 +1431,8 @@ export const deleteEntity: API.OperationMethod<
   DeleteEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEntityRequest,
-  output: DeleteEntityResponse,
+  input: __S(72) as any as S.Schema<DeleteEntityRequest>,
+  output: __S(73) as any as S.Schema<DeleteEntityResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1904,8 +1462,8 @@ export const deleteScene: API.OperationMethod<
   DeleteSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSceneRequest,
-  output: DeleteSceneResponse,
+  input: __S(74) as any as S.Schema<DeleteSceneRequest>,
+  output: __S(75) as any as S.Schema<DeleteSceneResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1936,8 +1494,8 @@ export const deleteSyncJob: API.OperationMethod<
   DeleteSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSyncJobRequest,
-  output: DeleteSyncJobResponse,
+  input: __S(76) as any as S.Schema<DeleteSyncJobRequest>,
+  output: __S(73) as any as S.Schema<DeleteSyncJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1968,8 +1526,8 @@ export const deleteWorkspace: API.OperationMethod<
   DeleteWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkspaceRequest,
-  output: DeleteWorkspaceResponse,
+  input: __S(77) as any as S.Schema<DeleteWorkspaceRequest>,
+  output: __S(78) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2005,8 +1563,8 @@ export const executeQuery: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ExecuteQueryRequest,
-  output: ExecuteQueryResponse,
+  input: __S(79) as any as S.Schema<ExecuteQueryRequest>,
+  output: __S(85) as any as S.Schema<ExecuteQueryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2042,8 +1600,8 @@ export const getComponentType: API.OperationMethod<
   GetComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComponentTypeRequest,
-  output: GetComponentTypeResponse,
+  input: __S(86) as any as S.Schema<GetComponentTypeRequest>,
+  output: __S(96) as any as S.Schema<GetComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2073,8 +1631,8 @@ export const getEntity: API.OperationMethod<
   GetEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntityRequest,
-  output: GetEntityResponse,
+  input: __S(97) as any as S.Schema<GetEntityRequest>,
+  output: __S(106) as any as S.Schema<GetEntityResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2104,8 +1662,8 @@ export const getMetadataTransferJob: API.OperationMethod<
   GetMetadataTransferJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetadataTransferJobRequest,
-  output: GetMetadataTransferJobResponse,
+  input: __S(107) as any as S.Schema<GetMetadataTransferJobRequest>,
+  output: __S(108) as any as S.Schema<GetMetadataTransferJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2134,8 +1692,8 @@ export const getPricingPlan: API.OperationMethod<
   GetPricingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPricingPlanRequest,
-  output: GetPricingPlanResponse,
+  input: __S(109) as any as S.Schema<GetPricingPlanRequest>,
+  output: __S(112) as any as S.Schema<GetPricingPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2170,8 +1728,8 @@ export const getPropertyValue: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetPropertyValueRequest,
-  output: GetPropertyValueResponse,
+  input: __S(118) as any as S.Schema<GetPropertyValueRequest>,
+  output: __S(124) as any as S.Schema<GetPropertyValueResponse>,
   errors: [
     AccessDeniedException,
     ConnectorFailureException,
@@ -2216,8 +1774,8 @@ export const getPropertyValueHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetPropertyValueHistoryRequest,
-  output: GetPropertyValueHistoryResponse,
+  input: __S(126) as any as S.Schema<GetPropertyValueHistoryRequest>,
+  output: __S(129) as any as S.Schema<GetPropertyValueHistoryResponse>,
   errors: [
     AccessDeniedException,
     ConnectorFailureException,
@@ -2254,8 +1812,8 @@ export const getScene: API.OperationMethod<
   GetSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSceneRequest,
-  output: GetSceneResponse,
+  input: __S(130) as any as S.Schema<GetSceneRequest>,
+  output: __S(131) as any as S.Schema<GetSceneResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2286,8 +1844,8 @@ export const getSyncJob: API.OperationMethod<
   GetSyncJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSyncJobRequest,
-  output: GetSyncJobResponse,
+  input: __S(132) as any as S.Schema<GetSyncJobRequest>,
+  output: __S(133) as any as S.Schema<GetSyncJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2318,8 +1876,8 @@ export const getWorkspace: API.OperationMethod<
   GetWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkspaceRequest,
-  output: GetWorkspaceResponse,
+  input: __S(134) as any as S.Schema<GetWorkspaceRequest>,
+  output: __S(135) as any as S.Schema<GetWorkspaceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -2350,8 +1908,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComponentsRequest,
-  output: ListComponentsResponse,
+  input: __S(136) as any as S.Schema<ListComponentsRequest>,
+  output: __S(138) as any as S.Schema<ListComponentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2386,8 +1944,8 @@ export const listComponentTypes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComponentTypesRequest,
-  output: ListComponentTypesResponse,
+  input: __S(141) as any as S.Schema<ListComponentTypesRequest>,
+  output: __S(144) as any as S.Schema<ListComponentTypesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2421,8 +1979,8 @@ export const listEntities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEntitiesRequest,
-  output: ListEntitiesResponse,
+  input: __S(147) as any as S.Schema<ListEntitiesRequest>,
+  output: __S(150) as any as S.Schema<ListEntitiesResponse>,
   errors: [
     InternalServerException,
     ServiceQuotaExceededException,
@@ -2456,8 +2014,8 @@ export const listMetadataTransferJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMetadataTransferJobsRequest,
-  output: ListMetadataTransferJobsResponse,
+  input: __S(153) as any as S.Schema<ListMetadataTransferJobsRequest>,
+  output: __S(156) as any as S.Schema<ListMetadataTransferJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2492,8 +2050,8 @@ export const listProperties: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPropertiesRequest,
-  output: ListPropertiesResponse,
+  input: __S(157) as any as S.Schema<ListPropertiesRequest>,
+  output: __S(160) as any as S.Schema<ListPropertiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2528,8 +2086,8 @@ export const listScenes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScenesRequest,
-  output: ListScenesResponse,
+  input: __S(161) as any as S.Schema<ListScenesRequest>,
+  output: __S(164) as any as S.Schema<ListScenesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2564,8 +2122,8 @@ export const listSyncJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSyncJobsRequest,
-  output: ListSyncJobsResponse,
+  input: __S(165) as any as S.Schema<ListSyncJobsRequest>,
+  output: __S(168) as any as S.Schema<ListSyncJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2601,8 +2159,8 @@ export const listSyncResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSyncResourcesRequest,
-  output: ListSyncResourcesResponse,
+  input: __S(171) as any as S.Schema<ListSyncResourcesRequest>,
+  output: __S(174) as any as S.Schema<ListSyncResourcesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2634,8 +2192,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(175) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(176) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2659,8 +2217,8 @@ export const listWorkspaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListWorkspacesRequest,
-  output: ListWorkspacesResponse,
+  input: __S(177) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(180) as any as S.Schema<ListWorkspacesResponse>,
   errors: [
     InternalServerException,
     ServiceQuotaExceededException,
@@ -2692,8 +2250,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(181) as any as S.Schema<TagResourceRequest>,
+  output: __S(75) as any as S.Schema<TagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException, TooManyTagsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2711,8 +2269,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(182) as any as S.Schema<UntagResourceRequest>,
+  output: __S(75) as any as S.Schema<UntagResourceResponse>,
   errors: [AccessDeniedException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2737,8 +2295,8 @@ export const updateComponentType: API.OperationMethod<
   UpdateComponentTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateComponentTypeRequest,
-  output: UpdateComponentTypeResponse,
+  input: __S(183) as any as S.Schema<UpdateComponentTypeRequest>,
+  output: __S(184) as any as S.Schema<UpdateComponentTypeResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2771,8 +2329,8 @@ export const updateEntity: API.OperationMethod<
   UpdateEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEntityRequest,
-  output: UpdateEntityResponse,
+  input: __S(190) as any as S.Schema<UpdateEntityRequest>,
+  output: __S(191) as any as S.Schema<UpdateEntityResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2803,8 +2361,8 @@ export const updatePricingPlan: API.OperationMethod<
   UpdatePricingPlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePricingPlanRequest,
-  output: UpdatePricingPlanResponse,
+  input: __S(192) as any as S.Schema<UpdatePricingPlanRequest>,
+  output: __S(193) as any as S.Schema<UpdatePricingPlanResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2833,8 +2391,8 @@ export const updateScene: API.OperationMethod<
   UpdateSceneError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSceneRequest,
-  output: UpdateSceneResponse,
+  input: __S(194) as any as S.Schema<UpdateSceneRequest>,
+  output: __S(195) as any as S.Schema<UpdateSceneResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2865,8 +2423,8 @@ export const updateWorkspace: API.OperationMethod<
   UpdateWorkspaceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkspaceRequest,
-  output: UpdateWorkspaceResponse,
+  input: __S(196) as any as S.Schema<UpdateWorkspaceRequest>,
+  output: __S(195) as any as S.Schema<UpdateWorkspaceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2891,21 +2449,21 @@ function __c0(j: number): any {
         S.Struct({
           componentName: S.optional(S.String),
           componentPath: S.optional(S.String),
-          externalIdProperty: S.optional(ExternalIdProperty),
+          externalIdProperty: S.optional(__S(0)),
           entityId: S.optional(S.String),
           propertyName: S.String,
         }),
       ).annotate({ identifier: "EntityPropertyReference" });
     case 2:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => DataValue).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(5)).annotate({
           identifier: "DataValue",
         }),
       );
     case 3:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => DataValue)
+        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(5))
           .annotate({ identifier: "DataValue" })
           .pipe(S.optional),
       );
@@ -2924,13 +2482,9 @@ function __c0(j: number): any {
           integerValue: S.optional(S.Number),
           longValue: S.optional(S.Number),
           stringValue: S.optional(S.String),
-          listValue: S.optional(
-            S.suspend(() => DataValueList).annotate({ identifier: "DataValueList" }),
-          ),
-          mapValue: S.optional(
-            S.suspend(() => DataValueMap).annotate({ identifier: "DataValueMap" }),
-          ),
-          relationshipValue: S.optional(RelationshipValue),
+          listValue: S.optional(S.suspend(() => __S(2)).annotate({ identifier: "DataValueList" })),
+          mapValue: S.optional(S.suspend(() => __S(3)).annotate({ identifier: "DataValueMap" })),
+          relationshipValue: S.optional(__S(4)),
           expression: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataValue" });
@@ -2938,12 +2492,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          value: DataValue,
+          value: __S(5),
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyValue" });
     case 7:
-      return S.Array(PropertyValue);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -2951,15 +2505,15 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entityPropertyReference: EntityPropertyReference,
-          propertyValues: S.optional(PropertyValues),
+          entityPropertyReference: __S(1),
+          propertyValues: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "PropertyValueEntry" });
     case 1:
-      return S.Array(PropertyValueEntry);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
-        S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")), entries: Entries }).pipe(
+        S.Struct({ workspaceId: S.String.pipe(T.HttpLabel("workspaceId")), entries: __S(9) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/entity-properties" }),
             svc,
@@ -2974,18 +2528,18 @@ function __c1(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ errorCode: S.String, errorMessage: S.String, entry: PropertyValueEntry }),
+        S.Struct({ errorCode: S.String, errorMessage: S.String, entry: __S(8) }),
       ).annotate({ identifier: "BatchPutPropertyError" });
     case 4:
-      return S.Array(BatchPutPropertyError);
+      return S.Array(__S(11));
     case 5:
-      return S.suspend(() => S.Struct({ errors: Errors })).annotate({
+      return S.suspend(() => S.Struct({ errors: __S(12) })).annotate({
         identifier: "BatchPutPropertyErrorEntry",
       });
     case 6:
-      return S.Array(BatchPutPropertyErrorEntry);
+      return S.Array(__S(13));
     case 7:
-      return S.suspend(() => S.Struct({ errorEntries: ErrorEntries })).annotate({
+      return S.suspend(() => S.Struct({ errorEntries: __S(14) })).annotate({
         identifier: "BatchPutPropertyValuesResponse",
       });
   }
@@ -3020,7 +2574,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
-          error: S.optional(ErrorDetails),
+          error: S.optional(__S(17)),
           queuedPosition: S.optional(S.Number),
         }),
       ).annotate({
@@ -3043,8 +2597,8 @@ function __c2(j: number): any {
           metadataTransferJobId: S.String,
           arn: S.String,
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: MetadataTransferJobStatus,
-          progress: S.optional(MetadataTransferJobProgress),
+          status: __S(18),
+          progress: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "CancelMetadataTransferJobResponse",
@@ -3061,25 +2615,25 @@ function __c2(j: number): any {
         S.Struct({
           type: S.String,
           nestedType: S.optional(
-            S.suspend((): S.Schema<DataType> => DataType).annotate({ identifier: "DataType" }),
+            S.suspend((): S.Schema<DataType> => __S(22)).annotate({ identifier: "DataType" }),
           ),
           allowedValues: S.optional(
-            S.suspend(() => DataValueList).annotate({ identifier: "DataValueList" }),
+            S.suspend(() => __S(2)).annotate({ identifier: "DataValueList" }),
           ),
           unitOfMeasure: S.optional(S.String),
-          relationship: S.optional(Relationship),
+          relationship: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "DataType" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(DataType),
+          dataType: S.optional(__S(22)),
           isRequiredInEntity: S.optional(S.Boolean),
           isExternalId: S.optional(S.Boolean),
           isStoredExternally: S.optional(S.Boolean),
           isTimeSeries: S.optional(S.Boolean),
-          defaultValue: S.optional(DataValue),
-          configuration: S.optional(Configuration),
+          defaultValue: S.optional(__S(5)),
+          configuration: S.optional(__S(0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -3090,7 +2644,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ PropertyDefinitionRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(23).pipe(S.optional));
     case 1:
       return S.Array(S.String);
     case 2:
@@ -3099,36 +2653,36 @@ function __c3(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ lambda: S.optional(LambdaFunction), isNative: S.optional(S.Boolean) }),
+        S.Struct({ lambda: S.optional(__S(26)), isNative: S.optional(S.Boolean) }),
       ).annotate({ identifier: "DataConnector" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requiredProperties: S.optional(RequiredProperties),
+          requiredProperties: S.optional(__S(25)),
           scope: S.optional(S.String),
-          implementedBy: S.optional(DataConnector),
+          implementedBy: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "FunctionRequest" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ FunctionRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(28).pipe(S.optional));
     case 6:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 7:
       return S.suspend(() =>
-        S.Struct({ groupType: S.optional(S.String), propertyNames: S.optional(PropertyNames) }),
+        S.Struct({ groupType: S.optional(S.String), propertyNames: S.optional(__S(25)) }),
       ).annotate({ identifier: "PropertyGroupRequest" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ PropertyGroupRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(31).pipe(S.optional));
     case 1:
       return S.suspend(() => S.Struct({ componentTypeId: S.optional(S.String) })).annotate({
         identifier: "CompositeComponentTypeRequest",
       });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ CompositeComponentTypeRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(33).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3136,13 +2690,13 @@ function __c4(j: number): any {
           isSingleton: S.optional(S.Boolean),
           componentTypeId: S.String.pipe(T.HttpLabel("componentTypeId")),
           description: S.optional(S.String),
-          propertyDefinitions: S.optional(PropertyDefinitionsRequest),
-          extendsFrom: S.optional(ExtendsFrom),
-          functions: S.optional(FunctionsRequest),
-          tags: S.optional(TagMap),
-          propertyGroups: S.optional(PropertyGroupsRequest),
+          propertyDefinitions: S.optional(__S(24)),
+          extendsFrom: S.optional(__S(25)),
+          functions: S.optional(__S(29)),
+          tags: S.optional(__S(30)),
+          propertyGroups: S.optional(__S(32)),
           componentTypeName: S.optional(S.String),
-          compositeComponentTypes: S.optional(CompositeComponentTypesRequest),
+          compositeComponentTypes: S.optional(__S(34)),
         }).pipe(
           T.all(
             T.Http({
@@ -3172,18 +2726,18 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(PropertyDefinitionRequest),
-          value: S.optional(DataValue),
+          definition: S.optional(__S(23)),
+          value: S.optional(__S(5)),
           updateType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PropertyRequest" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ PropertyRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(37).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           groupType: S.optional(S.String),
-          propertyNames: S.optional(PropertyNames),
+          propertyNames: S.optional(__S(25)),
           updateType: S.optional(S.String),
         }),
       ).annotate({
@@ -3194,30 +2748,30 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ ComponentPropertyGroupRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(39).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          properties: S.optional(PropertyRequests),
-          propertyGroups: S.optional(ComponentPropertyGroupRequests),
+          properties: S.optional(__S(38)),
+          propertyGroups: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "ComponentRequest" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ ComponentRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(41).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          properties: S.optional(PropertyRequests),
-          propertyGroups: S.optional(ComponentPropertyGroupRequests),
+          properties: S.optional(__S(38)),
+          propertyGroups: S.optional(__S(40)),
         }),
       ).annotate({
         identifier: "CompositeComponentRequest",
       });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ CompositeComponentRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(43).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3225,10 +2779,10 @@ function __c5(j: number): any {
           entityId: S.optional(S.String),
           entityName: S.String,
           description: S.optional(S.String),
-          components: S.optional(ComponentsMapRequest),
-          compositeComponents: S.optional(CompositeComponentsMapRequest),
+          components: S.optional(__S(42)),
+          compositeComponents: S.optional(__S(44)),
           parentEntityId: S.optional(S.String),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(30)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/entities" }),
@@ -3277,15 +2831,13 @@ function __c6(j: number): any {
       ).annotate({ identifier: "FilterByAsset" });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ filterByAssetModel: FilterByAssetModel }),
-        /*@__PURE__*/ S.Struct({ filterByAsset: FilterByAsset }),
+        /*@__PURE__*/ S.Struct({ filterByAssetModel: __S(48) }),
+        /*@__PURE__*/ S.Struct({ filterByAsset: __S(49) }),
       ]);
     case 3:
-      return S.Array(IotSiteWiseSourceConfigurationFilter);
+      return S.Array(__S(50));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ filters: S.optional(IotSiteWiseSourceConfigurationFilters) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ filters: S.optional(__S(51)) })).annotate({
         identifier: "IotSiteWiseSourceConfiguration",
       });
     case 5:
@@ -3298,20 +2850,20 @@ function __c6(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ filterByComponentType: FilterByComponentType }),
-        /*@__PURE__*/ S.Struct({ filterByEntity: FilterByEntity }),
+        /*@__PURE__*/ S.Struct({ filterByComponentType: __S(53) }),
+        /*@__PURE__*/ S.Struct({ filterByEntity: __S(54) }),
       ]);
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IotTwinMakerSourceConfigurationFilter);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           workspace: S.String,
-          filters: S.optional(IotTwinMakerSourceConfigurationFilters),
+          filters: S.optional(__S(56)),
         }),
       ).annotate({
         identifier: "IotTwinMakerSourceConfiguration",
@@ -3320,13 +2872,13 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          s3Configuration: S.optional(S3SourceConfiguration),
-          iotSiteWiseConfiguration: S.optional(IotSiteWiseSourceConfiguration),
-          iotTwinMakerConfiguration: S.optional(IotTwinMakerSourceConfiguration),
+          s3Configuration: S.optional(__S(47)),
+          iotSiteWiseConfiguration: S.optional(__S(52)),
+          iotTwinMakerConfiguration: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "SourceConfiguration" });
     case 3:
-      return S.Array(SourceConfiguration);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() => S.Struct({ location: S.String })).annotate({
         identifier: "S3DestinationConfiguration",
@@ -3339,8 +2891,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          s3Configuration: S.optional(S3DestinationConfiguration),
-          iotTwinMakerConfiguration: S.optional(IotTwinMakerDestinationConfiguration),
+          s3Configuration: S.optional(__S(60)),
+          iotTwinMakerConfiguration: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "DestinationConfiguration" });
     case 7:
@@ -3348,8 +2900,8 @@ function __c7(j: number): any {
         S.Struct({
           metadataTransferJobId: S.optional(S.String),
           description: S.optional(S.String),
-          sources: SourceConfigurations,
-          destination: DestinationConfiguration,
+          sources: __S(59),
+          destination: __S(62),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/metadata-transfer-jobs" }),
@@ -3373,7 +2925,7 @@ function __c8(j: number): any {
           metadataTransferJobId: S.String,
           arn: S.String,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: MetadataTransferJobStatus,
+          status: __S(18),
         }),
       ).annotate({
         identifier: "CreateMetadataTransferJobResponse",
@@ -3385,9 +2937,9 @@ function __c8(j: number): any {
           sceneId: S.String,
           contentLocation: S.String,
           description: S.optional(S.String),
-          capabilities: S.optional(SceneCapabilities),
-          tags: S.optional(TagMap),
-          sceneMetadata: S.optional(SceneMetadataMap),
+          capabilities: S.optional(__S(25)),
+          tags: S.optional(__S(30)),
+          sceneMetadata: S.optional(__S(0)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/scenes" }),
@@ -3412,7 +2964,7 @@ function __c8(j: number): any {
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           syncSource: S.String.pipe(T.HttpLabel("syncSource")),
           syncRole: S.String,
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(30)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/sync-jobs/{syncSource}" }),
@@ -3439,7 +2991,7 @@ function __c8(j: number): any {
           description: S.optional(S.String),
           s3Location: S.optional(S.String),
           role: S.optional(S.String),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(30)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}" }),
@@ -3581,20 +3133,20 @@ function __c10(j: number): any {
         S.Struct({ name: S.optional(S.String), type: S.optional(S.String) }),
       ).annotate({ identifier: "ColumnDescription" });
     case 1:
-      return S.Array(ColumnDescription);
+      return S.Array(__S(80));
     case 2:
       return S.Array(S.Any);
     case 3:
-      return S.suspend(() => S.Struct({ rowData: S.optional(RowData) })).annotate({
+      return S.suspend(() => S.Struct({ rowData: S.optional(__S(82)) })).annotate({
         identifier: "Row",
       });
     case 4:
-      return S.Array(Row);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          columnDescriptions: S.optional(ColumnDescriptions),
-          rows: S.optional(Rows),
+          columnDescriptions: S.optional(__S(81)),
+          rows: S.optional(__S(84)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecuteQueryResponse" });
@@ -3620,7 +3172,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataType: DataType,
+          dataType: __S(22),
           isTimeSeries: S.Boolean,
           isRequiredInEntity: S.Boolean,
           isExternalId: S.Boolean,
@@ -3628,8 +3180,8 @@ function __c10(j: number): any {
           isImported: S.Boolean,
           isFinal: S.Boolean,
           isInherited: S.Boolean,
-          defaultValue: S.optional(DataValue),
-          configuration: S.optional(Configuration),
+          defaultValue: S.optional(__S(5)),
+          configuration: S.optional(__S(0)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -3640,28 +3192,28 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ PropertyDefinitionResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(87).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          requiredProperties: S.optional(RequiredProperties),
+          requiredProperties: S.optional(__S(25)),
           scope: S.optional(S.String),
-          implementedBy: S.optional(DataConnector),
+          implementedBy: S.optional(__S(27)),
           isInherited: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FunctionResponse" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ FunctionResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(89).pipe(S.optional));
     case 3:
       return S.suspend(() =>
-        S.Struct({ state: S.optional(S.String), error: S.optional(ErrorDetails) }),
+        S.Struct({ state: S.optional(S.String), error: S.optional(__S(17)) }),
       ).annotate({ identifier: "Status" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ groupType: S.String, propertyNames: PropertyNames, isInherited: S.Boolean }),
+        S.Struct({ groupType: S.String, propertyNames: __S(25), isInherited: S.Boolean }),
       ).annotate({ identifier: "PropertyGroupResponse" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ PropertyGroupResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(92).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({ componentTypeId: S.optional(S.String), isInherited: S.optional(S.Boolean) }),
@@ -3669,7 +3221,7 @@ function __c11(j: number): any {
         identifier: "CompositeComponentTypeResponse",
       });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ CompositeComponentTypeResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(94).pipe(S.optional));
   }
 }
 function __c12(j: number): any {
@@ -3681,19 +3233,19 @@ function __c12(j: number): any {
           isSingleton: S.optional(S.Boolean),
           componentTypeId: S.String,
           description: S.optional(S.String),
-          propertyDefinitions: S.optional(PropertyDefinitionsResponse),
-          extendsFrom: S.optional(ExtendsFrom),
-          functions: S.optional(FunctionsResponse),
+          propertyDefinitions: S.optional(__S(88)),
+          extendsFrom: S.optional(__S(25)),
+          functions: S.optional(__S(90)),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           arn: S.String,
           isAbstract: S.optional(S.Boolean),
           isSchemaInitialized: S.optional(S.Boolean),
-          status: S.optional(Status),
-          propertyGroups: S.optional(PropertyGroupsResponse),
+          status: S.optional(__S(91)),
+          propertyGroups: S.optional(__S(93)),
           syncSource: S.optional(S.String),
           componentTypeName: S.optional(S.String),
-          compositeComponentTypes: S.optional(CompositeComponentTypesResponse),
+          compositeComponentTypes: S.optional(__S(95)),
         }),
       ).annotate({ identifier: "GetComponentTypeResponse" });
     case 1:
@@ -3715,21 +3267,21 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(PropertyDefinitionResponse),
-          value: S.optional(DataValue),
+          definition: S.optional(__S(87)),
+          value: S.optional(__S(5)),
           areAllPropertyValuesReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PropertyResponse" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ PropertyResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(98).pipe(S.optional));
     case 4:
       return S.suspend(() =>
-        S.Struct({ groupType: S.String, propertyNames: PropertyNames, isInherited: S.Boolean }),
+        S.Struct({ groupType: S.String, propertyNames: __S(25), isInherited: S.Boolean }),
       ).annotate({
         identifier: "ComponentPropertyGroupResponse",
       });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ ComponentPropertyGroupResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(100).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3737,14 +3289,14 @@ function __c12(j: number): any {
           componentTypeId: S.String,
           definedIn: S.optional(S.String),
           description: S.optional(S.String),
-          propertyGroups: S.optional(ComponentPropertyGroupResponses),
-          status: Status,
+          propertyGroups: S.optional(__S(101)),
+          status: __S(91),
           syncSource: S.optional(S.String),
           componentPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentSummary" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ComponentSummary.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(102).pipe(S.optional));
   }
 }
 function __c13(j: number): any {
@@ -3755,28 +3307,28 @@ function __c13(j: number): any {
           componentName: S.optional(S.String),
           description: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(91)),
           definedIn: S.optional(S.String),
-          properties: S.optional(PropertyResponses),
-          propertyGroups: S.optional(ComponentPropertyGroupResponses),
+          properties: S.optional(__S(99)),
+          propertyGroups: S.optional(__S(101)),
           syncSource: S.optional(S.String),
           areAllPropertiesReturned: S.optional(S.Boolean),
-          compositeComponents: S.optional(CompositeComponentResponse),
+          compositeComponents: S.optional(__S(103)),
           areAllCompositeComponentsReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ComponentResponse" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ ComponentResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(104).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           entityId: S.String,
           entityName: S.String,
           arn: S.String,
-          status: Status,
+          status: __S(91),
           workspaceId: S.String,
           description: S.optional(S.String),
-          components: S.optional(ComponentsMap),
+          components: S.optional(__S(105)),
           parentEntityId: S.String,
           hasChildEntities: S.Boolean,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3808,14 +3360,14 @@ function __c13(j: number): any {
           metadataTransferJobId: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          sources: SourceConfigurations,
-          destination: DestinationConfiguration,
+          sources: __S(59),
+          destination: __S(62),
           metadataTransferJobRole: S.String,
           reportUrl: S.optional(S.String),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: MetadataTransferJobStatus,
-          progress: S.optional(MetadataTransferJobProgress),
+          status: __S(18),
+          progress: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "GetMetadataTransferJobResponse",
@@ -3828,13 +3380,13 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetPricingPlanRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ bundleNames: PricingBundles, pricingTier: S.optional(S.String) }),
+        S.Struct({ bundleNames: __S(25), pricingTier: S.optional(S.String) }),
       ).annotate({ identifier: "BundleInformation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           billableEntityCount: S.optional(S.Number),
-          bundleInformation: S.optional(BundleInformation),
+          bundleInformation: S.optional(__S(110)),
           effectiveDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           pricingMode: S.String,
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3847,29 +3399,29 @@ function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ currentPricingPlan: PricingPlan, pendingPricingPlan: S.optional(PricingPlan) }),
+        S.Struct({ currentPricingPlan: __S(111), pendingPricingPlan: S.optional(__S(111)) }),
       ).annotate({ identifier: "GetPricingPlanResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({ order: S.optional(S.String), propertyName: S.String }),
       ).annotate({ identifier: "OrderBy" });
     case 2:
-      return S.Array(OrderBy);
+      return S.Array(__S(113));
     case 3:
       return S.suspend(() =>
         S.Struct({
           propertyName: S.optional(S.String),
           operator: S.optional(S.String),
-          value: S.optional(DataValue),
+          value: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "PropertyFilter" });
     case 4:
-      return S.Array(PropertyFilter);
+      return S.Array(__S(115));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          orderBy: S.optional(OrderByList),
-          propertyFilters: S.optional(PropertyFilters),
+          orderBy: S.optional(__S(114)),
+          propertyFilters: S.optional(__S(116)),
         }),
       ).annotate({ identifier: "TabularConditions" });
     case 6:
@@ -3879,12 +3431,12 @@ function __c14(j: number): any {
           componentPath: S.optional(S.String),
           componentTypeId: S.optional(S.String),
           entityId: S.optional(S.String),
-          selectedProperties: SelectedPropertyList,
+          selectedProperties: __S(25),
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
           propertyGroupName: S.optional(S.String),
-          tabularConditions: S.optional(TabularConditions),
+          tabularConditions: S.optional(__S(117)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/workspaces/{workspaceId}/entity-properties/value" }),
@@ -3899,8 +3451,8 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          propertyReference: EntityPropertyReference,
-          propertyValue: S.optional(DataValue),
+          propertyReference: __S(1),
+          propertyValue: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "PropertyLatestValue" });
   }
@@ -3908,24 +3460,24 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ PropertyLatestValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(119).pipe(S.optional));
     case 1:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => DataValue)
+        /*@__PURE__*/ S.suspend((): S.Schema<DataValue> => __S(5))
           .annotate({ identifier: "DataValue" })
           .pipe(S.optional),
       );
     case 2:
-      return S.Array(PropertyTableValue);
+      return S.Array(__S(121));
     case 3:
-      return S.Array(TabularPropertyValue);
+      return S.Array(__S(122));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          propertyValues: S.optional(PropertyLatestValueMap),
+          propertyValues: S.optional(__S(120)),
           nextToken: S.optional(S.String),
-          tabularPropertyValues: S.optional(TabularPropertyValues),
+          tabularPropertyValues: S.optional(__S(123)),
         }),
       ).annotate({ identifier: "GetPropertyValueResponse" });
     case 5:
@@ -3943,11 +3495,11 @@ function __c15(j: number): any {
           componentName: S.optional(S.String),
           componentPath: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          selectedProperties: SelectedPropertyList,
-          propertyFilters: S.optional(PropertyFilters),
+          selectedProperties: __S(25),
+          propertyFilters: S.optional(__S(116)),
           startDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           endDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          interpolation: S.optional(InterpolationParameters),
+          interpolation: S.optional(__S(125)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
           orderByTime: S.optional(S.String),
@@ -3968,17 +3520,17 @@ function __c15(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ entityPropertyReference: EntityPropertyReference, values: S.optional(Values) }),
+        S.Struct({ entityPropertyReference: __S(1), values: S.optional(__S(7)) }),
       ).annotate({ identifier: "PropertyValueHistory" });
   }
 }
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PropertyValueHistory);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
-        S.Struct({ propertyValues: PropertyValueList, nextToken: S.optional(S.String) }),
+        S.Struct({ propertyValues: __S(128), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetPropertyValueHistoryResponse",
       });
@@ -4008,10 +3560,10 @@ function __c16(j: number): any {
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           description: S.optional(S.String),
-          capabilities: S.optional(SceneCapabilities),
-          sceneMetadata: S.optional(SceneMetadataMap),
-          generatedSceneMetadata: S.optional(GeneratedSceneMetadataMap),
-          error: S.optional(SceneError),
+          capabilities: S.optional(__S(25)),
+          sceneMetadata: S.optional(__S(0)),
+          generatedSceneMetadata: S.optional(__S(0)),
+          error: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "GetSceneResponse" });
     case 4:
@@ -4037,7 +3589,7 @@ function __c16(j: number): any {
           workspaceId: S.String,
           syncSource: S.String,
           syncRole: S.String,
-          status: SyncJobStatus,
+          status: __S(91),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -4061,7 +3613,7 @@ function __c16(j: number): any {
           workspaceId: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          linkedServices: S.optional(LinkedServices),
+          linkedServices: S.optional(__S(25)),
           s3Location: S.optional(S.String),
           role: S.optional(S.String),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -4095,10 +3647,10 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListComponentsRequest" });
     case 1:
-      return S.Array(ComponentSummary);
+      return S.Array(__S(102));
     case 2:
       return S.suspend(() =>
-        S.Struct({ componentSummaries: ComponentSummaries, nextToken: S.optional(S.String) }),
+        S.Struct({ componentSummaries: __S(137), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListComponentsResponse" });
     case 3:
       return S.Union([
@@ -4107,12 +3659,12 @@ function __c17(j: number): any {
         /*@__PURE__*/ S.Struct({ isAbstract: S.Boolean }),
       ]);
     case 4:
-      return S.Array(ListComponentTypesFilter);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          filters: S.optional(ListComponentTypesFilters),
+          filters: S.optional(__S(140)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -4136,12 +3688,12 @@ function __c17(j: number): any {
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           description: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(91)),
           componentTypeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentTypeSummary" });
     case 7:
-      return S.Array(ComponentTypeSummary);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
@@ -4150,7 +3702,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String,
-          componentTypeSummaries: ComponentTypeSummaries,
+          componentTypeSummaries: __S(143),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }),
@@ -4164,12 +3716,12 @@ function __c18(j: number): any {
         /*@__PURE__*/ S.Struct({ externalId: S.String }),
       ]);
     case 2:
-      return S.Array(ListEntitiesFilter);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
-          filters: S.optional(ListEntitiesFilters),
+          filters: S.optional(__S(146)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4190,7 +3742,7 @@ function __c18(j: number): any {
           entityName: S.String,
           arn: S.String,
           parentEntityId: S.optional(S.String),
-          status: Status,
+          status: __S(91),
           description: S.optional(S.String),
           hasChildEntities: S.optional(S.Boolean),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -4198,10 +3750,10 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "EntitySummary" });
     case 5:
-      return S.Array(EntitySummary);
+      return S.Array(__S(148));
     case 6:
       return S.suspend(() =>
-        S.Struct({ entitySummaries: S.optional(EntitySummaries), nextToken: S.optional(S.String) }),
+        S.Struct({ entitySummaries: S.optional(__S(149)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEntitiesResponse" });
     case 7:
       return S.Union([
@@ -4213,13 +3765,13 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListMetadataTransferJobsFilter);
+      return S.Array(__S(151));
     case 1:
       return S.suspend(() =>
         S.Struct({
           sourceType: S.String,
           destinationType: S.String,
-          filters: S.optional(ListMetadataTransferJobsFilters),
+          filters: S.optional(__S(152)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(
@@ -4242,18 +3794,18 @@ function __c19(j: number): any {
           arn: S.String,
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          status: MetadataTransferJobStatus,
-          progress: S.optional(MetadataTransferJobProgress),
+          status: __S(18),
+          progress: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "MetadataTransferJobSummary",
       });
     case 3:
-      return S.Array(MetadataTransferJobSummary);
+      return S.Array(__S(154));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadataTransferJobSummaries: MetadataTransferJobSummaries,
+          metadataTransferJobSummaries: __S(155),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4282,21 +3834,21 @@ function __c19(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          definition: S.optional(PropertyDefinitionResponse),
+          definition: S.optional(__S(87)),
           propertyName: S.String,
-          value: S.optional(DataValue),
+          value: S.optional(__S(5)),
           areAllPropertyValuesReturned: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PropertySummary" });
     case 7:
-      return S.Array(PropertySummary);
+      return S.Array(__S(158));
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ propertySummaries: PropertySummaries, nextToken: S.optional(S.String) }),
+        S.Struct({ propertySummaries: __S(159), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListPropertiesResponse" });
     case 1:
       return S.suspend(() =>
@@ -4327,10 +3879,10 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "SceneSummary" });
     case 3:
-      return S.Array(SceneSummary);
+      return S.Array(__S(162));
     case 4:
       return S.suspend(() =>
-        S.Struct({ sceneSummaries: S.optional(SceneSummaries), nextToken: S.optional(S.String) }),
+        S.Struct({ sceneSummaries: S.optional(__S(163)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListScenesResponse" });
     case 5:
       return S.suspend(() =>
@@ -4355,13 +3907,13 @@ function __c20(j: number): any {
           arn: S.optional(S.String),
           workspaceId: S.optional(S.String),
           syncSource: S.optional(S.String),
-          status: S.optional(SyncJobStatus),
+          status: S.optional(__S(91)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncJobSummary" });
     case 7:
-      return S.Array(SyncJobSummary);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -4369,7 +3921,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          syncJobSummaries: S.optional(SyncJobSummaries),
+          syncJobSummaries: S.optional(__S(167)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSyncJobsResponse" });
@@ -4381,13 +3933,13 @@ function __c21(j: number): any {
         /*@__PURE__*/ S.Struct({ externalId: S.String }),
       ]);
     case 2:
-      return S.Array(SyncResourceFilter);
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
           workspaceId: S.String.pipe(T.HttpLabel("workspaceId")),
           syncSource: S.String.pipe(T.HttpLabel("syncSource")),
-          filters: S.optional(SyncResourceFilters),
+          filters: S.optional(__S(170)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -4410,16 +3962,16 @@ function __c21(j: number): any {
           resourceType: S.optional(S.String),
           externalId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          status: S.optional(SyncResourceStatus),
+          status: S.optional(__S(91)),
           updateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncResourceSummary" });
     case 5:
-      return S.Array(SyncResourceSummary);
+      return S.Array(__S(172));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          syncResources: S.optional(SyncResourceSummaries),
+          syncResources: S.optional(__S(173)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4441,7 +3993,7 @@ function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(TagMap), nextToken: S.optional(S.String) }),
+        S.Struct({ tags: S.optional(__S(30)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -4457,23 +4009,23 @@ function __c22(j: number): any {
           workspaceId: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          linkedServices: S.optional(LinkedServices),
+          linkedServices: S.optional(__S(25)),
           creationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updateDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "WorkspaceSummary" });
     case 3:
-      return S.Array(WorkspaceSummary);
+      return S.Array(__S(178));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workspaceSummaries: S.optional(WorkspaceSummaries),
+          workspaceSummaries: S.optional(__S(179)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkspacesResponse" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tags: TagMap }).pipe(
+        S.Struct({ resourceARN: S.String, tags: __S(30) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -4481,7 +4033,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceARN: S.String.pipe(T.HttpQuery("resourceARN")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(25).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 7:
@@ -4491,12 +4043,12 @@ function __c22(j: number): any {
           isSingleton: S.optional(S.Boolean),
           componentTypeId: S.String.pipe(T.HttpLabel("componentTypeId")),
           description: S.optional(S.String),
-          propertyDefinitions: S.optional(PropertyDefinitionsRequest),
-          extendsFrom: S.optional(ExtendsFrom),
-          functions: S.optional(FunctionsRequest),
-          propertyGroups: S.optional(PropertyGroupsRequest),
+          propertyDefinitions: S.optional(__S(24)),
+          extendsFrom: S.optional(__S(25)),
+          functions: S.optional(__S(29)),
+          propertyGroups: S.optional(__S(32)),
           componentTypeName: S.optional(S.String),
-          compositeComponentTypes: S.optional(CompositeComponentTypesRequest),
+          compositeComponentTypes: S.optional(__S(34)),
         }).pipe(
           T.all(
             T.Http({
@@ -4534,25 +4086,25 @@ function __c23(j: number): any {
           updateType: S.optional(S.String),
           description: S.optional(S.String),
           componentTypeId: S.optional(S.String),
-          propertyUpdates: S.optional(PropertyRequests),
-          propertyGroupUpdates: S.optional(ComponentPropertyGroupRequests),
+          propertyUpdates: S.optional(__S(38)),
+          propertyGroupUpdates: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "ComponentUpdateRequest" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ ComponentUpdateRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(185).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           updateType: S.optional(S.String),
           description: S.optional(S.String),
-          propertyUpdates: S.optional(PropertyRequests),
-          propertyGroupUpdates: S.optional(ComponentPropertyGroupRequests),
+          propertyUpdates: S.optional(__S(38)),
+          propertyGroupUpdates: S.optional(__S(40)),
         }),
       ).annotate({
         identifier: "CompositeComponentUpdateRequest",
       });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ CompositeComponentUpdateRequest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(187).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({ updateType: S.String, parentEntityId: S.optional(S.String) }),
@@ -4566,9 +4118,9 @@ function __c23(j: number): any {
           entityId: S.String.pipe(T.HttpLabel("entityId")),
           entityName: S.optional(S.String),
           description: S.optional(S.String),
-          componentUpdates: S.optional(ComponentUpdatesMapRequest),
-          compositeComponentUpdates: S.optional(CompositeComponentUpdatesMapRequest),
-          parentEntityUpdate: S.optional(ParentEntityUpdateRequest),
+          componentUpdates: S.optional(__S(186)),
+          compositeComponentUpdates: S.optional(__S(188)),
+          parentEntityUpdate: S.optional(__S(189)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/workspaces/{workspaceId}/entities/{entityId}" }),
@@ -4593,13 +4145,13 @@ function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ pricingMode: S.String, bundleNames: S.optional(PricingBundles) }).pipe(
+        S.Struct({ pricingMode: S.String, bundleNames: S.optional(__S(25)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/pricingplan" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdatePricingPlanRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ currentPricingPlan: PricingPlan, pendingPricingPlan: S.optional(PricingPlan) }),
+        S.Struct({ currentPricingPlan: __S(111), pendingPricingPlan: S.optional(__S(111)) }),
       ).annotate({
         identifier: "UpdatePricingPlanResponse",
       });
@@ -4610,8 +4162,8 @@ function __c24(j: number): any {
           sceneId: S.String.pipe(T.HttpLabel("sceneId")),
           contentLocation: S.optional(S.String),
           description: S.optional(S.String),
-          capabilities: S.optional(SceneCapabilities),
-          sceneMetadata: S.optional(SceneMetadataMap),
+          capabilities: S.optional(__S(25)),
+          sceneMetadata: S.optional(__S(0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/workspaces/{workspaceId}/scenes/{sceneId}" }),
@@ -4645,5 +4197,64 @@ function __c24(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateWorkspaceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

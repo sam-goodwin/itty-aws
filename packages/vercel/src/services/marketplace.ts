@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -70,23 +72,14 @@ export interface CreateEventRequestEventCase1 {
   resourceId: string;
 }
 export type CreateEventRequestEvent = CreateEventRequestEventCase0 | CreateEventRequestEventCase1;
-const CreateEventRequestEvent = S.Unknown as any as S.Schema<CreateEventRequestEvent>;
-
 export interface CreateEventRequest {
   integrationConfigurationId: string;
   event: CreateEventRequestEvent;
 }
-const CreateEventRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateEventRequest>;
-
 export interface CreateEventResponse {}
-const CreateEventResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateEventResponse>;
-
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItemCategory =
   | "experiment"
   | "flag";
-const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItemCategory =
-  S.String;
-
 export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem {
   id: string;
   slug: string;
@@ -100,97 +93,37 @@ export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResou
   createdAt?: number;
   updatedAt?: number;
 }
-const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    2,
-  ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem>;
-
 export type CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList =
   Array<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem>;
-const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    3,
-  ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList>;
-
 export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest {
   integrationConfigurationId: string;
   resourceId: string;
   items: CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList;
 }
-const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    4,
-  ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest>;
-
 export interface CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse {}
-const CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    5,
-  ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse>;
-
 export interface DeleteInstallationResourceExperimentationItemRequest {
   integrationConfigurationId: string;
   resourceId: string;
   itemId: string;
 }
-const DeleteInstallationResourceExperimentationItemRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteInstallationResourceExperimentationItemRequest>;
-
 export interface DeleteInstallationResourceExperimentationItemResponse {}
-const DeleteInstallationResourceExperimentationItemResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteInstallationResourceExperimentationItemResponse>;
-
 export interface DeleteIntegrationResourceRequest {
   integrationConfigurationId: string;
   resourceId: string;
 }
-const DeleteIntegrationResourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteIntegrationResourceRequest>;
-
 export interface DeleteIntegrationResourceResponse {}
-const DeleteIntegrationResourceResponse =
-  DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<DeleteIntegrationResourceResponse>;
-
 export interface FinalizeInstallationRequest {
   integrationConfigurationId: string;
 }
-const FinalizeInstallationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<FinalizeInstallationRequest>;
-
 export interface FinalizeInstallationResponse {}
-const FinalizeInstallationResponse =
-  CreateEventResponse as any as S.Schema<FinalizeInstallationResponse>;
-
 export interface GetAccountInfoRequest {
   integrationConfigurationId: string;
 }
-const GetAccountInfoRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetAccountInfoRequest>;
-
 /** The best contact for the integration, which can change as team members and their roles change. */
 export interface GetAccountInfoResponseContact {
   email: string;
   name?: string;
 }
-const GetAccountInfoResponseContact = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetAccountInfoResponseContact>;
-
 export interface GetAccountInfoResponse {
   /** The best contact for the integration, which can change as team members and their roles change. */
   contact: GetAccountInfoResponseContact | null;
@@ -199,20 +132,10 @@ export interface GetAccountInfoResponse {
   /** A URL linking to the installation in the Vercel Dashboard. */
   url: string;
 }
-const GetAccountInfoResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetAccountInfoResponse>;
-
 export interface GetInstallationResourceExperimentationGlobalConfigRequest {
   integrationConfigurationId: string;
   resourceId: string;
 }
-const GetInstallationResourceExperimentationGlobalConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigRequest>;
-
 export type GlobalConfigItemValueCase2Map = { [key: string]: GlobalConfigItemValue | undefined };
 export type GlobalConfigItemValueCase3List = Array<GlobalConfigItemValue>;
 export type GlobalConfigItemValue =
@@ -221,115 +144,54 @@ export type GlobalConfigItemValue =
   | GlobalConfigItemValueCase2Map
   | GlobalConfigItemValueCase3List
   | boolean;
-const GlobalConfigItemValue = S.Unknown as any as S.Schema<GlobalConfigItemValue>;
-
 export type GetInstallationResourceExperimentationGlobalConfigResponseItemsMap = {
   [key: string]: GlobalConfigItemValue | null | undefined;
 };
-const GetInstallationResourceExperimentationGlobalConfigResponseItemsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponseItemsMap>;
-
 export type GetInstallationResourceExperimentationGlobalConfigResponsePurpose =
   | "experimentation"
   | "flags";
-const GetInstallationResourceExperimentationGlobalConfigResponsePurpose = S.String;
-
 export interface GetInstallationResourceExperimentationGlobalConfigResponse {
   digest: string;
   items: GetInstallationResourceExperimentationGlobalConfigResponseItemsMap;
   purpose?: GetInstallationResourceExperimentationGlobalConfigResponsePurpose;
   updatedAt: number;
 }
-const GetInstallationResourceExperimentationGlobalConfigResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponse>;
-
 export interface GetIntegrationResourceRequest {
   /** The ID of the integration configuration (installation) the resource belongs to */
   integrationConfigurationId: string;
   /** The ID provided by the 3rd party provider for the given resource */
   resourceId: string;
 }
-const GetIntegrationResourceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetIntegrationResourceRequest>;
-
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue =
   | string
   | number
   | boolean;
-const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue =
-  S.Unknown as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue>;
-
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap = {
   [key: string]:
     | GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue
     | null
     | undefined;
 };
-const GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap>;
-
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList =
   Array<string>;
-const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    2,
-  ) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList>;
-
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList =
-  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList>;
-
 export interface GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen {
   environment?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList;
   role?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList;
 }
-const GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen>;
-
 export interface GetIntegrationResourceResponseCustomClaimsClaimRulesItem {
   claims: GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap;
   when?: GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen;
 }
-const GetIntegrationResourceResponseCustomClaimsClaimRulesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesItem>;
-
 export type GetIntegrationResourceResponseCustomClaimsClaimRulesList =
   Array<GetIntegrationResourceResponseCustomClaimsClaimRulesItem>;
-const GetIntegrationResourceResponseCustomClaimsClaimRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsClaimRulesList>;
-
 export type GetIntegrationResourceResponseCustomClaimsRolesList = Array<string>;
-const GetIntegrationResourceResponseCustomClaimsRolesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetIntegrationResourceResponseCustomClaimsRolesList>;
-
 /** The roles and claim rules Vercel resolves into the resource tokens it mints for this resource */
 export interface GetIntegrationResourceResponseCustomClaims {
   claimRules?: GetIntegrationResourceResponseCustomClaimsClaimRulesList;
   defaultRole?: string;
   roles?: GetIntegrationResourceResponseCustomClaimsRolesList;
 }
-const GetIntegrationResourceResponseCustomClaims = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetIntegrationResourceResponseCustomClaims>;
-
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataValueCase2List = Array<string>;
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
@@ -340,21 +202,11 @@ export type GetIntegrationResourceResponseMetadataValue =
   | GetIntegrationResourceResponseMetadataValueCase2List
   | GetIntegrationResourceResponseMetadataValueCase3List
   | boolean;
-const GetIntegrationResourceResponseMetadataValue =
-  S.Unknown as any as S.Schema<GetIntegrationResourceResponseMetadataValue>;
-
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourceResponseMetadataMap = {
   [key: string]: GetIntegrationResourceResponseMetadataValue | undefined;
 };
-const GetIntegrationResourceResponseMetadataMap = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetIntegrationResourceResponseMetadataMap>;
-
 export type GetIntegrationResourceResponseNotificationLevel = "error" | "info" | "warn";
-const GetIntegrationResourceResponseNotificationLevel = S.String;
-
 /** The notification, if set, displayed to the user when viewing the resource in Vercel */
 export interface GetIntegrationResourceResponseNotification {
   href?: string;
@@ -362,62 +214,28 @@ export interface GetIntegrationResourceResponseNotification {
   message?: string;
   title: string;
 }
-const GetIntegrationResourceResponseNotification = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetIntegrationResourceResponseNotification>;
-
 export type GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget =
   | "development"
   | "preview"
   | "production";
-const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget = S.String;
-
 export interface GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem {
   target: GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget;
   url: string;
 }
-const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    2,
-  ) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem>;
-
 export type GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList =
   Array<GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem>;
-const GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    3,
-  ) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList>;
-
 export interface GetIntegrationResourceResponseProtocolSettingsAuthentication {
   appUrls?: GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList;
 }
-const GetIntegrationResourceResponseProtocolSettingsAuthentication = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsAuthentication>;
-
 export interface GetIntegrationResourceResponseProtocolSettingsExperimentation {
   edgeConfigId?: string;
   globalConfigId?: string;
 }
-const GetIntegrationResourceResponseProtocolSettingsExperimentation = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetIntegrationResourceResponseProtocolSettingsExperimentation>;
-
 /** Any settings provided for the resource to support its product's protocols */
 export interface GetIntegrationResourceResponseProtocolSettings {
   authentication?: GetIntegrationResourceResponseProtocolSettingsAuthentication;
   experimentation?: GetIntegrationResourceResponseProtocolSettingsExperimentation;
 }
-const GetIntegrationResourceResponseProtocolSettings = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetIntegrationResourceResponseProtocolSettings>;
-
 /** The current status of the resource */
 export type GetIntegrationResourceResponseStatus =
   | "error"
@@ -427,8 +245,6 @@ export type GetIntegrationResourceResponseStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-const GetIntegrationResourceResponseStatus = S.String;
-
 export interface GetIntegrationResourceResponse {
   /** The ID of the billing plan the resource is subscribed to, if applicable */
   billingPlanId?: string;
@@ -451,19 +267,9 @@ export interface GetIntegrationResourceResponse {
   /** The current status of the resource */
   status?: GetIntegrationResourceResponseStatus;
 }
-const GetIntegrationResourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetIntegrationResourceResponse>;
-
 export interface GetIntegrationResourcesRequest {
   integrationConfigurationId: string;
 }
-const GetIntegrationResourcesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetIntegrationResourcesRequest>;
-
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List = Array<string>;
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
@@ -474,24 +280,14 @@ export type GetIntegrationResourcesResponseResourcesItemMetadataValue =
   | GetIntegrationResourcesResponseResourcesItemMetadataValueCase2List
   | GetIntegrationResourcesResponseResourcesItemMetadataValueCase3List
   | boolean;
-const GetIntegrationResourcesResponseResourcesItemMetadataValue =
-  S.Unknown as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataValue>;
-
 /** The configured metadata for the resource as defined by its product's Metadata Schema */
 export type GetIntegrationResourcesResponseResourcesItemMetadataMap = {
   [key: string]: GetIntegrationResourcesResponseResourcesItemMetadataValue | undefined;
 };
-const GetIntegrationResourcesResponseResourcesItemMetadataMap = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemMetadataMap>;
-
 export type GetIntegrationResourcesResponseResourcesItemNotificationLevel =
   | "error"
   | "info"
   | "warn";
-const GetIntegrationResourcesResponseResourcesItemNotificationLevel = S.String;
-
 /** The notification, if set, displayed to the user when viewing the resource in Vercel */
 export interface GetIntegrationResourcesResponseResourcesItemNotification {
   href?: string;
@@ -499,45 +295,19 @@ export interface GetIntegrationResourcesResponseResourcesItemNotification {
   message?: string;
   title: string;
 }
-const GetIntegrationResourcesResponseResourcesItemNotification = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemNotification>;
-
 export type GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget =
   | "development"
   | "preview"
   | "production";
-const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget =
-  S.String;
-
 export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem {
   target: GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget;
   url: string;
 }
-const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    3,
-  ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem>;
-
 export type GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList =
   Array<GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem>;
-const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    4,
-  ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList>;
-
 export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication {
   appUrls?: GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList;
 }
-const GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    5,
-  ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication>;
-
 export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation {
   edgeConfigId?: string;
   edgeConfigSyncingEnabled?: boolean;
@@ -545,22 +315,11 @@ export interface GetIntegrationResourcesResponseResourcesItemProtocolSettingsExp
   globalConfigId?: string;
   globalConfigSyncingEnabled?: boolean;
 }
-const GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    6,
-  ) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation>;
-
 /** Any settings provided for the resource to support its product's protocols */
 export interface GetIntegrationResourcesResponseResourcesItemProtocolSettings {
   authentication?: GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication;
   experimentation?: GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation;
 }
-const GetIntegrationResourcesResponseResourcesItemProtocolSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetIntegrationResourcesResponseResourcesItemProtocolSettings>;
-
 /** The current status of the resource */
 export type GetIntegrationResourcesResponseResourcesItemStatus =
   | "error"
@@ -570,8 +329,6 @@ export type GetIntegrationResourcesResponseResourcesItemStatus =
   | "resumed"
   | "suspended"
   | "uninstalled";
-const GetIntegrationResourcesResponseResourcesItemStatus = S.String;
-
 export interface GetIntegrationResourcesResponseResourcesItem {
   /** The ID of the billing plan the resource is subscribed to, if applicable */
   billingPlanId?: string;
@@ -592,32 +349,15 @@ export interface GetIntegrationResourcesResponseResourcesItem {
   /** The current status of the resource */
   status?: GetIntegrationResourcesResponseResourcesItemStatus;
 }
-const GetIntegrationResourcesResponseResourcesItem = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetIntegrationResourcesResponseResourcesItem>;
-
 export type GetIntegrationResourcesResponseResourcesList =
   Array<GetIntegrationResourcesResponseResourcesItem>;
-const GetIntegrationResourcesResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetIntegrationResourcesResponseResourcesList>;
-
 export interface GetIntegrationResourcesResponse {
   resources: GetIntegrationResourcesResponseResourcesList;
 }
-const GetIntegrationResourcesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetIntegrationResourcesResponse>;
-
 export interface GetInvoiceRequest {
   integrationConfigurationId: string;
   invoiceId: string;
 }
-const GetInvoiceRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetInvoiceRequest>;
-
 /** Invoice discounts. */
 export interface GetInvoiceResponseDiscountsItem {
   /** Discount amount. A dollar-based decimal string. */
@@ -635,18 +375,8 @@ export interface GetInvoiceResponseDiscountsItem {
   /** Start and end are only needed if different from the period's start/end. ISO 8601 timestamp. */
   start?: string;
 }
-const GetInvoiceResponseDiscountsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetInvoiceResponseDiscountsItem>;
-
 /** Invoice discounts. */
 export type GetInvoiceResponseDiscountsList = Array<GetInvoiceResponseDiscountsItem>;
-const GetInvoiceResponseDiscountsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetInvoiceResponseDiscountsList>;
-
 /** Invoice items. */
 export interface GetInvoiceResponseItemsItem {
   /** Partner's billing plan ID. */
@@ -670,28 +400,13 @@ export interface GetInvoiceResponseItemsItem {
   /** Units for item's quantity. */
   units: string;
 }
-const GetInvoiceResponseItemsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetInvoiceResponseItemsItem>;
-
 /** Invoice items. */
 export type GetInvoiceResponseItemsList = Array<GetInvoiceResponseItemsItem>;
-const GetInvoiceResponseItemsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetInvoiceResponseItemsList>;
-
 /** Subscription period for this billing cycle. ISO 8601 timestamps. */
 export interface GetInvoiceResponsePeriod {
   end: string;
   start: string;
 }
-const GetInvoiceResponsePeriod = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetInvoiceResponsePeriod>;
-
 /** Invoice state. */
 export type GetInvoiceResponseState =
   | "draft"
@@ -703,8 +418,6 @@ export type GetInvoiceResponseState =
   | "refund_requested"
   | "refunded"
   | "scheduled";
-const GetInvoiceResponseState = S.String;
-
 export interface GetInvoiceResponse {
   /** System creation date. ISO 8601 timestamp. */
   created: string;
@@ -741,18 +454,12 @@ export interface GetInvoiceResponse {
   /** System update date. ISO 8601 timestamp. */
   updated: string;
 }
-const GetInvoiceResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<GetInvoiceResponse>;
-
 export interface GetMemberRequest {
   integrationConfigurationId: string;
   memberId: string;
 }
-const GetMemberRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetMemberRequest>;
-
 /** "The `ADMIN` role, by default, is provided to users capable of installing integrations, while the `USER` role can be granted to Vercel users with the Vercel `Billing` or Vercel `Viewer` role, which are considered to be Read-Only roles." */
 export type GetMemberResponseRole = "ADMIN" | "USER";
-const GetMemberResponseRole = S.String;
-
 export interface GetMemberResponse {
   globalUserId?: string;
   id: string;
@@ -760,26 +467,12 @@ export interface GetMemberResponse {
   role: GetMemberResponseRole;
   userEmail?: string;
 }
-const GetMemberResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetMemberResponse>;
-
 export interface HeadInstallationResourceExperimentationGlobalConfigRequest {
   integrationConfigurationId: string;
   resourceId: string;
 }
-const HeadInstallationResourceExperimentationGlobalConfigRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigRequest>;
-
 export interface HeadInstallationResourceExperimentationGlobalConfigResponse {}
-const HeadInstallationResourceExperimentationGlobalConfigResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigResponse>;
-
 export type ImportResourceRequestOwnership = "owned" | "linked" | "sandbox";
-const ImportResourceRequestOwnership = S.String;
-
 export type ImportResourceRequestStatus =
   | "ready"
   | "pending"
@@ -788,40 +481,18 @@ export type ImportResourceRequestStatus =
   | "resumed"
   | "uninstalled"
   | "error";
-const ImportResourceRequestStatus = S.String;
-
 export type ImportResourceRequestMetadataMap = { [key: string]: unknown | undefined };
-const ImportResourceRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ImportResourceRequestMetadataMap>;
-
 export type ImportResourceRequestBillingPlanType = "prepayment" | "subscription";
-const ImportResourceRequestBillingPlanType = S.String;
-
 export interface ImportResourceRequestBillingPlanDetailsItem {
   label: string;
   value?: string;
 }
-const ImportResourceRequestBillingPlanDetailsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ImportResourceRequestBillingPlanDetailsItem>;
-
 export type ImportResourceRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-const ImportResourceRequestBillingPlanDetailsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ImportResourceRequestBillingPlanDetailsList>;
-
 export type ImportResourceRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
 export type ImportResourceRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-const ImportResourceRequestBillingPlanHighlightedDetailsList =
-  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<ImportResourceRequestBillingPlanHighlightedDetailsList>;
-
 export interface ImportResourceRequestBillingPlan {
   id: string;
   type: ImportResourceRequestBillingPlanType | (string & {});
@@ -833,29 +504,14 @@ export interface ImportResourceRequestBillingPlan {
   highlightedDetails?: ImportResourceRequestBillingPlanHighlightedDetailsList;
   effectiveDate?: string;
 }
-const ImportResourceRequestBillingPlan = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ImportResourceRequestBillingPlan>;
-
 export type ImportResourceRequestNotificationLevel = "info" | "warn" | "error";
-const ImportResourceRequestNotificationLevel = S.String;
-
 export interface ImportResourceRequestNotification {
   level: ImportResourceRequestNotificationLevel | (string & {});
   title: string;
   message?: string;
   href?: string;
 }
-const ImportResourceRequestNotification = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ImportResourceRequestNotification>;
-
 export type ImportResourceRequestExtrasMap = { [key: string]: unknown | undefined };
-const ImportResourceRequestExtrasMap =
-  ImportResourceRequestMetadataMap as any as S.Schema<ImportResourceRequestExtrasMap>;
-
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export interface ImportResourceRequestSecretsItemEnvironmentOverrides {
   /** Value used for development environment. */
@@ -865,11 +521,6 @@ export interface ImportResourceRequestSecretsItemEnvironmentOverrides {
   /** Value used for production environment. */
   production?: string;
 }
-const ImportResourceRequestSecretsItemEnvironmentOverrides = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ImportResourceRequestSecretsItemEnvironmentOverrides>;
-
 export interface ImportResourceRequestSecretsItem {
   name: string;
   value: string;
@@ -877,74 +528,32 @@ export interface ImportResourceRequestSecretsItem {
   /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
   environmentOverrides?: ImportResourceRequestSecretsItemEnvironmentOverrides;
 }
-const ImportResourceRequestSecretsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ImportResourceRequestSecretsItem>;
-
 export type ImportResourceRequestSecretsList = Array<ImportResourceRequestSecretsItem>;
-const ImportResourceRequestSecretsList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ImportResourceRequestSecretsList>;
-
 /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
 export type ImportResourceRequestCustomClaimsRolesList = Array<string>;
-const ImportResourceRequestCustomClaimsRolesList =
-  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<ImportResourceRequestCustomClaimsRolesList>;
-
 /** Applies only when the token is minted for one of these roles. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
-const ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList =
-  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList>;
-
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList = Array<string>;
-const ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList =
-  GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList>;
-
 export interface ImportResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these roles. */
   role?: ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList;
   /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
   environment?: ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList;
 }
-const ImportResourceRequestCustomClaimsClaimRulesItemWhen = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemWhen>;
-
 export type ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue = string | number | boolean;
-const ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue =
-  S.Unknown as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue>;
-
 /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
 export type ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = {
   [key: string]: ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue | null | undefined;
 };
-const ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap>;
-
 export interface ImportResourceRequestCustomClaimsClaimRulesItem {
   when?: ImportResourceRequestCustomClaimsClaimRulesItemWhen;
   /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
   claims: ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap;
 }
-const ImportResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesItem>;
-
 /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
 export type ImportResourceRequestCustomClaimsClaimRulesList =
   Array<ImportResourceRequestCustomClaimsClaimRulesItem>;
-const ImportResourceRequestCustomClaimsClaimRulesList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ImportResourceRequestCustomClaimsClaimRulesList>;
-
 /** Custom claims embedded in the resource tokens Vercel mints for this resource. */
 export interface ImportResourceRequestCustomClaims {
   /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
@@ -954,11 +563,6 @@ export interface ImportResourceRequestCustomClaims {
   /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
   claimRules?: ImportResourceRequestCustomClaimsClaimRulesList;
 }
-const ImportResourceRequestCustomClaims = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ImportResourceRequestCustomClaims>;
-
 export interface ImportResourceRequest {
   integrationConfigurationId: string;
   resourceId: string;
@@ -974,115 +578,54 @@ export interface ImportResourceRequest {
   /** Custom claims embedded in the resource tokens Vercel mints for this resource. */
   customClaims?: ImportResourceRequestCustomClaims;
 }
-const ImportResourceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ImportResourceRequest>;
-
 export interface ImportResourceResponse {
   name: string;
 }
-const ImportResourceResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ImportResourceResponse>;
-
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap =
   { [key: string]: unknown | undefined };
-const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    5,
-  ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap>;
-
 export interface ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest {
   integrationConfigurationId: string;
   resourceId: string;
   data: ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap;
 }
-const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    6,
-  ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest>;
-
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
   { [key: string]: GlobalConfigItemValue | null | undefined };
-const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap =
-  GetInstallationResourceExperimentationGlobalConfigResponseItemsMap as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap>;
-
 export type ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
   | "experimentation"
   | "flags";
-const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose =
-  S.String;
-
 export interface ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse {
   digest: string;
   items: ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap;
   purpose?: ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose;
   updatedAt: number;
 }
-const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    7,
-  ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse>;
-
 export interface RevokeInstallationCredentialRequest {
   integrationConfigurationId: string;
   token: string;
   client_secret: string | Redacted.Redacted<string>;
   client_id?: string;
 }
-const RevokeInstallationCredentialRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<RevokeInstallationCredentialRequest>;
-
 export interface RevokeInstallationCredentialResponse {
   already_revoked: boolean;
   revoked: boolean;
 }
-const RevokeInstallationCredentialResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<RevokeInstallationCredentialResponse>;
-
 export interface RotateInstallationCredentialRequest {
   integrationConfigurationId: string;
   client_secret: string | Redacted.Redacted<string>;
   client_id?: string;
 }
-const RotateInstallationCredentialRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<RotateInstallationCredentialRequest>;
-
 export type RotateInstallationCredentialResponseTokenType = "oauth2-token";
-const RotateInstallationCredentialResponseTokenType = S.String;
-
 export interface RotateInstallationCredentialResponse {
   access_token: string | Redacted.Redacted<string>;
   expires_in: number;
   scope: string;
   token_type: RotateInstallationCredentialResponseTokenType;
 }
-const RotateInstallationCredentialResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<RotateInstallationCredentialResponse>;
-
 /** Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time. */
 export interface SubmitBillingDataRequestPeriod {
   start: string;
   end: string;
 }
-const SubmitBillingDataRequestPeriod = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<SubmitBillingDataRequestPeriod>;
-
 export interface SubmitBillingDataRequestBillingCase0Item {
   /** Partner's billing plan ID. */
   billingPlanId: string;
@@ -1137,13 +680,8 @@ export interface SubmitBillingDataRequestBillingCase1 {
 export type SubmitBillingDataRequestBilling =
   | SubmitBillingDataRequestBillingCase0List
   | SubmitBillingDataRequestBillingCase1;
-const SubmitBillingDataRequestBilling =
-  S.Unknown as any as S.Schema<SubmitBillingDataRequestBilling>;
-
 /** Type of the metric. - total: measured total value, such as Database size - interval: usage during the period, such as i/o or number of queries. - rate: rate of usage, such as queries per second. */
 export type SubmitBillingDataRequestUsageItemType = "total" | "interval" | "rate";
-const SubmitBillingDataRequestUsageItemType = S.String;
-
 export interface SubmitBillingDataRequestUsageItem {
   /** Partner's resource ID. */
   resourceId?: string;
@@ -1160,17 +698,7 @@ export interface SubmitBillingDataRequestUsageItem {
   /** The limit value of the metric for a billing period, if a limit is defined by the plan. */
   planValue?: number;
 }
-const SubmitBillingDataRequestUsageItem = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<SubmitBillingDataRequestUsageItem>;
-
 export type SubmitBillingDataRequestUsageList = Array<SubmitBillingDataRequestUsageItem>;
-const SubmitBillingDataRequestUsageList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<SubmitBillingDataRequestUsageList>;
-
 export interface SubmitBillingDataRequest {
   integrationConfigurationId: string;
   /** Server time of your integration, used to determine the most recent data for race conditions & updates. Only the latest usage data for a given day, week, and month will be kept. */
@@ -1183,14 +711,7 @@ export interface SubmitBillingDataRequest {
   billing: SubmitBillingDataRequestBilling;
   usage: SubmitBillingDataRequestUsageList;
 }
-const SubmitBillingDataRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<SubmitBillingDataRequest>;
-
 export interface SubmitBillingDataResponse {}
-const SubmitBillingDataResponse = CreateEventResponse as any as S.Schema<SubmitBillingDataResponse>;
-
 /** Subscription period for this billing cycle. */
 export type SubmitInvoiceRequestPeriod = SubmitBillingDataRequestPeriod;
 export interface SubmitInvoiceRequestItemsItem {
@@ -1211,17 +732,7 @@ export interface SubmitInvoiceRequestItemsItem {
   /** Currency amount as a decimal string. */
   total: string;
 }
-const SubmitInvoiceRequestItemsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<SubmitInvoiceRequestItemsItem>;
-
 export type SubmitInvoiceRequestItemsList = Array<SubmitInvoiceRequestItemsItem>;
-const SubmitInvoiceRequestItemsList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<SubmitInvoiceRequestItemsList>;
-
 export interface SubmitInvoiceRequestDiscountsItem {
   /** Partner's resource ID. */
   resourceId?: string;
@@ -1236,30 +747,13 @@ export interface SubmitInvoiceRequestDiscountsItem {
   /** Currency amount as a decimal string. */
   amount: string;
 }
-const SubmitInvoiceRequestDiscountsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<SubmitInvoiceRequestDiscountsItem>;
-
 export type SubmitInvoiceRequestDiscountsList = Array<SubmitInvoiceRequestDiscountsItem>;
-const SubmitInvoiceRequestDiscountsList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<SubmitInvoiceRequestDiscountsList>;
-
 export type SubmitInvoiceRequestTestResult = "paid" | "notpaid" | "overdue";
-const SubmitInvoiceRequestTestResult = S.String;
-
 /** Test mode */
 export interface SubmitInvoiceRequestTest {
   validate?: boolean;
   result?: SubmitInvoiceRequestTestResult | (string & {});
 }
-const SubmitInvoiceRequestTest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<SubmitInvoiceRequestTest>;
-
 export interface SubmitInvoiceRequest {
   integrationConfigurationId: string;
   /** Partner-provided invoice identifier. If provided, it must be unique for this installation. */
@@ -1277,25 +771,12 @@ export interface SubmitInvoiceRequest {
   /** Test mode */
   test?: SubmitInvoiceRequestTest;
 }
-const SubmitInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<SubmitInvoiceRequest>;
-
 export type SubmitInvoiceResponseValidationErrorsList = Array<string>;
-const SubmitInvoiceResponseValidationErrorsList =
-  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<SubmitInvoiceResponseValidationErrorsList>;
-
 export interface SubmitInvoiceResponse {
   invoiceId?: string;
   test?: boolean;
   validationErrors?: SubmitInvoiceResponseValidationErrorsList;
 }
-const SubmitInvoiceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SubmitInvoiceResponse>;
-
 /** A credit balance for a particular token type */
 export interface SubmitPrepaymentBalancesRequestBalancesItem {
   /** Partner's resource ID, exclude if credits are tied to the installation and not an individual resource. */
@@ -1307,33 +788,15 @@ export interface SubmitPrepaymentBalancesRequestBalancesItem {
   /** The dollar value of the credit balance, in USD and provided in cents, which is used to trigger automatic purchase thresholds. */
   currencyValueInCents: number;
 }
-const SubmitPrepaymentBalancesRequestBalancesItem = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SubmitPrepaymentBalancesRequestBalancesItem>;
-
 export type SubmitPrepaymentBalancesRequestBalancesList =
   Array<SubmitPrepaymentBalancesRequestBalancesItem>;
-const SubmitPrepaymentBalancesRequestBalancesList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<SubmitPrepaymentBalancesRequestBalancesList>;
-
 export interface SubmitPrepaymentBalancesRequest {
   integrationConfigurationId: string;
   /** Server time of your integration, used to determine the most recent data for race conditions & updates. Only the latest usage data for a given day, week, and month will be kept. */
   timestamp: string;
   balances: SubmitPrepaymentBalancesRequestBalancesList;
 }
-const SubmitPrepaymentBalancesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<SubmitPrepaymentBalancesRequest>;
-
 export interface SubmitPrepaymentBalancesResponse {}
-const SubmitPrepaymentBalancesResponse =
-  DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<SubmitPrepaymentBalancesResponse>;
-
 export type UpdateInstallationRequestStatus =
   | "ready"
   | "pending"
@@ -1342,25 +805,15 @@ export type UpdateInstallationRequestStatus =
   | "resumed"
   | "uninstalled"
   | "error";
-const UpdateInstallationRequestStatus = S.String;
-
 export type UpdateInstallationRequestBillingPlanType = "prepayment" | "subscription";
-const UpdateInstallationRequestBillingPlanType = S.String;
-
 export type UpdateInstallationRequestBillingPlanDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
 export type UpdateInstallationRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-const UpdateInstallationRequestBillingPlanDetailsList =
-  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateInstallationRequestBillingPlanDetailsList>;
-
 export type UpdateInstallationRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
 export type UpdateInstallationRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-const UpdateInstallationRequestBillingPlanHighlightedDetailsList =
-  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateInstallationRequestBillingPlanHighlightedDetailsList>;
-
 export interface UpdateInstallationRequestBillingPlan {
   id: string;
   type: UpdateInstallationRequestBillingPlanType | (string & {});
@@ -1372,11 +825,6 @@ export interface UpdateInstallationRequestBillingPlan {
   highlightedDetails?: UpdateInstallationRequestBillingPlanHighlightedDetailsList;
   effectiveDate?: string;
 }
-const UpdateInstallationRequestBillingPlan = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<UpdateInstallationRequestBillingPlan>;
-
 export type UpdateInstallationRequestNotificationCase0Level = "info" | "warn" | "error";
 export interface UpdateInstallationRequestNotificationCase0 {
   level: UpdateInstallationRequestNotificationCase0Level | (string & {});
@@ -1388,9 +836,6 @@ export interface UpdateInstallationRequestNotificationCase0 {
 export type UpdateInstallationRequestNotification =
   | UpdateInstallationRequestNotificationCase0
   | string;
-const UpdateInstallationRequestNotification =
-  S.Unknown as any as S.Schema<UpdateInstallationRequestNotification>;
-
 export interface UpdateInstallationRequest {
   integrationConfigurationId: string;
   status?: UpdateInstallationRequestStatus | (string & {});
@@ -1399,21 +844,10 @@ export interface UpdateInstallationRequest {
   /** A notification to display to your customer. Send `null` to clear the current notification. */
   notification?: UpdateInstallationRequestNotification;
 }
-const UpdateInstallationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UpdateInstallationRequest>;
-
 export interface UpdateInstallationResponse {}
-const UpdateInstallationResponse =
-  CreateEventResponse as any as S.Schema<UpdateInstallationResponse>;
-
 export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory =
   | "experiment"
   | "flag";
-const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory =
-  S.String;
-
 export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest {
   integrationConfigurationId: string;
   resourceId: string;
@@ -1429,19 +863,8 @@ export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResou
   createdAt?: number;
   updatedAt?: number;
 }
-const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    4,
-  ) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest>;
-
 export interface UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse {}
-const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse =
-  CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse>;
-
 export type UpdateInvoiceRequestBodyAction = "refund";
-const UpdateInvoiceRequestBodyAction = S.String;
-
 export interface UpdateInvoiceRequestBody {
   action: UpdateInvoiceRequestBodyAction | (string & {});
   /** Refund reason. */
@@ -1449,27 +872,13 @@ export interface UpdateInvoiceRequestBody {
   /** The total amount to be refunded. Must be less than or equal to the total amount of the invoice. */
   total: string;
 }
-const UpdateInvoiceRequestBody = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UpdateInvoiceRequestBody>;
-
 export interface UpdateInvoiceRequest {
   integrationConfigurationId: string;
   invoiceId: string;
   body: UpdateInvoiceRequestBody;
 }
-const UpdateInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UpdateInvoiceRequest>;
-
 export interface UpdateInvoiceResponse {}
-const UpdateInvoiceResponse = CreateEventResponse as any as S.Schema<UpdateInvoiceResponse>;
-
 export type UpdateResourceRequestOwnership = "owned" | "linked" | "sandbox";
-const UpdateResourceRequestOwnership = S.String;
-
 export type UpdateResourceRequestStatus =
   | "ready"
   | "pending"
@@ -1478,29 +887,16 @@ export type UpdateResourceRequestStatus =
   | "resumed"
   | "uninstalled"
   | "error";
-const UpdateResourceRequestStatus = S.String;
-
 export type UpdateResourceRequestMetadataMap = { [key: string]: unknown | undefined };
-const UpdateResourceRequestMetadataMap =
-  ImportResourceRequestMetadataMap as any as S.Schema<UpdateResourceRequestMetadataMap>;
-
 export type UpdateResourceRequestBillingPlanType = "prepayment" | "subscription";
-const UpdateResourceRequestBillingPlanType = S.String;
-
 export type UpdateResourceRequestBillingPlanDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
 export type UpdateResourceRequestBillingPlanDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-const UpdateResourceRequestBillingPlanDetailsList =
-  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateResourceRequestBillingPlanDetailsList>;
-
 export type UpdateResourceRequestBillingPlanHighlightedDetailsItem =
   ImportResourceRequestBillingPlanDetailsItem;
 export type UpdateResourceRequestBillingPlanHighlightedDetailsList =
   Array<ImportResourceRequestBillingPlanDetailsItem>;
-const UpdateResourceRequestBillingPlanHighlightedDetailsList =
-  ImportResourceRequestBillingPlanDetailsList as any as S.Schema<UpdateResourceRequestBillingPlanHighlightedDetailsList>;
-
 export interface UpdateResourceRequestBillingPlan {
   id: string;
   type: UpdateResourceRequestBillingPlanType | (string & {});
@@ -1512,11 +908,6 @@ export interface UpdateResourceRequestBillingPlan {
   highlightedDetails?: UpdateResourceRequestBillingPlanHighlightedDetailsList;
   effectiveDate?: string;
 }
-const UpdateResourceRequestBillingPlan = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UpdateResourceRequestBillingPlan>;
-
 export type UpdateResourceRequestNotificationCase0Level = "info" | "warn" | "error";
 export interface UpdateResourceRequestNotificationCase0 {
   level: UpdateResourceRequestNotificationCase0Level | (string & {});
@@ -1525,13 +916,7 @@ export interface UpdateResourceRequestNotificationCase0 {
   href?: string;
 }
 export type UpdateResourceRequestNotification = UpdateResourceRequestNotificationCase0 | string;
-const UpdateResourceRequestNotification =
-  S.Unknown as any as S.Schema<UpdateResourceRequestNotification>;
-
 export type UpdateResourceRequestExtrasMap = { [key: string]: unknown | undefined };
-const UpdateResourceRequestExtrasMap =
-  ImportResourceRequestMetadataMap as any as S.Schema<UpdateResourceRequestExtrasMap>;
-
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceRequestSecretsCase0ItemEnvironmentOverrides =
   ImportResourceRequestSecretsItemEnvironmentOverrides;
@@ -1550,13 +935,8 @@ export interface UpdateResourceRequestSecretsCase1 {
 export type UpdateResourceRequestSecrets =
   | UpdateResourceRequestSecretsCase0List
   | UpdateResourceRequestSecretsCase1;
-const UpdateResourceRequestSecrets = S.Unknown as any as S.Schema<UpdateResourceRequestSecrets>;
-
 /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
 export type UpdateResourceRequestCustomClaimsRolesList = Array<string>;
-const UpdateResourceRequestCustomClaimsRolesList =
-  GetIntegrationResourceResponseCustomClaimsRolesList as any as S.Schema<UpdateResourceRequestCustomClaimsRolesList>;
-
 /** Applies only when the token is minted for one of these roles. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemWhenRoleList = Array<string>;
 /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
@@ -1567,40 +947,19 @@ export interface UpdateResourceRequestCustomClaimsClaimRulesItemWhen {
   /** Applies only when the token is minted for one of these environments: `production`, `preview`, `development`, or a custom environment slug. A custom environment also matches `preview`. */
   environment?: UpdateResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList;
 }
-const UpdateResourceRequestCustomClaimsClaimRulesItemWhen =
-  ImportResourceRequestCustomClaimsClaimRulesItemWhen as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemWhen>;
-
 export type UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue = string | number | boolean;
-const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue =
-  S.Unknown as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue>;
-
 /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
 export type UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = {
   [key: string]: UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue | null | undefined;
 };
-const UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap>;
-
 export interface UpdateResourceRequestCustomClaimsClaimRulesItem {
   when?: UpdateResourceRequestCustomClaimsClaimRulesItemWhen;
   /** Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed. */
   claims: UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap;
 }
-const UpdateResourceRequestCustomClaimsClaimRulesItem = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesItem>;
-
 /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
 export type UpdateResourceRequestCustomClaimsClaimRulesList =
   Array<UpdateResourceRequestCustomClaimsClaimRulesItem>;
-const UpdateResourceRequestCustomClaimsClaimRulesList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<UpdateResourceRequestCustomClaimsClaimRulesList>;
-
 /** Custom claims embedded in the resource tokens Vercel mints for this resource. */
 export interface UpdateResourceRequestCustomClaims {
   /** Roles a deployment may request when minting a token. The selected role becomes the `sub` claim. */
@@ -1610,11 +969,6 @@ export interface UpdateResourceRequestCustomClaims {
   /** Ordered rules resolved at mint time. Later rules win and shallow-merge over earlier ones. */
   claimRules?: UpdateResourceRequestCustomClaimsClaimRulesList;
 }
-const UpdateResourceRequestCustomClaims = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<UpdateResourceRequestCustomClaims>;
-
 export interface UpdateResourceRequest {
   integrationConfigurationId: string;
   resourceId: string;
@@ -1629,24 +983,14 @@ export interface UpdateResourceRequest {
   /** Custom claims embedded in the resource tokens Vercel mints for this resource. */
   customClaims?: UpdateResourceRequestCustomClaims;
 }
-const UpdateResourceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<UpdateResourceRequest>;
-
 export interface UpdateResourceResponse {
   name: string;
 }
-const UpdateResourceResponse = ImportResourceResponse as any as S.Schema<UpdateResourceResponse>;
-
 /** A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment. */
 export type UpdateResourceSecretsByIdRequestSecretsItemEnvironmentOverrides =
   ImportResourceRequestSecretsItemEnvironmentOverrides;
 export type UpdateResourceSecretsByIdRequestSecretsItem = ImportResourceRequestSecretsItem;
 export type UpdateResourceSecretsByIdRequestSecretsList = Array<ImportResourceRequestSecretsItem>;
-const UpdateResourceSecretsByIdRequestSecretsList =
-  ImportResourceRequestSecretsList as any as S.Schema<UpdateResourceSecretsByIdRequestSecretsList>;
-
 export interface UpdateResourceSecretsByIdRequest {
   integrationConfigurationId: string;
   resourceId: string;
@@ -1654,15 +998,7 @@ export interface UpdateResourceSecretsByIdRequest {
   /** If true, will only overwrite the provided secrets instead of replacing all secrets. */
   partial?: boolean;
 }
-const UpdateResourceSecretsByIdRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<UpdateResourceSecretsByIdRequest>;
-
 export interface UpdateResourceSecretsByIdResponse {}
-const UpdateResourceSecretsByIdResponse =
-  DeleteInstallationResourceExperimentationItemResponse as any as S.Schema<UpdateResourceSecretsByIdResponse>;
-
 export type CreateEventError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Create Event Partner notifies Vercel of any changes made to an Installation or a Resource. Vercel is expected to use `list-resources` and other read APIs to get the new state.<br/> <br/> `resource.updated` event should be dispatched when any state of a resource linked to Vercel is modified by the partner.<br/> `installation.updated` event should be dispatched when an installation's billing plan is changed via the provider instead of Vercel.<br/> <br/> Resource update use cases: <br/> <br/> - The user renames a database in the partner's application. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource in Vercel's datastores.<br/> - A resource has been suspended due to a lack of use. The partner should dispatch a `resource.updated` event to notify Vercel to update the resource's status in Vercel's datastores.<br/> */
 export const createEvent: API.OperationMethod<
@@ -1671,8 +1007,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventRequest,
-  output: CreateEventResponse,
+  input: __S(0) as any as S.Schema<CreateEventRequest>,
+  output: __S(1) as any as S.Schema<CreateEventResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1690,10 +1026,12 @@ export const createInstallationsByIntegrationConfigurationIdResourcesByResourceI
   CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest,
-  output:
-    CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse,
+  input: __S(
+    4,
+  ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequest>,
+  output: __S(
+    5,
+  ) as any as S.Schema<CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1049,8 @@ export const deleteInstallationResourceExperimentationItem: API.OperationMethod<
   DeleteInstallationResourceExperimentationItemError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInstallationResourceExperimentationItemRequest,
-  output: DeleteInstallationResourceExperimentationItemResponse,
+  input: __S(6) as any as S.Schema<DeleteInstallationResourceExperimentationItemRequest>,
+  output: __S(7) as any as S.Schema<DeleteInstallationResourceExperimentationItemResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1064,8 @@ export const deleteIntegrationResource: API.OperationMethod<
   DeleteIntegrationResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationResourceRequest,
-  output: DeleteIntegrationResourceResponse,
+  input: __S(8) as any as S.Schema<DeleteIntegrationResourceRequest>,
+  output: __S(7) as any as S.Schema<DeleteIntegrationResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1079,8 @@ export const finalizeInstallation: API.OperationMethod<
   FinalizeInstallationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinalizeInstallationRequest,
-  output: FinalizeInstallationResponse,
+  input: __S(9) as any as S.Schema<FinalizeInstallationRequest>,
+  output: __S(1) as any as S.Schema<FinalizeInstallationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1094,8 @@ export const getAccountInfo: API.OperationMethod<
   GetAccountInfoError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountInfoRequest,
-  output: GetAccountInfoResponse,
+  input: __S(10) as any as S.Schema<GetAccountInfoRequest>,
+  output: __S(12) as any as S.Schema<GetAccountInfoResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1775,8 +1113,8 @@ export const getInstallationResourceExperimentationGlobalConfig: API.OperationMe
   GetInstallationResourceExperimentationGlobalConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstallationResourceExperimentationGlobalConfigRequest,
-  output: GetInstallationResourceExperimentationGlobalConfigResponse,
+  input: __S(13) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigRequest>,
+  output: __S(15) as any as S.Schema<GetInstallationResourceExperimentationGlobalConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1790,8 +1128,8 @@ export const getIntegrationResource: API.OperationMethod<
   GetIntegrationResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationResourceRequest,
-  output: GetIntegrationResourceResponse,
+  input: __S(16) as any as S.Schema<GetIntegrationResourceRequest>,
+  output: __S(31) as any as S.Schema<GetIntegrationResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1805,8 +1143,8 @@ export const getIntegrationResources: API.OperationMethod<
   GetIntegrationResourcesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationResourcesRequest,
-  output: GetIntegrationResourcesResponse,
+  input: __S(32) as any as S.Schema<GetIntegrationResourcesRequest>,
+  output: __S(42) as any as S.Schema<GetIntegrationResourcesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1820,8 +1158,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInvoiceRequest,
-  output: GetInvoiceResponse,
+  input: __S(43) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(49) as any as S.Schema<GetInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1835,8 +1173,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMemberRequest,
-  output: GetMemberResponse,
+  input: __S(50) as any as S.Schema<GetMemberRequest>,
+  output: __S(51) as any as S.Schema<GetMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1854,8 +1192,8 @@ export const headInstallationResourceExperimentationGlobalConfig: API.OperationM
   HeadInstallationResourceExperimentationGlobalConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HeadInstallationResourceExperimentationGlobalConfigRequest,
-  output: HeadInstallationResourceExperimentationGlobalConfigResponse,
+  input: __S(52) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigRequest>,
+  output: __S(53) as any as S.Schema<HeadInstallationResourceExperimentationGlobalConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1875,8 +1213,8 @@ export const importResource: API.OperationMethod<
   ImportResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportResourceRequest,
-  output: ImportResourceResponse,
+  input: __S(67) as any as S.Schema<ImportResourceRequest>,
+  output: __S(68) as any as S.Schema<ImportResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1895,10 +1233,12 @@ export const replaceInstallationsByIntegrationConfigurationIdResourcesByResource
   ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest,
-  output:
-    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse,
+  input: __S(
+    70,
+  ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest>,
+  output: __S(
+    71,
+  ) as any as S.Schema<ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1917,8 +1257,8 @@ export const revokeInstallationCredential: API.OperationMethod<
   RevokeInstallationCredentialError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeInstallationCredentialRequest,
-  output: RevokeInstallationCredentialResponse,
+  input: __S(72) as any as S.Schema<RevokeInstallationCredentialRequest>,
+  output: __S(73) as any as S.Schema<RevokeInstallationCredentialResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1937,8 +1277,8 @@ export const rotateInstallationCredential: API.OperationMethod<
   RotateInstallationCredentialError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateInstallationCredentialRequest,
-  output: RotateInstallationCredentialResponse,
+  input: __S(74) as any as S.Schema<RotateInstallationCredentialRequest>,
+  output: __S(75) as any as S.Schema<RotateInstallationCredentialResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1952,8 +1292,8 @@ export const submitBillingData: API.OperationMethod<
   SubmitBillingDataError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitBillingDataRequest,
-  output: SubmitBillingDataResponse,
+  input: __S(79) as any as S.Schema<SubmitBillingDataRequest>,
+  output: __S(1) as any as S.Schema<SubmitBillingDataResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1967,8 +1307,8 @@ export const submitInvoice: API.OperationMethod<
   SubmitInvoiceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitInvoiceRequest,
-  output: SubmitInvoiceResponse,
+  input: __S(85) as any as S.Schema<SubmitInvoiceRequest>,
+  output: __S(86) as any as S.Schema<SubmitInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1982,8 +1322,8 @@ export const submitPrepaymentBalances: API.OperationMethod<
   SubmitPrepaymentBalancesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitPrepaymentBalancesRequest,
-  output: SubmitPrepaymentBalancesResponse,
+  input: __S(89) as any as S.Schema<SubmitPrepaymentBalancesRequest>,
+  output: __S(7) as any as S.Schema<SubmitPrepaymentBalancesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1997,8 +1337,8 @@ export const updateInstallation: API.OperationMethod<
   UpdateInstallationError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstallationRequest,
-  output: UpdateInstallationResponse,
+  input: __S(91) as any as S.Schema<UpdateInstallationRequest>,
+  output: __S(1) as any as S.Schema<UpdateInstallationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2016,10 +1356,12 @@ export const updateInstallationsByIntegrationConfigurationIdResourcesByResourceI
   UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest,
-  output:
-    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse,
+  input: __S(
+    92,
+  ) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest>,
+  output: __S(
+    5,
+  ) as any as S.Schema<UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2033,8 +1375,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInvoiceRequest,
-  output: UpdateInvoiceResponse,
+  input: __S(94) as any as S.Schema<UpdateInvoiceRequest>,
+  output: __S(1) as any as S.Schema<UpdateInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2054,8 +1396,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceRequest,
-  output: UpdateResourceResponse,
+  input: __S(100) as any as S.Schema<UpdateResourceRequest>,
+  output: __S(68) as any as S.Schema<UpdateResourceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2075,8 +1417,8 @@ export const updateResourceSecretsById: API.OperationMethod<
   UpdateResourceSecretsByIdError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceSecretsByIdRequest,
-  output: UpdateResourceSecretsByIdResponse,
+  input: __S(101) as any as S.Schema<UpdateResourceSecretsByIdRequest>,
+  output: __S(7) as any as S.Schema<UpdateResourceSecretsByIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2089,7 +1431,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
-          event: CreateEventRequestEvent,
+          event: S.Unknown,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2108,9 +1450,7 @@ function __c0(j: number): any {
           id: S.String,
           slug: S.String,
           origin: S.String,
-          category: S.optional(
-            CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItemCategory,
-          ),
+          category: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
@@ -2122,16 +1462,13 @@ function __c0(j: number): any {
           "CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem",
       });
     case 3:
-      return S.Array(
-        CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsItem,
-      );
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          items:
-            CreateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsRequestItemsList,
+          items: __S(3),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2225,7 +1562,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          contact: S.NullOr(GetAccountInfoResponseContact),
+          contact: S.NullOr(__S(11)),
           name: S.optional(S.String),
           url: S.String,
         }),
@@ -2246,13 +1583,13 @@ function __c1(j: number): any {
         identifier: "GetInstallationResourceExperimentationGlobalConfigRequest",
       });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(GlobalConfigItemValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 7:
       return S.suspend(() =>
         S.Struct({
           digest: S.String,
-          items: GetInstallationResourceExperimentationGlobalConfigResponseItemsMap,
-          purpose: S.optional(GetInstallationResourceExperimentationGlobalConfigResponsePurpose),
+          items: __S(14),
+          purpose: S.optional(S.String),
           updatedAt: S.Number,
         }),
       ).annotate({
@@ -2278,19 +1615,14 @@ function __c2(j: number): any {
         identifier: "GetIntegrationResourceRequest",
       });
     case 1:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(
-            GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenEnvironmentList,
-          ),
-          role: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhenRoleList),
+          environment: S.optional(__S(18)),
+          role: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen",
@@ -2298,22 +1630,22 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          claims: GetIntegrationResourceResponseCustomClaimsClaimRulesItemClaimsMap,
-          when: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesItemWhen),
+          claims: __S(17),
+          when: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseCustomClaimsClaimRulesItem",
       });
     case 5:
-      return S.Array(GetIntegrationResourceResponseCustomClaimsClaimRulesItem);
+      return S.Array(__S(20));
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          claimRules: S.optional(GetIntegrationResourceResponseCustomClaimsClaimRulesList),
+          claimRules: S.optional(__S(21)),
           defaultRole: S.optional(S.String),
-          roles: S.optional(GetIntegrationResourceResponseCustomClaimsRolesList),
+          roles: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseCustomClaims",
@@ -2323,12 +1655,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, GetIntegrationResourceResponseMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
-          level: GetIntegrationResourceResponseNotificationLevel,
+          level: S.String,
           message: S.optional(S.String),
           title: S.String,
         }),
@@ -2338,20 +1670,18 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          target: GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItemTarget,
+          target: S.String,
           url: S.String,
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem",
       });
     case 3:
-      return S.Array(GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsItem);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          appUrls: S.optional(
-            GetIntegrationResourceResponseProtocolSettingsAuthenticationAppUrlsList,
-          ),
+          appUrls: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettingsAuthentication",
@@ -2368,10 +1698,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(GetIntegrationResourceResponseProtocolSettingsAuthentication),
-          experimentation: S.optional(
-            GetIntegrationResourceResponseProtocolSettingsExperimentation,
-          ),
+          authentication: S.optional(__S(28)),
+          experimentation: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponseProtocolSettings",
@@ -2380,15 +1708,15 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           billingPlanId: S.optional(S.String),
-          customClaims: S.optional(GetIntegrationResourceResponseCustomClaims),
+          customClaims: S.optional(__S(23)),
           id: S.String,
           internalId: S.String,
-          metadata: S.optional(GetIntegrationResourceResponseMetadataMap),
+          metadata: S.optional(__S(24)),
           name: S.String,
-          notification: S.optional(GetIntegrationResourceResponseNotification),
+          notification: S.optional(__S(25)),
           productId: S.String,
-          protocolSettings: S.optional(GetIntegrationResourceResponseProtocolSettings),
-          status: S.optional(GetIntegrationResourceResponseStatus),
+          protocolSettings: S.optional(__S(30)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetIntegrationResourceResponse",
@@ -2412,12 +1740,12 @@ function __c4(j: number): any {
         identifier: "GetIntegrationResourcesRequest",
       });
     case 1:
-      return S.Record(S.String, GetIntegrationResourcesResponseResourcesItemMetadataValue);
+      return S.Record(S.String, S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           href: S.optional(S.String),
-          level: GetIntegrationResourcesResponseResourcesItemNotificationLevel,
+          level: S.String,
           message: S.optional(S.String),
           title: S.String,
         }),
@@ -2427,8 +1755,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          target:
-            GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItemTarget,
+          target: S.String,
           url: S.String,
         }),
       ).annotate({
@@ -2436,15 +1763,11 @@ function __c4(j: number): any {
           "GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem",
       });
     case 4:
-      return S.Array(
-        GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsItem,
-      );
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          appUrls: S.optional(
-            GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthenticationAppUrlsList,
-          ),
+          appUrls: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication",
@@ -2464,12 +1787,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authentication: S.optional(
-            GetIntegrationResourcesResponseResourcesItemProtocolSettingsAuthentication,
-          ),
-          experimentation: S.optional(
-            GetIntegrationResourcesResponseResourcesItemProtocolSettingsExperimentation,
-          ),
+          authentication: S.optional(__S(37)),
+          experimentation: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponseResourcesItemProtocolSettings",
@@ -2483,25 +1802,23 @@ function __c5(j: number): any {
         S.Struct({
           billingPlanId: S.optional(S.String),
           internalId: S.String,
-          metadata: S.optional(GetIntegrationResourcesResponseResourcesItemMetadataMap),
+          metadata: S.optional(__S(33)),
           name: S.String,
-          notification: S.optional(GetIntegrationResourcesResponseResourcesItemNotification),
+          notification: S.optional(__S(34)),
           partnerId: S.String,
           productId: S.String,
-          protocolSettings: S.optional(
-            GetIntegrationResourcesResponseResourcesItemProtocolSettings,
-          ),
-          status: S.optional(GetIntegrationResourcesResponseResourcesItemStatus),
+          protocolSettings: S.optional(__S(39)),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponseResourcesItem",
       });
     case 1:
-      return S.Array(GetIntegrationResourcesResponseResourcesItem);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: GetIntegrationResourcesResponseResourcesList,
+          resources: __S(41),
         }),
       ).annotate({
         identifier: "GetIntegrationResourcesResponse",
@@ -2534,7 +1851,7 @@ function __c5(j: number): any {
         identifier: "GetInvoiceResponseDiscountsItem",
       });
     case 5:
-      return S.Array(GetInvoiceResponseDiscountsItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2553,7 +1870,7 @@ function __c5(j: number): any {
         identifier: "GetInvoiceResponseItemsItem",
       });
     case 7:
-      return S.Array(GetInvoiceResponseItemsItem);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -2569,19 +1886,19 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created: S.String,
-          discounts: S.optional(GetInvoiceResponseDiscountsList),
+          discounts: S.optional(__S(45)),
           externalId: S.optional(S.String),
           invoiceDate: S.String,
           invoiceId: S.String,
           invoiceNumber: S.optional(S.String),
-          items: GetInvoiceResponseItemsList,
+          items: __S(47),
           memo: S.optional(S.String),
           paidAt: S.optional(S.String),
-          period: GetInvoiceResponsePeriod,
+          period: __S(48),
           refundedAt: S.optional(S.String),
           refundReason: S.optional(S.String),
           refundTotal: S.optional(S.String),
-          state: GetInvoiceResponseState,
+          state: S.String,
           test: S.optional(S.Boolean),
           total: S.String,
           updated: S.String,
@@ -2605,7 +1922,7 @@ function __c6(j: number): any {
         S.Struct({
           globalUserId: S.optional(S.String),
           id: S.String,
-          role: GetMemberResponseRole,
+          role: S.String,
           userEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetMemberResponse" });
@@ -2644,18 +1961,18 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ImportResourceRequestBillingPlanDetailsItem);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ImportResourceRequestBillingPlanType,
+          type: S.String,
           name: S.String,
           description: S.optional(S.String),
           paymentMethodRequired: S.optional(S.Boolean),
           cost: S.optional(S.String),
-          details: S.optional(ImportResourceRequestBillingPlanDetailsList),
-          highlightedDetails: S.optional(ImportResourceRequestBillingPlanHighlightedDetailsList),
+          details: S.optional(__S(56)),
+          highlightedDetails: S.optional(__S(56)),
           effectiveDate: S.optional(S.String),
         }),
       ).annotate({
@@ -2664,7 +1981,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          level: ImportResourceRequestNotificationLevel,
+          level: S.String,
           title: S.String,
           message: S.optional(S.String),
           href: S.optional(S.String),
@@ -2688,29 +2005,24 @@ function __c7(j: number): any {
           name: S.String,
           value: S.String,
           prefix: S.optional(S.String),
-          environmentOverrides: S.optional(ImportResourceRequestSecretsItemEnvironmentOverrides),
+          environmentOverrides: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "ImportResourceRequestSecretsItem",
       });
     case 5:
-      return S.Array(ImportResourceRequestSecretsItem);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(ImportResourceRequestCustomClaimsClaimRulesItemWhenRoleList),
-          environment: S.optional(
-            ImportResourceRequestCustomClaimsClaimRulesItemWhenEnvironmentList,
-          ),
+          role: S.optional(__S(22)),
+          environment: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "ImportResourceRequestCustomClaimsClaimRulesItemWhen",
       });
     case 7:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(ImportResourceRequestCustomClaimsClaimRulesItemClaimsValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
   }
 }
 function __c8(j: number): any {
@@ -2718,20 +2030,20 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          when: S.optional(ImportResourceRequestCustomClaimsClaimRulesItemWhen),
-          claims: ImportResourceRequestCustomClaimsClaimRulesItemClaimsMap,
+          when: S.optional(__S(62)),
+          claims: __S(63),
         }),
       ).annotate({
         identifier: "ImportResourceRequestCustomClaimsClaimRulesItem",
       });
     case 1:
-      return S.Array(ImportResourceRequestCustomClaimsClaimRulesItem);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(ImportResourceRequestCustomClaimsRolesList),
+          roles: S.optional(__S(22)),
           defaultRole: S.optional(S.String),
-          claimRules: S.optional(ImportResourceRequestCustomClaimsClaimRulesList),
+          claimRules: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "ImportResourceRequestCustomClaims",
@@ -2741,16 +2053,16 @@ function __c8(j: number): any {
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          ownership: S.optional(ImportResourceRequestOwnership),
+          ownership: S.optional(S.String),
           productId: S.String,
           name: S.String,
-          status: ImportResourceRequestStatus,
-          metadata: S.optional(ImportResourceRequestMetadataMap),
-          billingPlan: S.optional(ImportResourceRequestBillingPlan),
-          notification: S.optional(ImportResourceRequestNotification),
-          extras: S.optional(ImportResourceRequestExtrasMap),
-          secrets: S.optional(ImportResourceRequestSecretsList),
-          customClaims: S.optional(ImportResourceRequestCustomClaims),
+          status: S.String,
+          metadata: S.optional(__S(54)),
+          billingPlan: S.optional(__S(57)),
+          notification: S.optional(__S(58)),
+          extras: S.optional(__S(54)),
+          secrets: S.optional(__S(61)),
+          customClaims: S.optional(__S(66)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2772,7 +2084,7 @@ function __c8(j: number): any {
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          data: ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestDataMap,
+          data: __S(69),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2788,11 +2100,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           digest: S.String,
-          items:
-            ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseItemsMap,
-          purpose: S.optional(
-            ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponsePurpose,
-          ),
+          items: __S(14),
+          purpose: S.optional(S.String),
           updatedAt: S.Number,
         }),
       ).annotate({
@@ -2851,7 +2160,7 @@ function __c9(j: number): any {
           access_token: S.String.pipe(T.SensitiveValue({})),
           expires_in: S.Number,
           scope: S.String,
-          token_type: RotateInstallationCredentialResponseTokenType,
+          token_type: S.String,
         }),
       ).annotate({
         identifier: "RotateInstallationCredentialResponse",
@@ -2870,7 +2179,7 @@ function __c9(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           name: S.String,
-          type: SubmitBillingDataRequestUsageItemType,
+          type: S.String,
           units: S.String,
           dayValue: S.Number,
           periodValue: S.Number,
@@ -2880,16 +2189,16 @@ function __c9(j: number): any {
         identifier: "SubmitBillingDataRequestUsageItem",
       });
     case 6:
-      return S.Array(SubmitBillingDataRequestUsageItem);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           timestamp: S.String,
           eod: S.String,
-          period: SubmitBillingDataRequestPeriod,
-          billing: SubmitBillingDataRequestBilling,
-          usage: SubmitBillingDataRequestUsageList,
+          period: __S(76),
+          billing: S.Unknown,
+          usage: __S(78),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2920,7 +2229,7 @@ function __c10(j: number): any {
         identifier: "SubmitInvoiceRequestItemsItem",
       });
     case 1:
-      return S.Array(SubmitInvoiceRequestItemsItem);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2936,12 +2245,12 @@ function __c10(j: number): any {
         identifier: "SubmitInvoiceRequestDiscountsItem",
       });
     case 3:
-      return S.Array(SubmitInvoiceRequestDiscountsItem);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
           validate: S.optional(S.Boolean),
-          result: S.optional(SubmitInvoiceRequestTestResult),
+          result: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubmitInvoiceRequestTest" });
     case 5:
@@ -2951,11 +2260,11 @@ function __c10(j: number): any {
           externalId: S.optional(S.String),
           invoiceDate: S.String,
           memo: S.optional(S.String),
-          period: SubmitBillingDataRequestPeriod,
-          items: SubmitInvoiceRequestItemsList,
-          discounts: S.optional(SubmitInvoiceRequestDiscountsList),
+          period: __S(76),
+          items: __S(81),
+          discounts: S.optional(__S(83)),
           final: S.optional(S.Boolean),
-          test: S.optional(SubmitInvoiceRequestTest),
+          test: S.optional(__S(84)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2969,7 +2278,7 @@ function __c10(j: number): any {
         S.Struct({
           invoiceId: S.optional(S.String),
           test: S.optional(S.Boolean),
-          validationErrors: S.optional(SubmitInvoiceResponseValidationErrorsList),
+          validationErrors: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "SubmitInvoiceResponse" });
     case 7:
@@ -2988,13 +2297,13 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SubmitPrepaymentBalancesRequestBalancesItem);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           timestamp: S.String,
-          balances: SubmitPrepaymentBalancesRequestBalancesList,
+          balances: __S(88),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3009,15 +2318,13 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: UpdateInstallationRequestBillingPlanType,
+          type: S.String,
           name: S.String,
           description: S.optional(S.String),
           paymentMethodRequired: S.optional(S.Boolean),
           cost: S.optional(S.String),
-          details: S.optional(UpdateInstallationRequestBillingPlanDetailsList),
-          highlightedDetails: S.optional(
-            UpdateInstallationRequestBillingPlanHighlightedDetailsList,
-          ),
+          details: S.optional(__S(56)),
+          highlightedDetails: S.optional(__S(56)),
           effectiveDate: S.optional(S.String),
         }),
       ).annotate({
@@ -3027,10 +2334,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
-          status: S.optional(UpdateInstallationRequestStatus),
+          status: S.optional(S.String),
           externalId: S.optional(S.String),
-          billingPlan: S.optional(UpdateInstallationRequestBillingPlan),
-          notification: S.optional(UpdateInstallationRequestNotification),
+          billingPlan: S.optional(__S(90)),
+          notification: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3050,9 +2357,7 @@ function __c11(j: number): any {
           slug: S.String,
           origin: S.String,
           name: S.optional(S.String),
-          category: S.optional(
-            UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestCategory,
-          ),
+          category: S.optional(S.String),
           description: S.optional(S.String),
           isArchived: S.optional(S.Boolean),
           createdAt: S.optional(S.Number),
@@ -3071,7 +2376,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: UpdateInvoiceRequestBodyAction,
+          action: S.String,
           reason: S.String,
           total: S.String,
         }),
@@ -3081,7 +2386,7 @@ function __c11(j: number): any {
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           invoiceId: S.String.pipe(T.Label()),
-          body: UpdateInvoiceRequestBody.pipe(T.HttpBody()),
+          body: __S(93).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3094,13 +2399,13 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: UpdateResourceRequestBillingPlanType,
+          type: S.String,
           name: S.String,
           description: S.optional(S.String),
           paymentMethodRequired: S.optional(S.Boolean),
           cost: S.optional(S.String),
-          details: S.optional(UpdateResourceRequestBillingPlanDetailsList),
-          highlightedDetails: S.optional(UpdateResourceRequestBillingPlanHighlightedDetailsList),
+          details: S.optional(__S(56)),
+          highlightedDetails: S.optional(__S(56)),
           effectiveDate: S.optional(S.String),
         }),
       ).annotate({
@@ -3111,27 +2416,24 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(UpdateResourceRequestCustomClaimsClaimRulesItemClaimsValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          when: S.optional(UpdateResourceRequestCustomClaimsClaimRulesItemWhen),
-          claims: UpdateResourceRequestCustomClaimsClaimRulesItemClaimsMap,
+          when: S.optional(__S(62)),
+          claims: __S(96),
         }),
       ).annotate({
         identifier: "UpdateResourceRequestCustomClaimsClaimRulesItem",
       });
     case 2:
-      return S.Array(UpdateResourceRequestCustomClaimsClaimRulesItem);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(UpdateResourceRequestCustomClaimsRolesList),
+          roles: S.optional(__S(22)),
           defaultRole: S.optional(S.String),
-          claimRules: S.optional(UpdateResourceRequestCustomClaimsClaimRulesList),
+          claimRules: S.optional(__S(98)),
         }),
       ).annotate({
         identifier: "UpdateResourceRequestCustomClaims",
@@ -3141,15 +2443,15 @@ function __c12(j: number): any {
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          ownership: S.optional(UpdateResourceRequestOwnership),
+          ownership: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(UpdateResourceRequestStatus),
-          metadata: S.optional(UpdateResourceRequestMetadataMap),
-          billingPlan: S.optional(UpdateResourceRequestBillingPlan),
-          notification: S.optional(UpdateResourceRequestNotification),
-          extras: S.optional(UpdateResourceRequestExtrasMap),
-          secrets: S.optional(UpdateResourceRequestSecrets),
-          customClaims: S.optional(UpdateResourceRequestCustomClaims),
+          status: S.optional(S.String),
+          metadata: S.optional(__S(54)),
+          billingPlan: S.optional(__S(95)),
+          notification: S.optional(S.Unknown),
+          extras: S.optional(__S(54)),
+          secrets: S.optional(S.Unknown),
+          customClaims: S.optional(__S(99)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3163,7 +2465,7 @@ function __c12(j: number): any {
         S.Struct({
           integrationConfigurationId: S.String.pipe(T.Label()),
           resourceId: S.String.pipe(T.Label()),
-          secrets: UpdateResourceSecretsByIdRequestSecretsList,
+          secrets: __S(61),
           partial: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -3175,5 +2477,40 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UpdateResourceSecretsByIdRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

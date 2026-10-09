@@ -7,56 +7,32 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotRequestTagsMap = { [key: string]: string | undefined };
-const CreateBotRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateBotRequestTagsMap>;
-
 /** The name of SKU. */
 export type SkuName = "F0" | "S1";
-const SkuName = S.String;
-
 /** The SKU of the cognitive services account. */
 export interface SkuInput {
   /** The sku name */
   name: SkuName | (string & {});
 }
-const SkuInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SkuInput>;
-
 /** Indicates the type of bot service */
 export type Kind = "sdk" | "designer" | "bot" | "function" | "azurebot";
-const Kind = S.String;
-
 /** Contains resource all settings defined as key/value pairs. */
 export type BotPropertiesInputAllSettingsMap = { [key: string]: string | undefined };
-const BotPropertiesInputAllSettingsMap =
-  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesInputAllSettingsMap>;
-
 /** Contains resource parameters defined as key/value pairs. */
 export type BotPropertiesInputParametersMap = { [key: string]: string | undefined };
-const BotPropertiesInputParametersMap =
-  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesInputParametersMap>;
-
 /** Microsoft App Type for the bot */
 export type BotPropertiesInputMsaAppType = "UserAssignedMSI" | "SingleTenant" | "MultiTenant";
-const BotPropertiesInputMsaAppType = S.String;
-
 /** Collection of LUIS App Ids */
 export type BotPropertiesInputLuisAppIdsList = Array<string>;
-const BotPropertiesInputLuisAppIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BotPropertiesInputLuisAppIdsList>;
-
 /** Whether the bot is in an isolated network */
 export type BotPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-const BotPropertiesInputPublicNetworkAccess = S.String;
-
 /** The parameters to provide for the Bot. */
 export interface BotPropertiesInput {
   /** The Name of the bot */
@@ -114,8 +90,6 @@ export interface BotPropertiesInput {
   /** Publishing credentials of the resource */
   publishingCredentials?: string;
 }
-const BotPropertiesInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BotPropertiesInput>;
-
 export interface CreateBotRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -136,17 +110,10 @@ export interface CreateBotRequest {
   /** The set of properties specific to bot resource */
   properties?: BotPropertiesInput;
 }
-const CreateBotRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateBotRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotResponseTagsMap = { [key: string]: string | undefined };
-const CreateBotResponseTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<CreateBotResponseTagsMap>;
-
 /** Gets the sku tier. This is based on the SKU name. */
 export type SkuTier = "Free" | "Standard";
-const SkuTier = S.String;
-
 /** The SKU of the cognitive services account. */
 export interface Sku {
   /** The sku name */
@@ -154,57 +121,29 @@ export interface Sku {
   /** Gets the sku tier. This is based on the SKU name. */
   tier?: SkuTier;
 }
-const Sku = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Sku>;
-
 /** Entity zones */
 export type CreateBotResponseZonesList = Array<string>;
-const CreateBotResponseZonesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<CreateBotResponseZonesList>;
-
 /** Contains resource all settings defined as key/value pairs. */
 export type BotPropertiesAllSettingsMap = { [key: string]: string | undefined };
-const BotPropertiesAllSettingsMap =
-  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesAllSettingsMap>;
-
 /** Contains resource parameters defined as key/value pairs. */
 export type BotPropertiesParametersMap = { [key: string]: string | undefined };
-const BotPropertiesParametersMap =
-  CreateBotRequestTagsMap as any as S.Schema<BotPropertiesParametersMap>;
-
 /** Microsoft App Type for the bot */
 export type BotPropertiesMsaAppType = "UserAssignedMSI" | "SingleTenant" | "MultiTenant";
-const BotPropertiesMsaAppType = S.String;
-
 /** Collection of channels for which the bot is configured */
 export type BotPropertiesConfiguredChannelsList = Array<string>;
-const BotPropertiesConfiguredChannelsList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotPropertiesConfiguredChannelsList>;
-
 /** Collection of channels for which the bot is enabled */
 export type BotPropertiesEnabledChannelsList = Array<string>;
-const BotPropertiesEnabledChannelsList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotPropertiesEnabledChannelsList>;
-
 /** Collection of LUIS App Ids */
 export type BotPropertiesLuisAppIdsList = Array<string>;
-const BotPropertiesLuisAppIdsList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<BotPropertiesLuisAppIdsList>;
-
 /** Whether the bot is in an isolated network */
 export type BotPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-const BotPropertiesPublicNetworkAccess = S.String;
-
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PrivateEndpoint>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -214,24 +153,14 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Group ids */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
   /** The resource of private end point. */
@@ -243,11 +172,6 @@ export interface PrivateEndpointConnectionProperties {
   /** Group ids */
   groupIds?: PrivateEndpointConnectionPropertiesGroupIdsList;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** The Private Endpoint Connection resource. */
 export interface BotPropertiesPrivateEndpointConnectionsItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -259,19 +183,9 @@ export interface BotPropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const BotPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BotPropertiesPrivateEndpointConnectionsItem>;
-
 /** List of Private Endpoint Connections configured for the bot */
 export type BotPropertiesPrivateEndpointConnectionsList =
   Array<BotPropertiesPrivateEndpointConnectionsItem>;
-const BotPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BotPropertiesPrivateEndpointConnectionsList>;
-
 /** The parameters to provide for the Bot. */
 export interface BotProperties {
   /** The Name of the bot */
@@ -345,8 +259,6 @@ export interface BotProperties {
   /** Publishing credentials of the resource */
   publishingCredentials?: string;
 }
-const BotProperties = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<BotProperties>;
-
 export interface CreateBotResponse {
   /** Specifies the resource ID. */
   id?: string;
@@ -369,13 +281,8 @@ export interface CreateBotResponse {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-const CreateBotResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateBotResponse>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotConnectionRequestTagsMap = { [key: string]: string | undefined };
-const CreateBotConnectionRequestTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<CreateBotConnectionRequestTagsMap>;
-
 /** Extra Parameter in a Connection Setting Properties to indicate service provider specific properties */
 export interface ConnectionSettingParameter {
   /** Key for the Connection Setting Parameter. */
@@ -383,18 +290,8 @@ export interface ConnectionSettingParameter {
   /** Value associated with the Connection Setting Parameter. */
   value?: string | null;
 }
-const ConnectionSettingParameter = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ConnectionSettingParameter>;
-
 /** Service Provider Parameters associated with the Connection Setting */
 export type ConnectionSettingPropertiesInputParametersList = Array<ConnectionSettingParameter>;
-const ConnectionSettingPropertiesInputParametersList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ConnectionSettingPropertiesInputParametersList>;
-
 /** Properties for a Connection Setting Item */
 export interface ConnectionSettingPropertiesInput {
   /** Id of the Connection Setting. */
@@ -416,11 +313,6 @@ export interface ConnectionSettingPropertiesInput {
   /** Provisioning state of the resource */
   provisioningState?: string;
 }
-const ConnectionSettingPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ConnectionSettingPropertiesInput>;
-
 export interface CreateBotConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -443,26 +335,12 @@ export interface CreateBotConnectionRequest {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingPropertiesInput;
 }
-const CreateBotConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateBotConnectionRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type CreateBotConnectionResponseTagsMap = { [key: string]: string | undefined };
-const CreateBotConnectionResponseTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<CreateBotConnectionResponseTagsMap>;
-
 /** Entity zones */
 export type CreateBotConnectionResponseZonesList = Array<string>;
-const CreateBotConnectionResponseZonesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<CreateBotConnectionResponseZonesList>;
-
 /** Service Provider Parameters associated with the Connection Setting */
 export type ConnectionSettingPropertiesParametersList = Array<ConnectionSettingParameter>;
-const ConnectionSettingPropertiesParametersList =
-  ConnectionSettingPropertiesInputParametersList as any as S.Schema<ConnectionSettingPropertiesParametersList>;
-
 /** Properties for a Connection Setting Item */
 export interface ConnectionSettingProperties {
   /** Id of the Connection Setting. */
@@ -486,11 +364,6 @@ export interface ConnectionSettingProperties {
   /** Provisioning state of the resource */
   provisioningState?: string;
 }
-const ConnectionSettingProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ConnectionSettingProperties>;
-
 export interface CreateBotConnectionResponse {
   /** Specifies the resource ID. */
   id?: string;
@@ -513,11 +386,6 @@ export interface CreateBotConnectionResponse {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-const CreateBotConnectionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateBotConnectionResponse>;
-
 export type CreateChannelRequestChannelName =
   | "AlexaChannel"
   | "FacebookChannel"
@@ -538,13 +406,8 @@ export type CreateChannelRequestChannelName =
   | "AcsChatChannel"
   | "SearchAssistant"
   | "M365Extensions";
-const CreateChannelRequestChannelName = S.String;
-
 /** Contains resource tags defined as key/value pairs. */
 export type CreateChannelRequestTagsMap = { [key: string]: string | undefined };
-const CreateChannelRequestTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<CreateChannelRequestTagsMap>;
-
 /** Channel definition */
 export interface ChannelInput {
   /** The channel name */
@@ -556,8 +419,6 @@ export interface ChannelInput {
   /** Channel-specific properties (polymorphic on `channelName`), e.g. `{ sites: [...] }` for DirectLineChannel/WebChatChannel. */
   properties?: unknown;
 }
-const ChannelInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ChannelInput>;
-
 export interface CreateChannelRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -580,18 +441,10 @@ export interface CreateChannelRequest {
   /** The set of properties specific to bot channel resource */
   properties?: ChannelInput;
 }
-const CreateChannelRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateChannelRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type CreateChannelResponseTagsMap = { [key: string]: string | undefined };
-const CreateChannelResponseTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<CreateChannelResponseTagsMap>;
-
 /** Entity zones */
 export type CreateChannelResponseZonesList = Array<string>;
-const CreateChannelResponseZonesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<CreateChannelResponseZonesList>;
-
 /** Channel definition */
 export interface Channel {
   /** The channel name */
@@ -605,8 +458,6 @@ export interface Channel {
   /** Channel-specific properties (polymorphic on `channelName`), e.g. `{ sites: [...] }` for DirectLineChannel/WebChatChannel. */
   properties?: unknown;
 }
-const Channel = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Channel>;
-
 export interface CreateChannelResponse {
   /** Specifies the resource ID. */
   id?: string;
@@ -629,20 +480,10 @@ export interface CreateChannelResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-const CreateChannelResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateChannelResponse>;
-
 /** The Private Endpoint resource. */
 export interface PrivateEndpointInput {}
-const PrivateEndpointInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PrivateEndpointInput>;
-
 /** Group ids */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
-
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private end point. */
@@ -652,11 +493,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Group ids */
   groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface CreatePrivateEndpointConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -669,11 +505,6 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
-
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -684,9 +515,6 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const CreatePrivateEndpointConnectionResponse =
-  BotPropertiesPrivateEndpointConnectionsItem as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
-
 export interface DeleteBotRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -695,11 +523,7 @@ export interface DeleteBotRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const DeleteBotRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteBotRequest>;
-
 export interface DeleteBotResponse {}
-const DeleteBotResponse = PrivateEndpointInput as any as S.Schema<DeleteBotResponse>;
-
 export interface DeleteBotConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -710,15 +534,7 @@ export interface DeleteBotConnectionRequest {
   /** The name of the Bot Service Connection Setting resource. */
   connectionName: string;
 }
-const DeleteBotConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteBotConnectionRequest>;
-
 export interface DeleteBotConnectionResponse {}
-const DeleteBotConnectionResponse =
-  PrivateEndpointInput as any as S.Schema<DeleteBotConnectionResponse>;
-
 export interface DeleteChannelRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -729,11 +545,7 @@ export interface DeleteChannelRequest {
   /** The name of the Bot resource. */
   channelName: string;
 }
-const DeleteChannelRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteChannelRequest>;
-
 export interface DeleteChannelResponse {}
-const DeleteChannelResponse = PrivateEndpointInput as any as S.Schema<DeleteChannelResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -744,17 +556,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface EmailCreateSignInUrlRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -763,21 +565,11 @@ export interface EmailCreateSignInUrlRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const EmailCreateSignInUrlRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<EmailCreateSignInUrlRequest>;
-
 /** The set of properties specific to sign in url */
 export interface CreateEmailSignInUrlResponseProperties {
   /** Sign in url. */
   url?: string;
 }
-const CreateEmailSignInUrlResponseProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateEmailSignInUrlResponseProperties>;
-
 /** The ARM create email sign in url operation response. */
 export interface CreateEmailSignInUrlResponse {
   /** Specifies the resource ID. */
@@ -787,11 +579,6 @@ export interface CreateEmailSignInUrlResponse {
   /** The set of properties specific to sign in url */
   properties?: CreateEmailSignInUrlResponseProperties;
 }
-const CreateEmailSignInUrlResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateEmailSignInUrlResponse>;
-
 export interface GetBotRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -800,8 +587,6 @@ export interface GetBotRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const GetBotRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetBotRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type GetBotResponseTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -828,19 +613,12 @@ export interface GetBotResponse {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-const GetBotResponse = CreateBotResponse as any as S.Schema<GetBotResponse>;
-
 export interface GetBotCheckNameAvailabilityRequest {
   /** the name of the bot for which availability needs to be checked. */
   name?: string;
   /** the type of the bot for which availability needs to be checked */
   type?: string;
 }
-const GetBotCheckNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetBotCheckNameAvailabilityRequest>;
-
 /** The response body returned for a request to Bot Service Management to check availability of a bot name. */
 export interface CheckNameAvailabilityResponseBody {
   /** indicates if the bot name is valid. */
@@ -850,11 +628,6 @@ export interface CheckNameAvailabilityResponseBody {
   /** response code from ABS */
   absCode?: string;
 }
-const CheckNameAvailabilityResponseBody = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CheckNameAvailabilityResponseBody>;
-
 export interface GetBotConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -865,21 +638,10 @@ export interface GetBotConnectionRequest {
   /** The name of the Bot Service Connection Setting resource. */
   connectionName: string;
 }
-const GetBotConnectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetBotConnectionRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type GetBotConnectionResponseTagsMap = { [key: string]: string | undefined };
-const GetBotConnectionResponseTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<GetBotConnectionResponseTagsMap>;
-
 /** Entity zones */
 export type GetBotConnectionResponseZonesList = Array<string>;
-const GetBotConnectionResponseZonesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<GetBotConnectionResponseZonesList>;
-
 export interface GetBotConnectionResponse {
   /** Specifies the resource ID. */
   id?: string;
@@ -902,11 +664,6 @@ export interface GetBotConnectionResponse {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-const GetBotConnectionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetBotConnectionResponse>;
-
 export interface GetChannelRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -917,8 +674,6 @@ export interface GetChannelRequest {
   /** The name of the Bot resource. */
   channelName: string;
 }
-const GetChannelRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetChannelRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type GetChannelResponseTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -945,17 +700,10 @@ export interface GetChannelResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-const GetChannelResponse = CreateChannelResponse as any as S.Schema<GetChannelResponse>;
-
 export interface GetHostSettingsRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
 }
-const GetHostSettingsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetHostSettingsRequest>;
-
 /** The response body returned for a request to Bot Service Management to check per subscription hostSettings */
 export interface HostSettingsResponse {
   /** For in-conversation bot user authentication */
@@ -975,19 +723,12 @@ export interface HostSettingsResponse {
   /** Same as toBotFromChannelOpenIdMetadataUrl, used by SDK < v4.12 */
   BotOpenIdMetadata?: string;
 }
-const HostSettingsResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<HostSettingsResponse>;
-
 export interface GetOperationResultRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The ID of the operation result to get. */
   operationResultId: string;
 }
-const GetOperationResultRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetOperationResultRequest>;
-
 /** The status of the operation being performed. */
 export type OperationResultsDescriptionStatus =
   | "Canceled"
@@ -995,8 +736,6 @@ export type OperationResultsDescriptionStatus =
   | "Failed"
   | "Requested"
   | "Running";
-const OperationResultsDescriptionStatus = S.String;
-
 /** The properties indicating the operation result of an operation on a service. */
 export interface OperationResultsDescription {
   /** The ID of the operation returned. */
@@ -1008,11 +747,6 @@ export interface OperationResultsDescription {
   /** The time that the operation was started. */
   startTime?: string;
 }
-const OperationResultsDescription = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<OperationResultsDescription>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1023,11 +757,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1038,9 +767,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  BotPropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetQnAMakerEndpointKeyRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1049,11 +775,6 @@ export interface GetQnAMakerEndpointKeyRequest {
   /** Subscription key which provides access to this API. */
   authkey?: string;
 }
-const GetQnAMakerEndpointKeyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetQnAMakerEndpointKeyRequest>;
-
 /** Schema for EndpointKeys generate/refresh operations. */
 export interface QnAMakerEndpointKeysResponse {
   /** Primary Access Key. */
@@ -1065,30 +786,16 @@ export interface QnAMakerEndpointKeysResponse {
   /** Latest version of runtime. */
   lastStableVersion?: string;
 }
-const QnAMakerEndpointKeysResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<QnAMakerEndpointKeysResponse>;
-
 export interface ListBotByResourceGroupRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
   resourceGroupName: string;
 }
-const ListBotByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListBotByResourceGroupRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type BotTagsMap = { [key: string]: string | undefined };
-const BotTagsMap = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<BotTagsMap>;
-
 /** Entity zones */
 export type BotZonesList = Array<string>;
-const BotZonesList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BotZonesList>;
-
 /** Bot resource definition */
 export interface Bot {
   /** Specifies the resource ID. */
@@ -1112,15 +819,8 @@ export interface Bot {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-const Bot = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Bot>;
-
 /** Gets the list of bot service results and their properties. */
 export type BotResponseListValueList = Array<Bot>;
-const BotResponseListValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<BotResponseListValueList>;
-
 /** The list of bot service operation response. */
 export interface BotResponseList {
   /** The link used to get the next page of bot service resources. */
@@ -1128,8 +828,6 @@ export interface BotResponseList {
   /** Gets the list of bot service results and their properties. */
   value?: BotResponseListValueList;
 }
-const BotResponseList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<BotResponseList>;
-
 export interface ListBotConnectionByBotServiceRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1138,11 +836,6 @@ export interface ListBotConnectionByBotServiceRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const ListBotConnectionByBotServiceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListBotConnectionByBotServiceRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type ConnectionSettingTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -1170,15 +863,8 @@ export interface ConnectionSetting {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-const ConnectionSetting = GetBotConnectionResponse as any as S.Schema<ConnectionSetting>;
-
 /** Gets the list of bot service connection settings and their properties. */
 export type ConnectionSettingResponseListValueList = Array<ConnectionSetting>;
-const ConnectionSettingResponseListValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ConnectionSettingResponseListValueList>;
-
 /** The list of bot service connection settings response. */
 export interface ConnectionSettingResponseList {
   /** The link used to get the next page of bot service connection setting resources. */
@@ -1186,40 +872,20 @@ export interface ConnectionSettingResponseList {
   /** Gets the list of bot service connection settings and their properties. */
   value?: ConnectionSettingResponseListValueList;
 }
-const ConnectionSettingResponseList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ConnectionSettingResponseList>;
-
 export interface ListBotConnectionServiceProvidersRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
 }
-const ListBotConnectionServiceProvidersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListBotConnectionServiceProvidersRequest>;
-
 /** the constraints of the bot meta data. */
 export interface ServiceProviderParameterMetadataConstraints {
   /** Whether required the constraints of the bot meta data. */
   required?: boolean;
 }
-const ServiceProviderParameterMetadataConstraints = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ServiceProviderParameterMetadataConstraints>;
-
 /** Meta data for the Service Provider */
 export interface ServiceProviderParameterMetadata {
   /** the constraints of the bot meta data. */
   constraints?: ServiceProviderParameterMetadataConstraints;
 }
-const ServiceProviderParameterMetadata = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ServiceProviderParameterMetadata>;
-
 /** Extra Parameters specific to each Service Provider */
 export interface ServiceProviderParameter {
   /** Name of the Service Provider */
@@ -1237,18 +903,8 @@ export interface ServiceProviderParameter {
   /** Meta data for the Service Provider */
   metadata?: ServiceProviderParameterMetadata;
 }
-const ServiceProviderParameter = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ServiceProviderParameter>;
-
 /** The list of parameters for the Service Provider */
 export type ServiceProviderPropertiesParametersList = Array<ServiceProviderParameter>;
-const ServiceProviderPropertiesParametersList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ServiceProviderPropertiesParametersList>;
-
 /** The Object used to describe a Service Provider supported by Bot Service */
 export interface ServiceProviderProperties {
   /** Id for Service Provider */
@@ -1264,25 +920,13 @@ export interface ServiceProviderProperties {
   /** The list of parameters for the Service Provider */
   parameters?: ServiceProviderPropertiesParametersList;
 }
-const ServiceProviderProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ServiceProviderProperties>;
-
 /** Service Provider Definition */
 export interface ServiceProvider {
   /** The Properties of a Service Provider Object */
   properties?: ServiceProviderProperties;
 }
-const ServiceProvider = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ServiceProvider>;
-
 /** Gets the list of bot service providers and their properties. */
 export type ServiceProviderResponseListValueList = Array<ServiceProvider>;
-const ServiceProviderResponseListValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ServiceProviderResponseListValueList>;
-
 /** The list of bot service providers response. */
 export interface ServiceProviderResponseList {
   /** The link used to get the next page of bot service providers. */
@@ -1290,11 +934,6 @@ export interface ServiceProviderResponseList {
   /** Gets the list of bot service providers and their properties. */
   value?: ServiceProviderResponseListValueList;
 }
-const ServiceProviderResponseList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ServiceProviderResponseList>;
-
 export interface ListBotConnectionWithSecretsRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1305,11 +944,6 @@ export interface ListBotConnectionWithSecretsRequest {
   /** The name of the Bot Service Connection Setting resource. */
   connectionName: string;
 }
-const ListBotConnectionWithSecretsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListBotConnectionWithSecretsRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type ListBotConnectionWithSecretsResponseTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -1336,15 +970,10 @@ export interface ListBotConnectionWithSecretsResponse {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-const ListBotConnectionWithSecretsResponse =
-  CreateBotConnectionResponse as any as S.Schema<ListBotConnectionWithSecretsResponse>;
-
 export interface ListBotsRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
 }
-const ListBotsRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListBotsRequest>;
-
 export interface ListChannelByResourceGroupRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1353,11 +982,6 @@ export interface ListChannelByResourceGroupRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const ListChannelByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListChannelByResourceGroupRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type BotChannelTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -1385,15 +1009,8 @@ export interface BotChannel {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-const BotChannel = CreateChannelResponse as any as S.Schema<BotChannel>;
-
 /** Gets the list of bot service channel results and their properties. */
 export type ChannelResponseListValueList = Array<BotChannel>;
-const ChannelResponseListValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ChannelResponseListValueList>;
-
 /** The list of bot service channel operation response. */
 export interface ChannelResponseList {
   /** The link used to get the next page of bot service channel resources. */
@@ -1401,8 +1018,6 @@ export interface ChannelResponseList {
   /** Gets the list of bot service channel results and their properties. */
   value?: ChannelResponseListValueList;
 }
-const ChannelResponseList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ChannelResponseList>;
-
 export type ListChannelWithKeysRequestChannelName =
   | "AlexaChannel"
   | "FacebookChannel"
@@ -1423,8 +1038,6 @@ export type ListChannelWithKeysRequestChannelName =
   | "AcsChatChannel"
   | "SearchAssistant"
   | "M365Extensions";
-const ListChannelWithKeysRequestChannelName = S.String;
-
 export interface ListChannelWithKeysRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1435,26 +1048,12 @@ export interface ListChannelWithKeysRequest {
   /** The name of the Channel resource. */
   channelName: ListChannelWithKeysRequestChannelName | (string & {});
 }
-const ListChannelWithKeysRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListChannelWithKeysRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type ListChannelWithKeysResponseTagsMap = { [key: string]: string | undefined };
-const ListChannelWithKeysResponseTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<ListChannelWithKeysResponseTagsMap>;
-
 /** Entity zones */
 export type ListChannelWithKeysResponseZonesList = Array<string>;
-const ListChannelWithKeysResponseZonesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<ListChannelWithKeysResponseZonesList>;
-
 /** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
 export type SiteTrustedOriginsList = Array<string>;
-const SiteTrustedOriginsList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<SiteTrustedOriginsList>;
-
 /** A site for the channel */
 export interface Site {
   /** Tenant Id */
@@ -1496,15 +1095,8 @@ export interface Site {
   /** Whether this site is enabled for preview versions of Webchat */
   isWebchatPreviewEnabled?: boolean;
 }
-const Site = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Site>;
-
 /** The list of sites */
 export type ChannelSettingsSitesList = Array<Site>;
-const ChannelSettingsSitesList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ChannelSettingsSitesList>;
-
 /** Channel settings definition */
 export interface ChannelSettings {
   /** The extensionKey1 */
@@ -1528,8 +1120,6 @@ export interface ChannelSettings {
   /** Whether customer needs to agree to new terms. */
   requireTermsAgreement?: boolean;
 }
-const ChannelSettings = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ChannelSettings>;
-
 export interface ListChannelWithKeysResponse {
   /** Specifies the resource ID. */
   id?: string;
@@ -1562,17 +1152,7 @@ export interface ListChannelWithKeysResponse {
   /** Changed time of the resource */
   changedTime?: string;
 }
-const ListChannelWithKeysResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListChannelWithKeysResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The operation supported by Bot Service Management. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -1584,8 +1164,6 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-const OperationDisplayInfo = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<OperationDisplayInfo>;
-
 /** The operations supported by Bot Service Management. */
 export interface OperationEntity {
   /** Operation name: {provider}/{resource}/{operation}. */
@@ -1597,15 +1175,8 @@ export interface OperationEntity {
   /** Additional properties. */
   properties?: unknown;
 }
-const OperationEntity = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<OperationEntity>;
-
 /** The list of operations. */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
-const OperationEntityListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<OperationEntityListResultValueList>;
-
 /** The list of bot service operation response. */
 export interface OperationEntityListResult {
   /** The link used to get the next page of operations. */
@@ -1613,11 +1184,6 @@ export interface OperationEntityListResult {
   /** The list of operations. */
   value?: OperationEntityListResultValueList;
 }
-const OperationEntityListResult = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<OperationEntityListResult>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1626,28 +1192,15 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** The Private Endpoint Connection resource. */
 export type PrivateEndpointConnection = BotPropertiesPrivateEndpointConnectionsItem;
 /** Array of private endpoint connections */
 export type ListPrivateEndpointConnectionsResponseValueList =
   Array<BotPropertiesPrivateEndpointConnectionsItem>;
-const ListPrivateEndpointConnectionsResponseValueList =
-  BotPropertiesPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionsResponseValueList>;
-
 export interface ListPrivateEndpointConnectionsResponse {
   /** Array of private endpoint connections */
   value?: ListPrivateEndpointConnectionsResponseValueList;
 }
-const ListPrivateEndpointConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListPrivateEndpointConnectionsResponse>;
-
 export interface ListPrivateLinkResourceByBotResourceRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1656,21 +1209,10 @@ export interface ListPrivateLinkResourceByBotResourceRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-const ListPrivateLinkResourceByBotResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListPrivateLinkResourceByBotResourceRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -1680,11 +1222,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1696,31 +1233,15 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<PrivateLinkResource>;
-
 /** Array of private link resources */
 export type ListPrivateLinkResourceByBotResourceResponseValueList = Array<PrivateLinkResource>;
-const ListPrivateLinkResourceByBotResourceResponseValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListPrivateLinkResourceByBotResourceResponseValueList>;
-
 export interface ListPrivateLinkResourceByBotResourceResponse {
   /** Array of private link resources */
   value?: ListPrivateLinkResourceByBotResourceResponseValueList;
 }
-const ListPrivateLinkResourceByBotResourceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListPrivateLinkResourceByBotResourceResponse>;
-
 export type RegenerateDirectLineKeysRequestChannelName = "WebChatChannel" | "DirectLineChannel";
-const RegenerateDirectLineKeysRequestChannelName = S.String;
-
 /** Determines which key is to be regenerated */
 export type RegenerateDirectLineKeysRequestKey = "key1" | "key2";
-const RegenerateDirectLineKeysRequestKey = S.String;
-
 export interface RegenerateDirectLineKeysRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1735,21 +1256,10 @@ export interface RegenerateDirectLineKeysRequest {
   /** Determines which key is to be regenerated */
   key: RegenerateDirectLineKeysRequestKey | (string & {});
 }
-const RegenerateDirectLineKeysRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<RegenerateDirectLineKeysRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type RegenerateDirectLineKeysResponseTagsMap = { [key: string]: string | undefined };
-const RegenerateDirectLineKeysResponseTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<RegenerateDirectLineKeysResponseTagsMap>;
-
 /** Entity zones */
 export type RegenerateDirectLineKeysResponseZonesList = Array<string>;
-const RegenerateDirectLineKeysResponseZonesList =
-  BotPropertiesInputLuisAppIdsList as any as S.Schema<RegenerateDirectLineKeysResponseZonesList>;
-
 export interface RegenerateDirectLineKeysResponse {
   /** Specifies the resource ID. */
   id?: string;
@@ -1772,15 +1282,8 @@ export interface RegenerateDirectLineKeysResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-const RegenerateDirectLineKeysResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<RegenerateDirectLineKeysResponse>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotRequestTagsMap = { [key: string]: string | undefined };
-const UpdateBotRequestTagsMap = CreateBotRequestTagsMap as any as S.Schema<UpdateBotRequestTagsMap>;
-
 export interface UpdateBotRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1801,8 +1304,6 @@ export interface UpdateBotRequest {
   /** The set of properties specific to bot resource */
   properties?: BotPropertiesInput;
 }
-const UpdateBotRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<UpdateBotRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotResponseTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -1829,13 +1330,8 @@ export interface UpdateBotResponse {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-const UpdateBotResponse = CreateBotResponse as any as S.Schema<UpdateBotResponse>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotConnectionRequestTagsMap = { [key: string]: string | undefined };
-const UpdateBotConnectionRequestTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<UpdateBotConnectionRequestTagsMap>;
-
 export interface UpdateBotConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1858,11 +1354,6 @@ export interface UpdateBotConnectionRequest {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingPropertiesInput;
 }
-const UpdateBotConnectionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<UpdateBotConnectionRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateBotConnectionResponseTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -1889,9 +1380,6 @@ export interface UpdateBotConnectionResponse {
   /** The set of properties specific to bot channel resource */
   properties?: ConnectionSettingProperties;
 }
-const UpdateBotConnectionResponse =
-  CreateBotConnectionResponse as any as S.Schema<UpdateBotConnectionResponse>;
-
 export type UpdateChannelRequestChannelName =
   | "AlexaChannel"
   | "FacebookChannel"
@@ -1912,13 +1400,8 @@ export type UpdateChannelRequestChannelName =
   | "AcsChatChannel"
   | "SearchAssistant"
   | "M365Extensions";
-const UpdateChannelRequestChannelName = S.String;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateChannelRequestTagsMap = { [key: string]: string | undefined };
-const UpdateChannelRequestTagsMap =
-  CreateBotRequestTagsMap as any as S.Schema<UpdateChannelRequestTagsMap>;
-
 export interface UpdateChannelRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1941,11 +1424,6 @@ export interface UpdateChannelRequest {
   /** The set of properties specific to bot channel resource */
   properties?: ChannelInput;
 }
-const UpdateChannelRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UpdateChannelRequest>;
-
 /** Contains resource tags defined as key/value pairs. */
 export type UpdateChannelResponseTagsMap = { [key: string]: string | undefined };
 /** Entity zones */
@@ -1972,8 +1450,6 @@ export interface UpdateChannelResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-const UpdateChannelResponse = CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
-
 export type CreateBotError = AzureOpError;
 /** Creates a Bot Service. Bot Service is a resource group wide resource type. */
 export const CreateBot: API.OperationMethod<
@@ -1982,8 +1458,8 @@ export const CreateBot: API.OperationMethod<
   CreateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBotRequest,
-  output: CreateBotResponse,
+  input: __S(4) as any as S.Schema<CreateBotRequest>,
+  output: __S(12) as any as S.Schema<CreateBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1997,8 +1473,8 @@ export const CreateBotConnection: API.OperationMethod<
   CreateBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBotConnectionRequest,
-  output: CreateBotConnectionResponse,
+  input: __S(16) as any as S.Schema<CreateBotConnectionRequest>,
+  output: __S(18) as any as S.Schema<CreateBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2012,8 +1488,8 @@ export const CreateChannel: API.OperationMethod<
   CreateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelRequest,
-  output: CreateChannelResponse,
+  input: __S(20) as any as S.Schema<CreateChannelRequest>,
+  output: __S(22) as any as S.Schema<CreateChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2027,8 +1503,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateEndpointConnectionRequest,
-  output: CreatePrivateEndpointConnectionResponse,
+  input: __S(25) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(9) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2042,8 +1518,8 @@ export const DeleteBot: API.OperationMethod<
   DeleteBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotRequest,
-  output: DeleteBotResponse,
+  input: __S(26) as any as S.Schema<DeleteBotRequest>,
+  output: __S(23) as any as S.Schema<DeleteBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2057,8 +1533,8 @@ export const DeleteBotConnection: API.OperationMethod<
   DeleteBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotConnectionRequest,
-  output: DeleteBotConnectionResponse,
+  input: __S(27) as any as S.Schema<DeleteBotConnectionRequest>,
+  output: __S(23) as any as S.Schema<DeleteBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2072,8 +1548,8 @@ export const DeleteChannel: API.OperationMethod<
   DeleteChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelRequest,
-  output: DeleteChannelResponse,
+  input: __S(28) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(23) as any as S.Schema<DeleteChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2087,8 +1563,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(29) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(30) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2102,8 +1578,8 @@ export const EmailCreateSignInUrl: API.OperationMethod<
   EmailCreateSignInUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EmailCreateSignInUrlRequest,
-  output: CreateEmailSignInUrlResponse,
+  input: __S(31) as any as S.Schema<EmailCreateSignInUrlRequest>,
+  output: __S(33) as any as S.Schema<CreateEmailSignInUrlResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2117,8 +1593,8 @@ export const GetBot: API.OperationMethod<
   GetBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotRequest,
-  output: GetBotResponse,
+  input: __S(34) as any as S.Schema<GetBotRequest>,
+  output: __S(12) as any as S.Schema<GetBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2132,8 +1608,8 @@ export const GetBotCheckNameAvailability: API.OperationMethod<
   GetBotCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotCheckNameAvailabilityRequest,
-  output: CheckNameAvailabilityResponseBody,
+  input: __S(35) as any as S.Schema<GetBotCheckNameAvailabilityRequest>,
+  output: __S(36) as any as S.Schema<CheckNameAvailabilityResponseBody>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2147,8 +1623,8 @@ export const GetBotConnection: API.OperationMethod<
   GetBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotConnectionRequest,
-  output: GetBotConnectionResponse,
+  input: __S(37) as any as S.Schema<GetBotConnectionRequest>,
+  output: __S(38) as any as S.Schema<GetBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2162,8 +1638,8 @@ export const GetChannel: API.OperationMethod<
   GetChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelRequest,
-  output: GetChannelResponse,
+  input: __S(39) as any as S.Schema<GetChannelRequest>,
+  output: __S(22) as any as S.Schema<GetChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2177,8 +1653,8 @@ export const GetHostSettings: API.OperationMethod<
   GetHostSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostSettingsRequest,
-  output: HostSettingsResponse,
+  input: __S(40) as any as S.Schema<GetHostSettingsRequest>,
+  output: __S(41) as any as S.Schema<HostSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2192,8 +1668,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationResultRequest,
-  output: OperationResultsDescription,
+  input: __S(42) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(43) as any as S.Schema<OperationResultsDescription>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2207,8 +1683,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(44) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(9) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2222,8 +1698,8 @@ export const GetQnAMakerEndpointKey: API.OperationMethod<
   GetQnAMakerEndpointKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQnAMakerEndpointKeyRequest,
-  output: QnAMakerEndpointKeysResponse,
+  input: __S(45) as any as S.Schema<GetQnAMakerEndpointKeyRequest>,
+  output: __S(46) as any as S.Schema<QnAMakerEndpointKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2237,8 +1713,8 @@ export const ListBotByResourceGroup: API.OperationMethod<
   ListBotByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBotByResourceGroupRequest,
-  output: BotResponseList,
+  input: __S(47) as any as S.Schema<ListBotByResourceGroupRequest>,
+  output: __S(52) as any as S.Schema<BotResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2252,8 +1728,8 @@ export const ListBotConnectionByBotService: API.OperationMethod<
   ListBotConnectionByBotServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBotConnectionByBotServiceRequest,
-  output: ConnectionSettingResponseList,
+  input: __S(53) as any as S.Schema<ListBotConnectionByBotServiceRequest>,
+  output: __S(55) as any as S.Schema<ConnectionSettingResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2267,8 +1743,8 @@ export const ListBotConnectionServiceProviders: API.OperationMethod<
   ListBotConnectionServiceProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBotConnectionServiceProvidersRequest,
-  output: ServiceProviderResponseList,
+  input: __S(56) as any as S.Schema<ListBotConnectionServiceProvidersRequest>,
+  output: __S(64) as any as S.Schema<ServiceProviderResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2282,8 +1758,8 @@ export const ListBotConnectionWithSecrets: API.OperationMethod<
   ListBotConnectionWithSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBotConnectionWithSecretsRequest,
-  output: ListBotConnectionWithSecretsResponse,
+  input: __S(65) as any as S.Schema<ListBotConnectionWithSecretsRequest>,
+  output: __S(18) as any as S.Schema<ListBotConnectionWithSecretsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2297,8 +1773,8 @@ export const ListBots: API.OperationMethod<
   ListBotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBotsRequest,
-  output: BotResponseList,
+  input: __S(66) as any as S.Schema<ListBotsRequest>,
+  output: __S(52) as any as S.Schema<BotResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2312,8 +1788,8 @@ export const ListChannelByResourceGroup: API.OperationMethod<
   ListChannelByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChannelByResourceGroupRequest,
-  output: ChannelResponseList,
+  input: __S(67) as any as S.Schema<ListChannelByResourceGroupRequest>,
+  output: __S(69) as any as S.Schema<ChannelResponseList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2327,8 +1803,8 @@ export const ListChannelWithKeys: API.OperationMethod<
   ListChannelWithKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChannelWithKeysRequest,
-  output: ListChannelWithKeysResponse,
+  input: __S(70) as any as S.Schema<ListChannelWithKeysRequest>,
+  output: __S(74) as any as S.Schema<ListChannelWithKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2342,8 +1818,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationEntityListResult,
+  input: __S(75) as any as S.Schema<ListOperationsRequest>,
+  output: __S(79) as any as S.Schema<OperationEntityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2357,8 +1833,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: ListPrivateEndpointConnectionsResponse,
+  input: __S(80) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(81) as any as S.Schema<ListPrivateEndpointConnectionsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2372,8 +1848,8 @@ export const ListPrivateLinkResourceByBotResource: API.OperationMethod<
   ListPrivateLinkResourceByBotResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourceByBotResourceRequest,
-  output: ListPrivateLinkResourceByBotResourceResponse,
+  input: __S(82) as any as S.Schema<ListPrivateLinkResourceByBotResourceRequest>,
+  output: __S(86) as any as S.Schema<ListPrivateLinkResourceByBotResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2387,8 +1863,8 @@ export const RegenerateDirectLineKeys: API.OperationMethod<
   RegenerateDirectLineKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateDirectLineKeysRequest,
-  output: RegenerateDirectLineKeysResponse,
+  input: __S(87) as any as S.Schema<RegenerateDirectLineKeysRequest>,
+  output: __S(88) as any as S.Schema<RegenerateDirectLineKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2402,8 +1878,8 @@ export const UpdateBot: API.OperationMethod<
   UpdateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBotRequest,
-  output: UpdateBotResponse,
+  input: __S(89) as any as S.Schema<UpdateBotRequest>,
+  output: __S(12) as any as S.Schema<UpdateBotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2417,8 +1893,8 @@ export const UpdateBotConnection: API.OperationMethod<
   UpdateBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBotConnectionRequest,
-  output: UpdateBotConnectionResponse,
+  input: __S(90) as any as S.Schema<UpdateBotConnectionRequest>,
+  output: __S(18) as any as S.Schema<UpdateBotConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2432,8 +1908,8 @@ export const UpdateChannel: API.OperationMethod<
   UpdateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelRequest,
-  output: UpdateChannelResponse,
+  input: __S(91) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(22) as any as S.Schema<UpdateChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2447,7 +1923,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
+          name: S.String,
         }),
       ).annotate({ identifier: "SkuInput" });
     case 2:
@@ -2459,22 +1935,22 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           iconUrl: S.optional(S.String),
           endpoint: S.NullOr(S.String),
-          allSettings: S.optional(BotPropertiesInputAllSettingsMap),
-          parameters: S.optional(BotPropertiesInputParametersMap),
+          allSettings: S.optional(__S(0)),
+          parameters: S.optional(__S(0)),
           manifestUrl: S.optional(S.String),
-          msaAppType: S.optional(BotPropertiesInputMsaAppType),
+          msaAppType: S.optional(S.String),
           msaAppId: S.String,
           msaAppTenantId: S.optional(S.String),
           msaAppMSIResourceId: S.optional(S.String),
           developerAppInsightKey: S.optional(S.String),
           developerAppInsightsApiKey: S.optional(S.String),
           developerAppInsightsApplicationId: S.optional(S.String),
-          luisAppIds: S.optional(BotPropertiesInputLuisAppIdsList),
+          luisAppIds: S.optional(__S(2)),
           luisKey: S.optional(S.String),
           isCmekEnabled: S.optional(S.Boolean),
           cmekKeyVaultUrl: S.optional(S.String),
           tenantId: S.optional(S.String),
-          publicNetworkAccess: S.optional(BotPropertiesInputPublicNetworkAccess),
+          publicNetworkAccess: S.optional(S.String),
           isStreamingSupported: S.optional(S.Boolean),
           disableLocalAuth: S.optional(S.Boolean),
           schemaTransformationVersion: S.optional(S.NullOr(S.String)),
@@ -2491,11 +1967,11 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(CreateBotRequestTagsMap),
-          sku: S.optional(SkuInput),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(1)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(BotPropertiesInput),
+          properties: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2508,8 +1984,8 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
-          tier: S.optional(SkuTier),
+          name: S.String,
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
     case 6:
@@ -2521,7 +1997,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2535,10 +2011,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(__S(6)),
+          privateLinkServiceConnectionState: __S(7),
+          provisioningState: S.optional(S.String),
+          groupIds: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -2549,13 +2025,13 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          properties: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "BotPropertiesPrivateEndpointConnectionsItem",
       });
     case 2:
-      return S.Array(BotPropertiesPrivateEndpointConnectionsItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2564,32 +2040,32 @@ function __c1(j: number): any {
           iconUrl: S.optional(S.String),
           endpoint: S.NullOr(S.String),
           endpointVersion: S.optional(S.String),
-          allSettings: S.optional(BotPropertiesAllSettingsMap),
-          parameters: S.optional(BotPropertiesParametersMap),
+          allSettings: S.optional(__S(0)),
+          parameters: S.optional(__S(0)),
           manifestUrl: S.optional(S.String),
-          msaAppType: S.optional(BotPropertiesMsaAppType),
+          msaAppType: S.optional(S.String),
           msaAppId: S.String,
           msaAppTenantId: S.optional(S.String),
           msaAppMSIResourceId: S.optional(S.String),
-          configuredChannels: S.optional(BotPropertiesConfiguredChannelsList),
-          enabledChannels: S.optional(BotPropertiesEnabledChannelsList),
+          configuredChannels: S.optional(__S(2)),
+          enabledChannels: S.optional(__S(2)),
           developerAppInsightKey: S.optional(S.String),
           developerAppInsightsApiKey: S.optional(S.String),
           developerAppInsightsApplicationId: S.optional(S.String),
-          luisAppIds: S.optional(BotPropertiesLuisAppIdsList),
+          luisAppIds: S.optional(__S(2)),
           luisKey: S.optional(S.String),
           isCmekEnabled: S.optional(S.Boolean),
           cmekKeyVaultUrl: S.optional(S.String),
           cmekEncryptionStatus: S.optional(S.String),
           tenantId: S.optional(S.String),
-          publicNetworkAccess: S.optional(BotPropertiesPublicNetworkAccess),
+          publicNetworkAccess: S.optional(S.String),
           isStreamingSupported: S.optional(S.Boolean),
           isDeveloperAppInsightsApiKeySet: S.optional(S.Boolean),
           migrationToken: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           schemaTransformationVersion: S.optional(S.NullOr(S.String)),
           storageResourceId: S.optional(S.String),
-          privateEndpointConnections: S.optional(BotPropertiesPrivateEndpointConnectionsList),
+          privateEndpointConnections: S.optional(__S(10)),
           openWithHint: S.optional(S.String),
           appPasswordHint: S.optional(S.String.pipe(T.SensitiveValue({}))),
           provisioningState: S.optional(S.String),
@@ -2603,12 +2079,12 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(CreateBotResponseTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(CreateBotResponseZonesList),
-          properties: S.optional(BotProperties),
+          zones: S.optional(__S(2)),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "CreateBotResponse" });
     case 5:
@@ -2621,7 +2097,7 @@ function __c1(j: number): any {
         identifier: "ConnectionSettingParameter",
       });
     case 6:
-      return S.Array(ConnectionSettingParameter);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2632,7 +2108,7 @@ function __c1(j: number): any {
           scopes: S.optional(S.String),
           serviceProviderId: S.optional(S.String),
           serviceProviderDisplayName: S.optional(S.String),
-          parameters: S.optional(ConnectionSettingPropertiesInputParametersList),
+          parameters: S.optional(__S(14)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -2650,11 +2126,11 @@ function __c2(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(CreateBotConnectionRequestTagsMap),
-          sku: S.optional(SkuInput),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(1)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(ConnectionSettingPropertiesInput),
+          properties: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2677,7 +2153,7 @@ function __c2(j: number): any {
           scopes: S.optional(S.String),
           serviceProviderId: S.optional(S.String),
           serviceProviderDisplayName: S.optional(S.String),
-          parameters: S.optional(ConnectionSettingPropertiesParametersList),
+          parameters: S.optional(__S(14)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -2690,12 +2166,12 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(CreateBotConnectionResponseTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(CreateBotConnectionResponseZonesList),
-          properties: S.optional(ConnectionSettingProperties),
+          zones: S.optional(__S(2)),
+          properties: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "CreateBotConnectionResponse",
@@ -2715,13 +2191,13 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          channelName: CreateChannelRequestChannelName.pipe(T.Label()),
+          channelName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(CreateChannelRequestTagsMap),
-          sku: S.optional(SkuInput),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(1)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(ChannelInput),
+          properties: S.optional(__S(19)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2748,12 +2224,12 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(CreateChannelResponseTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(CreateChannelResponseZonesList),
-          properties: S.optional(Channel),
+          zones: S.optional(__S(2)),
+          properties: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "CreateChannelResponse" });
     case 7:
@@ -2767,9 +2243,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpointInput),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesInputGroupIdsList),
+          privateEndpoint: S.optional(__S(23)),
+          privateLinkServiceConnectionState: __S(7),
+          groupIds: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -2781,7 +2257,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(24)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2898,7 +2374,7 @@ function __c4(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           location: S.optional(S.String),
-          properties: S.optional(CreateEmailSignInUrlResponseProperties),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "CreateEmailSignInUrlResponse",
@@ -2967,12 +2443,12 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(GetBotConnectionResponseTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(GetBotConnectionResponseZonesList),
-          properties: S.optional(ConnectionSettingProperties),
+          zones: S.optional(__S(2)),
+          properties: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "GetBotConnectionResponse" });
     case 7:
@@ -3042,7 +2518,7 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(OperationResultsDescriptionStatus),
+          status: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({
@@ -3125,21 +2601,21 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(BotTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(48)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(BotZonesList),
-          properties: S.optional(BotProperties),
+          zones: S.optional(__S(49)),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "Bot" });
     case 3:
-      return S.Array(Bot);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(BotResponseListValueList),
+          value: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "BotResponseList" });
     case 5:
@@ -3160,12 +2636,12 @@ function __c6(j: number): any {
         identifier: "ListBotConnectionByBotServiceRequest",
       });
     case 6:
-      return S.Array(ConnectionSetting);
+      return S.Array(__S(38));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ConnectionSettingResponseListValueList),
+          value: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "ConnectionSettingResponseList",
@@ -3200,7 +2676,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          constraints: S.optional(ServiceProviderParameterMetadataConstraints),
+          constraints: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "ServiceProviderParameterMetadata",
@@ -3214,11 +2690,11 @@ function __c7(j: number): any {
           description: S.optional(S.String),
           helpUrl: S.optional(S.String),
           default: S.optional(S.String),
-          metadata: S.optional(ServiceProviderParameterMetadata),
+          metadata: S.optional(__S(58)),
         }),
       ).annotate({ identifier: "ServiceProviderParameter" });
     case 4:
-      return S.Array(ServiceProviderParameter);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -3227,7 +2703,7 @@ function __c7(j: number): any {
           serviceProviderName: S.optional(S.String),
           devPortalUrl: S.optional(S.String),
           iconUrl: S.optional(S.String),
-          parameters: S.optional(ServiceProviderPropertiesParametersList),
+          parameters: S.optional(__S(60)),
         }),
       ).annotate({
         identifier: "ServiceProviderProperties",
@@ -3235,11 +2711,11 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(ServiceProviderProperties),
+          properties: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "ServiceProvider" });
     case 7:
-      return S.Array(ServiceProvider);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -3248,7 +2724,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ServiceProviderResponseListValueList),
+          value: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "ServiceProviderResponseList",
@@ -3302,12 +2778,12 @@ function __c8(j: number): any {
         identifier: "ListChannelByResourceGroupRequest",
       });
     case 4:
-      return S.Array(BotChannel);
+      return S.Array(__S(22));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ChannelResponseListValueList),
+          value: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "ChannelResponseList" });
     case 6:
@@ -3316,7 +2792,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          channelName: ListChannelWithKeysRequestChannelName.pipe(T.Label()),
+          channelName: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3347,7 +2823,7 @@ function __c8(j: number): any {
           isV1Enabled: S.optional(S.Boolean),
           isV3Enabled: S.optional(S.Boolean),
           isSecureSiteEnabled: S.optional(S.Boolean),
-          trustedOrigins: S.optional(SiteTrustedOriginsList),
+          trustedOrigins: S.optional(__S(2)),
           isWebChatSpeechEnabled: S.optional(S.Boolean),
           isWebchatPreviewEnabled: S.optional(S.Boolean),
         }),
@@ -3357,13 +2833,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Site);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
           extensionKey1: S.optional(S.String),
           extensionKey2: S.optional(S.String),
-          sites: S.optional(ChannelSettingsSitesList),
+          sites: S.optional(__S(72)),
           channelId: S.optional(S.String),
           channelDisplayName: S.optional(S.String),
           botId: S.optional(S.String),
@@ -3380,14 +2856,14 @@ function __c9(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ListChannelWithKeysResponseTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(ListChannelWithKeysResponseZonesList),
-          properties: S.optional(Channel),
-          resource: S.optional(Channel),
-          setting: S.optional(ChannelSettings),
+          zones: S.optional(__S(2)),
+          properties: S.optional(__S(21)),
+          resource: S.optional(__S(21)),
+          setting: S.optional(__S(73)),
           provisioningState: S.optional(S.String),
           entityTag: S.optional(S.String),
           changedTime: S.optional(S.String),
@@ -3419,18 +2895,18 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplayInfo),
+          display: S.optional(__S(76)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationEntity" });
     case 6:
-      return S.Array(OperationEntity);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(OperationEntityListResultValueList),
+          value: S.optional(__S(78)),
         }),
       ).annotate({
         identifier: "OperationEntityListResult",
@@ -3459,7 +2935,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListPrivateEndpointConnectionsResponseValueList),
+          value: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "ListPrivateEndpointConnectionsResponse",
@@ -3485,8 +2961,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(2)),
+          requiredZoneNames: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -3497,15 +2973,15 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(PrivateLinkResourceProperties),
+          properties: S.optional(__S(83)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 5:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListPrivateLinkResourceByBotResourceResponseValueList),
+          value: S.optional(__S(85)),
         }),
       ).annotate({
         identifier: "ListPrivateLinkResourceByBotResourceResponse",
@@ -3516,9 +2992,9 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          channelName: RegenerateDirectLineKeysRequestChannelName.pipe(T.Label()),
+          channelName: S.String.pipe(T.Label()),
           siteName: S.String,
-          key: RegenerateDirectLineKeysRequestKey,
+          key: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -3541,12 +3017,12 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           location: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(RegenerateDirectLineKeysResponseTagsMap),
-          sku: S.optional(Sku),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(5)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          zones: S.optional(RegenerateDirectLineKeysResponseZonesList),
-          properties: S.optional(Channel),
+          zones: S.optional(__S(2)),
+          properties: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "RegenerateDirectLineKeysResponse",
@@ -3558,11 +3034,11 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateBotRequestTagsMap),
-          sku: S.optional(SkuInput),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(1)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(BotPropertiesInput),
+          properties: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3580,11 +3056,11 @@ function __c11(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateBotConnectionRequestTagsMap),
-          sku: S.optional(SkuInput),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(1)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(ConnectionSettingPropertiesInput),
+          properties: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3602,13 +3078,13 @@ function __c11(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          channelName: UpdateChannelRequestChannelName.pipe(T.Label()),
+          channelName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateChannelRequestTagsMap),
-          sku: S.optional(SkuInput),
-          kind: S.optional(S.NullOr(Kind)),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(1)),
+          kind: S.optional(S.NullOr(S.String)),
           etag: S.optional(S.String),
-          properties: S.optional(ChannelInput),
+          properties: S.optional(__S(19)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3618,5 +3094,38 @@ function __c11(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateChannelRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

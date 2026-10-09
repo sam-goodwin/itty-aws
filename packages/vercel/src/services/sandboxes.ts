@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -246,9 +248,6 @@ export interface CreateSandboxesByNameForkV2RequestNetworkPolicyCase1 {
 export type CreateSandboxesByNameForkV2RequestNetworkPolicy =
   | CreateSandboxesByNameForkV2RequestNetworkPolicyCase0
   | CreateSandboxesByNameForkV2RequestNetworkPolicyCase1;
-const CreateSandboxesByNameForkV2RequestNetworkPolicy =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestNetworkPolicy>;
-
 /** Resources to define the VM */
 export interface CreateSandboxesByNameForkV2RequestResources {
   /** The number of virtual CPUs to allocate to the sandbox. Must be 1, or an even number. */
@@ -256,49 +255,22 @@ export interface CreateSandboxesByNameForkV2RequestResources {
   /** The amount of memory in megabytes to allocate to the sandbox. Must equal vcpus * 2048. */
   memory?: number;
 }
-const CreateSandboxesByNameForkV2RequestResources = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestResources>;
-
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesByNameForkV2RequestPortsList = Array<number>;
-const CreateSandboxesByNameForkV2RequestPortsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestPortsList>;
-
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesByNameForkV2RequestEnvMap = { [key: string]: string | undefined };
-const CreateSandboxesByNameForkV2RequestEnvMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestEnvMap>;
-
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesByNameForkV2RequestMountsValueMode = "snapshot" | "read-write";
-const CreateSandboxesByNameForkV2RequestMountsValueMode = S.String;
-
 export interface CreateSandboxesByNameForkV2RequestMountsValue {
   /** Name of the drive to mount. The drive must already exist. */
   drive: string;
   /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
   mode?: CreateSandboxesByNameForkV2RequestMountsValueMode | (string & {});
 }
-const CreateSandboxesByNameForkV2RequestMountsValue = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestMountsValue>;
-
 /** List of drives to mount to the sandbox at the provided path. */
 export type CreateSandboxesByNameForkV2RequestMountsMap = {
   [key: string]: CreateSandboxesByNameForkV2RequestMountsValue | undefined;
 };
-const CreateSandboxesByNameForkV2RequestMountsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestMountsMap>;
-
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesByNameForkV2RequestRegion =
   | "iad1"
@@ -320,8 +292,6 @@ export type CreateSandboxesByNameForkV2RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const CreateSandboxesByNameForkV2RequestRegion = S.String;
-
 export type CreateSandboxesByNameForkV2RequestFailoverRegionsItem =
   | "iad1"
   | "sfo1"
@@ -342,27 +312,14 @@ export type CreateSandboxesByNameForkV2RequestFailoverRegionsItem =
   | "yul1"
   | "hnd1"
   | "kix1";
-const CreateSandboxesByNameForkV2RequestFailoverRegionsItem = S.String;
-
 /** The regions the sandbox falls back to when it cannot be created in `region`. */
 export type CreateSandboxesByNameForkV2RequestFailoverRegionsList = Array<
   CreateSandboxesByNameForkV2RequestFailoverRegionsItem | (string & {})
 >;
-const CreateSandboxesByNameForkV2RequestFailoverRegionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestFailoverRegionsList>;
-
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesByNameForkV2RequestSnapshotExpiration = unknown | number;
-const CreateSandboxesByNameForkV2RequestSnapshotExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestSnapshotExpiration>;
-
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration = unknown | number;
-const CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration>;
-
 /** Protect the N most recent snapshots with different expiration/deletion behavior. */
 export interface CreateSandboxesByNameForkV2RequestKeepLastSnapshots {
   /** Number of most recent snapshots to keep. */
@@ -372,16 +329,8 @@ export interface CreateSandboxesByNameForkV2RequestKeepLastSnapshots {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-const CreateSandboxesByNameForkV2RequestKeepLastSnapshots = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSandboxesByNameForkV2RequestKeepLastSnapshots>;
-
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesByNameForkV2RequestTagsMap = { [key: string]: string | undefined };
-const CreateSandboxesByNameForkV2RequestTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesByNameForkV2RequestTagsMap>;
-
 export interface CreateSandboxesByNameForkV2Request {
   /** Name of the source sandbox to fork. */
   name: string;
@@ -419,11 +368,6 @@ export interface CreateSandboxesByNameForkV2Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesByNameForkV2RequestTagsMap;
 }
-const CreateSandboxesByNameForkV2Request = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateSandboxesByNameForkV2Request>;
-
 /** This object represents a public route in a Vercel Sandbox. */
 export interface SandboxPublicRoute {
   /** The user port number that the route is mapped to. */
@@ -435,18 +379,9 @@ export interface SandboxPublicRoute {
   /** A public URL to access the corresponding port in the Sandbox. */
   url: string;
 }
-const SandboxPublicRoute = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SandboxPublicRoute>;
-
 export type CreateSandboxesByNameForkV2ResponseRoutesList = Array<SandboxPublicRoute>;
-const CreateSandboxesByNameForkV2ResponseRoutesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateSandboxesByNameForkV2ResponseRoutesList>;
-
 /** CPU architecture of the sandbox. This value does not change. */
 export type NamedSandboxArchitecture = "amd64" | "arm64";
-const NamedSandboxArchitecture = S.String;
-
 /** The regions the sandbox fails over to. Empty when it does not fail over. */
 export type NamedSandboxFailoverRegionsItem =
   | "arn1"
@@ -470,9 +405,6 @@ export type NamedSandboxFailoverRegionsItem =
   | "yul1";
 /** The regions the sandbox fails over to. Empty when it does not fail over. */
 export type NamedSandboxFailoverRegionsList = Array<NamedSandboxFailoverRegionsItem>;
-const NamedSandboxFailoverRegionsList =
-  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<NamedSandboxFailoverRegionsList>;
-
 /** Keep-last snapshot configuration. */
 export interface NamedSandboxKeepLastSnapshots {
   /** Number of most recent snapshots to keep. */
@@ -482,53 +414,23 @@ export interface NamedSandboxKeepLastSnapshots {
   /** Expiration time in milliseconds for kept snapshots. */
   expiration?: number;
 }
-const NamedSandboxKeepLastSnapshots = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<NamedSandboxKeepLastSnapshots>;
-
 export type NamedSandboxMountsValueMode = "read-only" | "read-write" | "snapshot";
-const NamedSandboxMountsValueMode = S.String;
-
 /** Key-value pairs of mount path and drive. */
 export interface NamedSandboxMountsValue {
   drive: string;
   mode?: NamedSandboxMountsValueMode;
 }
-const NamedSandboxMountsValue = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<NamedSandboxMountsValue>;
-
 /** Key-value pairs of mount path and drive. */
 export type NamedSandboxMountsMap = { [key: string]: NamedSandboxMountsValue | undefined };
-const NamedSandboxMountsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<NamedSandboxMountsMap>;
-
 export type NamedSandboxNetworkPolicyAllowedCIDRsList = Array<string>;
-const NamedSandboxNetworkPolicyAllowedCIDRsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<NamedSandboxNetworkPolicyAllowedCIDRsList>;
-
 export type NamedSandboxNetworkPolicyAllowedDomainsList = Array<string>;
-const NamedSandboxNetworkPolicyAllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<NamedSandboxNetworkPolicyAllowedDomainsList>;
-
 export type NamedSandboxNetworkPolicyDeniedCIDRsList = Array<string>;
-const NamedSandboxNetworkPolicyDeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<NamedSandboxNetworkPolicyDeniedCIDRsList>;
-
 export type NamedSandboxNetworkPolicyMode =
   | "allow-all"
   | "custom"
   | "default-allow"
   | "default-deny"
   | "deny-all";
-const NamedSandboxNetworkPolicyMode = S.String;
-
 /** Network policy configuration. */
 export interface NamedSandboxNetworkPolicy {
   allowedCIDRs?: NamedSandboxNetworkPolicyAllowedCIDRsList;
@@ -537,20 +439,10 @@ export interface NamedSandboxNetworkPolicy {
   mode: NamedSandboxNetworkPolicyMode;
   s3Key?: string;
 }
-const NamedSandboxNetworkPolicy = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<NamedSandboxNetworkPolicy>;
-
 /** The status of the current sandbox. */
 export type NamedSandboxStatus = "running" | "stopped" | "stopping";
-const NamedSandboxStatus = S.String;
-
 /** Key-value tags attached to the named sandbox. */
 export type NamedSandboxTagsMap = { [key: string]: string | undefined };
-const NamedSandboxTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<NamedSandboxTagsMap>;
-
 /** This object contains information related to a Vercel NamedSandbox. */
 export interface NamedSandbox {
   /** CPU architecture of the sandbox. This value does not change. */
@@ -612,32 +504,16 @@ export interface NamedSandbox {
   /** Number of virtual CPUs allocated. */
   vcpus?: number;
 }
-const NamedSandbox = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<NamedSandbox>;
-
 /** CPU architecture of the sandbox. */
 export type SessionArchitecture = "amd64" | "arm64";
-const SessionArchitecture = S.String;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. */
 export type SandboxNetworkPolicyAllowedCIDRsList = Array<string>;
-const SandboxNetworkPolicyAllowedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxNetworkPolicyAllowedCIDRsList>;
-
 /** List of domain names the sandbox is allowed to connect to. Supports wildcard patterns (e.g., "*.vercel.com" matches all subdomains). */
 export type SandboxNetworkPolicyAllowedDomainsList = Array<string>;
-const SandboxNetworkPolicyAllowedDomainsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxNetworkPolicyAllowedDomainsList>;
-
 /** List of IP address ranges (in CIDR notation) the sandbox is blocked from connecting to. These rules take precedence over all allowed rules. */
 export type SandboxNetworkPolicyDeniedCIDRsList = Array<string>;
-const SandboxNetworkPolicyDeniedCIDRsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxNetworkPolicyDeniedCIDRsList>;
-
 /** The names of HTTP headers that have value that will be injected for requests to this domain. */
 export type SandboxInjectionRuleHeaderNamesList = Array<string>;
-const SandboxInjectionRuleHeaderNamesList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SandboxInjectionRuleHeaderNamesList>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. */
 export interface SandboxInjectionRule {
   /** The domain (or pattern) that this injection rule applies to. Supports wildcards like *.vercel.com. */
@@ -645,19 +521,10 @@ export interface SandboxInjectionRule {
   /** The names of HTTP headers that have value that will be injected for requests to this domain. */
   headerNames?: SandboxInjectionRuleHeaderNamesList;
 }
-const SandboxInjectionRule = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SandboxInjectionRule>;
-
 /** HTTP header injection rules for outgoing requests matching specific domains. */
 export type SandboxNetworkPolicyInjectionRulesList = Array<SandboxInjectionRule>;
-const SandboxNetworkPolicyInjectionRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SandboxNetworkPolicyInjectionRulesList>;
-
 /** The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules. */
 export type SandboxNetworkPolicyMode = "allow-all" | "custom" | "deny-all";
-const SandboxNetworkPolicyMode = S.String;
-
 /** The network policy applied to this sandbox, if any. */
 export interface SandboxNetworkPolicy {
   /** List of IP address ranges (in CIDR notation) the sandbox is allowed to connect to. */
@@ -671,18 +538,11 @@ export interface SandboxNetworkPolicy {
   /** The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules. */
   mode: SandboxNetworkPolicyMode;
 }
-const SandboxNetworkPolicy = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SandboxNetworkPolicy>;
-
 /** The quantity of data transfered to and from the sandbox, in bytes. This value is only available once the sandbox is stopped, and only if it stopped successfully. */
 export interface SessionNetworkTransfer {
   egress: number;
   ingress: number;
 }
-const SessionNetworkTransfer = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SessionNetworkTransfer>;
-
 /** The status of the sandbox. */
 export type SessionStatus =
   | "aborted"
@@ -692,8 +552,6 @@ export type SessionStatus =
   | "snapshotting"
   | "stopped"
   | "stopping";
-const SessionStatus = S.String;
-
 /** This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key. */
 export interface Session {
   /** The time when the sandbox was aborted, in milliseconds since the epoch. */
@@ -746,18 +604,11 @@ export interface Session {
   /** Number of vCPUs allocated to this sandbox. */
   vcpus: number;
 }
-const Session = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Session>;
-
 export interface CreateSandboxesByNameForkV2Response {
   routes: CreateSandboxesByNameForkV2ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-const CreateSandboxesByNameForkV2Response = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateSandboxesByNameForkV2Response>;
-
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
 export type CreateSandboxesByNameForkV3RequestNetworkPolicyCase0Mode =
   | "allow-all"
@@ -932,22 +783,13 @@ export interface CreateSandboxesByNameForkV3RequestNetworkPolicyCase1 {
 export type CreateSandboxesByNameForkV3RequestNetworkPolicy =
   | CreateSandboxesByNameForkV3RequestNetworkPolicyCase0
   | CreateSandboxesByNameForkV3RequestNetworkPolicyCase1;
-const CreateSandboxesByNameForkV3RequestNetworkPolicy =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestNetworkPolicy>;
-
 /** Resources to define the VM */
 export type CreateSandboxesByNameForkV3RequestResources =
   CreateSandboxesByNameForkV2RequestResources;
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesByNameForkV3RequestPortsList = Array<number>;
-const CreateSandboxesByNameForkV3RequestPortsList =
-  CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesByNameForkV3RequestPortsList>;
-
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesByNameForkV3RequestEnvMap = { [key: string]: string | undefined };
-const CreateSandboxesByNameForkV3RequestEnvMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesByNameForkV3RequestEnvMap>;
-
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesByNameForkV3RequestMountsValueMode = "snapshot" | "read-write";
 export interface CreateSandboxesByNameForkV3RequestMountsValue {
@@ -960,9 +802,6 @@ export interface CreateSandboxesByNameForkV3RequestMountsValue {
 export type CreateSandboxesByNameForkV3RequestMountsMap = {
   [key: string]: CreateSandboxesByNameForkV3RequestMountsValue | undefined;
 };
-const CreateSandboxesByNameForkV3RequestMountsMap =
-  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesByNameForkV3RequestMountsMap>;
-
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesByNameForkV3RequestRegion =
   | "iad1"
@@ -984,8 +823,6 @@ export type CreateSandboxesByNameForkV3RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const CreateSandboxesByNameForkV3RequestRegion = S.String;
-
 export type CreateSandboxesByNameForkV3RequestFailoverRegionsItem =
   | "iad1"
   | "sfo1"
@@ -1010,14 +847,8 @@ export type CreateSandboxesByNameForkV3RequestFailoverRegionsItem =
 export type CreateSandboxesByNameForkV3RequestFailoverRegionsList = Array<
   CreateSandboxesByNameForkV3RequestFailoverRegionsItem | (string & {})
 >;
-const CreateSandboxesByNameForkV3RequestFailoverRegionsList =
-  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesByNameForkV3RequestFailoverRegionsList>;
-
 /** Default snapshot expiration time in milliseconds. Defaults to 7 days. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesByNameForkV3RequestSnapshotExpiration = unknown | number;
-const CreateSandboxesByNameForkV3RequestSnapshotExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestSnapshotExpiration>;
-
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1Expiration = unknown | number;
 export interface CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1 {
@@ -1032,14 +863,8 @@ export interface CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1 {
 export type CreateSandboxesByNameForkV3RequestKeepLastSnapshots =
   | string
   | CreateSandboxesByNameForkV3RequestKeepLastSnapshotsCase1;
-const CreateSandboxesByNameForkV3RequestKeepLastSnapshots =
-  S.Unknown as any as S.Schema<CreateSandboxesByNameForkV3RequestKeepLastSnapshots>;
-
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesByNameForkV3RequestTagsMap = { [key: string]: string | undefined };
-const CreateSandboxesByNameForkV3RequestTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesByNameForkV3RequestTagsMap>;
-
 export interface CreateSandboxesByNameForkV3Request {
   /** Name of the source sandbox to fork. */
   name: string;
@@ -1077,25 +902,14 @@ export interface CreateSandboxesByNameForkV3Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesByNameForkV3RequestTagsMap;
 }
-const CreateSandboxesByNameForkV3Request = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateSandboxesByNameForkV3Request>;
-
 export type CreateSandboxesByNameForkV3ResponseRoutesList = Array<SandboxPublicRoute>;
 export interface CreateSandboxesByNameForkV3Response {
   routes: CreateSandboxesByNameForkV3ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-const CreateSandboxesByNameForkV3Response =
-  CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesByNameForkV3Response>;
-
 /** The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration. */
 export type CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration = unknown | number;
-const CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration>;
-
 export interface CreateSandboxesSessionsBySessionIdSnapshotV2Request {
   /** The unique identifier of the session to snapshot. */
   sessionId: string;
@@ -1106,28 +920,14 @@ export interface CreateSandboxesSessionsBySessionIdSnapshotV2Request {
   /** The number of milliseconds after which the snapshot will expire and be deleted. Use 0 for no expiration. */
   expiration?: CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration;
 }
-const CreateSandboxesSessionsBySessionIdSnapshotV2Request = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Request>;
-
 /** CPU architecture required to restore the snapshot. */
 export type SnapshotArchitecture = "amd64" | "arm64";
-const SnapshotArchitecture = S.String;
-
 /** The method used to create the snapshot. */
 export type SnapshotCreationMethod = "automatic" | "manual";
-const SnapshotCreationMethod = S.String;
-
 /** The regions where the snapshot is available. */
 export type SnapshotRegionsList = Array<string>;
-const SnapshotRegionsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SnapshotRegionsList>;
-
 /** The status of the snapshot. */
 export type SnapshotStatus = "created" | "deleted" | "failed";
-const SnapshotStatus = S.String;
-
 /** This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API). */
 export interface Snapshot {
   /** CPU architecture required to restore the snapshot. */
@@ -1159,22 +959,12 @@ export interface Snapshot {
   /** Whether this snapshot is managed by v0 on the customer's behalf. */
   v0?: boolean;
 }
-const Snapshot = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Snapshot>;
-
 export interface CreateSandboxesSessionsBySessionIdSnapshotV2Response {
   session: Session;
   snapshot: Snapshot;
 }
-const CreateSandboxesSessionsBySessionIdSnapshotV2Response = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Response>;
-
 /** The number of milliseconds after which the snapshot will expire and be deleted. Defaults to 7 days when neither this field nor the sandbox configuration specifies an expiration. Use 0 for no expiration. */
 export type CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration = unknown | number;
-const CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration>;
-
 export interface CreateSandboxesSessionsBySessionIdSnapshotV3Request {
   /** The unique identifier of the session to snapshot. */
   sessionId: string;
@@ -1185,18 +975,10 @@ export interface CreateSandboxesSessionsBySessionIdSnapshotV3Request {
   /** The number of milliseconds after which the snapshot will expire and be deleted. Defaults to 7 days when neither this field nor the sandbox configuration specifies an expiration. Use 0 for no expiration. */
   expiration?: CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration;
 }
-const CreateSandboxesSessionsBySessionIdSnapshotV3Request = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Request>;
-
 export interface CreateSandboxesSessionsBySessionIdSnapshotV3Response {
   session: Session;
   snapshot: Snapshot;
 }
-const CreateSandboxesSessionsBySessionIdSnapshotV3Response =
-  CreateSandboxesSessionsBySessionIdSnapshotV2Response as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Response>;
-
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
 export type CreateSandboxesV2RequestNetworkPolicyCase0Mode =
   | "allow-all"
@@ -1371,17 +1153,10 @@ export interface CreateSandboxesV2RequestNetworkPolicyCase1 {
 export type CreateSandboxesV2RequestNetworkPolicy =
   | CreateSandboxesV2RequestNetworkPolicyCase0
   | CreateSandboxesV2RequestNetworkPolicyCase1;
-const CreateSandboxesV2RequestNetworkPolicy =
-  S.Unknown as any as S.Schema<CreateSandboxesV2RequestNetworkPolicy>;
-
 /** The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available. */
 export type CreateSandboxesV2RequestRuntime = "node22" | "node24" | "node26" | "python3.13";
-const CreateSandboxesV2RequestRuntime = S.String;
-
 /** CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access. */
 export type CreateSandboxesV2RequestArchitecture = "amd64" | "arm64";
-const CreateSandboxesV2RequestArchitecture = S.String;
-
 /** Resources to define the VM */
 export type CreateSandboxesV2RequestResources = CreateSandboxesByNameForkV2RequestResources;
 /** Clone a Git repository into the sandbox. */
@@ -1418,18 +1193,10 @@ export type CreateSandboxesV2RequestSource =
   | CreateSandboxesV2RequestSourceCase0
   | CreateSandboxesV2RequestSourceCase1
   | CreateSandboxesV2RequestSourceCase2;
-const CreateSandboxesV2RequestSource = S.Unknown as any as S.Schema<CreateSandboxesV2RequestSource>;
-
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesV2RequestPortsList = Array<number>;
-const CreateSandboxesV2RequestPortsList =
-  CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesV2RequestPortsList>;
-
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesV2RequestEnvMap = { [key: string]: string | undefined };
-const CreateSandboxesV2RequestEnvMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV2RequestEnvMap>;
-
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesV2RequestMountsValueMode = "snapshot" | "read-write";
 export interface CreateSandboxesV2RequestMountsValue {
@@ -1442,9 +1209,6 @@ export interface CreateSandboxesV2RequestMountsValue {
 export type CreateSandboxesV2RequestMountsMap = {
   [key: string]: CreateSandboxesV2RequestMountsValue | undefined;
 };
-const CreateSandboxesV2RequestMountsMap =
-  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV2RequestMountsMap>;
-
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesV2RequestRegion =
   | "iad1"
@@ -1466,8 +1230,6 @@ export type CreateSandboxesV2RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const CreateSandboxesV2RequestRegion = S.String;
-
 export type CreateSandboxesV2RequestFailoverRegionsItem =
   | "iad1"
   | "sfo1"
@@ -1492,19 +1254,10 @@ export type CreateSandboxesV2RequestFailoverRegionsItem =
 export type CreateSandboxesV2RequestFailoverRegionsList = Array<
   CreateSandboxesV2RequestFailoverRegionsItem | (string & {})
 >;
-const CreateSandboxesV2RequestFailoverRegionsList =
-  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV2RequestFailoverRegionsList>;
-
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV2RequestSnapshotExpiration = unknown | number;
-const CreateSandboxesV2RequestSnapshotExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesV2RequestSnapshotExpiration>;
-
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesV2RequestKeepLastSnapshotsExpiration = unknown | number;
-const CreateSandboxesV2RequestKeepLastSnapshotsExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesV2RequestKeepLastSnapshotsExpiration>;
-
 /** Protect the N most recent snapshots with different expiration/deletion behavior. */
 export interface CreateSandboxesV2RequestKeepLastSnapshots {
   /** Number of most recent snapshots to keep. */
@@ -1514,16 +1267,8 @@ export interface CreateSandboxesV2RequestKeepLastSnapshots {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-const CreateSandboxesV2RequestKeepLastSnapshots = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateSandboxesV2RequestKeepLastSnapshots>;
-
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesV2RequestTagsMap = { [key: string]: string | undefined };
-const CreateSandboxesV2RequestTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV2RequestTagsMap>;
-
 export interface CreateSandboxesV2Request {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -1567,20 +1312,12 @@ export interface CreateSandboxesV2Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesV2RequestTagsMap;
 }
-const CreateSandboxesV2Request = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateSandboxesV2Request>;
-
 export type CreateSandboxesV2ResponseRoutesList = Array<SandboxPublicRoute>;
 export interface CreateSandboxesV2Response {
   routes: CreateSandboxesV2ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-const CreateSandboxesV2Response =
-  CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesV2Response>;
-
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
 export type CreateSandboxesV3RequestNetworkPolicyCase0Mode =
   | "allow-all"
@@ -1755,13 +1492,8 @@ export interface CreateSandboxesV3RequestNetworkPolicyCase1 {
 export type CreateSandboxesV3RequestNetworkPolicy =
   | CreateSandboxesV3RequestNetworkPolicyCase0
   | CreateSandboxesV3RequestNetworkPolicyCase1;
-const CreateSandboxesV3RequestNetworkPolicy =
-  S.Unknown as any as S.Schema<CreateSandboxesV3RequestNetworkPolicy>;
-
 /** CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access. */
 export type CreateSandboxesV3RequestArchitecture = "amd64" | "arm64";
-const CreateSandboxesV3RequestArchitecture = S.String;
-
 /** Resources to define the VM */
 export type CreateSandboxesV3RequestResources = CreateSandboxesByNameForkV2RequestResources;
 /** Clone a Git repository into the sandbox. */
@@ -1775,18 +1507,10 @@ export type CreateSandboxesV3RequestSource =
   | CreateSandboxesV2RequestSourceCase0
   | CreateSandboxesV2RequestSourceCase1
   | CreateSandboxesV2RequestSourceCase2;
-const CreateSandboxesV3RequestSource = S.Unknown as any as S.Schema<CreateSandboxesV3RequestSource>;
-
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesV3RequestPortsList = Array<number>;
-const CreateSandboxesV3RequestPortsList =
-  CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesV3RequestPortsList>;
-
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesV3RequestEnvMap = { [key: string]: string | undefined };
-const CreateSandboxesV3RequestEnvMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV3RequestEnvMap>;
-
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesV3RequestMountsValueMode = "snapshot" | "read-write";
 export interface CreateSandboxesV3RequestMountsValue {
@@ -1799,9 +1523,6 @@ export interface CreateSandboxesV3RequestMountsValue {
 export type CreateSandboxesV3RequestMountsMap = {
   [key: string]: CreateSandboxesV3RequestMountsValue | undefined;
 };
-const CreateSandboxesV3RequestMountsMap =
-  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV3RequestMountsMap>;
-
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesV3RequestRegion =
   | "iad1"
@@ -1823,8 +1544,6 @@ export type CreateSandboxesV3RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const CreateSandboxesV3RequestRegion = S.String;
-
 export type CreateSandboxesV3RequestFailoverRegionsItem =
   | "iad1"
   | "sfo1"
@@ -1849,19 +1568,10 @@ export type CreateSandboxesV3RequestFailoverRegionsItem =
 export type CreateSandboxesV3RequestFailoverRegionsList = Array<
   CreateSandboxesV3RequestFailoverRegionsItem | (string & {})
 >;
-const CreateSandboxesV3RequestFailoverRegionsList =
-  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV3RequestFailoverRegionsList>;
-
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV3RequestSnapshotExpiration = unknown | number;
-const CreateSandboxesV3RequestSnapshotExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesV3RequestSnapshotExpiration>;
-
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesV3RequestKeepLastSnapshotsExpiration = unknown | number;
-const CreateSandboxesV3RequestKeepLastSnapshotsExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesV3RequestKeepLastSnapshotsExpiration>;
-
 /** Protect the N most recent snapshots with different expiration/deletion behavior. */
 export interface CreateSandboxesV3RequestKeepLastSnapshots {
   /** Number of most recent snapshots to keep. */
@@ -1871,16 +1581,8 @@ export interface CreateSandboxesV3RequestKeepLastSnapshots {
   /** Whether to immediately delete evicted snapshots. Defaults to true. */
   deleteEvicted?: boolean;
 }
-const CreateSandboxesV3RequestKeepLastSnapshots = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateSandboxesV3RequestKeepLastSnapshots>;
-
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesV3RequestTagsMap = { [key: string]: string | undefined };
-const CreateSandboxesV3RequestTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV3RequestTagsMap>;
-
 export interface CreateSandboxesV3Request {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -1922,20 +1624,12 @@ export interface CreateSandboxesV3Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesV3RequestTagsMap;
 }
-const CreateSandboxesV3Request = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateSandboxesV3Request>;
-
 export type CreateSandboxesV3ResponseRoutesList = Array<SandboxPublicRoute>;
 export interface CreateSandboxesV3Response {
   routes: CreateSandboxesV3ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-const CreateSandboxesV3Response =
-  CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesV3Response>;
-
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
 export type CreateSandboxesV4RequestNetworkPolicyCase0Mode =
   | "allow-all"
@@ -2110,13 +1804,8 @@ export interface CreateSandboxesV4RequestNetworkPolicyCase1 {
 export type CreateSandboxesV4RequestNetworkPolicy =
   | CreateSandboxesV4RequestNetworkPolicyCase0
   | CreateSandboxesV4RequestNetworkPolicyCase1;
-const CreateSandboxesV4RequestNetworkPolicy =
-  S.Unknown as any as S.Schema<CreateSandboxesV4RequestNetworkPolicy>;
-
 /** CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access. */
 export type CreateSandboxesV4RequestArchitecture = "amd64" | "arm64";
-const CreateSandboxesV4RequestArchitecture = S.String;
-
 /** Resources to define the VM */
 export type CreateSandboxesV4RequestResources = CreateSandboxesByNameForkV2RequestResources;
 /** Clone a Git repository into the sandbox. */
@@ -2130,18 +1819,10 @@ export type CreateSandboxesV4RequestSource =
   | CreateSandboxesV2RequestSourceCase0
   | CreateSandboxesV2RequestSourceCase1
   | CreateSandboxesV2RequestSourceCase2;
-const CreateSandboxesV4RequestSource = S.Unknown as any as S.Schema<CreateSandboxesV4RequestSource>;
-
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type CreateSandboxesV4RequestPortsList = Array<number>;
-const CreateSandboxesV4RequestPortsList =
-  CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<CreateSandboxesV4RequestPortsList>;
-
 /** Default environment variables for the sandbox. These are inherited by all commands unless overridden. */
 export type CreateSandboxesV4RequestEnvMap = { [key: string]: string | undefined };
-const CreateSandboxesV4RequestEnvMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV4RequestEnvMap>;
-
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type CreateSandboxesV4RequestMountsValueMode = "snapshot" | "read-write";
 export interface CreateSandboxesV4RequestMountsValue {
@@ -2154,9 +1835,6 @@ export interface CreateSandboxesV4RequestMountsValue {
 export type CreateSandboxesV4RequestMountsMap = {
   [key: string]: CreateSandboxesV4RequestMountsValue | undefined;
 };
-const CreateSandboxesV4RequestMountsMap =
-  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<CreateSandboxesV4RequestMountsMap>;
-
 /** The Vercel region in which to create the sandbox. */
 export type CreateSandboxesV4RequestRegion =
   | "iad1"
@@ -2178,8 +1856,6 @@ export type CreateSandboxesV4RequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const CreateSandboxesV4RequestRegion = S.String;
-
 export type CreateSandboxesV4RequestFailoverRegionsItem =
   | "iad1"
   | "sfo1"
@@ -2204,14 +1880,8 @@ export type CreateSandboxesV4RequestFailoverRegionsItem =
 export type CreateSandboxesV4RequestFailoverRegionsList = Array<
   CreateSandboxesV4RequestFailoverRegionsItem | (string & {})
 >;
-const CreateSandboxesV4RequestFailoverRegionsList =
-  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<CreateSandboxesV4RequestFailoverRegionsList>;
-
 /** Default snapshot expiration time in milliseconds. Defaults to 7 days. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type CreateSandboxesV4RequestSnapshotExpiration = unknown | number;
-const CreateSandboxesV4RequestSnapshotExpiration =
-  S.Unknown as any as S.Schema<CreateSandboxesV4RequestSnapshotExpiration>;
-
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type CreateSandboxesV4RequestKeepLastSnapshotsCase1Expiration = unknown | number;
 export interface CreateSandboxesV4RequestKeepLastSnapshotsCase1 {
@@ -2226,14 +1896,8 @@ export interface CreateSandboxesV4RequestKeepLastSnapshotsCase1 {
 export type CreateSandboxesV4RequestKeepLastSnapshots =
   | string
   | CreateSandboxesV4RequestKeepLastSnapshotsCase1;
-const CreateSandboxesV4RequestKeepLastSnapshots =
-  S.Unknown as any as S.Schema<CreateSandboxesV4RequestKeepLastSnapshots>;
-
 /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
 export type CreateSandboxesV4RequestTagsMap = { [key: string]: string | undefined };
-const CreateSandboxesV4RequestTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<CreateSandboxesV4RequestTagsMap>;
-
 export interface CreateSandboxesV4Request {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -2275,20 +1939,12 @@ export interface CreateSandboxesV4Request {
   /** Key-value tags to associate with the sandbox. Maximum 5 tags. */
   tags?: CreateSandboxesV4RequestTagsMap;
 }
-const CreateSandboxesV4Request = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateSandboxesV4Request>;
-
 export type CreateSandboxesV4ResponseRoutesList = Array<SandboxPublicRoute>;
 export interface CreateSandboxesV4Response {
   routes: CreateSandboxesV4ResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-const CreateSandboxesV4Response =
-  CreateSandboxesByNameForkV2Response as any as S.Schema<CreateSandboxesV4Response>;
-
 export interface CreateSessionDirectoryRequest {
   /** The unique identifier of the session to create the directory in. */
   sessionId: string;
@@ -2303,17 +1959,7 @@ export interface CreateSessionDirectoryRequest {
   /** If true, creates parent directories as needed (like `mkdir -p`). If false, fails if parent directories do not exist. */
   recursive?: boolean;
 }
-const CreateSessionDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateSessionDirectoryRequest>;
-
 export type CreateSessionDirectoryResponse = unknown;
-const CreateSessionDirectoryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateSessionDirectoryResponse>;
-
 export interface DeleteDriveRequest {
   /** Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores). */
   name: string;
@@ -2324,8 +1970,6 @@ export interface DeleteDriveRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteDriveRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteDriveRequest>;
-
 /** This object contains information related to a Vercel Sandbox Drive. */
 export interface Drive {
   /** The time when the drive was created, in milliseconds since the epoch. */
@@ -2349,13 +1993,9 @@ export interface Drive {
   /** Whether this drive is managed by v0 on the customer's behalf. */
   v0?: boolean;
 }
-const Drive = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Drive>;
-
 export interface DeleteDriveResponse {
   drive: Drive;
 }
-const DeleteDriveResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DeleteDriveResponse>;
-
 export interface DeleteSandboxRequest {
   /** The sandbox name to delete. */
   name: string;
@@ -2368,16 +2008,9 @@ export interface DeleteSandboxRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteSandboxRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DeleteSandboxRequest>;
-
 export interface DeleteSandboxResponse {
   sandbox: NamedSandbox;
 }
-const DeleteSandboxResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteSandboxResponse>;
-
 export interface DeleteSessionSnapshotRequest {
   /** The unique identifier of the snapshot to delete. */
   snapshotId: string;
@@ -2386,19 +2019,9 @@ export interface DeleteSessionSnapshotRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteSessionSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteSessionSnapshotRequest>;
-
 export interface DeleteSessionSnapshotResponse {
   snapshot: Snapshot;
 }
-const DeleteSessionSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeleteSessionSnapshotResponse>;
-
 export interface ExtendSessionTimeoutRequest {
   /** The unique identifier of the session to extend the timeout for. */
   sessionId: string;
@@ -2409,19 +2032,9 @@ export interface ExtendSessionTimeoutRequest {
   /** The amount of time in milliseconds to add to the current timeout. Must be at least 1000ms (1 second). */
   duration: number;
 }
-const ExtendSessionTimeoutRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ExtendSessionTimeoutRequest>;
-
 export interface ExtendSessionTimeoutResponse {
   session: Session;
 }
-const ExtendSessionTimeoutResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ExtendSessionTimeoutResponse>;
-
 export interface GetNamedSandboxRequest {
   /** Name for the sandbox. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores). */
   name: string;
@@ -2434,26 +2047,13 @@ export interface GetNamedSandboxRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetNamedSandboxRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetNamedSandboxRequest>;
-
 export type GetNamedSandboxResponseRoutesList = Array<SandboxPublicRoute>;
-const GetNamedSandboxResponseRoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<GetNamedSandboxResponseRoutesList>;
-
 export interface GetNamedSandboxResponse {
   resumed: boolean;
   routes: GetNamedSandboxResponseRoutesList;
   sandbox: NamedSandbox;
   session: Session;
 }
-const GetNamedSandboxResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetNamedSandboxResponse>;
-
 /** Region where the drive is stored. Defaults to iad1. */
 export type GetOrCreateDriveRequestRegion =
   | "iad1"
@@ -2475,8 +2075,6 @@ export type GetOrCreateDriveRequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const GetOrCreateDriveRequestRegion = S.String;
-
 export interface GetOrCreateDriveRequest {
   /** Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores). */
   name: string;
@@ -2491,16 +2089,9 @@ export interface GetOrCreateDriveRequest {
   /** Region where the drive is stored. Defaults to iad1. */
   region?: GetOrCreateDriveRequestRegion | (string & {});
 }
-const GetOrCreateDriveRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetOrCreateDriveRequest>;
-
 export interface GetOrCreateDriveResponse {
   drive: Drive;
 }
-const GetOrCreateDriveResponse = DeleteDriveResponse as any as S.Schema<GetOrCreateDriveResponse>;
-
 export interface GetSessionRequest {
   /** The unique identifier of the session to retrieve. */
   sessionId: string;
@@ -2509,18 +2100,11 @@ export interface GetSessionRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetSessionRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetSessionRequest>;
-
 export type GetSessionResponseRoutesList = Array<SandboxPublicRoute>;
-const GetSessionResponseRoutesList =
-  CreateSandboxesByNameForkV2ResponseRoutesList as any as S.Schema<GetSessionResponseRoutesList>;
-
 export interface GetSessionResponse {
   routes: GetSessionResponseRoutesList;
   session: Session;
 }
-const GetSessionResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetSessionResponse>;
-
 export interface GetSessionCommandRequest {
   /** The unique identifier of the session containing the command. */
   sessionId: string;
@@ -2533,16 +2117,8 @@ export interface GetSessionCommandRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetSessionCommandRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetSessionCommandRequest>;
-
 /** The arguments of the command. */
 export type SessionCommandArgsList = Array<string>;
-const SessionCommandArgsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<SessionCommandArgsList>;
-
 /** This object represents a command run in a Vercel Sandbox session (v2 API). */
 export interface SessionCommand {
   /** The arguments of the command. */
@@ -2562,16 +2138,9 @@ export interface SessionCommand {
   /** When the command was started, in milliseconds since the epoch. */
   startedAt: number;
 }
-const SessionCommand = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SessionCommand>;
-
 export interface GetSessionCommandResponse {
   command: SessionCommand;
 }
-const GetSessionCommandResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetSessionCommandResponse>;
-
 export interface GetSessionCommandLogsRequest {
   /** The unique identifier of the session containing the command. */
   sessionId: string;
@@ -2582,17 +2151,7 @@ export interface GetSessionCommandLogsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetSessionCommandLogsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetSessionCommandLogsRequest>;
-
 export interface GetSessionCommandLogsResponse {}
-const GetSessionCommandLogsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetSessionCommandLogsResponse>;
-
 export interface GetSessionSnapshotRequest {
   /** The unique identifier of the snapshot to retrieve. */
   snapshotId: string;
@@ -2601,17 +2160,9 @@ export interface GetSessionSnapshotRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetSessionSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetSessionSnapshotRequest>;
-
 export interface GetSessionSnapshotResponse {
   snapshot: Snapshot;
 }
-const GetSessionSnapshotResponse =
-  DeleteSessionSnapshotResponse as any as S.Schema<GetSessionSnapshotResponse>;
-
 export interface KillSessionCommandRequest {
   /** The unique identifier of the session containing the command. */
   sessionId: string;
@@ -2624,25 +2175,13 @@ export interface KillSessionCommandRequest {
   /** The POSIX signal number to send to the process. Common values: 15 (SIGTERM) for graceful termination, 9 (SIGKILL) for forced termination. */
   signal: number;
 }
-const KillSessionCommandRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<KillSessionCommandRequest>;
-
 export interface KillSessionCommandResponse {
   command: SessionCommand;
 }
-const KillSessionCommandResponse =
-  GetSessionCommandResponse as any as S.Schema<KillSessionCommandResponse>;
-
 /** Field to sort drives by. */
 export type ListDrivesRequestSortBy = "createdAt" | "updatedAt" | "name";
-const ListDrivesRequestSortBy = S.String;
-
 /** Sort direction for results. */
 export type ListDrivesRequestSortOrder = "asc" | "desc";
-const ListDrivesRequestSortOrder = S.String;
-
 export interface ListDrivesRequest {
   /** The project ID or name associated with the drives. Required unless using a Vercel OIDC token scoped to a project. */
   projectId?: string;
@@ -2661,50 +2200,28 @@ export interface ListDrivesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListDrivesRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListDrivesRequest>;
-
 export type ListDrivesResponseDrivesList = Array<Drive>;
-const ListDrivesResponseDrivesList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListDrivesResponseDrivesList>;
-
 export interface ListDrivesResponsePagination {
   count: number;
   next: string | null;
 }
-const ListDrivesResponsePagination = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListDrivesResponsePagination>;
-
 export interface ListDrivesResponse {
   drives: ListDrivesResponseDrivesList;
   pagination: ListDrivesResponsePagination;
 }
-const ListDrivesResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListDrivesResponse>;
-
 /** Field to sort by. */
 export type ListNamedSandboxesRequestSortBy =
   | "createdAt"
   | "name"
   | "statusUpdatedAt"
   | "currentSnapshotId";
-const ListNamedSandboxesRequestSortBy = S.String;
-
 /** Sort direction. Defaults to desc. */
 export type ListNamedSandboxesRequestSortOrder = "asc" | "desc";
-const ListNamedSandboxesRequestSortOrder = S.String;
-
 /** Filter named sandboxes by status. Only valid when sortBy is createdAt. */
 export type ListNamedSandboxesRequestStatus = "running" | "stopping" | "stopped";
-const ListNamedSandboxesRequestStatus = S.String;
-
 export type ListNamedSandboxesRequestTagsCase1List = Array<string>;
 /** Filter sandboxes by tag. Format: \"key:value\". Only one tag filter is supported at a time. */
 export type ListNamedSandboxesRequestTags = string | ListNamedSandboxesRequestTagsCase1List;
-const ListNamedSandboxesRequestTags = S.Unknown as any as S.Schema<ListNamedSandboxesRequestTags>;
-
 export interface ListNamedSandboxesRequest {
   /** The unique identifier or name of the project to list named sandboxes for. */
   project?: string;
@@ -2727,27 +2244,12 @@ export interface ListNamedSandboxesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListNamedSandboxesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListNamedSandboxesRequest>;
-
 export type ListNamedSandboxesResponsePagination = ListDrivesResponsePagination;
 export type ListNamedSandboxesResponseSandboxesList = Array<NamedSandbox>;
-const ListNamedSandboxesResponseSandboxesList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListNamedSandboxesResponseSandboxesList>;
-
 export interface ListNamedSandboxesResponse {
   pagination: ListDrivesResponsePagination;
   sandboxes: ListNamedSandboxesResponseSandboxesList;
 }
-const ListNamedSandboxesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListNamedSandboxesResponse>;
-
 export interface ListSessionCommandsRequest {
   /** The unique identifier of the session to list commands for. */
   sessionId: string;
@@ -2756,29 +2258,12 @@ export interface ListSessionCommandsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListSessionCommandsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListSessionCommandsRequest>;
-
 export type ListSessionCommandsResponseCommandsList = Array<SessionCommand>;
-const ListSessionCommandsResponseCommandsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListSessionCommandsResponseCommandsList>;
-
 export interface ListSessionCommandsResponse {
   commands: ListSessionCommandsResponseCommandsList;
 }
-const ListSessionCommandsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListSessionCommandsResponse>;
-
 /** Sort direction for results by creation time. */
 export type ListSessionsRequestSortOrder = "asc" | "desc";
-const ListSessionsRequestSortOrder = S.String;
-
 export interface ListSessionsRequest {
   /** The unique identifier or name of the project to list sessions for. */
   project?: string;
@@ -2795,8 +2280,6 @@ export interface ListSessionsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListSessionsRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ListSessionsRequest>;
-
 export type ListSessionsResponseBodyCase1Pagination = ListDrivesResponsePagination;
 export type ListSessionsResponseBodyCase1SessionsList = Array<Session>;
 export interface ListSessionsResponseBodyCase1 {
@@ -2804,15 +2287,9 @@ export interface ListSessionsResponseBodyCase1 {
   sessions: ListSessionsResponseBodyCase1SessionsList;
 }
 export type ListSessionsResponseBody = unknown | ListSessionsResponseBodyCase1;
-const ListSessionsResponseBody = S.Unknown as any as S.Schema<ListSessionsResponseBody>;
-
 export type ListSessionsResponse = ListSessionsResponseBody;
-const ListSessionsResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListSessionsResponse>;
-
 /** Sort direction for results by creation time. */
 export type ListSessionSnapshotsRequestSortOrder = "asc" | "desc";
-const ListSessionSnapshotsRequestSortOrder = S.String;
-
 export interface ListSessionSnapshotsRequest {
   /** The unique identifier or name of the project to list snapshots for. */
   project?: string;
@@ -2829,11 +2306,6 @@ export interface ListSessionSnapshotsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListSessionSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListSessionSnapshotsRequest>;
-
 export type ListSessionSnapshotsResponseBodyCase1Pagination = ListDrivesResponsePagination;
 export type ListSessionSnapshotsResponseBodyCase1SnapshotsList = Array<Snapshot>;
 export interface ListSessionSnapshotsResponseBodyCase1 {
@@ -2841,15 +2313,7 @@ export interface ListSessionSnapshotsResponseBodyCase1 {
   snapshots: ListSessionSnapshotsResponseBodyCase1SnapshotsList;
 }
 export type ListSessionSnapshotsResponseBody = unknown | ListSessionSnapshotsResponseBodyCase1;
-const ListSessionSnapshotsResponseBody =
-  S.Unknown as any as S.Schema<ListSessionSnapshotsResponseBody>;
-
 export type ListSessionSnapshotsResponse = ListSessionSnapshotsResponseBody;
-const ListSessionSnapshotsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListSessionSnapshotsResponse>;
-
 export interface ReadSessionFileRequest {
   /** The unique identifier of the session to read the file from. */
   sessionId: string;
@@ -2862,25 +2326,11 @@ export interface ReadSessionFileRequest {
   /** The path of the file to read. Can be absolute or relative to the working directory. */
   path: string;
 }
-const ReadSessionFileRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ReadSessionFileRequest>;
-
 export interface ReadSessionFileResponse {}
-const ReadSessionFileResponse =
-  GetSessionCommandLogsResponse as any as S.Schema<ReadSessionFileResponse>;
-
 /** Arguments to pass to the command. Each argument should be a separate array element. */
 export type RunSessionCommandRequestArgsList = Array<string>;
-const RunSessionCommandRequestArgsList =
-  NamedSandboxNetworkPolicyAllowedCIDRsList as any as S.Schema<RunSessionCommandRequestArgsList>;
-
 /** Additional environment variables to set for this command. These are merged with the sandbox environment. */
 export type RunSessionCommandRequestEnvMap = { [key: string]: string | undefined };
-const RunSessionCommandRequestEnvMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<RunSessionCommandRequestEnvMap>;
-
 export interface RunSessionCommandRequest {
   /** The unique identifier of the session in which to execute the command. */
   sessionId: string;
@@ -2907,17 +2357,9 @@ export interface RunSessionCommandRequest {
   /** Maximum duration in milliseconds the command may run before it is killed with SIGKILL, up to 5 hours. Enforced at exec time, independently of `wait`. */
   timeout?: number;
 }
-const RunSessionCommandRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<RunSessionCommandRequest>;
-
 export interface RunSessionCommandResponse {
   command: SessionCommand;
 }
-const RunSessionCommandResponse =
-  GetSessionCommandResponse as any as S.Schema<RunSessionCommandResponse>;
-
 export interface StopSessionRequest {
   /** The unique identifier of the session to stop. */
   sessionId: string;
@@ -2926,8 +2368,6 @@ export interface StopSessionRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const StopSessionRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<StopSessionRequest>;
-
 export interface StopSessionResponseBodyCase0 {
   session: Session;
 }
@@ -2937,22 +2377,13 @@ export interface StopSessionResponseBodyCase1 {
   snapshot: Snapshot;
 }
 export type StopSessionResponseBody = StopSessionResponseBodyCase0 | StopSessionResponseBodyCase1;
-const StopSessionResponseBody = S.Unknown as any as S.Schema<StopSessionResponseBody>;
-
 export type StopSessionResponse = StopSessionResponseBody;
-const StopSessionResponse = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<StopSessionResponse>;
-
 /** Resources to define the VM */
 export type UpdateSandboxRequestResources = CreateSandboxesByNameForkV2RequestResources;
 /** The runtime environment for the sandbox. Determines the pre-installed language runtimes and tools available. */
 export type UpdateSandboxRequestRuntime = "node22" | "node24" | "node26" | "python3.13";
-const UpdateSandboxRequestRuntime = S.String;
-
 /** Default snapshot expiration time in milliseconds. Set to 0 to disable expiration. When set, this value is used as the default expiration for all snapshots created for this sandbox. */
 export type UpdateSandboxRequestSnapshotExpiration = unknown | number;
-const UpdateSandboxRequestSnapshotExpiration =
-  S.Unknown as any as S.Schema<UpdateSandboxRequestSnapshotExpiration>;
-
 /** Expiration time in milliseconds for kept snapshots. Falls back to snapshotExpiration. */
 export type UpdateSandboxRequestKeepLastSnapshotsCase1Expiration = unknown | number;
 export interface UpdateSandboxRequestKeepLastSnapshotsCase1 {
@@ -2967,9 +2398,6 @@ export interface UpdateSandboxRequestKeepLastSnapshotsCase1 {
 export type UpdateSandboxRequestKeepLastSnapshots =
   | string
   | UpdateSandboxRequestKeepLastSnapshotsCase1;
-const UpdateSandboxRequestKeepLastSnapshots =
-  S.Unknown as any as S.Schema<UpdateSandboxRequestKeepLastSnapshots>;
-
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
 export type UpdateSandboxRequestNetworkPolicyCase0Mode =
   | "allow-all"
@@ -3143,9 +2571,6 @@ export interface UpdateSandboxRequestNetworkPolicyCase1 {
 export type UpdateSandboxRequestNetworkPolicy =
   | UpdateSandboxRequestNetworkPolicyCase0
   | UpdateSandboxRequestNetworkPolicyCase1;
-const UpdateSandboxRequestNetworkPolicy =
-  S.Unknown as any as S.Schema<UpdateSandboxRequestNetworkPolicy>;
-
 /** The Vercel region in which to create the sandbox. */
 export type UpdateSandboxRequestRegion =
   | "iad1"
@@ -3167,8 +2592,6 @@ export type UpdateSandboxRequestRegion =
   | "yul1"
   | "hnd1"
   | "kix1";
-const UpdateSandboxRequestRegion = S.String;
-
 export type UpdateSandboxRequestFailoverRegionsItem =
   | "iad1"
   | "sfo1"
@@ -3193,9 +2616,6 @@ export type UpdateSandboxRequestFailoverRegionsItem =
 export type UpdateSandboxRequestFailoverRegionsList = Array<
   UpdateSandboxRequestFailoverRegionsItem | (string & {})
 >;
-const UpdateSandboxRequestFailoverRegionsList =
-  CreateSandboxesByNameForkV2RequestFailoverRegionsList as any as S.Schema<UpdateSandboxRequestFailoverRegionsList>;
-
 /** Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time. */
 export type UpdateSandboxRequestMountsValueMode = "snapshot" | "read-write";
 export interface UpdateSandboxRequestMountsValue {
@@ -3208,24 +2628,12 @@ export interface UpdateSandboxRequestMountsValue {
 export type UpdateSandboxRequestMountsMap = {
   [key: string]: UpdateSandboxRequestMountsValue | undefined;
 };
-const UpdateSandboxRequestMountsMap =
-  CreateSandboxesByNameForkV2RequestMountsMap as any as S.Schema<UpdateSandboxRequestMountsMap>;
-
 /** Default environment variables for the sandbox. Set to empty object to clear. */
 export type UpdateSandboxRequestEnvMap = { [key: string]: string | undefined };
-const UpdateSandboxRequestEnvMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<UpdateSandboxRequestEnvMap>;
-
 /** List of ports to expose from the sandbox. Each port will be accessible via a unique URL. Maximum of 15 ports can be exposed. */
 export type UpdateSandboxRequestPortsList = Array<number>;
-const UpdateSandboxRequestPortsList =
-  CreateSandboxesByNameForkV2RequestPortsList as any as S.Schema<UpdateSandboxRequestPortsList>;
-
 /** Key-value tags to associate with the sandbox. Replaces existing tags. Set to empty object to clear. Maximum 5 tags. */
 export type UpdateSandboxRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSandboxRequestTagsMap =
-  CreateSandboxesByNameForkV2RequestEnvMap as any as S.Schema<UpdateSandboxRequestTagsMap>;
-
 export interface UpdateSandboxRequest {
   /** The sandbox to update. */
   name: string;
@@ -3267,8 +2675,6 @@ export interface UpdateSandboxRequest {
   /** Key-value tags to associate with the sandbox. Replaces existing tags. Set to empty object to clear. Maximum 5 tags. */
   tags?: UpdateSandboxRequestTagsMap;
 }
-const UpdateSandboxRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<UpdateSandboxRequest>;
-
 export type UpdateSandboxResponseBodyCase0RoutesList = Array<SandboxPublicRoute>;
 export interface UpdateSandboxResponseBodyCase0 {
   routes: UpdateSandboxResponseBodyCase0RoutesList;
@@ -3284,14 +2690,7 @@ export interface UpdateSandboxResponseBodyCase1 {
 export type UpdateSandboxResponseBody =
   | UpdateSandboxResponseBodyCase0
   | UpdateSandboxResponseBodyCase1;
-const UpdateSandboxResponseBody = S.Unknown as any as S.Schema<UpdateSandboxResponseBody>;
-
 export type UpdateSandboxResponse = UpdateSandboxResponseBody;
-const UpdateSandboxResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateSandboxResponse>;
-
 /** The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules. */
 export type UpdateSessionNetworkPolicyRequestBodyCase0Mode =
   | "allow-all"
@@ -3466,9 +2865,6 @@ export interface UpdateSessionNetworkPolicyRequestBodyCase1 {
 export type UpdateSessionNetworkPolicyRequestBody =
   | UpdateSessionNetworkPolicyRequestBodyCase0
   | UpdateSessionNetworkPolicyRequestBodyCase1;
-const UpdateSessionNetworkPolicyRequestBody =
-  S.Unknown as any as S.Schema<UpdateSessionNetworkPolicyRequestBody>;
-
 export interface UpdateSessionNetworkPolicyRequest {
   /** The unique identifier of the session to update the network policy for. */
   sessionId: string;
@@ -3478,17 +2874,9 @@ export interface UpdateSessionNetworkPolicyRequest {
   slug?: string;
   body?: UpdateSessionNetworkPolicyRequestBody;
 }
-const UpdateSessionNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateSessionNetworkPolicyRequest>;
-
 export interface UpdateSessionNetworkPolicyResponse {
   session: Session;
 }
-const UpdateSessionNetworkPolicyResponse =
-  ExtendSessionTimeoutResponse as any as S.Schema<UpdateSessionNetworkPolicyResponse>;
-
 export interface WriteSessionFilesRequest {
   /** The unique identifier of the session to write files to. */
   sessionId: string;
@@ -3499,15 +2887,7 @@ export interface WriteSessionFilesRequest {
   /** The target directory where the tarball contents will be extracted. If not specified, files are extracted to the sandbox home directory. */
   xCwd?: string;
 }
-const WriteSessionFilesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<WriteSessionFilesRequest>;
-
 export type WriteSessionFilesResponse = unknown;
-const WriteSessionFilesResponse =
-  CreateSessionDirectoryResponse as any as S.Schema<WriteSessionFilesResponse>;
-
 export type CreateSandboxesByNameForkV2Error =
   | BadRequest
   | PaymentRequired
@@ -3523,8 +2903,8 @@ export const createSandboxesByNameForkV2: API.OperationMethod<
   CreateSandboxesByNameForkV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesByNameForkV2Request,
-  output: CreateSandboxesByNameForkV2Response,
+  input: __S(7) as any as S.Schema<CreateSandboxesByNameForkV2Request>,
+  output: __S(21) as any as S.Schema<CreateSandboxesByNameForkV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3545,8 +2925,8 @@ export const createSandboxesByNameForkV3: API.OperationMethod<
   CreateSandboxesByNameForkV3Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesByNameForkV3Request,
-  output: CreateSandboxesByNameForkV3Response,
+  input: __S(22) as any as S.Schema<CreateSandboxesByNameForkV3Request>,
+  output: __S(21) as any as S.Schema<CreateSandboxesByNameForkV3Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3566,8 +2946,8 @@ export const createSandboxesSessionsBySessionIdSnapshotV2: API.OperationMethod<
   CreateSandboxesSessionsBySessionIdSnapshotV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesSessionsBySessionIdSnapshotV2Request,
-  output: CreateSandboxesSessionsBySessionIdSnapshotV2Response,
+  input: __S(23) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Request>,
+  output: __S(25) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3587,8 +2967,8 @@ export const createSandboxesSessionsBySessionIdSnapshotV3: API.OperationMethod<
   CreateSandboxesSessionsBySessionIdSnapshotV3Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesSessionsBySessionIdSnapshotV3Request,
-  output: CreateSandboxesSessionsBySessionIdSnapshotV3Response,
+  input: __S(26) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Request>,
+  output: __S(25) as any as S.Schema<CreateSandboxesSessionsBySessionIdSnapshotV3Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3609,8 +2989,8 @@ export const createSandboxesV2: API.OperationMethod<
   CreateSandboxesV2Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesV2Request,
-  output: CreateSandboxesV2Response,
+  input: __S(28) as any as S.Schema<CreateSandboxesV2Request>,
+  output: __S(21) as any as S.Schema<CreateSandboxesV2Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3631,8 +3011,8 @@ export const createSandboxesV3: API.OperationMethod<
   CreateSandboxesV3Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesV3Request,
-  output: CreateSandboxesV3Response,
+  input: __S(30) as any as S.Schema<CreateSandboxesV3Request>,
+  output: __S(21) as any as S.Schema<CreateSandboxesV3Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3653,8 +3033,8 @@ export const createSandboxesV4: API.OperationMethod<
   CreateSandboxesV4Error,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSandboxesV4Request,
-  output: CreateSandboxesV4Response,
+  input: __S(31) as any as S.Schema<CreateSandboxesV4Request>,
+  output: __S(21) as any as S.Schema<CreateSandboxesV4Response>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3673,8 +3053,8 @@ export const createSessionDirectory: API.OperationMethod<
   CreateSessionDirectoryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionDirectoryRequest,
-  output: CreateSessionDirectoryResponse,
+  input: __S(32) as any as S.Schema<CreateSessionDirectoryRequest>,
+  output: __S(33) as any as S.Schema<CreateSessionDirectoryResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3688,8 +3068,8 @@ export const deleteDrive: API.OperationMethod<
   DeleteDriveError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDriveRequest,
-  output: DeleteDriveResponse,
+  input: __S(34) as any as S.Schema<DeleteDriveRequest>,
+  output: __S(36) as any as S.Schema<DeleteDriveResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3703,8 +3083,8 @@ export const deleteSandbox: API.OperationMethod<
   DeleteSandboxError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSandboxRequest,
-  output: DeleteSandboxResponse,
+  input: __S(37) as any as S.Schema<DeleteSandboxRequest>,
+  output: __S(38) as any as S.Schema<DeleteSandboxResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3718,8 +3098,8 @@ export const deleteSessionSnapshot: API.OperationMethod<
   DeleteSessionSnapshotError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSessionSnapshotRequest,
-  output: DeleteSessionSnapshotResponse,
+  input: __S(39) as any as S.Schema<DeleteSessionSnapshotRequest>,
+  output: __S(40) as any as S.Schema<DeleteSessionSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3738,8 +3118,8 @@ export const extendSessionTimeout: API.OperationMethod<
   ExtendSessionTimeoutError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtendSessionTimeoutRequest,
-  output: ExtendSessionTimeoutResponse,
+  input: __S(41) as any as S.Schema<ExtendSessionTimeoutRequest>,
+  output: __S(42) as any as S.Schema<ExtendSessionTimeoutResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3760,8 +3140,8 @@ export const getNamedSandbox: API.OperationMethod<
   GetNamedSandboxError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamedSandboxRequest,
-  output: GetNamedSandboxResponse,
+  input: __S(43) as any as S.Schema<GetNamedSandboxRequest>,
+  output: __S(44) as any as S.Schema<GetNamedSandboxResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3781,8 +3161,8 @@ export const getOrCreateDrive: API.OperationMethod<
   GetOrCreateDriveError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrCreateDriveRequest,
-  output: GetOrCreateDriveResponse,
+  input: __S(45) as any as S.Schema<GetOrCreateDriveRequest>,
+  output: __S(36) as any as S.Schema<GetOrCreateDriveResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3796,8 +3176,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionRequest,
-  output: GetSessionResponse,
+  input: __S(46) as any as S.Schema<GetSessionRequest>,
+  output: __S(47) as any as S.Schema<GetSessionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3816,8 +3196,8 @@ export const getSessionCommand: API.OperationMethod<
   GetSessionCommandError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionCommandRequest,
-  output: GetSessionCommandResponse,
+  input: __S(48) as any as S.Schema<GetSessionCommandRequest>,
+  output: __S(50) as any as S.Schema<GetSessionCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3836,8 +3216,8 @@ export const getSessionCommandLogs: API.OperationMethod<
   GetSessionCommandLogsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionCommandLogsRequest,
-  output: GetSessionCommandLogsResponse,
+  input: __S(51) as any as S.Schema<GetSessionCommandLogsRequest>,
+  output: __S(52) as any as S.Schema<GetSessionCommandLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3851,8 +3231,8 @@ export const getSessionSnapshot: API.OperationMethod<
   GetSessionSnapshotError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionSnapshotRequest,
-  output: GetSessionSnapshotResponse,
+  input: __S(53) as any as S.Schema<GetSessionSnapshotRequest>,
+  output: __S(40) as any as S.Schema<GetSessionSnapshotResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3871,8 +3251,8 @@ export const killSessionCommand: API.OperationMethod<
   KillSessionCommandError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KillSessionCommandRequest,
-  output: KillSessionCommandResponse,
+  input: __S(54) as any as S.Schema<KillSessionCommandRequest>,
+  output: __S(50) as any as S.Schema<KillSessionCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3886,8 +3266,8 @@ export const listDrives: API.OperationMethod<
   ListDrivesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDrivesRequest,
-  output: ListDrivesResponse,
+  input: __S(55) as any as S.Schema<ListDrivesRequest>,
+  output: __S(58) as any as S.Schema<ListDrivesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3901,8 +3281,8 @@ export const listNamedSandboxes: API.OperationMethod<
   ListNamedSandboxesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamedSandboxesRequest,
-  output: ListNamedSandboxesResponse,
+  input: __S(59) as any as S.Schema<ListNamedSandboxesRequest>,
+  output: __S(61) as any as S.Schema<ListNamedSandboxesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3296,8 @@ export const listSessionCommands: API.OperationMethod<
   ListSessionCommandsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSessionCommandsRequest,
-  output: ListSessionCommandsResponse,
+  input: __S(62) as any as S.Schema<ListSessionCommandsRequest>,
+  output: __S(64) as any as S.Schema<ListSessionCommandsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3931,8 +3311,8 @@ export const listSessions: API.OperationMethod<
   ListSessionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSessionsRequest,
-  output: ListSessionsResponse,
+  input: __S(65) as any as S.Schema<ListSessionsRequest>,
+  output: __S(66) as any as S.Schema<ListSessionsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3946,8 +3326,8 @@ export const listSessionSnapshots: API.OperationMethod<
   ListSessionSnapshotsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSessionSnapshotsRequest,
-  output: ListSessionSnapshotsResponse,
+  input: __S(67) as any as S.Schema<ListSessionSnapshotsRequest>,
+  output: __S(68) as any as S.Schema<ListSessionSnapshotsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3966,8 +3346,8 @@ export const readSessionFile: API.OperationMethod<
   ReadSessionFileError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadSessionFileRequest,
-  output: ReadSessionFileResponse,
+  input: __S(69) as any as S.Schema<ReadSessionFileRequest>,
+  output: __S(52) as any as S.Schema<ReadSessionFileResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -3986,8 +3366,8 @@ export const runSessionCommand: API.OperationMethod<
   RunSessionCommandError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunSessionCommandRequest,
-  output: RunSessionCommandResponse,
+  input: __S(70) as any as S.Schema<RunSessionCommandRequest>,
+  output: __S(50) as any as S.Schema<RunSessionCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4006,8 +3386,8 @@ export const stopSession: API.OperationMethod<
   StopSessionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSessionRequest,
-  output: StopSessionResponse,
+  input: __S(71) as any as S.Schema<StopSessionRequest>,
+  output: __S(72) as any as S.Schema<StopSessionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4028,8 +3408,8 @@ export const updateSandbox: API.OperationMethod<
   UpdateSandboxError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSandboxRequest,
-  output: UpdateSandboxResponse,
+  input: __S(73) as any as S.Schema<UpdateSandboxRequest>,
+  output: __S(74) as any as S.Schema<UpdateSandboxResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4048,8 +3428,8 @@ export const updateSessionNetworkPolicy: API.OperationMethod<
   UpdateSessionNetworkPolicyError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSessionNetworkPolicyRequest,
-  output: UpdateSessionNetworkPolicyResponse,
+  input: __S(75) as any as S.Schema<UpdateSessionNetworkPolicyRequest>,
+  output: __S(42) as any as S.Schema<UpdateSessionNetworkPolicyResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4068,8 +3448,8 @@ export const writeSessionFiles: API.OperationMethod<
   WriteSessionFilesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WriteSessionFilesRequest,
-  output: WriteSessionFilesResponse,
+  input: __S(76) as any as S.Schema<WriteSessionFilesRequest>,
+  output: __S(33) as any as S.Schema<WriteSessionFilesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -4095,20 +3475,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           drive: S.String,
-          mode: S.optional(CreateSandboxesByNameForkV2RequestMountsValueMode),
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateSandboxesByNameForkV2RequestMountsValue",
       });
     case 4:
-      return S.Record(S.String, CreateSandboxesByNameForkV2RequestMountsValue);
+      return S.Record(S.String, __S(3));
     case 5:
-      return S.Array(CreateSandboxesByNameForkV2RequestFailoverRegionsItem);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          expiration: S.optional(CreateSandboxesByNameForkV2RequestKeepLastSnapshotsExpiration),
+          expiration: S.optional(S.Unknown),
           deleteEvicted: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4121,20 +3501,20 @@ function __c0(j: number): any {
           projectId: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(CreateSandboxesByNameForkV2RequestNetworkPolicy),
-          resources: S.optional(CreateSandboxesByNameForkV2RequestResources),
-          ports: S.optional(CreateSandboxesByNameForkV2RequestPortsList),
+          networkPolicy: S.optional(S.Unknown),
+          resources: S.optional(__S(0)),
+          ports: S.optional(__S(1)),
           image: S.optional(S.String),
           timeout: S.optional(S.Number),
-          env: S.optional(CreateSandboxesByNameForkV2RequestEnvMap),
-          mounts: S.optional(CreateSandboxesByNameForkV2RequestMountsMap),
-          region: S.optional(CreateSandboxesByNameForkV2RequestRegion),
-          failoverRegions: S.optional(CreateSandboxesByNameForkV2RequestFailoverRegionsList),
+          env: S.optional(__S(2)),
+          mounts: S.optional(__S(4)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(5)),
           networkId: S.optional(S.String),
           persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(CreateSandboxesByNameForkV2RequestSnapshotExpiration),
-          keepLastSnapshots: S.optional(CreateSandboxesByNameForkV2RequestKeepLastSnapshots),
-          tags: S.optional(CreateSandboxesByNameForkV2RequestTagsMap),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(__S(6)),
+          tags: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes/{name}/fork", code: 200 })),
       ).annotate({
         identifier: "CreateSandboxesByNameForkV2Request",
@@ -4153,7 +3533,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SandboxPublicRoute" });
     case 1:
-      return S.Array(SandboxPublicRoute);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4168,20 +3548,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           drive: S.String,
-          mode: S.optional(NamedSandboxMountsValueMode),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamedSandboxMountsValue" });
     case 4:
-      return S.Record(S.String, NamedSandboxMountsValue);
+      return S.Record(S.String, __S(11));
     case 5:
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allowedCIDRs: S.optional(NamedSandboxNetworkPolicyAllowedCIDRsList),
-          allowedDomains: S.optional(NamedSandboxNetworkPolicyAllowedDomainsList),
-          deniedCIDRs: S.optional(NamedSandboxNetworkPolicyDeniedCIDRsList),
-          mode: NamedSandboxNetworkPolicyMode,
+          allowedCIDRs: S.optional(__S(13)),
+          allowedDomains: S.optional(__S(13)),
+          deniedCIDRs: S.optional(__S(13)),
+          mode: S.String,
           s3Key: S.optional(S.String),
         }),
       ).annotate({
@@ -4190,27 +3570,27 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          architecture: S.optional(NamedSandboxArchitecture),
+          architecture: S.optional(S.String),
           createdAt: S.Number,
           currentSessionId: S.String,
           currentSnapshotId: S.optional(S.String),
           cwd: S.optional(S.String),
           expiresAt: S.optional(S.Number),
-          failoverRegions: S.optional(NamedSandboxFailoverRegionsList),
+          failoverRegions: S.optional(__S(5)),
           image: S.optional(S.String),
-          keepLastSnapshots: S.optional(NamedSandboxKeepLastSnapshots),
+          keepLastSnapshots: S.optional(__S(10)),
           memory: S.optional(S.Number),
-          mounts: S.optional(NamedSandboxMountsMap),
+          mounts: S.optional(__S(12)),
           name: S.String,
           networkId: S.optional(S.String),
-          networkPolicy: S.optional(NamedSandboxNetworkPolicy),
+          networkPolicy: S.optional(__S(14)),
           persistent: S.Boolean,
           region: S.optional(S.String),
           runtime: S.optional(S.String),
           snapshotExpiration: S.optional(S.Number),
-          status: NamedSandboxStatus,
+          status: S.String,
           statusUpdatedAt: S.Number,
-          tags: S.optional(NamedSandboxTagsMap),
+          tags: S.optional(__S(2)),
           timeout: S.optional(S.Number),
           totalActiveCpuDurationMs: S.optional(S.Number),
           totalDurationMs: S.optional(S.Number),
@@ -4229,19 +3609,19 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.String,
-          headerNames: S.optional(SandboxInjectionRuleHeaderNamesList),
+          headerNames: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "SandboxInjectionRule" });
     case 1:
-      return S.Array(SandboxInjectionRule);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedCIDRs: S.optional(SandboxNetworkPolicyAllowedCIDRsList),
-          allowedDomains: S.optional(SandboxNetworkPolicyAllowedDomainsList),
-          deniedCIDRs: S.optional(SandboxNetworkPolicyDeniedCIDRsList),
-          injectionRules: S.optional(SandboxNetworkPolicyInjectionRulesList),
-          mode: SandboxNetworkPolicyMode,
+          allowedCIDRs: S.optional(__S(13)),
+          allowedDomains: S.optional(__S(13)),
+          deniedCIDRs: S.optional(__S(13)),
+          injectionRules: S.optional(__S(17)),
+          mode: S.String,
         }),
       ).annotate({ identifier: "SandboxNetworkPolicy" });
     case 3:
@@ -4256,14 +3636,14 @@ function __c2(j: number): any {
         S.Struct({
           abortedAt: S.optional(S.Number),
           activeCpuDurationMs: S.optional(S.Number),
-          architecture: S.optional(SessionArchitecture),
+          architecture: S.optional(S.String),
           createdAt: S.Number,
           cwd: S.String,
           duration: S.optional(S.Number),
           id: S.String,
           memory: S.Number,
-          networkPolicy: S.optional(SandboxNetworkPolicy),
-          networkTransfer: S.optional(SessionNetworkTransfer),
+          networkPolicy: S.optional(__S(18)),
+          networkTransfer: S.optional(__S(19)),
           projectId: S.String,
           region: S.String,
           requestedAt: S.Number,
@@ -4273,7 +3653,7 @@ function __c2(j: number): any {
           sourceSandboxName: S.String,
           sourceSnapshotId: S.optional(S.String),
           startedAt: S.optional(S.Number),
-          status: SessionStatus,
+          status: S.String,
           stoppedAt: S.optional(S.Number),
           timeout: S.Number,
           updatedAt: S.Number,
@@ -4284,9 +3664,9 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          routes: CreateSandboxesByNameForkV2ResponseRoutesList,
-          sandbox: NamedSandbox,
-          session: Session,
+          routes: __S(9),
+          sandbox: __S(15),
+          session: __S(20),
         }),
       ).annotate({
         identifier: "CreateSandboxesByNameForkV2Response",
@@ -4298,20 +3678,20 @@ function __c2(j: number): any {
           projectId: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(CreateSandboxesByNameForkV3RequestNetworkPolicy),
-          resources: S.optional(CreateSandboxesByNameForkV2RequestResources),
-          ports: S.optional(CreateSandboxesByNameForkV3RequestPortsList),
+          networkPolicy: S.optional(S.Unknown),
+          resources: S.optional(__S(0)),
+          ports: S.optional(__S(1)),
           image: S.optional(S.String),
           timeout: S.optional(S.Number),
-          env: S.optional(CreateSandboxesByNameForkV3RequestEnvMap),
-          mounts: S.optional(CreateSandboxesByNameForkV3RequestMountsMap),
-          region: S.optional(CreateSandboxesByNameForkV3RequestRegion),
-          failoverRegions: S.optional(CreateSandboxesByNameForkV3RequestFailoverRegionsList),
+          env: S.optional(__S(2)),
+          mounts: S.optional(__S(4)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(5)),
           networkId: S.optional(S.String),
           persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(CreateSandboxesByNameForkV3RequestSnapshotExpiration),
-          keepLastSnapshots: S.optional(CreateSandboxesByNameForkV3RequestKeepLastSnapshots),
-          tags: S.optional(CreateSandboxesByNameForkV3RequestTagsMap),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(S.Unknown),
+          tags: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/sandboxes/{name}/fork", code: 200 })),
       ).annotate({
         identifier: "CreateSandboxesByNameForkV3Request",
@@ -4322,7 +3702,7 @@ function __c2(j: number): any {
           sessionId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          expiration: S.optional(CreateSandboxesSessionsBySessionIdSnapshotV2RequestExpiration),
+          expiration: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/snapshot", code: 200 }),
         ),
@@ -4336,18 +3716,18 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          architecture: S.optional(SnapshotArchitecture),
+          architecture: S.optional(S.String),
           createdAt: S.Number,
-          creationMethod: S.optional(SnapshotCreationMethod),
+          creationMethod: S.optional(S.String),
           expiresAt: S.optional(S.Number),
           id: S.String,
           lastUsedAt: S.Number,
           parentId: S.optional(S.String),
           region: S.optional(S.String),
-          regions: S.optional(SnapshotRegionsList),
+          regions: S.optional(__S(13)),
           sizeBytes: S.Number,
           sourceSessionId: S.String,
-          status: SnapshotStatus,
+          status: S.String,
           updatedAt: S.Number,
           v0: S.optional(S.Boolean),
         }),
@@ -4355,8 +3735,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          session: Session,
-          snapshot: Snapshot,
+          session: __S(20),
+          snapshot: __S(24),
         }),
       ).annotate({
         identifier: "CreateSandboxesSessionsBySessionIdSnapshotV2Response",
@@ -4367,7 +3747,7 @@ function __c3(j: number): any {
           sessionId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          expiration: S.optional(CreateSandboxesSessionsBySessionIdSnapshotV3RequestExpiration),
+          expiration: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/v3/sandboxes/sessions/{sessionId}/snapshot", code: 200 }),
         ),
@@ -4378,7 +3758,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          expiration: S.optional(CreateSandboxesV2RequestKeepLastSnapshotsExpiration),
+          expiration: S.optional(S.Unknown),
           deleteEvicted: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4389,32 +3769,32 @@ function __c3(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(CreateSandboxesV2RequestNetworkPolicy),
-          runtime: S.optional(CreateSandboxesV2RequestRuntime),
-          architecture: S.optional(CreateSandboxesV2RequestArchitecture),
-          resources: S.optional(CreateSandboxesByNameForkV2RequestResources),
-          source: S.optional(CreateSandboxesV2RequestSource),
+          networkPolicy: S.optional(S.Unknown),
+          runtime: S.optional(S.String),
+          architecture: S.optional(S.String),
+          resources: S.optional(__S(0)),
+          source: S.optional(S.Unknown),
           projectId: S.optional(S.String),
-          ports: S.optional(CreateSandboxesV2RequestPortsList),
+          ports: S.optional(__S(1)),
           image: S.optional(S.String),
           timeout: S.optional(S.Number),
-          env: S.optional(CreateSandboxesV2RequestEnvMap),
-          mounts: S.optional(CreateSandboxesV2RequestMountsMap),
-          region: S.optional(CreateSandboxesV2RequestRegion),
-          failoverRegions: S.optional(CreateSandboxesV2RequestFailoverRegionsList),
+          env: S.optional(__S(2)),
+          mounts: S.optional(__S(4)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(5)),
           networkId: S.optional(S.String),
           name: S.optional(S.String),
           persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(CreateSandboxesV2RequestSnapshotExpiration),
-          keepLastSnapshots: S.optional(CreateSandboxesV2RequestKeepLastSnapshots),
-          tags: S.optional(CreateSandboxesV2RequestTagsMap),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(__S(27)),
+          tags: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes", code: 200 })),
       ).annotate({ identifier: "CreateSandboxesV2Request" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          expiration: S.optional(CreateSandboxesV3RequestKeepLastSnapshotsExpiration),
+          expiration: S.optional(S.Unknown),
           deleteEvicted: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4425,24 +3805,24 @@ function __c3(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(CreateSandboxesV3RequestNetworkPolicy),
-          architecture: S.optional(CreateSandboxesV3RequestArchitecture),
-          resources: S.optional(CreateSandboxesByNameForkV2RequestResources),
-          source: S.optional(CreateSandboxesV3RequestSource),
+          networkPolicy: S.optional(S.Unknown),
+          architecture: S.optional(S.String),
+          resources: S.optional(__S(0)),
+          source: S.optional(S.Unknown),
           projectId: S.optional(S.String),
-          ports: S.optional(CreateSandboxesV3RequestPortsList),
+          ports: S.optional(__S(1)),
           image: S.optional(S.String),
           timeout: S.optional(S.Number),
-          env: S.optional(CreateSandboxesV3RequestEnvMap),
-          mounts: S.optional(CreateSandboxesV3RequestMountsMap),
-          region: S.optional(CreateSandboxesV3RequestRegion),
-          failoverRegions: S.optional(CreateSandboxesV3RequestFailoverRegionsList),
+          env: S.optional(__S(2)),
+          mounts: S.optional(__S(4)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(5)),
           networkId: S.optional(S.String),
           name: S.optional(S.String),
           persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(CreateSandboxesV3RequestSnapshotExpiration),
-          keepLastSnapshots: S.optional(CreateSandboxesV3RequestKeepLastSnapshots),
-          tags: S.optional(CreateSandboxesV3RequestTagsMap),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(__S(29)),
+          tags: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/sandboxes", code: 200 })),
       ).annotate({ identifier: "CreateSandboxesV3Request" });
     case 7:
@@ -4450,24 +3830,24 @@ function __c3(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          networkPolicy: S.optional(CreateSandboxesV4RequestNetworkPolicy),
-          architecture: S.optional(CreateSandboxesV4RequestArchitecture),
-          resources: S.optional(CreateSandboxesByNameForkV2RequestResources),
-          source: S.optional(CreateSandboxesV4RequestSource),
+          networkPolicy: S.optional(S.Unknown),
+          architecture: S.optional(S.String),
+          resources: S.optional(__S(0)),
+          source: S.optional(S.Unknown),
           projectId: S.optional(S.String),
-          ports: S.optional(CreateSandboxesV4RequestPortsList),
+          ports: S.optional(__S(1)),
           image: S.optional(S.String),
           timeout: S.optional(S.Number),
-          env: S.optional(CreateSandboxesV4RequestEnvMap),
-          mounts: S.optional(CreateSandboxesV4RequestMountsMap),
-          region: S.optional(CreateSandboxesV4RequestRegion),
-          failoverRegions: S.optional(CreateSandboxesV4RequestFailoverRegionsList),
+          env: S.optional(__S(2)),
+          mounts: S.optional(__S(4)),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(5)),
           networkId: S.optional(S.String),
           name: S.optional(S.String),
           persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(CreateSandboxesV4RequestSnapshotExpiration),
-          keepLastSnapshots: S.optional(CreateSandboxesV4RequestKeepLastSnapshots),
-          tags: S.optional(CreateSandboxesV4RequestTagsMap),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(S.Unknown),
+          tags: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v4/sandboxes", code: 200 })),
       ).annotate({ identifier: "CreateSandboxesV4Request" });
   }
@@ -4520,7 +3900,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          drive: Drive,
+          drive: __S(35),
         }),
       ).annotate({ identifier: "DeleteDriveResponse" });
     case 5:
@@ -4536,7 +3916,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sandbox: NamedSandbox,
+          sandbox: __S(15),
         }),
       ).annotate({ identifier: "DeleteSandboxResponse" });
     case 7:
@@ -4558,7 +3938,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          snapshot: Snapshot,
+          snapshot: __S(24),
         }),
       ).annotate({
         identifier: "DeleteSessionSnapshotResponse",
@@ -4583,7 +3963,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          session: Session,
+          session: __S(20),
         }),
       ).annotate({
         identifier: "ExtendSessionTimeoutResponse",
@@ -4602,9 +3982,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resumed: S.Boolean,
-          routes: GetNamedSandboxResponseRoutesList,
-          sandbox: NamedSandbox,
-          session: Session,
+          routes: __S(9),
+          sandbox: __S(15),
+          session: __S(20),
         }),
       ).annotate({ identifier: "GetNamedSandboxResponse" });
     case 5:
@@ -4615,7 +3995,7 @@ function __c5(j: number): any {
           slug: S.optional(S.String.pipe(T.Query())),
           projectId: S.optional(S.String),
           maxSizeBytes: S.optional(S.Number),
-          region: S.optional(GetOrCreateDriveRequestRegion),
+          region: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v2/sandboxes/drives/{name}", code: 200 })),
       ).annotate({ identifier: "GetOrCreateDriveRequest" });
     case 6:
@@ -4629,8 +4009,8 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          routes: GetSessionResponseRoutesList,
-          session: Session,
+          routes: __S(9),
+          session: __S(20),
         }),
       ).annotate({ identifier: "GetSessionResponse" });
   }
@@ -4656,7 +4036,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          args: SessionCommandArgsList,
+          args: __S(13),
           cwd: S.String,
           durationMs: S.optional(S.Number),
           exitCode: S.NullOr(S.Number),
@@ -4669,7 +4049,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          command: SessionCommand,
+          command: __S(49),
         }),
       ).annotate({
         identifier: "GetSessionCommandResponse",
@@ -4729,9 +4109,9 @@ function __c6(j: number): any {
           projectId: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(ListDrivesRequestSortBy.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query())),
           namePrefix: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(ListDrivesRequestSortOrder.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/drives", code: 200 })),
@@ -4741,7 +4121,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Drive);
+      return S.Array(__S(35));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4754,8 +4134,8 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          drives: ListDrivesResponseDrivesList,
-          pagination: ListDrivesResponsePagination,
+          drives: __S(56),
+          pagination: __S(57),
         }),
       ).annotate({ identifier: "ListDrivesResponse" });
     case 3:
@@ -4763,12 +4143,12 @@ function __c7(j: number): any {
         S.Struct({
           project: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sortBy: S.optional(ListNamedSandboxesRequestSortBy.pipe(T.Query())),
+          sortBy: S.optional(S.String.pipe(T.Query())),
           namePrefix: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(ListNamedSandboxesRequestSortOrder.pipe(T.Query())),
-          status: S.optional(ListNamedSandboxesRequestStatus.pipe(T.Query())),
-          tags: S.optional(ListNamedSandboxesRequestTags.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          tags: S.optional(S.Unknown.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes", code: 200 })),
@@ -4776,12 +4156,12 @@ function __c7(j: number): any {
         identifier: "ListNamedSandboxesRequest",
       });
     case 4:
-      return S.Array(NamedSandbox);
+      return S.Array(__S(15));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListDrivesResponsePagination,
-          sandboxes: ListNamedSandboxesResponseSandboxesList,
+          pagination: __S(57),
+          sandboxes: __S(60),
         }),
       ).annotate({
         identifier: "ListNamedSandboxesResponse",
@@ -4799,7 +4179,7 @@ function __c7(j: number): any {
         identifier: "ListSessionCommandsRequest",
       });
     case 7:
-      return S.Array(SessionCommand);
+      return S.Array(__S(49));
   }
 }
 function __c8(j: number): any {
@@ -4807,7 +4187,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commands: ListSessionCommandsResponseCommandsList,
+          commands: __S(63),
         }),
       ).annotate({
         identifier: "ListSessionCommandsResponse",
@@ -4819,13 +4199,13 @@ function __c8(j: number): any {
           name: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(ListSessionsRequestSortOrder.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/sessions", code: 200 })),
       ).annotate({ identifier: "ListSessionsRequest" });
     case 2:
-      return S.suspend(() => ListSessionsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSessionsResponse",
       });
     case 3:
@@ -4835,7 +4215,7 @@ function __c8(j: number): any {
           name: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          sortOrder: S.optional(ListSessionSnapshotsRequestSortOrder.pipe(T.Query())),
+          sortOrder: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/sandboxes/snapshots", code: 200 })),
@@ -4843,7 +4223,7 @@ function __c8(j: number): any {
         identifier: "ListSessionSnapshotsRequest",
       });
     case 4:
-      return S.suspend(() => ListSessionSnapshotsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSessionSnapshotsResponse",
       });
     case 5:
@@ -4866,9 +4246,9 @@ function __c8(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           command: S.String,
-          args: S.optional(RunSessionCommandRequestArgsList),
+          args: S.optional(__S(13)),
           cwd: S.optional(S.String),
-          env: S.optional(RunSessionCommandRequestEnvMap),
+          env: S.optional(__S(2)),
           sudo: S.optional(S.Boolean),
           wait: S.optional(S.Boolean),
           logs: S.optional(S.Boolean),
@@ -4892,7 +4272,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => StopSessionResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "StopSessionResponse",
       });
     case 1:
@@ -4903,25 +4283,25 @@ function __c9(j: number): any {
           resume: S.optional(S.Boolean.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          resources: S.optional(CreateSandboxesByNameForkV2RequestResources),
-          runtime: S.optional(UpdateSandboxRequestRuntime),
+          resources: S.optional(__S(0)),
+          runtime: S.optional(S.String),
           timeout: S.optional(S.Number),
           persistent: S.optional(S.Boolean),
-          snapshotExpiration: S.optional(UpdateSandboxRequestSnapshotExpiration),
-          keepLastSnapshots: S.optional(UpdateSandboxRequestKeepLastSnapshots),
-          networkPolicy: S.optional(UpdateSandboxRequestNetworkPolicy),
-          region: S.optional(UpdateSandboxRequestRegion),
-          failoverRegions: S.optional(UpdateSandboxRequestFailoverRegionsList),
-          mounts: S.optional(UpdateSandboxRequestMountsMap),
+          snapshotExpiration: S.optional(S.Unknown),
+          keepLastSnapshots: S.optional(S.Unknown),
+          networkPolicy: S.optional(S.Unknown),
+          region: S.optional(S.String),
+          failoverRegions: S.optional(__S(5)),
+          mounts: S.optional(__S(4)),
           networkId: S.optional(S.String),
-          env: S.optional(UpdateSandboxRequestEnvMap),
-          ports: S.optional(UpdateSandboxRequestPortsList),
+          env: S.optional(__S(2)),
+          ports: S.optional(__S(1)),
           currentSnapshotId: S.optional(S.String),
-          tags: S.optional(UpdateSandboxRequestTagsMap),
+          tags: S.optional(__S(2)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v2/sandboxes/{name}", code: 200 })),
       ).annotate({ identifier: "UpdateSandboxRequest" });
     case 2:
-      return S.suspend(() => UpdateSandboxResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateSandboxResponse",
       });
     case 3:
@@ -4930,7 +4310,7 @@ function __c9(j: number): any {
           sessionId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(UpdateSessionNetworkPolicyRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4952,5 +4332,34 @@ function __c9(j: number): any {
           T.Http({ method: "POST", uri: "/v2/sandboxes/sessions/{sessionId}/fs/write", code: 200 }),
         ),
       ).annotate({ identifier: "WriteSessionFilesRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

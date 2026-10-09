@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -37,11 +39,6 @@ export interface CreateRegionalServicePrefixBindingRequest {
   /** Region key from managed regions (e.g., "us", "eu"). */
   regionKey: string;
 }
-const CreateRegionalServicePrefixBindingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRegionalServicePrefixBindingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRegionalServicePrefixBindingResponse {
   /** The ID of the binding. */
@@ -53,36 +50,19 @@ export interface CreateRegionalServicePrefixBindingResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-const CreateRegionalServicePrefixBindingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRegionalServicePrefixBindingResponse>;
-
 export interface DeleteRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** Unique identifier for the prefix binding. */
   bindingId: string;
 }
-const DeleteRegionalServicePrefixBindingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteRegionalServicePrefixBindingRequest>;
-
 export interface DeleteRegionalServicePrefixBindingResponse {}
-const DeleteRegionalServicePrefixBindingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteRegionalServicePrefixBindingResponse>;
-
 export interface GetRegionRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** UUID of the region (custom or managed) or region_key of a managed region. */
   regionId: string;
 }
-const GetRegionRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetRegionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegionResponse {
   id: string;
@@ -93,19 +73,12 @@ export interface GetRegionResponse {
   version: number;
   versionCreatedOn: string;
 }
-const GetRegionResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetRegionResponse>;
-
 export interface GetRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** Unique identifier for the prefix binding. */
   bindingId: string;
 }
-const GetRegionalServicePrefixBindingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetRegionalServicePrefixBindingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegionalServicePrefixBindingResponse {
   /** The ID of the binding. */
@@ -117,9 +90,6 @@ export interface GetRegionalServicePrefixBindingResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-const GetRegionalServicePrefixBindingResponse =
-  CreateRegionalServicePrefixBindingResponse as any as S.Schema<GetRegionalServicePrefixBindingResponse>;
-
 export interface ListRegionalServicePrefixBindingsRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
@@ -127,11 +97,6 @@ export interface ListRegionalServicePrefixBindingsRequest {
   cursor?: string;
   perPage?: number;
 }
-const ListRegionalServicePrefixBindingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListRegionalServicePrefixBindingsRequest>;
-
 export interface RegionalServicesPrefixBindingsListResultItem {
   /** The ID of the binding. */
   id: string;
@@ -142,32 +107,15 @@ export interface RegionalServicesPrefixBindingsListResultItem {
   /** The region key used for the binding. */
   regionKey: string;
 }
-const RegionalServicesPrefixBindingsListResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<RegionalServicesPrefixBindingsListResultItem>;
-
 export type RegionalServicesPrefixBindingsListResultList =
   Array<RegionalServicesPrefixBindingsListResultItem>;
-const RegionalServicesPrefixBindingsListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<RegionalServicesPrefixBindingsListResultList>;
-
 export interface ListRegionalServicePrefixBindingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RegionalServicesPrefixBindingsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListRegionalServicePrefixBindingsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
-
 export type RegionsListRequestType = "managed" | "custom";
-const RegionsListRequestType = S.String;
-
 export interface ListRegionsRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
@@ -177,8 +125,6 @@ export interface ListRegionsRequest {
   /** Filter regions by type. Omit to return all regions. */
   type?: RegionsListRequestType | (string & {});
 }
-const ListRegionsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListRegionsRequest>;
-
 export interface RegionsListResultItem {
   id: string;
   createdOn: string;
@@ -188,25 +134,13 @@ export interface RegionsListResultItem {
   version: number;
   versionCreatedOn: string;
 }
-const RegionsListResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RegionsListResultItem>;
-
 export type RegionsListResultList = Array<RegionsListResultItem>;
-const RegionsListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<RegionsListResultList>;
-
 export interface ListRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RegionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListRegionsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListRegionsResponse>;
-
 export interface PatchRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
@@ -215,11 +149,6 @@ export interface PatchRegionalServicePrefixBindingRequest {
   /** New region key to assign (e.g., "us", "eu", "cfcanary"). */
   regionKey: string;
 }
-const PatchRegionalServicePrefixBindingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PatchRegionalServicePrefixBindingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchRegionalServicePrefixBindingResponse {
   /** The ID of the binding. */
@@ -231,9 +160,6 @@ export interface PatchRegionalServicePrefixBindingResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-const PatchRegionalServicePrefixBindingResponse =
-  CreateRegionalServicePrefixBindingResponse as any as S.Schema<PatchRegionalServicePrefixBindingResponse>;
-
 export type CreateRegionalServicePrefixBindingError = CloudflareOpError;
 /** Create a DLS prefix binding */
 export const createRegionalServicePrefixBinding: API.OperationMethod<
@@ -242,8 +168,8 @@ export const createRegionalServicePrefixBinding: API.OperationMethod<
   CreateRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegionalServicePrefixBindingRequest,
-  output: CreateRegionalServicePrefixBindingResponse,
+  input: __S(0) as any as S.Schema<CreateRegionalServicePrefixBindingRequest>,
+  output: __S(1) as any as S.Schema<CreateRegionalServicePrefixBindingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -257,8 +183,8 @@ export const deleteRegionalServicePrefixBinding: API.OperationMethod<
   DeleteRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegionalServicePrefixBindingRequest,
-  output: DeleteRegionalServicePrefixBindingResponse,
+  input: __S(2) as any as S.Schema<DeleteRegionalServicePrefixBindingRequest>,
+  output: __S(3) as any as S.Schema<DeleteRegionalServicePrefixBindingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -272,8 +198,8 @@ export const getRegion: API.OperationMethod<
   GetRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegionRequest,
-  output: GetRegionResponse,
+  input: __S(4) as any as S.Schema<GetRegionRequest>,
+  output: __S(5) as any as S.Schema<GetRegionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -287,8 +213,8 @@ export const getRegionalServicePrefixBinding: API.OperationMethod<
   GetRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegionalServicePrefixBindingRequest,
-  output: GetRegionalServicePrefixBindingResponse,
+  input: __S(6) as any as S.Schema<GetRegionalServicePrefixBindingRequest>,
+  output: __S(1) as any as S.Schema<GetRegionalServicePrefixBindingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -304,8 +230,8 @@ export const listRegionalServicePrefixBindings: API.PaginatedOperationMethod<
   RegionalServicesPrefixBindingsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRegionalServicePrefixBindingsRequest,
-    output: ListRegionalServicePrefixBindingsResponse,
+    input: __S(7) as any as S.Schema<ListRegionalServicePrefixBindingsRequest>,
+    output: __S(10) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -330,8 +256,8 @@ export const listRegions: API.PaginatedOperationMethod<
   RegionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRegionsRequest,
-    output: ListRegionsResponse,
+    input: __S(11) as any as S.Schema<ListRegionsRequest>,
+    output: __S(14) as any as S.Schema<ListRegionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -354,8 +280,8 @@ export const patchRegionalServicePrefixBinding: API.OperationMethod<
   PatchRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchRegionalServicePrefixBindingRequest,
-  output: PatchRegionalServicePrefixBindingResponse,
+  input: __S(15) as any as S.Schema<PatchRegionalServicePrefixBindingRequest>,
+  output: __S(1) as any as S.Schema<PatchRegionalServicePrefixBindingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -493,11 +419,11 @@ function __c1(j: number): any {
         identifier: "RegionalServicesPrefixBindingsListResultItem",
       });
     case 1:
-      return S.Array(RegionalServicesPrefixBindingsListResultItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: RegionalServicesPrefixBindingsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -509,7 +435,7 @@ function __c1(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           cursor: S.optional(S.String.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          type: S.optional(RegionsListRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/dls/regions", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -527,11 +453,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "RegionsListResultItem" });
     case 5:
-      return S.Array(RegionsListResultItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: RegionsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(13).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRegionsResponse" });
@@ -553,5 +479,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchRegionalServicePrefixBindingRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

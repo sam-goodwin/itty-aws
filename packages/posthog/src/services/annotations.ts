@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -42,21 +44,9 @@ export interface AnnotationsDestroyRequest {
   /** A unique integer value identifying this annotation. */
   id: number;
 }
-const AnnotationsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AnnotationsDestroyRequest>;
-
 export interface AnnotationsDestroyResponse {}
-const AnnotationsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AnnotationsDestroyResponse>;
-
 /** * `USR` - user * `GIT` - GitHub */
 export type AnnotationCreationTypeEnum = "USR" | "GIT";
-const AnnotationCreationTypeEnum = S.String;
-
 /** * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
 export type AnnotationScopeEnum =
   | "dashboard_item"
@@ -64,8 +54,6 @@ export type AnnotationScopeEnum =
   | "project"
   | "organization"
   | "recording";
-const AnnotationScopeEnum = S.String;
-
 export interface CreateAnnotationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -88,17 +76,7 @@ export interface CreateAnnotationRequest {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-const CreateAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateAnnotationRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -112,8 +90,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -125,8 +101,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UserBasic>;
-
 export interface Annotation {
   id?: number;
   /** Annotation text shown on charts to describe the change, release, or incident. */
@@ -155,16 +129,12 @@ export interface Annotation {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-const Annotation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Annotation>;
-
 export interface GetAnnotationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this annotation. */
   id: number;
 }
-const GetAnnotationRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetAnnotationRequest>;
-
 export interface ListAnnotationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -175,28 +145,13 @@ export interface ListAnnotationsRequest {
   /** A search term. */
   search?: string;
 }
-const ListAnnotationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListAnnotationsRequest>;
-
 export type PaginatedAnnotationListResultsList = Array<Annotation>;
-const PaginatedAnnotationListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PaginatedAnnotationListResultsList>;
-
 export interface PaginatedAnnotationList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedAnnotationListResultsList;
 }
-const PaginatedAnnotationList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedAnnotationList>;
-
 export interface UpdateAnnotationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -221,11 +176,6 @@ export interface UpdateAnnotationRequest {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-const UpdateAnnotationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateAnnotationRequest>;
-
 export interface UpdateAnnotationsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -250,11 +200,6 @@ export interface UpdateAnnotationsPartialRequest {
   /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
   hidden_in_user_interface?: boolean | null;
 }
-const UpdateAnnotationsPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateAnnotationsPartialRequest>;
-
 export type AnnotationsDestroyError = Forbidden | NotFound | PosthogOpError;
 /** Hard delete of this model is not allowed. Use a patch API call to set "deleted" to true */
 export const annotationsDestroy: API.OperationMethod<
@@ -263,8 +208,8 @@ export const annotationsDestroy: API.OperationMethod<
   AnnotationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnnotationsDestroyRequest,
-  output: AnnotationsDestroyResponse,
+  input: __S(0) as any as S.Schema<AnnotationsDestroyRequest>,
+  output: __S(1) as any as S.Schema<AnnotationsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -278,8 +223,8 @@ export const createAnnotation: API.OperationMethod<
   CreateAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAnnotationRequest,
-  output: Annotation,
+  input: __S(2) as any as S.Schema<CreateAnnotationRequest>,
+  output: __S(5) as any as S.Schema<Annotation>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -293,8 +238,8 @@ export const getAnnotation: API.OperationMethod<
   GetAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnnotationRequest,
-  output: Annotation,
+  input: __S(6) as any as S.Schema<GetAnnotationRequest>,
+  output: __S(5) as any as S.Schema<Annotation>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -308,8 +253,8 @@ export const listAnnotations: API.OperationMethod<
   ListAnnotationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAnnotationsRequest,
-  output: PaginatedAnnotationList,
+  input: __S(7) as any as S.Schema<ListAnnotationsRequest>,
+  output: __S(9) as any as S.Schema<PaginatedAnnotationList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -323,8 +268,8 @@ export const updateAnnotation: API.OperationMethod<
   UpdateAnnotationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAnnotationRequest,
-  output: Annotation,
+  input: __S(10) as any as S.Schema<UpdateAnnotationRequest>,
+  output: __S(5) as any as S.Schema<Annotation>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -338,8 +283,8 @@ export const updateAnnotationsPartial: API.OperationMethod<
   UpdateAnnotationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAnnotationsPartialRequest,
-  output: Annotation,
+  input: __S(11) as any as S.Schema<UpdateAnnotationsPartialRequest>,
+  output: __S(5) as any as S.Schema<Annotation>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -373,11 +318,11 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
           date_marker: S.optional(S.NullOr(S.String)),
-          creation_type: S.optional(AnnotationCreationTypeEnum),
+          creation_type: S.optional(S.String),
           dashboard_item: S.optional(S.NullOr(S.Number)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          scope: S.optional(AnnotationScopeEnum),
+          scope: S.optional(S.String),
           emoji: S.optional(S.NullOr(S.String)),
           hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -396,8 +341,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(3))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
@@ -406,18 +351,18 @@ function __c0(j: number): any {
           id: S.optional(S.Number),
           content: S.optional(S.NullOr(S.String)),
           date_marker: S.optional(S.NullOr(S.String)),
-          creation_type: S.optional(AnnotationCreationTypeEnum),
+          creation_type: S.optional(S.String),
           dashboard_item: S.optional(S.NullOr(S.Number)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
           dashboard_name: S.optional(S.NullOr(S.String)),
           insight_short_id: S.optional(S.NullOr(S.String)),
           insight_name: S.optional(S.NullOr(S.String)),
           insight_derived_name: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(4))),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
           deleted: S.optional(S.Boolean),
-          scope: S.optional(AnnotationScopeEnum),
+          scope: S.optional(S.String),
           emoji: S.optional(S.NullOr(S.String)),
           hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -447,14 +392,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Annotation);
+      return S.Array(__S(5));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedAnnotationListResultsList),
+          results: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "PaginatedAnnotationList" });
     case 2:
@@ -464,11 +409,11 @@ function __c1(j: number): any {
           id: S.Number.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
           date_marker: S.optional(S.NullOr(S.String)),
-          creation_type: S.optional(AnnotationCreationTypeEnum),
+          creation_type: S.optional(S.String),
           dashboard_item: S.optional(S.NullOr(S.Number)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          scope: S.optional(AnnotationScopeEnum),
+          scope: S.optional(S.String),
           emoji: S.optional(S.NullOr(S.String)),
           hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -482,11 +427,11 @@ function __c1(j: number): any {
           id: S.Number.pipe(T.Label()),
           content: S.optional(S.NullOr(S.String)),
           date_marker: S.optional(S.NullOr(S.String)),
-          creation_type: S.optional(AnnotationCreationTypeEnum),
+          creation_type: S.optional(S.String),
           dashboard_item: S.optional(S.NullOr(S.Number)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
           deleted: S.optional(S.Boolean),
-          scope: S.optional(AnnotationScopeEnum),
+          scope: S.optional(S.String),
           emoji: S.optional(S.NullOr(S.String)),
           hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -499,5 +444,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateAnnotationsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

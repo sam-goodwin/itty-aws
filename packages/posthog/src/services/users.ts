@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -40,17 +42,7 @@ export class NotFound
 export interface CreateUsersCredentialsReviewCompleteRequest {
   uuid: string;
 }
-const CreateUsersCredentialsReviewCompleteRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateUsersCredentialsReviewCompleteRequest>;
-
 export interface CreateUsersCredentialsReviewCompleteResponse {}
-const CreateUsersCredentialsReviewCompleteResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateUsersCredentialsReviewCompleteResponse>;
-
 export interface UserCodexAuthTokens {
   /** The ChatGPT access token (a JWT) from the `tokens` object of the Codex `auth.json`. */
   access_token: string | Redacted.Redacted<string>;
@@ -59,22 +51,13 @@ export interface UserCodexAuthTokens {
   /** The OpenID id token from the same `tokens` object, when present. Used to read the account email. */
   id_token?: string | null;
 }
-const UserCodexAuthTokens = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserCodexAuthTokens>;
-
 export interface CreateUsersIntegrationsCodexRequest {
   uuid: string;
   /** The `tokens` object of the `auth.json` that `codex login` wrote. PostHog refreshes the chain once, stores the rotated tokens, and refreshes them for cloud runs from then on. */
   tokens: UserCodexAuthTokens;
 }
-const CreateUsersIntegrationsCodexRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateUsersIntegrationsCodexRequest>;
-
 /** * `connected` - Connected * `reauth_required` - Reauth Required * `not_connected` - Not Connected */
 export type CodexIntegrationStatusEnum = "connected" | "reauth_required" | "not_connected";
-const CodexIntegrationStatusEnum = S.String;
-
 export interface UserCodexIntegration {
   /** `connected` when cloud runs can use the account; `reauth_required` when OpenAI rejected the refresh token and the user must log in and connect again; `not_connected` when no account is connected. * `connected` - Connected * `reauth_required` - Reauth Required * `not_connected` - Not Connected */
   status: CodexIntegrationStatusEnum;
@@ -85,26 +68,14 @@ export interface UserCodexIntegration {
   /** When the account was connected. */
   connected_at?: string | null;
 }
-const UserCodexIntegration = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UserCodexIntegration>;
-
 export interface CreateUsersIntegrationsGithubPrepareCallbackRequest {
   uuid: string;
   /** GitHub App installation id being managed on github.com. */
   installation_id: string;
 }
-const CreateUsersIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackRequest>;
-
 export interface CreateUsersIntegrationsGithubPrepareCallbackResponse {}
-const CreateUsersIntegrationsGithubPrepareCallbackResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>;
-
 /** * `later` - Later * `other` - Other */
 export type OnboardingSkipRequestReasonEnum = "later" | "other";
-const OnboardingSkipRequestReasonEnum = S.String;
-
 export interface CreateUsersOnboardingSkipRequest {
   uuid: string;
   /** Why the user is leaving onboarding. 'later' keeps them able to return; 'other' is a catch-all. 'delegated' is rejected here -- use the delegate endpoint so the delegation invite is created atomically. * `later` - Later * `other` - Other */
@@ -112,18 +83,8 @@ export interface CreateUsersOnboardingSkipRequest {
   /** Onboarding step key the user was on when skipping, for analytics only. */
   step_at_skip?: string;
 }
-const CreateUsersOnboardingSkipRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateUsersOnboardingSkipRequest>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UserOutputNotificationSettingsMap = { [key: string]: unknown | undefined };
-const UserOutputNotificationSettingsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UserOutputNotificationSettingsMap>;
-
 /** * `data_catalog_weekly_digest` - data_catalog_weekly_digest * `discussions_mentioned` - discussions_mentioned * `error_tracking_issue_assigned` - error_tracking_issue_assigned * `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled * `materialized_view_sync_failed` - materialized_view_sync_failed * `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily * `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate * `organization_member_join_email_disabled` - organization_member_join_email_disabled * `pipeline_notifications_disabled` - pipeline_notifications_disabled * `project_weekly_digest_disabled` - project_weekly_digest_disabled * `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled */
 export type SettingEnum =
   | "data_catalog_weekly_digest"
@@ -137,8 +98,6 @@ export type SettingEnum =
   | "pipeline_notifications_disabled"
   | "project_weekly_digest_disabled"
   | "web_analytics_weekly_digest_project_enabled";
-const SettingEnum = S.String;
-
 export interface OrganizationNotificationLock {
   /** Notification setting this rule enforces. * `data_catalog_weekly_digest` - data_catalog_weekly_digest * `discussions_mentioned` - discussions_mentioned * `error_tracking_issue_assigned` - error_tracking_issue_assigned * `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled * `materialized_view_sync_failed` - materialized_view_sync_failed * `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily * `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate * `organization_member_join_email_disabled` - organization_member_join_email_disabled * `pipeline_notifications_disabled` - pipeline_notifications_disabled * `project_weekly_digest_disabled` - project_weekly_digest_disabled * `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled */
   setting: SettingEnum;
@@ -147,24 +106,12 @@ export interface OrganizationNotificationLock {
   /** The value the organization enforces. */
   locked_value: boolean;
 }
-const OrganizationNotificationLock = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<OrganizationNotificationLock>;
-
 /** Notification settings an organization admin enforces on this user. The matching controls are read-only, and `notification_settings` still holds the user's own choice underneath. Read-only. */
 export type UserOutputNotificationLocksList = Array<OrganizationNotificationLock>;
-const UserOutputNotificationLocksList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UserOutputNotificationLocksList>;
-
 /** * `disabled` - disabled * `toolbar` - toolbar */
 export type ToolbarModeEnum = "disabled" | "toolbar";
 export type BlankEnum = "";
 export type UserOutputToolbarMode = ToolbarModeEnum | BlankEnum;
-const UserOutputToolbarMode = S.Unknown as any as S.Schema<UserOutputToolbarMode>;
-
 /** * `Africa/Abidjan` - Africa/Abidjan * `Africa/Accra` - Africa/Accra * `Africa/Addis_Ababa` - Africa/Addis_Ababa * `Africa/Algiers` - Africa/Algiers * `Africa/Asmara` - Africa/Asmara * `Africa/Asmera` - Africa/Asmera * `Africa/Bamako` - Africa/Bamako * `Africa/Bangui` - Africa/Bangui * `Africa/Banjul` - Africa/Banjul * `Africa/Bissau` - Africa/Bissau * `Africa/Blantyre` - Africa/Blantyre * `Africa/Brazzaville` - Africa/Brazzaville * `Africa/Bujumbura` - Africa/Bujumbura * `Africa/Cairo` - Africa/Cairo * `Africa/Casablanca` - Africa/Casablanca * `Africa/Ceuta` - Africa/Ceuta * `Africa/Conakry` - Africa/Conakry * `Africa/Dakar` - Africa/Dakar * `Africa/Dar_es_Salaam` - Africa/Dar_es_Salaam * `Africa/Djibouti` - Africa/Djibouti * `Africa/Douala` - Africa/Douala * `Africa/El_Aaiun` - Africa/El_Aaiun * `Africa/Freetown` - Africa/Freetown * `Africa/Gaborone` - Africa/Gaborone * `Africa/Harare` - Africa/Harare * `Africa/Johannesburg` - Africa/Johannesburg * `Africa/Juba` - Africa/Juba * `Africa/Kampala` - Africa/Kampala * `Africa/Khartoum` - Africa/Khartoum * `Africa/Kigali` - Africa/Kigali * `Africa/Kinshasa` - Africa/Kinshasa * `Africa/Lagos` - Africa/Lagos * `Africa/Libreville` - Africa/Libreville * `Africa/Lome` - Africa/Lome * `Africa/Luanda` - Africa/Luanda * `Africa/Lubumbashi` - Africa/Lubumbashi * `Africa/Lusaka` - Africa/Lusaka * `Africa/Malabo` - Africa/Malabo * `Africa/Maputo` - Africa/Maputo * `Africa/Maseru` - Africa/Maseru * `Africa/Mbabane` - Africa/Mbabane * `Africa/Mogadishu` - Africa/Mogadishu * `Africa/Monrovia` - Africa/Monrovia * `Africa/Nairobi` - Africa/Nairobi * `Africa/Ndjamena` - Africa/Ndjamena * `Africa/Niamey` - Africa/Niamey * `Africa/Nouakchott` - Africa/Nouakchott * `Africa/Ouagadougou` - Africa/Ouagadougou * `Africa/Porto-Novo` - Africa/Porto-Novo * `Africa/Sao_Tome` - Africa/Sao_Tome * `Africa/Timbuktu` - Africa/Timbuktu * `Africa/Tripoli` - Africa/Tripoli * `Africa/Tunis` - Africa/Tunis * `Africa/Windhoek` - Africa/Windhoek * `America/Adak` - America/Adak * `America/Anchorage` - America/Anchorage * `America/Anguilla` - America/Anguilla * `America/Antigua` - America/Antigua * `America/Araguaina` - America/Araguaina * `America/Argentina/Buenos_Aires` - America/Argentina/Buenos_Aires * `America/Argentina/Catamarca` - America/Argentina/Catamarca * `America/Argentina/ComodRivadavia` - America/Argentina/ComodRivadavia * `America/Argentina/Cordoba` - America/Argentina/Cordoba * `America/Argentina/Jujuy` - America/Argentina/Jujuy * `America/Argentina/La_Rioja` - America/Argentina/La_Rioja * `America/Argentina/Mendoza` - America/Argentina/Mendoza * `America/Argentina/Rio_Gallegos` - America/Argentina/Rio_Gallegos * `America/Argentina/Salta` - America/Argentina/Salta * `America/Argentina/San_Juan` - America/Argentina/San_Juan * `America/Argentina/San_Luis` - America/Argentina/San_Luis * `America/Argentina/Tucuman` - America/Argentina/Tucuman * `America/Argentina/Ushuaia` - America/Argentina/Ushuaia * `America/Aruba` - America/Aruba * `America/Asuncion` - America/Asuncion * `America/Atikokan` - America/Atikokan * `America/Atka` - America/Atka * `America/Bahia` - America/Bahia * `America/Bahia_Banderas` - America/Bahia_Banderas * `America/Barbados` - America/Barbados * `America/Belem` - America/Belem * `America/Belize` - America/Belize * `America/Blanc-Sablon` - America/Blanc-Sablon * `America/Boa_Vista` - America/Boa_Vista * `America/Bogota` - America/Bogota * `America/Boise` - America/Boise * `America/Buenos_Aires` - America/Buenos_Aires * `America/Cambridge_Bay` - America/Cambridge_Bay * `America/Campo_Grande` - America/Campo_Grande * `America/Cancun` - America/Cancun * `America/Caracas` - America/Caracas * `America/Catamarca` - America/Catamarca * `America/Cayenne` - America/Cayenne * `America/Cayman` - America/Cayman * `America/Chicago` - America/Chicago * `America/Chihuahua` - America/Chihuahua * `America/Ciudad_Juarez` - America/Ciudad_Juarez * `America/Coral_Harbour` - America/Coral_Harbour * `America/Cordoba` - America/Cordoba * `America/Costa_Rica` - America/Costa_Rica * `America/Creston` - America/Creston * `America/Cuiaba` - America/Cuiaba * `America/Curacao` - America/Curacao * `America/Danmarkshavn` - America/Danmarkshavn * `America/Dawson` - America/Dawson * `America/Dawson_Creek` - America/Dawson_Creek * `America/Denver` - America/Denver * `America/Detroit` - America/Detroit * `America/Dominica` - America/Dominica * `America/Edmonton` - America/Edmonton * `America/Eirunepe` - America/Eirunepe * `America/El_Salvador` - America/El_Salvador * `America/Ensenada` - America/Ensenada * `America/Fort_Nelson` - America/Fort_Nelson * `America/Fort_Wayne` - America/Fort_Wayne * `America/Fortaleza` - America/Fortaleza * `America/Glace_Bay` - America/Glace_Bay * `America/Godthab` - America/Godthab * `America/Goose_Bay` - America/Goose_Bay * `America/Grand_Turk` - America/Grand_Turk * `America/Grenada` - America/Grenada * `America/Guadeloupe` - America/Guadeloupe * `America/Guatemala` - America/Guatemala * `America/Guayaquil` - America/Guayaquil * `America/Guyana` - America/Guyana * `America/Halifax` - America/Halifax * `America/Havana` - America/Havana * `America/Hermosillo` - America/Hermosillo * `America/Indiana/Indianapolis` - America/Indiana/Indianapolis * `America/Indiana/Knox` - America/Indiana/Knox * `America/Indiana/Marengo` - America/Indiana/Marengo * `America/Indiana/Petersburg` - America/Indiana/Petersburg * `America/Indiana/Tell_City` - America/Indiana/Tell_City * `America/Indiana/Vevay` - America/Indiana/Vevay * `America/Indiana/Vincennes` - America/Indiana/Vincennes * `America/Indiana/Winamac` - America/Indiana/Winamac * `America/Indianapolis` - America/Indianapolis * `America/Inuvik` - America/Inuvik * `America/Iqaluit` - America/Iqaluit * `America/Jamaica` - America/Jamaica * `America/Jujuy` - America/Jujuy * `America/Juneau` - America/Juneau * `America/Kentucky/Louisville` - America/Kentucky/Louisville * `America/Kentucky/Monticello` - America/Kentucky/Monticello * `America/Knox_IN` - America/Knox_IN * `America/Kralendijk` - America/Kralendijk * `America/La_Paz` - America/La_Paz * `America/Lima` - America/Lima * `America/Los_Angeles` - America/Los_Angeles * `America/Louisville` - America/Louisville * `America/Lower_Princes` - America/Lower_Princes * `America/Maceio` - America/Maceio * `America/Managua` - America/Managua * `America/Manaus` - America/Manaus * `America/Marigot` - America/Marigot * `America/Martinique` - America/Martinique * `America/Matamoros` - America/Matamoros * `America/Mazatlan` - America/Mazatlan * `America/Mendoza` - America/Mendoza * `America/Menominee` - America/Menominee * `America/Merida` - America/Merida * `America/Metlakatla` - America/Metlakatla * `America/Mexico_City` - America/Mexico_City * `America/Miquelon` - America/Miquelon * `America/Moncton` - America/Moncton * `America/Monterrey` - America/Monterrey * `America/Montevideo` - America/Montevideo * `America/Montreal` - America/Montreal * `America/Montserrat` - America/Montserrat * `America/Nassau` - America/Nassau * `America/New_York` - America/New_York * `America/Nipigon` - America/Nipigon * `America/Nome` - America/Nome * `America/Noronha` - America/Noronha * `America/North_Dakota/Beulah` - America/North_Dakota/Beulah * `America/North_Dakota/Center` - America/North_Dakota/Center * `America/North_Dakota/New_Salem` - America/North_Dakota/New_Salem * `America/Nuuk` - America/Nuuk * `America/Ojinaga` - America/Ojinaga * `America/Panama` - America/Panama * `America/Pangnirtung` - America/Pangnirtung * `America/Paramaribo` - America/Paramaribo * `America/Phoenix` - America/Phoenix * `America/Port-au-Prince` - America/Port-au-Prince * `America/Port_of_Spain` - America/Port_of_Spain * `America/Porto_Acre` - America/Porto_Acre * `America/Porto_Velho` - America/Porto_Velho * `America/Puerto_Rico` - America/Puerto_Rico * `America/Punta_Arenas` - America/Punta_Arenas * `America/Rainy_River` - America/Rainy_River * `America/Rankin_Inlet` - America/Rankin_Inlet * `America/Recife` - America/Recife * `America/Regina` - America/Regina * `America/Resolute` - America/Resolute * `America/Rio_Branco` - America/Rio_Branco * `America/Rosario` - America/Rosario * `America/Santa_Isabel` - America/Santa_Isabel * `America/Santarem` - America/Santarem * `America/Santiago` - America/Santiago * `America/Santo_Domingo` - America/Santo_Domingo * `America/Sao_Paulo` - America/Sao_Paulo * `America/Scoresbysund` - America/Scoresbysund * `America/Shiprock` - America/Shiprock * `America/Sitka` - America/Sitka * `America/St_Barthelemy` - America/St_Barthelemy * `America/St_Johns` - America/St_Johns * `America/St_Kitts` - America/St_Kitts * `America/St_Lucia` - America/St_Lucia * `America/St_Thomas` - America/St_Thomas * `America/St_Vincent` - America/St_Vincent * `America/Swift_Current` - America/Swift_Current * `America/Tegucigalpa` - America/Tegucigalpa * `America/Thule` - America/Thule * `America/Thunder_Bay` - America/Thunder_Bay * `America/Tijuana` - America/Tijuana * `America/Toronto` - America/Toronto * `America/Tortola` - America/Tortola * `America/Vancouver` - America/Vancouver * `America/Virgin` - America/Virgin * `America/Whitehorse` - America/Whitehorse * `America/Winnipeg` - America/Winnipeg * `America/Yakutat` - America/Yakutat * `America/Yellowknife` - America/Yellowknife * `Antarctica/Casey` - Antarctica/Casey * `Antarctica/Davis` - Antarctica/Davis * `Antarctica/DumontDUrville` - Antarctica/DumontDUrville * `Antarctica/Macquarie` - Antarctica/Macquarie * `Antarctica/Mawson` - Antarctica/Mawson * `Antarctica/McMurdo` - Antarctica/McMurdo * `Antarctica/Palmer` - Antarctica/Palmer * `Antarctica/Rothera` - Antarctica/Rothera * `Antarctica/South_Pole` - Antarctica/South_Pole * `Antarctica/Syowa` - Antarctica/Syowa * `Antarctica/Troll` - Antarctica/Troll * `Antarctica/Vostok` - Antarctica/Vostok * `Arctic/Longyearbyen` - Arctic/Longyearbyen * `Asia/Aden` - Asia/Aden * `Asia/Almaty` - Asia/Almaty * `Asia/Amman` - Asia/Amman * `Asia/Anadyr` - Asia/Anadyr * `Asia/Aqtau` - Asia/Aqtau * `Asia/Aqtobe` - Asia/Aqtobe * `Asia/Ashgabat` - Asia/Ashgabat * `Asia/Ashkhabad` - Asia/Ashkhabad * `Asia/Atyrau` - Asia/Atyrau * `Asia/Baghdad` - Asia/Baghdad * `Asia/Bahrain` - Asia/Bahrain * `Asia/Baku` - Asia/Baku * `Asia/Bangkok` - Asia/Bangkok * `Asia/Barnaul` - Asia/Barnaul * `Asia/Beirut` - Asia/Beirut * `Asia/Bishkek` - Asia/Bishkek * `Asia/Brunei` - Asia/Brunei * `Asia/Calcutta` - Asia/Calcutta * `Asia/Chita` - Asia/Chita * `Asia/Choibalsan` - Asia/Choibalsan * `Asia/Chongqing` - Asia/Chongqing * `Asia/Chungking` - Asia/Chungking * `Asia/Colombo` - Asia/Colombo * `Asia/Dacca` - Asia/Dacca * `Asia/Damascus` - Asia/Damascus * `Asia/Dhaka` - Asia/Dhaka * `Asia/Dili` - Asia/Dili * `Asia/Dubai` - Asia/Dubai * `Asia/Dushanbe` - Asia/Dushanbe * `Asia/Famagusta` - Asia/Famagusta * `Asia/Gaza` - Asia/Gaza * `Asia/Harbin` - Asia/Harbin * `Asia/Hebron` - Asia/Hebron * `Asia/Ho_Chi_Minh` - Asia/Ho_Chi_Minh * `Asia/Hong_Kong` - Asia/Hong_Kong * `Asia/Hovd` - Asia/Hovd * `Asia/Irkutsk` - Asia/Irkutsk * `Asia/Istanbul` - Asia/Istanbul * `Asia/Jakarta` - Asia/Jakarta * `Asia/Jayapura` - Asia/Jayapura * `Asia/Jerusalem` - Asia/Jerusalem * `Asia/Kabul` - Asia/Kabul * `Asia/Kamchatka` - Asia/Kamchatka * `Asia/Karachi` - Asia/Karachi * `Asia/Kashgar` - Asia/Kashgar * `Asia/Kathmandu` - Asia/Kathmandu * `Asia/Katmandu` - Asia/Katmandu * `Asia/Khandyga` - Asia/Khandyga * `Asia/Kolkata` - Asia/Kolkata * `Asia/Krasnoyarsk` - Asia/Krasnoyarsk * `Asia/Kuala_Lumpur` - Asia/Kuala_Lumpur * `Asia/Kuching` - Asia/Kuching * `Asia/Kuwait` - Asia/Kuwait * `Asia/Macao` - Asia/Macao * `Asia/Macau` - Asia/Macau * `Asia/Magadan` - Asia/Magadan * `Asia/Makassar` - Asia/Makassar * `Asia/Manila` - Asia/Manila * `Asia/Muscat` - Asia/Muscat * `Asia/Nicosia` - Asia/Nicosia * `Asia/Novokuznetsk` - Asia/Novokuznetsk * `Asia/Novosibirsk` - Asia/Novosibirsk * `Asia/Omsk` - Asia/Omsk * `Asia/Oral` - Asia/Oral * `Asia/Phnom_Penh` - Asia/Phnom_Penh * `Asia/Pontianak` - Asia/Pontianak * `Asia/Pyongyang` - Asia/Pyongyang * `Asia/Qatar` - Asia/Qatar * `Asia/Qostanay` - Asia/Qostanay * `Asia/Qyzylorda` - Asia/Qyzylorda * `Asia/Rangoon` - Asia/Rangoon * `Asia/Riyadh` - Asia/Riyadh * `Asia/Saigon` - Asia/Saigon * `Asia/Sakhalin` - Asia/Sakhalin * `Asia/Samarkand` - Asia/Samarkand * `Asia/Seoul` - Asia/Seoul * `Asia/Shanghai` - Asia/Shanghai * `Asia/Singapore` - Asia/Singapore * `Asia/Srednekolymsk` - Asia/Srednekolymsk * `Asia/Taipei` - Asia/Taipei * `Asia/Tashkent` - Asia/Tashkent * `Asia/Tbilisi` - Asia/Tbilisi * `Asia/Tehran` - Asia/Tehran * `Asia/Tel_Aviv` - Asia/Tel_Aviv * `Asia/Thimbu` - Asia/Thimbu * `Asia/Thimphu` - Asia/Thimphu * `Asia/Tokyo` - Asia/Tokyo * `Asia/Tomsk` - Asia/Tomsk * `Asia/Ujung_Pandang` - Asia/Ujung_Pandang * `Asia/Ulaanbaatar` - Asia/Ulaanbaatar * `Asia/Ulan_Bator` - Asia/Ulan_Bator * `Asia/Urumqi` - Asia/Urumqi * `Asia/Ust-Nera` - Asia/Ust-Nera * `Asia/Vientiane` - Asia/Vientiane * `Asia/Vladivostok` - Asia/Vladivostok * `Asia/Yakutsk` - Asia/Yakutsk * `Asia/Yangon` - Asia/Yangon * `Asia/Yekaterinburg` - Asia/Yekaterinburg * `Asia/Yerevan` - Asia/Yerevan * `Atlantic/Azores` - Atlantic/Azores * `Atlantic/Bermuda` - Atlantic/Bermuda * `Atlantic/Canary` - Atlantic/Canary * `Atlantic/Cape_Verde` - Atlantic/Cape_Verde * `Atlantic/Faeroe` - Atlantic/Faeroe * `Atlantic/Faroe` - Atlantic/Faroe * `Atlantic/Jan_Mayen` - Atlantic/Jan_Mayen * `Atlantic/Madeira` - Atlantic/Madeira * `Atlantic/Reykjavik` - Atlantic/Reykjavik * `Atlantic/South_Georgia` - Atlantic/South_Georgia * `Atlantic/St_Helena` - Atlantic/St_Helena * `Atlantic/Stanley` - Atlantic/Stanley * `Australia/ACT` - Australia/ACT * `Australia/Adelaide` - Australia/Adelaide * `Australia/Brisbane` - Australia/Brisbane * `Australia/Broken_Hill` - Australia/Broken_Hill * `Australia/Canberra` - Australia/Canberra * `Australia/Currie` - Australia/Currie * `Australia/Darwin` - Australia/Darwin * `Australia/Eucla` - Australia/Eucla * `Australia/Hobart` - Australia/Hobart * `Australia/LHI` - Australia/LHI * `Australia/Lindeman` - Australia/Lindeman * `Australia/Lord_Howe` - Australia/Lord_Howe * `Australia/Melbourne` - Australia/Melbourne * `Australia/NSW` - Australia/NSW * `Australia/North` - Australia/North * `Australia/Perth` - Australia/Perth * `Australia/Queensland` - Australia/Queensland * `Australia/South` - Australia/South * `Australia/Sydney` - Australia/Sydney * `Australia/Tasmania` - Australia/Tasmania * `Australia/Victoria` - Australia/Victoria * `Australia/West` - Australia/West * `Australia/Yancowinna` - Australia/Yancowinna * `Brazil/Acre` - Brazil/Acre * `Brazil/DeNoronha` - Brazil/DeNoronha * `Brazil/East` - Brazil/East * `Brazil/West` - Brazil/West * `CET` - CET * `CST6CDT` - CST6CDT * `Canada/Atlantic` - Canada/Atlantic * `Canada/Central` - Canada/Central * `Canada/Eastern` - Canada/Eastern * `Canada/Mountain` - Canada/Mountain * `Canada/Newfoundland` - Canada/Newfoundland * `Canada/Pacific` - Canada/Pacific * `Canada/Saskatchewan` - Canada/Saskatchewan * `Canada/Yukon` - Canada/Yukon * `Chile/Continental` - Chile/Continental * `Chile/EasterIsland` - Chile/EasterIsland * `Cuba` - Cuba * `EET` - EET * `EST` - EST * `EST5EDT` - EST5EDT * `Egypt` - Egypt * `Eire` - Eire * `Etc/GMT` - Etc/GMT * `Etc/GMT+0` - Etc/GMT+0 * `Etc/GMT+1` - Etc/GMT+1 * `Etc/GMT+10` - Etc/GMT+10 * `Etc/GMT+11` - Etc/GMT+11 * `Etc/GMT+12` - Etc/GMT+12 * `Etc/GMT+2` - Etc/GMT+2 * `Etc/GMT+3` - Etc/GMT+3 * `Etc/GMT+4` - Etc/GMT+4 * `Etc/GMT+5` - Etc/GMT+5 * `Etc/GMT+6` - Etc/GMT+6 * `Etc/GMT+7` - Etc/GMT+7 * `Etc/GMT+8` - Etc/GMT+8 * `Etc/GMT+9` - Etc/GMT+9 * `Etc/GMT-0` - Etc/GMT-0 * `Etc/GMT-1` - Etc/GMT-1 * `Etc/GMT-10` - Etc/GMT-10 * `Etc/GMT-11` - Etc/GMT-11 * `Etc/GMT-12` - Etc/GMT-12 * `Etc/GMT-13` - Etc/GMT-13 * `Etc/GMT-14` - Etc/GMT-14 * `Etc/GMT-2` - Etc/GMT-2 * `Etc/GMT-3` - Etc/GMT-3 * `Etc/GMT-4` - Etc/GMT-4 * `Etc/GMT-5` - Etc/GMT-5 * `Etc/GMT-6` - Etc/GMT-6 * `Etc/GMT-7` - Etc/GMT-7 * `Etc/GMT-8` - Etc/GMT-8 * `Etc/GMT-9` - Etc/GMT-9 * `Etc/GMT0` - Etc/GMT0 * `Etc/Greenwich` - Etc/Greenwich * `Etc/UCT` - Etc/UCT * `Etc/UTC` - Etc/UTC * `Etc/Universal` - Etc/Universal * `Etc/Zulu` - Etc/Zulu * `Europe/Amsterdam` - Europe/Amsterdam * `Europe/Andorra` - Europe/Andorra * `Europe/Astrakhan` - Europe/Astrakhan * `Europe/Athens` - Europe/Athens * `Europe/Belfast` - Europe/Belfast * `Europe/Belgrade` - Europe/Belgrade * `Europe/Berlin` - Europe/Berlin * `Europe/Bratislava` - Europe/Bratislava * `Europe/Brussels` - Europe/Brussels * `Europe/Bucharest` - Europe/Bucharest * `Europe/Budapest` - Europe/Budapest * `Europe/Busingen` - Europe/Busingen * `Europe/Chisinau` - Europe/Chisinau * `Europe/Copenhagen` - Europe/Copenhagen * `Europe/Dublin` - Europe/Dublin * `Europe/Gibraltar` - Europe/Gibraltar * `Europe/Guernsey` - Europe/Guernsey * `Europe/Helsinki` - Europe/Helsinki * `Europe/Isle_of_Man` - Europe/Isle_of_Man * `Europe/Istanbul` - Europe/Istanbul * `Europe/Jersey` - Europe/Jersey * `Europe/Kaliningrad` - Europe/Kaliningrad * `Europe/Kiev` - Europe/Kiev * `Europe/Kirov` - Europe/Kirov * `Europe/Kyiv` - Europe/Kyiv * `Europe/Lisbon` - Europe/Lisbon * `Europe/Ljubljana` - Europe/Ljubljana * `Europe/London` - Europe/London * `Europe/Luxembourg` - Europe/Luxembourg * `Europe/Madrid` - Europe/Madrid * `Europe/Malta` - Europe/Malta * `Europe/Mariehamn` - Europe/Mariehamn * `Europe/Minsk` - Europe/Minsk * `Europe/Monaco` - Europe/Monaco * `Europe/Moscow` - Europe/Moscow * `Europe/Nicosia` - Europe/Nicosia * `Europe/Oslo` - Europe/Oslo * `Europe/Paris` - Europe/Paris * `Europe/Podgorica` - Europe/Podgorica * `Europe/Prague` - Europe/Prague * `Europe/Riga` - Europe/Riga * `Europe/Rome` - Europe/Rome * `Europe/Samara` - Europe/Samara * `Europe/San_Marino` - Europe/San_Marino * `Europe/Sarajevo` - Europe/Sarajevo * `Europe/Saratov` - Europe/Saratov * `Europe/Simferopol` - Europe/Simferopol * `Europe/Skopje` - Europe/Skopje * `Europe/Sofia` - Europe/Sofia * `Europe/Stockholm` - Europe/Stockholm * `Europe/Tallinn` - Europe/Tallinn * `Europe/Tirane` - Europe/Tirane * `Europe/Tiraspol` - Europe/Tiraspol * `Europe/Ulyanovsk` - Europe/Ulyanovsk * `Europe/Uzhgorod` - Europe/Uzhgorod * `Europe/Vaduz` - Europe/Vaduz * `Europe/Vatican` - Europe/Vatican * `Europe/Vienna` - Europe/Vienna * `Europe/Vilnius` - Europe/Vilnius * `Europe/Volgograd` - Europe/Volgograd * `Europe/Warsaw` - Europe/Warsaw * `Europe/Zagreb` - Europe/Zagreb * `Europe/Zaporozhye` - Europe/Zaporozhye * `Europe/Zurich` - Europe/Zurich * `GB` - GB * `GB-Eire` - GB-Eire * `GMT` - GMT * `GMT+0` - GMT+0 * `GMT-0` - GMT-0 * `GMT0` - GMT0 * `Greenwich` - Greenwich * `HST` - HST * `Hongkong` - Hongkong * `Iceland` - Iceland * `Indian/Antananarivo` - Indian/Antananarivo * `Indian/Chagos` - Indian/Chagos * `Indian/Christmas` - Indian/Christmas * `Indian/Cocos` - Indian/Cocos * `Indian/Comoro` - Indian/Comoro * `Indian/Kerguelen` - Indian/Kerguelen * `Indian/Mahe` - Indian/Mahe * `Indian/Maldives` - Indian/Maldives * `Indian/Mauritius` - Indian/Mauritius * `Indian/Mayotte` - Indian/Mayotte * `Indian/Reunion` - Indian/Reunion * `Iran` - Iran * `Israel` - Israel * `Jamaica` - Jamaica * `Japan` - Japan * `Kwajalein` - Kwajalein * `Libya` - Libya * `MET` - MET * `MST` - MST * `MST7MDT` - MST7MDT * `Mexico/BajaNorte` - Mexico/BajaNorte * `Mexico/BajaSur` - Mexico/BajaSur * `Mexico/General` - Mexico/General * `NZ` - NZ * `NZ-CHAT` - NZ-CHAT * `Navajo` - Navajo * `PRC` - PRC * `PST8PDT` - PST8PDT * `Pacific/Apia` - Pacific/Apia * `Pacific/Auckland` - Pacific/Auckland * `Pacific/Bougainville` - Pacific/Bougainville * `Pacific/Chatham` - Pacific/Chatham * `Pacific/Chuuk` - Pacific/Chuuk * `Pacific/Easter` - Pacific/Easter * `Pacific/Efate` - Pacific/Efate * `Pacific/Enderbury` - Pacific/Enderbury * `Pacific/Fakaofo` - Pacific/Fakaofo * `Pacific/Fiji` - Pacific/Fiji * `Pacific/Funafuti` - Pacific/Funafuti * `Pacific/Galapagos` - Pacific/Galapagos * `Pacific/Gambier` - Pacific/Gambier * `Pacific/Guadalcanal` - Pacific/Guadalcanal * `Pacific/Guam` - Pacific/Guam * `Pacific/Honolulu` - Pacific/Honolulu * `Pacific/Johnston` - Pacific/Johnston * `Pacific/Kanton` - Pacific/Kanton * `Pacific/Kiritimati` - Pacific/Kiritimati * `Pacific/Kosrae` - Pacific/Kosrae * `Pacific/Kwajalein` - Pacific/Kwajalein * `Pacific/Majuro` - Pacific/Majuro * `Pacific/Marquesas` - Pacific/Marquesas * `Pacific/Midway` - Pacific/Midway * `Pacific/Nauru` - Pacific/Nauru * `Pacific/Niue` - Pacific/Niue * `Pacific/Norfolk` - Pacific/Norfolk * `Pacific/Noumea` - Pacific/Noumea * `Pacific/Pago_Pago` - Pacific/Pago_Pago * `Pacific/Palau` - Pacific/Palau * `Pacific/Pitcairn` - Pacific/Pitcairn * `Pacific/Pohnpei` - Pacific/Pohnpei * `Pacific/Ponape` - Pacific/Ponape * `Pacific/Port_Moresby` - Pacific/Port_Moresby * `Pacific/Rarotonga` - Pacific/Rarotonga * `Pacific/Saipan` - Pacific/Saipan * `Pacific/Samoa` - Pacific/Samoa * `Pacific/Tahiti` - Pacific/Tahiti * `Pacific/Tarawa` - Pacific/Tarawa * `Pacific/Tongatapu` - Pacific/Tongatapu * `Pacific/Truk` - Pacific/Truk * `Pacific/Wake` - Pacific/Wake * `Pacific/Wallis` - Pacific/Wallis * `Pacific/Yap` - Pacific/Yap * `Poland` - Poland * `Portugal` - Portugal * `ROC` - ROC * `ROK` - ROK * `Singapore` - Singapore * `Turkey` - Turkey * `UCT` - UCT * `US/Alaska` - US/Alaska * `US/Aleutian` - US/Aleutian * `US/Arizona` - US/Arizona * `US/Central` - US/Central * `US/East-Indiana` - US/East-Indiana * `US/Eastern` - US/Eastern * `US/Hawaii` - US/Hawaii * `US/Indiana-Starke` - US/Indiana-Starke * `US/Michigan` - US/Michigan * `US/Mountain` - US/Mountain * `US/Pacific` - US/Pacific * `US/Samoa` - US/Samoa * `UTC` - UTC * `Universal` - Universal * `W-SU` - W-SU * `WET` - WET * `Zulu` - Zulu */
 export type TimezoneEnum =
   | "Africa/Abidjan"
@@ -763,8 +710,6 @@ export type TimezoneEnum =
   | "W-SU"
   | "WET"
   | "Zulu";
-const TimezoneEnum = S.String;
-
 /** Serializer for `Team` model with minimal attributes to speeed up loading and transfer times. Also used for nested serializers. */
 export interface TeamBasic {
   id?: number;
@@ -780,64 +725,28 @@ export interface TeamBasic {
   timezone?: TimezoneEnum;
   access_control?: boolean;
 }
-const TeamBasic = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TeamBasic>;
-
 /** * `1` - member * `8` - administrator * `15` - owner */
 export type OrganizationMembershipLevelEnum = 1 | 8 | 15;
-const OrganizationMembershipLevelEnum = S.Number;
-
 /** * `0` - none * `3` - config * `6` - install * `9` - root */
 export type OrganizationPluginsAccessLevelEnum = 0 | 3 | 6 | 9;
-const OrganizationPluginsAccessLevelEnum = S.Number;
-
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
-const OrganizationTeamsItemMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<OrganizationTeamsItemMap>;
-
 export type OrganizationTeamsList = Array<OrganizationTeamsItemMap>;
-const OrganizationTeamsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<OrganizationTeamsList>;
-
 export type OrganizationProjectsItemMap = { [key: string]: unknown | undefined };
 export type OrganizationProjectsList = Array<OrganizationProjectsItemMap>;
-const OrganizationProjectsList = OrganizationTeamsList as any as S.Schema<OrganizationProjectsList>;
-
 export type OrganizationAvailableProductFeaturesList = Array<unknown>;
-const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
-
 export type OrganizationMetadataMap = { [key: string]: string | undefined };
-const OrganizationMetadataMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<OrganizationMetadataMap>;
-
 export interface OrganizationMemberNoticeAction {
   /** Text on the button shown next to the notice. */
   label: string;
   /** Link the button opens in a new tab. Must use http or https. */
   url: string;
 }
-const OrganizationMemberNoticeAction = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<OrganizationMemberNoticeAction>;
-
 export interface OrganizationMemberNotice {
   /** HTML shown in the banner. Supports formatting tags and links (<b>, <strong>, <i>, <em>, <u>, <s>, <code>, <br>, <p>, <span>, <ul>, <ol>, <li>, <a href>). Other tags, styles and scripts are removed. */
   message: string;
   /** Optional link button shown on the right of the banner. */
   action?: OrganizationMemberNoticeAction | null;
 }
-const OrganizationMemberNotice = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<OrganizationMemberNotice>;
-
 export interface Organization {
   id?: string;
   name?: string;
@@ -891,8 +800,6 @@ export interface Organization {
   /** When True, access controls resolve with the most specific matching rule. When False, the legacy resolution order applies. */
   uses_most_specific_access_resolution?: boolean | null;
 }
-const Organization = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Organization>;
-
 /** Serializer for `Organization` model with minimal attributes to speeed up loading and transfer times. Also used for nested serializers. */
 export interface OrganizationBasic {
   id?: string;
@@ -908,39 +815,18 @@ export interface OrganizationBasic {
   /** Set to True when org deletion has been initiated. Blocks all UI access until the async task completes. */
   is_pending_deletion?: boolean | null;
 }
-const OrganizationBasic = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<OrganizationBasic>;
-
 export type UserOutputOrganizationsList = Array<OrganizationBasic>;
-const UserOutputOrganizationsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UserOutputOrganizationsList>;
-
 export interface ScenePersonalisationBasic {
   scene?: string;
   dashboard?: number | null;
 }
-const ScenePersonalisationBasic = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ScenePersonalisationBasic>;
-
 export type UserOutputScenePersonalisationList = Array<ScenePersonalisationBasic>;
-const UserOutputScenePersonalisationList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UserOutputScenePersonalisationList>;
-
 /** * `light` - Light * `dark` - Dark * `system` - System */
 export type ThemeModeEnum = "light" | "dark" | "system";
 export type UserOutputThemeMode = ThemeModeEnum | BlankEnum;
-const UserOutputThemeMode = S.Unknown as any as S.Schema<UserOutputThemeMode>;
-
 /** * `above` - Above * `below` - Below * `hidden` - Hidden */
 export type ShortcutPositionEnum = "above" | "below" | "hidden";
 export type UserOutputShortcutPosition = ShortcutPositionEnum | BlankEnum;
-const UserOutputShortcutPosition = S.Unknown as any as S.Schema<UserOutputShortcutPosition>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -952,19 +838,10 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-const RoleAtOrganizationEnum = S.String;
-
 /** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other * `provisioned` - Account provisioned by a partner */
 export type OnboardingSkippedReasonEnum = "delegated" | "later" | "other" | "provisioned";
-const OnboardingSkippedReasonEnum = S.String;
-
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
 export type UserOutputActiveRealtimeNotificationTypesList = Array<string>;
-const UserOutputActiveRealtimeNotificationTypesList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<UserOutputActiveRealtimeNotificationTypesList>;
-
 /** Shape of each item in UserSerializer.pending_invites. */
 export interface PendingInvite {
   id?: string;
@@ -973,14 +850,7 @@ export interface PendingInvite {
   organization_name?: string;
   created_at?: string;
 }
-const PendingInvite = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PendingInvite>;
-
 export type UserOutputPendingInvitesList = Array<PendingInvite>;
-const UserOutputPendingInvitesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UserOutputPendingInvitesList>;
-
 export interface UserOutput {
   date_joined?: string;
   uuid?: string;
@@ -1044,12 +914,8 @@ export interface UserOutput {
   /** True if the user has at least one Personal API Key or passkey, or a third-party OAuth application that can currently act as them, and has not yet acknowledged that access. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
   requires_credential_review?: boolean;
 }
-const UserOutput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UserOutput>;
-
 /** * `ios` - iOS * `android` - Android * `web` - Web */
 export type UserPushTokenPlatformEnum = "ios" | "android" | "web";
-const UserPushTokenPlatformEnum = S.String;
-
 export interface CreateUsersPushTokenRequest {
   uuid: string;
   /** Opaque push token issued by the device's platform push service (e.g. an Expo push token). */
@@ -1057,11 +923,6 @@ export interface CreateUsersPushTokenRequest {
   /** Device platform the token was issued for. One of `ios`, `android`, or `web`. * `ios` - iOS * `android` - Android * `web` - Web */
   platform: UserPushTokenPlatformEnum | (string & {});
 }
-const CreateUsersPushTokenRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateUsersPushTokenRequest>;
-
 export interface UserPushTokenItem {
   /** PostHog UserPushToken row id. */
   id: string;
@@ -1072,31 +933,15 @@ export interface UserPushTokenItem {
   /** Last time the mobile app re-registered this token. */
   last_seen_at: string;
 }
-const UserPushTokenItem = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UserPushTokenItem>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersRequestEmailVerificationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const CreateUsersRequestEmailVerificationRequestNotificationSettingsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateUsersRequestEmailVerificationRequestNotificationSettingsMap>;
-
 export type CreateUsersRequestEmailVerificationRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const CreateUsersRequestEmailVerificationRequestToolbarMode =
-  S.Unknown as any as S.Schema<CreateUsersRequestEmailVerificationRequestToolbarMode>;
-
 export type CreateUsersRequestEmailVerificationRequestThemeMode = ThemeModeEnum | BlankEnum;
-const CreateUsersRequestEmailVerificationRequestThemeMode =
-  S.Unknown as any as S.Schema<CreateUsersRequestEmailVerificationRequestThemeMode>;
-
 export type CreateUsersRequestEmailVerificationRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-const CreateUsersRequestEmailVerificationRequestShortcutPosition =
-  S.Unknown as any as S.Schema<CreateUsersRequestEmailVerificationRequestShortcutPosition>;
-
 export interface CreateUsersRequestEmailVerificationRequest {
   first_name?: string;
   last_name?: string;
@@ -1128,36 +973,16 @@ export interface CreateUsersRequestEmailVerificationRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const CreateUsersRequestEmailVerificationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateUsersRequestEmailVerificationRequest>;
-
 export interface CreateUsersRequestEmailVerificationResponse {}
-const CreateUsersRequestEmailVerificationResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersRequestEmailVerificationResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersScenePersonalisationRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const CreateUsersScenePersonalisationRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersScenePersonalisationRequestNotificationSettingsMap>;
-
 export type CreateUsersScenePersonalisationRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const CreateUsersScenePersonalisationRequestToolbarMode =
-  S.Unknown as any as S.Schema<CreateUsersScenePersonalisationRequestToolbarMode>;
-
 export type CreateUsersScenePersonalisationRequestThemeMode = ThemeModeEnum | BlankEnum;
-const CreateUsersScenePersonalisationRequestThemeMode =
-  S.Unknown as any as S.Schema<CreateUsersScenePersonalisationRequestThemeMode>;
-
 export type CreateUsersScenePersonalisationRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-const CreateUsersScenePersonalisationRequestShortcutPosition =
-  S.Unknown as any as S.Schema<CreateUsersScenePersonalisationRequestShortcutPosition>;
-
 export interface CreateUsersScenePersonalisationRequest {
   uuid: string;
   first_name?: string;
@@ -1190,19 +1015,9 @@ export interface CreateUsersScenePersonalisationRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const CreateUsersScenePersonalisationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateUsersScenePersonalisationRequest>;
-
 export interface CreateUsersScenePersonalisationResponse {}
-const CreateUsersScenePersonalisationResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersScenePersonalisationResponse>;
-
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
 export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
-const AutonomyPriorityEnum = S.String;
-
 export interface CreateUsersSignalAutonomyRequest {
   user_id: string;
   autostart_priority?: AutonomyPriorityEnum | (string & {}) | null;
@@ -1219,11 +1034,6 @@ export interface CreateUsersSignalAutonomyRequest {
   /** Open implementation pull requests for reports that suggest this user as reviewer ready for review instead of draft, so the full CI matrix runs without anybody clicking Ready. Null follows the project default. A ready pull request runs the full matrix on every push. */
   github_open_pull_request_ready?: boolean | null;
 }
-const CreateUsersSignalAutonomyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateUsersSignalAutonomyRequest>;
-
 export interface User {
   id?: number;
   uuid?: string;
@@ -1231,17 +1041,9 @@ export interface User {
   last_name?: string;
   email?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<User>;
-
 export type SignalUserAutonomyConfigAutostartPriority = AutonomyPriorityEnum | BlankEnum;
-const SignalUserAutonomyConfigAutostartPriority =
-  S.Unknown as any as S.Schema<SignalUserAutonomyConfigAutostartPriority>;
-
 /** Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority. When set, reports without a priority judgment do not notify. * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
 export type SignalUserAutonomyConfigSlackNotificationMinPriority = AutonomyPriorityEnum | BlankEnum;
-const SignalUserAutonomyConfigSlackNotificationMinPriority =
-  S.Unknown as any as S.Schema<SignalUserAutonomyConfigSlackNotificationMinPriority>;
-
 export interface SignalUserAutonomyConfig {
   id?: string;
   user?: User;
@@ -1259,32 +1061,15 @@ export interface SignalUserAutonomyConfig {
   created_at?: string;
   updated_at?: string;
 }
-const SignalUserAutonomyConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<SignalUserAutonomyConfig>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap>;
-
 export type CreateUsersTwoFactorBackupCodeRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const CreateUsersTwoFactorBackupCodeRequestToolbarMode =
-  S.Unknown as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestToolbarMode>;
-
 export type CreateUsersTwoFactorBackupCodeRequestThemeMode = ThemeModeEnum | BlankEnum;
-const CreateUsersTwoFactorBackupCodeRequestThemeMode =
-  S.Unknown as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestThemeMode>;
-
 export type CreateUsersTwoFactorBackupCodeRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-const CreateUsersTwoFactorBackupCodeRequestShortcutPosition =
-  S.Unknown as any as S.Schema<CreateUsersTwoFactorBackupCodeRequestShortcutPosition>;
-
 export interface CreateUsersTwoFactorBackupCodeRequest {
   uuid: string;
   first_name?: string;
@@ -1317,34 +1102,14 @@ export interface CreateUsersTwoFactorBackupCodeRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const CreateUsersTwoFactorBackupCodeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequest>;
-
 export interface CreateUsersTwoFactorBackupCodeResponse {}
-const CreateUsersTwoFactorBackupCodeResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type CreateUsersValidate2faRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const CreateUsersValidate2faRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<CreateUsersValidate2faRequestNotificationSettingsMap>;
-
 export type CreateUsersValidate2faRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const CreateUsersValidate2faRequestToolbarMode =
-  S.Unknown as any as S.Schema<CreateUsersValidate2faRequestToolbarMode>;
-
 export type CreateUsersValidate2faRequestThemeMode = ThemeModeEnum | BlankEnum;
-const CreateUsersValidate2faRequestThemeMode =
-  S.Unknown as any as S.Schema<CreateUsersValidate2faRequestThemeMode>;
-
 export type CreateUsersValidate2faRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-const CreateUsersValidate2faRequestShortcutPosition =
-  S.Unknown as any as S.Schema<CreateUsersValidate2faRequestShortcutPosition>;
-
 export interface CreateUsersValidate2faRequest {
   uuid: string;
   first_name?: string;
@@ -1377,56 +1142,24 @@ export interface CreateUsersValidate2faRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const CreateUsersValidate2faRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateUsersValidate2faRequest>;
-
 export interface CreateUsersValidate2faResponse {}
-const CreateUsersValidate2faResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateUsersValidate2faResponse>;
-
 export interface GetUserRequest {
   uuid: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetUserRequest>;
-
 export interface GetUsersGithubLoginRequest {
   uuid: string;
 }
-const GetUsersGithubLoginRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetUsersGithubLoginRequest>;
-
 export interface UserGithubLogin {
   /** The user's resolved GitHub login, or null when no GitHub identity is linked. */
   github_login: string | null;
 }
-const UserGithubLogin = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<UserGithubLogin>;
-
 export interface GetUsersHedgehogConfigRequest {
   uuid: string;
 }
-const GetUsersHedgehogConfigRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetUsersHedgehogConfigRequest>;
-
 export interface GetUsersHedgehogConfigResponse {}
-const GetUsersHedgehogConfigResponse =
-  CreateUsersValidate2faResponse as any as S.Schema<GetUsersHedgehogConfigResponse>;
-
 export interface GetUsersIntegrationsCodexRequest {
   uuid: string;
 }
-const GetUsersIntegrationsCodexRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetUsersIntegrationsCodexRequest>;
-
 export interface GetUsersIntegrationsGithubBranchRequest {
   uuid: string;
   installation_id: string;
@@ -1439,16 +1172,8 @@ export interface GetUsersIntegrationsGithubBranchRequest {
   /** Optional case-insensitive branch name search query. */
   search?: string;
 }
-const GetUsersIntegrationsGithubBranchRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetUsersIntegrationsGithubBranchRequest>;
-
 /** List of branch names */
 export type GitHubBranchesResponseBranchesList = Array<string>;
-const GitHubBranchesResponseBranchesList =
-  UserOutputActiveRealtimeNotificationTypesList as any as S.Schema<GitHubBranchesResponseBranchesList>;
-
 export interface GitHubBranchesResponse {
   /** List of branch names */
   branches?: GitHubBranchesResponseBranchesList;
@@ -1457,11 +1182,6 @@ export interface GitHubBranchesResponse {
   /** Whether more branches exist beyond the returned page */
   has_more?: boolean;
 }
-const GitHubBranchesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GitHubBranchesResponse>;
-
 export interface GetUsersIntegrationsGithubReposRequest {
   uuid: string;
   installation_id: string;
@@ -1474,11 +1194,6 @@ export interface GetUsersIntegrationsGithubReposRequest {
   /** Optional case-insensitive repository name search query. */
   search?: string;
 }
-const GetUsersIntegrationsGithubReposRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetUsersIntegrationsGithubReposRequest>;
-
 export interface GitHubRepo {
   /** GitHub repository numeric identifier. */
   id?: number;
@@ -1499,14 +1214,7 @@ export interface GitHubRepo {
   /** Whether the PostHog GitHub App has write access -- required to open pull requests. */
   can_push?: boolean;
 }
-const GitHubRepo = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GitHubRepo>;
-
 export type GitHubReposResponseRepositoriesList = Array<GitHubRepo>;
-const GitHubReposResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GitHubReposResponseRepositoriesList>;
-
 export interface GitHubReposResponse {
   repositories?: GitHubReposResponseRepositoriesList;
   /** Whether more repositories are available beyond this page. */
@@ -1516,16 +1224,9 @@ export interface GitHubReposResponse {
   /** Total number of repositories matching the search query, across all pages. */
   total?: number;
 }
-const GitHubReposResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GitHubReposResponse>;
-
 export interface GetUsersIntegrationsSlackLinkableWorkspaceRequest {
   uuid: string;
 }
-const GetUsersIntegrationsSlackLinkableWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetUsersIntegrationsSlackLinkableWorkspaceRequest>;
-
 export interface UserSlackLinkableWorkspaceItem {
   /** PostHog team/project id owning the Slack workspace install. */
   posthog_team_id: number;
@@ -1538,56 +1239,23 @@ export interface UserSlackLinkableWorkspaceItem {
   /** Slack workspace display name as known by PostHog. */
   slack_team_name?: string | null;
 }
-const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UserSlackLinkableWorkspaceItem>;
-
 /** Slack workspaces the user could link to but hasn't yet. */
 export type UserSlackLinkableWorkspaceListResponseResultsList =
   Array<UserSlackLinkableWorkspaceItem>;
-const UserSlackLinkableWorkspaceListResponseResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UserSlackLinkableWorkspaceListResponseResultsList>;
-
 export interface UserSlackLinkableWorkspaceListResponse {
   /** Slack workspaces the user could link to but hasn't yet. */
   results: UserSlackLinkableWorkspaceListResponseResultsList;
 }
-const UserSlackLinkableWorkspaceListResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<UserSlackLinkableWorkspaceListResponse>;
-
 export interface GetUsersSignalAutonomyRequest {
   user_id: string;
 }
-const GetUsersSignalAutonomyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetUsersSignalAutonomyRequest>;
-
 export interface GetUsersStart2faSetupRequest {
   uuid: string;
 }
-const GetUsersStart2faSetupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetUsersStart2faSetupRequest>;
-
 export interface GetUsersStart2faSetupResponse {}
-const GetUsersStart2faSetupResponse =
-  CreateUsersValidate2faResponse as any as S.Schema<GetUsersStart2faSetupResponse>;
-
 export interface GetUsersTwoFactorStatusRequest {
   uuid: string;
 }
-const GetUsersTwoFactorStatusRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetUsersTwoFactorStatusRequest>;
-
 export interface TwoFactorStatus {
   /** Whether the user has any 2FA method enabled. */
   is_enabled: boolean;
@@ -1602,21 +1270,11 @@ export interface TwoFactorStatus {
   /** Whether passkeys count as a 2FA method. */
   passkeys_enabled_for_2fa: boolean;
 }
-const TwoFactorStatus = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<TwoFactorStatus>;
-
 export interface InstallUsersIntegrationsGithubRequestsDestroyRequest {
   uuid: string;
   request_id: string;
 }
-const InstallUsersIntegrationsGithubRequestsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyRequest>;
-
 export interface InstallUsersIntegrationsGithubRequestsDestroyResponse {}
-const InstallUsersIntegrationsGithubRequestsDestroyResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>;
-
 export interface ListUsersRequest {
   email?: string;
   is_staff?: boolean;
@@ -1625,28 +1283,14 @@ export interface ListUsersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListUsersRequest>;
-
 export type PaginatedUserListOutputResultsList = Array<UserOutput>;
-const PaginatedUserListOutputResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<PaginatedUserListOutputResultsList>;
-
 export interface PaginatedUserListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedUserListOutputResultsList;
 }
-const PaginatedUserListOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<PaginatedUserListOutput>;
-
 export type ListUsersIntegrationsRequestKind = "github" | "slack";
-const ListUsersIntegrationsRequestKind = S.String;
-
 export interface ListUsersIntegrationsRequest {
   uuid: string;
   /** Integration kind to list. Defaults to `github` for back-compat with mobile and the Code SDK, which call this endpoint without a query param and expect GitHub-shaped items. */
@@ -1656,23 +1300,14 @@ export interface ListUsersIntegrationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListUsersIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListUsersIntegrationsRequest>;
-
 export interface UserGitHubAccount {
   /** GitHub account type for the installation (e.g. User or Organization). */
   type?: string | null;
   /** GitHub login or organization name tied to the installation. */
   name?: string | null;
 }
-const UserGitHubAccount = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UserGitHubAccount>;
-
 /** * `connected` - connected * `unavailable` - unavailable */
 export type InstallationStatusEnum = "connected" | "unavailable";
-const InstallationStatusEnum = S.String;
-
 export interface UserGitHubIntegrationItem {
   /** PostHog UserIntegration row id. */
   id: string;
@@ -1695,55 +1330,25 @@ export interface UserGitHubIntegrationItem {
   /** When this integration row was created. */
   created_at: string;
 }
-const UserGitHubIntegrationItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<UserGitHubIntegrationItem>;
-
 /** GitHub personal integrations for the authenticated user. */
 export type UserGitHubIntegrationListResponseResultsList = Array<UserGitHubIntegrationItem>;
-const UserGitHubIntegrationListResponseResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UserGitHubIntegrationListResponseResultsList>;
-
 export interface UserGitHubIntegrationListResponse {
   /** GitHub personal integrations for the authenticated user. */
   results: UserGitHubIntegrationListResponseResultsList;
 }
-const UserGitHubIntegrationListResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UserGitHubIntegrationListResponse>;
-
 export type PaginatedUserGitHubIntegrationListResponseListResultsList =
   Array<UserGitHubIntegrationListResponse>;
-const PaginatedUserGitHubIntegrationListResponseListResultsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseListResultsList>;
-
 export interface PaginatedUserGitHubIntegrationListResponseList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedUserGitHubIntegrationListResponseListResultsList;
 }
-const PaginatedUserGitHubIntegrationListResponseList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseList>;
-
 export interface ListUsersLoginSessionsRequest {
   uuid: string;
   email?: string;
   is_staff?: boolean;
 }
-const ListUsersLoginSessionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListUsersLoginSessionsRequest>;
-
 /** A cookie-auth login session shown on the user's 'Web sessions' screen. */
 export interface UserAuthSession {
   /** Identifier used to revoke this login session. */
@@ -1761,60 +1366,22 @@ export interface UserAuthSession {
   /** Whether this is the login session making the current request. */
   is_current: boolean;
 }
-const UserAuthSession = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<UserAuthSession>;
-
 export type ListUsersLoginSessionsResponseBodyList = Array<UserAuthSession>;
-const ListUsersLoginSessionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListUsersLoginSessionsResponseBodyList>;
-
 export type ListUsersLoginSessionsResponse = ListUsersLoginSessionsResponseBodyList;
-const ListUsersLoginSessionsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListUsersLoginSessionsResponse>;
-
 export interface LoginUserSessionsDestroyRequest {
   uuid: string;
   session_id: string;
 }
-const LoginUserSessionsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<LoginUserSessionsDestroyRequest>;
-
 export interface LoginUserSessionsDestroyResponse {}
-const LoginUserSessionsDestroyResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<LoginUserSessionsDestroyResponse>;
-
 export interface SignalUserAutonomyDestroyRequest {
   user_id: string;
 }
-const SignalUserAutonomyDestroyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<SignalUserAutonomyDestroyRequest>;
-
 export interface SignalUserAutonomyDestroyResponse {}
-const SignalUserAutonomyDestroyResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<SignalUserAutonomyDestroyResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUserRequestNotificationSettingsMap = { [key: string]: unknown | undefined };
-const UpdateUserRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<UpdateUserRequestNotificationSettingsMap>;
-
 export type UpdateUserRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const UpdateUserRequestToolbarMode = S.Unknown as any as S.Schema<UpdateUserRequestToolbarMode>;
-
 export type UpdateUserRequestThemeMode = ThemeModeEnum | BlankEnum;
-const UpdateUserRequestThemeMode = S.Unknown as any as S.Schema<UpdateUserRequestThemeMode>;
-
 export type UpdateUserRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-const UpdateUserRequestShortcutPosition =
-  S.Unknown as any as S.Schema<UpdateUserRequestShortcutPosition>;
-
 export interface UpdateUserRequest {
   uuid: string;
   first_name?: string;
@@ -1847,29 +1414,15 @@ export interface UpdateUserRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UpdateUserRequest>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap =
-  CreateUsersRequestEmailVerificationRequestNotificationSettingsMap as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap>;
-
 export type UpdateUsersHedgehogConfigPartialRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const UpdateUsersHedgehogConfigPartialRequestToolbarMode =
-  S.Unknown as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestToolbarMode>;
-
 export type UpdateUsersHedgehogConfigPartialRequestThemeMode = ThemeModeEnum | BlankEnum;
-const UpdateUsersHedgehogConfigPartialRequestThemeMode =
-  S.Unknown as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestThemeMode>;
-
 export type UpdateUsersHedgehogConfigPartialRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-const UpdateUsersHedgehogConfigPartialRequestShortcutPosition =
-  S.Unknown as any as S.Schema<UpdateUsersHedgehogConfigPartialRequestShortcutPosition>;
-
 export interface UpdateUsersHedgehogConfigPartialRequest {
   uuid: string;
   first_name?: string;
@@ -1902,34 +1455,14 @@ export interface UpdateUsersHedgehogConfigPartialRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const UpdateUsersHedgehogConfigPartialRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequest>;
-
 export interface UpdateUsersHedgehogConfigPartialResponse {}
-const UpdateUsersHedgehogConfigPartialResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UpdateUsersPartialRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const UpdateUsersPartialRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<UpdateUsersPartialRequestNotificationSettingsMap>;
-
 export type UpdateUsersPartialRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const UpdateUsersPartialRequestToolbarMode =
-  S.Unknown as any as S.Schema<UpdateUsersPartialRequestToolbarMode>;
-
 export type UpdateUsersPartialRequestThemeMode = ThemeModeEnum | BlankEnum;
-const UpdateUsersPartialRequestThemeMode =
-  S.Unknown as any as S.Schema<UpdateUsersPartialRequestThemeMode>;
-
 export type UpdateUsersPartialRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-const UpdateUsersPartialRequestShortcutPosition =
-  S.Unknown as any as S.Schema<UpdateUsersPartialRequestShortcutPosition>;
-
 export interface UpdateUsersPartialRequest {
   uuid: string;
   first_name?: string;
@@ -1962,11 +1495,6 @@ export interface UpdateUsersPartialRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const UpdateUsersPartialRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateUsersPartialRequest>;
-
 export interface UpdateUsersProductIntroSeenPartialRequest {
   uuid: string;
   /** Which key in `has_seen_product_intro_for` to set. Any string is accepted: besides the product keys, the map holds keys composed per team and keys for surfaces that are not products. */
@@ -1974,49 +1502,22 @@ export interface UpdateUsersProductIntroSeenPartialRequest {
   /** Whether the intro counts as seen. Send false to show it again. */
   seen?: boolean;
 }
-const UpdateUsersProductIntroSeenPartialRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateUsersProductIntroSeenPartialRequest>;
-
 export type UpdateUsersProductIntroSeenPartialResponseBodyMap = {
   [key: string]: boolean | undefined;
 };
-const UpdateUsersProductIntroSeenPartialResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponseBodyMap>;
-
 export type UpdateUsersProductIntroSeenPartialResponse =
   UpdateUsersProductIntroSeenPartialResponseBodyMap;
-const UpdateUsersProductIntroSeenPartialResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap =
-  CreateUsersRequestEmailVerificationRequestNotificationSettingsMap as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap>;
-
 export type UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   | ToolbarModeEnum
   | BlankEnum;
-const UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
-  S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode>;
-
 export type UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode = ThemeModeEnum | BlankEnum;
-const UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
-  S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode>;
-
 export type UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
   | ShortcutPositionEnum
   | BlankEnum;
-const UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
-  S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition>;
-
 export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
   first_name?: string;
   last_name?: string;
@@ -2048,61 +1549,25 @@ export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const UsersCancelEmailChangeRequestPartialUpdateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>;
-
 export interface UsersCancelEmailChangeRequestPartialUpdateResponse {}
-const UsersCancelEmailChangeRequestPartialUpdateResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>;
-
 export interface UsersDestroyRequest {
   uuid: string;
 }
-const UsersDestroyRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<UsersDestroyRequest>;
-
 export interface UsersDestroyResponse {}
-const UsersDestroyResponse =
-  CreateUsersValidate2faResponse as any as S.Schema<UsersDestroyResponse>;
-
 export interface UsersIntegrationsCodexDestroyRequest {
   uuid: string;
 }
-const UsersIntegrationsCodexDestroyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<UsersIntegrationsCodexDestroyRequest>;
-
 export interface UsersIntegrationsCodexDestroyResponse {}
-const UsersIntegrationsCodexDestroyResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsCodexDestroyResponse>;
-
 export interface UsersIntegrationsGithubDestroyRequest {
   uuid: string;
   installation_id: string;
 }
-const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>;
-
 export interface UsersIntegrationsGithubDestroyResponse {}
-const UsersIntegrationsGithubDestroyResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
-
 export interface UsersIntegrationsGithubInstallRequestsRetrieveRequest {
   uuid: string;
 }
-const UsersIntegrationsGithubInstallRequestsRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<UsersIntegrationsGithubInstallRequestsRetrieveRequest>;
-
 /** * `pending` - Pending * `approved` - Approved * `unidentified` - Unidentified */
 export type GitHubInstallRequestStatusEnum = "pending" | "approved" | "unidentified";
-const GitHubInstallRequestStatusEnum = S.String;
-
 export interface GitHubInstallRequestItem {
   /** PostHog GitHubInstallRequest row id. */
   id: string;
@@ -2121,54 +1586,26 @@ export interface GitHubInstallRequestItem {
   /** When an org owner approved the request. */
   resolved_at?: string | null;
 }
-const GitHubInstallRequestItem = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GitHubInstallRequestItem>;
-
 /** The user's GitHub App install-approval requests, newest first. */
 export type GitHubInstallRequestListResponseResultsList = Array<GitHubInstallRequestItem>;
-const GitHubInstallRequestListResponseResultsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GitHubInstallRequestListResponseResultsList>;
-
 export interface GitHubInstallRequestListResponse {
   /** The user's GitHub App install-approval requests, newest first. */
   results: GitHubInstallRequestListResponseResultsList;
   /** Shareable GitHub App install URL with no PostHog session state, for an org owner who needs to approve the install. Null when the GitHub App is not configured on this instance. */
   install_url?: string | null;
 }
-const GitHubInstallRequestListResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GitHubInstallRequestListResponse>;
-
 export interface UsersIntegrationsGithubReposRefreshCreateRequest {
   uuid: string;
   installation_id: string;
 }
-const UsersIntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>;
-
 /** The refreshed repository cache. */
 export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
-const GitHubReposRefreshResponseRepositoriesList =
-  GitHubReposResponseRepositoriesList as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
-
 export interface GitHubReposRefreshResponse {
   /** The refreshed repository cache. */
   repositories?: GitHubReposRefreshResponseRepositoriesList;
   /** `unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one. * `connected` - connected * `unavailable` - unavailable */
   installation_status?: InstallationStatusEnum;
 }
-const GitHubReposRefreshResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GitHubReposRefreshResponse>;
-
 export interface UsersIntegrationsGithubStartCreateRequest {
   uuid: string;
   /** Optional team/project id (e.g. PostHog Desktop); web UI uses the session's current team. */
@@ -2176,35 +1613,17 @@ export interface UsersIntegrationsGithubStartCreateRequest {
   /** Optional client hint (e.g. posthog_code) for return routing after OAuth. */
   connect_from?: string;
 }
-const UsersIntegrationsGithubStartCreateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<UsersIntegrationsGithubStartCreateRequest>;
-
 export interface UserGitHubLinkStartResponse {
   /** URL to open in the browser to install or authorize the GitHub App for this user. */
   install_url: string;
   /** OAuth or install flow used for this GitHub connection. */
   connect_flow: string;
 }
-const UserGitHubLinkStartResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<UserGitHubLinkStartResponse>;
-
 export interface UsersIntegrationsSlackDestroyRequest {
   uuid: string;
   slack_user_id: string;
 }
-const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>;
-
 export interface UsersIntegrationsSlackDestroyResponse {}
-const UsersIntegrationsSlackDestroyResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersIntegrationsSlackDestroyResponse>;
-
 export interface UsersIntegrationsSlackStartCreateRequest {
   uuid: string;
   /** Optional team/project id to link against; defaults to the user's current team. */
@@ -2212,70 +1631,30 @@ export interface UsersIntegrationsSlackStartCreateRequest {
   /** Specific Slack workspace id to link against, scoped to the team. Disambiguates when one team has multiple Slack integrations (rare). */
   slack_team_id?: string | null;
 }
-const UsersIntegrationsSlackStartCreateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UsersIntegrationsSlackStartCreateRequest>;
-
 export interface UserSlackLinkStartResponse {
   /** URL to open in the browser to start the Sign-in-with-Slack flow. */
   install_url: string;
 }
-const UserSlackLinkStartResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<UserSlackLinkStartResponse>;
-
 export interface UsersLoginSessionsRevokeOthersCreateRequest {
   uuid: string;
 }
-const UsersLoginSessionsRevokeOthersCreateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UsersLoginSessionsRevokeOthersCreateRequest>;
-
 export interface RevokeOtherSessionsResponse {
   /** Number of other login sessions that were revoked. */
   revoked_count: number;
 }
-const RevokeOtherSessionsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<RevokeOtherSessionsResponse>;
-
 export interface UsersPushTokensUnregisterCreateRequest {
   uuid: string;
   /** The opaque push token to remove for the authenticated user. */
   token: string;
 }
-const UsersPushTokensUnregisterCreateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UsersPushTokensUnregisterCreateRequest>;
-
 export interface UsersPushTokensUnregisterCreateResponse {}
-const UsersPushTokensUnregisterCreateResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersPushTokensUnregisterCreateResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorDisableCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const UsersTwoFactorDisableCreateRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<UsersTwoFactorDisableCreateRequestNotificationSettingsMap>;
-
 export type UsersTwoFactorDisableCreateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const UsersTwoFactorDisableCreateRequestToolbarMode =
-  S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestToolbarMode>;
-
 export type UsersTwoFactorDisableCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
-const UsersTwoFactorDisableCreateRequestThemeMode =
-  S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestThemeMode>;
-
 export type UsersTwoFactorDisableCreateRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-const UsersTwoFactorDisableCreateRequestShortcutPosition =
-  S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestShortcutPosition>;
-
 export interface UsersTwoFactorDisableCreateRequest {
   uuid: string;
   first_name?: string;
@@ -2308,46 +1687,18 @@ export interface UsersTwoFactorDisableCreateRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UsersTwoFactorDisableCreateRequest>;
-
 export interface UsersTwoFactorDisableCreateResponse {}
-const UsersTwoFactorDisableCreateResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorDisableCreateResponse>;
-
 export interface UsersTwoFactorStartSetupRetrieveRequest {
   uuid: string;
 }
-const UsersTwoFactorStartSetupRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<UsersTwoFactorStartSetupRetrieveRequest>;
-
 export interface UsersTwoFactorStartSetupRetrieveResponse {}
-const UsersTwoFactorStartSetupRetrieveResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>;
-
 /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated -- other preferences stay as-is. */
 export type UsersTwoFactorValidateCreateRequestNotificationSettingsMap = {
   [key: string]: unknown | undefined;
 };
-const UsersTwoFactorValidateCreateRequestNotificationSettingsMap =
-  UserOutputNotificationSettingsMap as any as S.Schema<UsersTwoFactorValidateCreateRequestNotificationSettingsMap>;
-
 export type UsersTwoFactorValidateCreateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
-const UsersTwoFactorValidateCreateRequestToolbarMode =
-  S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestToolbarMode>;
-
 export type UsersTwoFactorValidateCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
-const UsersTwoFactorValidateCreateRequestThemeMode =
-  S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestThemeMode>;
-
 export type UsersTwoFactorValidateCreateRequestShortcutPosition = ShortcutPositionEnum | BlankEnum;
-const UsersTwoFactorValidateCreateRequestShortcutPosition =
-  S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestShortcutPosition>;
-
 export interface UsersTwoFactorValidateCreateRequest {
   uuid: string;
   first_name?: string;
@@ -2380,30 +1731,14 @@ export interface UsersTwoFactorValidateCreateRequest {
   /** Per-user UI customization, validated against the `UserUIConfiguration` schema. Currently covers sidebar section and item visibility. Send the complete object: it replaces the stored value wholesale. Null means no customization; absent keys mean the element is shown. Once `sidebar.starred_products_setup_completed` is true, an update that omits it keeps it true. */
   ui_configuration?: unknown;
 }
-const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<UsersTwoFactorValidateCreateRequest>;
-
 export interface UsersTwoFactorValidateCreateResponse {}
-const UsersTwoFactorValidateCreateResponse =
-  CreateUsersCredentialsReviewCompleteResponse as any as S.Schema<UsersTwoFactorValidateCreateResponse>;
-
 export interface UsersVerifyEmailCreateRequest {
   /** UUID of the user whose email is being verified. */
   uuid: string;
   /** The 6-digit verification code from the email. Whitespace, invisible characters, and grouping hyphens are removed and compatibility digits are folded to ASCII before checking. */
   code: string;
 }
-const UsersVerifyEmailCreateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<UsersVerifyEmailCreateRequest>;
-
 export interface UsersVerifyEmailCreateResponse {}
-const UsersVerifyEmailCreateResponse =
-  CreateUsersValidate2faResponse as any as S.Schema<UsersVerifyEmailCreateResponse>;
-
 export type CreateUsersCredentialsReviewCompleteError = PosthogOpError;
 /** Mark the user as having reviewed their existing credentials. Idempotent. Flips `requires_credential_review` to False so the post-login interstitial isn't shown again. Does not modify any credentials; the user revokes individual Personal API Keys and passkeys via their existing endpoints from the same screen. */
 export const createUsersCredentialsReviewComplete: API.OperationMethod<
@@ -2412,8 +1747,8 @@ export const createUsersCredentialsReviewComplete: API.OperationMethod<
   CreateUsersCredentialsReviewCompleteError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersCredentialsReviewCompleteRequest,
-  output: CreateUsersCredentialsReviewCompleteResponse,
+  input: __S(0) as any as S.Schema<CreateUsersCredentialsReviewCompleteRequest>,
+  output: __S(1) as any as S.Schema<CreateUsersCredentialsReviewCompleteResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2427,8 +1762,8 @@ export const createUsersIntegrationsCodex: API.OperationMethod<
   CreateUsersIntegrationsCodexError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersIntegrationsCodexRequest,
-  output: UserCodexIntegration,
+  input: __S(3) as any as S.Schema<CreateUsersIntegrationsCodexRequest>,
+  output: __S(4) as any as S.Schema<UserCodexIntegration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2442,8 +1777,8 @@ export const createUsersIntegrationsGithubPrepareCallback: API.OperationMethod<
   CreateUsersIntegrationsGithubPrepareCallbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersIntegrationsGithubPrepareCallbackRequest,
-  output: CreateUsersIntegrationsGithubPrepareCallbackResponse,
+  input: __S(5) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackRequest>,
+  output: __S(1) as any as S.Schema<CreateUsersIntegrationsGithubPrepareCallbackResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2457,8 +1792,8 @@ export const createUsersOnboardingSkip: API.OperationMethod<
   CreateUsersOnboardingSkipError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersOnboardingSkipRequest,
-  output: UserOutput,
+  input: __S(6) as any as S.Schema<CreateUsersOnboardingSkipRequest>,
+  output: __S(24) as any as S.Schema<UserOutput>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2472,8 +1807,8 @@ export const createUsersPushToken: API.OperationMethod<
   CreateUsersPushTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersPushTokenRequest,
-  output: UserPushTokenItem,
+  input: __S(25) as any as S.Schema<CreateUsersPushTokenRequest>,
+  output: __S(26) as any as S.Schema<UserPushTokenItem>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2486,8 +1821,8 @@ export const createUsersRequestEmailVerification: API.OperationMethod<
   CreateUsersRequestEmailVerificationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersRequestEmailVerificationRequest,
-  output: CreateUsersRequestEmailVerificationResponse,
+  input: __S(28) as any as S.Schema<CreateUsersRequestEmailVerificationRequest>,
+  output: __S(1) as any as S.Schema<CreateUsersRequestEmailVerificationResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2504,8 +1839,8 @@ export const createUsersScenePersonalisation: API.OperationMethod<
   CreateUsersScenePersonalisationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersScenePersonalisationRequest,
-  output: CreateUsersScenePersonalisationResponse,
+  input: __S(29) as any as S.Schema<CreateUsersScenePersonalisationRequest>,
+  output: __S(1) as any as S.Schema<CreateUsersScenePersonalisationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2519,8 +1854,8 @@ export const createUsersSignalAutonomy: API.OperationMethod<
   CreateUsersSignalAutonomyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSignalAutonomyRequest,
-  output: SignalUserAutonomyConfig,
+  input: __S(30) as any as S.Schema<CreateUsersSignalAutonomyRequest>,
+  output: __S(32) as any as S.Schema<SignalUserAutonomyConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2538,8 +1873,8 @@ export const createUsersTwoFactorBackupCode: API.OperationMethod<
   CreateUsersTwoFactorBackupCodeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersTwoFactorBackupCodeRequest,
-  output: CreateUsersTwoFactorBackupCodeResponse,
+  input: __S(33) as any as S.Schema<CreateUsersTwoFactorBackupCodeRequest>,
+  output: __S(1) as any as S.Schema<CreateUsersTwoFactorBackupCodeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2552,8 +1887,8 @@ export const createUsersValidate2fa: API.OperationMethod<
   CreateUsersValidate2faError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersValidate2faRequest,
-  output: CreateUsersValidate2faResponse,
+  input: __S(34) as any as S.Schema<CreateUsersValidate2faRequest>,
+  output: __S(35) as any as S.Schema<CreateUsersValidate2faResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2567,8 +1902,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: UserOutput,
+  input: __S(36) as any as S.Schema<GetUserRequest>,
+  output: __S(24) as any as S.Schema<UserOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2581,8 +1916,8 @@ export const getUsersGithubLogin: API.OperationMethod<
   GetUsersGithubLoginError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersGithubLoginRequest,
-  output: UserGithubLogin,
+  input: __S(37) as any as S.Schema<GetUsersGithubLoginRequest>,
+  output: __S(38) as any as S.Schema<UserGithubLogin>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2595,8 +1930,8 @@ export const getUsersHedgehogConfig: API.OperationMethod<
   GetUsersHedgehogConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersHedgehogConfigRequest,
-  output: GetUsersHedgehogConfigResponse,
+  input: __S(39) as any as S.Schema<GetUsersHedgehogConfigRequest>,
+  output: __S(35) as any as S.Schema<GetUsersHedgehogConfigResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2610,8 +1945,8 @@ export const getUsersIntegrationsCodex: API.OperationMethod<
   GetUsersIntegrationsCodexError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersIntegrationsCodexRequest,
-  output: UserCodexIntegration,
+  input: __S(40) as any as S.Schema<GetUsersIntegrationsCodexRequest>,
+  output: __S(4) as any as S.Schema<UserCodexIntegration>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2625,8 +1960,8 @@ export const getUsersIntegrationsGithubBranch: API.OperationMethod<
   GetUsersIntegrationsGithubBranchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersIntegrationsGithubBranchRequest,
-  output: GitHubBranchesResponse,
+  input: __S(41) as any as S.Schema<GetUsersIntegrationsGithubBranchRequest>,
+  output: __S(42) as any as S.Schema<GitHubBranchesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2640,8 +1975,8 @@ export const getUsersIntegrationsGithubRepos: API.OperationMethod<
   GetUsersIntegrationsGithubReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersIntegrationsGithubReposRequest,
-  output: GitHubReposResponse,
+  input: __S(43) as any as S.Schema<GetUsersIntegrationsGithubReposRequest>,
+  output: __S(46) as any as S.Schema<GitHubReposResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2655,8 +1990,8 @@ export const getUsersIntegrationsSlackLinkableWorkspace: API.OperationMethod<
   GetUsersIntegrationsSlackLinkableWorkspaceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersIntegrationsSlackLinkableWorkspaceRequest,
-  output: UserSlackLinkableWorkspaceListResponse,
+  input: __S(47) as any as S.Schema<GetUsersIntegrationsSlackLinkableWorkspaceRequest>,
+  output: __S(50) as any as S.Schema<UserSlackLinkableWorkspaceListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2005,8 @@ export const getUsersSignalAutonomy: API.OperationMethod<
   GetUsersSignalAutonomyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSignalAutonomyRequest,
-  output: SignalUserAutonomyConfig,
+  input: __S(51) as any as S.Schema<GetUsersSignalAutonomyRequest>,
+  output: __S(32) as any as S.Schema<SignalUserAutonomyConfig>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2684,8 +2019,8 @@ export const getUsersStart2faSetup: API.OperationMethod<
   GetUsersStart2faSetupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersStart2faSetupRequest,
-  output: GetUsersStart2faSetupResponse,
+  input: __S(52) as any as S.Schema<GetUsersStart2faSetupRequest>,
+  output: __S(35) as any as S.Schema<GetUsersStart2faSetupResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2699,8 +2034,8 @@ export const getUsersTwoFactorStatus: API.OperationMethod<
   GetUsersTwoFactorStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersTwoFactorStatusRequest,
-  output: TwoFactorStatus,
+  input: __S(53) as any as S.Schema<GetUsersTwoFactorStatusRequest>,
+  output: __S(54) as any as S.Schema<TwoFactorStatus>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2714,8 +2049,8 @@ export const installUsersIntegrationsGithubRequestsDestroy: API.OperationMethod<
   InstallUsersIntegrationsGithubRequestsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstallUsersIntegrationsGithubRequestsDestroyRequest,
-  output: InstallUsersIntegrationsGithubRequestsDestroyResponse,
+  input: __S(55) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyRequest>,
+  output: __S(1) as any as S.Schema<InstallUsersIntegrationsGithubRequestsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2728,8 +2063,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: PaginatedUserListOutput,
+  input: __S(56) as any as S.Schema<ListUsersRequest>,
+  output: __S(58) as any as S.Schema<PaginatedUserListOutput>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2743,8 +2078,8 @@ export const listUsersIntegrations: API.OperationMethod<
   ListUsersIntegrationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersIntegrationsRequest,
-  output: PaginatedUserGitHubIntegrationListResponseList,
+  input: __S(59) as any as S.Schema<ListUsersIntegrationsRequest>,
+  output: __S(65) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2758,8 +2093,8 @@ export const listUsersLoginSessions: API.OperationMethod<
   ListUsersLoginSessionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersLoginSessionsRequest,
-  output: ListUsersLoginSessionsResponse,
+  input: __S(66) as any as S.Schema<ListUsersLoginSessionsRequest>,
+  output: __S(69) as any as S.Schema<ListUsersLoginSessionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2773,8 +2108,8 @@ export const loginUserSessionsDestroy: API.OperationMethod<
   LoginUserSessionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LoginUserSessionsDestroyRequest,
-  output: LoginUserSessionsDestroyResponse,
+  input: __S(70) as any as S.Schema<LoginUserSessionsDestroyRequest>,
+  output: __S(1) as any as S.Schema<LoginUserSessionsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2788,8 +2123,8 @@ export const signalUserAutonomyDestroy: API.OperationMethod<
   SignalUserAutonomyDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalUserAutonomyDestroyRequest,
-  output: SignalUserAutonomyDestroyResponse,
+  input: __S(71) as any as S.Schema<SignalUserAutonomyDestroyRequest>,
+  output: __S(1) as any as S.Schema<SignalUserAutonomyDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2803,8 +2138,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UserOutput,
+  input: __S(72) as any as S.Schema<UpdateUserRequest>,
+  output: __S(24) as any as S.Schema<UserOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2821,8 +2156,8 @@ export const updateUsersHedgehogConfigPartial: API.OperationMethod<
   UpdateUsersHedgehogConfigPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersHedgehogConfigPartialRequest,
-  output: UpdateUsersHedgehogConfigPartialResponse,
+  input: __S(73) as any as S.Schema<UpdateUsersHedgehogConfigPartialRequest>,
+  output: __S(1) as any as S.Schema<UpdateUsersHedgehogConfigPartialResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2836,8 +2171,8 @@ export const updateUsersPartial: API.OperationMethod<
   UpdateUsersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersPartialRequest,
-  output: UserOutput,
+  input: __S(74) as any as S.Schema<UpdateUsersPartialRequest>,
+  output: __S(24) as any as S.Schema<UserOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2851,8 +2186,8 @@ export const updateUsersProductIntroSeenPartial: API.OperationMethod<
   UpdateUsersProductIntroSeenPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersProductIntroSeenPartialRequest,
-  output: UpdateUsersProductIntroSeenPartialResponse,
+  input: __S(75) as any as S.Schema<UpdateUsersProductIntroSeenPartialRequest>,
+  output: __S(77) as any as S.Schema<UpdateUsersProductIntroSeenPartialResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2868,8 +2203,8 @@ export const usersCancelEmailChangeRequestPartialUpdate: API.OperationMethod<
   UsersCancelEmailChangeRequestPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersCancelEmailChangeRequestPartialUpdateRequest,
-  output: UsersCancelEmailChangeRequestPartialUpdateResponse,
+  input: __S(78) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>,
+  output: __S(1) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2882,8 +2217,8 @@ export const usersDestroy: API.OperationMethod<
   UsersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersDestroyRequest,
-  output: UsersDestroyResponse,
+  input: __S(79) as any as S.Schema<UsersDestroyRequest>,
+  output: __S(35) as any as S.Schema<UsersDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2897,8 +2232,8 @@ export const usersIntegrationsCodexDestroy: API.OperationMethod<
   UsersIntegrationsCodexDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsCodexDestroyRequest,
-  output: UsersIntegrationsCodexDestroyResponse,
+  input: __S(80) as any as S.Schema<UsersIntegrationsCodexDestroyRequest>,
+  output: __S(1) as any as S.Schema<UsersIntegrationsCodexDestroyResponse>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2912,8 +2247,8 @@ export const usersIntegrationsGithubDestroy: API.OperationMethod<
   UsersIntegrationsGithubDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsGithubDestroyRequest,
-  output: UsersIntegrationsGithubDestroyResponse,
+  input: __S(81) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>,
+  output: __S(1) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2927,8 +2262,8 @@ export const usersIntegrationsGithubInstallRequestsRetrieve: API.OperationMethod
   UsersIntegrationsGithubInstallRequestsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsGithubInstallRequestsRetrieveRequest,
-  output: GitHubInstallRequestListResponse,
+  input: __S(82) as any as S.Schema<UsersIntegrationsGithubInstallRequestsRetrieveRequest>,
+  output: __S(85) as any as S.Schema<GitHubInstallRequestListResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2942,8 +2277,8 @@ export const usersIntegrationsGithubReposRefreshCreate: API.OperationMethod<
   UsersIntegrationsGithubReposRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsGithubReposRefreshCreateRequest,
-  output: GitHubReposRefreshResponse,
+  input: __S(86) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>,
+  output: __S(87) as any as S.Schema<GitHubReposRefreshResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2957,8 +2292,8 @@ export const usersIntegrationsGithubStartCreate: API.OperationMethod<
   UsersIntegrationsGithubStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsGithubStartCreateRequest,
-  output: UserGitHubLinkStartResponse,
+  input: __S(88) as any as S.Schema<UsersIntegrationsGithubStartCreateRequest>,
+  output: __S(89) as any as S.Schema<UserGitHubLinkStartResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2972,8 +2307,8 @@ export const usersIntegrationsSlackDestroy: API.OperationMethod<
   UsersIntegrationsSlackDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsSlackDestroyRequest,
-  output: UsersIntegrationsSlackDestroyResponse,
+  input: __S(90) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>,
+  output: __S(1) as any as S.Schema<UsersIntegrationsSlackDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2987,8 +2322,8 @@ export const usersIntegrationsSlackStartCreate: API.OperationMethod<
   UsersIntegrationsSlackStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersIntegrationsSlackStartCreateRequest,
-  output: UserSlackLinkStartResponse,
+  input: __S(91) as any as S.Schema<UsersIntegrationsSlackStartCreateRequest>,
+  output: __S(92) as any as S.Schema<UserSlackLinkStartResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3002,8 +2337,8 @@ export const usersLoginSessionsRevokeOthersCreate: API.OperationMethod<
   UsersLoginSessionsRevokeOthersCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersLoginSessionsRevokeOthersCreateRequest,
-  output: RevokeOtherSessionsResponse,
+  input: __S(93) as any as S.Schema<UsersLoginSessionsRevokeOthersCreateRequest>,
+  output: __S(94) as any as S.Schema<RevokeOtherSessionsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3017,8 +2352,8 @@ export const usersPushTokensUnregisterCreate: API.OperationMethod<
   UsersPushTokensUnregisterCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersPushTokensUnregisterCreateRequest,
-  output: UsersPushTokensUnregisterCreateResponse,
+  input: __S(95) as any as S.Schema<UsersPushTokensUnregisterCreateRequest>,
+  output: __S(1) as any as S.Schema<UsersPushTokensUnregisterCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3032,8 +2367,8 @@ export const usersTwoFactorDisableCreate: API.OperationMethod<
   UsersTwoFactorDisableCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersTwoFactorDisableCreateRequest,
-  output: UsersTwoFactorDisableCreateResponse,
+  input: __S(96) as any as S.Schema<UsersTwoFactorDisableCreateRequest>,
+  output: __S(1) as any as S.Schema<UsersTwoFactorDisableCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3046,8 +2381,8 @@ export const usersTwoFactorStartSetupRetrieve: API.OperationMethod<
   UsersTwoFactorStartSetupRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersTwoFactorStartSetupRetrieveRequest,
-  output: UsersTwoFactorStartSetupRetrieveResponse,
+  input: __S(97) as any as S.Schema<UsersTwoFactorStartSetupRetrieveRequest>,
+  output: __S(1) as any as S.Schema<UsersTwoFactorStartSetupRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3060,8 +2395,8 @@ export const usersTwoFactorValidateCreate: API.OperationMethod<
   UsersTwoFactorValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersTwoFactorValidateCreateRequest,
-  output: UsersTwoFactorValidateCreateResponse,
+  input: __S(98) as any as S.Schema<UsersTwoFactorValidateCreateRequest>,
+  output: __S(1) as any as S.Schema<UsersTwoFactorValidateCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3074,8 +2409,8 @@ export const usersVerifyEmailCreate: API.OperationMethod<
   UsersVerifyEmailCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersVerifyEmailCreateRequest,
-  output: UsersVerifyEmailCreateResponse,
+  input: __S(99) as any as S.Schema<UsersVerifyEmailCreateRequest>,
+  output: __S(35) as any as S.Schema<UsersVerifyEmailCreateResponse>,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3114,7 +2449,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          tokens: UserCodexAuthTokens,
+          tokens: __S(2),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/users/{uuid}/integrations/codex/", code: 200 }),
         ),
@@ -3124,7 +2459,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: CodexIntegrationStatusEnum,
+          status: S.String,
           plan_type: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           connected_at: S.optional(S.NullOr(S.String)),
@@ -3149,7 +2484,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          reason: OnboardingSkipRequestReasonEnum,
+          reason: S.String,
           step_at_skip: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/users/{uuid}/onboarding/skip/", code: 200 })),
       ).annotate({
@@ -3164,7 +2499,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          setting: SettingEnum,
+          setting: S.String,
           scope_id: S.String,
           locked_value: S.Boolean,
         }),
@@ -3172,7 +2507,7 @@ function __c1(j: number): any {
         identifier: "OrganizationNotificationLock",
       });
     case 1:
-      return S.Array(OrganizationNotificationLock);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3186,12 +2521,12 @@ function __c1(j: number): any {
           has_completed_onboarding_for: S.optional(S.Unknown),
           ingested_event: S.optional(S.Boolean),
           is_demo: S.optional(S.Boolean),
-          timezone: S.optional(TimezoneEnum),
+          timezone: S.optional(S.String),
           access_control: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TeamBasic" });
     case 3:
-      return S.Array(OrganizationTeamsItemMap);
+      return S.Array(__S(7));
     case 4:
       return S.Array(S.Unknown);
     case 5:
@@ -3209,7 +2544,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.String,
-          action: S.optional(S.NullOr(OrganizationMemberNoticeAction)),
+          action: S.optional(S.NullOr(__S(14))),
         }),
       ).annotate({ identifier: "OrganizationMemberNotice" });
   }
@@ -3225,15 +2560,13 @@ function __c2(j: number): any {
           logo_media_id: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          membership_level: S.optional(OrganizationMembershipLevelEnum),
-          plugins_access_level: S.optional(OrganizationPluginsAccessLevelEnum),
-          teams: S.optional(OrganizationTeamsList),
-          projects: S.optional(OrganizationProjectsList),
-          available_product_features: S.optional(
-            S.NullOr(OrganizationAvailableProductFeaturesList),
-          ),
+          membership_level: S.optional(S.Number),
+          plugins_access_level: S.optional(S.Number),
+          teams: S.optional(__S(11)),
+          projects: S.optional(__S(11)),
+          available_product_features: S.optional(S.NullOr(__S(12))),
           is_member_join_email_enabled: S.optional(S.Boolean),
-          metadata: S.optional(OrganizationMetadataMap),
+          metadata: S.optional(__S(13)),
           customer_id: S.optional(S.NullOr(S.String)),
           enforce_2fa: S.optional(S.NullOr(S.Boolean)),
           enforce_verified_domains: S.optional(S.NullOr(S.Boolean)),
@@ -3243,7 +2576,7 @@ function __c2(j: number): any {
           members_can_see_org_members: S.optional(S.Boolean),
           allow_publicly_shared_resources: S.optional(S.Boolean),
           read_only_mcp_access: S.optional(S.NullOr(S.Boolean)),
-          member_notice: S.optional(S.NullOr(OrganizationMemberNotice)),
+          member_notice: S.optional(S.NullOr(__S(15))),
           member_count: S.optional(S.Number),
           is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
           is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
@@ -3265,7 +2598,7 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           slug: S.optional(S.String),
           logo_media_id: S.optional(S.NullOr(S.String)),
-          membership_level: S.optional(OrganizationMembershipLevelEnum),
+          membership_level: S.optional(S.Number),
           members_can_use_personal_api_keys: S.optional(S.Boolean),
           is_active: S.optional(S.NullOr(S.Boolean)),
           is_not_active_reason: S.optional(S.NullOr(S.String)),
@@ -3273,7 +2606,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "OrganizationBasic" });
     case 2:
-      return S.Array(OrganizationBasic);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3284,7 +2617,7 @@ function __c2(j: number): any {
         identifier: "ScenePersonalisationBasic",
       });
     case 4:
-      return S.Array(ScenePersonalisationBasic);
+      return S.Array(__S(19));
     case 5:
       return S.Array(S.String);
     case 6:
@@ -3298,7 +2631,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PendingInvite" });
     case 7:
-      return S.Array(PendingInvite);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -3314,11 +2647,11 @@ function __c3(j: number): any {
           email: S.optional(S.String),
           pending_email: S.optional(S.NullOr(S.String)),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          notification_settings: S.optional(UserOutputNotificationSettingsMap),
-          notification_locks: S.optional(UserOutputNotificationLocksList),
+          notification_settings: S.optional(__S(7)),
+          notification_locks: S.optional(__S(9)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(UserOutputToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           has_password: S.optional(S.Boolean),
           id: S.optional(S.Number),
           is_staff: S.optional(S.Boolean),
@@ -3328,34 +2661,32 @@ function __c3(j: number): any {
           is_impersonated_reason: S.optional(S.NullOr(S.String)),
           sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
           fresh_reauth_expires_at: S.optional(S.NullOr(S.String)),
-          team: S.optional(TeamBasic),
-          organization: S.optional(Organization),
-          organizations: S.optional(UserOutputOrganizationsList),
+          team: S.optional(__S(10)),
+          organization: S.optional(__S(16)),
+          organizations: S.optional(__S(18)),
           events_column_config: S.optional(S.Unknown),
           is_2fa_enabled: S.optional(S.Boolean),
           has_social_auth: S.optional(S.Boolean),
           has_sso_enforcement: S.optional(S.Boolean),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          scene_personalisation: S.optional(UserOutputScenePersonalisationList),
-          theme_mode: S.optional(S.NullOr(UserOutputThemeMode)),
+          scene_personalisation: S.optional(__S(20)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(UserOutputShortcutPosition)),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
           onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-          onboarding_skipped_reason: S.optional(S.NullOr(OnboardingSkippedReasonEnum)),
+          onboarding_skipped_reason: S.optional(S.NullOr(S.String)),
           onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
           onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
           onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
           onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
           is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-          active_realtime_notification_types: S.optional(
-            UserOutputActiveRealtimeNotificationTypesList,
-          ),
-          pending_invites: S.optional(UserOutputPendingInvitesList),
+          active_realtime_notification_types: S.optional(__S(21)),
+          pending_invites: S.optional(__S(23)),
           requires_credential_review: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "UserOutput" });
@@ -3364,7 +2695,7 @@ function __c3(j: number): any {
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           token: S.String,
-          platform: UserPushTokenPlatformEnum,
+          platform: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/users/{uuid}/push_tokens/", code: 200 })),
       ).annotate({
         identifier: "CreateUsersPushTokenRequest",
@@ -3373,7 +2704,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          platform: UserPushTokenPlatformEnum,
+          platform: S.String,
           created_at: S.String,
           last_seen_at: S.String,
         }),
@@ -3386,12 +2717,10 @@ function __c3(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            CreateUsersRequestEmailVerificationRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(27)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(CreateUsersRequestEmailVerificationRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3399,13 +2728,11 @@ function __c3(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(CreateUsersRequestEmailVerificationRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(CreateUsersRequestEmailVerificationRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -3422,12 +2749,10 @@ function __c3(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            CreateUsersScenePersonalisationRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(CreateUsersScenePersonalisationRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3435,13 +2760,11 @@ function __c3(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(CreateUsersScenePersonalisationRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(CreateUsersScenePersonalisationRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -3455,11 +2778,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           user_id: S.String.pipe(T.Label()),
-          autostart_priority: S.optional(S.NullOr(AutonomyPriorityEnum)),
+          autostart_priority: S.optional(S.NullOr(S.String)),
           slack_notification_integration_id: S.optional(S.NullOr(S.Number)),
           slack_notification_channel: S.optional(S.NullOr(S.String)),
           slack_notification_direct_message: S.optional(S.Boolean),
-          slack_notification_min_priority: S.optional(S.NullOr(AutonomyPriorityEnum)),
+          slack_notification_min_priority: S.optional(S.NullOr(S.String)),
           github_assign_on_pull_request: S.optional(S.Boolean),
           github_open_pull_request_ready: S.optional(S.NullOr(S.Boolean)),
         }).pipe(
@@ -3486,13 +2809,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          user: S.optional(User),
-          autostart_priority: S.optional(S.NullOr(SignalUserAutonomyConfigAutostartPriority)),
+          user: S.optional(__S(31)),
+          autostart_priority: S.optional(S.NullOr(S.Unknown)),
           slack_notification_integration_id: S.optional(S.NullOr(S.Number)),
           slack_notification_channel: S.optional(S.NullOr(S.String)),
-          slack_notification_min_priority: S.optional(
-            S.NullOr(SignalUserAutonomyConfigSlackNotificationMinPriority),
-          ),
+          slack_notification_min_priority: S.optional(S.NullOr(S.Unknown)),
           github_assign_on_pull_request: S.optional(S.Boolean),
           github_open_pull_request_ready: S.optional(S.NullOr(S.Boolean)),
           created_at: S.optional(S.String),
@@ -3506,12 +2827,10 @@ function __c4(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            CreateUsersTwoFactorBackupCodeRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(CreateUsersTwoFactorBackupCodeRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3519,13 +2838,11 @@ function __c4(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(CreateUsersTwoFactorBackupCodeRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(CreateUsersTwoFactorBackupCodeRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -3542,10 +2859,10 @@ function __c4(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(CreateUsersValidate2faRequestNotificationSettingsMap),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(CreateUsersValidate2faRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3553,11 +2870,11 @@ function __c4(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(CreateUsersValidate2faRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(CreateUsersValidate2faRequestShortcutPosition)),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -3631,7 +2948,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(GitHubBranchesResponseBranchesList),
+          branches: S.optional(__S(21)),
           default_branch: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
@@ -3670,11 +2987,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "GitHubRepo" });
     case 5:
-      return S.Array(GitHubRepo);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(GitHubReposResponseRepositoriesList),
+          repositories: S.optional(__S(45)),
           has_more: S.optional(S.Boolean),
           next_offset: S.optional(S.NullOr(S.Number)),
           total: S.optional(S.Number),
@@ -3711,11 +3028,11 @@ function __c6(j: number): any {
         identifier: "UserSlackLinkableWorkspaceItem",
       });
     case 1:
-      return S.Array(UserSlackLinkableWorkspaceItem);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: UserSlackLinkableWorkspaceListResponseResultsList,
+          results: __S(49),
         }),
       ).annotate({
         identifier: "UserSlackLinkableWorkspaceListResponse",
@@ -3784,21 +3101,21 @@ function __c7(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/users/", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
     case 1:
-      return S.Array(UserOutput);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedUserListOutputResultsList),
+          results: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "PaginatedUserListOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          kind: S.optional(ListUsersIntegrationsRequestKind.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{uuid}/integrations/", code: 200 })),
@@ -3819,22 +3136,22 @@ function __c7(j: number): any {
           kind: S.String,
           installation_id: S.String,
           repository_selection: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(UserGitHubAccount)),
+          account: S.optional(S.NullOr(__S(60))),
           github_login: S.optional(S.NullOr(S.String)),
           uses_shared_installation: S.Boolean,
           installation_shared: S.Boolean,
-          installation_status: InstallationStatusEnum,
+          installation_status: S.String,
           created_at: S.String,
         }),
       ).annotate({
         identifier: "UserGitHubIntegrationItem",
       });
     case 6:
-      return S.Array(UserGitHubIntegrationItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          results: UserGitHubIntegrationListResponseResultsList,
+          results: __S(62),
         }),
       ).annotate({
         identifier: "UserGitHubIntegrationListResponse",
@@ -3844,14 +3161,14 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserGitHubIntegrationListResponse);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedUserGitHubIntegrationListResponseListResultsList,
+          results: __S(64),
         }),
       ).annotate({
         identifier: "PaginatedUserGitHubIntegrationListResponseList",
@@ -3879,11 +3196,9 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "UserAuthSession" });
     case 4:
-      return S.Array(UserAuthSession);
+      return S.Array(__S(67));
     case 5:
-      return S.suspend(() =>
-        ListUsersLoginSessionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(68).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListUsersLoginSessionsResponse",
       });
     case 6:
@@ -3922,10 +3237,10 @@ function __c9(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(UpdateUserRequestNotificationSettingsMap),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(UpdateUserRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3933,11 +3248,11 @@ function __c9(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(UpdateUserRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(UpdateUserRequestShortcutPosition)),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -3950,12 +3265,10 @@ function __c9(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            UpdateUsersHedgehogConfigPartialRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(27)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(UpdateUsersHedgehogConfigPartialRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3963,13 +3276,11 @@ function __c9(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(UpdateUsersHedgehogConfigPartialRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(UpdateUsersHedgehogConfigPartialRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -3984,10 +3295,10 @@ function __c9(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(UpdateUsersPartialRequestNotificationSettingsMap),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(UpdateUsersPartialRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -3995,11 +3306,11 @@ function __c9(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(UpdateUsersPartialRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(S.NullOr(UpdateUsersPartialRequestShortcutPosition)),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -4022,9 +3333,7 @@ function __c9(j: number): any {
     case 4:
       return S.Record(S.String, S.Boolean);
     case 5:
-      return S.suspend(() =>
-        UpdateUsersProductIntroSeenPartialResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(76).pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateUsersProductIntroSeenPartialResponse",
       });
     case 6:
@@ -4033,14 +3342,10 @@ function __c9(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(27)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(
-            S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode),
-          ),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -4048,15 +3353,11 @@ function __c9(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(
-            S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode),
-          ),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -4120,7 +3421,7 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String,
           github_login: S.String,
-          status: GitHubInstallRequestStatusEnum,
+          status: S.String,
           installation_id: S.optional(S.NullOr(S.String)),
           account_login: S.optional(S.NullOr(S.String)),
           account_type: S.optional(S.NullOr(S.String)),
@@ -4129,11 +3430,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "GitHubInstallRequestItem" });
     case 4:
-      return S.Array(GitHubInstallRequestItem);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: GitHubInstallRequestListResponseResultsList,
+          results: __S(84),
           install_url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -4157,8 +3458,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
-          installation_status: S.optional(InstallationStatusEnum),
+          repositories: S.optional(__S(45)),
+          installation_status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GitHubReposRefreshResponse",
@@ -4271,12 +3572,10 @@ function __c12(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            UsersTwoFactorDisableCreateRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(UsersTwoFactorDisableCreateRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -4284,13 +3583,11 @@ function __c12(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(UsersTwoFactorDisableCreateRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(UsersTwoFactorDisableCreateRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -4317,12 +3614,10 @@ function __c12(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           email: S.optional(S.String),
-          notification_settings: S.optional(
-            UsersTwoFactorValidateCreateRequestNotificationSettingsMap,
-          ),
+          notification_settings: S.optional(__S(7)),
           anonymize_data: S.optional(S.NullOr(S.Boolean)),
           allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-          toolbar_mode: S.optional(S.NullOr(UsersTwoFactorValidateCreateRequestToolbarMode)),
+          toolbar_mode: S.optional(S.NullOr(S.Unknown)),
           is_staff: S.optional(S.Boolean),
           set_current_organization: S.optional(S.String),
           set_current_team: S.optional(S.String),
@@ -4330,13 +3625,11 @@ function __c12(j: number): any {
           current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           events_column_config: S.optional(S.Unknown),
           has_seen_product_intro_for: S.optional(S.Unknown),
-          theme_mode: S.optional(S.NullOr(UsersTwoFactorValidateCreateRequestThemeMode)),
+          theme_mode: S.optional(S.NullOr(S.Unknown)),
           hedgehog_config: S.optional(S.Unknown),
           allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-          shortcut_position: S.optional(
-            S.NullOr(UsersTwoFactorValidateCreateRequestShortcutPosition),
-          ),
-          role_at_organization: S.optional(RoleAtOrganizationEnum),
+          shortcut_position: S.optional(S.NullOr(S.Unknown)),
+          role_at_organization: S.optional(S.String),
           passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
           hide_mcp_hints: S.optional(S.Boolean),
           ui_configuration: S.optional(S.Unknown),
@@ -4355,5 +3648,40 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UsersVerifyEmailCreateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

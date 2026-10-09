@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -58,14 +60,7 @@ export interface GetSmartRoutingRequest {
   /** Specifies the zone associated with the API call. */
   zoneId: string;
 }
-const GetSmartRoutingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetSmartRoutingRequest>;
-
 export type SmartRoutingGetResponseValue = "on" | "off";
-const SmartRoutingGetResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSmartRoutingResponse {
   /** Specifies the identifier of the Argo Smart Routing setting. */
@@ -77,26 +72,12 @@ export interface GetSmartRoutingResponse {
   /** Specifies the time when the setting was last modified. */
   modifiedOn?: string | null;
 }
-const GetSmartRoutingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetSmartRoutingResponse>;
-
 export interface GetTieredCachingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetTieredCachingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetTieredCachingRequest>;
-
 export type TieredCachingGetResponseId = "tiered_caching";
-const TieredCachingGetResponseId = S.String;
-
 export type TieredCachingGetResponseValue = "on" | "off";
-const TieredCachingGetResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTieredCachingResponse {
   /** The identifier of the caching setting. */
@@ -108,28 +89,14 @@ export interface GetTieredCachingResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const GetTieredCachingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetTieredCachingResponse>;
-
 export type SmartRoutingEditRequestValue = "on" | "off";
-const SmartRoutingEditRequestValue = S.String;
-
 export interface PatchSmartRoutingRequest {
   /** Specifies the zone associated with the API call. */
   zoneId: string;
   /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingEditRequestValue | (string & {});
 }
-const PatchSmartRoutingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PatchSmartRoutingRequest>;
-
 export type SmartRoutingEditResponseValue = "on" | "off";
-const SmartRoutingEditResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSmartRoutingResponse {
   /** Specifies the identifier of the Argo Smart Routing setting. */
@@ -141,31 +108,15 @@ export interface PatchSmartRoutingResponse {
   /** Specifies the time when the setting was last modified. */
   modifiedOn?: string | null;
 }
-const PatchSmartRoutingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PatchSmartRoutingResponse>;
-
 export type TieredCachingEditRequestValue = "on" | "off";
-const TieredCachingEditRequestValue = S.String;
-
 export interface PatchTieredCachingRequest {
   /** Identifier. */
   zoneId: string;
   /** Enables Tiered Caching. */
   value: TieredCachingEditRequestValue | (string & {});
 }
-const PatchTieredCachingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PatchTieredCachingRequest>;
-
 export type TieredCachingEditResponseId = "tiered_caching";
-const TieredCachingEditResponseId = S.String;
-
 export type TieredCachingEditResponseValue = "on" | "off";
-const TieredCachingEditResponseValue = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchTieredCachingResponse {
   /** The identifier of the caching setting. */
@@ -177,11 +128,6 @@ export interface PatchTieredCachingResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const PatchTieredCachingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PatchTieredCachingResponse>;
-
 export type GetSmartRoutingError =
   | InvalidObjectIdentifier
   | NotAuthorized
@@ -194,8 +140,8 @@ export const getSmartRouting: API.OperationMethod<
   GetSmartRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmartRoutingRequest,
-  output: GetSmartRoutingResponse,
+  input: __S(0) as any as S.Schema<GetSmartRoutingRequest>,
+  output: __S(1) as any as S.Schema<GetSmartRoutingResponse>,
   errors: [
     InvalidObjectIdentifier,
     NotAuthorized,
@@ -219,8 +165,8 @@ export const getTieredCaching: API.OperationMethod<
   GetTieredCachingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTieredCachingRequest,
-  output: GetTieredCachingResponse,
+  input: __S(2) as any as S.Schema<GetTieredCachingRequest>,
+  output: __S(3) as any as S.Schema<GetTieredCachingResponse>,
   errors: [
     InvalidObjectIdentifier,
     ZoneNotFound,
@@ -244,8 +190,8 @@ export const patchSmartRouting: API.OperationMethod<
   PatchSmartRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSmartRoutingRequest,
-  output: PatchSmartRoutingResponse,
+  input: __S(4) as any as S.Schema<PatchSmartRoutingRequest>,
+  output: __S(5) as any as S.Schema<PatchSmartRoutingResponse>,
   errors: [
     InvalidObjectIdentifier,
     NotAuthorized,
@@ -265,8 +211,8 @@ export const patchTieredCaching: API.OperationMethod<
   PatchTieredCachingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchTieredCachingRequest,
-  output: PatchTieredCachingResponse,
+  input: __S(6) as any as S.Schema<PatchTieredCachingRequest>,
+  output: __S(7) as any as S.Schema<PatchTieredCachingResponse>,
   errors: [InvalidObjectIdentifier, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -288,7 +234,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           editable: S.Boolean,
-          value: SmartRoutingGetResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSmartRoutingResponse" });
@@ -303,9 +249,9 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          id: TieredCachingGetResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: TieredCachingGetResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTieredCachingResponse" });
@@ -313,7 +259,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: SmartRoutingEditRequestValue,
+          value: S.String,
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/argo/smart_routing", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -323,7 +269,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           editable: S.Boolean,
-          value: SmartRoutingEditResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -333,7 +279,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          value: TieredCachingEditRequestValue,
+          value: S.String,
         })
           .pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/argo/tiered_caching", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -343,13 +289,24 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: TieredCachingEditResponseId,
+          id: S.String,
           editable: S.Boolean,
-          value: TieredCachingEditResponseValue,
+          value: S.String,
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchTieredCachingResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

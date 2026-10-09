@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -70,8 +72,6 @@ export interface InsertArchiveRequest {
   /** The group ID */
   groupId: string;
 }
-const InsertArchiveRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<InsertArchiveRequest>;
-
 /** JSON response template for groups migration API. */
 export interface Groups {
   /** The kind of insert resource this is. */
@@ -79,8 +79,6 @@ export interface Groups {
   /** The status of the insert request. */
   responseCode?: string;
 }
-const Groups = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Groups>;
-
 export type InsertArchiveError =
   | NotFound
   | Forbidden
@@ -94,8 +92,8 @@ export const insertArchive: API.OperationMethod<
   InsertArchiveError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertArchiveRequest,
-  output: Groups,
+  input: __S(0) as any as S.Schema<InsertArchiveRequest>,
+  output: __S(1) as any as S.Schema<Groups>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -123,5 +121,16 @@ function __c0(j: number): any {
           responseCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "Groups" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 1) {
+    case 0:
+      return __c0(i & 1);
   }
 }

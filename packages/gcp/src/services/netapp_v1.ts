@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
-
 export type ActiveDirectoryStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -93,14 +83,8 @@ export type ActiveDirectoryStateEnum =
   | "DELETING"
   | "ERROR"
   | "DIAGNOSING";
-const ActiveDirectoryStateEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
-
 /** ActiveDirectory is the public representation of the active directory config. */
 export interface ActiveDirectory {
   /** Required. NetBIOSPrefix is used as a prefix for SMB server name. */
@@ -148,8 +132,6 @@ export interface ActiveDirectory {
   /** Required. Username of the Active Directory domain administrator. */
   username?: string;
 }
-const ActiveDirectory = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ActiveDirectory>;
-
 export interface CreateProjectsLocationsActiveDirectoriesRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -158,17 +140,8 @@ export interface CreateProjectsLocationsActiveDirectoriesRequest {
   /** Request body */
   body?: ActiveDirectory;
 }
-const CreateProjectsLocationsActiveDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateProjectsLocationsActiveDirectoriesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -178,8 +151,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -193,8 +164,6 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Operation>;
-
 export type BackupPolicyStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -202,8 +171,6 @@ export type BackupPolicyStateEnum =
   | "DELETING"
   | "ERROR"
   | "UPDATING";
-const BackupPolicyStateEnum = S.String;
-
 /** Backup Policy. */
 export interface BackupPolicy {
   /** Output only. The backup policy state. */
@@ -227,8 +194,6 @@ export interface BackupPolicy {
   /** Description of the backup policy. */
   description?: string;
 }
-const BackupPolicy = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BackupPolicy>;
-
 export interface CreateProjectsLocationsBackupPoliciesRequest {
   /** Required. The ID to use for the backup policy. The ID must be unique within the specified location. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. */
   backupPolicyId?: string;
@@ -237,11 +202,6 @@ export interface CreateProjectsLocationsBackupPoliciesRequest {
   /** Request body */
   body?: BackupPolicy;
 }
-const CreateProjectsLocationsBackupPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProjectsLocationsBackupPoliciesRequest>;
-
 export type BackupVaultStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -249,16 +209,12 @@ export type BackupVaultStateEnum =
   | "DELETING"
   | "ERROR"
   | "UPDATING";
-const BackupVaultStateEnum = S.String;
-
 export type BackupVaultEncryptionStateEnum =
   | "ENCRYPTION_STATE_UNSPECIFIED"
   | "ENCRYPTION_STATE_PENDING"
   | "ENCRYPTION_STATE_COMPLETED"
   | "ENCRYPTION_STATE_IN_PROGRESS"
   | "ENCRYPTION_STATE_FAILED";
-const BackupVaultEncryptionStateEnum = S.String;
-
 /** Retention policy for backups in the backup vault */
 export interface BackupRetentionPolicy {
   /** Optional. Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true. */
@@ -272,17 +228,10 @@ export interface BackupRetentionPolicy {
   /** Optional. Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true. */
   manualBackupImmutable?: boolean;
 }
-const BackupRetentionPolicy = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BackupRetentionPolicy>;
-
 export type BackupVaultBackupVaultTypeEnum =
   | "BACKUP_VAULT_TYPE_UNSPECIFIED"
   | "IN_REGION"
   | "CROSS_REGION";
-const BackupVaultBackupVaultTypeEnum = S.String;
-
 /** A NetApp BackupVault. */
 export interface BackupVault {
   /** Identifier. The resource name of the backup vault. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`. */
@@ -314,8 +263,6 @@ export interface BackupVault {
   /** Optional. Region in which the backup vault is created. Format: `projects/{project_id}/locations/{location}` */
   sourceRegion?: string;
 }
-const BackupVault = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BackupVault>;
-
 export interface CreateProjectsLocationsBackupVaultsRequest {
   /** Required. The location to create the backup vaults, in the format `projects/{project_id}/locations/{location}` */
   parent: string;
@@ -324,11 +271,6 @@ export interface CreateProjectsLocationsBackupVaultsRequest {
   /** Request body */
   body?: BackupVault;
 }
-const CreateProjectsLocationsBackupVaultsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateProjectsLocationsBackupVaultsRequest>;
-
 /** Represents ONTAP source details. */
 export interface OntapSource {
   /** Required. The UUID of the ONTAP source volume. */
@@ -338,8 +280,6 @@ export interface OntapSource {
   /** Required. Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes. Format: `projects/{projects_id}/locations/{location}/storagePools/{storage_pool_id}` */
   storagePool?: string;
 }
-const OntapSource = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OntapSource>;
-
 export type BackupStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -348,11 +288,7 @@ export type BackupStateEnum =
   | "DELETING"
   | "ERROR"
   | "UPDATING";
-const BackupStateEnum = S.String;
-
 export type BackupBackupTypeEnum = "TYPE_UNSPECIFIED" | "MANUAL" | "SCHEDULED";
-const BackupBackupTypeEnum = S.String;
-
 /** A NetApp Backup. */
 export interface Backup {
   /** Output only. Region of the volume from which the backup was created. Format: `projects/{project_id}/locations/{location}` */
@@ -388,8 +324,6 @@ export interface Backup {
   /** Output only. Type of backup, manually created or created by a backup policy. */
   backupType?: BackupBackupTypeEnum | (string & {});
 }
-const Backup = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Backup>;
-
 export interface CreateProjectsLocationsBackupVaultsBackupsRequest {
   /** Required. The NetApp backupVault to create the backups of, in the format `projects/*\/locations/*\/backupVaults/{backup_vault_id}` */
   parent: string;
@@ -398,11 +332,6 @@ export interface CreateProjectsLocationsBackupVaultsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-const CreateProjectsLocationsBackupVaultsBackupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateProjectsLocationsBackupVaultsBackupsRequest>;
-
 export type HostGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -410,14 +339,8 @@ export type HostGroupStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DISABLED";
-const HostGroupStateEnum = S.String;
-
 export type HostGroupTypeEnum = "TYPE_UNSPECIFIED" | "ISCSI_INITIATOR";
-const HostGroupTypeEnum = S.String;
-
 export type HostGroupOsTypeEnum = "OS_TYPE_UNSPECIFIED" | "LINUX" | "WINDOWS" | "ESXI";
-const HostGroupOsTypeEnum = S.String;
-
 /** Host group is a collection of hosts that can be used for accessing a Block Volume. */
 export interface HostGroup {
   /** Output only. Create time of the host group. */
@@ -437,8 +360,6 @@ export interface HostGroup {
   /** Identifier. The resource name of the host group. Format: `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`. */
   name?: string;
 }
-const HostGroup = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<HostGroup>;
-
 export interface CreateProjectsLocationsHostGroupsRequest {
   /** Required. ID of the host group to create. Must be unique within the parent resource. Must contain only letters, numbers, and hyphen, with the first character a letter or underscore, the last a letter or underscore or a number, and a 63 character maximum. */
   hostGroupId?: string;
@@ -447,11 +368,6 @@ export interface CreateProjectsLocationsHostGroupsRequest {
   /** Request body */
   body?: HostGroup;
 }
-const CreateProjectsLocationsHostGroupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateProjectsLocationsHostGroupsRequest>;
-
 export type KmsConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
@@ -465,8 +381,6 @@ export type KmsConfigStateEnum =
   | "DISABLING"
   | "DISABLED"
   | "MIGRATING";
-const KmsConfigStateEnum = S.String;
-
 /** KmsConfig is the customer-managed encryption key(CMEK) configuration. */
 export interface KmsConfig {
   /** Output only. Create time of the KmsConfig. */
@@ -488,8 +402,6 @@ export interface KmsConfig {
   /** Output only. State of the KmsConfig. */
   state?: KmsConfigStateEnum | (string & {});
 }
-const KmsConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<KmsConfig>;
-
 export interface CreateProjectsLocationsKmsConfigsRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -498,34 +410,21 @@ export interface CreateProjectsLocationsKmsConfigsRequest {
   /** Request body */
   body?: KmsConfig;
 }
-const CreateProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateProjectsLocationsKmsConfigsRequest>;
-
 export type StoragePoolQosTypeEnum = "QOS_TYPE_UNSPECIFIED" | "AUTO" | "MANUAL";
-const StoragePoolQosTypeEnum = S.String;
-
 export type StoragePoolScaleTypeEnum =
   | "SCALE_TYPE_UNSPECIFIED"
   | "SCALE_TYPE_DEFAULT"
   | "SCALE_TYPE_SCALEOUT";
-const StoragePoolScaleTypeEnum = S.String;
-
 export type StoragePoolEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "SERVICE_MANAGED"
   | "CLOUD_KMS";
-const StoragePoolEncryptionTypeEnum = S.String;
-
 export type StoragePoolServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "PREMIUM"
   | "EXTREME"
   | "STANDARD"
   | "FLEX";
-const StoragePoolServiceLevelEnum = S.String;
-
 export type StoragePoolStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
@@ -535,14 +434,8 @@ export type StoragePoolStateEnum =
   | "RESTORING"
   | "DISABLED"
   | "ERROR";
-const StoragePoolStateEnum = S.String;
-
 export type StoragePoolTypeEnum = "STORAGE_POOL_TYPE_UNSPECIFIED" | "FILE" | "UNIFIED";
-const StoragePoolTypeEnum = S.String;
-
 export type StoragePoolModeEnum = "MODE_UNSPECIFIED" | "DEFAULT" | "ONTAP";
-const StoragePoolModeEnum = S.String;
-
 /** StoragePool is a container for volumes with a service level and capacity. Volumes can be created in a pool of sufficient available capacity. StoragePool capacity is what you are billed for. */
 export interface StoragePool {
   /** Optional. Description of the storage pool */
@@ -614,8 +507,6 @@ export interface StoragePool {
   /** Output only. Create time of the storage pool */
   createTime?: string;
 }
-const StoragePool = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StoragePool>;
-
 export interface CreateProjectsLocationsStoragePoolsRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -624,11 +515,6 @@ export interface CreateProjectsLocationsStoragePoolsRequest {
   /** Request body */
   body?: StoragePool;
 }
-const CreateProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateProjectsLocationsStoragePoolsRequest>;
-
 export type VolumeProtocolsItemEnum =
   | "PROTOCOLS_UNSPECIFIED"
   | "NFSV3"
@@ -636,29 +522,18 @@ export type VolumeProtocolsItemEnum =
   | "SMB"
   | "ISCSI"
   | "NVME";
-const VolumeProtocolsItemEnum = S.String;
-
 export type VolumeProtocolsItemEnumList = Array<VolumeProtocolsItemEnum | (string & {})>;
-const VolumeProtocolsItemEnumList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<VolumeProtocolsItemEnumList>;
-
 export type HybridReplicationParametersHybridReplicationTypeEnum =
   | "VOLUME_HYBRID_REPLICATION_TYPE_UNSPECIFIED"
   | "MIGRATION"
   | "CONTINUOUS_REPLICATION"
   | "ONPREM_REPLICATION"
   | "REVERSE_ONPREM_REPLICATION";
-const HybridReplicationParametersHybridReplicationTypeEnum = S.String;
-
 export type HybridReplicationParametersReplicationScheduleEnum =
   | "HYBRID_REPLICATION_SCHEDULE_UNSPECIFIED"
   | "EVERY_10_MINUTES"
   | "HOURLY"
   | "DAILY";
-const HybridReplicationParametersReplicationScheduleEnum = S.String;
-
 /** The Hybrid Replication parameters for the volume. */
 export interface HybridReplicationParameters {
   /** Optional. Description of the replication. */
@@ -684,28 +559,16 @@ export interface HybridReplicationParameters {
   /** Optional. Constituent volume count for large volume. */
   largeVolumeConstituentCount?: number;
 }
-const HybridReplicationParameters = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<HybridReplicationParameters>;
-
 export type VolumeSecurityStyleEnum = "SECURITY_STYLE_UNSPECIFIED" | "NTFS" | "UNIX";
-const VolumeSecurityStyleEnum = S.String;
-
 export type VolumeRestrictedActionsItemEnum = "RESTRICTED_ACTION_UNSPECIFIED" | "DELETE";
 export type VolumeRestrictedActionsItemEnumList = Array<
   VolumeRestrictedActionsItemEnum | (string & {})
 >;
-const VolumeRestrictedActionsItemEnumList =
-  VolumeProtocolsItemEnumList as any as S.Schema<VolumeRestrictedActionsItemEnumList>;
-
 /** Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20 PiB; it is composed of multiple internal constituents, and must be created in a large capacity pool. */
 export interface LargeCapacityConfig {
   /** Optional. The number of internal constituents (e.g., FlexVols) for this large volume. The minimum number of constituents is 2. */
   constituentCount?: number;
 }
-const LargeCapacityConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<LargeCapacityConfig>;
-
 export type VolumeStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
@@ -717,8 +580,6 @@ export type VolumeStateEnum =
   | "ERROR"
   | "PREPARING"
   | "READ_ONLY";
-const VolumeStateEnum = S.String;
-
 export type VolumeSmbSettingsItemEnum =
   | "SMB_SETTINGS_UNSPECIFIED"
   | "ENCRYPT_DATA"
@@ -731,31 +592,22 @@ export type VolumeSmbSettingsItemEnum =
   | "ACCESS_BASED_ENUMERATION"
   | "CONTINUOUSLY_AVAILABLE";
 export type VolumeSmbSettingsItemEnumList = Array<VolumeSmbSettingsItemEnum | (string & {})>;
-const VolumeSmbSettingsItemEnumList =
-  VolumeProtocolsItemEnumList as any as S.Schema<VolumeSmbSettingsItemEnumList>;
-
 export type VolumeServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "PREMIUM"
   | "EXTREME"
   | "STANDARD"
   | "FLEX";
-const VolumeServiceLevelEnum = S.String;
-
 export type SimpleExportPolicyRuleAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "READ_ONLY"
   | "READ_WRITE"
   | "READ_NONE";
-const SimpleExportPolicyRuleAccessTypeEnum = S.String;
-
 export type SimpleExportPolicyRuleSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_ROOT_SQUASH"
   | "ROOT_SQUASH"
   | "ALL_SQUASH";
-const SimpleExportPolicyRuleSquashModeEnum = S.String;
-
 /** An export policy rule describing various export options. */
 export interface SimpleExportPolicyRule {
   /** Comma separated list of allowed clients IP addresses */
@@ -785,33 +637,17 @@ export interface SimpleExportPolicyRule {
   /** Optional. Defines how user identity squashing is applied for this export rule. This field is the preferred way to configure squashing behavior and takes precedence over `has_root_access` if both are provided. */
   squashMode?: SimpleExportPolicyRuleSquashModeEnum | (string & {});
 }
-const SimpleExportPolicyRule = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<SimpleExportPolicyRule>;
-
 export type SimpleExportPolicyRuleList = Array<SimpleExportPolicyRule>;
-const SimpleExportPolicyRuleList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<SimpleExportPolicyRuleList>;
-
 /** Defines the export policy for the volume. */
 export interface ExportPolicy {
   /** Required. List of export policy rules */
   rules?: SimpleExportPolicyRuleList;
 }
-const ExportPolicy = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ExportPolicy>;
-
 export type VolumeEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "SERVICE_MANAGED"
   | "CLOUD_KMS";
-const VolumeEncryptionTypeEnum = S.String;
-
 export type BlockDeviceOsTypeEnum = "OS_TYPE_UNSPECIFIED" | "LINUX" | "WINDOWS" | "ESXI";
-const BlockDeviceOsTypeEnum = S.String;
-
 /** Block device represents the device(s) which are stored in the block volume. */
 export interface BlockDevice {
   /** Optional. The size of the block device in GiB. Any value provided for the `size_gib` field during volume creation is ignored. The block device's size is system-managed and will be set to match the parent Volume's `capacity_gib`. */
@@ -825,11 +661,7 @@ export interface BlockDevice {
   /** Required. Immutable. The OS type of the volume. This field can't be changed after the block device is created. */
   osType?: BlockDeviceOsTypeEnum | (string & {});
 }
-const BlockDevice = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<BlockDevice>;
-
 export type BlockDeviceList = Array<BlockDevice>;
-const BlockDeviceList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<BlockDeviceList>;
-
 /** Make a snapshot every day e.g. at 04:00, 05:20, 23:50 */
 export interface DailySchedule {
   /** Set the minute of the hour to start the snapshot (0-59), defaults to the top of the hour (0). */
@@ -839,8 +671,6 @@ export interface DailySchedule {
   /** Set the hour to start the snapshot (0-23), defaults to midnight (0). */
   hour?: number;
 }
-const DailySchedule = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DailySchedule>;
-
 /** Make a snapshot every week e.g. at Monday 04:00, Wednesday 05:20, Sunday 23:50 */
 export interface WeeklySchedule {
   /** Set the minute of the hour to start the snapshot (0-59), defaults to the top of the hour (0). */
@@ -852,8 +682,6 @@ export interface WeeklySchedule {
   /** Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'. */
   day?: string;
 }
-const WeeklySchedule = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<WeeklySchedule>;
-
 /** Make a snapshot every hour e.g. at 04:00, 05:00, 06:00. */
 export interface HourlySchedule {
   /** The maximum number of Snapshots to keep for the hourly schedule */
@@ -861,8 +689,6 @@ export interface HourlySchedule {
   /** Set the minute of the hour to start the snapshot (0-59), defaults to the top of the hour (0). */
   minute?: number;
 }
-const HourlySchedule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<HourlySchedule>;
-
 /** Make a snapshot once a month e.g. at 2nd 04:00, 7th 05:20, 24th 23:50 */
 export interface MonthlySchedule {
   /** Set the hour to start the snapshot (0-23), defaults to midnight (0). */
@@ -874,8 +700,6 @@ export interface MonthlySchedule {
   /** Set the minute of the hour to start the snapshot (0-59), defaults to the top of the hour (0). */
   minute?: number;
 }
-const MonthlySchedule = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MonthlySchedule>;
-
 /** Snapshot Policy for a volume. */
 export interface SnapshotPolicy {
   /** Daily schedule policy. */
@@ -889,11 +713,7 @@ export interface SnapshotPolicy {
   /** Monthly schedule policy. */
   monthlySchedule?: MonthlySchedule;
 }
-const SnapshotPolicy = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SnapshotPolicy>;
-
 export type TieringPolicyTierActionEnum = "TIER_ACTION_UNSPECIFIED" | "ENABLED" | "PAUSED";
-const TieringPolicyTierActionEnum = S.String;
-
 /** Defines tiering policy for the volume. */
 export interface TieringPolicy {
   /** Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED. */
@@ -903,8 +723,6 @@ export interface TieringPolicy {
   /** Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183. Default is 31. */
   coolingThresholdDays?: number;
 }
-const TieringPolicy = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TieringPolicy>;
-
 export type MountOptionProtocolEnum =
   | "PROTOCOLS_UNSPECIFIED"
   | "NFSV3"
@@ -912,8 +730,6 @@ export type MountOptionProtocolEnum =
   | "SMB"
   | "ISCSI"
   | "NVME";
-const MountOptionProtocolEnum = S.String;
-
 /** View only mount options for a volume. */
 export interface MountOption {
   /** Output only. IP Address. */
@@ -927,11 +743,7 @@ export interface MountOption {
   /** Protocol to mount with. */
   protocol?: MountOptionProtocolEnum | (string & {});
 }
-const MountOption = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<MountOption>;
-
 export type MountOptionList = Array<MountOption>;
-const MountOptionList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<MountOptionList>;
-
 /** The RestoreParameters if volume is created from a snapshot or backup. */
 export interface RestoreParameters {
   /** Full name of the snapshot resource. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
@@ -939,8 +751,6 @@ export interface RestoreParameters {
   /** Full name of the backup resource. Format for standard backup: projects/{project}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}. Format for BackupDR backup: projects/{project}/locations/{location}/backupVaults/{backup_vault}/dataSources/{data_source}/backups/{backup} */
   sourceBackup?: string;
 }
-const RestoreParameters = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RestoreParameters>;
-
 /** BackupConfig contains backup related config on a volume. */
 export interface BackupConfig {
   /** Output only. Total size of all backups in a chain in bytes = baseline backup size + sum(incremental backup size). */
@@ -952,16 +762,12 @@ export interface BackupConfig {
   /** Optional. Name of backup vault. Format: projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id} */
   backupVault?: string;
 }
-const BackupConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<BackupConfig>;
-
 export type CacheConfigCachePrePopulateStateEnum =
   | "CACHE_PRE_POPULATE_STATE_UNSPECIFIED"
   | "NOT_NEEDED"
   | "IN_PROGRESS"
   | "COMPLETE"
   | "ERROR";
-const CacheConfigCachePrePopulateStateEnum = S.String;
-
 /** Pre-populate cache volume with data from the origin volume. */
 export interface CachePrePopulate {
   /** Optional. List of directory-paths to be pre-populated for the FlexCache volume. */
@@ -971,8 +777,6 @@ export interface CachePrePopulate {
   /** Optional. List of directory-paths to be excluded for pre-population for the FlexCache volume. */
   excludePathList?: StringList;
 }
-const CachePrePopulate = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CachePrePopulate>;
-
 /** Configuration of the cache volume. */
 export interface CacheConfig {
   /** Output only. State of the prepopulation job indicating how the prepopulation is progressing. */
@@ -984,16 +788,12 @@ export interface CacheConfig {
   /** Optional. Flag indicating whether writeback is enabled for the FlexCache volume. */
   writebackEnabled?: boolean;
 }
-const CacheConfig = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CacheConfig>;
-
 export type CacheParametersCacheStateEnum =
   | "CACHE_STATE_UNSPECIFIED"
   | "PENDING_CLUSTER_PEERING"
   | "PENDING_SVM_PEERING"
   | "PEERED"
   | "ERROR";
-const CacheParametersCacheStateEnum = S.String;
-
 /** Cache Parameters for the volume. */
 export interface CacheParameters {
   /** Output only. Detailed description of the current cache state. */
@@ -1019,15 +819,11 @@ export interface CacheParameters {
   /** Optional. Expiration time for the peering command to be executed on user's ONTAP. */
   peeringCommandExpiryTime?: string;
 }
-const CacheParameters = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CacheParameters>;
-
 export type CloneDetailsSplitStateEnum =
   | "SPLIT_STATE_UNSPECIFIED"
   | "SPLIT_STATE_NOT_SPLITTING"
   | "SPLIT_STATE_IN_PROGRESS"
   | "SPLIT_STATE_FAILED";
-const CloneDetailsSplitStateEnum = S.String;
-
 /** Details about a clone volume. */
 export interface CloneDetails {
   /** Output only. Specifies the full resource name of the source snapshot from which this volume was cloned. Format: projects/{project}/locations/{location}/volumes/{volume}/snapshots/{snapshot} */
@@ -1039,8 +835,6 @@ export interface CloneDetails {
   /** Output only. Shared space in GiB. Determined at volume creation time based on size of source snapshot. */
   sharedSpaceGib?: string;
 }
-const CloneDetails = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CloneDetails>;
-
 /** Volume provides a filesystem that you can mount. */
 export interface Volume {
   /** Required. Protocols required for the volume */
@@ -1132,8 +926,6 @@ export interface Volume {
   /** Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and `large_capacity_config` are mutually exclusive. */
   largeCapacity?: boolean;
 }
-const Volume = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Volume>;
-
 export interface CreateProjectsLocationsVolumesRequest {
   /** Required. Id of the requesting volume. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. */
   volumeId?: string;
@@ -1142,11 +934,6 @@ export interface CreateProjectsLocationsVolumesRequest {
   /** Request body */
   body?: Volume;
 }
-const CreateProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateProjectsLocationsVolumesRequest>;
-
 export type QuotaRuleStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1154,16 +941,12 @@ export type QuotaRuleStateEnum =
   | "DELETING"
   | "READY"
   | "ERROR";
-const QuotaRuleStateEnum = S.String;
-
 export type QuotaRuleTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INDIVIDUAL_USER_QUOTA"
   | "INDIVIDUAL_GROUP_QUOTA"
   | "DEFAULT_USER_QUOTA"
   | "DEFAULT_GROUP_QUOTA";
-const QuotaRuleTypeEnum = S.String;
-
 /** QuotaRule specifies the maximum disk space a user or group can use within a volume. They can be used for creating default and individual quota rules. */
 export interface QuotaRule {
   /** Optional. The quota rule applies to the specified user or group, identified by a Unix UID/GID, Windows SID, or null for default. */
@@ -1185,8 +968,6 @@ export interface QuotaRule {
   /** Required. The type of quota rule. */
   type?: QuotaRuleTypeEnum | (string & {});
 }
-const QuotaRule = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<QuotaRule>;
-
 export interface CreateProjectsLocationsVolumesQuotaRulesRequest {
   /** Required. ID of the quota rule to create. Must be unique within the parent resource. Must contain only letters, numbers, underscore and hyphen, with the first character a letter or underscore, the last a letter or underscore or a number, and a 63 character maximum. */
   quotaRuleId?: string;
@@ -1195,14 +976,7 @@ export interface CreateProjectsLocationsVolumesQuotaRulesRequest {
   /** Request body */
   body?: QuotaRule;
 }
-const CreateProjectsLocationsVolumesQuotaRulesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateProjectsLocationsVolumesQuotaRulesRequest>;
-
 export type ReplicationRoleEnum = "REPLICATION_ROLE_UNSPECIFIED" | "SOURCE" | "DESTINATION";
-const ReplicationRoleEnum = S.String;
-
 export type ReplicationMirrorStateEnum =
   | "MIRROR_STATE_UNSPECIFIED"
   | "PREPARING"
@@ -1213,15 +987,11 @@ export type ReplicationMirrorStateEnum =
   | "ABORTED"
   | "EXTERNALLY_MANAGED"
   | "PENDING_PEERING";
-const ReplicationMirrorStateEnum = S.String;
-
 /** UserCommands contains the commands to be executed by the customer. */
 export interface UserCommands {
   /** Output only. List of commands to be executed by the customer. */
   commands?: StringList;
 }
-const UserCommands = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<UserCommands>;
-
 /** HybridPeeringDetails contains details about the hybrid peering. */
 export interface HybridPeeringDetails {
   /** Output only. Name of the user's local source volume to be peered with the destination volume. */
@@ -1239,8 +1009,6 @@ export interface HybridPeeringDetails {
   /** Output only. Expiration time for the peering command to be executed on user's ONTAP. */
   commandExpiryTime?: string;
 }
-const HybridPeeringDetails = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<HybridPeeringDetails>;
-
 /** DestinationVolumeParameters specify input parameters used for creating destination volume. */
 export interface DestinationVolumeParameters {
   /** Destination volume's share name. If not specified, source volume's share name will be used. */
@@ -1254,11 +1022,6 @@ export interface DestinationVolumeParameters {
   /** Required. Existing destination StoragePool name. */
   storagePool?: string;
 }
-const DestinationVolumeParameters = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DestinationVolumeParameters>;
-
 /** TransferStats reports all statistics related to replication transfer. */
 export interface TransferStats {
   /** Time when progress was updated last. */
@@ -1278,23 +1041,17 @@ export interface TransferStats {
   /** Last transfer size in bytes. */
   lastTransferBytes?: string;
 }
-const TransferStats = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TransferStats>;
-
 export type ReplicationReplicationScheduleEnum =
   | "REPLICATION_SCHEDULE_UNSPECIFIED"
   | "EVERY_10_MINUTES"
   | "HOURLY"
   | "DAILY";
-const ReplicationReplicationScheduleEnum = S.String;
-
 export type ReplicationHybridReplicationTypeEnum =
   | "HYBRID_REPLICATION_TYPE_UNSPECIFIED"
   | "MIGRATION"
   | "CONTINUOUS_REPLICATION"
   | "ONPREM_REPLICATION"
   | "REVERSE_ONPREM_REPLICATION";
-const ReplicationHybridReplicationTypeEnum = S.String;
-
 export type ReplicationStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1306,8 +1063,6 @@ export type ReplicationStateEnum =
   | "PENDING_SVM_PEERING"
   | "PENDING_REMOTE_RESYNC"
   | "EXTERNALLY_MANAGED_REPLICATION";
-const ReplicationStateEnum = S.String;
-
 /** Replication is a nested resource under Volume, that describes a cross-region replication relationship between 2 volumes in different regions. */
 export interface Replication {
   /** Output only. Indicates whether this points to source or destination. */
@@ -1347,8 +1102,6 @@ export interface Replication {
   /** Output only. Replication create time. */
   createTime?: string;
 }
-const Replication = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Replication>;
-
 export interface CreateProjectsLocationsVolumesReplicationsRequest {
   /** Required. The NetApp volume to create the replications of, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` */
   parent: string;
@@ -1357,11 +1110,6 @@ export interface CreateProjectsLocationsVolumesReplicationsRequest {
   /** Request body */
   body?: Replication;
 }
-const CreateProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateProjectsLocationsVolumesReplicationsRequest>;
-
 export type SnapshotStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
@@ -1370,8 +1118,6 @@ export type SnapshotStateEnum =
   | "UPDATING"
   | "DISABLED"
   | "ERROR";
-const SnapshotStateEnum = S.String;
-
 /** Snapshot is a point-in-time version of a Volume's content. */
 export interface Snapshot {
   /** Output only. The time when the snapshot was created. */
@@ -1389,8 +1135,6 @@ export interface Snapshot {
   /** Output only. Current storage usage for the snapshot in bytes. */
   usedBytes?: number;
 }
-const Snapshot = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Snapshot>;
-
 export interface CreateProjectsLocationsVolumesSnapshotsRequest {
   /** Required. ID of the snapshot to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. */
   snapshotId?: string;
@@ -1399,121 +1143,56 @@ export interface CreateProjectsLocationsVolumesSnapshotsRequest {
   /** Request body */
   body?: Snapshot;
 }
-const CreateProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateProjectsLocationsVolumesSnapshotsRequest>;
-
 export interface DeleteProjectsLocationsActiveDirectoriesRequest {
   /** Required. Name of the active directory. */
   name: string;
 }
-const DeleteProjectsLocationsActiveDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsActiveDirectoriesRequest>;
-
 export interface DeleteProjectsLocationsBackupPoliciesRequest {
   /** Required. The backup policy resource name, in the format `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}` */
   name: string;
 }
-const DeleteProjectsLocationsBackupPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsBackupPoliciesRequest>;
-
 export interface DeleteProjectsLocationsBackupVaultsRequest {
   /** Required. The backupVault resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}` */
   name: string;
 }
-const DeleteProjectsLocationsBackupVaultsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsBackupVaultsRequest>;
-
 export interface DeleteProjectsLocationsBackupVaultsBackupsRequest {
   /** Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}` */
   name: string;
 }
-const DeleteProjectsLocationsBackupVaultsBackupsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsBackupVaultsBackupsRequest>;
-
 export interface DeleteProjectsLocationsHostGroupsRequest {
   /** Required. The resource name of the host group. Format: `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`. */
   name: string;
 }
-const DeleteProjectsLocationsHostGroupsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsHostGroupsRequest>;
-
 export interface DeleteProjectsLocationsKmsConfigsRequest {
   /** Required. Name of the KmsConfig. */
   name: string;
 }
-const DeleteProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsKmsConfigsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsStoragePoolsRequest {
   /** Required. Name of the storage pool */
   name: string;
 }
-const DeleteProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsStoragePoolsRequest>;
-
 export interface DeleteProjectsLocationsVolumesRequest {
   /** If this field is set as true, CCFE will not block the volume resource deletion even if it has any snapshots resource. (Otherwise, the request will only work if the volume has no snapshots.) */
   force?: boolean;
   /** Required. Name of the volume */
   name: string;
 }
-const DeleteProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsVolumesRequest>;
-
 export interface DeleteProjectsLocationsVolumesQuotaRulesRequest {
   /** Required. Name of the quota rule. */
   name: string;
 }
-const DeleteProjectsLocationsVolumesQuotaRulesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsVolumesQuotaRulesRequest>;
-
 export interface DeleteProjectsLocationsVolumesReplicationsRequest {
   /** Required. The replication resource name, in the format `projects/*\/locations/*\/volumes/*\/replications/{replication_id}` */
   name: string;
 }
-const DeleteProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsVolumesReplicationsRequest>;
-
 export interface DeleteProjectsLocationsVolumesSnapshotsRequest {
   /** Required. The snapshot resource name, in the format `projects/*\/locations/*\/volumes/*\/snapshots/{snapshot_id}` */
   name: string;
 }
-const DeleteProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsVolumesSnapshotsRequest>;
-
 /** EncryptVolumesRequest specifies the KMS config to encrypt existing volumes. */
 export type EncryptVolumesRequest = CancelOperationRequest;
 export interface EncryptProjectsLocationsKmsConfigsRequest {
@@ -1522,11 +1201,6 @@ export interface EncryptProjectsLocationsKmsConfigsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const EncryptProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<EncryptProjectsLocationsKmsConfigsRequest>;
-
 /** EstablishVolumePeeringRequest establishes cluster and svm peerings between the source and destination clusters. */
 export interface EstablishVolumePeeringRequest {
   /** Required. Name of the user's local source volume to be peered with the destination volume. */
@@ -1538,22 +1212,12 @@ export interface EstablishVolumePeeringRequest {
   /** Required. Name of the user's local source vserver svm to be peered with the destination vserver svm. */
   peerSvmName?: string;
 }
-const EstablishVolumePeeringRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<EstablishVolumePeeringRequest>;
-
 export interface EstablishPeeringProjectsLocationsVolumesRequest {
   /** Required. The volume resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` */
   name: string;
   /** Request body */
   body?: EstablishVolumePeeringRequest;
 }
-const EstablishPeeringProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<EstablishPeeringProjectsLocationsVolumesRequest>;
-
 /** EstablishPeeringRequest establishes cluster and svm peerings between the source and the destination replications. */
 export interface EstablishPeeringRequest {
   /** Required. Name of the user's local source cluster to be peered with the destination cluster. */
@@ -1565,87 +1229,46 @@ export interface EstablishPeeringRequest {
   /** Required. Name of the user's local source volume to be peered with the destination volume. */
   peerVolumeName?: string;
 }
-const EstablishPeeringRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<EstablishPeeringRequest>;
-
 export interface EstablishPeeringProjectsLocationsVolumesReplicationsRequest {
   /** Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. */
   name: string;
   /** Request body */
   body?: EstablishPeeringRequest;
 }
-const EstablishPeeringProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EstablishPeeringProjectsLocationsVolumesReplicationsRequest>;
-
 export interface ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest {
   /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
   ontapPath: string;
 }
-const ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest>;
-
 /** Response message for `ExecuteOntapDelete` API. */
 export interface ExecuteOntapDeleteResponse {
   /** The raw `JSON` body of the response. */
   body?: DocumentMap;
 }
-const ExecuteOntapDeleteResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ExecuteOntapDeleteResponse>;
-
 export interface ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest {
   /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
   ontapPath: string;
 }
-const ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest>;
-
 /** Response message for `ExecuteOntapGet` API. */
 export interface ExecuteOntapGetResponse {
   /** The raw `JSON` body of the response. */
   body?: DocumentMap;
 }
-const ExecuteOntapGetResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ExecuteOntapGetResponse>;
-
 /** Request message for `ExecuteOntapPatch` API. */
 export interface ExecuteOntapPatchRequest {
   /** Required. The raw `JSON` body of the request. The body should be in the format of the ONTAP resource. For example: ``` { "body": { "field1": "value1", "field2": "value2", } } ``` */
   body?: DocumentMap;
 }
-const ExecuteOntapPatchRequest =
-  ExecuteOntapGetResponse as any as S.Schema<ExecuteOntapPatchRequest>;
-
 export interface ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest {
   /** Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. */
   ontapPath: string;
   /** Request body */
   body?: ExecuteOntapPatchRequest;
 }
-const ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest>;
-
 /** Response message for `ExecuteOntapPatch` API. */
 export interface ExecuteOntapPatchResponse {
   /** The raw `JSON` body of the response. */
   body?: DocumentMap;
 }
-const ExecuteOntapPatchResponse =
-  ExecuteOntapDeleteResponse as any as S.Schema<ExecuteOntapPatchResponse>;
-
 /** Request message for `ExecuteOntapPost` API. */
 export type ExecuteOntapPostRequest = ExecuteOntapPatchRequest;
 export interface ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest {
@@ -1654,28 +1277,15 @@ export interface ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest {
   /** Request body */
   body?: ExecuteOntapPatchRequest;
 }
-const ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest>;
-
 /** Response message for `ExecuteOntapPost` API. */
 export interface ExecuteOntapPostResponse {
   /** The raw `JSON` body of the response. */
   body?: DocumentMap;
 }
-const ExecuteOntapPostResponse =
-  ExecuteOntapGetResponse as any as S.Schema<ExecuteOntapPostResponse>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -1689,132 +1299,63 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsActiveDirectoriesRequest {
   /** Required. Name of the active directory. */
   name: string;
 }
-const GetProjectsLocationsActiveDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetProjectsLocationsActiveDirectoriesRequest>;
-
 export interface GetProjectsLocationsBackupPoliciesRequest {
   /** Required. The backupPolicy resource name, in the format `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}` */
   name: string;
 }
-const GetProjectsLocationsBackupPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetProjectsLocationsBackupPoliciesRequest>;
-
 export interface GetProjectsLocationsBackupVaultsRequest {
   /** Required. The backupVault resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}` */
   name: string;
 }
-const GetProjectsLocationsBackupVaultsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetProjectsLocationsBackupVaultsRequest>;
-
 export interface GetProjectsLocationsBackupVaultsBackupsRequest {
   /** Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}` */
   name: string;
 }
-const GetProjectsLocationsBackupVaultsBackupsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetProjectsLocationsBackupVaultsBackupsRequest>;
-
 export interface GetProjectsLocationsHostGroupsRequest {
   /** Required. The resource name of the host group. Format: `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`. */
   name: string;
 }
-const GetProjectsLocationsHostGroupsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetProjectsLocationsHostGroupsRequest>;
-
 export interface GetProjectsLocationsKmsConfigsRequest {
   /** Required. Name of the KmsConfig */
   name: string;
 }
-const GetProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetProjectsLocationsKmsConfigsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsStoragePoolsRequest {
   /** Required. Name of the storage pool */
   name: string;
 }
-const GetProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetProjectsLocationsStoragePoolsRequest>;
-
 export interface GetProjectsLocationsVolumesRequest {
   /** Required. Name of the volume */
   name: string;
 }
-const GetProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetProjectsLocationsVolumesRequest>;
-
 export interface GetProjectsLocationsVolumesQuotaRulesRequest {
   /** Required. Name of the quota rule */
   name: string;
 }
-const GetProjectsLocationsVolumesQuotaRulesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetProjectsLocationsVolumesQuotaRulesRequest>;
-
 export interface GetProjectsLocationsVolumesReplicationsRequest {
   /** Required. The replication resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}` */
   name: string;
 }
-const GetProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetProjectsLocationsVolumesReplicationsRequest>;
-
 export interface GetProjectsLocationsVolumesSnapshotsRequest {
   /** Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}` */
   name: string;
 }
-const GetProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetProjectsLocationsVolumesSnapshotsRequest>;
-
 export interface GetSplitStatusProjectsLocationsVolumesRequest {
   /** Required. The full name of the volume. Format: projects/{project_number}/locations/{location}/volumes/{volume_id} */
   name: string;
 }
-const GetSplitStatusProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetSplitStatusProjectsLocationsVolumesRequest>;
-
 export type SplitStatusSplitStateEnum =
   | "SPLIT_STATE_UNSPECIFIED"
   | "SPLIT_STATE_NOT_SPLITTING"
   | "SPLIT_STATE_IN_PROGRESS"
   | "SPLIT_STATE_FAILED";
-const SplitStatusSplitStateEnum = S.String;
-
 /** Message for SplitStatus. */
 export interface SplitStatus {
   /** Output only. The current state of the clone split operation. */
@@ -1824,8 +1365,6 @@ export interface SplitStatus {
   /** Output only. The estimated progress percentage of the split operation (0-100). This is meaningful primarily when split_state is IN_PROGRESS. */
   progressPercent?: number;
 }
-const SplitStatus = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<SplitStatus>;
-
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -1838,14 +1377,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1853,11 +1385,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsActiveDirectoriesRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1870,14 +1397,7 @@ export interface ListProjectsLocationsActiveDirectoriesRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsActiveDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListProjectsLocationsActiveDirectoriesRequest>;
-
 export type ActiveDirectoryList = Array<ActiveDirectory>;
-const ActiveDirectoryList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ActiveDirectoryList>;
-
 /** ListActiveDirectoriesResponse contains all the active directories requested. */
 export interface ListActiveDirectoriesResponse {
   /** Locations that could not be reached. */
@@ -1887,11 +1407,6 @@ export interface ListActiveDirectoriesResponse {
   /** The list of active directories. */
   activeDirectories?: ActiveDirectoryList;
 }
-const ListActiveDirectoriesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListActiveDirectoriesResponse>;
-
 export interface ListProjectsLocationsBackupPoliciesRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -1904,14 +1419,7 @@ export interface ListProjectsLocationsBackupPoliciesRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsBackupPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListProjectsLocationsBackupPoliciesRequest>;
-
 export type BackupPolicyList = Array<BackupPolicy>;
-const BackupPolicyList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<BackupPolicyList>;
-
 /** ListBackupPoliciesResponse contains all the backup policies requested. */
 export interface ListBackupPoliciesResponse {
   /** Locations that could not be reached. */
@@ -1921,11 +1429,6 @@ export interface ListBackupPoliciesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListBackupPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListBackupPoliciesResponse>;
-
 export interface ListProjectsLocationsBackupVaultsRequest {
   /** List filter. */
   filter?: string;
@@ -1938,14 +1441,7 @@ export interface ListProjectsLocationsBackupVaultsRequest {
   /** Required. The location for which to retrieve backupVault information, in the format `projects/{project_id}/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsBackupVaultsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListProjectsLocationsBackupVaultsRequest>;
-
 export type BackupVaultList = Array<BackupVault>;
-const BackupVaultList = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<BackupVaultList>;
-
 /** ListBackupVaultsResponse is the result of ListBackupVaultsRequest. */
 export interface ListBackupVaultsResponse {
   /** A list of backupVaults in the project for the specified location. */
@@ -1955,11 +1451,6 @@ export interface ListBackupVaultsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListBackupVaultsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListBackupVaultsResponse>;
-
 export interface ListProjectsLocationsBackupVaultsBackupsRequest {
   /** The maximum number of items to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -1972,14 +1463,7 @@ export interface ListProjectsLocationsBackupVaultsBackupsRequest {
   /** The standard list filter. If specified, backups will be returned based on the attribute name that matches the filter expression. If empty, then no backups are filtered out. See https://google.aip.dev/160 */
   filter?: string;
 }
-const ListProjectsLocationsBackupVaultsBackupsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListProjectsLocationsBackupVaultsBackupsRequest>;
-
 export type BackupList = Array<Backup>;
-const BackupList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<BackupList>;
-
 /** ListBackupsResponse is the result of ListBackupsRequest. */
 export interface ListBackupsResponse {
   /** The token you can use to retrieve the next page of results. Not returned if there are no more results in the list. */
@@ -1989,8 +1473,6 @@ export interface ListBackupsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListBackupsResponse = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ListBackupsResponse>;
-
 export interface ListProjectsLocationsHostGroupsRequest {
   /** Required. Parent value for ListHostGroupsRequest */
   parent: string;
@@ -2003,14 +1485,7 @@ export interface ListProjectsLocationsHostGroupsRequest {
   /** Optional. Filter to apply to the request. */
   filter?: string;
 }
-const ListProjectsLocationsHostGroupsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListProjectsLocationsHostGroupsRequest>;
-
 export type HostGroupList = Array<HostGroup>;
-const HostGroupList = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<HostGroupList>;
-
 /** ListHostGroupsResponse is the response to a ListHostGroupsRequest. */
 export interface ListHostGroupsResponse {
   /** A token identifying a page of results the server should return. */
@@ -2020,11 +1495,6 @@ export interface ListHostGroupsResponse {
   /** The list of host groups. */
   hostGroups?: HostGroupList;
 }
-const ListHostGroupsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ListHostGroupsResponse>;
-
 export interface ListProjectsLocationsKmsConfigsRequest {
   /** List filter. */
   filter?: string;
@@ -2037,14 +1507,7 @@ export interface ListProjectsLocationsKmsConfigsRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
 }
-const ListProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListProjectsLocationsKmsConfigsRequest>;
-
 export type KmsConfigList = Array<KmsConfig>;
-const KmsConfigList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<KmsConfigList>;
-
 /** ListKmsConfigsResponse is the response to a ListKmsConfigsRequest. */
 export interface ListKmsConfigsResponse {
   /** Locations that could not be reached. */
@@ -2054,11 +1517,6 @@ export interface ListKmsConfigsResponse {
   /** The list of KmsConfigs */
   kmsConfigs?: KmsConfigList;
 }
-const ListKmsConfigsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListKmsConfigsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -2071,14 +1529,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -2088,11 +1539,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsStoragePoolsRequest {
   /** Optional. The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
@@ -2105,14 +1551,7 @@ export interface ListProjectsLocationsStoragePoolsRequest {
   /** Optional. List filter. */
   filter?: string;
 }
-const ListProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListProjectsLocationsStoragePoolsRequest>;
-
 export type StoragePoolList = Array<StoragePool>;
-const StoragePoolList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<StoragePoolList>;
-
 /** ListStoragePoolsResponse is the response to a ListStoragePoolsRequest. */
 export interface ListStoragePoolsResponse {
   /** The list of StoragePools */
@@ -2122,11 +1561,6 @@ export interface ListStoragePoolsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListStoragePoolsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListStoragePoolsResponse>;
-
 export interface ListProjectsLocationsStoragePoolsBackupConfigsRequest {
   /** Required. The ONTAP StoragePool for which to retrieve backup configuration information, in the format `projects/{project}/locations/{location}/storagePools/{storage_pool}`. */
   parent: string;
@@ -2139,11 +1573,6 @@ export interface ListProjectsLocationsStoragePoolsBackupConfigsRequest {
   /** Optional. The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
 }
-const ListProjectsLocationsStoragePoolsBackupConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ListProjectsLocationsStoragePoolsBackupConfigsRequest>;
-
 /** Backup configuration for a volume in a pool. */
 export interface VolumeBackupConfig {
   /** Backup configuration for the volume. */
@@ -2151,14 +1580,7 @@ export interface VolumeBackupConfig {
   /** Provides the Ontap UUID of the volume within the pool. */
   volumeUuid?: string;
 }
-const VolumeBackupConfig = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<VolumeBackupConfig>;
-
 export type VolumeBackupConfigList = Array<VolumeBackupConfig>;
-const VolumeBackupConfigList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<VolumeBackupConfigList>;
-
 /** Message for response to listing BackupConfigs in an ONTAP StoragePool. */
 export interface ListBackupConfigsResponse {
   /** A list of backup configurations for volumes in the pool. */
@@ -2168,11 +1590,6 @@ export interface ListBackupConfigsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListBackupConfigsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListBackupConfigsResponse>;
-
 export interface ListProjectsLocationsVolumesRequest {
   /** Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
@@ -2185,14 +1602,7 @@ export interface ListProjectsLocationsVolumesRequest {
   /** Filtering results */
   filter?: string;
 }
-const ListProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ListProjectsLocationsVolumesRequest>;
-
 export type VolumeList = Array<Volume>;
-const VolumeList = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<VolumeList>;
-
 /** Message for response to listing Volumes */
 export interface ListVolumesResponse {
   /** A token identifying a page of results the server should return. */
@@ -2202,8 +1612,6 @@ export interface ListVolumesResponse {
   /** The list of Volume */
   volumes?: VolumeList;
 }
-const ListVolumesResponse = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListVolumesResponse>;
-
 export interface ListProjectsLocationsVolumesQuotaRulesRequest {
   /** Optional. Filtering results */
   filter?: string;
@@ -2216,14 +1624,7 @@ export interface ListProjectsLocationsVolumesQuotaRulesRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsVolumesQuotaRulesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListProjectsLocationsVolumesQuotaRulesRequest>;
-
 export type QuotaRuleList = Array<QuotaRule>;
-const QuotaRuleList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<QuotaRuleList>;
-
 /** ListQuotaRulesResponse is the response to a ListQuotaRulesRequest. */
 export interface ListQuotaRulesResponse {
   /** A token identifying a page of results the server should return. */
@@ -2233,11 +1634,6 @@ export interface ListQuotaRulesResponse {
   /** List of quota rules */
   quotaRules?: QuotaRuleList;
 }
-const ListQuotaRulesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListQuotaRulesResponse>;
-
 export interface ListProjectsLocationsVolumesReplicationsRequest {
   /** The maximum number of items to return. */
   pageSize?: number;
@@ -2250,14 +1646,7 @@ export interface ListProjectsLocationsVolumesReplicationsRequest {
   /** Required. The volume for which to retrieve replication information, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}`. */
   parent: string;
 }
-const ListProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListProjectsLocationsVolumesReplicationsRequest>;
-
 export type ReplicationList = Array<Replication>;
-const ReplicationList = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<ReplicationList>;
-
 /** ListReplicationsResponse is the result of ListReplicationsRequest. */
 export interface ListReplicationsResponse {
   /** The token you can use to retrieve the next page of results. Not returned if there are no more results in the list. */
@@ -2267,11 +1656,6 @@ export interface ListReplicationsResponse {
   /** A list of replications in the project for the specified volume. */
   replications?: ReplicationList;
 }
-const ListReplicationsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListReplicationsResponse>;
-
 export interface ListProjectsLocationsVolumesSnapshotsRequest {
   /** The next_page_token value to use if there are additional results to retrieve for this list request. */
   pageToken?: string;
@@ -2284,14 +1668,7 @@ export interface ListProjectsLocationsVolumesSnapshotsRequest {
   /** Required. The volume for which to retrieve snapshot information, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}`. */
   parent: string;
 }
-const ListProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListProjectsLocationsVolumesSnapshotsRequest>;
-
 export type SnapshotList = Array<Snapshot>;
-const SnapshotList = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<SnapshotList>;
-
 /** ListSnapshotsResponse is the result of ListSnapshotsRequest. */
 export interface ListSnapshotsResponse {
   /** The token you can use to retrieve the next page of results. Not returned if there are no more results in the list. */
@@ -2301,11 +1678,6 @@ export interface ListSnapshotsResponse {
   /** A list of snapshots in the project for the specified volume. */
   snapshots?: SnapshotList;
 }
-const ListSnapshotsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListSnapshotsResponse>;
-
 export interface PatchProjectsLocationsActiveDirectoriesRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Active Directory resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -2314,11 +1686,6 @@ export interface PatchProjectsLocationsActiveDirectoriesRequest {
   /** Request body */
   body?: ActiveDirectory;
 }
-const PatchProjectsLocationsActiveDirectoriesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<PatchProjectsLocationsActiveDirectoriesRequest>;
-
 export interface PatchProjectsLocationsBackupPoliciesRequest {
   /** Identifier. The resource name of the backup policy. Format: `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}`. */
   name: string;
@@ -2327,11 +1694,6 @@ export interface PatchProjectsLocationsBackupPoliciesRequest {
   /** Request body */
   body?: BackupPolicy;
 }
-const PatchProjectsLocationsBackupPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<PatchProjectsLocationsBackupPoliciesRequest>;
-
 export interface PatchProjectsLocationsBackupVaultsRequest {
   /** Identifier. The resource name of the backup vault. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`. */
   name: string;
@@ -2340,11 +1702,6 @@ export interface PatchProjectsLocationsBackupVaultsRequest {
   /** Request body */
   body?: BackupVault;
 }
-const PatchProjectsLocationsBackupVaultsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<PatchProjectsLocationsBackupVaultsRequest>;
-
 export interface PatchProjectsLocationsBackupVaultsBackupsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Backup resource to be updated. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -2353,11 +1710,6 @@ export interface PatchProjectsLocationsBackupVaultsBackupsRequest {
   /** Request body */
   body?: Backup;
 }
-const PatchProjectsLocationsBackupVaultsBackupsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<PatchProjectsLocationsBackupVaultsBackupsRequest>;
-
 export interface PatchProjectsLocationsHostGroupsRequest {
   /** Identifier. The resource name of the host group. Format: `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`. */
   name: string;
@@ -2366,11 +1718,6 @@ export interface PatchProjectsLocationsHostGroupsRequest {
   /** Request body */
   body?: HostGroup;
 }
-const PatchProjectsLocationsHostGroupsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<PatchProjectsLocationsHostGroupsRequest>;
-
 export interface PatchProjectsLocationsKmsConfigsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the KmsConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -2379,11 +1726,6 @@ export interface PatchProjectsLocationsKmsConfigsRequest {
   /** Request body */
   body?: KmsConfig;
 }
-const PatchProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<PatchProjectsLocationsKmsConfigsRequest>;
-
 export interface PatchProjectsLocationsStoragePoolsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the StoragePool resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -2392,11 +1734,6 @@ export interface PatchProjectsLocationsStoragePoolsRequest {
   /** Request body */
   body?: StoragePool;
 }
-const PatchProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<PatchProjectsLocationsStoragePoolsRequest>;
-
 export interface PatchProjectsLocationsVolumesRequest {
   /** Identifier. Name of the volume */
   name: string;
@@ -2405,11 +1742,6 @@ export interface PatchProjectsLocationsVolumesRequest {
   /** Request body */
   body?: Volume;
 }
-const PatchProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<PatchProjectsLocationsVolumesRequest>;
-
 export interface PatchProjectsLocationsVolumesQuotaRulesRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Quota Rule resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -2418,11 +1750,6 @@ export interface PatchProjectsLocationsVolumesQuotaRulesRequest {
   /** Request body */
   body?: QuotaRule;
 }
-const PatchProjectsLocationsVolumesQuotaRulesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<PatchProjectsLocationsVolumesQuotaRulesRequest>;
-
 export interface PatchProjectsLocationsVolumesReplicationsRequest {
   /** Identifier. The resource name of the Replication. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}`. */
   name: string;
@@ -2431,11 +1758,6 @@ export interface PatchProjectsLocationsVolumesReplicationsRequest {
   /** Request body */
   body?: Replication;
 }
-const PatchProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<PatchProjectsLocationsVolumesReplicationsRequest>;
-
 export interface PatchProjectsLocationsVolumesSnapshotsRequest {
   /** Required. Mask of fields to update. At least one path must be supplied in this field. */
   updateMask?: string;
@@ -2444,11 +1766,6 @@ export interface PatchProjectsLocationsVolumesSnapshotsRequest {
   /** Request body */
   body?: Snapshot;
 }
-const PatchProjectsLocationsVolumesSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<PatchProjectsLocationsVolumesSnapshotsRequest>;
-
 /** RestoreBackupFilesRequest restores files from a backup to a volume. */
 export interface RestoreBackupFilesRequest {
   /** Required. List of files to be restored, specified by their absolute path in the source volume. */
@@ -2458,22 +1775,12 @@ export interface RestoreBackupFilesRequest {
   /** Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}` */
   backup?: string;
 }
-const RestoreBackupFilesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<RestoreBackupFilesRequest>;
-
 export interface RestoreProjectsLocationsVolumesRequest {
   /** Required. The volume resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` */
   name: string;
   /** Request body */
   body?: RestoreBackupFilesRequest;
 }
-const RestoreProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<RestoreProjectsLocationsVolumesRequest>;
-
 /** Represents the ONTAP volume target of the restore operation. */
 export interface OntapVolumeTarget {
   /** Optional. Absolute directory path in the destination volume. */
@@ -2481,8 +1788,6 @@ export interface OntapVolumeTarget {
   /** Required. The UUID of the ONTAP volume to restore to. */
   volumeUuid?: string;
 }
-const OntapVolumeTarget = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<OntapVolumeTarget>;
-
 /** Represents the backup source of the restore operation. */
 export interface BackupSource {
   /** Optional. List of files to be restored in the form of their absolute path as in source volume. If provided, only these files will be restored. If not provided, the entire backup will be restored (Full Backup Restore) */
@@ -2490,8 +1795,6 @@ export interface BackupSource {
   /** Required. The backup resource name. */
   backup?: string;
 }
-const BackupSource = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<BackupSource>;
-
 /** Request message for `RestoreVolume` API. */
 export interface RestoreVolumeRequest {
   /** The ONTAP volume target of the restore operation. */
@@ -2499,22 +1802,12 @@ export interface RestoreVolumeRequest {
   /** The backup source of the restore operation. */
   backupSource?: BackupSource;
 }
-const RestoreVolumeRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<RestoreVolumeRequest>;
-
 export interface RestoreVolumeProjectsLocationsStoragePoolsRequest {
   /** Required. The resource name of the ONTAP mode storage pool, in the format of `projects/{project}/locations/{location}/storagePools/{storage_pool}` */
   name: string;
   /** Request body */
   body?: RestoreVolumeRequest;
 }
-const RestoreVolumeProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<RestoreVolumeProjectsLocationsStoragePoolsRequest>;
-
 /** ResumeReplicationRequest resumes a stopped replication. */
 export type ResumeReplicationRequest = CancelOperationRequest;
 export interface ResumeProjectsLocationsVolumesReplicationsRequest {
@@ -2523,11 +1816,6 @@ export interface ResumeProjectsLocationsVolumesReplicationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const ResumeProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ResumeProjectsLocationsVolumesReplicationsRequest>;
-
 /** ReverseReplicationDirectionRequest reverses direction of replication. Source becomes destination and destination becomes source. */
 export type ReverseReplicationDirectionRequest = CancelOperationRequest;
 export interface ReverseDirectionProjectsLocationsVolumesReplicationsRequest {
@@ -2536,29 +1824,17 @@ export interface ReverseDirectionProjectsLocationsVolumesReplicationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const ReverseDirectionProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ReverseDirectionProjectsLocationsVolumesReplicationsRequest>;
-
 /** RevertVolumeRequest reverts the given volume to the specified snapshot. */
 export interface RevertVolumeRequest {
   /** Required. The snapshot resource ID, in the format 'my-snapshot', where the specified ID is the {snapshot_id} of the fully qualified name like projects/{project_id}/locations/{location_id}/volumes/{volume_id}/snapshots/{snapshot_id} */
   snapshotId?: string;
 }
-const RevertVolumeRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<RevertVolumeRequest>;
-
 export interface RevertProjectsLocationsVolumesRequest {
   /** Required. The resource name of the volume, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}. */
   name: string;
   /** Request body */
   body?: RevertVolumeRequest;
 }
-const RevertProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<RevertProjectsLocationsVolumesRequest>;
-
 /** Request message for splitting a volume. */
 export type StartSplitRequest = CancelOperationRequest;
 export interface StartSplitProjectsLocationsVolumesRequest {
@@ -2567,32 +1843,17 @@ export interface StartSplitProjectsLocationsVolumesRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const StartSplitProjectsLocationsVolumesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<StartSplitProjectsLocationsVolumesRequest>;
-
 /** StopReplicationRequest stops a replication until resumed. */
 export interface StopReplicationRequest {
   /** Indicates whether to stop replication forcefully while data transfer is in progress. Warning! if force is true, this will abort any current transfers and can lead to data loss due to partial transfer. If force is false, stop replication will fail while data transfer is in progress and you will need to retry later. */
   force?: boolean;
 }
-const StopReplicationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<StopReplicationRequest>;
-
 export interface StopProjectsLocationsVolumesReplicationsRequest {
   /** Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. */
   name: string;
   /** Request body */
   body?: StopReplicationRequest;
 }
-const StopProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<StopProjectsLocationsVolumesReplicationsRequest>;
-
 /** SwitchActiveReplicaZoneRequest switch the active/replica zone for a regional storagePool. */
 export type SwitchActiveReplicaZoneRequest = CancelOperationRequest;
 export interface SwitchProjectsLocationsStoragePoolsRequest {
@@ -2601,11 +1862,6 @@ export interface SwitchProjectsLocationsStoragePoolsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const SwitchProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<SwitchProjectsLocationsStoragePoolsRequest>;
-
 /** SyncReplicationRequest syncs the replication from source to destination. */
 export type SyncReplicationRequest = CancelOperationRequest;
 export interface SyncProjectsLocationsVolumesReplicationsRequest {
@@ -2614,11 +1870,6 @@ export interface SyncProjectsLocationsVolumesReplicationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const SyncProjectsLocationsVolumesReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<SyncProjectsLocationsVolumesReplicationsRequest>;
-
 /** Request message for UpdateBackupConfig */
 export interface UpdateBackupConfigRequest {
   /** Required. The UUID of the ONTAP-mode volume. */
@@ -2628,48 +1879,26 @@ export interface UpdateBackupConfigRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the BackupConfig for the Volume. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. */
   updateMask?: string;
 }
-const UpdateBackupConfigRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<UpdateBackupConfigRequest>;
-
 export interface UpdateBackupConfigProjectsLocationsStoragePoolsRequest {
   /** Required. The resource name of the StoragePool, in the format: projects/{projectNumber}/locations/{locationId}/storagePools/{poolId} */
   name: string;
   /** Request body */
   body?: UpdateBackupConfigRequest;
 }
-const UpdateBackupConfigProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<UpdateBackupConfigProjectsLocationsStoragePoolsRequest>;
-
 export type ValidateDirectoryServiceRequestDirectoryServiceTypeEnum =
   | "DIRECTORY_SERVICE_TYPE_UNSPECIFIED"
   | "ACTIVE_DIRECTORY";
-const ValidateDirectoryServiceRequestDirectoryServiceTypeEnum = S.String;
-
 /** ValidateDirectoryServiceRequest validates the directory service policy attached to the storage pool. */
 export interface ValidateDirectoryServiceRequest {
   /** Type of directory service policy attached to the storage pool. */
   directoryServiceType?: ValidateDirectoryServiceRequestDirectoryServiceTypeEnum | (string & {});
 }
-const ValidateDirectoryServiceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ValidateDirectoryServiceRequest>;
-
 export interface ValidateDirectoryServiceProjectsLocationsStoragePoolsRequest {
   /** Required. Name of the storage pool */
   name: string;
   /** Request body */
   body?: ValidateDirectoryServiceRequest;
 }
-const ValidateDirectoryServiceProjectsLocationsStoragePoolsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ValidateDirectoryServiceProjectsLocationsStoragePoolsRequest>;
-
 /** VerifyKmsConfigRequest specifies the KMS config to be validated. */
 export type VerifyKmsConfigRequest = CancelOperationRequest;
 export interface VerifyProjectsLocationsKmsConfigsRequest {
@@ -2678,11 +1907,6 @@ export interface VerifyProjectsLocationsKmsConfigsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const VerifyProjectsLocationsKmsConfigsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<VerifyProjectsLocationsKmsConfigsRequest>;
-
 /** VerifyKmsConfigResponse contains the information if the config is correctly and error message. */
 export interface VerifyKmsConfigResponse {
   /** Output only. Instructions for the customers to provide the access to the encryption key. */
@@ -2692,11 +1916,6 @@ export interface VerifyKmsConfigResponse {
   /** Output only. Error message if config is not healthy. */
   healthError?: string;
 }
-const VerifyKmsConfigResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<VerifyKmsConfigResponse>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -2710,8 +1929,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2730,8 +1949,8 @@ export const createProjectsLocationsActiveDirectories: API.OperationMethod<
   CreateProjectsLocationsActiveDirectoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsActiveDirectoriesRequest,
-  output: Operation,
+  input: __S(5) as any as S.Schema<CreateProjectsLocationsActiveDirectoriesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2750,8 +1969,8 @@ export const createProjectsLocationsBackupPolicies: API.OperationMethod<
   CreateProjectsLocationsBackupPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackupPoliciesRequest,
-  output: Operation,
+  input: __S(11) as any as S.Schema<CreateProjectsLocationsBackupPoliciesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2770,8 +1989,8 @@ export const createProjectsLocationsBackupVaults: API.OperationMethod<
   CreateProjectsLocationsBackupVaultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackupVaultsRequest,
-  output: Operation,
+  input: __S(14) as any as S.Schema<CreateProjectsLocationsBackupVaultsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2009,8 @@ export const createProjectsLocationsBackupVaultsBackups: API.OperationMethod<
   CreateProjectsLocationsBackupVaultsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackupVaultsBackupsRequest,
-  output: Operation,
+  input: __S(17) as any as S.Schema<CreateProjectsLocationsBackupVaultsBackupsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2810,8 +2029,8 @@ export const createProjectsLocationsHostGroups: API.OperationMethod<
   CreateProjectsLocationsHostGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsHostGroupsRequest,
-  output: Operation,
+  input: __S(19) as any as S.Schema<CreateProjectsLocationsHostGroupsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2049,8 @@ export const createProjectsLocationsKmsConfigs: API.OperationMethod<
   CreateProjectsLocationsKmsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsKmsConfigsRequest,
-  output: Operation,
+  input: __S(21) as any as S.Schema<CreateProjectsLocationsKmsConfigsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2069,8 @@ export const createProjectsLocationsStoragePools: API.OperationMethod<
   CreateProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(23) as any as S.Schema<CreateProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2870,8 +2089,8 @@ export const createProjectsLocationsVolumes: API.OperationMethod<
   CreateProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(47) as any as S.Schema<CreateProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2109,8 @@ export const createProjectsLocationsVolumesQuotaRules: API.OperationMethod<
   CreateProjectsLocationsVolumesQuotaRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsVolumesQuotaRulesRequest,
-  output: Operation,
+  input: __S(49) as any as S.Schema<CreateProjectsLocationsVolumesQuotaRulesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2910,8 +2129,8 @@ export const createProjectsLocationsVolumesReplications: API.OperationMethod<
   CreateProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(55) as any as S.Schema<CreateProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2930,8 +2149,8 @@ export const createProjectsLocationsVolumesSnapshots: API.OperationMethod<
   CreateProjectsLocationsVolumesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsVolumesSnapshotsRequest,
-  output: Operation,
+  input: __S(57) as any as S.Schema<CreateProjectsLocationsVolumesSnapshotsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2169,8 @@ export const deleteProjectsLocationsActiveDirectories: API.OperationMethod<
   DeleteProjectsLocationsActiveDirectoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsActiveDirectoriesRequest,
-  output: Operation,
+  input: __S(58) as any as S.Schema<DeleteProjectsLocationsActiveDirectoriesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2970,8 +2189,8 @@ export const deleteProjectsLocationsBackupPolicies: API.OperationMethod<
   DeleteProjectsLocationsBackupPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupPoliciesRequest,
-  output: Operation,
+  input: __S(59) as any as S.Schema<DeleteProjectsLocationsBackupPoliciesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2209,8 @@ export const deleteProjectsLocationsBackupVaults: API.OperationMethod<
   DeleteProjectsLocationsBackupVaultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupVaultsRequest,
-  output: Operation,
+  input: __S(60) as any as S.Schema<DeleteProjectsLocationsBackupVaultsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3010,8 +2229,8 @@ export const deleteProjectsLocationsBackupVaultsBackups: API.OperationMethod<
   DeleteProjectsLocationsBackupVaultsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackupVaultsBackupsRequest,
-  output: Operation,
+  input: __S(61) as any as S.Schema<DeleteProjectsLocationsBackupVaultsBackupsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3030,8 +2249,8 @@ export const deleteProjectsLocationsHostGroups: API.OperationMethod<
   DeleteProjectsLocationsHostGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsHostGroupsRequest,
-  output: Operation,
+  input: __S(62) as any as S.Schema<DeleteProjectsLocationsHostGroupsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3050,8 +2269,8 @@ export const deleteProjectsLocationsKmsConfigs: API.OperationMethod<
   DeleteProjectsLocationsKmsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsKmsConfigsRequest,
-  output: Operation,
+  input: __S(63) as any as S.Schema<DeleteProjectsLocationsKmsConfigsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3070,8 +2289,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(64) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3090,8 +2309,8 @@ export const deleteProjectsLocationsStoragePools: API.OperationMethod<
   DeleteProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(65) as any as S.Schema<DeleteProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3110,8 +2329,8 @@ export const deleteProjectsLocationsVolumes: API.OperationMethod<
   DeleteProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(66) as any as S.Schema<DeleteProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3130,8 +2349,8 @@ export const deleteProjectsLocationsVolumesQuotaRules: API.OperationMethod<
   DeleteProjectsLocationsVolumesQuotaRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsVolumesQuotaRulesRequest,
-  output: Operation,
+  input: __S(67) as any as S.Schema<DeleteProjectsLocationsVolumesQuotaRulesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3150,8 +2369,8 @@ export const deleteProjectsLocationsVolumesReplications: API.OperationMethod<
   DeleteProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(68) as any as S.Schema<DeleteProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3170,8 +2389,8 @@ export const deleteProjectsLocationsVolumesSnapshots: API.OperationMethod<
   DeleteProjectsLocationsVolumesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsVolumesSnapshotsRequest,
-  output: Operation,
+  input: __S(69) as any as S.Schema<DeleteProjectsLocationsVolumesSnapshotsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3190,8 +2409,8 @@ export const encryptProjectsLocationsKmsConfigs: API.OperationMethod<
   EncryptProjectsLocationsKmsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EncryptProjectsLocationsKmsConfigsRequest,
-  output: Operation,
+  input: __S(70) as any as S.Schema<EncryptProjectsLocationsKmsConfigsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3210,8 +2429,8 @@ export const establishPeeringProjectsLocationsVolumes: API.OperationMethod<
   EstablishPeeringProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EstablishPeeringProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(72) as any as S.Schema<EstablishPeeringProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3230,8 +2449,8 @@ export const establishPeeringProjectsLocationsVolumesReplications: API.Operation
   EstablishPeeringProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EstablishPeeringProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(74) as any as S.Schema<EstablishPeeringProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3250,8 +2469,8 @@ export const executeOntapDeleteProjectsLocationsStoragePoolsOntap: API.Operation
   ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest,
-  output: ExecuteOntapDeleteResponse,
+  input: __S(75) as any as S.Schema<ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest>,
+  output: __S(76) as any as S.Schema<ExecuteOntapDeleteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3268,8 +2487,8 @@ export const executeOntapGetProjectsLocationsStoragePoolsOntap: API.OperationMet
   ExecuteOntapGetProjectsLocationsStoragePoolsOntapError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest,
-  output: ExecuteOntapGetResponse,
+  input: __S(77) as any as S.Schema<ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest>,
+  output: __S(78) as any as S.Schema<ExecuteOntapGetResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3288,8 +2507,8 @@ export const executeOntapPatchProjectsLocationsStoragePoolsOntap: API.OperationM
   ExecuteOntapPatchProjectsLocationsStoragePoolsOntapError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest,
-  output: ExecuteOntapPatchResponse,
+  input: __S(79) as any as S.Schema<ExecuteOntapPatchProjectsLocationsStoragePoolsOntapRequest>,
+  output: __S(76) as any as S.Schema<ExecuteOntapPatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3308,8 +2527,8 @@ export const executeOntapPostProjectsLocationsStoragePoolsOntap: API.OperationMe
   ExecuteOntapPostProjectsLocationsStoragePoolsOntapError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest,
-  output: ExecuteOntapPostResponse,
+  input: __S(80) as any as S.Schema<ExecuteOntapPostProjectsLocationsStoragePoolsOntapRequest>,
+  output: __S(78) as any as S.Schema<ExecuteOntapPostResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3323,8 +2542,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(81) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(82) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3338,8 +2557,8 @@ export const getProjectsLocationsActiveDirectories: API.OperationMethod<
   GetProjectsLocationsActiveDirectoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsActiveDirectoriesRequest,
-  output: ActiveDirectory,
+  input: __S(83) as any as S.Schema<GetProjectsLocationsActiveDirectoriesRequest>,
+  output: __S(4) as any as S.Schema<ActiveDirectory>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3353,8 +2572,8 @@ export const getProjectsLocationsBackupPolicies: API.OperationMethod<
   GetProjectsLocationsBackupPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupPoliciesRequest,
-  output: BackupPolicy,
+  input: __S(84) as any as S.Schema<GetProjectsLocationsBackupPoliciesRequest>,
+  output: __S(10) as any as S.Schema<BackupPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3368,8 +2587,8 @@ export const getProjectsLocationsBackupVaults: API.OperationMethod<
   GetProjectsLocationsBackupVaultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupVaultsRequest,
-  output: BackupVault,
+  input: __S(85) as any as S.Schema<GetProjectsLocationsBackupVaultsRequest>,
+  output: __S(13) as any as S.Schema<BackupVault>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3383,8 +2602,8 @@ export const getProjectsLocationsBackupVaultsBackups: API.OperationMethod<
   GetProjectsLocationsBackupVaultsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackupVaultsBackupsRequest,
-  output: Backup,
+  input: __S(86) as any as S.Schema<GetProjectsLocationsBackupVaultsBackupsRequest>,
+  output: __S(16) as any as S.Schema<Backup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3398,8 +2617,8 @@ export const getProjectsLocationsHostGroups: API.OperationMethod<
   GetProjectsLocationsHostGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsHostGroupsRequest,
-  output: HostGroup,
+  input: __S(87) as any as S.Schema<GetProjectsLocationsHostGroupsRequest>,
+  output: __S(18) as any as S.Schema<HostGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3413,8 +2632,8 @@ export const getProjectsLocationsKmsConfigs: API.OperationMethod<
   GetProjectsLocationsKmsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsKmsConfigsRequest,
-  output: KmsConfig,
+  input: __S(88) as any as S.Schema<GetProjectsLocationsKmsConfigsRequest>,
+  output: __S(20) as any as S.Schema<KmsConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3428,8 +2647,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(89) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3443,8 +2662,8 @@ export const getProjectsLocationsStoragePools: API.OperationMethod<
   GetProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsStoragePoolsRequest,
-  output: StoragePool,
+  input: __S(90) as any as S.Schema<GetProjectsLocationsStoragePoolsRequest>,
+  output: __S(22) as any as S.Schema<StoragePool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3458,8 +2677,8 @@ export const getProjectsLocationsVolumes: API.OperationMethod<
   GetProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesRequest,
-  output: Volume,
+  input: __S(91) as any as S.Schema<GetProjectsLocationsVolumesRequest>,
+  output: __S(46) as any as S.Schema<Volume>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3473,8 +2692,8 @@ export const getProjectsLocationsVolumesQuotaRules: API.OperationMethod<
   GetProjectsLocationsVolumesQuotaRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesQuotaRulesRequest,
-  output: QuotaRule,
+  input: __S(92) as any as S.Schema<GetProjectsLocationsVolumesQuotaRulesRequest>,
+  output: __S(48) as any as S.Schema<QuotaRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3488,8 +2707,8 @@ export const getProjectsLocationsVolumesReplications: API.OperationMethod<
   GetProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesReplicationsRequest,
-  output: Replication,
+  input: __S(93) as any as S.Schema<GetProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(54) as any as S.Schema<Replication>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3503,8 +2722,8 @@ export const getProjectsLocationsVolumesSnapshots: API.OperationMethod<
   GetProjectsLocationsVolumesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsVolumesSnapshotsRequest,
-  output: Snapshot,
+  input: __S(94) as any as S.Schema<GetProjectsLocationsVolumesSnapshotsRequest>,
+  output: __S(56) as any as S.Schema<Snapshot>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3518,8 +2737,8 @@ export const getSplitStatusProjectsLocationsVolumes: API.OperationMethod<
   GetSplitStatusProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSplitStatusProjectsLocationsVolumesRequest,
-  output: SplitStatus,
+  input: __S(95) as any as S.Schema<GetSplitStatusProjectsLocationsVolumesRequest>,
+  output: __S(96) as any as S.Schema<SplitStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3534,8 +2753,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(97) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(99) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3551,8 +2770,8 @@ export const listProjectsLocationsActiveDirectories: API.PaginatedOperationMetho
   GcpOpContext,
   ListActiveDirectoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsActiveDirectoriesRequest,
-  output: ListActiveDirectoriesResponse,
+  input: __S(100) as any as S.Schema<ListProjectsLocationsActiveDirectoriesRequest>,
+  output: __S(102) as any as S.Schema<ListActiveDirectoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3568,8 +2787,8 @@ export const listProjectsLocationsBackupPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackupPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupPoliciesRequest,
-  output: ListBackupPoliciesResponse,
+  input: __S(103) as any as S.Schema<ListProjectsLocationsBackupPoliciesRequest>,
+  output: __S(105) as any as S.Schema<ListBackupPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3585,8 +2804,8 @@ export const listProjectsLocationsBackupVaults: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBackupVaultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupVaultsRequest,
-  output: ListBackupVaultsResponse,
+  input: __S(106) as any as S.Schema<ListProjectsLocationsBackupVaultsRequest>,
+  output: __S(108) as any as S.Schema<ListBackupVaultsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3602,8 +2821,8 @@ export const listProjectsLocationsBackupVaultsBackups: API.PaginatedOperationMet
   GcpOpContext,
   ListBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackupVaultsBackupsRequest,
-  output: ListBackupsResponse,
+  input: __S(109) as any as S.Schema<ListProjectsLocationsBackupVaultsBackupsRequest>,
+  output: __S(111) as any as S.Schema<ListBackupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3619,8 +2838,8 @@ export const listProjectsLocationsHostGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListHostGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsHostGroupsRequest,
-  output: ListHostGroupsResponse,
+  input: __S(112) as any as S.Schema<ListProjectsLocationsHostGroupsRequest>,
+  output: __S(114) as any as S.Schema<ListHostGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3636,8 +2855,8 @@ export const listProjectsLocationsKmsConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListKmsConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsKmsConfigsRequest,
-  output: ListKmsConfigsResponse,
+  input: __S(115) as any as S.Schema<ListProjectsLocationsKmsConfigsRequest>,
+  output: __S(117) as any as S.Schema<ListKmsConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3653,8 +2872,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(118) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(120) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3670,8 +2889,8 @@ export const listProjectsLocationsStoragePools: API.PaginatedOperationMethod<
   GcpOpContext,
   ListStoragePoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsStoragePoolsRequest,
-  output: ListStoragePoolsResponse,
+  input: __S(121) as any as S.Schema<ListProjectsLocationsStoragePoolsRequest>,
+  output: __S(123) as any as S.Schema<ListStoragePoolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3687,8 +2906,8 @@ export const listProjectsLocationsStoragePoolsBackupConfigs: API.PaginatedOperat
   GcpOpContext,
   ListBackupConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsStoragePoolsBackupConfigsRequest,
-  output: ListBackupConfigsResponse,
+  input: __S(124) as any as S.Schema<ListProjectsLocationsStoragePoolsBackupConfigsRequest>,
+  output: __S(127) as any as S.Schema<ListBackupConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3704,8 +2923,8 @@ export const listProjectsLocationsVolumes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVolumesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsVolumesRequest,
-  output: ListVolumesResponse,
+  input: __S(128) as any as S.Schema<ListProjectsLocationsVolumesRequest>,
+  output: __S(130) as any as S.Schema<ListVolumesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3721,8 +2940,8 @@ export const listProjectsLocationsVolumesQuotaRules: API.PaginatedOperationMetho
   GcpOpContext,
   ListQuotaRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsVolumesQuotaRulesRequest,
-  output: ListQuotaRulesResponse,
+  input: __S(131) as any as S.Schema<ListProjectsLocationsVolumesQuotaRulesRequest>,
+  output: __S(133) as any as S.Schema<ListQuotaRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3738,8 +2957,8 @@ export const listProjectsLocationsVolumesReplications: API.PaginatedOperationMet
   GcpOpContext,
   ListReplicationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsVolumesReplicationsRequest,
-  output: ListReplicationsResponse,
+  input: __S(134) as any as S.Schema<ListProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(136) as any as S.Schema<ListReplicationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3755,8 +2974,8 @@ export const listProjectsLocationsVolumesSnapshots: API.PaginatedOperationMethod
   GcpOpContext,
   ListSnapshotsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsVolumesSnapshotsRequest,
-  output: ListSnapshotsResponse,
+  input: __S(137) as any as S.Schema<ListProjectsLocationsVolumesSnapshotsRequest>,
+  output: __S(139) as any as S.Schema<ListSnapshotsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3776,8 +2995,8 @@ export const patchProjectsLocationsActiveDirectories: API.OperationMethod<
   PatchProjectsLocationsActiveDirectoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsActiveDirectoriesRequest,
-  output: Operation,
+  input: __S(140) as any as S.Schema<PatchProjectsLocationsActiveDirectoriesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3796,8 +3015,8 @@ export const patchProjectsLocationsBackupPolicies: API.OperationMethod<
   PatchProjectsLocationsBackupPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupPoliciesRequest,
-  output: Operation,
+  input: __S(141) as any as S.Schema<PatchProjectsLocationsBackupPoliciesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3816,8 +3035,8 @@ export const patchProjectsLocationsBackupVaults: API.OperationMethod<
   PatchProjectsLocationsBackupVaultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupVaultsRequest,
-  output: Operation,
+  input: __S(142) as any as S.Schema<PatchProjectsLocationsBackupVaultsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3836,8 +3055,8 @@ export const patchProjectsLocationsBackupVaultsBackups: API.OperationMethod<
   PatchProjectsLocationsBackupVaultsBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackupVaultsBackupsRequest,
-  output: Operation,
+  input: __S(143) as any as S.Schema<PatchProjectsLocationsBackupVaultsBackupsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3856,8 +3075,8 @@ export const patchProjectsLocationsHostGroups: API.OperationMethod<
   PatchProjectsLocationsHostGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsHostGroupsRequest,
-  output: Operation,
+  input: __S(144) as any as S.Schema<PatchProjectsLocationsHostGroupsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3876,8 +3095,8 @@ export const patchProjectsLocationsKmsConfigs: API.OperationMethod<
   PatchProjectsLocationsKmsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsKmsConfigsRequest,
-  output: Operation,
+  input: __S(145) as any as S.Schema<PatchProjectsLocationsKmsConfigsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3896,8 +3115,8 @@ export const patchProjectsLocationsStoragePools: API.OperationMethod<
   PatchProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(146) as any as S.Schema<PatchProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3135,8 @@ export const patchProjectsLocationsVolumes: API.OperationMethod<
   PatchProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(147) as any as S.Schema<PatchProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3936,8 +3155,8 @@ export const patchProjectsLocationsVolumesQuotaRules: API.OperationMethod<
   PatchProjectsLocationsVolumesQuotaRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsVolumesQuotaRulesRequest,
-  output: Operation,
+  input: __S(148) as any as S.Schema<PatchProjectsLocationsVolumesQuotaRulesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3956,8 +3175,8 @@ export const patchProjectsLocationsVolumesReplications: API.OperationMethod<
   PatchProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(149) as any as S.Schema<PatchProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3976,8 +3195,8 @@ export const patchProjectsLocationsVolumesSnapshots: API.OperationMethod<
   PatchProjectsLocationsVolumesSnapshotsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsVolumesSnapshotsRequest,
-  output: Operation,
+  input: __S(150) as any as S.Schema<PatchProjectsLocationsVolumesSnapshotsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3996,8 +3215,8 @@ export const restoreProjectsLocationsVolumes: API.OperationMethod<
   RestoreProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(152) as any as S.Schema<RestoreProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4016,8 +3235,8 @@ export const restoreVolumeProjectsLocationsStoragePools: API.OperationMethod<
   RestoreVolumeProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreVolumeProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(156) as any as S.Schema<RestoreVolumeProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4036,8 +3255,8 @@ export const resumeProjectsLocationsVolumesReplications: API.OperationMethod<
   ResumeProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(157) as any as S.Schema<ResumeProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4056,8 +3275,8 @@ export const reverseDirectionProjectsLocationsVolumesReplications: API.Operation
   ReverseDirectionProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReverseDirectionProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(158) as any as S.Schema<ReverseDirectionProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4076,8 +3295,8 @@ export const revertProjectsLocationsVolumes: API.OperationMethod<
   RevertProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(160) as any as S.Schema<RevertProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4096,8 +3315,8 @@ export const startSplitProjectsLocationsVolumes: API.OperationMethod<
   StartSplitProjectsLocationsVolumesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSplitProjectsLocationsVolumesRequest,
-  output: Operation,
+  input: __S(161) as any as S.Schema<StartSplitProjectsLocationsVolumesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4116,8 +3335,8 @@ export const stopProjectsLocationsVolumesReplications: API.OperationMethod<
   StopProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(163) as any as S.Schema<StopProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4136,8 +3355,8 @@ export const switchProjectsLocationsStoragePools: API.OperationMethod<
   SwitchProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SwitchProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(164) as any as S.Schema<SwitchProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4156,8 +3375,8 @@ export const syncProjectsLocationsVolumesReplications: API.OperationMethod<
   SyncProjectsLocationsVolumesReplicationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncProjectsLocationsVolumesReplicationsRequest,
-  output: Operation,
+  input: __S(165) as any as S.Schema<SyncProjectsLocationsVolumesReplicationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4176,8 +3395,8 @@ export const updateBackupConfigProjectsLocationsStoragePools: API.OperationMetho
   UpdateBackupConfigProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBackupConfigProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(167) as any as S.Schema<UpdateBackupConfigProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4196,8 +3415,8 @@ export const validateDirectoryServiceProjectsLocationsStoragePools: API.Operatio
   ValidateDirectoryServiceProjectsLocationsStoragePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateDirectoryServiceProjectsLocationsStoragePoolsRequest,
-  output: Operation,
+  input: __S(169) as any as S.Schema<ValidateDirectoryServiceProjectsLocationsStoragePoolsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4216,8 +3435,8 @@ export const verifyProjectsLocationsKmsConfigs: API.OperationMethod<
   VerifyProjectsLocationsKmsConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyProjectsLocationsKmsConfigsRequest,
-  output: VerifyKmsConfigResponse,
+  input: __S(170) as any as S.Schema<VerifyProjectsLocationsKmsConfigsRequest>,
+  output: __S(171) as any as S.Schema<VerifyKmsConfigResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4234,7 +3453,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4254,20 +3473,20 @@ function __c0(j: number): any {
         S.Struct({
           netBiosPrefix: S.optional(S.String),
           kdcHostname: S.optional(S.String),
-          state: S.optional(ActiveDirectoryStateEnum),
+          state: S.optional(S.String),
           kdcIp: S.optional(S.String),
           nfsUsersWithLdap: S.optional(S.Boolean),
           encryptDcConnections: S.optional(S.Boolean),
           aesEncryption: S.optional(S.Boolean),
           domain: S.optional(S.String),
-          backupOperators: S.optional(StringList),
+          backupOperators: S.optional(__S(2)),
           stateDetails: S.optional(S.String),
           organizationalUnit: S.optional(S.String),
           name: S.optional(S.String),
           site: S.optional(S.String),
-          securityOperators: S.optional(StringList),
-          labels: S.optional(StringMap),
-          administrators: S.optional(StringList),
+          securityOperators: S.optional(__S(2)),
+          labels: S.optional(__S(3)),
+          administrators: S.optional(__S(2)),
           createTime: S.optional(S.String),
           dns: S.optional(S.String),
           password: S.optional(S.String),
@@ -4281,7 +3500,7 @@ function __c0(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           activeDirectoryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ActiveDirectory.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4295,7 +3514,7 @@ function __c0(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -4305,23 +3524,23 @@ function __c1(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(6)),
+          metadata: S.optional(__S(6)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          error: S.optional(Status),
+          error: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(BackupPolicyStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           monthlyBackupLimit: S.optional(S.Number),
@@ -4329,7 +3548,7 @@ function __c1(j: number): any {
           weeklyBackupLimit: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
           assignedVolumeCount: S.optional(S.Number),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupPolicy" });
@@ -4338,7 +3557,7 @@ function __c1(j: number): any {
         S.Struct({
           backupPolicyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BackupPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4363,13 +3582,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          state: S.optional(BackupVaultStateEnum),
+          state: S.optional(S.String),
           backupsCryptoKeyVersion: S.optional(S.String),
-          encryptionState: S.optional(BackupVaultEncryptionStateEnum),
-          backupRetentionPolicy: S.optional(BackupRetentionPolicy),
+          encryptionState: S.optional(S.String),
+          backupRetentionPolicy: S.optional(__S(12)),
           sourceBackupVault: S.optional(S.String),
-          labels: S.optional(StringMap),
-          backupVaultType: S.optional(BackupVaultBackupVaultTypeEnum),
+          labels: S.optional(__S(3)),
+          backupVaultType: S.optional(S.String),
           createTime: S.optional(S.String),
           kmsConfig: S.optional(S.String),
           destinationBackupVault: S.optional(S.String),
@@ -4383,7 +3602,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           backupVaultId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BackupVault.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4414,17 +3633,17 @@ function __c2(j: number): any {
           sourceSnapshot: S.optional(S.String),
           volumeUsageBytes: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          ontapSource: S.optional(OntapSource),
+          ontapSource: S.optional(__S(15)),
           backupRegion: S.optional(S.String),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(BackupStateEnum),
-          labels: S.optional(StringMap),
+          state: S.optional(S.String),
+          labels: S.optional(__S(3)),
           enforcedRetentionEndTime: S.optional(S.String),
           description: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
           chainStorageBytes: S.optional(S.String),
-          backupType: S.optional(BackupBackupTypeEnum),
+          backupType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Backup" });
     case 1:
@@ -4432,7 +3651,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           backupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Backup.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4448,11 +3667,11 @@ function __c2(j: number): any {
         S.Struct({
           createTime: S.optional(S.String),
           description: S.optional(S.String),
-          state: S.optional(HostGroupStateEnum),
-          hosts: S.optional(StringList),
-          labels: S.optional(StringMap),
-          type: S.optional(HostGroupTypeEnum),
-          osType: S.optional(HostGroupOsTypeEnum),
+          state: S.optional(S.String),
+          hosts: S.optional(__S(2)),
+          labels: S.optional(__S(3)),
+          type: S.optional(S.String),
+          osType: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostGroup" });
@@ -4461,7 +3680,7 @@ function __c2(j: number): any {
         S.Struct({
           hostGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(HostGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4482,8 +3701,8 @@ function __c2(j: number): any {
           instructions: S.optional(S.String),
           stateDetails: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
-          state: S.optional(KmsConfigStateEnum),
+          labels: S.optional(__S(3)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "KmsConfig" });
     case 5:
@@ -4491,7 +3710,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           kmsConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(KmsConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4510,33 +3729,33 @@ function __c2(j: number): any {
           allowAutoTiering: S.optional(S.Boolean),
           name: S.optional(S.String),
           network: S.optional(S.String),
-          qosType: S.optional(StoragePoolQosTypeEnum),
+          qosType: S.optional(S.String),
           replicaZone: S.optional(S.String),
           hotTierSizeUsedGib: S.optional(S.String),
-          scaleType: S.optional(StoragePoolScaleTypeEnum),
+          scaleType: S.optional(S.String),
           volumeCount: S.optional(S.Number),
           ldapEnabled: S.optional(S.Boolean),
           customPerformanceEnabled: S.optional(S.Boolean),
           availableThroughputMibps: S.optional(S.Number),
           kmsConfig: S.optional(S.String),
           volumeCapacityGib: S.optional(S.String),
-          encryptionType: S.optional(StoragePoolEncryptionTypeEnum),
-          serviceLevel: S.optional(StoragePoolServiceLevelEnum),
+          encryptionType: S.optional(S.String),
+          serviceLevel: S.optional(S.String),
           activeDirectory: S.optional(S.String),
           zone: S.optional(S.String),
           psaRange: S.optional(S.String),
           stateDetails: S.optional(S.String),
           globalAccessAllowed: S.optional(S.Boolean),
-          state: S.optional(StoragePoolStateEnum),
-          type: S.optional(StoragePoolTypeEnum),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
           totalThroughputMibps: S.optional(S.String),
           coldTierSizeUsedGib: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
           totalIops: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
           hotTierSizeGib: S.optional(S.String),
-          labels: S.optional(StringMap),
-          mode: S.optional(StoragePoolModeEnum),
+          labels: S.optional(__S(3)),
+          mode: S.optional(S.String),
           enableHotTierAutoResize: S.optional(S.Boolean),
           createTime: S.optional(S.String),
         }),
@@ -4546,7 +3765,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           storagePoolId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(StoragePool.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4562,7 +3781,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VolumeProtocolsItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4570,11 +3789,11 @@ function __c3(j: number): any {
           clusterLocation: S.optional(S.String),
           peerClusterName: S.optional(S.String),
           peerVolumeName: S.optional(S.String),
-          hybridReplicationType: S.optional(HybridReplicationParametersHybridReplicationTypeEnum),
-          replicationSchedule: S.optional(HybridReplicationParametersReplicationScheduleEnum),
+          hybridReplicationType: S.optional(S.String),
+          replicationSchedule: S.optional(S.String),
           replication: S.optional(S.String),
-          peerIpAddresses: S.optional(StringList),
-          labels: S.optional(StringMap),
+          peerIpAddresses: S.optional(__S(2)),
+          labels: S.optional(__S(3)),
           peerSvmName: S.optional(S.String),
           largeVolumeConstituentCount: S.optional(S.Number),
         }),
@@ -4597,20 +3816,20 @@ function __c3(j: number): any {
           kerberos5ReadWrite: S.optional(S.Boolean),
           nfsv4: S.optional(S.Boolean),
           kerberos5ReadOnly: S.optional(S.Boolean),
-          accessType: S.optional(SimpleExportPolicyRuleAccessTypeEnum),
+          accessType: S.optional(S.String),
           hasRootAccess: S.optional(S.String),
           kerberos5pReadOnly: S.optional(S.Boolean),
           kerberos5iReadWrite: S.optional(S.Boolean),
           kerberos5iReadOnly: S.optional(S.Boolean),
-          squashMode: S.optional(SimpleExportPolicyRuleSquashModeEnum),
+          squashMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SimpleExportPolicyRule" });
     case 4:
-      return S.Array(SimpleExportPolicyRule);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(SimpleExportPolicyRuleList),
+          rules: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "ExportPolicy" });
     case 6:
@@ -4618,13 +3837,13 @@ function __c3(j: number): any {
         S.Struct({
           sizeGib: S.optional(S.String),
           identifier: S.optional(S.String),
-          hostGroups: S.optional(StringList),
+          hostGroups: S.optional(__S(2)),
           name: S.optional(S.String),
-          osType: S.optional(BlockDeviceOsTypeEnum),
+          osType: S.optional(S.String),
         }),
       ).annotate({ identifier: "BlockDevice" });
     case 7:
-      return S.Array(BlockDevice);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -4665,17 +3884,17 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dailySchedule: S.optional(DailySchedule),
-          weeklySchedule: S.optional(WeeklySchedule),
+          dailySchedule: S.optional(__S(32)),
+          weeklySchedule: S.optional(__S(33)),
           enabled: S.optional(S.Boolean),
-          hourlySchedule: S.optional(HourlySchedule),
-          monthlySchedule: S.optional(MonthlySchedule),
+          hourlySchedule: S.optional(__S(34)),
+          monthlySchedule: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "SnapshotPolicy" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tierAction: S.optional(TieringPolicyTierActionEnum),
+          tierAction: S.optional(S.String),
           hotTierBypassModeEnabled: S.optional(S.Boolean),
           coolingThresholdDays: S.optional(S.Number),
         }),
@@ -4687,11 +3906,11 @@ function __c4(j: number): any {
           instructions: S.optional(S.String),
           export: S.optional(S.String),
           exportFull: S.optional(S.String),
-          protocol: S.optional(MountOptionProtocolEnum),
+          protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountOption" });
     case 7:
-      return S.Array(MountOption);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -4708,24 +3927,24 @@ function __c5(j: number): any {
         S.Struct({
           backupChainBytes: S.optional(S.String),
           scheduledBackupEnabled: S.optional(S.Boolean),
-          backupPolicies: S.optional(StringList),
+          backupPolicies: S.optional(__S(2)),
           backupVault: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pathList: S.optional(StringList),
+          pathList: S.optional(__S(2)),
           recursion: S.optional(S.Boolean),
-          excludePathList: S.optional(StringList),
+          excludePathList: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CachePrePopulate" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cachePrePopulateState: S.optional(CacheConfigCachePrePopulateStateEnum),
+          cachePrePopulateState: S.optional(S.String),
           cifsChangeNotifyEnabled: S.optional(S.Boolean),
-          cachePrePopulate: S.optional(CachePrePopulate),
+          cachePrePopulate: S.optional(__S(42)),
           writebackEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CacheConfig" });
@@ -4738,10 +3957,10 @@ function __c5(j: number): any {
           peerSvmName: S.optional(S.String),
           command: S.optional(S.String),
           peerVolumeName: S.optional(S.String),
-          cacheConfig: S.optional(CacheConfig),
-          cacheState: S.optional(CacheParametersCacheStateEnum),
+          cacheConfig: S.optional(__S(43)),
+          cacheState: S.optional(S.String),
           passphrase: S.optional(S.String),
-          peerIpAddresses: S.optional(StringList),
+          peerIpAddresses: S.optional(__S(2)),
           peeringCommandExpiryTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheParameters" });
@@ -4750,54 +3969,54 @@ function __c5(j: number): any {
         S.Struct({
           sourceSnapshot: S.optional(S.String),
           sourceVolume: S.optional(S.String),
-          splitState: S.optional(CloneDetailsSplitStateEnum),
+          splitState: S.optional(S.String),
           sharedSpaceGib: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloneDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          protocols: S.optional(VolumeProtocolsItemEnumList),
+          protocols: S.optional(__S(24)),
           ldapEnabled: S.optional(S.Boolean),
-          hybridReplicationParameters: S.optional(HybridReplicationParameters),
-          securityStyle: S.optional(VolumeSecurityStyleEnum),
-          restrictedActions: S.optional(VolumeRestrictedActionsItemEnumList),
+          hybridReplicationParameters: S.optional(__S(25)),
+          securityStyle: S.optional(S.String),
+          restrictedActions: S.optional(__S(24)),
           network: S.optional(S.String),
           storagePool: S.optional(S.String),
           multipleEndpoints: S.optional(S.Boolean),
           hotTierSizeUsedGib: S.optional(S.String),
-          largeCapacityConfig: S.optional(LargeCapacityConfig),
+          largeCapacityConfig: S.optional(__S(26)),
           capacityGib: S.optional(S.String),
           zone: S.optional(S.String),
-          state: S.optional(VolumeStateEnum),
-          smbSettings: S.optional(VolumeSmbSettingsItemEnumList),
+          state: S.optional(S.String),
+          smbSettings: S.optional(__S(24)),
           description: S.optional(S.String),
-          serviceLevel: S.optional(VolumeServiceLevelEnum),
-          exportPolicy: S.optional(ExportPolicy),
-          encryptionType: S.optional(VolumeEncryptionTypeEnum),
-          blockDevices: S.optional(BlockDeviceList),
+          serviceLevel: S.optional(S.String),
+          exportPolicy: S.optional(__S(29)),
+          encryptionType: S.optional(S.String),
+          blockDevices: S.optional(__S(31)),
           snapshotDirectory: S.optional(S.Boolean),
           kmsConfig: S.optional(S.String),
           replicaZone: S.optional(S.String),
           snapReserve: S.optional(S.Number),
-          labels: S.optional(StringMap),
-          snapshotPolicy: S.optional(SnapshotPolicy),
+          labels: S.optional(__S(3)),
+          snapshotPolicy: S.optional(__S(36)),
           coldTierSizeGib: S.optional(S.String),
           psaRange: S.optional(S.String),
           hasReplication: S.optional(S.Boolean),
-          tieringPolicy: S.optional(TieringPolicy),
+          tieringPolicy: S.optional(__S(37)),
           createTime: S.optional(S.String),
           throughputMibps: S.optional(S.Number),
           stateDetails: S.optional(S.String),
           kerberosEnabled: S.optional(S.Boolean),
-          mountOptions: S.optional(MountOptionList),
+          mountOptions: S.optional(__S(39)),
           activeDirectory: S.optional(S.String),
-          restoreParameters: S.optional(RestoreParameters),
+          restoreParameters: S.optional(__S(40)),
           name: S.optional(S.String),
-          backupConfig: S.optional(BackupConfig),
-          cacheParameters: S.optional(CacheParameters),
+          backupConfig: S.optional(__S(41)),
+          cacheParameters: S.optional(__S(44)),
           shareName: S.optional(S.String),
-          cloneDetails: S.optional(CloneDetails),
+          cloneDetails: S.optional(__S(45)),
           unixPermissions: S.optional(S.String),
           usedGib: S.optional(S.String),
           largeCapacity: S.optional(S.Boolean),
@@ -4808,7 +4027,7 @@ function __c5(j: number): any {
         S.Struct({
           volumeId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Volume.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4829,12 +4048,12 @@ function __c6(j: number): any {
           target: S.optional(S.String),
           diskLimitMib: S.optional(S.Number),
           stateDetails: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(QuotaRuleStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(QuotaRuleTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaRule" });
     case 1:
@@ -4842,7 +4061,7 @@ function __c6(j: number): any {
         S.Struct({
           quotaRuleId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(QuotaRule.pipe(T.HttpBody())),
+          body: S.optional(__S(48).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4856,7 +4075,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          commands: S.optional(StringList),
+          commands: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "UserCommands" });
     case 3:
@@ -4877,7 +4096,7 @@ function __c6(j: number): any {
           shareName: S.optional(S.String),
           description: S.optional(S.String),
           volumeId: S.optional(S.String),
-          tieringPolicy: S.optional(TieringPolicy),
+          tieringPolicy: S.optional(__S(37)),
           storagePool: S.optional(S.String),
         }),
       ).annotate({
@@ -4899,23 +4118,23 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(ReplicationRoleEnum),
+          role: S.optional(S.String),
           description: S.optional(S.String),
-          mirrorState: S.optional(ReplicationMirrorStateEnum),
-          hybridReplicationUserCommands: S.optional(UserCommands),
+          mirrorState: S.optional(S.String),
+          hybridReplicationUserCommands: S.optional(__S(50)),
           clusterLocation: S.optional(S.String),
-          hybridPeeringDetails: S.optional(HybridPeeringDetails),
+          hybridPeeringDetails: S.optional(__S(51)),
           stateDetails: S.optional(S.String),
           sourceVolume: S.optional(S.String),
           healthy: S.optional(S.Boolean),
-          destinationVolumeParameters: S.optional(DestinationVolumeParameters),
-          transferStats: S.optional(TransferStats),
-          labels: S.optional(StringMap),
+          destinationVolumeParameters: S.optional(__S(52)),
+          transferStats: S.optional(__S(53)),
+          labels: S.optional(__S(3)),
           name: S.optional(S.String),
-          replicationSchedule: S.optional(ReplicationReplicationScheduleEnum),
+          replicationSchedule: S.optional(S.String),
           destinationVolume: S.optional(S.String),
-          hybridReplicationType: S.optional(ReplicationHybridReplicationTypeEnum),
-          state: S.optional(ReplicationStateEnum),
+          hybridReplicationType: S.optional(S.String),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Replication" });
@@ -4924,7 +4143,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           replicationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Replication.pipe(T.HttpBody())),
+          body: S.optional(__S(54).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4943,11 +4162,11 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          state: S.optional(SnapshotStateEnum),
+          state: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
           stateDetails: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           usedBytes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Snapshot" });
@@ -4956,7 +4175,7 @@ function __c7(j: number): any {
         S.Struct({
           snapshotId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Snapshot.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5144,7 +4363,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5160,7 +4379,7 @@ function __c8(j: number): any {
         S.Struct({
           peerVolumeName: S.optional(S.String),
           peerClusterName: S.optional(S.String),
-          peerIpAddresses: S.optional(StringList),
+          peerIpAddresses: S.optional(__S(2)),
           peerSvmName: S.optional(S.String),
         }),
       ).annotate({
@@ -5174,7 +4393,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(EstablishVolumePeeringRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(71).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5190,7 +4409,7 @@ function __c9(j: number): any {
         S.Struct({
           peerClusterName: S.optional(S.String),
           peerSvmName: S.optional(S.String),
-          peerIpAddresses: S.optional(StringList),
+          peerIpAddresses: S.optional(__S(2)),
           peerVolumeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EstablishPeeringRequest" });
@@ -5198,7 +4417,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(EstablishPeeringRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5226,7 +4445,7 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(DocumentMap),
+          body: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "ExecuteOntapDeleteResponse",
@@ -5248,14 +4467,14 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(DocumentMap),
+          body: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "ExecuteOntapGetResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ontapPath: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteOntapPatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(78).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5274,7 +4493,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ontapPath: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteOntapPatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(78).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5301,8 +4520,8 @@ function __c10(j: number): any {
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
-          metadata: S.optional(DocumentMap),
+          labels: S.optional(__S(3)),
+          metadata: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Location" });
     case 3:
@@ -5450,7 +4669,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          splitState: S.optional(SplitStatusSplitStateEnum),
+          splitState: S.optional(S.String),
           stateDetails: S.optional(S.String),
           progressPercent: S.optional(S.Number),
         }),
@@ -5460,7 +4679,7 @@ function __c12(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -5474,11 +4693,11 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 2:
-      return S.Array(Location);
+      return S.Array(__S(82));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(98)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -5501,13 +4720,13 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsActiveDirectoriesRequest",
       });
     case 5:
-      return S.Array(ActiveDirectory);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          activeDirectories: S.optional(ActiveDirectoryList),
+          activeDirectories: S.optional(__S(101)),
         }),
       ).annotate({
         identifier: "ListActiveDirectoriesResponse",
@@ -5535,12 +4754,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BackupPolicy);
+      return S.Array(__S(10));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          backupPolicies: S.optional(BackupPolicyList),
+          unreachable: S.optional(__S(2)),
+          backupPolicies: S.optional(__S(104)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5565,13 +4784,13 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsBackupVaultsRequest",
       });
     case 3:
-      return S.Array(BackupVault);
+      return S.Array(__S(13));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backupVaults: S.optional(BackupVaultList),
+          backupVaults: S.optional(__S(107)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ListBackupVaultsResponse" });
     case 5:
@@ -5593,13 +4812,13 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsBackupVaultsBackupsRequest",
       });
     case 6:
-      return S.Array(Backup);
+      return S.Array(__S(16));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          backups: S.optional(BackupList),
-          unreachable: S.optional(StringList),
+          backups: S.optional(__S(110)),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
   }
@@ -5625,13 +4844,13 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsHostGroupsRequest",
       });
     case 1:
-      return S.Array(HostGroup);
+      return S.Array(__S(18));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          hostGroups: S.optional(HostGroupList),
+          unreachable: S.optional(__S(2)),
+          hostGroups: S.optional(__S(113)),
         }),
       ).annotate({ identifier: "ListHostGroupsResponse" });
     case 3:
@@ -5653,13 +4872,13 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsKmsConfigsRequest",
       });
     case 4:
-      return S.Array(KmsConfig);
+      return S.Array(__S(20));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          kmsConfigs: S.optional(KmsConfigList),
+          kmsConfigs: S.optional(__S(116)),
         }),
       ).annotate({ identifier: "ListKmsConfigsResponse" });
     case 6:
@@ -5681,7 +4900,7 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(9));
   }
 }
 function __c15(j: number): any {
@@ -5690,8 +4909,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(2)),
+          operations: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 1:
@@ -5713,12 +4932,12 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsStoragePoolsRequest",
       });
     case 2:
-      return S.Array(StoragePool);
+      return S.Array(__S(22));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          storagePools: S.optional(StoragePoolList),
-          unreachable: S.optional(StringList),
+          storagePools: S.optional(__S(122)),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListStoragePoolsResponse" });
@@ -5743,18 +4962,18 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backupConfig: S.optional(BackupConfig),
+          backupConfig: S.optional(__S(41)),
           volumeUuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeBackupConfig" });
     case 6:
-      return S.Array(VolumeBackupConfig);
+      return S.Array(__S(125));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          volumeBackupConfigs: S.optional(VolumeBackupConfigList),
+          volumeBackupConfigs: S.optional(__S(126)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ListBackupConfigsResponse",
@@ -5782,13 +5001,13 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsVolumesRequest",
       });
     case 1:
-      return S.Array(Volume);
+      return S.Array(__S(46));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          volumes: S.optional(VolumeList),
+          unreachable: S.optional(__S(2)),
+          volumes: S.optional(__S(129)),
         }),
       ).annotate({ identifier: "ListVolumesResponse" });
     case 3:
@@ -5810,13 +5029,13 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsVolumesQuotaRulesRequest",
       });
     case 4:
-      return S.Array(QuotaRule);
+      return S.Array(__S(48));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          quotaRules: S.optional(QuotaRuleList),
+          unreachable: S.optional(__S(2)),
+          quotaRules: S.optional(__S(132)),
         }),
       ).annotate({ identifier: "ListQuotaRulesResponse" });
     case 6:
@@ -5838,7 +5057,7 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsVolumesReplicationsRequest",
       });
     case 7:
-      return S.Array(Replication);
+      return S.Array(__S(54));
   }
 }
 function __c17(j: number): any {
@@ -5847,8 +5066,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          replications: S.optional(ReplicationList),
+          unreachable: S.optional(__S(2)),
+          replications: S.optional(__S(135)),
         }),
       ).annotate({ identifier: "ListReplicationsResponse" });
     case 1:
@@ -5870,13 +5089,13 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsVolumesSnapshotsRequest",
       });
     case 2:
-      return S.Array(Snapshot);
+      return S.Array(__S(56));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          snapshots: S.optional(SnapshotList),
+          unreachable: S.optional(__S(2)),
+          snapshots: S.optional(__S(138)),
         }),
       ).annotate({ identifier: "ListSnapshotsResponse" });
     case 4:
@@ -5884,7 +5103,7 @@ function __c17(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(ActiveDirectory.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5896,7 +5115,7 @@ function __c17(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BackupPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5908,7 +5127,7 @@ function __c17(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(BackupVault.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5920,7 +5139,7 @@ function __c17(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Backup.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5936,7 +5155,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(HostGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5948,7 +5167,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(KmsConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5960,7 +5179,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(StoragePool.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5972,7 +5191,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Volume.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5984,7 +5203,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(QuotaRule.pipe(T.HttpBody())),
+          body: S.optional(__S(48).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -5996,7 +5215,7 @@ function __c18(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Replication.pipe(T.HttpBody())),
+          body: S.optional(__S(54).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -6008,7 +5227,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Snapshot.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://netapp.googleapis.com/" }),
         ),
@@ -6018,7 +5237,7 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          fileList: S.optional(StringList),
+          fileList: S.optional(__S(2)),
           restoreDestinationPath: S.optional(S.String),
           backup: S.optional(S.String),
         }),
@@ -6033,7 +5252,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RestoreBackupFilesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(151).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6054,22 +5273,22 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fileList: S.optional(StringList),
+          fileList: S.optional(__S(2)),
           backup: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackupSource" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ontapVolumeTarget: S.optional(OntapVolumeTarget),
-          backupSource: S.optional(BackupSource),
+          ontapVolumeTarget: S.optional(__S(153)),
+          backupSource: S.optional(__S(154)),
         }),
       ).annotate({ identifier: "RestoreVolumeRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RestoreVolumeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6084,7 +5303,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6099,7 +5318,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6124,7 +5343,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RevertVolumeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(159).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6139,7 +5358,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6160,7 +5379,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(StopReplicationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(162).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6175,7 +5394,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6190,7 +5409,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6205,7 +5424,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeUuid: S.optional(S.String),
-          backupConfig: S.optional(BackupConfig),
+          backupConfig: S.optional(__S(41)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -6215,7 +5434,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateBackupConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(166).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6233,7 +5452,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          directoryServiceType: S.optional(ValidateDirectoryServiceRequestDirectoryServiceTypeEnum),
+          directoryServiceType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ValidateDirectoryServiceRequest",
@@ -6242,7 +5461,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ValidateDirectoryServiceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(168).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6257,7 +5476,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6276,5 +5495,58 @@ function __c21(j: number): any {
           healthError: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifyKmsConfigResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
   }
 }

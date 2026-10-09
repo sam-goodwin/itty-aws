@@ -7,13 +7,13 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** Type of resource assigning the Primary IP to. */
 export type AssignPrimaryIpRequestAssigneeType = "server";
-const AssignPrimaryIpRequestAssigneeType = S.String;
-
 export interface AssignPrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
@@ -22,34 +22,17 @@ export interface AssignPrimaryIpRequest {
   /** ID of a resource of type `assignee_type`. */
   assignee_id: number;
 }
-const AssignPrimaryIpRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssignPrimaryIpRequest>;
-
 /** Status of the Action. */
 export type AssignPrimaryIpResponseActionStatus = "running" | "success" | "error";
-const AssignPrimaryIpResponseActionStatus = S.String;
-
 export interface AssignPrimaryIpResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const AssignPrimaryIpResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssignPrimaryIpResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type AssignPrimaryIpResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const AssignPrimaryIpResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssignPrimaryIpResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AssignPrimaryIpResponseActionError {
   /** Fixed error code for machines. */
@@ -57,11 +40,6 @@ export interface AssignPrimaryIpResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const AssignPrimaryIpResponseActionError = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AssignPrimaryIpResponseActionError>;
-
 export interface AssignPrimaryIpResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -80,19 +58,9 @@ export interface AssignPrimaryIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const AssignPrimaryIpResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssignPrimaryIpResponseAction>;
-
 export interface AssignPrimaryIpResponse {
   action: AssignPrimaryIpResponseAction;
 }
-const AssignPrimaryIpResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssignPrimaryIpResponse>;
-
 export interface ChangePrimaryIpDnsPtrRequest {
   /** ID of the Primary IP. */
   id: number;
@@ -101,23 +69,13 @@ export interface ChangePrimaryIpDnsPtrRequest {
   /** Domain Name to point to. PTR record content used for reverse DNS. Set to null to reset (IPv4) to the default value or remove (IPv6) the record. */
   dns_ptr: string | null;
 }
-const ChangePrimaryIpDnsPtrRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ChangePrimaryIpDnsPtrRequest>;
-
 /** Status of the Action. */
 export type ChangePrimaryIpDnsPtrResponseActionStatus = "running" | "success" | "error";
-const ChangePrimaryIpDnsPtrResponseActionStatus = S.String;
-
 export type ChangePrimaryIpDnsPtrResponseActionResourcesItem =
   AssignPrimaryIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangePrimaryIpDnsPtrResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const ChangePrimaryIpDnsPtrResponseActionResourcesList =
-  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ChangePrimaryIpDnsPtrResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangePrimaryIpDnsPtrResponseActionError = AssignPrimaryIpResponseActionError;
 export interface ChangePrimaryIpDnsPtrResponseAction {
@@ -138,42 +96,22 @@ export interface ChangePrimaryIpDnsPtrResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const ChangePrimaryIpDnsPtrResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ChangePrimaryIpDnsPtrResponseAction>;
-
 export interface ChangePrimaryIpDnsPtrResponse {
   action: ChangePrimaryIpDnsPtrResponseAction;
 }
-const ChangePrimaryIpDnsPtrResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ChangePrimaryIpDnsPtrResponse>;
-
 export interface ChangePrimaryIpProtectionRequest {
   /** ID of the Primary IP. */
   id: number;
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-const ChangePrimaryIpProtectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ChangePrimaryIpProtectionRequest>;
-
 /** Status of the Action. */
 export type ChangePrimaryIpProtectionResponseActionStatus = "running" | "success" | "error";
-const ChangePrimaryIpProtectionResponseActionStatus = S.String;
-
 export type ChangePrimaryIpProtectionResponseActionResourcesItem =
   AssignPrimaryIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangePrimaryIpProtectionResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const ChangePrimaryIpProtectionResponseActionResourcesList =
-  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ChangePrimaryIpProtectionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangePrimaryIpProtectionResponseActionError = AssignPrimaryIpResponseActionError;
 export interface ChangePrimaryIpProtectionResponseAction {
@@ -194,40 +132,20 @@ export interface ChangePrimaryIpProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const ChangePrimaryIpProtectionResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ChangePrimaryIpProtectionResponseAction>;
-
 export interface ChangePrimaryIpProtectionResponse {
   action: ChangePrimaryIpProtectionResponseAction;
 }
-const ChangePrimaryIpProtectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ChangePrimaryIpProtectionResponse>;
-
 export interface GetPrimaryIpsActionRequest {
   /** ID of the Action. */
   id: number;
 }
-const GetPrimaryIpsActionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetPrimaryIpsActionRequest>;
-
 /** Status of the Action. */
 export type GetPrimaryIpsActionResponseActionStatus = "running" | "success" | "error";
-const GetPrimaryIpsActionResponseActionStatus = S.String;
-
 export type GetPrimaryIpsActionResponseActionResourcesItem =
   AssignPrimaryIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetPrimaryIpsActionResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const GetPrimaryIpsActionResponseActionResourcesList =
-  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<GetPrimaryIpsActionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetPrimaryIpsActionResponseActionError = AssignPrimaryIpResponseActionError;
 export interface GetPrimaryIpsActionResponseAction {
@@ -248,19 +166,9 @@ export interface GetPrimaryIpsActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const GetPrimaryIpsActionResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetPrimaryIpsActionResponseAction>;
-
 export interface GetPrimaryIpsActionResponse {
   action: GetPrimaryIpsActionResponseAction;
 }
-const GetPrimaryIpsActionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetPrimaryIpsActionResponse>;
-
 export type ListPrimaryIpActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -277,24 +185,14 @@ export type ListPrimaryIpActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-const ListPrimaryIpActionsRequestSortItem = S.String;
-
 export type ListPrimaryIpActionsRequestSortList = Array<
   ListPrimaryIpActionsRequestSortItem | (string & {})
 >;
-const ListPrimaryIpActionsRequestSortList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListPrimaryIpActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListPrimaryIpActionsRequestStatusItem = "running" | "success" | "error";
 export type ListPrimaryIpActionsRequestStatusList = Array<
   ListPrimaryIpActionsRequestStatusItem | (string & {})
 >;
-const ListPrimaryIpActionsRequestStatusList =
-  ListPrimaryIpActionsRequestSortList as any as S.Schema<ListPrimaryIpActionsRequestStatusList>;
-
 export interface ListPrimaryIpActionsRequest {
   /** ID of the Primary IP. */
   id: number;
@@ -307,23 +205,13 @@ export interface ListPrimaryIpActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListPrimaryIpActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListPrimaryIpActionsRequest>;
-
 /** Status of the Action. */
 export type ListPrimaryIpActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListPrimaryIpActionsResponseActionsItemStatus = S.String;
-
 export type ListPrimaryIpActionsResponseActionsItemResourcesItem =
   AssignPrimaryIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListPrimaryIpActionsResponseActionsItemResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const ListPrimaryIpActionsResponseActionsItemResourcesList =
-  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ListPrimaryIpActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListPrimaryIpActionsResponseActionsItemError = AssignPrimaryIpResponseActionError;
 export interface ListPrimaryIpActionsResponseActionsItem {
@@ -344,18 +232,8 @@ export interface ListPrimaryIpActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const ListPrimaryIpActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListPrimaryIpActionsResponseActionsItem>;
-
 export type ListPrimaryIpActionsResponseActionsList =
   Array<ListPrimaryIpActionsResponseActionsItem>;
-const ListPrimaryIpActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListPrimaryIpActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListPrimaryIpActionsResponseMetaPagination {
   /** Current page number. */
@@ -371,35 +249,15 @@ export interface ListPrimaryIpActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListPrimaryIpActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListPrimaryIpActionsResponseMetaPagination>;
-
 export interface ListPrimaryIpActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListPrimaryIpActionsResponseMetaPagination;
 }
-const ListPrimaryIpActionsResponseMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListPrimaryIpActionsResponseMeta>;
-
 export interface ListPrimaryIpActionsResponse {
   actions: ListPrimaryIpActionsResponseActionsList;
   meta: ListPrimaryIpActionsResponseMeta;
 }
-const ListPrimaryIpActionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListPrimaryIpActionsResponse>;
-
 export type ListPrimaryIpsActionsRequestIdList = Array<number>;
-const ListPrimaryIpsActionsRequestIdList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListPrimaryIpsActionsRequestIdList>;
-
 export type ListPrimaryIpsActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -419,17 +277,11 @@ export type ListPrimaryIpsActionsRequestSortItem =
 export type ListPrimaryIpsActionsRequestSortList = Array<
   ListPrimaryIpsActionsRequestSortItem | (string & {})
 >;
-const ListPrimaryIpsActionsRequestSortList =
-  ListPrimaryIpActionsRequestSortList as any as S.Schema<ListPrimaryIpsActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListPrimaryIpsActionsRequestStatusItem = "running" | "success" | "error";
 export type ListPrimaryIpsActionsRequestStatusList = Array<
   ListPrimaryIpsActionsRequestStatusItem | (string & {})
 >;
-const ListPrimaryIpsActionsRequestStatusList =
-  ListPrimaryIpActionsRequestSortList as any as S.Schema<ListPrimaryIpsActionsRequestStatusList>;
-
 export interface ListPrimaryIpsActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListPrimaryIpsActionsRequestIdList;
@@ -442,23 +294,13 @@ export interface ListPrimaryIpsActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListPrimaryIpsActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListPrimaryIpsActionsRequest>;
-
 /** Status of the Action. */
 export type ListPrimaryIpsActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListPrimaryIpsActionsResponseActionsItemStatus = S.String;
-
 export type ListPrimaryIpsActionsResponseActionsItemResourcesItem =
   AssignPrimaryIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListPrimaryIpsActionsResponseActionsItemResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const ListPrimaryIpsActionsResponseActionsItemResourcesList =
-  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<ListPrimaryIpsActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListPrimaryIpsActionsResponseActionsItemError = AssignPrimaryIpResponseActionError;
 export interface ListPrimaryIpsActionsResponseActionsItem {
@@ -479,18 +321,8 @@ export interface ListPrimaryIpsActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const ListPrimaryIpsActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListPrimaryIpsActionsResponseActionsItem>;
-
 export type ListPrimaryIpsActionsResponseActionsList =
   Array<ListPrimaryIpsActionsResponseActionsItem>;
-const ListPrimaryIpsActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListPrimaryIpsActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListPrimaryIpsActionsResponseMetaPagination =
   ListPrimaryIpActionsResponseMetaPagination;
@@ -499,32 +331,17 @@ export interface ListPrimaryIpsActionsResponse {
   actions: ListPrimaryIpsActionsResponseActionsList;
   meta: ListPrimaryIpActionsResponseMeta;
 }
-const ListPrimaryIpsActionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListPrimaryIpsActionsResponse>;
-
 export interface UnassignPrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
 }
-const UnassignPrimaryIpRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UnassignPrimaryIpRequest>;
-
 /** Status of the Action. */
 export type UnassignPrimaryIpResponseActionStatus = "running" | "success" | "error";
-const UnassignPrimaryIpResponseActionStatus = S.String;
-
 export type UnassignPrimaryIpResponseActionResourcesItem =
   AssignPrimaryIpResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type UnassignPrimaryIpResponseActionResourcesList =
   Array<AssignPrimaryIpResponseActionResourcesItem>;
-const UnassignPrimaryIpResponseActionResourcesList =
-  AssignPrimaryIpResponseActionResourcesList as any as S.Schema<UnassignPrimaryIpResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type UnassignPrimaryIpResponseActionError = AssignPrimaryIpResponseActionError;
 export interface UnassignPrimaryIpResponseAction {
@@ -545,19 +362,9 @@ export interface UnassignPrimaryIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AssignPrimaryIpResponseActionError | null;
 }
-const UnassignPrimaryIpResponseAction = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UnassignPrimaryIpResponseAction>;
-
 export interface UnassignPrimaryIpResponse {
   action: UnassignPrimaryIpResponseAction;
 }
-const UnassignPrimaryIpResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UnassignPrimaryIpResponse>;
-
 export type AssignPrimaryIpError = HetznerOpError;
 /** Assign a Primary IP to a resource Assign a [Primary IP](#tag/primary-ips) to a resource. A [Server](#tag/servers) can only have one [Primary IP](#tag/primary-ips) of type `ipv4` and one of type `ipv6` assigned. If you need more IPs use [Floating IPs](#tag/floating-ips). A [Server](#tag/servers) must be powered off (status `off`) in order for this operation to succeed. #### Operation specific errors */
 export const assignPrimaryIp: API.OperationMethod<
@@ -566,8 +373,8 @@ export const assignPrimaryIp: API.OperationMethod<
   AssignPrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssignPrimaryIpRequest,
-  output: AssignPrimaryIpResponse,
+  input: __S(0) as any as S.Schema<AssignPrimaryIpRequest>,
+  output: __S(5) as any as S.Schema<AssignPrimaryIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -581,8 +388,8 @@ export const changePrimaryIpDnsPtr: API.OperationMethod<
   ChangePrimaryIpDnsPtrError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangePrimaryIpDnsPtrRequest,
-  output: ChangePrimaryIpDnsPtrResponse,
+  input: __S(6) as any as S.Schema<ChangePrimaryIpDnsPtrRequest>,
+  output: __S(8) as any as S.Schema<ChangePrimaryIpDnsPtrResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -596,8 +403,8 @@ export const changePrimaryIpProtection: API.OperationMethod<
   ChangePrimaryIpProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangePrimaryIpProtectionRequest,
-  output: ChangePrimaryIpProtectionResponse,
+  input: __S(9) as any as S.Schema<ChangePrimaryIpProtectionRequest>,
+  output: __S(11) as any as S.Schema<ChangePrimaryIpProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -611,8 +418,8 @@ export const getPrimaryIpsAction: API.OperationMethod<
   GetPrimaryIpsActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrimaryIpsActionRequest,
-  output: GetPrimaryIpsActionResponse,
+  input: __S(12) as any as S.Schema<GetPrimaryIpsActionRequest>,
+  output: __S(14) as any as S.Schema<GetPrimaryIpsActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -628,8 +435,8 @@ export const listPrimaryIpActions: API.PaginatedOperationMethod<
   ListPrimaryIpActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPrimaryIpActionsRequest,
-    output: ListPrimaryIpActionsResponse,
+    input: __S(16) as any as S.Schema<ListPrimaryIpActionsRequest>,
+    output: __S(21) as any as S.Schema<ListPrimaryIpActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -654,8 +461,8 @@ export const listPrimaryIpsActions: API.PaginatedOperationMethod<
   ListPrimaryIpsActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPrimaryIpsActionsRequest,
-    output: ListPrimaryIpsActionsResponse,
+    input: __S(23) as any as S.Schema<ListPrimaryIpsActionsRequest>,
+    output: __S(26) as any as S.Schema<ListPrimaryIpsActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -678,8 +485,8 @@ export const unassignPrimaryIp: API.OperationMethod<
   UnassignPrimaryIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnassignPrimaryIpRequest,
-  output: UnassignPrimaryIpResponse,
+  input: __S(27) as any as S.Schema<UnassignPrimaryIpRequest>,
+  output: __S(29) as any as S.Schema<UnassignPrimaryIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -692,7 +499,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          assignee_type: AssignPrimaryIpRequestAssigneeType,
+          assignee_type: S.String,
           assignee_id: S.Number,
         }).pipe(T.Http({ method: "POST", uri: "/primary_ips/{id}/actions/assign", code: 200 })),
       ).annotate({ identifier: "AssignPrimaryIpRequest" });
@@ -706,7 +513,7 @@ function __c0(j: number): any {
         identifier: "AssignPrimaryIpResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(AssignPrimaryIpResponseActionResourcesItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -721,12 +528,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: AssignPrimaryIpResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: AssignPrimaryIpResponseActionResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "AssignPrimaryIpResponseAction",
@@ -734,7 +541,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: AssignPrimaryIpResponseAction,
+          action: __S(4),
         }),
       ).annotate({ identifier: "AssignPrimaryIpResponse" });
     case 6:
@@ -754,12 +561,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangePrimaryIpDnsPtrResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangePrimaryIpDnsPtrResponseActionResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ChangePrimaryIpDnsPtrResponseAction",
@@ -771,7 +578,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: ChangePrimaryIpDnsPtrResponseAction,
+          action: __S(7),
         }),
       ).annotate({
         identifier: "ChangePrimaryIpDnsPtrResponse",
@@ -792,12 +599,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangePrimaryIpProtectionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangePrimaryIpProtectionResponseActionResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ChangePrimaryIpProtectionResponseAction",
@@ -805,7 +612,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: ChangePrimaryIpProtectionResponseAction,
+          action: __S(10),
         }),
       ).annotate({
         identifier: "ChangePrimaryIpProtectionResponse",
@@ -823,12 +630,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: GetPrimaryIpsActionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: GetPrimaryIpsActionResponseActionResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "GetPrimaryIpsActionResponseAction",
@@ -836,13 +643,13 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: GetPrimaryIpsActionResponseAction,
+          action: __S(13),
         }),
       ).annotate({
         identifier: "GetPrimaryIpsActionResponse",
       });
     case 7:
-      return S.Array(ListPrimaryIpActionsRequestSortItem);
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -851,8 +658,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(ListPrimaryIpActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListPrimaryIpActionsRequestStatusList.pipe(T.Query())),
+          sort: S.optional(__S(15).pipe(T.Query())),
+          status: S.optional(__S(15).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/primary_ips/{id}/actions", code: 200 })),
@@ -864,18 +671,18 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListPrimaryIpActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListPrimaryIpActionsResponseActionsItemResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ListPrimaryIpActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(ListPrimaryIpActionsResponseActionsItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -892,7 +699,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListPrimaryIpActionsResponseMetaPagination,
+          pagination: __S(19),
         }),
       ).annotate({
         identifier: "ListPrimaryIpActionsResponseMeta",
@@ -900,8 +707,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: ListPrimaryIpActionsResponseActionsList,
-          meta: ListPrimaryIpActionsResponseMeta,
+          actions: __S(18),
+          meta: __S(20),
         }),
       ).annotate({
         identifier: "ListPrimaryIpActionsResponse",
@@ -911,9 +718,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(ListPrimaryIpsActionsRequestIdList.pipe(T.Query())),
-          sort: S.optional(ListPrimaryIpsActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListPrimaryIpsActionsRequestStatusList.pipe(T.Query())),
+          id: S.optional(__S(22).pipe(T.Query())),
+          sort: S.optional(__S(15).pipe(T.Query())),
+          status: S.optional(__S(15).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/primary_ips/actions", code: 200 })),
@@ -929,23 +736,23 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListPrimaryIpsActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListPrimaryIpsActionsResponseActionsItemResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ListPrimaryIpsActionsResponseActionsItem",
       });
     case 1:
-      return S.Array(ListPrimaryIpsActionsResponseActionsItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: ListPrimaryIpsActionsResponseActionsList,
-          meta: ListPrimaryIpActionsResponseMeta,
+          actions: __S(25),
+          meta: __S(20),
         }),
       ).annotate({
         identifier: "ListPrimaryIpsActionsResponse",
@@ -961,12 +768,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: UnassignPrimaryIpResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: UnassignPrimaryIpResponseActionResourcesList,
-          error: S.NullOr(AssignPrimaryIpResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "UnassignPrimaryIpResponseAction",
@@ -974,10 +781,27 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: UnassignPrimaryIpResponseAction,
+          action: __S(28),
         }),
       ).annotate({
         identifier: "UnassignPrimaryIpResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

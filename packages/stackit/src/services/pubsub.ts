@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -56,19 +58,13 @@ export class UnprocessableEntity
   ) {}
 
 export type CreateSubscriptionRequestRegionId = "eu01";
-const CreateSubscriptionRequestRegionId = S.String;
-
 /** Labels are key-value pairs used to group and organize subsets of resources. **Key constraints:** - May contain an optional domain prefix separated by a slash (`/`). - The domain prefix must be less than or equal to 250 characters and a valid DNS subdomain containing only lowercase alphanumerics (`[a-z0-9]`) and dashes (`-`), separated by dots (`.`). - The name part (excluding the domain prefix) must be between 1 and 63 characters long. - The name part must begin and end with an alphanumeric character (`[a-z0-9A-Z]`). - The name part may contain dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics in between. - Keys starting with the prefix `stackit-` or having a domain prefix of `stackit.cloud` (including its subdomains, e.g., `*.stackit.cloud/`) are reserved for system use. **Value constraints:** - Must be less than or equal to 63 characters long (can be empty). - Must begin and end with an alphanumeric character (`[a-z0-9A-Z]`) if not empty. - May contain dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics in between. **Count constraint:** - A maximum of 64 labels can be applied per resource. Restricted labels are excluded from this count. */
 export type Labels = { [key: string]: string | null | undefined };
-const Labels = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Labels>;
-
 /** Configuration settings for the subscription. */
 export interface SubscriptionSettings {
   /** The maximum amount of time the system waits for a message acknowledgment. If a message is not acknowledged within this window, it will be redelivered. **Format:** Must be a duration string consisting of a number (integer or decimal) followed by a unit ('s', 'm', or 'h'). **Constraints:** - **Minimum:** "1s" - **Maximum:** "168h" (7 days) */
   ackDeadline?: string;
 }
-const SubscriptionSettings = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SubscriptionSettings>;
-
 export interface CreateSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -83,15 +79,8 @@ export interface CreateSubscriptionRequest {
   labels?: Labels;
   settings?: SubscriptionSettings;
 }
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateSubscriptionRequest>;
-
 /** The current state of the resource. */
 export type SubscriptionResponseState = "reconciling" | "active" | "deleting";
-const SubscriptionResponseState = S.String;
-
 export interface SubscriptionResponse {
   /** The point in time the resource was created. */
   createTime: string;
@@ -108,15 +97,9 @@ export interface SubscriptionResponse {
   /** The id of the topic to which the subscription belongs. */
   topicId: string;
 }
-const SubscriptionResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SubscriptionResponse>;
-
 export type CreateTopicRequestRegionId = "eu01";
-const CreateTopicRequestRegionId = S.String;
-
 /** Whitelist of IPs in CIDR notation that can access the topic and its underlying subscriptions. */
 export type TopicSettingsAclList = Array<string>;
-const TopicSettingsAclList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TopicSettingsAclList>;
-
 /** Configuration settings for the topic. */
 export interface TopicSettings {
   /** Whitelist of IPs in CIDR notation that can access the topic and its underlying subscriptions. */
@@ -128,8 +111,6 @@ export interface TopicSettings {
   /** Enables or disables sending of service logs for the topic. */
   serviceLogs?: boolean;
 }
-const TopicSettings = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TopicSettings>;
-
 export interface CreateTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -142,12 +123,8 @@ export interface CreateTopicRequest {
   labels?: Labels;
   settings?: TopicSettings;
 }
-const CreateTopicRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateTopicRequest>;
-
 /** The current state of the resource. */
 export type TopicResponseState = "reconciling" | "active" | "deleting";
-const TopicResponseState = S.String;
-
 export interface TopicResponse {
   /** The point in time the resource was created. */
   createTime: string;
@@ -164,11 +141,7 @@ export interface TopicResponse {
   /** The URI for reaching the resource. */
   uri?: string;
 }
-const TopicResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TopicResponse>;
-
 export type DeleteSubscriptionRequestRegionId = "eu01";
-const DeleteSubscriptionRequestRegionId = S.String;
-
 export interface DeleteSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -181,20 +154,8 @@ export interface DeleteSubscriptionRequest {
   /** If true, deletes the topic and all its active subscriptions (cascading delete). If false (default), the operation returns a 409 conflict if active subscriptions exist. */
   force?: boolean;
 }
-const DeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteSubscriptionRequest>;
-
 export interface DeleteSubscriptionResponse {}
-const DeleteSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteSubscriptionResponse>;
-
 export type DeleteTopicRequestRegionId = "eu01";
-const DeleteTopicRequestRegionId = S.String;
-
 export interface DeleteTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -205,14 +166,8 @@ export interface DeleteTopicRequest {
   /** If true, deletes the topic and all its active subscriptions (cascading delete). If false (default), the operation returns a 409 conflict if active subscriptions exist. */
   force?: boolean;
 }
-const DeleteTopicRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteTopicRequest>;
-
 export interface DeleteTopicResponse {}
-const DeleteTopicResponse = DeleteSubscriptionResponse as any as S.Schema<DeleteTopicResponse>;
-
 export type GetSubscriptionRequestRegionId = "eu01";
-const GetSubscriptionRequestRegionId = S.String;
-
 export interface GetSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -223,14 +178,7 @@ export interface GetSubscriptionRequest {
   /** The subscription UUID. */
   subscriptionId: string;
 }
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 export type GetTopicRequestRegionId = "eu01";
-const GetTopicRequestRegionId = S.String;
-
 export interface GetTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -239,11 +187,7 @@ export interface GetTopicRequest {
   /** The topic UUID. */
   topicId: string;
 }
-const GetTopicRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetTopicRequest>;
-
 export type GrantSubscriptionSubscriberAccessRequestRegionId = "eu01";
-const GrantSubscriptionSubscriberAccessRequestRegionId = S.String;
-
 export interface GrantSubscriptionSubscriberAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -256,20 +200,8 @@ export interface GrantSubscriptionSubscriberAccessRequest {
   /** A single RFC 5322 compliant email address. */
   emailAddress: string;
 }
-const GrantSubscriptionSubscriberAccessRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GrantSubscriptionSubscriberAccessRequest>;
-
 export interface GrantSubscriptionSubscriberAccessResponse {}
-const GrantSubscriptionSubscriberAccessResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GrantSubscriptionSubscriberAccessResponse>;
-
 export type GrantTopicPublisherAccessRequestRegionId = "eu01";
-const GrantTopicPublisherAccessRequestRegionId = S.String;
-
 export interface GrantTopicPublisherAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -280,18 +212,8 @@ export interface GrantTopicPublisherAccessRequest {
   /** A single RFC 5322 compliant email address. */
   emailAddress: string;
 }
-const GrantTopicPublisherAccessRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GrantTopicPublisherAccessRequest>;
-
 export interface GrantTopicPublisherAccessResponse {}
-const GrantTopicPublisherAccessResponse =
-  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<GrantTopicPublisherAccessResponse>;
-
 export type ListSubscriptionsRequestRegionId = "eu01";
-const ListSubscriptionsRequestRegionId = S.String;
-
 export interface ListSubscriptionsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -306,30 +228,13 @@ export interface ListSubscriptionsRequest {
   /** Supply a query string to filter the results. */
   query?: string;
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListSubscriptionsRequest>;
-
 export type ListSubscriptionsResponseSubscriptionsList = Array<SubscriptionResponse>;
-const ListSubscriptionsResponseSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListSubscriptionsResponseSubscriptionsList>;
-
 export interface ListSubscriptionsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
   subscriptions: ListSubscriptionsResponseSubscriptionsList;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export type ListSubscriptionSubscribersRequestRegionId = "eu01";
-const ListSubscriptionSubscribersRequestRegionId = S.String;
-
 export interface ListSubscriptionSubscribersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -340,26 +245,11 @@ export interface ListSubscriptionSubscribersRequest {
   /** The subscription UUID. */
   subscriptionId: string;
 }
-const ListSubscriptionSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListSubscriptionSubscribersRequest>;
-
 export type ListEmailAddressesResponseEmailAddressesList = Array<string>;
-const ListEmailAddressesResponseEmailAddressesList =
-  TopicSettingsAclList as any as S.Schema<ListEmailAddressesResponseEmailAddressesList>;
-
 export interface ListEmailAddressesResponse {
   emailAddresses: ListEmailAddressesResponseEmailAddressesList;
 }
-const ListEmailAddressesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListEmailAddressesResponse>;
-
 export type ListTopicPublishersRequestRegionId = "eu01";
-const ListTopicPublishersRequestRegionId = S.String;
-
 export interface ListTopicPublishersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -368,14 +258,7 @@ export interface ListTopicPublishersRequest {
   /** The topic UUID. */
   topicId: string;
 }
-const ListTopicPublishersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListTopicPublishersRequest>;
-
 export type ListTopicsRequestRegionId = "eu01";
-const ListTopicsRequestRegionId = S.String;
-
 export interface ListTopicsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -388,24 +271,13 @@ export interface ListTopicsRequest {
   /** Supply a query string to filter the results. */
   query?: string;
 }
-const ListTopicsRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListTopicsRequest>;
-
 export type ListTopicsResponseTopicsList = Array<TopicResponse>;
-const ListTopicsResponseTopicsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListTopicsResponseTopicsList>;
-
 export interface ListTopicsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
   topics: ListTopicsResponseTopicsList;
 }
-const ListTopicsResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListTopicsResponse>;
-
 export type RevokeSubscriptionSubscriberAccessRequestRegionId = "eu01";
-const RevokeSubscriptionSubscriberAccessRequestRegionId = S.String;
-
 export interface RevokeSubscriptionSubscriberAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -416,18 +288,8 @@ export interface RevokeSubscriptionSubscriberAccessRequest {
   /** The subscription UUID. */
   subscriptionId: string;
 }
-const RevokeSubscriptionSubscriberAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<RevokeSubscriptionSubscriberAccessRequest>;
-
 export interface RevokeSubscriptionSubscriberAccessResponse {}
-const RevokeSubscriptionSubscriberAccessResponse =
-  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<RevokeSubscriptionSubscriberAccessResponse>;
-
 export type RevokeTopicPublisherAccessRequestRegionId = "eu01";
-const RevokeTopicPublisherAccessRequestRegionId = S.String;
-
 export interface RevokeTopicPublisherAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -436,23 +298,10 @@ export interface RevokeTopicPublisherAccessRequest {
   /** The topic UUID. */
   topicId: string;
 }
-const RevokeTopicPublisherAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<RevokeTopicPublisherAccessRequest>;
-
 export interface RevokeTopicPublisherAccessResponse {}
-const RevokeTopicPublisherAccessResponse =
-  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<RevokeTopicPublisherAccessResponse>;
-
 export type UpdatePublisherAccessRequestRegionId = "eu01";
-const UpdatePublisherAccessRequestRegionId = S.String;
-
 /** A list of valid subscriber email addresses. */
 export type UpdatePublisherAccessRequestEmailAddressesList = Array<string>;
-const UpdatePublisherAccessRequestEmailAddressesList =
-  TopicSettingsAclList as any as S.Schema<UpdatePublisherAccessRequestEmailAddressesList>;
-
 export interface UpdatePublisherAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -463,18 +312,8 @@ export interface UpdatePublisherAccessRequest {
   /** A list of valid subscriber email addresses. */
   emailAddresses: UpdatePublisherAccessRequestEmailAddressesList;
 }
-const UpdatePublisherAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UpdatePublisherAccessRequest>;
-
 export interface UpdatePublisherAccessResponse {}
-const UpdatePublisherAccessResponse =
-  DeleteSubscriptionResponse as any as S.Schema<UpdatePublisherAccessResponse>;
-
 export type UpdateSubscriptionRequestRegionId = "eu01";
-const UpdateSubscriptionRequestRegionId = S.String;
-
 export interface UpdateSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -491,23 +330,10 @@ export interface UpdateSubscriptionRequest {
   labels?: Labels;
   settings?: SubscriptionSettings;
 }
-const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UpdateSubscriptionRequest>;
-
 export interface UpdateSubscriptionResponse {}
-const UpdateSubscriptionResponse =
-  DeleteSubscriptionResponse as any as S.Schema<UpdateSubscriptionResponse>;
-
 export type UpdateSubscriptionSubscriberAccessRequestRegionId = "eu01";
-const UpdateSubscriptionSubscriberAccessRequestRegionId = S.String;
-
 /** A list of valid subscriber email addresses. */
 export type UpdateSubscriptionSubscriberAccessRequestEmailAddressesList = Array<string>;
-const UpdateSubscriptionSubscriberAccessRequestEmailAddressesList =
-  TopicSettingsAclList as any as S.Schema<UpdateSubscriptionSubscriberAccessRequestEmailAddressesList>;
-
 export interface UpdateSubscriptionSubscriberAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -520,18 +346,8 @@ export interface UpdateSubscriptionSubscriberAccessRequest {
   /** A list of valid subscriber email addresses. */
   emailAddresses: UpdateSubscriptionSubscriberAccessRequestEmailAddressesList;
 }
-const UpdateSubscriptionSubscriberAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateSubscriptionSubscriberAccessRequest>;
-
 export interface UpdateSubscriptionSubscriberAccessResponse {}
-const UpdateSubscriptionSubscriberAccessResponse =
-  GrantSubscriptionSubscriberAccessResponse as any as S.Schema<UpdateSubscriptionSubscriberAccessResponse>;
-
 export type UpdateTopicRequestRegionId = "eu01";
-const UpdateTopicRequestRegionId = S.String;
-
 export interface UpdateTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -546,11 +362,7 @@ export interface UpdateTopicRequest {
   labels?: Labels;
   settings?: TopicSettings;
 }
-const UpdateTopicRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UpdateTopicRequest>;
-
 export interface UpdateTopicResponse {}
-const UpdateTopicResponse = DeleteSubscriptionResponse as any as S.Schema<UpdateTopicResponse>;
-
 export type CreateSubscriptionError =
   | BadRequest
   | Forbidden
@@ -565,8 +377,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: SubscriptionResponse,
+  input: __S(2) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(3) as any as S.Schema<SubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -580,8 +392,8 @@ export const createTopic: API.OperationMethod<
   CreateTopicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTopicRequest,
-  output: TopicResponse,
+  input: __S(6) as any as S.Schema<CreateTopicRequest>,
+  output: __S(7) as any as S.Schema<TopicResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -595,8 +407,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRequest,
-  output: DeleteSubscriptionResponse,
+  input: __S(8) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(9) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -615,8 +427,8 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTopicRequest,
-  output: DeleteTopicResponse,
+  input: __S(10) as any as S.Schema<DeleteTopicRequest>,
+  output: __S(9) as any as S.Schema<DeleteTopicResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -630,8 +442,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRequest,
-  output: SubscriptionResponse,
+  input: __S(11) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(3) as any as S.Schema<SubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -645,8 +457,8 @@ export const getTopic: API.OperationMethod<
   GetTopicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTopicRequest,
-  output: TopicResponse,
+  input: __S(12) as any as S.Schema<GetTopicRequest>,
+  output: __S(7) as any as S.Schema<TopicResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -665,8 +477,8 @@ export const grantSubscriptionSubscriberAccess: API.OperationMethod<
   GrantSubscriptionSubscriberAccessError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrantSubscriptionSubscriberAccessRequest,
-  output: GrantSubscriptionSubscriberAccessResponse,
+  input: __S(13) as any as S.Schema<GrantSubscriptionSubscriberAccessRequest>,
+  output: __S(14) as any as S.Schema<GrantSubscriptionSubscriberAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -685,8 +497,8 @@ export const grantTopicPublisherAccess: API.OperationMethod<
   GrantTopicPublisherAccessError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GrantTopicPublisherAccessRequest,
-  output: GrantTopicPublisherAccessResponse,
+  input: __S(15) as any as S.Schema<GrantTopicPublisherAccessRequest>,
+  output: __S(14) as any as S.Schema<GrantTopicPublisherAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -700,8 +512,8 @@ export const listSubscriptions: API.OperationMethod<
   ListSubscriptionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
+  input: __S(16) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(18) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -715,8 +527,8 @@ export const listSubscriptionSubscribers: API.OperationMethod<
   ListSubscriptionSubscribersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionSubscribersRequest,
-  output: ListEmailAddressesResponse,
+  input: __S(19) as any as S.Schema<ListSubscriptionSubscribersRequest>,
+  output: __S(20) as any as S.Schema<ListEmailAddressesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -730,8 +542,8 @@ export const listTopicPublishers: API.OperationMethod<
   ListTopicPublishersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTopicPublishersRequest,
-  output: ListEmailAddressesResponse,
+  input: __S(21) as any as S.Schema<ListTopicPublishersRequest>,
+  output: __S(20) as any as S.Schema<ListEmailAddressesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -745,8 +557,8 @@ export const listTopics: API.OperationMethod<
   ListTopicsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTopicsRequest,
-  output: ListTopicsResponse,
+  input: __S(22) as any as S.Schema<ListTopicsRequest>,
+  output: __S(24) as any as S.Schema<ListTopicsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -765,8 +577,8 @@ export const revokeSubscriptionSubscriberAccess: API.OperationMethod<
   RevokeSubscriptionSubscriberAccessError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeSubscriptionSubscriberAccessRequest,
-  output: RevokeSubscriptionSubscriberAccessResponse,
+  input: __S(25) as any as S.Schema<RevokeSubscriptionSubscriberAccessRequest>,
+  output: __S(14) as any as S.Schema<RevokeSubscriptionSubscriberAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -785,8 +597,8 @@ export const revokeTopicPublisherAccess: API.OperationMethod<
   RevokeTopicPublisherAccessError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeTopicPublisherAccessRequest,
-  output: RevokeTopicPublisherAccessResponse,
+  input: __S(26) as any as S.Schema<RevokeTopicPublisherAccessRequest>,
+  output: __S(14) as any as S.Schema<RevokeTopicPublisherAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -805,8 +617,8 @@ export const updatePublisherAccess: API.OperationMethod<
   UpdatePublisherAccessError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePublisherAccessRequest,
-  output: UpdatePublisherAccessResponse,
+  input: __S(27) as any as S.Schema<UpdatePublisherAccessRequest>,
+  output: __S(9) as any as S.Schema<UpdatePublisherAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -826,8 +638,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionRequest,
-  output: UpdateSubscriptionResponse,
+  input: __S(28) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(9) as any as S.Schema<UpdateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -846,8 +658,8 @@ export const updateSubscriptionSubscriberAccess: API.OperationMethod<
   UpdateSubscriptionSubscriberAccessError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionSubscriberAccessRequest,
-  output: UpdateSubscriptionSubscriberAccessResponse,
+  input: __S(29) as any as S.Schema<UpdateSubscriptionSubscriberAccessRequest>,
+  output: __S(14) as any as S.Schema<UpdateSubscriptionSubscriberAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -867,8 +679,8 @@ export const updateTopic: API.OperationMethod<
   UpdateTopicError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTopicRequest,
-  output: UpdateTopicResponse,
+  input: __S(30) as any as S.Schema<UpdateTopicRequest>,
+  output: __S(9) as any as S.Schema<UpdateTopicResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -889,12 +701,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateSubscriptionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          labels: S.optional(Labels),
-          settings: S.optional(SubscriptionSettings),
+          labels: S.optional(__S(0)),
+          settings: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -913,9 +725,9 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          labels: S.optional(Labels),
-          settings: S.optional(SubscriptionSettings),
-          state: SubscriptionResponseState,
+          labels: S.optional(__S(0)),
+          settings: S.optional(__S(1)),
+          state: S.String,
           topicId: S.String,
         }),
       ).annotate({ identifier: "SubscriptionResponse" });
@@ -924,7 +736,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          acl: S.optional(TopicSettingsAclList),
+          acl: S.optional(__S(4)),
           metrics: S.optional(S.Boolean),
           retention: S.optional(S.String),
           serviceLogs: S.optional(S.Boolean),
@@ -934,11 +746,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateTopicRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
-          labels: S.optional(Labels),
-          settings: S.optional(TopicSettings),
+          labels: S.optional(__S(0)),
+          settings: S.optional(__S(5)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -955,9 +767,9 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          labels: S.optional(Labels),
-          settings: S.optional(TopicSettings),
-          state: TopicResponseState,
+          labels: S.optional(__S(0)),
+          settings: S.optional(__S(5)),
+          state: S.String,
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "TopicResponse" });
@@ -969,7 +781,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteSubscriptionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
@@ -992,7 +804,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteTopicRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           force: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -1008,7 +820,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetSubscriptionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1024,7 +836,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetTopicRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1039,7 +851,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GrantSubscriptionSubscriberAccessRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
           emailAddress: S.String,
@@ -1062,7 +874,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GrantTopicPublisherAccessRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           emailAddress: S.String,
         }).pipe(
@@ -1084,7 +896,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListSubscriptionsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1099,12 +911,12 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
     case 1:
-      return S.Array(SubscriptionResponse);
+      return S.Array(__S(3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          subscriptions: ListSubscriptionsResponseSubscriptionsList,
+          subscriptions: __S(17),
         }),
       ).annotate({
         identifier: "ListSubscriptionsResponse",
@@ -1113,7 +925,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListSubscriptionSubscribersRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1130,7 +942,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          emailAddresses: ListEmailAddressesResponseEmailAddressesList,
+          emailAddresses: __S(4),
         }),
       ).annotate({
         identifier: "ListEmailAddressesResponse",
@@ -1139,7 +951,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListTopicPublishersRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1156,7 +968,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListTopicsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
@@ -1170,7 +982,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListTopicsRequest" });
     case 7:
-      return S.Array(TopicResponse);
+      return S.Array(__S(7));
   }
 }
 function __c3(j: number): any {
@@ -1179,14 +991,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          topics: ListTopicsResponseTopicsList,
+          topics: __S(23),
         }),
       ).annotate({ identifier: "ListTopicsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: RevokeSubscriptionSubscriberAccessRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1204,7 +1016,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: RevokeTopicPublisherAccessRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1221,9 +1033,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdatePublisherAccessRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
-          emailAddresses: UpdatePublisherAccessRequestEmailAddressesList,
+          emailAddresses: __S(4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1239,13 +1051,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdateSubscriptionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(Labels),
-          settings: S.optional(SubscriptionSettings),
+          labels: S.optional(__S(0)),
+          settings: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1261,10 +1073,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdateSubscriptionSubscriberAccessRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           subscriptionId: S.String.pipe(T.Label()),
-          emailAddresses: UpdateSubscriptionSubscriberAccessRequestEmailAddressesList,
+          emailAddresses: __S(4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1280,12 +1092,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: UpdateTopicRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           topicId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          labels: S.optional(Labels),
-          settings: S.optional(TopicSettings),
+          labels: S.optional(__S(0)),
+          settings: S.optional(__S(5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1295,5 +1107,22 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTopicRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

@@ -6,21 +6,15 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
 /** List of actions to check authorizations for */
 export type CheckIamAuthorizationRequestActionsList = Array<string>;
-const CheckIamAuthorizationRequestActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckIamAuthorizationRequestActionsList>;
-
 /** Resources on which accesses should be checked */
 export type CheckIamAuthorizationRequestResourceURNsList = Array<string>;
-const CheckIamAuthorizationRequestResourceURNsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<CheckIamAuthorizationRequestResourceURNsList>;
-
 export interface CheckIamAuthorizationRequest {
   /** Pagination cursor */
   xPaginationCursor?: string;
@@ -31,21 +25,10 @@ export interface CheckIamAuthorizationRequest {
   /** Resources on which accesses should be checked */
   resourceURNs: CheckIamAuthorizationRequestResourceURNsList;
 }
-const CheckIamAuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckIamAuthorizationRequest>;
-
 /** Authorized actions */
 export type IamAuthorizeBatchResponseAuthorizedActionsList = Array<string>;
-const IamAuthorizeBatchResponseAuthorizedActionsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeBatchResponseAuthorizedActionsList>;
-
 /** Unauthorized actions */
 export type IamAuthorizeBatchResponseUnauthorizedActionsList = Array<string>;
-const IamAuthorizeBatchResponseUnauthorizedActionsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeBatchResponseUnauthorizedActionsList>;
-
 /** Result of an authorization request */
 export interface IamAuthorizeBatchResponse {
   /** Authorized actions */
@@ -55,49 +38,20 @@ export interface IamAuthorizeBatchResponse {
   /** Unauthorized actions */
   unauthorizedActions?: IamAuthorizeBatchResponseUnauthorizedActionsList;
 }
-const IamAuthorizeBatchResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IamAuthorizeBatchResponse>;
-
 export type CheckIamAuthorizationResponseBodyList = Array<IamAuthorizeBatchResponse>;
-const CheckIamAuthorizationResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckIamAuthorizationResponseBodyList>;
-
 export type CheckIamAuthorizationResponse = CheckIamAuthorizationResponseBodyList;
-const CheckIamAuthorizationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CheckIamAuthorizationResponse>;
-
 /** List of actions to check authorizations for */
 export type CheckIamResourceAuthorizationRequestActionsList = Array<string>;
-const CheckIamResourceAuthorizationRequestActionsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<CheckIamResourceAuthorizationRequestActionsList>;
-
 export interface CheckIamResourceAuthorizationRequest {
   /** ResourceURN */
   resourceURN: string;
   /** List of actions to check authorizations for */
   actions: CheckIamResourceAuthorizationRequestActionsList;
 }
-const CheckIamResourceAuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CheckIamResourceAuthorizationRequest>;
-
 /** Authorized actions */
 export type IamAuthorizeResponseAuthorizedActionsList = Array<string>;
-const IamAuthorizeResponseAuthorizedActionsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeResponseAuthorizedActionsList>;
-
 /** Unauthorized actions */
 export type IamAuthorizeResponseUnauthorizedActionsList = Array<string>;
-const IamAuthorizeResponseUnauthorizedActionsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamAuthorizeResponseUnauthorizedActionsList>;
-
 /** Result of an authorization request */
 export interface IamAuthorizeResponse {
   /** Authorized actions */
@@ -105,19 +59,12 @@ export interface IamAuthorizeResponse {
   /** Unauthorized actions */
   unauthorizedActions?: IamAuthorizeResponseUnauthorizedActionsList;
 }
-const IamAuthorizeResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<IamAuthorizeResponse>;
-
 export interface CreateIamLogSubscriptionRequest {
   /** Log kind name to subscribe to */
   kind: string;
   /** Customer log stream ID */
   streamId: string;
 }
-const CreateIamLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateIamLogSubscriptionRequest>;
-
 /** Asynchronous operation after subscribing or unsubscribing to a resource logs */
 export interface DbaasLogsLogSubscriptionResponse {
   /** Identifier of the operation */
@@ -125,20 +72,10 @@ export interface DbaasLogsLogSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
-const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DbaasLogsLogSubscriptionResponse>;
-
 export interface CreateIamLogUrlRequest {
   /** Log kind name */
   kind: string;
 }
-const CreateIamLogUrlRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateIamLogUrlRequest>;
-
 /** Temporary url information */
 export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url expiration date */
@@ -146,35 +83,17 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DbaasLogsTemporaryLogsLink>;
-
 /** Action that can be allowed or denied on a resource */
 export interface IamPolicyAction {
   /** Name of the action */
   action: string;
 }
-const IamPolicyAction = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<IamPolicyAction>;
-
 /** List of allowed actions */
 export type IamPolicyPermissionsAllowList = Array<IamPolicyAction>;
-const IamPolicyPermissionsAllowList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IamPolicyPermissionsAllowList>;
-
 /** Actions to deny the access to */
 export type IamPolicyPermissionsDenyList = Array<IamPolicyAction>;
-const IamPolicyPermissionsDenyList =
-  IamPolicyPermissionsAllowList as any as S.Schema<IamPolicyPermissionsDenyList>;
-
 /** Actions to filter from the allowed list */
 export type IamPolicyPermissionsExceptList = Array<IamPolicyAction>;
-const IamPolicyPermissionsExceptList =
-  IamPolicyPermissionsAllowList as any as S.Schema<IamPolicyPermissionsExceptList>;
-
 /** Permissions included in a policy */
 export interface IamPolicyPermissions {
   /** List of allowed actions */
@@ -184,8 +103,6 @@ export interface IamPolicyPermissions {
   /** Actions to filter from the allowed list */
   except?: IamPolicyPermissionsExceptList | null;
 }
-const IamPolicyPermissions = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<IamPolicyPermissions>;
-
 export interface CreateIamPermissionsGroupRequest {
   /** Description of the permissions group */
   description: string;
@@ -194,11 +111,6 @@ export interface CreateIamPermissionsGroupRequest {
   /** Permissions granted when using this permissions group */
   permissions: IamPolicyPermissions;
 }
-const CreateIamPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateIamPermissionsGroupRequest>;
-
 /** Permissions group defines a re-usable set of permissions */
 export interface IamPermissionsGroup {
   /** Creation time */
@@ -218,26 +130,12 @@ export interface IamPermissionsGroup {
   /** Unique resource name used in policies to include this permissions group */
   urn?: string;
 }
-const IamPermissionsGroup = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<IamPermissionsGroup>;
-
 /** conditions */
 export type IamPolicyConditionConditionsList = Array<IamPolicyCondition>;
-const IamPolicyConditionConditionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IamPolicyConditionConditionsList>;
-
 /** Operator that can be used in order to restrict policy */
 export type IamPolicyConditionOperatorEnum = "AND" | "MATCH" | "NOT" | "OR";
-const IamPolicyConditionOperatorEnum = S.String;
-
 /** Conditions to apply */
 export type IamPolicyConditionValuesMap = { [key: string]: string | undefined };
-const IamPolicyConditionValuesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IamPolicyConditionValuesMap>;
-
 /** Condition included in a policy */
 export interface IamPolicyCondition {
   /** conditions */
@@ -247,47 +145,22 @@ export interface IamPolicyCondition {
   /** Conditions to apply */
   values?: IamPolicyConditionValuesMap | null;
 }
-const IamPolicyCondition = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IamPolicyCondition>;
-
 /** Recipients of the delegated resources */
 export type CreateIamPolicyRequestIdentitiesList = Array<string>;
-const CreateIamPolicyRequestIdentitiesList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<CreateIamPolicyRequestIdentitiesList>;
-
 /** Permissions group linked to a policy */
 export interface IamPolicyPermissionsGroupInput {
   /** URN of the permissions group */
   urn?: string;
 }
-const IamPolicyPermissionsGroupInput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IamPolicyPermissionsGroupInput>;
-
 /** Permissions groups accorded to the recipients on the given resources */
 export type CreateIamPolicyRequestPermissionsGroupsList = Array<IamPolicyPermissionsGroupInput>;
-const CreateIamPolicyRequestPermissionsGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateIamPolicyRequestPermissionsGroupsList>;
-
 /** Resource in a policy */
 export interface IamPolicyResourceInput {
   /** URN of the resource */
   urn: string;
 }
-const IamPolicyResourceInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IamPolicyResourceInput>;
-
 /** Resources to delegate */
 export type CreateIamPolicyRequestResourcesList = Array<IamPolicyResourceInput>;
-const CreateIamPolicyRequestResourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateIamPolicyRequestResourcesList>;
-
 export interface CreateIamPolicyRequest {
   /** Conditions restrict permissions following resources, date or customer's information */
   conditions?: IamPolicyCondition | null;
@@ -306,16 +179,8 @@ export interface CreateIamPolicyRequest {
   /** Resources to delegate */
   resources: CreateIamPolicyRequestResourcesList;
 }
-const CreateIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateIamPolicyRequest>;
-
 /** Recipients of the delegated resources */
 export type IamPolicyResponseIdentitiesList = Array<string>;
-const IamPolicyResponseIdentitiesList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamPolicyResponseIdentitiesList>;
-
 /** Permissions group linked to a policy */
 export interface IamPolicyPermissionsGroup {
   /** Name of the permissions group */
@@ -327,18 +192,8 @@ export interface IamPolicyPermissionsGroup {
   /** URN of the permissions group */
   urn?: string;
 }
-const IamPolicyPermissionsGroup = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IamPolicyPermissionsGroup>;
-
 /** Permissions groups accorded to the recipients on the given resources */
 export type IamPolicyResponsePermissionsGroupsList = Array<IamPolicyPermissionsGroup>;
-const IamPolicyResponsePermissionsGroupsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IamPolicyResponsePermissionsGroupsList>;
-
 /** Group defines a set of resources */
 export interface IamPolicyGroup {
   /** Unique identifier of the group */
@@ -348,13 +203,8 @@ export interface IamPolicyGroup {
   /** Whether you can add or remove resources */
   readOnly?: boolean;
 }
-const IamPolicyGroup = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<IamPolicyGroup>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamPolicySingleResourceTagsMap = { [key: string]: string | undefined };
-const IamPolicySingleResourceTagsMap =
-  IamPolicyConditionValuesMap as any as S.Schema<IamPolicySingleResourceTagsMap>;
-
 /** Single resource in a policy */
 export interface IamPolicySingleResource {
   /** Display name of the resource */
@@ -370,11 +220,6 @@ export interface IamPolicySingleResource {
   /** Resource type. All types can be retrieved at /reference/resource/type */
   type?: string;
 }
-const IamPolicySingleResource = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IamPolicySingleResource>;
-
 /** Resource in a policy */
 export interface IamPolicyResource {
   /** Group object, if resource is a group */
@@ -384,15 +229,8 @@ export interface IamPolicyResource {
   /** URN of the resource */
   urn: string;
 }
-const IamPolicyResource = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<IamPolicyResource>;
-
 /** Resources to delegate */
 export type IamPolicyResponseResourcesList = Array<IamPolicyResource>;
-const IamPolicyResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IamPolicyResponseResourcesList>;
-
 /** Policy definition */
 export interface IamPolicyResponse {
   /** Conditions restrict permissions following resources, date or customer's information */
@@ -422,8 +260,6 @@ export interface IamPolicyResponse {
   /** Last update time */
   updatedAt?: string | null;
 }
-const IamPolicyResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<IamPolicyResponse>;
-
 /** Resource is an entity standing for a product. It is used for right delegation */
 export interface IamGroupResourceInput {
   /** Unique identifier of the resource */
@@ -431,34 +267,16 @@ export interface IamGroupResourceInput {
   /** Unique resource name used in policies */
   urn?: string | null;
 }
-const IamGroupResourceInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IamGroupResourceInput>;
-
 /** Resources to add in the created group */
 export type CreateIamResourceGroupRequestResourcesList = Array<IamGroupResourceInput>;
-const CreateIamResourceGroupRequestResourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateIamResourceGroupRequestResourcesList>;
-
 export interface CreateIamResourceGroupRequest {
   /** Name of the group */
   name: string;
   /** Resources to add in the created group */
   resources?: CreateIamResourceGroupRequestResourcesList;
 }
-const CreateIamResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateIamResourceGroupRequest>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamGroupResourceTagsMap = { [key: string]: string | undefined };
-const IamGroupResourceTagsMap =
-  IamPolicyConditionValuesMap as any as S.Schema<IamGroupResourceTagsMap>;
-
 /** Resource is an entity standing for a product. It is used for right delegation */
 export interface IamGroupResource {
   /** Resource display name */
@@ -476,15 +294,8 @@ export interface IamGroupResource {
   /** Unique resource name used in policies */
   urn?: string | null;
 }
-const IamGroupResource = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<IamGroupResource>;
-
 /** Resources included in the group */
 export type IamGroupResponseResourcesList = Array<IamGroupResource>;
-const IamGroupResponseResourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IamGroupResponseResourcesList>;
-
 /** Group defines a set of resources */
 export interface IamGroupResponse {
   /** Creation time */
@@ -504,8 +315,6 @@ export interface IamGroupResponse {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamGroupResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<IamGroupResponse>;
-
 export interface CreateIamResourceTagRequest {
   /** ResourceURN */
   resourceURN: string;
@@ -514,93 +323,39 @@ export interface CreateIamResourceTagRequest {
   /** Resource tag value. It must comply with '^[a-zA-Z0-9_.:/=+@-]{0,256}\z' */
   value: string;
 }
-const CreateIamResourceTagRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateIamResourceTagRequest>;
-
 export interface CreateIamResourceTagResponse {}
-const CreateIamResourceTagResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateIamResourceTagResponse>;
-
 export interface DeleteIamLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-const DeleteIamLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteIamLogSubscriptionRequest>;
-
 export interface DeleteIamPermissionsGroupRequest {
   /** Permissions groupurn */
   permissionsGroupURN: string;
 }
-const DeleteIamPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeleteIamPermissionsGroupRequest>;
-
 export interface DeleteIamPermissionsGroupResponse {}
-const DeleteIamPermissionsGroupResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteIamPermissionsGroupResponse>;
-
 export interface DeleteIamPolicyRequest {
   /** Policy ID */
   policyId: string;
 }
-const DeleteIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteIamPolicyRequest>;
-
 export interface DeleteIamPolicyResponse {}
-const DeleteIamPolicyResponse =
-  CreateIamResourceTagResponse as any as S.Schema<DeleteIamPolicyResponse>;
-
 export interface DeleteIamResourceGroupRequest {
   /** Group ID */
   groupId: string;
 }
-const DeleteIamResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteIamResourceGroupRequest>;
-
 export interface DeleteIamResourceGroupResponse {}
-const DeleteIamResourceGroupResponse =
-  CreateIamResourceTagResponse as any as S.Schema<DeleteIamResourceGroupResponse>;
-
 export interface DeleteIamResourceTagRequest {
   /** ResourceURN */
   resourceURN: string;
   /** Key */
   key: string;
 }
-const DeleteIamResourceTagRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteIamResourceTagRequest>;
-
 export interface DeleteIamResourceTagResponse {}
-const DeleteIamResourceTagResponse =
-  CreateIamResourceTagResponse as any as S.Schema<DeleteIamResourceTagResponse>;
-
 export interface GetIamLogKindRequest {
   /** Name */
   name: string;
 }
-const GetIamLogKindRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetIamLogKindRequest>;
-
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-const DbaasLogsLogKindAdditionalReturnedFieldsList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
-
 /** Log kind */
 export interface DbaasLogsLogKind {
   /** List of additional log fields managed in this log kind */
@@ -616,17 +371,10 @@ export interface DbaasLogsLogKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
-const DbaasLogsLogKind = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DbaasLogsLogKind>;
-
 export interface GetIamLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-const GetIamLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetIamLogSubscriptionRequest>;
-
 /** Log subscription resource */
 export interface DbaasLogsLogSubscriptionResource {
   /** Name of subscribed resource */
@@ -634,11 +382,6 @@ export interface DbaasLogsLogSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
-const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DbaasLogsLogSubscriptionResource>;
-
 /** Log subscription */
 export interface DbaasLogsLogSubscription {
   /** Creation date of the subscription */
@@ -656,42 +399,22 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-const DbaasLogsLogSubscription = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DbaasLogsLogSubscription>;
-
 export interface GetIamPermissionsGroupRequest {
   /** Permissions groupurn */
   permissionsGroupURN: string;
 }
-const GetIamPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetIamPermissionsGroupRequest>;
-
 export interface GetIamPolicyRequest {
   /** Policy ID */
   policyId: string;
   /** Add extra information about resources in output */
   details?: boolean;
 }
-const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetIamPolicyRequest>;
-
 export interface GetIamResourceRequest {
   /** ResourceURN */
   resourceURN: string;
 }
-const GetIamResourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetIamResourceRequest>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceResourceTagsMap = { [key: string]: string | undefined };
-const IamResourceResourceTagsMap =
-  IamPolicyConditionValuesMap as any as S.Schema<IamResourceResourceTagsMap>;
-
 /** Resource is an entity standing for a product. It is used for right delegation */
 export interface IamResourceResource {
   /** Resource display name */
@@ -709,40 +432,20 @@ export interface IamResourceResource {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceResource = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<IamResourceResource>;
-
 export interface GetIamResourceGroupRequest {
   /** Group ID */
   groupId: string;
   /** Add extra information about resources in output */
   details?: boolean;
 }
-const GetIamResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetIamResourceGroupRequest>;
-
 export interface ListIamLogKindRequest {
   /** Pagination cursor */
   xPaginationCursor?: string;
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamLogKindRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListIamLogKindRequest>;
-
 export type ListIamLogKindResponseBodyList = Array<string>;
-const ListIamLogKindResponseBodyList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamLogKindResponseBodyList>;
-
 export type ListIamLogKindResponse = ListIamLogKindResponseBodyList;
-const ListIamLogKindResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListIamLogKindResponse>;
-
 export interface ListIamLogSubscriptionRequest {
   /** Filter on a specific kind (e.g., default) */
   kind?: string;
@@ -751,56 +454,19 @@ export interface ListIamLogSubscriptionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamLogSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListIamLogSubscriptionRequest>;
-
 export type ListIamLogSubscriptionResponseBodyList = Array<string>;
-const ListIamLogSubscriptionResponseBodyList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamLogSubscriptionResponseBodyList>;
-
 export type ListIamLogSubscriptionResponse = ListIamLogSubscriptionResponseBodyList;
-const ListIamLogSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListIamLogSubscriptionResponse>;
-
 export interface ListIamPermissionsGroupRequest {
   /** Pagination cursor */
   xPaginationCursor?: string;
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListIamPermissionsGroupRequest>;
-
 export type ListIamPermissionsGroupResponseBodyList = Array<IamPermissionsGroup>;
-const ListIamPermissionsGroupResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListIamPermissionsGroupResponseBodyList>;
-
 export type ListIamPermissionsGroupResponse = ListIamPermissionsGroupResponseBodyList;
-const ListIamPermissionsGroupResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListIamPermissionsGroupResponse>;
-
 export type ListIamPolicyRequestActionList = Array<string>;
-const ListIamPolicyRequestActionList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamPolicyRequestActionList>;
-
 export type ListIamPolicyRequestIdentityList = Array<string>;
-const ListIamPolicyRequestIdentityList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamPolicyRequestIdentityList>;
-
 export type ListIamPolicyRequestResourceURNList = Array<string>;
-const ListIamPolicyRequestResourceURNList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamPolicyRequestResourceURNList>;
-
 export interface ListIamPolicyRequest {
   /** Filter on policies embedding the given IAM action */
   action?: ListIamPolicyRequestActionList;
@@ -817,24 +483,9 @@ export interface ListIamPolicyRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamPolicyRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ListIamPolicyRequest>;
-
 export type ListIamPolicyResponseBodyList = Array<IamPolicyResponse>;
-const ListIamPolicyResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListIamPolicyResponseBodyList>;
-
 export type ListIamPolicyResponse = ListIamPolicyResponseBodyList;
-const ListIamPolicyResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListIamPolicyResponse>;
-
 export type ListIamReferenceActionRequestResourceTypeList = Array<string>;
-const ListIamReferenceActionRequestResourceTypeList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamReferenceActionRequestResourceTypeList>;
-
 export interface ListIamReferenceActionRequest {
   /** Filter actions for specific resource types */
   resourceType?: ListIamReferenceActionRequestResourceTypeList;
@@ -843,16 +494,8 @@ export interface ListIamReferenceActionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamReferenceActionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListIamReferenceActionRequest>;
-
 /** List of categories the action belongs to */
 export type IamReferenceActionCategoriesList = Array<string>;
-const IamReferenceActionCategoriesList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<IamReferenceActionCategoriesList>;
-
 /** Action that can be allowed or denied on a resource */
 export interface IamReferenceAction {
   /** Name of the action */
@@ -866,67 +509,25 @@ export interface IamReferenceAction {
   /** Resource type related to the action */
   resourceType?: string;
 }
-const IamReferenceAction = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<IamReferenceAction>;
-
 export type ListIamReferenceActionResponseBodyList = Array<IamReferenceAction>;
-const ListIamReferenceActionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListIamReferenceActionResponseBodyList>;
-
 export type ListIamReferenceActionResponse = ListIamReferenceActionResponseBodyList;
-const ListIamReferenceActionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListIamReferenceActionResponse>;
-
 export interface ListIamReferenceResourceTypeRequest {
   /** Pagination cursor */
   xPaginationCursor?: string;
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamReferenceResourceTypeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListIamReferenceResourceTypeRequest>;
-
 export type ListIamReferenceResourceTypeResponseBodyList = Array<string>;
 export type ListIamReferenceResourceTypeResponse = ListIamReferenceResourceTypeResponseBodyList;
-const ListIamReferenceResourceTypeResponse =
-  ListIamLogSubscriptionResponse as any as S.Schema<ListIamReferenceResourceTypeResponse>;
-
 export type ListIamResourceRequestResourceNameList = Array<string>;
-const ListIamResourceRequestResourceNameList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamResourceRequestResourceNameList>;
-
 export type ListIamResourceRequestResourceTypeList = Array<string>;
-const ListIamResourceRequestResourceTypeList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamResourceRequestResourceTypeList>;
-
 export type ListIamResourceRequestResourceURNList = Array<string>;
-const ListIamResourceRequestResourceURNList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<ListIamResourceRequestResourceURNList>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput =
-  CreateIamResourceTagResponse as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListIamResourceRequestTagsValueList = Array<IamResourceTagFilterInput>;
-const ListIamResourceRequestTagsValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListIamResourceRequestTagsValueList>;
-
 export type ListIamResourceRequestTagsMap = {
   [key: string]: ListIamResourceRequestTagsValueList | undefined;
 };
-const ListIamResourceRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListIamResourceRequestTagsMap>;
-
 export interface ListIamResourceRequest {
   /** Filter resources for specific resource names */
   resourceName?: ListIamResourceRequestResourceNameList;
@@ -941,23 +542,8 @@ export interface ListIamResourceRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamResourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListIamResourceRequest>;
-
 export type ListIamResourceResponseBodyList = Array<IamResourceResource>;
-const ListIamResourceResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListIamResourceResponseBodyList>;
-
 export type ListIamResourceResponse = ListIamResourceResponseBodyList;
-const ListIamResourceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListIamResourceResponse>;
-
 export interface ListIamResourceGroupRequest {
   /** Add extra information about resources in output */
   details?: boolean;
@@ -966,23 +552,8 @@ export interface ListIamResourceGroupRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-const ListIamResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListIamResourceGroupRequest>;
-
 export type ListIamResourceGroupResponseBodyList = Array<IamGroupResponse>;
-const ListIamResourceGroupResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListIamResourceGroupResponseBodyList>;
-
 export type ListIamResourceGroupResponse = ListIamResourceGroupResponseBodyList;
-const ListIamResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListIamResourceGroupResponse>;
-
 export interface PutIamPermissionsGroupRequest {
   /** Permissions groupurn */
   permissionsGroupURN: string;
@@ -993,26 +564,12 @@ export interface PutIamPermissionsGroupRequest {
   /** Permissions granted when using this permissions group */
   permissions: IamPolicyPermissions;
 }
-const PutIamPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<PutIamPermissionsGroupRequest>;
-
 /** Recipients of the delegated resources */
 export type PutIamPolicyRequestIdentitiesList = Array<string>;
-const PutIamPolicyRequestIdentitiesList =
-  CheckIamAuthorizationRequestActionsList as any as S.Schema<PutIamPolicyRequestIdentitiesList>;
-
 /** Permissions groups accorded to the recipients on the given resources */
 export type PutIamPolicyRequestPermissionsGroupsList = Array<IamPolicyPermissionsGroupInput>;
-const PutIamPolicyRequestPermissionsGroupsList =
-  CreateIamPolicyRequestPermissionsGroupsList as any as S.Schema<PutIamPolicyRequestPermissionsGroupsList>;
-
 /** Resources to delegate */
 export type PutIamPolicyRequestResourcesList = Array<IamPolicyResourceInput>;
-const PutIamPolicyRequestResourcesList =
-  CreateIamPolicyRequestResourcesList as any as S.Schema<PutIamPolicyRequestResourcesList>;
-
 export interface PutIamPolicyRequest {
   /** Policy ID */
   policyId: string;
@@ -1033,29 +590,16 @@ export interface PutIamPolicyRequest {
   /** Resources to delegate */
   resources: PutIamPolicyRequestResourcesList;
 }
-const PutIamPolicyRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<PutIamPolicyRequest>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type PutIamResourceRequestTagsMap = { [key: string]: string | undefined };
-const PutIamResourceRequestTagsMap =
-  IamPolicyConditionValuesMap as any as S.Schema<PutIamResourceRequestTagsMap>;
-
 export interface PutIamResourceRequest {
   /** ResourceURN */
   resourceURN: string;
   /** Resource tags. Tags that were internally computed are prefixed with ovh: */
   tags?: PutIamResourceRequestTagsMap | null;
 }
-const PutIamResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PutIamResourceRequest>;
-
 /** New list of resources of the group */
 export type PutIamResourceGroupRequestResourcesList = Array<IamGroupResourceInput>;
-const PutIamResourceGroupRequestResourcesList =
-  CreateIamResourceGroupRequestResourcesList as any as S.Schema<PutIamResourceGroupRequestResourcesList>;
-
 export interface PutIamResourceGroupRequest {
   /** Group ID */
   groupId: string;
@@ -1064,11 +608,6 @@ export interface PutIamResourceGroupRequest {
   /** New list of resources of the group */
   resources: PutIamResourceGroupRequestResourcesList;
 }
-const PutIamResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<PutIamResourceGroupRequest>;
-
 export type CheckIamAuthorizationError = OvhOpError;
 /** Validate your authorizations on given resources */
 export const checkIamAuthorization: API.OperationMethod<
@@ -1077,8 +616,8 @@ export const checkIamAuthorization: API.OperationMethod<
   CheckIamAuthorizationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckIamAuthorizationRequest,
-  output: CheckIamAuthorizationResponse,
+  input: __S(1) as any as S.Schema<CheckIamAuthorizationRequest>,
+  output: __S(4) as any as S.Schema<CheckIamAuthorizationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1092,8 +631,8 @@ export const checkIamResourceAuthorization: API.OperationMethod<
   CheckIamResourceAuthorizationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckIamResourceAuthorizationRequest,
-  output: IamAuthorizeResponse,
+  input: __S(5) as any as S.Schema<CheckIamResourceAuthorizationRequest>,
+  output: __S(6) as any as S.Schema<IamAuthorizeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1107,8 +646,8 @@ export const createIamLogSubscription: API.OperationMethod<
   CreateIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIamLogSubscriptionRequest,
-  output: DbaasLogsLogSubscriptionResponse,
+  input: __S(7) as any as S.Schema<CreateIamLogSubscriptionRequest>,
+  output: __S(8) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1122,8 +661,8 @@ export const createIamLogUrl: API.OperationMethod<
   CreateIamLogUrlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIamLogUrlRequest,
-  output: DbaasLogsTemporaryLogsLink,
+  input: __S(9) as any as S.Schema<CreateIamLogUrlRequest>,
+  output: __S(10) as any as S.Schema<DbaasLogsTemporaryLogsLink>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1137,8 +676,8 @@ export const createIamPermissionsGroup: API.OperationMethod<
   CreateIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIamPermissionsGroupRequest,
-  output: IamPermissionsGroup,
+  input: __S(14) as any as S.Schema<CreateIamPermissionsGroupRequest>,
+  output: __S(15) as any as S.Schema<IamPermissionsGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1152,8 +691,8 @@ export const createIamPolicy: API.OperationMethod<
   CreateIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIamPolicyRequest,
-  output: IamPolicyResponse,
+  input: __S(23) as any as S.Schema<CreateIamPolicyRequest>,
+  output: __S(30) as any as S.Schema<IamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1167,8 +706,8 @@ export const createIamResourceGroup: API.OperationMethod<
   CreateIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIamResourceGroupRequest,
-  output: IamGroupResponse,
+  input: __S(33) as any as S.Schema<CreateIamResourceGroupRequest>,
+  output: __S(36) as any as S.Schema<IamGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1182,8 +721,8 @@ export const createIamResourceTag: API.OperationMethod<
   CreateIamResourceTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIamResourceTagRequest,
-  output: CreateIamResourceTagResponse,
+  input: __S(37) as any as S.Schema<CreateIamResourceTagRequest>,
+  output: __S(38) as any as S.Schema<CreateIamResourceTagResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1197,8 +736,8 @@ export const deleteIamLogSubscription: API.OperationMethod<
   DeleteIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIamLogSubscriptionRequest,
-  output: DbaasLogsLogSubscriptionResponse,
+  input: __S(39) as any as S.Schema<DeleteIamLogSubscriptionRequest>,
+  output: __S(8) as any as S.Schema<DbaasLogsLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1212,8 +751,8 @@ export const deleteIamPermissionsGroup: API.OperationMethod<
   DeleteIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIamPermissionsGroupRequest,
-  output: DeleteIamPermissionsGroupResponse,
+  input: __S(40) as any as S.Schema<DeleteIamPermissionsGroupRequest>,
+  output: __S(41) as any as S.Schema<DeleteIamPermissionsGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1227,8 +766,8 @@ export const deleteIamPolicy: API.OperationMethod<
   DeleteIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIamPolicyRequest,
-  output: DeleteIamPolicyResponse,
+  input: __S(42) as any as S.Schema<DeleteIamPolicyRequest>,
+  output: __S(38) as any as S.Schema<DeleteIamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1242,8 +781,8 @@ export const deleteIamResourceGroup: API.OperationMethod<
   DeleteIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIamResourceGroupRequest,
-  output: DeleteIamResourceGroupResponse,
+  input: __S(43) as any as S.Schema<DeleteIamResourceGroupRequest>,
+  output: __S(38) as any as S.Schema<DeleteIamResourceGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1257,8 +796,8 @@ export const deleteIamResourceTag: API.OperationMethod<
   DeleteIamResourceTagError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIamResourceTagRequest,
-  output: DeleteIamResourceTagResponse,
+  input: __S(44) as any as S.Schema<DeleteIamResourceTagRequest>,
+  output: __S(38) as any as S.Schema<DeleteIamResourceTagResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1272,8 +811,8 @@ export const getIamLogKind: API.OperationMethod<
   GetIamLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamLogKindRequest,
-  output: DbaasLogsLogKind,
+  input: __S(45) as any as S.Schema<GetIamLogKindRequest>,
+  output: __S(46) as any as S.Schema<DbaasLogsLogKind>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1287,8 +826,8 @@ export const getIamLogSubscription: API.OperationMethod<
   GetIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamLogSubscriptionRequest,
-  output: DbaasLogsLogSubscription,
+  input: __S(47) as any as S.Schema<GetIamLogSubscriptionRequest>,
+  output: __S(49) as any as S.Schema<DbaasLogsLogSubscription>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1302,8 +841,8 @@ export const getIamPermissionsGroup: API.OperationMethod<
   GetIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPermissionsGroupRequest,
-  output: IamPermissionsGroup,
+  input: __S(50) as any as S.Schema<GetIamPermissionsGroupRequest>,
+  output: __S(15) as any as S.Schema<IamPermissionsGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1317,8 +856,8 @@ export const getIamPolicy: API.OperationMethod<
   GetIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyRequest,
-  output: IamPolicyResponse,
+  input: __S(51) as any as S.Schema<GetIamPolicyRequest>,
+  output: __S(30) as any as S.Schema<IamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1332,8 +871,8 @@ export const getIamResource: API.OperationMethod<
   GetIamResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamResourceRequest,
-  output: IamResourceResource,
+  input: __S(52) as any as S.Schema<GetIamResourceRequest>,
+  output: __S(53) as any as S.Schema<IamResourceResource>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1347,8 +886,8 @@ export const getIamResourceGroup: API.OperationMethod<
   GetIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamResourceGroupRequest,
-  output: IamGroupResponse,
+  input: __S(54) as any as S.Schema<GetIamResourceGroupRequest>,
+  output: __S(36) as any as S.Schema<IamGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1362,8 +901,8 @@ export const listIamLogKind: API.OperationMethod<
   ListIamLogKindError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamLogKindRequest,
-  output: ListIamLogKindResponse,
+  input: __S(55) as any as S.Schema<ListIamLogKindRequest>,
+  output: __S(56) as any as S.Schema<ListIamLogKindResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1377,8 +916,8 @@ export const listIamLogSubscription: API.OperationMethod<
   ListIamLogSubscriptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamLogSubscriptionRequest,
-  output: ListIamLogSubscriptionResponse,
+  input: __S(57) as any as S.Schema<ListIamLogSubscriptionRequest>,
+  output: __S(58) as any as S.Schema<ListIamLogSubscriptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1392,8 +931,8 @@ export const listIamPermissionsGroup: API.OperationMethod<
   ListIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamPermissionsGroupRequest,
-  output: ListIamPermissionsGroupResponse,
+  input: __S(59) as any as S.Schema<ListIamPermissionsGroupRequest>,
+  output: __S(61) as any as S.Schema<ListIamPermissionsGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1407,8 +946,8 @@ export const listIamPolicy: API.OperationMethod<
   ListIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamPolicyRequest,
-  output: ListIamPolicyResponse,
+  input: __S(62) as any as S.Schema<ListIamPolicyRequest>,
+  output: __S(64) as any as S.Schema<ListIamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1422,8 +961,8 @@ export const listIamReferenceAction: API.OperationMethod<
   ListIamReferenceActionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamReferenceActionRequest,
-  output: ListIamReferenceActionResponse,
+  input: __S(65) as any as S.Schema<ListIamReferenceActionRequest>,
+  output: __S(68) as any as S.Schema<ListIamReferenceActionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1437,8 +976,8 @@ export const listIamReferenceResourceType: API.OperationMethod<
   ListIamReferenceResourceTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamReferenceResourceTypeRequest,
-  output: ListIamReferenceResourceTypeResponse,
+  input: __S(69) as any as S.Schema<ListIamReferenceResourceTypeRequest>,
+  output: __S(58) as any as S.Schema<ListIamReferenceResourceTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1452,8 +991,8 @@ export const listIamResource: API.OperationMethod<
   ListIamResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamResourceRequest,
-  output: ListIamResourceResponse,
+  input: __S(72) as any as S.Schema<ListIamResourceRequest>,
+  output: __S(74) as any as S.Schema<ListIamResourceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1467,8 +1006,8 @@ export const listIamResourceGroup: API.OperationMethod<
   ListIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIamResourceGroupRequest,
-  output: ListIamResourceGroupResponse,
+  input: __S(75) as any as S.Schema<ListIamResourceGroupRequest>,
+  output: __S(77) as any as S.Schema<ListIamResourceGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1482,8 +1021,8 @@ export const putIamPermissionsGroup: API.OperationMethod<
   PutIamPermissionsGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIamPermissionsGroupRequest,
-  output: IamPermissionsGroup,
+  input: __S(78) as any as S.Schema<PutIamPermissionsGroupRequest>,
+  output: __S(15) as any as S.Schema<IamPermissionsGroup>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1497,8 +1036,8 @@ export const putIamPolicy: API.OperationMethod<
   PutIamPolicyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIamPolicyRequest,
-  output: IamPolicyResponse,
+  input: __S(79) as any as S.Schema<PutIamPolicyRequest>,
+  output: __S(30) as any as S.Schema<IamPolicyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1512,8 +1051,8 @@ export const putIamResource: API.OperationMethod<
   PutIamResourceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIamResourceRequest,
-  output: IamResourceResource,
+  input: __S(80) as any as S.Schema<PutIamResourceRequest>,
+  output: __S(53) as any as S.Schema<IamResourceResource>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1527,8 +1066,8 @@ export const putIamResourceGroup: API.OperationMethod<
   PutIamResourceGroupError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIamResourceGroupRequest,
-  output: IamGroupResponse,
+  input: __S(81) as any as S.Schema<PutIamResourceGroupRequest>,
+  output: __S(36) as any as S.Schema<IamGroupResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1544,8 +1083,8 @@ function __c0(j: number): any {
         S.Struct({
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-          actions: CheckIamAuthorizationRequestActionsList,
-          resourceURNs: CheckIamAuthorizationRequestResourceURNsList,
+          actions: __S(0),
+          resourceURNs: __S(0),
         }).pipe(T.Http({ method: "POST", uri: "/iam/authorization/check", code: 200 })),
       ).annotate({
         identifier: "CheckIamAuthorizationRequest",
@@ -1553,26 +1092,24 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authorizedActions: S.optional(IamAuthorizeBatchResponseAuthorizedActionsList),
+          authorizedActions: S.optional(__S(0)),
           resourceURN: S.optional(S.String),
-          unauthorizedActions: S.optional(IamAuthorizeBatchResponseUnauthorizedActionsList),
+          unauthorizedActions: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IamAuthorizeBatchResponse",
       });
     case 3:
-      return S.Array(IamAuthorizeBatchResponse);
+      return S.Array(__S(2));
     case 4:
-      return S.suspend(() =>
-        CheckIamAuthorizationResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "CheckIamAuthorizationResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceURN: S.String.pipe(T.Label()),
-          actions: CheckIamResourceAuthorizationRequestActionsList,
+          actions: __S(0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1586,8 +1123,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authorizedActions: S.optional(IamAuthorizeResponseAuthorizedActionsList),
-          unauthorizedActions: S.optional(IamAuthorizeResponseUnauthorizedActionsList),
+          authorizedActions: S.optional(__S(0)),
+          unauthorizedActions: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "IamAuthorizeResponse" });
     case 7:
@@ -1634,13 +1171,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "IamPolicyAction" });
     case 4:
-      return S.Array(IamPolicyAction);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(S.NullOr(IamPolicyPermissionsAllowList)),
-          deny: S.optional(S.NullOr(IamPolicyPermissionsDenyList)),
-          except: S.optional(S.NullOr(IamPolicyPermissionsExceptList)),
+          allow: S.optional(S.NullOr(__S(12))),
+          deny: S.optional(S.NullOr(__S(12))),
+          except: S.optional(S.NullOr(__S(12))),
         }),
       ).annotate({ identifier: "IamPolicyPermissions" });
     case 6:
@@ -1648,7 +1185,7 @@ function __c1(j: number): any {
         S.Struct({
           description: S.String,
           name: S.String,
-          permissions: IamPolicyPermissions,
+          permissions: __S(13),
         }).pipe(T.Http({ method: "POST", uri: "/iam/permissionsGroup", code: 200 })),
       ).annotate({
         identifier: "CreateIamPermissionsGroupRequest",
@@ -1661,7 +1198,7 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.String,
           owner: S.optional(S.String),
-          permissions: IamPolicyPermissions,
+          permissions: __S(13),
           updatedAt: S.optional(S.NullOr(S.String)),
           urn: S.optional(S.String),
         }),
@@ -1671,15 +1208,15 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => IamPolicyCondition));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(18)));
     case 1:
       return S.Record(S.String, S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(S.NullOr(IamPolicyConditionConditionsList)),
-          operator: S.optional(IamPolicyConditionOperatorEnum),
-          values: S.optional(S.NullOr(IamPolicyConditionValuesMap)),
+          conditions: S.optional(S.NullOr(__S(16))),
+          operator: S.optional(S.String),
+          values: S.optional(S.NullOr(__S(17))),
         }),
       ).annotate({ identifier: "IamPolicyCondition" });
     case 3:
@@ -1691,7 +1228,7 @@ function __c2(j: number): any {
         identifier: "IamPolicyPermissionsGroupInput",
       });
     case 4:
-      return S.Array(IamPolicyPermissionsGroupInput);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1699,18 +1236,18 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "IamPolicyResourceInput" });
     case 6:
-      return S.Array(IamPolicyResourceInput);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(S.NullOr(IamPolicyCondition)),
+          conditions: S.optional(S.NullOr(__S(18))),
           description: S.optional(S.String),
           expiredAt: S.optional(S.NullOr(S.String)),
-          identities: CreateIamPolicyRequestIdentitiesList,
+          identities: __S(0),
           name: S.String,
-          permissions: IamPolicyPermissions,
-          permissionsGroups: S.optional(S.NullOr(CreateIamPolicyRequestPermissionsGroupsList)),
-          resources: CreateIamPolicyRequestResourcesList,
+          permissions: __S(13),
+          permissionsGroups: S.optional(S.NullOr(__S(20))),
+          resources: __S(22),
         }).pipe(T.Http({ method: "POST", uri: "/iam/policy", code: 200 })),
       ).annotate({ identifier: "CreateIamPolicyRequest" });
   }
@@ -1722,14 +1259,14 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.NullOr(S.String)),
           owner: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(S.NullOr(IamPolicyPermissions)),
+          permissions: S.optional(S.NullOr(__S(13))),
           urn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IamPolicyPermissionsGroup",
       });
     case 1:
-      return S.Array(IamPolicyPermissionsGroup);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1745,35 +1282,35 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           owner: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamPolicySingleResourceTagsMap)),
+          tags: S.optional(S.NullOr(__S(17))),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamPolicySingleResource" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          group: S.optional(S.NullOr(IamPolicyGroup)),
-          resource: S.optional(S.NullOr(IamPolicySingleResource)),
+          group: S.optional(S.NullOr(__S(26))),
+          resource: S.optional(S.NullOr(__S(27))),
           urn: S.String,
         }),
       ).annotate({ identifier: "IamPolicyResource" });
     case 5:
-      return S.Array(IamPolicyResource);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(S.NullOr(IamPolicyCondition)),
+          conditions: S.optional(S.NullOr(__S(18))),
           createdAt: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           expiredAt: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          identities: S.optional(IamPolicyResponseIdentitiesList),
+          identities: S.optional(__S(0)),
           name: S.optional(S.String),
           owner: S.optional(S.String),
-          permissions: S.optional(IamPolicyPermissions),
-          permissionsGroups: S.optional(IamPolicyResponsePermissionsGroupsList),
+          permissions: S.optional(__S(13)),
+          permissionsGroups: S.optional(__S(25)),
           readOnly: S.optional(S.Boolean),
-          resources: S.optional(IamPolicyResponseResourcesList),
+          resources: S.optional(__S(29)),
           updatedAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IamPolicyResponse" });
@@ -1789,12 +1326,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IamGroupResourceInput);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          resources: S.optional(CreateIamResourceGroupRequestResourcesList),
+          resources: S.optional(__S(32)),
         }).pipe(T.Http({ method: "POST", uri: "/iam/resourceGroup", code: 200 })),
       ).annotate({
         identifier: "CreateIamResourceGroupRequest",
@@ -1806,13 +1343,13 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           owner: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(IamGroupResourceTagsMap)),
+          tags: S.optional(S.NullOr(__S(17))),
           type: S.optional(S.NullOr(S.String)),
           urn: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IamGroupResource" });
     case 3:
-      return S.Array(IamGroupResource);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1821,7 +1358,7 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          resources: S.optional(IamGroupResponseResourcesList),
+          resources: S.optional(__S(35)),
           updatedAt: S.optional(S.NullOr(S.String)),
           urn: S.optional(S.String),
         }),
@@ -1906,7 +1443,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          additionalReturnedFields: S.optional(DbaasLogsLogKindAdditionalReturnedFieldsList),
+          additionalReturnedFields: S.optional(__S(0)),
           createdAt: S.optional(S.String),
           displayName: S.optional(S.String),
           kindId: S.optional(S.String),
@@ -1942,7 +1479,7 @@ function __c6(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           kind: S.optional(S.String),
-          resource: S.optional(DbaasLogsLogSubscriptionResource),
+          resource: S.optional(__S(48)),
           serviceName: S.optional(S.String),
           streamId: S.optional(S.String),
           subscriptionId: S.optional(S.String),
@@ -1979,7 +1516,7 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           owner: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceResourceTagsMap)),
+          tags: S.optional(S.NullOr(__S(17))),
           type: S.optional(S.String),
           urn: S.optional(S.String),
         }),
@@ -2005,7 +1542,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListIamLogKindResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamLogKindResponse",
       });
     case 1:
@@ -2019,9 +1556,7 @@ function __c7(j: number): any {
         identifier: "ListIamLogSubscriptionRequest",
       });
     case 2:
-      return S.suspend(() =>
-        ListIamLogSubscriptionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamLogSubscriptionResponse",
       });
     case 3:
@@ -2034,39 +1569,37 @@ function __c7(j: number): any {
         identifier: "ListIamPermissionsGroupRequest",
       });
     case 4:
-      return S.Array(IamPermissionsGroup);
+      return S.Array(__S(15));
     case 5:
-      return S.suspend(() =>
-        ListIamPermissionsGroupResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(60).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamPermissionsGroupResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(ListIamPolicyRequestActionList.pipe(T.Query())),
+          action: S.optional(__S(0).pipe(T.Query())),
           details: S.optional(S.Boolean.pipe(T.Query())),
-          identity: S.optional(ListIamPolicyRequestIdentityList.pipe(T.Query())),
+          identity: S.optional(__S(0).pipe(T.Query())),
           readOnly: S.optional(S.Boolean.pipe(T.Query())),
-          resourceURN: S.optional(ListIamPolicyRequestResourceURNList.pipe(T.Query())),
+          resourceURN: S.optional(__S(0).pipe(T.Query())),
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(T.Http({ method: "GET", uri: "/iam/policy", code: 200 })),
       ).annotate({ identifier: "ListIamPolicyRequest" });
     case 7:
-      return S.Array(IamPolicyResponse);
+      return S.Array(__S(30));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListIamPolicyResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(63).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamPolicyResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceType: S.optional(ListIamReferenceActionRequestResourceTypeList.pipe(T.Query())),
+          resourceType: S.optional(__S(0).pipe(T.Query())),
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(T.Http({ method: "GET", uri: "/iam/reference/action", code: 200 })),
@@ -2077,18 +1610,16 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           action: S.optional(S.String),
-          categories: S.optional(IamReferenceActionCategoriesList),
+          categories: S.optional(__S(0)),
           description: S.optional(S.String),
           hasQueryParameters: S.optional(S.Boolean),
           resourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamReferenceAction" });
     case 3:
-      return S.Array(IamReferenceAction);
+      return S.Array(__S(66));
     case 4:
-      return S.suspend(() =>
-        ListIamReferenceActionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(67).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamReferenceActionResponse",
       });
     case 5:
@@ -2101,9 +1632,9 @@ function __c8(j: number): any {
         identifier: "ListIamReferenceResourceTypeRequest",
       });
     case 6:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(38));
     case 7:
-      return S.Record(S.String, ListIamResourceRequestTagsValueList);
+      return S.Record(S.String, __S(70));
   }
 }
 function __c9(j: number): any {
@@ -2111,18 +1642,18 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourceName: S.optional(ListIamResourceRequestResourceNameList.pipe(T.Query())),
-          resourceType: S.optional(ListIamResourceRequestResourceTypeList.pipe(T.Query())),
-          resourceURN: S.optional(ListIamResourceRequestResourceURNList.pipe(T.Query())),
-          tags: S.optional(ListIamResourceRequestTagsMap.pipe(T.Query())),
+          resourceName: S.optional(__S(0).pipe(T.Query())),
+          resourceType: S.optional(__S(0).pipe(T.Query())),
+          resourceURN: S.optional(__S(0).pipe(T.Query())),
+          tags: S.optional(__S(71).pipe(T.Query())),
           xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
           xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
         }).pipe(T.Http({ method: "GET", uri: "/iam/resource", code: 200 })),
       ).annotate({ identifier: "ListIamResourceRequest" });
     case 1:
-      return S.Array(IamResourceResource);
+      return S.Array(__S(53));
     case 2:
-      return S.suspend(() => ListIamResourceResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(73).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamResourceResponse",
       });
     case 3:
@@ -2136,11 +1667,9 @@ function __c9(j: number): any {
         identifier: "ListIamResourceGroupRequest",
       });
     case 4:
-      return S.Array(IamGroupResponse);
+      return S.Array(__S(36));
     case 5:
-      return S.suspend(() =>
-        ListIamResourceGroupResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(76).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIamResourceGroupResponse",
       });
     case 6:
@@ -2149,7 +1678,7 @@ function __c9(j: number): any {
           permissionsGroupURN: S.String.pipe(T.Label()),
           description: S.String,
           name: S.String,
-          permissions: IamPolicyPermissions,
+          permissions: __S(13),
         }).pipe(
           T.Http({ method: "PUT", uri: "/iam/permissionsGroup/{permissionsGroupURN}", code: 200 }),
         ),
@@ -2160,14 +1689,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           policyId: S.String.pipe(T.Label()),
-          conditions: S.optional(S.NullOr(IamPolicyCondition)),
+          conditions: S.optional(S.NullOr(__S(18))),
           description: S.optional(S.String),
           expiredAt: S.optional(S.NullOr(S.String)),
-          identities: PutIamPolicyRequestIdentitiesList,
+          identities: __S(0),
           name: S.String,
-          permissions: IamPolicyPermissions,
-          permissionsGroups: S.optional(S.NullOr(PutIamPolicyRequestPermissionsGroupsList)),
-          resources: PutIamPolicyRequestResourcesList,
+          permissions: __S(13),
+          permissionsGroups: S.optional(S.NullOr(__S(20))),
+          resources: __S(22),
         }).pipe(T.Http({ method: "PUT", uri: "/iam/policy/{policyId}", code: 200 })),
       ).annotate({ identifier: "PutIamPolicyRequest" });
   }
@@ -2178,7 +1707,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceURN: S.String.pipe(T.Label()),
-          tags: S.optional(S.NullOr(PutIamResourceRequestTagsMap)),
+          tags: S.optional(S.NullOr(__S(17))),
         }).pipe(T.Http({ method: "PUT", uri: "/iam/resource/{resourceURN}", code: 200 })),
       ).annotate({ identifier: "PutIamResourceRequest" });
     case 1:
@@ -2186,10 +1715,41 @@ function __c10(j: number): any {
         S.Struct({
           groupId: S.String.pipe(T.Label()),
           name: S.String,
-          resources: PutIamResourceGroupRequestResourcesList,
+          resources: __S(32),
         }).pipe(T.Http({ method: "PUT", uri: "/iam/resourceGroup/{groupId}", code: 200 })),
       ).annotate({
         identifier: "PutIamResourceGroupRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

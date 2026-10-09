@@ -7,6 +7,8 @@ import { UnknownPaypalError } from "../errors.ts";
 import { PaypalProtocol, type PaypalOpError, type PaypalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PaypalOpError, PaypalOpContext };
 
@@ -39,8 +41,6 @@ export class UnprocessableEntity
 
 /** The person's name type. */
 export type PersonNameType = "LEGAL";
-const PersonNameType = S.String;
-
 export interface PersonName {
   /** The prefix, or title, to the party's name. */
   prefix?: string;
@@ -57,12 +57,8 @@ export interface PersonName {
   /** The type of name. Currently supported values are: `LEGAL`. */
   type: PersonNameType | (string & {});
 }
-const PersonName = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<PersonName>;
-
 /** The name of the person. */
 export type PersonNameList = Array<PersonName>;
-const PersonNameList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PersonNameList>;
-
 /** The non-portable additional address details that are sometimes needed for compliance, risk, or other scenarios where fine-grain address information might be needed. Not portable with common third party and open source. Redundant with core fields.<br/>For example, `address_portable.address_line_1` is usually a combination of `address_details.street_number`, `street_name`, and `street_type`. */
 export interface AddressDetails {
   /** The street number. */
@@ -78,12 +74,8 @@ export interface AddressDetails {
   /** The first-order entity below a named building or location that represents the sub-premise. Usually a single building within a collection of buildings with a common name. Can be a flat, story, floor, room, or apartment. */
   sub_building?: string;
 }
-const AddressDetails = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddressDetails>;
-
 /** The address type under which the provided address is tagged. */
 export type PersonAddressType = "HOME";
-const PersonAddressType = S.String;
-
 export interface PersonAddressDetail {
   /** The first line of the address. For example, number or street. For example, `173 Drury Lane`. Required for data entry and compliance and risk checks. Must contain the full address. */
   address_line_1?: string;
@@ -106,19 +98,10 @@ export interface PersonAddressDetail {
   /** The address type under which this is classified. */
   type: PersonAddressType | (string & {});
 }
-const PersonAddressDetail = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<PersonAddressDetail>;
-
 /** The list of addresses associated with the person. */
 export type PersonAddressDetailList = Array<PersonAddressDetail>;
-const PersonAddressDetailList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PersonAddressDetailList>;
-
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-const PhoneType = S.String;
-
 export interface PersonPhoneDetail {
   /** The country calling code (CC), in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the CC and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   country_code: string;
@@ -129,26 +112,15 @@ export interface PersonPhoneDetail {
   /** The type of phone number provided. For example, home, work, or mobile. */
   type: PhoneType | (string & {});
 }
-const PersonPhoneDetail = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PersonPhoneDetail>;
-
 /** The list of phone numbers associated with the person. */
 export type PersonPhoneDetailList = Array<PersonPhoneDetail>;
-const PersonPhoneDetailList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PersonPhoneDetailList>;
-
 /** Date of birth data provided by the user */
 export interface BirthDetails {
   /** date of birth, fomrat [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   date_of_birth: string;
 }
-const BirthDetails = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BirthDetails>;
-
 /** The document labels. A document could be classfied to multiple categories. For example, a bill document can be classfified as `BILL DOCUMENT` and `UTILITY DOCUMENT`. */
 export type LabelsList = Array<string>;
-const LabelsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LabelsList>;
-
 /** The file reference. Can be a file in PayPal MediaServ, PayPal DMS, or another custom store. */
 export interface FileReference {
   /** The ID of the referenced file. */
@@ -162,12 +134,8 @@ export interface FileReference {
   /** The size of the file, in bytes. */
   size?: string;
 }
-const FileReference = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FileReference>;
-
 /** The files contained in the document. For example, a document could be represented by a front page file and a back page file, etc. */
 export type FileReferenceList = Array<FileReference>;
-const FileReferenceList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<FileReferenceList>;
-
 /** The type of documents. */
 export type PersonDocumentType =
   | "SOCIAL_SECURITY_NUMBER"
@@ -180,8 +148,6 @@ export type PersonDocumentType =
   | "CPF"
   | "PAN"
   | "NATIONAL_ID_CARD";
-const PersonDocumentType = S.String;
-
 export interface PersonDocumentInput {
   labels?: LabelsList;
   /** The file name. */
@@ -198,19 +164,10 @@ export interface PersonDocumentInput {
   /** The actual type of the document. It could be `ID_CARD`, `PASSPORT`, etc. */
   type?: PersonDocumentType | (string & {});
 }
-const PersonDocumentInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PersonDocumentInput>;
-
 /** A person's or party's related document data collected from the customer. For example SSN, ITIN, or business registration number collected from the user. <blockquote><strong>Note:</strong> This field is not applicable for POST [/v2/customer/partner-referrals](/docs/api/partner-referrals/v2/#partner-referrals_create) API calls.</blockquote> */
 export type PersonDocumentListInput = Array<PersonDocumentInput>;
-const PersonDocumentListInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PersonDocumentListInput>;
-
 /** Role of the person party played in the account. */
 export type IndividualOwnerType = "PRIMARY";
-const IndividualOwnerType = S.String;
-
 export interface IndividualOwnerInput {
   names?: PersonNameList;
   /** The citizenship country code of the person. */
@@ -223,15 +180,8 @@ export interface IndividualOwnerInput {
   /** The actual role of this user on the account, PRIMARY/SECONDARY. */
   type?: IndividualOwnerType | (string & {});
 }
-const IndividualOwnerInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<IndividualOwnerInput>;
-
 /** List of owners in the account. There should be only one primary account owner which is mentioned in their role_type. */
 export type IndividualOwnerListInput = Array<IndividualOwnerInput>;
-const IndividualOwnerListInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IndividualOwnerListInput>;
-
 /** The business types classified */
 export type BusinessType =
   | "ANY_OTHER_BUSINESS_ENTITY"
@@ -258,8 +208,6 @@ export type BusinessType =
   | "PUBLIC_CORPORATION"
   | "PUBLIC_PARTNERSHIP"
   | "REGISTERED_COOPERATIVE";
-const BusinessType = S.String;
-
 /** Sub classification of the business type */
 export type BusinessSubType =
   | "ASSO_TYPE_INCORPORATED"
@@ -269,8 +217,6 @@ export type BusinessSubType =
   | "GOVT_TYPE_ESTD_COMM"
   | "GOVT_TYPE_ESTD_FC"
   | "GOVT_TYPE_ESTD_ST_TR";
-const BusinessSubType = S.String;
-
 /** The type and subtype of the business. */
 export interface BusinessTypeInfo {
   /** Type of business entity like corporation, sole prop, governmental. */
@@ -278,8 +224,6 @@ export interface BusinessTypeInfo {
   /** The sub classification of the business type. */
   subtype?: BusinessSubType | (string & {});
 }
-const BusinessTypeInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<BusinessTypeInfo>;
-
 /** The category, subcategory and MCC code of the business. */
 export interface BusinessIndustry {
   /** The customer's business category code. PayPal uses industry standard seller category codes. */
@@ -289,8 +233,6 @@ export interface BusinessIndustry {
   /** The customer's business subcategory code. PayPal uses industry standard seller subcategory codes. */
   subcategory: string;
 }
-const BusinessIndustry = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<BusinessIndustry>;
-
 /** Business incorporation information. */
 export interface BusinessEntityInputBusinessIncorporation {
   /** The incorporation country code. */
@@ -298,46 +240,26 @@ export interface BusinessEntityInputBusinessIncorporation {
   /** date of incorporation */
   incorporation_date?: string;
 }
-const BusinessEntityInputBusinessIncorporation = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BusinessEntityInputBusinessIncorporation>;
-
 /** Business name type */
 export type BusinessNameType = "DOING_BUSINESS_AS" | "LEGAL_NAME";
-const BusinessNameType = S.String;
-
 export interface BusinessNameDetail {
   /** Required. The business name of the party. */
   business_name?: string;
   /** The type of business name. For example, trading name. */
   type: BusinessNameType | (string & {});
 }
-const BusinessNameDetail = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<BusinessNameDetail>;
-
 /** Name of the business. */
 export type BusinessNameDetailList = Array<BusinessNameDetail>;
-const BusinessNameDetailList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BusinessNameDetailList>;
-
 /** The role of the email address. */
 export type EmailType = "CUSTOMER_SERVICE";
-const EmailType = S.String;
-
 /** An email address at which the person or business can be contacted. */
 export interface Email {
   /** The role of the email address. */
   type: EmailType | (string & {});
   email: string;
 }
-const Email = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Email>;
-
 /** Email addresses of the business. */
 export type EmailList = Array<Email>;
-const EmailList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EmailList>;
-
 /** Address type under which the provided address is tagged */
 export type BusinessAddressType = "WORK";
 export interface BusinessAddressDetail {
@@ -364,9 +286,6 @@ export interface BusinessAddressDetail {
 }
 /** List of addresses associated with the business entity. */
 export type BusinessAddressDetailList = Array<BusinessAddressDetail>;
-const BusinessAddressDetailList =
-  PersonAddressDetailList as any as S.Schema<BusinessAddressDetailList>;
-
 /** The type of phone number provided. For example, home, work, or mobile. */
 export type BusinessPhoneType = "CUSTOMER_SERVICE" | "BUSINESS";
 export interface BusinessPhoneDetail {
@@ -381,8 +300,6 @@ export interface BusinessPhoneDetail {
 }
 /** List of phone number associated with the business. */
 export type BusinessPhoneDetailList = Array<BusinessPhoneDetail>;
-const BusinessPhoneDetailList = PersonPhoneDetailList as any as S.Schema<BusinessPhoneDetailList>;
-
 /** The type of documents. */
 export type BusinessDocumentType =
   | "SOCIAL_SECURITY_NUMBER"
@@ -413,9 +330,6 @@ export interface BusinessDocumentInput {
 }
 /** Business Party related Document data collected from the customer.. For example SSN, ITIN, Business registration number that were collected from the user. */
 export type BusinessDocumentListInput = Array<BusinessDocumentInput>;
-const BusinessDocumentListInput =
-  PersonDocumentListInput as any as S.Schema<BusinessDocumentListInput>;
-
 export interface IndividualBeneficialOwnerInput {
   names?: PersonNameList;
   /** The citizenship country code of the person. */
@@ -428,18 +342,8 @@ export interface IndividualBeneficialOwnerInput {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-const IndividualBeneficialOwnerInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IndividualBeneficialOwnerInput>;
-
 /** Individual beneficial owners. */
 export type IndividualBeneficialOwnerListInput = Array<IndividualBeneficialOwnerInput>;
-const IndividualBeneficialOwnerListInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IndividualBeneficialOwnerListInput>;
-
 /** Business incorporation information. */
 export type BusinessBeneficialOwnerInputBusinessIncorporation =
   BusinessEntityInputBusinessIncorporation;
@@ -460,36 +364,19 @@ export interface BusinessBeneficialOwnerInput {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-const BusinessBeneficialOwnerInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BusinessBeneficialOwnerInput>;
-
 /** Business beneficial owners. */
 export type BusinessBeneficialOwnerListInput = Array<BusinessBeneficialOwnerInput>;
-const BusinessBeneficialOwnerListInput = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BusinessBeneficialOwnerListInput>;
-
 /** Beneficial owners of the entity. */
 export interface BeneficialOwnersInput {
   individual_beneficial_owners?: IndividualBeneficialOwnerListInput;
   business_beneficial_owners?: BusinessBeneficialOwnerListInput;
 }
-const BeneficialOwnersInput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BeneficialOwnersInput>;
-
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
   currency_code: string;
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/). */
   value: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Money>;
-
 /** The currency range, from the minimum inclusive amount to the maximum inclusive amount. */
 export interface CurrencyRange {
   /** The minimum inclusive amount for the range. */
@@ -497,8 +384,6 @@ export interface CurrencyRange {
   /** The maximum inclusive amount for the range. */
   maximum_amount?: Money;
 }
-const CurrencyRange = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CurrencyRange>;
-
 export interface BusinessEntityInput {
   /** Information related to the business like the nature of business, started date etc. */
   business_type?: BusinessTypeInfo;
@@ -524,8 +409,6 @@ export interface BusinessEntityInput {
   /** The business goals description. For example, a mission statement. */
   business_description?: string;
 }
-const BusinessEntityInput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<BusinessEntityInput>;
-
 /** The preference to customize the web experience of the customer by overriding that is set at the Partner's Account. */
 export interface PartnerConfigOverride {
   /** The URL to which to redirect the customer upon completion of the onboarding process. */
@@ -535,15 +418,8 @@ export interface PartnerConfigOverride {
   /** Indicates whether to show an add credit card page. */
   show_add_credit_card?: boolean;
 }
-const PartnerConfigOverride = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PartnerConfigOverride>;
-
 /** The type of bank account. */
 export type BankAccountType = "CHECKING" | "SAVINGS";
-const BankAccountType = S.String;
-
 /** The bank account ID type. */
 export type IdentifierType =
   | "BANK_CODE"
@@ -559,8 +435,6 @@ export type IdentifierType =
   | "BBAN_ENCRYPTED"
   | "BBAN_HMAC"
   | "AGGREGATOR_YODLEE";
-const IdentifierType = S.String;
-
 /** The bank account ID. An ID with `ROUTING_NUMBER_1` is required. */
 export interface Identifier {
   /** The bank account ID type. */
@@ -568,12 +442,8 @@ export interface Identifier {
   /** The value of account identifier. */
   value?: string;
 }
-const Identifier = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Identifier>;
-
 /** An array of instrument institute attributes. Used with the account number to uniquely identify the instrument. Value is:<ul><li>For banks with IBAN information, the IBAN number.</li><li>For banks with BBAN information, the BBAN number.</li><li>For banks with both IBAN and BBAN information, the IBAN number.</li></ul> */
 export type IdentifierList = Array<Identifier>;
-const IdentifierList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<IdentifierList>;
-
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export interface BankBranchLocation {
   /** The first line of the address. For example, number or street. For example, `173 Drury Lane`. Required for data entry and compliance and risk checks. Must contain the full address. */
@@ -588,15 +458,11 @@ export interface BankBranchLocation {
   postal_code?: string;
   country_code: string;
 }
-const BankBranchLocation = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<BankBranchLocation>;
-
 /** Seller's consent to operate on this financial instrument. */
 export interface Mandate {
   /** Whether mandate was accepted or not. */
   accepted: boolean;
 }
-const Mandate = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Mandate>;
-
 /** The bank account information. */
 export interface Bank {
   /** The user-provided short name for the user's bank account. */
@@ -613,18 +479,12 @@ export interface Bank {
   /** Mandate for this bank account. */
   mandate?: Mandate;
 }
-const Bank = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Bank>;
-
 /** An array of banks attached to this managed account. */
 export type BankList = Array<Bank>;
-const BankList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<BankList>;
-
 /** Financial instruments attached to this account. */
 export interface FinancialInstruments {
   banks?: BankList;
 }
-const FinancialInstruments = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<FinancialInstruments>;
-
 /** The operation to enable for the customer. To enable the collection of the API permissions that you require to integrate with the customer, specify `API_INTEGRATION`. `BANK_ADDITION` is supported only for the US. */
 export type OperationOperation =
   | "API_INTEGRATION"
@@ -633,16 +493,10 @@ export type OperationOperation =
   | "CONTEXTUAL_MARKETING_CONSENT"
   | "OFFLINE_ONBOARDING"
   | "SALESFORCE_REFERRAL";
-const OperationOperation = S.String;
-
 /** The REST-credential integration method. */
 export type RestApiIntegrationIntegrationMethod = "BRAINTREE" | "PAYPAL" | "SDK";
-const RestApiIntegrationIntegrationMethod = S.String;
-
 /** The type of REST-endpoint integration. To integrate with Braintree v.zero for PayPal REST endpoints, specify `third_party_details`. */
 export type RestApiIntegrationIntegrationType = "FIRST_PARTY" | "THIRD_PARTY";
-const RestApiIntegrationIntegrationType = S.String;
-
 /** The REST endpoint. */
 export type RestEndpointFeaturesEnum =
   | "PAYOUTS"
@@ -669,34 +523,20 @@ export type RestEndpointFeaturesEnum =
   | "TRANSACTION_RISK_DATA"
   | "PAYPAL_BALANCE"
   | "EXCHANGE_CURRENCY";
-const RestEndpointFeaturesEnum = S.String;
-
 /** An array of features that partner can access, or use, in PayPal on behalf of the seller. The seller grants permission for these features to the partner. */
 export type RestEndpointFeaturesEnumList = Array<RestEndpointFeaturesEnum | (string & {})>;
-const RestEndpointFeaturesEnumList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<RestEndpointFeaturesEnumList>;
-
 /** The integration details for PayPal first party REST endpoints. */
 export interface FirstPartyDetails {
   features: RestEndpointFeaturesEnumList;
   /** S256 - The code verifier must be high-entropy cryptographic random string with a byte length of 43-128 range. */
   seller_nonce: string;
 }
-const FirstPartyDetails = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<FirstPartyDetails>;
-
 /** An array of features that partner can access, or use, in PayPal on behalf of the seller. The seller grants permission for these features to the partner. */
 export type RestApiIntegrationRestEndpointFeaturesEnumList = Array<
   RestEndpointFeaturesEnum | (string & {})
 >;
-const RestApiIntegrationRestEndpointFeaturesEnumList =
-  RestEndpointFeaturesEnumList as any as S.Schema<RestApiIntegrationRestEndpointFeaturesEnumList>;
-
 /** Signup Mode to be used for sellers for third party integration. */
 export type SignupMode = "VERIFY_WITH_PAYPAL";
-const SignupMode = S.String;
-
 /** The integration details for PayPal REST endpoints. */
 export interface ThirdPartyDetails {
   features?: RestApiIntegrationRestEndpointFeaturesEnumList;
@@ -704,8 +544,6 @@ export interface ThirdPartyDetails {
   /** The organization to which the account will belong in the partner's hierarchy, as a path. */
   organization?: string;
 }
-const ThirdPartyDetails = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ThirdPartyDetails>;
-
 /** The integration details for PayPal REST endpoints. */
 export interface RestApiIntegration {
   /** The REST-credential integration method. */
@@ -715,15 +553,11 @@ export interface RestApiIntegration {
   first_party_details?: FirstPartyDetails;
   third_party_details?: ThirdPartyDetails;
 }
-const RestApiIntegration = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<RestApiIntegration>;
-
 /** The integration details for the partner and customer relationship. Required if `operation` is `API_INTEGRATION`. */
 export interface IntegrationDetails {
   classic_api_integration?: unknown;
   rest_api_integration?: RestApiIntegration;
 }
-const IntegrationDetails = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<IntegrationDetails>;
-
 /** The preference that customizes the billing experience of the customer. */
 export interface BillingExperiencePreference {
   /** The ID of the payment web experience profile. */
@@ -731,11 +565,6 @@ export interface BillingExperiencePreference {
   /** Indicates whether the partner has already displayed the billing context to the seller. */
   billing_context_set?: boolean;
 }
-const BillingExperiencePreference = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<BillingExperiencePreference>;
-
 /** The details of the billing agreement between the partner and a seller. */
 export interface BillingAgreement {
   /** The billing agreement description. */
@@ -748,8 +577,6 @@ export interface BillingAgreement {
   /** The billing agreement token for the agreement. */
   ec_token?: string;
 }
-const BillingAgreement = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<BillingAgreement>;
-
 /** The required operation to share data. */
 export interface Operation {
   /** The operation to enable for the customer. To enable the collection of the API permissions that you require to integrate with the customer, specify `API_INTEGRATION`. `BANK_ADDITION` is supported only for the US. */
@@ -758,12 +585,8 @@ export interface Operation {
   offline_onboarding_preference?: unknown;
   billing_agreement?: BillingAgreement;
 }
-const Operation = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Operation>;
-
 /** An array of operations to perform for the customer while they share their data. */
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<OperationList>;
-
 /** The PayPal product for which the customer is onboarded. */
 export type Product =
   | "ALIPAY"
@@ -787,12 +610,8 @@ export type Product =
   | "ZETTLE"
   | "PAYPAL_COMMERCE_PLATFORM_BUSINESS"
   | "HYPERWALLET_PAYOUTS";
-const Product = S.String;
-
 /** An array of PayPal products to which the partner wants to onboard the customer. */
 export type ProductList = Array<Product | (string & {})>;
-const ProductList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ProductList>;
-
 /** Optional capabilities of the selected PayPal product for which the customer is being onboarded. */
 export type Capabilities =
   | "PAYPAL_WALLET_VAULTING_ADVANCED"
@@ -801,16 +620,10 @@ export type Capabilities =
   | "GOOGLE_PAY";
 /** An array of capabilities which the partner wants to enable for the selected products. Supported only when products are specified. */
 export type CapabilitiesList = Array<Capabilities | (string & {})>;
-const CapabilitiesList = RestEndpointFeaturesEnumList as any as S.Schema<CapabilitiesList>;
-
 /** An array of dependent processes. */
 export type DependentProcessList = Array<unknown>;
-const DependentProcessList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DependentProcessList>;
-
 /** The type of consent. `SHARE_DATA_CONSENT` gives consent to you to share your customer's data with PayPal. */
 export type LegalConsentType = "SHARE_DATA_CONSENT";
-const LegalConsentType = S.String;
-
 /** The customer-provided consent. */
 export interface LegalConsent {
   /** The type of consent. `SHARE_DATA_CONSENT` gives consent to you to share your customer's data with PayPal. */
@@ -818,51 +631,29 @@ export interface LegalConsent {
   /** Indicates whether the customer agreed to share this type of data. To give consent, specify `true`. To withhold consent, specify `false`. */
   granted: boolean;
 }
-const LegalConsent = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<LegalConsent>;
-
 /** An array of all consents that the partner has received from this seller. If `SHARE_DATA_CONSENT` is not granted, PayPal does not store customer data. */
 export type LegalConsentList = Array<LegalConsent>;
-const LegalConsentList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<LegalConsentList>;
-
 /** Transfer Method type. */
 export type TransferMethodTransferMethodType = "BANK_ACCOUNT" | "PAYPAL" | "VENMO" | "WIRE_ACCOUNT";
-const TransferMethodTransferMethodType = S.String;
-
 /** Requested Currencies for a Transfer Method. */
 export type CurrencyCodeList = Array<string>;
-const CurrencyCodeList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CurrencyCodeList>;
-
 /** Requested transfer method and currency for a country. */
 export interface TransferMethod {
   /** Transfer Method type. */
   transfer_method_type?: TransferMethodTransferMethodType | (string & {});
   currencies?: CurrencyCodeList;
 }
-const TransferMethod = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TransferMethod>;
-
 /** Requested transfer method and currency for a country. */
 export type TransferMethodList = Array<TransferMethod>;
-const TransferMethodList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TransferMethodList>;
-
 /** Requested country, transfer method and currency. */
 export interface CountryTransferMethodCurrencySelection {
   /** Country. */
   country?: string;
   transfer_methods?: TransferMethodList;
 }
-const CountryTransferMethodCurrencySelection = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CountryTransferMethodCurrencySelection>;
-
 /** Requested country, transfer method and currency. */
 export type CountryTransferMethodCurrencySelectionList =
   Array<CountryTransferMethodCurrencySelection>;
-const CountryTransferMethodCurrencySelectionList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CountryTransferMethodCurrencySelectionList>;
-
 /** Payout specific attributes. */
 export interface PayoutAttributes {
   /** If `true`, specifies that the merchant or platform is offering goods or services on behalf of 3rd party sellers. */
@@ -871,8 +662,6 @@ export interface PayoutAttributes {
   kyc_required?: boolean;
   country_transfer_method_currency_selection?: CountryTransferMethodCurrencySelectionList;
 }
-const PayoutAttributes = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<PayoutAttributes>;
-
 export interface CreatePartnerReferralRequest {
   individual_owners?: IndividualOwnerListInput;
   /** Business entity of the account. */
@@ -897,11 +686,6 @@ export interface CreatePartnerReferralRequest {
   /** Legal Country Code. */
   legal_country_code?: string;
 }
-const CreatePartnerReferralRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreatePartnerReferralRequest>;
-
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
   | "GET"
@@ -912,8 +696,6 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-const LinkDescriptionMethod = S.String;
-
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -923,37 +705,18 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-const LinkDescription = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<LinkDescription>;
-
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-const DefinitionsLinkDescriptionList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DefinitionsLinkDescriptionList>;
-
 /** The shared referral data. */
 export interface CreateReferralDataResponse {
   links?: DefinitionsLinkDescriptionList;
 }
-const CreateReferralDataResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateReferralDataResponse>;
-
 export interface ReadPartnerReferralRequest {
   /** The ID of the partner-referrals data for which to show details. */
   partner_referral_id: string;
 }
-const ReadPartnerReferralRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ReadPartnerReferralRequest>;
-
 /** The HATEOAS links. */
 export type LinkDescriptionList = Array<LinkDescription>;
-const LinkDescriptionList = DefinitionsLinkDescriptionList as any as S.Schema<LinkDescriptionList>;
-
 export interface PersonDocument {
   /** The encrypted identifier for the document. */
   id?: string;
@@ -973,12 +736,8 @@ export interface PersonDocument {
   /** The actual type of the document. It could be `ID_CARD`, `PASSPORT`, etc. */
   type?: PersonDocumentType;
 }
-const PersonDocument = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<PersonDocument>;
-
 /** A person's or party's related document data collected from the customer. For example SSN, ITIN, or business registration number collected from the user. <blockquote><strong>Note:</strong> This field is not applicable for POST [/v2/customer/partner-referrals](/docs/api/partner-referrals/v2/#partner-referrals_create) API calls.</blockquote> */
 export type PersonDocumentList = Array<PersonDocument>;
-const PersonDocumentList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<PersonDocumentList>;
-
 export interface IndividualOwner {
   /** The encrypted party ID. */
   id?: string;
@@ -993,12 +752,8 @@ export interface IndividualOwner {
   /** The actual role of this user on the account, PRIMARY/SECONDARY. */
   type?: IndividualOwnerType;
 }
-const IndividualOwner = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<IndividualOwner>;
-
 /** List of owners in the account. There should be only one primary account owner which is mentioned in their role_type. */
 export type IndividualOwnerList = Array<IndividualOwner>;
-const IndividualOwnerList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<IndividualOwnerList>;
-
 /** Business incorporation information. */
 export type BusinessEntityBusinessIncorporation = BusinessEntityInputBusinessIncorporation;
 export interface BusinessDocument {
@@ -1022,8 +777,6 @@ export interface BusinessDocument {
 }
 /** Business Party related Document data collected from the customer.. For example SSN, ITIN, Business registration number that were collected from the user. */
 export type BusinessDocumentList = Array<BusinessDocument>;
-const BusinessDocumentList = PersonDocumentList as any as S.Schema<BusinessDocumentList>;
-
 export interface IndividualBeneficialOwner {
   /** The encrypted party ID. */
   id?: string;
@@ -1038,18 +791,8 @@ export interface IndividualBeneficialOwner {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-const IndividualBeneficialOwner = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<IndividualBeneficialOwner>;
-
 /** Individual beneficial owners. */
 export type IndividualBeneficialOwnerList = Array<IndividualBeneficialOwner>;
-const IndividualBeneficialOwnerList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<IndividualBeneficialOwnerList>;
-
 /** Business incorporation information. */
 export type BusinessBeneficialOwnerBusinessIncorporation = BusinessEntityInputBusinessIncorporation;
 export interface BusinessBeneficialOwner {
@@ -1069,25 +812,13 @@ export interface BusinessBeneficialOwner {
   /** The percentage of shares this person owns in the company. */
   percentage_of_ownership?: string;
 }
-const BusinessBeneficialOwner = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<BusinessBeneficialOwner>;
-
 /** Business beneficial owners. */
 export type BusinessBeneficialOwnerList = Array<BusinessBeneficialOwner>;
-const BusinessBeneficialOwnerList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<BusinessBeneficialOwnerList>;
-
 /** Beneficial owners of the entity. */
 export interface BeneficialOwners {
   individual_beneficial_owners?: IndividualBeneficialOwnerList;
   business_beneficial_owners?: BusinessBeneficialOwnerList;
 }
-const BeneficialOwners = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<BeneficialOwners>;
-
 export interface BusinessEntity {
   /** Information related to the business like the nature of business, started date etc. */
   business_type?: BusinessTypeInfo;
@@ -1113,8 +844,6 @@ export interface BusinessEntity {
   /** The business goals description. For example, a mission statement. */
   business_description?: string;
 }
-const BusinessEntity = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<BusinessEntity>;
-
 /** The customer's referral data that partners share with PayPal. */
 export interface ReferralData {
   individual_owners?: IndividualOwnerList;
@@ -1140,13 +869,8 @@ export interface ReferralData {
   /** Legal Country Code. */
   legal_country_code?: string;
 }
-const ReferralData = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ReferralData>;
-
 /** An array of request-related [HATEOAS links](/docs/api/overview/#hateoas-links). */
 export type ReferralDataResponseDefinitionsLinkDescriptionList = Array<LinkDescription>;
-const ReferralDataResponseDefinitionsLinkDescriptionList =
-  DefinitionsLinkDescriptionList as any as S.Schema<ReferralDataResponseDefinitionsLinkDescriptionList>;
-
 /** The share referral data response. */
 export interface ReferralDataResponse {
   /** The ID to access the customer's data shared by the partner with PayPal. */
@@ -1158,8 +882,6 @@ export interface ReferralDataResponse {
   referral_data?: ReferralData;
   links?: ReferralDataResponseDefinitionsLinkDescriptionList;
 }
-const ReferralDataResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ReferralDataResponse>;
-
 export type CreatePartnerReferralError =
   | BadRequest
   | Forbidden
@@ -1172,8 +894,8 @@ export const createPartnerReferral: API.OperationMethod<
   CreatePartnerReferralError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePartnerReferralRequest,
-  output: CreateReferralDataResponse,
+  input: __S(57) as any as S.Schema<CreatePartnerReferralRequest>,
+  output: __S(60) as any as S.Schema<CreateReferralDataResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1187,8 +909,8 @@ export const readPartnerReferral: API.OperationMethod<
   ReadPartnerReferralError,
   PaypalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadPartnerReferralRequest,
-  output: ReferralDataResponse,
+  input: __S(61) as any as S.Schema<ReadPartnerReferralRequest>,
+  output: __S(73) as any as S.Schema<ReferralDataResponse>,
   errors: [Forbidden, UnknownPaypalError],
   protocol: PaypalProtocol,
   retry: Retry.Retry,
@@ -1206,11 +928,11 @@ function __c0(j: number): any {
           middle_name: S.optional(S.String),
           suffix: S.optional(S.String),
           full_name: S.optional(S.String),
-          type: PersonNameType,
+          type: S.String,
         }),
       ).annotate({ identifier: "PersonName" });
     case 1:
-      return S.Array(PersonName);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1234,23 +956,23 @@ function __c0(j: number): any {
           admin_area_1: S.optional(S.String),
           postal_code: S.optional(S.String),
           country_code: S.String,
-          address_details: S.optional(AddressDetails),
-          type: PersonAddressType,
+          address_details: S.optional(__S(2)),
+          type: S.String,
         }),
       ).annotate({ identifier: "PersonAddressDetail" });
     case 4:
-      return S.Array(PersonAddressDetail);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           country_code: S.String,
           national_number: S.String,
           extension_number: S.optional(S.String),
-          type: PhoneType,
+          type: S.String,
         }),
       ).annotate({ identifier: "PersonPhoneDetail" });
     case 6:
-      return S.Array(PersonPhoneDetail);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1274,41 +996,41 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "FileReference" });
     case 2:
-      return S.Array(FileReference);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelsList),
+          labels: S.optional(__S(8)),
           name: S.optional(S.String),
           identification_number: S.optional(S.String),
           issue_date: S.optional(S.String),
           expiry_date: S.optional(S.String),
           issuing_country_code: S.optional(S.String),
-          files: S.optional(FileReferenceList),
-          type: S.optional(PersonDocumentType),
+          files: S.optional(__S(10)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PersonDocumentInput" });
     case 4:
-      return S.Array(PersonDocumentInput);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(PersonNameList),
+          names: S.optional(__S(1)),
           citizenship: S.optional(S.String),
-          addresses: S.optional(PersonAddressDetailList),
-          phones: S.optional(PersonPhoneDetailList),
-          birth_details: S.optional(BirthDetails),
-          documents: S.optional(PersonDocumentListInput),
-          type: S.optional(IndividualOwnerType),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          birth_details: S.optional(__S(7)),
+          documents: S.optional(__S(12)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndividualOwnerInput" });
     case 6:
-      return S.Array(IndividualOwnerInput);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(BusinessType),
-          subtype: S.optional(BusinessSubType),
+          type: S.optional(S.String),
+          subtype: S.optional(S.String),
         }),
       ).annotate({ identifier: "BusinessTypeInfo" });
   }
@@ -1336,36 +1058,36 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           business_name: S.optional(S.String),
-          type: BusinessNameType,
+          type: S.String,
         }),
       ).annotate({ identifier: "BusinessNameDetail" });
     case 3:
-      return S.Array(BusinessNameDetail);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: EmailType,
+          type: S.String,
           email: S.String,
         }),
       ).annotate({ identifier: "Email" });
     case 5:
-      return S.Array(Email);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(PersonNameList),
+          names: S.optional(__S(1)),
           citizenship: S.optional(S.String),
-          addresses: S.optional(PersonAddressDetailList),
-          phones: S.optional(PersonPhoneDetailList),
-          birth_details: S.optional(BirthDetails),
-          documents: S.optional(PersonDocumentListInput),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          birth_details: S.optional(__S(7)),
+          documents: S.optional(__S(12)),
           percentage_of_ownership: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IndividualBeneficialOwnerInput",
       });
     case 7:
-      return S.Array(IndividualBeneficialOwnerInput);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1373,27 +1095,27 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          business_type: S.optional(BusinessTypeInfo),
-          business_industry: S.optional(BusinessIndustry),
-          business_incorporation: S.optional(BusinessEntityInputBusinessIncorporation),
-          names: S.optional(BusinessNameDetailList),
-          emails: S.optional(EmailList),
+          business_type: S.optional(__S(15)),
+          business_industry: S.optional(__S(16)),
+          business_incorporation: S.optional(__S(17)),
+          names: S.optional(__S(19)),
+          emails: S.optional(__S(21)),
           website: S.optional(S.String),
-          addresses: S.optional(BusinessAddressDetailList),
-          phones: S.optional(BusinessPhoneDetailList),
-          documents: S.optional(BusinessDocumentListInput),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          documents: S.optional(__S(12)),
           percentage_of_ownership: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BusinessBeneficialOwnerInput",
       });
     case 1:
-      return S.Array(BusinessBeneficialOwnerInput);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          individual_beneficial_owners: S.optional(IndividualBeneficialOwnerListInput),
-          business_beneficial_owners: S.optional(BusinessBeneficialOwnerListInput),
+          individual_beneficial_owners: S.optional(__S(23)),
+          business_beneficial_owners: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "BeneficialOwnersInput" });
     case 3:
@@ -1406,25 +1128,25 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          minimum_amount: S.optional(Money),
-          maximum_amount: S.optional(Money),
+          minimum_amount: S.optional(__S(27)),
+          maximum_amount: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "CurrencyRange" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          business_type: S.optional(BusinessTypeInfo),
-          business_industry: S.optional(BusinessIndustry),
-          business_incorporation: S.optional(BusinessEntityInputBusinessIncorporation),
-          names: S.optional(BusinessNameDetailList),
-          emails: S.optional(EmailList),
+          business_type: S.optional(__S(15)),
+          business_industry: S.optional(__S(16)),
+          business_incorporation: S.optional(__S(17)),
+          names: S.optional(__S(19)),
+          emails: S.optional(__S(21)),
           website: S.optional(S.String),
-          addresses: S.optional(BusinessAddressDetailList),
-          phones: S.optional(BusinessPhoneDetailList),
-          documents: S.optional(BusinessDocumentListInput),
-          beneficial_owners: S.optional(BeneficialOwnersInput),
-          annual_sales_volume_range: S.optional(CurrencyRange),
-          average_monthly_volume_range: S.optional(CurrencyRange),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          documents: S.optional(__S(12)),
+          beneficial_owners: S.optional(__S(26)),
+          annual_sales_volume_range: S.optional(__S(28)),
+          average_monthly_volume_range: S.optional(__S(28)),
           purpose_code: S.optional(S.Unknown),
           business_description: S.optional(S.String),
         }),
@@ -1440,7 +1162,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(IdentifierType),
+          type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identifier" });
@@ -1449,7 +1171,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Identifier);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1472,27 +1194,27 @@ function __c4(j: number): any {
         S.Struct({
           nick_name: S.optional(S.String),
           account_number: S.String,
-          account_type: BankAccountType,
+          account_type: S.String,
           currency_code: S.optional(S.String),
-          identifiers: S.optional(IdentifierList),
-          branch_location: S.optional(BankBranchLocation),
-          mandate: S.optional(Mandate),
+          identifiers: S.optional(__S(32)),
+          branch_location: S.optional(__S(33)),
+          mandate: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "Bank" });
     case 4:
-      return S.Array(Bank);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          banks: S.optional(BankList),
+          banks: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "FinancialInstruments" });
     case 6:
-      return S.Array(RestEndpointFeaturesEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          features: RestEndpointFeaturesEnumList,
+          features: __S(38),
           seller_nonce: S.String,
         }),
       ).annotate({ identifier: "FirstPartyDetails" });
@@ -1503,25 +1225,25 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          features: S.optional(RestApiIntegrationRestEndpointFeaturesEnumList),
-          signup_mode: S.optional(SignupMode),
+          features: S.optional(__S(38)),
+          signup_mode: S.optional(S.String),
           organization: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThirdPartyDetails" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          integration_method: S.optional(RestApiIntegrationIntegrationMethod),
-          integration_type: RestApiIntegrationIntegrationType,
-          first_party_details: S.optional(FirstPartyDetails),
-          third_party_details: S.optional(ThirdPartyDetails),
+          integration_method: S.optional(S.String),
+          integration_type: S.String,
+          first_party_details: S.optional(__S(39)),
+          third_party_details: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "RestApiIntegration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           classic_api_integration: S.optional(S.Unknown),
-          rest_api_integration: S.optional(RestApiIntegration),
+          rest_api_integration: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "IntegrationDetails" });
     case 3:
@@ -1537,7 +1259,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          billing_experience_preference: S.optional(BillingExperiencePreference),
+          billing_experience_preference: S.optional(__S(43)),
           merchant_custom_data: S.optional(S.String),
           approval_url: S.optional(S.String),
           ec_token: S.optional(S.String),
@@ -1546,16 +1268,16 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operation: OperationOperation,
-          api_integration_preference: S.optional(IntegrationDetails),
+          operation: S.String,
+          api_integration_preference: S.optional(__S(42)),
           offline_onboarding_preference: S.optional(S.Unknown),
-          billing_agreement: S.optional(BillingAgreement),
+          billing_agreement: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(45));
     case 7:
-      return S.Array(Product);
+      return S.Array(S.String);
   }
 }
 function __c6(j: number): any {
@@ -1565,34 +1287,34 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: LegalConsentType,
+          type: S.String,
           granted: S.Boolean,
         }),
       ).annotate({ identifier: "LegalConsent" });
     case 2:
-      return S.Array(LegalConsent);
+      return S.Array(__S(49));
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          transfer_method_type: S.optional(TransferMethodTransferMethodType),
-          currencies: S.optional(CurrencyCodeList),
+          transfer_method_type: S.optional(S.String),
+          currencies: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "TransferMethod" });
     case 5:
-      return S.Array(TransferMethod);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          transfer_methods: S.optional(TransferMethodList),
+          transfer_methods: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "CountryTransferMethodCurrencySelection",
       });
     case 7:
-      return S.Array(CountryTransferMethodCurrencySelection);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -1602,27 +1324,25 @@ function __c7(j: number): any {
         S.Struct({
           marketplace: S.optional(S.Boolean),
           kyc_required: S.optional(S.Boolean),
-          country_transfer_method_currency_selection: S.optional(
-            CountryTransferMethodCurrencySelectionList,
-          ),
+          country_transfer_method_currency_selection: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "PayoutAttributes" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          individual_owners: S.optional(IndividualOwnerListInput),
-          business_entity: S.optional(BusinessEntityInput),
+          individual_owners: S.optional(__S(14)),
+          business_entity: S.optional(__S(29)),
           email: S.optional(S.String),
           preferred_language_code: S.optional(S.String),
           tracking_id: S.optional(S.String),
-          partner_config_override: S.optional(PartnerConfigOverride),
-          financial_instruments: S.optional(FinancialInstruments),
-          operations: OperationList,
-          products: S.optional(ProductList),
-          capabilities: S.optional(CapabilitiesList),
-          outside_process_dependencies: S.optional(DependentProcessList),
-          legal_consents: LegalConsentList,
-          payout_attributes: S.optional(PayoutAttributes),
+          partner_config_override: S.optional(__S(30)),
+          financial_instruments: S.optional(__S(37)),
+          operations: __S(46),
+          products: S.optional(__S(47)),
+          capabilities: S.optional(__S(38)),
+          outside_process_dependencies: S.optional(__S(48)),
+          legal_consents: __S(50),
+          payout_attributes: S.optional(__S(56)),
           legal_country_code: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v2/customer/partner-referrals", code: 200 })),
       ).annotate({
@@ -1633,15 +1353,15 @@ function __c7(j: number): any {
         S.Struct({
           href: S.String,
           rel: S.String,
-          method: S.optional(LinkDescriptionMethod),
+          method: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDescription" });
     case 3:
-      return S.Array(LinkDescription);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(DefinitionsLinkDescriptionList),
+          links: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "CreateReferralDataResponse",
@@ -1664,19 +1384,19 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          labels: S.optional(LabelsList),
+          labels: S.optional(__S(8)),
           name: S.optional(S.String),
           identification_number: S.optional(S.String),
           issue_date: S.optional(S.String),
           expiry_date: S.optional(S.String),
           issuing_country_code: S.optional(S.String),
-          files: S.optional(FileReferenceList),
-          links: S.optional(LinkDescriptionList),
-          type: S.optional(PersonDocumentType),
+          files: S.optional(__S(10)),
+          links: S.optional(__S(59)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PersonDocument" });
     case 7:
-      return S.Array(PersonDocument);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -1685,73 +1405,73 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          names: S.optional(PersonNameList),
+          names: S.optional(__S(1)),
           citizenship: S.optional(S.String),
-          addresses: S.optional(PersonAddressDetailList),
-          phones: S.optional(PersonPhoneDetailList),
-          birth_details: S.optional(BirthDetails),
-          documents: S.optional(PersonDocumentList),
-          type: S.optional(IndividualOwnerType),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          birth_details: S.optional(__S(7)),
+          documents: S.optional(__S(63)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IndividualOwner" });
     case 1:
-      return S.Array(IndividualOwner);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          names: S.optional(PersonNameList),
+          names: S.optional(__S(1)),
           citizenship: S.optional(S.String),
-          addresses: S.optional(PersonAddressDetailList),
-          phones: S.optional(PersonPhoneDetailList),
-          birth_details: S.optional(BirthDetails),
-          documents: S.optional(PersonDocumentList),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          birth_details: S.optional(__S(7)),
+          documents: S.optional(__S(63)),
           percentage_of_ownership: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IndividualBeneficialOwner",
       });
     case 3:
-      return S.Array(IndividualBeneficialOwner);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          business_type: S.optional(BusinessTypeInfo),
-          business_industry: S.optional(BusinessIndustry),
-          business_incorporation: S.optional(BusinessEntityInputBusinessIncorporation),
-          names: S.optional(BusinessNameDetailList),
-          emails: S.optional(EmailList),
+          business_type: S.optional(__S(15)),
+          business_industry: S.optional(__S(16)),
+          business_incorporation: S.optional(__S(17)),
+          names: S.optional(__S(19)),
+          emails: S.optional(__S(21)),
           website: S.optional(S.String),
-          addresses: S.optional(BusinessAddressDetailList),
-          phones: S.optional(BusinessPhoneDetailList),
-          documents: S.optional(BusinessDocumentList),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          documents: S.optional(__S(63)),
           percentage_of_ownership: S.optional(S.String),
         }),
       ).annotate({ identifier: "BusinessBeneficialOwner" });
     case 5:
-      return S.Array(BusinessBeneficialOwner);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          individual_beneficial_owners: S.optional(IndividualBeneficialOwnerList),
-          business_beneficial_owners: S.optional(BusinessBeneficialOwnerList),
+          individual_beneficial_owners: S.optional(__S(67)),
+          business_beneficial_owners: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "BeneficialOwners" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          business_type: S.optional(BusinessTypeInfo),
-          business_industry: S.optional(BusinessIndustry),
-          business_incorporation: S.optional(BusinessEntityInputBusinessIncorporation),
-          names: S.optional(BusinessNameDetailList),
-          emails: S.optional(EmailList),
+          business_type: S.optional(__S(15)),
+          business_industry: S.optional(__S(16)),
+          business_incorporation: S.optional(__S(17)),
+          names: S.optional(__S(19)),
+          emails: S.optional(__S(21)),
           website: S.optional(S.String),
-          addresses: S.optional(BusinessAddressDetailList),
-          phones: S.optional(BusinessPhoneDetailList),
-          documents: S.optional(BusinessDocumentList),
-          beneficial_owners: S.optional(BeneficialOwners),
-          annual_sales_volume_range: S.optional(CurrencyRange),
-          average_monthly_volume_range: S.optional(CurrencyRange),
+          addresses: S.optional(__S(4)),
+          phones: S.optional(__S(6)),
+          documents: S.optional(__S(63)),
+          beneficial_owners: S.optional(__S(70)),
+          annual_sales_volume_range: S.optional(__S(28)),
+          average_monthly_volume_range: S.optional(__S(28)),
           purpose_code: S.optional(S.Unknown),
           business_description: S.optional(S.String),
         }),
@@ -1763,19 +1483,19 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          individual_owners: S.optional(IndividualOwnerList),
-          business_entity: S.optional(BusinessEntity),
+          individual_owners: S.optional(__S(65)),
+          business_entity: S.optional(__S(71)),
           email: S.optional(S.String),
           preferred_language_code: S.optional(S.String),
           tracking_id: S.optional(S.String),
-          partner_config_override: S.optional(PartnerConfigOverride),
-          financial_instruments: S.optional(FinancialInstruments),
-          operations: OperationList,
-          products: S.optional(ProductList),
-          capabilities: S.optional(CapabilitiesList),
-          outside_process_dependencies: S.optional(DependentProcessList),
-          legal_consents: LegalConsentList,
-          payout_attributes: S.optional(PayoutAttributes),
+          partner_config_override: S.optional(__S(30)),
+          financial_instruments: S.optional(__S(37)),
+          operations: __S(46),
+          products: S.optional(__S(47)),
+          capabilities: S.optional(__S(38)),
+          outside_process_dependencies: S.optional(__S(48)),
+          legal_consents: __S(50),
+          payout_attributes: S.optional(__S(56)),
           legal_country_code: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReferralData" });
@@ -1785,9 +1505,38 @@ function __c9(j: number): any {
           partner_referral_id: S.optional(S.String),
           submitter_payer_id: S.optional(S.String),
           submitter_client_id: S.optional(S.String),
-          referral_data: S.optional(ReferralData),
-          links: S.optional(ReferralDataResponseDefinitionsLinkDescriptionList),
+          referral_data: S.optional(__S(72)),
+          links: S.optional(__S(59)),
         }),
       ).annotate({ identifier: "ReferralDataResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

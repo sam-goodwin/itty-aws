@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -45,19 +47,10 @@ export interface ListPluginConfigsLogsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListPluginConfigsLogsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListPluginConfigsLogsRequest>;
-
 /** * `SYSTEM` - SYSTEM * `PLUGIN` - PLUGIN * `CONSOLE` - CONSOLE */
 export type PluginLogEntrySourceEnum = "SYSTEM" | "PLUGIN" | "CONSOLE";
-const PluginLogEntrySourceEnum = S.String;
-
 /** * `DEBUG` - DEBUG * `LOG` - LOG * `INFO` - INFO * `WARN` - WARN * `ERROR` - ERROR */
 export type PluginLogEntryTypeEnum = "DEBUG" | "LOG" | "INFO" | "WARN" | "ERROR";
-const PluginLogEntryTypeEnum = S.String;
-
 export interface PluginLogEntry {
   id?: string;
   team_id?: number;
@@ -69,25 +62,13 @@ export interface PluginLogEntry {
   message?: string;
   instance_id?: string;
 }
-const PluginLogEntry = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PluginLogEntry>;
-
 export type PaginatedPluginLogEntryListResultsList = Array<PluginLogEntry>;
-const PaginatedPluginLogEntryListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PaginatedPluginLogEntryListResultsList>;
-
 export interface PaginatedPluginLogEntryList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedPluginLogEntryListResultsList;
 }
-const PaginatedPluginLogEntryList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PaginatedPluginLogEntryList>;
-
 export type ListPluginConfigsLogsError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const listPluginConfigsLogs: API.OperationMethod<
   ListPluginConfigsLogsRequest,
@@ -95,8 +76,8 @@ export const listPluginConfigsLogs: API.OperationMethod<
   ListPluginConfigsLogsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPluginConfigsLogsRequest,
-  output: PaginatedPluginLogEntryList,
+  input: __S(0) as any as S.Schema<ListPluginConfigsLogsRequest>,
+  output: __S(3) as any as S.Schema<PaginatedPluginLogEntryList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -130,24 +111,35 @@ function __c0(j: number): any {
           plugin_id: S.optional(S.Number),
           plugin_config_id: S.optional(S.Number),
           timestamp: S.optional(S.String),
-          source: S.optional(PluginLogEntrySourceEnum),
-          type: S.optional(PluginLogEntryTypeEnum),
+          source: S.optional(S.String),
+          type: S.optional(S.String),
           message: S.optional(S.String),
           instance_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "PluginLogEntry" });
     case 2:
-      return S.Array(PluginLogEntry);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedPluginLogEntryListResultsList),
+          results: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PaginatedPluginLogEntryList",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

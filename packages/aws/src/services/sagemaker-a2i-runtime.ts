@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SageMaker A2I Runtime",
   serviceShapeName: "AmazonSageMakerA2IRuntime",
@@ -116,22 +118,10 @@ export type HumanLoopName = string;
 export interface DeleteHumanLoopRequest {
   HumanLoopName: string;
 }
-const DeleteHumanLoopRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteHumanLoopRequest>;
 export interface DeleteHumanLoopResponse {}
-const DeleteHumanLoopResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteHumanLoopResponse>;
 export interface DescribeHumanLoopRequest {
   HumanLoopName: string;
 }
-const DescribeHumanLoopRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DescribeHumanLoopRequest>;
 export type HumanLoopStatus =
   | "InProgress"
   | "Failed"
@@ -139,14 +129,11 @@ export type HumanLoopStatus =
   | "Stopped"
   | "Stopping"
   | (string & {});
-const HumanLoopStatus = S.String;
-
 export type HumanLoopArn = string;
 export type FlowDefinitionArn = string;
 export interface HumanLoopOutput {
   OutputS3Uri?: string;
 }
-const HumanLoopOutput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<HumanLoopOutput>;
 export interface DescribeHumanLoopResponse {
   CreationTime: Date;
   FailureReason?: string;
@@ -157,13 +144,7 @@ export interface DescribeHumanLoopResponse {
   FlowDefinitionArn: string;
   HumanLoopOutput?: HumanLoopOutput & { OutputS3Uri: string };
 }
-const DescribeHumanLoopResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DescribeHumanLoopResponse>;
 export type SortOrder = "Ascending" | "Descending" | (string & {});
-const SortOrder = S.String;
-
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListHumanLoopsRequest {
@@ -174,10 +155,6 @@ export interface ListHumanLoopsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListHumanLoopsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListHumanLoopsRequest>;
 export type FailureReason = string;
 export interface HumanLoopSummary {
   HumanLoopName?: string;
@@ -186,60 +163,36 @@ export interface HumanLoopSummary {
   FailureReason?: string;
   FlowDefinitionArn?: string;
 }
-const HumanLoopSummary = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<HumanLoopSummary>;
 export type HumanLoopSummaries = HumanLoopSummary[];
-const HumanLoopSummaries = /*@__PURE__*/ __L.at(__c0, 7);
 export interface ListHumanLoopsResponse {
   HumanLoopSummaries: HumanLoopSummary[];
   NextToken?: string;
 }
-const ListHumanLoopsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListHumanLoopsResponse>;
 export type InputContent = string;
 export interface HumanLoopInput {
   InputContent?: string;
 }
-const HumanLoopInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<HumanLoopInput>;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
   | "FreeOfAdultContent"
   | (string & {});
-const ContentClassifier = S.String;
-
 export type ContentClassifiers = ContentClassifier[];
-const ContentClassifiers = /*@__PURE__*/ __L.at(__c1, 2);
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
-const HumanLoopDataAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<HumanLoopDataAttributes>;
 export interface StartHumanLoopRequest {
   HumanLoopName?: string;
   FlowDefinitionArn?: string;
   HumanLoopInput?: HumanLoopInput;
   DataAttributes?: HumanLoopDataAttributes;
 }
-const StartHumanLoopRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<StartHumanLoopRequest>;
 export interface StartHumanLoopResponse {
   HumanLoopArn?: string;
 }
-const StartHumanLoopResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<StartHumanLoopResponse>;
 export interface StopHumanLoopRequest {
   HumanLoopName?: string;
 }
-const StopHumanLoopRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StopHumanLoopRequest>;
 export interface StopHumanLoopResponse {}
-const StopHumanLoopResponse = DeleteHumanLoopResponse as any as S.Schema<StopHumanLoopResponse>;
 export type DeleteHumanLoopError =
   | InternalServerException
   | ResourceNotFoundException
@@ -258,8 +211,8 @@ export const deleteHumanLoop: API.OperationMethod<
   DeleteHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHumanLoopRequest,
-  output: DeleteHumanLoopResponse,
+  input: __S(0) as any as S.Schema<DeleteHumanLoopRequest>,
+  output: __S(1) as any as S.Schema<DeleteHumanLoopResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -287,8 +240,8 @@ export const describeHumanLoop: API.OperationMethod<
   DescribeHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeHumanLoopRequest,
-  output: DescribeHumanLoopResponse,
+  input: __S(2) as any as S.Schema<DescribeHumanLoopRequest>,
+  output: __S(4) as any as S.Schema<DescribeHumanLoopResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -316,8 +269,8 @@ export const listHumanLoops: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   HumanLoopSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListHumanLoopsRequest,
-  output: ListHumanLoopsResponse,
+  input: __S(5) as any as S.Schema<ListHumanLoopsRequest>,
+  output: __S(8) as any as S.Schema<ListHumanLoopsResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -351,8 +304,8 @@ export const startHumanLoop: API.OperationMethod<
   StartHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartHumanLoopRequest,
-  output: StartHumanLoopResponse,
+  input: __S(12) as any as S.Schema<StartHumanLoopRequest>,
+  output: __S(13) as any as S.Schema<StartHumanLoopResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -380,8 +333,8 @@ export const stopHumanLoop: API.OperationMethod<
   StopHumanLoopError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopHumanLoopRequest,
-  output: StopHumanLoopResponse,
+  input: __S(14) as any as S.Schema<StopHumanLoopRequest>,
+  output: __S(1) as any as S.Schema<StopHumanLoopResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -436,11 +389,11 @@ function __c0(j: number): any {
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           FailureReason: S.optional(S.String),
           FailureCode: S.optional(S.String),
-          HumanLoopStatus: S.optional(HumanLoopStatus),
+          HumanLoopStatus: S.optional(S.String),
           HumanLoopName: S.optional(S.String),
           HumanLoopArn: S.optional(S.String),
           FlowDefinitionArn: S.optional(S.String),
-          HumanLoopOutput: S.optional(HumanLoopOutput),
+          HumanLoopOutput: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "DescribeHumanLoopResponse",
@@ -455,7 +408,7 @@ function __c0(j: number): any {
             T.DateFromString.pipe(T.TimestampFormat("date-time")),
           ).pipe(T.HttpQuery("CreationTimeBefore")),
           FlowDefinitionArn: S.optional(S.String).pipe(T.HttpQuery("FlowDefinitionArn")),
-          SortOrder: S.optional(SortOrder).pipe(T.HttpQuery("SortOrder")),
+          SortOrder: S.optional(S.String).pipe(T.HttpQuery("SortOrder")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
         }).pipe(
@@ -466,14 +419,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           HumanLoopName: S.optional(S.String),
-          HumanLoopStatus: S.optional(HumanLoopStatus),
+          HumanLoopStatus: S.optional(S.String),
           CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           FailureReason: S.optional(S.String),
           FlowDefinitionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "HumanLoopSummary" });
     case 7:
-      return S.Array(HumanLoopSummary);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -481,7 +434,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          HumanLoopSummaries: S.optional(HumanLoopSummaries),
+          HumanLoopSummaries: S.optional(__S(7)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListHumanLoopsResponse" });
@@ -490,18 +443,18 @@ function __c1(j: number): any {
         identifier: "HumanLoopInput",
       });
     case 2:
-      return S.Array(ContentClassifier);
+      return S.Array(S.String);
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
-      ).annotate({ identifier: "HumanLoopDataAttributes" });
+      return S.suspend(() => S.Struct({ ContentClassifiers: S.optional(__S(10)) })).annotate({
+        identifier: "HumanLoopDataAttributes",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
           HumanLoopName: S.optional(S.String),
           FlowDefinitionArn: S.optional(S.String),
-          HumanLoopInput: S.optional(HumanLoopInput),
-          DataAttributes: S.optional(HumanLoopDataAttributes),
+          HumanLoopInput: S.optional(__S(9)),
+          DataAttributes: S.optional(__S(11)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/human-loops" }), svc, auth, proto, ver, rules),
         ),
@@ -516,5 +469,18 @@ function __c1(j: number): any {
           T.all(T.Http({ method: "POST", uri: "/human-loops/stop" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopHumanLoopRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -82,8 +84,6 @@ export class TalentDataPermissionRequired
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Application related details of a job posting. */
 export interface ApplicationInfo {
   /** Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000. */
@@ -93,8 +93,6 @@ export interface ApplicationInfo {
   /** Use this field to provide instructions, such as "Mail your application to ...", that a candidate can follow to apply for the job. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 3,000. */
   instruction?: string;
 }
-const ApplicationInfo = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ApplicationInfo>;
-
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
@@ -120,8 +118,6 @@ export interface PostalAddress {
   /** Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. For Spain, this is the province and not the autonomous community (for example, "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. For example, in Switzerland, this should be left unpopulated. */
   administrativeArea?: string;
 }
-const PostalAddress = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<PostalAddress>;
-
 export type LocationLocationTypeEnum =
   | "LOCATION_TYPE_UNSPECIFIED"
   | "COUNTRY"
@@ -134,8 +130,6 @@ export type LocationLocationTypeEnum =
   | "SUB_LOCALITY_2"
   | "NEIGHBORHOOD"
   | "STREET_ADDRESS";
-const LocationLocationTypeEnum = S.String;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -143,8 +137,6 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-const LatLng = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LatLng>;
-
 /** A resource that represents a location with full geographic information. */
 export interface Location {
   /** Postal address of the location that includes human readable information, such as postal delivery and payments addresses. Given a postal address, a postal service can deliver items to a premises, P.O. Box, or other delivery location. */
@@ -156,11 +148,7 @@ export interface Location {
   /** Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from google.type.LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles. */
   radiusMiles?: number;
 }
-const Location = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Location>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<LocationList>;
-
 export type JobDerivedInfoJobCategoriesItemEnum =
   | "JOB_CATEGORY_UNSPECIFIED"
   | "ACCOUNTING_AND_FINANCE"
@@ -193,16 +181,9 @@ export type JobDerivedInfoJobCategoriesItemEnum =
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
   | "TRANSPORTATION_AND_LOGISTICS";
-const JobDerivedInfoJobCategoriesItemEnum = S.String;
-
 export type JobDerivedInfoJobCategoriesItemEnumList = Array<
   JobDerivedInfoJobCategoriesItemEnum | (string & {})
 >;
-const JobDerivedInfoJobCategoriesItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
-
 /** Derived details about the job posting. */
 export interface JobDerivedInfo {
   /** Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order. */
@@ -210,14 +191,10 @@ export interface JobDerivedInfo {
   /** Job categories derived from Job.title and Job.description. */
   jobCategories?: JobDerivedInfoJobCategoriesItemEnumList;
 }
-const JobDerivedInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<JobDerivedInfo>;
-
 export type ProcessingOptionsHtmlSanitizationEnum =
   | "HTML_SANITIZATION_UNSPECIFIED"
   | "HTML_SANITIZATION_DISABLED"
   | "SIMPLE_FORMATTING_ONLY";
-const ProcessingOptionsHtmlSanitizationEnum = S.String;
-
 /** Options for job processing. */
 export interface ProcessingOptions {
   /** If set to `true`, the service does not attempt to resolve a more precise address for the job. */
@@ -225,15 +202,11 @@ export interface ProcessingOptions {
   /** Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY. */
   htmlSanitization?: ProcessingOptionsHtmlSanitizationEnum | (string & {});
 }
-const ProcessingOptions = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ProcessingOptions>;
-
 export type JobVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "ACCOUNT_ONLY"
   | "SHARED_WITH_GOOGLE"
   | "SHARED_WITH_PUBLIC";
-const JobVisibilityEnum = S.String;
-
 export type JobEmploymentTypesItemEnum =
   | "EMPLOYMENT_TYPE_UNSPECIFIED"
   | "FULL_TIME"
@@ -247,9 +220,6 @@ export type JobEmploymentTypesItemEnum =
   | "FLY_IN_FLY_OUT"
   | "OTHER_EMPLOYMENT_TYPE";
 export type JobEmploymentTypesItemEnumList = Array<JobEmploymentTypesItemEnum | (string & {})>;
-const JobEmploymentTypesItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobEmploymentTypesItemEnumList>;
-
 export type CompensationEntryTypeEnum =
   | "COMPENSATION_TYPE_UNSPECIFIED"
   | "BASE"
@@ -260,8 +230,6 @@ export type CompensationEntryTypeEnum =
   | "COMMISSIONS"
   | "TIPS"
   | "OTHER_COMPENSATION_TYPE";
-const CompensationEntryTypeEnum = S.String;
-
 export type CompensationEntryUnitEnum =
   | "COMPENSATION_UNIT_UNSPECIFIED"
   | "HOURLY"
@@ -271,8 +239,6 @@ export type CompensationEntryUnitEnum =
   | "YEARLY"
   | "ONE_TIME"
   | "OTHER_COMPENSATION_UNIT";
-const CompensationEntryUnitEnum = S.String;
-
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -282,8 +248,6 @@ export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Money>;
-
 /** Compensation range. */
 export interface CompensationRange {
   /** The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation. */
@@ -291,8 +255,6 @@ export interface CompensationRange {
   /** The minimum amount of compensation. If left empty, the value is set to zero and the currency code is set to match the currency code of max_compensation. */
   minCompensation?: Money;
 }
-const CompensationRange = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CompensationRange>;
-
 /** A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year. */
 export interface CompensationEntry {
   /** Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED. */
@@ -308,14 +270,7 @@ export interface CompensationEntry {
   /** Compensation amount. */
   amount?: Money;
 }
-const CompensationEntry = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CompensationEntry>;
-
 export type CompensationEntryList = Array<CompensationEntry>;
-const CompensationEntryList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CompensationEntryList>;
-
 /** Job compensation details. */
 export interface CompensationInfo {
   /** Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as **base compensation entry** for the job. */
@@ -325,8 +280,6 @@ export interface CompensationInfo {
   /** Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
   annualizedTotalCompensationRange?: CompensationRange;
 }
-const CompensationInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CompensationInfo>;
-
 /** Custom attribute values that are either filterable or non-filterable. */
 export interface CustomAttribute {
   /** Exactly one of string_values or long_values must be specified. This field is used to perform number range search. (`EQ`, `GT`, `GE`, `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values is supported. */
@@ -338,11 +291,7 @@ export interface CustomAttribute {
   /** If the `keyword_searchable` flag is true, the keywords in custom fields are searchable by keyword match. If false, the values are not searchable by keyword match. Default is false. */
   keywordSearchable?: boolean;
 }
-const CustomAttribute = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CustomAttribute>;
-
 export type CustomAttributeMap = { [key: string]: CustomAttribute | undefined };
-const CustomAttributeMap = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CustomAttributeMap>;
-
 export type JobJobBenefitsItemEnum =
   | "JOB_BENEFIT_UNSPECIFIED"
   | "CHILD_CARE"
@@ -357,9 +306,6 @@ export type JobJobBenefitsItemEnum =
   | "VACATION"
   | "VISION";
 export type JobJobBenefitsItemEnumList = Array<JobJobBenefitsItemEnum | (string & {})>;
-const JobJobBenefitsItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobJobBenefitsItemEnumList>;
-
 export type JobJobLevelEnum =
   | "JOB_LEVEL_UNSPECIFIED"
   | "ENTRY_LEVEL"
@@ -367,15 +313,11 @@ export type JobJobLevelEnum =
   | "MANAGER"
   | "DIRECTOR"
   | "EXECUTIVE";
-const JobJobLevelEnum = S.String;
-
 export type JobPostingRegionEnum =
   | "POSTING_REGION_UNSPECIFIED"
   | "ADMINISTRATIVE_AREA"
   | "NATION"
   | "TELECOMMUTE";
-const JobPostingRegionEnum = S.String;
-
 export type JobDegreeTypesItemEnum =
   | "DEGREE_TYPE_UNSPECIFIED"
   | "PRIMARY_EDUCATION"
@@ -387,9 +329,6 @@ export type JobDegreeTypesItemEnum =
   | "MASTERS_OR_EQUIVALENT"
   | "DOCTORAL_OR_EQUIVALENT";
 export type JobDegreeTypesItemEnumList = Array<JobDegreeTypesItemEnum | (string & {})>;
-const JobDegreeTypesItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobDegreeTypesItemEnumList>;
-
 /** A Job resource represents a job posting (also referred to as a "job listing" or "job requisition"). A job belongs to a Company, which is the hiring entity responsible for the job. */
 export interface Job {
   /** The start timestamp of the job in UTC time zone. Typically this field is used for contracting engagements. Invalid timestamps are ignored. */
@@ -453,38 +392,20 @@ export interface Job {
   /** Output only. The timestamp when this job posting was created. */
   postingCreateTime?: string;
 }
-const Job = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Job>;
-
 export type JobList = Array<Job>;
-const JobList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<JobList>;
-
 /** Request to create a batch of jobs. */
 export interface BatchCreateJobsRequest {
   /** Required. The jobs to be created. A maximum of 200 jobs can be created in a batch. */
   jobs?: JobList;
 }
-const BatchCreateJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchCreateJobsRequest>;
-
 export interface BatchCreateProjectsTenantsJobsRequest {
   /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: BatchCreateJobsRequest;
 }
-const BatchCreateProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BatchCreateProjectsTenantsJobsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -494,8 +415,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -509,29 +428,17 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Operation>;
-
 /** Request to delete a batch of jobs. */
 export interface BatchDeleteJobsRequest {
   /** The names of the jobs to delete. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". A maximum of 200 jobs can be deleted in a batch. */
   names?: StringList;
 }
-const BatchDeleteJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchDeleteJobsRequest>;
-
 export interface BatchDeleteProjectsTenantsJobsRequest {
   /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". The parent of all of the jobs specified in `names` must match this field. */
   parent: string;
   /** Request body */
   body?: BatchDeleteJobsRequest;
 }
-const BatchDeleteProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BatchDeleteProjectsTenantsJobsRequest>;
-
 /** Request to update a batch of jobs. */
 export interface BatchUpdateJobsRequest {
   /** Strongly recommended for the best service experience. Be aware that it will also increase latency when checking the status of a batch operation. If update_mask is provided, only the specified fields in Job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. If update_mask is provided, The Job inside JobResult will only contains fields that is updated, plus the Id of the Job. Otherwise, Job will include all fields, which can yield a very large response. */
@@ -539,35 +446,21 @@ export interface BatchUpdateJobsRequest {
   /** Required. The jobs to be updated. A maximum of 200 jobs can be updated in a batch. */
   jobs?: JobList;
 }
-const BatchUpdateJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BatchUpdateJobsRequest>;
-
 export interface BatchUpdateProjectsTenantsJobsRequest {
   /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: BatchUpdateJobsRequest;
 }
-const BatchUpdateProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BatchUpdateProjectsTenantsJobsRequest>;
-
 export type CompleteQueryProjectsTenantsTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
   | "COMBINED";
-const CompleteQueryProjectsTenantsTypeEnum = S.String;
-
 export type CompleteQueryProjectsTenantsScopeEnum =
   | "COMPLETION_SCOPE_UNSPECIFIED"
   | "TENANT"
   | "PUBLIC";
-const CompleteQueryProjectsTenantsScopeEnum = S.String;
-
 export interface CompleteQueryProjectsTenantsRequest {
   /** The completion topic. The default is CompletionType.COMBINED. */
   type?: CompleteQueryProjectsTenantsTypeEnum | (string & {});
@@ -584,18 +477,11 @@ export interface CompleteQueryProjectsTenantsRequest {
   /** The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. */
   languageCodes?: StringList;
 }
-const CompleteQueryProjectsTenantsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CompleteQueryProjectsTenantsRequest>;
-
 export type CompletionResultTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
   | "COMBINED";
-const CompletionResultTypeEnum = S.String;
-
 /** Resource that represents completion results. */
 export interface CompletionResult {
   /** The suggestion for the query. */
@@ -605,18 +491,12 @@ export interface CompletionResult {
   /** The completion topic. */
   type?: CompletionResultTypeEnum;
 }
-const CompletionResult = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CompletionResult>;
-
 export type CompletionResultList = Array<CompletionResult>;
-const CompletionResultList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CompletionResultList>;
-
 /** Additional information returned to client, such as debugging information. */
 export interface ResponseMetadata {
   /** A unique id associated with this call. This id is logged for tracking purposes. */
   requestId?: string;
 }
-const ResponseMetadata = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ResponseMetadata>;
-
 /** Response of auto-complete query. */
 export interface CompleteQueryResponse {
   /** Results of the matching job/company candidates. */
@@ -624,11 +504,6 @@ export interface CompleteQueryResponse {
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: ResponseMetadata;
 }
-const CompleteQueryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CompleteQueryResponse>;
-
 /** A Tenant resource represents a tenant in the service. A tenant is a group or entity that shares common access with specific privileges for resources like jobs. Customer may create multiple tenants to provide data isolation for different groups. */
 export interface Tenant {
   /** Required during tenant update. The resource name for a tenant. This is generated by the service when a tenant is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
@@ -636,19 +511,12 @@ export interface Tenant {
   /** Required. Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255. */
   externalId?: string;
 }
-const Tenant = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Tenant>;
-
 export interface CreateProjectsTenantsRequest {
   /** Required. Resource name of the project under which the tenant is created. The format is "projects/{project_id}", for example, "projects/foo". */
   parent: string;
   /** Request body */
   body?: Tenant;
 }
-const CreateProjectsTenantsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateProjectsTenantsRequest>;
-
 export type JobEventTypeEnum =
   | "JOB_EVENT_TYPE_UNSPECIFIED"
   | "IMPRESSION"
@@ -666,8 +534,6 @@ export type JobEventTypeEnum =
   | "HIRED"
   | "SENT_CV"
   | "INTERVIEW_GRANTED";
-const JobEventTypeEnum = S.String;
-
 /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
 export interface JobEvent {
   /** Required. The type of the event (see JobEventType). */
@@ -675,8 +541,6 @@ export interface JobEvent {
   /** Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example, "projects/foo/tenants/bar/jobs/baz". */
   jobs?: StringList;
 }
-const JobEvent = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<JobEvent>;
-
 /** An event issued when an end user interacts with the application that implements Cloud Talent Solution. Providing this information improves the quality of results for the API clients, enabling the service to perform optimally. The number of events sent must be consistent with other calls, such as job searches, issued to the service by the client. */
 export interface ClientEvent {
   /** Required. The timestamp of the event. */
@@ -690,19 +554,12 @@ export interface ClientEvent {
   /** Notes about the event provided by recruiters or other users, for example, feedback on why a job was bookmarked. */
   eventNotes?: string;
 }
-const ClientEvent = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ClientEvent>;
-
 export interface CreateProjectsTenantsClientEventsRequest {
   /** Required. Resource name of the tenant under which the event is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: ClientEvent;
 }
-const CreateProjectsTenantsClientEventsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateProjectsTenantsClientEventsRequest>;
-
 export type CompanySizeEnum =
   | "COMPANY_SIZE_UNSPECIFIED"
   | "MINI"
@@ -712,15 +569,11 @@ export type CompanySizeEnum =
   | "BIG"
   | "BIGGER"
   | "GIANT";
-const CompanySizeEnum = S.String;
-
 /** Derived details about the company. */
 export interface CompanyDerivedInfo {
   /** A structured headquarters location of the company, resolved from Company.headquarters_address if provided. */
   headquartersLocation?: Location;
 }
-const CompanyDerivedInfo = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CompanyDerivedInfo>;
-
 /** A Company resource represents a company in the service. A company is the entity that owns job postings, that is, the hiring entity responsible for employing applicants for the job position. */
 export interface Company {
   /** The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com". */
@@ -750,97 +603,48 @@ export interface Company {
   /** This field is deprecated. Please set the searchability of the custom attribute in the Job.custom_attributes going forward. A list of keys of filterable Job.custom_attributes, whose corresponding `string_values` are used in keyword searches. Jobs with `string_values` under these specified field keys are returned if any of the values match the search keyword. Custom field values with parenthesis, brackets and special symbols are not searchable as-is, and those keyword queries must be surrounded by quotes. */
   keywordSearchableJobCustomAttributes?: StringList;
 }
-const Company = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Company>;
-
 export interface CreateProjectsTenantsCompaniesRequest {
   /** Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: Company;
 }
-const CreateProjectsTenantsCompaniesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateProjectsTenantsCompaniesRequest>;
-
 export interface CreateProjectsTenantsJobsRequest {
   /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: Job;
 }
-const CreateProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateProjectsTenantsJobsRequest>;
-
 export interface DeleteProjectsTenantsRequest {
   /** Required. The resource name of the tenant to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   name: string;
 }
-const DeleteProjectsTenantsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteProjectsTenantsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Empty>;
-
 export interface DeleteProjectsTenantsCompaniesRequest {
   /** Required. The resource name of the company to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
   name: string;
 }
-const DeleteProjectsTenantsCompaniesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteProjectsTenantsCompaniesRequest>;
-
 export interface DeleteProjectsTenantsJobsRequest {
   /** Required. The resource name of the job to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". */
   name: string;
 }
-const DeleteProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteProjectsTenantsJobsRequest>;
-
 export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetProjectsOperationsRequest>;
-
 export interface GetProjectsTenantsRequest {
   /** Required. The resource name of the tenant to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   name: string;
 }
-const GetProjectsTenantsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetProjectsTenantsRequest>;
-
 export interface GetProjectsTenantsCompaniesRequest {
   /** Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/api-test-project/tenants/foo/companies/bar". */
   name: string;
 }
-const GetProjectsTenantsCompaniesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetProjectsTenantsCompaniesRequest>;
-
 export interface GetProjectsTenantsJobsRequest {
   /** Required. The resource name of the job to retrieve. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". */
   name: string;
 }
-const GetProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetProjectsTenantsJobsRequest>;
-
 export interface ListProjectsTenantsRequest {
   /** The starting indicator from which to return results. */
   pageToken?: string;
@@ -849,14 +653,7 @@ export interface ListProjectsTenantsRequest {
   /** The maximum number of tenants to be returned, at most 100. Default is 100 if a non-positive number is provided. */
   pageSize?: number;
 }
-const ListProjectsTenantsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListProjectsTenantsRequest>;
-
 export type TenantList = Array<Tenant>;
-const TenantList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TenantList>;
-
 /** The List tenants response object. */
 export interface ListTenantsResponse {
   /** Tenants for the current client. */
@@ -866,8 +663,6 @@ export interface ListTenantsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListTenantsResponse = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ListTenantsResponse>;
-
 export interface ListProjectsTenantsCompaniesRequest {
   /** The starting indicator from which to return results. */
   pageToken?: string;
@@ -878,14 +673,7 @@ export interface ListProjectsTenantsCompaniesRequest {
   /** Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. */
   requireOpenJobs?: boolean;
 }
-const ListProjectsTenantsCompaniesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListProjectsTenantsCompaniesRequest>;
-
 export type CompanyList = Array<Company>;
-const CompanyList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<CompanyList>;
-
 /** The List companies response object. */
 export interface ListCompaniesResponse {
   /** A token to retrieve the next page of results. */
@@ -895,19 +683,12 @@ export interface ListCompaniesResponse {
   /** Companies for the current client. */
   companies?: CompanyList;
 }
-const ListCompaniesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListCompaniesResponse>;
-
 export type ListProjectsTenantsJobsJobViewEnum =
   | "JOB_VIEW_UNSPECIFIED"
   | "JOB_VIEW_ID_ONLY"
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
   | "JOB_VIEW_FULL";
-const ListProjectsTenantsJobsJobViewEnum = S.String;
-
 export interface ListProjectsTenantsJobsRequest {
   /** The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. */
   pageSize?: number;
@@ -920,11 +701,6 @@ export interface ListProjectsTenantsJobsRequest {
   /** Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/foo/tenants/bar/companies/baz" * companyName = "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" * companyName = "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" */
   filter?: string;
 }
-const ListProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListProjectsTenantsJobsRequest>;
-
 /** List jobs response. */
 export interface ListJobsResponse {
   /** Additional information for the API invocation, such as the request tracking id. */
@@ -934,8 +710,6 @@ export interface ListJobsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListJobsResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ListJobsResponse>;
-
 export interface PatchProjectsTenantsRequest {
   /** Required during tenant update. The resource name for a tenant. This is generated by the service when a tenant is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
   name: string;
@@ -944,11 +718,6 @@ export interface PatchProjectsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
-const PatchProjectsTenantsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<PatchProjectsTenantsRequest>;
-
 export interface PatchProjectsTenantsCompaniesRequest {
   /** Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
   name: string;
@@ -957,11 +726,6 @@ export interface PatchProjectsTenantsCompaniesRequest {
   /** Request body */
   body?: Company;
 }
-const PatchProjectsTenantsCompaniesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<PatchProjectsTenantsCompaniesRequest>;
-
 export interface PatchProjectsTenantsJobsRequest {
   /** Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. */
   name: string;
@@ -970,11 +734,6 @@ export interface PatchProjectsTenantsJobsRequest {
   /** Request body */
   body?: Job;
 }
-const PatchProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<PatchProjectsTenantsJobsRequest>;
-
 /** Message representing a period of time between two timestamps. */
 export interface TimestampRange {
   /** End of the period (exclusive). */
@@ -982,8 +741,6 @@ export interface TimestampRange {
   /** Begin of the period (inclusive). */
   startTime?: string;
 }
-const TimestampRange = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<TimestampRange>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -995,14 +752,10 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<TimeOfDay>;
-
 export type CommuteFilterRoadTrafficEnum =
   | "ROAD_TRAFFIC_UNSPECIFIED"
   | "TRAFFIC_FREE"
   | "BUSY_HOUR";
-const CommuteFilterRoadTrafficEnum = S.String;
-
 export type CommuteFilterCommuteMethodEnum =
   | "COMMUTE_METHOD_UNSPECIFIED"
   | "DRIVING"
@@ -1010,8 +763,6 @@ export type CommuteFilterCommuteMethodEnum =
   | "WALKING"
   | "CYCLING"
   | "TRANSIT_ACCESSIBLE";
-const CommuteFilterCommuteMethodEnum = S.String;
-
 /** Parameters needed for commute search. */
 export interface CommuteFilter {
   /** Required. The latitude and longitude of the location to calculate the commute time from. */
@@ -1027,16 +778,12 @@ export interface CommuteFilter {
   /** Required. The method of transportation to calculate the commute time for. */
   commuteMethod?: CommuteFilterCommuteMethodEnum | (string & {});
 }
-const CommuteFilter = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<CommuteFilter>;
-
 export type CompensationFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
   | "UNIT_ONLY"
   | "UNIT_AND_AMOUNT"
   | "ANNUALIZED_BASE_AMOUNT"
   | "ANNUALIZED_TOTAL_AMOUNT";
-const CompensationFilterTypeEnum = S.String;
-
 export type CompensationFilterUnitsItemEnum =
   | "COMPENSATION_UNIT_UNSPECIFIED"
   | "HOURLY"
@@ -1049,9 +796,6 @@ export type CompensationFilterUnitsItemEnum =
 export type CompensationFilterUnitsItemEnumList = Array<
   CompensationFilterUnitsItemEnum | (string & {})
 >;
-const CompensationFilterUnitsItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<CompensationFilterUnitsItemEnumList>;
-
 /** Filter on job compensation type and amount. */
 export interface CompensationFilter {
   /** If set to true, jobs with unspecified compensation range fields are included. */
@@ -1063,8 +807,6 @@ export interface CompensationFilter {
   /** Compensation range. */
   range?: CompensationRange;
 }
-const CompensationFilter = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<CompensationFilter>;
-
 export type JobQueryEmploymentTypesItemEnum =
   | "EMPLOYMENT_TYPE_UNSPECIFIED"
   | "FULL_TIME"
@@ -1080,16 +822,11 @@ export type JobQueryEmploymentTypesItemEnum =
 export type JobQueryEmploymentTypesItemEnumList = Array<
   JobQueryEmploymentTypesItemEnum | (string & {})
 >;
-const JobQueryEmploymentTypesItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
-
 export type LocationFilterTelecommutePreferenceEnum =
   | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
   | "TELECOMMUTE_EXCLUDED"
   | "TELECOMMUTE_ALLOWED"
   | "TELECOMMUTE_JOBS_EXCLUDED";
-const LocationFilterTelecommutePreferenceEnum = S.String;
-
 /** Geographic region of the search. */
 export interface LocationFilter {
   /** CLDR region code of the country/region. This field may be used in two ways: 1) If telecommute preference is not set, this field is used address ambiguity of the user-input address. For example, "Liverpool" may refer to "Liverpool, NY, US" or "Liverpool, UK". This region code biases the address resolution toward a specific country or territory. If this field is not set, address resolution is biased toward the United States by default. 2) If telecommute preference is set to TELECOMMUTE_ALLOWED, the telecommute location filter will be limited to the region specified in this field. If this field is not set, the telecommute job locations will not be See https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
@@ -1103,11 +840,7 @@ export interface LocationFilter {
   /** The distance_in_miles is applied when the location being searched for is identified as a city or smaller. This field is ignored if the location being searched for is a state or larger. */
   distanceInMiles?: number;
 }
-const LocationFilter = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<LocationFilter>;
-
 export type LocationFilterList = Array<LocationFilter>;
-const LocationFilterList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<LocationFilterList>;
-
 export type JobQueryJobCategoriesItemEnum =
   | "JOB_CATEGORY_UNSPECIFIED"
   | "ACCOUNTING_AND_FINANCE"
@@ -1143,9 +876,6 @@ export type JobQueryJobCategoriesItemEnum =
 export type JobQueryJobCategoriesItemEnumList = Array<
   JobQueryJobCategoriesItemEnum | (string & {})
 >;
-const JobQueryJobCategoriesItemEnumList =
-  JobDerivedInfoJobCategoriesItemEnumList as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
-
 /** The query required to perform a search query. */
 export interface JobQuery {
   /** Jobs published within a range specified by this filter are searched against. */
@@ -1177,14 +907,10 @@ export interface JobQuery {
   /** The category filter specifies the categories of jobs to search against. See JobCategory for more information. If a value isn't specified, jobs from any category are searched against. If multiple values are specified, jobs from any of the specified categories are searched against. */
   jobCategories?: JobQueryJobCategoriesItemEnumList;
 }
-const JobQuery = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<JobQuery>;
-
 export type SearchJobsRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "JOB_SEARCH"
   | "FEATURED_JOB_SEARCH";
-const SearchJobsRequestSearchModeEnum = S.String;
-
 export type DeviceInfoDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "WEB"
@@ -1193,8 +919,6 @@ export type DeviceInfoDeviceTypeEnum =
   | "IOS"
   | "BOT"
   | "OTHER";
-const DeviceInfoDeviceTypeEnum = S.String;
-
 /** Device information collected from the job seeker, candidate, or other entity conducting the job search. Providing this information improves the quality of the search results across devices. */
 export interface DeviceInfo {
   /** Type of the device. */
@@ -1202,8 +926,6 @@ export interface DeviceInfo {
   /** A device-specific ID. The ID must be a unique identifier that distinguishes the device from other devices. */
   id?: string;
 }
-const DeviceInfo = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DeviceInfo>;
-
 /** Meta information related to the job searcher or entity conducting the job search. This information is used to improve the performance of the service. */
 export interface RequestMetadata {
   /** Required if allow_missing_ids is unset or `false`. The client-defined scope or source of the service call, which typically is the domain on which the service has been implemented and is currently being run. For example, if the service is being run by client *Foo, Inc.*, on job board www.foo.com and career site www.bar.com, then this field is set to "foo.com" for use on the job board, and "bar.com" for use on the career site. Note that any improvements to the model for a particular tenant site rely on this field being set correctly to a unique domain. The maximum number of allowed characters is 255. */
@@ -1217,8 +939,6 @@ export interface RequestMetadata {
   /** The type of device used by the job seeker at the time of the call to the service. */
   deviceInfo?: DeviceInfo;
 }
-const RequestMetadata = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<RequestMetadata>;
-
 export type SearchJobsRequestDiversificationLevelEnum =
   | "DIVERSIFICATION_LEVEL_UNSPECIFIED"
   | "DISABLED"
@@ -1227,41 +947,29 @@ export type SearchJobsRequestDiversificationLevelEnum =
   | "TWO_PER_COMPANY"
   | "MAX_THREE_PER_COMPANY"
   | "DIVERSIFY_BY_LOOSER_SIMILARITY";
-const SearchJobsRequestDiversificationLevelEnum = S.String;
-
 /** The histogram request. */
 export interface HistogramQuery {
   /** An expression specifies a histogram request against matching jobs for searches. See SearchJobsRequest.histogram_queries for details about syntax. */
   histogramQuery?: string;
 }
-const HistogramQuery = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<HistogramQuery>;
-
 export type HistogramQueryList = Array<HistogramQuery>;
-const HistogramQueryList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<HistogramQueryList>;
-
 export type SearchJobsRequestKeywordMatchModeEnum =
   | "KEYWORD_MATCH_MODE_UNSPECIFIED"
   | "KEYWORD_MATCH_DISABLED"
   | "KEYWORD_MATCH_ALL"
   | "KEYWORD_MATCH_TITLE_ONLY";
-const SearchJobsRequestKeywordMatchModeEnum = S.String;
-
 export type SearchJobsRequestRelevanceThresholdEnum =
   | "RELEVANCE_THRESHOLD_UNSPECIFIED"
   | "LOWEST"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-const SearchJobsRequestRelevanceThresholdEnum = S.String;
-
 export type SearchJobsRequestJobViewEnum =
   | "JOB_VIEW_UNSPECIFIED"
   | "JOB_VIEW_ID_ONLY"
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
   | "JOB_VIEW_FULL";
-const SearchJobsRequestJobViewEnum = S.String;
-
 export type CustomRankingInfoImportanceLevelEnum =
   | "IMPORTANCE_LEVEL_UNSPECIFIED"
   | "NONE"
@@ -1270,8 +978,6 @@ export type CustomRankingInfoImportanceLevelEnum =
   | "MEDIUM"
   | "HIGH"
   | "EXTREME";
-const CustomRankingInfoImportanceLevelEnum = S.String;
-
 /** Custom ranking information for SearchJobsRequest. */
 export interface CustomRankingInfo {
   /** Required. Controls over how important the score of CustomRankingInfo.ranking_expression gets applied to job's final ranking position. An error is thrown if not specified. */
@@ -1279,8 +985,6 @@ export interface CustomRankingInfo {
   /** Required. Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). A combination of the ranking expression and relevance score is used to determine job's final ranking position. The syntax for this expression is a subset of Google SQL syntax. Supported operators are: +, -, *, /, where the left and right side of the operator is either a numeric Job.custom_attributes key, integer/double value or an expression that can be evaluated to a number. Parenthesis are supported to adjust calculation precedence. The expression must be < 200 characters in length. The expression is considered invalid for a job if the expression references custom attributes that are not populated on the job or if the expression results in a divide by zero. If an expression is invalid for a job, that job is demoted to the end of the results. Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5) */
   rankingExpression?: string;
 }
-const CustomRankingInfo = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<CustomRankingInfo>;
-
 /** The Request body of the `SearchJobs` call. */
 export interface SearchJobsRequest {
   /** Query used to search against jobs, such as keyword, location filters, etc. */
@@ -1314,19 +1018,12 @@ export interface SearchJobsRequest {
   /** Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). */
   customRankingInfo?: CustomRankingInfo;
 }
-const SearchJobsRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<SearchJobsRequest>;
-
 export interface SearchForAlertProjectsTenantsJobsRequest {
   /** Required. The resource name of the tenant to search within. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: SearchJobsRequest;
 }
-const SearchForAlertProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<SearchForAlertProjectsTenantsJobsRequest>;
-
 /** Spell check result. */
 export interface SpellingCorrection {
   /** Correction output consisting of the corrected keyword string. */
@@ -1336,11 +1033,7 @@ export interface SpellingCorrection {
   /** Corrected output with html tags to highlight the corrected words. Corrected words are called out with the "*...*" html tags. For example, the user input query is "software enginear", where the second word, "enginear," is incorrect. It should be "engineer". When spelling correction is enabled, this value is "software *engineer*". */
   correctedHtml?: string;
 }
-const SpellingCorrection = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SpellingCorrection>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<StringMap>;
-
 /** Histogram result that matches HistogramQuery specified in searches. */
 export interface HistogramQueryResult {
   /** Requested histogram expression. */
@@ -1348,14 +1041,7 @@ export interface HistogramQueryResult {
   /** A map from the values of the facet associated with distinct values to the number of matching entries with corresponding value. The key format is: * (for string histogram) string values stored in the field. * (for named numeric bucket) name specified in `bucket()` function, like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`. * (for anonymous numeric bucket) range formatted as `-`, for example, `0-1000`, `MIN-0`, and `0-MAX`. */
   histogram?: StringMap;
 }
-const HistogramQueryResult = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<HistogramQueryResult>;
-
 export type HistogramQueryResultList = Array<HistogramQueryResult>;
-const HistogramQueryResultList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<HistogramQueryResultList>;
-
 /** Commute details related to this job. */
 export interface CommuteInfo {
   /** Location used as the destination in the commute calculation. */
@@ -1363,8 +1049,6 @@ export interface CommuteInfo {
   /** The number of seconds required to travel to the job location from the query location. A duration of 0 seconds indicates that the job isn't reachable within the requested duration, but was returned as part of an expanded query. */
   travelDuration?: string;
 }
-const CommuteInfo = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CommuteInfo>;
-
 /** Job entry with metadata inside SearchJobsResponse. */
 export interface MatchingJob {
   /** A summary of the job with core information that's displayed on the search results listing page. */
@@ -1378,11 +1062,7 @@ export interface MatchingJob {
   /** Job resource that matches the specified SearchJobsRequest. */
   job?: Job;
 }
-const MatchingJob = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<MatchingJob>;
-
 export type MatchingJobList = Array<MatchingJob>;
-const MatchingJobList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<MatchingJobList>;
-
 /** Response for SearchJob method. */
 export interface SearchJobsResponse {
   /** The spell checking result, and correction. */
@@ -1402,19 +1082,12 @@ export interface SearchJobsResponse {
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: ResponseMetadata;
 }
-const SearchJobsResponse = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SearchJobsResponse>;
-
 export interface SearchProjectsTenantsJobsRequest {
   /** Required. The resource name of the tenant to search within. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: SearchJobsRequest;
 }
-const SearchProjectsTenantsJobsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<SearchProjectsTenantsJobsRequest>;
-
 export type BatchCreateProjectsTenantsJobsError =
   | NotFound
   | Forbidden
@@ -1428,8 +1101,8 @@ export const batchCreateProjectsTenantsJobs: API.OperationMethod<
   BatchCreateProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsTenantsJobsRequest,
-  output: Operation,
+  input: __S(19) as any as S.Schema<BatchCreateProjectsTenantsJobsRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1121,8 @@ export const batchDeleteProjectsTenantsJobs: API.OperationMethod<
   BatchDeleteProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsTenantsJobsRequest,
-  output: Operation,
+  input: __S(25) as any as S.Schema<BatchDeleteProjectsTenantsJobsRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1468,8 +1141,8 @@ export const batchUpdateProjectsTenantsJobs: API.OperationMethod<
   BatchUpdateProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateProjectsTenantsJobsRequest,
-  output: Operation,
+  input: __S(27) as any as S.Schema<BatchUpdateProjectsTenantsJobsRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1483,8 +1156,8 @@ export const completeQueryProjectsTenants: API.OperationMethod<
   CompleteQueryProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteQueryProjectsTenantsRequest,
-  output: CompleteQueryResponse,
+  input: __S(28) as any as S.Schema<CompleteQueryProjectsTenantsRequest>,
+  output: __S(32) as any as S.Schema<CompleteQueryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1504,8 +1177,8 @@ export const createProjectsTenants: API.OperationMethod<
   CreateProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTenantsRequest,
-  output: Tenant,
+  input: __S(34) as any as S.Schema<CreateProjectsTenantsRequest>,
+  output: __S(33) as any as S.Schema<Tenant>,
   errors: [
     NotFound,
     Forbidden,
@@ -1531,8 +1204,8 @@ export const createProjectsTenantsClientEvents: API.OperationMethod<
   CreateProjectsTenantsClientEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTenantsClientEventsRequest,
-  output: ClientEvent,
+  input: __S(37) as any as S.Schema<CreateProjectsTenantsClientEventsRequest>,
+  output: __S(36) as any as S.Schema<ClientEvent>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1552,8 +1225,8 @@ export const createProjectsTenantsCompanies: API.OperationMethod<
   CreateProjectsTenantsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTenantsCompaniesRequest,
-  output: Company,
+  input: __S(40) as any as S.Schema<CreateProjectsTenantsCompaniesRequest>,
+  output: __S(39) as any as S.Schema<Company>,
   errors: [
     NotFound,
     Forbidden,
@@ -1580,8 +1253,8 @@ export const createProjectsTenantsJobs: API.OperationMethod<
   CreateProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTenantsJobsRequest,
-  output: Job,
+  input: __S(41) as any as S.Schema<CreateProjectsTenantsJobsRequest>,
+  output: __S(16) as any as S.Schema<Job>,
   errors: [
     NotFound,
     Forbidden,
@@ -1602,8 +1275,8 @@ export const deleteProjectsTenants: API.OperationMethod<
   DeleteProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTenantsRequest,
-  output: Empty,
+  input: __S(42) as any as S.Schema<DeleteProjectsTenantsRequest>,
+  output: __S(43) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1295,8 @@ export const deleteProjectsTenantsCompanies: API.OperationMethod<
   DeleteProjectsTenantsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTenantsCompaniesRequest,
-  output: Empty,
+  input: __S(44) as any as S.Schema<DeleteProjectsTenantsCompaniesRequest>,
+  output: __S(43) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1642,8 +1315,8 @@ export const deleteProjectsTenantsJobs: API.OperationMethod<
   DeleteProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTenantsJobsRequest,
-  output: Empty,
+  input: __S(45) as any as S.Schema<DeleteProjectsTenantsJobsRequest>,
+  output: __S(43) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1330,8 @@ export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsOperationsRequest,
-  output: Operation,
+  input: __S(46) as any as S.Schema<GetProjectsOperationsRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1676,8 +1349,8 @@ export const getProjectsTenants: API.OperationMethod<
   GetProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsTenantsRequest,
-  output: Tenant,
+  input: __S(47) as any as S.Schema<GetProjectsTenantsRequest>,
+  output: __S(33) as any as S.Schema<Tenant>,
   errors: [NotFound, Forbidden, TalentDataPermissionRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1695,8 +1368,8 @@ export const getProjectsTenantsCompanies: API.OperationMethod<
   GetProjectsTenantsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsTenantsCompaniesRequest,
-  output: Company,
+  input: __S(48) as any as S.Schema<GetProjectsTenantsCompaniesRequest>,
+  output: __S(39) as any as S.Schema<Company>,
   errors: [NotFound, Forbidden, TalentDataPermissionRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1714,8 +1387,8 @@ export const getProjectsTenantsJobs: API.OperationMethod<
   GetProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsTenantsJobsRequest,
-  output: Job,
+  input: __S(49) as any as S.Schema<GetProjectsTenantsJobsRequest>,
+  output: __S(16) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, TalentDataPermissionRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1734,8 +1407,8 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTenantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTenantsRequest,
-  output: ListTenantsResponse,
+  input: __S(50) as any as S.Schema<ListProjectsTenantsRequest>,
+  output: __S(52) as any as S.Schema<ListTenantsResponse>,
   errors: [NotFound, Forbidden, TalentDataPermissionRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1755,8 +1428,8 @@ export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCompaniesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTenantsCompaniesRequest,
-  output: ListCompaniesResponse,
+  input: __S(53) as any as S.Schema<ListProjectsTenantsCompaniesRequest>,
+  output: __S(55) as any as S.Schema<ListCompaniesResponse>,
   errors: [NotFound, Forbidden, TalentDataPermissionRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1449,8 @@ export const listProjectsTenantsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTenantsJobsRequest,
-  output: ListJobsResponse,
+  input: __S(56) as any as S.Schema<ListProjectsTenantsJobsRequest>,
+  output: __S(57) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, TalentDataPermissionRequired, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1471,8 @@ export const patchProjectsTenants: API.OperationMethod<
   PatchProjectsTenantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsTenantsRequest,
-  output: Tenant,
+  input: __S(58) as any as S.Schema<PatchProjectsTenantsRequest>,
+  output: __S(33) as any as S.Schema<Tenant>,
   errors: [
     NotFound,
     Forbidden,
@@ -1826,8 +1499,8 @@ export const patchProjectsTenantsCompanies: API.OperationMethod<
   PatchProjectsTenantsCompaniesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsTenantsCompaniesRequest,
-  output: Company,
+  input: __S(59) as any as S.Schema<PatchProjectsTenantsCompaniesRequest>,
+  output: __S(39) as any as S.Schema<Company>,
   errors: [
     NotFound,
     Forbidden,
@@ -1854,8 +1527,8 @@ export const patchProjectsTenantsJobs: API.OperationMethod<
   PatchProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsTenantsJobsRequest,
-  output: Job,
+  input: __S(60) as any as S.Schema<PatchProjectsTenantsJobsRequest>,
+  output: __S(16) as any as S.Schema<Job>,
   errors: [
     NotFound,
     Forbidden,
@@ -1881,8 +1554,8 @@ export const searchForAlertProjectsTenantsJobs: API.OperationMethod<
   SearchForAlertProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchForAlertProjectsTenantsJobsRequest,
-  output: SearchJobsResponse,
+  input: __S(74) as any as S.Schema<SearchForAlertProjectsTenantsJobsRequest>,
+  output: __S(82) as any as S.Schema<SearchJobsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1574,8 @@ export const searchProjectsTenantsJobs: API.OperationMethod<
   SearchProjectsTenantsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchProjectsTenantsJobsRequest,
-  output: SearchJobsResponse,
+  input: __S(83) as any as S.Schema<SearchProjectsTenantsJobsRequest>,
+  output: __S(82) as any as S.Schema<SearchJobsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1589,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          uris: S.optional(StringList),
-          emails: S.optional(StringList),
+          uris: S.optional(__S(0)),
+          emails: S.optional(__S(0)),
           instruction: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationInfo" });
@@ -1926,9 +1599,9 @@ function __c0(j: number): any {
         S.Struct({
           sublocality: S.optional(S.String),
           organization: S.optional(S.String),
-          addressLines: S.optional(StringList),
+          addressLines: S.optional(__S(0)),
           locality: S.optional(S.String),
-          recipients: S.optional(StringList),
+          recipients: S.optional(__S(0)),
           postalCode: S.optional(S.String),
           revision: S.optional(S.Number),
           sortingCode: S.optional(S.String),
@@ -1947,21 +1620,21 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          postalAddress: S.optional(PostalAddress),
-          locationType: S.optional(LocationLocationTypeEnum),
-          latLng: S.optional(LatLng),
+          postalAddress: S.optional(__S(2)),
+          locationType: S.optional(S.String),
+          latLng: S.optional(__S(3)),
           radiusMiles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Location" });
     case 5:
-      return S.Array(Location);
+      return S.Array(__S(4));
     case 6:
-      return S.Array(JobDerivedInfoJobCategoriesItemEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
-          jobCategories: S.optional(JobDerivedInfoJobCategoriesItemEnumList),
+          locations: S.optional(__S(5)),
+          jobCategories: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "JobDerivedInfo" });
   }
@@ -1972,7 +1645,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           disableStreetAddressResolution: S.optional(S.Boolean),
-          htmlSanitization: S.optional(ProcessingOptionsHtmlSanitizationEnum),
+          htmlSanitization: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProcessingOptions" });
     case 1:
@@ -1986,42 +1659,42 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          maxCompensation: S.optional(Money),
-          minCompensation: S.optional(Money),
+          maxCompensation: S.optional(__S(9)),
+          minCompensation: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "CompensationRange" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CompensationEntryTypeEnum),
-          unit: S.optional(CompensationEntryUnitEnum),
-          range: S.optional(CompensationRange),
+          type: S.optional(S.String),
+          unit: S.optional(S.String),
+          range: S.optional(__S(10)),
           expectedUnitsPerYear: S.optional(S.Number),
           description: S.optional(S.String),
-          amount: S.optional(Money),
+          amount: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "CompensationEntry" });
     case 4:
-      return S.Array(CompensationEntry);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(CompensationEntryList),
-          annualizedBaseCompensationRange: S.optional(CompensationRange),
-          annualizedTotalCompensationRange: S.optional(CompensationRange),
+          entries: S.optional(__S(12)),
+          annualizedBaseCompensationRange: S.optional(__S(10)),
+          annualizedTotalCompensationRange: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "CompensationInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          longValues: S.optional(StringList),
+          longValues: S.optional(__S(0)),
           filterable: S.optional(S.Boolean),
-          stringValues: S.optional(StringList),
+          stringValues: S.optional(__S(0)),
           keywordSearchable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CustomAttribute" });
     case 7:
-      return S.Record(S.String, CustomAttribute);
+      return S.Record(S.String, __S(14));
   }
 }
 function __c2(j: number): any {
@@ -2030,50 +1703,50 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobStartTime: S.optional(S.String),
-          applicationInfo: S.optional(ApplicationInfo),
-          derivedInfo: S.optional(JobDerivedInfo),
+          applicationInfo: S.optional(__S(1)),
+          derivedInfo: S.optional(__S(7)),
           languageCode: S.optional(S.String),
-          processingOptions: S.optional(ProcessingOptions),
-          visibility: S.optional(JobVisibilityEnum),
+          processingOptions: S.optional(__S(8)),
+          visibility: S.optional(S.String),
           requisitionId: S.optional(S.String),
-          employmentTypes: S.optional(JobEmploymentTypesItemEnumList),
+          employmentTypes: S.optional(__S(6)),
           qualifications: S.optional(S.String),
-          compensationInfo: S.optional(CompensationInfo),
+          compensationInfo: S.optional(__S(13)),
           description: S.optional(S.String),
           postingExpireTime: S.optional(S.String),
-          customAttributes: S.optional(CustomAttributeMap),
-          jobBenefits: S.optional(JobJobBenefitsItemEnumList),
-          jobLevel: S.optional(JobJobLevelEnum),
+          customAttributes: S.optional(__S(15)),
+          jobBenefits: S.optional(__S(6)),
+          jobLevel: S.optional(S.String),
           companyDisplayName: S.optional(S.String),
           incentives: S.optional(S.String),
           responsibilities: S.optional(S.String),
           postingPublishTime: S.optional(S.String),
-          addresses: S.optional(StringList),
+          addresses: S.optional(__S(0)),
           company: S.optional(S.String),
           title: S.optional(S.String),
           postingUpdateTime: S.optional(S.String),
           department: S.optional(S.String),
           promotionValue: S.optional(S.Number),
-          postingRegion: S.optional(JobPostingRegionEnum),
-          degreeTypes: S.optional(JobDegreeTypesItemEnumList),
+          postingRegion: S.optional(S.String),
+          degreeTypes: S.optional(__S(6)),
           name: S.optional(S.String),
           jobEndTime: S.optional(S.String),
           postingCreateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Job" });
     case 1:
-      return S.Array(Job);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jobs: S.optional(JobList),
+          jobs: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "BatchCreateJobsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchCreateJobsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2087,11 +1760,11 @@ function __c2(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(21)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -2099,10 +1772,10 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          response: S.optional(__S(20)),
+          error: S.optional(__S(22)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(20)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -2113,14 +1786,14 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(StringList),
+          names: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "BatchDeleteJobsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchDeleteJobsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2135,14 +1808,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          jobs: S.optional(JobList),
+          jobs: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "BatchUpdateJobsRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchUpdateJobsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2156,13 +1829,13 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CompleteQueryProjectsTenantsTypeEnum.pipe(T.Query())),
-          scope: S.optional(CompleteQueryProjectsTenantsScopeEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          scope: S.optional(S.String.pipe(T.Query())),
           tenant: S.String.pipe(T.Label()),
           query: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           company: S.optional(S.String.pipe(T.Query())),
-          languageCodes: S.optional(StringList.pipe(T.Query())),
+          languageCodes: S.optional(__S(0).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2178,11 +1851,11 @@ function __c3(j: number): any {
         S.Struct({
           suggestion: S.optional(S.String),
           imageUri: S.optional(S.String),
-          type: S.optional(CompletionResultTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompletionResult" });
     case 6:
-      return S.Array(CompletionResult);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2196,8 +1869,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          completionResults: S.optional(CompletionResultList),
-          metadata: S.optional(ResponseMetadata),
+          completionResults: S.optional(__S(30)),
+          metadata: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "CompleteQueryResponse" });
     case 1:
@@ -2211,7 +1884,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Tenant.pipe(T.HttpBody())),
+          body: S.optional(__S(33).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2225,15 +1898,15 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(JobEventTypeEnum),
-          jobs: S.optional(StringList),
+          type: S.optional(S.String),
+          jobs: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "JobEvent" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          jobEvent: S.optional(JobEvent),
+          jobEvent: S.optional(__S(35)),
           requestId: S.optional(S.String),
           eventId: S.optional(S.String),
           eventNotes: S.optional(S.String),
@@ -2243,7 +1916,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ClientEvent.pipe(T.HttpBody())),
+          body: S.optional(__S(36).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2257,7 +1930,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          headquartersLocation: S.optional(Location),
+          headquartersLocation: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "CompanyDerivedInfo" });
     case 7:
@@ -2267,15 +1940,15 @@ function __c4(j: number): any {
           hiringAgency: S.optional(S.Boolean),
           externalId: S.optional(S.String),
           name: S.optional(S.String),
-          size: S.optional(CompanySizeEnum),
+          size: S.optional(S.String),
           imageUri: S.optional(S.String),
           eeoText: S.optional(S.String),
           displayName: S.optional(S.String),
-          derivedInfo: S.optional(CompanyDerivedInfo),
+          derivedInfo: S.optional(__S(38)),
           suspended: S.optional(S.Boolean),
           websiteUri: S.optional(S.String),
           headquartersAddress: S.optional(S.String),
-          keywordSearchableJobCustomAttributes: S.optional(StringList),
+          keywordSearchableJobCustomAttributes: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "Company" });
   }
@@ -2286,7 +1959,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Company.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2301,7 +1974,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Job.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2407,12 +2080,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsTenantsRequest",
       });
     case 3:
-      return S.Array(Tenant);
+      return S.Array(__S(33));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          tenants: S.optional(TenantList),
-          metadata: S.optional(ResponseMetadata),
+          tenants: S.optional(__S(51)),
+          metadata: S.optional(__S(31)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTenantsResponse" });
@@ -2434,13 +2107,13 @@ function __c6(j: number): any {
         identifier: "ListProjectsTenantsCompaniesRequest",
       });
     case 6:
-      return S.Array(Company);
+      return S.Array(__S(39));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          metadata: S.optional(ResponseMetadata),
-          companies: S.optional(CompanyList),
+          metadata: S.optional(__S(31)),
+          companies: S.optional(__S(54)),
         }),
       ).annotate({ identifier: "ListCompaniesResponse" });
   }
@@ -2451,7 +2124,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          jobView: S.optional(ListProjectsTenantsJobsJobViewEnum.pipe(T.Query())),
+          jobView: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -2468,8 +2141,8 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(ResponseMetadata),
-          jobs: S.optional(JobList),
+          metadata: S.optional(__S(31)),
+          jobs: S.optional(__S(17)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
@@ -2478,7 +2151,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Tenant.pipe(T.HttpBody())),
+          body: S.optional(__S(33).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://jobs.googleapis.com/" }),
         ),
@@ -2490,7 +2163,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Company.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://jobs.googleapis.com/" }),
         ),
@@ -2502,7 +2175,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Job.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://jobs.googleapis.com/" }),
         ),
@@ -2528,12 +2201,12 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          startCoordinates: S.optional(LatLng),
+          startCoordinates: S.optional(__S(3)),
           allowImpreciseAddresses: S.optional(S.Boolean),
-          departureTime: S.optional(TimeOfDay),
+          departureTime: S.optional(__S(62)),
           travelDuration: S.optional(S.String),
-          roadTraffic: S.optional(CommuteFilterRoadTrafficEnum),
-          commuteMethod: S.optional(CommuteFilterCommuteMethodEnum),
+          roadTraffic: S.optional(S.String),
+          commuteMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommuteFilter" });
   }
@@ -2544,46 +2217,46 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           includeJobsWithUnspecifiedCompensationRange: S.optional(S.Boolean),
-          type: S.optional(CompensationFilterTypeEnum),
-          units: S.optional(CompensationFilterUnitsItemEnumList),
-          range: S.optional(CompensationRange),
+          type: S.optional(S.String),
+          units: S.optional(__S(6)),
+          range: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "CompensationFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          telecommutePreference: S.optional(LocationFilterTelecommutePreferenceEnum),
+          telecommutePreference: S.optional(S.String),
           address: S.optional(S.String),
-          latLng: S.optional(LatLng),
+          latLng: S.optional(__S(3)),
           distanceInMiles: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LocationFilter" });
     case 2:
-      return S.Array(LocationFilter);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          publishTimeRange: S.optional(TimestampRange),
+          publishTimeRange: S.optional(__S(61)),
           query: S.optional(S.String),
-          commuteFilter: S.optional(CommuteFilter),
-          compensationFilter: S.optional(CompensationFilter),
-          companies: S.optional(StringList),
-          employmentTypes: S.optional(JobQueryEmploymentTypesItemEnumList),
+          commuteFilter: S.optional(__S(63)),
+          compensationFilter: S.optional(__S(64)),
+          companies: S.optional(__S(0)),
+          employmentTypes: S.optional(__S(6)),
           customAttributeFilter: S.optional(S.String),
-          languageCodes: S.optional(StringList),
-          excludedJobs: S.optional(StringList),
+          languageCodes: S.optional(__S(0)),
+          excludedJobs: S.optional(__S(0)),
           queryLanguageCode: S.optional(S.String),
-          locationFilters: S.optional(LocationFilterList),
-          companyDisplayNames: S.optional(StringList),
+          locationFilters: S.optional(__S(66)),
+          companyDisplayNames: S.optional(__S(0)),
           disableSpellCheck: S.optional(S.Boolean),
-          jobCategories: S.optional(JobQueryJobCategoriesItemEnumList),
+          jobCategories: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "JobQuery" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          deviceType: S.optional(DeviceInfoDeviceTypeEnum),
+          deviceType: S.optional(S.String),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceInfo" });
@@ -2594,7 +2267,7 @@ function __c8(j: number): any {
           sessionId: S.optional(S.String),
           allowMissingIds: S.optional(S.Boolean),
           userId: S.optional(S.String),
-          deviceInfo: S.optional(DeviceInfo),
+          deviceInfo: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "RequestMetadata" });
     case 6:
@@ -2604,7 +2277,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "HistogramQuery" });
     case 7:
-      return S.Array(HistogramQuery);
+      return S.Array(__S(70));
   }
 }
 function __c9(j: number): any {
@@ -2612,35 +2285,35 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          importanceLevel: S.optional(CustomRankingInfoImportanceLevelEnum),
+          importanceLevel: S.optional(S.String),
           rankingExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomRankingInfo" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          jobQuery: S.optional(JobQuery),
+          jobQuery: S.optional(__S(67)),
           offset: S.optional(S.Number),
           orderBy: S.optional(S.String),
-          searchMode: S.optional(SearchJobsRequestSearchModeEnum),
-          requestMetadata: S.optional(RequestMetadata),
-          diversificationLevel: S.optional(SearchJobsRequestDiversificationLevelEnum),
-          histogramQueries: S.optional(HistogramQueryList),
+          searchMode: S.optional(S.String),
+          requestMetadata: S.optional(__S(69)),
+          diversificationLevel: S.optional(S.String),
+          histogramQueries: S.optional(__S(71)),
           disableKeywordMatch: S.optional(S.Boolean),
-          keywordMatchMode: S.optional(SearchJobsRequestKeywordMatchModeEnum),
+          keywordMatchMode: S.optional(S.String),
           enableBroadening: S.optional(S.Boolean),
           maxPageSize: S.optional(S.Number),
-          relevanceThreshold: S.optional(SearchJobsRequestRelevanceThresholdEnum),
+          relevanceThreshold: S.optional(S.String),
           pageToken: S.optional(S.String),
-          jobView: S.optional(SearchJobsRequestJobViewEnum),
-          customRankingInfo: S.optional(CustomRankingInfo),
+          jobView: S.optional(S.String),
+          customRankingInfo: S.optional(__S(72)),
         }),
       ).annotate({ identifier: "SearchJobsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SearchJobsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2665,15 +2338,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           histogramQuery: S.optional(S.String),
-          histogram: S.optional(StringMap),
+          histogram: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "HistogramQueryResult" });
     case 6:
-      return S.Array(HistogramQueryResult);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jobLocation: S.optional(Location),
+          jobLocation: S.optional(__S(4)),
           travelDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommuteInfo" });
@@ -2687,30 +2360,30 @@ function __c10(j: number): any {
           jobSummary: S.optional(S.String),
           jobTitleSnippet: S.optional(S.String),
           searchTextSnippet: S.optional(S.String),
-          commuteInfo: S.optional(CommuteInfo),
-          job: S.optional(Job),
+          commuteInfo: S.optional(__S(79)),
+          job: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "MatchingJob" });
     case 1:
-      return S.Array(MatchingJob);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          spellCorrection: S.optional(SpellingCorrection),
+          spellCorrection: S.optional(__S(75)),
           nextPageToken: S.optional(S.String),
-          histogramQueryResults: S.optional(HistogramQueryResultList),
+          histogramQueryResults: S.optional(__S(78)),
           broadenedQueryJobsCount: S.optional(S.Number),
-          locationFilters: S.optional(LocationList),
-          matchingJobs: S.optional(MatchingJobList),
+          locationFilters: S.optional(__S(5)),
+          matchingJobs: S.optional(__S(81)),
           totalSize: S.optional(S.Number),
-          metadata: S.optional(ResponseMetadata),
+          metadata: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "SearchJobsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SearchJobsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2721,5 +2394,36 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "SearchProjectsTenantsJobsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

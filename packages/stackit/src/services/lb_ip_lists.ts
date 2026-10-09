@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -51,32 +53,16 @@ export interface DeleteIPListRequest {
   region: string;
   name: string;
 }
-const DeleteIPListRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteIPListRequest>;
-
 export type DeleteIPListResponse2 = unknown;
-const DeleteIPListResponse2 = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteIPListResponse2>;
-
 export interface GetIPListRequest {
   projectId: string;
   region: string;
   name: string;
 }
-const GetIPListRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetIPListRequest>;
-
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per IP list. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetIPListResponseLabelsMap = { [key: string]: string | undefined };
-const GetIPListResponseLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetIPListResponseLabelsMap>;
-
 /** List of load balancers that reference this IP list. */
 export type IPListUsageItemsList = Array<string>;
-const IPListUsageItemsList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IPListUsageItemsList>;
-
 /** IPListUsage describes which NLB/ALB currently reference an IP list. */
 export interface IPListUsage {
   /** Number of load balancers currently using this IP list. */
@@ -84,8 +70,6 @@ export interface IPListUsage {
   /** List of load balancers that reference this IP list. */
   items?: IPListUsageItemsList;
 }
-const IPListUsage = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<IPListUsage>;
-
 /** GetIPListResponse returns IP list configuration without CIDR entries. */
 export interface GetIPListResponse {
   /** Unique SHA-256 hex fingerprint used to verify the stored IP list content. */
@@ -99,14 +83,10 @@ export interface GetIPListResponse {
   /** Current use of this IP list in load balancers. */
   usage?: IPListUsage;
 }
-const GetIPListResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetIPListResponse>;
-
 export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-const GetQuotaRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetQuotaRequest>;
-
 /** IPListsQuota holds the limits and current usage for IP list resources. Defaults: limit=3 per project, max_entries_per_list=50000. */
 export interface IPListsQuota {
   /** The maximum number of IP lists allowed in this project. Defaults to 3. Use -1 to indicate unlimited. */
@@ -114,14 +94,10 @@ export interface IPListsQuota {
   /** The number of IP lists that currently exist in this project. */
   usage?: number;
 }
-const IPListsQuota = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IPListsQuota>;
-
 /** Quotas holds the specific quota elements for resources managed by this API. */
 export interface Quotas {
   ipLists?: IPListsQuota;
 }
-const Quotas = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Quotas>;
-
 /** GetQuotaResponse returns the configured IP list quota for the project and region. */
 export interface GetQuotaResponse {
   /** Project identifier */
@@ -130,33 +106,19 @@ export interface GetQuotaResponse {
   /** Region */
   region?: string;
 }
-const GetQuotaResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetQuotaResponse>;
-
 export interface ListIPListsRequest {
   projectId: string;
   region: string;
 }
-const ListIPListsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListIPListsRequest>;
-
 /** Every IP list in the project and region. Never includes the CIDR entries themselves. */
 export type ListIPListsResponseItemsList = Array<GetIPListResponse>;
-const ListIPListsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListIPListsResponseItemsList>;
-
 /** ListIPListsResponse returns metadata for all IP lists in a project and region. The CIDR entries themselves are never returned. */
 export interface ListIPListsResponse {
   /** Every IP list in the project and region. Never includes the CIDR entries themselves. */
   items?: ListIPListsResponseItemsList;
 }
-const ListIPListsResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListIPListsResponse>;
-
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per IP list. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type UploadIPListRequestLabelsMap = { [key: string]: string | undefined };
-const UploadIPListRequestLabelsMap =
-  GetIPListResponseLabelsMap as any as S.Schema<UploadIPListRequestLabelsMap>;
-
 export interface UploadIPListRequest {
   projectId: string;
   region: string;
@@ -166,8 +128,6 @@ export interface UploadIPListRequest {
   /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per IP list. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
   labels?: UploadIPListRequestLabelsMap;
 }
-const UploadIPListRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UploadIPListRequest>;
-
 export type DeleteIPListError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Delete an IP List configuration Removes the IP list configuration from the project. If the IP list is referenced by load balancers, clear or replace the reference first. */
 export const deleteIPList: API.OperationMethod<
@@ -176,8 +136,8 @@ export const deleteIPList: API.OperationMethod<
   DeleteIPListError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIPListRequest,
-  output: DeleteIPListResponse2,
+  input: __S(0) as any as S.Schema<DeleteIPListRequest>,
+  output: __S(1) as any as S.Schema<DeleteIPListResponse2>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -191,8 +151,8 @@ export const getIPList: API.OperationMethod<
   GetIPListError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIPListRequest,
-  output: GetIPListResponse,
+  input: __S(2) as any as S.Schema<GetIPListRequest>,
+  output: __S(6) as any as S.Schema<GetIPListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -206,8 +166,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQuotaRequest,
-  output: GetQuotaResponse,
+  input: __S(7) as any as S.Schema<GetQuotaRequest>,
+  output: __S(10) as any as S.Schema<GetQuotaResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -221,8 +181,8 @@ export const listIPLists: API.OperationMethod<
   ListIPListsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIPListsRequest,
-  output: ListIPListsResponse,
+  input: __S(11) as any as S.Schema<ListIPListsRequest>,
+  output: __S(13) as any as S.Schema<ListIPListsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -236,8 +196,8 @@ export const uploadIPList: API.OperationMethod<
   UploadIPListError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadIPListRequest,
-  output: GetIPListResponse,
+  input: __S(14) as any as S.Schema<UploadIPListRequest>,
+  output: __S(6) as any as S.Schema<GetIPListResponse>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -288,17 +248,17 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          items: S.optional(IPListUsageItemsList),
+          items: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "IPListUsage" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           contentHash: S.optional(S.String),
-          labels: S.optional(GetIPListResponseLabelsMap),
+          labels: S.optional(__S(3)),
           name: S.String,
           numberOfIps: S.optional(S.Number),
-          usage: S.optional(IPListUsage),
+          usage: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "GetIPListResponse" });
     case 7:
@@ -329,14 +289,14 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ipLists: S.optional(IPListsQuota),
+          ipLists: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "Quotas" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
-          quotas: S.optional(Quotas),
+          quotas: S.optional(__S(9)),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQuotaResponse" });
@@ -355,11 +315,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListIPListsRequest" });
     case 4:
-      return S.Array(GetIPListResponse);
+      return S.Array(__S(6));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListIPListsResponseItemsList),
+          items: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "ListIPListsResponse" });
     case 6:
@@ -369,7 +329,7 @@ function __c1(j: number): any {
           region: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           fileContent: S.String,
-          labels: S.optional(UploadIPListRequestLabelsMap),
+          labels: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -379,5 +339,18 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UploadIPListRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

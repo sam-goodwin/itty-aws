@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -38,16 +40,12 @@ export class NotFound
   ) {}
 
 export type GetCategoryRequestLanguage = "en" | "de";
-const GetCategoryRequestLanguage = S.String;
-
 export interface GetCategoryRequest {
   /** The unique identifier for a category. */
   categoryId: string;
   /** The language to retrieve the data in, available for en and de */
   language?: GetCategoryRequestLanguage | (string & {});
 }
-const GetCategoryRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetCategoryRequest>;
-
 export interface PublicCategory {
   /** Description of the category */
   description?: string;
@@ -64,26 +62,15 @@ export interface PublicCategory {
   /** Number of the revision from PIM */
   version?: string;
 }
-const PublicCategory = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<PublicCategory>;
-
 export type GetProductRequestLanguage = "en" | "de";
-const GetProductRequestLanguage = S.String;
-
 export interface GetProductRequest {
   /** The unique identifier for a product. */
   productId: string;
   /** The language to retrieve the data in, available for en and de */
   language?: GetProductRequestLanguage | (string & {});
 }
-const GetProductRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetProductRequest>;
-
 /** Api identifier */
 export type PublicProductApiIdentifierList = Array<string>;
-const PublicProductApiIdentifierList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PublicProductApiIdentifierList>;
-
 export interface PublicProduct {
   /** Api identifier */
   apiIdentifier?: PublicProductApiIdentifierList;
@@ -108,37 +95,21 @@ export interface PublicProduct {
   /** Number of the revision from PIM */
   version?: string;
 }
-const PublicProduct = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PublicProduct>;
-
 export type GetProductMarketingDataRequestLanguage = "en" | "de";
-const GetProductMarketingDataRequestLanguage = S.String;
-
 export interface GetProductMarketingDataRequest {
   /** The unique identifier for a product. */
   productId: string;
   /** The language to retrieve the data in, available for en and de */
   language?: GetProductMarketingDataRequestLanguage | (string & {});
 }
-const GetProductMarketingDataRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetProductMarketingDataRequest>;
-
 export interface MarketingAdvantage {
   /** Name of the advantage */
   advantage?: string;
   /** Description of the advantage */
   position?: number;
 }
-const MarketingAdvantage = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MarketingAdvantage>;
-
 /** List of advantages of the product */
 export type PublicMarketingDataAdvantagesList = Array<MarketingAdvantage>;
-const PublicMarketingDataAdvantagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PublicMarketingDataAdvantagesList>;
-
 export interface MarketingApplication {
   /** Description of the application */
   application?: string;
@@ -147,30 +118,16 @@ export interface MarketingApplication {
   /** Position of the application */
   position?: number;
 }
-const MarketingApplication = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MarketingApplication>;
-
 /** List of applications provided by the product */
 export type PublicMarketingDataApplicationsList = Array<MarketingApplication>;
-const PublicMarketingDataApplicationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PublicMarketingDataApplicationsList>;
-
 export interface MarketingFunction {
   /** Name of the function */
   function?: string;
   /** Position of the function */
   position?: number;
 }
-const MarketingFunction = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MarketingFunction>;
-
 /** List of functions provided by the product */
 export type PublicMarketingDataFunctionsList = Array<MarketingFunction>;
-const PublicMarketingDataFunctionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PublicMarketingDataFunctionsList>;
-
 export interface PublicMarketingData {
   /** List of advantages of the product */
   advantages?: PublicMarketingDataAdvantagesList;
@@ -197,35 +154,23 @@ export interface PublicMarketingData {
   /** Number of the revision from PIM */
   version?: string;
 }
-const PublicMarketingData = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PublicMarketingData>;
-
 export type GetSKURequestLanguage = "en" | "de";
-const GetSKURequestLanguage = S.String;
-
 export interface GetSKURequest {
   /** The unique identifier for a SKU. */
   skuId: string;
   /** The language to retrieve the data in, available for en and de */
   language?: GetSKURequestLanguage | (string & {});
 }
-const GetSKURequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetSKURequest>;
-
 export interface FinOpsFocus {
   /** FinOps Focus service category */
   serviceCategory?: string;
   /** FinOps Focus service subcategory */
   serviceSubCategory?: string;
 }
-const FinOpsFocus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<FinOpsFocus>;
-
 /** Prices' currency code regarding ISO4217 */
 export type CurrencyCodes = "EUR" | "USD" | "GBP";
-const CurrencyCodes = S.String;
-
 /** Prices' currency symbol */
 export type CurrencySymbols = "\u20ac" | "$";
-const CurrencySymbols = S.String;
-
 export interface Price {
   currencyCode?: CurrencyCodes;
   currencySymbol?: CurrencySymbols | null;
@@ -241,20 +186,10 @@ export interface Price {
   /** Price as integer representation 1e11 */
   valueAsInt?: number;
 }
-const Price = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Price>;
-
 /** List of prices */
 export type GetSKUResponsePricesList = Array<Price>;
-const GetSKUResponsePricesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetSKUResponsePricesList>;
-
 /** List of unique service look up ids (ASCII ordered, ascending) */
 export type GetSKUResponseServiceIdList = Array<string>;
-const GetSKUResponseServiceIdList =
-  PublicProductApiIdentifierList as any as S.Schema<GetSKUResponseServiceIdList>;
-
 /** Performance Classes */
 export type PublicDatabaseSpecificAttributesPerformanceClassesList = Array<string>;
 export interface PublicDatabaseSpecificAttributes {
@@ -442,23 +377,13 @@ export type GetSKUResponseProductSpecificAttributes =
   | RuntimeSpecificAttributes
   | SupportSpecificAttributes
   | DeveloperPlatformSpecificAttributes;
-const GetSKUResponseProductSpecificAttributes =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetSKUResponseProductSpecificAttributes>;
-
 export interface PublicSavingsPlan {
   /** Discount percentage for the savings plan */
   discount?: number;
   /** Number of years the savings plan is valid */
   validityPeriodInYears?: number;
 }
-const PublicSavingsPlan = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PublicSavingsPlan>;
-
 export type GetSKUResponseSavingsPlansList = Array<PublicSavingsPlan>;
-const GetSKUResponseSavingsPlansList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetSKUResponseSavingsPlansList>;
-
 export interface GetSKUResponse {
   /** The unique identifier for the category, which is object id from the DB */
   categoryId: string | null;
@@ -518,29 +443,17 @@ export interface GetSKUResponse {
   productSpecificAttributes?: GetSKUResponseProductSpecificAttributes;
   savingsPlans?: GetSKUResponseSavingsPlansList;
 }
-const GetSKUResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetSKUResponse>;
-
 export type GetSTAXSKURequestLanguage = "en" | "de";
-const GetSTAXSKURequestLanguage = S.String;
-
 export interface GetSTAXSKURequest {
   /** The unique identifier for a SKU. */
   skuId: string;
   /** The language to retrieve the data in, available for en and de */
   language?: GetSTAXSKURequestLanguage | (string & {});
 }
-const GetSTAXSKURequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetSTAXSKURequest>;
-
 /** List of prices */
 export type GetSTAXSKUResponsePricesList = Array<Price>;
-const GetSTAXSKUResponsePricesList =
-  GetSKUResponsePricesList as any as S.Schema<GetSTAXSKUResponsePricesList>;
-
 /** List of unique service look up ids (ASCII ordered, ascending) */
 export type GetSTAXSKUResponseServiceIdList = Array<string>;
-const GetSTAXSKUResponseServiceIdList =
-  PublicProductApiIdentifierList as any as S.Schema<GetSTAXSKUResponseServiceIdList>;
-
 export type GetSTAXSKUResponseProductSpecificAttributes =
   | PublicDatabaseSpecificAttributes
   | ArchivingSpecificAttributes
@@ -555,13 +468,7 @@ export type GetSTAXSKUResponseProductSpecificAttributes =
   | RuntimeSpecificAttributes
   | SupportSpecificAttributes
   | DeveloperPlatformSpecificAttributes;
-const GetSTAXSKUResponseProductSpecificAttributes =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetSTAXSKUResponseProductSpecificAttributes>;
-
 export type GetSTAXSKUResponseSavingsPlansList = Array<PublicSavingsPlan>;
-const GetSTAXSKUResponseSavingsPlansList =
-  GetSKUResponseSavingsPlansList as any as S.Schema<GetSTAXSKUResponseSavingsPlansList>;
-
 export interface GetSTAXSKUResponse {
   /** The unique identifier for the category, which is object id from the DB */
   categoryId: string | null;
@@ -621,11 +528,7 @@ export interface GetSTAXSKUResponse {
   productSpecificAttributes?: GetSTAXSKUResponseProductSpecificAttributes;
   savingsPlans?: GetSTAXSKUResponseSavingsPlansList;
 }
-const GetSTAXSKUResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetSTAXSKUResponse>;
-
 export type ListCategoriesRequestLanguage = "en" | "de";
-const ListCategoriesRequestLanguage = S.String;
-
 export interface ListCategoriesRequest {
   /** The number of items to retrieve per page */
   pageSize?: number;
@@ -636,37 +539,18 @@ export interface ListCategoriesRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: ListCategoriesRequestLanguage | (string & {});
 }
-const ListCategoriesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListCategoriesRequest>;
-
 export type ListCategoriesResponseDataList = Array<PublicCategory>;
-const ListCategoriesResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListCategoriesResponseDataList>;
-
 export interface MetaInformation {
   /** The cursor base64 encoded is used to retrieve the next page of results */
   nextCursor?: string;
   /** The number of items per page */
   pageSize?: number;
 }
-const MetaInformation = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MetaInformation>;
-
 export interface ListCategoriesResponse {
   data?: ListCategoriesResponseDataList;
   meta?: MetaInformation;
 }
-const ListCategoriesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListCategoriesResponse>;
-
 export type ListCategoryProductsRequestLanguage = "en" | "de";
-const ListCategoryProductsRequestLanguage = S.String;
-
 export interface ListCategoryProductsRequest {
   /** The unique identifier for a category. */
   categoryId: string;
@@ -679,29 +563,12 @@ export interface ListCategoryProductsRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: ListCategoryProductsRequestLanguage | (string & {});
 }
-const ListCategoryProductsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListCategoryProductsRequest>;
-
 export type ListCategoryProductsResponseDataList = Array<PublicProduct>;
-const ListCategoryProductsResponseDataList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListCategoryProductsResponseDataList>;
-
 export interface ListCategoryProductsResponse {
   data?: ListCategoryProductsResponseDataList;
   meta?: MetaInformation;
 }
-const ListCategoryProductsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListCategoryProductsResponse>;
-
 export type ListMarketingDataRequestLanguage = "en" | "de";
-const ListMarketingDataRequestLanguage = S.String;
-
 export interface ListMarketingDataRequest {
   /** The number of items to retrieve per page */
   pageSize?: number;
@@ -712,29 +579,12 @@ export interface ListMarketingDataRequest {
   /** The product's name to retrieve the data for */
   productName?: string;
 }
-const ListMarketingDataRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListMarketingDataRequest>;
-
 export type ListMarketingDataResponseDataList = Array<PublicMarketingData>;
-const ListMarketingDataResponseDataList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListMarketingDataResponseDataList>;
-
 export interface ListMarketingDataResponse {
   data?: ListMarketingDataResponseDataList;
   meta?: MetaInformation;
 }
-const ListMarketingDataResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListMarketingDataResponse>;
-
 export type ListProductsRequestLanguage = "en" | "de";
-const ListProductsRequestLanguage = S.String;
-
 export interface ListProductsRequest {
   /** The number of items to retrieve per page */
   pageSize?: number;
@@ -747,25 +597,13 @@ export interface ListProductsRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: ListProductsRequestLanguage | (string & {});
 }
-const ListProductsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListProductsRequest>;
-
 export type ListProductsResponseDataList = Array<PublicProduct>;
-const ListProductsResponseDataList =
-  ListCategoryProductsResponseDataList as any as S.Schema<ListProductsResponseDataList>;
-
 export interface ListProductsResponse {
   data?: ListProductsResponseDataList;
   meta?: MetaInformation;
 }
-const ListProductsResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListProductsResponse>;
-
 export type ListProductSKUsRequestLanguage = "en" | "de";
-const ListProductSKUsRequestLanguage = S.String;
-
 export type ListProductSKUsRequestRegionList = Array<string>;
-const ListProductSKUsRequestRegionList =
-  PublicProductApiIdentifierList as any as S.Schema<ListProductSKUsRequestRegionList>;
-
 export interface ListProductSKUsRequest {
   /** The unique identifier for a product. */
   productId: string;
@@ -780,20 +618,10 @@ export interface ListProductSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListProductSKUsRequestRegionList;
 }
-const ListProductSKUsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListProductSKUsRequest>;
-
 /** List of prices */
 export type PublicSKUPricesList = Array<Price>;
-const PublicSKUPricesList = GetSKUResponsePricesList as any as S.Schema<PublicSKUPricesList>;
-
 /** List of unique service look up ids (ASCII ordered, ascending) */
 export type PublicSKUServiceIdList = Array<string>;
-const PublicSKUServiceIdList =
-  PublicProductApiIdentifierList as any as S.Schema<PublicSKUServiceIdList>;
-
 export type PublicSKUProductSpecificAttributes =
   | PublicDatabaseSpecificAttributes
   | ArchivingSpecificAttributes
@@ -808,13 +636,7 @@ export type PublicSKUProductSpecificAttributes =
   | RuntimeSpecificAttributes
   | SupportSpecificAttributes
   | DeveloperPlatformSpecificAttributes;
-const PublicSKUProductSpecificAttributes =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<PublicSKUProductSpecificAttributes>;
-
 export type PublicSKUSavingsPlansList = Array<PublicSavingsPlan>;
-const PublicSKUSavingsPlansList =
-  GetSKUResponseSavingsPlansList as any as S.Schema<PublicSKUSavingsPlansList>;
-
 export interface PublicSKU {
   /** The unique identifier for the category, which is object id from the DB */
   categoryId: string | null;
@@ -874,30 +696,13 @@ export interface PublicSKU {
   productSpecificAttributes?: PublicSKUProductSpecificAttributes;
   savingsPlans?: PublicSKUSavingsPlansList;
 }
-const PublicSKU = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PublicSKU>;
-
 export type ListProductSKUsResponseDataList = Array<PublicSKU>;
-const ListProductSKUsResponseDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListProductSKUsResponseDataList>;
-
 export interface ListProductSKUsResponse {
   data?: ListProductSKUsResponseDataList;
   meta?: MetaInformation;
 }
-const ListProductSKUsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListProductSKUsResponse>;
-
 export type ListProductSTAXSKUsRequestLanguage = "en" | "de";
-const ListProductSTAXSKUsRequestLanguage = S.String;
-
 export type ListProductSTAXSKUsRequestRegionList = Array<string>;
-const ListProductSTAXSKUsRequestRegionList =
-  PublicProductApiIdentifierList as any as S.Schema<ListProductSTAXSKUsRequestRegionList>;
-
 export interface ListProductSTAXSKUsRequest {
   /** The unique identifier for a product. */
   productId: string;
@@ -912,31 +717,13 @@ export interface ListProductSTAXSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListProductSTAXSKUsRequestRegionList;
 }
-const ListProductSTAXSKUsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListProductSTAXSKUsRequest>;
-
 export type ListProductSTAXSKUsResponseDataList = Array<PublicSKU>;
-const ListProductSTAXSKUsResponseDataList =
-  ListProductSKUsResponseDataList as any as S.Schema<ListProductSTAXSKUsResponseDataList>;
-
 export interface ListProductSTAXSKUsResponse {
   data?: ListProductSTAXSKUsResponseDataList;
   meta?: MetaInformation;
 }
-const ListProductSTAXSKUsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListProductSTAXSKUsResponse>;
-
 export type ListSKUsRequestLanguage = "en" | "de";
-const ListSKUsRequestLanguage = S.String;
-
 export type ListSKUsRequestRegionList = Array<string>;
-const ListSKUsRequestRegionList =
-  PublicProductApiIdentifierList as any as S.Schema<ListSKUsRequestRegionList>;
-
 export interface ListSKUsRequest {
   /** The cursor base64 encoded is used to retrieve the next page of results */
   cursor?: string;
@@ -953,22 +740,13 @@ export interface ListSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListSKUsRequestRegionList;
 }
-const ListSKUsRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListSKUsRequest>;
-
 export type ListSKUsResponseDataList = Array<PublicSKU>;
 export interface ListSKUsResponse {
   data?: ListSKUsResponseDataList;
   meta?: MetaInformation;
 }
-const ListSKUsResponse = ListProductSKUsResponse as any as S.Schema<ListSKUsResponse>;
-
 export type ListSTAXSKUsRequestLanguage = "en" | "de";
-const ListSTAXSKUsRequestLanguage = S.String;
-
 export type ListSTAXSKUsRequestRegionList = Array<string>;
-const ListSTAXSKUsRequestRegionList =
-  PublicProductApiIdentifierList as any as S.Schema<ListSTAXSKUsRequestRegionList>;
-
 export interface ListSTAXSKUsRequest {
   /** The cursor base64 encoded is used to retrieve the next page of results */
   cursor?: string;
@@ -985,18 +763,12 @@ export interface ListSTAXSKUsRequest {
   /** The region to retrieve the data in */
   region?: ListSTAXSKUsRequestRegionList;
 }
-const ListSTAXSKUsRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListSTAXSKUsRequest>;
-
 export type ListSTAXSKUsResponseDataList = Array<PublicSKU>;
 export interface ListSTAXSKUsResponse {
   data?: ListSTAXSKUsResponseDataList;
   meta?: MetaInformation;
 }
-const ListSTAXSKUsResponse = ListProductSKUsResponse as any as S.Schema<ListSTAXSKUsResponse>;
-
 export type SearchSKUsRequestLanguage = "en" | "de";
-const SearchSKUsRequestLanguage = S.String;
-
 export interface SearchSKUsRequest {
   /** The language to retrieve the data in, available for en and de */
   language?: SearchSKUsRequestLanguage | (string & {});
@@ -1125,15 +897,11 @@ export interface SearchSKUsRequest {
   /** Price value that is valid at request time, shown with full precision with 11 decimals */
   value?: string;
 }
-const SearchSKUsRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SearchSKUsRequest>;
-
 export type SearchSKUsResponseDataList = Array<PublicSKU>;
 export interface SearchSKUsResponse {
   data?: SearchSKUsResponseDataList;
   meta?: MetaInformation;
 }
-const SearchSKUsResponse = ListProductSKUsResponse as any as S.Schema<SearchSKUsResponse>;
-
 export type GetCategoryError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Get category by ID Retrieves a specific category by its ID, available for general public. */
 export const getCategory: API.OperationMethod<
@@ -1142,8 +910,8 @@ export const getCategory: API.OperationMethod<
   GetCategoryError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCategoryRequest,
-  output: PublicCategory,
+  input: __S(0) as any as S.Schema<GetCategoryRequest>,
+  output: __S(1) as any as S.Schema<PublicCategory>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1157,8 +925,8 @@ export const getProduct: API.OperationMethod<
   GetProductError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductRequest,
-  output: PublicProduct,
+  input: __S(2) as any as S.Schema<GetProductRequest>,
+  output: __S(4) as any as S.Schema<PublicProduct>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1172,8 +940,8 @@ export const getProductMarketingData: API.OperationMethod<
   GetProductMarketingDataError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductMarketingDataRequest,
-  output: PublicMarketingData,
+  input: __S(5) as any as S.Schema<GetProductMarketingDataRequest>,
+  output: __S(12) as any as S.Schema<PublicMarketingData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1187,8 +955,8 @@ export const getSKU: API.OperationMethod<
   GetSKUError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSKURequest,
-  output: GetSKUResponse,
+  input: __S(13) as any as S.Schema<GetSKURequest>,
+  output: __S(19) as any as S.Schema<GetSKUResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1202,8 +970,8 @@ export const getSTAXSKU: API.OperationMethod<
   GetSTAXSKUError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSTAXSKURequest,
-  output: GetSTAXSKUResponse,
+  input: __S(20) as any as S.Schema<GetSTAXSKURequest>,
+  output: __S(21) as any as S.Schema<GetSTAXSKUResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1217,8 +985,8 @@ export const listCategories: API.OperationMethod<
   ListCategoriesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCategoriesRequest,
-  output: ListCategoriesResponse,
+  input: __S(22) as any as S.Schema<ListCategoriesRequest>,
+  output: __S(25) as any as S.Schema<ListCategoriesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1232,8 +1000,8 @@ export const listCategoryProducts: API.OperationMethod<
   ListCategoryProductsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCategoryProductsRequest,
-  output: ListCategoryProductsResponse,
+  input: __S(26) as any as S.Schema<ListCategoryProductsRequest>,
+  output: __S(28) as any as S.Schema<ListCategoryProductsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1247,8 +1015,8 @@ export const listMarketingData: API.OperationMethod<
   ListMarketingDataError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMarketingDataRequest,
-  output: ListMarketingDataResponse,
+  input: __S(29) as any as S.Schema<ListMarketingDataRequest>,
+  output: __S(31) as any as S.Schema<ListMarketingDataResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1262,8 +1030,8 @@ export const listProducts: API.OperationMethod<
   ListProductsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProductsRequest,
-  output: ListProductsResponse,
+  input: __S(32) as any as S.Schema<ListProductsRequest>,
+  output: __S(33) as any as S.Schema<ListProductsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1277,8 +1045,8 @@ export const listProductSKUs: API.OperationMethod<
   ListProductSKUsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProductSKUsRequest,
-  output: ListProductSKUsResponse,
+  input: __S(34) as any as S.Schema<ListProductSKUsRequest>,
+  output: __S(37) as any as S.Schema<ListProductSKUsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1292,8 +1060,8 @@ export const listProductSTAXSKUs: API.OperationMethod<
   ListProductSTAXSKUsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProductSTAXSKUsRequest,
-  output: ListProductSTAXSKUsResponse,
+  input: __S(38) as any as S.Schema<ListProductSTAXSKUsRequest>,
+  output: __S(39) as any as S.Schema<ListProductSTAXSKUsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1307,8 +1075,8 @@ export const listSKUs: API.OperationMethod<
   ListSKUsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSKUsRequest,
-  output: ListSKUsResponse,
+  input: __S(40) as any as S.Schema<ListSKUsRequest>,
+  output: __S(37) as any as S.Schema<ListSKUsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1322,8 +1090,8 @@ export const listSTAXSKUs: API.OperationMethod<
   ListSTAXSKUsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSTAXSKUsRequest,
-  output: ListSTAXSKUsResponse,
+  input: __S(41) as any as S.Schema<ListSTAXSKUsRequest>,
+  output: __S(37) as any as S.Schema<ListSTAXSKUsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1105,8 @@ export const searchSKUs: API.OperationMethod<
   SearchSKUsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchSKUsRequest,
-  output: SearchSKUsResponse,
+  input: __S(42) as any as S.Schema<SearchSKUsRequest>,
+  output: __S(37) as any as S.Schema<SearchSKUsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1351,7 +1119,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           categoryId: S.String.pipe(T.Label()),
-          language: S.optional(GetCategoryRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1377,7 +1145,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
-          language: S.optional(GetProductRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1392,7 +1160,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          apiIdentifier: S.optional(PublicProductApiIdentifierList),
+          apiIdentifier: S.optional(__S(3)),
           categoryId: S.optional(S.NullOr(S.String)),
           categoryName: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
@@ -1409,7 +1177,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
-          language: S.optional(GetProductMarketingDataRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1429,7 +1197,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "MarketingAdvantage" });
     case 7:
-      return S.Array(MarketingAdvantage);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -1443,7 +1211,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MarketingApplication" });
     case 1:
-      return S.Array(MarketingApplication);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1452,13 +1220,13 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MarketingFunction" });
     case 3:
-      return S.Array(MarketingFunction);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          advantages: S.optional(PublicMarketingDataAdvantagesList),
-          applications: S.optional(PublicMarketingDataApplicationsList),
-          functions: S.optional(PublicMarketingDataFunctionsList),
+          advantages: S.optional(__S(7)),
+          applications: S.optional(__S(9)),
+          functions: S.optional(__S(11)),
           headline: S.optional(S.String),
           id: S.optional(S.NullOr(S.String)),
           introductoryText: S.optional(S.String),
@@ -1474,7 +1242,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           skuId: S.String.pipe(T.Label()),
-          language: S.optional(GetSKURequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1494,8 +1262,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(CurrencyCodes),
-          currencySymbol: S.optional(S.NullOr(CurrencySymbols)),
+          currencyCode: S.optional(S.String),
+          currencySymbol: S.optional(S.NullOr(S.String)),
           monthlyPrice: S.optional(S.NullOr(S.String)),
           roundedMonthlyPrice: S.optional(S.String),
           roundedValue: S.optional(S.String),
@@ -1509,7 +1277,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Price);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1518,7 +1286,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "PublicSavingsPlan" });
     case 2:
-      return S.Array(PublicSavingsPlan);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1527,7 +1295,7 @@ function __c2(j: number): any {
           cpuOverprovisioning: S.optional(S.NullOr(S.Boolean)),
           deprecated: S.NullOr(S.String),
           documentation: S.NullOr(S.String),
-          finOpsFocus: FinOpsFocus,
+          finOpsFocus: __S(14),
           generalProductGroup: S.NullOr(S.String),
           id: S.String,
           language: S.optional(S.String),
@@ -1536,12 +1304,12 @@ function __c2(j: number): any {
           metric: S.optional(S.NullOr(S.String)),
           name: S.NullOr(S.String),
           priceListVisibility: S.NullOr(S.String),
-          prices: GetSKUResponsePricesList,
+          prices: __S(16),
           productId: S.NullOr(S.String),
           productName: S.NullOr(S.String),
           rateType: S.optional(S.NullOr(S.String)),
           region: S.String,
-          serviceId: S.optional(GetSKUResponseServiceIdList),
+          serviceId: S.optional(__S(3)),
           technicalProductGroup: S.optional(S.NullOr(S.String)),
           tierMaxValue: S.optional(S.NullOr(S.Number)),
           tierMinValue: S.optional(S.NullOr(S.Number)),
@@ -1550,15 +1318,15 @@ function __c2(j: number): any {
           unitBilling: S.String,
           validStart: S.String,
           version: S.String,
-          productSpecificAttributes: S.optional(GetSKUResponseProductSpecificAttributes),
-          savingsPlans: S.optional(GetSKUResponseSavingsPlansList),
+          productSpecificAttributes: S.optional(S.Unknown),
+          savingsPlans: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "GetSKUResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           skuId: S.String.pipe(T.Label()),
-          language: S.optional(GetSTAXSKURequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1576,7 +1344,7 @@ function __c2(j: number): any {
           cpuOverprovisioning: S.optional(S.NullOr(S.Boolean)),
           deprecated: S.NullOr(S.String),
           documentation: S.NullOr(S.String),
-          finOpsFocus: FinOpsFocus,
+          finOpsFocus: __S(14),
           generalProductGroup: S.NullOr(S.String),
           id: S.String,
           language: S.optional(S.String),
@@ -1585,12 +1353,12 @@ function __c2(j: number): any {
           metric: S.optional(S.NullOr(S.String)),
           name: S.NullOr(S.String),
           priceListVisibility: S.NullOr(S.String),
-          prices: GetSTAXSKUResponsePricesList,
+          prices: __S(16),
           productId: S.NullOr(S.String),
           productName: S.NullOr(S.String),
           rateType: S.optional(S.NullOr(S.String)),
           region: S.String,
-          serviceId: S.optional(GetSTAXSKUResponseServiceIdList),
+          serviceId: S.optional(__S(3)),
           technicalProductGroup: S.optional(S.NullOr(S.String)),
           tierMaxValue: S.optional(S.NullOr(S.Number)),
           tierMinValue: S.optional(S.NullOr(S.Number)),
@@ -1599,8 +1367,8 @@ function __c2(j: number): any {
           unitBilling: S.String,
           validStart: S.String,
           version: S.String,
-          productSpecificAttributes: S.optional(GetSTAXSKUResponseProductSpecificAttributes),
-          savingsPlans: S.optional(GetSTAXSKUResponseSavingsPlansList),
+          productSpecificAttributes: S.optional(S.Unknown),
+          savingsPlans: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "GetSTAXSKUResponse" });
     case 6:
@@ -1609,7 +1377,7 @@ function __c2(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           categoryName: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(ListCategoriesRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1620,7 +1388,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListCategoriesRequest" });
     case 7:
-      return S.Array(PublicCategory);
+      return S.Array(__S(1));
   }
 }
 function __c3(j: number): any {
@@ -1635,8 +1403,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListCategoriesResponseDataList),
-          meta: S.optional(MetaInformation),
+          data: S.optional(__S(23)),
+          meta: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ListCategoriesResponse" });
     case 2:
@@ -1646,7 +1414,7 @@ function __c3(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           productName: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(ListCategoryProductsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1659,12 +1427,12 @@ function __c3(j: number): any {
         identifier: "ListCategoryProductsRequest",
       });
     case 3:
-      return S.Array(PublicProduct);
+      return S.Array(__S(4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListCategoryProductsResponseDataList),
-          meta: S.optional(MetaInformation),
+          data: S.optional(__S(27)),
+          meta: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "ListCategoryProductsResponse",
@@ -1674,7 +1442,7 @@ function __c3(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(ListMarketingDataRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
           productName: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1686,12 +1454,12 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListMarketingDataRequest" });
     case 6:
-      return S.Array(PublicMarketingData);
+      return S.Array(__S(12));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListMarketingDataResponseDataList),
-          meta: S.optional(MetaInformation),
+          data: S.optional(__S(30)),
+          meta: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "ListMarketingDataResponse",
@@ -1707,7 +1475,7 @@ function __c4(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           categoryName: S.optional(S.String.pipe(T.Query())),
           productName: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(ListProductsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1720,8 +1488,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListProductsResponseDataList),
-          meta: S.optional(MetaInformation),
+          data: S.optional(__S(27)),
+          meta: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
     case 2:
@@ -1730,9 +1498,9 @@ function __c4(j: number): any {
           productId: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(ListProductSKUsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
           skuName: S.optional(S.String.pipe(T.Query())),
-          region: S.optional(ListProductSKUsRequestRegionList.pipe(T.Query())),
+          region: S.optional(__S(3).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1750,7 +1518,7 @@ function __c4(j: number): any {
           cpuOverprovisioning: S.optional(S.NullOr(S.Boolean)),
           deprecated: S.NullOr(S.String),
           documentation: S.NullOr(S.String),
-          finOpsFocus: FinOpsFocus,
+          finOpsFocus: __S(14),
           generalProductGroup: S.NullOr(S.String),
           id: S.String,
           language: S.optional(S.String),
@@ -1759,12 +1527,12 @@ function __c4(j: number): any {
           metric: S.optional(S.NullOr(S.String)),
           name: S.NullOr(S.String),
           priceListVisibility: S.NullOr(S.String),
-          prices: PublicSKUPricesList,
+          prices: __S(16),
           productId: S.NullOr(S.String),
           productName: S.NullOr(S.String),
           rateType: S.optional(S.NullOr(S.String)),
           region: S.String,
-          serviceId: S.optional(PublicSKUServiceIdList),
+          serviceId: S.optional(__S(3)),
           technicalProductGroup: S.optional(S.NullOr(S.String)),
           tierMaxValue: S.optional(S.NullOr(S.Number)),
           tierMinValue: S.optional(S.NullOr(S.Number)),
@@ -1773,17 +1541,17 @@ function __c4(j: number): any {
           unitBilling: S.String,
           validStart: S.String,
           version: S.String,
-          productSpecificAttributes: S.optional(PublicSKUProductSpecificAttributes),
-          savingsPlans: S.optional(PublicSKUSavingsPlansList),
+          productSpecificAttributes: S.optional(S.Unknown),
+          savingsPlans: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "PublicSKU" });
     case 4:
-      return S.Array(PublicSKU);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListProductSKUsResponseDataList),
-          meta: S.optional(MetaInformation),
+          data: S.optional(__S(36)),
+          meta: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ListProductSKUsResponse" });
     case 6:
@@ -1792,9 +1560,9 @@ function __c4(j: number): any {
           productId: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(ListProductSTAXSKUsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
           skuName: S.optional(S.String.pipe(T.Query())),
-          region: S.optional(ListProductSTAXSKUsRequestRegionList.pipe(T.Query())),
+          region: S.optional(__S(3).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1809,8 +1577,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListProductSTAXSKUsResponseDataList),
-          meta: S.optional(MetaInformation),
+          data: S.optional(__S(36)),
+          meta: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "ListProductSTAXSKUsResponse",
@@ -1824,11 +1592,11 @@ function __c5(j: number): any {
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(ListSKUsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
           categoryName: S.optional(S.String.pipe(T.Query())),
           productName: S.optional(S.String.pipe(T.Query())),
           skuName: S.optional(S.String.pipe(T.Query())),
-          region: S.optional(ListSKUsRequestRegionList.pipe(T.Query())),
+          region: S.optional(__S(3).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1843,11 +1611,11 @@ function __c5(j: number): any {
         S.Struct({
           cursor: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          language: S.optional(ListSTAXSKUsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
           categoryName: S.optional(S.String.pipe(T.Query())),
           productName: S.optional(S.String.pipe(T.Query())),
           skuName: S.optional(S.String.pipe(T.Query())),
-          region: S.optional(ListSTAXSKUsRequestRegionList.pipe(T.Query())),
+          region: S.optional(__S(3).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1860,7 +1628,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          language: S.optional(SearchSKUsRequestLanguage.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           categoryName: S.optional(S.String),
@@ -1934,5 +1702,26 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SearchSKUsRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

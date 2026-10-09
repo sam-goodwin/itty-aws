@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -40,11 +42,7 @@ export interface GetDomainsRequest {
   /** The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name. */
   name: string;
 }
-const GetDomainsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetDomainsRequest>;
-
 export type DomainPermissionEnum = "PERMISSION_UNSPECIFIED" | "OWNER" | "READER" | "NONE";
-const DomainPermissionEnum = S.String;
-
 /** A registered domain resource in the Postmaster API. */
 export interface Domain {
   /** The resource name of the Domain. Domain names have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
@@ -54,17 +52,10 @@ export interface Domain {
   /** User's permission for this domain. Assigned by the server. */
   permission?: DomainPermissionEnum;
 }
-const Domain = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Domain>;
-
 export interface GetDomainsTrafficStatsRequest {
   /** The resource name of the traffic statistics to get. E.g., domains/mymail.mydomain.com/trafficStats/20160807. */
   name: string;
 }
-const GetDomainsTrafficStatsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetDomainsTrafficStatsRequest>;
-
 export type DeliveryErrorErrorTypeEnum =
   | "DELIVERY_ERROR_TYPE_UNSPECIFIED"
   | "RATE_LIMIT_EXCEEDED"
@@ -77,14 +68,10 @@ export type DeliveryErrorErrorTypeEnum =
   | "IP_IN_RBL"
   | "DOMAIN_IN_RBL"
   | "BAD_PTR_RECORD";
-const DeliveryErrorErrorTypeEnum = S.String;
-
 export type DeliveryErrorErrorClassEnum =
   | "DELIVERY_ERROR_CLASS_UNSPECIFIED"
   | "PERMANENT_ERROR"
   | "TEMPORARY_ERROR";
-const DeliveryErrorErrorClassEnum = S.String;
-
 /** Metric on a particular delivery error type. */
 export interface DeliveryError {
   /** The ratio of messages where the error occurred vs all authenticated traffic. */
@@ -94,11 +81,7 @@ export interface DeliveryError {
   /** The class of delivery error. */
   errorClass?: DeliveryErrorErrorClassEnum;
 }
-const DeliveryError = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeliveryError>;
-
 export type DeliveryErrorList = Array<DeliveryError>;
-const DeliveryErrorList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeliveryErrorList>;
-
 /** [Feedback loop](https://support.google.com/mail/answer/6254652) identifier information. */
 export interface FeedbackLoop {
   /** Feedback loop identifier that uniquely identifies individual campaigns. */
@@ -106,22 +89,14 @@ export interface FeedbackLoop {
   /** The ratio of user marked spam messages with the identifier vs the total number of inboxed messages with that identifier. */
   spamRatio?: number;
 }
-const FeedbackLoop = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<FeedbackLoop>;
-
 export type FeedbackLoopList = Array<FeedbackLoop>;
-const FeedbackLoopList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FeedbackLoopList>;
-
 export type IpReputationReputationEnum =
   | "REPUTATION_CATEGORY_UNSPECIFIED"
   | "HIGH"
   | "MEDIUM"
   | "LOW"
   | "BAD";
-const IpReputationReputationEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
-
 /** IP Reputation information for a set of IPs in a specific reputation category. */
 export interface IpReputation {
   /** Total number of unique IPs in this reputation category. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). */
@@ -133,19 +108,13 @@ export interface IpReputation {
   /** A sample of IPs in this reputation category. */
   sampleIps?: StringList;
 }
-const IpReputation = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IpReputation>;
-
 export type IpReputationList = Array<IpReputation>;
-const IpReputationList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IpReputationList>;
-
 export type TrafficStatsDomainReputationEnum =
   | "REPUTATION_CATEGORY_UNSPECIFIED"
   | "HIGH"
   | "MEDIUM"
   | "LOW"
   | "BAD";
-const TrafficStatsDomainReputationEnum = S.String;
-
 /** Email traffic statistics pertaining to a specific date. */
 export interface TrafficStats {
   /** Delivery errors for the domain. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). */
@@ -175,19 +144,13 @@ export interface TrafficStats {
   /** The ratio of incoming mail (to Gmail), that passed secure transport (TLS) vs all mail received from that domain. This metric only pertains to traffic that passed [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). */
   inboundEncryptionRatio?: number;
 }
-const TrafficStats = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TrafficStats>;
-
 export interface ListDomainsRequest {
   /** Requested page size. Server may return fewer domains than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
   /** The next_page_token value returned from a previous List request, if any. This is the value of ListDomainsResponse.next_page_token returned from the previous call to `ListDomains` method. */
   pageToken?: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListDomainsRequest>;
-
 export type DomainList = Array<Domain>;
-const DomainList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DomainList>;
-
 /** Response message for ListDomains. */
 export interface ListDomainsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -195,8 +158,6 @@ export interface ListDomainsResponse {
   /** The list of domains. */
   domains?: DomainList;
 }
-const ListDomainsResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListDomainsResponse>;
-
 export interface ListDomainsTrafficStatsRequest {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   "startDate.day"?: number;
@@ -217,14 +178,7 @@ export interface ListDomainsTrafficStatsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "startDate.month"?: number;
 }
-const ListDomainsTrafficStatsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListDomainsTrafficStatsRequest>;
-
 export type TrafficStatsList = Array<TrafficStats>;
-const TrafficStatsList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<TrafficStatsList>;
-
 /** Response message for ListTrafficStats. */
 export interface ListTrafficStatsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -232,11 +186,6 @@ export interface ListTrafficStatsResponse {
   /** The list of TrafficStats. */
   trafficStats?: TrafficStatsList;
 }
-const ListTrafficStatsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListTrafficStatsResponse>;
-
 export type GetDomainsError = NotFound | Forbidden | GcpOpError;
 /** Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist. */
 export const getDomains: API.OperationMethod<
@@ -245,8 +194,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainsRequest,
-  output: Domain,
+  input: __S(0) as any as S.Schema<GetDomainsRequest>,
+  output: __S(1) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -260,8 +209,8 @@ export const getDomainsTrafficStats: API.OperationMethod<
   GetDomainsTrafficStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainsTrafficStatsRequest,
-  output: TrafficStats,
+  input: __S(2) as any as S.Schema<GetDomainsTrafficStatsRequest>,
+  output: __S(10) as any as S.Schema<TrafficStats>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -276,8 +225,8 @@ export const listDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainsRequest,
-  output: ListDomainsResponse,
+  input: __S(11) as any as S.Schema<ListDomainsRequest>,
+  output: __S(13) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -293,8 +242,8 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTrafficStatsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainsTrafficStatsRequest,
-  output: ListTrafficStatsResponse,
+  input: __S(14) as any as S.Schema<ListDomainsTrafficStatsRequest>,
+  output: __S(16) as any as S.Schema<ListTrafficStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -321,7 +270,7 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          permission: S.optional(DomainPermissionEnum),
+          permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "Domain" });
     case 2:
@@ -342,12 +291,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           errorRatio: S.optional(S.Number),
-          errorType: S.optional(DeliveryErrorErrorTypeEnum),
-          errorClass: S.optional(DeliveryErrorErrorClassEnum),
+          errorType: S.optional(S.String),
+          errorClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeliveryError" });
     case 4:
-      return S.Array(DeliveryError);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -356,7 +305,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FeedbackLoop" });
     case 6:
-      return S.Array(FeedbackLoop);
+      return S.Array(__S(5));
     case 7:
       return S.Array(S.String);
   }
@@ -367,24 +316,24 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ipCount: S.optional(S.String),
-          reputation: S.optional(IpReputationReputationEnum),
+          reputation: S.optional(S.String),
           numIps: S.optional(S.String),
-          sampleIps: S.optional(StringList),
+          sampleIps: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "IpReputation" });
     case 1:
-      return S.Array(IpReputation);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deliveryErrors: S.optional(DeliveryErrorList),
+          deliveryErrors: S.optional(__S(4)),
           userReportedSpamRatio: S.optional(S.Number),
           dmarcSuccessRatio: S.optional(S.Number),
           userReportedSpamRatioUpperBound: S.optional(S.Number),
           dkimSuccessRatio: S.optional(S.Number),
-          spammyFeedbackLoops: S.optional(FeedbackLoopList),
-          ipReputations: S.optional(IpReputationList),
-          domainReputation: S.optional(TrafficStatsDomainReputationEnum),
+          spammyFeedbackLoops: S.optional(__S(6)),
+          ipReputations: S.optional(__S(9)),
+          domainReputation: S.optional(S.String),
           userReportedSpamRatioLowerBound: S.optional(S.Number),
           outboundEncryptionRatio: S.optional(S.Number),
           name: S.optional(S.String),
@@ -406,12 +355,12 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
     case 4:
-      return S.Array(Domain);
+      return S.Array(__S(1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          domains: S.optional(DomainList),
+          domains: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
     case 6:
@@ -437,7 +386,7 @@ function __c1(j: number): any {
         identifier: "ListDomainsTrafficStatsRequest",
       });
     case 7:
-      return S.Array(TrafficStats);
+      return S.Array(__S(10));
   }
 }
 function __c2(j: number): any {
@@ -446,8 +395,23 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          trafficStats: S.optional(TrafficStatsList),
+          trafficStats: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "ListTrafficStatsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

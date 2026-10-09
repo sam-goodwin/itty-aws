@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "WorkSpaces Thin Client",
   serviceShapeName: "ThinClient",
@@ -144,12 +146,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(43)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -163,11 +165,7 @@ export type SoftwareSetUpdateSchedule =
   | "USE_MAINTENANCE_WINDOW"
   | "APPLY_IMMEDIATELY"
   | (string & {});
-const SoftwareSetUpdateSchedule = S.String;
-
 export type MaintenanceWindowType = "SYSTEM" | "CUSTOM" | (string & {});
-const MaintenanceWindowType = S.String;
-
 export type Hour = number;
 export type Minute = number;
 export type DayOfWeek =
@@ -179,13 +177,8 @@ export type DayOfWeek =
   | "SATURDAY"
   | "SUNDAY"
   | (string & {});
-const DayOfWeek = S.String;
-
 export type DayOfWeekList = DayOfWeek[];
-const DayOfWeekList = /*@__PURE__*/ __L.at(__c0, 0);
 export type ApplyTimeOf = "UTC" | "DEVICE" | (string & {});
-const ApplyTimeOf = S.String;
-
 export interface MaintenanceWindow {
   type: MaintenanceWindowType;
   startTimeHour?: number;
@@ -195,19 +188,14 @@ export interface MaintenanceWindow {
   daysOfTheWeek?: DayOfWeek[];
   applyTimeOf?: ApplyTimeOf;
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<MaintenanceWindow>;
 export type SoftwareSetUpdateMode = "USE_LATEST" | "USE_DESIRED" | (string & {});
-const SoftwareSetUpdateMode = S.String;
-
 export type SoftwareSetId = string;
 export type KmsKeyArn = string;
 export type ClientToken = string;
 export type TagsMap = { [key: string]: string | undefined };
-const TagsMap = /*@__PURE__*/ __L.at(__c0, 2);
 export type DeviceCreationTagKey = string;
 export type DeviceCreationTagValue = string;
 export type DeviceCreationTagsMap = { [key: string]: string | undefined };
-const DeviceCreationTagsMap = /*@__PURE__*/ __L.at(__c0, 3);
 export interface CreateEnvironmentRequest {
   name?: string | redacted.Redacted<string>;
   desktopArn: string;
@@ -221,14 +209,8 @@ export interface CreateEnvironmentRequest {
   tags?: { [key: string]: string | undefined };
   deviceCreationTags?: { [key: string]: string | undefined };
 }
-const CreateEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateEnvironmentRequest>;
 export type EnvironmentId = string;
 export type DesktopType = "workspaces" | "appstream" | "workspaces-web" | (string & {});
-const DesktopType = S.String;
-
 export type ActivationCode = string | redacted.Redacted<string>;
 export interface EnvironmentSummary {
   id?: string;
@@ -246,51 +228,30 @@ export interface EnvironmentSummary {
   updatedAt?: Date;
   arn?: string;
 }
-const EnvironmentSummary = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EnvironmentSummary>;
 export interface CreateEnvironmentResponse {
   environment?: EnvironmentSummary;
 }
-const CreateEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateEnvironmentResponse>;
 export type DeviceId = string;
 export interface DeleteDeviceRequest {
   id: string;
   clientToken?: string;
 }
-const DeleteDeviceRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteDeviceRequest>;
 export interface DeleteDeviceResponse {}
-const DeleteDeviceResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteDeviceResponse>;
 export interface DeleteEnvironmentRequest {
   id: string;
   clientToken?: string;
 }
-const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {}
-const DeleteEnvironmentResponse =
-  DeleteDeviceResponse as any as S.Schema<DeleteEnvironmentResponse>;
 export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED" | (string & {});
-const TargetDeviceStatus = S.String;
-
 export interface DeregisterDeviceRequest {
   id: string;
   targetDeviceStatus?: TargetDeviceStatus;
   clientToken?: string;
 }
-const DeregisterDeviceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeregisterDeviceRequest>;
 export interface DeregisterDeviceResponse {}
-const DeregisterDeviceResponse = DeleteDeviceResponse as any as S.Schema<DeregisterDeviceResponse>;
 export interface GetDeviceRequest {
   id: string;
 }
-const GetDeviceRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetDeviceRequest>;
 export type DeviceName = string | redacted.Redacted<string>;
 export type DeviceStatus =
   | "REGISTERED"
@@ -298,18 +259,12 @@ export type DeviceStatus =
   | "DEREGISTERED"
   | "ARCHIVED"
   | (string & {});
-const DeviceStatus = S.String;
-
 export type DeviceSoftwareSetComplianceStatus =
   | "NONE"
   | "COMPLIANT"
   | "NOT_COMPLIANT"
   | (string & {});
-const DeviceSoftwareSetComplianceStatus = S.String;
-
 export type SoftwareSetUpdateStatus = "AVAILABLE" | "IN_PROGRESS" | "UP_TO_DATE" | (string & {});
-const SoftwareSetUpdateStatus = S.String;
-
 export type UserId = string | redacted.Redacted<string>;
 export interface Device {
   id?: string;
@@ -334,25 +289,17 @@ export interface Device {
   kmsKeyArn?: string;
   lastUserId?: string | redacted.Redacted<string>;
 }
-const Device = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Device>;
 export interface GetDeviceResponse {
   device?: Device;
 }
-const GetDeviceResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetDeviceResponse>;
 export interface GetEnvironmentRequest {
   id: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetEnvironmentRequest>;
 export type EnvironmentSoftwareSetComplianceStatus =
   | "NO_REGISTERED_DEVICES"
   | "COMPLIANT"
   | "NOT_COMPLIANT"
   | (string & {});
-const EnvironmentSoftwareSetComplianceStatus = S.String;
-
 export interface Environment {
   id?: string;
   name?: string | redacted.Redacted<string>;
@@ -374,31 +321,18 @@ export interface Environment {
   kmsKeyArn?: string;
   deviceCreationTags?: { [key: string]: string | undefined };
 }
-const Environment = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Environment>;
 export interface GetEnvironmentResponse {
   environment?: Environment;
 }
-const GetEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetEnvironmentResponse>;
 export interface GetSoftwareSetRequest {
   id: string;
 }
-const GetSoftwareSetRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetSoftwareSetRequest>;
 export type SoftwareSetValidationStatus = "VALIDATED" | "NOT_VALIDATED" | (string & {});
-const SoftwareSetValidationStatus = S.String;
-
 export interface Software {
   name?: string;
   version?: string;
 }
-const Software = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Software>;
 export type SoftwareList = Software[];
-const SoftwareList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface SoftwareSet {
   id?: string;
   version?: string;
@@ -408,21 +342,15 @@ export interface SoftwareSet {
   software?: Software[];
   arn?: string;
 }
-const SoftwareSet = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SoftwareSet>;
 export interface GetSoftwareSetResponse {
   softwareSet?: SoftwareSet;
 }
-const GetSoftwareSetResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetSoftwareSetResponse>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface ListDevicesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDevicesRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListDevicesRequest>;
 export interface DeviceSummary {
   id?: string;
   serialNumber?: string;
@@ -441,40 +369,24 @@ export interface DeviceSummary {
   arn?: string;
   lastUserId?: string | redacted.Redacted<string>;
 }
-const DeviceSummary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeviceSummary>;
 export type DeviceList = DeviceSummary[];
-const DeviceList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ListDevicesResponse {
   devices?: DeviceSummary[];
   nextToken?: string;
 }
-const ListDevicesResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListDevicesResponse>;
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentList = EnvironmentSummary[];
-const EnvironmentList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface ListEnvironmentsResponse {
   environments?: EnvironmentSummary[];
   nextToken?: string;
 }
-const ListEnvironmentsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListEnvironmentsResponse>;
 export interface ListSoftwareSetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSoftwareSetsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListSoftwareSetsRequest>;
 export interface SoftwareSetSummary {
   id?: string;
   version?: string;
@@ -483,58 +395,37 @@ export interface SoftwareSetSummary {
   validationStatus?: SoftwareSetValidationStatus;
   arn?: string;
 }
-const SoftwareSetSummary = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SoftwareSetSummary>;
 export type SoftwareSetList = SoftwareSetSummary[];
-const SoftwareSetList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListSoftwareSetsResponse {
   softwareSets?: SoftwareSetSummary[];
   nextToken?: string;
 }
-const ListSoftwareSetsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListSoftwareSetsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteDeviceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-const TagKeys = /*@__PURE__*/ __L.at(__c4, 4);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteDeviceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceRequest {
   id: string;
   name?: string | redacted.Redacted<string>;
   desiredSoftwareSetId?: string;
   softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule;
 }
-const UpdateDeviceRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<UpdateDeviceRequest>;
 export interface UpdateDeviceResponse {
   device?: DeviceSummary;
 }
-const UpdateDeviceResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<UpdateDeviceResponse>;
 export type SoftwareSetIdOrEmptyString = string;
 export interface UpdateEnvironmentRequest {
   id: string;
@@ -547,26 +438,14 @@ export interface UpdateEnvironmentRequest {
   desiredSoftwareSetId?: string;
   deviceCreationTags?: { [key: string]: string | undefined };
 }
-const UpdateEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateEnvironmentRequest>;
 export interface UpdateEnvironmentResponse {
   environment?: EnvironmentSummary;
 }
-const UpdateEnvironmentResponse =
-  CreateEnvironmentResponse as any as S.Schema<UpdateEnvironmentResponse>;
 export interface UpdateSoftwareSetRequest {
   id: string;
   validationStatus: SoftwareSetValidationStatus;
 }
-const UpdateSoftwareSetRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateSoftwareSetRequest>;
 export interface UpdateSoftwareSetResponse {}
-const UpdateSoftwareSetResponse =
-  DeleteDeviceResponse as any as S.Schema<UpdateSoftwareSetResponse>;
 export type ExceptionMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
@@ -579,19 +458,12 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export type FieldName = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 3);
 export type CreateEnvironmentError =
   | AccessDeniedException
   | ConflictException
@@ -610,8 +482,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentRequest,
-  output: CreateEnvironmentResponse,
+  input: __S(4) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(6) as any as S.Schema<CreateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -644,8 +516,8 @@ export const deleteDevice: API.OperationMethod<
   DeleteDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceRequest,
-  output: DeleteDeviceResponse,
+  input: __S(7) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(8) as any as S.Schema<DeleteDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -677,8 +549,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentRequest,
-  output: DeleteEnvironmentResponse,
+  input: __S(9) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(8) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -710,8 +582,8 @@ export const deregisterDevice: API.OperationMethod<
   DeregisterDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterDeviceRequest,
-  output: DeregisterDeviceResponse,
+  input: __S(10) as any as S.Schema<DeregisterDeviceRequest>,
+  output: __S(8) as any as S.Schema<DeregisterDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -742,8 +614,8 @@ export const getDevice: API.OperationMethod<
   GetDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceRequest,
-  output: GetDeviceResponse,
+  input: __S(11) as any as S.Schema<GetDeviceRequest>,
+  output: __S(13) as any as S.Schema<GetDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -773,8 +645,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: GetEnvironmentResponse,
+  input: __S(14) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(16) as any as S.Schema<GetEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -804,8 +676,8 @@ export const getSoftwareSet: API.OperationMethod<
   GetSoftwareSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSoftwareSetRequest,
-  output: GetSoftwareSetResponse,
+  input: __S(17) as any as S.Schema<GetSoftwareSetRequest>,
+  output: __S(21) as any as S.Schema<GetSoftwareSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -835,8 +707,8 @@ export const listDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeviceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicesRequest,
-  output: ListDevicesResponse,
+  input: __S(22) as any as S.Schema<ListDevicesRequest>,
+  output: __S(25) as any as S.Schema<ListDevicesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -871,8 +743,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentsRequest,
-  output: ListEnvironmentsResponse,
+  input: __S(26) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(28) as any as S.Schema<ListEnvironmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -907,8 +779,8 @@ export const listSoftwareSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SoftwareSetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSoftwareSetsRequest,
-  output: ListSoftwareSetsResponse,
+  input: __S(29) as any as S.Schema<ListSoftwareSetsRequest>,
+  output: __S(32) as any as S.Schema<ListSoftwareSetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -943,8 +815,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(33) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(34) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -975,8 +847,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(35) as any as S.Schema<TagResourceRequest>,
+  output: __S(8) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1008,8 +880,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(37) as any as S.Schema<UntagResourceRequest>,
+  output: __S(8) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1040,8 +912,8 @@ export const updateDevice: API.OperationMethod<
   UpdateDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceRequest,
-  output: UpdateDeviceResponse,
+  input: __S(38) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(39) as any as S.Schema<UpdateDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1072,8 +944,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentRequest,
-  output: UpdateEnvironmentResponse,
+  input: __S(40) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(6) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1104,8 +976,8 @@ export const updateSoftwareSet: API.OperationMethod<
   UpdateSoftwareSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSoftwareSetRequest,
-  output: UpdateSoftwareSetResponse,
+  input: __S(41) as any as S.Schema<UpdateSoftwareSetRequest>,
+  output: __S(8) as any as S.Schema<UpdateSoftwareSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1123,17 +995,17 @@ export const updateSoftwareSet: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DayOfWeek);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: MaintenanceWindowType,
+          type: S.String,
           startTimeHour: S.optional(S.Number),
           startTimeMinute: S.optional(S.Number),
           endTimeHour: S.optional(S.Number),
           endTimeMinute: S.optional(S.Number),
-          daysOfTheWeek: S.optional(DayOfWeekList),
-          applyTimeOf: S.optional(ApplyTimeOf),
+          daysOfTheWeek: S.optional(__S(0)),
+          applyTimeOf: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 2:
@@ -1146,14 +1018,14 @@ function __c0(j: number): any {
           name: S.optional(SensitiveString),
           desktopArn: S.String,
           desktopEndpoint: S.optional(SensitiveString),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
-          maintenanceWindow: S.optional(MaintenanceWindow),
-          softwareSetUpdateMode: S.optional(SoftwareSetUpdateMode),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(1)),
+          softwareSetUpdateMode: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagsMap),
-          deviceCreationTags: S.optional(DeviceCreationTagsMap),
+          tags: S.optional(__S(2)),
+          deviceCreationTags: S.optional(__S(3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/environments" }), svc, auth, proto, ver, rules),
         ),
@@ -1165,11 +1037,11 @@ function __c0(j: number): any {
           name: S.optional(SensitiveString),
           desktopArn: S.optional(S.String),
           desktopEndpoint: S.optional(SensitiveString),
-          desktopType: S.optional(DesktopType),
+          desktopType: S.optional(S.String),
           activationCode: S.optional(SensitiveString),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
-          maintenanceWindow: S.optional(MaintenanceWindow),
-          softwareSetUpdateMode: S.optional(SoftwareSetUpdateMode),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(1)),
+          softwareSetUpdateMode: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetId: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1178,7 +1050,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentSummary" });
     case 6:
-      return S.suspend(() => S.Struct({ environment: S.optional(EnvironmentSummary) })).annotate({
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(5)) })).annotate({
         identifier: "CreateEnvironmentResponse",
       });
     case 7:
@@ -1218,7 +1090,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          targetDeviceStatus: S.optional(TargetDeviceStatus),
+          targetDeviceStatus: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -1245,15 +1117,15 @@ function __c1(j: number): any {
           name: S.optional(SensitiveString),
           model: S.optional(S.String),
           environmentId: S.optional(S.String),
-          status: S.optional(DeviceStatus),
+          status: S.optional(S.String),
           currentSoftwareSetId: S.optional(S.String),
           currentSoftwareSetVersion: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetVersion: S.optional(S.String),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
-          softwareSetComplianceStatus: S.optional(DeviceSoftwareSetComplianceStatus),
-          softwareSetUpdateStatus: S.optional(SoftwareSetUpdateStatus),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          softwareSetComplianceStatus: S.optional(S.String),
+          softwareSetUpdateStatus: S.optional(S.String),
           lastConnectedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastPostureAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1264,7 +1136,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Device" });
     case 5:
-      return S.suspend(() => S.Struct({ device: S.optional(Device) })).annotate({
+      return S.suspend(() => S.Struct({ device: S.optional(__S(12)) })).annotate({
         identifier: "GetDeviceResponse",
       });
     case 6:
@@ -1280,21 +1152,21 @@ function __c1(j: number): any {
           name: S.optional(SensitiveString),
           desktopArn: S.optional(S.String),
           desktopEndpoint: S.optional(SensitiveString),
-          desktopType: S.optional(DesktopType),
+          desktopType: S.optional(S.String),
           activationCode: S.optional(SensitiveString),
           registeredDevicesCount: S.optional(S.Number),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
-          maintenanceWindow: S.optional(MaintenanceWindow),
-          softwareSetUpdateMode: S.optional(SoftwareSetUpdateMode),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(1)),
+          softwareSetUpdateMode: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetVersion: S.optional(S.String),
-          softwareSetComplianceStatus: S.optional(EnvironmentSoftwareSetComplianceStatus),
+          softwareSetComplianceStatus: S.optional(S.String),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           arn: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          deviceCreationTags: S.optional(DeviceCreationTagsMap),
+          deviceCreationTags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Environment" });
   }
@@ -1302,7 +1174,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ environment: S.optional(Environment) })).annotate({
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(15)) })).annotate({
         identifier: "GetEnvironmentResponse",
       });
     case 1:
@@ -1316,7 +1188,7 @@ function __c2(j: number): any {
         S.Struct({ name: S.optional(S.String), version: S.optional(S.String) }),
       ).annotate({ identifier: "Software" });
     case 3:
-      return S.Array(Software);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1324,13 +1196,13 @@ function __c2(j: number): any {
           version: S.optional(S.String),
           releasedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           supportedUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          validationStatus: S.optional(SoftwareSetValidationStatus),
-          software: S.optional(SoftwareList),
+          validationStatus: S.optional(S.String),
+          software: S.optional(__S(19)),
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SoftwareSet" });
     case 5:
-      return S.suspend(() => S.Struct({ softwareSet: S.optional(SoftwareSet) })).annotate({
+      return S.suspend(() => S.Struct({ softwareSet: S.optional(__S(20)) })).annotate({
         identifier: "GetSoftwareSetResponse",
       });
     case 6:
@@ -1348,11 +1220,11 @@ function __c2(j: number): any {
           name: S.optional(SensitiveString),
           model: S.optional(S.String),
           environmentId: S.optional(S.String),
-          status: S.optional(DeviceStatus),
+          status: S.optional(S.String),
           currentSoftwareSetId: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
           pendingSoftwareSetId: S.optional(S.String),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
+          softwareSetUpdateSchedule: S.optional(S.String),
           lastConnectedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastPostureAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1366,10 +1238,10 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeviceSummary);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
-        S.Struct({ devices: S.optional(DeviceList), nextToken: S.optional(S.String) }),
+        S.Struct({ devices: S.optional(__S(24)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDevicesResponse" });
     case 2:
       return S.suspend(() =>
@@ -1381,10 +1253,10 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 3:
-      return S.Array(EnvironmentSummary);
+      return S.Array(__S(5));
     case 4:
       return S.suspend(() =>
-        S.Struct({ environments: S.optional(EnvironmentList), nextToken: S.optional(S.String) }),
+        S.Struct({ environments: S.optional(__S(27)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListEnvironmentsResponse" });
     case 5:
       return S.suspend(() =>
@@ -1402,19 +1274,19 @@ function __c3(j: number): any {
           version: S.optional(S.String),
           releasedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           supportedUntil: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          validationStatus: S.optional(SoftwareSetValidationStatus),
+          validationStatus: S.optional(S.String),
           arn: S.optional(S.String),
         }),
       ).annotate({ identifier: "SoftwareSetSummary" });
     case 7:
-      return S.Array(SoftwareSetSummary);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ softwareSets: S.optional(SoftwareSetList), nextToken: S.optional(S.String) }),
+        S.Struct({ softwareSets: S.optional(__S(31)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSoftwareSetsResponse" });
     case 1:
       return S.suspend(() =>
@@ -1432,12 +1304,12 @@ function __c4(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagsMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(2)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1454,7 +1326,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(36).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1472,13 +1344,13 @@ function __c4(j: number): any {
           id: S.String.pipe(T.HttpLabel("id")),
           name: S.optional(SensitiveString),
           desiredSoftwareSetId: S.optional(S.String),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
+          softwareSetUpdateSchedule: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/devices/{id}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateDeviceRequest" });
     case 7:
-      return S.suspend(() => S.Struct({ device: S.optional(DeviceSummary) })).annotate({
+      return S.suspend(() => S.Struct({ device: S.optional(__S(23)) })).annotate({
         identifier: "UpdateDeviceResponse",
       });
   }
@@ -1492,11 +1364,11 @@ function __c5(j: number): any {
           name: S.optional(SensitiveString),
           desktopArn: S.optional(S.String),
           desktopEndpoint: S.optional(SensitiveString),
-          softwareSetUpdateSchedule: S.optional(SoftwareSetUpdateSchedule),
-          maintenanceWindow: S.optional(MaintenanceWindow),
-          softwareSetUpdateMode: S.optional(SoftwareSetUpdateMode),
+          softwareSetUpdateSchedule: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(1)),
+          softwareSetUpdateMode: S.optional(S.String),
           desiredSoftwareSetId: S.optional(S.String),
-          deviceCreationTags: S.optional(DeviceCreationTagsMap),
+          deviceCreationTags: S.optional(__S(3)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/environments/{id}" }),
@@ -1512,7 +1384,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.HttpLabel("id")),
-          validationStatus: SoftwareSetValidationStatus,
+          validationStatus: S.String,
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/softwaresets/{id}" }),
@@ -1529,6 +1401,27 @@ function __c5(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 3:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(42));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

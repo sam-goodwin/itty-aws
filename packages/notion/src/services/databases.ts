@@ -7,13 +7,13 @@ import { UnknownNotionError } from "../errors.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
 /** The type of parent. */
 export type CreateDatabaseRequestParentType = "page_id" | "workspace";
-const CreateDatabaseRequestParentType = S.String;
-
 /** The parent page or workspace where the database will be created. */
 export interface CreateDatabaseRequestParent {
   /** The type of parent. */
@@ -22,11 +22,6 @@ export interface CreateDatabaseRequestParent {
   /** Always `true` */
   workspace?: boolean;
 }
-const CreateDatabaseRequestParent = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDatabaseRequestParent>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`, `default_background`, `gray_background`, `brown_background`, `orange_background`, `yellow_background`, `green_background`, `blue_background`, `purple_background`, `pink_background`, `red_background` */
 export type ApiColor =
   | "default"
@@ -49,8 +44,6 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
-const ApiColor = S.String;
-
 export interface AnnotationRequest {
   /** Whether the text is formatted as bold. */
   bold?: boolean;
@@ -65,17 +58,10 @@ export interface AnnotationRequest {
   /** The color of the text. */
   color?: ApiColor | (string & {});
 }
-const AnnotationRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AnnotationRequest>;
-
 export interface RichTextItemRequestTextLink {
   /** The URL of the link. */
   url: string;
 }
-const RichTextItemRequestTextLink = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<RichTextItemRequestTextLink>;
-
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemRequestText {
   /** The actual text content of the text. */
@@ -83,11 +69,6 @@ export interface RichTextItemRequestText {
   /** An object with information about any inline link in this text, if included. */
   link?: RichTextItemRequestTextLink | null;
 }
-const RichTextItemRequestText = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<RichTextItemRequestText>;
-
 export interface PartialUserObjectRequest {
   /** The ID of the user. */
   id: string;
@@ -184,19 +165,11 @@ export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase3
   | RichTextItemRequestMentionCase4
   | RichTextItemRequestMentionCase5;
-const RichTextItemRequestMention =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemRequestMention>;
-
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export interface RichTextItemRequestEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
-const RichTextItemRequestEquation = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<RichTextItemRequestEquation>;
-
 export interface RichTextItemRequest {
   /** All rich text objects contain an annotations object that sets the styling for the rich text. */
   annotations?: AnnotationRequest;
@@ -209,36 +182,16 @@ export interface RichTextItemRequest {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-const RichTextItemRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<RichTextItemRequest>;
-
 /** The title of the database. */
 export type CreateDatabaseRequestTitleList = Array<RichTextItemRequest>;
-const CreateDatabaseRequestTitleList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDatabaseRequestTitleList>;
-
 /** The description of the database. */
 export type CreateDatabaseRequestDescriptionList = Array<RichTextItemRequest>;
-const CreateDatabaseRequestDescriptionList =
-  CreateDatabaseRequestTitleList as any as S.Schema<CreateDatabaseRequestDescriptionList>;
-
 export interface PropertyConfigurationRequestNumber {
   format?: string;
 }
-const PropertyConfigurationRequestNumber = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PropertyConfigurationRequestNumber>;
-
 export interface PropertyConfigurationRequestFormula {
   expression?: string;
 }
-const PropertyConfigurationRequestFormula = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PropertyConfigurationRequestFormula>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red` */
 export type SelectColor =
   | "default"
@@ -251,33 +204,16 @@ export type SelectColor =
   | "purple"
   | "pink"
   | "red";
-const SelectColor = S.String;
-
 export interface PropertyConfigurationRequestSelectOptionsItem {
   name: string;
   color?: SelectColor | (string & {});
   description?: string | null;
 }
-const PropertyConfigurationRequestSelectOptionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PropertyConfigurationRequestSelectOptionsItem>;
-
 export type PropertyConfigurationRequestSelectOptionsList =
   Array<PropertyConfigurationRequestSelectOptionsItem>;
-const PropertyConfigurationRequestSelectOptionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PropertyConfigurationRequestSelectOptionsList>;
-
 export interface PropertyConfigurationRequestSelect {
   options?: PropertyConfigurationRequestSelectOptionsList;
 }
-const PropertyConfigurationRequestSelect = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PropertyConfigurationRequestSelect>;
-
 export type PropertyConfigurationRequestMultiSelectOptionsItem =
   PropertyConfigurationRequestSelectOptionsItem;
 export type PropertyConfigurationRequestMultiSelectOptionsList =
@@ -285,45 +221,23 @@ export type PropertyConfigurationRequestMultiSelectOptionsList =
 export interface PropertyConfigurationRequestMultiSelect {
   options?: PropertyConfigurationRequestMultiSelectOptionsList;
 }
-const PropertyConfigurationRequestMultiSelect =
-  PropertyConfigurationRequestSelect as any as S.Schema<PropertyConfigurationRequestMultiSelect>;
-
 /** One of: `To-do`, `In progress`, `Complete` */
 export type StatusOptionGroup = "To-do" | "In progress" | "Complete";
-const StatusOptionGroup = S.String;
-
 export interface StatusOptionRequest {
   name: string;
   color?: SelectColor | (string & {});
   description?: string | null;
   group?: StatusOptionGroup | (string & {});
 }
-const StatusOptionRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StatusOptionRequest>;
-
 export type StatusOptionRequestArray = Array<StatusOptionRequest>;
-const StatusOptionRequestArray = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<StatusOptionRequestArray>;
-
 export interface StatusPropertyConfigRequest {
   /** The initial status options. If not provided, defaults are created. */
   options?: StatusOptionRequestArray;
 }
-const StatusPropertyConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<StatusPropertyConfigRequest>;
-
 export interface PropertyConfigurationRequestRelationDualProperty {
   synced_property_id?: string;
   synced_property_name?: string;
 }
-const PropertyConfigurationRequestRelationDualProperty = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PropertyConfigurationRequestRelationDualProperty>;
-
 export interface PropertyConfigurationRequestRelation {
   data_source_id: string;
   /** Always `single_property` */
@@ -331,11 +245,6 @@ export interface PropertyConfigurationRequestRelation {
   single_property?: unknown;
   dual_property?: PropertyConfigurationRequestRelationDualProperty;
 }
-const PropertyConfigurationRequestRelation = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<PropertyConfigurationRequestRelation>;
-
 export type RollupFunction =
   | "count"
   | "count_values"
@@ -361,8 +270,6 @@ export type RollupFunction =
   | "count_per_group"
   | "percent_per_group"
   | "show_original";
-const RollupFunction = S.String;
-
 export interface PropertyConfigurationRequestRollup {
   /** The function to use for the rollup, e.g. count, count_values, percent_not_empty, max. */
   function: RollupFunction | (string & {});
@@ -371,19 +278,9 @@ export interface PropertyConfigurationRequestRollup {
   relation_property_id?: string;
   rollup_property_id?: string;
 }
-const PropertyConfigurationRequestRollup = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PropertyConfigurationRequestRollup>;
-
 export interface PropertyConfigurationRequestUniqueId {
   prefix?: string | null;
 }
-const PropertyConfigurationRequestUniqueId = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PropertyConfigurationRequestUniqueId>;
-
 export interface PropertyConfigurationRequest {
   /** The description of the property. */
   description?: string | null;
@@ -416,33 +313,16 @@ export interface PropertyConfigurationRequest {
   last_visited_time?: unknown;
   place?: unknown;
 }
-const PropertyConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PropertyConfigurationRequest>;
-
 /** Property schema for the initial data source, if you'd like to create one. */
 export type InitialDataSourceRequestPropertiesMap = {
   [key: string]: PropertyConfigurationRequest | undefined;
 };
-const InitialDataSourceRequestPropertiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<InitialDataSourceRequestPropertiesMap>;
-
 export interface InitialDataSourceRequest {
   /** Property schema for the initial data source, if you'd like to create one. */
   properties?: InitialDataSourceRequestPropertiesMap;
 }
-const InitialDataSourceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<InitialDataSourceRequest>;
-
 /** Create a typed database with Notion's canonical schema. One of `tasks`, `projects`, or `skills`. Cannot be combined with `initial_data_source`. When `title` is omitted, the database is named after the type. */
 export type CreateDatabaseRequestDatabaseType = "tasks" | "projects" | "skills";
-const CreateDatabaseRequestDatabaseType = S.String;
-
 export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
@@ -504,8 +384,6 @@ export type PageIconRequest =
   | ExternalPageIconRequest
   | CustomEmojiPageIconRequest
   | IconPageIconRequest;
-const PageIconRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageIconRequest>;
-
 /** The file upload for the cover. */
 export type FileUploadPageCoverRequestFileUpload = FileUploadPageIconRequestFileUpload;
 export interface FileUploadPageCoverRequest {
@@ -523,8 +401,6 @@ export interface ExternalPageCoverRequest {
   external: ExternalPageIconRequestExternal;
 }
 export type PageCoverRequest = FileUploadPageCoverRequest | ExternalPageCoverRequest;
-const PageCoverRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageCoverRequest>;
-
 export interface CreateDatabaseRequest {
   /** The parent page or workspace where the database will be created. */
   parent: CreateDatabaseRequestParent;
@@ -543,11 +419,6 @@ export interface CreateDatabaseRequest {
   /** The cover image for the database. */
   cover?: PageCoverRequest;
 }
-const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateDatabaseRequest>;
-
 export interface PartialDatabaseObjectResponse {
   /** The database object type name. */
   object: string;
@@ -946,26 +817,12 @@ export interface DatabaseObjectResponse {
   public_url: string | null;
 }
 export type CreateDatabaseResponseBody = PartialDatabaseObjectResponse | DatabaseObjectResponse;
-const CreateDatabaseResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateDatabaseResponseBody>;
-
 export type CreateDatabaseResponse = CreateDatabaseResponseBody;
-const CreateDatabaseResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateDatabaseResponse>;
-
 export interface GetDatabaseRequest {
   database_id: string;
 }
-const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetDatabaseRequest>;
-
 export type GetDatabaseResponseBody = PartialDatabaseObjectResponse | DatabaseObjectResponse;
-const GetDatabaseResponseBody = /*@__PURE__*/ S.Unknown as any as S.Schema<GetDatabaseResponseBody>;
-
 export type GetDatabaseResponse = GetDatabaseResponseBody;
-const GetDatabaseResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetDatabaseResponse>;
-
 /** The type of parent. */
 export type UpdateDatabaseRequestParentType = "page_id" | "workspace";
 /** The parent page or workspace to move the database to. If not provided, the database will not be moved. */
@@ -976,19 +833,10 @@ export interface UpdateDatabaseRequestParent {
   /** Always `true` */
   workspace?: boolean;
 }
-const UpdateDatabaseRequestParent =
-  CreateDatabaseRequestParent as any as S.Schema<UpdateDatabaseRequestParent>;
-
 /** The updated title of the database, if any. If not provided, the title will not be updated. */
 export type UpdateDatabaseRequestTitleList = Array<RichTextItemRequest>;
-const UpdateDatabaseRequestTitleList =
-  CreateDatabaseRequestTitleList as any as S.Schema<UpdateDatabaseRequestTitleList>;
-
 /** The updated description of the database, if any. If not provided, the description will not be updated. */
 export type UpdateDatabaseRequestDescriptionList = Array<RichTextItemRequest>;
-const UpdateDatabaseRequestDescriptionList =
-  CreateDatabaseRequestTitleList as any as S.Schema<UpdateDatabaseRequestDescriptionList>;
-
 export interface UpdateDatabaseRequest {
   database_id: string;
   /** The parent page or workspace to move the database to. If not provided, the database will not be moved. */
@@ -1008,21 +856,8 @@ export interface UpdateDatabaseRequest {
   /** Whether the database should be locked from editing in the Notion app UI. If not provided, the locked state will not be updated. */
   is_locked?: boolean;
 }
-const UpdateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<UpdateDatabaseRequest>;
-
 export type UpdateDatabaseResponseBody = PartialDatabaseObjectResponse | DatabaseObjectResponse;
-const UpdateDatabaseResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDatabaseResponseBody>;
-
 export type UpdateDatabaseResponse = UpdateDatabaseResponseBody;
-const UpdateDatabaseResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UpdateDatabaseResponse>;
-
 export type CreateDatabaseError = NotionOpError;
 /** Create a database */
 export const createDatabase: API.OperationMethod<
@@ -1031,8 +866,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseRequest,
-  output: CreateDatabaseResponse,
+  input: __S(22) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(23) as any as S.Schema<CreateDatabaseResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1046,8 +881,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseRequest,
-  output: GetDatabaseResponse,
+  input: __S(24) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(25) as any as S.Schema<GetDatabaseResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1061,8 +896,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatabaseRequest,
-  output: UpdateDatabaseResponse,
+  input: __S(26) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(27) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -1074,7 +909,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: CreateDatabaseRequestParentType,
+          type: S.String,
           page_id: S.optional(S.String),
           workspace: S.optional(S.Boolean),
         }),
@@ -1089,7 +924,7 @@ function __c0(j: number): any {
           strikethrough: S.optional(S.Boolean),
           underline: S.optional(S.Boolean),
           code: S.optional(S.Boolean),
-          color: S.optional(ApiColor),
+          color: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnnotationRequest" });
     case 2:
@@ -1104,7 +939,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.optional(S.NullOr(RichTextItemRequestTextLink)),
+          link: S.optional(S.NullOr(__S(2))),
         }),
       ).annotate({ identifier: "RichTextItemRequestText" });
     case 4:
@@ -1118,15 +953,15 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(AnnotationRequest),
+          annotations: S.optional(__S(1)),
           type: S.optional(S.String),
-          text: S.optional(RichTextItemRequestText),
-          mention: S.optional(RichTextItemRequestMention),
-          equation: S.optional(RichTextItemRequestEquation),
+          text: S.optional(__S(3)),
+          mention: S.optional(S.Unknown),
+          equation: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "RichTextItemRequest" });
     case 6:
-      return S.Array(RichTextItemRequest);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1151,18 +986,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          color: S.optional(SelectColor),
+          color: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestSelectOptionsItem",
       });
     case 2:
-      return S.Array(PropertyConfigurationRequestSelectOptionsItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(PropertyConfigurationRequestSelectOptionsList),
+          options: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestSelect",
@@ -1171,17 +1006,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          color: S.optional(SelectColor),
+          color: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          group: S.optional(StatusOptionGroup),
+          group: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatusOptionRequest" });
     case 5:
-      return S.Array(StatusOptionRequest);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(StatusOptionRequestArray),
+          options: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "StatusPropertyConfigRequest",
@@ -1205,7 +1040,7 @@ function __c2(j: number): any {
           data_source_id: S.String,
           type: S.optional(S.String),
           single_property: S.optional(S.Unknown),
-          dual_property: S.optional(PropertyConfigurationRequestRelationDualProperty),
+          dual_property: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestRelation",
@@ -1213,7 +1048,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          function: RollupFunction,
+          function: S.String,
           relation_property_name: S.optional(S.String),
           rollup_property_name: S.optional(S.String),
           relation_property_id: S.optional(S.String),
@@ -1235,14 +1070,14 @@ function __c2(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
-          number: S.optional(PropertyConfigurationRequestNumber),
-          formula: S.optional(PropertyConfigurationRequestFormula),
-          select: S.optional(PropertyConfigurationRequestSelect),
-          multi_select: S.optional(PropertyConfigurationRequestMultiSelect),
-          status: S.optional(StatusPropertyConfigRequest),
-          relation: S.optional(PropertyConfigurationRequestRelation),
-          rollup: S.optional(PropertyConfigurationRequestRollup),
-          unique_id: S.optional(PropertyConfigurationRequestUniqueId),
+          number: S.optional(__S(7)),
+          formula: S.optional(__S(8)),
+          select: S.optional(__S(11)),
+          multi_select: S.optional(__S(11)),
+          status: S.optional(__S(14)),
+          relation: S.optional(__S(16)),
+          rollup: S.optional(__S(17)),
+          unique_id: S.optional(__S(18)),
           title: S.optional(S.Unknown),
           rich_text: S.optional(S.Unknown),
           url: S.optional(S.Unknown),
@@ -1266,28 +1101,28 @@ function __c2(j: number): any {
         identifier: "PropertyConfigurationRequest",
       });
     case 4:
-      return S.Record(S.String, PropertyConfigurationRequest);
+      return S.Record(S.String, __S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(InitialDataSourceRequestPropertiesMap),
+          properties: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "InitialDataSourceRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          parent: CreateDatabaseRequestParent,
-          title: S.optional(CreateDatabaseRequestTitleList),
-          description: S.optional(CreateDatabaseRequestDescriptionList),
+          parent: __S(0),
+          title: S.optional(__S(6)),
+          description: S.optional(__S(6)),
           is_inline: S.optional(S.Boolean),
-          initial_data_source: S.optional(InitialDataSourceRequest),
-          database_type: S.optional(CreateDatabaseRequestDatabaseType),
-          icon: S.optional(PageIconRequest),
-          cover: S.optional(PageCoverRequest),
+          initial_data_source: S.optional(__S(21)),
+          database_type: S.optional(S.String),
+          icon: S.optional(S.Unknown),
+          cover: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/databases", code: 200 })),
       ).annotate({ identifier: "CreateDatabaseRequest" });
     case 7:
-      return S.suspend(() => CreateDatabaseResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDatabaseResponse",
       });
   }
@@ -1301,26 +1136,43 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/databases/{database_id}", code: 200 })),
       ).annotate({ identifier: "GetDatabaseRequest" });
     case 1:
-      return S.suspend(() => GetDatabaseResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDatabaseResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           database_id: S.String.pipe(T.Label()),
-          parent: S.optional(UpdateDatabaseRequestParent),
-          title: S.optional(UpdateDatabaseRequestTitleList),
-          description: S.optional(UpdateDatabaseRequestDescriptionList),
+          parent: S.optional(__S(0)),
+          title: S.optional(__S(6)),
+          description: S.optional(__S(6)),
           is_inline: S.optional(S.Boolean),
-          icon: S.optional(PageIconRequest),
-          cover: S.optional(PageCoverRequest),
+          icon: S.optional(S.Unknown),
+          cover: S.optional(S.Unknown),
           in_trash: S.optional(S.Boolean),
           is_locked: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/databases/{database_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDatabaseRequest" });
     case 3:
-      return S.suspend(() => UpdateDatabaseResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDatabaseResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

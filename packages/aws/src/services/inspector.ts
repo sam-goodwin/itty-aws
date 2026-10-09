@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Inspector",
   serviceShapeName: "InspectorService",
@@ -77,7 +79,7 @@ export class AccessDeniedException
     "AccessDeniedException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      errorCode: /*@__PURE__*/ S.suspend(() => AccessDeniedErrorCode).annotate({
+      errorCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "AccessDeniedErrorCode",
       }),
       canRetry: S.Boolean,
@@ -89,7 +91,7 @@ export class AgentsAlreadyRunningAssessmentException
     "AgentsAlreadyRunningAssessmentException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      agents: /*@__PURE__*/ S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
+      agents: /*@__PURE__*/ S.suspend(() => __S(121)).annotate({
         identifier: "AgentAlreadyRunningAssessmentList",
       }),
       agentsTruncated: S.Boolean,
@@ -101,7 +103,7 @@ export class AssessmentRunInProgressException
     "AssessmentRunInProgressException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      assessmentRunArns: /*@__PURE__*/ S.suspend(() => AssessmentRunInProgressArnList).annotate({
+      assessmentRunArns: /*@__PURE__*/ S.suspend(() => __S(0)).annotate({
         identifier: "AssessmentRunInProgressArnList",
       }),
       assessmentRunArnsTruncated: S.Boolean,
@@ -118,7 +120,7 @@ export class InvalidCrossAccountRoleException
     "InvalidCrossAccountRoleException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      errorCode: /*@__PURE__*/ S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
+      errorCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "InvalidCrossAccountRoleErrorCode",
       }),
       canRetry: S.Boolean,
@@ -127,7 +129,7 @@ export class InvalidCrossAccountRoleException
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()("InvalidInputException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-    errorCode: /*@__PURE__*/ S.suspend(() => InvalidInputErrorCode).annotate({
+    errorCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({
       identifier: "InvalidInputErrorCode",
     }),
     canRetry: S.Boolean,
@@ -135,7 +137,7 @@ export class InvalidInputException
 export class LimitExceededException
   extends /*@__PURE__*/ S.TaggedError<LimitExceededException>()("LimitExceededException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-    errorCode: /*@__PURE__*/ S.suspend(() => LimitExceededErrorCode).annotate({
+    errorCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({
       identifier: "LimitExceededErrorCode",
     }),
     canRetry: S.Boolean,
@@ -143,7 +145,7 @@ export class LimitExceededException
 export class NoSuchEntityException
   extends /*@__PURE__*/ S.TaggedError<NoSuchEntityException>()("NoSuchEntityException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-    errorCode: /*@__PURE__*/ S.suspend(() => NoSuchEntityErrorCode).annotate({
+    errorCode: /*@__PURE__*/ S.suspend(() => S.String).annotate({
       identifier: "NoSuchEntityErrorCode",
     }),
     canRetry: S.Boolean,
@@ -166,24 +168,17 @@ export class UnsupportedFeatureException
   ) {}
 export type Arn = string;
 export type AddRemoveAttributesFindingArnList = string[];
-const AddRemoveAttributesFindingArnList = /*@__PURE__*/ __L.at(__c0, 0);
 export type AttributeKey = string;
 export type AttributeValue = string;
 export interface Attribute {
   key: string;
   value?: string;
 }
-const Attribute = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Attribute>;
 export type UserAttributeList = Attribute[];
-const UserAttributeList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface AddAttributesToFindingsRequest {
   findingArns: string[];
   attributes: Attribute[];
 }
-const AddAttributesToFindingsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddAttributesToFindingsRequest>;
 export type FailedItemErrorCode =
   | "INVALID_ARN"
   | "DUPLICATE_ARN"
@@ -192,43 +187,25 @@ export type FailedItemErrorCode =
   | "LIMIT_EXCEEDED"
   | "INTERNAL_ERROR"
   | (string & {});
-const FailedItemErrorCode = S.String;
-
 export interface FailedItemDetails {
   failureCode: FailedItemErrorCode;
   retryable: boolean;
 }
-const FailedItemDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FailedItemDetails>;
 export type FailedItems = { [key: string]: FailedItemDetails | undefined };
-const FailedItems = /*@__PURE__*/ __L.at(__c0, 5);
 export interface AddAttributesToFindingsResponse {
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const AddAttributesToFindingsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddAttributesToFindingsResponse>;
 export type AssessmentTargetName = string;
 export interface CreateAssessmentTargetRequest {
   assessmentTargetName: string;
   resourceGroupArn?: string;
 }
-const CreateAssessmentTargetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateAssessmentTargetRequest>;
 export interface CreateAssessmentTargetResponse {
   assessmentTargetArn: string;
 }
-const CreateAssessmentTargetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateAssessmentTargetResponse>;
 export type AssessmentTemplateName = string;
 export type AssessmentRunDuration = number;
 export type AssessmentTemplateRulesPackageArnList = string[];
-const AssessmentTemplateRulesPackageArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<AssessmentTemplateRulesPackageArnList>;
 export interface CreateAssessmentTemplateRequest {
   assessmentTargetArn: string;
   assessmentTemplateName: string;
@@ -236,32 +213,16 @@ export interface CreateAssessmentTemplateRequest {
   rulesPackageArns: string[];
   userAttributesForFindings?: Attribute[];
 }
-const CreateAssessmentTemplateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateAssessmentTemplateRequest>;
 export interface CreateAssessmentTemplateResponse {
   assessmentTemplateArn: string;
 }
-const CreateAssessmentTemplateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateAssessmentTemplateResponse>;
 export interface CreateExclusionsPreviewRequest {
   assessmentTemplateArn: string;
 }
-const CreateExclusionsPreviewRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateExclusionsPreviewRequest>;
 export type UUID = string;
 export interface CreateExclusionsPreviewResponse {
   previewToken: string;
 }
-const CreateExclusionsPreviewResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateExclusionsPreviewResponse>;
 export type TagKey = string;
 export type TagValue = string;
 export interface ResourceGroupTag {
@@ -269,65 +230,28 @@ export interface ResourceGroupTag {
   value?: string;
 }
 export type ResourceGroupTags = ResourceGroupTag[];
-const ResourceGroupTags = UserAttributeList as any as S.Schema<ResourceGroupTags>;
 export interface CreateResourceGroupRequest {
   resourceGroupTags: ResourceGroupTag[];
 }
-const CreateResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateResourceGroupRequest>;
 export interface CreateResourceGroupResponse {
   resourceGroupArn: string;
 }
-const CreateResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateResourceGroupResponse>;
 export interface DeleteAssessmentRunRequest {
   assessmentRunArn: string;
 }
-const DeleteAssessmentRunRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteAssessmentRunRequest>;
 export interface DeleteAssessmentRunResponse {}
-const DeleteAssessmentRunResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteAssessmentRunResponse>;
 export interface DeleteAssessmentTargetRequest {
   assessmentTargetArn: string;
 }
-const DeleteAssessmentTargetRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteAssessmentTargetRequest>;
 export interface DeleteAssessmentTargetResponse {}
-const DeleteAssessmentTargetResponse =
-  DeleteAssessmentRunResponse as any as S.Schema<DeleteAssessmentTargetResponse>;
 export interface DeleteAssessmentTemplateRequest {
   assessmentTemplateArn: string;
 }
-const DeleteAssessmentTemplateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteAssessmentTemplateRequest>;
 export interface DeleteAssessmentTemplateResponse {}
-const DeleteAssessmentTemplateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteAssessmentTemplateResponse>;
 export type BatchDescribeArnList = string[];
-const BatchDescribeArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<BatchDescribeArnList>;
 export interface DescribeAssessmentRunsRequest {
   assessmentRunArns: string[];
 }
-const DescribeAssessmentRunsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DescribeAssessmentRunsRequest>;
 export type AssessmentRunName = string;
 export type AssessmentRunState =
   | "CREATED"
@@ -344,21 +268,12 @@ export type AssessmentRunState =
   | "COMPLETED_WITH_ERRORS"
   | "CANCELED"
   | (string & {});
-const AssessmentRunState = S.String;
-
 export type AssessmentRulesPackageArnList = string[];
-const AssessmentRulesPackageArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<AssessmentRulesPackageArnList>;
 export interface AssessmentRunStateChange {
   stateChangedAt: Date;
   state: AssessmentRunState;
 }
-const AssessmentRunStateChange = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AssessmentRunStateChange>;
 export type AssessmentRunStateChangeList = AssessmentRunStateChange[];
-const AssessmentRunStateChangeList = /*@__PURE__*/ __L.at(__c2, 6);
 export type InspectorEvent =
   | "ASSESSMENT_RUN_STARTED"
   | "ASSESSMENT_RUN_COMPLETED"
@@ -366,8 +281,6 @@ export type InspectorEvent =
   | "FINDING_REPORTED"
   | "OTHER"
   | (string & {});
-const InspectorEvent = S.String;
-
 export type Message = string;
 export type AssessmentRunNotificationSnsStatusCode =
   | "SUCCESS"
@@ -375,8 +288,6 @@ export type AssessmentRunNotificationSnsStatusCode =
   | "ACCESS_DENIED"
   | "INTERNAL_ERROR"
   | (string & {});
-const AssessmentRunNotificationSnsStatusCode = S.String;
-
 export interface AssessmentRunNotification {
   date: Date;
   event: InspectorEvent;
@@ -385,18 +296,10 @@ export interface AssessmentRunNotification {
   snsTopicArn?: string;
   snsPublishStatusCode?: AssessmentRunNotificationSnsStatusCode;
 }
-const AssessmentRunNotification = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AssessmentRunNotification>;
 export type AssessmentRunNotificationList = AssessmentRunNotification[];
-const AssessmentRunNotificationList = /*@__PURE__*/ __L.at(__c3, 0);
 export type Severity = "Low" | "Medium" | "High" | "Informational" | "Undefined" | (string & {});
-const Severity = S.String;
-
 export type FindingCount = number;
 export type AssessmentRunFindingCounts = { [key in Severity]?: number };
-const AssessmentRunFindingCounts = /*@__PURE__*/ __L.at(__c3, 1);
 export interface AssessmentRun {
   arn: string;
   name: string;
@@ -414,24 +317,14 @@ export interface AssessmentRun {
   notifications: AssessmentRunNotification[];
   findingCounts: { [key: string]: number | undefined };
 }
-const AssessmentRun = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AssessmentRun>;
 export type AssessmentRunList = AssessmentRun[];
-const AssessmentRunList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface DescribeAssessmentRunsResponse {
   assessmentRuns: AssessmentRun[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeAssessmentRunsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DescribeAssessmentRunsResponse>;
 export interface DescribeAssessmentTargetsRequest {
   assessmentTargetArns: string[];
 }
-const DescribeAssessmentTargetsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DescribeAssessmentTargetsRequest>;
 export interface AssessmentTarget {
   arn: string;
   name: string;
@@ -439,24 +332,14 @@ export interface AssessmentTarget {
   createdAt: Date;
   updatedAt: Date;
 }
-const AssessmentTarget = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AssessmentTarget>;
 export type AssessmentTargetList = AssessmentTarget[];
-const AssessmentTargetList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface DescribeAssessmentTargetsResponse {
   assessmentTargets: AssessmentTarget[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeAssessmentTargetsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DescribeAssessmentTargetsResponse>;
 export interface DescribeAssessmentTemplatesRequest {
   assessmentTemplateArns: string[];
 }
-const DescribeAssessmentTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DescribeAssessmentTemplatesRequest>;
 export type ArnCount = number;
 export interface AssessmentTemplate {
   arn: string;
@@ -469,59 +352,32 @@ export interface AssessmentTemplate {
   assessmentRunCount: number;
   createdAt: Date;
 }
-const AssessmentTemplate = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AssessmentTemplate>;
 export type AssessmentTemplateList = AssessmentTemplate[];
-const AssessmentTemplateList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface DescribeAssessmentTemplatesResponse {
   assessmentTemplates: AssessmentTemplate[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeAssessmentTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DescribeAssessmentTemplatesResponse>;
 export interface DescribeCrossAccountAccessRoleRequest {}
-const DescribeCrossAccountAccessRoleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DescribeCrossAccountAccessRoleRequest>;
 export interface DescribeCrossAccountAccessRoleResponse {
   roleArn: string;
   valid: boolean;
   registeredAt: Date;
 }
-const DescribeCrossAccountAccessRoleResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DescribeCrossAccountAccessRoleResponse>;
 export type BatchDescribeExclusionsArnList = string[];
-const BatchDescribeExclusionsArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<BatchDescribeExclusionsArnList>;
 export type Locale = "EN_US" | (string & {});
-const Locale = S.String;
-
 export interface DescribeExclusionsRequest {
   exclusionArns: string[];
   locale?: Locale;
 }
-const DescribeExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DescribeExclusionsRequest>;
 export type Text = string;
 export type ScopeType = "INSTANCE_ID" | "RULES_PACKAGE_ARN" | (string & {});
-const ScopeType = S.String;
-
 export type ScopeValue = string;
 export interface Scope {
   key?: ScopeType;
   value?: string;
 }
-const Scope = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Scope>;
 export type ScopeList = Scope[];
-const ScopeList = /*@__PURE__*/ __L.at(__c5, 1);
 export type AttributeList = Attribute[];
-const AttributeList = UserAttributeList as any as S.Schema<AttributeList>;
 export interface Exclusion {
   arn: string;
   title: string;
@@ -530,25 +386,15 @@ export interface Exclusion {
   scopes: Scope[];
   attributes?: Attribute[];
 }
-const Exclusion = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Exclusion>;
 export type ExclusionMap = { [key: string]: Exclusion | undefined };
-const ExclusionMap = /*@__PURE__*/ __L.at(__c5, 3);
 export interface DescribeExclusionsResponse {
   exclusions: { [key: string]: Exclusion | undefined };
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeExclusionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DescribeExclusionsResponse>;
 export interface DescribeFindingsRequest {
   findingArns: string[];
   locale?: Locale;
 }
-const DescribeFindingsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DescribeFindingsRequest>;
 export type NumericVersion = number;
 export type ServiceName = string;
 export interface InspectorServiceAttributes {
@@ -556,42 +402,29 @@ export interface InspectorServiceAttributes {
   assessmentRunArn?: string;
   rulesPackageArn?: string;
 }
-const InspectorServiceAttributes = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<InspectorServiceAttributes>;
 export type AssetType = "ec2-instance" | (string & {});
-const AssetType = S.String;
-
 export type AgentId = string;
 export type AutoScalingGroup = string;
 export type AmiId = string;
 export type Hostname = string;
 export type Ipv4Address = string;
 export type Ipv4AddressList = string[];
-const Ipv4AddressList = AddRemoveAttributesFindingArnList as any as S.Schema<Ipv4AddressList>;
 export interface Tag {
   key: string;
   value?: string;
 }
 export type Tags = Tag[];
-const Tags = UserAttributeList as any as S.Schema<Tags>;
 export interface PrivateIp {
   privateDnsName?: string;
   privateIpAddress?: string;
 }
-const PrivateIp = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PrivateIp>;
 export type PrivateIpAddresses = PrivateIp[];
-const PrivateIpAddresses = /*@__PURE__*/ __L.at(__c6, 0);
 export type Ipv6Addresses = string[];
-const Ipv6Addresses = AddRemoveAttributesFindingArnList as any as S.Schema<Ipv6Addresses>;
 export interface SecurityGroup {
   groupName?: string;
   groupId?: string;
 }
-const SecurityGroup = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SecurityGroup>;
 export type SecurityGroups = SecurityGroup[];
-const SecurityGroups = /*@__PURE__*/ __L.at(__c6, 2);
 export interface NetworkInterface {
   networkInterfaceId?: string;
   subnetId?: string;
@@ -604,9 +437,7 @@ export interface NetworkInterface {
   ipv6Addresses?: string[];
   securityGroups?: SecurityGroup[];
 }
-const NetworkInterface = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
-const NetworkInterfaces = /*@__PURE__*/ __L.at(__c6, 4);
 export interface AssetAttributes {
   schemaVersion: number;
   agentId?: string;
@@ -617,7 +448,6 @@ export interface AssetAttributes {
   tags?: Tag[];
   networkInterfaces?: NetworkInterface[];
 }
-const AssetAttributes = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AssetAttributes>;
 export type FindingId = string;
 export type NumericSeverity = number;
 export type IocConfidence = number;
@@ -641,48 +471,28 @@ export interface Finding {
   createdAt: Date;
   updatedAt: Date;
 }
-const Finding = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<Finding>;
 export type FindingList = Finding[];
-const FindingList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface DescribeFindingsResponse {
   findings: Finding[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeFindingsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DescribeFindingsResponse>;
 export interface DescribeResourceGroupsRequest {
   resourceGroupArns: string[];
 }
-const DescribeResourceGroupsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DescribeResourceGroupsRequest>;
 export interface ResourceGroup {
   arn: string;
   tags: ResourceGroupTag[];
   createdAt: Date;
 }
-const ResourceGroup = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ResourceGroup>;
 export type ResourceGroupList = ResourceGroup[];
-const ResourceGroupList = /*@__PURE__*/ __L.at(__c7, 3);
 export interface DescribeResourceGroupsResponse {
   resourceGroups: ResourceGroup[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeResourceGroupsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DescribeResourceGroupsResponse>;
 export interface DescribeRulesPackagesRequest {
   rulesPackageArns: string[];
   locale?: Locale;
 }
-const DescribeRulesPackagesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DescribeRulesPackagesRequest>;
 export type RulesPackageName = string;
 export type Version = string;
 export type ProviderName = string;
@@ -693,44 +503,24 @@ export interface RulesPackage {
   provider: string;
   description?: string;
 }
-const RulesPackage = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<RulesPackage>;
 export type RulesPackageList = RulesPackage[];
-const RulesPackageList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface DescribeRulesPackagesResponse {
   rulesPackages: RulesPackage[];
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const DescribeRulesPackagesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DescribeRulesPackagesResponse>;
 export type ReportFileFormat = "HTML" | "PDF" | (string & {});
-const ReportFileFormat = S.String;
-
 export type ReportType = "FINDING" | "FULL" | (string & {});
-const ReportType = S.String;
-
 export interface GetAssessmentReportRequest {
   assessmentRunArn: string;
   reportFileFormat: ReportFileFormat;
   reportType: ReportType;
 }
-const GetAssessmentReportRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetAssessmentReportRequest>;
 export type ReportStatus = "WORK_IN_PROGRESS" | "FAILED" | "COMPLETED" | (string & {});
-const ReportStatus = S.String;
-
 export type Url = string;
 export interface GetAssessmentReportResponse {
   status: ReportStatus;
   url?: string;
 }
-const GetAssessmentReportResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetAssessmentReportResponse>;
 export type PaginationToken = string;
 export type ListMaxResults = number;
 export interface GetExclusionsPreviewRequest {
@@ -740,13 +530,7 @@ export interface GetExclusionsPreviewRequest {
   maxResults?: number;
   locale?: Locale;
 }
-const GetExclusionsPreviewRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetExclusionsPreviewRequest>;
 export type PreviewStatus = "WORK_IN_PROGRESS" | "COMPLETED" | (string & {});
-const PreviewStatus = S.String;
-
 export interface ExclusionPreview {
   title: string;
   description: string;
@@ -754,46 +538,27 @@ export interface ExclusionPreview {
   scopes: Scope[];
   attributes?: Attribute[];
 }
-const ExclusionPreview = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ExclusionPreview>;
 export type ExclusionPreviewList = ExclusionPreview[];
-const ExclusionPreviewList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface GetExclusionsPreviewResponse {
   previewStatus: PreviewStatus;
   exclusionPreviews?: ExclusionPreview[];
   nextToken?: string;
 }
-const GetExclusionsPreviewResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetExclusionsPreviewResponse>;
 export interface GetTelemetryMetadataRequest {
   assessmentRunArn: string;
 }
-const GetTelemetryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetTelemetryMetadataRequest>;
 export type MessageType = string;
 export interface TelemetryMetadata {
   messageType: string;
   count: number;
   dataSize?: number;
 }
-const TelemetryMetadata = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<TelemetryMetadata>;
 export type TelemetryMetadataList = TelemetryMetadata[];
-const TelemetryMetadataList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface GetTelemetryMetadataResponse {
   telemetryMetadata: TelemetryMetadata[];
 }
-const GetTelemetryMetadataResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetTelemetryMetadataResponse>;
 export type AgentHealth = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
-const AgentHealth = S.String;
-
 export type AgentHealthList = AgentHealth[];
-const AgentHealthList = /*@__PURE__*/ __L.at(__c9, 3);
 export type AgentHealthCode =
   | "IDLE"
   | "RUNNING"
@@ -802,25 +567,17 @@ export type AgentHealthCode =
   | "THROTTLED"
   | "UNKNOWN"
   | (string & {});
-const AgentHealthCode = S.String;
-
 export type AgentHealthCodeList = AgentHealthCode[];
-const AgentHealthCodeList = AgentHealthList as any as S.Schema<AgentHealthCodeList>;
 export interface AgentFilter {
   agentHealths: AgentHealth[];
   agentHealthCodes: AgentHealthCode[];
 }
-const AgentFilter = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AgentFilter>;
 export interface ListAssessmentRunAgentsRequest {
   assessmentRunArn: string;
   filter?: AgentFilter;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssessmentRunAgentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListAssessmentRunAgentsRequest>;
 export interface AssessmentRunAgent {
   agentId: string;
   assessmentRunArn: string;
@@ -830,35 +587,23 @@ export interface AssessmentRunAgent {
   autoScalingGroup?: string;
   telemetryMetadata: TelemetryMetadata[];
 }
-const AssessmentRunAgent = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<AssessmentRunAgent>;
 export type AssessmentRunAgentList = AssessmentRunAgent[];
-const AssessmentRunAgentList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ListAssessmentRunAgentsResponse {
   assessmentRunAgents: AssessmentRunAgent[];
   nextToken?: string;
 }
-const ListAssessmentRunAgentsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListAssessmentRunAgentsResponse>;
 export type ListParentArnList = string[];
-const ListParentArnList = AddRemoveAttributesFindingArnList as any as S.Schema<ListParentArnList>;
 export type NamePattern = string;
 export type AssessmentRunStateList = AssessmentRunState[];
-const AssessmentRunStateList = AgentHealthList as any as S.Schema<AssessmentRunStateList>;
 export interface DurationRange {
   minSeconds?: number;
   maxSeconds?: number;
 }
-const DurationRange = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<DurationRange>;
 export type FilterRulesPackageArnList = string[];
-const FilterRulesPackageArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<FilterRulesPackageArnList>;
 export interface TimestampRange {
   beginDate?: Date;
   endDate?: Date;
 }
-const TimestampRange = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<TimestampRange>;
 export interface AssessmentRunFilter {
   namePattern?: string;
   states?: AssessmentRunState[];
@@ -868,139 +613,79 @@ export interface AssessmentRunFilter {
   completionTimeRange?: TimestampRange;
   stateChangeTimeRange?: TimestampRange;
 }
-const AssessmentRunFilter = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<AssessmentRunFilter>;
 export interface ListAssessmentRunsRequest {
   assessmentTemplateArns?: string[];
   filter?: AssessmentRunFilter;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssessmentRunsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListAssessmentRunsRequest>;
 export type ListReturnedArnList = string[];
-const ListReturnedArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<ListReturnedArnList>;
 export interface ListAssessmentRunsResponse {
   assessmentRunArns: string[];
   nextToken?: string;
 }
-const ListAssessmentRunsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListAssessmentRunsResponse>;
 export interface AssessmentTargetFilter {
   assessmentTargetNamePattern?: string;
 }
-const AssessmentTargetFilter = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AssessmentTargetFilter>;
 export interface ListAssessmentTargetsRequest {
   filter?: AssessmentTargetFilter;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssessmentTargetsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListAssessmentTargetsRequest>;
 export interface ListAssessmentTargetsResponse {
   assessmentTargetArns: string[];
   nextToken?: string;
 }
-const ListAssessmentTargetsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListAssessmentTargetsResponse>;
 export interface AssessmentTemplateFilter {
   namePattern?: string;
   durationRange?: DurationRange;
   rulesPackageArns?: string[];
 }
-const AssessmentTemplateFilter = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<AssessmentTemplateFilter>;
 export interface ListAssessmentTemplatesRequest {
   assessmentTargetArns?: string[];
   filter?: AssessmentTemplateFilter;
   nextToken?: string;
   maxResults?: number;
 }
-const ListAssessmentTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListAssessmentTemplatesRequest>;
 export interface ListAssessmentTemplatesResponse {
   assessmentTemplateArns: string[];
   nextToken?: string;
 }
-const ListAssessmentTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListAssessmentTemplatesResponse>;
 export type ListEventSubscriptionsMaxResults = number;
 export interface ListEventSubscriptionsRequest {
   resourceArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListEventSubscriptionsRequest>;
 export interface EventSubscription {
   event: InspectorEvent;
   subscribedAt: Date;
 }
-const EventSubscription = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<EventSubscription>;
 export type EventSubscriptionList = EventSubscription[];
-const EventSubscriptionList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface Subscription {
   resourceArn: string;
   topicArn: string;
   eventSubscriptions: EventSubscription[];
 }
-const Subscription = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
-const SubscriptionList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ListEventSubscriptionsResponse {
   subscriptions: Subscription[];
   nextToken?: string;
 }
-const ListEventSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListEventSubscriptionsResponse>;
 export interface ListExclusionsRequest {
   assessmentRunArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListExclusionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListExclusionsRequest>;
 export interface ListExclusionsResponse {
   exclusionArns: string[];
   nextToken?: string;
 }
-const ListExclusionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListExclusionsResponse>;
 export type AgentIdList = string[];
-const AgentIdList = AddRemoveAttributesFindingArnList as any as S.Schema<AgentIdList>;
 export type AutoScalingGroupList = string[];
-const AutoScalingGroupList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<AutoScalingGroupList>;
 export type RuleName = string;
 export type RuleNameList = string[];
-const RuleNameList = AddRemoveAttributesFindingArnList as any as S.Schema<RuleNameList>;
 export type SeverityList = Severity[];
-const SeverityList = AgentHealthList as any as S.Schema<SeverityList>;
 export interface FindingFilter {
   agentIds?: string[];
   autoScalingGroups?: string[];
@@ -1011,64 +696,37 @@ export interface FindingFilter {
   userAttributes?: Attribute[];
   creationTimeRange?: TimestampRange;
 }
-const FindingFilter = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<FindingFilter>;
 export interface ListFindingsRequest {
   assessmentRunArns?: string[];
   filter?: FindingFilter;
   nextToken?: string;
   maxResults?: number;
 }
-const ListFindingsRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ListFindingsRequest>;
 export interface ListFindingsResponse {
   findingArns: string[];
   nextToken?: string;
 }
-const ListFindingsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListFindingsResponse>;
 export interface ListRulesPackagesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListRulesPackagesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListRulesPackagesRequest>;
 export interface ListRulesPackagesResponse {
   rulesPackageArns: string[];
   nextToken?: string;
 }
-const ListRulesPackagesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListRulesPackagesResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagList = Tag[];
-const TagList = UserAttributeList as any as S.Schema<TagList>;
 export interface ListTagsForResourceResponse {
   tags: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type PreviewAgentsMaxResults = number;
 export interface PreviewAgentsRequest {
   previewAgentsArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const PreviewAgentsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PreviewAgentsRequest>;
 export type AgentVersion = string;
 export type OperatingSystem = string;
 export type KernelVersion = string;
@@ -1082,119 +740,59 @@ export interface AgentPreview {
   kernelVersion?: string;
   ipv4Address?: string;
 }
-const AgentPreview = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<AgentPreview>;
 export type AgentPreviewList = AgentPreview[];
-const AgentPreviewList = /*@__PURE__*/ __L.at(__c13, 5);
 export interface PreviewAgentsResponse {
   agentPreviews: AgentPreview[];
   nextToken?: string;
 }
-const PreviewAgentsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<PreviewAgentsResponse>;
 export interface RegisterCrossAccountAccessRoleRequest {
   roleArn: string;
 }
-const RegisterCrossAccountAccessRoleRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<RegisterCrossAccountAccessRoleRequest>;
 export interface RegisterCrossAccountAccessRoleResponse {}
-const RegisterCrossAccountAccessRoleResponse =
-  DeleteAssessmentTemplateResponse as any as S.Schema<RegisterCrossAccountAccessRoleResponse>;
 export type UserAttributeKeyList = string[];
-const UserAttributeKeyList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<UserAttributeKeyList>;
 export interface RemoveAttributesFromFindingsRequest {
   findingArns: string[];
   attributeKeys: string[];
 }
-const RemoveAttributesFromFindingsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<RemoveAttributesFromFindingsRequest>;
 export interface RemoveAttributesFromFindingsResponse {
   failedItems: { [key: string]: FailedItemDetails | undefined };
 }
-const RemoveAttributesFromFindingsResponse =
-  AddAttributesToFindingsResponse as any as S.Schema<RemoveAttributesFromFindingsResponse>;
 export interface SetTagsForResourceRequest {
   resourceArn: string;
   tags?: Tag[];
 }
-const SetTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<SetTagsForResourceRequest>;
 export interface SetTagsForResourceResponse {}
-const SetTagsForResourceResponse =
-  DeleteAssessmentRunResponse as any as S.Schema<SetTagsForResourceResponse>;
 export interface StartAssessmentRunRequest {
   assessmentTemplateArn: string;
   assessmentRunName?: string;
 }
-const StartAssessmentRunRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<StartAssessmentRunRequest>;
 export interface StartAssessmentRunResponse {
   assessmentRunArn: string;
 }
-const StartAssessmentRunResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<StartAssessmentRunResponse>;
 export type StopAction = "START_EVALUATION" | "SKIP_EVALUATION" | (string & {});
-const StopAction = S.String;
-
 export interface StopAssessmentRunRequest {
   assessmentRunArn: string;
   stopAction?: StopAction;
 }
-const StopAssessmentRunRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<StopAssessmentRunRequest>;
 export interface StopAssessmentRunResponse {}
-const StopAssessmentRunResponse =
-  DeleteAssessmentRunResponse as any as S.Schema<StopAssessmentRunResponse>;
 export interface SubscribeToEventRequest {
   resourceArn: string;
   event: InspectorEvent;
   topicArn: string;
 }
-const SubscribeToEventRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<SubscribeToEventRequest>;
 export interface SubscribeToEventResponse {}
-const SubscribeToEventResponse =
-  DeleteAssessmentRunResponse as any as S.Schema<SubscribeToEventResponse>;
 export interface UnsubscribeFromEventRequest {
   resourceArn: string;
   event: InspectorEvent;
   topicArn: string;
 }
-const UnsubscribeFromEventRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<UnsubscribeFromEventRequest>;
 export interface UnsubscribeFromEventResponse {}
-const UnsubscribeFromEventResponse =
-  DeleteAssessmentRunResponse as any as S.Schema<UnsubscribeFromEventResponse>;
 export interface UpdateAssessmentTargetRequest {
   assessmentTargetArn: string;
   assessmentTargetName: string;
   resourceGroupArn?: string;
 }
-const UpdateAssessmentTargetRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<UpdateAssessmentTargetRequest>;
 export interface UpdateAssessmentTargetResponse {}
-const UpdateAssessmentTargetResponse =
-  DeleteAssessmentRunResponse as any as S.Schema<UpdateAssessmentTargetResponse>;
 export type ErrorMessage = string;
 export type AccessDeniedErrorCode =
   | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"
@@ -1206,8 +804,6 @@ export type AccessDeniedErrorCode =
   | "ACCESS_DENIED_TO_SNS_TOPIC"
   | "ACCESS_DENIED_TO_IAM_ROLE"
   | (string & {});
-const AccessDeniedErrorCode = S.String;
-
 export type InvalidInputErrorCode =
   | "INVALID_ASSESSMENT_TARGET_ARN"
   | "INVALID_ASSESSMENT_TEMPLATE_ARN"
@@ -1264,8 +860,6 @@ export type InvalidInputErrorCode =
   | "INVALID_NUMBER_OF_RULE_NAMES"
   | "INVALID_NUMBER_OF_SEVERITIES"
   | (string & {});
-const InvalidInputErrorCode = S.String;
-
 export type NoSuchEntityErrorCode =
   | "ASSESSMENT_TARGET_DOES_NOT_EXIST"
   | "ASSESSMENT_TEMPLATE_DOES_NOT_EXIST"
@@ -1276,14 +870,10 @@ export type NoSuchEntityErrorCode =
   | "SNS_TOPIC_DOES_NOT_EXIST"
   | "IAM_ROLE_DOES_NOT_EXIST"
   | (string & {});
-const NoSuchEntityErrorCode = S.String;
-
 export type InvalidCrossAccountRoleErrorCode =
   | "ROLE_DOES_NOT_EXIST_OR_INVALID_TRUST_RELATIONSHIP"
   | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY"
   | (string & {});
-const InvalidCrossAccountRoleErrorCode = S.String;
-
 export type LimitExceededErrorCode =
   | "ASSESSMENT_TARGET_LIMIT_EXCEEDED"
   | "ASSESSMENT_TEMPLATE_LIMIT_EXCEEDED"
@@ -1291,21 +881,12 @@ export type LimitExceededErrorCode =
   | "RESOURCE_GROUP_LIMIT_EXCEEDED"
   | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED"
   | (string & {});
-const LimitExceededErrorCode = S.String;
-
 export type AssessmentRunInProgressArnList = string[];
-const AssessmentRunInProgressArnList =
-  AddRemoveAttributesFindingArnList as any as S.Schema<AssessmentRunInProgressArnList>;
 export interface AgentAlreadyRunningAssessment {
   agentId: string;
   assessmentRunArn: string;
 }
-const AgentAlreadyRunningAssessment = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<AgentAlreadyRunningAssessment>;
 export type AgentAlreadyRunningAssessmentList = AgentAlreadyRunningAssessment[];
-const AgentAlreadyRunningAssessmentList = /*@__PURE__*/ __L.at(__c15, 1);
 export type AddAttributesToFindingsError =
   | AccessDeniedException
   | InternalException
@@ -1323,8 +904,8 @@ export const addAttributesToFindings: API.OperationMethod<
   AddAttributesToFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAttributesToFindingsRequest,
-  output: AddAttributesToFindingsResponse,
+  input: __S(3) as any as S.Schema<AddAttributesToFindingsRequest>,
+  output: __S(6) as any as S.Schema<AddAttributesToFindingsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -1362,8 +943,8 @@ export const createAssessmentTarget: API.OperationMethod<
   CreateAssessmentTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssessmentTargetRequest,
-  output: CreateAssessmentTargetResponse,
+  input: __S(7) as any as S.Schema<CreateAssessmentTargetRequest>,
+  output: __S(8) as any as S.Schema<CreateAssessmentTargetResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -1398,8 +979,8 @@ export const createAssessmentTemplate: API.OperationMethod<
   CreateAssessmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssessmentTemplateRequest,
-  output: CreateAssessmentTemplateResponse,
+  input: __S(9) as any as S.Schema<CreateAssessmentTemplateRequest>,
+  output: __S(10) as any as S.Schema<CreateAssessmentTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -1432,8 +1013,8 @@ export const createExclusionsPreview: API.OperationMethod<
   CreateExclusionsPreviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExclusionsPreviewRequest,
-  output: CreateExclusionsPreviewResponse,
+  input: __S(11) as any as S.Schema<CreateExclusionsPreviewRequest>,
+  output: __S(12) as any as S.Schema<CreateExclusionsPreviewResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -1466,8 +1047,8 @@ export const createResourceGroup: API.OperationMethod<
   CreateResourceGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceGroupRequest,
-  output: CreateResourceGroupResponse,
+  input: __S(13) as any as S.Schema<CreateResourceGroupRequest>,
+  output: __S(14) as any as S.Schema<CreateResourceGroupResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -1498,8 +1079,8 @@ export const deleteAssessmentRun: API.OperationMethod<
   DeleteAssessmentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssessmentRunRequest,
-  output: DeleteAssessmentRunResponse,
+  input: __S(15) as any as S.Schema<DeleteAssessmentRunRequest>,
+  output: __S(16) as any as S.Schema<DeleteAssessmentRunResponse>,
   errors: [
     AccessDeniedException,
     AssessmentRunInProgressException,
@@ -1531,8 +1112,8 @@ export const deleteAssessmentTarget: API.OperationMethod<
   DeleteAssessmentTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssessmentTargetRequest,
-  output: DeleteAssessmentTargetResponse,
+  input: __S(17) as any as S.Schema<DeleteAssessmentTargetRequest>,
+  output: __S(16) as any as S.Schema<DeleteAssessmentTargetResponse>,
   errors: [
     AccessDeniedException,
     AssessmentRunInProgressException,
@@ -1564,8 +1145,8 @@ export const deleteAssessmentTemplate: API.OperationMethod<
   DeleteAssessmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssessmentTemplateRequest,
-  output: DeleteAssessmentTemplateResponse,
+  input: __S(18) as any as S.Schema<DeleteAssessmentTemplateRequest>,
+  output: __S(19) as any as S.Schema<DeleteAssessmentTemplateResponse>,
   errors: [
     AccessDeniedException,
     AssessmentRunInProgressException,
@@ -1590,8 +1171,8 @@ export const describeAssessmentRuns: API.OperationMethod<
   DescribeAssessmentRunsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAssessmentRunsRequest,
-  output: DescribeAssessmentRunsResponse,
+  input: __S(20) as any as S.Schema<DescribeAssessmentRunsRequest>,
+  output: __S(28) as any as S.Schema<DescribeAssessmentRunsResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1612,8 +1193,8 @@ export const describeAssessmentTargets: API.OperationMethod<
   DescribeAssessmentTargetsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAssessmentTargetsRequest,
-  output: DescribeAssessmentTargetsResponse,
+  input: __S(29) as any as S.Schema<DescribeAssessmentTargetsRequest>,
+  output: __S(32) as any as S.Schema<DescribeAssessmentTargetsResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1634,8 +1215,8 @@ export const describeAssessmentTemplates: API.OperationMethod<
   DescribeAssessmentTemplatesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAssessmentTemplatesRequest,
-  output: DescribeAssessmentTemplatesResponse,
+  input: __S(33) as any as S.Schema<DescribeAssessmentTemplatesRequest>,
+  output: __S(36) as any as S.Schema<DescribeAssessmentTemplatesResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1653,8 +1234,8 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   DescribeCrossAccountAccessRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeCrossAccountAccessRoleRequest,
-  output: DescribeCrossAccountAccessRoleResponse,
+  input: __S(37) as any as S.Schema<DescribeCrossAccountAccessRoleRequest>,
+  output: __S(38) as any as S.Schema<DescribeCrossAccountAccessRoleResponse>,
   errors: [InternalException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1671,8 +1252,8 @@ export const describeExclusions: API.OperationMethod<
   DescribeExclusionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeExclusionsRequest,
-  output: DescribeExclusionsResponse,
+  input: __S(39) as any as S.Schema<DescribeExclusionsRequest>,
+  output: __S(44) as any as S.Schema<DescribeExclusionsResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1689,8 +1270,8 @@ export const describeFindings: API.OperationMethod<
   DescribeFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeFindingsRequest,
-  output: DescribeFindingsResponse,
+  input: __S(45) as any as S.Schema<DescribeFindingsRequest>,
+  output: __S(56) as any as S.Schema<DescribeFindingsResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1708,8 +1289,8 @@ export const describeResourceGroups: API.OperationMethod<
   DescribeResourceGroupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeResourceGroupsRequest,
-  output: DescribeResourceGroupsResponse,
+  input: __S(57) as any as S.Schema<DescribeResourceGroupsRequest>,
+  output: __S(60) as any as S.Schema<DescribeResourceGroupsResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1727,8 +1308,8 @@ export const describeRulesPackages: API.OperationMethod<
   DescribeRulesPackagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeRulesPackagesRequest,
-  output: DescribeRulesPackagesResponse,
+  input: __S(61) as any as S.Schema<DescribeRulesPackagesRequest>,
+  output: __S(64) as any as S.Schema<DescribeRulesPackagesResponse>,
   errors: [InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1754,8 +1335,8 @@ export const getAssessmentReport: API.OperationMethod<
   GetAssessmentReportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssessmentReportRequest,
-  output: GetAssessmentReportResponse,
+  input: __S(65) as any as S.Schema<GetAssessmentReportRequest>,
+  output: __S(66) as any as S.Schema<GetAssessmentReportResponse>,
   errors: [
     AccessDeniedException,
     AssessmentRunInProgressException,
@@ -1788,8 +1369,8 @@ export const getExclusionsPreview: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetExclusionsPreviewRequest,
-  output: GetExclusionsPreviewResponse,
+  input: __S(67) as any as S.Schema<GetExclusionsPreviewRequest>,
+  output: __S(70) as any as S.Schema<GetExclusionsPreviewResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1817,8 +1398,8 @@ export const getTelemetryMetadata: API.OperationMethod<
   GetTelemetryMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTelemetryMetadataRequest,
-  output: GetTelemetryMetadataResponse,
+  input: __S(71) as any as S.Schema<GetTelemetryMetadataRequest>,
+  output: __S(74) as any as S.Schema<GetTelemetryMetadataResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1842,8 +1423,8 @@ export const listAssessmentRunAgents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssessmentRunAgentsRequest,
-  output: ListAssessmentRunAgentsResponse,
+  input: __S(77) as any as S.Schema<ListAssessmentRunAgentsRequest>,
+  output: __S(80) as any as S.Schema<ListAssessmentRunAgentsResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1872,8 +1453,8 @@ export const listAssessmentRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssessmentRunsRequest,
-  output: ListAssessmentRunsResponse,
+  input: __S(84) as any as S.Schema<ListAssessmentRunsRequest>,
+  output: __S(85) as any as S.Schema<ListAssessmentRunsResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1902,8 +1483,8 @@ export const listAssessmentTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssessmentTargetsRequest,
-  output: ListAssessmentTargetsResponse,
+  input: __S(87) as any as S.Schema<ListAssessmentTargetsRequest>,
+  output: __S(88) as any as S.Schema<ListAssessmentTargetsResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1932,8 +1513,8 @@ export const listAssessmentTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssessmentTemplatesRequest,
-  output: ListAssessmentTemplatesResponse,
+  input: __S(90) as any as S.Schema<ListAssessmentTemplatesRequest>,
+  output: __S(91) as any as S.Schema<ListAssessmentTemplatesResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1962,8 +1543,8 @@ export const listEventSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventSubscriptionsRequest,
-  output: ListEventSubscriptionsResponse,
+  input: __S(92) as any as S.Schema<ListEventSubscriptionsRequest>,
+  output: __S(97) as any as S.Schema<ListEventSubscriptionsResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1991,8 +1572,8 @@ export const listExclusions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExclusionsRequest,
-  output: ListExclusionsResponse,
+  input: __S(98) as any as S.Schema<ListExclusionsRequest>,
+  output: __S(99) as any as S.Schema<ListExclusionsResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2021,8 +1602,8 @@ export const listFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFindingsRequest,
-  output: ListFindingsResponse,
+  input: __S(101) as any as S.Schema<ListFindingsRequest>,
+  output: __S(102) as any as S.Schema<ListFindingsResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2049,8 +1630,8 @@ export const listRulesPackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRulesPackagesRequest,
-  output: ListRulesPackagesResponse,
+  input: __S(103) as any as S.Schema<ListRulesPackagesRequest>,
+  output: __S(104) as any as S.Schema<ListRulesPackagesResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2077,8 +1658,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(105) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(106) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [AccessDeniedException, InternalException, InvalidInputException, NoSuchEntityException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2103,8 +1684,8 @@ export const previewAgents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: PreviewAgentsRequest,
-  output: PreviewAgentsResponse,
+  input: __S(107) as any as S.Schema<PreviewAgentsRequest>,
+  output: __S(110) as any as S.Schema<PreviewAgentsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2139,8 +1720,8 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
   RegisterCrossAccountAccessRoleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterCrossAccountAccessRoleRequest,
-  output: RegisterCrossAccountAccessRoleResponse,
+  input: __S(111) as any as S.Schema<RegisterCrossAccountAccessRoleRequest>,
+  output: __S(19) as any as S.Schema<RegisterCrossAccountAccessRoleResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2170,8 +1751,8 @@ export const removeAttributesFromFindings: API.OperationMethod<
   RemoveAttributesFromFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAttributesFromFindingsRequest,
-  output: RemoveAttributesFromFindingsResponse,
+  input: __S(112) as any as S.Schema<RemoveAttributesFromFindingsRequest>,
+  output: __S(6) as any as S.Schema<RemoveAttributesFromFindingsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2201,8 +1782,8 @@ export const setTagsForResource: API.OperationMethod<
   SetTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetTagsForResourceRequest,
-  output: SetTagsForResourceResponse,
+  input: __S(113) as any as S.Schema<SetTagsForResourceRequest>,
+  output: __S(16) as any as S.Schema<SetTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2236,8 +1817,8 @@ export const startAssessmentRun: API.OperationMethod<
   StartAssessmentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAssessmentRunRequest,
-  output: StartAssessmentRunResponse,
+  input: __S(114) as any as S.Schema<StartAssessmentRunRequest>,
+  output: __S(115) as any as S.Schema<StartAssessmentRunResponse>,
   errors: [
     AccessDeniedException,
     AgentsAlreadyRunningAssessmentException,
@@ -2270,8 +1851,8 @@ export const stopAssessmentRun: API.OperationMethod<
   StopAssessmentRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopAssessmentRunRequest,
-  output: StopAssessmentRunResponse,
+  input: __S(116) as any as S.Schema<StopAssessmentRunRequest>,
+  output: __S(16) as any as S.Schema<StopAssessmentRunResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2302,8 +1883,8 @@ export const subscribeToEvent: API.OperationMethod<
   SubscribeToEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscribeToEventRequest,
-  output: SubscribeToEventResponse,
+  input: __S(117) as any as S.Schema<SubscribeToEventRequest>,
+  output: __S(16) as any as S.Schema<SubscribeToEventResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2334,8 +1915,8 @@ export const unsubscribeFromEvent: API.OperationMethod<
   UnsubscribeFromEventError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnsubscribeFromEventRequest,
-  output: UnsubscribeFromEventResponse,
+  input: __S(118) as any as S.Schema<UnsubscribeFromEventRequest>,
+  output: __S(16) as any as S.Schema<UnsubscribeFromEventResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2368,8 +1949,8 @@ export const updateAssessmentTarget: API.OperationMethod<
   UpdateAssessmentTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssessmentTargetRequest,
-  output: UpdateAssessmentTargetResponse,
+  input: __S(119) as any as S.Schema<UpdateAssessmentTargetRequest>,
+  output: __S(16) as any as S.Schema<UpdateAssessmentTargetResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -2392,24 +1973,24 @@ function __c0(j: number): any {
         identifier: "Attribute",
       });
     case 2:
-      return S.Array(Attribute);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          findingArns: AddRemoveAttributesFindingArnList,
-          attributes: UserAttributeList,
+          findingArns: __S(0),
+          attributes: __S(2),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "AddAttributesToFindingsRequest",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ failureCode: FailedItemErrorCode, retryable: S.Boolean }),
-      ).annotate({ identifier: "FailedItemDetails" });
+      return S.suspend(() => S.Struct({ failureCode: S.String, retryable: S.Boolean })).annotate({
+        identifier: "FailedItemDetails",
+      });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ FailedItemDetails.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(4).pipe(S.optional));
     case 6:
-      return S.suspend(() => S.Struct({ failedItems: FailedItems })).annotate({
+      return S.suspend(() => S.Struct({ failedItems: __S(5) })).annotate({
         identifier: "AddAttributesToFindingsResponse",
       });
     case 7:
@@ -2434,8 +2015,8 @@ function __c1(j: number): any {
           assessmentTargetArn: S.String,
           assessmentTemplateName: S.String,
           durationInSeconds: S.Number,
-          rulesPackageArns: AssessmentTemplateRulesPackageArnList,
-          userAttributesForFindings: S.optional(UserAttributeList),
+          rulesPackageArns: __S(0),
+          userAttributesForFindings: S.optional(__S(2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAssessmentTemplateRequest",
@@ -2458,7 +2039,7 @@ function __c1(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceGroupTags: ResourceGroupTags }).pipe(
+        S.Struct({ resourceGroupTags: __S(2) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2506,7 +2087,7 @@ function __c2(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ assessmentRunArns: BatchDescribeArnList }).pipe(
+        S.Struct({ assessmentRunArns: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2516,20 +2097,20 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           stateChangedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          state: AssessmentRunState,
+          state: S.String,
         }),
       ).annotate({ identifier: "AssessmentRunStateChange" });
     case 6:
-      return S.Array(AssessmentRunStateChange);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           date: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          event: InspectorEvent,
+          event: S.String,
           message: S.optional(S.String),
           error: S.Boolean,
           snsTopicArn: S.optional(S.String),
-          snsPublishStatusCode: S.optional(AssessmentRunNotificationSnsStatusCode),
+          snsPublishStatusCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AssessmentRunNotification",
@@ -2539,40 +2120,38 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AssessmentRunNotification);
+      return S.Array(__S(23));
     case 1:
-      return S.Record(Severity, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
           name: S.String,
           assessmentTemplateArn: S.String,
-          state: AssessmentRunState,
+          state: S.String,
           durationInSeconds: S.Number,
-          rulesPackageArns: AssessmentRulesPackageArnList,
-          userAttributesForFindings: UserAttributeList,
+          rulesPackageArns: __S(0),
+          userAttributesForFindings: __S(2),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           stateChangedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           dataCollected: S.Boolean,
-          stateChanges: AssessmentRunStateChangeList,
-          notifications: AssessmentRunNotificationList,
-          findingCounts: AssessmentRunFindingCounts,
+          stateChanges: __S(22),
+          notifications: __S(24),
+          findingCounts: __S(25),
         }),
       ).annotate({ identifier: "AssessmentRun" });
     case 3:
-      return S.Array(AssessmentRun);
+      return S.Array(__S(26));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ assessmentRuns: AssessmentRunList, failedItems: FailedItems }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ assessmentRuns: __S(27), failedItems: __S(5) })).annotate({
         identifier: "DescribeAssessmentRunsResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ assessmentTargetArns: BatchDescribeArnList }).pipe(
+        S.Struct({ assessmentTargetArns: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2589,20 +2168,20 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "AssessmentTarget" });
     case 7:
-      return S.Array(AssessmentTarget);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ assessmentTargets: AssessmentTargetList, failedItems: FailedItems }),
+        S.Struct({ assessmentTargets: __S(31), failedItems: __S(5) }),
       ).annotate({
         identifier: "DescribeAssessmentTargetsResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ assessmentTemplateArns: BatchDescribeArnList }).pipe(
+        S.Struct({ assessmentTemplateArns: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2615,18 +2194,18 @@ function __c4(j: number): any {
           name: S.String,
           assessmentTargetArn: S.String,
           durationInSeconds: S.Number,
-          rulesPackageArns: AssessmentTemplateRulesPackageArnList,
-          userAttributesForFindings: UserAttributeList,
+          rulesPackageArns: __S(0),
+          userAttributesForFindings: __S(2),
           lastAssessmentRunArn: S.optional(S.String),
           assessmentRunCount: S.Number,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "AssessmentTemplate" });
     case 3:
-      return S.Array(AssessmentTemplate);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
-        S.Struct({ assessmentTemplates: AssessmentTemplateList, failedItems: FailedItems }),
+        S.Struct({ assessmentTemplates: __S(35), failedItems: __S(5) }),
       ).annotate({
         identifier: "DescribeAssessmentTemplatesResponse",
       });
@@ -2651,8 +2230,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exclusionArns: BatchDescribeExclusionsArnList,
-          locale: S.optional(Locale),
+          exclusionArns: __S(0),
+          locale: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DescribeExclusionsRequest",
@@ -2663,10 +2242,10 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ key: S.optional(ScopeType), value: S.optional(S.String) }),
+        S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Scope" });
     case 1:
-      return S.Array(Scope);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2674,21 +2253,19 @@ function __c5(j: number): any {
           title: S.String,
           description: S.String,
           recommendation: S.String,
-          scopes: ScopeList,
-          attributes: S.optional(AttributeList),
+          scopes: __S(41),
+          attributes: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Exclusion" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ Exclusion.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(42).pipe(S.optional));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ exclusions: ExclusionMap, failedItems: FailedItems }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ exclusions: __S(43), failedItems: __S(5) })).annotate({
         identifier: "DescribeExclusionsResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ findingArns: BatchDescribeArnList, locale: S.optional(Locale) }).pipe(
+        S.Struct({ findingArns: __S(0), locale: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DescribeFindingsRequest" });
@@ -2711,13 +2288,13 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateIp);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({ groupName: S.optional(S.String), groupId: S.optional(S.String) }),
       ).annotate({ identifier: "SecurityGroup" });
     case 2:
-      return S.Array(SecurityGroup);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2726,15 +2303,15 @@ function __c6(j: number): any {
           vpcId: S.optional(S.String),
           privateDnsName: S.optional(S.String),
           privateIpAddress: S.optional(S.String),
-          privateIpAddresses: S.optional(PrivateIpAddresses),
+          privateIpAddresses: S.optional(__S(48)),
           publicDnsName: S.optional(S.String),
           publicIp: S.optional(S.String),
-          ipv6Addresses: S.optional(Ipv6Addresses),
-          securityGroups: S.optional(SecurityGroups),
+          ipv6Addresses: S.optional(__S(0)),
+          securityGroups: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 4:
-      return S.Array(NetworkInterface);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2743,9 +2320,9 @@ function __c6(j: number): any {
           autoScalingGroup: S.optional(S.String),
           amiId: S.optional(S.String),
           hostname: S.optional(S.String),
-          ipv4Addresses: S.optional(Ipv4AddressList),
-          tags: S.optional(Tags),
-          networkInterfaces: S.optional(NetworkInterfaces),
+          ipv4Addresses: S.optional(__S(0)),
+          tags: S.optional(__S(2)),
+          networkInterfaces: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "AssetAttributes" });
     case 6:
@@ -2754,36 +2331,36 @@ function __c6(j: number): any {
           arn: S.String,
           schemaVersion: S.optional(S.Number),
           service: S.optional(S.String),
-          serviceAttributes: S.optional(InspectorServiceAttributes),
-          assetType: S.optional(AssetType),
-          assetAttributes: S.optional(AssetAttributes),
+          serviceAttributes: S.optional(__S(46)),
+          assetType: S.optional(S.String),
+          assetAttributes: S.optional(__S(53)),
           id: S.optional(S.String),
           title: S.optional(S.String),
           description: S.optional(S.String),
           recommendation: S.optional(S.String),
-          severity: S.optional(Severity),
+          severity: S.optional(S.String),
           numericSeverity: S.optional(S.Number),
           confidence: S.optional(S.Number),
           indicatorOfCompromise: S.optional(S.Boolean),
-          attributes: AttributeList,
-          userAttributes: UserAttributeList,
+          attributes: __S(2),
+          userAttributes: __S(2),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "Finding" });
     case 7:
-      return S.Array(Finding);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ findings: FindingList, failedItems: FailedItems }),
-      ).annotate({ identifier: "DescribeFindingsResponse" });
+      return S.suspend(() => S.Struct({ findings: __S(55), failedItems: __S(5) })).annotate({
+        identifier: "DescribeFindingsResponse",
+      });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceGroupArns: BatchDescribeArnList }).pipe(
+        S.Struct({ resourceGroupArns: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2793,21 +2370,19 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arn: S.String,
-          tags: ResourceGroupTags,
+          tags: __S(2),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "ResourceGroup" });
     case 3:
-      return S.Array(ResourceGroup);
+      return S.Array(__S(58));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ resourceGroups: ResourceGroupList, failedItems: FailedItems }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ resourceGroups: __S(59), failedItems: __S(5) })).annotate({
         identifier: "DescribeResourceGroupsResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ rulesPackageArns: BatchDescribeArnList, locale: S.optional(Locale) }).pipe(
+        S.Struct({ rulesPackageArns: __S(0), locale: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2824,31 +2399,27 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "RulesPackage" });
     case 7:
-      return S.Array(RulesPackage);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ rulesPackages: RulesPackageList, failedItems: FailedItems }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ rulesPackages: __S(63), failedItems: __S(5) })).annotate({
         identifier: "DescribeRulesPackagesResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           assessmentRunArn: S.String,
-          reportFileFormat: ReportFileFormat,
-          reportType: ReportType,
+          reportFileFormat: S.String,
+          reportType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetAssessmentReportRequest",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ status: ReportStatus, url: S.optional(S.String) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ status: S.String, url: S.optional(S.String) })).annotate({
         identifier: "GetAssessmentReportResponse",
       });
     case 3:
@@ -2858,7 +2429,7 @@ function __c8(j: number): any {
           previewToken: S.String,
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          locale: S.optional(Locale),
+          locale: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetExclusionsPreviewRequest",
@@ -2869,17 +2440,17 @@ function __c8(j: number): any {
           title: S.String,
           description: S.String,
           recommendation: S.String,
-          scopes: ScopeList,
-          attributes: S.optional(AttributeList),
+          scopes: __S(41),
+          attributes: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ExclusionPreview" });
     case 5:
-      return S.Array(ExclusionPreview);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          previewStatus: PreviewStatus,
-          exclusionPreviews: S.optional(ExclusionPreviewList),
+          previewStatus: S.String,
+          exclusionPreviews: S.optional(__S(69)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2902,22 +2473,22 @@ function __c9(j: number): any {
         S.Struct({ messageType: S.String, count: S.Number, dataSize: S.optional(S.Number) }),
       ).annotate({ identifier: "TelemetryMetadata" });
     case 1:
-      return S.Array(TelemetryMetadata);
+      return S.Array(__S(72));
     case 2:
-      return S.suspend(() => S.Struct({ telemetryMetadata: TelemetryMetadataList })).annotate({
+      return S.suspend(() => S.Struct({ telemetryMetadata: __S(73) })).annotate({
         identifier: "GetTelemetryMetadataResponse",
       });
     case 3:
-      return S.Array(AgentHealth);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
-        S.Struct({ agentHealths: AgentHealthList, agentHealthCodes: AgentHealthCodeList }),
+        S.Struct({ agentHealths: __S(75), agentHealthCodes: __S(75) }),
       ).annotate({ identifier: "AgentFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           assessmentRunArn: S.String,
-          filter: S.optional(AgentFilter),
+          filter: S.optional(__S(76)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2929,22 +2500,22 @@ function __c9(j: number): any {
         S.Struct({
           agentId: S.String,
           assessmentRunArn: S.String,
-          agentHealth: AgentHealth,
-          agentHealthCode: AgentHealthCode,
+          agentHealth: S.String,
+          agentHealthCode: S.String,
           agentHealthDetails: S.optional(S.String),
           autoScalingGroup: S.optional(S.String),
-          telemetryMetadata: TelemetryMetadataList,
+          telemetryMetadata: __S(73),
         }),
       ).annotate({ identifier: "AssessmentRunAgent" });
     case 7:
-      return S.Array(AssessmentRunAgent);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ assessmentRunAgents: AssessmentRunAgentList, nextToken: S.optional(S.String) }),
+        S.Struct({ assessmentRunAgents: __S(79), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssessmentRunAgentsResponse",
       });
@@ -2963,19 +2534,19 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           namePattern: S.optional(S.String),
-          states: S.optional(AssessmentRunStateList),
-          durationRange: S.optional(DurationRange),
-          rulesPackageArns: S.optional(FilterRulesPackageArnList),
-          startTimeRange: S.optional(TimestampRange),
-          completionTimeRange: S.optional(TimestampRange),
-          stateChangeTimeRange: S.optional(TimestampRange),
+          states: S.optional(__S(75)),
+          durationRange: S.optional(__S(81)),
+          rulesPackageArns: S.optional(__S(0)),
+          startTimeRange: S.optional(__S(82)),
+          completionTimeRange: S.optional(__S(82)),
+          stateChangeTimeRange: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "AssessmentRunFilter" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assessmentTemplateArns: S.optional(ListParentArnList),
-          filter: S.optional(AssessmentRunFilter),
+          assessmentTemplateArns: S.optional(__S(0)),
+          filter: S.optional(__S(83)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -2984,7 +2555,7 @@ function __c10(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ assessmentRunArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
+        S.Struct({ assessmentRunArns: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssessmentRunsResponse",
       });
@@ -2995,7 +2566,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(AssessmentTargetFilter),
+          filter: S.optional(__S(86)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3008,7 +2579,7 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ assessmentTargetArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
+        S.Struct({ assessmentTargetArns: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssessmentTargetsResponse",
       });
@@ -3016,15 +2587,15 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           namePattern: S.optional(S.String),
-          durationRange: S.optional(DurationRange),
-          rulesPackageArns: S.optional(FilterRulesPackageArnList),
+          durationRange: S.optional(__S(81)),
+          rulesPackageArns: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "AssessmentTemplateFilter" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assessmentTargetArns: S.optional(ListParentArnList),
-          filter: S.optional(AssessmentTemplateFilter),
+          assessmentTargetArns: S.optional(__S(0)),
+          filter: S.optional(__S(89)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3033,7 +2604,7 @@ function __c11(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ assessmentTemplateArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
+        S.Struct({ assessmentTemplateArns: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssessmentTemplatesResponse",
       });
@@ -3050,18 +2621,18 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          event: InspectorEvent,
+          event: S.String,
           subscribedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "EventSubscription" });
     case 6:
-      return S.Array(EventSubscription);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
           topicArn: S.String,
-          eventSubscriptions: EventSubscriptionList,
+          eventSubscriptions: __S(94),
         }),
       ).annotate({ identifier: "Subscription" });
   }
@@ -3069,10 +2640,10 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Subscription);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
-        S.Struct({ subscriptions: SubscriptionList, nextToken: S.optional(S.String) }),
+        S.Struct({ subscriptions: __S(96), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListEventSubscriptionsResponse",
       });
@@ -3086,33 +2657,33 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListExclusionsRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ exclusionArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
+        S.Struct({ exclusionArns: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListExclusionsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          agentIds: S.optional(AgentIdList),
-          autoScalingGroups: S.optional(AutoScalingGroupList),
-          ruleNames: S.optional(RuleNameList),
-          severities: S.optional(SeverityList),
-          rulesPackageArns: S.optional(FilterRulesPackageArnList),
-          attributes: S.optional(AttributeList),
-          userAttributes: S.optional(AttributeList),
-          creationTimeRange: S.optional(TimestampRange),
+          agentIds: S.optional(__S(0)),
+          autoScalingGroups: S.optional(__S(0)),
+          ruleNames: S.optional(__S(0)),
+          severities: S.optional(__S(75)),
+          rulesPackageArns: S.optional(__S(0)),
+          attributes: S.optional(__S(2)),
+          userAttributes: S.optional(__S(2)),
+          creationTimeRange: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "FindingFilter" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assessmentRunArns: S.optional(ListParentArnList),
-          filter: S.optional(FindingFilter),
+          assessmentRunArns: S.optional(__S(0)),
+          filter: S.optional(__S(100)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListFindingsRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ findingArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
+        S.Struct({ findingArns: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFindingsResponse" });
     case 7:
       return S.suspend(() =>
@@ -3126,7 +2697,7 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ rulesPackageArns: ListReturnedArnList, nextToken: S.optional(S.String) }),
+        S.Struct({ rulesPackageArns: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListRulesPackagesResponse",
       });
@@ -3139,7 +2710,7 @@ function __c13(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: TagList })).annotate({
+      return S.suspend(() => S.Struct({ tags: __S(2) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -3156,7 +2727,7 @@ function __c13(j: number): any {
           hostname: S.optional(S.String),
           agentId: S.String,
           autoScalingGroup: S.optional(S.String),
-          agentHealth: S.optional(AgentHealth),
+          agentHealth: S.optional(S.String),
           agentVersion: S.optional(S.String),
           operatingSystem: S.optional(S.String),
           kernelVersion: S.optional(S.String),
@@ -3164,10 +2735,10 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "AgentPreview" });
     case 5:
-      return S.Array(AgentPreview);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
-        S.Struct({ agentPreviews: AgentPreviewList, nextToken: S.optional(S.String) }),
+        S.Struct({ agentPreviews: __S(109), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "PreviewAgentsResponse" });
     case 7:
       return S.suspend(() =>
@@ -3184,15 +2755,15 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          findingArns: AddRemoveAttributesFindingArnList,
-          attributeKeys: UserAttributeKeyList,
+          findingArns: __S(0),
+          attributeKeys: __S(0),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RemoveAttributesFromFindingsRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: S.optional(TagList) }).pipe(
+        S.Struct({ resourceArn: S.String, tags: S.optional(__S(2)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3212,19 +2783,19 @@ function __c14(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ assessmentRunArn: S.String, stopAction: S.optional(StopAction) }).pipe(
+        S.Struct({ assessmentRunArn: S.String, stopAction: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StopAssessmentRunRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, event: InspectorEvent, topicArn: S.String }).pipe(
+        S.Struct({ resourceArn: S.String, event: S.String, topicArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "SubscribeToEventRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, event: InspectorEvent, topicArn: S.String }).pipe(
+        S.Struct({ resourceArn: S.String, event: S.String, topicArn: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -3249,6 +2820,47 @@ function __c15(j: number): any {
         identifier: "AgentAlreadyRunningAssessment",
       });
     case 1:
-      return S.Array(AgentAlreadyRunningAssessment);
+      return S.Array(__S(120));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
   }
 }

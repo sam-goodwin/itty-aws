@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Billing", serviceShapeName: "AWSBilling" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "billing" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2023-09-07");
@@ -180,11 +182,11 @@ export class ValidationException
     "ValidationException",
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
-      reason: /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+      reason: /*@__PURE__*/ S.suspend(() => S.String).annotate({
         identifier: "ValidationExceptionReason",
       }),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(98)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -196,59 +198,42 @@ export class ValidationException
   ).pipe(C.withBadRequestError) {}
 export type BillingViewArn = string;
 export type BillingViewSourceViewsList = string[];
-const BillingViewSourceViewsList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface AssociateSourceViewsRequest {
   arn: string;
   sourceViews: string[];
 }
-const AssociateSourceViewsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateSourceViewsRequest>;
 export interface AssociateSourceViewsResponse {
   arn: string;
 }
-const AssociateSourceViewsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssociateSourceViewsResponse>;
 export type BillingViewName = string | redacted.Redacted<string>;
 export type BillingViewDescription = string | redacted.Redacted<string>;
 export type Dimension = "LINKED_ACCOUNT" | (string & {});
-const Dimension = S.String;
-
 export type Value = string;
 export type Values = string[];
-const Values = BillingViewSourceViewsList as any as S.Schema<Values>;
 export interface DimensionValues {
   key: Dimension;
   values: string[];
 }
-const DimensionValues = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DimensionValues>;
 export type TagKey = string;
 export interface TagValues {
   key: string;
   values: string[];
 }
-const TagValues = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TagValues>;
 export type CostCategoryName = string;
 export interface CostCategoryValues {
   key: string;
   values: string[];
 }
-const CostCategoryValues = TagValues as any as S.Schema<CostCategoryValues>;
 export interface TimeRange {
   beginDateInclusive?: Date;
   endDateInclusive?: Date;
 }
-const TimeRange = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TimeRange>;
 export interface Expression {
   dimensions?: DimensionValues;
   tags?: TagValues;
   costCategories?: CostCategoryValues;
   timeRange?: TimeRange;
 }
-const Expression = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Expression>;
 export type ClientToken = string;
 export type ResourceTagKey = string;
 export type ResourceTagValue = string;
@@ -256,9 +241,7 @@ export interface ResourceTag {
   key: string;
   value?: string;
 }
-const ResourceTag = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
-const ResourceTagList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateBillingViewRequest {
   name: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
@@ -267,44 +250,24 @@ export interface CreateBillingViewRequest {
   clientToken?: string;
   resourceTags?: ResourceTag[];
 }
-const CreateBillingViewRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateBillingViewRequest>;
 export interface CreateBillingViewResponse {
   arn: string;
   createdAt?: Date;
 }
-const CreateBillingViewResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateBillingViewResponse>;
 export interface DeleteBillingViewRequest {
   arn: string;
   force?: boolean;
 }
-const DeleteBillingViewRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteBillingViewRequest>;
 export interface DeleteBillingViewResponse {
   arn: string;
 }
-const DeleteBillingViewResponse =
-  AssociateSourceViewsResponse as any as S.Schema<DeleteBillingViewResponse>;
 export interface DisassociateSourceViewsRequest {
   arn: string;
   sourceViews: string[];
 }
-const DisassociateSourceViewsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DisassociateSourceViewsRequest>;
 export interface DisassociateSourceViewsResponse {
   arn: string;
 }
-const DisassociateSourceViewsResponse =
-  AssociateSourceViewsResponse as any as S.Schema<DisassociateSourceViewsResponse>;
 export type PageToken = string;
 export type BillingFeature =
   | "RI_SHARING"
@@ -315,38 +278,23 @@ export type BillingFeature =
   | "BILLING_ALERTS"
   | "CREDIT_PREFERENCE_OPTIONS"
   | (string & {});
-const BillingFeature = S.String;
-
 export type BillingFeatures = BillingFeature[];
-const BillingFeatures = /*@__PURE__*/ __L.at(__c1, 5);
 export type BillingFeatureFilterName = "PREFERENCE_KEY" | (string & {});
-const BillingFeatureFilterName = S.String;
-
 export type BillingFeatureFilterValue = string;
 export type BillingFeatureFilterValues = string[];
-const BillingFeatureFilterValues =
-  BillingViewSourceViewsList as any as S.Schema<BillingFeatureFilterValues>;
 export interface BillingFeatureFilter {
   name?: BillingFeatureFilterName;
   value?: string[];
 }
-const BillingFeatureFilter = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<BillingFeatureFilter>;
 export type BillingFeatureFilters = BillingFeatureFilter[];
-const BillingFeatureFilters = /*@__PURE__*/ __L.at(__c1, 7);
 export interface GetBillingPreferencesRequest {
   nextToken?: string;
   maxResults?: number;
   features: BillingFeature[];
   filters?: BillingFeatureFilter[];
 }
-const GetBillingPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetBillingPreferencesRequest>;
 export type PreferenceKey = string;
 export type PreferenceValue = "ENABLED" | "DISABLED" | (string & {});
-const PreferenceValue = S.String;
-
 export type AccountName = string;
 export type AccountId = string;
 export type BillingYear = number;
@@ -355,7 +303,6 @@ export interface BillingPeriod {
   year: number;
   month: number;
 }
-const BillingPeriod = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<BillingPeriod>;
 export interface BillingPreferenceSummary {
   feature: BillingFeature;
   key: string;
@@ -364,27 +311,14 @@ export interface BillingPreferenceSummary {
   accountId?: string;
   billingPeriod?: BillingPeriod;
 }
-const BillingPreferenceSummary = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BillingPreferenceSummary>;
 export type BillingPreferences = BillingPreferenceSummary[];
-const BillingPreferences = /*@__PURE__*/ __L.at(__c2, 3);
 export interface GetBillingPreferencesResponse {
   billingPreferences: BillingPreferenceSummary[];
   nextToken?: string;
 }
-const GetBillingPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetBillingPreferencesResponse>;
 export interface GetBillingViewRequest {
   arn: string;
 }
-const GetBillingViewRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetBillingViewRequest>;
 export type BillingViewType =
   | "PRIMARY"
   | "BILLING_GROUP"
@@ -392,11 +326,7 @@ export type BillingViewType =
   | "BILLING_TRANSFER"
   | "BILLING_TRANSFER_SHOWBACK"
   | (string & {});
-const BillingViewType = S.String;
-
 export type BillingViewStatus = "HEALTHY" | "UNHEALTHY" | "CREATING" | "UPDATING" | (string & {});
-const BillingViewStatus = S.String;
-
 export type BillingViewStatusReason =
   | "SOURCE_VIEW_UNHEALTHY"
   | "SOURCE_VIEW_UPDATING"
@@ -408,15 +338,10 @@ export type BillingViewStatusReason =
   | "VIEW_OWNER_NOT_MANAGEMENT_ACCOUNT"
   | (string & {});
 export type BillingViewStatusReasons = BillingViewStatusReason[];
-const BillingViewStatusReasons = BillingFeatures as any as S.Schema<BillingViewStatusReasons>;
 export interface BillingViewHealthStatus {
   statusCode?: BillingViewStatus;
   statusReasons?: BillingViewStatusReason[];
 }
-const BillingViewHealthStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BillingViewHealthStatus>;
 export interface BillingViewElement {
   arn?: string;
   name?: string | redacted.Redacted<string>;
@@ -432,14 +357,9 @@ export interface BillingViewElement {
   viewDefinitionLastUpdatedAt?: Date;
   healthStatus?: BillingViewHealthStatus;
 }
-const BillingViewElement = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<BillingViewElement>;
 export interface GetBillingViewResponse {
   billingView: BillingViewElement;
 }
-const GetBillingViewResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetBillingViewResponse>;
 export interface GetCreditAllocationHistoryRequest {
   accountId: string;
   creditId?: number;
@@ -448,10 +368,6 @@ export interface GetCreditAllocationHistoryRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const GetCreditAllocationHistoryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetCreditAllocationHistoryRequest>;
 export type CreditId = string;
 export type CurrencyCode = string;
 export type CurrencyAmount = string;
@@ -459,7 +375,6 @@ export interface Amount {
   currencyCode: string;
   currencyAmount: string;
 }
-const Amount = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Amount>;
 export type BillingMonth = string;
 export interface CreditAllocationHistoryEntry {
   creditId: string;
@@ -470,54 +385,33 @@ export interface CreditAllocationHistoryEntry {
   billingMonth: string;
   isEstimatedBill: boolean;
 }
-const CreditAllocationHistoryEntry = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreditAllocationHistoryEntry>;
 export type CreditAllocationHistoryList = CreditAllocationHistoryEntry[];
-const CreditAllocationHistoryList = /*@__PURE__*/ __L.at(__c3, 4);
 export type FailedMonthsList = string[];
-const FailedMonthsList = BillingViewSourceViewsList as any as S.Schema<FailedMonthsList>;
 export interface GetCreditAllocationHistoryResponse {
   creditAllocationHistoryList?: CreditAllocationHistoryEntry[];
   partialResults: boolean;
   failedMonths?: string[];
   nextToken?: string;
 }
-const GetCreditAllocationHistoryResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetCreditAllocationHistoryResponse>;
 export interface GetCreditsRequest {
   accountId: string;
   startDate: Date;
   endDate?: Date;
   payerAccountFlag?: boolean;
 }
-const GetCreditsRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetCreditsRequest>;
 export type ProductName = string;
 export type ProductNames = string[];
-const ProductNames = BillingViewSourceViewsList as any as S.Schema<ProductNames>;
 export type ApplicationType = "BEFORE_CROSS_SERVICE_DISCOUNTS" | "AFTER_DISCOUNTS" | (string & {});
-const ApplicationType = S.String;
-
 export type ShareableAccountIds = string[];
-const ShareableAccountIds = BillingViewSourceViewsList as any as S.Schema<ShareableAccountIds>;
 export type CreditSharingType =
   | "DEFAULT"
   | "DISABLED"
   | "CUSTOM"
   | "COST_CATEGORY_RULE"
   | (string & {});
-const CreditSharingType = S.String;
-
 export type CreditStatus = "ENABLED" | "DISABLED" | (string & {});
-const CreditStatus = S.String;
-
 export type PurchaseType = string;
 export type PurchaseTypeApplications = string[];
-const PurchaseTypeApplications =
-  BillingViewSourceViewsList as any as S.Schema<PurchaseTypeApplications>;
 export interface CreditData {
   creditId: string;
   accountId: string;
@@ -540,21 +434,14 @@ export interface CreditData {
   creditStatus?: CreditStatus;
   purchaseTypeApplications?: string[];
 }
-const CreditData = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreditData>;
 export type CreditDataList = CreditData[];
-const CreditDataList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface GetCreditsResponse {
   credits?: CreditData[];
 }
-const GetCreditsResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetCreditsResponse>;
 export type EnterpriseSupportBillingMonth = string;
 export interface GetEnterpriseSupportChargeSummaryRequest {
   billingMonth: string;
 }
-const GetEnterpriseSupportChargeSummaryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetEnterpriseSupportChargeSummaryRequest>;
 export interface PricingPlanTier {
   tierMinimum: string;
   tierMaximum?: string;
@@ -565,9 +452,7 @@ export interface PricingPlanTier {
   increment?: string;
   incrementCharge?: string;
 }
-const PricingPlanTier = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PricingPlanTier>;
 export type PricingPlanTierList = PricingPlanTier[];
-const PricingPlanTierList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface PricingPlan {
   pricingPlanId?: string;
   name?: string;
@@ -580,7 +465,6 @@ export interface PricingPlan {
   tiered?: string;
   tiers: PricingPlanTier[];
 }
-const PricingPlan = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<PricingPlan>;
 export interface GetEnterpriseSupportChargeSummaryResponse {
   payerAccountId: string;
   billingMonth: string;
@@ -598,41 +482,26 @@ export interface GetEnterpriseSupportChargeSummaryResponse {
   supportChargePercentage: string;
   supportEffectivePricingPlan: PricingPlan;
 }
-const GetEnterpriseSupportChargeSummaryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetEnterpriseSupportChargeSummaryResponse>;
 export interface GetEnterpriseSupportContractDetailsRequest {
   billingMonth: string;
 }
-const GetEnterpriseSupportContractDetailsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetEnterpriseSupportContractDetailsRequest>;
 export interface ContractAccount {
   accountId: string;
   isGdn: boolean;
 }
-const ContractAccount = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ContractAccount>;
 export type ContractAccountList = ContractAccount[];
-const ContractAccountList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ChargeAccount {
   accountId: string;
   chargePercentage: string;
 }
-const ChargeAccount = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ChargeAccount>;
 export type ChargeAccountList = ChargeAccount[];
-const ChargeAccountList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface AdditionalCharge {
   description: string;
   amount?: string;
   chargeType?: string;
 }
-const AdditionalCharge = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<AdditionalCharge>;
 export type AdditionalChargeList = AdditionalCharge[];
-const AdditionalChargeList = /*@__PURE__*/ __L.at(__c5, 5);
 export type PricingPlanList = PricingPlan[];
-const PricingPlanList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface GetEnterpriseSupportContractDetailsResponse {
   isContractActive?: boolean;
   supportAllocationMethod: string;
@@ -647,47 +516,28 @@ export interface GetEnterpriseSupportContractDetailsResponse {
   additionalSupportEligibleUsageSpend?: AdditionalCharge[];
   pricingPlans: PricingPlan[];
 }
-const GetEnterpriseSupportContractDetailsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetEnterpriseSupportContractDetailsResponse>;
 export type ResourceArn = string;
 export interface GetResourcePolicyRequest {
   resourceArn: string;
 }
-const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetResourcePolicyRequest>;
 export type PolicyDocument = string;
 export interface GetResourcePolicyResponse {
   resourceArn: string;
   policy?: string;
 }
-const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetResourcePolicyResponse>;
 export interface ActiveTimeRange {
   activeAfterInclusive: Date;
   activeBeforeInclusive: Date;
 }
-const ActiveTimeRange = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ActiveTimeRange>;
 export type BillingViewArnList = string[];
-const BillingViewArnList = BillingViewSourceViewsList as any as S.Schema<BillingViewArnList>;
 export type BillingViewTypeList = BillingViewType[];
-const BillingViewTypeList = BillingFeatures as any as S.Schema<BillingViewTypeList>;
 export type SearchOption = "STARTS_WITH" | (string & {});
-const SearchOption = S.String;
-
 export type SearchValue = string;
 export interface StringSearch {
   searchOption: SearchOption;
   searchValue: string;
 }
-const StringSearch = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<StringSearch>;
 export type StringSearches = StringSearch[];
-const StringSearches = /*@__PURE__*/ __L.at(__c6, 4);
 export type BillingViewsMaxResults = number;
 export interface ListBillingViewsRequest {
   activeTimeRange?: ActiveTimeRange;
@@ -699,10 +549,6 @@ export interface ListBillingViewsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListBillingViewsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListBillingViewsRequest>;
 export interface BillingViewListElement {
   arn?: string;
   name?: string | redacted.Redacted<string>;
@@ -712,41 +558,22 @@ export interface BillingViewListElement {
   billingViewType?: BillingViewType;
   healthStatus?: BillingViewHealthStatus;
 }
-const BillingViewListElement = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<BillingViewListElement>;
 export type BillingViewList = BillingViewListElement[];
-const BillingViewList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface ListBillingViewsResponse {
   billingViews: BillingViewListElement[];
   nextToken?: string;
 }
-const ListBillingViewsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListBillingViewsResponse>;
 export interface BillingViewSegmentTimeRange {
   beginDateInclusive?: Date;
   endDateExclusive?: Date;
 }
-const BillingViewSegmentTimeRange = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<BillingViewSegmentTimeRange>;
 export interface ListBillingViewSegmentsRequest {
   timeRange?: BillingViewSegmentTimeRange;
   arn?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListBillingViewSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListBillingViewSegmentsRequest>;
 export type BillingDomain = "BILLABLE" | "PRO_FORMA" | (string & {});
-const BillingDomain = S.String;
-
 export interface BillingViewSegmentsListElement {
   domain?: BillingDomain;
   timeRange?: BillingViewSegmentTimeRange;
@@ -754,20 +581,11 @@ export interface BillingViewSegmentsListElement {
   managementAccountId?: string;
   billingGroupPrimaryAccountId?: string;
 }
-const BillingViewSegmentsListElement = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<BillingViewSegmentsListElement>;
 export type BillingViewSegmentsList = BillingViewSegmentsListElement[];
-const BillingViewSegmentsList = /*@__PURE__*/ __L.at(__c7, 4);
 export interface ListBillingViewSegmentsResponse {
   items: BillingViewSegmentsListElement[];
   nextToken?: string;
 }
-const ListBillingViewSegmentsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListBillingViewSegmentsResponse>;
 export type BusinessSupportBillingMonth = string;
 export interface ListBusinessSupportAccountChargesRequest {
   billingMonth: string;
@@ -775,10 +593,6 @@ export interface ListBusinessSupportAccountChargesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListBusinessSupportAccountChargesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListBusinessSupportAccountChargesRequest>;
 export interface BusinessSupportTierCharge {
   tierDescription: string;
   tierRate: string;
@@ -787,22 +601,13 @@ export interface BusinessSupportTierCharge {
   chargePeriodStartDate?: Date;
   chargePeriodEndDate?: Date;
 }
-const BusinessSupportTierCharge = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<BusinessSupportTierCharge>;
 export type BusinessSupportTierChargeList = BusinessSupportTierCharge[];
-const BusinessSupportTierChargeList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface BusinessSupportDiscount {
   discountAmount?: string;
   discountPercentage?: string;
   discountType?: string;
   discountSource?: string;
 }
-const BusinessSupportDiscount = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<BusinessSupportDiscount>;
 export interface BusinessSupportServiceSpend {
   contributingService: string;
   itemType: string;
@@ -810,12 +615,7 @@ export interface BusinessSupportServiceSpend {
   chargeAmount: string;
   currency: string;
 }
-const BusinessSupportServiceSpend = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<BusinessSupportServiceSpend>;
 export type BusinessSupportServiceSpendList = BusinessSupportServiceSpend[];
-const BusinessSupportServiceSpendList = /*@__PURE__*/ __L.at(__c8, 3);
 export interface BusinessSupportAccountCharge {
   accountId: string;
   supportPlanName: string;
@@ -825,12 +625,7 @@ export interface BusinessSupportAccountCharge {
   supportDiscount?: BusinessSupportDiscount;
   supportEligibleSpendByService?: BusinessSupportServiceSpend[];
 }
-const BusinessSupportAccountCharge = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<BusinessSupportAccountCharge>;
 export type BusinessSupportAccountChargeList = BusinessSupportAccountCharge[];
-const BusinessSupportAccountChargeList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ListBusinessSupportAccountChargesResponse {
   billingMonth: string;
   isEstimated: boolean;
@@ -840,10 +635,6 @@ export interface ListBusinessSupportAccountChargesResponse {
   accountCharges: BusinessSupportAccountCharge[];
   nextToken?: string;
 }
-const ListBusinessSupportAccountChargesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListBusinessSupportAccountChargesResponse>;
 export interface ListBusinessSupportSubscriptionHistoryRequest {
   billingMonth?: string;
   accountId?: string;
@@ -852,60 +643,33 @@ export interface ListBusinessSupportSubscriptionHistoryRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListBusinessSupportSubscriptionHistoryRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListBusinessSupportSubscriptionHistoryRequest>;
 export interface BusinessSupportSubscriptionContract {
   accountId: string;
   planName: string;
   contractStartDate: Date;
   contractEndDate: Date;
 }
-const BusinessSupportSubscriptionContract = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<BusinessSupportSubscriptionContract>;
 export type BusinessSupportSubscriptionContractList = BusinessSupportSubscriptionContract[];
-const BusinessSupportSubscriptionContractList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListBusinessSupportSubscriptionHistoryResponse {
   subscriptionContracts: BusinessSupportSubscriptionContract[];
   nextToken?: string;
 }
-const ListBusinessSupportSubscriptionHistoryResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListBusinessSupportSubscriptionHistoryResponse>;
 export interface ListEnterpriseSupportLinkedAccountChargesRequest {
   billingMonth: string;
   accountId?: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListEnterpriseSupportLinkedAccountChargesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListEnterpriseSupportLinkedAccountChargesRequest>;
 export interface EnterpriseSupportTimePeriod {
   beginDate: Date;
   endDate?: Date;
 }
-const EnterpriseSupportTimePeriod = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<EnterpriseSupportTimePeriod>;
 export type TimePeriodList = EnterpriseSupportTimePeriod[];
-const TimePeriodList = /*@__PURE__*/ __L.at(__c9, 5);
 export interface ServiceLevelAccountUsage {
   serviceCode?: string;
   totalSupportEligibleSpend?: string;
 }
-const ServiceLevelAccountUsage = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ServiceLevelAccountUsage>;
 export type ServiceLevelAccountUsageList = ServiceLevelAccountUsage[];
-const ServiceLevelAccountUsageList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface LinkedAccountCharge {
   accountId: string;
   payerAccountId: string;
@@ -920,121 +684,62 @@ export interface LinkedAccountCharge {
   totalSupportEligibleSavingsPlanSpend?: string;
   supportEligibleSpendByService?: ServiceLevelAccountUsage[];
 }
-const LinkedAccountCharge = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<LinkedAccountCharge>;
 export type LinkedAccountChargeList = LinkedAccountCharge[];
-const LinkedAccountChargeList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface ListEnterpriseSupportLinkedAccountChargesResponse {
   linkedAccount: LinkedAccountCharge[];
   nextToken?: string;
 }
-const ListEnterpriseSupportLinkedAccountChargesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListEnterpriseSupportLinkedAccountChargesResponse>;
 export interface ListSourceViewsForBillingViewRequest {
   arn: string;
   maxResults?: number;
   nextToken?: string;
 }
-const ListSourceViewsForBillingViewRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListSourceViewsForBillingViewRequest>;
 export interface ListSourceViewsForBillingViewResponse {
   sourceViews: string[];
   nextToken?: string;
 }
-const ListSourceViewsForBillingViewResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListSourceViewsForBillingViewResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   resourceTags?: ResourceTag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type PromoCode = string;
 export interface RedeemCreditsRequest {
   promoCode: string;
 }
-const RedeemCreditsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<RedeemCreditsRequest>;
 export interface RedeemCreditsResponse {}
-const RedeemCreditsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<RedeemCreditsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   resourceTags: ResourceTag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = RedeemCreditsResponse as any as S.Schema<TagResourceResponse>;
 export type ResourceTagKeyList = string[];
-const ResourceTagKeyList = BillingViewSourceViewsList as any as S.Schema<ResourceTagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   resourceTagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = RedeemCreditsResponse as any as S.Schema<UntagResourceResponse>;
 export interface BillingPreferenceForKey {
   key: string;
   value: PreferenceValue;
 }
-const BillingPreferenceForKey = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<BillingPreferenceForKey>;
 export type BillingPreferencesPerKey = BillingPreferenceForKey[];
-const BillingPreferencesPerKey = /*@__PURE__*/ __L.at(__c11, 4);
 export interface UpdateBillingPreferencesRequest {
   feature: BillingFeature;
   billingPreferencesPerKey: BillingPreferenceForKey[];
 }
-const UpdateBillingPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UpdateBillingPreferencesRequest>;
 export interface UpdateBillingPreferencesResponse {}
-const UpdateBillingPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UpdateBillingPreferencesResponse>;
 export interface UpdateBillingViewRequest {
   arn: string;
   name?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
   dataFilterExpression?: Expression;
 }
-const UpdateBillingViewRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UpdateBillingViewRequest>;
 export interface UpdateBillingViewResponse {
   arn: string;
   updatedAt?: Date;
 }
-const UpdateBillingViewResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UpdateBillingViewResponse>;
 export type ErrorMessage = string;
 export type ResourceId = string;
 export type ResourceType = string;
@@ -1046,19 +751,12 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export type FieldName = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c12, 2);
 export type AssociateSourceViewsError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -1078,8 +776,8 @@ export const associateSourceViews: API.OperationMethod<
   AssociateSourceViewsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateSourceViewsRequest,
-  output: AssociateSourceViewsResponse,
+  input: __S(1) as any as S.Schema<AssociateSourceViewsRequest>,
+  output: __S(2) as any as S.Schema<AssociateSourceViewsResponse>,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1114,8 +812,8 @@ export const createBillingView: API.OperationMethod<
   CreateBillingViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingViewRequest,
-  output: CreateBillingViewResponse,
+  input: __S(9) as any as S.Schema<CreateBillingViewRequest>,
+  output: __S(10) as any as S.Schema<CreateBillingViewResponse>,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1147,8 +845,8 @@ export const deleteBillingView: API.OperationMethod<
   DeleteBillingViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingViewRequest,
-  output: DeleteBillingViewResponse,
+  input: __S(11) as any as S.Schema<DeleteBillingViewRequest>,
+  output: __S(2) as any as S.Schema<DeleteBillingViewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1179,8 +877,8 @@ export const disassociateSourceViews: API.OperationMethod<
   DisassociateSourceViewsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateSourceViewsRequest,
-  output: DisassociateSourceViewsResponse,
+  input: __S(12) as any as S.Schema<DisassociateSourceViewsRequest>,
+  output: __S(2) as any as S.Schema<DisassociateSourceViewsResponse>,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1210,8 +908,8 @@ export const getBillingPreferences: API.OperationMethod<
   GetBillingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingPreferencesRequest,
-  output: GetBillingPreferencesResponse,
+  input: __S(16) as any as S.Schema<GetBillingPreferencesRequest>,
+  output: __S(20) as any as S.Schema<GetBillingPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1239,8 +937,8 @@ export const getBillingView: API.OperationMethod<
   GetBillingViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingViewRequest,
-  output: GetBillingViewResponse,
+  input: __S(21) as any as S.Schema<GetBillingViewRequest>,
+  output: __S(24) as any as S.Schema<GetBillingViewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1269,8 +967,8 @@ export const getCreditAllocationHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CreditAllocationHistoryEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetCreditAllocationHistoryRequest,
-  output: GetCreditAllocationHistoryResponse,
+  input: __S(25) as any as S.Schema<GetCreditAllocationHistoryRequest>,
+  output: __S(29) as any as S.Schema<GetCreditAllocationHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1305,8 +1003,8 @@ export const getCredits: API.OperationMethod<
   GetCreditsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCreditsRequest,
-  output: GetCreditsResponse,
+  input: __S(30) as any as S.Schema<GetCreditsRequest>,
+  output: __S(33) as any as S.Schema<GetCreditsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1334,8 +1032,8 @@ export const getEnterpriseSupportChargeSummary: API.OperationMethod<
   GetEnterpriseSupportChargeSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnterpriseSupportChargeSummaryRequest,
-  output: GetEnterpriseSupportChargeSummaryResponse,
+  input: __S(34) as any as S.Schema<GetEnterpriseSupportChargeSummaryRequest>,
+  output: __S(38) as any as S.Schema<GetEnterpriseSupportChargeSummaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1364,8 +1062,8 @@ export const getEnterpriseSupportContractDetails: API.OperationMethod<
   GetEnterpriseSupportContractDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnterpriseSupportContractDetailsRequest,
-  output: GetEnterpriseSupportContractDetailsResponse,
+  input: __S(39) as any as S.Schema<GetEnterpriseSupportContractDetailsRequest>,
+  output: __S(47) as any as S.Schema<GetEnterpriseSupportContractDetailsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1394,8 +1092,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePolicyRequest,
-  output: GetResourcePolicyResponse,
+  input: __S(48) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(49) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1426,8 +1124,8 @@ export const listBillingViews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingViewListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingViewsRequest,
-  output: ListBillingViewsResponse,
+  input: __S(53) as any as S.Schema<ListBillingViewsRequest>,
+  output: __S(56) as any as S.Schema<ListBillingViewsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1467,8 +1165,8 @@ export const listBillingViewSegments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingViewSegmentsListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBillingViewSegmentsRequest,
-  output: ListBillingViewSegmentsResponse,
+  input: __S(58) as any as S.Schema<ListBillingViewSegmentsRequest>,
+  output: __S(61) as any as S.Schema<ListBillingViewSegmentsResponse>,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1505,8 +1203,8 @@ export const listBusinessSupportAccountCharges: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BusinessSupportAccountCharge
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBusinessSupportAccountChargesRequest,
-  output: ListBusinessSupportAccountChargesResponse,
+  input: __S(62) as any as S.Schema<ListBusinessSupportAccountChargesRequest>,
+  output: __S(70) as any as S.Schema<ListBusinessSupportAccountChargesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1542,8 +1240,8 @@ export const listBusinessSupportSubscriptionHistory: API.PaginatedOperationMetho
   Credentials | HttpClient.HttpClient,
   BusinessSupportSubscriptionContract
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBusinessSupportSubscriptionHistoryRequest,
-  output: ListBusinessSupportSubscriptionHistoryResponse,
+  input: __S(71) as any as S.Schema<ListBusinessSupportSubscriptionHistoryRequest>,
+  output: __S(74) as any as S.Schema<ListBusinessSupportSubscriptionHistoryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1579,8 +1277,8 @@ export const listEnterpriseSupportLinkedAccountCharges: API.PaginatedOperationMe
   Credentials | HttpClient.HttpClient,
   LinkedAccountCharge
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnterpriseSupportLinkedAccountChargesRequest,
-  output: ListEnterpriseSupportLinkedAccountChargesResponse,
+  input: __S(75) as any as S.Schema<ListEnterpriseSupportLinkedAccountChargesRequest>,
+  output: __S(82) as any as S.Schema<ListEnterpriseSupportLinkedAccountChargesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1616,8 +1314,8 @@ export const listSourceViewsForBillingView: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BillingViewArn
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSourceViewsForBillingViewRequest,
-  output: ListSourceViewsForBillingViewResponse,
+  input: __S(83) as any as S.Schema<ListSourceViewsForBillingViewRequest>,
+  output: __S(84) as any as S.Schema<ListSourceViewsForBillingViewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1652,8 +1350,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(85) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(86) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1681,8 +1379,8 @@ export const redeemCredits: API.OperationMethod<
   RedeemCreditsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedeemCreditsRequest,
-  output: RedeemCreditsResponse,
+  input: __S(87) as any as S.Schema<RedeemCreditsRequest>,
+  output: __S(88) as any as S.Schema<RedeemCreditsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1710,8 +1408,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(89) as any as S.Schema<TagResourceRequest>,
+  output: __S(88) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1740,8 +1438,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(90) as any as S.Schema<UntagResourceRequest>,
+  output: __S(88) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1771,8 +1469,8 @@ export const updateBillingPreferences: API.OperationMethod<
   UpdateBillingPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBillingPreferencesRequest,
-  output: UpdateBillingPreferencesResponse,
+  input: __S(93) as any as S.Schema<UpdateBillingPreferencesRequest>,
+  output: __S(94) as any as S.Schema<UpdateBillingPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1803,8 +1501,8 @@ export const updateBillingView: API.OperationMethod<
   UpdateBillingViewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBillingViewRequest,
-  output: UpdateBillingViewResponse,
+  input: __S(95) as any as S.Schema<UpdateBillingViewRequest>,
+  output: __S(96) as any as S.Schema<UpdateBillingViewResponse>,
   errors: [
     AccessDeniedException,
     BillingViewHealthStatusException,
@@ -1827,7 +1525,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, sourceViews: BillingViewSourceViewsList }).pipe(
+        S.Struct({ arn: S.String, sourceViews: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1838,11 +1536,11 @@ function __c0(j: number): any {
         identifier: "AssociateSourceViewsResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ key: Dimension, values: Values })).annotate({
+      return S.suspend(() => S.Struct({ key: S.String, values: __S(0) })).annotate({
         identifier: "DimensionValues",
       });
     case 4:
-      return S.suspend(() => S.Struct({ key: S.String, values: Values })).annotate({
+      return S.suspend(() => S.Struct({ key: S.String, values: __S(0) })).annotate({
         identifier: "TagValues",
       });
     case 5:
@@ -1855,10 +1553,10 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(DimensionValues),
-          tags: S.optional(TagValues),
-          costCategories: S.optional(CostCategoryValues),
-          timeRange: S.optional(TimeRange),
+          dimensions: S.optional(__S(3)),
+          tags: S.optional(__S(4)),
+          costCategories: S.optional(__S(4)),
+          timeRange: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "Expression" });
     case 7:
@@ -1870,19 +1568,19 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceTag);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: SensitiveString,
           description: S.optional(SensitiveString),
-          sourceViews: BillingViewSourceViewsList,
-          dataFilterExpression: S.optional(Expression),
+          sourceViews: __S(0),
+          dataFilterExpression: S.optional(__S(6)),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Amzn-Client-Token"),
             T.IdempotencyToken(),
           ),
-          resourceTags: S.optional(ResourceTagList),
+          resourceTags: S.optional(__S(8)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateBillingViewRequest" });
     case 2:
@@ -1902,23 +1600,23 @@ function __c1(j: number): any {
       ).annotate({ identifier: "DeleteBillingViewRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ arn: S.String, sourceViews: BillingViewSourceViewsList }).pipe(
+        S.Struct({ arn: S.String, sourceViews: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
         identifier: "DisassociateSourceViewsRequest",
       });
     case 5:
-      return S.Array(BillingFeature);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(BillingFeatureFilterName),
-          value: S.optional(BillingFeatureFilterValues),
+          name: S.optional(S.String),
+          value: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "BillingFeatureFilter" });
     case 7:
-      return S.Array(BillingFeatureFilter);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1928,8 +1626,8 @@ function __c2(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          features: BillingFeatures,
-          filters: S.optional(BillingFeatureFilters),
+          features: __S(13),
+          filters: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetBillingPreferencesRequest",
@@ -1941,19 +1639,19 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          feature: BillingFeature,
+          feature: S.String,
           key: S.String,
-          value: PreferenceValue,
+          value: S.String,
           accountName: S.optional(S.String),
           accountId: S.optional(S.String),
-          billingPeriod: S.optional(BillingPeriod),
+          billingPeriod: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "BillingPreferenceSummary" });
     case 3:
-      return S.Array(BillingPreferenceSummary);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
-        S.Struct({ billingPreferences: BillingPreferences, nextToken: S.optional(S.String) }),
+        S.Struct({ billingPreferences: __S(19), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetBillingPreferencesResponse",
       });
@@ -1966,8 +1664,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          statusCode: S.optional(BillingViewStatus),
-          statusReasons: S.optional(BillingViewStatusReasons),
+          statusCode: S.optional(S.String),
+          statusReasons: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "BillingViewHealthStatus" });
     case 7:
@@ -1976,16 +1674,16 @@ function __c2(j: number): any {
           arn: S.optional(S.String),
           name: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          billingViewType: S.optional(BillingViewType),
+          billingViewType: S.optional(S.String),
           ownerAccountId: S.optional(S.String),
           sourceAccountId: S.optional(S.String),
-          dataFilterExpression: S.optional(Expression),
+          dataFilterExpression: S.optional(__S(6)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           derivedViewCount: S.optional(S.Number),
           sourceViewCount: S.optional(S.Number),
           viewDefinitionLastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          healthStatus: S.optional(BillingViewHealthStatus),
+          healthStatus: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "BillingViewElement" });
   }
@@ -1993,7 +1691,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ billingView: BillingViewElement })).annotate({
+      return S.suspend(() => S.Struct({ billingView: __S(23) })).annotate({
         identifier: "GetBillingViewResponse",
       });
     case 1:
@@ -2017,7 +1715,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creditId: S.String,
-          creditAmount: Amount,
+          creditAmount: __S(26),
           description: S.optional(S.String),
           accountId: S.String,
           appliedServiceName: S.String,
@@ -2028,13 +1726,13 @@ function __c3(j: number): any {
         identifier: "CreditAllocationHistoryEntry",
       });
     case 4:
-      return S.Array(CreditAllocationHistoryEntry);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creditAllocationHistoryList: S.optional(CreditAllocationHistoryList),
+          creditAllocationHistoryList: S.optional(__S(28)),
           partialResults: S.Boolean,
-          failedMonths: S.optional(FailedMonthsList),
+          failedMonths: S.optional(__S(0)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2055,23 +1753,23 @@ function __c3(j: number): any {
           creditId: S.String,
           accountId: S.String,
           creditType: S.String,
-          initialAmount: Amount,
-          remainingAmount: Amount,
-          estimatedAmount: S.optional(Amount),
-          applicableProductNames: S.optional(ProductNames),
+          initialAmount: __S(26),
+          remainingAmount: __S(26),
+          estimatedAmount: S.optional(__S(26)),
+          applicableProductNames: S.optional(__S(0)),
           description: S.String,
           startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           exhaustDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          applicationType: S.optional(ApplicationType),
-          shareableAccounts: S.optional(ShareableAccountIds),
+          applicationType: S.optional(S.String),
+          shareableAccounts: S.optional(__S(0)),
           accountHasCreditSharingEnabled: S.optional(S.Boolean),
           creditConsoleVisibility: S.optional(S.String),
-          creditSharingType: S.optional(CreditSharingType),
+          creditSharingType: S.optional(S.String),
           costCategoryArn: S.optional(S.String),
           ruleName: S.optional(S.String),
-          creditStatus: S.optional(CreditStatus),
-          purchaseTypeApplications: S.optional(PurchaseTypeApplications),
+          creditStatus: S.optional(S.String),
+          purchaseTypeApplications: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "CreditData" });
   }
@@ -2079,9 +1777,9 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreditData);
+      return S.Array(__S(31));
     case 1:
-      return S.suspend(() => S.Struct({ credits: S.optional(CreditDataList) })).annotate({
+      return S.suspend(() => S.Struct({ credits: S.optional(__S(32)) })).annotate({
         identifier: "GetCreditsResponse",
       });
     case 2:
@@ -2106,7 +1804,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "PricingPlanTier" });
     case 4:
-      return S.Array(PricingPlanTier);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2119,7 +1817,7 @@ function __c4(j: number): any {
           discountAppliesToMinimumCharge: S.optional(S.Boolean),
           minimumCharge: S.optional(S.String),
           tiered: S.optional(S.String),
-          tiers: PricingPlanTierList,
+          tiers: __S(36),
         }),
       ).annotate({ identifier: "PricingPlan" });
     case 6:
@@ -2139,7 +1837,7 @@ function __c4(j: number): any {
           totalSupportEligibleReservedInstanceSpend: S.String,
           totalSupportEligibleSavingsPlanSpend: S.String,
           supportChargePercentage: S.String,
-          supportEffectivePricingPlan: PricingPlan,
+          supportEffectivePricingPlan: __S(37),
         }),
       ).annotate({
         identifier: "GetEnterpriseSupportChargeSummaryResponse",
@@ -2161,13 +1859,13 @@ function __c5(j: number): any {
         identifier: "ContractAccount",
       });
     case 1:
-      return S.Array(ContractAccount);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({ accountId: S.String, chargePercentage: S.String }),
       ).annotate({ identifier: "ChargeAccount" });
     case 3:
-      return S.Array(ChargeAccount);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2177,9 +1875,9 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "AdditionalCharge" });
     case 5:
-      return S.Array(AdditionalCharge);
+      return S.Array(__S(44));
     case 6:
-      return S.Array(PricingPlan);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2194,11 +1892,11 @@ function __c5(j: number): any {
           ),
           supportSavingsPlansTreatmentMethod: S.optional(S.String),
           supportProrateStartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          contractPayerAccountIds: ContractAccountList,
-          chargedPayerAccountIds: ChargeAccountList,
-          additionalSupportCharge: S.optional(AdditionalChargeList),
-          additionalSupportEligibleUsageSpend: S.optional(AdditionalChargeList),
-          pricingPlans: PricingPlanList,
+          contractPayerAccountIds: __S(41),
+          chargedPayerAccountIds: __S(43),
+          additionalSupportCharge: S.optional(__S(45)),
+          additionalSupportEligibleUsageSpend: S.optional(__S(45)),
+          pricingPlans: __S(46),
         }),
       ).annotate({
         identifier: "GetEnterpriseSupportContractDetailsResponse",
@@ -2227,18 +1925,18 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ActiveTimeRange" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ searchOption: SearchOption, searchValue: S.String }),
-      ).annotate({ identifier: "StringSearch" });
+      return S.suspend(() => S.Struct({ searchOption: S.String, searchValue: S.String })).annotate({
+        identifier: "StringSearch",
+      });
     case 4:
-      return S.Array(StringSearch);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activeTimeRange: S.optional(ActiveTimeRange),
-          arns: S.optional(BillingViewArnList),
-          billingViewTypes: S.optional(BillingViewTypeList),
-          names: S.optional(StringSearches),
+          activeTimeRange: S.optional(__S(50)),
+          arns: S.optional(__S(0)),
+          billingViewTypes: S.optional(__S(13)),
+          names: S.optional(__S(52)),
           ownerAccountId: S.optional(S.String),
           sourceAccountId: S.optional(S.String),
           maxResults: S.optional(S.Number),
@@ -2253,19 +1951,19 @@ function __c6(j: number): any {
           description: S.optional(SensitiveString),
           ownerAccountId: S.optional(S.String),
           sourceAccountId: S.optional(S.String),
-          billingViewType: S.optional(BillingViewType),
-          healthStatus: S.optional(BillingViewHealthStatus),
+          billingViewType: S.optional(S.String),
+          healthStatus: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "BillingViewListElement" });
     case 7:
-      return S.Array(BillingViewListElement);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ billingViews: BillingViewList, nextToken: S.optional(S.String) }),
+        S.Struct({ billingViews: __S(55), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListBillingViewsResponse" });
     case 1:
       return S.suspend(() =>
@@ -2279,7 +1977,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          timeRange: S.optional(BillingViewSegmentTimeRange),
+          timeRange: S.optional(__S(57)),
           arn: S.optional(S.String),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
@@ -2290,8 +1988,8 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(BillingDomain),
-          timeRange: S.optional(BillingViewSegmentTimeRange),
+          domain: S.optional(S.String),
+          timeRange: S.optional(__S(57)),
           billingTransferAccountId: S.optional(S.String),
           managementAccountId: S.optional(S.String),
           billingGroupPrimaryAccountId: S.optional(S.String),
@@ -2300,10 +1998,10 @@ function __c7(j: number): any {
         identifier: "BillingViewSegmentsListElement",
       });
     case 4:
-      return S.Array(BillingViewSegmentsListElement);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: BillingViewSegmentsList, nextToken: S.optional(S.String) }),
+        S.Struct({ items: __S(60), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListBillingViewSegmentsResponse",
       });
@@ -2336,7 +2034,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BusinessSupportTierCharge);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2359,7 +2057,7 @@ function __c8(j: number): any {
         identifier: "BusinessSupportServiceSpend",
       });
     case 3:
-      return S.Array(BusinessSupportServiceSpend);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2367,15 +2065,15 @@ function __c8(j: number): any {
           supportPlanName: S.String,
           totalCharge: S.String,
           totalUsageBasis: S.String,
-          tierCharges: S.optional(BusinessSupportTierChargeList),
-          supportDiscount: S.optional(BusinessSupportDiscount),
-          supportEligibleSpendByService: S.optional(BusinessSupportServiceSpendList),
+          tierCharges: S.optional(__S(64)),
+          supportDiscount: S.optional(__S(65)),
+          supportEligibleSpendByService: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "BusinessSupportAccountCharge",
       });
     case 5:
-      return S.Array(BusinessSupportAccountCharge);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2384,7 +2082,7 @@ function __c8(j: number): any {
           totalSupportCharge: S.String,
           totalSupportEligibleSpend: S.String,
           accountCount: S.Number,
-          accountCharges: BusinessSupportAccountChargeList,
+          accountCharges: __S(69),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2419,11 +2117,11 @@ function __c9(j: number): any {
         identifier: "BusinessSupportSubscriptionContract",
       });
     case 1:
-      return S.Array(BusinessSupportSubscriptionContract);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptionContracts: BusinessSupportSubscriptionContractList,
+          subscriptionContracts: __S(73),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2450,7 +2148,7 @@ function __c9(j: number): any {
         identifier: "EnterpriseSupportTimePeriod",
       });
     case 5:
-      return S.Array(EnterpriseSupportTimePeriod);
+      return S.Array(__S(76));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2459,7 +2157,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ServiceLevelAccountUsage" });
     case 7:
-      return S.Array(ServiceLevelAccountUsage);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -2474,18 +2172,18 @@ function __c10(j: number): any {
           totalSeconds: S.Number,
           totalSupportEligibleSpend: S.String,
           proratedTotalSupportEligibleSpend: S.String,
-          linkedTimePeriods: S.optional(TimePeriodList),
-          subscriptionTimePeriods: S.optional(TimePeriodList),
+          linkedTimePeriods: S.optional(__S(77)),
+          subscriptionTimePeriods: S.optional(__S(77)),
           totalSupportEligibleReservedInstanceSpend: S.optional(S.String),
           totalSupportEligibleSavingsPlanSpend: S.optional(S.String),
-          supportEligibleSpendByService: S.optional(ServiceLevelAccountUsageList),
+          supportEligibleSpendByService: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "LinkedAccountCharge" });
     case 1:
-      return S.Array(LinkedAccountCharge);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
-        S.Struct({ linkedAccount: LinkedAccountChargeList, nextToken: S.optional(S.String) }),
+        S.Struct({ linkedAccount: __S(81), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListEnterpriseSupportLinkedAccountChargesResponse",
       });
@@ -2501,7 +2199,7 @@ function __c10(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ sourceViews: BillingViewSourceViewsList, nextToken: S.optional(S.String) }),
+        S.Struct({ sourceViews: __S(0), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListSourceViewsForBillingViewResponse",
       });
@@ -2514,7 +2212,7 @@ function __c10(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ resourceTags: S.optional(ResourceTagList) })).annotate({
+      return S.suspend(() => S.Struct({ resourceTags: S.optional(__S(8)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 7:
@@ -2533,27 +2231,27 @@ function __c11(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, resourceTags: ResourceTagList }).pipe(
+        S.Struct({ resourceArn: S.String, resourceTags: __S(8) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, resourceTagKeys: ResourceTagKeyList }).pipe(
+        S.Struct({ resourceArn: S.String, resourceTagKeys: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ key: S.String, value: PreferenceValue })).annotate({
+      return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "BillingPreferenceForKey",
       });
     case 4:
-      return S.Array(BillingPreferenceForKey);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          feature: BillingFeature,
-          billingPreferencesPerKey: BillingPreferencesPerKey,
+          feature: S.String,
+          billingPreferencesPerKey: __S(92),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateBillingPreferencesRequest",
@@ -2568,7 +2266,7 @@ function __c11(j: number): any {
           arn: S.String,
           name: S.optional(SensitiveString),
           description: S.optional(SensitiveString),
-          dataFilterExpression: S.optional(Expression),
+          dataFilterExpression: S.optional(__S(6)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateBillingViewRequest" });
   }
@@ -2589,6 +2287,41 @@ function __c12(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 2:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(97));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

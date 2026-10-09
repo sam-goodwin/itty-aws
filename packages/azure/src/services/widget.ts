@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,24 +19,9 @@ export interface DeleteEmployeeRequest {
   /** The name of the Employee */
   employeeName: string;
 }
-const DeleteEmployeeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteEmployeeRequest>;
-
 export interface DeleteEmployeeResponse {}
-const DeleteEmployeeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteEmployeeResponse>;
-
 /** Resource tags. */
 export type EmployeesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const EmployeesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<EmployeesCreateOrUpdateRequestTagsMap>;
-
 /** Employee properties */
 export interface EmployeePropertiesInput {
   /** Age of employee */
@@ -44,11 +31,6 @@ export interface EmployeePropertiesInput {
   /** Profile of employee */
   profile?: string;
 }
-const EmployeePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<EmployeePropertiesInput>;
-
 export interface EmployeesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -63,19 +45,10 @@ export interface EmployeesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: EmployeePropertiesInput;
 }
-const EmployeesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EmployeesCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -91,13 +64,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type EmployeesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const EmployeesCreateOrUpdateResponseTagsMap =
-  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<EmployeesCreateOrUpdateResponseTagsMap>;
-
 /** The resource provisioning state. */
 export type ProvisioningState =
   | "Succeeded"
@@ -107,8 +75,6 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-const ProvisioningState = S.String;
-
 /** Employee properties */
 export interface EmployeeProperties {
   /** Age of employee */
@@ -120,8 +86,6 @@ export interface EmployeeProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const EmployeeProperties = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EmployeeProperties>;
-
 export interface EmployeesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -138,11 +102,6 @@ export interface EmployeesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-const EmployeesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EmployeesCreateOrUpdateResponse>;
-
 export interface GetEmployeeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -151,13 +110,8 @@ export interface GetEmployeeRequest {
   /** The name of the Employee */
   employeeName: string;
 }
-const GetEmployeeRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetEmployeeRequest>;
-
 /** Resource tags. */
 export type GetEmployeeResponseTagsMap = { [key: string]: string | undefined };
-const GetEmployeeResponseTagsMap =
-  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEmployeeResponseTagsMap>;
-
 export interface GetEmployeeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -174,19 +128,12 @@ export interface GetEmployeeResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-const GetEmployeeResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetEmployeeResponse>;
-
 export interface ListEmployeeByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListEmployeeByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListEmployeeByResourceGroupRequest>;
-
 /** Resource tags. */
 export type EmployeeTagsMap = { [key: string]: string | undefined };
 /** Employee resource */
@@ -206,15 +153,8 @@ export interface Employee {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-const Employee = GetEmployeeResponse as any as S.Schema<Employee>;
-
 /** The Employee items on this page */
 export type EmployeeListResultValueList = Array<Employee>;
-const EmployeeListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<EmployeeListResultValueList>;
-
 /** The response of a Employee list operation. */
 export interface EmployeeListResult {
   /** The Employee items on this page */
@@ -222,23 +162,11 @@ export interface EmployeeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EmployeeListResult = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EmployeeListResult>;
-
 export interface ListEmployeeBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListEmployeeBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListEmployeeBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -250,16 +178,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -273,31 +195,16 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 /** Resource tags. */
 export type UpdateEmployeeRequestTagsMap = { [key: string]: string | undefined };
-const UpdateEmployeeRequestTagsMap =
-  EmployeesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEmployeeRequestTagsMap>;
-
 export interface UpdateEmployeeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -310,11 +217,6 @@ export interface UpdateEmployeeRequest {
   /** The resource-specific properties for this resource. */
   properties?: EmployeePropertiesInput;
 }
-const UpdateEmployeeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateEmployeeRequest>;
-
 /** Resource tags. */
 export type UpdateEmployeeResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEmployeeResponse {
@@ -333,8 +235,6 @@ export interface UpdateEmployeeResponse {
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
 }
-const UpdateEmployeeResponse = GetEmployeeResponse as any as S.Schema<UpdateEmployeeResponse>;
-
 export type DeleteEmployeeError = AzureOpError;
 /** Delete a Employee */
 export const DeleteEmployee: API.OperationMethod<
@@ -343,8 +243,8 @@ export const DeleteEmployee: API.OperationMethod<
   DeleteEmployeeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmployeeRequest,
-  output: DeleteEmployeeResponse,
+  input: __S(0) as any as S.Schema<DeleteEmployeeRequest>,
+  output: __S(1) as any as S.Schema<DeleteEmployeeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -358,8 +258,8 @@ export const EmployeesCreateOrUpdate: API.OperationMethod<
   EmployeesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EmployeesCreateOrUpdateRequest,
-  output: EmployeesCreateOrUpdateResponse,
+  input: __S(4) as any as S.Schema<EmployeesCreateOrUpdateRequest>,
+  output: __S(7) as any as S.Schema<EmployeesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -373,8 +273,8 @@ export const GetEmployee: API.OperationMethod<
   GetEmployeeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmployeeRequest,
-  output: GetEmployeeResponse,
+  input: __S(8) as any as S.Schema<GetEmployeeRequest>,
+  output: __S(9) as any as S.Schema<GetEmployeeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -388,8 +288,8 @@ export const ListEmployeeByResourceGroup: API.OperationMethod<
   ListEmployeeByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmployeeByResourceGroupRequest,
-  output: EmployeeListResult,
+  input: __S(10) as any as S.Schema<ListEmployeeByResourceGroupRequest>,
+  output: __S(12) as any as S.Schema<EmployeeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -403,8 +303,8 @@ export const ListEmployeeBySubscription: API.OperationMethod<
   ListEmployeeBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmployeeBySubscriptionRequest,
-  output: EmployeeListResult,
+  input: __S(13) as any as S.Schema<ListEmployeeBySubscriptionRequest>,
+  output: __S(12) as any as S.Schema<EmployeeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -418,8 +318,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(14) as any as S.Schema<ListOperationsRequest>,
+  output: __S(18) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -433,8 +333,8 @@ export const UpdateEmployee: API.OperationMethod<
   UpdateEmployeeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmployeeRequest,
-  output: UpdateEmployeeResponse,
+  input: __S(19) as any as S.Schema<UpdateEmployeeRequest>,
+  output: __S(9) as any as S.Schema<UpdateEmployeeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -478,9 +378,9 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           employeeName: S.String.pipe(T.Label()),
-          tags: S.optional(EmployeesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(EmployeePropertiesInput),
+          properties: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -496,10 +396,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -509,7 +409,7 @@ function __c0(j: number): any {
           age: S.optional(S.Number),
           city: S.optional(S.String),
           profile: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmployeeProperties" });
     case 7:
@@ -518,10 +418,10 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(EmployeesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(EmployeeProperties),
+          properties: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "EmployeesCreateOrUpdateResponse",
@@ -551,10 +451,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetEmployeeResponseTagsMap),
+          systemData: S.optional(__S(5)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(EmployeeProperties),
+          properties: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "GetEmployeeResponse" });
     case 2:
@@ -574,11 +474,11 @@ function __c1(j: number): any {
         identifier: "ListEmployeeByResourceGroupRequest",
       });
     case 3:
-      return S.Array(Employee);
+      return S.Array(__S(9));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: EmployeeListResultValueList,
+          value: __S(11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmployeeListResult" });
@@ -626,17 +526,17 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(15)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(17)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -646,8 +546,8 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           employeeName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateEmployeeRequestTagsMap),
-          properties: S.optional(EmployeePropertiesInput),
+          tags: S.optional(__S(2)),
+          properties: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -657,5 +557,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateEmployeeRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Empty>;
-
 /** Request to cancel a session. */
 export type CancelSessionRequest = GoogleLongrunningCancelOperationRequest;
 export interface CancelProjectsLocationsSessionsRequest {
@@ -92,38 +82,22 @@ export interface CancelProjectsLocationsSessionsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-const CancelProjectsLocationsSessionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelProjectsLocationsSessionsRequest>;
-
 export type CancelSessionResponseCancelResultEnum =
   | "CANCEL_RESULT_UNSPECIFIED"
   | "SESSION_MARKED_AS_CANCELLED"
   | "SESSION_FINISHED";
-const CancelSessionResponseCancelResultEnum = S.String;
-
 /** Response of the cancel session request. */
 export interface CancelSessionResponse {
   /** The result of the request. */
   cancelResult?: CancelSessionResponseCancelResultEnum;
 }
-const CancelSessionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelSessionResponse>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
-
 export type StatusStatusTypeEnum =
   | "STATUS_TYPE_UNSPECIFIED"
   | "PENDING"
   | "RUNNING"
   | "DONE"
   | "SUSPENDED";
-const StatusStatusTypeEnum = S.String;
-
 /** The status of a session/job/execution. */
 export interface Status {
   /** Output only. Human-readable, detailed descriptions of the session/job/execution's progress. For example: "Provisioning a device", "Starting Test". Each message should contain only one line of text. During the course of execution new data may be appended to the end of progress_messages. */
@@ -131,11 +105,7 @@ export interface Status {
   /** Output only. The status type of the session/job/execution. */
   statusType?: StatusStatusTypeEnum | (string & {});
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
-
 export type IssueSummaryTypeEnum = "ISSUE_TYPE_UNSPECIFIED" | "INFRA" | "CUSTOMER";
-const IssueSummaryTypeEnum = S.String;
-
 /** Describes the summary of an issue (error or warning) with structured details. */
 export interface IssueSummary {
   /** Output only. Human-readable explanation of the issue in English. */
@@ -145,15 +115,11 @@ export interface IssueSummary {
   /** Output only. The issue classification based on responsibility. */
   type?: IssueSummaryTypeEnum | (string & {});
 }
-const IssueSummary = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<IssueSummary>;
-
 /** Describes the cause of the non-passed result occurred during the execution. */
 export interface ResultCause {
   /** Output only. Structured cause detail. */
   summary?: IssueSummary;
 }
-const ResultCause = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ResultCause>;
-
 export type ResultResultTypeEnum =
   | "RESULT_TYPE_UNSPECIFIED"
   | "PASSED"
@@ -161,8 +127,6 @@ export type ResultResultTypeEnum =
   | "ERROR"
   | "TIMED_OUT"
   | "CANCELLED";
-const ResultResultTypeEnum = S.String;
-
 /** The result of a session/job/execution. */
 export interface Result {
   /** Output only. Detailed result cause diagnostics. Set if type is not PASSED. */
@@ -170,38 +134,24 @@ export interface Result {
   /** Output only. The result type of the session/job/execution. */
   resultType?: ResultResultTypeEnum | (string & {});
 }
-const Result = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Result>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringMap>;
-
 /** Non-fatal operational anomaly, lint observation, or execution insight. */
 export interface Warning {
   /** Output only. Detailed warning summary. */
   summary?: IssueSummary;
 }
-const Warning = ResultCause as any as S.Schema<Warning>;
-
 export type WarningList = Array<Warning>;
-const WarningList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<WarningList>;
-
 /** A path to a file or directory in Google Cloud Storage. */
 export interface GcsPath {
   /** Required. The Google Cloud Storage path of the file or directory. Format: `gs:///`. */
   path?: string;
 }
-const GcsPath = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GcsPath>;
-
 /** Output file. */
 export interface OutputFile {
   /** An output file in Google Cloud Storage. */
   gcsOutputFile?: GcsPath;
 }
-const OutputFile = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<OutputFile>;
-
 export type OutputFileList = Array<OutputFile>;
-const OutputFileList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<OutputFileList>;
-
 /** The runtime information and result report of a single on-device execution attempt. */
 export interface ExecutionReport {
   /** Output only. The status of the execution. */
@@ -221,11 +171,7 @@ export interface ExecutionReport {
   /** Output only. The unique identifier of the execution. */
   id?: string;
 }
-const ExecutionReport = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ExecutionReport>;
-
 export type ExecutionReportList = Array<ExecutionReport>;
-const ExecutionReportList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ExecutionReportList>;
-
 /** The runtime information and result report of a job. */
 export interface JobReport {
   /** Output only. The start time of the job. */
@@ -249,11 +195,7 @@ export interface JobReport {
   /** Output only. Reports of the execution attempts of the job. */
   executionReports?: ExecutionReportList;
 }
-const JobReport = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<JobReport>;
-
 export type JobReportList = Array<JobReport>;
-const JobReportList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<JobReportList>;
-
 /** The runtime information and result report of a session. */
 export interface SessionReport {
   /** Output only. The unique identifier of the session. */
@@ -269,18 +211,11 @@ export interface SessionReport {
   /** Output only. Reports of the jobs in the session. */
   jobReports?: JobReportList;
 }
-const SessionReport = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SessionReport>;
-
 /** Config to control session notification. */
 export interface SessionConfigSessionNotificationConfig {
   /** Optional. The Pub/Sub topics to which session events are published. Format: `projects/{project}/topics/{topic}`. See https://cloud.google.com/pubsub/docs/admin#topic_and_subscription_name_restrictions */
   pubsubTopic?: StringList;
 }
-const SessionConfigSessionNotificationConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SessionConfigSessionNotificationConfig>;
-
 /** Config to control session output file directory. */
 export interface SessionConfigSessionOutputFileDirectoryConfig {
   /** Optional. Whether to write output files directly under the output directory instead of nesting them under service-generated subdirectories. By default (`false`), output files are stored under `////`. When `true`, the session ID subdirectory is never appended, and the job display name subdirectory is appended only when the session has more than one job. Output files are therefore stored under: - `//` for a single-job session. - `///` for a multi-job session. Set this to `true` when the output directory is already unique per session (for example, when a CI system generates it), to avoid redundant nesting. */
@@ -288,18 +223,11 @@ export interface SessionConfigSessionOutputFileDirectoryConfig {
   /** The Google Cloud Storage path of the output directory (e.g. `gs://my-bucket/output`). The bucket must exist. If the bucket is located in another project or uses fine-grained access controls, ensure the Device Run Service Agent of the project (`service-@gcp-sa-devicerun.iam.gserviceaccount.com`) is granted access to the bucket (such as `roles/storage.objectUser`). */
   gcsOutputDirectory?: GcsPath;
 }
-const SessionConfigSessionOutputFileDirectoryConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SessionConfigSessionOutputFileDirectoryConfig>;
-
 /** Input file. */
 export interface InputFile {
   /** An input file in Google Cloud Storage. */
   gcsInputFile?: GcsPath;
 }
-const InputFile = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<InputFile>;
-
 /** The configuration of an Android native binary execution. */
 export interface AndroidNativeBinary {
   /** Optional. Arguments for running the binary file. The flags will be appended to the command line that invokes the binary. Limits: - Maximum number of entries: 64 - Maximum entry size: 1024 bytes (UTF-8) */
@@ -311,8 +239,6 @@ export interface AndroidNativeBinary {
   /** Optional. A map of environment variables to set for the binary process. The keys are the variable names and the values are the variable values. Limits: - Maximum number of entries: 32 - Maximum key size: 64 bytes (UTF-8) - Key regex: `a-zA-Z_*` - Maximum value size: 1024 bytes (UTF-8) */
   envVars?: StringMap;
 }
-const AndroidNativeBinary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<AndroidNativeBinary>;
-
 /** The configuration of an iOS XCTest. */
 export interface IosXcTest {
   /** Optional. An .xctestrun file that will override the .xctestrun file in the tests zip. */
@@ -324,8 +250,6 @@ export interface IosXcTest {
   /** Optional. The timeout of the test. Default value: 5 min. Range: [1 min, 3 hours]. */
   xcTestTimeout?: string;
 }
-const IosXcTest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<IosXcTest>;
-
 /** The smart sharding strategy to split the job into multiple shards based on the test methods and their recorded execution time. */
 export interface AndroidInstrumentationTestSmartSharding {
   /** Required. The timing record file to use for smart sharding. If the file does not exist, smart sharding will use default test time (30s) for each test method to shard the job into multiple shards. This file will be overwritten with the latest timing record after the job is completed. */
@@ -335,31 +259,17 @@ export interface AndroidInstrumentationTestSmartSharding {
   /** Required. The targeted duration of each shard. Limits: - Must be at least 2 minutes. - Must be at most 3 hours. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. Durations are calculated based on the following inputs: - Timing records from previous runs of the same test case. - For new test cases, the average duration of other known test cases. - A system-chosen, default duration if there are no previous timing records available. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed instrumentation timeout. This approach avoids cancelling the shard before all tests can finish. */
   targetedShardDuration?: string;
 }
-const AndroidInstrumentationTestSmartSharding = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<AndroidInstrumentationTestSmartSharding>;
-
 /** Uniformly shards test cases given a total number of shards. It will be translated to `-e numShard` and `-e shardIndex` AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. */
 export interface AndroidInstrumentationTestUniformSharding {
   /** Required. The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. Limits: - For physical devices, the number of shards must be <= 20. - For virtual devices, the number of shards must be <= 200. */
   shardCount?: number;
 }
-const AndroidInstrumentationTestUniformSharding = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AndroidInstrumentationTestUniformSharding>;
-
 export type InputFileList = Array<InputFile>;
-const InputFileList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InputFileList>;
-
 /** An Android Installable represents the file(s) for installing an Android package on a device. This can be an APK, an Android App Bundle (AAB), or an APK Set. */
 export interface AndroidInstallable {
   /** Required. Files that make up the package. Supported formats are distinguished by their file extension: - APK: One or more files with extension `.apk`. - App Bundle: A single file with extension `.aab`. - APK Set: A single file with extension `.apks`. */
   files?: InputFileList;
 }
-const AndroidInstallable = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AndroidInstallable>;
-
 /** The configuration of an Android instrumentation test. See https://developer.android.com/training/testing/instrumented-tests for more information on Android instrumentation tests. */
 export interface AndroidInstrumentationTest {
   /** Optional. Smart sharding strategy to split the job into multiple shards based on the test methods and their execution time. */
@@ -381,11 +291,6 @@ export interface AndroidInstrumentationTest {
   /** Required. The test package to install and run the test. */
   testInstallable?: AndroidInstallable;
 }
-const AndroidInstrumentationTest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AndroidInstrumentationTest>;
-
 /** The action to be performed in a job. */
 export interface JobAction {
   /** Android native binary execution. */
@@ -395,14 +300,7 @@ export interface JobAction {
   /** Android instrumentation test. */
   androidInstrumentationTest?: AndroidInstrumentationTest;
 }
-const JobAction = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<JobAction>;
-
 export type AndroidInstallableList = Array<AndroidInstallable>;
-const AndroidInstallableList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AndroidInstallableList>;
-
 /** Installs Android packages on the device. At least one installable is specified when using this device action. Limits: - A maximum of 20 installables in total are allowed. - A maximum of 100 files are allowed in total across all installables. */
 export interface AndroidInstallPackagesDeviceAction {
   /** Optional. Deprecated: use `pre_target_app_installables`, `target_app` and `post_target_app_installables` instead. The Android packages to install on the device. The installation will be performed in the order specified, before the installables of all other fields. */
@@ -414,49 +312,26 @@ export interface AndroidInstallPackagesDeviceAction {
   /** Optional. The Android packages to install on the device after `target_app` (if specified) is installed. The installation will be performed in the order specified. */
   postTargetAppInstallables?: AndroidInstallableList;
 }
-const AndroidInstallPackagesDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AndroidInstallPackagesDeviceAction>;
-
 /** Captures a bugreport from the device. The output will be written to a file named `bugreport.zip` in the execution output directory. */
 export interface AndroidBugreportDeviceAction {
   /** Optional. Whether to deliver the bugreport when the test passes. If false, the bugreport is skipped on pass to save time (default behavior). If true, the bugreport is always delivered. */
   collectOnPass?: boolean;
 }
-const AndroidBugreportDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AndroidBugreportDeviceAction>;
-
 /** Pulls directories and files from the device at the end of the run. Files will be copied to the '/artifacts' directory, with the absolute path structure preserved. Note that: 1. A clean device is provided for the run. 2. Any existing files in the output directory may be overwritten. 3. Pulling files is best effort. Will skip files if they don't exist on the device. */
 export interface AndroidPullFilesDeviceAction {
   /** Required. Absolute directory or file paths to pull from the device. Limits: - A maximum of 10 paths are allowed. */
   paths?: StringList;
 }
-const AndroidPullFilesDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AndroidPullFilesDeviceAction>;
-
 /** Captures dumpsys output from the device. The output will be written to a file named `dumpsys.log` in the execution output directory. */
 export interface AndroidDumpsysDeviceAction {
   /** Optional. Whether to deliver the dumpsys when the test passes. If false, the dumpsys is skipped on pass to save time (default behavior). If true, the dumpsys is always delivered. */
   collectOnPass?: boolean;
 }
-const AndroidDumpsysDeviceAction =
-  AndroidBugreportDeviceAction as any as S.Schema<AndroidDumpsysDeviceAction>;
-
 /** Installs iOS packages on the device. */
 export interface IosInstallPackagesDeviceAction {
   /** Required. Additional iOS packages (IPAs) to install on the device. Limits: - A maximum of 20 IPAs are allowed. */
   ipas?: InputFileList;
 }
-const IosInstallPackagesDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IosInstallPackagesDeviceAction>;
-
 /** Collects the exported iOS App Privacy Report during the test run. When enabled, the iOS device records application activity (such as network access, domain requests, and sensitive resource access like photos, camera, or location) and exports Apple's official App Privacy Report. The report will be written to a file named `AppActivityReport.ndjson` in the execution output directory. */
 export type IosAppPrivacyReportDeviceAction = GoogleLongrunningCancelOperationRequest;
 /** Collects logcat output from the device. The output will be written to a file named `logcat.txt` in the execution output directory. */
@@ -468,64 +343,36 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-const LatLng = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<LatLng>;
-
 /** Mocks the location of the Android device. */
 export interface AndroidMockLocationDeviceAction {
   /** Required. The mock location to set on the device. */
   location?: LatLng;
 }
-const AndroidMockLocationDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AndroidMockLocationDeviceAction>;
-
 /** Switches the locale (language and region) of the iOS application. */
 export interface IosSwitchLocaleDeviceAction {
   /** Required. The locale (language and region) to switch the app to. The format is `language-region` or `language`, e.g. "en-US", "zh-CN", "ja", etc. */
   localeCode?: string;
 }
-const IosSwitchLocaleDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IosSwitchLocaleDeviceAction>;
-
 /** Records a video of the device screen during the run. The video will be written to a file named `video.mp4` in the execution output directory. */
 export interface AndroidRecordVideoDeviceAction {
   /** Optional. Whether to discard and not upload the recording when the test passes. Default is false. */
   discardOnPass?: boolean;
 }
-const AndroidRecordVideoDeviceAction = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AndroidRecordVideoDeviceAction>;
-
 /** Sets the orientation of the device. */
 export interface AndroidOrientationDeviceAction {
   /** Required. The orientation to set the device to. One of `portrait` or `landscape`. */
   orientation?: string;
 }
-const AndroidOrientationDeviceAction = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AndroidOrientationDeviceAction>;
-
 /** Records a video of the iOS device screen during the run. The video will be written to a file named `video.mp4` in the execution output directory. */
 export interface IosRecordVideoDeviceAction {
   /** Optional. Whether to discard the video if the test passes. If not specified, the default is false (always keep the video). */
   discardOnPass?: boolean;
 }
-const IosRecordVideoDeviceAction =
-  AndroidRecordVideoDeviceAction as any as S.Schema<IosRecordVideoDeviceAction>;
-
 /** Switches the locale (language and region) of the device. */
 export interface AndroidSwitchLocaleDeviceAction {
   /** Required. The locale (language and region) to switch the device to. The format is `language-region`, e.g. "en-US", "zh-CN", etc. The typical language value is a two or three-letter language code as defined in ISO639. The typical region value is a two-letter ISO 3166 code or a three-digit UN M.49 area code. */
   localeCode?: string;
 }
-const AndroidSwitchLocaleDeviceAction =
-  IosSwitchLocaleDeviceAction as any as S.Schema<AndroidSwitchLocaleDeviceAction>;
-
 /** The configuration of pushing a file to the iOS device. */
 export interface IosPushFilesDeviceActionFileConfig {
   /** Required. The destination path relative to the app sandbox, e.g. "/Documents/file.txt". */
@@ -535,27 +382,12 @@ export interface IosPushFilesDeviceActionFileConfig {
   /** Required. The file to be pushed. */
   sourceFile?: InputFile;
 }
-const IosPushFilesDeviceActionFileConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<IosPushFilesDeviceActionFileConfig>;
-
 export type IosPushFilesDeviceActionFileConfigList = Array<IosPushFilesDeviceActionFileConfig>;
-const IosPushFilesDeviceActionFileConfigList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IosPushFilesDeviceActionFileConfigList>;
-
 /** Pushes files to the iOS device sandbox at the beginning of the run. */
 export interface IosPushFilesDeviceAction {
   /** Required. Configs of pushing files to the device. Limits: - A maximum of 50 files are allowed. */
   fileConfigs?: IosPushFilesDeviceActionFileConfigList;
 }
-const IosPushFilesDeviceAction = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IosPushFilesDeviceAction>;
-
 /** The configuration of pulling a file or directory from the iOS device. */
 export interface IosPullFilesDeviceActionPathConfig {
   /** Required. The device path relative to the app sandbox, e.g. "/Documents/output/". */
@@ -563,27 +395,12 @@ export interface IosPullFilesDeviceActionPathConfig {
   /** Required. The bundle ID of the application sandbox. */
   bundleId?: string;
 }
-const IosPullFilesDeviceActionPathConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IosPullFilesDeviceActionPathConfig>;
-
 export type IosPullFilesDeviceActionPathConfigList = Array<IosPullFilesDeviceActionPathConfig>;
-const IosPullFilesDeviceActionPathConfigList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<IosPullFilesDeviceActionPathConfigList>;
-
 /** Pulls directories and files from the iOS device sandbox at the end of the run. */
 export interface IosPullFilesDeviceAction {
   /** Required. Absolute directory or file paths to pull from the device. Limits: - A maximum of 10 paths are allowed. */
   paths?: IosPullFilesDeviceActionPathConfigList;
 }
-const IosPullFilesDeviceAction = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<IosPullFilesDeviceAction>;
-
 /** The configuration of pushing a file to the device. */
 export interface AndroidPushFilesDeviceActionFileConfig {
   /** Required. The file to be pushed to the device. */
@@ -591,28 +408,13 @@ export interface AndroidPushFilesDeviceActionFileConfig {
   /** Required. The destination path on the device. */
   destinationPath?: string;
 }
-const AndroidPushFilesDeviceActionFileConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<AndroidPushFilesDeviceActionFileConfig>;
-
 export type AndroidPushFilesDeviceActionFileConfigList =
   Array<AndroidPushFilesDeviceActionFileConfig>;
-const AndroidPushFilesDeviceActionFileConfigList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<AndroidPushFilesDeviceActionFileConfigList>;
-
 /** Pushes files to the device at the beginning of the run. Files are overwritten if a file with the same path already exists on the device, if device permissions allow. */
 export interface AndroidPushFilesDeviceAction {
   /** Required. Configs of pushing files to the device. Limits: - A maximum of 50 files are allowed. */
   fileConfigs?: AndroidPushFilesDeviceActionFileConfigList;
 }
-const AndroidPushFilesDeviceAction = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AndroidPushFilesDeviceAction>;
-
 /** The action to be performed on a device. */
 export interface DeviceAction {
   /** Installs Android packages on the device. */
@@ -648,18 +450,12 @@ export interface DeviceAction {
   /** Pushes files to the device at the beginning of the run. */
   androidPushFiles?: AndroidPushFilesDeviceAction;
 }
-const DeviceAction = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeviceAction>;
-
 export type DeviceActionList = Array<DeviceAction>;
-const DeviceActionList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DeviceActionList>;
-
 /** The requirement of a device. */
 export interface DeviceRequirement {
   /** The device ID of a device in the catalog. The device ID is the last part of a device's resource name. */
   deviceId?: string;
 }
-const DeviceRequirement = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DeviceRequirement>;
-
 /** The configuration of a run on a device. */
 export interface DeviceConfig {
   /** Optional. The actions to be performed on the device. Actions will be executed in the order they are specified in the list. Each action type can at most have 1 instance in the list. */
@@ -667,24 +463,16 @@ export interface DeviceConfig {
   /** Required. The requirement of the device. */
   requirement?: DeviceRequirement;
 }
-const DeviceConfig = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DeviceConfig>;
-
 export type DeviceConfigList = Array<DeviceConfig>;
-const DeviceConfigList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeviceConfigList>;
-
 /** Allocation config. */
 export interface AllocationConfig {
   /** Required. At least one device config is required. If more than one device config is required, the multiple devices are allocated to each shard of the OmniLab job to run multi-device-interaction tests. */
   deviceConfigs?: DeviceConfigList;
 }
-const AllocationConfig = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AllocationConfig>;
-
 export type RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum =
   | "TEST_REDUCTION_MODE_UNSPECIFIED"
   | "NO_REDUCTION"
   | "REDUCE_TO_FAILED_TEST_CASES";
-const RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum = S.String;
-
 /** Default retry strategy. It will retry on test failures for up to flaky_test_attempts (including the initial run). It also retries on infra issues for up to 2 attempts (including the initial run). So in total, an execution can run up to flaky_test_attempts * 2 times in the worst case. */
 export interface RetrySettingsFlakyTestRetryStrategy {
   /** Optional. Whether to retry the test failures in parallel. By default, the test is retried sequentially. If true, when the initial attempt fails, (flaky_test_attempts - 1) attempts will be triggered at the same time to run in parallel. */
@@ -694,25 +482,16 @@ export interface RetrySettingsFlakyTestRetryStrategy {
   /** Optional. The mode of test reduction for retry. If the test runner doesn't support the specified test reduction mode, the request will be rejected with an `INVALID_ARGUMENT` error. */
   testReductionMode?: RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum | (string & {});
 }
-const RetrySettingsFlakyTestRetryStrategy = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<RetrySettingsFlakyTestRetryStrategy>;
-
 /** Retry settings. */
 export interface RetrySettings {
   /** Optional. The default retry strategy. Allows an Execution to retry on test failures and infrastructure errors. */
   flakyTestRetryStrategy?: RetrySettingsFlakyTestRetryStrategy;
 }
-const RetrySettings = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<RetrySettings>;
-
 /** Job settings to control the job execution. */
 export interface JobSettings {
   /** Optional. The retry settings of the job. */
   retrySettings?: RetrySettings;
 }
-const JobSettings = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<JobSettings>;
-
 /** The configuration of a job. */
 export interface JobConfig {
   /** Required. Job action. */
@@ -726,11 +505,7 @@ export interface JobConfig {
   /** Optional. Job settings. */
   settings?: JobSettings;
 }
-const JobConfig = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<JobConfig>;
-
 export type JobConfigList = Array<JobConfig>;
-const JobConfigList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<JobConfigList>;
-
 /** SessionConfig is used to create a session. */
 export interface SessionConfig {
   /** Optional. Notification config for the session. */
@@ -742,8 +517,6 @@ export interface SessionConfig {
   /** Required. Configs of the jobs in the session. */
   jobConfigs?: JobConfigList;
 }
-const SessionConfig = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SessionConfig>;
-
 /** A session resource in the AutomationSession API. At a high level, `Session` describes the configuration of one or multiple jobs, the state transitions it goes through, and the results. */
 export interface Session {
   /** Output only. The runtime information and result report of the session. */
@@ -753,8 +526,6 @@ export interface Session {
   /** Required. Configuration used to create the session. */
   sessionConfig?: SessionConfig;
 }
-const Session = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<Session>;
-
 export interface CreateProjectsLocationsSessionsRequest {
   /** Required. The parent resource where this session will be created. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -765,17 +536,8 @@ export interface CreateProjectsLocationsSessionsRequest {
   /** Request body */
   body?: Session;
 }
-const CreateProjectsLocationsSessionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateProjectsLocationsSessionsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -785,8 +547,6 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -800,40 +560,20 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsSessionsRequest {
   /** Required. The name of the session. Format: `projects/{project}/locations/{location}/sessions/{session}`. */
   name: string;
   /** Optional. A unique identifier for this request. This request is only idempotent if a `request_id` is provided, i.e. if a request with the same `request_id` is received, then the previous result will be returned. The server will guarantee that for at least 60 minutes after the first request. The value must be a UUID (e.g., 123e4567-e89b-12d3-a456-426655440000). See github.com/google/uuid for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsSessionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsSessionsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -847,17 +587,10 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsDevicesRequest {
   /** Required. The name of the device. Format: `projects/{project}/locations/global/devices/{device}`. */
   name: string;
 }
-const GetProjectsLocationsDevicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetProjectsLocationsDevicesRequest>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Devicerun_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -867,11 +600,7 @@ export interface Devicerun_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Devicerun_Date = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Devicerun_Date>;
-
 export type CatalogLifecycleStateEnum = "STATE_UNSPECIFIED" | "PREVIEW" | "ACTIVE" | "DEPRECATED";
-const CatalogLifecycleStateEnum = S.String;
-
 /** Catalog resource lifecycle: maturity state plus key lifecycle dates. */
 export interface CatalogLifecycle {
   /** Output only. Specifies the date the resource is scheduled to be removed from the catalog. Only set when `state == DEPRECATED`. */
@@ -879,20 +608,11 @@ export interface CatalogLifecycle {
   /** Output only. Specifies the current maturity state of the resource. */
   state?: CatalogLifecycleStateEnum;
 }
-const CatalogLifecycle = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<CatalogLifecycle>;
-
 export type CatalogDeviceAccessDeniedReasonsItemEnum =
   | "ACCESS_DENIED_REASON_UNSPECIFIED"
   | "EULA_NOT_ACCEPTED";
-const CatalogDeviceAccessDeniedReasonsItemEnum = S.String;
-
 export type CatalogDeviceAccessDeniedReasonsItemEnumList =
   Array<CatalogDeviceAccessDeniedReasonsItemEnum>;
-const CatalogDeviceAccessDeniedReasonsItemEnumList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CatalogDeviceAccessDeniedReasonsItemEnumList>;
-
 /** Android-specific device attributes. */
 export interface CatalogAndroidDeviceDetails {
   /** Output only. Mirrors the AOSP `ro.build.type` property, e.g. "user", "userdebug", "eng". Empty if unknown. */
@@ -900,11 +620,6 @@ export interface CatalogAndroidDeviceDetails {
   /** Output only. Lists ABIs supported by the device (android.os.Build.SUPPORTED_ABIS), most preferred first, e.g. "arm64-v8a". */
   supportedAbis?: StringList;
 }
-const CatalogAndroidDeviceDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CatalogAndroidDeviceDetails>;
-
 /** Per-product metadata for the Automation (DeviceRun) product. */
 export type CatalogAutomationSupport = GoogleLongrunningCancelOperationRequest;
 /** Per-product metadata for the DeviceStreaming product. */
@@ -912,11 +627,6 @@ export interface CatalogDeviceStreamingSupport {
   /** Output only. Specifies the minimum Android Studio version that supports this device. Optional; only set when the device is known to work only at or above a certain Android Studio version. Expected format "major.minor.micro.patch", e.g. "5921.22.2211.8881706". */
   minimumAndroidStudioVersion?: string;
 }
-const CatalogDeviceStreamingSupport = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CatalogDeviceStreamingSupport>;
-
 /** Declares that a device supports a given Device Cloud product, with optional per-product metadata. Discriminated by which product-specific message is set; adding a new product = new oneof arm + new per-product message. */
 export interface CatalogSupportedProduct {
   /** Output only. Represents Automation, which is DeviceRun-backed automated test execution. */
@@ -924,17 +634,7 @@ export interface CatalogSupportedProduct {
   /** Output only. Represents DeviceStreaming, which is interactive remote device streaming. */
   deviceStreaming?: CatalogDeviceStreamingSupport;
 }
-const CatalogSupportedProduct = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CatalogSupportedProduct>;
-
 export type CatalogSupportedProductList = Array<CatalogSupportedProduct>;
-const CatalogSupportedProductList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CatalogSupportedProductList>;
-
 /** iOS-specific device attributes. Reserved for future iOS-only fields. */
 export type CatalogIosDeviceDetails = GoogleLongrunningCancelOperationRequest;
 /** Screen measurements of a device. */
@@ -946,33 +646,20 @@ export interface CatalogScreenMetrics {
   /** Output only. Width in pixels. */
   widthPx?: number;
 }
-const CatalogScreenMetrics = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CatalogScreenMetrics>;
-
 export type CatalogDevicePlatformEnum = "PLATFORM_UNSPECIFIED" | "ANDROID" | "IOS";
-const CatalogDevicePlatformEnum = S.String;
-
 export type CatalogDeviceHardwareTypeEnum = "HARDWARE_TYPE_UNSPECIFIED" | "PHYSICAL" | "VIRTUAL";
-const CatalogDeviceHardwareTypeEnum = S.String;
-
 export type CatalogDeviceAvailabilityAvailableEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABILITY_NONE"
   | "AVAILABILITY_LOW"
   | "AVAILABILITY_MEDIUM"
   | "AVAILABILITY_HIGH";
-const CatalogDeviceAvailabilityAvailableEnum = S.String;
-
 export type CatalogDeviceAvailabilityCapacityEnum =
   | "CAPACITY_UNSPECIFIED"
   | "CAPACITY_NONE"
   | "CAPACITY_LOW"
   | "CAPACITY_MEDIUM"
   | "CAPACITY_HIGH";
-const CatalogDeviceAvailabilityCapacityEnum = S.String;
-
 /** Fleet availability for a device configuration. */
 export interface CatalogDeviceAvailability {
   /** Output only. Specifies the current availability bucket (idle, immediately allocatable devices) for this device configuration. This is a best-effort snapshot, refreshed periodically. It fluctuates depending on traffic as other requests allocate devices. */
@@ -980,19 +667,12 @@ export interface CatalogDeviceAvailability {
   /** Output only. Specifies the current capacity bucket for this device configuration. Represents the total number of online devices (idle or in use). */
   capacity?: CatalogDeviceAvailabilityCapacityEnum;
 }
-const CatalogDeviceAvailability = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CatalogDeviceAvailability>;
-
 export type CatalogDeviceFormFactorEnum =
   | "FORM_FACTOR_UNSPECIFIED"
   | "PHONE"
   | "TABLET"
   | "WEARABLE"
   | "TV";
-const CatalogDeviceFormFactorEnum = S.String;
-
 /** The lab hosting a device. */
 export interface CatalogLabInfo {
   /** Output only. Display name of the lab where the device is hosted. If empty, the device is hosted in a Google owned lab. */
@@ -1000,8 +680,6 @@ export interface CatalogLabInfo {
   /** Output only. The Unicode country/region code (CLDR) of the lab where the device is hosted, e.g. "US" for United States, "KR" for South Korea. Empty when the hosting region is not published. */
   regionCode?: string;
 }
-const CatalogLabInfo = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<CatalogLabInfo>;
-
 /** A single routable device configuration in the catalog. */
 export interface CatalogDevice {
   /** Output only. Additional information. Informational only. May change over the lifecycle of a device. */
@@ -1039,56 +717,33 @@ export interface CatalogDevice {
   /** Output only. The lab hosting this device. */
   labInfo?: CatalogLabInfo;
 }
-const CatalogDevice = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<CatalogDevice>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export type GetProjectsLocationsSessionsViewEnum =
   | "SESSION_VIEW_UNSPECIFIED"
   | "SESSION_VIEW_BASIC"
   | "SESSION_VIEW_FULL";
-const GetProjectsLocationsSessionsViewEnum = S.String;
-
 export interface GetProjectsLocationsSessionsRequest {
   /** Required. The name of the session. Format: `projects/{project}/locations/{location}/sessions/{session}`. */
   name: string;
   /** Optional. The view of the session to return. If not set, the default BASIC view will be returned. */
   view?: GetProjectsLocationsSessionsViewEnum | (string & {});
 }
-const GetProjectsLocationsSessionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetProjectsLocationsSessionsRequest>;
-
 export interface GetProjectsLocationsSoftwareVersionsRequest {
   /** Required. The name of the software version. Format: `projects/{project}/locations/global/softwareVersions/{software_version}`. */
   name: string;
 }
-const GetProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetProjectsLocationsSoftwareVersionsRequest>;
-
 /** Xcode-specific attributes. */
 export interface CatalogXcodeDetails {
   /** Output only. Lists the iOS versions this Xcode can run tests against, e.g. "16.6". This is a property of the toolchain, so it says nothing about whether a device on that iOS version is available; list the `Device` collection to find out. */
   supportedIosVersions?: StringList;
 }
-const CatalogXcodeDetails = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<CatalogXcodeDetails>;
-
 export type CatalogSoftwareVersionSoftwareTypeEnum =
   | "SOFTWARE_TYPE_UNSPECIFIED"
   | "ANDROIDX_TEST_ORCHESTRATOR"
   | "XCODE";
-const CatalogSoftwareVersionSoftwareTypeEnum = S.String;
-
 /** AndroidX Test Orchestrator-specific attributes. Reserved for future orchestrator-only fields. */
 export type CatalogAndroidxTestOrchestratorDetails = GoogleLongrunningCancelOperationRequest;
 /** A single software version in the catalog. */
@@ -1110,11 +765,6 @@ export interface CatalogSoftwareVersion {
   /** Output only. Indicates whether the system uses this version when a request does not select one explicitly. Exactly one version per `software_type` is the default, and it may change over time. */
   isDefault?: boolean;
 }
-const CatalogSoftwareVersion = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CatalogSoftwareVersion>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -1127,14 +777,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1142,11 +785,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsDevicesRequest {
   /** Required. The parent of the collection of devices. Format: `projects/{project}/locations/global`. */
   parent: string;
@@ -1157,14 +795,7 @@ export interface ListProjectsLocationsDevicesRequest {
   /** Optional. An AIP-160 (https://google.aip.dev/160) filter expression restricting which devices are returned. An empty filter returns all devices. Filtering is supported over the `Device` fields, including nested fields via dot-path. Enum and string values must be double-quoted. Examples: * `platform = "ANDROID"` * `platform = "ANDROID" AND os_version = "34"` * `hardware_type = "PHYSICAL" AND form_factor = "PHONE"` * `android_details.build_type = "userdebug"` * `availability.capacity = "HIGH"` */
   filter?: string;
 }
-const ListProjectsLocationsDevicesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListProjectsLocationsDevicesRequest>;
-
 export type CatalogDeviceList = Array<CatalogDevice>;
-const CatalogDeviceList = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<CatalogDeviceList>;
-
 /** Response including listed devices. */
 export interface CatalogListDevicesResponse {
   /** Token to receive the next page of devices. This will be absent if the end of the response list has been reached. */
@@ -1172,11 +803,6 @@ export interface CatalogListDevicesResponse {
   /** The list of devices. */
   devices?: CatalogDeviceList;
 }
-const CatalogListDevicesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CatalogListDevicesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -1189,17 +815,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -1209,17 +825,10 @@ export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: GoogleLongrunningOperationList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export type ListProjectsLocationsSessionsViewEnum =
   | "SESSION_VIEW_UNSPECIFIED"
   | "SESSION_VIEW_BASIC"
   | "SESSION_VIEW_FULL";
-const ListProjectsLocationsSessionsViewEnum = S.String;
-
 export interface ListProjectsLocationsSessionsRequest {
   /** Required. Parent value for ListSessionsRequest The parent of the collection of sessions. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -1234,14 +843,7 @@ export interface ListProjectsLocationsSessionsRequest {
   /** Optional. A page token, received from a previous `ListSessions` call. Provide this to receive the subsequent page. When paginating, all other parameters provided to `ListSessions` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListProjectsLocationsSessionsRequest>;
-
 export type SessionList = Array<Session>;
-const SessionList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<SessionList>;
-
 /** Response including listed sessions. */
 export interface ListSessionsResponse {
   /** Unordered list. Sessions that could not be reached. */
@@ -1251,11 +853,6 @@ export interface ListSessionsResponse {
   /** The list of sessions. */
   sessions?: SessionList;
 }
-const ListSessionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListSessionsResponse>;
-
 export interface ListProjectsLocationsSoftwareVersionsRequest {
   /** Optional. The maximum number of software versions to return. The server may return fewer items than this value. */
   pageSize?: number;
@@ -1266,17 +863,7 @@ export interface ListProjectsLocationsSoftwareVersionsRequest {
   /** Required. The parent of the collection of software versions. Format: `projects/{project}/locations/global`. */
   parent: string;
 }
-const ListProjectsLocationsSoftwareVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListProjectsLocationsSoftwareVersionsRequest>;
-
 export type CatalogSoftwareVersionList = Array<CatalogSoftwareVersion>;
-const CatalogSoftwareVersionList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CatalogSoftwareVersionList>;
-
 /** Response including listed software versions. */
 export interface CatalogListSoftwareVersionsResponse {
   /** The list of software versions. */
@@ -1284,11 +871,6 @@ export interface CatalogListSoftwareVersionsResponse {
   /** Token to receive the next page of software versions. This will be absent if the end of the response list has been reached. */
   nextPageToken?: string;
 }
-const CatalogListSoftwareVersionsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CatalogListSoftwareVersionsResponse>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1302,8 +884,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1322,8 +904,8 @@ export const cancelProjectsLocationsSessions: API.OperationMethod<
   CancelProjectsLocationsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsSessionsRequest,
-  output: CancelSessionResponse,
+  input: __S(3) as any as S.Schema<CancelProjectsLocationsSessionsRequest>,
+  output: __S(4) as any as S.Schema<CancelSessionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1342,8 +924,8 @@ export const createProjectsLocationsSessions: API.OperationMethod<
   CreateProjectsLocationsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSessionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(63) as any as S.Schema<CreateProjectsLocationsSessionsRequest>,
+  output: __S(67) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1362,8 +944,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(68) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(2) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1382,8 +964,8 @@ export const deleteProjectsLocationsSessions: API.OperationMethod<
   DeleteProjectsLocationsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSessionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(69) as any as S.Schema<DeleteProjectsLocationsSessionsRequest>,
+  output: __S(67) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1397,8 +979,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(70) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(71) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1412,8 +994,8 @@ export const getProjectsLocationsDevices: API.OperationMethod<
   GetProjectsLocationsDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDevicesRequest,
-  output: CatalogDevice,
+  input: __S(72) as any as S.Schema<GetProjectsLocationsDevicesRequest>,
+  output: __S(83) as any as S.Schema<CatalogDevice>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1427,8 +1009,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(84) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(67) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1442,8 +1024,8 @@ export const getProjectsLocationsSessions: API.OperationMethod<
   GetProjectsLocationsSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSessionsRequest,
-  output: Session,
+  input: __S(85) as any as S.Schema<GetProjectsLocationsSessionsRequest>,
+  output: __S(62) as any as S.Schema<Session>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1457,8 +1039,8 @@ export const getProjectsLocationsSoftwareVersions: API.OperationMethod<
   GetProjectsLocationsSoftwareVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSoftwareVersionsRequest,
-  output: CatalogSoftwareVersion,
+  input: __S(86) as any as S.Schema<GetProjectsLocationsSoftwareVersionsRequest>,
+  output: __S(88) as any as S.Schema<CatalogSoftwareVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1473,8 +1055,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(89) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(91) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1072,8 @@ export const listProjectsLocationsDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   CatalogListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDevicesRequest,
-  output: CatalogListDevicesResponse,
+  input: __S(92) as any as S.Schema<ListProjectsLocationsDevicesRequest>,
+  output: __S(94) as any as S.Schema<CatalogListDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1507,8 +1089,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(95) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(97) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1524,8 +1106,8 @@ export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSessionsRequest,
-  output: ListSessionsResponse,
+  input: __S(98) as any as S.Schema<ListProjectsLocationsSessionsRequest>,
+  output: __S(100) as any as S.Schema<ListSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1541,8 +1123,8 @@ export const listProjectsLocationsSoftwareVersions: API.PaginatedOperationMethod
   GcpOpContext,
   CatalogListSoftwareVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSoftwareVersionsRequest,
-  output: CatalogListSoftwareVersionsResponse,
+  input: __S(101) as any as S.Schema<ListProjectsLocationsSoftwareVersionsRequest>,
+  output: __S(103) as any as S.Schema<CatalogListSoftwareVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1560,7 +1142,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1579,7 +1161,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1593,7 +1175,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cancelResult: S.optional(CancelSessionResponseCancelResultEnum),
+          cancelResult: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancelSessionResponse" });
     case 5:
@@ -1601,8 +1183,8 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          progressMessages: S.optional(StringList),
-          statusType: S.optional(StatusStatusTypeEnum),
+          progressMessages: S.optional(__S(5)),
+          statusType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
@@ -1610,7 +1192,7 @@ function __c0(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           reason: S.optional(S.String),
-          type: S.optional(IssueSummaryTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssueSummary" });
   }
@@ -1620,20 +1202,20 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(IssueSummary),
+          summary: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "ResultCause" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cause: S.optional(ResultCause),
-          resultType: S.optional(ResultResultTypeEnum),
+          cause: S.optional(__S(8)),
+          resultType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Result" });
     case 2:
       return S.Record(S.String, S.String);
     case 3:
-      return S.Array(Warning);
+      return S.Array(__S(8));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1643,21 +1225,21 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          gcsOutputFile: S.optional(GcsPath),
+          gcsOutputFile: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "OutputFile" });
     case 6:
-      return S.Array(OutputFile);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(Status),
-          result: S.optional(Result),
+          status: S.optional(__S(6)),
+          result: S.optional(__S(9)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
-          warnings: S.optional(WarningList),
+          warnings: S.optional(__S(11)),
           displayName: S.optional(S.String),
-          outputFiles: S.optional(OutputFileList),
+          outputFiles: S.optional(__S(14)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionReport" });
@@ -1666,39 +1248,39 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExecutionReport);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          labels: S.optional(StringMap),
-          warnings: S.optional(WarningList),
-          status: S.optional(Status),
+          labels: S.optional(__S(10)),
+          warnings: S.optional(__S(11)),
+          status: S.optional(__S(6)),
           id: S.optional(S.String),
           endTime: S.optional(S.String),
-          outputFiles: S.optional(OutputFileList),
+          outputFiles: S.optional(__S(14)),
           displayName: S.optional(S.String),
-          result: S.optional(Result),
-          executionReports: S.optional(ExecutionReportList),
+          result: S.optional(__S(9)),
+          executionReports: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "JobReport" });
     case 2:
-      return S.Array(JobReport);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          status: S.optional(Status),
-          result: S.optional(Result),
+          status: S.optional(__S(6)),
+          result: S.optional(__S(9)),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          jobReports: S.optional(JobReportList),
+          jobReports: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "SessionReport" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pubsubTopic: S.optional(StringList),
+          pubsubTopic: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "SessionConfigSessionNotificationConfig",
@@ -1707,7 +1289,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           flatDirectoryStructure: S.optional(S.Boolean),
-          gcsOutputDirectory: S.optional(GcsPath),
+          gcsOutputDirectory: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "SessionConfigSessionOutputFileDirectoryConfig",
@@ -1715,16 +1297,16 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gcsInputFile: S.optional(GcsPath),
+          gcsInputFile: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "InputFile" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(StringList),
+          args: S.optional(__S(5)),
           executionTimeout: S.optional(S.String),
-          androidNativeBinary: S.optional(InputFile),
-          envVars: S.optional(StringMap),
+          androidNativeBinary: S.optional(__S(22)),
+          envVars: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "AndroidNativeBinary" });
   }
@@ -1734,16 +1316,16 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          xctestrun: S.optional(InputFile),
+          xctestrun: S.optional(__S(22)),
           xcodeVersion: S.optional(S.String),
-          testsZip: S.optional(InputFile),
+          testsZip: S.optional(__S(22)),
           xcTestTimeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "IosXcTest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          timingRecord: S.optional(InputFile),
+          timingRecord: S.optional(__S(22)),
           maxShardCount: S.optional(S.Number),
           targetedShardDuration: S.optional(S.String),
         }),
@@ -1759,25 +1341,25 @@ function __c3(j: number): any {
         identifier: "AndroidInstrumentationTestUniformSharding",
       });
     case 3:
-      return S.Array(InputFile);
+      return S.Array(__S(22));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          files: S.optional(InputFileList),
+          files: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "AndroidInstallable" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          smartSharding: S.optional(AndroidInstrumentationTestSmartSharding),
+          smartSharding: S.optional(__S(25)),
           orchestratorVersion: S.optional(S.String),
-          testTargets: S.optional(StringList),
-          additionalTestOptions: S.optional(StringMap),
+          testTargets: S.optional(__S(5)),
+          additionalTestOptions: S.optional(__S(10)),
           testRunnerClass: S.optional(S.String),
           enableCodeCoverage: S.optional(S.Boolean),
-          uniformSharding: S.optional(AndroidInstrumentationTestUniformSharding),
+          uniformSharding: S.optional(__S(26)),
           instrumentationTimeout: S.optional(S.String),
-          testInstallable: S.optional(AndroidInstallable),
+          testInstallable: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "AndroidInstrumentationTest",
@@ -1785,13 +1367,13 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          androidNativeBinary: S.optional(AndroidNativeBinary),
-          iosXcTest: S.optional(IosXcTest),
-          androidInstrumentationTest: S.optional(AndroidInstrumentationTest),
+          androidNativeBinary: S.optional(__S(23)),
+          iosXcTest: S.optional(__S(24)),
+          androidInstrumentationTest: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "JobAction" });
     case 7:
-      return S.Array(AndroidInstallable);
+      return S.Array(__S(28));
   }
 }
 function __c4(j: number): any {
@@ -1799,10 +1381,10 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          installables: S.optional(AndroidInstallableList),
-          preTargetAppInstallables: S.optional(AndroidInstallableList),
-          targetApp: S.optional(AndroidInstallable),
-          postTargetAppInstallables: S.optional(AndroidInstallableList),
+          installables: S.optional(__S(31)),
+          preTargetAppInstallables: S.optional(__S(31)),
+          targetApp: S.optional(__S(28)),
+          postTargetAppInstallables: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "AndroidInstallPackagesDeviceAction",
@@ -1818,7 +1400,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          paths: S.optional(StringList),
+          paths: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "AndroidPullFilesDeviceAction",
@@ -1826,7 +1408,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipas: S.optional(InputFileList),
+          ipas: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "IosInstallPackagesDeviceAction",
@@ -1841,7 +1423,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          location: S.optional(LatLng),
+          location: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "AndroidMockLocationDeviceAction",
@@ -1879,17 +1461,17 @@ function __c5(j: number): any {
         S.Struct({
           destinationPath: S.optional(S.String),
           bundleId: S.optional(S.String),
-          sourceFile: S.optional(InputFile),
+          sourceFile: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "IosPushFilesDeviceActionFileConfig",
       });
     case 2:
-      return S.Array(IosPushFilesDeviceActionFileConfig);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fileConfigs: S.optional(IosPushFilesDeviceActionFileConfigList),
+          fileConfigs: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "IosPushFilesDeviceAction" });
     case 4:
@@ -1902,17 +1484,17 @@ function __c5(j: number): any {
         identifier: "IosPullFilesDeviceActionPathConfig",
       });
     case 5:
-      return S.Array(IosPullFilesDeviceActionPathConfig);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          paths: S.optional(IosPullFilesDeviceActionPathConfigList),
+          paths: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "IosPullFilesDeviceAction" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sourceFile: S.optional(InputFile),
+          sourceFile: S.optional(__S(22)),
           destinationPath: S.optional(S.String),
         }),
       ).annotate({
@@ -1923,11 +1505,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AndroidPushFilesDeviceActionFileConfig);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fileConfigs: S.optional(AndroidPushFilesDeviceActionFileConfigList),
+          fileConfigs: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "AndroidPushFilesDeviceAction",
@@ -1935,26 +1517,26 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          androidInstallPackages: S.optional(AndroidInstallPackagesDeviceAction),
-          androidBugreport: S.optional(AndroidBugreportDeviceAction),
-          androidPullFiles: S.optional(AndroidPullFilesDeviceAction),
-          androidDumpsys: S.optional(AndroidDumpsysDeviceAction),
-          iosInstallPackages: S.optional(IosInstallPackagesDeviceAction),
-          iosAppPrivacyReport: S.optional(GoogleLongrunningCancelOperationRequest),
-          androidLogcat: S.optional(GoogleLongrunningCancelOperationRequest),
-          androidMockLocation: S.optional(AndroidMockLocationDeviceAction),
-          iosSwitchLocale: S.optional(IosSwitchLocaleDeviceAction),
-          androidRecordVideo: S.optional(AndroidRecordVideoDeviceAction),
-          androidOrientation: S.optional(AndroidOrientationDeviceAction),
-          iosRecordVideo: S.optional(IosRecordVideoDeviceAction),
-          androidSwitchLocale: S.optional(AndroidSwitchLocaleDeviceAction),
-          iosPushFiles: S.optional(IosPushFilesDeviceAction),
-          iosPullFiles: S.optional(IosPullFilesDeviceAction),
-          androidPushFiles: S.optional(AndroidPushFilesDeviceAction),
+          androidInstallPackages: S.optional(__S(32)),
+          androidBugreport: S.optional(__S(33)),
+          androidPullFiles: S.optional(__S(34)),
+          androidDumpsys: S.optional(__S(33)),
+          iosInstallPackages: S.optional(__S(35)),
+          iosAppPrivacyReport: S.optional(__S(0)),
+          androidLogcat: S.optional(__S(0)),
+          androidMockLocation: S.optional(__S(37)),
+          iosSwitchLocale: S.optional(__S(38)),
+          androidRecordVideo: S.optional(__S(39)),
+          androidOrientation: S.optional(__S(40)),
+          iosRecordVideo: S.optional(__S(39)),
+          androidSwitchLocale: S.optional(__S(38)),
+          iosPushFiles: S.optional(__S(43)),
+          iosPullFiles: S.optional(__S(46)),
+          androidPushFiles: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "DeviceAction" });
     case 3:
-      return S.Array(DeviceAction);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1964,16 +1546,16 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(DeviceActionList),
-          requirement: S.optional(DeviceRequirement),
+          actions: S.optional(__S(51)),
+          requirement: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "DeviceConfig" });
     case 6:
-      return S.Array(DeviceConfig);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deviceConfigs: S.optional(DeviceConfigList),
+          deviceConfigs: S.optional(__S(54)),
         }),
       ).annotate({ identifier: "AllocationConfig" });
   }
@@ -1985,7 +1567,7 @@ function __c7(j: number): any {
         S.Struct({
           parallelRetry: S.optional(S.Boolean),
           flakyTestAttempts: S.optional(S.Number),
-          testReductionMode: S.optional(RetrySettingsFlakyTestRetryStrategyTestReductionModeEnum),
+          testReductionMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RetrySettingsFlakyTestRetryStrategy",
@@ -1993,42 +1575,42 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          flakyTestRetryStrategy: S.optional(RetrySettingsFlakyTestRetryStrategy),
+          flakyTestRetryStrategy: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "RetrySettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          retrySettings: S.optional(RetrySettings),
+          retrySettings: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "JobSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(JobAction),
-          allocationConfig: S.optional(AllocationConfig),
-          labels: S.optional(StringMap),
+          action: S.optional(__S(30)),
+          allocationConfig: S.optional(__S(55)),
+          labels: S.optional(__S(10)),
           displayName: S.optional(S.String),
-          settings: S.optional(JobSettings),
+          settings: S.optional(__S(58)),
         }),
       ).annotate({ identifier: "JobConfig" });
     case 4:
-      return S.Array(JobConfig);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          notificationConfig: S.optional(SessionConfigSessionNotificationConfig),
-          outputDirectoryConfig: S.optional(SessionConfigSessionOutputFileDirectoryConfig),
+          notificationConfig: S.optional(__S(20)),
+          outputDirectoryConfig: S.optional(__S(21)),
           displayName: S.optional(S.String),
-          jobConfigs: S.optional(JobConfigList),
+          jobConfigs: S.optional(__S(60)),
         }),
       ).annotate({ identifier: "SessionConfig" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sessionReport: S.optional(SessionReport),
+          sessionReport: S.optional(__S(19)),
           name: S.optional(S.String),
-          sessionConfig: S.optional(SessionConfig),
+          sessionConfig: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "Session" });
     case 7:
@@ -2037,7 +1619,7 @@ function __c7(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           sessionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Session.pipe(T.HttpBody())),
+          body: S.optional(__S(62).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2055,23 +1637,23 @@ function __c8(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(DocumentMap);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(65)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(GoogleRpcStatus),
+          error: S.optional(__S(66)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(64)),
+          metadata: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -2122,10 +1704,10 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(64)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -2158,17 +1740,17 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          removalDate: S.optional(Devicerun_Date),
-          state: S.optional(CatalogLifecycleStateEnum),
+          removalDate: S.optional(__S(73)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogLifecycle" });
     case 3:
-      return S.Array(CatalogDeviceAccessDeniedReasonsItemEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           buildType: S.optional(S.String),
-          supportedAbis: S.optional(StringList),
+          supportedAbis: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "CatalogAndroidDeviceDetails",
@@ -2184,12 +1766,12 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          automation: S.optional(GoogleLongrunningCancelOperationRequest),
-          deviceStreaming: S.optional(CatalogDeviceStreamingSupport),
+          automation: S.optional(__S(0)),
+          deviceStreaming: S.optional(__S(77)),
         }),
       ).annotate({ identifier: "CatalogSupportedProduct" });
     case 7:
-      return S.Array(CatalogSupportedProduct);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -2205,8 +1787,8 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          available: S.optional(CatalogDeviceAvailabilityAvailableEnum),
-          capacity: S.optional(CatalogDeviceAvailabilityCapacityEnum),
+          available: S.optional(S.String),
+          capacity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CatalogDeviceAvailability",
@@ -2221,23 +1803,23 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
-          lifecycle: S.optional(CatalogLifecycle),
-          accessDeniedReasons: S.optional(CatalogDeviceAccessDeniedReasonsItemEnumList),
-          androidDetails: S.optional(CatalogAndroidDeviceDetails),
-          supportedProducts: S.optional(CatalogSupportedProductList),
-          iosDetails: S.optional(GoogleLongrunningCancelOperationRequest),
-          primaryScreen: S.optional(CatalogScreenMetrics),
-          platform: S.optional(CatalogDevicePlatformEnum),
+          labels: S.optional(__S(10)),
+          lifecycle: S.optional(__S(74)),
+          accessDeniedReasons: S.optional(__S(75)),
+          androidDetails: S.optional(__S(76)),
+          supportedProducts: S.optional(__S(79)),
+          iosDetails: S.optional(__S(0)),
+          primaryScreen: S.optional(__S(80)),
+          platform: S.optional(S.String),
           manufacturer: S.optional(S.String),
           modelCode: S.optional(S.String),
-          hardwareType: S.optional(CatalogDeviceHardwareTypeEnum),
-          availability: S.optional(CatalogDeviceAvailability),
+          hardwareType: S.optional(S.String),
+          availability: S.optional(__S(81)),
           displayName: S.optional(S.String),
           osVersion: S.optional(S.String),
           name: S.optional(S.String),
-          formFactor: S.optional(CatalogDeviceFormFactorEnum),
-          labInfo: S.optional(CatalogLabInfo),
+          formFactor: S.optional(S.String),
+          labInfo: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "CatalogDevice" });
     case 4:
@@ -2258,7 +1840,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsSessionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2286,7 +1868,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          supportedIosVersions: S.optional(StringList),
+          supportedIosVersions: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "CatalogXcodeDetails" });
   }
@@ -2296,20 +1878,20 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          xcodeDetails: S.optional(CatalogXcodeDetails),
-          softwareType: S.optional(CatalogSoftwareVersionSoftwareTypeEnum),
+          xcodeDetails: S.optional(__S(87)),
+          softwareType: S.optional(S.String),
           name: S.optional(S.String),
-          androidxTestOrchestratorDetails: S.optional(GoogleLongrunningCancelOperationRequest),
+          androidxTestOrchestratorDetails: S.optional(__S(0)),
           version: S.optional(S.String),
           displayName: S.optional(S.String),
-          lifecycle: S.optional(CatalogLifecycle),
+          lifecycle: S.optional(__S(74)),
           isDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CatalogSoftwareVersion" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(5).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2325,11 +1907,11 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 2:
-      return S.Array(Location);
+      return S.Array(__S(71));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(90)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -2351,12 +1933,12 @@ function __c11(j: number): any {
         identifier: "ListProjectsLocationsDevicesRequest",
       });
     case 5:
-      return S.Array(CatalogDevice);
+      return S.Array(__S(83));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          devices: S.optional(CatalogDeviceList),
+          devices: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "CatalogListDevicesResponse",
@@ -2384,13 +1966,13 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(67));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(5)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(GoogleLongrunningOperationList),
+          operations: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -2399,7 +1981,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          view: S.optional(ListProjectsLocationsSessionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -2415,13 +1997,13 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsSessionsRequest",
       });
     case 3:
-      return S.Array(Session);
+      return S.Array(__S(62));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(5)),
           nextPageToken: S.optional(S.String),
-          sessions: S.optional(SessionList),
+          sessions: S.optional(__S(99)),
         }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 5:
@@ -2442,15 +2024,50 @@ function __c12(j: number): any {
         identifier: "ListProjectsLocationsSoftwareVersionsRequest",
       });
     case 6:
-      return S.Array(CatalogSoftwareVersion);
+      return S.Array(__S(88));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          softwareVersions: S.optional(CatalogSoftwareVersionList),
+          softwareVersions: S.optional(__S(102)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CatalogListSoftwareVersionsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

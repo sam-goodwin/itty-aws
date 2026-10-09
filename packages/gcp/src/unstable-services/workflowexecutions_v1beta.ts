@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,22 +66,12 @@ export class NotFound
 
 /** Request for the CancelExecution method. */
 export interface CancelExecutionRequest {}
-const CancelExecutionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelExecutionRequest>;
-
 export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution to be cancelled. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
   name: string;
   /** Request body */
   body?: CancelExecutionRequest;
 }
-const CancelProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsWorkflowsExecutionsRequest>;
-
 /** Represents a step of the workflow this execution is running. */
 export interface Step {
   /** Name of a step within the routine. */
@@ -87,24 +79,16 @@ export interface Step {
   /** Name of a routine within the workflow. */
   routine?: string;
 }
-const Step = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Step>;
-
 export type StepList = Array<Step>;
-const StepList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StepList>;
-
 /** Represents the current status of this execution. */
 export interface Status {
   /** A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step. */
   currentSteps?: StepList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 export type ExecutionCallLogLevelEnum =
   | "CALL_LOG_LEVEL_UNSPECIFIED"
   | "LOG_ALL_CALLS"
   | "LOG_ERRORS_ONLY";
-const ExecutionCallLogLevelEnum = S.String;
-
 export type ExecutionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -113,8 +97,6 @@ export type ExecutionStateEnum =
   | "CANCELLED"
   | "UNAVAILABLE"
   | "QUEUED";
-const ExecutionStateEnum = S.String;
-
 /** Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes. */
 export interface Position {
   /** The source code line number the current instruction was generated from. */
@@ -124,8 +106,6 @@ export interface Position {
   /** The source code column position (of the line) the current instruction was generated from. */
   column?: string;
 }
-const Position = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Position>;
-
 /** A single stack element (frame) where an error occurred. */
 export interface StackTraceElement {
   /** The step the error occurred at. */
@@ -135,21 +115,12 @@ export interface StackTraceElement {
   /** The source position information of the stack trace element. */
   position?: Position;
 }
-const StackTraceElement = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StackTraceElement>;
-
 export type StackTraceElementList = Array<StackTraceElement>;
-const StackTraceElementList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<StackTraceElementList>;
-
 /** A collection of stack elements (frames) where an error occurred. */
 export interface StackTrace {
   /** An array of stack elements. */
   elements?: StackTraceElementList;
 }
-const StackTrace = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StackTrace>;
-
 /** Error describes why the execution was abnormally terminated. */
 export interface Workflowexecutions_Error {
   /** Human-readable stack trace string. */
@@ -159,11 +130,6 @@ export interface Workflowexecutions_Error {
   /** Error message and data returned represented as a JSON string. */
   payload?: string;
 }
-const Workflowexecutions_Error = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<Workflowexecutions_Error>;
-
 /** A running instance of a [Workflow](/workflows/docs/reference/rest/v1beta/projects.locations.workflows). */
 export interface Execution {
   /** Output only. Status tracks the current steps and progress data of this execution. */
@@ -187,42 +153,26 @@ export interface Execution {
   /** Output only. The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`. */
   error?: Workflowexecutions_Error;
 }
-const Execution = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Execution>;
-
 export interface CreateProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the workflow for which an execution should be created. Format: projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the workflow will be used. */
   parent: string;
   /** Request body */
   body?: Execution;
 }
-const CreateProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProjectsLocationsWorkflowsExecutionsRequest>;
-
 export type GetProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-const GetProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
-
 export interface GetProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution to be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
   name: string;
   /** Optional. A view defining which fields should be filled in the returned execution. The API will default to the FULL view. */
   view?: GetProjectsLocationsWorkflowsExecutionsViewEnum | (string & {});
 }
-const GetProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetProjectsLocationsWorkflowsExecutionsRequest>;
-
 export type ListProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-const ListProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
-
 export interface ListProjectsLocationsWorkflowsExecutionsRequest {
   /** Maximum number of executions to return per call. Max supported value depends on the selected Execution view: it's 10000 for BASIC and 100 for FULL. The default value used if the field is not specified is 100, regardless of the selected view. Values greater than the max value will be coerced down to it. */
   pageSize?: number;
@@ -233,14 +183,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsRequest {
   /** Optional. A view defining which fields should be filled in the returned executions. The API will default to the BASIC view. */
   view?: ListProjectsLocationsWorkflowsExecutionsViewEnum | (string & {});
 }
-const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
-
 export type ExecutionList = Array<Execution>;
-const ExecutionList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ExecutionList>;
-
 /** Response for the ListExecutions method. */
 export interface ListExecutionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -248,11 +191,6 @@ export interface ListExecutionsResponse {
   /** The executions which match the request. */
   executions?: ExecutionList;
 }
-const ListExecutionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListExecutionsResponse>;
-
 export type CancelProjectsLocationsWorkflowsExecutionsError =
   | NotFound
   | Forbidden
@@ -266,8 +204,8 @@ export const cancelProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   CancelProjectsLocationsWorkflowsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsWorkflowsExecutionsRequest,
-  output: Execution,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsWorkflowsExecutionsRequest>,
+  output: __S(10) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -286,8 +224,8 @@ export const createProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   CreateProjectsLocationsWorkflowsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsWorkflowsExecutionsRequest,
-  output: Execution,
+  input: __S(11) as any as S.Schema<CreateProjectsLocationsWorkflowsExecutionsRequest>,
+  output: __S(10) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -301,8 +239,8 @@ export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
   GetProjectsLocationsWorkflowsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsWorkflowsExecutionsRequest,
-  output: Execution,
+  input: __S(12) as any as S.Schema<GetProjectsLocationsWorkflowsExecutionsRequest>,
+  output: __S(10) as any as S.Schema<Execution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -317,8 +255,8 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
   GcpOpContext,
   ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsWorkflowsExecutionsRequest,
-  output: ListExecutionsResponse,
+  input: __S(13) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>,
+  output: __S(15) as any as S.Schema<ListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -336,7 +274,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelExecutionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -355,11 +293,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Step" });
     case 3:
-      return S.Array(Step);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          currentSteps: S.optional(StepList),
+          currentSteps: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
@@ -375,11 +313,11 @@ function __c0(j: number): any {
         S.Struct({
           step: S.optional(S.String),
           routine: S.optional(S.String),
-          position: S.optional(Position),
+          position: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "StackTraceElement" });
     case 7:
-      return S.Array(StackTraceElement);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -387,37 +325,37 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(StackTraceElementList),
+          elements: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "StackTrace" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           context: S.optional(S.String),
-          stackTrace: S.optional(StackTrace),
+          stackTrace: S.optional(__S(8)),
           payload: S.optional(S.String),
         }),
       ).annotate({ identifier: "Workflowexecutions_Error" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(Status),
+          status: S.optional(__S(4)),
           workflowRevisionId: S.optional(S.String),
           result: S.optional(S.String),
           argument: S.optional(S.String),
-          callLogLevel: S.optional(ExecutionCallLogLevelEnum),
-          state: S.optional(ExecutionStateEnum),
+          callLogLevel: S.optional(S.String),
+          state: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           name: S.optional(S.String),
-          error: S.optional(Workflowexecutions_Error),
+          error: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "Execution" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Execution.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -432,7 +370,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsWorkflowsExecutionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -449,7 +387,7 @@ function __c1(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          view: S.optional(ListProjectsLocationsWorkflowsExecutionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -461,13 +399,26 @@ function __c1(j: number): any {
         identifier: "ListProjectsLocationsWorkflowsExecutionsRequest",
       });
     case 6:
-      return S.Array(Execution);
+      return S.Array(__S(10));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          executions: S.optional(ExecutionList),
+          executions: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "ListExecutionsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

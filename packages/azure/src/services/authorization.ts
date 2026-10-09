@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -18,8 +20,6 @@ export type RoleAssignmentPropertiesInputPrincipalType =
   | "Device"
   | "AgentUser"
   | "AgentServicePrincipal";
-const RoleAssignmentPropertiesInputPrincipalType = S.String;
-
 /** Role assignment properties. */
 export interface RoleAssignmentPropertiesInput {
   /** The role definition ID. */
@@ -37,11 +37,6 @@ export interface RoleAssignmentPropertiesInput {
   /** Id of the delegated managed identity resource */
   delegatedManagedIdentityResourceId?: string;
 }
-const RoleAssignmentPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<RoleAssignmentPropertiesInput>;
-
 export interface CreateRoleAssignmentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -50,19 +45,10 @@ export interface CreateRoleAssignmentRequest {
   /** Role assignment properties. */
   properties: RoleAssignmentPropertiesInput;
 }
-const CreateRoleAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRoleAssignmentRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -78,8 +64,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
-
 /** The principal type of the assigned principal ID. */
 export type RoleAssignmentPropertiesPrincipalType =
   | "User"
@@ -89,8 +73,6 @@ export type RoleAssignmentPropertiesPrincipalType =
   | "Device"
   | "AgentUser"
   | "AgentServicePrincipal";
-const RoleAssignmentPropertiesPrincipalType = S.String;
-
 /** Role assignment properties. */
 export interface RoleAssignmentProperties {
   /** The role assignment scope. */
@@ -118,11 +100,6 @@ export interface RoleAssignmentProperties {
   /** Id of the delegated managed identity resource */
   delegatedManagedIdentityResourceId?: string;
 }
-const RoleAssignmentProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<RoleAssignmentProperties>;
-
 export interface CreateRoleAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -135,22 +112,12 @@ export interface CreateRoleAssignmentResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const CreateRoleAssignmentResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateRoleAssignmentResponse>;
-
 export interface CreateRoleAssignmentByIdRequest {
   /** The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME> */
   roleAssignmentId: string;
   /** Role assignment properties. */
   properties: RoleAssignmentPropertiesInput;
 }
-const CreateRoleAssignmentByIdRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateRoleAssignmentByIdRequest>;
-
 export interface CreateRoleAssignmentByIdResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -163,9 +130,6 @@ export interface CreateRoleAssignmentByIdResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const CreateRoleAssignmentByIdResponse =
-  CreateRoleAssignmentResponse as any as S.Schema<CreateRoleAssignmentByIdResponse>;
-
 export interface DeleteRoleAssignmentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -174,11 +138,6 @@ export interface DeleteRoleAssignmentRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const DeleteRoleAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteRoleAssignmentRequest>;
-
 export interface DeleteRoleAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -191,20 +150,12 @@ export interface DeleteRoleAssignmentResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const DeleteRoleAssignmentResponse =
-  CreateRoleAssignmentResponse as any as S.Schema<DeleteRoleAssignmentResponse>;
-
 export interface DeleteRoleAssignmentByIdRequest {
   /** The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME> */
   roleAssignmentId: string;
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const DeleteRoleAssignmentByIdRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteRoleAssignmentByIdRequest>;
-
 export interface DeleteRoleAssignmentByIdResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -217,41 +168,20 @@ export interface DeleteRoleAssignmentByIdResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const DeleteRoleAssignmentByIdResponse =
-  CreateRoleAssignmentResponse as any as S.Schema<DeleteRoleAssignmentByIdResponse>;
-
 export interface DeleteRoleDefinitionRequest {
   /** The scope of the role definition. */
   scope: string;
   /** The ID of the role definition to delete. */
   roleDefinitionId: string;
 }
-const DeleteRoleDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteRoleDefinitionRequest>;
-
 /** Allowed actions. */
 export type PermissionActionsList = Array<string>;
-const PermissionActionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PermissionActionsList>;
-
 /** Denied actions. */
 export type PermissionNotActionsList = Array<string>;
-const PermissionNotActionsList = PermissionActionsList as any as S.Schema<PermissionNotActionsList>;
-
 /** Allowed Data actions. */
 export type PermissionDataActionsList = Array<string>;
-const PermissionDataActionsList =
-  PermissionActionsList as any as S.Schema<PermissionDataActionsList>;
-
 /** Denied Data actions. */
 export type PermissionNotDataActionsList = Array<string>;
-const PermissionNotDataActionsList =
-  PermissionActionsList as any as S.Schema<PermissionNotDataActionsList>;
-
 /** Role definition permissions. */
 export interface Permission {
   /** Allowed actions. */
@@ -263,20 +193,10 @@ export interface Permission {
   /** Denied Data actions. */
   notDataActions?: PermissionNotDataActionsList;
 }
-const Permission = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Permission>;
-
 /** Role definition permissions. */
 export type RoleDefinitionPropertiesPermissionsList = Array<Permission>;
-const RoleDefinitionPropertiesPermissionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RoleDefinitionPropertiesPermissionsList>;
-
 /** Role definition assignable scopes. */
 export type RoleDefinitionPropertiesAssignableScopesList = Array<string>;
-const RoleDefinitionPropertiesAssignableScopesList =
-  PermissionActionsList as any as S.Schema<RoleDefinitionPropertiesAssignableScopesList>;
-
 /** Role definition properties. */
 export interface RoleDefinitionProperties {
   /** The role name. */
@@ -298,11 +218,6 @@ export interface RoleDefinitionProperties {
   /** Id of the user who updated the assignment */
   updatedBy?: string;
 }
-const RoleDefinitionProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RoleDefinitionProperties>;
-
 /** Role definition. */
 export interface RoleDefinition {
   /** The role definition ID. */
@@ -314,39 +229,20 @@ export interface RoleDefinition {
   /** Role definition properties. */
   properties?: RoleDefinitionProperties;
 }
-const RoleDefinition = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RoleDefinition>;
-
 export interface GetDenyAssignmentRequest {
   /** The scope of the deny assignment. */
   scope: string;
   /** The ID of the deny assignment to get. */
   denyAssignmentId: string;
 }
-const GetDenyAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetDenyAssignmentRequest>;
-
 /** Actions to which the deny assignment does not grant access. */
 export type DenyAssignmentPermissionActionsList = Array<string>;
-const DenyAssignmentPermissionActionsList =
-  PermissionActionsList as any as S.Schema<DenyAssignmentPermissionActionsList>;
-
 /** Actions to exclude from that the deny assignment does not grant access. */
 export type DenyAssignmentPermissionNotActionsList = Array<string>;
-const DenyAssignmentPermissionNotActionsList =
-  PermissionActionsList as any as S.Schema<DenyAssignmentPermissionNotActionsList>;
-
 /** Data actions to which the deny assignment does not grant access. */
 export type DenyAssignmentPermissionDataActionsList = Array<string>;
-const DenyAssignmentPermissionDataActionsList =
-  PermissionActionsList as any as S.Schema<DenyAssignmentPermissionDataActionsList>;
-
 /** Data actions to exclude from that the deny assignment does not grant access. */
 export type DenyAssignmentPermissionNotDataActionsList = Array<string>;
-const DenyAssignmentPermissionNotDataActionsList =
-  PermissionActionsList as any as S.Schema<DenyAssignmentPermissionNotDataActionsList>;
-
 /** Deny assignment permissions. */
 export interface DenyAssignmentPermission {
   /** Actions to which the deny assignment does not grant access. */
@@ -362,18 +258,8 @@ export interface DenyAssignmentPermission {
   /** Version of the condition. */
   conditionVersion?: string;
 }
-const DenyAssignmentPermission = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DenyAssignmentPermission>;
-
 /** An array of permissions that are denied by the deny assignment. */
 export type DenyAssignmentPropertiesPermissionsList = Array<DenyAssignmentPermission>;
-const DenyAssignmentPropertiesPermissionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DenyAssignmentPropertiesPermissionsList>;
-
 /** The name of the entity last modified it */
 export interface DenyAssignmentPropertiesPrincipalsItem {
   /** The id of the principal made changes */
@@ -385,26 +271,13 @@ export interface DenyAssignmentPropertiesPrincipalsItem {
   /** Email of principal */
   email?: string;
 }
-const DenyAssignmentPropertiesPrincipalsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DenyAssignmentPropertiesPrincipalsItem>;
-
 /** Array of principals to which the deny assignment applies. */
 export type DenyAssignmentPropertiesPrincipalsList = Array<DenyAssignmentPropertiesPrincipalsItem>;
-const DenyAssignmentPropertiesPrincipalsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DenyAssignmentPropertiesPrincipalsList>;
-
 /** The name of the entity last modified it */
 export type DenyAssignmentPropertiesExcludePrincipalsItem = DenyAssignmentPropertiesPrincipalsItem;
 /** Array of principals to which the deny assignment does not apply. */
 export type DenyAssignmentPropertiesExcludePrincipalsList =
   Array<DenyAssignmentPropertiesPrincipalsItem>;
-const DenyAssignmentPropertiesExcludePrincipalsList =
-  DenyAssignmentPropertiesPrincipalsList as any as S.Schema<DenyAssignmentPropertiesExcludePrincipalsList>;
-
 /** Deny assignment properties. */
 export interface DenyAssignmentProperties {
   /** The display name of the deny assignment. */
@@ -436,11 +309,6 @@ export interface DenyAssignmentProperties {
   /** Id of the user who updated the assignment */
   updatedBy?: string;
 }
-const DenyAssignmentProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DenyAssignmentProperties>;
-
 /** Deny Assignment */
 export interface DenyAssignment {
   /** The deny assignment ID. */
@@ -452,28 +320,16 @@ export interface DenyAssignment {
   /** Deny assignment properties. */
   properties?: DenyAssignmentProperties;
 }
-const DenyAssignment = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DenyAssignment>;
-
 export interface GetDenyAssignmentByIdRequest {
   /** The fully qualified deny assignment ID. For example, use the format, /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for subscription level deny assignments, or /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for tenant level deny assignments. */
   denyAssignmentId: string;
 }
-const GetDenyAssignmentByIdRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetDenyAssignmentByIdRequest>;
-
 export interface GetProviderOperationsMetadataRequest {
   /** The namespace of the resource provider. */
   resourceProviderNamespace: string;
   /** Specifies whether to expand the values. */
   _expand?: string;
 }
-const GetProviderOperationsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetProviderOperationsMetadataRequest>;
-
 /** Operation */
 export interface ProviderOperation {
   /** The operation name. */
@@ -489,15 +345,8 @@ export interface ProviderOperation {
   /** The dataAction flag to specify the operation type. */
   isDataAction?: boolean;
 }
-const ProviderOperation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ProviderOperation>;
-
 /** The resource type operations. */
 export type ResourceTypeOperationsList = Array<ProviderOperation>;
-const ResourceTypeOperationsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ResourceTypeOperationsList>;
-
 /** Resource Type */
 export interface ResourceType {
   /** The resource type name. */
@@ -507,20 +356,10 @@ export interface ResourceType {
   /** The resource type operations. */
   operations?: ResourceTypeOperationsList;
 }
-const ResourceType = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ResourceType>;
-
 /** The provider resource types */
 export type GetProviderOperationsMetadataResponseResourceTypesList = Array<ResourceType>;
-const GetProviderOperationsMetadataResponseResourceTypesList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetProviderOperationsMetadataResponseResourceTypesList>;
-
 /** The provider operations. */
 export type GetProviderOperationsMetadataResponseOperationsList = Array<ProviderOperation>;
-const GetProviderOperationsMetadataResponseOperationsList =
-  ResourceTypeOperationsList as any as S.Schema<GetProviderOperationsMetadataResponseOperationsList>;
-
 export interface GetProviderOperationsMetadataResponse {
   /** The provider ID. */
   id?: string;
@@ -535,11 +374,6 @@ export interface GetProviderOperationsMetadataResponse {
   /** The provider operations. */
   operations?: GetProviderOperationsMetadataResponseOperationsList;
 }
-const GetProviderOperationsMetadataResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetProviderOperationsMetadataResponse>;
-
 export interface GetRoleAssignmentRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -548,11 +382,6 @@ export interface GetRoleAssignmentRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const GetRoleAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetRoleAssignmentRequest>;
-
 export interface GetRoleAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -565,20 +394,12 @@ export interface GetRoleAssignmentResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const GetRoleAssignmentResponse =
-  CreateRoleAssignmentResponse as any as S.Schema<GetRoleAssignmentResponse>;
-
 export interface GetRoleAssignmentByIdRequest {
   /** The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME> */
   roleAssignmentId: string;
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const GetRoleAssignmentByIdRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetRoleAssignmentByIdRequest>;
-
 export interface GetRoleAssignmentByIdResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -591,20 +412,12 @@ export interface GetRoleAssignmentByIdResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const GetRoleAssignmentByIdResponse =
-  CreateRoleAssignmentResponse as any as S.Schema<GetRoleAssignmentByIdResponse>;
-
 export interface GetRoleDefinitionRequest {
   /** The scope of the role definition. */
   scope: string;
   /** The ID of the role definition. */
   roleDefinitionId: string;
 }
-const GetRoleDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetRoleDefinitionRequest>;
-
 export interface ListDenyAssignmentForResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -621,18 +434,8 @@ export interface ListDenyAssignmentForResourceRequest {
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-const ListDenyAssignmentForResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListDenyAssignmentForResourceRequest>;
-
 /** Deny assignment list. */
 export type DenyAssignmentListResultValueList = Array<DenyAssignment>;
-const DenyAssignmentListResultValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DenyAssignmentListResultValueList>;
-
 /** Deny assignment list operation result. */
 export interface DenyAssignmentListResult {
   /** Deny assignment list. */
@@ -640,11 +443,6 @@ export interface DenyAssignmentListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const DenyAssignmentListResult = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DenyAssignmentListResult>;
-
 export interface ListDenyAssignmentForResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -653,33 +451,18 @@ export interface ListDenyAssignmentForResourceGroupRequest {
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-const ListDenyAssignmentForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListDenyAssignmentForResourceGroupRequest>;
-
 export interface ListDenyAssignmentForScopeRequest {
   /** The scope of the deny assignments. */
   scope: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-const ListDenyAssignmentForScopeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListDenyAssignmentForScopeRequest>;
-
 export interface ListDenyAssignmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-const ListDenyAssignmentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListDenyAssignmentsRequest>;
-
 export interface ListPermissionsForResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -694,16 +477,8 @@ export interface ListPermissionsForResourceRequest {
   /** The name of the resource to get the permissions for. */
   resourceName: string;
 }
-const ListPermissionsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListPermissionsForResourceRequest>;
-
 /** An array of permissions. */
 export type PermissionGetResultValueList = Array<Permission>;
-const PermissionGetResultValueList =
-  RoleDefinitionPropertiesPermissionsList as any as S.Schema<PermissionGetResultValueList>;
-
 /** Permissions information. */
 export interface PermissionGetResult {
   /** An array of permissions. */
@@ -711,28 +486,16 @@ export interface PermissionGetResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const PermissionGetResult = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PermissionGetResult>;
-
 export interface ListPermissionsForResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListPermissionsForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListPermissionsForResourceGroupRequest>;
-
 export interface ListProviderOperationsMetadataRequest {
   /** Specifies whether to expand the values. */
   _expand?: string;
 }
-const ListProviderOperationsMetadataRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListProviderOperationsMetadataRequest>;
-
 /** The provider resource types */
 export type ProviderOperationsMetadataResourceTypesList = Array<ResourceType>;
 /** The provider operations. */
@@ -752,16 +515,8 @@ export interface ProviderOperationsMetadata {
   /** The provider operations. */
   operations?: ProviderOperationsMetadataOperationsList;
 }
-const ProviderOperationsMetadata =
-  GetProviderOperationsMetadataResponse as any as S.Schema<ProviderOperationsMetadata>;
-
 /** The ProviderOperationsMetadata items on this page */
 export type ProviderOperationsMetadataListResultValueList = Array<ProviderOperationsMetadata>;
-const ProviderOperationsMetadataListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ProviderOperationsMetadataListResultValueList>;
-
 /** The response of a ProviderOperationsMetadata list operation. */
 export interface ProviderOperationsMetadataListResult {
   /** The ProviderOperationsMetadata items on this page */
@@ -769,11 +524,6 @@ export interface ProviderOperationsMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ProviderOperationsMetadataListResult = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ProviderOperationsMetadataListResult>;
-
 export interface ListRoleAssignmentForResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -790,11 +540,6 @@ export interface ListRoleAssignmentForResourceRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const ListRoleAssignmentForResourceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListRoleAssignmentForResourceRequest>;
-
 /** Role Assignments */
 export interface RoleAssignment {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -808,15 +553,8 @@ export interface RoleAssignment {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-const RoleAssignment = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<RoleAssignment>;
-
 /** The RoleAssignment items on this page */
 export type RoleAssignmentListResultValueList = Array<RoleAssignment>;
-const RoleAssignmentListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<RoleAssignmentListResultValueList>;
-
 /** Role assignment list operation result. */
 export interface RoleAssignmentListResult {
   /** The RoleAssignment items on this page */
@@ -824,11 +562,6 @@ export interface RoleAssignmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const RoleAssignmentListResult = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<RoleAssignmentListResult>;
-
 export interface ListRoleAssignmentForResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -839,11 +572,6 @@ export interface ListRoleAssignmentForResourceGroupRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const ListRoleAssignmentForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListRoleAssignmentForResourceGroupRequest>;
-
 export interface ListRoleAssignmentForScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -854,11 +582,6 @@ export interface ListRoleAssignmentForScopeRequest {
   /** The skipToken to apply on the operation. Use $skipToken={skiptoken} to return paged role assignments following the skipToken passed. Only supported on provider level calls. */
   _skipToken?: string;
 }
-const ListRoleAssignmentForScopeRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListRoleAssignmentForScopeRequest>;
-
 export interface ListRoleAssignmentForSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -867,29 +590,14 @@ export interface ListRoleAssignmentForSubscriptionRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-const ListRoleAssignmentForSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListRoleAssignmentForSubscriptionRequest>;
-
 export interface ListRoleDefinitionsRequest {
   /** The scope of the role definition. */
   scope: string;
   /** The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well. */
   _filter?: string;
 }
-const ListRoleDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListRoleDefinitionsRequest>;
-
 /** Role definition list. */
 export type RoleDefinitionListResultValueList = Array<RoleDefinition>;
-const RoleDefinitionListResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<RoleDefinitionListResultValueList>;
-
 /** Role definition list operation result. */
 export interface RoleDefinitionListResult {
   /** Role definition list. */
@@ -897,21 +605,10 @@ export interface RoleDefinitionListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const RoleDefinitionListResult = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<RoleDefinitionListResult>;
-
 /** Role definition permissions. */
 export type RoleDefinitionPropertiesInputPermissionsList = Array<Permission>;
-const RoleDefinitionPropertiesInputPermissionsList =
-  RoleDefinitionPropertiesPermissionsList as any as S.Schema<RoleDefinitionPropertiesInputPermissionsList>;
-
 /** Role definition assignable scopes. */
 export type RoleDefinitionPropertiesInputAssignableScopesList = Array<string>;
-const RoleDefinitionPropertiesInputAssignableScopesList =
-  PermissionActionsList as any as S.Schema<RoleDefinitionPropertiesInputAssignableScopesList>;
-
 /** Role definition properties. */
 export interface RoleDefinitionPropertiesInput {
   /** The role name. */
@@ -925,11 +622,6 @@ export interface RoleDefinitionPropertiesInput {
   /** Role definition assignable scopes. */
   assignableScopes?: RoleDefinitionPropertiesInputAssignableScopesList;
 }
-const RoleDefinitionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<RoleDefinitionPropertiesInput>;
-
 export interface RoleDefinitionsCreateOrUpdateRequest {
   /** The scope of the role definition. */
   scope: string;
@@ -938,11 +630,6 @@ export interface RoleDefinitionsCreateOrUpdateRequest {
   /** Role definition properties. */
   properties?: RoleDefinitionPropertiesInput;
 }
-const RoleDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<RoleDefinitionsCreateOrUpdateRequest>;
-
 export type CreateRoleAssignmentError = AzureOpError;
 /** Create or update a role assignment by scope and name. */
 export const CreateRoleAssignment: API.OperationMethod<
@@ -951,8 +638,8 @@ export const CreateRoleAssignment: API.OperationMethod<
   CreateRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRoleAssignmentRequest,
-  output: CreateRoleAssignmentResponse,
+  input: __S(1) as any as S.Schema<CreateRoleAssignmentRequest>,
+  output: __S(4) as any as S.Schema<CreateRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -966,8 +653,8 @@ export const CreateRoleAssignmentById: API.OperationMethod<
   CreateRoleAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRoleAssignmentByIdRequest,
-  output: CreateRoleAssignmentByIdResponse,
+  input: __S(5) as any as S.Schema<CreateRoleAssignmentByIdRequest>,
+  output: __S(4) as any as S.Schema<CreateRoleAssignmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -981,8 +668,8 @@ export const DeleteRoleAssignment: API.OperationMethod<
   DeleteRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoleAssignmentRequest,
-  output: DeleteRoleAssignmentResponse,
+  input: __S(6) as any as S.Schema<DeleteRoleAssignmentRequest>,
+  output: __S(4) as any as S.Schema<DeleteRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -996,8 +683,8 @@ export const DeleteRoleAssignmentById: API.OperationMethod<
   DeleteRoleAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoleAssignmentByIdRequest,
-  output: DeleteRoleAssignmentByIdResponse,
+  input: __S(7) as any as S.Schema<DeleteRoleAssignmentByIdRequest>,
+  output: __S(4) as any as S.Schema<DeleteRoleAssignmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1011,8 +698,8 @@ export const DeleteRoleDefinition: API.OperationMethod<
   DeleteRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoleDefinitionRequest,
-  output: RoleDefinition,
+  input: __S(8) as any as S.Schema<DeleteRoleDefinitionRequest>,
+  output: __S(13) as any as S.Schema<RoleDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1026,8 +713,8 @@ export const GetDenyAssignment: API.OperationMethod<
   GetDenyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDenyAssignmentRequest,
-  output: DenyAssignment,
+  input: __S(14) as any as S.Schema<GetDenyAssignmentRequest>,
+  output: __S(20) as any as S.Schema<DenyAssignment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1041,8 +728,8 @@ export const GetDenyAssignmentById: API.OperationMethod<
   GetDenyAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDenyAssignmentByIdRequest,
-  output: DenyAssignment,
+  input: __S(21) as any as S.Schema<GetDenyAssignmentByIdRequest>,
+  output: __S(20) as any as S.Schema<DenyAssignment>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1056,8 +743,8 @@ export const GetProviderOperationsMetadata: API.OperationMethod<
   GetProviderOperationsMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProviderOperationsMetadataRequest,
-  output: GetProviderOperationsMetadataResponse,
+  input: __S(22) as any as S.Schema<GetProviderOperationsMetadataRequest>,
+  output: __S(27) as any as S.Schema<GetProviderOperationsMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1071,8 +758,8 @@ export const GetRoleAssignment: API.OperationMethod<
   GetRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleAssignmentRequest,
-  output: GetRoleAssignmentResponse,
+  input: __S(28) as any as S.Schema<GetRoleAssignmentRequest>,
+  output: __S(4) as any as S.Schema<GetRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1086,8 +773,8 @@ export const GetRoleAssignmentById: API.OperationMethod<
   GetRoleAssignmentByIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleAssignmentByIdRequest,
-  output: GetRoleAssignmentByIdResponse,
+  input: __S(29) as any as S.Schema<GetRoleAssignmentByIdRequest>,
+  output: __S(4) as any as S.Schema<GetRoleAssignmentByIdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1101,8 +788,8 @@ export const GetRoleDefinition: API.OperationMethod<
   GetRoleDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleDefinitionRequest,
-  output: RoleDefinition,
+  input: __S(30) as any as S.Schema<GetRoleDefinitionRequest>,
+  output: __S(13) as any as S.Schema<RoleDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1116,8 +803,8 @@ export const ListDenyAssignmentForResource: API.OperationMethod<
   ListDenyAssignmentForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDenyAssignmentForResourceRequest,
-  output: DenyAssignmentListResult,
+  input: __S(31) as any as S.Schema<ListDenyAssignmentForResourceRequest>,
+  output: __S(33) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1131,8 +818,8 @@ export const ListDenyAssignmentForResourceGroup: API.OperationMethod<
   ListDenyAssignmentForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDenyAssignmentForResourceGroupRequest,
-  output: DenyAssignmentListResult,
+  input: __S(34) as any as S.Schema<ListDenyAssignmentForResourceGroupRequest>,
+  output: __S(33) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1146,8 +833,8 @@ export const ListDenyAssignmentForScope: API.OperationMethod<
   ListDenyAssignmentForScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDenyAssignmentForScopeRequest,
-  output: DenyAssignmentListResult,
+  input: __S(35) as any as S.Schema<ListDenyAssignmentForScopeRequest>,
+  output: __S(33) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1161,8 +848,8 @@ export const ListDenyAssignments: API.OperationMethod<
   ListDenyAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDenyAssignmentsRequest,
-  output: DenyAssignmentListResult,
+  input: __S(36) as any as S.Schema<ListDenyAssignmentsRequest>,
+  output: __S(33) as any as S.Schema<DenyAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1176,8 +863,8 @@ export const ListPermissionsForResource: API.OperationMethod<
   ListPermissionsForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPermissionsForResourceRequest,
-  output: PermissionGetResult,
+  input: __S(37) as any as S.Schema<ListPermissionsForResourceRequest>,
+  output: __S(38) as any as S.Schema<PermissionGetResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1191,8 +878,8 @@ export const ListPermissionsForResourceGroup: API.OperationMethod<
   ListPermissionsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPermissionsForResourceGroupRequest,
-  output: PermissionGetResult,
+  input: __S(39) as any as S.Schema<ListPermissionsForResourceGroupRequest>,
+  output: __S(38) as any as S.Schema<PermissionGetResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1206,8 +893,8 @@ export const ListProviderOperationsMetadata: API.OperationMethod<
   ListProviderOperationsMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProviderOperationsMetadataRequest,
-  output: ProviderOperationsMetadataListResult,
+  input: __S(40) as any as S.Schema<ListProviderOperationsMetadataRequest>,
+  output: __S(42) as any as S.Schema<ProviderOperationsMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1221,8 +908,8 @@ export const ListRoleAssignmentForResource: API.OperationMethod<
   ListRoleAssignmentForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleAssignmentForResourceRequest,
-  output: RoleAssignmentListResult,
+  input: __S(43) as any as S.Schema<ListRoleAssignmentForResourceRequest>,
+  output: __S(46) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1236,8 +923,8 @@ export const ListRoleAssignmentForResourceGroup: API.OperationMethod<
   ListRoleAssignmentForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleAssignmentForResourceGroupRequest,
-  output: RoleAssignmentListResult,
+  input: __S(47) as any as S.Schema<ListRoleAssignmentForResourceGroupRequest>,
+  output: __S(46) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1251,8 +938,8 @@ export const ListRoleAssignmentForScope: API.OperationMethod<
   ListRoleAssignmentForScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleAssignmentForScopeRequest,
-  output: RoleAssignmentListResult,
+  input: __S(48) as any as S.Schema<ListRoleAssignmentForScopeRequest>,
+  output: __S(46) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1266,8 +953,8 @@ export const ListRoleAssignmentForSubscription: API.OperationMethod<
   ListRoleAssignmentForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleAssignmentForSubscriptionRequest,
-  output: RoleAssignmentListResult,
+  input: __S(49) as any as S.Schema<ListRoleAssignmentForSubscriptionRequest>,
+  output: __S(46) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1281,8 +968,8 @@ export const ListRoleDefinitions: API.OperationMethod<
   ListRoleDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleDefinitionsRequest,
-  output: RoleDefinitionListResult,
+  input: __S(50) as any as S.Schema<ListRoleDefinitionsRequest>,
+  output: __S(52) as any as S.Schema<RoleDefinitionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1296,8 +983,8 @@ export const RoleDefinitionsCreateOrUpdate: API.OperationMethod<
   RoleDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RoleDefinitionsCreateOrUpdateRequest,
-  output: RoleDefinition,
+  input: __S(54) as any as S.Schema<RoleDefinitionsCreateOrUpdateRequest>,
+  output: __S(13) as any as S.Schema<RoleDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1311,7 +998,7 @@ function __c0(j: number): any {
         S.Struct({
           roleDefinitionId: S.String,
           principalId: S.String,
-          principalType: S.optional(RoleAssignmentPropertiesInputPrincipalType),
+          principalType: S.optional(S.String),
           description: S.optional(S.String),
           condition: S.optional(S.String),
           conditionVersion: S.optional(S.String),
@@ -1325,7 +1012,7 @@ function __c0(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           roleAssignmentName: S.String.pipe(T.Label()),
-          properties: RoleAssignmentPropertiesInput,
+          properties: __S(0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1341,10 +1028,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -1354,7 +1041,7 @@ function __c0(j: number): any {
           scope: S.optional(S.String),
           roleDefinitionId: S.String,
           principalId: S.String,
-          principalType: S.optional(RoleAssignmentPropertiesPrincipalType),
+          principalType: S.optional(S.String),
           description: S.optional(S.String),
           condition: S.optional(S.String),
           conditionVersion: S.optional(S.String),
@@ -1371,8 +1058,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RoleAssignmentProperties),
+          systemData: S.optional(__S(2)),
+          properties: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "CreateRoleAssignmentResponse",
@@ -1381,7 +1068,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           roleAssignmentId: S.String.pipe(T.Label()),
-          properties: RoleAssignmentPropertiesInput,
+          properties: __S(0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1451,22 +1138,22 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(PermissionActionsList),
-          notActions: S.optional(PermissionNotActionsList),
-          dataActions: S.optional(PermissionDataActionsList),
-          notDataActions: S.optional(PermissionNotDataActionsList),
+          actions: S.optional(__S(9)),
+          notActions: S.optional(__S(9)),
+          dataActions: S.optional(__S(9)),
+          notDataActions: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "Permission" });
     case 3:
-      return S.Array(Permission);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           roleName: S.optional(S.String),
           description: S.optional(S.String),
           type: S.optional(S.String),
-          permissions: S.optional(RoleDefinitionPropertiesPermissionsList),
-          assignableScopes: S.optional(RoleDefinitionPropertiesAssignableScopesList),
+          permissions: S.optional(__S(11)),
+          assignableScopes: S.optional(__S(9)),
           createdOn: S.optional(S.String),
           updatedOn: S.optional(S.String),
           createdBy: S.optional(S.String),
@@ -1479,7 +1166,7 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RoleDefinitionProperties),
+          properties: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "RoleDefinition" });
     case 6:
@@ -1499,10 +1186,10 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(DenyAssignmentPermissionActionsList),
-          notActions: S.optional(DenyAssignmentPermissionNotActionsList),
-          dataActions: S.optional(DenyAssignmentPermissionDataActionsList),
-          notDataActions: S.optional(DenyAssignmentPermissionNotDataActionsList),
+          actions: S.optional(__S(9)),
+          notActions: S.optional(__S(9)),
+          dataActions: S.optional(__S(9)),
+          notDataActions: S.optional(__S(9)),
           condition: S.optional(S.String),
           conditionVersion: S.optional(S.String),
         }),
@@ -1512,7 +1199,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DenyAssignmentPermission);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1525,17 +1212,17 @@ function __c2(j: number): any {
         identifier: "DenyAssignmentPropertiesPrincipalsItem",
       });
     case 2:
-      return S.Array(DenyAssignmentPropertiesPrincipalsItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           denyAssignmentName: S.optional(S.String),
           description: S.optional(S.String),
-          permissions: S.optional(DenyAssignmentPropertiesPermissionsList),
+          permissions: S.optional(__S(16)),
           scope: S.optional(S.String),
           doNotApplyToChildScopes: S.optional(S.Boolean),
-          principals: S.optional(DenyAssignmentPropertiesPrincipalsList),
-          excludePrincipals: S.optional(DenyAssignmentPropertiesExcludePrincipalsList),
+          principals: S.optional(__S(18)),
+          excludePrincipals: S.optional(__S(18)),
           isSystemProtected: S.optional(S.Boolean),
           condition: S.optional(S.String),
           conditionVersion: S.optional(S.String),
@@ -1551,7 +1238,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(DenyAssignmentProperties),
+          properties: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "DenyAssignment" });
     case 5:
@@ -1601,17 +1288,17 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProviderOperation);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          operations: S.optional(ResourceTypeOperationsList),
+          operations: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ResourceType" });
     case 2:
-      return S.Array(ResourceType);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1619,8 +1306,8 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           displayName: S.optional(S.String),
-          resourceTypes: S.optional(GetProviderOperationsMetadataResponseResourceTypesList),
-          operations: S.optional(GetProviderOperationsMetadataResponseOperationsList),
+          resourceTypes: S.optional(__S(26)),
+          operations: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "GetProviderOperationsMetadataResponse",
@@ -1696,11 +1383,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DenyAssignment);
+      return S.Array(__S(20));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(DenyAssignmentListResultValueList),
+          value: S.optional(__S(32)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DenyAssignmentListResult" });
@@ -1776,7 +1463,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PermissionGetResultValueList),
+          value: S.optional(__S(11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PermissionGetResult" });
@@ -1816,11 +1503,11 @@ function __c5(j: number): any {
         identifier: "ListProviderOperationsMetadataRequest",
       });
     case 1:
-      return S.Array(ProviderOperationsMetadata);
+      return S.Array(__S(27));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ProviderOperationsMetadataListResultValueList,
+          value: __S(41),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1853,16 +1540,16 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RoleAssignmentProperties),
+          systemData: S.optional(__S(2)),
+          properties: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "RoleAssignment" });
     case 5:
-      return S.Array(RoleAssignment);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: RoleAssignmentListResultValueList,
+          value: __S(45),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentListResult" });
@@ -1940,11 +1627,11 @@ function __c6(j: number): any {
         identifier: "ListRoleDefinitionsRequest",
       });
     case 3:
-      return S.Array(RoleDefinition);
+      return S.Array(__S(13));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RoleDefinitionListResultValueList),
+          value: S.optional(__S(51)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleDefinitionListResult" });
@@ -1954,8 +1641,8 @@ function __c6(j: number): any {
           roleName: S.optional(S.String),
           description: S.optional(S.String),
           type: S.optional(S.String),
-          permissions: S.optional(RoleDefinitionPropertiesInputPermissionsList),
-          assignableScopes: S.optional(RoleDefinitionPropertiesInputAssignableScopesList),
+          permissions: S.optional(__S(11)),
+          assignableScopes: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "RoleDefinitionPropertiesInput",
@@ -1965,7 +1652,7 @@ function __c6(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           roleDefinitionId: S.String.pipe(T.Label()),
-          properties: S.optional(RoleDefinitionPropertiesInput),
+          properties: S.optional(__S(53)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1977,5 +1664,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "RoleDefinitionsCreateOrUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

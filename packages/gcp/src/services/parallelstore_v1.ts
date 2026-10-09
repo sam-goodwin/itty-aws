@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,49 +66,27 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
-
 export type InstanceDirectoryStripeLevelEnum =
   | "DIRECTORY_STRIPE_LEVEL_UNSPECIFIED"
   | "DIRECTORY_STRIPE_LEVEL_MIN"
   | "DIRECTORY_STRIPE_LEVEL_BALANCED"
   | "DIRECTORY_STRIPE_LEVEL_MAX";
-const InstanceDirectoryStripeLevelEnum = S.String;
-
 export type InstanceFileStripeLevelEnum =
   | "FILE_STRIPE_LEVEL_UNSPECIFIED"
   | "FILE_STRIPE_LEVEL_MIN"
   | "FILE_STRIPE_LEVEL_BALANCED"
   | "FILE_STRIPE_LEVEL_MAX";
-const InstanceFileStripeLevelEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 export type InstanceDeploymentTypeEnum = "DEPLOYMENT_TYPE_UNSPECIFIED" | "SCRATCH" | "PERSISTENT";
-const InstanceDeploymentTypeEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
-
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -115,8 +95,6 @@ export type InstanceStateEnum =
   | "FAILED"
   | "UPGRADING"
   | "REPAIRING";
-const InstanceStateEnum = S.String;
-
 /** A Parallelstore instance. */
 export interface Instance {
   /** Optional. Immutable. The name of the Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. */
@@ -150,8 +128,6 @@ export interface Instance {
   /** Required. Immutable. The instance's storage capacity in Gibibytes (GiB). Allowed values are between 12000 and 100000, in multiples of 4000; e.g., 12000, 16000, 20000, ... */
   capacityGib?: string;
 }
-const Instance = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Instance>;
-
 export interface CreateProjectsLocationsInstancesRequest {
   /** Required. The instance's project and location, in the format `projects/{project}/locations/{location}`. Locations map to Google Cloud zones; for example, `us-west1-b`. */
   parent: string;
@@ -162,17 +138,8 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -182,8 +149,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -197,37 +162,19 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Name of the resource */
   name: string;
 }
-const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export type TransferMetadataOptionsGidEnum = "GID_UNSPECIFIED" | "GID_SKIP" | "GID_NUMBER_PRESERVE";
-const TransferMetadataOptionsGidEnum = S.String;
-
 export type TransferMetadataOptionsModeEnum = "MODE_UNSPECIFIED" | "MODE_SKIP" | "MODE_PRESERVE";
-const TransferMetadataOptionsModeEnum = S.String;
-
 export type TransferMetadataOptionsUidEnum = "UID_UNSPECIFIED" | "UID_SKIP" | "UID_NUMBER_PRESERVE";
-const TransferMetadataOptionsUidEnum = S.String;
-
 /** Transfer metadata options for the instance. */
 export interface TransferMetadataOptions {
   /** Optional. The GID preservation behavior. */
@@ -237,25 +184,16 @@ export interface TransferMetadataOptions {
   /** Optional. The UID preservation behavior. */
   uid?: TransferMetadataOptionsUidEnum | (string & {});
 }
-const TransferMetadataOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TransferMetadataOptions>;
-
 /** Parallelstore as the source of a data transfer. */
 export interface SourceParallelstore {
   /** Optional. Root directory path to the Paralellstore filesystem, starting with `/`. Defaults to `/` if unset. */
   path?: string;
 }
-const SourceParallelstore = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SourceParallelstore>;
-
 /** Cloud Storage as the destination of a data transfer. */
 export interface DestinationGcsBucket {
   /** Required. URI to a Cloud Storage bucket in the format: `gs:///`. The path inside the bucket is optional. */
   uri?: string;
 }
-const DestinationGcsBucket = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DestinationGcsBucket>;
-
 /** Export data from Parallelstore to Cloud Storage. */
 export interface ExportDataRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -269,28 +207,16 @@ export interface ExportDataRequest {
   /** Optional. User-specified Service Account (SA) credentials to be used when performing the transfer. Use one of the following formats: * `{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/{PROJECT_ID_OR_NUMBER}/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/-/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` If unspecified, the Parallelstore service agent is used: `service-@gcp-sa-parallelstore.iam.gserviceaccount.com` */
   serviceAccount?: string;
 }
-const ExportDataRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ExportDataRequest>;
-
 export interface ExportDataProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: ExportDataRequest;
 }
-const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ExportDataProjectsLocationsInstancesRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -304,26 +230,14 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. */
   name: string;
 }
-const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 /** Cloud Storage as the source of a data transfer. */
 export type SourceGcsBucket = DestinationGcsBucket;
 /** Parallelstore as the destination of a data transfer. */
@@ -341,19 +255,12 @@ export interface ImportDataRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const ImportDataRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ImportDataRequest>;
-
 export interface ImportDataProjectsLocationsInstancesRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: ImportDataRequest;
 }
-const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ImportDataProjectsLocationsInstancesRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -366,14 +273,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -381,11 +281,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsInstancesRequest {
   /** Required. The project and location for which to retrieve instance information, in the format `projects/{project_id}/locations/{location}`. To retrieve instance information for all locations, use "-" as the value of `{location}`. */
   parent: string;
@@ -398,14 +293,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Filtering results. */
   filter?: string;
 }
-const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
-
 export type InstanceList = Array<Instance>;
-const InstanceList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<InstanceList>;
-
 /** Response from ListInstances. */
 export interface ListInstancesResponse {
   /** Locations that could not be reached. */
@@ -415,11 +303,6 @@ export interface ListInstancesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListInstancesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -432,14 +315,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all resources across all supported locations. */
@@ -449,11 +325,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsInstancesRequest {
   /** Identifier. The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance_id}`. */
   name: string;
@@ -464,11 +335,6 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -482,8 +348,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -502,8 +368,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(5) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -522,8 +388,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(10) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -542,8 +408,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(11) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -562,8 +428,8 @@ export const exportDataProjectsLocationsInstances: API.OperationMethod<
   ExportDataProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportDataProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(16) as any as S.Schema<ExportDataProjectsLocationsInstancesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -577,8 +443,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(17) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(18) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -592,8 +458,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: Instance,
+  input: __S(19) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(4) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -607,8 +473,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(20) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -627,8 +493,8 @@ export const importDataProjectsLocationsInstances: API.OperationMethod<
   ImportDataProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDataProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(22) as any as S.Schema<ImportDataProjectsLocationsInstancesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +509,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(23) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(25) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -660,8 +526,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesRequest,
-  output: ListInstancesResponse,
+  input: __S(26) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(28) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -677,8 +543,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(29) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(31) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -698,8 +564,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(32) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
+  output: __S(9) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -716,7 +582,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -735,18 +601,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           network: S.optional(S.String),
-          directoryStripeLevel: S.optional(InstanceDirectoryStripeLevelEnum),
+          directoryStripeLevel: S.optional(S.String),
           reservedIpRange: S.optional(S.String),
           daosVersion: S.optional(S.String),
-          fileStripeLevel: S.optional(InstanceFileStripeLevelEnum),
-          accessPoints: S.optional(StringList),
+          fileStripeLevel: S.optional(S.String),
+          accessPoints: S.optional(__S(2)),
           description: S.optional(S.String),
-          deploymentType: S.optional(InstanceDeploymentTypeEnum),
+          deploymentType: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           effectiveReservedIpRange: S.optional(S.String),
           updateTime: S.optional(S.String),
-          state: S.optional(InstanceStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           capacityGib: S.optional(S.String),
         }),
@@ -757,7 +623,7 @@ function __c0(j: number): any {
           parent: S.String.pipe(T.Label()),
           instanceId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -771,7 +637,7 @@ function __c0(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -781,16 +647,16 @@ function __c1(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Status" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(6)),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(8)),
+          response: S.optional(__S(6)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -826,9 +692,9 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          gid: S.optional(TransferMetadataOptionsGidEnum),
-          mode: S.optional(TransferMetadataOptionsModeEnum),
-          uid: S.optional(TransferMetadataOptionsUidEnum),
+          gid: S.optional(S.String),
+          mode: S.optional(S.String),
+          uid: S.optional(S.String),
         }),
       ).annotate({ identifier: "TransferMetadataOptions" });
     case 5:
@@ -847,9 +713,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          metadataOptions: S.optional(TransferMetadataOptions),
-          sourceParallelstore: S.optional(SourceParallelstore),
-          destinationGcsBucket: S.optional(DestinationGcsBucket),
+          metadataOptions: S.optional(__S(12)),
+          sourceParallelstore: S.optional(__S(13)),
+          destinationGcsBucket: S.optional(__S(14)),
           serviceAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportDataRequest" });
@@ -861,7 +727,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExportDataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -889,9 +755,9 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(6)),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -927,9 +793,9 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sourceGcsBucket: S.optional(DestinationGcsBucket),
-          destinationParallelstore: S.optional(SourceParallelstore),
-          metadataOptions: S.optional(TransferMetadataOptions),
+          sourceGcsBucket: S.optional(__S(14)),
+          destinationParallelstore: S.optional(__S(13)),
+          metadataOptions: S.optional(__S(12)),
           serviceAccount: S.optional(S.String),
           requestId: S.optional(S.String),
         }),
@@ -938,7 +804,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ImportDataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -956,7 +822,7 @@ function __c2(j: number): any {
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -972,12 +838,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Location);
+      return S.Array(__S(18));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 2:
@@ -999,12 +865,12 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsInstancesRequest",
       });
     case 3:
-      return S.Array(Instance);
+      return S.Array(__S(4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          instances: S.optional(InstanceList),
+          unreachable: S.optional(__S(2)),
+          instances: S.optional(__S(27)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -1027,13 +893,13 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(9));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
@@ -1046,7 +912,7 @@ function __c4(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1057,5 +923,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsInstancesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

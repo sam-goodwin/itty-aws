@@ -6,16 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The resource tags. */
 export type AppsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const AppsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AppsCreateOrUpdateRequestTagsMap>;
-
 /** The properties of an IoT Central application. */
 export interface AppPropertiesInput {
   /** The display name of the application. */
@@ -25,32 +22,19 @@ export interface AppPropertiesInput {
   /** The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch. */
   template?: string;
 }
-const AppPropertiesInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AppPropertiesInput>;
-
 /** The name of the SKU. */
 export type AppSkuInfoName = "ST0" | "ST1" | "ST2";
-const AppSkuInfoName = S.String;
-
 /** Information about the SKU of the IoT Central application. */
 export interface AppSkuInfo {
   /** The name of the SKU. */
   name: AppSkuInfoName | (string & {});
 }
-const AppSkuInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AppSkuInfo>;
-
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
-const SystemAssignedServiceIdentityType = S.String;
-
 /** Managed service identity (either system assigned, or none) */
 export interface AppsCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
-const AppsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AppsCreateOrUpdateRequestIdentity>;
-
 export interface AppsCreateOrUpdateRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -69,20 +53,10 @@ export interface AppsCreateOrUpdateRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateRequestIdentity;
 }
-const AppsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AppsCreateOrUpdateRequest>;
-
 /** The resource tags. */
 export type AppsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const AppsCreateOrUpdateResponseTagsMap =
-  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<AppsCreateOrUpdateResponseTagsMap>;
-
 /** The current state of the application. */
 export type AppState = "created" | "suspended";
-const AppState = S.String;
-
 /** The properties of an IoT Central application. */
 export interface AppProperties {
   /** The ID of the application. */
@@ -96,8 +70,6 @@ export interface AppProperties {
   /** The current state of the application. */
   state?: AppState;
 }
-const AppProperties = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AppProperties>;
-
 /** Managed service identity (either system assigned, or none) */
 export interface AppsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -106,11 +78,6 @@ export interface AppsCreateOrUpdateResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
-const AppsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AppsCreateOrUpdateResponseIdentity>;
-
 export interface AppsCreateOrUpdateResponse {
   /** The ARM resource identifier. */
   id?: string;
@@ -129,11 +96,6 @@ export interface AppsCreateOrUpdateResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-const AppsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AppsCreateOrUpdateResponse>;
-
 export interface CheckAppNameAvailabilityRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -142,11 +104,6 @@ export interface CheckAppNameAvailabilityRequest {
   /** The type of the IoT Central resource to query. */
   type?: string;
 }
-const CheckAppNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CheckAppNameAvailabilityRequest>;
-
 /** The properties indicating whether a given IoT Central application name or subdomain is available. */
 export interface AppAvailabilityInfo {
   /** The value which indicates whether the provided name is available. */
@@ -156,8 +113,6 @@ export interface AppAvailabilityInfo {
   /** The detailed reason message. */
   message?: string;
 }
-const AppAvailabilityInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AppAvailabilityInfo>;
-
 export interface CheckAppSubdomainAvailabilityRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -166,11 +121,6 @@ export interface CheckAppSubdomainAvailabilityRequest {
   /** The type of the IoT Central resource to query. */
   type?: string;
 }
-const CheckAppSubdomainAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CheckAppSubdomainAvailabilityRequest>;
-
 export interface DeleteAppRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -179,11 +129,7 @@ export interface DeleteAppRequest {
   /** The ARM resource name of the IoT Central application. */
   resourceName: string;
 }
-const DeleteAppRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteAppRequest>;
-
 export interface DeleteAppResponse {}
-const DeleteAppResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteAppResponse>;
-
 export interface GetAppRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -192,13 +138,8 @@ export interface GetAppRequest {
   /** The ARM resource name of the IoT Central application. */
   resourceName: string;
 }
-const GetAppRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetAppRequest>;
-
 /** The resource tags. */
 export type GetAppResponseTagsMap = { [key: string]: string | undefined };
-const GetAppResponseTagsMap =
-  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppResponseTagsMap>;
-
 /** Managed service identity (either system assigned, or none) */
 export type GetAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
 export interface GetAppResponse {
@@ -219,23 +160,14 @@ export interface GetAppResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-const GetAppResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetAppResponse>;
-
 export interface ListAppByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the IoT Central application. */
   resourceGroupName: string;
 }
-const ListAppByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListAppByResourceGroupRequest>;
-
 /** The resource tags. */
 export type AppTagsMap = { [key: string]: string | undefined };
-const AppTagsMap = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AppTagsMap>;
-
 /** Managed service identity (either system assigned, or none) */
 export type AppIdentity = AppsCreateOrUpdateResponseIdentity;
 /** The IoT Central application. */
@@ -257,15 +189,8 @@ export interface App {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-const App = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<App>;
-
 /** A list of IoT Central Applications. */
 export type AppListResultValueList = Array<App>;
-const AppListResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AppListResultValueList>;
-
 /** A list of IoT Central Applications with a next link. */
 export interface AppListResult {
   /** The link used to get the next page of IoT Central Applications. */
@@ -273,26 +198,14 @@ export interface AppListResult {
   /** A list of IoT Central Applications. */
   value?: AppListResultValueList;
 }
-const AppListResult = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AppListResult>;
-
 export interface ListAppBySubscriptionRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-const ListAppBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListAppBySubscriptionRequest>;
-
 export interface ListAppTemplatesRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-const ListAppTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListAppTemplatesRequest>;
-
 /** IoT Central Application Template Locations. */
 export interface AppTemplateLocations {
   /** The ID of the location. */
@@ -300,15 +213,8 @@ export interface AppTemplateLocations {
   /** The display name of the location. */
   displayName?: string;
 }
-const AppTemplateLocations = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AppTemplateLocations>;
-
 /** A list of locations that support the template. */
 export type AppTemplateLocationsList = Array<AppTemplateLocations>;
-const AppTemplateLocationsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AppTemplateLocationsList>;
-
 /** IoT Central Application Template. */
 export interface AppTemplate {
   /** The ID of the template. */
@@ -328,15 +234,8 @@ export interface AppTemplate {
   /** A list of locations that support the template. */
   locations?: AppTemplateLocationsList;
 }
-const AppTemplate = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AppTemplate>;
-
 /** A list of IoT Central Application Templates. */
 export type AppTemplatesResultValueList = Array<AppTemplate>;
-const AppTemplatesResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<AppTemplatesResultValueList>;
-
 /** A list of IoT Central Application Templates with a next link. */
 export interface AppTemplatesResult {
   /** The link used to get the next page of IoT Central application templates. */
@@ -344,14 +243,7 @@ export interface AppTemplatesResult {
   /** A list of IoT Central Application Templates. */
   value?: AppTemplatesResultValueList;
 }
-const AppTemplatesResult = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AppTemplatesResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft IoT Central */
@@ -363,8 +255,6 @@ export interface OperationDisplay {
   /** Friendly description for the operation, */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<OperationDisplay>;
-
 /** IoT Central REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{read | write | action | delete} */
@@ -376,15 +266,8 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: unknown;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Operation>;
-
 /** A list of operations supported by the Microsoft.IoTCentral resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** A list of IoT Central operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** The link used to get the next page of IoT Central description objects. */
@@ -392,13 +275,8 @@ export interface OperationListResult {
   /** A list of operations supported by the Microsoft.IoTCentral resource provider. */
   value?: OperationListResultValueList;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationListResult>;
-
 /** Instance tags */
 export type UpdateAppRequestTagsMap = { [key: string]: string | undefined };
-const UpdateAppRequestTagsMap =
-  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppRequestTagsMap>;
-
 /** Managed service identity (either system assigned, or none) */
 export type UpdateAppRequestIdentity = AppsCreateOrUpdateRequestIdentity;
 export interface UpdateAppRequest {
@@ -417,8 +295,6 @@ export interface UpdateAppRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateRequestIdentity;
 }
-const UpdateAppRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UpdateAppRequest>;
-
 /** The resource tags. */
 export type UpdateAppResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (either system assigned, or none) */
@@ -441,8 +317,6 @@ export interface UpdateAppResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-const UpdateAppResponse = GetAppResponse as any as S.Schema<UpdateAppResponse>;
-
 export type AppsCreateOrUpdateError = AzureOpError;
 /** Create or update the metadata of an IoT Central application. The usual pattern to modify a property is to retrieve the IoT Central application metadata and security metadata, and then combine them with the modified values in a new body to update the IoT Central application. */
 export const AppsCreateOrUpdate: API.OperationMethod<
@@ -451,8 +325,8 @@ export const AppsCreateOrUpdate: API.OperationMethod<
   AppsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsCreateOrUpdateRequest,
-  output: AppsCreateOrUpdateResponse,
+  input: __S(4) as any as S.Schema<AppsCreateOrUpdateRequest>,
+  output: __S(7) as any as S.Schema<AppsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -466,8 +340,8 @@ export const CheckAppNameAvailability: API.OperationMethod<
   CheckAppNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAppNameAvailabilityRequest,
-  output: AppAvailabilityInfo,
+  input: __S(8) as any as S.Schema<CheckAppNameAvailabilityRequest>,
+  output: __S(9) as any as S.Schema<AppAvailabilityInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -481,8 +355,8 @@ export const CheckAppSubdomainAvailability: API.OperationMethod<
   CheckAppSubdomainAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAppSubdomainAvailabilityRequest,
-  output: AppAvailabilityInfo,
+  input: __S(10) as any as S.Schema<CheckAppSubdomainAvailabilityRequest>,
+  output: __S(9) as any as S.Schema<AppAvailabilityInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -496,8 +370,8 @@ export const DeleteApp: API.OperationMethod<
   DeleteAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppRequest,
-  output: DeleteAppResponse,
+  input: __S(11) as any as S.Schema<DeleteAppRequest>,
+  output: __S(12) as any as S.Schema<DeleteAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -511,8 +385,8 @@ export const GetApp: API.OperationMethod<
   GetAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRequest,
-  output: GetAppResponse,
+  input: __S(13) as any as S.Schema<GetAppRequest>,
+  output: __S(14) as any as S.Schema<GetAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -526,8 +400,8 @@ export const ListAppByResourceGroup: API.OperationMethod<
   ListAppByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppByResourceGroupRequest,
-  output: AppListResult,
+  input: __S(15) as any as S.Schema<ListAppByResourceGroupRequest>,
+  output: __S(19) as any as S.Schema<AppListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -541,8 +415,8 @@ export const ListAppBySubscription: API.OperationMethod<
   ListAppBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppBySubscriptionRequest,
-  output: AppListResult,
+  input: __S(20) as any as S.Schema<ListAppBySubscriptionRequest>,
+  output: __S(19) as any as S.Schema<AppListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -556,8 +430,8 @@ export const ListAppTemplates: API.OperationMethod<
   ListAppTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppTemplatesRequest,
-  output: AppTemplatesResult,
+  input: __S(21) as any as S.Schema<ListAppTemplatesRequest>,
+  output: __S(26) as any as S.Schema<AppTemplatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -571,8 +445,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(27) as any as S.Schema<ListOperationsRequest>,
+  output: __S(31) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -586,8 +460,8 @@ export const UpdateApp: API.OperationMethod<
   UpdateAppError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppRequest,
-  output: UpdateAppResponse,
+  input: __S(32) as any as S.Schema<UpdateAppRequest>,
+  output: __S(14) as any as S.Schema<UpdateAppResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -609,13 +483,13 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: AppSkuInfoName,
+          name: S.String,
         }),
       ).annotate({ identifier: "AppSkuInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: SystemAssignedServiceIdentityType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "AppsCreateOrUpdateRequestIdentity",
@@ -627,10 +501,10 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(AppsCreateOrUpdateRequestTagsMap),
-          properties: S.optional(AppPropertiesInput),
-          sku: AppSkuInfo,
-          identity: S.optional(AppsCreateOrUpdateRequestIdentity),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(1)),
+          sku: __S(2),
+          identity: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -649,7 +523,7 @@ function __c0(j: number): any {
           displayName: S.optional(S.String),
           subdomain: S.optional(S.String),
           template: S.optional(S.String),
-          state: S.optional(AppState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppProperties" });
     case 6:
@@ -657,7 +531,7 @@ function __c0(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: SystemAssignedServiceIdentityType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "AppsCreateOrUpdateResponseIdentity",
@@ -669,10 +543,10 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(AppsCreateOrUpdateResponseTagsMap),
-          properties: S.optional(AppProperties),
-          sku: AppSkuInfo,
-          identity: S.optional(AppsCreateOrUpdateResponseIdentity),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(5)),
+          sku: __S(2),
+          identity: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "AppsCreateOrUpdateResponse",
@@ -764,10 +638,10 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(GetAppResponseTagsMap),
-          properties: S.optional(AppProperties),
-          sku: AppSkuInfo,
-          identity: S.optional(AppsCreateOrUpdateResponseIdentity),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(5)),
+          sku: __S(2),
+          identity: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "GetAppResponse" });
     case 7:
@@ -799,19 +673,19 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(AppTagsMap),
-          properties: S.optional(AppProperties),
-          sku: AppSkuInfo,
-          identity: S.optional(AppsCreateOrUpdateResponseIdentity),
+          tags: S.optional(__S(16)),
+          properties: S.optional(__S(5)),
+          sku: __S(2),
+          identity: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "App" });
     case 2:
-      return S.Array(App);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AppListResultValueList),
+          value: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "AppListResult" });
     case 4:
@@ -850,7 +724,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AppTemplateLocations" });
     case 7:
-      return S.Array(AppTemplateLocations);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -865,16 +739,16 @@ function __c3(j: number): any {
           order: S.optional(S.Number),
           description: S.optional(S.String),
           industry: S.optional(S.String),
-          locations: S.optional(AppTemplateLocationsList),
+          locations: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "AppTemplate" });
     case 1:
-      return S.Array(AppTemplate);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AppTemplatesResultValueList),
+          value: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "AppTemplatesResult" });
     case 3:
@@ -901,18 +775,18 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(28)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
@@ -925,10 +799,10 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateAppRequestTagsMap),
-          sku: S.optional(AppSkuInfo),
-          properties: S.optional(AppPropertiesInput),
-          identity: S.optional(AppsCreateOrUpdateRequestIdentity),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(2)),
+          properties: S.optional(__S(1)),
+          identity: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -938,5 +812,24 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAppRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

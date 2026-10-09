@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 export interface GenerateAccessTokenRequest {
   /** Required. Code to identify the scopes to be included in the OAuth 2.0 access token. See https://developers.google.com/identity/protocols/googlescopes for more information. At least one value required. */
   scope?: StringList;
@@ -73,33 +73,18 @@ export interface GenerateAccessTokenRequest {
   /** The sequence of service accounts in a delegation chain. This field is required for [delegated requests](https://cloud.google.com/iam/help/credentials/delegated-request). For [direct requests](https://cloud.google.com/iam/help/credentials/direct-request), which are more common, do not specify this field. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   delegates?: StringList;
 }
-const GenerateAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GenerateAccessTokenRequest>;
-
 export interface GenerateAccessTokenProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   name: string;
   /** Request body */
   body?: GenerateAccessTokenRequest;
 }
-const GenerateAccessTokenProjectsServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>;
-
 export interface GenerateAccessTokenResponse {
   /** The OAuth 2.0 access token. */
   accessToken?: string;
   /** Token expiration time. The expiration time is always set. */
   expireTime?: string;
 }
-const GenerateAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GenerateAccessTokenResponse>;
-
 export interface GenerateIdTokenRequest {
   /** Required. The audience for the token, such as the API or account that this token grants access to. */
   audience?: string;
@@ -110,40 +95,20 @@ export interface GenerateIdTokenRequest {
   /** Include the organization number of the service account in the token. If set to `true`, the token will contain a `google.organization_number` claim. The value of the claim will be `null` if the service account isn't associated with an organization. */
   organizationNumberIncluded?: boolean;
 }
-const GenerateIdTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GenerateIdTokenRequest>;
-
 export interface GenerateIdTokenProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   name: string;
   /** Request body */
   body?: GenerateIdTokenRequest;
 }
-const GenerateIdTokenProjectsServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GenerateIdTokenProjectsServiceAccountsRequest>;
-
 export interface GenerateIdTokenResponse {
   /** The OpenId Connect ID token. The token is a JSON Web Token (JWT) that contains a payload with claims. See the [JSON Web Token spec](https://tools.ietf.org/html/rfc7519) for more information. Here is an example of a decoded JWT payload: ``` { "iss": "https://accounts.google.com", "iat": 1496953245, "exp": 1496953245, "aud": "https://www.example.com", "sub": "107517467455664443765", "azp": "107517467455664443765", "email": "my-iam-account@my-project.iam.gserviceaccount.com", "email_verified": true, "google": { "organization_number": 123456 } } ``` */
   token?: string;
 }
-const GenerateIdTokenResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GenerateIdTokenResponse>;
-
 export interface GetAllowedLocationsLocationsWorkforcePoolsRequest {
   /** Required. Resource name of workforce pool. */
   name: string;
 }
-const GetAllowedLocationsLocationsWorkforcePoolsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>;
-
 /** Represents a list of allowed locations for given workforce pool. */
 export interface WorkforcePoolAllowedLocations {
   /** Output only. The hex encoded bitmap of the trust boundary locations */
@@ -151,20 +116,10 @@ export interface WorkforcePoolAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
   locations?: StringList;
 }
-const WorkforcePoolAllowedLocations = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<WorkforcePoolAllowedLocations>;
-
 export interface GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest {
   /** Required. Resource name of workload identity pool. */
   name: string;
 }
-const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>;
-
 /** Represents a list of allowed locations for given workload identity pool. */
 export interface WorkloadIdentityPoolAllowedLocations {
   /** Output only. The hex encoded bitmap of the trust boundary locations */
@@ -172,18 +127,10 @@ export interface WorkloadIdentityPoolAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
   locations?: StringList;
 }
-const WorkloadIdentityPoolAllowedLocations =
-  WorkforcePoolAllowedLocations as any as S.Schema<WorkloadIdentityPoolAllowedLocations>;
-
 export interface GetAllowedLocationsProjectsServiceAccountsRequest {
   /** Required. Resource name of service account. Format: `projects/-/serviceAccounts/{service_account_email}` */
   name: string;
 }
-const GetAllowedLocationsProjectsServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>;
-
 /** Represents a list of allowed locations for given service account. */
 export interface ServiceAccountAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
@@ -191,65 +138,42 @@ export interface ServiceAccountAllowedLocations {
   /** Output only. The hex encoded bitmap of the trust boundary locations */
   encodedLocations?: string;
 }
-const ServiceAccountAllowedLocations = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ServiceAccountAllowedLocations>;
-
 export interface SignBlobRequest {
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   delegates?: StringList;
   /** Required. The bytes to sign. */
   payload?: string;
 }
-const SignBlobRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<SignBlobRequest>;
-
 export interface SignBlobProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   name: string;
   /** Request body */
   body?: SignBlobRequest;
 }
-const SignBlobProjectsServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>;
-
 export interface SignBlobResponse {
   /** The ID of the key used to sign the blob. The key used for signing will remain valid for at least 12 hours after the blob is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}` */
   keyId?: string;
   /** The signature for the blob. Does not include the original blob. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the blob. As a result, the receiver can no longer verify the signature. */
   signedBlob?: string;
 }
-const SignBlobResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SignBlobResponse>;
-
 export interface SignJwtRequest {
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   delegates?: StringList;
   /** Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future. */
   payload?: string;
 }
-const SignJwtRequest = SignBlobRequest as any as S.Schema<SignJwtRequest>;
-
 export interface SignJwtProjectsServiceAccountsRequest {
   /** Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
   name: string;
   /** Request body */
   body?: SignJwtRequest;
 }
-const SignJwtProjectsServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>;
-
 export interface SignJwtResponse {
   /** The signed JWT. Contains the automatically generated header; the client-supplied payload; and the signature, which is generated using the key referenced by the `kid` field in the header. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the JWT. As a result, the receiver can no longer verify the signature. */
   signedJwt?: string;
   /** The ID of the key used to sign the JWT. The key used for signing will remain valid for at least 12 hours after the JWT is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}` */
   keyId?: string;
 }
-const SignJwtResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SignJwtResponse>;
-
 export type GenerateAccessTokenProjectsServiceAccountsError =
   | NotFound
   | Forbidden
@@ -263,8 +187,8 @@ export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateAccessTokenProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateAccessTokenProjectsServiceAccountsRequest,
-  output: GenerateAccessTokenResponse,
+  input: __S(2) as any as S.Schema<GenerateAccessTokenProjectsServiceAccountsRequest>,
+  output: __S(3) as any as S.Schema<GenerateAccessTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -283,8 +207,8 @@ export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
   GenerateIdTokenProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateIdTokenProjectsServiceAccountsRequest,
-  output: GenerateIdTokenResponse,
+  input: __S(5) as any as S.Schema<GenerateIdTokenProjectsServiceAccountsRequest>,
+  output: __S(6) as any as S.Schema<GenerateIdTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -298,8 +222,8 @@ export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
   GetAllowedLocationsLocationsWorkforcePoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllowedLocationsLocationsWorkforcePoolsRequest,
-  output: WorkforcePoolAllowedLocations,
+  input: __S(7) as any as S.Schema<GetAllowedLocationsLocationsWorkforcePoolsRequest>,
+  output: __S(8) as any as S.Schema<WorkforcePoolAllowedLocations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -316,8 +240,10 @@ export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.Oper
   GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest,
-  output: WorkloadIdentityPoolAllowedLocations,
+  input: __S(
+    9,
+  ) as any as S.Schema<GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest>,
+  output: __S(8) as any as S.Schema<WorkloadIdentityPoolAllowedLocations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -331,8 +257,8 @@ export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
   GetAllowedLocationsProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllowedLocationsProjectsServiceAccountsRequest,
-  output: ServiceAccountAllowedLocations,
+  input: __S(10) as any as S.Schema<GetAllowedLocationsProjectsServiceAccountsRequest>,
+  output: __S(11) as any as S.Schema<ServiceAccountAllowedLocations>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -351,8 +277,8 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
   SignBlobProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignBlobProjectsServiceAccountsRequest,
-  output: SignBlobResponse,
+  input: __S(13) as any as S.Schema<SignBlobProjectsServiceAccountsRequest>,
+  output: __S(14) as any as S.Schema<SignBlobResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -371,8 +297,8 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
   SignJwtProjectsServiceAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignJwtProjectsServiceAccountsRequest,
-  output: SignJwtResponse,
+  input: __S(15) as any as S.Schema<SignJwtProjectsServiceAccountsRequest>,
+  output: __S(16) as any as S.Schema<SignJwtResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -386,9 +312,9 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(StringList),
+          scope: S.optional(__S(0)),
           lifetime: S.optional(S.String),
-          delegates: S.optional(StringList),
+          delegates: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GenerateAccessTokenRequest",
@@ -397,7 +323,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GenerateAccessTokenRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -422,7 +348,7 @@ function __c0(j: number): any {
         S.Struct({
           audience: S.optional(S.String),
           includeEmail: S.optional(S.Boolean),
-          delegates: S.optional(StringList),
+          delegates: S.optional(__S(0)),
           organizationNumberIncluded: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GenerateIdTokenRequest" });
@@ -430,7 +356,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GenerateIdTokenRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -469,7 +395,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           encodedLocations: S.optional(S.String),
-          locations: S.optional(StringList),
+          locations: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "WorkforcePoolAllowedLocations",
@@ -505,7 +431,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(StringList),
+          locations: S.optional(__S(0)),
           encodedLocations: S.optional(S.String),
         }),
       ).annotate({
@@ -514,7 +440,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          delegates: S.optional(StringList),
+          delegates: S.optional(__S(0)),
           payload: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignBlobRequest" });
@@ -522,7 +448,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SignBlobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -544,7 +470,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SignJwtRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -566,5 +492,20 @@ function __c2(j: number): any {
           keyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignJwtResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

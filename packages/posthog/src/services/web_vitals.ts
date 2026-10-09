@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,17 +16,8 @@ export interface GetWebVitalRequest {
   /** Filter web vitals by pathname */
   pathname: string;
 }
-const GetWebVitalRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetWebVitalRequest>;
-
 export type GetWebVitalResponseBodyMap = { [key: string]: unknown | undefined };
-const GetWebVitalResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetWebVitalResponseBodyMap>;
-
 export type GetWebVitalResponse = GetWebVitalResponseBodyMap;
-const GetWebVitalResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetWebVitalResponse>;
-
 export type GetWebVitalError = PosthogOpError;
 /** Get web vitals for a specific pathname. Toolbar accesses this via OAuth (handled by TeamAndOrgViewSetMixin.get_authenticators). */
 export const getWebVital: API.OperationMethod<
@@ -33,8 +26,8 @@ export const getWebVital: API.OperationMethod<
   GetWebVitalError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebVitalRequest,
-  output: GetWebVitalResponse,
+  input: __S(0) as any as S.Schema<GetWebVitalRequest>,
+  output: __S(2) as any as S.Schema<GetWebVitalResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -55,8 +48,19 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.suspend(() => GetWebVitalResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetWebVitalResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

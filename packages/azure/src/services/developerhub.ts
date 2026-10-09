@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,21 +19,11 @@ export interface DeleteWorkflowRequest {
   /** The name of the workflow resource. */
   workflowName: string;
 }
-const DeleteWorkflowRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteWorkflowRequest>;
-
 /** delete response if content must be provided on delete operation */
 export interface DeleteWorkflowResponse {
   /** delete status message */
   status?: string;
 }
-const DeleteWorkflowResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteWorkflowResponse>;
-
 /** The programming language used. */
 export type GenerationLanguage =
   | "clojure"
@@ -47,20 +39,12 @@ export type GenerationLanguage =
   | "ruby"
   | "rust"
   | "swift";
-const GenerationLanguage = S.String;
-
 /** The mode of generation to be used for generating Dockerfiles. */
 export type DockerfileGenerationMode = "enabled" | "disabled";
-const DockerfileGenerationMode = S.String;
-
 /** The mode of generation to be used for generating Manifest. */
 export type ManifestGenerationMode = "enabled" | "disabled";
-const ManifestGenerationMode = S.String;
-
 /** Determines the type of manifests to be generated. */
 export type GenerationManifestType = "helm" | "kube";
-const GenerationManifestType = S.String;
-
 export interface GeneratePreviewArtifactsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -89,24 +73,9 @@ export interface GeneratePreviewArtifactsRequest {
   /** The tag to apply to the generated image. */
   imageTag?: string;
 }
-const GeneratePreviewArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GeneratePreviewArtifactsRequest>;
-
 /** Dockerfile and manifest artifacts generated as a preview are returned as a map<path string,content string> */
 export type GeneratePreviewArtifactsResponse = { [key: string]: string | undefined };
-const GeneratePreviewArtifactsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GeneratePreviewArtifactsResponse>;
-
 export type GeneratePreviewArtifactsResponse2 = GeneratePreviewArtifactsResponse;
-const GeneratePreviewArtifactsResponse2 = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GeneratePreviewArtifactsResponse2>;
-
 export interface GetWorkflowRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -115,16 +84,10 @@ export interface GetWorkflowRequest {
   /** The name of the workflow resource. */
   workflowName: string;
 }
-const GetWorkflowRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetWorkflowRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -140,28 +103,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type GetWorkflowResponseTagsMap = { [key: string]: string | undefined };
-const GetWorkflowResponseTagsMap =
-  GeneratePreviewArtifactsResponse as any as S.Schema<GetWorkflowResponseTagsMap>;
-
 /** Determines the type of manifests within the repository. */
 export type ManifestType = "helm" | "kube" | "kustomize";
-const ManifestType = S.String;
-
 export type DeploymentPropertiesKubeManifestLocationsList = Array<string>;
-const DeploymentPropertiesKubeManifestLocationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeploymentPropertiesKubeManifestLocationsList>;
-
 /** Manifest override values. */
 export type DeploymentPropertiesOverridesMap = { [key: string]: string | undefined };
-const DeploymentPropertiesOverridesMap =
-  GeneratePreviewArtifactsResponse as any as S.Schema<DeploymentPropertiesOverridesMap>;
-
 export interface DeploymentProperties {
   manifestType?: ManifestType | (string & {});
   kubeManifestLocations?: DeploymentPropertiesKubeManifestLocationsList;
@@ -172,8 +120,6 @@ export interface DeploymentProperties {
   /** Manifest override values. */
   overrides?: DeploymentPropertiesOverridesMap;
 }
-const DeploymentProperties = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeploymentProperties>;
-
 /** Information on the azure container registry */
 export interface ACR {
   /** ACR subscription id */
@@ -185,8 +131,6 @@ export interface ACR {
   /** ACR repository */
   acrRepositoryName?: string;
 }
-const ACR = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ACR>;
-
 /** The fields needed for OIDC with GitHub. */
 export interface GitHubWorkflowProfileOidcCredentials {
   /** Azure Application Client ID */
@@ -194,19 +138,10 @@ export interface GitHubWorkflowProfileOidcCredentials {
   /** Azure Directory (tenant) ID */
   azureTenantId?: string;
 }
-const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GitHubWorkflowProfileOidcCredentials>;
-
 /** The status of the Pull Request submitted against the users repository. */
 export type PullRequestStatus = "unknown" | "submitted" | "merged" | "removed";
-const PullRequestStatus = S.String;
-
 /** Describes the status of the workflow run */
 export type WorkflowRunStatus = "queued" | "inprogress" | "completed";
-const WorkflowRunStatus = S.String;
-
 export interface WorkflowRun {
   /** Describes if the workflow run succeeded. */
   succeeded?: boolean;
@@ -216,12 +151,8 @@ export interface WorkflowRun {
   lastRunAt?: string;
   workflowRunStatus?: WorkflowRunStatus;
 }
-const WorkflowRun = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<WorkflowRun>;
-
 /** Determines the authorization status of requests. */
 export type AuthorizationStatus = "Authorized" | "NotFound" | "Error";
-const AuthorizationStatus = S.String;
-
 /** GitHub Workflow Profile */
 export interface GitHubWorkflowProfile {
   /** Repository Owner */
@@ -250,11 +181,6 @@ export interface GitHubWorkflowProfile {
   lastWorkflowRun?: WorkflowRun;
   authStatus?: AuthorizationStatus;
 }
-const GitHubWorkflowProfile = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GitHubWorkflowProfile>;
-
 /** Properties used for generating artifacts such as Dockerfiles and manifests. */
 export interface ArtifactGenerationProperties {
   generationLanguage?: GenerationLanguage | (string & {});
@@ -280,11 +206,6 @@ export interface ArtifactGenerationProperties {
   /** The tag to apply to the generated image. */
   imageTag?: string;
 }
-const ArtifactGenerationProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ArtifactGenerationProperties>;
-
 /** Workflow properties */
 export interface WorkflowProperties {
   /** Profile of a github workflow. */
@@ -292,8 +213,6 @@ export interface WorkflowProperties {
   /** Properties for generating artifacts like dockerfile and manifests. */
   artifactGenerationProperties?: ArtifactGenerationProperties;
 }
-const WorkflowProperties = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<WorkflowProperties>;
-
 export interface GetWorkflowResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -310,8 +229,6 @@ export interface GetWorkflowResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-const GetWorkflowResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetWorkflowResponse>;
-
 export interface GitHubOAuthRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -320,8 +237,6 @@ export interface GitHubOAuthRequest {
   /** The URL the client will redirect to on successful authentication. If empty, no redirect will occur. */
   redirectUrl?: string;
 }
-const GitHubOAuthRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GitHubOAuthRequest>;
-
 /** URL used to authorize the Developer Hub GitHub App */
 export interface GitHubOAuthInfoResponse {
   /** URL for authorizing the Developer Hub GitHub App */
@@ -329,11 +244,6 @@ export interface GitHubOAuthInfoResponse {
   /** OAuth token used to make calls to GitHub */
   token?: string;
 }
-const GitHubOAuthInfoResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GitHubOAuthInfoResponse>;
-
 export interface GitHubOAuthCallbackRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -344,21 +254,11 @@ export interface GitHubOAuthCallbackRequest {
   /** The state response from authenticating the GitHub App. */
   state: string;
 }
-const GitHubOAuthCallbackRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GitHubOAuthCallbackRequest>;
-
 /** The response from List GitHubOAuth operation. */
 export interface GitHubOAuthProperties {
   /** user making request */
   username?: string;
 }
-const GitHubOAuthProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GitHubOAuthProperties>;
-
 export interface GitHubOAuthCallbackResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -371,22 +271,12 @@ export interface GitHubOAuthCallbackResponse {
   /** Properties of a workflow. */
   properties?: GitHubOAuthProperties;
 }
-const GitHubOAuthCallbackResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GitHubOAuthCallbackResponse>;
-
 export interface ListGitHubOAuthRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
 }
-const ListGitHubOAuthRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListGitHubOAuthRequest>;
-
 /** Singleton response of GitHubOAuth containing */
 export interface GitHubOAuthResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -400,31 +290,14 @@ export interface GitHubOAuthResponse {
   /** Properties of a workflow. */
   properties?: GitHubOAuthProperties;
 }
-const GitHubOAuthResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GitHubOAuthResponse>;
-
 /** Singleton list response containing one GitHubOAuthResponse response */
 export type GitHubOAuthListResponseValueList = Array<GitHubOAuthResponse>;
-const GitHubOAuthListResponseValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GitHubOAuthListResponseValueList>;
-
 /** The response from List GitHubOAuth operation. */
 export interface GitHubOAuthListResponse {
   /** Singleton list response containing one GitHubOAuthResponse response */
   value?: GitHubOAuthListResponseValueList;
 }
-const GitHubOAuthListResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GitHubOAuthListResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -436,16 +309,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -459,32 +326,18 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListWorkflowRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListWorkflowRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListWorkflowRequest>;
-
 /** Resource tags. */
 export type WorkflowTagsMap = { [key: string]: string | undefined };
 /** Resource representation of a workflow */
@@ -504,15 +357,8 @@ export interface Workflow {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
-
 /** The list of workflows. */
 export type WorkflowListResultValueList = Array<Workflow>;
-const WorkflowListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<WorkflowListResultValueList>;
-
 /** The response from List Workflows operation. */
 export interface WorkflowListResult {
   /** The list of workflows. */
@@ -520,8 +366,6 @@ export interface WorkflowListResult {
   /** The URL to the next set of workflow results. */
   nextLink?: string;
 }
-const WorkflowListResult = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WorkflowListResult>;
-
 export interface ListWorkflowByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -530,15 +374,7 @@ export interface ListWorkflowByResourceGroupRequest {
   /** The ManagedCluster resource associated with the workflows. */
   managedClusterResource?: string;
 }
-const ListWorkflowByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListWorkflowByResourceGroupRequest>;
-
 export type UpdateWorkflowTagsRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWorkflowTagsRequestTagsMap =
-  GeneratePreviewArtifactsResponse as any as S.Schema<UpdateWorkflowTagsRequestTagsMap>;
-
 export interface UpdateWorkflowTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -548,16 +384,8 @@ export interface UpdateWorkflowTagsRequest {
   workflowName: string;
   tags?: UpdateWorkflowTagsRequestTagsMap;
 }
-const UpdateWorkflowTagsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<UpdateWorkflowTagsRequest>;
-
 /** Resource tags. */
 export type UpdateWorkflowTagsResponseTagsMap = { [key: string]: string | undefined };
-const UpdateWorkflowTagsResponseTagsMap =
-  GeneratePreviewArtifactsResponse as any as S.Schema<UpdateWorkflowTagsResponseTagsMap>;
-
 export interface UpdateWorkflowTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -574,23 +402,13 @@ export interface UpdateWorkflowTagsResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-const UpdateWorkflowTagsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateWorkflowTagsResponse>;
-
 /** Resource tags. */
 export type WorkflowCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WorkflowCreateOrUpdateRequestTagsMap =
-  GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowCreateOrUpdateRequestTagsMap>;
-
 /** The fields needed for OIDC with GitHub. */
 export type GitHubWorkflowProfileInputOidcCredentials = GitHubWorkflowProfileOidcCredentials;
 export interface WorkflowRunInput {
   workflowRunStatus?: WorkflowRunStatus | (string & {});
 }
-const WorkflowRunInput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WorkflowRunInput>;
-
 /** GitHub Workflow Profile */
 export interface GitHubWorkflowProfileInput {
   /** Repository Owner */
@@ -613,11 +431,6 @@ export interface GitHubWorkflowProfileInput {
   aksResourceId?: string;
   lastWorkflowRun?: WorkflowRunInput;
 }
-const GitHubWorkflowProfileInput = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GitHubWorkflowProfileInput>;
-
 /** Workflow properties */
 export interface WorkflowPropertiesInput {
   /** Profile of a github workflow. */
@@ -625,11 +438,6 @@ export interface WorkflowPropertiesInput {
   /** Properties for generating artifacts like dockerfile and manifests. */
   artifactGenerationProperties?: ArtifactGenerationProperties;
 }
-const WorkflowPropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<WorkflowPropertiesInput>;
-
 export interface WorkflowCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -644,11 +452,6 @@ export interface WorkflowCreateOrUpdateRequest {
   /** Properties of a workflow. */
   properties?: WorkflowPropertiesInput;
 }
-const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<WorkflowCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type WorkflowCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface WorkflowCreateOrUpdateResponse {
@@ -667,9 +470,6 @@ export interface WorkflowCreateOrUpdateResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-const WorkflowCreateOrUpdateResponse =
-  UpdateWorkflowTagsResponse as any as S.Schema<WorkflowCreateOrUpdateResponse>;
-
 export type DeleteWorkflowError = AzureOpError;
 /** Deletes a workflow */
 export const DeleteWorkflow: API.OperationMethod<
@@ -678,8 +478,8 @@ export const DeleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkflowRequest,
-  output: DeleteWorkflowResponse,
+  input: __S(0) as any as S.Schema<DeleteWorkflowRequest>,
+  output: __S(1) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -693,8 +493,8 @@ export const GeneratePreviewArtifacts: API.OperationMethod<
   GeneratePreviewArtifactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeneratePreviewArtifactsRequest,
-  output: GeneratePreviewArtifactsResponse2,
+  input: __S(2) as any as S.Schema<GeneratePreviewArtifactsRequest>,
+  output: __S(4) as any as S.Schema<GeneratePreviewArtifactsResponse2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -708,8 +508,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkflowRequest,
-  output: GetWorkflowResponse,
+  input: __S(5) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(15) as any as S.Schema<GetWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -723,8 +523,8 @@ export const GitHubOAuth: API.OperationMethod<
   GitHubOAuthError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GitHubOAuthRequest,
-  output: GitHubOAuthInfoResponse,
+  input: __S(16) as any as S.Schema<GitHubOAuthRequest>,
+  output: __S(17) as any as S.Schema<GitHubOAuthInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -738,8 +538,8 @@ export const GitHubOAuthCallback: API.OperationMethod<
   GitHubOAuthCallbackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GitHubOAuthCallbackRequest,
-  output: GitHubOAuthCallbackResponse,
+  input: __S(18) as any as S.Schema<GitHubOAuthCallbackRequest>,
+  output: __S(20) as any as S.Schema<GitHubOAuthCallbackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -753,8 +553,8 @@ export const ListGitHubOAuth: API.OperationMethod<
   ListGitHubOAuthError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGitHubOAuthRequest,
-  output: GitHubOAuthListResponse,
+  input: __S(21) as any as S.Schema<ListGitHubOAuthRequest>,
+  output: __S(24) as any as S.Schema<GitHubOAuthListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -768,8 +568,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(25) as any as S.Schema<ListOperationsRequest>,
+  output: __S(29) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -783,8 +583,8 @@ export const ListWorkflow: API.OperationMethod<
   ListWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkflowRequest,
-  output: WorkflowListResult,
+  input: __S(30) as any as S.Schema<ListWorkflowRequest>,
+  output: __S(32) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -798,8 +598,8 @@ export const ListWorkflowByResourceGroup: API.OperationMethod<
   ListWorkflowByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkflowByResourceGroupRequest,
-  output: WorkflowListResult,
+  input: __S(33) as any as S.Schema<ListWorkflowByResourceGroupRequest>,
+  output: __S(32) as any as S.Schema<WorkflowListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -813,8 +613,8 @@ export const UpdateWorkflowTags: API.OperationMethod<
   UpdateWorkflowTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkflowTagsRequest,
-  output: UpdateWorkflowTagsResponse,
+  input: __S(34) as any as S.Schema<UpdateWorkflowTagsRequest>,
+  output: __S(35) as any as S.Schema<UpdateWorkflowTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -828,8 +628,8 @@ export const WorkflowCreateOrUpdate: API.OperationMethod<
   WorkflowCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkflowCreateOrUpdateRequest,
-  output: WorkflowCreateOrUpdateResponse,
+  input: __S(39) as any as S.Schema<WorkflowCreateOrUpdateRequest>,
+  output: __S(35) as any as S.Schema<WorkflowCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -864,16 +664,16 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          generationLanguage: S.optional(GenerationLanguage),
+          generationLanguage: S.optional(S.String),
           languageVersion: S.optional(S.String),
           builderVersion: S.optional(S.String),
           port: S.optional(S.String),
           appName: S.optional(S.String),
           dockerfileOutputDirectory: S.optional(S.String),
           manifestOutputDirectory: S.optional(S.String),
-          dockerfileGenerationMode: S.optional(DockerfileGenerationMode),
-          manifestGenerationMode: S.optional(ManifestGenerationMode),
-          manifestType: S.optional(GenerationManifestType),
+          dockerfileGenerationMode: S.optional(S.String),
+          manifestGenerationMode: S.optional(S.String),
+          manifestType: S.optional(S.String),
           imageName: S.optional(S.String),
           namespace: S.optional(S.String),
           imageTag: S.optional(S.String),
@@ -891,7 +691,7 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.String);
     case 4:
-      return S.suspend(() => GeneratePreviewArtifactsResponse.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "GeneratePreviewArtifactsResponse2",
       });
     case 5:
@@ -913,10 +713,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -929,11 +729,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          manifestType: S.optional(ManifestType),
-          kubeManifestLocations: S.optional(DeploymentPropertiesKubeManifestLocationsList),
+          manifestType: S.optional(S.String),
+          kubeManifestLocations: S.optional(__S(7)),
           helmChartPath: S.optional(S.String),
           helmValues: S.optional(S.String),
-          overrides: S.optional(DeploymentPropertiesOverridesMap),
+          overrides: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "DeploymentProperties" });
     case 1:
@@ -960,7 +760,7 @@ function __c1(j: number): any {
           succeeded: S.optional(S.Boolean),
           workflowRunURL: S.optional(S.String),
           lastRunAt: S.optional(S.String),
-          workflowRunStatus: S.optional(WorkflowRunStatus),
+          workflowRunStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowRun" });
     case 4:
@@ -971,31 +771,31 @@ function __c1(j: number): any {
           branchName: S.optional(S.String),
           dockerfile: S.optional(S.String),
           dockerBuildContext: S.optional(S.String),
-          deploymentProperties: S.optional(DeploymentProperties),
+          deploymentProperties: S.optional(__S(8)),
           namespace: S.optional(S.String),
-          acr: S.optional(ACR),
-          oidcCredentials: S.optional(GitHubWorkflowProfileOidcCredentials),
+          acr: S.optional(__S(9)),
+          oidcCredentials: S.optional(__S(10)),
           aksResourceId: S.optional(S.String),
           prURL: S.optional(S.String),
           pullNumber: S.optional(S.Number),
-          prStatus: S.optional(PullRequestStatus),
-          lastWorkflowRun: S.optional(WorkflowRun),
-          authStatus: S.optional(AuthorizationStatus),
+          prStatus: S.optional(S.String),
+          lastWorkflowRun: S.optional(__S(11)),
+          authStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GitHubWorkflowProfile" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          generationLanguage: S.optional(GenerationLanguage),
+          generationLanguage: S.optional(S.String),
           languageVersion: S.optional(S.String),
           builderVersion: S.optional(S.String),
           port: S.optional(S.String),
           appName: S.optional(S.String),
           dockerfileOutputDirectory: S.optional(S.String),
           manifestOutputDirectory: S.optional(S.String),
-          dockerfileGenerationMode: S.optional(DockerfileGenerationMode),
-          manifestGenerationMode: S.optional(ManifestGenerationMode),
-          manifestType: S.optional(GenerationManifestType),
+          dockerfileGenerationMode: S.optional(S.String),
+          manifestGenerationMode: S.optional(S.String),
+          manifestType: S.optional(S.String),
           imageName: S.optional(S.String),
           namespace: S.optional(S.String),
           imageTag: S.optional(S.String),
@@ -1006,8 +806,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          githubWorkflowProfile: S.optional(GitHubWorkflowProfile),
-          artifactGenerationProperties: S.optional(ArtifactGenerationProperties),
+          githubWorkflowProfile: S.optional(__S(12)),
+          artifactGenerationProperties: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "WorkflowProperties" });
     case 7:
@@ -1016,10 +816,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWorkflowResponseTagsMap),
+          systemData: S.optional(__S(6)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(WorkflowProperties),
+          properties: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "GetWorkflowResponse" });
   }
@@ -1078,8 +878,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(GitHubOAuthProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "GitHubOAuthCallbackResponse",
@@ -1104,12 +904,12 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(GitHubOAuthProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "GitHubOAuthResponse" });
     case 7:
-      return S.Array(GitHubOAuthResponse);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1117,7 +917,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(GitHubOAuthListResponseValueList),
+          value: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "GitHubOAuthListResponse" });
     case 1:
@@ -1145,17 +945,17 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(26)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(28)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1173,7 +973,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowRequest" });
     case 7:
-      return S.Array(Workflow);
+      return S.Array(__S(15));
   }
 }
 function __c4(j: number): any {
@@ -1181,7 +981,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WorkflowListResultValueList),
+          value: S.optional(__S(31)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowListResult" });
@@ -1208,7 +1008,7 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateWorkflowTagsRequestTagsMap),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1226,10 +1026,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(UpdateWorkflowTagsResponseTagsMap),
+          systemData: S.optional(__S(6)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(WorkflowProperties),
+          properties: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "UpdateWorkflowTagsResponse",
@@ -1237,7 +1037,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workflowRunStatus: S.optional(WorkflowRunStatus),
+          workflowRunStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowRunInput" });
     case 5:
@@ -1248,12 +1048,12 @@ function __c4(j: number): any {
           branchName: S.optional(S.String),
           dockerfile: S.optional(S.String),
           dockerBuildContext: S.optional(S.String),
-          deploymentProperties: S.optional(DeploymentProperties),
+          deploymentProperties: S.optional(__S(8)),
           namespace: S.optional(S.String),
-          acr: S.optional(ACR),
-          oidcCredentials: S.optional(GitHubWorkflowProfileOidcCredentials),
+          acr: S.optional(__S(9)),
+          oidcCredentials: S.optional(__S(10)),
           aksResourceId: S.optional(S.String),
-          lastWorkflowRun: S.optional(WorkflowRunInput),
+          lastWorkflowRun: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "GitHubWorkflowProfileInput",
@@ -1261,8 +1061,8 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          githubWorkflowProfile: S.optional(GitHubWorkflowProfileInput),
-          artifactGenerationProperties: S.optional(ArtifactGenerationProperties),
+          githubWorkflowProfile: S.optional(__S(37)),
+          artifactGenerationProperties: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "WorkflowPropertiesInput" });
     case 7:
@@ -1271,9 +1071,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          tags: S.optional(WorkflowCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(WorkflowPropertiesInput),
+          properties: S.optional(__S(38)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1285,5 +1085,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "WorkflowCreateOrUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

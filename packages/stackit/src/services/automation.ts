@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -40,25 +42,13 @@ export class NotFound
 export interface VolumeAutomationInput {
   kind: string;
 }
-const VolumeAutomationInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<VolumeAutomationInput>;
-
 export interface AutomationScheduleTrigger {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-const AutomationScheduleTrigger = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AutomationScheduleTrigger>;
-
 export interface AutomationTriggers {
   schedule?: AutomationScheduleTrigger | null;
 }
-const AutomationTriggers = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AutomationTriggers>;
-
 export interface CreateVolumeAutomationRequest {
   /** project Id */
   projectId: string;
@@ -70,29 +60,15 @@ export interface CreateVolumeAutomationRequest {
   templateId: string;
   triggers?: AutomationTriggers | null;
 }
-const CreateVolumeAutomationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateVolumeAutomationRequest>;
-
 export type VolumeOutputStepResult = VolumeAutomationInput;
 export interface VolumeOutputStep {
   name: string;
   result?: VolumeAutomationInput;
 }
-const VolumeOutputStep = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<VolumeOutputStep>;
-
 export type VolumeOutputStepsList = Array<VolumeOutputStep>;
-const VolumeOutputStepsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<VolumeOutputStepsList>;
-
 export interface VolumeOutput {
   steps?: VolumeOutputStepsList;
 }
-const VolumeOutput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<VolumeOutput>;
-
 export interface VolumeAutomation {
   createTime: string;
   description?: string;
@@ -104,8 +80,6 @@ export interface VolumeAutomation {
   triggers?: AutomationTriggers | null;
   updateTime: string;
 }
-const VolumeAutomation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<VolumeAutomation>;
-
 export interface CreateVolumeExecutionRequest {
   /** project Id */
   projectId: string;
@@ -114,11 +88,6 @@ export interface CreateVolumeExecutionRequest {
   /** automation Id */
   automationId: string;
 }
-const CreateVolumeExecutionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateVolumeExecutionRequest>;
-
 export interface VolumeExecutionAutomation {
   createTime: string;
   description?: string;
@@ -129,56 +98,27 @@ export interface VolumeExecutionAutomation {
   triggers?: AutomationTriggers | null;
   updateTime: string;
 }
-const VolumeExecutionAutomation = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<VolumeExecutionAutomation>;
-
 export type VolumeExecutionOutputStepStatus = "PENDING" | "RUNNING" | "FAILED" | "SUCCESSFUL";
-const VolumeExecutionOutputStepStatus = S.String;
-
 export interface VolumeExecutionOutputStep {
   message?: string;
   name: string;
   result?: VolumeAutomationInput;
   status: VolumeExecutionOutputStepStatus;
 }
-const VolumeExecutionOutputStep = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<VolumeExecutionOutputStep>;
-
 export type VolumeExecutionOutputStepsList = Array<VolumeExecutionOutputStep>;
-const VolumeExecutionOutputStepsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<VolumeExecutionOutputStepsList>;
-
 export interface VolumeExecutionOutput {
   steps?: VolumeExecutionOutputStepsList;
 }
-const VolumeExecutionOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<VolumeExecutionOutput>;
-
 export interface VolumeExecutionDetails {
   config: VolumeExecutionAutomation;
   output?: VolumeExecutionOutput;
 }
-const VolumeExecutionDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<VolumeExecutionDetails>;
-
 export type VolumeExecutionResponseStatus =
   | "PENDING"
   | "RUNNING"
   | "COMPLETED"
   | "FAILED"
   | "TERMINATED";
-const VolumeExecutionResponseStatus = S.String;
-
 export interface VolumeExecutionResponse {
   automation?: VolumeExecutionDetails;
   createTime: string;
@@ -186,11 +126,6 @@ export interface VolumeExecutionResponse {
   id: string;
   status: VolumeExecutionResponseStatus;
 }
-const VolumeExecutionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<VolumeExecutionResponse>;
-
 export interface DeleteVolumeAutomationRequest {
   /** project Id */
   projectId: string;
@@ -199,17 +134,7 @@ export interface DeleteVolumeAutomationRequest {
   /** automation Id */
   automationId: string;
 }
-const DeleteVolumeAutomationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteVolumeAutomationRequest>;
-
 export interface DeleteVolumeAutomationResponse {}
-const DeleteVolumeAutomationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteVolumeAutomationResponse>;
-
 export interface GetVolumeAutomationRequest {
   /** project Id */
   projectId: string;
@@ -218,11 +143,6 @@ export interface GetVolumeAutomationRequest {
   /** automation Id */
   automationId: string;
 }
-const GetVolumeAutomationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetVolumeAutomationRequest>;
-
 export interface GetVolumeExecutionRequest {
   /** project Id */
   projectId: string;
@@ -233,11 +153,6 @@ export interface GetVolumeExecutionRequest {
   /** execution Id */
   executionId: string;
 }
-const GetVolumeExecutionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetVolumeExecutionRequest>;
-
 export interface GetVolumeTemplateRequest {
   /** project Id */
   projectId: string;
@@ -246,22 +161,10 @@ export interface GetVolumeTemplateRequest {
   /** templateId Id */
   templateId: string;
 }
-const GetVolumeTemplateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetVolumeTemplateRequest>;
-
 export type VolumeTemplateAutomationInputKind = "VolumeRecoveryPointManagement";
-const VolumeTemplateAutomationInputKind = S.String;
-
 export interface VolumeTemplateAutomationInput {
   kind: VolumeTemplateAutomationInputKind;
 }
-const VolumeTemplateAutomationInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<VolumeTemplateAutomationInput>;
-
 export interface GetVolumeTemplateResponse {
   createTime: string;
   description: string;
@@ -270,11 +173,6 @@ export interface GetVolumeTemplateResponse {
   name: string;
   output?: VolumeOutput;
 }
-const GetVolumeTemplateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetVolumeTemplateResponse>;
-
 export interface ListVolumeAutomationsRequest {
   /** project Id */
   projectId: string;
@@ -285,11 +183,6 @@ export interface ListVolumeAutomationsRequest {
   /** A page token, received from a previous list call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListVolumeAutomationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListVolumeAutomationsRequest>;
-
 export interface ListAutomationsItem {
   createTime: string;
   description?: string;
@@ -299,24 +192,12 @@ export interface ListAutomationsItem {
   triggers?: AutomationTriggers | null;
   updateTime: string;
 }
-const ListAutomationsItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListAutomationsItem>;
-
 export type ListAutomationsResponseItemsList = Array<ListAutomationsItem>;
-const ListAutomationsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListAutomationsResponseItemsList>;
-
 export interface ListAutomationsResponse {
   items: ListAutomationsResponseItemsList;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListAutomationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListAutomationsResponse>;
-
 export interface ListVolumeExecutionsRequest {
   /** project Id */
   projectId: string;
@@ -329,43 +210,24 @@ export interface ListVolumeExecutionsRequest {
   /** A page token, received from a previous list call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListVolumeExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListVolumeExecutionsRequest>;
-
 export type ListExecutionsItemStatus =
   | "PENDING"
   | "RUNNING"
   | "COMPLETED"
   | "FAILED"
   | "TERMINATED";
-const ListExecutionsItemStatus = S.String;
-
 export interface ListExecutionsItem {
   createTime: string;
   endTime?: string;
   id: string;
   status: ListExecutionsItemStatus;
 }
-const ListExecutionsItem = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListExecutionsItem>;
-
 export type ListExecutionsResponseItemsList = Array<ListExecutionsItem>;
-const ListExecutionsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListExecutionsResponseItemsList>;
-
 export interface ListExecutionsResponse {
   items: ListExecutionsResponseItemsList;
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListExecutionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListExecutionsResponse>;
-
 export interface ListVolumeTemplatesRequest {
   /** project Id */
   projectId: string;
@@ -376,35 +238,18 @@ export interface ListVolumeTemplatesRequest {
   /** A page token, received from a previous list call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListVolumeTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListVolumeTemplatesRequest>;
-
 export interface Template {
   createTime: string;
   description: string;
   id: string;
   name: string;
 }
-const Template = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Template>;
-
 export type ListTemplatesResponseItemsList = Array<Template>;
-const ListTemplatesResponseItemsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListTemplatesResponseItemsList>;
-
 export interface ListTemplatesResponse {
   items: ListTemplatesResponseItemsList;
   /** A token that can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListTemplatesResponse>;
-
 export interface PartialUpdateVolumeAutomationRequest {
   /** project Id */
   projectId: string;
@@ -419,11 +264,6 @@ export interface PartialUpdateVolumeAutomationRequest {
   name?: string | null;
   triggers?: AutomationTriggers | null;
 }
-const PartialUpdateVolumeAutomationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PartialUpdateVolumeAutomationRequest>;
-
 export type CreateVolumeAutomationError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Create volume automation Creates a new volume automation */
 export const createVolumeAutomation: API.OperationMethod<
@@ -432,8 +272,8 @@ export const createVolumeAutomation: API.OperationMethod<
   CreateVolumeAutomationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVolumeAutomationRequest,
-  output: VolumeAutomation,
+  input: __S(3) as any as S.Schema<CreateVolumeAutomationRequest>,
+  output: __S(7) as any as S.Schema<VolumeAutomation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -447,8 +287,8 @@ export const createVolumeExecution: API.OperationMethod<
   CreateVolumeExecutionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVolumeExecutionRequest,
-  output: VolumeExecutionResponse,
+  input: __S(8) as any as S.Schema<CreateVolumeExecutionRequest>,
+  output: __S(14) as any as S.Schema<VolumeExecutionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -462,8 +302,8 @@ export const deleteVolumeAutomation: API.OperationMethod<
   DeleteVolumeAutomationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVolumeAutomationRequest,
-  output: DeleteVolumeAutomationResponse,
+  input: __S(15) as any as S.Schema<DeleteVolumeAutomationRequest>,
+  output: __S(16) as any as S.Schema<DeleteVolumeAutomationResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -477,8 +317,8 @@ export const getVolumeAutomation: API.OperationMethod<
   GetVolumeAutomationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeAutomationRequest,
-  output: VolumeAutomation,
+  input: __S(17) as any as S.Schema<GetVolumeAutomationRequest>,
+  output: __S(7) as any as S.Schema<VolumeAutomation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -492,8 +332,8 @@ export const getVolumeExecution: API.OperationMethod<
   GetVolumeExecutionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeExecutionRequest,
-  output: VolumeExecutionResponse,
+  input: __S(18) as any as S.Schema<GetVolumeExecutionRequest>,
+  output: __S(14) as any as S.Schema<VolumeExecutionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -507,8 +347,8 @@ export const getVolumeTemplate: API.OperationMethod<
   GetVolumeTemplateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeTemplateRequest,
-  output: GetVolumeTemplateResponse,
+  input: __S(19) as any as S.Schema<GetVolumeTemplateRequest>,
+  output: __S(21) as any as S.Schema<GetVolumeTemplateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -522,8 +362,8 @@ export const listVolumeAutomations: API.OperationMethod<
   ListVolumeAutomationsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeAutomationsRequest,
-  output: ListAutomationsResponse,
+  input: __S(22) as any as S.Schema<ListVolumeAutomationsRequest>,
+  output: __S(25) as any as S.Schema<ListAutomationsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -537,8 +377,8 @@ export const listVolumeExecutions: API.OperationMethod<
   ListVolumeExecutionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeExecutionsRequest,
-  output: ListExecutionsResponse,
+  input: __S(26) as any as S.Schema<ListVolumeExecutionsRequest>,
+  output: __S(29) as any as S.Schema<ListExecutionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -552,8 +392,8 @@ export const listVolumeTemplates: API.OperationMethod<
   ListVolumeTemplatesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeTemplatesRequest,
-  output: ListTemplatesResponse,
+  input: __S(30) as any as S.Schema<ListVolumeTemplatesRequest>,
+  output: __S(33) as any as S.Schema<ListTemplatesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -567,8 +407,8 @@ export const partialUpdateVolumeAutomation: API.OperationMethod<
   PartialUpdateVolumeAutomationError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateVolumeAutomationRequest,
-  output: VolumeAutomation,
+  input: __S(34) as any as S.Schema<PartialUpdateVolumeAutomationRequest>,
+  output: __S(7) as any as S.Schema<VolumeAutomation>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -594,7 +434,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schedule: S.optional(S.NullOr(AutomationScheduleTrigger)),
+          schedule: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({ identifier: "AutomationTriggers" });
     case 3:
@@ -603,10 +443,10 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
-          input: S.optional(S.NullOr(VolumeAutomationInput)),
+          input: S.optional(S.NullOr(__S(0))),
           name: S.optional(S.NullOr(S.String)),
           templateId: S.String,
-          triggers: S.optional(S.NullOr(AutomationTriggers)),
+          triggers: S.optional(S.NullOr(__S(2))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -622,15 +462,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          result: S.optional(VolumeAutomationInput),
+          result: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "VolumeOutputStep" });
     case 5:
-      return S.Array(VolumeOutputStep);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(VolumeOutputStepsList),
+          steps: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "VolumeOutput" });
     case 7:
@@ -639,11 +479,11 @@ function __c0(j: number): any {
           createTime: S.String,
           description: S.optional(S.String),
           id: S.String,
-          input: S.optional(S.NullOr(VolumeAutomationInput)),
+          input: S.optional(S.NullOr(__S(0))),
           name: S.optional(S.String),
-          output: S.optional(VolumeOutput),
+          output: S.optional(__S(6)),
           templateId: S.optional(S.String),
-          triggers: S.optional(S.NullOr(AutomationTriggers)),
+          triggers: S.optional(S.NullOr(__S(2))),
           updateTime: S.String,
         }),
       ).annotate({ identifier: "VolumeAutomation" });
@@ -673,11 +513,11 @@ function __c1(j: number): any {
         S.Struct({
           createTime: S.String,
           description: S.optional(S.String),
-          input: S.optional(S.NullOr(VolumeAutomationInput)),
+          input: S.optional(S.NullOr(__S(0))),
           name: S.optional(S.String),
-          output: S.optional(VolumeOutput),
+          output: S.optional(__S(6)),
           templateId: S.optional(S.String),
-          triggers: S.optional(S.NullOr(AutomationTriggers)),
+          triggers: S.optional(S.NullOr(__S(2))),
           updateTime: S.String,
         }),
       ).annotate({
@@ -688,35 +528,35 @@ function __c1(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           name: S.String,
-          result: S.optional(VolumeAutomationInput),
-          status: VolumeExecutionOutputStepStatus,
+          result: S.optional(__S(0)),
+          status: S.String,
         }),
       ).annotate({
         identifier: "VolumeExecutionOutputStep",
       });
     case 3:
-      return S.Array(VolumeExecutionOutputStep);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          steps: S.optional(VolumeExecutionOutputStepsList),
+          steps: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "VolumeExecutionOutput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          config: VolumeExecutionAutomation,
-          output: S.optional(VolumeExecutionOutput),
+          config: __S(9),
+          output: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "VolumeExecutionDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          automation: S.optional(VolumeExecutionDetails),
+          automation: S.optional(__S(13)),
           createTime: S.String,
           endTime: S.optional(S.String),
           id: S.String,
-          status: VolumeExecutionResponseStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "VolumeExecutionResponse" });
     case 7:
@@ -797,7 +637,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          kind: VolumeTemplateAutomationInputKind,
+          kind: S.String,
         }),
       ).annotate({
         identifier: "VolumeTemplateAutomationInput",
@@ -808,9 +648,9 @@ function __c2(j: number): any {
           createTime: S.String,
           description: S.String,
           id: S.String,
-          input: S.optional(VolumeTemplateAutomationInput),
+          input: S.optional(__S(20)),
           name: S.String,
-          output: S.optional(VolumeOutput),
+          output: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GetVolumeTemplateResponse",
@@ -841,7 +681,7 @@ function __c2(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           templateId: S.optional(S.String),
-          triggers: S.optional(S.NullOr(AutomationTriggers)),
+          triggers: S.optional(S.NullOr(__S(2))),
           updateTime: S.String,
         }),
       ).annotate({ identifier: "ListAutomationsItem" });
@@ -850,11 +690,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListAutomationsItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListAutomationsResponseItemsList,
+          items: __S(24),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAutomationsResponse" });
@@ -883,15 +723,15 @@ function __c3(j: number): any {
           createTime: S.String,
           endTime: S.optional(S.String),
           id: S.String,
-          status: ListExecutionsItemStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "ListExecutionsItem" });
     case 4:
-      return S.Array(ListExecutionsItem);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: ListExecutionsResponseItemsList,
+          items: __S(28),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListExecutionsResponse" });
@@ -927,11 +767,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Template);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListTemplatesResponseItemsList,
+          items: __S(32),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTemplatesResponse" });
@@ -943,9 +783,9 @@ function __c4(j: number): any {
           automationId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.NullOr(S.String)),
-          input: S.optional(S.NullOr(VolumeAutomationInput)),
+          input: S.optional(S.NullOr(__S(0))),
           name: S.optional(S.NullOr(S.String)),
-          triggers: S.optional(S.NullOr(AutomationTriggers)),
+          triggers: S.optional(S.NullOr(__S(2))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -957,5 +797,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "PartialUpdateVolumeAutomationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

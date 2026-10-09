@@ -8,6 +8,8 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -24,9 +26,6 @@ export interface SearchByTitleRequestSortCase1 {
 export type SearchByTitleRequestSort =
   | SearchByTitleRequestSortCase0
   | SearchByTitleRequestSortCase1;
-const SearchByTitleRequestSort =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SearchByTitleRequestSort>;
-
 export type SearchByTitleRequestFilterCase0Property = "object";
 export type SearchByTitleRequestFilterCase0Value = "page" | "data_source";
 export interface SearchByTitleRequestFilterCase0 {
@@ -40,9 +39,6 @@ export interface SearchByTitleRequestFilterCase1 {
 export type SearchByTitleRequestFilter =
   | SearchByTitleRequestFilterCase0
   | SearchByTitleRequestFilterCase1;
-const SearchByTitleRequestFilter =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SearchByTitleRequestFilter>;
-
 export interface SearchByTitleRequest {
   sort?: SearchByTitleRequestSort;
   query?: string;
@@ -50,8 +46,6 @@ export interface SearchByTitleRequest {
   page_size?: number;
   filter?: SearchByTitleRequestFilter;
 }
-const SearchByTitleRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SearchByTitleRequest>;
-
 export interface DatabaseParentResponse {
   /** The parent type. */
   type: string;
@@ -1018,30 +1012,13 @@ export type SearchByTitleResponseResultsItemCase1 =
 export type SearchByTitleResponseResultsItem =
   | SearchByTitleResponseResultsItemCase0
   | SearchByTitleResponseResultsItemCase1;
-const SearchByTitleResponseResultsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<SearchByTitleResponseResultsItem>;
-
 export type SearchByTitleResponseResultsList = Array<SearchByTitleResponseResultsItem>;
-const SearchByTitleResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SearchByTitleResponseResultsList>;
-
 export type SearchByTitleResponseRequestStatusType = "complete" | "incomplete";
-const SearchByTitleResponseRequestStatusType = S.String;
-
 export type SearchByTitleResponseRequestStatusIncompleteReason = "query_result_limit_reached";
-const SearchByTitleResponseRequestStatusIncompleteReason = S.String;
-
 export interface SearchByTitleResponseRequestStatus {
   type: SearchByTitleResponseRequestStatusType;
   incomplete_reason?: SearchByTitleResponseRequestStatusIncompleteReason;
 }
-const SearchByTitleResponseRequestStatus = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<SearchByTitleResponseRequestStatus>;
-
 export interface SearchByTitleResponse {
   type: string;
   page_or_data_source: unknown;
@@ -1051,11 +1028,6 @@ export interface SearchByTitleResponse {
   results: SearchByTitleResponseResultsList;
   request_status?: SearchByTitleResponseRequestStatus;
 }
-const SearchByTitleResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<SearchByTitleResponse>;
-
 export type SearchByTitleError = NotionOpError;
 /** Search by title */
 export const searchByTitle: API.PaginatedOperationMethod<
@@ -1066,8 +1038,8 @@ export const searchByTitle: API.PaginatedOperationMethod<
   SearchByTitleResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: SearchByTitleRequest,
-    output: SearchByTitleResponse,
+    input: __S(0) as any as S.Schema<SearchByTitleRequest>,
+    output: __S(3) as any as S.Schema<SearchByTitleResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -1087,20 +1059,20 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(SearchByTitleRequestSort),
+          sort: S.optional(S.Unknown),
           query: S.optional(S.String),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
-          filter: S.optional(SearchByTitleRequestFilter),
+          filter: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/search", code: 200 })),
       ).annotate({ identifier: "SearchByTitleRequest" });
     case 1:
-      return S.Array(SearchByTitleResponseResultsItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: SearchByTitleResponseRequestStatusType,
-          incomplete_reason: S.optional(SearchByTitleResponseRequestStatusIncompleteReason),
+          type: S.String,
+          incomplete_reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SearchByTitleResponseRequestStatus",
@@ -1113,9 +1085,20 @@ function __c0(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: SearchByTitleResponseResultsList,
-          request_status: S.optional(SearchByTitleResponseRequestStatus),
+          results: __S(1),
+          request_status: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "SearchByTitleResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

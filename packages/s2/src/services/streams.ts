@@ -7,6 +7,8 @@ import { paginateStartAfter } from "../pagination.ts";
 import { S2Protocol, type S2OpError, type S2OpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { S2OpError, S2OpContext };
 
@@ -14,8 +16,6 @@ export interface DeleteOnEmptyConfig {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 (default) to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number;
 }
-const DeleteOnEmptyConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteOnEmptyConfig>;
-
 /** Age in seconds for automatic trimming of records older than this threshold. This must be set to a value greater than 0 seconds. */
 export interface RetentionPolicyCase0 {
   /** Age in seconds for automatic trimming of records older than this threshold. This must be set to a value greater than 0 seconds. */
@@ -27,18 +27,12 @@ export interface RetentionPolicyCase1 {
   infinite: unknown;
 }
 export type RetentionPolicy = RetentionPolicyCase0 | RetentionPolicyCase1;
-const RetentionPolicy = /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionPolicy>;
-
 export type TimestampingMode = "client-prefer" | "client-require" | "arrival";
-const TimestampingMode = S.String;
-
 export interface TimestampingConfig {
   mode?: TimestampingMode | (string & {}) | null;
   /** Allow client-specified timestamps to exceed the arrival time. If this is `false` or not set, client timestamps will be capped at the arrival time. */
   uncapped?: boolean | null;
 }
-const TimestampingConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TimestampingConfig>;
-
 export interface StreamConfig {
   delete_on_empty?: DeleteOnEmptyConfig | null;
   retention_policy?: RetentionPolicy | null;
@@ -46,8 +40,6 @@ export interface StreamConfig {
   storage_class?: string | null;
   timestamping?: TimestampingConfig | null;
 }
-const StreamConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StreamConfig>;
-
 export interface CreateStreamRequest {
   /** Client-specified request token for idempotent retries. */
   s2RequestToken?: string;
@@ -55,11 +47,7 @@ export interface CreateStreamRequest {
   /** Stream name that is unique to the basin. It can be between 1 and 512 bytes in length, and must not contain NUL bytes. */
   stream: string;
 }
-const CreateStreamRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateStreamRequest>;
-
 export type EncryptionAlgorithm = "aegis-256" | "aes-256-gcm";
-const EncryptionAlgorithm = S.String;
-
 export interface StreamInfo {
   cipher?: EncryptionAlgorithm | null;
   /** Creation time in RFC 3339 format. */
@@ -69,33 +57,20 @@ export interface StreamInfo {
   /** Stream name. */
   name: string;
 }
-const StreamInfo = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StreamInfo>;
-
 export interface DeleteStreamRequest {
   /** Stream name. */
   stream: string;
 }
-const DeleteStreamRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteStreamRequest>;
-
 export interface DeleteStreamResponse {}
-const DeleteStreamResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteStreamResponse>;
-
 export interface EnsureStreamRequest {
   /** Stream name. */
   stream: string;
   body?: StreamConfig | null;
 }
-const EnsureStreamRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EnsureStreamRequest>;
-
 export interface GetStreamConfigRequest {
   /** Stream name. */
   stream: string;
 }
-const GetStreamConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetStreamConfigRequest>;
-
 export interface ListStreamsRequest {
   /** Filter to streams whose names begin with this prefix. It must not contain NUL bytes. */
   prefix?: string;
@@ -104,42 +79,23 @@ export interface ListStreamsRequest {
   /** Number of results, up to a maximum of 1000. */
   limit?: number;
 }
-const ListStreamsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListStreamsRequest>;
-
 /** Matching streams. */
 export type ListStreamsResponseStreamsList = Array<StreamInfo>;
-const ListStreamsResponseStreamsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListStreamsResponseStreamsList>;
-
 export interface ListStreamsResponse {
   /** Indicates that there are more results that match the criteria. */
   has_more: boolean;
   /** Matching streams. */
   streams: ListStreamsResponseStreamsList;
 }
-const ListStreamsResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListStreamsResponse>;
-
 export interface DeleteOnEmptyReconfiguration {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number | null;
 }
-const DeleteOnEmptyReconfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteOnEmptyReconfiguration>;
-
 export interface TimestampingReconfiguration {
   mode?: TimestampingMode | (string & {}) | null;
   /** Allow client-specified timestamps to exceed the arrival time. */
   uncapped?: boolean | null;
 }
-const TimestampingReconfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<TimestampingReconfiguration>;
-
 export interface ReconfigureStreamRequest {
   /** Stream name. */
   stream: string;
@@ -149,11 +105,6 @@ export interface ReconfigureStreamRequest {
   storage_class?: string | null;
   timestamping?: TimestampingReconfiguration | null;
 }
-const ReconfigureStreamRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ReconfigureStreamRequest>;
-
 export type CreateStreamError = S2OpError;
 /** Create a stream. */
 export const createStream: API.OperationMethod<
@@ -162,8 +113,8 @@ export const createStream: API.OperationMethod<
   CreateStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamRequest,
-  output: StreamInfo,
+  input: __S(3) as any as S.Schema<CreateStreamRequest>,
+  output: __S(4) as any as S.Schema<StreamInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -177,8 +128,8 @@ export const deleteStream: API.OperationMethod<
   DeleteStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStreamRequest,
-  output: DeleteStreamResponse,
+  input: __S(5) as any as S.Schema<DeleteStreamRequest>,
+  output: __S(6) as any as S.Schema<DeleteStreamResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -192,8 +143,8 @@ export const ensureStream: API.OperationMethod<
   EnsureStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnsureStreamRequest,
-  output: StreamInfo,
+  input: __S(7) as any as S.Schema<EnsureStreamRequest>,
+  output: __S(4) as any as S.Schema<StreamInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -207,8 +158,8 @@ export const getStreamConfig: API.OperationMethod<
   GetStreamConfigError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamConfigRequest,
-  output: StreamConfig,
+  input: __S(8) as any as S.Schema<GetStreamConfigRequest>,
+  output: __S(2) as any as S.Schema<StreamConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -224,8 +175,8 @@ export const listStreams: API.PaginatedOperationMethod<
   StreamInfo
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListStreamsRequest,
-    output: ListStreamsResponse,
+    input: __S(9) as any as S.Schema<ListStreamsRequest>,
+    output: __S(11) as any as S.Schema<ListStreamsResponse>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -248,8 +199,8 @@ export const reconfigureStream: API.OperationMethod<
   ReconfigureStreamError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReconfigureStreamRequest,
-  output: StreamConfig,
+  input: __S(14) as any as S.Schema<ReconfigureStreamRequest>,
+  output: __S(2) as any as S.Schema<StreamConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -267,31 +218,31 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.NullOr(TimestampingMode)),
+          mode: S.optional(S.NullOr(S.String)),
           uncapped: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "TimestampingConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyConfig)),
-          retention_policy: S.optional(S.NullOr(RetentionPolicy)),
+          delete_on_empty: S.optional(S.NullOr(__S(0))),
+          retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(TimestampingConfig)),
+          timestamping: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({ identifier: "StreamConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
-          config: S.optional(S.NullOr(StreamConfig)),
+          config: S.optional(S.NullOr(__S(2))),
           stream: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/streams", code: 200 })),
       ).annotate({ identifier: "CreateStreamRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cipher: S.optional(S.NullOr(EncryptionAlgorithm)),
+          cipher: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           deleted_at: S.optional(S.NullOr(S.String)),
           name: S.String,
@@ -311,7 +262,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(StreamConfig).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(2)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/streams/{stream}", code: 200 })),
       ).annotate({ identifier: "EnsureStreamRequest" });
   }
@@ -333,12 +284,12 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/streams", code: 200 })),
       ).annotate({ identifier: "ListStreamsRequest" });
     case 2:
-      return S.Array(StreamInfo);
+      return S.Array(__S(4));
     case 3:
       return S.suspend(() =>
         S.Struct({
           has_more: S.Boolean,
-          streams: ListStreamsResponseStreamsList,
+          streams: __S(10),
         }),
       ).annotate({ identifier: "ListStreamsResponse" });
     case 4:
@@ -352,7 +303,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.NullOr(TimestampingMode)),
+          mode: S.optional(S.NullOr(S.String)),
           uncapped: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -362,11 +313,24 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           stream: S.String.pipe(T.Label()),
-          delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyReconfiguration)),
-          retention_policy: S.optional(S.NullOr(RetentionPolicy)),
+          delete_on_empty: S.optional(S.NullOr(__S(12))),
+          retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(TimestampingReconfiguration)),
+          timestamping: S.optional(S.NullOr(__S(13))),
         }).pipe(T.Http({ method: "PATCH", uri: "/streams/{stream}", code: 200 })),
       ).annotate({ identifier: "ReconfigureStreamRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

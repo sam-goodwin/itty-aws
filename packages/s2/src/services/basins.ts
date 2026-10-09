@@ -7,6 +7,8 @@ import { paginateStartAfter } from "../pagination.ts";
 import { S2Protocol, type S2OpError, type S2OpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { S2OpError, S2OpContext };
 
@@ -14,8 +16,6 @@ export interface DeleteOnEmptyConfig {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 (default) to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number;
 }
-const DeleteOnEmptyConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteOnEmptyConfig>;
-
 /** Age in seconds for automatic trimming of records older than this threshold. This must be set to a value greater than 0 seconds. */
 export interface RetentionPolicyCase0 {
   /** Age in seconds for automatic trimming of records older than this threshold. This must be set to a value greater than 0 seconds. */
@@ -27,18 +27,12 @@ export interface RetentionPolicyCase1 {
   infinite: unknown;
 }
 export type RetentionPolicy = RetentionPolicyCase0 | RetentionPolicyCase1;
-const RetentionPolicy = /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionPolicy>;
-
 export type TimestampingMode = "client-prefer" | "client-require" | "arrival";
-const TimestampingMode = S.String;
-
 export interface TimestampingConfig {
   mode?: TimestampingMode | (string & {}) | null;
   /** Allow client-specified timestamps to exceed the arrival time. If this is `false` or not set, client timestamps will be capped at the arrival time. */
   uncapped?: boolean | null;
 }
-const TimestampingConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TimestampingConfig>;
-
 export interface StreamConfig {
   delete_on_empty?: DeleteOnEmptyConfig | null;
   retention_policy?: RetentionPolicy | null;
@@ -46,11 +40,7 @@ export interface StreamConfig {
   storage_class?: string | null;
   timestamping?: TimestampingConfig | null;
 }
-const StreamConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StreamConfig>;
-
 export type EncryptionAlgorithm = "aegis-256" | "aes-256-gcm";
-const EncryptionAlgorithm = S.String;
-
 export interface BasinConfig {
   /** Create stream on append if it doesn't exist, using the default stream configuration. */
   create_stream_on_append?: boolean;
@@ -59,8 +49,6 @@ export interface BasinConfig {
   default_stream_config?: StreamConfig | null;
   stream_cipher?: EncryptionAlgorithm | (string & {}) | null;
 }
-const BasinConfig = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BasinConfig>;
-
 export interface CreateBasinRequest {
   /** Client-specified request token for idempotent retries. */
   s2RequestToken?: string;
@@ -69,8 +57,6 @@ export interface CreateBasinRequest {
   config?: BasinConfig | null;
   location?: string | null;
 }
-const CreateBasinRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateBasinRequest>;
-
 export interface BasinInfo {
   /** Creation time in RFC 3339 format. */
   created_at: string;
@@ -80,39 +66,24 @@ export interface BasinInfo {
   /** Basin name. */
   name: string;
 }
-const BasinInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BasinInfo>;
-
 export interface DeleteBasinRequest {
   /** Basin name. */
   basin: string;
 }
-const DeleteBasinRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteBasinRequest>;
-
 export interface DeleteBasinResponse {}
-const DeleteBasinResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeleteBasinResponse>;
-
 export interface EnsureBasinRequest {
   config?: BasinConfig | null;
   location?: string | null;
 }
-const EnsureBasinRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EnsureBasinRequest>;
-
 export interface EnsureBasinRequest2 {
   /** Basin name. */
   basin: string;
   body?: EnsureBasinRequest | null;
 }
-const EnsureBasinRequest2 = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<EnsureBasinRequest2>;
-
 export interface GetBasinConfigRequest {
   /** Basin name. */
   basin: string;
 }
-const GetBasinConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetBasinConfigRequest>;
-
 export interface ListBasinsRequest {
   /** Filter to basins whose names begin with this prefix. */
   prefix?: string;
@@ -121,42 +92,23 @@ export interface ListBasinsRequest {
   /** Number of results, up to a maximum of 1000. */
   limit?: number;
 }
-const ListBasinsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListBasinsRequest>;
-
 /** Matching basins. */
 export type ListBasinsResponseBasinsList = Array<BasinInfo>;
-const ListBasinsResponseBasinsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListBasinsResponseBasinsList>;
-
 export interface ListBasinsResponse {
   /** Matching basins. */
   basins: ListBasinsResponseBasinsList;
   /** Indicates that there are more basins that match the criteria. */
   has_more: boolean;
 }
-const ListBasinsResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListBasinsResponse>;
-
 export interface DeleteOnEmptyReconfiguration {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number | null;
 }
-const DeleteOnEmptyReconfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteOnEmptyReconfiguration>;
-
 export interface TimestampingReconfiguration {
   mode?: TimestampingMode | (string & {}) | null;
   /** Allow client-specified timestamps to exceed the arrival time. */
   uncapped?: boolean | null;
 }
-const TimestampingReconfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<TimestampingReconfiguration>;
-
 export interface StreamReconfiguration {
   delete_on_empty?: DeleteOnEmptyReconfiguration | null;
   retention_policy?: RetentionPolicy | null;
@@ -164,11 +116,6 @@ export interface StreamReconfiguration {
   storage_class?: string | null;
   timestamping?: TimestampingReconfiguration | null;
 }
-const StreamReconfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<StreamReconfiguration>;
-
 export interface ReconfigureBasinRequest {
   /** Basin name. */
   basin: string;
@@ -179,11 +126,6 @@ export interface ReconfigureBasinRequest {
   default_stream_config?: StreamReconfiguration | null;
   stream_cipher?: EncryptionAlgorithm | (string & {}) | null;
 }
-const ReconfigureBasinRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ReconfigureBasinRequest>;
-
 export type CreateBasinError = S2OpError;
 /** Create a basin. */
 export const createBasin: API.OperationMethod<
@@ -192,8 +134,8 @@ export const createBasin: API.OperationMethod<
   CreateBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBasinRequest,
-  output: BasinInfo,
+  input: __S(4) as any as S.Schema<CreateBasinRequest>,
+  output: __S(5) as any as S.Schema<BasinInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -207,8 +149,8 @@ export const deleteBasin: API.OperationMethod<
   DeleteBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBasinRequest,
-  output: DeleteBasinResponse,
+  input: __S(6) as any as S.Schema<DeleteBasinRequest>,
+  output: __S(7) as any as S.Schema<DeleteBasinResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -222,8 +164,8 @@ export const ensureBasin: API.OperationMethod<
   EnsureBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnsureBasinRequest2,
-  output: BasinInfo,
+  input: __S(9) as any as S.Schema<EnsureBasinRequest2>,
+  output: __S(5) as any as S.Schema<BasinInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -237,8 +179,8 @@ export const getBasinConfig: API.OperationMethod<
   GetBasinConfigError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBasinConfigRequest,
-  output: BasinConfig,
+  input: __S(10) as any as S.Schema<GetBasinConfigRequest>,
+  output: __S(3) as any as S.Schema<BasinConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -254,8 +196,8 @@ export const listBasins: API.PaginatedOperationMethod<
   BasinInfo
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListBasinsRequest,
-    output: ListBasinsResponse,
+    input: __S(11) as any as S.Schema<ListBasinsRequest>,
+    output: __S(13) as any as S.Schema<ListBasinsResponse>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -278,8 +220,8 @@ export const reconfigureBasin: API.OperationMethod<
   ReconfigureBasinError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReconfigureBasinRequest,
-  output: BasinConfig,
+  input: __S(17) as any as S.Schema<ReconfigureBasinRequest>,
+  output: __S(3) as any as S.Schema<BasinConfig>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -297,17 +239,17 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.NullOr(TimestampingMode)),
+          mode: S.optional(S.NullOr(S.String)),
           uncapped: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "TimestampingConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyConfig)),
-          retention_policy: S.optional(S.NullOr(RetentionPolicy)),
+          delete_on_empty: S.optional(S.NullOr(__S(0))),
+          retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(TimestampingConfig)),
+          timestamping: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({ identifier: "StreamConfig" });
     case 3:
@@ -315,8 +257,8 @@ function __c0(j: number): any {
         S.Struct({
           create_stream_on_append: S.optional(S.Boolean),
           create_stream_on_read: S.optional(S.Boolean),
-          default_stream_config: S.optional(S.NullOr(StreamConfig)),
-          stream_cipher: S.optional(S.NullOr(EncryptionAlgorithm)),
+          default_stream_config: S.optional(S.NullOr(__S(2))),
+          stream_cipher: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "BasinConfig" });
     case 4:
@@ -324,7 +266,7 @@ function __c0(j: number): any {
         S.Struct({
           s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
           basin: S.String,
-          config: S.optional(S.NullOr(BasinConfig)),
+          config: S.optional(S.NullOr(__S(3))),
           location: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/basins", code: 200 })),
       ).annotate({ identifier: "CreateBasinRequest" });
@@ -354,7 +296,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(BasinConfig)),
+          config: S.optional(S.NullOr(__S(3))),
           location: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "EnsureBasinRequest" });
@@ -362,7 +304,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basin: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(EnsureBasinRequest).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(8)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/basins/{basin}", code: 200 })),
       ).annotate({ identifier: "EnsureBasinRequest2" });
     case 2:
@@ -380,11 +322,11 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/basins", code: 200 })),
       ).annotate({ identifier: "ListBasinsRequest" });
     case 4:
-      return S.Array(BasinInfo);
+      return S.Array(__S(5));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          basins: ListBasinsResponseBasinsList,
+          basins: __S(12),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "ListBasinsResponse" });
@@ -399,7 +341,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(S.NullOr(TimestampingMode)),
+          mode: S.optional(S.NullOr(S.String)),
           uncapped: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -412,10 +354,10 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyReconfiguration)),
-          retention_policy: S.optional(S.NullOr(RetentionPolicy)),
+          delete_on_empty: S.optional(S.NullOr(__S(14))),
+          retention_policy: S.optional(S.NullOr(S.Unknown)),
           storage_class: S.optional(S.NullOr(S.String)),
-          timestamping: S.optional(S.NullOr(TimestampingReconfiguration)),
+          timestamping: S.optional(S.NullOr(__S(15))),
         }),
       ).annotate({ identifier: "StreamReconfiguration" });
     case 1:
@@ -424,9 +366,24 @@ function __c2(j: number): any {
           basin: S.String.pipe(T.Label()),
           create_stream_on_append: S.optional(S.NullOr(S.Boolean)),
           create_stream_on_read: S.optional(S.NullOr(S.Boolean)),
-          default_stream_config: S.optional(S.NullOr(StreamReconfiguration)),
-          stream_cipher: S.optional(S.NullOr(EncryptionAlgorithm)),
+          default_stream_config: S.optional(S.NullOr(__S(16))),
+          stream_cipher: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/basins/{basin}", code: 200 })),
       ).annotate({ identifier: "ReconfigureBasinRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

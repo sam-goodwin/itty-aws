@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,11 +124,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource. */
 export interface IoK8sApiNetworkingV1IngressClassParametersReference {
   /** apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. */
@@ -173,11 +137,6 @@ export interface IoK8sApiNetworkingV1IngressClassParametersReference {
   /** scope represents if this refers to a cluster or namespace scoped resource. This may be set to "Cluster" (default) or "Namespace". */
   scope?: string;
 }
-const IoK8sApiNetworkingV1IngressClassParametersReference = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressClassParametersReference>;
-
 /** IngressClassSpec provides information about the class of an Ingress. */
 export interface IoK8sApiNetworkingV1IngressClassSpec {
   /** controller refers to the name of the controller that should handle this class. This allows for different "flavors" that are controlled by the same controller. For example, you may have different parameters for the same implementing controller. This should be specified as a domain-prefixed path no more than 250 characters in length, e.g. "acme.io/ingress-controller". This field is immutable. */
@@ -185,11 +144,6 @@ export interface IoK8sApiNetworkingV1IngressClassSpec {
   /** parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters. */
   parameters?: IoK8sApiNetworkingV1IngressClassParametersReference;
 }
-const IoK8sApiNetworkingV1IngressClassSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressClassSpec>;
-
 export interface CreateNetworkingV1IngressClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -208,11 +162,6 @@ export interface CreateNetworkingV1IngressClassRequest {
   /** spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IngressClassSpec;
 }
-const CreateNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateNetworkingV1IngressClassRequest>;
-
 /** IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class. */
 export interface IoK8sApiNetworkingV1IngressClass {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -224,11 +173,6 @@ export interface IoK8sApiNetworkingV1IngressClass {
   /** spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IngressClassSpec;
 }
-const IoK8sApiNetworkingV1IngressClass = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>;
-
 /** ParentReference describes a reference to a parent object. */
 export interface IoK8sApiNetworkingV1ParentReference {
   /** group is the group of the object being referenced. */
@@ -240,21 +184,11 @@ export interface IoK8sApiNetworkingV1ParentReference {
   /** resource is the resource of the object being referenced. */
   resource: string;
 }
-const IoK8sApiNetworkingV1ParentReference = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1ParentReference>;
-
 /** IPAddressSpec describe the attributes in an IP Address. */
 export interface IoK8sApiNetworkingV1IPAddressSpec {
   /** parentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object. */
   parentRef: IoK8sApiNetworkingV1ParentReference;
 }
-const IoK8sApiNetworkingV1IPAddressSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1IPAddressSpec>;
-
 export interface CreateNetworkingV1IPAddressRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -273,11 +207,6 @@ export interface CreateNetworkingV1IPAddressRequest {
   /** spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IPAddressSpec;
 }
-const CreateNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateNetworkingV1IPAddressRequest>;
-
 /** IPAddress represents a single IP of a single IP Family. The object is designed to be used by APIs that operate on IP addresses. The object is used by the Service core API for allocation of IP addresses. An IP address can be represented in different formats, to guarantee the uniqueness of the IP, the name of the object is the IP address in canonical format, four decimal digits separated by dots suppressing leading zeros for IPv4 and the representation defined by RFC 5952 for IPv6. Valid: 192.168.1.5 or 2001:db8::1 or 2001:db8:aaaa:bbbb:cccc:dddd:eeee:1 Invalid: 10.01.2.3 or 2001:db8:0:0:0::1 */
 export interface IoK8sApiNetworkingV1IPAddress {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -289,11 +218,6 @@ export interface IoK8sApiNetworkingV1IPAddress {
   /** spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IPAddressSpec;
 }
-const IoK8sApiNetworkingV1IPAddress = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>;
-
 /** TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace. */
 export interface IoK8sApiCoreV1TypedLocalObjectReference {
   /** apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. */
@@ -303,11 +227,6 @@ export interface IoK8sApiCoreV1TypedLocalObjectReference {
   /** name is the name of resource being referenced */
   name: string;
 }
-const IoK8sApiCoreV1TypedLocalObjectReference = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1TypedLocalObjectReference>;
-
 /** ServiceBackendPort is the service port being referenced. */
 export interface IoK8sApiNetworkingV1ServiceBackendPort {
   /** name is the name of the port on the Service. This is a mutually exclusive setting with "Number". */
@@ -315,11 +234,6 @@ export interface IoK8sApiNetworkingV1ServiceBackendPort {
   /** number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name". */
   number?: number;
 }
-const IoK8sApiNetworkingV1ServiceBackendPort = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceBackendPort>;
-
 /** IngressServiceBackend references a Kubernetes Service as a Backend. */
 export interface IoK8sApiNetworkingV1IngressServiceBackend {
   /** name is the referenced service. The service must exist in the same namespace as the Ingress object. */
@@ -327,11 +241,6 @@ export interface IoK8sApiNetworkingV1IngressServiceBackend {
   /** port of the referenced service. A port name or port number is required for a IngressServiceBackend. */
   port?: IoK8sApiNetworkingV1ServiceBackendPort;
 }
-const IoK8sApiNetworkingV1IngressServiceBackend = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressServiceBackend>;
-
 /** IngressBackend describes all endpoints for a given service and port. */
 export interface IoK8sApiNetworkingV1IngressBackend {
   /** resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with "Service". */
@@ -339,11 +248,6 @@ export interface IoK8sApiNetworkingV1IngressBackend {
   /** service references a service as a backend. This is a mutually exclusive setting with "Resource". */
   service?: IoK8sApiNetworkingV1IngressServiceBackend;
 }
-const IoK8sApiNetworkingV1IngressBackend = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressBackend>;
-
 /** HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend. */
 export interface IoK8sApiNetworkingV1HTTPIngressPath {
   /** backend defines the referenced service endpoint to which the traffic will be forwarded to. */
@@ -353,29 +257,14 @@ export interface IoK8sApiNetworkingV1HTTPIngressPath {
   /** pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is done on a path element by element basis. A path element refers is the list of labels in the path split by the '/' separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. Note that if the last element of the path is a substring of the last element in request path, it is not a match (e.g. /foo/bar matches /foo/bar/baz, but does not match /foo/barbaz). * ImplementationSpecific: Interpretation of the Path matching is up to the IngressClass. Implementations can treat this as a separate PathType or treat it identically to Prefix or Exact path types. Implementations are required to support all path types. */
   pathType: string;
 }
-const IoK8sApiNetworkingV1HTTPIngressPath = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1HTTPIngressPath>;
-
 /** paths is a collection of paths that map requests to backends. */
 export type IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList =
   Array<IoK8sApiNetworkingV1HTTPIngressPath>;
-const IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList>;
-
 /** HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'. */
 export interface IoK8sApiNetworkingV1HTTPIngressRuleValue {
   /** paths is a collection of paths that map requests to backends. */
   paths: IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList;
 }
-const IoK8sApiNetworkingV1HTTPIngressRuleValue = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IoK8sApiNetworkingV1HTTPIngressRuleValue>;
-
 /** IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue. */
 export interface IoK8sApiNetworkingV1IngressRule {
   /** host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in RFC 3986: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the IP in the Spec of the parent Ingress. 2. The `:` delimiter is not respected because ports are not allowed. Currently the port of an Ingress is implicitly :80 for http and :443 for https. Both these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue. host can be "precise" which is a domain name without the terminating dot of a network host (e.g. "foo.bar.com") or "wildcard", which is a domain name prefixed with a single wildcard label (e.g. "*.foo.com"). The wildcard character '*' must appear by itself as the first DNS label and matches only a single label. You cannot have a wildcard label by itself (e.g. Host == "*"). Requests will be matched against the Host field in the following way: 1. If host is precise, the request matches this rule if the http host header is equal to Host. 2. If host is a wildcard, then the request matches this rule if the http host header is to equal to the suffix (removing the first label) of the wildcard rule. */
@@ -383,23 +272,10 @@ export interface IoK8sApiNetworkingV1IngressRule {
   /** http is a HTTP IngressRuleValue, which contains a list of http selectors */
   http?: IoK8sApiNetworkingV1HTTPIngressRuleValue;
 }
-const IoK8sApiNetworkingV1IngressRule = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressRule>;
-
 /** rules is a list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend. */
 export type IoK8sApiNetworkingV1IngressSpecRulesList = Array<IoK8sApiNetworkingV1IngressRule>;
-const IoK8sApiNetworkingV1IngressSpecRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressSpecRulesList>;
-
 /** hosts is a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified. */
 export type IoK8sApiNetworkingV1IngressTLSHostsList = Array<string>;
-const IoK8sApiNetworkingV1IngressTLSHostsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1IngressTLSHostsList>;
-
 /** IngressTLS describes the transport layer security associated with an ingress. */
 export interface IoK8sApiNetworkingV1IngressTLS {
   /** hosts is a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified. */
@@ -407,18 +283,8 @@ export interface IoK8sApiNetworkingV1IngressTLS {
   /** secretName is the name of the secret used to terminate TLS traffic on port 443. Field is left optional to allow TLS routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the "Host" header is used for routing. */
   secretName?: string;
 }
-const IoK8sApiNetworkingV1IngressTLS = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressTLS>;
-
 /** tls represents the TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI. */
 export type IoK8sApiNetworkingV1IngressSpecTlsList = Array<IoK8sApiNetworkingV1IngressTLS>;
-const IoK8sApiNetworkingV1IngressSpecTlsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressSpecTlsList>;
-
 /** IngressSpec describes the Ingress the user wishes to exist. */
 export interface IoK8sApiNetworkingV1IngressSpec {
   /** defaultBackend is the backend that should handle requests that don't match any rule. If Rules are not specified, DefaultBackend must be specified. If DefaultBackend is not set, the handling of requests that do not match any of the rules will be up to the Ingress controller. */
@@ -430,11 +296,6 @@ export interface IoK8sApiNetworkingV1IngressSpec {
   /** tls represents the TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI. */
   tls?: IoK8sApiNetworkingV1IngressSpecTlsList;
 }
-const IoK8sApiNetworkingV1IngressSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressSpec>;
-
 /** IngressPortStatus represents the error condition of a service port */
 export interface IoK8sApiNetworkingV1IngressPortStatus {
   /** error is to record the problem with the service port The format of the error shall comply with the following rules: - built-in error values shall be specified in this file and those shall use CamelCase names - cloud provider specific error values must have names that comply with the format foo.example.com/CamelCase. */
@@ -444,19 +305,9 @@ export interface IoK8sApiNetworkingV1IngressPortStatus {
   /** protocol is the protocol of the ingress port. The supported values are: "TCP", "UDP", "SCTP" */
   protocol?: string;
 }
-const IoK8sApiNetworkingV1IngressPortStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressPortStatus>;
-
 /** ports provides information about the ports exposed by this LoadBalancer. */
 export type IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList =
   Array<IoK8sApiNetworkingV1IngressPortStatus>;
-const IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList>;
-
 /** IngressLoadBalancerIngress represents the status of a load-balancer ingress point. */
 export interface IoK8sApiNetworkingV1IngressLoadBalancerIngress {
   /** hostname is set for load-balancer ingress points that are DNS based. */
@@ -466,39 +317,19 @@ export interface IoK8sApiNetworkingV1IngressLoadBalancerIngress {
   /** ports provides information about the ports exposed by this LoadBalancer. */
   ports?: IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList;
 }
-const IoK8sApiNetworkingV1IngressLoadBalancerIngress = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressLoadBalancerIngress>;
-
 /** ingress is a list containing ingress points for the load-balancer. */
 export type IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList =
   Array<IoK8sApiNetworkingV1IngressLoadBalancerIngress>;
-const IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList>;
-
 /** IngressLoadBalancerStatus represents the status of a load-balancer. */
 export interface IoK8sApiNetworkingV1IngressLoadBalancerStatus {
   /** ingress is a list containing ingress points for the load-balancer. */
   ingress?: IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList;
 }
-const IoK8sApiNetworkingV1IngressLoadBalancerStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressLoadBalancerStatus>;
-
 /** IngressStatus describe the current state of the Ingress. */
 export interface IoK8sApiNetworkingV1IngressStatus {
   /** loadBalancer contains the current status of the load-balancer. */
   loadBalancer?: IoK8sApiNetworkingV1IngressLoadBalancerStatus;
 }
-const IoK8sApiNetworkingV1IngressStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressStatus>;
-
 export interface CreateNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -521,11 +352,6 @@ export interface CreateNetworkingV1NamespacedIngressRequest {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-const CreateNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateNetworkingV1NamespacedIngressRequest>;
-
 /** Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc. */
 export interface IoK8sApiNetworkingV1Ingress {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -539,11 +365,6 @@ export interface IoK8sApiNetworkingV1Ingress {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-const IoK8sApiNetworkingV1Ingress = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IoK8sApiNetworkingV1Ingress>;
-
 /** NetworkPolicyPort describes a port to allow traffic on */
 export interface IoK8sApiNetworkingV1NetworkPolicyPort {
   /** endPort indicates that the range of ports from port to endPort if set, inclusive, should be allowed by the policy. This field cannot be defined if the port field is not defined or if the port field is defined as a named (string) port. The endPort must be equal or greater than port. */
@@ -553,24 +374,11 @@ export interface IoK8sApiNetworkingV1NetworkPolicyPort {
   /** protocol represents the protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP. */
   protocol?: string;
 }
-const IoK8sApiNetworkingV1NetworkPolicyPort = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyPort>;
-
 /** ports is a list of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
 export type IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPort>;
-const IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList>;
-
 /** except is a slice of CIDRs that should not be included within an IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" Except values will be rejected if they are outside the cidr range */
 export type IoK8sApiNetworkingV1IPBlockExceptList = Array<string>;
-const IoK8sApiNetworkingV1IPBlockExceptList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1IPBlockExceptList>;
-
 /** IPBlock describes a particular CIDR (Ex. "192.168.1.0/24","2001:db8::/64") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule. */
 export interface IoK8sApiNetworkingV1IPBlock {
   /** cidr is a string representing the IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" */
@@ -578,18 +386,8 @@ export interface IoK8sApiNetworkingV1IPBlock {
   /** except is a slice of CIDRs that should not be included within an IPBlock Valid examples are "192.168.1.0/24" or "2001:db8::/64" Except values will be rejected if they are outside the cidr range */
   except?: IoK8sApiNetworkingV1IPBlockExceptList;
 }
-const IoK8sApiNetworkingV1IPBlock = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<IoK8sApiNetworkingV1IPBlock>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
-
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -599,26 +397,13 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
-
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
-
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
@@ -626,11 +411,6 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
-
 /** NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields are allowed */
 export interface IoK8sApiNetworkingV1NetworkPolicyPeer {
   /** ipBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be. */
@@ -640,19 +420,9 @@ export interface IoK8sApiNetworkingV1NetworkPolicyPeer {
   /** podSelector is a label selector which selects pods. This field follows standard label selector semantics; if present but empty, it selects all pods. If namespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the pods matching podSelector in the policy's own namespace. */
   podSelector?: IoK8sApimachineryPkgApisMetaV1LabelSelector;
 }
-const IoK8sApiNetworkingV1NetworkPolicyPeer = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyPeer>;
-
 /** to is a list of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list. */
 export type IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPeer>;
-const IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList>;
-
 /** NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8 */
 export interface IoK8sApiNetworkingV1NetworkPolicyEgressRule {
   /** ports is a list of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
@@ -660,31 +430,15 @@ export interface IoK8sApiNetworkingV1NetworkPolicyEgressRule {
   /** to is a list of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list. */
   to?: IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList;
 }
-const IoK8sApiNetworkingV1NetworkPolicyEgressRule = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyEgressRule>;
-
 /** egress is a list of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8 */
 export type IoK8sApiNetworkingV1NetworkPolicySpecEgressList =
   Array<IoK8sApiNetworkingV1NetworkPolicyEgressRule>;
-const IoK8sApiNetworkingV1NetworkPolicySpecEgressList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecEgressList>;
-
 /** from is a list of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list. */
 export type IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPeer>;
-const IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList =
-  IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList>;
-
 /** ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
 export type IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
   Array<IoK8sApiNetworkingV1NetworkPolicyPort>;
-const IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList =
-  IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList>;
-
 /** NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from. */
 export interface IoK8sApiNetworkingV1NetworkPolicyIngressRule {
   /** from is a list of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list. */
@@ -692,24 +446,11 @@ export interface IoK8sApiNetworkingV1NetworkPolicyIngressRule {
   /** ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list. */
   ports?: IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList;
 }
-const IoK8sApiNetworkingV1NetworkPolicyIngressRule = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyIngressRule>;
-
 /** ingress is a list of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default) */
 export type IoK8sApiNetworkingV1NetworkPolicySpecIngressList =
   Array<IoK8sApiNetworkingV1NetworkPolicyIngressRule>;
-const IoK8sApiNetworkingV1NetworkPolicySpecIngressList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecIngressList>;
-
 /** policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8 */
 export type IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList = Array<string>;
-const IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList>;
-
 /** NetworkPolicySpec provides the specification of a NetworkPolicy */
 export interface IoK8sApiNetworkingV1NetworkPolicySpec {
   /** egress is a list of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8 */
@@ -721,11 +462,6 @@ export interface IoK8sApiNetworkingV1NetworkPolicySpec {
   /** policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are ["Ingress"], ["Egress"], or ["Ingress", "Egress"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ "Egress" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include "Egress" (since such a policy would not include an egress section and would otherwise default to just [ "Ingress" ]). This field is beta-level in 1.8 */
   policyTypes?: IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList;
 }
-const IoK8sApiNetworkingV1NetworkPolicySpec = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicySpec>;
-
 export interface CreateNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -746,11 +482,6 @@ export interface CreateNetworkingV1NamespacedNetworkPolicyRequest {
   /** spec represents the specification of the desired behavior for this NetworkPolicy. */
   spec?: IoK8sApiNetworkingV1NetworkPolicySpec;
 }
-const CreateNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateNetworkingV1NamespacedNetworkPolicyRequest>;
-
 /** NetworkPolicy describes what network traffic is allowed for a set of Pods */
 export interface IoK8sApiNetworkingV1NetworkPolicy {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -762,26 +493,13 @@ export interface IoK8sApiNetworkingV1NetworkPolicy {
   /** spec represents the specification of the desired behavior for this NetworkPolicy. */
   spec?: IoK8sApiNetworkingV1NetworkPolicySpec;
 }
-const IoK8sApiNetworkingV1NetworkPolicy = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>;
-
 /** cidrs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable. */
 export type IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList = Array<string>;
-const IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList>;
-
 /** ServiceCIDRSpec define the CIDRs the user wants to use for allocating ClusterIPs for Services. */
 export interface IoK8sApiNetworkingV1ServiceCIDRSpec {
   /** cidrs defines the IP blocks in CIDR notation (e.g. "192.168.0.0/24" or "2001:db8::/64") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable. */
   cidrs?: IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList;
 }
-const IoK8sApiNetworkingV1ServiceCIDRSpec = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRSpec>;
-
 /** Condition contains details for one aspect of the current state of this API Resource. */
 export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable. */
@@ -797,29 +515,14 @@ export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** type of condition in CamelCase or in foo.example.com/CamelCase. */
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Condition>;
-
 /** conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state */
 export type IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-const IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList>;
-
 /** ServiceCIDRStatus describes the current state of the ServiceCIDR. */
 export interface IoK8sApiNetworkingV1ServiceCIDRStatus {
   /** conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state */
   conditions?: IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList;
 }
-const IoK8sApiNetworkingV1ServiceCIDRStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRStatus>;
-
 export interface CreateNetworkingV1ServiceCIDRRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -840,11 +543,6 @@ export interface CreateNetworkingV1ServiceCIDRRequest {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-const CreateNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateNetworkingV1ServiceCIDRRequest>;
-
 /** ServiceCIDR defines a range of IP addresses using CIDR format (e.g. 192.168.0.0/24 or 2001:db2::/64). This range is used to allocate ClusterIPs to Service objects. */
 export interface IoK8sApiNetworkingV1ServiceCIDR {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -858,11 +556,6 @@ export interface IoK8sApiNetworkingV1ServiceCIDR {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-const IoK8sApiNetworkingV1ServiceCIDR = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -870,11 +563,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteNetworkingV1CollectionIngressClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -913,11 +601,6 @@ export interface DeleteNetworkingV1CollectionIngressClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1CollectionIngressClassRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteNetworkingV1CollectionIngressClassRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -927,19 +610,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -955,21 +628,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -983,11 +646,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1007,11 +665,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteNetworkingV1CollectionIPAddressRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1050,11 +703,6 @@ export interface DeleteNetworkingV1CollectionIPAddressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1CollectionIPAddressRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteNetworkingV1CollectionIPAddressRequest>;
-
 export interface DeleteNetworkingV1CollectionNamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1095,11 +743,6 @@ export interface DeleteNetworkingV1CollectionNamespacedIngressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1CollectionNamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedIngressRequest>;
-
 export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1140,11 +783,6 @@ export interface DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest>;
-
 export interface DeleteNetworkingV1CollectionServiceCIDRRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1183,11 +821,6 @@ export interface DeleteNetworkingV1CollectionServiceCIDRRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1CollectionServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteNetworkingV1CollectionServiceCIDRRequest>;
-
 export interface DeleteNetworkingV1IngressClassRequest {
   /** name of the IngressClass */
   name: string;
@@ -1210,11 +843,6 @@ export interface DeleteNetworkingV1IngressClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteNetworkingV1IngressClassRequest>;
-
 export interface DeleteNetworkingV1IPAddressRequest {
   /** name of the IPAddress */
   name: string;
@@ -1237,11 +865,6 @@ export interface DeleteNetworkingV1IPAddressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteNetworkingV1IPAddressRequest>;
-
 export interface DeleteNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1266,11 +889,6 @@ export interface DeleteNetworkingV1NamespacedIngressRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteNetworkingV1NamespacedIngressRequest>;
-
 export interface DeleteNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1295,11 +913,6 @@ export interface DeleteNetworkingV1NamespacedNetworkPolicyRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteNetworkingV1NamespacedNetworkPolicyRequest>;
-
 export interface DeleteNetworkingV1ServiceCIDRRequest {
   /** name of the ServiceCIDR */
   name: string;
@@ -1322,17 +935,7 @@ export interface DeleteNetworkingV1ServiceCIDRRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteNetworkingV1ServiceCIDRRequest>;
-
 export interface GetNetworkingAPIGroupRequest {}
-const GetNetworkingAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetNetworkingAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -1340,11 +943,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -1352,27 +950,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1388,32 +971,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetNetworkingV1APIResourcesRequest {}
-const GetNetworkingV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetNetworkingV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -1437,19 +1001,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1461,11 +1015,6 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface ListNetworkingV1IngressClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1492,18 +1041,8 @@ export interface ListNetworkingV1IngressClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListNetworkingV1IngressClassRequest>;
-
 /** items is the list of IngressClasses. */
 export type IoK8sApiNetworkingV1IngressClassListItemsList = Array<IoK8sApiNetworkingV1IngressClass>;
-const IoK8sApiNetworkingV1IngressClassListItemsList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressClassListItemsList>;
-
 /** IngressClassList is a collection of IngressClasses. */
 export interface IoK8sApiNetworkingV1IngressClassList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1515,11 +1054,6 @@ export interface IoK8sApiNetworkingV1IngressClassList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiNetworkingV1IngressClassList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressClassList>;
-
 export interface ListNetworkingV1IngressForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1546,18 +1080,8 @@ export interface ListNetworkingV1IngressForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1IngressForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListNetworkingV1IngressForAllNamespacesRequest>;
-
 /** items is the list of Ingress. */
 export type IoK8sApiNetworkingV1IngressListItemsList = Array<IoK8sApiNetworkingV1Ingress>;
-const IoK8sApiNetworkingV1IngressListItemsList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressListItemsList>;
-
 /** IngressList is a collection of Ingress. */
 export interface IoK8sApiNetworkingV1IngressList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1569,11 +1093,6 @@ export interface IoK8sApiNetworkingV1IngressList {
   /** Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiNetworkingV1IngressList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<IoK8sApiNetworkingV1IngressList>;
-
 export interface ListNetworkingV1IPAddressRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1600,18 +1119,8 @@ export interface ListNetworkingV1IPAddressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListNetworkingV1IPAddressRequest>;
-
 /** items is the list of IPAddresses. */
 export type IoK8sApiNetworkingV1IPAddressListItemsList = Array<IoK8sApiNetworkingV1IPAddress>;
-const IoK8sApiNetworkingV1IPAddressListItemsList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1IPAddressListItemsList>;
-
 /** IPAddressList contains a list of IPAddress. */
 export interface IoK8sApiNetworkingV1IPAddressList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1623,11 +1132,6 @@ export interface IoK8sApiNetworkingV1IPAddressList {
   /** Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiNetworkingV1IPAddressList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1IPAddressList>;
-
 export interface ListNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1656,11 +1160,6 @@ export interface ListNetworkingV1NamespacedIngressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListNetworkingV1NamespacedIngressRequest>;
-
 export interface ListNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1689,19 +1188,9 @@ export interface ListNetworkingV1NamespacedNetworkPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListNetworkingV1NamespacedNetworkPolicyRequest>;
-
 /** items is a list of schema objects. */
 export type IoK8sApiNetworkingV1NetworkPolicyListItemsList =
   Array<IoK8sApiNetworkingV1NetworkPolicy>;
-const IoK8sApiNetworkingV1NetworkPolicyListItemsList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyListItemsList>;
-
 /** NetworkPolicyList is a list of NetworkPolicy objects. */
 export interface IoK8sApiNetworkingV1NetworkPolicyList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1713,11 +1202,6 @@ export interface IoK8sApiNetworkingV1NetworkPolicyList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiNetworkingV1NetworkPolicyList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>;
-
 export interface ListNetworkingV1NetworkPolicyForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1744,11 +1228,6 @@ export interface ListNetworkingV1NetworkPolicyForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1NetworkPolicyForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListNetworkingV1NetworkPolicyForAllNamespacesRequest>;
-
 export interface ListNetworkingV1ServiceCIDRRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
@@ -1775,18 +1254,8 @@ export interface ListNetworkingV1ServiceCIDRRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListNetworkingV1ServiceCIDRRequest>;
-
 /** items is the list of ServiceCIDRs. */
 export type IoK8sApiNetworkingV1ServiceCIDRListItemsList = Array<IoK8sApiNetworkingV1ServiceCIDR>;
-const IoK8sApiNetworkingV1ServiceCIDRListItemsList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRListItemsList>;
-
 /** ServiceCIDRList contains a list of ServiceCIDR objects. */
 export interface IoK8sApiNetworkingV1ServiceCIDRList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1798,11 +1267,6 @@ export interface IoK8sApiNetworkingV1ServiceCIDRList {
   /** Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiNetworkingV1ServiceCIDRList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRList>;
-
 export interface PatchNetworkingV1IngressClassRequest {
   /** name of the IngressClass */
   name: string;
@@ -1817,11 +1281,6 @@ export interface PatchNetworkingV1IngressClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<PatchNetworkingV1IngressClassRequest>;
-
 export interface PatchNetworkingV1IPAddressRequest {
   /** name of the IPAddress */
   name: string;
@@ -1836,11 +1295,6 @@ export interface PatchNetworkingV1IPAddressRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<PatchNetworkingV1IPAddressRequest>;
-
 export interface PatchNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1857,11 +1311,6 @@ export interface PatchNetworkingV1NamespacedIngressRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<PatchNetworkingV1NamespacedIngressRequest>;
-
 export interface PatchNetworkingV1NamespacedIngressStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1878,11 +1327,6 @@ export interface PatchNetworkingV1NamespacedIngressStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<PatchNetworkingV1NamespacedIngressStatusRequest>;
-
 export interface PatchNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1899,11 +1343,6 @@ export interface PatchNetworkingV1NamespacedNetworkPolicyRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<PatchNetworkingV1NamespacedNetworkPolicyRequest>;
-
 export interface PatchNetworkingV1ServiceCIDRRequest {
   /** name of the ServiceCIDR */
   name: string;
@@ -1918,11 +1357,6 @@ export interface PatchNetworkingV1ServiceCIDRRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<PatchNetworkingV1ServiceCIDRRequest>;
-
 export interface PatchNetworkingV1ServiceCIDRStatusRequest {
   /** name of the ServiceCIDR */
   name: string;
@@ -1937,33 +1371,18 @@ export interface PatchNetworkingV1ServiceCIDRStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PatchNetworkingV1ServiceCIDRStatusRequest>;
-
 export interface ReadNetworkingV1IngressClassRequest {
   /** name of the IngressClass */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ReadNetworkingV1IngressClassRequest>;
-
 export interface ReadNetworkingV1IPAddressRequest {
   /** name of the IPAddress */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ReadNetworkingV1IPAddressRequest>;
-
 export interface ReadNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1972,11 +1391,6 @@ export interface ReadNetworkingV1NamespacedIngressRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ReadNetworkingV1NamespacedIngressRequest>;
-
 export interface ReadNetworkingV1NamespacedIngressStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1985,11 +1399,6 @@ export interface ReadNetworkingV1NamespacedIngressStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ReadNetworkingV1NamespacedIngressStatusRequest>;
-
 export interface ReadNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1998,33 +1407,18 @@ export interface ReadNetworkingV1NamespacedNetworkPolicyRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ReadNetworkingV1NamespacedNetworkPolicyRequest>;
-
 export interface ReadNetworkingV1ServiceCIDRRequest {
   /** name of the ServiceCIDR */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ReadNetworkingV1ServiceCIDRRequest>;
-
 export interface ReadNetworkingV1ServiceCIDRStatusRequest {
   /** name of the ServiceCIDR */
   name: string;
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ReadNetworkingV1ServiceCIDRStatusRequest>;
-
 export interface ReplaceNetworkingV1IngressClassRequest {
   /** name of the IngressClass */
   name: string;
@@ -2045,11 +1439,6 @@ export interface ReplaceNetworkingV1IngressClassRequest {
   /** spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IngressClassSpec;
 }
-const ReplaceNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ReplaceNetworkingV1IngressClassRequest>;
-
 export interface ReplaceNetworkingV1IPAddressRequest {
   /** name of the IPAddress */
   name: string;
@@ -2070,11 +1459,6 @@ export interface ReplaceNetworkingV1IPAddressRequest {
   /** spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiNetworkingV1IPAddressSpec;
 }
-const ReplaceNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ReplaceNetworkingV1IPAddressRequest>;
-
 export interface ReplaceNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2099,11 +1483,6 @@ export interface ReplaceNetworkingV1NamespacedIngressRequest {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-const ReplaceNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressRequest>;
-
 export interface ReplaceNetworkingV1NamespacedIngressStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2128,11 +1507,6 @@ export interface ReplaceNetworkingV1NamespacedIngressStatusRequest {
   /** status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1IngressStatus;
 }
-const ReplaceNetworkingV1NamespacedIngressStatusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressStatusRequest>;
-
 export interface ReplaceNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2155,11 +1529,6 @@ export interface ReplaceNetworkingV1NamespacedNetworkPolicyRequest {
   /** spec represents the specification of the desired behavior for this NetworkPolicy. */
   spec?: IoK8sApiNetworkingV1NetworkPolicySpec;
 }
-const ReplaceNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ReplaceNetworkingV1NamespacedNetworkPolicyRequest>;
-
 export interface ReplaceNetworkingV1ServiceCIDRRequest {
   /** name of the ServiceCIDR */
   name: string;
@@ -2182,11 +1551,6 @@ export interface ReplaceNetworkingV1ServiceCIDRRequest {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-const ReplaceNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRRequest>;
-
 export interface ReplaceNetworkingV1ServiceCIDRStatusRequest {
   /** name of the ServiceCIDR */
   name: string;
@@ -2209,11 +1573,6 @@ export interface ReplaceNetworkingV1ServiceCIDRStatusRequest {
   /** status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiNetworkingV1ServiceCIDRStatus;
 }
-const ReplaceNetworkingV1ServiceCIDRStatusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRStatusRequest>;
-
 export interface WatchNetworkingV1IngressClassRequest {
   /** name of the IngressClass */
   name: string;
@@ -2242,22 +1601,12 @@ export interface WatchNetworkingV1IngressClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1IngressClassRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<WatchNetworkingV1IngressClassRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchNetworkingV1IngressClassListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2284,11 +1633,6 @@ export interface WatchNetworkingV1IngressClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1IngressClassListRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<WatchNetworkingV1IngressClassListRequest>;
-
 export interface WatchNetworkingV1IngressListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2315,11 +1659,6 @@ export interface WatchNetworkingV1IngressListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1IngressListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<WatchNetworkingV1IngressListForAllNamespacesRequest>;
-
 export interface WatchNetworkingV1IPAddressRequest {
   /** name of the IPAddress */
   name: string;
@@ -2348,11 +1687,6 @@ export interface WatchNetworkingV1IPAddressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1IPAddressRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<WatchNetworkingV1IPAddressRequest>;
-
 export interface WatchNetworkingV1IPAddressListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2379,11 +1713,6 @@ export interface WatchNetworkingV1IPAddressListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1IPAddressListRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<WatchNetworkingV1IPAddressListRequest>;
-
 export interface WatchNetworkingV1NamespacedIngressRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2414,11 +1743,6 @@ export interface WatchNetworkingV1NamespacedIngressRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1NamespacedIngressRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<WatchNetworkingV1NamespacedIngressRequest>;
-
 export interface WatchNetworkingV1NamespacedIngressListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2447,11 +1771,6 @@ export interface WatchNetworkingV1NamespacedIngressListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1NamespacedIngressListRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<WatchNetworkingV1NamespacedIngressListRequest>;
-
 export interface WatchNetworkingV1NamespacedNetworkPolicyRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2482,11 +1801,6 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1NamespacedNetworkPolicyRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyRequest>;
-
 export interface WatchNetworkingV1NamespacedNetworkPolicyListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2515,11 +1829,6 @@ export interface WatchNetworkingV1NamespacedNetworkPolicyListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1NamespacedNetworkPolicyListRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyListRequest>;
-
 export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2546,11 +1855,6 @@ export interface WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest>;
-
 export interface WatchNetworkingV1ServiceCIDRRequest {
   /** name of the ServiceCIDR */
   name: string;
@@ -2579,11 +1883,6 @@ export interface WatchNetworkingV1ServiceCIDRRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1ServiceCIDRRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<WatchNetworkingV1ServiceCIDRRequest>;
-
 export interface WatchNetworkingV1ServiceCIDRListRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -2610,11 +1909,6 @@ export interface WatchNetworkingV1ServiceCIDRListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchNetworkingV1ServiceCIDRListRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<WatchNetworkingV1ServiceCIDRListRequest>;
-
 export type CreateNetworkingV1IngressClassError =
   | Conflict
   | UnprocessableEntity
@@ -2626,8 +1920,8 @@ export const createNetworkingV1IngressClass: API.OperationMethod<
   CreateNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkingV1IngressClassRequest,
-  output: IoK8sApiNetworkingV1IngressClass,
+  input: __S(9) as any as S.Schema<CreateNetworkingV1IngressClassRequest>,
+  output: __S(10) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2641,8 +1935,8 @@ export const createNetworkingV1IPAddress: API.OperationMethod<
   CreateNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkingV1IPAddressRequest,
-  output: IoK8sApiNetworkingV1IPAddress,
+  input: __S(13) as any as S.Schema<CreateNetworkingV1IPAddressRequest>,
+  output: __S(14) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2659,8 +1953,8 @@ export const createNetworkingV1NamespacedIngress: API.OperationMethod<
   CreateNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(33) as any as S.Schema<CreateNetworkingV1NamespacedIngressRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2677,8 +1971,8 @@ export const createNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   CreateNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApiNetworkingV1NetworkPolicy,
+  input: __S(49) as any as S.Schema<CreateNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(50) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2692,8 +1986,8 @@ export const createNetworkingV1ServiceCIDR: API.OperationMethod<
   CreateNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(55) as any as S.Schema<CreateNetworkingV1ServiceCIDRRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2707,8 +2001,8 @@ export const deleteNetworkingV1CollectionIngressClass: API.OperationMethod<
   DeleteNetworkingV1CollectionIngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1CollectionIngressClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(58) as any as S.Schema<DeleteNetworkingV1CollectionIngressClassRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2722,8 +2016,8 @@ export const deleteNetworkingV1CollectionIPAddress: API.OperationMethod<
   DeleteNetworkingV1CollectionIPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1CollectionIPAddressRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(65) as any as S.Schema<DeleteNetworkingV1CollectionIPAddressRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2737,8 +2031,8 @@ export const deleteNetworkingV1CollectionNamespacedIngress: API.OperationMethod<
   DeleteNetworkingV1CollectionNamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1CollectionNamespacedIngressRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(66) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedIngressRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2752,8 +2046,8 @@ export const deleteNetworkingV1CollectionNamespacedNetworkPolicy: API.OperationM
   DeleteNetworkingV1CollectionNamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(67) as any as S.Schema<DeleteNetworkingV1CollectionNamespacedNetworkPolicyRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2767,8 +2061,8 @@ export const deleteNetworkingV1CollectionServiceCIDR: API.OperationMethod<
   DeleteNetworkingV1CollectionServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1CollectionServiceCIDRRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(68) as any as S.Schema<DeleteNetworkingV1CollectionServiceCIDRRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2782,8 +2076,8 @@ export const deleteNetworkingV1IngressClass: API.OperationMethod<
   DeleteNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1IngressClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(69) as any as S.Schema<DeleteNetworkingV1IngressClassRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2797,8 +2091,8 @@ export const deleteNetworkingV1IPAddress: API.OperationMethod<
   DeleteNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1IPAddressRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(70) as any as S.Schema<DeleteNetworkingV1IPAddressRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2812,8 +2106,8 @@ export const deleteNetworkingV1NamespacedIngress: API.OperationMethod<
   DeleteNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(71) as any as S.Schema<DeleteNetworkingV1NamespacedIngressRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2124,8 @@ export const deleteNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   DeleteNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(72) as any as S.Schema<DeleteNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2845,8 +2139,8 @@ export const deleteNetworkingV1ServiceCIDR: API.OperationMethod<
   DeleteNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(73) as any as S.Schema<DeleteNetworkingV1ServiceCIDRRequest>,
+  output: __S(64) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2860,8 +2154,8 @@ export const getNetworkingAPIGroup: API.OperationMethod<
   GetNetworkingAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkingAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(74) as any as S.Schema<GetNetworkingAPIGroupRequest>,
+  output: __S(79) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2875,8 +2169,8 @@ export const getNetworkingV1APIResources: API.OperationMethod<
   GetNetworkingV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkingV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(80) as any as S.Schema<GetNetworkingV1APIResourcesRequest>,
+  output: __S(83) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2184,8 @@ export const listNetworkingV1IngressClass: API.OperationMethod<
   ListNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1IngressClassRequest,
-  output: IoK8sApiNetworkingV1IngressClassList,
+  input: __S(84) as any as S.Schema<ListNetworkingV1IngressClassRequest>,
+  output: __S(86) as any as S.Schema<IoK8sApiNetworkingV1IngressClassList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2905,8 +2199,8 @@ export const listNetworkingV1IngressForAllNamespaces: API.OperationMethod<
   ListNetworkingV1IngressForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1IngressForAllNamespacesRequest,
-  output: IoK8sApiNetworkingV1IngressList,
+  input: __S(87) as any as S.Schema<ListNetworkingV1IngressForAllNamespacesRequest>,
+  output: __S(89) as any as S.Schema<IoK8sApiNetworkingV1IngressList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2920,8 +2214,8 @@ export const listNetworkingV1IPAddress: API.OperationMethod<
   ListNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1IPAddressRequest,
-  output: IoK8sApiNetworkingV1IPAddressList,
+  input: __S(90) as any as S.Schema<ListNetworkingV1IPAddressRequest>,
+  output: __S(92) as any as S.Schema<IoK8sApiNetworkingV1IPAddressList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2229,8 @@ export const listNetworkingV1NamespacedIngress: API.OperationMethod<
   ListNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApiNetworkingV1IngressList,
+  input: __S(93) as any as S.Schema<ListNetworkingV1NamespacedIngressRequest>,
+  output: __S(89) as any as S.Schema<IoK8sApiNetworkingV1IngressList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2244,8 @@ export const listNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   ListNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApiNetworkingV1NetworkPolicyList,
+  input: __S(94) as any as S.Schema<ListNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(96) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2965,8 +2259,8 @@ export const listNetworkingV1NetworkPolicyForAllNamespaces: API.OperationMethod<
   ListNetworkingV1NetworkPolicyForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1NetworkPolicyForAllNamespacesRequest,
-  output: IoK8sApiNetworkingV1NetworkPolicyList,
+  input: __S(97) as any as S.Schema<ListNetworkingV1NetworkPolicyForAllNamespacesRequest>,
+  output: __S(96) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicyList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2980,8 +2274,8 @@ export const listNetworkingV1ServiceCIDR: API.OperationMethod<
   ListNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDRList,
+  input: __S(98) as any as S.Schema<ListNetworkingV1ServiceCIDRRequest>,
+  output: __S(100) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDRList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2999,8 +2293,8 @@ export const patchNetworkingV1IngressClass: API.OperationMethod<
   PatchNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1IngressClassRequest,
-  output: IoK8sApiNetworkingV1IngressClass,
+  input: __S(101) as any as S.Schema<PatchNetworkingV1IngressClassRequest>,
+  output: __S(10) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3018,8 +2312,8 @@ export const patchNetworkingV1IPAddress: API.OperationMethod<
   PatchNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1IPAddressRequest,
-  output: IoK8sApiNetworkingV1IPAddress,
+  input: __S(102) as any as S.Schema<PatchNetworkingV1IPAddressRequest>,
+  output: __S(14) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3037,8 +2331,8 @@ export const patchNetworkingV1NamespacedIngress: API.OperationMethod<
   PatchNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(103) as any as S.Schema<PatchNetworkingV1NamespacedIngressRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3056,8 +2350,8 @@ export const patchNetworkingV1NamespacedIngressStatus: API.OperationMethod<
   PatchNetworkingV1NamespacedIngressStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1NamespacedIngressStatusRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(104) as any as S.Schema<PatchNetworkingV1NamespacedIngressStatusRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3075,8 +2369,8 @@ export const patchNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   PatchNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApiNetworkingV1NetworkPolicy,
+  input: __S(105) as any as S.Schema<PatchNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(50) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3094,8 +2388,8 @@ export const patchNetworkingV1ServiceCIDR: API.OperationMethod<
   PatchNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(106) as any as S.Schema<PatchNetworkingV1ServiceCIDRRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3113,8 +2407,8 @@ export const patchNetworkingV1ServiceCIDRStatus: API.OperationMethod<
   PatchNetworkingV1ServiceCIDRStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchNetworkingV1ServiceCIDRStatusRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(107) as any as S.Schema<PatchNetworkingV1ServiceCIDRStatusRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3128,8 +2422,8 @@ export const readNetworkingV1IngressClass: API.OperationMethod<
   ReadNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1IngressClassRequest,
-  output: IoK8sApiNetworkingV1IngressClass,
+  input: __S(108) as any as S.Schema<ReadNetworkingV1IngressClassRequest>,
+  output: __S(10) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3143,8 +2437,8 @@ export const readNetworkingV1IPAddress: API.OperationMethod<
   ReadNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1IPAddressRequest,
-  output: IoK8sApiNetworkingV1IPAddress,
+  input: __S(109) as any as S.Schema<ReadNetworkingV1IPAddressRequest>,
+  output: __S(14) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3158,8 +2452,8 @@ export const readNetworkingV1NamespacedIngress: API.OperationMethod<
   ReadNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(110) as any as S.Schema<ReadNetworkingV1NamespacedIngressRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3173,8 +2467,8 @@ export const readNetworkingV1NamespacedIngressStatus: API.OperationMethod<
   ReadNetworkingV1NamespacedIngressStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1NamespacedIngressStatusRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(111) as any as S.Schema<ReadNetworkingV1NamespacedIngressStatusRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3188,8 +2482,8 @@ export const readNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   ReadNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApiNetworkingV1NetworkPolicy,
+  input: __S(112) as any as S.Schema<ReadNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(50) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3203,8 +2497,8 @@ export const readNetworkingV1ServiceCIDR: API.OperationMethod<
   ReadNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(113) as any as S.Schema<ReadNetworkingV1ServiceCIDRRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3218,8 +2512,8 @@ export const readNetworkingV1ServiceCIDRStatus: API.OperationMethod<
   ReadNetworkingV1ServiceCIDRStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadNetworkingV1ServiceCIDRStatusRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(114) as any as S.Schema<ReadNetworkingV1ServiceCIDRStatusRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3237,8 +2531,8 @@ export const replaceNetworkingV1IngressClass: API.OperationMethod<
   ReplaceNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1IngressClassRequest,
-  output: IoK8sApiNetworkingV1IngressClass,
+  input: __S(115) as any as S.Schema<ReplaceNetworkingV1IngressClassRequest>,
+  output: __S(10) as any as S.Schema<IoK8sApiNetworkingV1IngressClass>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3256,8 +2550,8 @@ export const replaceNetworkingV1IPAddress: API.OperationMethod<
   ReplaceNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1IPAddressRequest,
-  output: IoK8sApiNetworkingV1IPAddress,
+  input: __S(116) as any as S.Schema<ReplaceNetworkingV1IPAddressRequest>,
+  output: __S(14) as any as S.Schema<IoK8sApiNetworkingV1IPAddress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3275,8 +2569,8 @@ export const replaceNetworkingV1NamespacedIngress: API.OperationMethod<
   ReplaceNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(117) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3294,8 +2588,8 @@ export const replaceNetworkingV1NamespacedIngressStatus: API.OperationMethod<
   ReplaceNetworkingV1NamespacedIngressStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1NamespacedIngressStatusRequest,
-  output: IoK8sApiNetworkingV1Ingress,
+  input: __S(118) as any as S.Schema<ReplaceNetworkingV1NamespacedIngressStatusRequest>,
+  output: __S(34) as any as S.Schema<IoK8sApiNetworkingV1Ingress>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3313,8 +2607,8 @@ export const replaceNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   ReplaceNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApiNetworkingV1NetworkPolicy,
+  input: __S(119) as any as S.Schema<ReplaceNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(50) as any as S.Schema<IoK8sApiNetworkingV1NetworkPolicy>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3332,8 +2626,8 @@ export const replaceNetworkingV1ServiceCIDR: API.OperationMethod<
   ReplaceNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(120) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3351,8 +2645,8 @@ export const replaceNetworkingV1ServiceCIDRStatus: API.OperationMethod<
   ReplaceNetworkingV1ServiceCIDRStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceNetworkingV1ServiceCIDRStatusRequest,
-  output: IoK8sApiNetworkingV1ServiceCIDR,
+  input: __S(121) as any as S.Schema<ReplaceNetworkingV1ServiceCIDRStatusRequest>,
+  output: __S(56) as any as S.Schema<IoK8sApiNetworkingV1ServiceCIDR>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3366,8 +2660,8 @@ export const watchNetworkingV1IngressClass: API.OperationMethod<
   WatchNetworkingV1IngressClassError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1IngressClassRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(122) as any as S.Schema<WatchNetworkingV1IngressClassRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3381,8 +2675,8 @@ export const watchNetworkingV1IngressClassList: API.OperationMethod<
   WatchNetworkingV1IngressClassListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1IngressClassListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(124) as any as S.Schema<WatchNetworkingV1IngressClassListRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3396,8 +2690,8 @@ export const watchNetworkingV1IngressListForAllNamespaces: API.OperationMethod<
   WatchNetworkingV1IngressListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1IngressListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(125) as any as S.Schema<WatchNetworkingV1IngressListForAllNamespacesRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3411,8 +2705,8 @@ export const watchNetworkingV1IPAddress: API.OperationMethod<
   WatchNetworkingV1IPAddressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1IPAddressRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(126) as any as S.Schema<WatchNetworkingV1IPAddressRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3426,8 +2720,8 @@ export const watchNetworkingV1IPAddressList: API.OperationMethod<
   WatchNetworkingV1IPAddressListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1IPAddressListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(127) as any as S.Schema<WatchNetworkingV1IPAddressListRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3441,8 +2735,8 @@ export const watchNetworkingV1NamespacedIngress: API.OperationMethod<
   WatchNetworkingV1NamespacedIngressError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1NamespacedIngressRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(128) as any as S.Schema<WatchNetworkingV1NamespacedIngressRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3456,8 +2750,8 @@ export const watchNetworkingV1NamespacedIngressList: API.OperationMethod<
   WatchNetworkingV1NamespacedIngressListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1NamespacedIngressListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(129) as any as S.Schema<WatchNetworkingV1NamespacedIngressListRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3471,8 +2765,8 @@ export const watchNetworkingV1NamespacedNetworkPolicy: API.OperationMethod<
   WatchNetworkingV1NamespacedNetworkPolicyError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1NamespacedNetworkPolicyRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(130) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3486,8 +2780,8 @@ export const watchNetworkingV1NamespacedNetworkPolicyList: API.OperationMethod<
   WatchNetworkingV1NamespacedNetworkPolicyListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1NamespacedNetworkPolicyListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(131) as any as S.Schema<WatchNetworkingV1NamespacedNetworkPolicyListRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3501,8 +2795,8 @@ export const watchNetworkingV1NetworkPolicyListForAllNamespaces: API.OperationMe
   WatchNetworkingV1NetworkPolicyListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(132) as any as S.Schema<WatchNetworkingV1NetworkPolicyListForAllNamespacesRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3516,8 +2810,8 @@ export const watchNetworkingV1ServiceCIDR: API.OperationMethod<
   WatchNetworkingV1ServiceCIDRError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1ServiceCIDRRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(133) as any as S.Schema<WatchNetworkingV1ServiceCIDRRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3531,8 +2825,8 @@ export const watchNetworkingV1ServiceCIDRList: API.OperationMethod<
   WatchNetworkingV1ServiceCIDRListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchNetworkingV1ServiceCIDRListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(134) as any as S.Schema<WatchNetworkingV1ServiceCIDRListRequest>,
+  output: __S(123) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -3560,7 +2854,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3575,22 +2869,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0)),
+          managedFields: S.optional(__S(3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -3618,7 +2912,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           controller: S.String,
-          parameters: S.optional(IoK8sApiNetworkingV1IngressClassParametersReference),
+          parameters: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressClassSpec",
@@ -3632,8 +2926,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiNetworkingV1IngressClassSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
         }).pipe(
           T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/ingressclasses", code: 200 }),
         ),
@@ -3645,8 +2939,8 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiNetworkingV1IngressClassSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressClass",
@@ -3665,7 +2959,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          parentRef: IoK8sApiNetworkingV1ParentReference,
+          parentRef: __S(11),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IPAddressSpec",
@@ -3679,8 +2973,8 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiNetworkingV1IPAddressSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(12),
         }).pipe(
           T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/ipaddresses", code: 200 }),
         ),
@@ -3692,8 +2986,8 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiNetworkingV1IPAddressSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(12),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IPAddress",
@@ -3725,7 +3019,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          port: S.optional(IoK8sApiNetworkingV1ServiceBackendPort),
+          port: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressServiceBackend",
@@ -3733,8 +3027,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(IoK8sApiCoreV1TypedLocalObjectReference),
-          service: S.optional(IoK8sApiNetworkingV1IngressServiceBackend),
+          resource: S.optional(__S(15)),
+          service: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressBackend",
@@ -3742,7 +3036,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          backend: IoK8sApiNetworkingV1IngressBackend,
+          backend: __S(18),
           path: S.optional(S.String),
           pathType: S.String,
         }),
@@ -3750,11 +3044,11 @@ function __c2(j: number): any {
         identifier: "IoK8sApiNetworkingV1HTTPIngressPath",
       });
     case 4:
-      return S.Array(IoK8sApiNetworkingV1HTTPIngressPath);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          paths: IoK8sApiNetworkingV1HTTPIngressRuleValuePathsList,
+          paths: __S(20),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1HTTPIngressRuleValue",
@@ -3763,13 +3057,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
-          http: S.optional(IoK8sApiNetworkingV1HTTPIngressRuleValue),
+          http: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressRule",
       });
     case 7:
-      return S.Array(IoK8sApiNetworkingV1IngressRule);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -3777,21 +3071,21 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hosts: S.optional(IoK8sApiNetworkingV1IngressTLSHostsList),
+          hosts: S.optional(__S(1)),
           secretName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressTLS",
       });
     case 1:
-      return S.Array(IoK8sApiNetworkingV1IngressTLS);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          defaultBackend: S.optional(IoK8sApiNetworkingV1IngressBackend),
+          defaultBackend: S.optional(__S(18)),
           ingressClassName: S.optional(S.String),
-          rules: S.optional(IoK8sApiNetworkingV1IngressSpecRulesList),
-          tls: S.optional(IoK8sApiNetworkingV1IngressSpecTlsList),
+          rules: S.optional(__S(23)),
+          tls: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressSpec",
@@ -3807,23 +3101,23 @@ function __c3(j: number): any {
         identifier: "IoK8sApiNetworkingV1IngressPortStatus",
       });
     case 4:
-      return S.Array(IoK8sApiNetworkingV1IngressPortStatus);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           hostname: S.optional(S.String),
           ip: S.optional(S.String),
-          ports: S.optional(IoK8sApiNetworkingV1IngressLoadBalancerIngressPortsList),
+          ports: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressLoadBalancerIngress",
       });
     case 6:
-      return S.Array(IoK8sApiNetworkingV1IngressLoadBalancerIngress);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ingress: S.optional(IoK8sApiNetworkingV1IngressLoadBalancerStatusIngressList),
+          ingress: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressLoadBalancerStatus",
@@ -3835,7 +3129,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          loadBalancer: S.optional(IoK8sApiNetworkingV1IngressLoadBalancerStatus),
+          loadBalancer: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressStatus",
@@ -3850,9 +3144,9 @@ function __c4(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1IngressSpec),
-          status: S.optional(IoK8sApiNetworkingV1IngressStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(26)),
+          status: S.optional(__S(32)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3868,9 +3162,9 @@ function __c4(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1IngressSpec),
-          status: S.optional(IoK8sApiNetworkingV1IngressStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(26)),
+          status: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1Ingress",
@@ -3886,12 +3180,12 @@ function __c4(j: number): any {
         identifier: "IoK8sApiNetworkingV1NetworkPolicyPort",
       });
     case 4:
-      return S.Array(IoK8sApiNetworkingV1NetworkPolicyPort);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           cidr: S.String,
-          except: S.optional(IoK8sApiNetworkingV1IPBlockExceptList),
+          except: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IPBlock",
@@ -3903,7 +3197,7 @@ function __c4(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList),
+          values: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
@@ -3913,14 +3207,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(
-            IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList,
-          ),
-          matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
+          matchExpressions: S.optional(__S(40)),
+          matchLabels: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
@@ -3928,37 +3220,37 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ipBlock: S.optional(IoK8sApiNetworkingV1IPBlock),
-          namespaceSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-          podSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          ipBlock: S.optional(__S(37)),
+          namespaceSelector: S.optional(__S(41)),
+          podSelector: S.optional(__S(41)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicyPeer",
       });
     case 3:
-      return S.Array(IoK8sApiNetworkingV1NetworkPolicyPeer);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(IoK8sApiNetworkingV1NetworkPolicyEgressRulePortsList),
-          to: S.optional(IoK8sApiNetworkingV1NetworkPolicyEgressRuleToList),
+          ports: S.optional(__S(36)),
+          to: S.optional(__S(43)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicyEgressRule",
       });
     case 5:
-      return S.Array(IoK8sApiNetworkingV1NetworkPolicyEgressRule);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          from: S.optional(IoK8sApiNetworkingV1NetworkPolicyIngressRuleFromList),
-          ports: S.optional(IoK8sApiNetworkingV1NetworkPolicyIngressRulePortsList),
+          from: S.optional(__S(43)),
+          ports: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicyIngressRule",
       });
     case 7:
-      return S.Array(IoK8sApiNetworkingV1NetworkPolicyIngressRule);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -3966,10 +3258,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          egress: S.optional(IoK8sApiNetworkingV1NetworkPolicySpecEgressList),
-          ingress: S.optional(IoK8sApiNetworkingV1NetworkPolicySpecIngressList),
-          podSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-          policyTypes: S.optional(IoK8sApiNetworkingV1NetworkPolicySpecPolicyTypesList),
+          egress: S.optional(__S(45)),
+          ingress: S.optional(__S(47)),
+          podSelector: S.optional(__S(41)),
+          policyTypes: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicySpec",
@@ -3984,8 +3276,8 @@ function __c6(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1NetworkPolicySpec),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(48)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4001,8 +3293,8 @@ function __c6(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1NetworkPolicySpec),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicy",
@@ -4010,7 +3302,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cidrs: S.optional(IoK8sApiNetworkingV1ServiceCIDRSpecCidrsList),
+          cidrs: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1ServiceCIDRSpec",
@@ -4029,11 +3321,11 @@ function __c6(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1Condition",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1Condition);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(IoK8sApiNetworkingV1ServiceCIDRStatusConditionsList),
+          conditions: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1ServiceCIDRStatus",
@@ -4047,9 +3339,9 @@ function __c6(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1ServiceCIDRSpec),
-          status: S.optional(IoK8sApiNetworkingV1ServiceCIDRStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(51)),
+          status: S.optional(__S(54)),
         }).pipe(
           T.Http({ method: "POST", uri: "/apis/networking.k8s.io/v1/servicecidrs", code: 200 }),
         ),
@@ -4065,9 +3357,9 @@ function __c7(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1ServiceCIDRSpec),
-          status: S.optional(IoK8sApiNetworkingV1ServiceCIDRStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(51)),
+          status: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1ServiceCIDR",
@@ -4101,7 +3393,7 @@ function __c7(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/ingressclasses", code: 200 }),
         ),
@@ -4119,11 +3411,11 @@ function __c7(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 4:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(60)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -4148,7 +3440,7 @@ function __c7(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(62)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -4162,10 +3454,10 @@ function __c8(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(61)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(63)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -4192,7 +3484,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/ipaddresses", code: 200 }),
         ),
@@ -4220,7 +3512,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4252,7 +3544,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4283,7 +3575,7 @@ function __c8(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/apis/networking.k8s.io/v1/servicecidrs", code: 200 }),
         ),
@@ -4302,7 +3594,7 @@ function __c8(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4325,7 +3617,7 @@ function __c8(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4349,7 +3641,7 @@ function __c8(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4377,7 +3669,7 @@ function __c9(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4400,7 +3692,7 @@ function __c9(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(57)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -4436,20 +3728,18 @@ function __c9(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(76));
     case 6:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(75));
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(75)),
+          serverAddressByClientCIDRs: S.optional(__S(77)),
+          versions: __S(78),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -4467,29 +3757,29 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 2:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(82),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -4516,14 +3806,14 @@ function __c10(j: number): any {
         identifier: "ListNetworkingV1IngressClassRequest",
       });
     case 5:
-      return S.Array(IoK8sApiNetworkingV1IngressClass);
+      return S.Array(__S(10));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiNetworkingV1IngressClassListItemsList,
+          items: __S(85),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressClassList",
@@ -4552,14 +3842,14 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiNetworkingV1Ingress);
+      return S.Array(__S(34));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiNetworkingV1IngressListItemsList,
+          items: __S(88),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IngressList",
@@ -4586,14 +3876,14 @@ function __c11(j: number): any {
         identifier: "ListNetworkingV1IPAddressRequest",
       });
     case 3:
-      return S.Array(IoK8sApiNetworkingV1IPAddress);
+      return S.Array(__S(14));
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiNetworkingV1IPAddressListItemsList,
+          items: __S(91),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1IPAddressList",
@@ -4651,7 +3941,7 @@ function __c11(j: number): any {
         identifier: "ListNetworkingV1NamespacedNetworkPolicyRequest",
       });
     case 7:
-      return S.Array(IoK8sApiNetworkingV1NetworkPolicy);
+      return S.Array(__S(50));
   }
 }
 function __c12(j: number): any {
@@ -4660,9 +3950,9 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiNetworkingV1NetworkPolicyListItemsList,
+          items: __S(95),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1NetworkPolicyList",
@@ -4710,14 +4000,14 @@ function __c12(j: number): any {
         identifier: "ListNetworkingV1ServiceCIDRRequest",
       });
     case 3:
-      return S.Array(IoK8sApiNetworkingV1ServiceCIDR);
+      return S.Array(__S(56));
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiNetworkingV1ServiceCIDRListItemsList,
+          items: __S(99),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "IoK8sApiNetworkingV1ServiceCIDRList",
@@ -4984,8 +4274,8 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiNetworkingV1IngressClassSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5006,8 +4296,8 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiNetworkingV1IPAddressSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(12),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5029,9 +4319,9 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1IngressSpec),
-          status: S.optional(IoK8sApiNetworkingV1IngressStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(26)),
+          status: S.optional(__S(32)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5053,9 +4343,9 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1IngressSpec),
-          status: S.optional(IoK8sApiNetworkingV1IngressStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(26)),
+          status: S.optional(__S(32)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5077,8 +4367,8 @@ function __c14(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1NetworkPolicySpec),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(48)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5103,9 +4393,9 @@ function __c15(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1ServiceCIDRSpec),
-          status: S.optional(IoK8sApiNetworkingV1ServiceCIDRStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(51)),
+          status: S.optional(__S(54)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5126,9 +4416,9 @@ function __c15(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiNetworkingV1ServiceCIDRSpec),
-          status: S.optional(IoK8sApiNetworkingV1ServiceCIDRStatus),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(51)),
+          status: S.optional(__S(54)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5453,5 +4743,48 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "WatchNetworkingV1ServiceCIDRListRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
   }
 }

@@ -5,6 +5,8 @@ import * as __L from "@distilled.cloud/core/chunks";
 import * as S from "@distilled.cloud/core/schema";
 import { CelldProtocol, type CelldOpError, type CelldOpContext } from "../protocol.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CelldOpError, CelldOpContext };
 
@@ -45,11 +47,7 @@ export class PeerWrongTarget
   ) {}
 
 export type KvDeleteOperation = "delete";
-const KvDeleteOperation = S.String;
-
 export type Strings = Array<string>;
-const Strings = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Strings>;
-
 export interface DeleteKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -72,25 +70,17 @@ export interface DeleteKvInput {
   op: KvDeleteOperation | (string & {});
   keys: Strings;
 }
-const DeleteKvInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeleteKvInput>;
-
 export interface OkResult {
   ok: boolean;
 }
-const OkResult = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<OkResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface DeleteKvOutput {
   result: OkResult;
 }
-const DeleteKvOutput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteKvOutput>;
-
 export interface D1ExecPayload {
   sql: string;
   rows?: boolean;
 }
-const D1ExecPayload = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<D1ExecPayload>;
-
 export interface ExecD1Input {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -112,49 +102,31 @@ export interface ExecD1Input {
   peer_signature: string;
   exec: D1ExecPayload;
 }
-const ExecD1Input = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ExecD1Input>;
-
 export type JsonValues = Array<unknown>;
-const JsonValues = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<JsonValues>;
-
 export type Rows = Array<JsonValues>;
-const Rows = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Rows>;
-
 /** Native SQL engine result; row values and engine metadata retain their JSON types. */
 export interface D1ResultSet {
   columns?: Strings;
   rows?: Rows;
   meta?: unknown;
 }
-const D1ResultSet = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<D1ResultSet>;
-
 export type D1ResultSets = Array<D1ResultSet>;
-const D1ResultSets = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<D1ResultSets>;
-
 /** Duration is in milliseconds. Result sets are present only when exec.rows is true. */
 export interface ExecD1Result {
   count: number;
   duration: number;
   results?: D1ResultSets;
 }
-const ExecD1Result = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ExecD1Result>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface ExecD1Output {
   result: ExecD1Result;
 }
-const ExecD1Output = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ExecD1Output>;
-
 export interface D1Statement {
   sql: string;
   params?: JsonValues;
   first?: boolean;
 }
-const D1Statement = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<D1Statement>;
-
 export type D1StatementList = Array<D1Statement>;
-const D1StatementList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<D1StatementList>;
-
 export interface ExecuteD1StatementsInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -176,23 +148,11 @@ export interface ExecuteD1StatementsInput {
   peer_signature: string;
   statements: D1StatementList;
 }
-const ExecuteD1StatementsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ExecuteD1StatementsInput>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface ExecuteD1StatementsOutput {
   result: D1ResultSets;
 }
-const ExecuteD1StatementsOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ExecuteD1StatementsOutput>;
-
 export type KvGetOperation = "get";
-const KvGetOperation = S.String;
-
 export interface GetKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -215,8 +175,6 @@ export interface GetKvInput {
   op: KvGetOperation | (string & {});
   key: string;
 }
-const GetKvInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetKvInput>;
-
 export interface GetKvResult {
   found: boolean;
   /** A JSON array of byte integers for inline values, or a base64 string for large values. Absent when found is false. */
@@ -229,17 +187,11 @@ export interface GetKvResult {
   /** Expiration in Unix milliseconds; may be null. */
   expiration?: number | null;
 }
-const GetKvResult = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetKvResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface GetKvOutput {
   result: GetKvResult;
 }
-const GetKvOutput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetKvOutput>;
-
 export type GetKvInfoOperation = "info";
-const GetKvInfoOperation = S.String;
-
 export interface GetKvInfoInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -261,24 +213,16 @@ export interface GetKvInfoInput {
   peer_signature: string;
   op: GetKvInfoOperation | (string & {});
 }
-const GetKvInfoInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetKvInfoInput>;
-
 export interface GetKvInfoResult {
   live: number;
   bytes: number;
   stored: number;
 }
-const GetKvInfoResult = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetKvInfoResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface GetKvInfoOutput {
   result: GetKvInfoResult;
 }
-const GetKvInfoOutput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetKvInfoOutput>;
-
 export type GetQueueInfoOperation = "info";
-const GetQueueInfoOperation = S.String;
-
 export interface GetQueueInfoInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -300,8 +244,6 @@ export interface GetQueueInfoInput {
   peer_signature: string;
   op: GetQueueInfoOperation | (string & {});
 }
-const GetQueueInfoInput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetQueueInfoInput>;
-
 export interface GetQueueInfoResult {
   backlog_count: number;
   backlog_bytes: number;
@@ -310,17 +252,11 @@ export interface GetQueueInfoResult {
   stored: number;
   paused: boolean;
 }
-const GetQueueInfoResult = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetQueueInfoResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface GetQueueInfoOutput {
   result: GetQueueInfoResult;
 }
-const GetQueueInfoOutput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetQueueInfoOutput>;
-
 export type KvListOperation = "list";
-const KvListOperation = S.String;
-
 export interface ListKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -346,8 +282,6 @@ export interface ListKvInput {
   /** Exclusive last key name from the previous page, not a binding cursor. */
   after?: string;
 }
-const ListKvInput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListKvInput>;
-
 export interface KvKey {
   name: string;
   /** Stored JSON text; may be null. */
@@ -355,31 +289,21 @@ export interface KvKey {
   /** Unix milliseconds; may be null. */
   expiration?: number | null;
 }
-const KvKey = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<KvKey>;
-
 export type KvKeys = Array<KvKey>;
-const KvKeys = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<KvKeys>;
-
 export interface ListKvResult {
   keys: KvKeys;
   complete: boolean;
 }
-const ListKvResult = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListKvResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface ListKvOutput {
   result: ListKvResult;
 }
-const ListKvOutput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListKvOutput>;
-
 export interface D1Migration {
   name: string;
   sql: string;
   /** Defaults to d1_migrations when omitted or empty. */
   table?: string;
 }
-const D1Migration = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<D1Migration>;
-
 export interface MigrateD1Input {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -401,17 +325,11 @@ export interface MigrateD1Input {
   peer_signature: string;
   migrate: D1Migration;
 }
-const MigrateD1Input = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<MigrateD1Input>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface MigrateD1Output {
   result: unknown;
 }
-const MigrateD1Output = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MigrateD1Output>;
-
 export type QueuePauseOperation = "pause";
-const QueuePauseOperation = S.String;
-
 export interface PauseQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -433,8 +351,6 @@ export interface PauseQueueInput {
   peer_signature: string;
   op: QueuePauseOperation | (string & {});
 }
-const PauseQueueInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PauseQueueInput>;
-
 export interface QueuePausedResult {
   backlog_count: number;
   backlog_bytes: number;
@@ -442,17 +358,11 @@ export interface QueuePausedResult {
   oldest_message_timestamp?: number | null;
   paused: boolean;
 }
-const QueuePausedResult = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<QueuePausedResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface PauseQueueOutput {
   result: QueuePausedResult;
 }
-const PauseQueueOutput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<PauseQueueOutput>;
-
 export type PeekQueueOperation = "peek";
-const PeekQueueOperation = S.String;
-
 export interface PeekQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -476,8 +386,6 @@ export interface PeekQueueInput {
   /** Defaults to 10; valid values are 1 through 100. */
   limit?: number;
 }
-const PeekQueueInput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<PeekQueueInput>;
-
 export interface QueueMessage {
   id: string;
   body_base64: string;
@@ -495,25 +403,15 @@ export interface QueueMessage {
   /** May be null. */
   dead_letter_source?: string | null;
 }
-const QueueMessage = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<QueueMessage>;
-
 export type QueueMessages = Array<QueueMessage>;
-const QueueMessages = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<QueueMessages>;
-
 export interface PeekQueueResult {
   messages: QueueMessages;
 }
-const PeekQueueResult = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PeekQueueResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface PeekQueueOutput {
   result: PeekQueueResult;
 }
-const PeekQueueOutput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PeekQueueOutput>;
-
 export type QueuePurgeOperation = "purge";
-const QueuePurgeOperation = S.String;
-
 export interface PurgeQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -535,35 +433,23 @@ export interface PurgeQueueInput {
   peer_signature: string;
   op: QueuePurgeOperation | (string & {});
 }
-const PurgeQueueInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<PurgeQueueInput>;
-
 export interface QueueMetrics {
   backlog_count: number;
   backlog_bytes: number;
   /** Unix milliseconds; null when no message exists. */
   oldest_message_timestamp?: number | null;
 }
-const QueueMetrics = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<QueueMetrics>;
-
 export interface PurgeQueueResult {
   deleted: number;
   leased: number;
   metrics: QueueMetrics;
 }
-const PurgeQueueResult = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PurgeQueueResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface PurgeQueueOutput {
   result: PurgeQueueResult;
 }
-const PurgeQueueOutput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PurgeQueueOutput>;
-
 export type KvPutOperation = "put";
-const KvPutOperation = S.String;
-
 export type Bytes = Array<number>;
-const Bytes = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<Bytes>;
-
 export interface PutKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -595,17 +481,11 @@ export interface PutKvInput {
   expiration_ttl?: number;
   value: Bytes;
 }
-const PutKvInput = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PutKvInput>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface PutKvOutput {
   result: OkResult;
 }
-const PutKvOutput = DeleteKvOutput as any as S.Schema<PutKvOutput>;
-
 export type PutKvBase64Operation = "put-base64";
-const PutKvBase64Operation = S.String;
-
 export interface PutKvBase64Input {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -637,17 +517,11 @@ export interface PutKvBase64Input {
   expiration_ttl?: number;
   value: string;
 }
-const PutKvBase64Input = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PutKvBase64Input>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface PutKvBase64Output {
   result: OkResult;
 }
-const PutKvBase64Output = DeleteKvOutput as any as S.Schema<PutKvBase64Output>;
-
 export type RedriveQueueOperation = "redrive";
-const RedriveQueueOperation = S.String;
-
 export interface RedriveQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -671,23 +545,15 @@ export interface RedriveQueueInput {
   /** Defaults to 100; valid values are 1 through 100. */
   limit?: number;
 }
-const RedriveQueueInput = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<RedriveQueueInput>;
-
 export interface RedriveQueueResult {
   redriven: number;
   metrics: QueueMetrics;
 }
-const RedriveQueueResult = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<RedriveQueueResult>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface RedriveQueueOutput {
   result: RedriveQueueResult;
 }
-const RedriveQueueOutput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<RedriveQueueOutput>;
-
 export type QueueResumeOperation = "resume";
-const QueueResumeOperation = S.String;
-
 export interface ResumeQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
   scope: string;
@@ -709,14 +575,10 @@ export interface ResumeQueueInput {
   peer_signature: string;
   op: QueueResumeOperation | (string & {});
 }
-const ResumeQueueInput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ResumeQueueInput>;
-
 /** The actual HTTP JSON envelope is {"result": ...}; nested arrays or scalars are not top-level raw responses. */
 export interface ResumeQueueOutput {
   result: QueuePausedResult;
 }
-const ResumeQueueOutput = PauseQueueOutput as any as S.Schema<ResumeQueueOutput>;
-
 export type DeleteKvError =
   | PeerIncompatibleVersion
   | PeerWrongTarget
@@ -729,8 +591,8 @@ export const deleteKv: API.OperationMethod<
   DeleteKvError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKvInput,
-  output: DeleteKvOutput,
+  input: __S(1) as any as S.Schema<DeleteKvInput>,
+  output: __S(3) as any as S.Schema<DeleteKvOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -744,8 +606,8 @@ export type ExecD1Error =
 /** Execute SQL against a reserved D1 cell with the JSON body {"exec":{"sql":...,"rows":...}}. */
 export const execD1: API.OperationMethod<ExecD1Input, ExecD1Output, ExecD1Error, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ExecD1Input,
-    output: ExecD1Output,
+    input: __S(5) as any as S.Schema<ExecD1Input>,
+    output: __S(11) as any as S.Schema<ExecD1Output>,
     errors: [D1ExecutionError, PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -763,8 +625,8 @@ export const executeD1Statements: API.OperationMethod<
   ExecuteD1StatementsError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteD1StatementsInput,
-  output: ExecuteD1StatementsOutput,
+  input: __S(14) as any as S.Schema<ExecuteD1StatementsInput>,
+  output: __S(15) as any as S.Schema<ExecuteD1StatementsOutput>,
   errors: [D1ExecutionError, PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -777,8 +639,8 @@ export type GetKvError =
 /** Read one key from a reserved KV namespace. A missing key returns result.found=false. */
 export const getKv: API.OperationMethod<GetKvInput, GetKvOutput, GetKvError, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetKvInput,
-    output: GetKvOutput,
+    input: __S(16) as any as S.Schema<GetKvInput>,
+    output: __S(18) as any as S.Schema<GetKvOutput>,
     errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -795,8 +657,8 @@ export const getKvInfo: API.OperationMethod<
   GetKvInfoError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKvInfoInput,
-  output: GetKvInfoOutput,
+  input: __S(19) as any as S.Schema<GetKvInfoInput>,
+  output: __S(21) as any as S.Schema<GetKvInfoOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -813,8 +675,8 @@ export const getQueueInfo: API.OperationMethod<
   GetQueueInfoError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueueInfoInput,
-  output: GetQueueInfoOutput,
+  input: __S(22) as any as S.Schema<GetQueueInfoInput>,
+  output: __S(24) as any as S.Schema<GetQueueInfoOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -827,8 +689,8 @@ export type ListKvError =
 /** List keys in a reserved KV namespace. Metadata remains JSON text and expiration is in milliseconds. */
 export const listKv: API.OperationMethod<ListKvInput, ListKvOutput, ListKvError, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ListKvInput,
-    output: ListKvOutput,
+    input: __S(25) as any as S.Schema<ListKvInput>,
+    output: __S(29) as any as S.Schema<ListKvOutput>,
     errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -846,8 +708,8 @@ export const migrateD1: API.OperationMethod<
   MigrateD1Error,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MigrateD1Input,
-  output: MigrateD1Output,
+  input: __S(31) as any as S.Schema<MigrateD1Input>,
+  output: __S(32) as any as S.Schema<MigrateD1Output>,
   errors: [D1ExecutionError, PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -864,8 +726,8 @@ export const pauseQueue: API.OperationMethod<
   PauseQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseQueueInput,
-  output: PauseQueueOutput,
+  input: __S(33) as any as S.Schema<PauseQueueInput>,
+  output: __S(35) as any as S.Schema<PauseQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -882,8 +744,8 @@ export const peekQueue: API.OperationMethod<
   PeekQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PeekQueueInput,
-  output: PeekQueueOutput,
+  input: __S(36) as any as S.Schema<PeekQueueInput>,
+  output: __S(40) as any as S.Schema<PeekQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -900,8 +762,8 @@ export const purgeQueue: API.OperationMethod<
   PurgeQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeQueueInput,
-  output: PurgeQueueOutput,
+  input: __S(41) as any as S.Schema<PurgeQueueInput>,
+  output: __S(44) as any as S.Schema<PurgeQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -914,8 +776,8 @@ export type PutKvError =
 /** Write an inline JSON byte array. Expiration is resolved by the cell clock. */
 export const putKv: API.OperationMethod<PutKvInput, PutKvOutput, PutKvError, CelldOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: PutKvInput,
-    output: PutKvOutput,
+    input: __S(46) as any as S.Schema<PutKvInput>,
+    output: __S(3) as any as S.Schema<PutKvOutput>,
     errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
     protocol: CelldProtocol,
   }));
@@ -932,8 +794,8 @@ export const putKvBase64: API.OperationMethod<
   PutKvBase64Error,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKvBase64Input,
-  output: PutKvBase64Output,
+  input: __S(47) as any as S.Schema<PutKvBase64Input>,
+  output: __S(3) as any as S.Schema<PutKvBase64Output>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -950,8 +812,8 @@ export const redriveQueue: API.OperationMethod<
   RedriveQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedriveQueueInput,
-  output: RedriveQueueOutput,
+  input: __S(48) as any as S.Schema<RedriveQueueInput>,
+  output: __S(50) as any as S.Schema<RedriveQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -968,8 +830,8 @@ export const resumeQueue: API.OperationMethod<
   ResumeQueueError,
   CelldOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeQueueInput,
-  output: ResumeQueueOutput,
+  input: __S(51) as any as S.Schema<ResumeQueueInput>,
+  output: __S(35) as any as S.Schema<ResumeQueueOutput>,
   errors: [PeerIncompatibleVersion, PeerWrongTarget, PeerReplayRejected],
   protocol: CelldProtocol,
 }));
@@ -991,8 +853,8 @@ function __c0(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: KvDeleteOperation,
-          keys: Strings,
+          op: S.String,
+          keys: __S(0),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "DeleteKvInput" });
     case 2:
@@ -1004,7 +866,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: OkResult,
+          result: __S(2),
         }),
       ).annotate({ identifier: "DeleteKvOutput" });
     case 4:
@@ -1026,13 +888,13 @@ function __c0(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          exec: D1ExecPayload,
+          exec: __S(4),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "ExecD1Input" });
     case 6:
       return S.Array(S.Unknown);
     case 7:
-      return S.Array(JsonValues);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -1040,37 +902,37 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(Strings),
-          rows: S.optional(Rows),
+          columns: S.optional(__S(0)),
+          rows: S.optional(__S(7)),
           meta: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "D1ResultSet" });
     case 1:
-      return S.Array(D1ResultSet);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           duration: S.Number,
-          results: S.optional(D1ResultSets),
+          results: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "ExecD1Result" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: ExecD1Result,
+          result: __S(10),
         }),
       ).annotate({ identifier: "ExecD1Output" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           sql: S.String,
-          params: S.optional(JsonValues),
+          params: S.optional(__S(6)),
           first: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "D1Statement" });
     case 5:
-      return S.Array(D1Statement);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1083,13 +945,13 @@ function __c1(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          statements: D1StatementList,
+          statements: __S(13),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "ExecuteD1StatementsInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: D1ResultSets,
+          result: __S(9),
         }),
       ).annotate({
         identifier: "ExecuteD1StatementsOutput",
@@ -1110,7 +972,7 @@ function __c2(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: KvGetOperation,
+          op: S.String,
           key: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "GetKvInput" });
@@ -1128,7 +990,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: GetKvResult,
+          result: __S(17),
         }),
       ).annotate({ identifier: "GetKvOutput" });
     case 3:
@@ -1143,7 +1005,7 @@ function __c2(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: GetKvInfoOperation,
+          op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "GetKvInfoInput" });
     case 4:
@@ -1157,7 +1019,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: GetKvInfoResult,
+          result: __S(20),
         }),
       ).annotate({ identifier: "GetKvInfoOutput" });
     case 6:
@@ -1172,7 +1034,7 @@ function __c2(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: GetQueueInfoOperation,
+          op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "GetQueueInfoInput" });
     case 7:
@@ -1194,7 +1056,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: GetQueueInfoResult,
+          result: __S(23),
         }),
       ).annotate({ identifier: "GetQueueInfoOutput" });
     case 1:
@@ -1209,7 +1071,7 @@ function __c3(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: KvListOperation,
+          op: S.String,
           prefix: S.optional(S.String),
           limit: S.Number,
           after: S.optional(S.String),
@@ -1224,18 +1086,18 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "KvKey" });
     case 3:
-      return S.Array(KvKey);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keys: KvKeys,
+          keys: __S(27),
           complete: S.Boolean,
         }),
       ).annotate({ identifier: "ListKvResult" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: ListKvResult,
+          result: __S(28),
         }),
       ).annotate({ identifier: "ListKvOutput" });
     case 6:
@@ -1258,7 +1120,7 @@ function __c3(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          migrate: D1Migration,
+          migrate: __S(30),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "MigrateD1Input" });
   }
@@ -1283,7 +1145,7 @@ function __c4(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: QueuePauseOperation,
+          op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "PauseQueueInput" });
     case 2:
@@ -1300,7 +1162,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: QueuePausedResult,
+          result: __S(34),
         }),
       ).annotate({ identifier: "PauseQueueOutput" });
     case 4:
@@ -1315,7 +1177,7 @@ function __c4(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: PeekQueueOperation,
+          op: S.String,
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "PeekQueueInput" });
@@ -1336,11 +1198,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "QueueMessage" });
     case 6:
-      return S.Array(QueueMessage);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          messages: QueueMessages,
+          messages: __S(38),
         }),
       ).annotate({ identifier: "PeekQueueResult" });
   }
@@ -1350,7 +1212,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: PeekQueueResult,
+          result: __S(39),
         }),
       ).annotate({ identifier: "PeekQueueOutput" });
     case 1:
@@ -1365,7 +1227,7 @@ function __c5(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: QueuePurgeOperation,
+          op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "PurgeQueueInput" });
     case 2:
@@ -1383,13 +1245,13 @@ function __c5(j: number): any {
         S.Struct({
           deleted: S.Number,
           leased: S.Number,
-          metrics: QueueMetrics,
+          metrics: __S(42),
         }),
       ).annotate({ identifier: "PurgeQueueResult" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: PurgeQueueResult,
+          result: __S(43),
         }),
       ).annotate({ identifier: "PurgeQueueOutput" });
     case 5:
@@ -1406,13 +1268,13 @@ function __c5(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: KvPutOperation,
+          op: S.String,
           key: S.String,
           tag: S.optional(S.String),
           metadata: S.optional(S.String),
           expiration: S.optional(S.Number),
           expiration_ttl: S.optional(S.Number.pipe(T.Body("expirationTtl"))),
-          value: Bytes,
+          value: __S(45),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "PutKvInput" });
     case 7:
@@ -1427,7 +1289,7 @@ function __c5(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: PutKvBase64Operation,
+          op: S.String,
           key: S.String,
           tag: S.optional(S.String),
           metadata: S.optional(S.String),
@@ -1452,7 +1314,7 @@ function __c6(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: RedriveQueueOperation,
+          op: S.String,
           limit: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "RedriveQueueInput" });
@@ -1460,13 +1322,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           redriven: S.Number,
-          metrics: QueueMetrics,
+          metrics: __S(42),
         }),
       ).annotate({ identifier: "RedriveQueueResult" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: RedriveQueueResult,
+          result: __S(49),
         }),
       ).annotate({ identifier: "RedriveQueueOutput" });
     case 3:
@@ -1481,8 +1343,31 @@ function __c6(j: number): any {
           peer_nonce: S.String.pipe(T.Header("x-cells-peer-nonce")),
           peer_body_sha256: S.String.pipe(T.Header("x-cells-peer-body-sha256")),
           peer_signature: S.String.pipe(T.Header("x-cells-peer-signature")),
-          op: QueueResumeOperation,
+          op: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/runtime/{scope}", code: 200 })),
       ).annotate({ identifier: "ResumeQueueInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

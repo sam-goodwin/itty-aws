@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -36,25 +38,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -72,19 +61,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -100,19 +79,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -146,29 +115,13 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList = Array<string>;
-const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList>;
-
 /** extra corresponds to the user.Info.GetExtra() method from the authenticator. Since that is input to the authorizer it needs a reflection here. */
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap = {
   [key: string]: IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList | undefined;
 };
-const IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap>;
-
 /** groups is the groups you're testing for. */
 export type IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList = Array<string>;
-const IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList>;
-
 /** NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface */
 export interface IoK8sApiAuthorizationV1NonResourceAttributes {
   /** path is the URL path of the request */
@@ -176,18 +129,8 @@ export interface IoK8sApiAuthorizationV1NonResourceAttributes {
   /** verb is the standard HTTP verb */
   verb?: string;
 }
-const IoK8sApiAuthorizationV1NonResourceAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiAuthorizationV1NonResourceAttributes>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. */
 export type IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList>;
-
 /** FieldSelectorRequirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement {
   /** key is the field selector key that the requirement applies to. */
@@ -197,19 +140,9 @@ export interface IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. */
   values?: IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList;
 }
-const IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement>;
-
 /** requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
 export type IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList =
   Array<IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement>;
-const IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList>;
-
 /** FieldSelectorAttributes indicates a field limited access. Webhook authors are encouraged to * ensure rawSelector and requirements are not both set * consider the requirements field if set * not try to parse or consider the rawSelector field if set. This is to avoid another CVE-2022-2880 (i.e. getting different systems to agree on how exactly to parse a query is not something we want), see https://www.oxeye.io/resources/golang-parameter-smuggling-attack for more details. For the *SubjectAccessReview endpoints of the kube-apiserver: * If rawSelector is empty and requirements are empty, the request is not limited. * If rawSelector is present and requirements are empty, the rawSelector will be parsed and limited if the parsing succeeds. * If rawSelector is empty and requirements are present, the requirements should be honored * If rawSelector is present and requirements are present, the request is invalid. */
 export interface IoK8sApiAuthorizationV1FieldSelectorAttributes {
   /** rawSelector is the serialization of a field selector that would be included in a query parameter. Webhook implementations are encouraged to ignore rawSelector. The kube-apiserver's *SubjectAccessReview will parse the rawSelector as long as the requirements are not present. */
@@ -217,11 +150,6 @@ export interface IoK8sApiAuthorizationV1FieldSelectorAttributes {
   /** requirements is the parsed interpretation of a field selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
   requirements?: IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList;
 }
-const IoK8sApiAuthorizationV1FieldSelectorAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiAuthorizationV1FieldSelectorAttributes>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
@@ -243,9 +171,6 @@ export interface IoK8sApiAuthorizationV1LabelSelectorAttributes {
   /** requirements is the parsed interpretation of a label selector. All requirements must be met for a resource instance to match the selector. Webhook implementations should handle requirements, but how to handle them is up to the webhook. Since requirements can only limit the request, it is safe to authorize as unlimited request if the requirements are not understood. */
   requirements?: IoK8sApiAuthorizationV1LabelSelectorAttributesRequirementsList;
 }
-const IoK8sApiAuthorizationV1LabelSelectorAttributes =
-  IoK8sApiAuthorizationV1FieldSelectorAttributes as any as S.Schema<IoK8sApiAuthorizationV1LabelSelectorAttributes>;
-
 /** ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface */
 export interface IoK8sApiAuthorizationV1ResourceAttributes {
   /** fieldSelector describes the limitation on access based on field. It can only limit access, not broaden it. */
@@ -267,11 +192,6 @@ export interface IoK8sApiAuthorizationV1ResourceAttributes {
   /** version is the API Version of the Resource. "*" means all. */
   version?: string;
 }
-const IoK8sApiAuthorizationV1ResourceAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IoK8sApiAuthorizationV1ResourceAttributes>;
-
 /** SubjectAccessReviewSpec is a description of the access request. Exactly one of resourceAttributes and nonResourceAttributes must be set */
 export interface IoK8sApiAuthorizationV1SubjectAccessReviewSpec {
   /** extra corresponds to the user.Info.GetExtra() method from the authenticator. Since that is input to the authorizer it needs a reflection here. */
@@ -287,11 +207,6 @@ export interface IoK8sApiAuthorizationV1SubjectAccessReviewSpec {
   /** user is the user you're testing for. If you specify "User" but not "Groups", then is it interpreted as "What if User were not a member of any groups */
   user?: string;
 }
-const IoK8sApiAuthorizationV1SubjectAccessReviewSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewSpec>;
-
 /** SubjectAccessReviewStatus */
 export interface IoK8sApiAuthorizationV1SubjectAccessReviewStatus {
   /** allowed is set to true if the action is allowed, and should be set to false otherwise. */
@@ -303,11 +218,6 @@ export interface IoK8sApiAuthorizationV1SubjectAccessReviewStatus {
   /** reason is optional. It indicates why a request was allowed or denied. */
   reason?: string;
 }
-const IoK8sApiAuthorizationV1SubjectAccessReviewStatus = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReviewStatus>;
-
 export interface CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -330,11 +240,6 @@ export interface CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest 
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-const CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest>;
-
 /** LocalSubjectAccessReview checks whether or not a user or group can perform an action in a given namespace. Having a namespace scoped resource makes it much easier to grant namespace scoped policy that includes permissions checking. */
 export interface IoK8sApiAuthorizationV1LocalSubjectAccessReview {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -348,11 +253,6 @@ export interface IoK8sApiAuthorizationV1LocalSubjectAccessReview {
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-const IoK8sApiAuthorizationV1LocalSubjectAccessReview = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApiAuthorizationV1LocalSubjectAccessReview>;
-
 /** SelfSubjectAccessReviewSpec is a description of the access request. Exactly one of resourceAttributes and nonResourceAttributes must be set */
 export interface IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec {
   /** nonResourceAttributes describes information for a non-resource access request */
@@ -360,11 +260,6 @@ export interface IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec {
   /** resourceAttributes describes information for a resource access request */
   resourceAttributes?: IoK8sApiAuthorizationV1ResourceAttributes;
 }
-const IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec>;
-
 export interface CreateAuthorizationV1SelfSubjectAccessReviewRequest {
   /** When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed */
   dryRun?: string;
@@ -385,11 +280,6 @@ export interface CreateAuthorizationV1SelfSubjectAccessReviewRequest {
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-const CreateAuthorizationV1SelfSubjectAccessReviewRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateAuthorizationV1SelfSubjectAccessReviewRequest>;
-
 /** SelfSubjectAccessReview checks whether or the current user can perform an action. Not filling in a spec.namespace means "in all namespaces". Self is a special case, because users should always be able to check whether they can perform an action */
 export interface IoK8sApiAuthorizationV1SelfSubjectAccessReview {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -403,31 +293,15 @@ export interface IoK8sApiAuthorizationV1SelfSubjectAccessReview {
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-const IoK8sApiAuthorizationV1SelfSubjectAccessReview = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectAccessReview>;
-
 /** SelfSubjectRulesReviewSpec defines the specification for SelfSubjectRulesReview. */
 export interface IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec {
   /** namespace to evaluate rules for. Required. */
   namespace: string;
 }
-const IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec>;
-
 /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path. "*" means all. */
 export type IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList = Array<string>;
-const IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList>;
-
 /** verbs is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options. "*" means all. */
 export type IoK8sApiAuthorizationV1NonResourceRuleVerbsList = Array<string>;
-const IoK8sApiAuthorizationV1NonResourceRuleVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRuleVerbsList>;
-
 /** NonResourceRule holds information that describes a rule for the non-resource */
 export interface IoK8sApiAuthorizationV1NonResourceRule {
   /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path. "*" means all. */
@@ -435,39 +309,17 @@ export interface IoK8sApiAuthorizationV1NonResourceRule {
   /** verbs is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options. "*" means all. */
   verbs?: IoK8sApiAuthorizationV1NonResourceRuleVerbsList;
 }
-const IoK8sApiAuthorizationV1NonResourceRule = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApiAuthorizationV1NonResourceRule>;
-
 /** nonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
 export type IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList =
   Array<IoK8sApiAuthorizationV1NonResourceRule>;
-const IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList>;
-
 /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleApiGroupsList = Array<string>;
-const IoK8sApiAuthorizationV1ResourceRuleApiGroupsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleApiGroupsList>;
-
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleResourceNamesList = Array<string>;
-const IoK8sApiAuthorizationV1ResourceRuleResourceNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourceNamesList>;
-
 /** resources is a list of resources this rule applies to. "*" means all in the specified apiGroups. "*\/foo" represents the subresource 'foo' for all resources in the specified apiGroups. */
 export type IoK8sApiAuthorizationV1ResourceRuleResourcesList = Array<string>;
-const IoK8sApiAuthorizationV1ResourceRuleResourcesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleResourcesList>;
-
 /** verbs is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy. "*" means all. */
 export type IoK8sApiAuthorizationV1ResourceRuleVerbsList = Array<string>;
-const IoK8sApiAuthorizationV1ResourceRuleVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiAuthorizationV1ResourceRuleVerbsList>;
-
 /** ResourceRule is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
 export interface IoK8sApiAuthorizationV1ResourceRule {
   /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "*" means all. */
@@ -479,19 +331,9 @@ export interface IoK8sApiAuthorizationV1ResourceRule {
   /** verbs is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy. "*" means all. */
   verbs?: IoK8sApiAuthorizationV1ResourceRuleVerbsList;
 }
-const IoK8sApiAuthorizationV1ResourceRule = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApiAuthorizationV1ResourceRule>;
-
 /** resourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
 export type IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList =
   Array<IoK8sApiAuthorizationV1ResourceRule>;
-const IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList>;
-
 /** SubjectRulesReviewStatus contains the result of a rules check. This check can be incomplete depending on the set of authorizers the server is configured with and any errors experienced during evaluation. Because authorization rules are additive, if a rule appears in a list it's safe to assume the subject has that permission, even if that list is incomplete. */
 export interface IoK8sApiAuthorizationV1SubjectRulesReviewStatus {
   /** evaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete. */
@@ -503,11 +345,6 @@ export interface IoK8sApiAuthorizationV1SubjectRulesReviewStatus {
   /** resourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete. */
   resourceRules?: IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList;
 }
-const IoK8sApiAuthorizationV1SubjectRulesReviewStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApiAuthorizationV1SubjectRulesReviewStatus>;
-
 export interface CreateAuthorizationV1SelfSubjectRulesReviewRequest {
   /** When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed */
   dryRun?: string;
@@ -528,11 +365,6 @@ export interface CreateAuthorizationV1SelfSubjectRulesReviewRequest {
   /** status is filled in by the server and indicates the set of actions a user can perform. */
   status?: IoK8sApiAuthorizationV1SubjectRulesReviewStatus;
 }
-const CreateAuthorizationV1SelfSubjectRulesReviewRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateAuthorizationV1SelfSubjectRulesReviewRequest>;
-
 /** SelfSubjectRulesReview enumerates the set of actions the current user can perform within a namespace. The returned list of actions may be incomplete depending on the server's authorization mode, and any errors experienced during the evaluation. SelfSubjectRulesReview should be used by UIs to show/hide actions, or to quickly let an end user reason about their permissions. It should NOT Be used by external systems to drive authorization decisions as this raises confused deputy, cache lifetime/revocation, and correctness concerns. SubjectAccessReview, and LocalAccessReview are the correct way to defer authorization decisions to the API server. */
 export interface IoK8sApiAuthorizationV1SelfSubjectRulesReview {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -546,11 +378,6 @@ export interface IoK8sApiAuthorizationV1SelfSubjectRulesReview {
   /** status is filled in by the server and indicates the set of actions a user can perform. */
   status?: IoK8sApiAuthorizationV1SubjectRulesReviewStatus;
 }
-const IoK8sApiAuthorizationV1SelfSubjectRulesReview = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectRulesReview>;
-
 export interface CreateAuthorizationV1SubjectAccessReviewRequest {
   /** When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed */
   dryRun?: string;
@@ -571,11 +398,6 @@ export interface CreateAuthorizationV1SubjectAccessReviewRequest {
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-const CreateAuthorizationV1SubjectAccessReviewRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateAuthorizationV1SubjectAccessReviewRequest>;
-
 /** SubjectAccessReview checks whether or not a user or group can perform an action. */
 export interface IoK8sApiAuthorizationV1SubjectAccessReview {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -589,15 +411,7 @@ export interface IoK8sApiAuthorizationV1SubjectAccessReview {
   /** status is filled in by the server and indicates whether the request is allowed or not */
   status?: IoK8sApiAuthorizationV1SubjectAccessReviewStatus;
 }
-const IoK8sApiAuthorizationV1SubjectAccessReview =
-  IoK8sApiAuthorizationV1LocalSubjectAccessReview as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>;
-
 export interface GetAuthorizationAPIGroupRequest {}
-const GetAuthorizationAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetAuthorizationAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -605,11 +419,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -617,27 +426,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -653,32 +447,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetAuthorizationV1APIResourcesRequest {}
-const GetAuthorizationV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetAuthorizationV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -702,19 +477,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -726,11 +491,6 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export type CreateAuthorizationV1NamespacedLocalSubjectAccessReviewError =
   | Conflict
   | UnprocessableEntity
@@ -742,8 +502,8 @@ export const createAuthorizationV1NamespacedLocalSubjectAccessReview: API.Operat
   CreateAuthorizationV1NamespacedLocalSubjectAccessReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest,
-  output: IoK8sApiAuthorizationV1LocalSubjectAccessReview,
+  input: __S(16) as any as S.Schema<CreateAuthorizationV1NamespacedLocalSubjectAccessReviewRequest>,
+  output: __S(17) as any as S.Schema<IoK8sApiAuthorizationV1LocalSubjectAccessReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -760,8 +520,8 @@ export const createAuthorizationV1SelfSubjectAccessReview: API.OperationMethod<
   CreateAuthorizationV1SelfSubjectAccessReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationV1SelfSubjectAccessReviewRequest,
-  output: IoK8sApiAuthorizationV1SelfSubjectAccessReview,
+  input: __S(19) as any as S.Schema<CreateAuthorizationV1SelfSubjectAccessReviewRequest>,
+  output: __S(20) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectAccessReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -778,8 +538,8 @@ export const createAuthorizationV1SelfSubjectRulesReview: API.OperationMethod<
   CreateAuthorizationV1SelfSubjectRulesReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationV1SelfSubjectRulesReviewRequest,
-  output: IoK8sApiAuthorizationV1SelfSubjectRulesReview,
+  input: __S(27) as any as S.Schema<CreateAuthorizationV1SelfSubjectRulesReviewRequest>,
+  output: __S(28) as any as S.Schema<IoK8sApiAuthorizationV1SelfSubjectRulesReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -796,8 +556,8 @@ export const createAuthorizationV1SubjectAccessReview: API.OperationMethod<
   CreateAuthorizationV1SubjectAccessReviewError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationV1SubjectAccessReviewRequest,
-  output: IoK8sApiAuthorizationV1SubjectAccessReview,
+  input: __S(29) as any as S.Schema<CreateAuthorizationV1SubjectAccessReviewRequest>,
+  output: __S(17) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -811,8 +571,8 @@ export const getAuthorizationAPIGroup: API.OperationMethod<
   GetAuthorizationAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(30) as any as S.Schema<GetAuthorizationAPIGroupRequest>,
+  output: __S(35) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -826,8 +586,8 @@ export const getAuthorizationV1APIResources: API.OperationMethod<
   GetAuthorizationV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(36) as any as S.Schema<GetAuthorizationV1APIResourcesRequest>,
+  output: __S(39) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -855,7 +615,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -870,22 +630,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0)),
+          managedFields: S.optional(__S(3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -894,7 +654,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ObjectMeta",
       });
     case 7:
-      return S.Record(S.String, IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraValueList);
+      return S.Record(S.String, __S(1));
   }
 }
 function __c1(j: number): any {
@@ -915,18 +675,18 @@ function __c1(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirementValuesList),
+          values: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1FieldSelectorRequirement);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           rawSelector: S.optional(S.String),
-          requirements: S.optional(IoK8sApiAuthorizationV1FieldSelectorAttributesRequirementsList),
+          requirements: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1FieldSelectorAttributes",
@@ -934,9 +694,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldSelector: S.optional(IoK8sApiAuthorizationV1FieldSelectorAttributes),
+          fieldSelector: S.optional(__S(12)),
           group: S.optional(S.String),
-          labelSelector: S.optional(IoK8sApiAuthorizationV1LabelSelectorAttributes),
+          labelSelector: S.optional(__S(12)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
           resource: S.optional(S.String),
@@ -950,10 +710,10 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extra: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewSpecExtraMap),
-          groups: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewSpecGroupsList),
-          nonResourceAttributes: S.optional(IoK8sApiAuthorizationV1NonResourceAttributes),
-          resourceAttributes: S.optional(IoK8sApiAuthorizationV1ResourceAttributes),
+          extra: S.optional(__S(7)),
+          groups: S.optional(__S(1)),
+          nonResourceAttributes: S.optional(__S(8)),
+          resourceAttributes: S.optional(__S(13)),
           uid: S.optional(S.String),
           user: S.optional(S.String),
         }),
@@ -985,9 +745,9 @@ function __c2(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SubjectAccessReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(14),
+          status: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1003,9 +763,9 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SubjectAccessReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(14),
+          status: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1LocalSubjectAccessReview",
@@ -1013,8 +773,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          nonResourceAttributes: S.optional(IoK8sApiAuthorizationV1NonResourceAttributes),
-          resourceAttributes: S.optional(IoK8sApiAuthorizationV1ResourceAttributes),
+          nonResourceAttributes: S.optional(__S(8)),
+          resourceAttributes: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec",
@@ -1028,9 +788,9 @@ function __c2(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(18),
+          status: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1046,9 +806,9 @@ function __c2(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(18),
+          status: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectAccessReview",
@@ -1064,14 +824,14 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          nonResourceURLs: S.optional(IoK8sApiAuthorizationV1NonResourceRuleNonResourceURLsList),
-          verbs: S.optional(IoK8sApiAuthorizationV1NonResourceRuleVerbsList),
+          nonResourceURLs: S.optional(__S(1)),
+          verbs: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1NonResourceRule",
       });
     case 7:
-      return S.Array(IoK8sApiAuthorizationV1NonResourceRule);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1079,27 +839,23 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          apiGroups: S.optional(IoK8sApiAuthorizationV1ResourceRuleApiGroupsList),
-          resourceNames: S.optional(IoK8sApiAuthorizationV1ResourceRuleResourceNamesList),
-          resources: S.optional(IoK8sApiAuthorizationV1ResourceRuleResourcesList),
-          verbs: S.optional(IoK8sApiAuthorizationV1ResourceRuleVerbsList),
+          apiGroups: S.optional(__S(1)),
+          resourceNames: S.optional(__S(1)),
+          resources: S.optional(__S(1)),
+          verbs: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1ResourceRule",
       });
     case 1:
-      return S.Array(IoK8sApiAuthorizationV1ResourceRule);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           evaluationError: S.optional(S.String),
           incomplete: S.optional(S.Boolean),
-          nonResourceRules: S.optional(
-            IoK8sApiAuthorizationV1SubjectRulesReviewStatusNonResourceRulesList,
-          ),
-          resourceRules: S.optional(
-            IoK8sApiAuthorizationV1SubjectRulesReviewStatusResourceRulesList,
-          ),
+          nonResourceRules: S.optional(__S(23)),
+          resourceRules: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SubjectRulesReviewStatus",
@@ -1113,9 +869,9 @@ function __c3(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectRulesReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(21),
+          status: S.optional(__S(26)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1131,9 +887,9 @@ function __c3(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectRulesReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(21),
+          status: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "IoK8sApiAuthorizationV1SelfSubjectRulesReview",
@@ -1147,9 +903,9 @@ function __c3(j: number): any {
           pretty: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAuthorizationV1SubjectAccessReviewSpec,
-          status: S.optional(IoK8sApiAuthorizationV1SubjectAccessReviewStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(14),
+          status: S.optional(__S(15)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1189,20 +945,18 @@ function __c4(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 1:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(32));
     case 2:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(31));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(31)),
+          serverAddressByClientCIDRs: S.optional(__S(33)),
+          versions: __S(34),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -1218,32 +972,51 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 6:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(38),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

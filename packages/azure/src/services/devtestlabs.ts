@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The storage type for the disk (i.e. Standard, Premium). */
 export type StorageType = "Standard" | "Premium" | "StandardSSD";
-const StorageType = S.String;
-
 /** Properties to attach new disk to the Virtual Machine. */
 export interface AttachNewDataDiskOptions {
   /** Size of the disk to be attached in Gibibytes. */
@@ -23,15 +23,8 @@ export interface AttachNewDataDiskOptions {
   /** The storage type for the disk (i.e. Standard, Premium). */
   diskType?: StorageType | (string & {});
 }
-const AttachNewDataDiskOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AttachNewDataDiskOptions>;
-
 /** Caching option for a data disk (i.e. None, ReadOnly, ReadWrite). */
 export type HostCachingOptions = "None" | "ReadOnly" | "ReadWrite";
-const HostCachingOptions = S.String;
-
 export interface AddVirtualMachineDataDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -48,17 +41,7 @@ export interface AddVirtualMachineDataDiskRequest {
   /** Caching option for a data disk (i.e. None, ReadOnly, ReadWrite). */
   hostCaching?: HostCachingOptions | (string & {});
 }
-const AddVirtualMachineDataDiskRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddVirtualMachineDataDiskRequest>;
-
 export interface AddVirtualMachineDataDiskResponse {}
-const AddVirtualMachineDataDiskResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddVirtualMachineDataDiskResponse>;
-
 /** Properties of an artifact parameter. */
 export interface ArtifactParameterProperties {
   /** The name of the artifact parameter. */
@@ -66,18 +49,8 @@ export interface ArtifactParameterProperties {
   /** The value of the artifact parameter. */
   value?: string;
 }
-const ArtifactParameterProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ArtifactParameterProperties>;
-
 /** The parameters of the artifact. */
 export type ArtifactInstallPropertiesParametersList = Array<ArtifactParameterProperties>;
-const ArtifactInstallPropertiesParametersList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ArtifactInstallPropertiesParametersList>;
-
 /** Properties of an artifact. */
 export interface ArtifactInstallProperties {
   /** The artifact's identifier. */
@@ -95,18 +68,8 @@ export interface ArtifactInstallProperties {
   /** The time that the artifact starts to install on the virtual machine. */
   installTime?: string;
 }
-const ArtifactInstallProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ArtifactInstallProperties>;
-
 /** The list of artifacts to apply. */
 export type ApplyVirtualMachineArtifactsRequestArtifactsList = Array<ArtifactInstallProperties>;
-const ApplyVirtualMachineArtifactsRequestArtifactsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ApplyVirtualMachineArtifactsRequestArtifactsList>;
-
 export interface ApplyVirtualMachineArtifactsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -119,23 +82,11 @@ export interface ApplyVirtualMachineArtifactsRequest {
   /** The list of artifacts to apply. */
   artifacts?: ApplyVirtualMachineArtifactsRequestArtifactsList;
 }
-const ApplyVirtualMachineArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ApplyVirtualMachineArtifactsRequest>;
-
 export interface ApplyVirtualMachineArtifactsResponse {}
-const ApplyVirtualMachineArtifactsResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<ApplyVirtualMachineArtifactsResponse>;
-
 /** The artifact source's type. */
 export type SourceControlType = "VsoGit" | "GitHub" | "StorageAccount";
-const SourceControlType = S.String;
-
 /** Indicates if the artifact source is enabled (values: Enabled, Disabled). */
 export type EnableStatus = "Enabled" | "Disabled";
-const EnableStatus = S.String;
-
 /** Properties of an artifact source. */
 export interface ArtifactSourcePropertiesInput {
   /** The artifact source's display name. */
@@ -155,18 +106,8 @@ export interface ArtifactSourcePropertiesInput {
   /** Indicates if the artifact source is enabled (values: Enabled, Disabled). */
   status?: EnableStatus | (string & {});
 }
-const ArtifactSourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ArtifactSourcePropertiesInput>;
-
 /** Resource tags. */
 export type ArtifactSourcesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ArtifactSourcesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ArtifactSourcesCreateOrUpdateRequestTagsMap>;
-
 export interface ArtifactSourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -183,19 +124,10 @@ export interface ArtifactSourcesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ArtifactSourcesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ArtifactSourcesCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -211,8 +143,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
-
 /** Properties of an artifact source. */
 export interface ArtifactSourceProperties {
   /** The artifact source's display name. */
@@ -238,16 +168,8 @@ export interface ArtifactSourceProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const ArtifactSourceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ArtifactSourceProperties>;
-
 /** Resource tags. */
 export type ArtifactSourcesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ArtifactSourcesCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactSourcesCreateOrUpdateResponseTagsMap>;
-
 export interface ArtifactSourcesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -264,11 +186,6 @@ export interface ArtifactSourcesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ArtifactSourcesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ArtifactSourcesCreateOrUpdateResponse>;
-
 export interface AttachDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -283,11 +200,7 @@ export interface AttachDiskRequest {
   /** The resource ID of the Lab virtual machine to which the disk is attached. */
   leasedByLabVmId?: string;
 }
-const AttachDiskRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AttachDiskRequest>;
-
 export interface AttachDiskResponse {}
-const AttachDiskResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AttachDiskResponse>;
-
 export interface ClaimLabAnyVmRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -296,11 +209,7 @@ export interface ClaimLabAnyVmRequest {
   /** The name of the lab. */
   name: string;
 }
-const ClaimLabAnyVmRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ClaimLabAnyVmRequest>;
-
 export interface ClaimLabAnyVmResponse {}
-const ClaimLabAnyVmResponse = AttachDiskResponse as any as S.Schema<ClaimLabAnyVmResponse>;
-
 export interface ClaimVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -311,15 +220,7 @@ export interface ClaimVirtualMachineRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const ClaimVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ClaimVirtualMachineRequest>;
-
 export interface ClaimVirtualMachineResponse {}
-const ClaimVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<ClaimVirtualMachineResponse>;
-
 export interface ClaimVirtualMachinesUnRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -330,33 +231,16 @@ export interface ClaimVirtualMachinesUnRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const ClaimVirtualMachinesUnRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ClaimVirtualMachinesUnRequest>;
-
 export interface ClaimVirtualMachinesUnResponse {}
-const ClaimVirtualMachinesUnResponse =
-  AttachDiskResponse as any as S.Schema<ClaimVirtualMachinesUnResponse>;
-
 /** Target cost status */
 export type TargetCostStatus = "Enabled" | "Disabled";
-const TargetCostStatus = S.String;
-
 /** Properties of a percentage cost threshold. */
 export interface PercentageCostThresholdProperties {
   /** The cost threshold value. */
   thresholdValue?: number;
 }
-const PercentageCostThresholdProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PercentageCostThresholdProperties>;
-
 /** Indicates whether this threshold will be displayed on cost charts. */
 export type CostThresholdStatus = "Enabled" | "Disabled";
-const CostThresholdStatus = S.String;
-
 /** Properties of a cost threshold item. */
 export interface CostThresholdProperties {
   /** The ID of the cost threshold item. */
@@ -370,22 +254,10 @@ export interface CostThresholdProperties {
   /** Indicates the datetime when notifications were last sent for this threshold. */
   notificationSent?: string;
 }
-const CostThresholdProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CostThresholdProperties>;
-
 /** Cost thresholds. */
 export type TargetCostPropertiesCostThresholdsList = Array<CostThresholdProperties>;
-const TargetCostPropertiesCostThresholdsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<TargetCostPropertiesCostThresholdsList>;
-
 /** Reporting cycle type. */
 export type ReportingCycleType = "CalendarMonth" | "Custom";
-const ReportingCycleType = S.String;
-
 /** Properties of a cost target. */
 export interface TargetCostProperties {
   /** Target cost status */
@@ -401,8 +273,6 @@ export interface TargetCostProperties {
   /** Reporting cycle type. */
   cycleType?: ReportingCycleType | (string & {});
 }
-const TargetCostProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<TargetCostProperties>;
-
 /** Properties of a cost item. */
 export interface LabCostPropertiesInput {
   /** The target cost properties */
@@ -416,16 +286,8 @@ export interface LabCostPropertiesInput {
   /** The creation date of the cost. */
   createdDate?: string;
 }
-const LabCostPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<LabCostPropertiesInput>;
-
 /** Resource tags. */
 export type CostsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CostsCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CostsCreateOrUpdateRequestTagsMap>;
-
 export interface CostsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -442,25 +304,13 @@ export interface CostsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const CostsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CostsCreateOrUpdateRequest>;
-
 /** The properties of the cost summary. */
 export interface LabCostSummaryProperties {
   /** The cost component of the cost item. */
   estimatedLabCost?: number;
 }
-const LabCostSummaryProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<LabCostSummaryProperties>;
-
 /** The type of the cost. */
 export type CostType = "Unavailable" | "Reported" | "Projected";
-const CostType = S.String;
-
 /** The properties of a lab cost item. */
 export interface LabCostDetailsProperties {
   /** The date of the cost item. */
@@ -470,18 +320,8 @@ export interface LabCostDetailsProperties {
   /** The type of the cost. */
   costType?: CostType;
 }
-const LabCostDetailsProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<LabCostDetailsProperties>;
-
 /** The lab cost details component of the cost data. */
 export type LabCostPropertiesLabCostDetailsList = Array<LabCostDetailsProperties>;
-const LabCostPropertiesLabCostDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<LabCostPropertiesLabCostDetailsList>;
-
 /** The properties of a resource cost item. */
 export interface LabResourceCostProperties {
   /** The name of the resource. */
@@ -503,18 +343,8 @@ export interface LabResourceCostProperties {
   /** The ID of the external resource */
   externalResourceId?: string;
 }
-const LabResourceCostProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<LabResourceCostProperties>;
-
 /** The resource cost component of the cost data. */
 export type LabCostPropertiesResourceCostsList = Array<LabResourceCostProperties>;
-const LabCostPropertiesResourceCostsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<LabCostPropertiesResourceCostsList>;
-
 /** Properties of a cost item. */
 export interface LabCostProperties {
   /** The target cost properties */
@@ -538,13 +368,8 @@ export interface LabCostProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const LabCostProperties = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<LabCostProperties>;
-
 /** Resource tags. */
 export type CostsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CostsCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CostsCreateOrUpdateResponseTagsMap>;
-
 export interface CostsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -561,27 +386,14 @@ export interface CostsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const CostsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CostsCreateOrUpdateResponse>;
-
 /** Parameters for creating multiple virtual machines as a single action. */
 export interface BulkCreationParameters {
   /** The number of virtual machine instances to create. */
   instanceCount?: number;
 }
-const BulkCreationParameters = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<BulkCreationParameters>;
-
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachineCreationParameterPropertiesInputArtifactsList =
   Array<ArtifactInstallProperties>;
-const LabVirtualMachineCreationParameterPropertiesInputArtifactsList =
-  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInputArtifactsList>;
-
 /** The reference information for an Azure Marketplace image. */
 export interface GalleryImageReference {
   /** The offer of the gallery image. */
@@ -595,15 +407,8 @@ export interface GalleryImageReference {
   /** The version of the gallery image. */
   version?: string;
 }
-const GalleryImageReference = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GalleryImageReference>;
-
 /** The transport protocol for the endpoint. */
 export type TransportProtocol = "Tcp" | "Udp";
-const TransportProtocol = S.String;
-
 /** A rule for NAT - exposing a VM's port (backendPort) on the public IP address using a load balancer. */
 export interface InboundNatRule {
   /** The transport protocol for the endpoint. */
@@ -613,25 +418,13 @@ export interface InboundNatRule {
   /** The port to which the external traffic will be redirected. */
   backendPort?: number;
 }
-const InboundNatRule = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<InboundNatRule>;
-
 /** The incoming NAT rules */
 export type SharedPublicIpAddressConfigurationInboundNatRulesList = Array<InboundNatRule>;
-const SharedPublicIpAddressConfigurationInboundNatRulesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<SharedPublicIpAddressConfigurationInboundNatRulesList>;
-
 /** Properties of a virtual machine that determine how it is connected to a load balancer. */
 export interface SharedPublicIpAddressConfiguration {
   /** The incoming NAT rules */
   inboundNatRules?: SharedPublicIpAddressConfigurationInboundNatRulesList;
 }
-const SharedPublicIpAddressConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SharedPublicIpAddressConfiguration>;
-
 /** Properties of a network interface. */
 export interface NetworkInterfaceProperties {
   /** The resource ID of the virtual network. */
@@ -653,11 +446,6 @@ export interface NetworkInterfaceProperties {
   /** The configuration for sharing a public IP address across multiple virtual machines. */
   sharedPublicIpAddressConfiguration?: SharedPublicIpAddressConfiguration;
 }
-const NetworkInterfaceProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<NetworkInterfaceProperties>;
-
 /** Request body for adding a new or existing data disk to a virtual machine. */
 export interface DataDiskProperties {
   /** Specifies options to attach a new disk to the virtual machine. */
@@ -667,28 +455,13 @@ export interface DataDiskProperties {
   /** Caching option for a data disk (i.e. None, ReadOnly, ReadWrite). */
   hostCaching?: HostCachingOptions | (string & {});
 }
-const DataDiskProperties = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DataDiskProperties>;
-
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList =
   Array<DataDiskProperties>;
-const LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    7,
-  ) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList>;
-
 /** The status of the schedule (i.e. Enabled, Disabled) */
 export type ScheduleCreationParameterPropertiesStatus = "Enabled" | "Disabled";
-const ScheduleCreationParameterPropertiesStatus = S.String;
-
 /** The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.). */
 export type WeekDetailsWeekdaysList = Array<string>;
-const WeekDetailsWeekdaysList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<WeekDetailsWeekdaysList>;
-
 /** Properties of a weekly schedule. */
 export interface WeekDetails {
   /** The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.). */
@@ -696,26 +469,18 @@ export interface WeekDetails {
   /** The time of the day the schedule will occur. */
   time?: string;
 }
-const WeekDetails = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<WeekDetails>;
-
 /** Properties of a daily schedule. */
 export interface DayDetails {
   /** The time of day the schedule will occur. */
   time?: string;
 }
-const DayDetails = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DayDetails>;
-
 /** Properties of an hourly schedule. */
 export interface HourDetails {
   /** Minutes of the hour the schedule will run. */
   minute?: number;
 }
-const HourDetails = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<HourDetails>;
-
 /** If notifications are enabled for this schedule (i.e. Enabled, Disabled). */
 export type NotificationSettingsStatus = "Enabled" | "Disabled";
-const NotificationSettingsStatus = S.String;
-
 /** Notification settings for a schedule. */
 export interface NotificationSettings {
   /** If notifications are enabled for this schedule (i.e. Enabled, Disabled). */
@@ -729,8 +494,6 @@ export interface NotificationSettings {
   /** The locale to use when sending a notification (fallback for unsupported languages is EN). */
   notificationLocale?: string;
 }
-const NotificationSettings = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<NotificationSettings>;
-
 /** Properties for schedule creation. */
 export interface ScheduleCreationParameterProperties {
   /** The status of the schedule (i.e. Enabled, Disabled) */
@@ -750,16 +513,8 @@ export interface ScheduleCreationParameterProperties {
   /** The resource ID to which the schedule belongs */
   targetResourceId?: string;
 }
-const ScheduleCreationParameterProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ScheduleCreationParameterProperties>;
-
 /** The tags of the resource. */
 export type ScheduleCreationParameterInputTagsMap = { [key: string]: string | undefined };
-const ScheduleCreationParameterInputTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ScheduleCreationParameterInputTagsMap>;
-
 /** Properties for creating a schedule. */
 export interface ScheduleCreationParameterInput {
   /** The properties of the schedule. */
@@ -769,20 +524,9 @@ export interface ScheduleCreationParameterInput {
   /** The tags of the resource. */
   tags?: ScheduleCreationParameterInputTagsMap;
 }
-const ScheduleCreationParameterInput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ScheduleCreationParameterInput>;
-
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList =
   Array<ScheduleCreationParameterInput>;
-const LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    7,
-  ) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList>;
-
 /** Properties for virtual machine creation. */
 export interface LabVirtualMachineCreationParameterPropertiesInput {
   /** The number of virtual machine instances to create. */
@@ -834,16 +578,8 @@ export interface LabVirtualMachineCreationParameterPropertiesInput {
   /** Virtual Machine schedules to be created */
   scheduleParameters?: LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList;
 }
-const LabVirtualMachineCreationParameterPropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesInput>;
-
 /** The tags of the resource. */
 export type CreateLabEnvironmentRequestTagsMap = { [key: string]: string | undefined };
-const CreateLabEnvironmentRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CreateLabEnvironmentRequestTagsMap>;
-
 export interface CreateLabEnvironmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -858,37 +594,21 @@ export interface CreateLabEnvironmentRequest {
   /** The tags of the resource. */
   tags?: CreateLabEnvironmentRequestTagsMap;
 }
-const CreateLabEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateLabEnvironmentRequest>;
-
 export interface CreateLabEnvironmentResponse {}
-const CreateLabEnvironmentResponse =
-  AttachDiskResponse as any as S.Schema<CreateLabEnvironmentResponse>;
-
 /** The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied). */
 export type WindowsOsState = "NonSysprepped" | "SysprepRequested" | "SysprepApplied";
-const WindowsOsState = S.String;
-
 /** Information about a Windows OS. */
 export interface WindowsOsInfo {
   /** The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied). */
   windowsOsState?: WindowsOsState | (string & {});
 }
-const WindowsOsInfo = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<WindowsOsInfo>;
-
 /** The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied). */
 export type LinuxOsState = "NonDeprovisioned" | "DeprovisionRequested" | "DeprovisionApplied";
-const LinuxOsState = S.String;
-
 /** Information about a Linux OS. */
 export interface LinuxOsInfo {
   /** The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied). */
   linuxOsState?: LinuxOsState | (string & {});
 }
-const LinuxOsInfo = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<LinuxOsInfo>;
-
 /** Properties for creating a custom image from a virtual machine. */
 export interface CustomImagePropertiesFromVm {
   /** The source vm identifier. */
@@ -898,15 +618,8 @@ export interface CustomImagePropertiesFromVm {
   /** The Linux OS information of the VM. */
   linuxOsInfo?: LinuxOsInfo;
 }
-const CustomImagePropertiesFromVm = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CustomImagePropertiesFromVm>;
-
 /** The OS type of the custom image (i.e. Windows, Linux) */
 export type CustomImageOsType = "Windows" | "Linux" | "None";
-const CustomImageOsType = S.String;
-
 /** Properties for creating a custom image from a VHD. */
 export interface CustomImagePropertiesCustom {
   /** The image name. */
@@ -916,11 +629,6 @@ export interface CustomImagePropertiesCustom {
   /** The OS type of the custom image (i.e. Windows, Linux) */
   osType: CustomImageOsType | (string & {});
 }
-const CustomImagePropertiesCustom = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CustomImagePropertiesCustom>;
-
 /** Storage information about the data disks present in the custom image */
 export interface DataDiskStorageTypeInfo {
   /** Disk Lun */
@@ -928,18 +636,8 @@ export interface DataDiskStorageTypeInfo {
   /** Disk Storage Type */
   storageType?: StorageType | (string & {});
 }
-const DataDiskStorageTypeInfo = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DataDiskStorageTypeInfo>;
-
 /** Storage information about the data disks present in the custom image */
 export type CustomImagePropertiesInputDataDiskStorageInfoList = Array<DataDiskStorageTypeInfo>;
-const CustomImagePropertiesInputDataDiskStorageInfoList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CustomImagePropertiesInputDataDiskStorageInfoList>;
-
 /** Properties for plan on a custom image. */
 export interface CustomImagePropertiesFromPlan {
   /** The id of the plan, equivalent to name of the plan */
@@ -949,11 +647,6 @@ export interface CustomImagePropertiesFromPlan {
   /** The offer for the plan from the marketplace image the custom image is derived from */
   offer?: string;
 }
-const CustomImagePropertiesFromPlan = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CustomImagePropertiesFromPlan>;
-
 /** Properties of a custom image. */
 export interface CustomImagePropertiesInput {
   /** The virtual machine from which the image is to be created. */
@@ -975,16 +668,8 @@ export interface CustomImagePropertiesInput {
   /** Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment */
   isPlanAuthorized?: boolean;
 }
-const CustomImagePropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CustomImagePropertiesInput>;
-
 /** Resource tags. */
 export type CustomImagesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CustomImagesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CustomImagesCreateOrUpdateRequestTagsMap>;
-
 export interface CustomImagesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1001,16 +686,8 @@ export interface CustomImagesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const CustomImagesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CustomImagesCreateOrUpdateRequest>;
-
 /** Storage information about the data disks present in the custom image */
 export type CustomImagePropertiesDataDiskStorageInfoList = Array<DataDiskStorageTypeInfo>;
-const CustomImagePropertiesDataDiskStorageInfoList =
-  CustomImagePropertiesInputDataDiskStorageInfoList as any as S.Schema<CustomImagePropertiesDataDiskStorageInfoList>;
-
 /** Properties of a custom image. */
 export interface CustomImageProperties {
   /** The virtual machine from which the image is to be created. */
@@ -1038,16 +715,8 @@ export interface CustomImageProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const CustomImageProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CustomImageProperties>;
-
 /** Resource tags. */
 export type CustomImagesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CustomImagesCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<CustomImagesCreateOrUpdateResponseTagsMap>;
-
 export interface CustomImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1064,11 +733,6 @@ export interface CustomImagesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const CustomImagesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CustomImagesCreateOrUpdateResponse>;
-
 export interface DeleteArtifactSourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1079,15 +743,7 @@ export interface DeleteArtifactSourceRequest {
   /** The name of the artifact source. */
   name: string;
 }
-const DeleteArtifactSourceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteArtifactSourceRequest>;
-
 export interface DeleteArtifactSourceResponse {}
-const DeleteArtifactSourceResponse =
-  AttachDiskResponse as any as S.Schema<DeleteArtifactSourceResponse>;
-
 export interface DeleteCustomImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1098,14 +754,7 @@ export interface DeleteCustomImageRequest {
   /** The name of the CustomImage */
   name: string;
 }
-const DeleteCustomImageRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteCustomImageRequest>;
-
 export interface DeleteCustomImageResponse {}
-const DeleteCustomImageResponse = AttachDiskResponse as any as S.Schema<DeleteCustomImageResponse>;
-
 export interface DeleteDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1118,11 +767,7 @@ export interface DeleteDiskRequest {
   /** The name of the disk. */
   name: string;
 }
-const DeleteDiskRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteDiskRequest>;
-
 export interface DeleteDiskResponse {}
-const DeleteDiskResponse = AttachDiskResponse as any as S.Schema<DeleteDiskResponse>;
-
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1135,14 +780,7 @@ export interface DeleteEnvironmentRequest {
   /** The name of the environment. */
   name: string;
 }
-const DeleteEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteEnvironmentRequest>;
-
 export interface DeleteEnvironmentResponse {}
-const DeleteEnvironmentResponse = AttachDiskResponse as any as S.Schema<DeleteEnvironmentResponse>;
-
 export interface DeleteFormulasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1153,14 +791,7 @@ export interface DeleteFormulasRequest {
   /** The name of the formula. */
   name: string;
 }
-const DeleteFormulasRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteFormulasRequest>;
-
 export interface DeleteFormulasResponse {}
-const DeleteFormulasResponse = AttachDiskResponse as any as S.Schema<DeleteFormulasResponse>;
-
 export interface DeleteGlobalScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1169,15 +800,7 @@ export interface DeleteGlobalScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const DeleteGlobalScheduleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteGlobalScheduleRequest>;
-
 export interface DeleteGlobalScheduleResponse {}
-const DeleteGlobalScheduleResponse =
-  AttachDiskResponse as any as S.Schema<DeleteGlobalScheduleResponse>;
-
 export interface DeleteLabRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1186,11 +809,7 @@ export interface DeleteLabRequest {
   /** The name of the lab. */
   name: string;
 }
-const DeleteLabRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DeleteLabRequest>;
-
 export interface DeleteLabResponse {}
-const DeleteLabResponse = AttachDiskResponse as any as S.Schema<DeleteLabResponse>;
-
 export interface DeleteNotificationChannelRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1201,15 +820,7 @@ export interface DeleteNotificationChannelRequest {
   /** The name of the notification channel. */
   name: string;
 }
-const DeleteNotificationChannelRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteNotificationChannelRequest>;
-
 export interface DeleteNotificationChannelResponse {}
-const DeleteNotificationChannelResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<DeleteNotificationChannelResponse>;
-
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1222,11 +833,7 @@ export interface DeletePolicyRequest {
   /** The name of the Policy */
   name: string;
 }
-const DeletePolicyRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeletePolicyRequest>;
-
 export interface DeletePolicyResponse {}
-const DeletePolicyResponse = AttachDiskResponse as any as S.Schema<DeletePolicyResponse>;
-
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1237,14 +844,7 @@ export interface DeleteScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const DeleteScheduleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteScheduleRequest>;
-
 export interface DeleteScheduleResponse {}
-const DeleteScheduleResponse = AttachDiskResponse as any as S.Schema<DeleteScheduleResponse>;
-
 export interface DeleteSecretRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1257,11 +857,7 @@ export interface DeleteSecretRequest {
   /** The name of the secret. */
   name: string;
 }
-const DeleteSecretRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DeleteSecretRequest>;
-
 export interface DeleteSecretResponse {}
-const DeleteSecretResponse = AttachDiskResponse as any as S.Schema<DeleteSecretResponse>;
-
 export interface DeleteServiceFabricRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1274,15 +870,7 @@ export interface DeleteServiceFabricRequest {
   /** The name of the service fabric. */
   name: string;
 }
-const DeleteServiceFabricRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteServiceFabricRequest>;
-
 export interface DeleteServiceFabricResponse {}
-const DeleteServiceFabricResponse =
-  AttachDiskResponse as any as S.Schema<DeleteServiceFabricResponse>;
-
 export interface DeleteServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1297,15 +885,7 @@ export interface DeleteServiceFabricScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const DeleteServiceFabricScheduleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteServiceFabricScheduleRequest>;
-
 export interface DeleteServiceFabricScheduleResponse {}
-const DeleteServiceFabricScheduleResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<DeleteServiceFabricScheduleResponse>;
-
 export interface DeleteServiceRunnerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1316,15 +896,7 @@ export interface DeleteServiceRunnerRequest {
   /** The name of the service runner. */
   name: string;
 }
-const DeleteServiceRunnerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteServiceRunnerRequest>;
-
 export interface DeleteServiceRunnerResponse {}
-const DeleteServiceRunnerResponse =
-  AttachDiskResponse as any as S.Schema<DeleteServiceRunnerResponse>;
-
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1335,11 +907,7 @@ export interface DeleteUserRequest {
   /** The name of the user profile. */
   name: string;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserResponse {}
-const DeleteUserResponse = AttachDiskResponse as any as S.Schema<DeleteUserResponse>;
-
 export interface DeleteVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1350,15 +918,7 @@ export interface DeleteVirtualMachineRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const DeleteVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteVirtualMachineRequest>;
-
 export interface DeleteVirtualMachineResponse {}
-const DeleteVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<DeleteVirtualMachineResponse>;
-
 export interface DeleteVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1371,15 +931,7 @@ export interface DeleteVirtualMachineScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const DeleteVirtualMachineScheduleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteVirtualMachineScheduleRequest>;
-
 export interface DeleteVirtualMachineScheduleResponse {}
-const DeleteVirtualMachineScheduleResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<DeleteVirtualMachineScheduleResponse>;
-
 export interface DeleteVirtualNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1390,15 +942,7 @@ export interface DeleteVirtualNetworkRequest {
   /** The name of the virtual network. */
   name: string;
 }
-const DeleteVirtualNetworkRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteVirtualNetworkRequest>;
-
 export interface DeleteVirtualNetworkResponse {}
-const DeleteVirtualNetworkResponse =
-  AttachDiskResponse as any as S.Schema<DeleteVirtualNetworkResponse>;
-
 export interface DetachDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1413,11 +957,7 @@ export interface DetachDiskRequest {
   /** The resource ID of the Lab VM to which the disk is attached. */
   leasedByLabVmId?: string;
 }
-const DetachDiskRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<DetachDiskRequest>;
-
 export interface DetachDiskResponse {}
-const DetachDiskResponse = AttachDiskResponse as any as S.Schema<DetachDiskResponse>;
-
 export interface DetachVirtualMachineDataDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1430,15 +970,7 @@ export interface DetachVirtualMachineDataDiskRequest {
   /** Specifies the disk resource ID to detach from virtual machine. */
   existingLabDiskId?: string;
 }
-const DetachVirtualMachineDataDiskRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DetachVirtualMachineDataDiskRequest>;
-
 export interface DetachVirtualMachineDataDiskResponse {}
-const DetachVirtualMachineDataDiskResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<DetachVirtualMachineDataDiskResponse>;
-
 /** Properties of a disk. */
 export interface DiskPropertiesInput {
   /** The storage type for the disk (i.e. Standard, Premium). */
@@ -1458,13 +990,8 @@ export interface DiskPropertiesInput {
   /** When backed by managed disk, this is the ID of the compute disk resource. */
   managedDiskId?: string;
 }
-const DiskPropertiesInput = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<DiskPropertiesInput>;
-
 /** Resource tags. */
 export type DisksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const DisksCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<DisksCreateOrUpdateRequestTagsMap>;
-
 export interface DisksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1483,11 +1010,6 @@ export interface DisksCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const DisksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DisksCreateOrUpdateRequest>;
-
 /** Properties of a disk. */
 export interface DiskProperties {
   /** The storage type for the disk (i.e. Standard, Premium). */
@@ -1513,13 +1035,8 @@ export interface DiskProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const DiskProperties = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<DiskProperties>;
-
 /** Resource tags. */
 export type DisksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const DisksCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<DisksCreateOrUpdateResponseTagsMap>;
-
 export interface DisksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1536,11 +1053,6 @@ export interface DisksCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const DisksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DisksCreateOrUpdateResponse>;
-
 /** Properties of an Azure Resource Manager template parameter. */
 export interface ArmTemplateParameterProperties {
   /** The name of the template parameter. */
@@ -1550,9 +1062,6 @@ export interface ArmTemplateParameterProperties {
 }
 /** The parameters of the Azure Resource Manager template. */
 export type EnvironmentDeploymentPropertiesParametersList = Array<ArmTemplateParameterProperties>;
-const EnvironmentDeploymentPropertiesParametersList =
-  ArtifactInstallPropertiesParametersList as any as S.Schema<EnvironmentDeploymentPropertiesParametersList>;
-
 /** Properties of an environment deployment. */
 export interface EnvironmentDeploymentProperties {
   /** The Azure Resource Manager template's identifier. */
@@ -1560,11 +1069,6 @@ export interface EnvironmentDeploymentProperties {
   /** The parameters of the Azure Resource Manager template. */
   parameters?: EnvironmentDeploymentPropertiesParametersList;
 }
-const EnvironmentDeploymentProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<EnvironmentDeploymentProperties>;
-
 /** Properties of an environment. */
 export interface EnvironmentPropertiesInput {
   /** The deployment properties of the environment. */
@@ -1572,16 +1076,8 @@ export interface EnvironmentPropertiesInput {
   /** The display name of the Azure Resource Manager template that produced the environment. */
   armTemplateDisplayName?: string;
 }
-const EnvironmentPropertiesInput = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<EnvironmentPropertiesInput>;
-
 /** Resource tags. */
 export type EnvironmentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const EnvironmentsCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<EnvironmentsCreateOrUpdateRequestTagsMap>;
-
 export interface EnvironmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1600,11 +1096,6 @@ export interface EnvironmentsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>;
-
 /** Properties of an environment. */
 export interface EnvironmentProperties {
   /** The deployment properties of the environment. */
@@ -1620,16 +1111,8 @@ export interface EnvironmentProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const EnvironmentProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<EnvironmentProperties>;
-
 /** Resource tags. */
 export type EnvironmentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const EnvironmentsCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<EnvironmentsCreateOrUpdateResponseTagsMap>;
-
 export interface EnvironmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1646,11 +1129,6 @@ export interface EnvironmentsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const EnvironmentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<EnvironmentsCreateOrUpdateResponse>;
-
 export interface ExecuteGlobalScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1659,15 +1137,7 @@ export interface ExecuteGlobalScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const ExecuteGlobalScheduleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ExecuteGlobalScheduleRequest>;
-
 export interface ExecuteGlobalScheduleResponse {}
-const ExecuteGlobalScheduleResponse =
-  AttachDiskResponse as any as S.Schema<ExecuteGlobalScheduleResponse>;
-
 export interface ExecuteScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1678,14 +1148,7 @@ export interface ExecuteScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const ExecuteScheduleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ExecuteScheduleRequest>;
-
 export interface ExecuteScheduleResponse {}
-const ExecuteScheduleResponse = AttachDiskResponse as any as S.Schema<ExecuteScheduleResponse>;
-
 export interface ExecuteServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1700,15 +1163,7 @@ export interface ExecuteServiceFabricScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const ExecuteServiceFabricScheduleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ExecuteServiceFabricScheduleRequest>;
-
 export interface ExecuteServiceFabricScheduleResponse {}
-const ExecuteServiceFabricScheduleResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<ExecuteServiceFabricScheduleResponse>;
-
 export interface ExecuteVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1721,15 +1176,7 @@ export interface ExecuteVirtualMachineScheduleRequest {
   /** The name of the Schedule */
   name: string;
 }
-const ExecuteVirtualMachineScheduleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ExecuteVirtualMachineScheduleRequest>;
-
 export interface ExecuteVirtualMachineScheduleResponse {}
-const ExecuteVirtualMachineScheduleResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<ExecuteVirtualMachineScheduleResponse>;
-
 export interface ExportLabResourceUsageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1742,20 +1189,9 @@ export interface ExportLabResourceUsageRequest {
   /** The start time of the usage. If not provided, usage will be reported since the beginning of data collection. */
   usageStartDate?: string;
 }
-const ExportLabResourceUsageRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ExportLabResourceUsageRequest>;
-
 export interface ExportLabResourceUsageResponse {}
-const ExportLabResourceUsageResponse =
-  AttachDiskResponse as any as S.Schema<ExportLabResourceUsageResponse>;
-
 /** The tags of the resource. */
 export type LabVirtualMachineCreationParameterInputTagsMap = { [key: string]: string | undefined };
-const LabVirtualMachineCreationParameterInputTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabVirtualMachineCreationParameterInputTagsMap>;
-
 /** Properties for creating a virtual machine. */
 export interface LabVirtualMachineCreationParameterInput {
   /** The properties of the resource. */
@@ -1767,21 +1203,11 @@ export interface LabVirtualMachineCreationParameterInput {
   /** The tags of the resource. */
   tags?: LabVirtualMachineCreationParameterInputTagsMap;
 }
-const LabVirtualMachineCreationParameterInput = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<LabVirtualMachineCreationParameterInput>;
-
 /** Information about a VM from which a formula is to be created. */
 export interface FormulaPropertiesFromVm {
   /** The identifier of the VM from which a formula is to be created. */
   labVmId?: string;
 }
-const FormulaPropertiesFromVm = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<FormulaPropertiesFromVm>;
-
 /** Properties of a formula. */
 export interface FormulaPropertiesInput {
   /** The description of the formula. */
@@ -1793,16 +1219,8 @@ export interface FormulaPropertiesInput {
   /** Information about a VM from which a formula is to be created. */
   vm?: FormulaPropertiesFromVm;
 }
-const FormulaPropertiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<FormulaPropertiesInput>;
-
 /** Resource tags. */
 export type FormulasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const FormulasCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<FormulasCreateOrUpdateRequestTagsMap>;
-
 export interface FormulasCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1819,28 +1237,14 @@ export interface FormulasCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const FormulasCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<FormulasCreateOrUpdateRequest>;
-
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachineCreationParameterPropertiesArtifactsList =
   Array<ArtifactInstallProperties>;
-const LabVirtualMachineCreationParameterPropertiesArtifactsList =
-  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachineCreationParameterPropertiesArtifactsList>;
-
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachineCreationParameterPropertiesDataDiskParametersList =
   Array<DataDiskProperties>;
-const LabVirtualMachineCreationParameterPropertiesDataDiskParametersList =
-  LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList as any as S.Schema<LabVirtualMachineCreationParameterPropertiesDataDiskParametersList>;
-
 /** The tags of the resource. */
 export type ScheduleCreationParameterTagsMap = { [key: string]: string | undefined };
-const ScheduleCreationParameterTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ScheduleCreationParameterTagsMap>;
-
 /** Properties for creating a schedule. */
 export interface ScheduleCreationParameter {
   /** The properties of the schedule. */
@@ -1852,19 +1256,9 @@ export interface ScheduleCreationParameter {
   /** The tags of the resource. */
   tags?: ScheduleCreationParameterTagsMap;
 }
-const ScheduleCreationParameter = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ScheduleCreationParameter>;
-
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachineCreationParameterPropertiesScheduleParametersList =
   Array<ScheduleCreationParameter>;
-const LabVirtualMachineCreationParameterPropertiesScheduleParametersList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<LabVirtualMachineCreationParameterPropertiesScheduleParametersList>;
-
 /** Properties for virtual machine creation. */
 export interface LabVirtualMachineCreationParameterProperties {
   /** The number of virtual machine instances to create. */
@@ -1916,16 +1310,8 @@ export interface LabVirtualMachineCreationParameterProperties {
   /** Virtual Machine schedules to be created */
   scheduleParameters?: LabVirtualMachineCreationParameterPropertiesScheduleParametersList;
 }
-const LabVirtualMachineCreationParameterProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<LabVirtualMachineCreationParameterProperties>;
-
 /** The tags of the resource. */
 export type LabVirtualMachineCreationParameterTagsMap = { [key: string]: string | undefined };
-const LabVirtualMachineCreationParameterTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabVirtualMachineCreationParameterTagsMap>;
-
 /** Properties for creating a virtual machine. */
 export interface LabVirtualMachineCreationParameter {
   /** The properties of the resource. */
@@ -1937,11 +1323,6 @@ export interface LabVirtualMachineCreationParameter {
   /** The tags of the resource. */
   tags?: LabVirtualMachineCreationParameterTagsMap;
 }
-const LabVirtualMachineCreationParameter = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<LabVirtualMachineCreationParameter>;
-
 /** Properties of a formula. */
 export interface FormulaProperties {
   /** The description of the formula. */
@@ -1961,13 +1342,8 @@ export interface FormulaProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const FormulaProperties = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<FormulaProperties>;
-
 /** Resource tags. */
 export type FormulasCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const FormulasCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<FormulasCreateOrUpdateResponseTagsMap>;
-
 export interface FormulasCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1984,22 +1360,12 @@ export interface FormulasCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const FormulasCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<FormulasCreateOrUpdateResponse>;
-
 /** Information about an artifact's parameter. */
 export type ParameterInfo = ArtifactParameterProperties;
 /** The parameters of the ARM template. */
 export type GenerateArtifactArmTemplateRequestParametersList = Array<ArtifactParameterProperties>;
-const GenerateArtifactArmTemplateRequestParametersList =
-  ArtifactInstallPropertiesParametersList as any as S.Schema<GenerateArtifactArmTemplateRequestParametersList>;
-
 /** Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value. */
 export type FileUploadOptions = "UploadFilesAndGenerateSasTokens" | "None";
-const FileUploadOptions = S.String;
-
 export interface GenerateArtifactArmTemplateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2020,23 +1386,10 @@ export interface GenerateArtifactArmTemplateRequest {
   /** Options for uploading the files for the artifact. UploadFilesAndGenerateSasTokens is the default value. */
   fileUploadOptions?: FileUploadOptions | (string & {});
 }
-const GenerateArtifactArmTemplateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GenerateArtifactArmTemplateRequest>;
-
 /** The template's contents. */
 export type ArmTemplateInfoTemplateMap = { [key: string]: unknown | undefined };
-const ArmTemplateInfoTemplateMap = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ArmTemplateInfoTemplateMap>;
-
 /** The parameters of the ARM template. */
 export type ArmTemplateInfoParametersMap = { [key: string]: unknown | undefined };
-const ArmTemplateInfoParametersMap =
-  ArmTemplateInfoTemplateMap as any as S.Schema<ArmTemplateInfoParametersMap>;
-
 /** Information about a generated ARM template. */
 export interface ArmTemplateInfo {
   /** The template's contents. */
@@ -2044,8 +1397,6 @@ export interface ArmTemplateInfo {
   /** The parameters of the ARM template. */
   parameters?: ArmTemplateInfoParametersMap;
 }
-const ArmTemplateInfo = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<ArmTemplateInfo>;
-
 export interface GetArmTemplateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2060,21 +1411,10 @@ export interface GetArmTemplateRequest {
   /** Specify the $expand query. Example: 'properties($select=displayName)' */
   _expand?: string;
 }
-const GetArmTemplateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetArmTemplateRequest>;
-
 /** The contents of the ARM template. */
 export type ArmTemplatePropertiesContentsMap = { [key: string]: unknown | undefined };
-const ArmTemplatePropertiesContentsMap =
-  ArmTemplateInfoTemplateMap as any as S.Schema<ArmTemplatePropertiesContentsMap>;
-
 /** Contents of the file. */
 export type ParametersValueFileInfoParametersValueInfoMap = { [key: string]: unknown | undefined };
-const ParametersValueFileInfoParametersValueInfoMap =
-  ArmTemplateInfoTemplateMap as any as S.Schema<ParametersValueFileInfoParametersValueInfoMap>;
-
 /** A file containing a set of parameter values for an ARM template. */
 export interface ParametersValueFileInfo {
   /** File name. */
@@ -2082,18 +1422,8 @@ export interface ParametersValueFileInfo {
   /** Contents of the file. */
   parametersValueInfo?: ParametersValueFileInfoParametersValueInfoMap;
 }
-const ParametersValueFileInfo = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ParametersValueFileInfo>;
-
 /** File name and parameter values information from all azuredeploy.*.parameters.json for the ARM template. */
 export type ArmTemplatePropertiesParametersValueFilesInfoList = Array<ParametersValueFileInfo>;
-const ArmTemplatePropertiesParametersValueFilesInfoList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ArmTemplatePropertiesParametersValueFilesInfoList>;
-
 /** Properties of an Azure Resource Manager template. */
 export interface ArmTemplateProperties {
   /** The display name of the ARM template. */
@@ -2113,16 +1443,8 @@ export interface ArmTemplateProperties {
   /** Whether or not ARM template is enabled for use by lab user. */
   enabled?: boolean;
 }
-const ArmTemplateProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ArmTemplateProperties>;
-
 /** Resource tags. */
 export type GetArmTemplateResponseTagsMap = { [key: string]: string | undefined };
-const GetArmTemplateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetArmTemplateResponseTagsMap>;
-
 export interface GetArmTemplateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2139,11 +1461,6 @@ export interface GetArmTemplateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetArmTemplateResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetArmTemplateResponse>;
-
 export interface GetArtifactRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2158,13 +1475,8 @@ export interface GetArtifactRequest {
   /** Specify the $expand query. Example: 'properties($select=title)' */
   _expand?: string;
 }
-const GetArtifactRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<GetArtifactRequest>;
-
 /** The artifact's parameters. */
 export type ArtifactPropertiesParametersMap = { [key: string]: unknown | undefined };
-const ArtifactPropertiesParametersMap =
-  ArmTemplateInfoTemplateMap as any as S.Schema<ArtifactPropertiesParametersMap>;
-
 /** Properties of an artifact. */
 export interface ArtifactProperties {
   /** The artifact's title. */
@@ -2184,13 +1496,8 @@ export interface ArtifactProperties {
   /** The artifact's creation date. */
   createdDate?: string;
 }
-const ArtifactProperties = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ArtifactProperties>;
-
 /** Resource tags. */
 export type GetArtifactResponseTagsMap = { [key: string]: string | undefined };
-const GetArtifactResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetArtifactResponseTagsMap>;
-
 export interface GetArtifactResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2207,8 +1514,6 @@ export interface GetArtifactResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetArtifactResponse = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetArtifactResponse>;
-
 export interface GetArtifactSourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2221,11 +1526,6 @@ export interface GetArtifactSourceRequest {
   /** Specify the $expand query. Example: 'properties($select=displayName)' */
   _expand?: string;
 }
-const GetArtifactSourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetArtifactSourceRequest>;
-
 /** Resource tags. */
 export type GetArtifactSourceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetArtifactSourceResponse {
@@ -2244,9 +1544,6 @@ export interface GetArtifactSourceResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetArtifactSourceResponse =
-  ArtifactSourcesCreateOrUpdateResponse as any as S.Schema<GetArtifactSourceResponse>;
-
 export interface GetCostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2259,13 +1556,8 @@ export interface GetCostRequest {
   /** Specify the $expand query. Example: 'properties($expand=labCostDetails)' */
   _expand?: string;
 }
-const GetCostRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetCostRequest>;
-
 /** Resource tags. */
 export type GetCostResponseTagsMap = { [key: string]: string | undefined };
-const GetCostResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetCostResponseTagsMap>;
-
 export interface GetCostResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2282,8 +1574,6 @@ export interface GetCostResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetCostResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetCostResponse>;
-
 export interface GetCustomImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2296,16 +1586,8 @@ export interface GetCustomImageRequest {
   /** Specify the $expand query. Example: 'properties($select=vm)' */
   _expand?: string;
 }
-const GetCustomImageRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetCustomImageRequest>;
-
 /** Resource tags. */
 export type GetCustomImageResponseTagsMap = { [key: string]: string | undefined };
-const GetCustomImageResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetCustomImageResponseTagsMap>;
-
 export interface GetCustomImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2322,11 +1604,6 @@ export interface GetCustomImageResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetCustomImageResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetCustomImageResponse>;
-
 export interface GetDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2341,13 +1618,8 @@ export interface GetDiskRequest {
   /** Specify the $expand query. Example: 'properties($select=diskType)' */
   _expand?: string;
 }
-const GetDiskRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<GetDiskRequest>;
-
 /** Resource tags. */
 export type GetDiskResponseTagsMap = { [key: string]: string | undefined };
-const GetDiskResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDiskResponseTagsMap>;
-
 export interface GetDiskResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2364,8 +1636,6 @@ export interface GetDiskResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetDiskResponse = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<GetDiskResponse>;
-
 export interface GetEnvironmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2380,16 +1650,8 @@ export interface GetEnvironmentRequest {
   /** Specify the $expand query. Example: 'properties($select=deploymentProperties)' */
   _expand?: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetEnvironmentRequest>;
-
 /** Resource tags. */
 export type GetEnvironmentResponseTagsMap = { [key: string]: string | undefined };
-const GetEnvironmentResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetEnvironmentResponseTagsMap>;
-
 export interface GetEnvironmentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2406,11 +1668,6 @@ export interface GetEnvironmentResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetEnvironmentResponse>;
-
 export interface GetFormulasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2423,13 +1680,8 @@ export interface GetFormulasRequest {
   /** Specify the $expand query. Example: 'properties($select=description)' */
   _expand?: string;
 }
-const GetFormulasRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetFormulasRequest>;
-
 /** Resource tags. */
 export type GetFormulasResponseTagsMap = { [key: string]: string | undefined };
-const GetFormulasResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetFormulasResponseTagsMap>;
-
 export interface GetFormulasResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2446,8 +1698,6 @@ export interface GetFormulasResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetFormulasResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetFormulasResponse>;
-
 export interface GetGlobalScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2458,15 +1708,8 @@ export interface GetGlobalScheduleRequest {
   /** Specify the $expand query. Example: 'properties($select=status)' */
   _expand?: string;
 }
-const GetGlobalScheduleRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetGlobalScheduleRequest>;
-
 /** The status of the schedule (i.e. Enabled, Disabled) */
 export type SchedulePropertiesStatus = "Enabled" | "Disabled";
-const SchedulePropertiesStatus = S.String;
-
 /** Properties of a schedule. */
 export interface ScheduleProperties {
   /** The status of the schedule (i.e. Enabled, Disabled) */
@@ -2492,13 +1735,8 @@ export interface ScheduleProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const ScheduleProperties = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ScheduleProperties>;
-
 /** Resource tags. */
 export type GetGlobalScheduleResponseTagsMap = { [key: string]: string | undefined };
-const GetGlobalScheduleResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetGlobalScheduleResponseTagsMap>;
-
 export interface GetGlobalScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2515,11 +1753,6 @@ export interface GetGlobalScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetGlobalScheduleResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetGlobalScheduleResponse>;
-
 export interface GetLabRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2530,30 +1763,16 @@ export interface GetLabRequest {
   /** Specify the $expand query. Example: 'properties($select=defaultStorageAccount)' */
   _expand?: string;
 }
-const GetLabRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<GetLabRequest>;
-
 /** Type of storage used by the lab. It can be either Premium or Standard. Default is Premium. */
 export type LabPropertiesLabStorageType = "Standard" | "Premium" | "StandardSSD";
-const LabPropertiesLabStorageType = S.String;
-
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesMandatoryArtifactsResourceIdsLinuxList = Array<string>;
-const LabPropertiesMandatoryArtifactsResourceIdsLinuxList =
-  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesMandatoryArtifactsResourceIdsLinuxList>;
-
 /** The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesMandatoryArtifactsResourceIdsWindowsList = Array<string>;
-const LabPropertiesMandatoryArtifactsResourceIdsWindowsList =
-  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesMandatoryArtifactsResourceIdsWindowsList>;
-
 /** The setting to enable usage of premium data disks. When its value is 'Enabled', creation of standard or premium data disks is allowed. When its value is 'Disabled', only creation of standard data disks is allowed. */
 export type PremiumDataDisk = "Disabled" | "Enabled";
-const PremiumDataDisk = S.String;
-
 /** The access rights to be granted to the user when provisioning an environment */
 export type EnvironmentPermission = "Reader" | "Contributor";
-const EnvironmentPermission = S.String;
-
 /** Properties of a lab's announcement banner */
 export interface LabAnnouncementProperties {
   /** The plain text title for the lab announcement */
@@ -2571,11 +1790,6 @@ export interface LabAnnouncementProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const LabAnnouncementProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<LabAnnouncementProperties>;
-
 /** Properties of a lab's support banner */
 export interface LabSupportProperties {
   /** Is the lab support banner active/enabled at this time? */
@@ -2583,16 +1797,8 @@ export interface LabSupportProperties {
   /** The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown. */
   markdown?: string;
 }
-const LabSupportProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<LabSupportProperties>;
-
 /** Extended properties of the lab used for experimental features */
 export type LabPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
-const LabPropertiesExtendedPropertiesMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabPropertiesExtendedPropertiesMap>;
-
 /** Properties of a lab. */
 export interface LabProperties {
   /** The lab's default storage account. */
@@ -2636,13 +1842,8 @@ export interface LabProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const LabProperties = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<LabProperties>;
-
 /** Resource tags. */
 export type GetLabResponseTagsMap = { [key: string]: string | undefined };
-const GetLabResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetLabResponseTagsMap>;
-
 export interface GetLabResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2659,8 +1860,6 @@ export interface GetLabResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetLabResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetLabResponse>;
-
 export interface GetNotificationChannelRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2673,29 +1872,15 @@ export interface GetNotificationChannelRequest {
   /** Specify the $expand query. Example: 'properties($select=webHookUrl)' */
   _expand?: string;
 }
-const GetNotificationChannelRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetNotificationChannelRequest>;
-
 /** The event type for which this notification is enabled (i.e. AutoShutdown, Cost) */
 export type NotificationChannelEventType = "AutoShutdown" | "Cost";
-const NotificationChannelEventType = S.String;
-
 /** An event to be notified for. */
 export interface Event {
   /** The event type for which this notification is enabled (i.e. AutoShutdown, Cost) */
   eventName?: NotificationChannelEventType | (string & {});
 }
-const Event = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<Event>;
-
 /** The list of event for which this notification is enabled. */
 export type NotificationChannelPropertiesEventsList = Array<Event>;
-const NotificationChannelPropertiesEventsList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<NotificationChannelPropertiesEventsList>;
-
 /** Properties of a schedule. */
 export interface NotificationChannelProperties {
   /** The webhook URL to send notifications to. */
@@ -2715,16 +1900,8 @@ export interface NotificationChannelProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const NotificationChannelProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<NotificationChannelProperties>;
-
 /** Resource tags. */
 export type GetNotificationChannelResponseTagsMap = { [key: string]: string | undefined };
-const GetNotificationChannelResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetNotificationChannelResponseTagsMap>;
-
 export interface GetNotificationChannelResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2741,11 +1918,6 @@ export interface GetNotificationChannelResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetNotificationChannelResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetNotificationChannelResponse>;
-
 export interface GetOperationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2754,8 +1926,6 @@ export interface GetOperationRequest {
   /** The name of the operation. */
   name: string;
 }
-const GetOperationRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GetOperationRequest>;
-
 /** The status code for the operation. */
 export type HttpStatusCode =
   | "Continue"
@@ -2805,8 +1975,6 @@ export type HttpStatusCode =
   | "ServiceUnavailable"
   | "GatewayTimeout"
   | "HttpVersionNotSupported";
-const HttpStatusCode = S.String;
-
 /** Error details for the operation in case of a failure. */
 export interface OperationError {
   /** The error code of the operation error. */
@@ -2814,8 +1982,6 @@ export interface OperationError {
   /** The error message of the operation error. */
   message?: string;
 }
-const OperationError = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<OperationError>;
-
 /** An Operation Result */
 export interface OperationResult {
   /** The operation status. */
@@ -2825,8 +1991,6 @@ export interface OperationResult {
   /** Error details for the operation in case of a failure. */
   error?: OperationError;
 }
-const OperationResult = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<OperationResult>;
-
 export interface GetPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2841,12 +2005,8 @@ export interface GetPolicyRequest {
   /** Specify the $expand query. Example: 'properties($select=description)' */
   _expand?: string;
 }
-const GetPolicyRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<GetPolicyRequest>;
-
 /** The status of the policy. */
 export type PolicyStatus = "Enabled" | "Disabled";
-const PolicyStatus = S.String;
-
 /** The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc. */
 export type PolicyFactName =
   | "UserOwnedLabVmCount"
@@ -2859,12 +2019,8 @@ export type PolicyFactName =
   | "LabTargetCost"
   | "EnvironmentTemplate"
   | "ScheduleEditPermission";
-const PolicyFactName = S.String;
-
 /** The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy). */
 export type PolicyEvaluatorType = "AllowedValuesPolicy" | "MaxValuePolicy";
-const PolicyEvaluatorType = S.String;
-
 /** Properties of a Policy. */
 export interface PolicyProperties {
   /** The description of the policy. */
@@ -2886,13 +2042,8 @@ export interface PolicyProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const PolicyProperties = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PolicyProperties>;
-
 /** The tags of the resource. */
 export type GetPolicyResponseTagsMap = { [key: string]: string | undefined };
-const GetPolicyResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetPolicyResponseTagsMap>;
-
 export interface GetPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2909,8 +2060,6 @@ export interface GetPolicyResponse {
   /** The location of the resource. */
   location?: string;
 }
-const GetPolicyResponse = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<GetPolicyResponse>;
-
 export interface GetScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2923,13 +2072,8 @@ export interface GetScheduleRequest {
   /** Specify the $expand query. Example: 'properties($select=status)' */
   _expand?: string;
 }
-const GetScheduleRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<GetScheduleRequest>;
-
 /** Resource tags. */
 export type GetScheduleResponseTagsMap = { [key: string]: string | undefined };
-const GetScheduleResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetScheduleResponseTagsMap>;
-
 export interface GetScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2946,8 +2090,6 @@ export interface GetScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetScheduleResponse = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<GetScheduleResponse>;
-
 export interface GetSecretRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2962,8 +2104,6 @@ export interface GetSecretRequest {
   /** Specify the $expand query. Example: 'properties($select=value)' */
   _expand?: string;
 }
-const GetSecretRequest = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<GetSecretRequest>;
-
 /** Properties of a secret. */
 export interface SecretProperties {
   /** The value of the secret for secret creation. */
@@ -2973,13 +2113,8 @@ export interface SecretProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const SecretProperties = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<SecretProperties>;
-
 /** Resource tags. */
 export type GetSecretResponseTagsMap = { [key: string]: string | undefined };
-const GetSecretResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetSecretResponseTagsMap>;
-
 export interface GetSecretResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2996,8 +2131,6 @@ export interface GetSecretResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetSecretResponse = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetSecretResponse>;
-
 export interface GetServiceFabricRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3012,16 +2145,8 @@ export interface GetServiceFabricRequest {
   /** Specify the $expand query. Example: 'properties($expand=applicableSchedule)' */
   _expand?: string;
 }
-const GetServiceFabricRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetServiceFabricRequest>;
-
 /** The tags of the resource. */
 export type ApplicableScheduleTagsMap = { [key: string]: string | undefined };
-const ApplicableScheduleTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ApplicableScheduleTagsMap>;
-
 /** Resource tags. */
 export type ScheduleTagsMap = { [key: string]: string | undefined };
 /** A schedule. */
@@ -3041,8 +2166,6 @@ export interface Schedule {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Schedule = GetScheduleResponse as any as S.Schema<Schedule>;
-
 /** Properties of a schedules applicable to a virtual machine. */
 export interface ApplicableScheduleProperties {
   /** The auto-shutdown schedule, if one has been set at the lab or lab resource level. */
@@ -3050,11 +2173,6 @@ export interface ApplicableScheduleProperties {
   /** The auto-startup schedule, if one has been set at the lab or lab resource level. */
   labVmsStartup?: Schedule;
 }
-const ApplicableScheduleProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ApplicableScheduleProperties>;
-
 /** Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level. */
 export interface ApplicableSchedule {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3072,8 +2190,6 @@ export interface ApplicableSchedule {
   /** The properties of the resource. */
   properties: ApplicableScheduleProperties;
 }
-const ApplicableSchedule = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ApplicableSchedule>;
-
 /** Properties of a service fabric. */
 export interface ServiceFabricProperties {
   /** The backing service fabric resource's id */
@@ -3087,16 +2203,8 @@ export interface ServiceFabricProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const ServiceFabricProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ServiceFabricProperties>;
-
 /** Resource tags. */
 export type GetServiceFabricResponseTagsMap = { [key: string]: string | undefined };
-const GetServiceFabricResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceFabricResponseTagsMap>;
-
 export interface GetServiceFabricResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3113,11 +2221,6 @@ export interface GetServiceFabricResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetServiceFabricResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetServiceFabricResponse>;
-
 export interface GetServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3134,11 +2237,6 @@ export interface GetServiceFabricScheduleRequest {
   /** Specify the $expand query. Example: 'properties($select=status)' */
   _expand?: string;
 }
-const GetServiceFabricScheduleRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetServiceFabricScheduleRequest>;
-
 /** Resource tags. */
 export type GetServiceFabricScheduleResponseTagsMap = { [key: string]: string | undefined };
 export interface GetServiceFabricScheduleResponse {
@@ -3157,9 +2255,6 @@ export interface GetServiceFabricScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetServiceFabricScheduleResponse =
-  GetGlobalScheduleResponse as any as S.Schema<GetServiceFabricScheduleResponse>;
-
 export interface GetServiceRunnerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3170,24 +2265,14 @@ export interface GetServiceRunnerRequest {
   /** The name of the service runner. */
   name: string;
 }
-const GetServiceRunnerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetServiceRunnerRequest>;
-
 /** Resource tags. */
 export type GetServiceRunnerResponseTagsMap = { [key: string]: string | undefined };
-const GetServiceRunnerResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetServiceRunnerResponseTagsMap>;
-
 /** Managed identity. */
 export type ManagedIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedIdentityType = S.String;
-
 /** A user-assigned identity attached to the resource. */
 export interface UserAssignedIdentityValue {
   /** Principal ID of the user-assigned identity. */
@@ -3195,20 +2280,10 @@ export interface UserAssignedIdentityValue {
   /** Client ID of the user-assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentityValue = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<UserAssignedIdentityValue>;
-
 /** User-assigned identities, keyed by ARM resource ID. */
 export type IdentityPropertiesUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityValue | undefined;
 };
-const IdentityPropertiesUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<IdentityPropertiesUserAssignedIdentitiesMap>;
-
 /** Properties of a managed identity */
 export interface IdentityProperties {
   /** Managed identity. */
@@ -3222,8 +2297,6 @@ export interface IdentityProperties {
   /** User-assigned identities, keyed by ARM resource ID. */
   userAssignedIdentities?: IdentityPropertiesUserAssignedIdentitiesMap;
 }
-const IdentityProperties = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<IdentityProperties>;
-
 export interface GetServiceRunnerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3240,11 +2313,6 @@ export interface GetServiceRunnerResponse {
   /** The identity of the resource. */
   identity?: IdentityProperties;
 }
-const GetServiceRunnerResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetServiceRunnerResponse>;
-
 export interface GetUserRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3257,8 +2325,6 @@ export interface GetUserRequest {
   /** Specify the $expand query. Example: 'properties($select=identity)' */
   _expand?: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<GetUserRequest>;
-
 /** Identity attributes of a lab user. */
 export interface UserIdentity {
   /** Set to the principal name / UPN of the client JWT making the request. */
@@ -3272,8 +2338,6 @@ export interface UserIdentity {
   /** Set to the app Id of the client JWT making the request. */
   appId?: string;
 }
-const UserIdentity = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<UserIdentity>;
-
 /** Properties of a user's secret store. */
 export interface UserSecretStore {
   /** The URI of the user's Key vault. */
@@ -3281,8 +2345,6 @@ export interface UserSecretStore {
   /** The ID of the user's Key vault. */
   keyVaultId?: string;
 }
-const UserSecretStore = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<UserSecretStore>;
-
 /** Properties of a lab user profile. */
 export interface UserProperties {
   /** The identity of the user. */
@@ -3296,13 +2358,8 @@ export interface UserProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const UserProperties = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<UserProperties>;
-
 /** Resource tags. */
 export type GetUserResponseTagsMap = { [key: string]: string | undefined };
-const GetUserResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetUserResponseTagsMap>;
-
 export interface GetUserResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3319,8 +2376,6 @@ export interface GetUserResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetUserResponse = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<GetUserResponse>;
-
 export interface GetVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3333,16 +2388,8 @@ export interface GetVirtualMachineRequest {
   /** Specify the $expand query. Example: 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)' */
   _expand?: string;
 }
-const GetVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetVirtualMachineRequest>;
-
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachinePropertiesArtifactsList = Array<ArtifactInstallProperties>;
-const LabVirtualMachinePropertiesArtifactsList =
-  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachinePropertiesArtifactsList>;
-
 /** Properties of an artifact deployment. */
 export interface ArtifactDeploymentStatusProperties {
   /** The deployment status of the artifact. */
@@ -3352,11 +2399,6 @@ export interface ArtifactDeploymentStatusProperties {
   /** The total count of the artifacts that were tentatively applied. */
   totalArtifacts?: number;
 }
-const ArtifactDeploymentStatusProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ArtifactDeploymentStatusProperties>;
-
 /** Status information about a virtual machine. */
 export interface ComputeVmInstanceViewStatus {
   /** Gets the status Code. */
@@ -3366,23 +2408,10 @@ export interface ComputeVmInstanceViewStatus {
   /** Gets the message associated with the status. */
   message?: string;
 }
-const ComputeVmInstanceViewStatus = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ComputeVmInstanceViewStatus>;
-
 /** Gets the statuses of the virtual machine. */
 export type ComputeVmPropertiesStatusesList = Array<ComputeVmInstanceViewStatus>;
-const ComputeVmPropertiesStatusesList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ComputeVmPropertiesStatusesList>;
-
 /** Gets data disks blob uri for the virtual machine. */
 export type ComputeVmPropertiesDataDiskIdsList = Array<string>;
-const ComputeVmPropertiesDataDiskIdsList =
-  WeekDetailsWeekdaysList as any as S.Schema<ComputeVmPropertiesDataDiskIdsList>;
-
 /** A data disks attached to a virtual machine. */
 export interface ComputeDataDisk {
   /** Gets data disk name. */
@@ -3394,15 +2423,8 @@ export interface ComputeDataDisk {
   /** Gets data disk size in GiB. */
   diskSizeGiB?: number;
 }
-const ComputeDataDisk = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ComputeDataDisk>;
-
 /** Gets all data disks attached to the virtual machine. */
 export type ComputeVmPropertiesDataDisksList = Array<ComputeDataDisk>;
-const ComputeVmPropertiesDataDisksList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ComputeVmPropertiesDataDisksList>;
-
 /** Properties of a virtual machine returned by the Microsoft.Compute API. */
 export interface ComputeVmProperties {
   /** Gets the statuses of the virtual machine. */
@@ -3420,29 +2442,15 @@ export interface ComputeVmProperties {
   /** Gets all data disks attached to the virtual machine. */
   dataDisks?: ComputeVmPropertiesDataDisksList;
 }
-const ComputeVmProperties = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ComputeVmProperties>;
-
 /** Tells source of creation of lab virtual machine. Output property only. */
 export type VirtualMachineCreationSource =
   | "FromCustomImage"
   | "FromGalleryImage"
   | "FromSharedGalleryImage";
-const VirtualMachineCreationSource = S.String;
-
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachinePropertiesDataDiskParametersList = Array<DataDiskProperties>;
-const LabVirtualMachinePropertiesDataDiskParametersList = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<LabVirtualMachinePropertiesDataDiskParametersList>;
-
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachinePropertiesScheduleParametersList = Array<ScheduleCreationParameter>;
-const LabVirtualMachinePropertiesScheduleParametersList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<LabVirtualMachinePropertiesScheduleParametersList>;
-
 /** Properties of a virtual machine. */
 export interface LabVirtualMachineProperties {
   /** The notes of the virtual machine. */
@@ -3516,16 +2524,8 @@ export interface LabVirtualMachineProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const LabVirtualMachineProperties = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<LabVirtualMachineProperties>;
-
 /** Resource tags. */
 export type GetVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
-const GetVirtualMachineResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualMachineResponseTagsMap>;
-
 export interface GetVirtualMachineResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3542,11 +2542,6 @@ export interface GetVirtualMachineResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetVirtualMachineResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetVirtualMachineResponse>;
-
 export interface GetVirtualMachineRdpFileContentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3557,18 +2552,11 @@ export interface GetVirtualMachineRdpFileContentsRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const GetVirtualMachineRdpFileContentsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetVirtualMachineRdpFileContentsRequest>;
-
 /** Represents a .rdp file */
 export interface RdpConnection {
   /** The contents of the .rdp file */
   contents?: string;
 }
-const RdpConnection = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<RdpConnection>;
-
 export interface GetVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3583,11 +2571,6 @@ export interface GetVirtualMachineScheduleRequest {
   /** Specify the $expand query. Example: 'properties($select=status)' */
   _expand?: string;
 }
-const GetVirtualMachineScheduleRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetVirtualMachineScheduleRequest>;
-
 /** Resource tags. */
 export type GetVirtualMachineScheduleResponseTagsMap = { [key: string]: string | undefined };
 export interface GetVirtualMachineScheduleResponse {
@@ -3606,9 +2589,6 @@ export interface GetVirtualMachineScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetVirtualMachineScheduleResponse =
-  GetGlobalScheduleResponse as any as S.Schema<GetVirtualMachineScheduleResponse>;
-
 export interface GetVirtualNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3621,15 +2601,8 @@ export interface GetVirtualNetworkRequest {
   /** Specify the $expand query. Example: 'properties($expand=externalSubnets)' */
   _expand?: string;
 }
-const GetVirtualNetworkRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetVirtualNetworkRequest>;
-
 /** The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)). */
 export type UsagePermissionType = "Default" | "Deny" | "Allow";
-const UsagePermissionType = S.String;
-
 /** Subnet information. */
 export interface Subnet {
   /** The resource ID of the subnet. */
@@ -3639,15 +2612,8 @@ export interface Subnet {
   /** The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)). */
   allowPublicIp?: UsagePermissionType | (string & {});
 }
-const Subnet = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<Subnet>;
-
 /** The allowed subnets of the virtual network. */
 export type VirtualNetworkPropertiesAllowedSubnetsList = Array<Subnet>;
-const VirtualNetworkPropertiesAllowedSubnetsList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<VirtualNetworkPropertiesAllowedSubnetsList>;
-
 /** Subnet information as returned by the Microsoft.Network API. */
 export interface ExternalSubnet {
   /** Gets or sets the identifier. */
@@ -3655,15 +2621,8 @@ export interface ExternalSubnet {
   /** Gets or sets the name. */
   name?: string;
 }
-const ExternalSubnet = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ExternalSubnet>;
-
 /** The external subnet properties. */
 export type VirtualNetworkPropertiesExternalSubnetsList = Array<ExternalSubnet>;
-const VirtualNetworkPropertiesExternalSubnetsList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<VirtualNetworkPropertiesExternalSubnetsList>;
-
 /** Properties of a network port. */
 export interface Port {
   /** Protocol type of the port. */
@@ -3671,25 +2630,13 @@ export interface Port {
   /** Backend port of the target virtual machine. */
   backendPort?: number;
 }
-const Port = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<Port>;
-
 /** Backend ports that virtual machines on this subnet are allowed to expose */
 export type SubnetSharedPublicIpAddressConfigurationAllowedPortsList = Array<Port>;
-const SubnetSharedPublicIpAddressConfigurationAllowedPortsList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<SubnetSharedPublicIpAddressConfigurationAllowedPortsList>;
-
 /** Configuration for public IP address sharing. */
 export interface SubnetSharedPublicIpAddressConfiguration {
   /** Backend ports that virtual machines on this subnet are allowed to expose */
   allowedPorts?: SubnetSharedPublicIpAddressConfigurationAllowedPortsList;
 }
-const SubnetSharedPublicIpAddressConfiguration = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<SubnetSharedPublicIpAddressConfiguration>;
-
 /** Property overrides on a subnet of a virtual network. */
 export interface SubnetOverride {
   /** The resource ID of the subnet. */
@@ -3705,15 +2652,8 @@ export interface SubnetOverride {
   /** The virtual network pool associated with this subnet. */
   virtualNetworkPoolName?: string;
 }
-const SubnetOverride = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<SubnetOverride>;
-
 /** The subnet overrides of the virtual network. */
 export type VirtualNetworkPropertiesSubnetOverridesList = Array<SubnetOverride>;
-const VirtualNetworkPropertiesSubnetOverridesList = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<VirtualNetworkPropertiesSubnetOverridesList>;
-
 /** Properties of a virtual network. */
 export interface VirtualNetworkProperties {
   /** The allowed subnets of the virtual network. */
@@ -3733,16 +2673,8 @@ export interface VirtualNetworkProperties {
   /** The unique immutable identifier of a resource (Guid). */
   uniqueIdentifier?: string;
 }
-const VirtualNetworkProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<VirtualNetworkProperties>;
-
 /** Resource tags. */
 export type GetVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
-const GetVirtualNetworkResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GetVirtualNetworkResponseTagsMap>;
-
 export interface GetVirtualNetworkResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3759,15 +2691,8 @@ export interface GetVirtualNetworkResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetVirtualNetworkResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetVirtualNetworkResponse>;
-
 /** The status of the schedule (i.e. Enabled, Disabled) */
 export type SchedulePropertiesInputStatus = "Enabled" | "Disabled";
-const SchedulePropertiesInputStatus = S.String;
-
 /** Properties of a schedule. */
 export interface SchedulePropertiesInput {
   /** The status of the schedule (i.e. Enabled, Disabled) */
@@ -3787,16 +2712,8 @@ export interface SchedulePropertiesInput {
   /** The resource ID to which the schedule belongs */
   targetResourceId?: string;
 }
-const SchedulePropertiesInput = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<SchedulePropertiesInput>;
-
 /** Resource tags. */
 export type GlobalSchedulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const GlobalSchedulesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GlobalSchedulesCreateOrUpdateRequestTagsMap>;
-
 export interface GlobalSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3811,11 +2728,6 @@ export interface GlobalSchedulesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GlobalSchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GlobalSchedulesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type GlobalSchedulesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface GlobalSchedulesCreateOrUpdateResponse {
@@ -3834,9 +2746,6 @@ export interface GlobalSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GlobalSchedulesCreateOrUpdateResponse =
-  GetGlobalScheduleResponse as any as S.Schema<GlobalSchedulesCreateOrUpdateResponse>;
-
 export interface GlobalSchedulesRetargetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3849,17 +2758,7 @@ export interface GlobalSchedulesRetargetRequest {
   /** The resource Id of the virtual machine that the schedule should be retargeted to */
   targetResourceId?: string;
 }
-const GlobalSchedulesRetargetRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GlobalSchedulesRetargetRequest>;
-
 export interface GlobalSchedulesRetargetResponse {}
-const GlobalSchedulesRetargetResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GlobalSchedulesRetargetResponse>;
-
 export interface ImportLabVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3872,29 +2771,13 @@ export interface ImportLabVirtualMachineRequest {
   /** The name of the virtual machine in the destination lab */
   destinationVirtualMachineName?: string;
 }
-const ImportLabVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ImportLabVirtualMachineRequest>;
-
 export interface ImportLabVirtualMachineResponse {}
-const ImportLabVirtualMachineResponse =
-  GlobalSchedulesRetargetResponse as any as S.Schema<ImportLabVirtualMachineResponse>;
-
 /** Type of storage used by the lab. It can be either Premium or Standard. Default is Premium. */
 export type LabPropertiesInputLabStorageType = "Standard" | "Premium" | "StandardSSD";
-const LabPropertiesInputLabStorageType = S.String;
-
 /** The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList = Array<string>;
-const LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList =
-  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList>;
-
 /** The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user. */
 export type LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList = Array<string>;
-const LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList =
-  WeekDetailsWeekdaysList as any as S.Schema<LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList>;
-
 /** Properties of a lab's announcement banner */
 export interface LabAnnouncementPropertiesInput {
   /** The plain text title for the lab announcement */
@@ -3908,16 +2791,8 @@ export interface LabAnnouncementPropertiesInput {
   /** Has this announcement expired? */
   expired?: boolean;
 }
-const LabAnnouncementPropertiesInput = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<LabAnnouncementPropertiesInput>;
-
 /** Extended properties of the lab used for experimental features */
 export type LabPropertiesInputExtendedPropertiesMap = { [key: string]: string | undefined };
-const LabPropertiesInputExtendedPropertiesMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabPropertiesInputExtendedPropertiesMap>;
-
 /** Properties of a lab. */
 export interface LabPropertiesInput {
   /** Type of storage used by the lab. It can be either Premium or Standard. Default is Premium. */
@@ -3937,13 +2812,8 @@ export interface LabPropertiesInput {
   /** Extended properties of the lab used for experimental features */
   extendedProperties?: LabPropertiesInputExtendedPropertiesMap;
 }
-const LabPropertiesInput = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<LabPropertiesInput>;
-
 /** Resource tags. */
 export type LabsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const LabsCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
-
 export interface LabsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3958,16 +2828,8 @@ export interface LabsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const LabsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<LabsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type LabsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const LabsCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabsCreateOrUpdateResponseTagsMap>;
-
 export interface LabsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3984,11 +2846,6 @@ export interface LabsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const LabsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<LabsCreateOrUpdateResponse>;
-
 export interface LabsGenerateUploadUriRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3999,21 +2856,11 @@ export interface LabsGenerateUploadUriRequest {
   /** The blob name of the upload URI. */
   blobName?: string;
 }
-const LabsGenerateUploadUriRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<LabsGenerateUploadUriRequest>;
-
 /** Response body for generating an upload URI. */
 export interface GenerateUploadUriResponse {
   /** The upload URI for the VHD. */
   uploadUri?: string;
 }
-const GenerateUploadUriResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<GenerateUploadUriResponse>;
-
 export interface ListArmTemplatesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4032,11 +2879,6 @@ export interface ListArmTemplatesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListArmTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListArmTemplatesRequest>;
-
 /** Resource tags. */
 export type ArmTemplateTagsMap = { [key: string]: string | undefined };
 /** An Azure Resource Manager template. */
@@ -4056,15 +2898,8 @@ export interface ArmTemplate {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ArmTemplate = GetArmTemplateResponse as any as S.Schema<ArmTemplate>;
-
 /** The ArmTemplate items on this page */
 export type ArmTemplateListValueList = Array<ArmTemplate>;
-const ArmTemplateListValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ArmTemplateListValueList>;
-
 /** The response of a list operation. */
 export interface ArmTemplateList {
   /** The ArmTemplate items on this page */
@@ -4072,8 +2907,6 @@ export interface ArmTemplateList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ArmTemplateList = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<ArmTemplateList>;
-
 export interface ListArtifactsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4092,11 +2925,6 @@ export interface ListArtifactsRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListArtifactsRequest>;
-
 /** Resource tags. */
 export type ArtifactTagsMap = { [key: string]: string | undefined };
 /** An artifact. */
@@ -4116,15 +2944,8 @@ export interface Artifact {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Artifact = GetArtifactResponse as any as S.Schema<Artifact>;
-
 /** The Artifact items on this page */
 export type ArtifactListValueList = Array<Artifact>;
-const ArtifactListValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ArtifactListValueList>;
-
 /** The response of a list operation. */
 export interface ArtifactList {
   /** The Artifact items on this page */
@@ -4132,8 +2953,6 @@ export interface ArtifactList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ArtifactList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ArtifactList>;
-
 export interface ListArtifactSourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4150,16 +2969,8 @@ export interface ListArtifactSourcesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListArtifactSourcesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListArtifactSourcesRequest>;
-
 /** Resource tags. */
 export type ArtifactSourceTagsMap = { [key: string]: string | undefined };
-const ArtifactSourceTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ArtifactSourceTagsMap>;
-
 /** Properties of an artifact source. */
 export interface ArtifactSource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4177,15 +2988,8 @@ export interface ArtifactSource {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ArtifactSource = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<ArtifactSource>;
-
 /** The ArtifactSource items on this page */
 export type ArtifactSourceListValueList = Array<ArtifactSource>;
-const ArtifactSourceListValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ArtifactSourceListValueList>;
-
 /** The response of a list operation. */
 export interface ArtifactSourceList {
   /** The ArtifactSource items on this page */
@@ -4193,8 +2997,6 @@ export interface ArtifactSourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ArtifactSourceList = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<ArtifactSourceList>;
-
 export interface ListCustomImagesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4211,11 +3013,6 @@ export interface ListCustomImagesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListCustomImagesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListCustomImagesRequest>;
-
 /** Resource tags. */
 export type CustomImageTagsMap = { [key: string]: string | undefined };
 /** A custom image. */
@@ -4235,15 +3032,8 @@ export interface CustomImage {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const CustomImage = GetCustomImageResponse as any as S.Schema<CustomImage>;
-
 /** The CustomImage items on this page */
 export type CustomImageListValueList = Array<CustomImage>;
-const CustomImageListValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<CustomImageListValueList>;
-
 /** The response of a list operation. */
 export interface CustomImageList {
   /** The CustomImage items on this page */
@@ -4251,8 +3041,6 @@ export interface CustomImageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CustomImageList = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<CustomImageList>;
-
 export interface ListDisksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4271,8 +3059,6 @@ export interface ListDisksRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListDisksRequest = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<ListDisksRequest>;
-
 /** Resource tags. */
 export type DiskTagsMap = { [key: string]: string | undefined };
 /** A Disk. */
@@ -4292,12 +3078,8 @@ export interface Disk {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Disk = GetDiskResponse as any as S.Schema<Disk>;
-
 /** The Disk items on this page */
 export type DiskListValueList = Array<Disk>;
-const DiskListValueList = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<DiskListValueList>;
-
 /** The response of a list operation. */
 export interface DiskList {
   /** The Disk items on this page */
@@ -4305,8 +3087,6 @@ export interface DiskList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DiskList = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<DiskList>;
-
 export interface ListEnvironmentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4325,11 +3105,6 @@ export interface ListEnvironmentsRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListEnvironmentsRequest>;
-
 /** Resource tags. */
 export type DtlEnvironmentTagsMap = { [key: string]: string | undefined };
 /** An environment, which is essentially an ARM template deployment. */
@@ -4349,15 +3124,8 @@ export interface DtlEnvironment {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const DtlEnvironment = GetEnvironmentResponse as any as S.Schema<DtlEnvironment>;
-
 /** The DtlEnvironment items on this page */
 export type DtlEnvironmentListValueList = Array<DtlEnvironment>;
-const DtlEnvironmentListValueList = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DtlEnvironmentListValueList>;
-
 /** The response of a list operation. */
 export interface DtlEnvironmentList {
   /** The DtlEnvironment items on this page */
@@ -4365,8 +3133,6 @@ export interface DtlEnvironmentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DtlEnvironmentList = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<DtlEnvironmentList>;
-
 export interface ListFormulasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4383,8 +3149,6 @@ export interface ListFormulasRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListFormulasRequest = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<ListFormulasRequest>;
-
 /** Resource tags. */
 export type FormulaTagsMap = { [key: string]: string | undefined };
 /** A formula for creating a VM, specifying an image base and other parameters */
@@ -4404,15 +3168,8 @@ export interface Formula {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Formula = GetFormulasResponse as any as S.Schema<Formula>;
-
 /** The Formula items on this page */
 export type FormulaListValueList = Array<Formula>;
-const FormulaListValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<FormulaListValueList>;
-
 /** The response of a list operation. */
 export interface FormulaList {
   /** The Formula items on this page */
@@ -4420,8 +3177,6 @@ export interface FormulaList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FormulaList = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<FormulaList>;
-
 export interface ListGalleryImagesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4438,11 +3193,6 @@ export interface ListGalleryImagesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListGalleryImagesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListGalleryImagesRequest>;
-
 /** Properties of a gallery image. */
 export interface GalleryImageProperties {
   /** The author of the gallery image. */
@@ -4462,16 +3212,8 @@ export interface GalleryImageProperties {
   /** Indicates if the plan has been authorized for programmatic deployment. */
   isPlanAuthorized?: boolean;
 }
-const GalleryImageProperties = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GalleryImageProperties>;
-
 /** Resource tags. */
 export type GalleryImageTagsMap = { [key: string]: string | undefined };
-const GalleryImageTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<GalleryImageTagsMap>;
-
 /** A gallery image. */
 export interface GalleryImage {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4489,15 +3231,8 @@ export interface GalleryImage {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GalleryImage = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<GalleryImage>;
-
 /** The GalleryImage items on this page */
 export type GalleryImageListValueList = Array<GalleryImage>;
-const GalleryImageListValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GalleryImageListValueList>;
-
 /** The response of a list operation. */
 export interface GalleryImageList {
   /** The GalleryImage items on this page */
@@ -4505,8 +3240,6 @@ export interface GalleryImageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const GalleryImageList = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<GalleryImageList>;
-
 export interface ListGlobalScheduleByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4521,18 +3254,8 @@ export interface ListGlobalScheduleByResourceGroupRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListGlobalScheduleByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListGlobalScheduleByResourceGroupRequest>;
-
 /** The Schedule items on this page */
 export type ScheduleListValueList = Array<Schedule>;
-const ScheduleListValueList = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ScheduleListValueList>;
-
 /** The response of a list operation. */
 export interface ScheduleList {
   /** The Schedule items on this page */
@@ -4540,8 +3263,6 @@ export interface ScheduleList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ScheduleList = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<ScheduleList>;
-
 export interface ListGlobalScheduleBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4554,11 +3275,6 @@ export interface ListGlobalScheduleBySubscriptionRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListGlobalScheduleBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ListGlobalScheduleBySubscriptionRequest>;
-
 export interface ListLabByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4573,15 +3289,8 @@ export interface ListLabByResourceGroupRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListLabByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ListLabByResourceGroupRequest>;
-
 /** Resource tags. */
 export type LabTagsMap = { [key: string]: string | undefined };
-const LabTagsMap = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<LabTagsMap>;
-
 /** A lab. */
 export interface Lab {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4599,12 +3308,8 @@ export interface Lab {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Lab = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<Lab>;
-
 /** The Lab items on this page */
 export type LabListValueList = Array<Lab>;
-const LabListValueList = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<LabListValueList>;
-
 /** The response of a list operation. */
 export interface LabList {
   /** The Lab items on this page */
@@ -4612,8 +3317,6 @@ export interface LabList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const LabList = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<LabList>;
-
 export interface ListLabBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4626,11 +3329,6 @@ export interface ListLabBySubscriptionRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListLabBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListLabBySubscriptionRequest>;
-
 export interface ListLabVhdsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4639,19 +3337,13 @@ export interface ListLabVhdsRequest {
   /** The name of the lab. */
   name: string;
 }
-const ListLabVhdsRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<ListLabVhdsRequest>;
-
 /** Properties of a VHD in the lab. */
 export interface LabVhd {
   /** The URI to the VHD. */
   id?: string;
 }
-const LabVhd = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<LabVhd>;
-
 /** The LabVhd items on this page */
 export type LabVhdListValueList = Array<LabVhd>;
-const LabVhdListValueList = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<LabVhdListValueList>;
-
 /** The response of a list operation. */
 export interface LabVhdList {
   /** The LabVhd items on this page */
@@ -4659,8 +3351,6 @@ export interface LabVhdList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const LabVhdList = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<LabVhdList>;
-
 export interface ListNotificationChannelsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4677,16 +3367,8 @@ export interface ListNotificationChannelsRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListNotificationChannelsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListNotificationChannelsRequest>;
-
 /** Resource tags. */
 export type NotificationChannelTagsMap = { [key: string]: string | undefined };
-const NotificationChannelTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<NotificationChannelTagsMap>;
-
 /** A notification. */
 export interface NotificationChannel {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4704,15 +3386,8 @@ export interface NotificationChannel {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NotificationChannel = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<NotificationChannel>;
-
 /** The NotificationChannel items on this page */
 export type NotificationChannelListValueList = Array<NotificationChannel>;
-const NotificationChannelListValueList = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<NotificationChannelListValueList>;
-
 /** The response of a list operation. */
 export interface NotificationChannelList {
   /** The NotificationChannel items on this page */
@@ -4720,11 +3395,6 @@ export interface NotificationChannelList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NotificationChannelList = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<NotificationChannelList>;
-
 export interface ListPoliciesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4743,8 +3413,6 @@ export interface ListPoliciesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListPoliciesRequest = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<ListPoliciesRequest>;
-
 /** The tags of the resource. */
 export type PolicyTagsMap = { [key: string]: string | undefined };
 /** A Policy. */
@@ -4764,12 +3432,8 @@ export interface Policy {
   /** The location of the resource. */
   location?: string;
 }
-const Policy = GetPolicyResponse as any as S.Schema<Policy>;
-
 /** The Policy items on this page */
 export type PolicyListValueList = Array<Policy>;
-const PolicyListValueList = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<PolicyListValueList>;
-
 /** The response of a list operation. */
 export interface PolicyList {
   /** The Policy items on this page */
@@ -4777,14 +3441,7 @@ export interface PolicyList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PolicyList = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<PolicyList>;
-
 export interface ListProviderOperationsRequest {}
-const ListProviderOperationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ListProviderOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -4796,16 +3453,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -4819,26 +3470,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListProviderOperationsResponseValueList = Array<Operation>;
-const ListProviderOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ListProviderOperationsResponseValueList>;
-
 export interface ListProviderOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListProviderOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListProviderOperationsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ListProviderOperationsResponse>;
-
 export interface ListScheduleApplicableRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4849,11 +3488,6 @@ export interface ListScheduleApplicableRequest {
   /** The name of the Schedule */
   name: string;
 }
-const ListScheduleApplicableRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ListScheduleApplicableRequest>;
-
 export interface ListSchedulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4870,11 +3504,6 @@ export interface ListSchedulesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ListSchedulesRequest>;
-
 export interface ListSecretsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4893,8 +3522,6 @@ export interface ListSecretsRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListSecretsRequest = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<ListSecretsRequest>;
-
 /** Resource tags. */
 export type SecretTagsMap = { [key: string]: string | undefined };
 /** A secret. */
@@ -4914,12 +3541,8 @@ export interface Secret {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Secret = GetSecretResponse as any as S.Schema<Secret>;
-
 /** The Secret items on this page */
 export type SecretListValueList = Array<Secret>;
-const SecretListValueList = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<SecretListValueList>;
-
 /** The response of a list operation. */
 export interface SecretList {
   /** The Secret items on this page */
@@ -4927,8 +3550,6 @@ export interface SecretList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SecretList = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<SecretList>;
-
 export interface ListServiceFabricApplicableSchedulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4941,18 +3562,10 @@ export interface ListServiceFabricApplicableSchedulesRequest {
   /** The name of the service fabric. */
   name: string;
 }
-const ListServiceFabricApplicableSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ListServiceFabricApplicableSchedulesRequest>;
-
 /** The tags of the resource. */
 export type ListServiceFabricApplicableSchedulesResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const ListServiceFabricApplicableSchedulesResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ListServiceFabricApplicableSchedulesResponseTagsMap>;
-
 export interface ListServiceFabricApplicableSchedulesResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4969,11 +3582,6 @@ export interface ListServiceFabricApplicableSchedulesResponse {
   /** The properties of the resource. */
   properties: ApplicableScheduleProperties;
 }
-const ListServiceFabricApplicableSchedulesResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<ListServiceFabricApplicableSchedulesResponse>;
-
 export interface ListServiceFabricsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4992,11 +3600,6 @@ export interface ListServiceFabricsRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListServiceFabricsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ListServiceFabricsRequest>;
-
 /** Resource tags. */
 export type ServiceFabricTagsMap = { [key: string]: string | undefined };
 /** A Service Fabric. */
@@ -5016,15 +3619,8 @@ export interface ServiceFabric {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServiceFabric = GetServiceFabricResponse as any as S.Schema<ServiceFabric>;
-
 /** The ServiceFabric items on this page */
 export type ServiceFabricListValueList = Array<ServiceFabric>;
-const ServiceFabricListValueList = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<ServiceFabricListValueList>;
-
 /** The response of a list operation. */
 export interface ServiceFabricList {
   /** The ServiceFabric items on this page */
@@ -5032,8 +3628,6 @@ export interface ServiceFabricList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ServiceFabricList = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<ServiceFabricList>;
-
 export interface ListServiceFabricSchedulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5054,11 +3648,6 @@ export interface ListServiceFabricSchedulesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListServiceFabricSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<ListServiceFabricSchedulesRequest>;
-
 export interface ListUsersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5075,8 +3664,6 @@ export interface ListUsersRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ListUsersRequest>;
-
 /** Resource tags. */
 export type UserTagsMap = { [key: string]: string | undefined };
 /** A user profile. */
@@ -5096,12 +3683,8 @@ export interface User {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const User = GetUserResponse as any as S.Schema<User>;
-
 /** The User items on this page */
 export type UserListValueList = Array<User>;
-const UserListValueList = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<UserListValueList>;
-
 /** The response of a list operation. */
 export interface UserList {
   /** The User items on this page */
@@ -5109,8 +3692,6 @@ export interface UserList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const UserList = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<UserList>;
-
 export interface ListVirtualMachineApplicableSchedulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5121,11 +3702,6 @@ export interface ListVirtualMachineApplicableSchedulesRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const ListVirtualMachineApplicableSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ListVirtualMachineApplicableSchedulesRequest>;
-
 /** The tags of the resource. */
 export type ListVirtualMachineApplicableSchedulesResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5146,9 +3722,6 @@ export interface ListVirtualMachineApplicableSchedulesResponse {
   /** The properties of the resource. */
   properties: ApplicableScheduleProperties;
 }
-const ListVirtualMachineApplicableSchedulesResponse =
-  ListServiceFabricApplicableSchedulesResponse as any as S.Schema<ListVirtualMachineApplicableSchedulesResponse>;
-
 export interface ListVirtualMachinesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5165,16 +3738,8 @@ export interface ListVirtualMachinesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListVirtualMachinesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ListVirtualMachinesRequest>;
-
 /** Resource tags. */
 export type LabVirtualMachineTagsMap = { [key: string]: string | undefined };
-const LabVirtualMachineTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<LabVirtualMachineTagsMap>;
-
 /** A virtual machine. */
 export interface LabVirtualMachine {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5192,15 +3757,8 @@ export interface LabVirtualMachine {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const LabVirtualMachine = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<LabVirtualMachine>;
-
 /** The LabVirtualMachine items on this page */
 export type LabVirtualMachineListValueList = Array<LabVirtualMachine>;
-const LabVirtualMachineListValueList = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<LabVirtualMachineListValueList>;
-
 /** The response of a list operation. */
 export interface LabVirtualMachineList {
   /** The LabVirtualMachine items on this page */
@@ -5208,11 +3766,6 @@ export interface LabVirtualMachineList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const LabVirtualMachineList = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<LabVirtualMachineList>;
-
 export interface ListVirtualMachineSchedulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5231,11 +3784,6 @@ export interface ListVirtualMachineSchedulesRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListVirtualMachineSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<ListVirtualMachineSchedulesRequest>;
-
 export interface ListVirtualNetworksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5252,16 +3800,8 @@ export interface ListVirtualNetworksRequest {
   /** The ordering expression for the results, using OData notation. Example: '$orderby=name desc' */
   _orderby?: string;
 }
-const ListVirtualNetworksRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<ListVirtualNetworksRequest>;
-
 /** Resource tags. */
 export type VirtualNetworkTagsMap = { [key: string]: string | undefined };
-const VirtualNetworkTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworkTagsMap>;
-
 /** A virtual network. */
 export interface VirtualNetwork {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5279,15 +3819,8 @@ export interface VirtualNetwork {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualNetwork = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<VirtualNetwork>;
-
 /** The VirtualNetwork items on this page */
 export type VirtualNetworkListValueList = Array<VirtualNetwork>;
-const VirtualNetworkListValueList = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<VirtualNetworkListValueList>;
-
 /** The response of a list operation. */
 export interface VirtualNetworkList {
   /** The VirtualNetwork items on this page */
@@ -5295,13 +3828,8 @@ export interface VirtualNetworkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const VirtualNetworkList = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<VirtualNetworkList>;
-
 /** The list of event for which this notification is enabled. */
 export type NotificationChannelPropertiesInputEventsList = Array<Event>;
-const NotificationChannelPropertiesInputEventsList =
-  NotificationChannelPropertiesEventsList as any as S.Schema<NotificationChannelPropertiesInputEventsList>;
-
 /** Properties of a schedule. */
 export interface NotificationChannelPropertiesInput {
   /** The webhook URL to send notifications to. */
@@ -5315,18 +3843,10 @@ export interface NotificationChannelPropertiesInput {
   /** The list of event for which this notification is enabled. */
   events?: NotificationChannelPropertiesInputEventsList;
 }
-const NotificationChannelPropertiesInput = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<NotificationChannelPropertiesInput>;
-
 /** Resource tags. */
 export type NotificationChannelsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const NotificationChannelsCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<NotificationChannelsCreateOrUpdateRequestTagsMap>;
-
 export interface NotificationChannelsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5343,11 +3863,6 @@ export interface NotificationChannelsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NotificationChannelsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<NotificationChannelsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type NotificationChannelsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5368,9 +3883,6 @@ export interface NotificationChannelsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NotificationChannelsCreateOrUpdateResponse =
-  GetNotificationChannelResponse as any as S.Schema<NotificationChannelsCreateOrUpdateResponse>;
-
 export interface NotifyNotificationChannelRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5385,15 +3897,7 @@ export interface NotifyNotificationChannelRequest {
   /** Properties for the notification in json format. */
   jsonPayload?: string;
 }
-const NotifyNotificationChannelRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<NotifyNotificationChannelRequest>;
-
 export interface NotifyNotificationChannelResponse {}
-const NotifyNotificationChannelResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<NotifyNotificationChannelResponse>;
-
 /** Properties of a Policy. */
 export interface PolicyPropertiesInput {
   /** The description of the policy. */
@@ -5409,16 +3913,8 @@ export interface PolicyPropertiesInput {
   /** The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy). */
   evaluatorType?: PolicyEvaluatorType | (string & {});
 }
-const PolicyPropertiesInput = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<PolicyPropertiesInput>;
-
 /** The tags of the resource. */
 export type PoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const PoliciesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
-
 export interface PoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5437,16 +3933,8 @@ export interface PoliciesCreateOrUpdateRequest {
   /** The location of the resource. */
   location?: string;
 }
-const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<PoliciesCreateOrUpdateRequest>;
-
 /** The tags of the resource. */
 export type PoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const PoliciesCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
-
 export interface PoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5463,11 +3951,6 @@ export interface PoliciesCreateOrUpdateResponse {
   /** The location of the resource. */
   location?: string;
 }
-const PoliciesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<PoliciesCreateOrUpdateResponse>;
-
 /** Properties for evaluating a policy set. */
 export interface EvaluatePoliciesProperties {
   /** The fact name. */
@@ -5479,18 +3962,8 @@ export interface EvaluatePoliciesProperties {
   /** The user for which policies will be evaluated */
   userObjectId?: string;
 }
-const EvaluatePoliciesProperties = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<EvaluatePoliciesProperties>;
-
 /** Policies to evaluate. */
 export type PolicySetsEvaluatePoliciesRequestPoliciesList = Array<EvaluatePoliciesProperties>;
-const PolicySetsEvaluatePoliciesRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<PolicySetsEvaluatePoliciesRequestPoliciesList>;
-
 export interface PolicySetsEvaluatePoliciesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5503,11 +3976,6 @@ export interface PolicySetsEvaluatePoliciesRequest {
   /** Policies to evaluate. */
   policies?: PolicySetsEvaluatePoliciesRequestPoliciesList;
 }
-const PolicySetsEvaluatePoliciesRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<PolicySetsEvaluatePoliciesRequest>;
-
 /** Policy violation. */
 export interface PolicyViolation {
   /** The code of the policy violation. */
@@ -5515,15 +3983,8 @@ export interface PolicyViolation {
   /** The message of the policy violation. */
   message?: string;
 }
-const PolicyViolation = OperationError as any as S.Schema<PolicyViolation>;
-
 /** The list of policy violations. */
 export type PolicySetResultPolicyViolationsList = Array<PolicyViolation>;
-const PolicySetResultPolicyViolationsList = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<PolicySetResultPolicyViolationsList>;
-
 /** Result of a policy set evaluation. */
 export interface PolicySetResult {
   /** A value indicating whether this policy set evaluation has discovered violations. */
@@ -5531,25 +3992,13 @@ export interface PolicySetResult {
   /** The list of policy violations. */
   policyViolations?: PolicySetResultPolicyViolationsList;
 }
-const PolicySetResult = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<PolicySetResult>;
-
 /** Results of evaluating a policy set. */
 export type EvaluatePoliciesResponseResultsList = Array<PolicySetResult>;
-const EvaluatePoliciesResponseResultsList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<EvaluatePoliciesResponseResultsList>;
-
 /** Response body for evaluating a policy set. */
 export interface EvaluatePoliciesResponse {
   /** Results of evaluating a policy set. */
   results?: EvaluatePoliciesResponseResultsList;
 }
-const EvaluatePoliciesResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<EvaluatePoliciesResponse>;
-
 export interface RedeployVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5560,15 +4009,7 @@ export interface RedeployVirtualMachineRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const RedeployVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<RedeployVirtualMachineRequest>;
-
 export interface RedeployVirtualMachineResponse {}
-const RedeployVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<RedeployVirtualMachineResponse>;
-
 export interface ResizeVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5581,15 +4022,7 @@ export interface ResizeVirtualMachineRequest {
   /** Specifies the size of the virtual machine. */
   size?: string;
 }
-const ResizeVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ResizeVirtualMachineRequest>;
-
 export interface ResizeVirtualMachineResponse {}
-const ResizeVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<ResizeVirtualMachineResponse>;
-
 export interface RestartVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5600,20 +4033,9 @@ export interface RestartVirtualMachineRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const RestartVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<RestartVirtualMachineRequest>;
-
 export interface RestartVirtualMachineResponse {}
-const RestartVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<RestartVirtualMachineResponse>;
-
 /** Resource tags. */
 export type SchedulesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SchedulesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SchedulesCreateOrUpdateRequestTagsMap>;
-
 export interface SchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5630,11 +4052,6 @@ export interface SchedulesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<SchedulesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SchedulesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface SchedulesCreateOrUpdateResponse {
@@ -5653,24 +4070,13 @@ export interface SchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const SchedulesCreateOrUpdateResponse =
-  GetGlobalScheduleResponse as any as S.Schema<SchedulesCreateOrUpdateResponse>;
-
 /** Properties of a secret. */
 export interface SecretPropertiesInput {
   /** The value of the secret for secret creation. */
   value?: string;
 }
-const SecretPropertiesInput = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<SecretPropertiesInput>;
-
 /** Resource tags. */
 export type SecretsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SecretsCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SecretsCreateOrUpdateRequestTagsMap>;
-
 export interface SecretsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5689,16 +4095,8 @@ export interface SecretsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const SecretsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<SecretsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SecretsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const SecretsCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<SecretsCreateOrUpdateResponseTagsMap>;
-
 export interface SecretsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5715,18 +4113,10 @@ export interface SecretsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const SecretsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<SecretsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ServiceFabricSchedulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const ServiceFabricSchedulesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateRequestTagsMap>;
-
 export interface ServiceFabricSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5747,11 +4137,6 @@ export interface ServiceFabricSchedulesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServiceFabricSchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServiceFabricSchedulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5772,9 +4157,6 @@ export interface ServiceFabricSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServiceFabricSchedulesCreateOrUpdateResponse =
-  GetGlobalScheduleResponse as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateResponse>;
-
 /** Properties of a service fabric. */
 export interface ServiceFabricPropertiesInput {
   /** The backing service fabric resource's id */
@@ -5782,16 +4164,8 @@ export interface ServiceFabricPropertiesInput {
   /** The resource id of the environment under which the service fabric resource is present */
   environmentId?: string;
 }
-const ServiceFabricPropertiesInput = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<ServiceFabricPropertiesInput>;
-
 /** Resource tags. */
 export type ServiceFabricsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServiceFabricsCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricsCreateOrUpdateRequestTagsMap>;
-
 export interface ServiceFabricsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5810,16 +4184,8 @@ export interface ServiceFabricsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServiceFabricsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<ServiceFabricsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServiceFabricsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ServiceFabricsCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceFabricsCreateOrUpdateResponseTagsMap>;
-
 export interface ServiceFabricsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5836,26 +4202,13 @@ export interface ServiceFabricsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServiceFabricsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<ServiceFabricsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ServiceRunnersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServiceRunnersCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceRunnersCreateOrUpdateRequestTagsMap>;
-
 /** Properties of a service runner. */
 export interface ServiceRunnerProperties {
   /** What the runner's identity is used for: `Environment` or `VirtualMachine`. */
   identityUsageType?: string;
 }
-const ServiceRunnerProperties = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<ServiceRunnerProperties>;
-
 export interface ServiceRunnersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5874,16 +4227,8 @@ export interface ServiceRunnersCreateOrUpdateRequest {
   /** Properties of the service runner. */
   properties?: ServiceRunnerProperties;
 }
-const ServiceRunnersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<ServiceRunnersCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServiceRunnersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ServiceRunnersCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<ServiceRunnersCreateOrUpdateResponseTagsMap>;
-
 export interface ServiceRunnersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5900,11 +4245,6 @@ export interface ServiceRunnersCreateOrUpdateResponse {
   /** The identity of the resource. */
   identity?: IdentityProperties;
 }
-const ServiceRunnersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<ServiceRunnersCreateOrUpdateResponse>;
-
 export interface StartServiceFabricRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5917,15 +4257,7 @@ export interface StartServiceFabricRequest {
   /** The name of the service fabric. */
   name: string;
 }
-const StartServiceFabricRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<StartServiceFabricRequest>;
-
 export interface StartServiceFabricResponse {}
-const StartServiceFabricResponse =
-  AttachDiskResponse as any as S.Schema<StartServiceFabricResponse>;
-
 export interface StartVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5936,15 +4268,7 @@ export interface StartVirtualMachineRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const StartVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<StartVirtualMachineRequest>;
-
 export interface StartVirtualMachineResponse {}
-const StartVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<StartVirtualMachineResponse>;
-
 export interface StopServiceFabricRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5957,14 +4281,7 @@ export interface StopServiceFabricRequest {
   /** The name of the service fabric. */
   name: string;
 }
-const StopServiceFabricRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<StopServiceFabricRequest>;
-
 export interface StopServiceFabricResponse {}
-const StopServiceFabricResponse = AttachDiskResponse as any as S.Schema<StopServiceFabricResponse>;
-
 export interface StopVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5975,15 +4292,7 @@ export interface StopVirtualMachineRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const StopVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<StopVirtualMachineRequest>;
-
 export interface StopVirtualMachineResponse {}
-const StopVirtualMachineResponse =
-  AttachDiskResponse as any as S.Schema<StopVirtualMachineResponse>;
-
 export interface TransferVirtualMachineDisksRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5994,20 +4303,9 @@ export interface TransferVirtualMachineDisksRequest {
   /** The name of the virtual machine. */
   name: string;
 }
-const TransferVirtualMachineDisksRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<TransferVirtualMachineDisksRequest>;
-
 export interface TransferVirtualMachineDisksResponse {}
-const TransferVirtualMachineDisksResponse =
-  AddVirtualMachineDataDiskResponse as any as S.Schema<TransferVirtualMachineDisksResponse>;
-
 /** The tags of the resource. */
 export type UpdateArtifactSourceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateArtifactSourceRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateArtifactSourceRequestTagsMap>;
-
 export interface UpdateArtifactSourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6020,11 +4318,6 @@ export interface UpdateArtifactSourceRequest {
   /** The tags of the resource. */
   tags?: UpdateArtifactSourceRequestTagsMap;
 }
-const UpdateArtifactSourceRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<UpdateArtifactSourceRequest>;
-
 /** Resource tags. */
 export type UpdateArtifactSourceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateArtifactSourceResponse {
@@ -6043,14 +4336,8 @@ export interface UpdateArtifactSourceResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateArtifactSourceResponse =
-  ArtifactSourcesCreateOrUpdateResponse as any as S.Schema<UpdateArtifactSourceResponse>;
-
 /** The tags of the resource. */
 export type UpdateCustomImageRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCustomImageRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCustomImageRequestTagsMap>;
-
 export interface UpdateCustomImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6063,11 +4350,6 @@ export interface UpdateCustomImageRequest {
   /** The tags of the resource. */
   tags?: UpdateCustomImageRequestTagsMap;
 }
-const UpdateCustomImageRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<UpdateCustomImageRequest>;
-
 /** Resource tags. */
 export type UpdateCustomImageResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateCustomImageResponse {
@@ -6086,14 +4368,8 @@ export interface UpdateCustomImageResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateCustomImageResponse =
-  CustomImagesCreateOrUpdateResponse as any as S.Schema<UpdateCustomImageResponse>;
-
 /** The tags of the resource. */
 export type UpdateDiskRequestTagsMap = { [key: string]: string | undefined };
-const UpdateDiskRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDiskRequestTagsMap>;
-
 export interface UpdateDiskRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6108,8 +4384,6 @@ export interface UpdateDiskRequest {
   /** The tags of the resource. */
   tags?: UpdateDiskRequestTagsMap;
 }
-const UpdateDiskRequest = /*@__PURE__*/ __L.at(__c39, 3) as any as S.Schema<UpdateDiskRequest>;
-
 /** Resource tags. */
 export type UpdateDiskResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDiskResponse {
@@ -6128,13 +4402,8 @@ export interface UpdateDiskResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateDiskResponse = GetDiskResponse as any as S.Schema<UpdateDiskResponse>;
-
 /** The tags of the resource. */
 export type UpdateEnvironmentRequestTagsMap = { [key: string]: string | undefined };
-const UpdateEnvironmentRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateEnvironmentRequestTagsMap>;
-
 export interface UpdateEnvironmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6149,11 +4418,6 @@ export interface UpdateEnvironmentRequest {
   /** The tags of the resource. */
   tags?: UpdateEnvironmentRequestTagsMap;
 }
-const UpdateEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<UpdateEnvironmentRequest>;
-
 /** Resource tags. */
 export type UpdateEnvironmentResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateEnvironmentResponse {
@@ -6172,14 +4436,8 @@ export interface UpdateEnvironmentResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateEnvironmentResponse =
-  EnvironmentsCreateOrUpdateResponse as any as S.Schema<UpdateEnvironmentResponse>;
-
 /** The tags of the resource. */
 export type UpdateFormulasRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFormulasRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateFormulasRequestTagsMap>;
-
 export interface UpdateFormulasRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6192,11 +4450,6 @@ export interface UpdateFormulasRequest {
   /** The tags of the resource. */
   tags?: UpdateFormulasRequestTagsMap;
 }
-const UpdateFormulasRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<UpdateFormulasRequest>;
-
 /** Resource tags. */
 export type UpdateFormulasResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateFormulasResponse {
@@ -6215,13 +4468,8 @@ export interface UpdateFormulasResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateFormulasResponse = GetFormulasResponse as any as S.Schema<UpdateFormulasResponse>;
-
 /** The tags of the resource. */
 export type UpdateGlobalScheduleRequestTagsMap = { [key: string]: string | undefined };
-const UpdateGlobalScheduleRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateGlobalScheduleRequestTagsMap>;
-
 export interface UpdateGlobalScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6232,11 +4480,6 @@ export interface UpdateGlobalScheduleRequest {
   /** The tags of the resource. */
   tags?: UpdateGlobalScheduleRequestTagsMap;
 }
-const UpdateGlobalScheduleRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<UpdateGlobalScheduleRequest>;
-
 /** Resource tags. */
 export type UpdateGlobalScheduleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateGlobalScheduleResponse {
@@ -6255,14 +4498,8 @@ export interface UpdateGlobalScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateGlobalScheduleResponse =
-  GetGlobalScheduleResponse as any as S.Schema<UpdateGlobalScheduleResponse>;
-
 /** The tags of the resource. */
 export type UpdateLabRequestTagsMap = { [key: string]: string | undefined };
-const UpdateLabRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateLabRequestTagsMap>;
-
 export interface UpdateLabRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6273,8 +4510,6 @@ export interface UpdateLabRequest {
   /** The tags of the resource. */
   tags?: UpdateLabRequestTagsMap;
 }
-const UpdateLabRequest = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<UpdateLabRequest>;
-
 /** Resource tags. */
 export type UpdateLabResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateLabResponse {
@@ -6293,13 +4528,8 @@ export interface UpdateLabResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateLabResponse = GetLabResponse as any as S.Schema<UpdateLabResponse>;
-
 /** The tags of the resource. */
 export type UpdateNotificationChannelRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNotificationChannelRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNotificationChannelRequestTagsMap>;
-
 export interface UpdateNotificationChannelRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6312,11 +4542,6 @@ export interface UpdateNotificationChannelRequest {
   /** The tags of the resource. */
   tags?: UpdateNotificationChannelRequestTagsMap;
 }
-const UpdateNotificationChannelRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<UpdateNotificationChannelRequest>;
-
 /** Resource tags. */
 export type UpdateNotificationChannelResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNotificationChannelResponse {
@@ -6335,14 +4560,8 @@ export interface UpdateNotificationChannelResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateNotificationChannelResponse =
-  GetNotificationChannelResponse as any as S.Schema<UpdateNotificationChannelResponse>;
-
 /** The tags of the resource. */
 export type UpdatePolicyRequestTagsMap = { [key: string]: string | undefined };
-const UpdatePolicyRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdatePolicyRequestTagsMap>;
-
 export interface UpdatePolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6357,8 +4576,6 @@ export interface UpdatePolicyRequest {
   /** The tags of the resource. */
   tags?: UpdatePolicyRequestTagsMap;
 }
-const UpdatePolicyRequest = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<UpdatePolicyRequest>;
-
 /** The tags of the resource. */
 export type UpdatePolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdatePolicyResponse {
@@ -6377,13 +4594,8 @@ export interface UpdatePolicyResponse {
   /** The location of the resource. */
   location?: string;
 }
-const UpdatePolicyResponse = GetPolicyResponse as any as S.Schema<UpdatePolicyResponse>;
-
 /** The tags of the resource. */
 export type UpdateScheduleRequestTagsMap = { [key: string]: string | undefined };
-const UpdateScheduleRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateScheduleRequestTagsMap>;
-
 export interface UpdateScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6396,11 +4608,6 @@ export interface UpdateScheduleRequest {
   /** The tags of the resource. */
   tags?: UpdateScheduleRequestTagsMap;
 }
-const UpdateScheduleRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<UpdateScheduleRequest>;
-
 /** Resource tags. */
 export type UpdateScheduleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateScheduleResponse {
@@ -6419,13 +4626,8 @@ export interface UpdateScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateScheduleResponse = GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
-
 /** The tags of the resource. */
 export type UpdateSecretRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSecretRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateSecretRequestTagsMap>;
-
 export interface UpdateSecretRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6440,8 +4642,6 @@ export interface UpdateSecretRequest {
   /** The tags of the resource. */
   tags?: UpdateSecretRequestTagsMap;
 }
-const UpdateSecretRequest = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<UpdateSecretRequest>;
-
 /** Resource tags. */
 export type UpdateSecretResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSecretResponse {
@@ -6460,13 +4660,8 @@ export interface UpdateSecretResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateSecretResponse = GetSecretResponse as any as S.Schema<UpdateSecretResponse>;
-
 /** The tags of the resource. */
 export type UpdateServiceFabricRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServiceFabricRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceFabricRequestTagsMap>;
-
 export interface UpdateServiceFabricRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6481,11 +4676,6 @@ export interface UpdateServiceFabricRequest {
   /** The tags of the resource. */
   tags?: UpdateServiceFabricRequestTagsMap;
 }
-const UpdateServiceFabricRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<UpdateServiceFabricRequest>;
-
 /** Resource tags. */
 export type UpdateServiceFabricResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServiceFabricResponse {
@@ -6504,14 +4694,8 @@ export interface UpdateServiceFabricResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateServiceFabricResponse =
-  ServiceFabricsCreateOrUpdateResponse as any as S.Schema<UpdateServiceFabricResponse>;
-
 /** The tags of the resource. */
 export type UpdateServiceFabricScheduleRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServiceFabricScheduleRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateServiceFabricScheduleRequestTagsMap>;
-
 export interface UpdateServiceFabricScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6528,11 +4712,6 @@ export interface UpdateServiceFabricScheduleRequest {
   /** The tags of the resource. */
   tags?: UpdateServiceFabricScheduleRequestTagsMap;
 }
-const UpdateServiceFabricScheduleRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<UpdateServiceFabricScheduleRequest>;
-
 /** Resource tags. */
 export type UpdateServiceFabricScheduleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServiceFabricScheduleResponse {
@@ -6551,14 +4730,8 @@ export interface UpdateServiceFabricScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateServiceFabricScheduleResponse =
-  GetGlobalScheduleResponse as any as S.Schema<UpdateServiceFabricScheduleResponse>;
-
 /** The tags of the resource. */
 export type UpdateUserRequestTagsMap = { [key: string]: string | undefined };
-const UpdateUserRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateUserRequestTagsMap>;
-
 export interface UpdateUserRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6571,8 +4744,6 @@ export interface UpdateUserRequest {
   /** The tags of the resource. */
   tags?: UpdateUserRequestTagsMap;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<UpdateUserRequest>;
-
 /** Resource tags. */
 export type UpdateUserResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateUserResponse {
@@ -6591,13 +4762,8 @@ export interface UpdateUserResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
-
 /** The tags of the resource. */
 export type UpdateVirtualMachineRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVirtualMachineRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineRequestTagsMap>;
-
 export interface UpdateVirtualMachineRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6610,11 +4776,6 @@ export interface UpdateVirtualMachineRequest {
   /** The tags of the resource. */
   tags?: UpdateVirtualMachineRequestTagsMap;
 }
-const UpdateVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<UpdateVirtualMachineRequest>;
-
 /** Resource tags. */
 export type UpdateVirtualMachineResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVirtualMachineResponse {
@@ -6633,14 +4794,8 @@ export interface UpdateVirtualMachineResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateVirtualMachineResponse =
-  GetVirtualMachineResponse as any as S.Schema<UpdateVirtualMachineResponse>;
-
 /** The tags of the resource. */
 export type UpdateVirtualMachineScheduleRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVirtualMachineScheduleRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualMachineScheduleRequestTagsMap>;
-
 export interface UpdateVirtualMachineScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6655,11 +4810,6 @@ export interface UpdateVirtualMachineScheduleRequest {
   /** The tags of the resource. */
   tags?: UpdateVirtualMachineScheduleRequestTagsMap;
 }
-const UpdateVirtualMachineScheduleRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<UpdateVirtualMachineScheduleRequest>;
-
 /** Resource tags. */
 export type UpdateVirtualMachineScheduleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVirtualMachineScheduleResponse {
@@ -6678,14 +4828,8 @@ export interface UpdateVirtualMachineScheduleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateVirtualMachineScheduleResponse =
-  GetGlobalScheduleResponse as any as S.Schema<UpdateVirtualMachineScheduleResponse>;
-
 /** The tags of the resource. */
 export type UpdateVirtualNetworkRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVirtualNetworkRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateVirtualNetworkRequestTagsMap>;
-
 export interface UpdateVirtualNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6698,11 +4842,6 @@ export interface UpdateVirtualNetworkRequest {
   /** The tags of the resource. */
   tags?: UpdateVirtualNetworkRequestTagsMap;
 }
-const UpdateVirtualNetworkRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<UpdateVirtualNetworkRequest>;
-
 /** Resource tags. */
 export type UpdateVirtualNetworkResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVirtualNetworkResponse {
@@ -6721,9 +4860,6 @@ export interface UpdateVirtualNetworkResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateVirtualNetworkResponse =
-  GetVirtualNetworkResponse as any as S.Schema<UpdateVirtualNetworkResponse>;
-
 /** Properties of a lab user profile. */
 export interface UserPropertiesInput {
   /** The identity of the user. */
@@ -6731,13 +4867,8 @@ export interface UserPropertiesInput {
   /** The secret store of the user. */
   secretStore?: UserSecretStore;
 }
-const UserPropertiesInput = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<UserPropertiesInput>;
-
 /** Resource tags. */
 export type UsersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const UsersCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UsersCreateOrUpdateRequestTagsMap>;
-
 export interface UsersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6754,16 +4885,8 @@ export interface UsersCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UsersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<UsersCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type UsersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const UsersCreateOrUpdateResponseTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<UsersCreateOrUpdateResponseTagsMap>;
-
 export interface UsersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6780,18 +4903,10 @@ export interface UsersCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UsersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<UsersCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type VirtualMachineSchedulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const VirtualMachineSchedulesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateRequestTagsMap>;
-
 export interface VirtualMachineSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6810,11 +4925,6 @@ export interface VirtualMachineSchedulesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualMachineSchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type VirtualMachineSchedulesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -6835,27 +4945,13 @@ export interface VirtualMachineSchedulesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualMachineSchedulesCreateOrUpdateResponse =
-  GetGlobalScheduleResponse as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateResponse>;
-
 /** The artifacts to be installed on the virtual machine. */
 export type LabVirtualMachinePropertiesInputArtifactsList = Array<ArtifactInstallProperties>;
-const LabVirtualMachinePropertiesInputArtifactsList =
-  ApplyVirtualMachineArtifactsRequestArtifactsList as any as S.Schema<LabVirtualMachinePropertiesInputArtifactsList>;
-
 /** New or existing data disks to attach to the virtual machine after creation */
 export type LabVirtualMachinePropertiesInputDataDiskParametersList = Array<DataDiskProperties>;
-const LabVirtualMachinePropertiesInputDataDiskParametersList =
-  LabVirtualMachinePropertiesDataDiskParametersList as any as S.Schema<LabVirtualMachinePropertiesInputDataDiskParametersList>;
-
 /** Virtual Machine schedules to be created */
 export type LabVirtualMachinePropertiesInputScheduleParametersList =
   Array<ScheduleCreationParameterInput>;
-const LabVirtualMachinePropertiesInputScheduleParametersList = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<LabVirtualMachinePropertiesInputScheduleParametersList>;
-
 /** Properties of a virtual machine. */
 export interface LabVirtualMachinePropertiesInput {
   /** The notes of the virtual machine. */
@@ -6905,16 +5001,8 @@ export interface LabVirtualMachinePropertiesInput {
   /** Virtual Machine schedules to be created */
   scheduleParameters?: LabVirtualMachinePropertiesInputScheduleParametersList;
 }
-const LabVirtualMachinePropertiesInput = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<LabVirtualMachinePropertiesInput>;
-
 /** Resource tags. */
 export type VirtualMachinesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const VirtualMachinesCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualMachinesCreateOrUpdateRequestTagsMap>;
-
 export interface VirtualMachinesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6931,11 +5019,6 @@ export interface VirtualMachinesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type VirtualMachinesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface VirtualMachinesCreateOrUpdateResponse {
@@ -6954,19 +5037,10 @@ export interface VirtualMachinesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualMachinesCreateOrUpdateResponse =
-  GetVirtualMachineResponse as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>;
-
 /** The allowed subnets of the virtual network. */
 export type VirtualNetworkPropertiesInputAllowedSubnetsList = Array<Subnet>;
-const VirtualNetworkPropertiesInputAllowedSubnetsList =
-  VirtualNetworkPropertiesAllowedSubnetsList as any as S.Schema<VirtualNetworkPropertiesInputAllowedSubnetsList>;
-
 /** The subnet overrides of the virtual network. */
 export type VirtualNetworkPropertiesInputSubnetOverridesList = Array<SubnetOverride>;
-const VirtualNetworkPropertiesInputSubnetOverridesList =
-  VirtualNetworkPropertiesSubnetOverridesList as any as S.Schema<VirtualNetworkPropertiesInputSubnetOverridesList>;
-
 /** Properties of a virtual network. */
 export interface VirtualNetworkPropertiesInput {
   /** The allowed subnets of the virtual network. */
@@ -6978,16 +5052,8 @@ export interface VirtualNetworkPropertiesInput {
   /** The subnet overrides of the virtual network. */
   subnetOverrides?: VirtualNetworkPropertiesInputSubnetOverridesList;
 }
-const VirtualNetworkPropertiesInput = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<VirtualNetworkPropertiesInput>;
-
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const VirtualNetworksCreateOrUpdateRequestTagsMap =
-  ArtifactSourcesCreateOrUpdateRequestTagsMap as any as S.Schema<VirtualNetworksCreateOrUpdateRequestTagsMap>;
-
 export interface VirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7004,11 +5070,6 @@ export interface VirtualNetworksCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualNetworksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type VirtualNetworksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface VirtualNetworksCreateOrUpdateResponse {
@@ -7027,9 +5088,6 @@ export interface VirtualNetworksCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const VirtualNetworksCreateOrUpdateResponse =
-  GetVirtualNetworkResponse as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>;
-
 export type AddVirtualMachineDataDiskError = AzureOpError;
 /** Attach a new or existing data disk to virtual machine. This operation can take a while to complete. */
 export const AddVirtualMachineDataDisk: API.OperationMethod<
@@ -7038,8 +5096,8 @@ export const AddVirtualMachineDataDisk: API.OperationMethod<
   AddVirtualMachineDataDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddVirtualMachineDataDiskRequest,
-  output: AddVirtualMachineDataDiskResponse,
+  input: __S(1) as any as S.Schema<AddVirtualMachineDataDiskRequest>,
+  output: __S(2) as any as S.Schema<AddVirtualMachineDataDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7053,8 +5111,8 @@ export const ApplyVirtualMachineArtifacts: API.OperationMethod<
   ApplyVirtualMachineArtifactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyVirtualMachineArtifactsRequest,
-  output: ApplyVirtualMachineArtifactsResponse,
+  input: __S(7) as any as S.Schema<ApplyVirtualMachineArtifactsRequest>,
+  output: __S(2) as any as S.Schema<ApplyVirtualMachineArtifactsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7068,8 +5126,8 @@ export const ArtifactSourcesCreateOrUpdate: API.OperationMethod<
   ArtifactSourcesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ArtifactSourcesCreateOrUpdateRequest,
-  output: ArtifactSourcesCreateOrUpdateResponse,
+  input: __S(10) as any as S.Schema<ArtifactSourcesCreateOrUpdateRequest>,
+  output: __S(13) as any as S.Schema<ArtifactSourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7083,8 +5141,8 @@ export const AttachDisk: API.OperationMethod<
   AttachDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachDiskRequest,
-  output: AttachDiskResponse,
+  input: __S(14) as any as S.Schema<AttachDiskRequest>,
+  output: __S(15) as any as S.Schema<AttachDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7098,8 +5156,8 @@ export const ClaimLabAnyVm: API.OperationMethod<
   ClaimLabAnyVmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimLabAnyVmRequest,
-  output: ClaimLabAnyVmResponse,
+  input: __S(16) as any as S.Schema<ClaimLabAnyVmRequest>,
+  output: __S(15) as any as S.Schema<ClaimLabAnyVmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7113,8 +5171,8 @@ export const ClaimVirtualMachine: API.OperationMethod<
   ClaimVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimVirtualMachineRequest,
-  output: ClaimVirtualMachineResponse,
+  input: __S(17) as any as S.Schema<ClaimVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<ClaimVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7128,8 +5186,8 @@ export const ClaimVirtualMachinesUn: API.OperationMethod<
   ClaimVirtualMachinesUnError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimVirtualMachinesUnRequest,
-  output: ClaimVirtualMachinesUnResponse,
+  input: __S(18) as any as S.Schema<ClaimVirtualMachinesUnRequest>,
+  output: __S(15) as any as S.Schema<ClaimVirtualMachinesUnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7143,8 +5201,8 @@ export const CostsCreateOrUpdate: API.OperationMethod<
   CostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CostsCreateOrUpdateRequest,
-  output: CostsCreateOrUpdateResponse,
+  input: __S(24) as any as S.Schema<CostsCreateOrUpdateRequest>,
+  output: __S(31) as any as S.Schema<CostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7158,8 +5216,8 @@ export const CreateLabEnvironment: API.OperationMethod<
   CreateLabEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLabEnvironmentRequest,
-  output: CreateLabEnvironmentResponse,
+  input: __S(49) as any as S.Schema<CreateLabEnvironmentRequest>,
+  output: __S(15) as any as S.Schema<CreateLabEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7173,8 +5231,8 @@ export const CustomImagesCreateOrUpdate: API.OperationMethod<
   CustomImagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomImagesCreateOrUpdateRequest,
-  output: CustomImagesCreateOrUpdateResponse,
+  input: __S(58) as any as S.Schema<CustomImagesCreateOrUpdateRequest>,
+  output: __S(60) as any as S.Schema<CustomImagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7188,8 +5246,8 @@ export const DeleteArtifactSource: API.OperationMethod<
   DeleteArtifactSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteArtifactSourceRequest,
-  output: DeleteArtifactSourceResponse,
+  input: __S(61) as any as S.Schema<DeleteArtifactSourceRequest>,
+  output: __S(15) as any as S.Schema<DeleteArtifactSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7203,8 +5261,8 @@ export const DeleteCustomImage: API.OperationMethod<
   DeleteCustomImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomImageRequest,
-  output: DeleteCustomImageResponse,
+  input: __S(62) as any as S.Schema<DeleteCustomImageRequest>,
+  output: __S(15) as any as S.Schema<DeleteCustomImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7218,8 +5276,8 @@ export const DeleteDisk: API.OperationMethod<
   DeleteDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDiskRequest,
-  output: DeleteDiskResponse,
+  input: __S(63) as any as S.Schema<DeleteDiskRequest>,
+  output: __S(15) as any as S.Schema<DeleteDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7233,8 +5291,8 @@ export const DeleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentRequest,
-  output: DeleteEnvironmentResponse,
+  input: __S(64) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(15) as any as S.Schema<DeleteEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7248,8 +5306,8 @@ export const DeleteFormulas: API.OperationMethod<
   DeleteFormulasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFormulasRequest,
-  output: DeleteFormulasResponse,
+  input: __S(65) as any as S.Schema<DeleteFormulasRequest>,
+  output: __S(15) as any as S.Schema<DeleteFormulasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7263,8 +5321,8 @@ export const DeleteGlobalSchedule: API.OperationMethod<
   DeleteGlobalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGlobalScheduleRequest,
-  output: DeleteGlobalScheduleResponse,
+  input: __S(66) as any as S.Schema<DeleteGlobalScheduleRequest>,
+  output: __S(15) as any as S.Schema<DeleteGlobalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7278,8 +5336,8 @@ export const DeleteLab: API.OperationMethod<
   DeleteLabError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLabRequest,
-  output: DeleteLabResponse,
+  input: __S(67) as any as S.Schema<DeleteLabRequest>,
+  output: __S(15) as any as S.Schema<DeleteLabResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7293,8 +5351,8 @@ export const DeleteNotificationChannel: API.OperationMethod<
   DeleteNotificationChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNotificationChannelRequest,
-  output: DeleteNotificationChannelResponse,
+  input: __S(68) as any as S.Schema<DeleteNotificationChannelRequest>,
+  output: __S(2) as any as S.Schema<DeleteNotificationChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7308,8 +5366,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyRequest,
-  output: DeletePolicyResponse,
+  input: __S(69) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(15) as any as S.Schema<DeletePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7323,8 +5381,8 @@ export const DeleteSchedule: API.OperationMethod<
   DeleteScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScheduleRequest,
-  output: DeleteScheduleResponse,
+  input: __S(70) as any as S.Schema<DeleteScheduleRequest>,
+  output: __S(15) as any as S.Schema<DeleteScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7338,8 +5396,8 @@ export const DeleteSecret: API.OperationMethod<
   DeleteSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecretRequest,
-  output: DeleteSecretResponse,
+  input: __S(71) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(15) as any as S.Schema<DeleteSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7353,8 +5411,8 @@ export const DeleteServiceFabric: API.OperationMethod<
   DeleteServiceFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceFabricRequest,
-  output: DeleteServiceFabricResponse,
+  input: __S(72) as any as S.Schema<DeleteServiceFabricRequest>,
+  output: __S(15) as any as S.Schema<DeleteServiceFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7368,8 +5426,8 @@ export const DeleteServiceFabricSchedule: API.OperationMethod<
   DeleteServiceFabricScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceFabricScheduleRequest,
-  output: DeleteServiceFabricScheduleResponse,
+  input: __S(73) as any as S.Schema<DeleteServiceFabricScheduleRequest>,
+  output: __S(2) as any as S.Schema<DeleteServiceFabricScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7383,8 +5441,8 @@ export const DeleteServiceRunner: API.OperationMethod<
   DeleteServiceRunnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRunnerRequest,
-  output: DeleteServiceRunnerResponse,
+  input: __S(74) as any as S.Schema<DeleteServiceRunnerRequest>,
+  output: __S(15) as any as S.Schema<DeleteServiceRunnerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7398,8 +5456,8 @@ export const DeleteUser: API.OperationMethod<
   DeleteUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeleteUserResponse,
+  input: __S(75) as any as S.Schema<DeleteUserRequest>,
+  output: __S(15) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7413,8 +5471,8 @@ export const DeleteVirtualMachine: API.OperationMethod<
   DeleteVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVirtualMachineRequest,
-  output: DeleteVirtualMachineResponse,
+  input: __S(76) as any as S.Schema<DeleteVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<DeleteVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7428,8 +5486,8 @@ export const DeleteVirtualMachineSchedule: API.OperationMethod<
   DeleteVirtualMachineScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVirtualMachineScheduleRequest,
-  output: DeleteVirtualMachineScheduleResponse,
+  input: __S(77) as any as S.Schema<DeleteVirtualMachineScheduleRequest>,
+  output: __S(2) as any as S.Schema<DeleteVirtualMachineScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7443,8 +5501,8 @@ export const DeleteVirtualNetwork: API.OperationMethod<
   DeleteVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVirtualNetworkRequest,
-  output: DeleteVirtualNetworkResponse,
+  input: __S(78) as any as S.Schema<DeleteVirtualNetworkRequest>,
+  output: __S(15) as any as S.Schema<DeleteVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7458,8 +5516,8 @@ export const DetachDisk: API.OperationMethod<
   DetachDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachDiskRequest,
-  output: DetachDiskResponse,
+  input: __S(79) as any as S.Schema<DetachDiskRequest>,
+  output: __S(15) as any as S.Schema<DetachDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7473,8 +5531,8 @@ export const DetachVirtualMachineDataDisk: API.OperationMethod<
   DetachVirtualMachineDataDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachVirtualMachineDataDiskRequest,
-  output: DetachVirtualMachineDataDiskResponse,
+  input: __S(80) as any as S.Schema<DetachVirtualMachineDataDiskRequest>,
+  output: __S(2) as any as S.Schema<DetachVirtualMachineDataDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7488,8 +5546,8 @@ export const DisksCreateOrUpdate: API.OperationMethod<
   DisksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisksCreateOrUpdateRequest,
-  output: DisksCreateOrUpdateResponse,
+  input: __S(82) as any as S.Schema<DisksCreateOrUpdateRequest>,
+  output: __S(84) as any as S.Schema<DisksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7503,8 +5561,8 @@ export const EnvironmentsCreateOrUpdate: API.OperationMethod<
   EnvironmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsCreateOrUpdateRequest,
-  output: EnvironmentsCreateOrUpdateResponse,
+  input: __S(87) as any as S.Schema<EnvironmentsCreateOrUpdateRequest>,
+  output: __S(89) as any as S.Schema<EnvironmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7518,8 +5576,8 @@ export const ExecuteGlobalSchedule: API.OperationMethod<
   ExecuteGlobalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteGlobalScheduleRequest,
-  output: ExecuteGlobalScheduleResponse,
+  input: __S(90) as any as S.Schema<ExecuteGlobalScheduleRequest>,
+  output: __S(15) as any as S.Schema<ExecuteGlobalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7533,8 +5591,8 @@ export const ExecuteSchedule: API.OperationMethod<
   ExecuteScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteScheduleRequest,
-  output: ExecuteScheduleResponse,
+  input: __S(91) as any as S.Schema<ExecuteScheduleRequest>,
+  output: __S(15) as any as S.Schema<ExecuteScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7548,8 +5606,8 @@ export const ExecuteServiceFabricSchedule: API.OperationMethod<
   ExecuteServiceFabricScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteServiceFabricScheduleRequest,
-  output: ExecuteServiceFabricScheduleResponse,
+  input: __S(92) as any as S.Schema<ExecuteServiceFabricScheduleRequest>,
+  output: __S(2) as any as S.Schema<ExecuteServiceFabricScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7563,8 +5621,8 @@ export const ExecuteVirtualMachineSchedule: API.OperationMethod<
   ExecuteVirtualMachineScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteVirtualMachineScheduleRequest,
-  output: ExecuteVirtualMachineScheduleResponse,
+  input: __S(93) as any as S.Schema<ExecuteVirtualMachineScheduleRequest>,
+  output: __S(2) as any as S.Schema<ExecuteVirtualMachineScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7578,8 +5636,8 @@ export const ExportLabResourceUsage: API.OperationMethod<
   ExportLabResourceUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportLabResourceUsageRequest,
-  output: ExportLabResourceUsageResponse,
+  input: __S(94) as any as S.Schema<ExportLabResourceUsageRequest>,
+  output: __S(15) as any as S.Schema<ExportLabResourceUsageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7593,8 +5651,8 @@ export const FormulasCreateOrUpdate: API.OperationMethod<
   FormulasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FormulasCreateOrUpdateRequest,
-  output: FormulasCreateOrUpdateResponse,
+  input: __S(98) as any as S.Schema<FormulasCreateOrUpdateRequest>,
+  output: __S(104) as any as S.Schema<FormulasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7608,8 +5666,8 @@ export const GenerateArtifactArmTemplate: API.OperationMethod<
   GenerateArtifactArmTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateArtifactArmTemplateRequest,
-  output: ArmTemplateInfo,
+  input: __S(105) as any as S.Schema<GenerateArtifactArmTemplateRequest>,
+  output: __S(107) as any as S.Schema<ArmTemplateInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7623,8 +5681,8 @@ export const GetArmTemplate: API.OperationMethod<
   GetArmTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetArmTemplateRequest,
-  output: GetArmTemplateResponse,
+  input: __S(108) as any as S.Schema<GetArmTemplateRequest>,
+  output: __S(112) as any as S.Schema<GetArmTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7638,8 +5696,8 @@ export const GetArtifact: API.OperationMethod<
   GetArtifactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetArtifactRequest,
-  output: GetArtifactResponse,
+  input: __S(113) as any as S.Schema<GetArtifactRequest>,
+  output: __S(115) as any as S.Schema<GetArtifactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7653,8 +5711,8 @@ export const GetArtifactSource: API.OperationMethod<
   GetArtifactSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetArtifactSourceRequest,
-  output: GetArtifactSourceResponse,
+  input: __S(116) as any as S.Schema<GetArtifactSourceRequest>,
+  output: __S(13) as any as S.Schema<GetArtifactSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7668,8 +5726,8 @@ export const GetCost: API.OperationMethod<
   GetCostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCostRequest,
-  output: GetCostResponse,
+  input: __S(117) as any as S.Schema<GetCostRequest>,
+  output: __S(118) as any as S.Schema<GetCostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7683,8 +5741,8 @@ export const GetCustomImage: API.OperationMethod<
   GetCustomImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomImageRequest,
-  output: GetCustomImageResponse,
+  input: __S(119) as any as S.Schema<GetCustomImageRequest>,
+  output: __S(120) as any as S.Schema<GetCustomImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7698,8 +5756,8 @@ export const GetDisk: API.OperationMethod<
   GetDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDiskRequest,
-  output: GetDiskResponse,
+  input: __S(121) as any as S.Schema<GetDiskRequest>,
+  output: __S(122) as any as S.Schema<GetDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7713,8 +5771,8 @@ export const GetEnvironment: API.OperationMethod<
   GetEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: GetEnvironmentResponse,
+  input: __S(123) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(124) as any as S.Schema<GetEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7728,8 +5786,8 @@ export const GetFormulas: API.OperationMethod<
   GetFormulasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFormulasRequest,
-  output: GetFormulasResponse,
+  input: __S(125) as any as S.Schema<GetFormulasRequest>,
+  output: __S(126) as any as S.Schema<GetFormulasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7743,8 +5801,8 @@ export const GetGlobalSchedule: API.OperationMethod<
   GetGlobalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGlobalScheduleRequest,
-  output: GetGlobalScheduleResponse,
+  input: __S(127) as any as S.Schema<GetGlobalScheduleRequest>,
+  output: __S(129) as any as S.Schema<GetGlobalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7758,8 +5816,8 @@ export const GetLab: API.OperationMethod<
   GetLabError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLabRequest,
-  output: GetLabResponse,
+  input: __S(130) as any as S.Schema<GetLabRequest>,
+  output: __S(134) as any as S.Schema<GetLabResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7773,8 +5831,8 @@ export const GetNotificationChannel: API.OperationMethod<
   GetNotificationChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationChannelRequest,
-  output: GetNotificationChannelResponse,
+  input: __S(135) as any as S.Schema<GetNotificationChannelRequest>,
+  output: __S(139) as any as S.Schema<GetNotificationChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7788,8 +5846,8 @@ export const GetOperation: API.OperationMethod<
   GetOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationRequest,
-  output: OperationResult,
+  input: __S(140) as any as S.Schema<GetOperationRequest>,
+  output: __S(142) as any as S.Schema<OperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7803,8 +5861,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyRequest,
-  output: GetPolicyResponse,
+  input: __S(143) as any as S.Schema<GetPolicyRequest>,
+  output: __S(145) as any as S.Schema<GetPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7818,8 +5876,8 @@ export const GetSchedule: API.OperationMethod<
   GetScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScheduleRequest,
-  output: GetScheduleResponse,
+  input: __S(146) as any as S.Schema<GetScheduleRequest>,
+  output: __S(147) as any as S.Schema<GetScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7833,8 +5891,8 @@ export const GetSecret: API.OperationMethod<
   GetSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecretRequest,
-  output: GetSecretResponse,
+  input: __S(148) as any as S.Schema<GetSecretRequest>,
+  output: __S(150) as any as S.Schema<GetSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7848,8 +5906,8 @@ export const GetServiceFabric: API.OperationMethod<
   GetServiceFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceFabricRequest,
-  output: GetServiceFabricResponse,
+  input: __S(151) as any as S.Schema<GetServiceFabricRequest>,
+  output: __S(155) as any as S.Schema<GetServiceFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7863,8 +5921,8 @@ export const GetServiceFabricSchedule: API.OperationMethod<
   GetServiceFabricScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceFabricScheduleRequest,
-  output: GetServiceFabricScheduleResponse,
+  input: __S(156) as any as S.Schema<GetServiceFabricScheduleRequest>,
+  output: __S(129) as any as S.Schema<GetServiceFabricScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7878,8 +5936,8 @@ export const GetServiceRunner: API.OperationMethod<
   GetServiceRunnerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRunnerRequest,
-  output: GetServiceRunnerResponse,
+  input: __S(157) as any as S.Schema<GetServiceRunnerRequest>,
+  output: __S(161) as any as S.Schema<GetServiceRunnerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7893,8 +5951,8 @@ export const GetUser: API.OperationMethod<
   GetUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: GetUserResponse,
+  input: __S(162) as any as S.Schema<GetUserRequest>,
+  output: __S(166) as any as S.Schema<GetUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7908,8 +5966,8 @@ export const GetVirtualMachine: API.OperationMethod<
   GetVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualMachineRequest,
-  output: GetVirtualMachineResponse,
+  input: __S(167) as any as S.Schema<GetVirtualMachineRequest>,
+  output: __S(177) as any as S.Schema<GetVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7923,8 +5981,8 @@ export const GetVirtualMachineRdpFileContents: API.OperationMethod<
   GetVirtualMachineRdpFileContentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualMachineRdpFileContentsRequest,
-  output: RdpConnection,
+  input: __S(178) as any as S.Schema<GetVirtualMachineRdpFileContentsRequest>,
+  output: __S(179) as any as S.Schema<RdpConnection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7938,8 +5996,8 @@ export const GetVirtualMachineSchedule: API.OperationMethod<
   GetVirtualMachineScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualMachineScheduleRequest,
-  output: GetVirtualMachineScheduleResponse,
+  input: __S(180) as any as S.Schema<GetVirtualMachineScheduleRequest>,
+  output: __S(129) as any as S.Schema<GetVirtualMachineScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7953,8 +6011,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualNetworkRequest,
-  output: GetVirtualNetworkResponse,
+  input: __S(181) as any as S.Schema<GetVirtualNetworkRequest>,
+  output: __S(192) as any as S.Schema<GetVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7968,8 +6026,8 @@ export const GlobalSchedulesCreateOrUpdate: API.OperationMethod<
   GlobalSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GlobalSchedulesCreateOrUpdateRequest,
-  output: GlobalSchedulesCreateOrUpdateResponse,
+  input: __S(194) as any as S.Schema<GlobalSchedulesCreateOrUpdateRequest>,
+  output: __S(129) as any as S.Schema<GlobalSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7983,8 +6041,8 @@ export const GlobalSchedulesRetarget: API.OperationMethod<
   GlobalSchedulesRetargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GlobalSchedulesRetargetRequest,
-  output: GlobalSchedulesRetargetResponse,
+  input: __S(195) as any as S.Schema<GlobalSchedulesRetargetRequest>,
+  output: __S(196) as any as S.Schema<GlobalSchedulesRetargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7998,8 +6056,8 @@ export const ImportLabVirtualMachine: API.OperationMethod<
   ImportLabVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportLabVirtualMachineRequest,
-  output: ImportLabVirtualMachineResponse,
+  input: __S(197) as any as S.Schema<ImportLabVirtualMachineRequest>,
+  output: __S(196) as any as S.Schema<ImportLabVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8013,8 +6071,8 @@ export const LabsCreateOrUpdate: API.OperationMethod<
   LabsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LabsCreateOrUpdateRequest,
-  output: LabsCreateOrUpdateResponse,
+  input: __S(200) as any as S.Schema<LabsCreateOrUpdateRequest>,
+  output: __S(201) as any as S.Schema<LabsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8028,8 +6086,8 @@ export const LabsGenerateUploadUri: API.OperationMethod<
   LabsGenerateUploadUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LabsGenerateUploadUriRequest,
-  output: GenerateUploadUriResponse,
+  input: __S(202) as any as S.Schema<LabsGenerateUploadUriRequest>,
+  output: __S(203) as any as S.Schema<GenerateUploadUriResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8043,8 +6101,8 @@ export const ListArmTemplates: API.OperationMethod<
   ListArmTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListArmTemplatesRequest,
-  output: ArmTemplateList,
+  input: __S(204) as any as S.Schema<ListArmTemplatesRequest>,
+  output: __S(206) as any as S.Schema<ArmTemplateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8058,8 +6116,8 @@ export const ListArtifacts: API.OperationMethod<
   ListArtifactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListArtifactsRequest,
-  output: ArtifactList,
+  input: __S(207) as any as S.Schema<ListArtifactsRequest>,
+  output: __S(209) as any as S.Schema<ArtifactList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8073,8 +6131,8 @@ export const ListArtifactSources: API.OperationMethod<
   ListArtifactSourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListArtifactSourcesRequest,
-  output: ArtifactSourceList,
+  input: __S(210) as any as S.Schema<ListArtifactSourcesRequest>,
+  output: __S(213) as any as S.Schema<ArtifactSourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8088,8 +6146,8 @@ export const ListCustomImages: API.OperationMethod<
   ListCustomImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomImagesRequest,
-  output: CustomImageList,
+  input: __S(214) as any as S.Schema<ListCustomImagesRequest>,
+  output: __S(216) as any as S.Schema<CustomImageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8103,8 +6161,8 @@ export const ListDisks: API.OperationMethod<
   ListDisksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDisksRequest,
-  output: DiskList,
+  input: __S(217) as any as S.Schema<ListDisksRequest>,
+  output: __S(219) as any as S.Schema<DiskList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8118,8 +6176,8 @@ export const ListEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnvironmentsRequest,
-  output: DtlEnvironmentList,
+  input: __S(220) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(222) as any as S.Schema<DtlEnvironmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8133,8 +6191,8 @@ export const ListFormulas: API.OperationMethod<
   ListFormulasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFormulasRequest,
-  output: FormulaList,
+  input: __S(223) as any as S.Schema<ListFormulasRequest>,
+  output: __S(225) as any as S.Schema<FormulaList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8148,8 +6206,8 @@ export const ListGalleryImages: API.OperationMethod<
   ListGalleryImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGalleryImagesRequest,
-  output: GalleryImageList,
+  input: __S(226) as any as S.Schema<ListGalleryImagesRequest>,
+  output: __S(230) as any as S.Schema<GalleryImageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8163,8 +6221,8 @@ export const ListGlobalScheduleByResourceGroup: API.OperationMethod<
   ListGlobalScheduleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGlobalScheduleByResourceGroupRequest,
-  output: ScheduleList,
+  input: __S(231) as any as S.Schema<ListGlobalScheduleByResourceGroupRequest>,
+  output: __S(233) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8178,8 +6236,8 @@ export const ListGlobalScheduleBySubscription: API.OperationMethod<
   ListGlobalScheduleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGlobalScheduleBySubscriptionRequest,
-  output: ScheduleList,
+  input: __S(234) as any as S.Schema<ListGlobalScheduleBySubscriptionRequest>,
+  output: __S(233) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8193,8 +6251,8 @@ export const ListLabByResourceGroup: API.OperationMethod<
   ListLabByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLabByResourceGroupRequest,
-  output: LabList,
+  input: __S(235) as any as S.Schema<ListLabByResourceGroupRequest>,
+  output: __S(239) as any as S.Schema<LabList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8208,8 +6266,8 @@ export const ListLabBySubscription: API.OperationMethod<
   ListLabBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLabBySubscriptionRequest,
-  output: LabList,
+  input: __S(240) as any as S.Schema<ListLabBySubscriptionRequest>,
+  output: __S(239) as any as S.Schema<LabList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8223,8 +6281,8 @@ export const ListLabVhds: API.OperationMethod<
   ListLabVhdsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLabVhdsRequest,
-  output: LabVhdList,
+  input: __S(241) as any as S.Schema<ListLabVhdsRequest>,
+  output: __S(244) as any as S.Schema<LabVhdList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8238,8 +6296,8 @@ export const ListNotificationChannels: API.OperationMethod<
   ListNotificationChannelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNotificationChannelsRequest,
-  output: NotificationChannelList,
+  input: __S(245) as any as S.Schema<ListNotificationChannelsRequest>,
+  output: __S(248) as any as S.Schema<NotificationChannelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8253,8 +6311,8 @@ export const ListPolicies: API.OperationMethod<
   ListPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPoliciesRequest,
-  output: PolicyList,
+  input: __S(249) as any as S.Schema<ListPoliciesRequest>,
+  output: __S(251) as any as S.Schema<PolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8268,8 +6326,8 @@ export const ListProviderOperations: API.OperationMethod<
   ListProviderOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProviderOperationsRequest,
-  output: ListProviderOperationsResponse,
+  input: __S(252) as any as S.Schema<ListProviderOperationsRequest>,
+  output: __S(256) as any as S.Schema<ListProviderOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8283,8 +6341,8 @@ export const ListScheduleApplicable: API.OperationMethod<
   ListScheduleApplicableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListScheduleApplicableRequest,
-  output: ScheduleList,
+  input: __S(257) as any as S.Schema<ListScheduleApplicableRequest>,
+  output: __S(233) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8298,8 +6356,8 @@ export const ListSchedules: API.OperationMethod<
   ListSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSchedulesRequest,
-  output: ScheduleList,
+  input: __S(258) as any as S.Schema<ListSchedulesRequest>,
+  output: __S(233) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8313,8 +6371,8 @@ export const ListSecrets: API.OperationMethod<
   ListSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecretsRequest,
-  output: SecretList,
+  input: __S(259) as any as S.Schema<ListSecretsRequest>,
+  output: __S(261) as any as S.Schema<SecretList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8328,8 +6386,8 @@ export const ListServiceFabricApplicableSchedules: API.OperationMethod<
   ListServiceFabricApplicableSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceFabricApplicableSchedulesRequest,
-  output: ListServiceFabricApplicableSchedulesResponse,
+  input: __S(262) as any as S.Schema<ListServiceFabricApplicableSchedulesRequest>,
+  output: __S(263) as any as S.Schema<ListServiceFabricApplicableSchedulesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8343,8 +6401,8 @@ export const ListServiceFabrics: API.OperationMethod<
   ListServiceFabricsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceFabricsRequest,
-  output: ServiceFabricList,
+  input: __S(264) as any as S.Schema<ListServiceFabricsRequest>,
+  output: __S(266) as any as S.Schema<ServiceFabricList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8358,8 +6416,8 @@ export const ListServiceFabricSchedules: API.OperationMethod<
   ListServiceFabricSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceFabricSchedulesRequest,
-  output: ScheduleList,
+  input: __S(267) as any as S.Schema<ListServiceFabricSchedulesRequest>,
+  output: __S(233) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8373,8 +6431,8 @@ export const ListUsers: API.OperationMethod<
   ListUsersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: UserList,
+  input: __S(268) as any as S.Schema<ListUsersRequest>,
+  output: __S(270) as any as S.Schema<UserList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8388,8 +6446,8 @@ export const ListVirtualMachineApplicableSchedules: API.OperationMethod<
   ListVirtualMachineApplicableSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineApplicableSchedulesRequest,
-  output: ListVirtualMachineApplicableSchedulesResponse,
+  input: __S(271) as any as S.Schema<ListVirtualMachineApplicableSchedulesRequest>,
+  output: __S(263) as any as S.Schema<ListVirtualMachineApplicableSchedulesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8403,8 +6461,8 @@ export const ListVirtualMachines: API.OperationMethod<
   ListVirtualMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachinesRequest,
-  output: LabVirtualMachineList,
+  input: __S(272) as any as S.Schema<ListVirtualMachinesRequest>,
+  output: __S(275) as any as S.Schema<LabVirtualMachineList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8418,8 +6476,8 @@ export const ListVirtualMachineSchedules: API.OperationMethod<
   ListVirtualMachineSchedulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineSchedulesRequest,
-  output: ScheduleList,
+  input: __S(276) as any as S.Schema<ListVirtualMachineSchedulesRequest>,
+  output: __S(233) as any as S.Schema<ScheduleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8433,8 +6491,8 @@ export const ListVirtualNetworks: API.OperationMethod<
   ListVirtualNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualNetworksRequest,
-  output: VirtualNetworkList,
+  input: __S(277) as any as S.Schema<ListVirtualNetworksRequest>,
+  output: __S(280) as any as S.Schema<VirtualNetworkList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8448,8 +6506,8 @@ export const NotificationChannelsCreateOrUpdate: API.OperationMethod<
   NotificationChannelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NotificationChannelsCreateOrUpdateRequest,
-  output: NotificationChannelsCreateOrUpdateResponse,
+  input: __S(282) as any as S.Schema<NotificationChannelsCreateOrUpdateRequest>,
+  output: __S(139) as any as S.Schema<NotificationChannelsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8463,8 +6521,8 @@ export const NotifyNotificationChannel: API.OperationMethod<
   NotifyNotificationChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NotifyNotificationChannelRequest,
-  output: NotifyNotificationChannelResponse,
+  input: __S(283) as any as S.Schema<NotifyNotificationChannelRequest>,
+  output: __S(2) as any as S.Schema<NotifyNotificationChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8478,8 +6536,8 @@ export const PoliciesCreateOrUpdate: API.OperationMethod<
   PoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesCreateOrUpdateRequest,
-  output: PoliciesCreateOrUpdateResponse,
+  input: __S(285) as any as S.Schema<PoliciesCreateOrUpdateRequest>,
+  output: __S(286) as any as S.Schema<PoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8493,8 +6551,8 @@ export const PolicySetsEvaluatePolicies: API.OperationMethod<
   PolicySetsEvaluatePoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PolicySetsEvaluatePoliciesRequest,
-  output: EvaluatePoliciesResponse,
+  input: __S(289) as any as S.Schema<PolicySetsEvaluatePoliciesRequest>,
+  output: __S(293) as any as S.Schema<EvaluatePoliciesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8508,8 +6566,8 @@ export const RedeployVirtualMachine: API.OperationMethod<
   RedeployVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedeployVirtualMachineRequest,
-  output: RedeployVirtualMachineResponse,
+  input: __S(294) as any as S.Schema<RedeployVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<RedeployVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8523,8 +6581,8 @@ export const ResizeVirtualMachine: API.OperationMethod<
   ResizeVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResizeVirtualMachineRequest,
-  output: ResizeVirtualMachineResponse,
+  input: __S(295) as any as S.Schema<ResizeVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<ResizeVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8538,8 +6596,8 @@ export const RestartVirtualMachine: API.OperationMethod<
   RestartVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartVirtualMachineRequest,
-  output: RestartVirtualMachineResponse,
+  input: __S(296) as any as S.Schema<RestartVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<RestartVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8553,8 +6611,8 @@ export const SchedulesCreateOrUpdate: API.OperationMethod<
   SchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SchedulesCreateOrUpdateRequest,
-  output: SchedulesCreateOrUpdateResponse,
+  input: __S(297) as any as S.Schema<SchedulesCreateOrUpdateRequest>,
+  output: __S(129) as any as S.Schema<SchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8568,8 +6626,8 @@ export const SecretsCreateOrUpdate: API.OperationMethod<
   SecretsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecretsCreateOrUpdateRequest,
-  output: SecretsCreateOrUpdateResponse,
+  input: __S(299) as any as S.Schema<SecretsCreateOrUpdateRequest>,
+  output: __S(300) as any as S.Schema<SecretsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8583,8 +6641,8 @@ export const ServiceFabricSchedulesCreateOrUpdate: API.OperationMethod<
   ServiceFabricSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceFabricSchedulesCreateOrUpdateRequest,
-  output: ServiceFabricSchedulesCreateOrUpdateResponse,
+  input: __S(301) as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateRequest>,
+  output: __S(129) as any as S.Schema<ServiceFabricSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8598,8 +6656,8 @@ export const ServiceFabricsCreateOrUpdate: API.OperationMethod<
   ServiceFabricsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceFabricsCreateOrUpdateRequest,
-  output: ServiceFabricsCreateOrUpdateResponse,
+  input: __S(303) as any as S.Schema<ServiceFabricsCreateOrUpdateRequest>,
+  output: __S(304) as any as S.Schema<ServiceFabricsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8613,8 +6671,8 @@ export const ServiceRunnersCreateOrUpdate: API.OperationMethod<
   ServiceRunnersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceRunnersCreateOrUpdateRequest,
-  output: ServiceRunnersCreateOrUpdateResponse,
+  input: __S(306) as any as S.Schema<ServiceRunnersCreateOrUpdateRequest>,
+  output: __S(307) as any as S.Schema<ServiceRunnersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8628,8 +6686,8 @@ export const StartServiceFabric: API.OperationMethod<
   StartServiceFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartServiceFabricRequest,
-  output: StartServiceFabricResponse,
+  input: __S(308) as any as S.Schema<StartServiceFabricRequest>,
+  output: __S(15) as any as S.Schema<StartServiceFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8643,8 +6701,8 @@ export const StartVirtualMachine: API.OperationMethod<
   StartVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartVirtualMachineRequest,
-  output: StartVirtualMachineResponse,
+  input: __S(309) as any as S.Schema<StartVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<StartVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8658,8 +6716,8 @@ export const StopServiceFabric: API.OperationMethod<
   StopServiceFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopServiceFabricRequest,
-  output: StopServiceFabricResponse,
+  input: __S(310) as any as S.Schema<StopServiceFabricRequest>,
+  output: __S(15) as any as S.Schema<StopServiceFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8673,8 +6731,8 @@ export const StopVirtualMachine: API.OperationMethod<
   StopVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopVirtualMachineRequest,
-  output: StopVirtualMachineResponse,
+  input: __S(311) as any as S.Schema<StopVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<StopVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8688,8 +6746,8 @@ export const TransferVirtualMachineDisks: API.OperationMethod<
   TransferVirtualMachineDisksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferVirtualMachineDisksRequest,
-  output: TransferVirtualMachineDisksResponse,
+  input: __S(312) as any as S.Schema<TransferVirtualMachineDisksRequest>,
+  output: __S(2) as any as S.Schema<TransferVirtualMachineDisksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8703,8 +6761,8 @@ export const UpdateArtifactSource: API.OperationMethod<
   UpdateArtifactSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateArtifactSourceRequest,
-  output: UpdateArtifactSourceResponse,
+  input: __S(313) as any as S.Schema<UpdateArtifactSourceRequest>,
+  output: __S(13) as any as S.Schema<UpdateArtifactSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8718,8 +6776,8 @@ export const UpdateCustomImage: API.OperationMethod<
   UpdateCustomImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomImageRequest,
-  output: UpdateCustomImageResponse,
+  input: __S(314) as any as S.Schema<UpdateCustomImageRequest>,
+  output: __S(60) as any as S.Schema<UpdateCustomImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8733,8 +6791,8 @@ export const UpdateDisk: API.OperationMethod<
   UpdateDiskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDiskRequest,
-  output: UpdateDiskResponse,
+  input: __S(315) as any as S.Schema<UpdateDiskRequest>,
+  output: __S(122) as any as S.Schema<UpdateDiskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8748,8 +6806,8 @@ export const UpdateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentRequest,
-  output: UpdateEnvironmentResponse,
+  input: __S(316) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(89) as any as S.Schema<UpdateEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8763,8 +6821,8 @@ export const UpdateFormulas: API.OperationMethod<
   UpdateFormulasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFormulasRequest,
-  output: UpdateFormulasResponse,
+  input: __S(317) as any as S.Schema<UpdateFormulasRequest>,
+  output: __S(126) as any as S.Schema<UpdateFormulasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8778,8 +6836,8 @@ export const UpdateGlobalSchedule: API.OperationMethod<
   UpdateGlobalScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGlobalScheduleRequest,
-  output: UpdateGlobalScheduleResponse,
+  input: __S(318) as any as S.Schema<UpdateGlobalScheduleRequest>,
+  output: __S(129) as any as S.Schema<UpdateGlobalScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8793,8 +6851,8 @@ export const UpdateLab: API.OperationMethod<
   UpdateLabError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLabRequest,
-  output: UpdateLabResponse,
+  input: __S(319) as any as S.Schema<UpdateLabRequest>,
+  output: __S(134) as any as S.Schema<UpdateLabResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8808,8 +6866,8 @@ export const UpdateNotificationChannel: API.OperationMethod<
   UpdateNotificationChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNotificationChannelRequest,
-  output: UpdateNotificationChannelResponse,
+  input: __S(320) as any as S.Schema<UpdateNotificationChannelRequest>,
+  output: __S(139) as any as S.Schema<UpdateNotificationChannelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8823,8 +6881,8 @@ export const UpdatePolicy: API.OperationMethod<
   UpdatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePolicyRequest,
-  output: UpdatePolicyResponse,
+  input: __S(321) as any as S.Schema<UpdatePolicyRequest>,
+  output: __S(145) as any as S.Schema<UpdatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8838,8 +6896,8 @@ export const UpdateSchedule: API.OperationMethod<
   UpdateScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateScheduleRequest,
-  output: UpdateScheduleResponse,
+  input: __S(322) as any as S.Schema<UpdateScheduleRequest>,
+  output: __S(147) as any as S.Schema<UpdateScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8853,8 +6911,8 @@ export const UpdateSecret: API.OperationMethod<
   UpdateSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecretRequest,
-  output: UpdateSecretResponse,
+  input: __S(323) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(150) as any as S.Schema<UpdateSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8868,8 +6926,8 @@ export const UpdateServiceFabric: API.OperationMethod<
   UpdateServiceFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceFabricRequest,
-  output: UpdateServiceFabricResponse,
+  input: __S(324) as any as S.Schema<UpdateServiceFabricRequest>,
+  output: __S(304) as any as S.Schema<UpdateServiceFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8883,8 +6941,8 @@ export const UpdateServiceFabricSchedule: API.OperationMethod<
   UpdateServiceFabricScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceFabricScheduleRequest,
-  output: UpdateServiceFabricScheduleResponse,
+  input: __S(325) as any as S.Schema<UpdateServiceFabricScheduleRequest>,
+  output: __S(129) as any as S.Schema<UpdateServiceFabricScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8898,8 +6956,8 @@ export const UpdateUser: API.OperationMethod<
   UpdateUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UpdateUserResponse,
+  input: __S(326) as any as S.Schema<UpdateUserRequest>,
+  output: __S(166) as any as S.Schema<UpdateUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8913,8 +6971,8 @@ export const UpdateVirtualMachine: API.OperationMethod<
   UpdateVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVirtualMachineRequest,
-  output: UpdateVirtualMachineResponse,
+  input: __S(327) as any as S.Schema<UpdateVirtualMachineRequest>,
+  output: __S(177) as any as S.Schema<UpdateVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8928,8 +6986,8 @@ export const UpdateVirtualMachineSchedule: API.OperationMethod<
   UpdateVirtualMachineScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVirtualMachineScheduleRequest,
-  output: UpdateVirtualMachineScheduleResponse,
+  input: __S(328) as any as S.Schema<UpdateVirtualMachineScheduleRequest>,
+  output: __S(129) as any as S.Schema<UpdateVirtualMachineScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8943,8 +7001,8 @@ export const UpdateVirtualNetwork: API.OperationMethod<
   UpdateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVirtualNetworkRequest,
-  output: UpdateVirtualNetworkResponse,
+  input: __S(329) as any as S.Schema<UpdateVirtualNetworkRequest>,
+  output: __S(192) as any as S.Schema<UpdateVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8958,8 +7016,8 @@ export const UsersCreateOrUpdate: API.OperationMethod<
   UsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersCreateOrUpdateRequest,
-  output: UsersCreateOrUpdateResponse,
+  input: __S(331) as any as S.Schema<UsersCreateOrUpdateRequest>,
+  output: __S(332) as any as S.Schema<UsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8973,8 +7031,8 @@ export const VirtualMachineSchedulesCreateOrUpdate: API.OperationMethod<
   VirtualMachineSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualMachineSchedulesCreateOrUpdateRequest,
-  output: VirtualMachineSchedulesCreateOrUpdateResponse,
+  input: __S(333) as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateRequest>,
+  output: __S(129) as any as S.Schema<VirtualMachineSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8988,8 +7046,8 @@ export const VirtualMachinesCreateOrUpdate: API.OperationMethod<
   VirtualMachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualMachinesCreateOrUpdateRequest,
-  output: VirtualMachinesCreateOrUpdateResponse,
+  input: __S(336) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>,
+  output: __S(177) as any as S.Schema<VirtualMachinesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9003,8 +7061,8 @@ export const VirtualNetworksCreateOrUpdate: API.OperationMethod<
   VirtualNetworksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualNetworksCreateOrUpdateRequest,
-  output: VirtualNetworksCreateOrUpdateResponse,
+  input: __S(338) as any as S.Schema<VirtualNetworksCreateOrUpdateRequest>,
+  output: __S(192) as any as S.Schema<VirtualNetworksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9018,7 +7076,7 @@ function __c0(j: number): any {
         S.Struct({
           diskSizeGiB: S.optional(S.Number),
           diskName: S.optional(S.String),
-          diskType: S.optional(StorageType),
+          diskType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttachNewDataDiskOptions" });
     case 1:
@@ -9028,9 +7086,9 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          attachNewDataDiskOptions: S.optional(AttachNewDataDiskOptions),
+          attachNewDataDiskOptions: S.optional(__S(0)),
           existingLabDiskId: S.optional(S.String),
-          hostCaching: S.optional(HostCachingOptions),
+          hostCaching: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9056,13 +7114,13 @@ function __c0(j: number): any {
         identifier: "ArtifactParameterProperties",
       });
     case 4:
-      return S.Array(ArtifactParameterProperties);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           artifactId: S.optional(S.String),
           artifactTitle: S.optional(S.String),
-          parameters: S.optional(ArtifactInstallPropertiesParametersList),
+          parameters: S.optional(__S(4)),
           status: S.optional(S.String),
           deploymentStatusMessage: S.optional(S.String),
           vmExtensionStatusMessage: S.optional(S.String),
@@ -9072,7 +7130,7 @@ function __c0(j: number): any {
         identifier: "ArtifactInstallProperties",
       });
     case 6:
-      return S.Array(ArtifactInstallProperties);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9080,7 +7138,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          artifacts: S.optional(ApplyVirtualMachineArtifactsRequestArtifactsList),
+          artifacts: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9101,12 +7159,12 @@ function __c1(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           uri: S.optional(S.String),
-          sourceType: S.optional(SourceControlType),
+          sourceType: S.optional(S.String),
           folderPath: S.optional(S.String),
           armTemplateFolderPath: S.optional(S.String),
           branchRef: S.optional(S.String),
           securityToken: S.optional(S.String),
-          status: S.optional(EnableStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ArtifactSourcePropertiesInput",
@@ -9120,8 +7178,8 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: ArtifactSourcePropertiesInput,
-          tags: S.optional(ArtifactSourcesCreateOrUpdateRequestTagsMap),
+          properties: __S(8),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9138,10 +7196,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -9150,12 +7208,12 @@ function __c1(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           uri: S.optional(S.String),
-          sourceType: S.optional(SourceControlType),
+          sourceType: S.optional(S.String),
           folderPath: S.optional(S.String),
           armTemplateFolderPath: S.optional(S.String),
           branchRef: S.optional(S.String),
           securityToken: S.optional(S.String),
-          status: S.optional(EnableStatus),
+          status: S.optional(S.String),
           createdDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -9167,9 +7225,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ArtifactSourceProperties,
-          tags: S.optional(ArtifactSourcesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(12),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -9264,29 +7322,29 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           thresholdId: S.optional(S.String),
-          percentageThreshold: S.optional(PercentageCostThresholdProperties),
-          displayOnChart: S.optional(CostThresholdStatus),
-          sendNotificationWhenExceeded: S.optional(CostThresholdStatus),
+          percentageThreshold: S.optional(__S(19)),
+          displayOnChart: S.optional(S.String),
+          sendNotificationWhenExceeded: S.optional(S.String),
           notificationSent: S.optional(S.String),
         }),
       ).annotate({ identifier: "CostThresholdProperties" });
     case 5:
-      return S.Array(CostThresholdProperties);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TargetCostStatus),
+          status: S.optional(S.String),
           target: S.optional(S.Number),
-          costThresholds: S.optional(TargetCostPropertiesCostThresholdsList),
+          costThresholds: S.optional(__S(21)),
           cycleStartDateTime: S.optional(S.String),
           cycleEndDateTime: S.optional(S.String),
-          cycleType: S.optional(ReportingCycleType),
+          cycleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetCostProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          targetCost: S.optional(TargetCostProperties),
+          targetCost: S.optional(__S(22)),
           currencyCode: S.optional(S.String),
           startDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
@@ -9304,8 +7362,8 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: LabCostPropertiesInput,
-          tags: S.optional(CostsCreateOrUpdateRequestTagsMap),
+          properties: __S(23),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9329,11 +7387,11 @@ function __c3(j: number): any {
         S.Struct({
           date: S.optional(S.String),
           cost: S.optional(S.Number),
-          costType: S.optional(CostType),
+          costType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabCostDetailsProperties" });
     case 3:
-      return S.Array(LabCostDetailsProperties);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9351,14 +7409,14 @@ function __c3(j: number): any {
         identifier: "LabResourceCostProperties",
       });
     case 5:
-      return S.Array(LabResourceCostProperties);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          targetCost: S.optional(TargetCostProperties),
-          labCostSummary: S.optional(LabCostSummaryProperties),
-          labCostDetails: S.optional(LabCostPropertiesLabCostDetailsList),
-          resourceCosts: S.optional(LabCostPropertiesResourceCostsList),
+          targetCost: S.optional(__S(22)),
+          labCostSummary: S.optional(__S(25)),
+          labCostDetails: S.optional(__S(27)),
+          resourceCosts: S.optional(__S(29)),
           currencyCode: S.optional(S.String),
           startDateTime: S.optional(S.String),
           endDateTime: S.optional(S.String),
@@ -9373,9 +7431,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabCostProperties,
-          tags: S.optional(CostsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(30),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -9404,17 +7462,17 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          transportProtocol: S.optional(TransportProtocol),
+          transportProtocol: S.optional(S.String),
           frontendPort: S.optional(S.Number),
           backendPort: S.optional(S.Number),
         }),
       ).annotate({ identifier: "InboundNatRule" });
     case 3:
-      return S.Array(InboundNatRule);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inboundNatRules: S.optional(SharedPublicIpAddressConfigurationInboundNatRulesList),
+          inboundNatRules: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "SharedPublicIpAddressConfiguration",
@@ -9430,7 +7488,7 @@ function __c4(j: number): any {
           dnsName: S.optional(S.String),
           rdpAuthority: S.optional(S.String),
           sshAuthority: S.optional(S.String),
-          sharedPublicIpAddressConfiguration: S.optional(SharedPublicIpAddressConfiguration),
+          sharedPublicIpAddressConfiguration: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "NetworkInterfaceProperties",
@@ -9438,13 +7496,13 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attachNewDataDiskOptions: S.optional(AttachNewDataDiskOptions),
+          attachNewDataDiskOptions: S.optional(__S(0)),
           existingLabDiskId: S.optional(S.String),
-          hostCaching: S.optional(HostCachingOptions),
+          hostCaching: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataDiskProperties" });
     case 7:
-      return S.Array(DataDiskProperties);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -9454,7 +7512,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          weekdays: S.optional(WeekDetailsWeekdaysList),
+          weekdays: S.optional(__S(40)),
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "WeekDetails" });
@@ -9473,7 +7531,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(NotificationSettingsStatus),
+          status: S.optional(S.String),
           timeInMinutes: S.optional(S.Number),
           webhookUrl: S.optional(S.String),
           emailRecipient: S.optional(S.String),
@@ -9483,13 +7541,13 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ScheduleCreationParameterPropertiesStatus),
+          status: S.optional(S.String),
           taskType: S.optional(S.String),
-          weeklyRecurrence: S.optional(WeekDetails),
-          dailyRecurrence: S.optional(DayDetails),
-          hourlyRecurrence: S.optional(HourDetails),
+          weeklyRecurrence: S.optional(__S(41)),
+          dailyRecurrence: S.optional(__S(42)),
+          hourlyRecurrence: S.optional(__S(43)),
           timeZoneId: S.optional(S.String),
-          notificationSettings: S.optional(NotificationSettings),
+          notificationSettings: S.optional(__S(44)),
           targetResourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -9498,15 +7556,15 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(ScheduleCreationParameterProperties),
+          properties: S.optional(__S(45)),
           name: S.optional(S.String),
-          tags: S.optional(ScheduleCreationParameterInputTagsMap),
+          tags: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "ScheduleCreationParameterInput",
       });
     case 7:
-      return S.Array(ScheduleCreationParameterInput);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -9514,7 +7572,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bulkCreationParameters: S.optional(BulkCreationParameters),
+          bulkCreationParameters: S.optional(__S(32)),
           notes: S.optional(S.String),
           ownerObjectId: S.optional(S.String),
           ownerUserPrincipalName: S.optional(S.String),
@@ -9528,20 +7586,16 @@ function __c6(j: number): any {
           labSubnetName: S.optional(S.String),
           labVirtualNetworkId: S.optional(S.String),
           disallowPublicIpAddress: S.optional(S.Boolean),
-          artifacts: S.optional(LabVirtualMachineCreationParameterPropertiesInputArtifactsList),
-          galleryImageReference: S.optional(GalleryImageReference),
+          artifacts: S.optional(__S(6)),
+          galleryImageReference: S.optional(__S(33)),
           planId: S.optional(S.String),
-          networkInterface: S.optional(NetworkInterfaceProperties),
+          networkInterface: S.optional(__S(37)),
           expirationDate: S.optional(S.String),
           allowClaim: S.optional(S.Boolean),
           storageType: S.optional(S.String),
           environmentId: S.optional(S.String),
-          dataDiskParameters: S.optional(
-            LabVirtualMachineCreationParameterPropertiesInputDataDiskParametersList,
-          ),
-          scheduleParameters: S.optional(
-            LabVirtualMachineCreationParameterPropertiesInputScheduleParametersList,
-          ),
+          dataDiskParameters: S.optional(__S(39)),
+          scheduleParameters: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "LabVirtualMachineCreationParameterPropertiesInput",
@@ -9552,9 +7606,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(LabVirtualMachineCreationParameterPropertiesInput),
+          properties: S.optional(__S(48)),
           location: S.optional(S.String),
-          tags: S.optional(CreateLabEnvironmentRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9569,21 +7623,21 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          windowsOsState: S.optional(WindowsOsState),
+          windowsOsState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WindowsOsInfo" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          linuxOsState: S.optional(LinuxOsState),
+          linuxOsState: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinuxOsInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           sourceVmId: S.optional(S.String),
-          windowsOsInfo: S.optional(WindowsOsInfo),
-          linuxOsInfo: S.optional(LinuxOsInfo),
+          windowsOsInfo: S.optional(__S(50)),
+          linuxOsInfo: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "CustomImagePropertiesFromVm",
@@ -9593,7 +7647,7 @@ function __c6(j: number): any {
         S.Struct({
           imageName: S.optional(S.String),
           sysPrep: S.optional(S.Boolean),
-          osType: CustomImageOsType,
+          osType: S.String,
         }),
       ).annotate({
         identifier: "CustomImagePropertiesCustom",
@@ -9602,11 +7656,11 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lun: S.optional(S.String),
-          storageType: S.optional(StorageType),
+          storageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataDiskStorageTypeInfo" });
     case 7:
-      return S.Array(DataDiskStorageTypeInfo);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -9624,14 +7678,14 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          vm: S.optional(CustomImagePropertiesFromVm),
-          vhd: S.optional(CustomImagePropertiesCustom),
+          vm: S.optional(__S(52)),
+          vhd: S.optional(__S(53)),
           description: S.optional(S.String),
           author: S.optional(S.String),
           managedImageId: S.optional(S.String),
           managedSnapshotId: S.optional(S.String),
-          dataDiskStorageInfo: S.optional(CustomImagePropertiesInputDataDiskStorageInfoList),
-          customImagePlan: S.optional(CustomImagePropertiesFromPlan),
+          dataDiskStorageInfo: S.optional(__S(55)),
+          customImagePlan: S.optional(__S(56)),
           isPlanAuthorized: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9644,8 +7698,8 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: CustomImagePropertiesInput,
-          tags: S.optional(CustomImagesCreateOrUpdateRequestTagsMap),
+          properties: __S(57),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9661,15 +7715,15 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          vm: S.optional(CustomImagePropertiesFromVm),
-          vhd: S.optional(CustomImagePropertiesCustom),
+          vm: S.optional(__S(52)),
+          vhd: S.optional(__S(53)),
           description: S.optional(S.String),
           author: S.optional(S.String),
           creationDate: S.optional(S.String),
           managedImageId: S.optional(S.String),
           managedSnapshotId: S.optional(S.String),
-          dataDiskStorageInfo: S.optional(CustomImagePropertiesDataDiskStorageInfoList),
-          customImagePlan: S.optional(CustomImagePropertiesFromPlan),
+          dataDiskStorageInfo: S.optional(__S(55)),
+          customImagePlan: S.optional(__S(56)),
           isPlanAuthorized: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -9681,9 +7735,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomImageProperties,
-          tags: S.optional(CustomImagesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(59),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -10053,7 +8107,7 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          diskType: S.optional(StorageType),
+          diskType: S.optional(S.String),
           diskSizeGiB: S.optional(S.Number),
           leasedByLabVmId: S.optional(S.String),
           diskBlobName: S.optional(S.String),
@@ -10071,8 +8125,8 @@ function __c10(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: DiskPropertiesInput,
-          tags: S.optional(DisksCreateOrUpdateRequestTagsMap),
+          properties: __S(81),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10088,7 +8142,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          diskType: S.optional(StorageType),
+          diskType: S.optional(S.String),
           diskSizeGiB: S.optional(S.Number),
           leasedByLabVmId: S.optional(S.String),
           diskBlobName: S.optional(S.String),
@@ -10107,9 +8161,9 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DiskProperties,
-          tags: S.optional(DisksCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(83),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -10119,7 +8173,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           armTemplateId: S.optional(S.String),
-          parameters: S.optional(EnvironmentDeploymentPropertiesParametersList),
+          parameters: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "EnvironmentDeploymentProperties",
@@ -10127,7 +8181,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          deploymentProperties: S.optional(EnvironmentDeploymentProperties),
+          deploymentProperties: S.optional(__S(85)),
           armTemplateDisplayName: S.optional(S.String),
         }),
       ).annotate({
@@ -10141,8 +8195,8 @@ function __c10(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: EnvironmentPropertiesInput,
-          tags: S.optional(EnvironmentsCreateOrUpdateRequestTagsMap),
+          properties: __S(86),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10162,7 +8216,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deploymentProperties: S.optional(EnvironmentDeploymentProperties),
+          deploymentProperties: S.optional(__S(85)),
           armTemplateDisplayName: S.optional(S.String),
           resourceGroupId: S.optional(S.String),
           createdByUser: S.optional(S.String),
@@ -10176,9 +8230,9 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: EnvironmentProperties,
-          tags: S.optional(EnvironmentsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(88),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -10278,10 +8332,10 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(LabVirtualMachineCreationParameterPropertiesInput),
+          properties: S.optional(__S(48)),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(LabVirtualMachineCreationParameterInputTagsMap),
+          tags: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "LabVirtualMachineCreationParameterInput",
@@ -10301,8 +8355,8 @@ function __c12(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           osType: S.optional(S.String),
-          formulaContent: S.optional(LabVirtualMachineCreationParameterInput),
-          vm: S.optional(FormulaPropertiesFromVm),
+          formulaContent: S.optional(__S(95)),
+          vm: S.optional(__S(96)),
         }),
       ).annotate({ identifier: "FormulaPropertiesInput" });
     case 2:
@@ -10312,8 +8366,8 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: FormulaPropertiesInput,
-          tags: S.optional(FormulasCreateOrUpdateRequestTagsMap),
+          properties: __S(97),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10329,20 +8383,20 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(ScheduleCreationParameterProperties),
+          properties: S.optional(__S(45)),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(ScheduleCreationParameterTagsMap),
+          tags: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "ScheduleCreationParameter",
       });
     case 4:
-      return S.Array(ScheduleCreationParameter);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bulkCreationParameters: S.optional(BulkCreationParameters),
+          bulkCreationParameters: S.optional(__S(32)),
           notes: S.optional(S.String),
           ownerObjectId: S.optional(S.String),
           ownerUserPrincipalName: S.optional(S.String),
@@ -10356,20 +8410,16 @@ function __c12(j: number): any {
           labSubnetName: S.optional(S.String),
           labVirtualNetworkId: S.optional(S.String),
           disallowPublicIpAddress: S.optional(S.Boolean),
-          artifacts: S.optional(LabVirtualMachineCreationParameterPropertiesArtifactsList),
-          galleryImageReference: S.optional(GalleryImageReference),
+          artifacts: S.optional(__S(6)),
+          galleryImageReference: S.optional(__S(33)),
           planId: S.optional(S.String),
-          networkInterface: S.optional(NetworkInterfaceProperties),
+          networkInterface: S.optional(__S(37)),
           expirationDate: S.optional(S.String),
           allowClaim: S.optional(S.Boolean),
           storageType: S.optional(S.String),
           environmentId: S.optional(S.String),
-          dataDiskParameters: S.optional(
-            LabVirtualMachineCreationParameterPropertiesDataDiskParametersList,
-          ),
-          scheduleParameters: S.optional(
-            LabVirtualMachineCreationParameterPropertiesScheduleParametersList,
-          ),
+          dataDiskParameters: S.optional(__S(39)),
+          scheduleParameters: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "LabVirtualMachineCreationParameterProperties",
@@ -10377,10 +8427,10 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(LabVirtualMachineCreationParameterProperties),
+          properties: S.optional(__S(101)),
           name: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(LabVirtualMachineCreationParameterTagsMap),
+          tags: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "LabVirtualMachineCreationParameter",
@@ -10392,8 +8442,8 @@ function __c12(j: number): any {
           author: S.optional(S.String),
           osType: S.optional(S.String),
           creationDate: S.optional(S.String),
-          formulaContent: S.optional(LabVirtualMachineCreationParameter),
-          vm: S.optional(FormulaPropertiesFromVm),
+          formulaContent: S.optional(__S(102)),
+          vm: S.optional(__S(96)),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
         }),
@@ -10408,9 +8458,9 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FormulaProperties,
-          tags: S.optional(FormulasCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(103),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -10425,9 +8475,9 @@ function __c13(j: number): any {
           artifactSourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           virtualMachineName: S.optional(S.String),
-          parameters: S.optional(GenerateArtifactArmTemplateRequestParametersList),
+          parameters: S.optional(__S(4)),
           location: S.optional(S.String),
-          fileUploadOptions: S.optional(FileUploadOptions),
+          fileUploadOptions: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10444,8 +8494,8 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          template: S.optional(ArmTemplateInfoTemplateMap),
-          parameters: S.optional(ArmTemplateInfoParametersMap),
+          template: S.optional(__S(106)),
+          parameters: S.optional(__S(106)),
         }),
       ).annotate({ identifier: "ArmTemplateInfo" });
     case 4:
@@ -10470,11 +8520,11 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileName: S.optional(S.String),
-          parametersValueInfo: S.optional(ParametersValueFileInfoParametersValueInfoMap),
+          parametersValueInfo: S.optional(__S(106)),
         }),
       ).annotate({ identifier: "ParametersValueFileInfo" });
     case 6:
-      return S.Array(ParametersValueFileInfo);
+      return S.Array(__S(109));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -10482,9 +8532,9 @@ function __c13(j: number): any {
           description: S.optional(S.String),
           publisher: S.optional(S.String),
           icon: S.optional(S.String),
-          contents: S.optional(ArmTemplatePropertiesContentsMap),
+          contents: S.optional(__S(106)),
           createdDate: S.optional(S.String),
-          parametersValueFilesInfo: S.optional(ArmTemplatePropertiesParametersValueFilesInfoList),
+          parametersValueFilesInfo: S.optional(__S(110)),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ArmTemplateProperties" });
@@ -10498,9 +8548,9 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ArmTemplateProperties,
-          tags: S.optional(GetArmTemplateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(111),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetArmTemplateResponse" });
@@ -10531,7 +8581,7 @@ function __c14(j: number): any {
           filePath: S.optional(S.String),
           icon: S.optional(S.String),
           targetOsType: S.optional(S.String),
-          parameters: S.optional(ArtifactPropertiesParametersMap),
+          parameters: S.optional(__S(106)),
           createdDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactProperties" });
@@ -10541,9 +8591,9 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ArtifactProperties,
-          tags: S.optional(GetArtifactResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(114),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetArtifactResponse" });
@@ -10587,9 +8637,9 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabCostProperties,
-          tags: S.optional(GetCostResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(30),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetCostResponse" });
@@ -10620,9 +8670,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CustomImageProperties,
-          tags: S.optional(GetCustomImageResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(59),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetCustomImageResponse" });
@@ -10650,9 +8700,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DiskProperties,
-          tags: S.optional(GetDiskResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(83),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDiskResponse" });
@@ -10680,9 +8730,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: EnvironmentProperties,
-          tags: S.optional(GetEnvironmentResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(88),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetEnvironmentResponse" });
@@ -10709,9 +8759,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FormulaProperties,
-          tags: S.optional(GetFormulasResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(103),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetFormulasResponse" });
@@ -10738,13 +8788,13 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SchedulePropertiesStatus),
+          status: S.optional(S.String),
           taskType: S.optional(S.String),
-          weeklyRecurrence: S.optional(WeekDetails),
-          dailyRecurrence: S.optional(DayDetails),
-          hourlyRecurrence: S.optional(HourDetails),
+          weeklyRecurrence: S.optional(__S(41)),
+          dailyRecurrence: S.optional(__S(42)),
+          hourlyRecurrence: S.optional(__S(43)),
           timeZoneId: S.optional(S.String),
-          notificationSettings: S.optional(NotificationSettings),
+          notificationSettings: S.optional(__S(44)),
           createdDate: S.optional(S.String),
           targetResourceId: S.optional(S.String),
           provisioningState: S.optional(S.String),
@@ -10757,9 +8807,9 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ScheduleProperties,
-          tags: S.optional(GetGlobalScheduleResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(128),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -10786,7 +8836,7 @@ function __c16(j: number): any {
         S.Struct({
           title: S.optional(S.String),
           markdown: S.optional(S.String),
-          enabled: S.optional(EnableStatus),
+          enabled: S.optional(S.String),
           expirationDate: S.optional(S.String),
           expired: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
@@ -10798,7 +8848,7 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(EnableStatus),
+          enabled: S.optional(S.String),
           markdown: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabSupportProperties" });
@@ -10810,23 +8860,19 @@ function __c16(j: number): any {
           artifactsStorageAccount: S.optional(S.String),
           premiumDataDiskStorageAccount: S.optional(S.String),
           vaultName: S.optional(S.String),
-          labStorageType: S.optional(LabPropertiesLabStorageType),
-          mandatoryArtifactsResourceIdsLinux: S.optional(
-            LabPropertiesMandatoryArtifactsResourceIdsLinuxList,
-          ),
-          mandatoryArtifactsResourceIdsWindows: S.optional(
-            LabPropertiesMandatoryArtifactsResourceIdsWindowsList,
-          ),
+          labStorageType: S.optional(S.String),
+          mandatoryArtifactsResourceIdsLinux: S.optional(__S(40)),
+          mandatoryArtifactsResourceIdsWindows: S.optional(__S(40)),
           createdDate: S.optional(S.String),
-          premiumDataDisks: S.optional(PremiumDataDisk),
-          environmentPermission: S.optional(EnvironmentPermission),
-          announcement: S.optional(LabAnnouncementProperties),
-          support: S.optional(LabSupportProperties),
+          premiumDataDisks: S.optional(S.String),
+          environmentPermission: S.optional(S.String),
+          announcement: S.optional(__S(131)),
+          support: S.optional(__S(132)),
           vmCreationResourceGroup: S.optional(S.String),
           publicIpId: S.optional(S.String),
           loadBalancerId: S.optional(S.String),
           networkSecurityGroupId: S.optional(S.String),
-          extendedProperties: S.optional(LabPropertiesExtendedPropertiesMap),
+          extendedProperties: S.optional(__S(9)),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
         }),
@@ -10837,9 +8883,9 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabProperties,
-          tags: S.optional(GetLabResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(133),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetLabResponse" });
@@ -10869,11 +8915,11 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          eventName: S.optional(NotificationChannelEventType),
+          eventName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
     case 1:
-      return S.Array(Event);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10881,7 +8927,7 @@ function __c17(j: number): any {
           emailRecipient: S.optional(S.String),
           notificationLocale: S.optional(S.String),
           description: S.optional(S.String),
-          events: S.optional(NotificationChannelPropertiesEventsList),
+          events: S.optional(__S(137)),
           createdDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -10895,9 +8941,9 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NotificationChannelProperties,
-          tags: S.optional(GetNotificationChannelResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(138),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -10929,8 +8975,8 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          statusCode: S.optional(HttpStatusCode),
-          error: S.optional(OperationError),
+          statusCode: S.optional(S.String),
+          error: S.optional(__S(141)),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 7:
@@ -10959,11 +9005,11 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          status: S.optional(PolicyStatus),
-          factName: S.optional(PolicyFactName),
+          status: S.optional(S.String),
+          factName: S.optional(S.String),
           factData: S.optional(S.String),
           threshold: S.optional(S.String),
-          evaluatorType: S.optional(PolicyEvaluatorType),
+          evaluatorType: S.optional(S.String),
           createdDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -10975,9 +9021,9 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: PolicyProperties,
-          tags: S.optional(GetPolicyResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(144),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPolicyResponse" });
@@ -11004,9 +9050,9 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ScheduleProperties,
-          tags: S.optional(GetScheduleResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(128),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetScheduleResponse" });
@@ -11042,9 +9088,9 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SecretProperties,
-          tags: S.optional(GetSecretResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(149),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSecretResponse" });
@@ -11073,8 +9119,8 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labVmsShutdown: S.optional(Schedule),
-          labVmsStartup: S.optional(Schedule),
+          labVmsShutdown: S.optional(__S(147)),
+          labVmsStartup: S.optional(__S(147)),
         }),
       ).annotate({
         identifier: "ApplicableScheduleProperties",
@@ -11085,10 +9131,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(11)),
           location: S.optional(S.String),
-          tags: S.optional(ApplicableScheduleTagsMap),
-          properties: ApplicableScheduleProperties,
+          tags: S.optional(__S(9)),
+          properties: __S(152),
         }),
       ).annotate({ identifier: "ApplicableSchedule" });
     case 2:
@@ -11096,7 +9142,7 @@ function __c19(j: number): any {
         S.Struct({
           externalServiceFabricId: S.optional(S.String),
           environmentId: S.optional(S.String),
-          applicableSchedule: S.optional(ApplicableSchedule),
+          applicableSchedule: S.optional(__S(153)),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
         }),
@@ -11107,9 +9153,9 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ServiceFabricProperties,
-          tags: S.optional(GetServiceFabricResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(154),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetServiceFabricResponse" });
@@ -11160,7 +9206,7 @@ function __c19(j: number): any {
         identifier: "UserAssignedIdentityValue",
       });
     case 7:
-      return S.Record(S.String, UserAssignedIdentityValue);
+      return S.Record(S.String, __S(158));
   }
 }
 function __c20(j: number): any {
@@ -11168,11 +9214,11 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
+          type: S.optional(S.String),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           clientSecretUrl: S.optional(S.String),
-          userAssignedIdentities: S.optional(IdentityPropertiesUserAssignedIdentitiesMap),
+          userAssignedIdentities: S.optional(__S(159)),
         }),
       ).annotate({ identifier: "IdentityProperties" });
     case 1:
@@ -11181,10 +9227,10 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetServiceRunnerResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
-          identity: S.optional(IdentityProperties),
+          identity: S.optional(__S(160)),
         }),
       ).annotate({ identifier: "GetServiceRunnerResponse" });
     case 2:
@@ -11224,8 +9270,8 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(UserIdentity),
-          secretStore: S.optional(UserSecretStore),
+          identity: S.optional(__S(163)),
+          secretStore: S.optional(__S(164)),
           createdDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -11237,9 +9283,9 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: UserProperties,
-          tags: S.optional(GetUserResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(165),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetUserResponse" });
@@ -11285,7 +9331,7 @@ function __c21(j: number): any {
         identifier: "ComputeVmInstanceViewStatus",
       });
     case 2:
-      return S.Array(ComputeVmInstanceViewStatus);
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11296,23 +9342,23 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ComputeDataDisk" });
     case 4:
-      return S.Array(ComputeDataDisk);
+      return S.Array(__S(171));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          statuses: S.optional(ComputeVmPropertiesStatusesList),
+          statuses: S.optional(__S(170)),
           osType: S.optional(S.String),
           vmSize: S.optional(S.String),
           networkInterfaceId: S.optional(S.String),
           osDiskId: S.optional(S.String),
-          dataDiskIds: S.optional(ComputeVmPropertiesDataDiskIdsList),
-          dataDisks: S.optional(ComputeVmPropertiesDataDisksList),
+          dataDiskIds: S.optional(__S(40)),
+          dataDisks: S.optional(__S(172)),
         }),
       ).annotate({ identifier: "ComputeVmProperties" });
     case 6:
-      return S.Array(DataDiskProperties);
+      return S.Array(__S(38));
     case 7:
-      return S.Array(ScheduleCreationParameter);
+      return S.Array(__S(99));
   }
 }
 function __c22(j: number): any {
@@ -11338,20 +9384,20 @@ function __c22(j: number): any {
           labSubnetName: S.optional(S.String),
           labVirtualNetworkId: S.optional(S.String),
           disallowPublicIpAddress: S.optional(S.Boolean),
-          artifacts: S.optional(LabVirtualMachinePropertiesArtifactsList),
-          artifactDeploymentStatus: S.optional(ArtifactDeploymentStatusProperties),
-          galleryImageReference: S.optional(GalleryImageReference),
+          artifacts: S.optional(__S(6)),
+          artifactDeploymentStatus: S.optional(__S(168)),
+          galleryImageReference: S.optional(__S(33)),
           planId: S.optional(S.String),
-          computeVm: S.optional(ComputeVmProperties),
-          networkInterface: S.optional(NetworkInterfaceProperties),
-          applicableSchedule: S.optional(ApplicableSchedule),
+          computeVm: S.optional(__S(173)),
+          networkInterface: S.optional(__S(37)),
+          applicableSchedule: S.optional(__S(153)),
           expirationDate: S.optional(S.String),
           allowClaim: S.optional(S.Boolean),
           storageType: S.optional(S.String),
-          virtualMachineCreationSource: S.optional(VirtualMachineCreationSource),
+          virtualMachineCreationSource: S.optional(S.String),
           environmentId: S.optional(S.String),
-          dataDiskParameters: S.optional(LabVirtualMachinePropertiesDataDiskParametersList),
-          scheduleParameters: S.optional(LabVirtualMachinePropertiesScheduleParametersList),
+          dataDiskParameters: S.optional(__S(174)),
+          scheduleParameters: S.optional(__S(175)),
           lastKnownPowerState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -11365,9 +9411,9 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabVirtualMachineProperties,
-          tags: S.optional(GetVirtualMachineResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(176),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -11439,11 +9485,11 @@ function __c22(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           labSubnetName: S.optional(S.String),
-          allowPublicIp: S.optional(UsagePermissionType),
+          allowPublicIp: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
     case 7:
-      return S.Array(Subnet);
+      return S.Array(__S(182));
   }
 }
 function __c23(j: number): any {
@@ -11456,20 +9502,20 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "ExternalSubnet" });
     case 1:
-      return S.Array(ExternalSubnet);
+      return S.Array(__S(184));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          transportProtocol: S.optional(TransportProtocol),
+          transportProtocol: S.optional(S.String),
           backendPort: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Port" });
     case 3:
-      return S.Array(Port);
+      return S.Array(__S(186));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allowedPorts: S.optional(SubnetSharedPublicIpAddressConfigurationAllowedPortsList),
+          allowedPorts: S.optional(__S(187)),
         }),
       ).annotate({
         identifier: "SubnetSharedPublicIpAddressConfiguration",
@@ -11479,22 +9525,22 @@ function __c23(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           labSubnetName: S.optional(S.String),
-          useInVmCreationPermission: S.optional(UsagePermissionType),
-          usePublicIpAddressPermission: S.optional(UsagePermissionType),
-          sharedPublicIpAddressConfiguration: S.optional(SubnetSharedPublicIpAddressConfiguration),
+          useInVmCreationPermission: S.optional(S.String),
+          usePublicIpAddressPermission: S.optional(S.String),
+          sharedPublicIpAddressConfiguration: S.optional(__S(188)),
           virtualNetworkPoolName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubnetOverride" });
     case 6:
-      return S.Array(SubnetOverride);
+      return S.Array(__S(189));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allowedSubnets: S.optional(VirtualNetworkPropertiesAllowedSubnetsList),
+          allowedSubnets: S.optional(__S(183)),
           description: S.optional(S.String),
           externalProviderResourceId: S.optional(S.String),
-          externalSubnets: S.optional(VirtualNetworkPropertiesExternalSubnetsList),
-          subnetOverrides: S.optional(VirtualNetworkPropertiesSubnetOverridesList),
+          externalSubnets: S.optional(__S(185)),
+          subnetOverrides: S.optional(__S(190)),
           createdDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
           uniqueIdentifier: S.optional(S.String),
@@ -11510,9 +9556,9 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: VirtualNetworkProperties,
-          tags: S.optional(GetVirtualNetworkResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(191),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -11521,13 +9567,13 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SchedulePropertiesInputStatus),
+          status: S.optional(S.String),
           taskType: S.optional(S.String),
-          weeklyRecurrence: S.optional(WeekDetails),
-          dailyRecurrence: S.optional(DayDetails),
-          hourlyRecurrence: S.optional(HourDetails),
+          weeklyRecurrence: S.optional(__S(41)),
+          dailyRecurrence: S.optional(__S(42)),
+          hourlyRecurrence: S.optional(__S(43)),
           timeZoneId: S.optional(S.String),
-          notificationSettings: S.optional(NotificationSettings),
+          notificationSettings: S.optional(__S(44)),
           targetResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulePropertiesInput" });
@@ -11537,8 +9583,8 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: SchedulePropertiesInput,
-          tags: S.optional(GlobalSchedulesCreateOrUpdateRequestTagsMap),
+          properties: __S(193),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11598,7 +9644,7 @@ function __c24(j: number): any {
         S.Struct({
           title: S.optional(S.String),
           markdown: S.optional(S.String),
-          enabled: S.optional(EnableStatus),
+          enabled: S.optional(S.String),
           expirationDate: S.optional(S.String),
           expired: S.optional(S.Boolean),
         }),
@@ -11608,18 +9654,14 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labStorageType: S.optional(LabPropertiesInputLabStorageType),
-          mandatoryArtifactsResourceIdsLinux: S.optional(
-            LabPropertiesInputMandatoryArtifactsResourceIdsLinuxList,
-          ),
-          mandatoryArtifactsResourceIdsWindows: S.optional(
-            LabPropertiesInputMandatoryArtifactsResourceIdsWindowsList,
-          ),
-          premiumDataDisks: S.optional(PremiumDataDisk),
-          environmentPermission: S.optional(EnvironmentPermission),
-          announcement: S.optional(LabAnnouncementPropertiesInput),
-          support: S.optional(LabSupportProperties),
-          extendedProperties: S.optional(LabPropertiesInputExtendedPropertiesMap),
+          labStorageType: S.optional(S.String),
+          mandatoryArtifactsResourceIdsLinux: S.optional(__S(40)),
+          mandatoryArtifactsResourceIdsWindows: S.optional(__S(40)),
+          premiumDataDisks: S.optional(S.String),
+          environmentPermission: S.optional(S.String),
+          announcement: S.optional(__S(198)),
+          support: S.optional(__S(132)),
+          extendedProperties: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "LabPropertiesInput" });
   }
@@ -11632,8 +9674,8 @@ function __c25(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: LabPropertiesInput,
-          tags: S.optional(LabsCreateOrUpdateRequestTagsMap),
+          properties: __S(199),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11652,9 +9694,9 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabProperties,
-          tags: S.optional(LabsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(133),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -11707,11 +9749,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListArmTemplatesRequest" });
     case 5:
-      return S.Array(ArmTemplate);
+      return S.Array(__S(112));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: ArmTemplateListValueList,
+          value: __S(205),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArmTemplateList" });
@@ -11740,11 +9782,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Artifact);
+      return S.Array(__S(115));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ArtifactListValueList,
+          value: __S(208),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactList" });
@@ -11775,18 +9817,18 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ArtifactSourceProperties,
-          tags: S.optional(ArtifactSourceTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(12),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactSource" });
     case 4:
-      return S.Array(ArtifactSource);
+      return S.Array(__S(211));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ArtifactSourceListValueList,
+          value: __S(212),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactSourceList" });
@@ -11810,7 +9852,7 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomImagesRequest" });
     case 7:
-      return S.Array(CustomImage);
+      return S.Array(__S(120));
   }
 }
 function __c27(j: number): any {
@@ -11818,7 +9860,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: CustomImageListValueList,
+          value: __S(215),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomImageList" });
@@ -11843,11 +9885,11 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListDisksRequest" });
     case 2:
-      return S.Array(Disk);
+      return S.Array(__S(122));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: DiskListValueList,
+          value: __S(218),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskList" });
@@ -11872,11 +9914,11 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 5:
-      return S.Array(DtlEnvironment);
+      return S.Array(__S(124));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: DtlEnvironmentListValueList,
+          value: __S(221),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DtlEnvironmentList" });
@@ -11904,11 +9946,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Formula);
+      return S.Array(__S(126));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: FormulaListValueList,
+          value: __S(224),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FormulaList" });
@@ -11937,7 +9979,7 @@ function __c28(j: number): any {
           author: S.optional(S.String),
           createdDate: S.optional(S.String),
           description: S.optional(S.String),
-          imageReference: S.optional(GalleryImageReference),
+          imageReference: S.optional(__S(33)),
           icon: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           planId: S.optional(S.String),
@@ -11950,18 +9992,18 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: GalleryImageProperties,
-          tags: S.optional(GalleryImageTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(227),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GalleryImage" });
     case 5:
-      return S.Array(GalleryImage);
+      return S.Array(__S(228));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: GalleryImageListValueList,
+          value: __S(229),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GalleryImageList" });
@@ -11990,11 +10032,11 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Schedule);
+      return S.Array(__S(147));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ScheduleListValueList,
+          value: __S(232),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduleList" });
@@ -12045,18 +10087,18 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabProperties,
-          tags: S.optional(LabTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(133),
+          tags: S.optional(__S(236)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "Lab" });
     case 6:
-      return S.Array(Lab);
+      return S.Array(__S(237));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: LabListValueList,
+          value: __S(238),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabList" });
@@ -12105,11 +10147,11 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "LabVhd" });
     case 3:
-      return S.Array(LabVhd);
+      return S.Array(__S(242));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: LabVhdListValueList,
+          value: __S(243),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabVhdList" });
@@ -12140,14 +10182,14 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NotificationChannelProperties,
-          tags: S.optional(NotificationChannelTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(138),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationChannel" });
     case 7:
-      return S.Array(NotificationChannel);
+      return S.Array(__S(246));
   }
 }
 function __c31(j: number): any {
@@ -12155,7 +10197,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: NotificationChannelListValueList,
+          value: __S(247),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationChannelList" });
@@ -12180,11 +10222,11 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListPoliciesRequest" });
     case 2:
-      return S.Array(Policy);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: PolicyListValueList,
+          value: __S(250),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyList" });
@@ -12215,13 +10257,13 @@ function __c31(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(253)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(254));
   }
 }
 function __c32(j: number): any {
@@ -12229,7 +10271,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListProviderOperationsResponseValueList),
+          value: S.optional(__S(255)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -12293,11 +10335,11 @@ function __c32(j: number): any {
         ),
       ).annotate({ identifier: "ListSecretsRequest" });
     case 4:
-      return S.Array(Secret);
+      return S.Array(__S(150));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: SecretListValueList,
+          value: __S(260),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretList" });
@@ -12326,10 +10368,10 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(11)),
           location: S.optional(S.String),
-          tags: S.optional(ListServiceFabricApplicableSchedulesResponseTagsMap),
-          properties: ApplicableScheduleProperties,
+          tags: S.optional(__S(9)),
+          properties: __S(152),
         }),
       ).annotate({
         identifier: "ListServiceFabricApplicableSchedulesResponse",
@@ -12361,11 +10403,11 @@ function __c33(j: number): any {
         identifier: "ListServiceFabricsRequest",
       });
     case 1:
-      return S.Array(ServiceFabric);
+      return S.Array(__S(155));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ServiceFabricListValueList,
+          value: __S(265),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceFabricList" });
@@ -12412,11 +10454,11 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersRequest" });
     case 5:
-      return S.Array(User);
+      return S.Array(__S(166));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: UserListValueList,
+          value: __S(269),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserList" });
@@ -12469,18 +10511,18 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: LabVirtualMachineProperties,
-          tags: S.optional(LabVirtualMachineTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(176),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabVirtualMachine" });
     case 2:
-      return S.Array(LabVirtualMachine);
+      return S.Array(__S(273));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: LabVirtualMachineListValueList,
+          value: __S(274),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabVirtualMachineList" });
@@ -12533,14 +10575,14 @@ function __c34(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: VirtualNetworkProperties,
-          tags: S.optional(VirtualNetworkTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(191),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetwork" });
     case 7:
-      return S.Array(VirtualNetwork);
+      return S.Array(__S(278));
   }
 }
 function __c35(j: number): any {
@@ -12548,7 +10590,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: VirtualNetworkListValueList,
+          value: __S(279),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkList" });
@@ -12559,7 +10601,7 @@ function __c35(j: number): any {
           emailRecipient: S.optional(S.String),
           notificationLocale: S.optional(S.String),
           description: S.optional(S.String),
-          events: S.optional(NotificationChannelPropertiesInputEventsList),
+          events: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "NotificationChannelPropertiesInput",
@@ -12571,8 +10613,8 @@ function __c35(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: NotificationChannelPropertiesInput,
-          tags: S.optional(NotificationChannelsCreateOrUpdateRequestTagsMap),
+          properties: __S(281),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12592,7 +10634,7 @@ function __c35(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          eventName: S.optional(NotificationChannelEventType),
+          eventName: S.optional(S.String),
           jsonPayload: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12609,11 +10651,11 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          status: S.optional(PolicyStatus),
-          factName: S.optional(PolicyFactName),
+          status: S.optional(S.String),
+          factName: S.optional(S.String),
           factData: S.optional(S.String),
           threshold: S.optional(S.String),
-          evaluatorType: S.optional(PolicyEvaluatorType),
+          evaluatorType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyPropertiesInput" });
     case 5:
@@ -12624,8 +10666,8 @@ function __c35(j: number): any {
           labName: S.String.pipe(T.Label()),
           policySetName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: PolicyPropertiesInput,
-          tags: S.optional(PoliciesCreateOrUpdateRequestTagsMap),
+          properties: __S(284),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12644,9 +10686,9 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: PolicyProperties,
-          tags: S.optional(PoliciesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(144),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -12668,7 +10710,7 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EvaluatePoliciesProperties);
+      return S.Array(__S(287));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12676,7 +10718,7 @@ function __c36(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          policies: S.optional(PolicySetsEvaluatePoliciesRequestPoliciesList),
+          policies: S.optional(__S(288)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12689,20 +10731,20 @@ function __c36(j: number): any {
         identifier: "PolicySetsEvaluatePoliciesRequest",
       });
     case 2:
-      return S.Array(PolicyViolation);
+      return S.Array(__S(141));
     case 3:
       return S.suspend(() =>
         S.Struct({
           hasError: S.optional(S.Boolean),
-          policyViolations: S.optional(PolicySetResultPolicyViolationsList),
+          policyViolations: S.optional(__S(290)),
         }),
       ).annotate({ identifier: "PolicySetResult" });
     case 4:
-      return S.Array(PolicySetResult);
+      return S.Array(__S(291));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(EvaluatePoliciesResponseResultsList),
+          results: S.optional(__S(292)),
         }),
       ).annotate({ identifier: "EvaluatePoliciesResponse" });
     case 6:
@@ -12771,8 +10813,8 @@ function __c37(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: SchedulePropertiesInput,
-          tags: S.optional(SchedulesCreateOrUpdateRequestTagsMap),
+          properties: __S(193),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12799,8 +10841,8 @@ function __c37(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: SecretPropertiesInput,
-          tags: S.optional(SecretsCreateOrUpdateRequestTagsMap),
+          properties: __S(298),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12819,9 +10861,9 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SecretProperties,
-          tags: S.optional(SecretsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(149),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -12836,8 +10878,8 @@ function __c37(j: number): any {
           userName: S.String.pipe(T.Label()),
           serviceFabricName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: SchedulePropertiesInput,
-          tags: S.optional(ServiceFabricSchedulesCreateOrUpdateRequestTagsMap),
+          properties: __S(193),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12867,8 +10909,8 @@ function __c37(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: ServiceFabricPropertiesInput,
-          tags: S.optional(ServiceFabricsCreateOrUpdateRequestTagsMap),
+          properties: __S(302),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12891,9 +10933,9 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ServiceFabricProperties,
-          tags: S.optional(ServiceFabricsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(154),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -12912,10 +10954,10 @@ function __c38(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(ServiceRunnersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
-          identity: S.optional(IdentityProperties),
-          properties: S.optional(ServiceRunnerProperties),
+          identity: S.optional(__S(160)),
+          properties: S.optional(__S(305)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12933,10 +10975,10 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ServiceRunnersCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
-          identity: S.optional(IdentityProperties),
+          identity: S.optional(__S(160)),
         }),
       ).annotate({
         identifier: "ServiceRunnersCreateOrUpdateResponse",
@@ -13042,7 +11084,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateArtifactSourceRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13061,7 +11103,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateCustomImageRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13079,7 +11121,7 @@ function __c39(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateDiskRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13097,7 +11139,7 @@ function __c39(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateEnvironmentRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13114,7 +11156,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateFormulasRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13130,7 +11172,7 @@ function __c39(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateGlobalScheduleRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13148,7 +11190,7 @@ function __c39(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateLabRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13169,7 +11211,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNotificationChannelRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13189,7 +11231,7 @@ function __c40(j: number): any {
           labName: S.String.pipe(T.Label()),
           policySetName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdatePolicyRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13206,7 +11248,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateScheduleRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13224,7 +11266,7 @@ function __c40(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSecretRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13242,7 +11284,7 @@ function __c40(j: number): any {
           labName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateServiceFabricRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13263,7 +11305,7 @@ function __c40(j: number): any {
           userName: S.String.pipe(T.Label()),
           serviceFabricName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateServiceFabricScheduleRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13282,7 +11324,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateUserRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13299,7 +11341,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateVirtualMachineRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13323,7 +11365,7 @@ function __c41(j: number): any {
           labName: S.String.pipe(T.Label()),
           virtualMachineName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateVirtualMachineScheduleRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13342,7 +11384,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateVirtualNetworkRequestTagsMap),
+          tags: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13357,8 +11399,8 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(UserIdentity),
-          secretStore: S.optional(UserSecretStore),
+          identity: S.optional(__S(163)),
+          secretStore: S.optional(__S(164)),
         }),
       ).annotate({ identifier: "UserPropertiesInput" });
     case 3:
@@ -13368,8 +11410,8 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: UserPropertiesInput,
-          tags: S.optional(UsersCreateOrUpdateRequestTagsMap),
+          properties: __S(330),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -13388,9 +11430,9 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: UserProperties,
-          tags: S.optional(UsersCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          properties: __S(165),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -13404,8 +11446,8 @@ function __c41(j: number): any {
           labName: S.String.pipe(T.Label()),
           virtualMachineName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: SchedulePropertiesInput,
-          tags: S.optional(VirtualMachineSchedulesCreateOrUpdateRequestTagsMap),
+          properties: __S(193),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -13419,7 +11461,7 @@ function __c41(j: number): any {
         identifier: "VirtualMachineSchedulesCreateOrUpdateRequest",
       });
     case 6:
-      return S.Array(ScheduleCreationParameterInput);
+      return S.Array(__S(46));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -13436,16 +11478,16 @@ function __c41(j: number): any {
           labSubnetName: S.optional(S.String),
           labVirtualNetworkId: S.optional(S.String),
           disallowPublicIpAddress: S.optional(S.Boolean),
-          artifacts: S.optional(LabVirtualMachinePropertiesInputArtifactsList),
-          galleryImageReference: S.optional(GalleryImageReference),
+          artifacts: S.optional(__S(6)),
+          galleryImageReference: S.optional(__S(33)),
           planId: S.optional(S.String),
-          networkInterface: S.optional(NetworkInterfaceProperties),
+          networkInterface: S.optional(__S(37)),
           expirationDate: S.optional(S.String),
           allowClaim: S.optional(S.Boolean),
           storageType: S.optional(S.String),
           environmentId: S.optional(S.String),
-          dataDiskParameters: S.optional(LabVirtualMachinePropertiesInputDataDiskParametersList),
-          scheduleParameters: S.optional(LabVirtualMachinePropertiesInputScheduleParametersList),
+          dataDiskParameters: S.optional(__S(174)),
+          scheduleParameters: S.optional(__S(334)),
         }),
       ).annotate({
         identifier: "LabVirtualMachinePropertiesInput",
@@ -13461,8 +11503,8 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: LabVirtualMachinePropertiesInput,
-          tags: S.optional(VirtualMachinesCreateOrUpdateRequestTagsMap),
+          properties: __S(335),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -13478,10 +11520,10 @@ function __c42(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedSubnets: S.optional(VirtualNetworkPropertiesInputAllowedSubnetsList),
+          allowedSubnets: S.optional(__S(183)),
           description: S.optional(S.String),
           externalProviderResourceId: S.optional(S.String),
-          subnetOverrides: S.optional(VirtualNetworkPropertiesInputSubnetOverridesList),
+          subnetOverrides: S.optional(__S(190)),
         }),
       ).annotate({
         identifier: "VirtualNetworkPropertiesInput",
@@ -13493,8 +11535,8 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           labName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: VirtualNetworkPropertiesInput,
-          tags: S.optional(VirtualNetworksCreateOrUpdateRequestTagsMap),
+          properties: __S(337),
+          tags: S.optional(__S(9)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -13507,5 +11549,100 @@ function __c42(j: number): any {
       ).annotate({
         identifier: "VirtualNetworksCreateOrUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
   }
 }

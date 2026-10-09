@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,34 +65,17 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 export interface BatchDeleteMessagesRequest {
   /** The IDs of the messages to delete. */
   ids?: StringList;
 }
-const BatchDeleteMessagesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchDeleteMessagesRequest>;
-
 export interface BatchDeleteUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: BatchDeleteMessagesRequest;
 }
-const BatchDeleteUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchDeleteUsersMessagesRequest>;
-
 export interface BatchDeleteUsersMessagesResponse {}
-const BatchDeleteUsersMessagesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BatchDeleteUsersMessagesResponse>;
-
 /** Field values for a classification label. */
 export interface ClassificationLabelFieldValue {
   /** Required. The field ID for the Classification Label Value. Maps to the ID field of the Google Drive `Label.Field` object. */
@@ -98,17 +83,7 @@ export interface ClassificationLabelFieldValue {
   /** Selection choice ID for the selection option. Should only be set if the field type is `SELECTION` in the Google Drive `Label.Field` object. Maps to the id field of the Google Drive `Label.Field.SelectionOptions` resource. */
   selection?: string;
 }
-const ClassificationLabelFieldValue = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ClassificationLabelFieldValue>;
-
 export type ClassificationLabelFieldValueList = Array<ClassificationLabelFieldValue>;
-const ClassificationLabelFieldValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ClassificationLabelFieldValueList>;
-
 /** Classification Labels applied to the email message. Classification Labels are different from Gmail inbox labels. Only used for Google Workspace accounts. [Learn more about classification labels](https://support.google.com/a/answer/9292382). */
 export interface ClassificationLabelValue {
   /** Required. The canonical or raw alphanumeric classification label ID. Maps to the ID field of the Google Drive Label resource. */
@@ -116,17 +91,7 @@ export interface ClassificationLabelValue {
   /** Field values for the given classification label ID. */
   fields?: ClassificationLabelFieldValueList;
 }
-const ClassificationLabelValue = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ClassificationLabelValue>;
-
 export type ClassificationLabelValueList = Array<ClassificationLabelValue>;
-const ClassificationLabelValueList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ClassificationLabelValueList>;
-
 export interface BatchModifyMessagesRequest {
   /** The IDs of the messages to modify. There is a limit of 1000 ids per request. */
   ids?: StringList;
@@ -139,40 +104,20 @@ export interface BatchModifyMessagesRequest {
   /** A list of label IDs to add to messages. */
   addLabelIds?: StringList;
 }
-const BatchModifyMessagesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchModifyMessagesRequest>;
-
 export interface BatchModifyUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: BatchModifyMessagesRequest;
 }
-const BatchModifyUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchModifyUsersMessagesRequest>;
-
 export interface BatchModifyUsersMessagesResponse {}
-const BatchModifyUsersMessagesResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<BatchModifyUsersMessagesResponse>;
-
 export interface MessagePartHeader {
   /** The value of the header after the `:` separator. For example, `someuser@example.com`. */
   value?: string;
   /** The name of the header before the `:` separator. For example, `To`. */
   name?: string;
 }
-const MessagePartHeader = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MessagePartHeader>;
-
 export type MessagePartHeaderList = Array<MessagePartHeader>;
-const MessagePartHeaderList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MessagePartHeaderList>;
-
 /** The body of a single MIME message part. */
 export interface MessagePartBody {
   /** When present, contains the ID of an external attachment that can be retrieved in a separate `messages.attachments.get` request. When not present, the entire content of the message part body is contained in the data field. */
@@ -182,11 +127,7 @@ export interface MessagePartBody {
   /** The body data of a MIME message part as a base64url encoded string. May be empty for MIME container types that have no message body or when the body data is sent as a separate attachment. An attachment ID is present if the body data is contained in a separate attachment. */
   data?: string;
 }
-const MessagePartBody = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MessagePartBody>;
-
 export type MessagePartList = Array<MessagePart>;
-const MessagePartList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<MessagePartList>;
-
 /** A single MIME message part. */
 export interface MessagePart {
   /** List of headers on this message part. For the top-level message part, representing the entire message payload, it will contain the standard RFC 2822 email headers such as `To`, `From`, and `Subject`. */
@@ -202,8 +143,6 @@ export interface MessagePart {
   /** The immutable ID of the message part. */
   partId?: string;
 }
-const MessagePart = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<MessagePart>;
-
 /** An email message. */
 export interface Message {
   /** The ID of the thread the message belongs to. To add a message or draft to a thread, the following criteria must be met: 1. The requested `threadId` must be specified on the `Message` or `Draft.Message` you supply with your request. 2. The `References` and `In-Reply-To` headers must be set in compliance with the [RFC 2822](https://tools.ietf.org/html/rfc2822) standard. 3. The `Subject` headers must match. */
@@ -227,8 +166,6 @@ export interface Message {
   /** The parsed email structure in the message parts. */
   payload?: MessagePart;
 }
-const Message = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Message>;
-
 /** A draft email in the user's mailbox. */
 export interface Draft {
   /** The message content of the draft. */
@@ -236,36 +173,21 @@ export interface Draft {
   /** The immutable ID of the draft. */
   id?: string;
 }
-const Draft = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Draft>;
-
 export interface CreateUsersDraftsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: Draft;
 }
-const CreateUsersDraftsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateUsersDraftsRequest>;
-
 export type LabelMessageListVisibilityEnum = "show" | "hide";
-const LabelMessageListVisibilityEnum = S.String;
-
 export type LabelTypeEnum = "system" | "user";
-const LabelTypeEnum = S.String;
-
 export type LabelLabelListVisibilityEnum = "labelShow" | "labelShowIfUnread" | "labelHide";
-const LabelLabelListVisibilityEnum = S.String;
-
 export interface LabelColor {
   /** The background color represented as hex string #RRGGBB (ex #000000). This field is required in order to set the color of a label. Only the following predefined set of color values are allowed: \#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018 */
   backgroundColor?: string;
   /** The text color of the label, represented as hex string. This field is required in order to set the color of a label. Only the following predefined set of color values are allowed: \#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018 */
   textColor?: string;
 }
-const LabelColor = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LabelColor>;
-
 /** Labels are used to categorize messages and threads within the user's mailbox. The maximum number of labels supported for a user's mailbox is 10,000. */
 export interface Label {
   /** The number of unread threads with the label. */
@@ -289,19 +211,12 @@ export interface Label {
   /** The color to assign to the label. Color is only available for labels that have their `type` set to `user`. */
   color?: LabelColor;
 }
-const Label = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Label>;
-
 export interface CreateUsersLabelsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: Label;
 }
-const CreateUsersLabelsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateUsersLabelsRequest>;
-
 /** The configuration of a CSE identity that uses different key pairs for signing and encryption. */
 export interface SignAndEncryptKeyPairs {
   /** The ID of the CseKeyPair that signs outgoing mail. */
@@ -309,11 +224,6 @@ export interface SignAndEncryptKeyPairs {
   /** The ID of the CseKeyPair that encrypts signed outgoing mail. */
   encryptionKeyPairId?: string;
 }
-const SignAndEncryptKeyPairs = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SignAndEncryptKeyPairs>;
-
 /** The client-side encryption (CSE) configuration for the email address of an authenticated user. Gmail uses CSE configurations to save drafts of client-side encrypted email messages, and to sign and send encrypted email messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export interface CseIdentity {
   /** If a key pair is associated, the ID of the key pair, CseKeyPair. */
@@ -323,32 +233,19 @@ export interface CseIdentity {
   /** The configuration of a CSE identity that uses different key pairs for signing and encryption. */
   signAndEncryptKeyPairs?: SignAndEncryptKeyPairs;
 }
-const CseIdentity = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CseIdentity>;
-
 export interface CreateUsersSettingsCseIdentitiesRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
   /** Request body */
   body?: CseIdentity;
 }
-const CreateUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateUsersSettingsCseIdentitiesRequest>;
-
 export type CreateUsersSettingsCseKeypairsChainValidationEnum = "all" | "none";
-const CreateUsersSettingsCseKeypairsChainValidationEnum = S.String;
-
 export type CseKeyPairEnablementStateEnum = "stateUnspecified" | "enabled" | "disabled";
-const CseKeyPairEnablementStateEnum = S.String;
-
 /** Metadata for hardware keys. If [hardware key encryption](https://support.google.com/a/answer/14153163) is set up for the Google Workspace organization, users can optionally store their private key on their smart card and use it to sign and decrypt email messages in Gmail by inserting their smart card into a reader attached to their Windows device. */
 export interface HardwareKeyMetadata {
   /** Description about the hardware key. */
   description?: string;
 }
-const HardwareKeyMetadata = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<HardwareKeyMetadata>;
-
 /** Metadata for a cryptographic key managed by an external key access control list service. For details about managing key access, see [Google Workspace CSE API Reference](https://developers.google.com/workspace/cse/reference). */
 export interface KaclsKeyMetadata {
   /** The URI of the key access control list service that manages the key. */
@@ -356,8 +253,6 @@ export interface KaclsKeyMetadata {
   /** Opaque data generated and used by the key access control list service. */
   kaclsData?: string;
 }
-const KaclsKeyMetadata = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<KaclsKeyMetadata>;
-
 /** Metadata for a private key instance. */
 export interface CsePrivateKeyMetadata {
   /** Output only. The immutable ID for the private key metadata instance. */
@@ -367,17 +262,7 @@ export interface CsePrivateKeyMetadata {
   /** Metadata for a private key instance managed by an external key access control list service. The maximum size of the KACLS data field is 8 KiB. */
   kaclsKeyMetadata?: KaclsKeyMetadata;
 }
-const CsePrivateKeyMetadata = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CsePrivateKeyMetadata>;
-
 export type CsePrivateKeyMetadataList = Array<CsePrivateKeyMetadata>;
-const CsePrivateKeyMetadataList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CsePrivateKeyMetadataList>;
-
 /** A client-side encryption S/MIME key pair, which is comprised of a public key, its certificate chain, and metadata for its paired private key. Gmail uses the key pair to complete the following tasks: - Sign outgoing client-side encrypted messages. - Save and reopen drafts of client-side encrypted messages. - Save and reopen sent messages. - Decrypt incoming or archived S/MIME messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export interface CseKeyPair {
   /** Output only. The current state of the key pair. */
@@ -395,8 +280,6 @@ export interface CseKeyPair {
   /** Metadata for instances of this key pair's private key. */
   privateKeyMetadata?: CsePrivateKeyMetadataList;
 }
-const CseKeyPair = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CseKeyPair>;
-
 export interface CreateUsersSettingsCseKeypairsRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
@@ -405,19 +288,12 @@ export interface CreateUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: CseKeyPair;
 }
-const CreateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateUsersSettingsCseKeypairsRequest>;
-
 export type DelegateVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
   | "pending"
   | "rejected"
   | "expired";
-const DelegateVerificationStatusEnum = S.String;
-
 /** Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add contacts, for the delegator's account. See "Set up mail delegation" for more information about delegates. */
 export interface Delegate {
   /** The email address of the delegate. */
@@ -425,22 +301,13 @@ export interface Delegate {
   /** Indicates whether this address has been verified and can act as a delegate for the account. Read-only. */
   verificationStatus?: DelegateVerificationStatusEnum | (string & {});
 }
-const Delegate = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Delegate>;
-
 export interface CreateUsersSettingsDelegatesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: Delegate;
 }
-const CreateUsersSettingsDelegatesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateUsersSettingsDelegatesRequest>;
-
 export type FilterCriteriaSizeComparisonEnum = "unspecified" | "smaller" | "larger";
-const FilterCriteriaSizeComparisonEnum = S.String;
-
 /** Message matching criteria. */
 export interface FilterCriteria {
   /** The size of the entire RFC822 message in bytes, including all headers and attachments. */
@@ -462,8 +329,6 @@ export interface FilterCriteria {
   /** Only return messages not matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. */
   negatedQuery?: string;
 }
-const FilterCriteria = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<FilterCriteria>;
-
 /** A set of actions to perform on a message. */
 export interface FilterAction {
   /** List of labels to remove from the message. */
@@ -473,8 +338,6 @@ export interface FilterAction {
   /** Email address that the message should be forwarded to. This effectively redirects the message to the address specified in this field, maintaining the original sender in the "From" field. */
   forward?: string;
 }
-const FilterAction = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<FilterAction>;
-
 /** Resource definition for Gmail filters. Filters apply to specific messages instead of an entire email thread. */
 export interface Filter {
   /** The server assigned ID of the filter. */
@@ -484,25 +347,16 @@ export interface Filter {
   /** Action that the filter performs. */
   action?: FilterAction;
 }
-const Filter = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Filter>;
-
 export interface CreateUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: Filter;
 }
-const CreateUsersSettingsFiltersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateUsersSettingsFiltersRequest>;
-
 export type ForwardingAddressVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
   | "pending";
-const ForwardingAddressVerificationStatusEnum = S.String;
-
 /** Settings for a forwarding address. */
 export interface ForwardingAddress {
   /** Indicates whether this address has been verified and is usable for forwarding. Read-only. */
@@ -510,25 +364,14 @@ export interface ForwardingAddress {
   /** An email address to which messages can be forwarded. */
   forwardingEmail?: string;
 }
-const ForwardingAddress = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ForwardingAddress>;
-
 export interface CreateUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: ForwardingAddress;
 }
-const CreateUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateUsersSettingsForwardingAddressesRequest>;
-
 export type SendAsVerificationStatusEnum = "verificationStatusUnspecified" | "accepted" | "pending";
-const SendAsVerificationStatusEnum = S.String;
-
 export type SmtpMsaSecurityModeEnum = "securityModeUnspecified" | "none" | "ssl" | "starttls";
-const SmtpMsaSecurityModeEnum = S.String;
-
 /** Configuration for communication with an SMTP service. */
 export interface SmtpMsa {
   /** The protocol that will be used to secure communication with the SMTP service. Required. */
@@ -542,8 +385,6 @@ export interface SmtpMsa {
   /** The port of the SMTP service. Required. */
   port?: number;
 }
-const SmtpMsa = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SmtpMsa>;
-
 /** Settings associated with a send-as alias, which can be either the primary login address associated with the account or a custom "from" address. Send-as aliases correspond to the "Send Mail As" feature in the web interface. The send-as alias must be a valid email address. */
 export interface SendAs {
   /** Whether Gmail should treat this address as an alias for the user's primary email address. This setting only applies to custom "from" aliases. */
@@ -565,141 +406,68 @@ export interface SendAs {
   /** An optional HTML signature that is included in messages composed with this alias in the Gmail web UI. This signature is added to new emails only. */
   signature?: string;
 }
-const SendAs = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SendAs>;
-
 export interface CreateUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: SendAs;
 }
-const CreateUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateUsersSettingsSendAsRequest>;
-
 export interface DeleteUsersDraftsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** The ID of the draft to delete. */
   id: string;
 }
-const DeleteUsersDraftsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteUsersDraftsRequest>;
-
 export interface DeleteUsersDraftsResponse {}
-const DeleteUsersDraftsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteUsersDraftsResponse>;
-
 export interface DeleteUsersLabelsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** The ID of the label to delete. */
   id: string;
 }
-const DeleteUsersLabelsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteUsersLabelsRequest>;
-
 export interface DeleteUsersLabelsResponse {}
-const DeleteUsersLabelsResponse =
-  DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersLabelsResponse>;
-
 export interface DeleteUsersMessagesRequest {
   /** The ID of the message to delete. */
   id: string;
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const DeleteUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteUsersMessagesRequest>;
-
 export interface DeleteUsersMessagesResponse {}
-const DeleteUsersMessagesResponse =
-  DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersMessagesResponse>;
-
 export interface DeleteUsersSettingsCseIdentitiesRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
   /** The primary email address associated with the client-side encryption identity configuration that's removed. */
   cseEmailAddress: string;
 }
-const DeleteUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteUsersSettingsCseIdentitiesRequest>;
-
 export interface DeleteUsersSettingsCseIdentitiesResponse {}
-const DeleteUsersSettingsCseIdentitiesResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>;
-
 export interface DeleteUsersSettingsDelegatesRequest {
   /** The email address of the user to be removed as a delegate. */
   delegateEmail: string;
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const DeleteUsersSettingsDelegatesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DeleteUsersSettingsDelegatesRequest>;
-
 export interface DeleteUsersSettingsDelegatesResponse {}
-const DeleteUsersSettingsDelegatesResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsDelegatesResponse>;
-
 export interface DeleteUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** The ID of the filter to be deleted. */
   id: string;
 }
-const DeleteUsersSettingsFiltersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteUsersSettingsFiltersRequest>;
-
 export interface DeleteUsersSettingsFiltersResponse {}
-const DeleteUsersSettingsFiltersResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsFiltersResponse>;
-
 export interface DeleteUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** The forwarding address to be deleted. */
   forwardingEmail: string;
 }
-const DeleteUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteUsersSettingsForwardingAddressesRequest>;
-
 export interface DeleteUsersSettingsForwardingAddressesResponse {}
-const DeleteUsersSettingsForwardingAddressesResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>;
-
 export interface DeleteUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** The send-as alias to be deleted. */
   sendAsEmail: string;
 }
-const DeleteUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteUsersSettingsSendAsRequest>;
-
 export interface DeleteUsersSettingsSendAsResponse {}
-const DeleteUsersSettingsSendAsResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsSendAsResponse>;
-
 export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
   /** The immutable ID for the SmimeInfo. */
   id: string;
@@ -708,35 +476,16 @@ export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const DeleteUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>;
-
 export interface DeleteUsersSettingsSendAsSmimeInfoResponse {}
-const DeleteUsersSettingsSendAsSmimeInfoResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>;
-
 export interface DeleteUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** ID of the Thread to delete. */
   id: string;
 }
-const DeleteUsersThreadsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteUsersThreadsRequest>;
-
 export interface DeleteUsersThreadsResponse {}
-const DeleteUsersThreadsResponse =
-  DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersThreadsResponse>;
-
 /** Requests to turn off a client-side encryption key pair. */
 export interface DisableCseKeyPairRequest {}
-const DisableCseKeyPairRequest =
-  DeleteUsersDraftsResponse as any as S.Schema<DisableCseKeyPairRequest>;
-
 export interface DisableUsersSettingsCseKeypairsRequest {
   /** The identifier of the key pair to turn off. */
   keyPairId: string;
@@ -745,11 +494,6 @@ export interface DisableUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: DisableCseKeyPairRequest;
 }
-const DisableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DisableUsersSettingsCseKeypairsRequest>;
-
 /** Requests to turn on a client-side encryption key pair. */
 export type EnableCseKeyPairRequest = DisableCseKeyPairRequest;
 export interface EnableUsersSettingsCseKeypairsRequest {
@@ -760,28 +504,16 @@ export interface EnableUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: DisableCseKeyPairRequest;
 }
-const EnableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<EnableUsersSettingsCseKeypairsRequest>;
-
 export interface GetAutoForwardingUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetAutoForwardingUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetAutoForwardingUsersSettingsRequest>;
-
 export type AutoForwardingDispositionEnum =
   | "dispositionUnspecified"
   | "leaveInInbox"
   | "archive"
   | "trash"
   | "markRead";
-const AutoForwardingDispositionEnum = S.String;
-
 /** Auto-forwarding settings for an account. */
 export interface AutoForwarding {
   /** Email address to which all incoming messages are forwarded. This email address must be a verified member of the forwarding addresses. */
@@ -791,24 +523,15 @@ export interface AutoForwarding {
   /** The state that a message should be left in after it has been forwarded. */
   disposition?: AutoForwardingDispositionEnum | (string & {});
 }
-const AutoForwarding = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AutoForwarding>;
-
 export interface GetImapUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetImapUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetImapUsersSettingsRequest>;
-
 export type ImapSettingsExpungeBehaviorEnum =
   | "expungeBehaviorUnspecified"
   | "archive"
   | "trash"
   | "deleteForever";
-const ImapSettingsExpungeBehaviorEnum = S.String;
-
 /** IMAP settings for an account. */
 export interface ImapSettings {
   /** Whether IMAP is enabled for the account. */
@@ -820,48 +543,30 @@ export interface ImapSettings {
   /** An optional limit on the number of messages that an IMAP folder may contain. Legal values are 0, 1000, 2000, 5000 or 10000. A value of zero is interpreted to mean that there is no limit. */
   maxFolderSize?: number;
 }
-const ImapSettings = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ImapSettings>;
-
 export interface GetLanguageUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetLanguageUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetLanguageUsersSettingsRequest>;
-
 /** Language settings for an account. These settings correspond to the "Language settings" feature in the web interface. */
 export interface LanguageSettings {
   /** The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example `en-GB`, `fr` or `ja` for British English, French, or Japanese respectively). The set of languages supported by Gmail evolves over time, so please refer to the "Language" dropdown in the Gmail settings for all available options, as described in the language settings help article. For a table of sample values, see [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings). Not all Gmail clients can display the same set of languages. In the case that a user's display language is not available for use on a particular client, said client automatically chooses to display in the closest supported variant (or a reasonable default). */
   displayLanguage?: string;
 }
-const LanguageSettings = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<LanguageSettings>;
-
 export interface GetPopUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetPopUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetPopUsersSettingsRequest>;
-
 export type PopSettingsAccessWindowEnum =
   | "accessWindowUnspecified"
   | "disabled"
   | "fromNowOn"
   | "allMail";
-const PopSettingsAccessWindowEnum = S.String;
-
 export type PopSettingsDispositionEnum =
   | "dispositionUnspecified"
   | "leaveInInbox"
   | "archive"
   | "trash"
   | "markRead";
-const PopSettingsDispositionEnum = S.String;
-
 /** POP settings for an account. */
 export interface PopSettings {
   /** The range of messages which are accessible via POP. */
@@ -869,17 +574,10 @@ export interface PopSettings {
   /** The action that will be executed on a message after it has been fetched via POP. */
   disposition?: PopSettingsDispositionEnum | (string & {});
 }
-const PopSettings = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<PopSettings>;
-
 export interface GetProfileUsersRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetProfileUsersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetProfileUsersRequest>;
-
 /** Profile for a Gmail user. */
 export interface Profile {
   /** The user's email address. */
@@ -891,11 +589,7 @@ export interface Profile {
   /** The ID of the mailbox's current history record. */
   historyId?: string;
 }
-const Profile = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Profile>;
-
 export type GetUsersDraftsFormatEnum = "minimal" | "full" | "raw" | "metadata";
-const GetUsersDraftsFormatEnum = S.String;
-
 export interface GetUsersDraftsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -904,25 +598,13 @@ export interface GetUsersDraftsRequest {
   /** The ID of the draft to retrieve. */
   id: string;
 }
-const GetUsersDraftsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetUsersDraftsRequest>;
-
 export interface GetUsersLabelsRequest {
   /** The ID of the label to retrieve. */
   id: string;
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetUsersLabelsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetUsersLabelsRequest>;
-
 export type GetUsersMessagesFormatEnum = "minimal" | "full" | "raw" | "metadata";
-const GetUsersMessagesFormatEnum = S.String;
-
 export interface GetUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -933,11 +615,6 @@ export interface GetUsersMessagesRequest {
   /** The format to return the message in. */
   format?: GetUsersMessagesFormatEnum | (string & {});
 }
-const GetUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetUsersMessagesRequest>;
-
 export interface GetUsersMessagesAttachmentsRequest {
   /** The ID of the attachment. */
   id: string;
@@ -946,77 +623,42 @@ export interface GetUsersMessagesAttachmentsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetUsersMessagesAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetUsersMessagesAttachmentsRequest>;
-
 export interface GetUsersSettingsCseIdentitiesRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
   /** The primary email address associated with the client-side encryption identity configuration that's retrieved. */
   cseEmailAddress: string;
 }
-const GetUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetUsersSettingsCseIdentitiesRequest>;
-
 export interface GetUsersSettingsCseKeypairsRequest {
   /** The identifier of the key pair to retrieve. */
   keyPairId: string;
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
 }
-const GetUsersSettingsCseKeypairsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetUsersSettingsCseKeypairsRequest>;
-
 export interface GetUsersSettingsDelegatesRequest {
   /** The email address of the user whose delegate relationship is to be retrieved. */
   delegateEmail: string;
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetUsersSettingsDelegatesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetUsersSettingsDelegatesRequest>;
-
 export interface GetUsersSettingsFiltersRequest {
   /** The ID of the filter to be fetched. */
   id: string;
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetUsersSettingsFiltersRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetUsersSettingsFiltersRequest>;
-
 export interface GetUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** The forwarding address to be retrieved. */
   forwardingEmail: string;
 }
-const GetUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetUsersSettingsForwardingAddressesRequest>;
-
 export interface GetUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** The send-as alias to be retrieved. */
   sendAsEmail: string;
 }
-const GetUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetUsersSettingsSendAsRequest>;
-
 export interface GetUsersSettingsSendAsSmimeInfoRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -1025,11 +667,6 @@ export interface GetUsersSettingsSendAsSmimeInfoRequest {
   /** The immutable ID for the SmimeInfo. */
   id: string;
 }
-const GetUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetUsersSettingsSendAsSmimeInfoRequest>;
-
 /** An S/MIME email config. */
 export interface SmimeInfo {
   /** When the certificate expires (in milliseconds since epoch). */
@@ -1047,11 +684,7 @@ export interface SmimeInfo {
   /** Encrypted key password, when key is encrypted. */
   encryptedKeyPassword?: string;
 }
-const SmimeInfo = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SmimeInfo>;
-
 export type GetUsersThreadsFormatEnum = "full" | "metadata" | "minimal";
-const GetUsersThreadsFormatEnum = S.String;
-
 export interface GetUsersThreadsRequest {
   /** The ID of the thread to retrieve. */
   id: string;
@@ -1062,14 +695,7 @@ export interface GetUsersThreadsRequest {
   /** The format to return the messages in. */
   format?: GetUsersThreadsFormatEnum | (string & {});
 }
-const GetUsersThreadsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetUsersThreadsRequest>;
-
 export type MessageList = Array<Message>;
-const MessageList = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<MessageList>;
-
 /** A collection of messages representing a conversation. */
 export interface Thread {
   /** A short part of the message text. */
@@ -1081,17 +707,10 @@ export interface Thread {
   /** The unique ID of the thread. */
   id?: string;
 }
-const Thread = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Thread>;
-
 export interface GetVacationUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const GetVacationUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetVacationUsersSettingsRequest>;
-
 /** Vacation auto-reply settings for an account. These settings correspond to the "Vacation responder" feature in the web interface. */
 export interface VacationSettings {
   /** An optional end time for sending auto-replies (epoch ms). When this is specified, Gmail will automatically reply only to messages that it receives before the end time. If both `startTime` and `endTime` are specified, `startTime` must precede `endTime`. */
@@ -1111,11 +730,7 @@ export interface VacationSettings {
   /** An optional start time for sending auto-replies (epoch ms). When this is specified, Gmail will automatically reply only to messages that it receives after the start time. If both `startTime` and `endTime` are specified, `startTime` must precede `endTime`. */
   startTime?: string;
 }
-const VacationSettings = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<VacationSettings>;
-
 export type ImportUsersMessagesInternalDateSourceEnum = "receivedTime" | "dateHeader";
-const ImportUsersMessagesInternalDateSourceEnum = S.String;
-
 export interface ImportUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -1130,14 +745,7 @@ export interface ImportUsersMessagesRequest {
   /** Request body */
   body?: Message;
 }
-const ImportUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ImportUsersMessagesRequest>;
-
 export type InsertUsersMessagesInternalDateSourceEnum = "receivedTime" | "dateHeader";
-const InsertUsersMessagesInternalDateSourceEnum = S.String;
-
 export interface InsertUsersMessagesRequest {
   /** Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. */
   deleted?: boolean;
@@ -1148,11 +756,6 @@ export interface InsertUsersMessagesRequest {
   /** Request body */
   body?: Message;
 }
-const InsertUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<InsertUsersMessagesRequest>;
-
 export interface InsertUsersSettingsSendAsSmimeInfoRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -1161,11 +764,6 @@ export interface InsertUsersSettingsSendAsSmimeInfoRequest {
   /** Request body */
   body?: SmimeInfo;
 }
-const InsertUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<InsertUsersSettingsSendAsSmimeInfoRequest>;
-
 export interface ListUsersDraftsRequest {
   /** Page token to retrieve a specific page of results in the list. */
   pageToken?: string;
@@ -1178,14 +776,7 @@ export interface ListUsersDraftsRequest {
   /** Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. */
   q?: string;
 }
-const ListUsersDraftsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListUsersDraftsRequest>;
-
 export type DraftList = Array<Draft>;
-const DraftList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<DraftList>;
-
 export interface ListDraftsResponse {
   /** Token to retrieve the next page of results in the list. */
   nextPageToken?: string;
@@ -1194,23 +785,14 @@ export interface ListDraftsResponse {
   /** List of drafts. Note that the `Message` property in each `Draft` resource only contains an `id` and a `threadId`. The [`messages.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/messages/get) method can fetch additional message details. */
   drafts?: DraftList;
 }
-const ListDraftsResponse = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListDraftsResponse>;
-
 export type ListUsersHistoryHistoryTypesEnum =
   | "messageAdded"
   | "messageDeleted"
   | "labelAdded"
   | "labelRemoved";
-const ListUsersHistoryHistoryTypesEnum = S.String;
-
 export type ListUsersHistoryHistoryTypesEnumList = Array<
   ListUsersHistoryHistoryTypesEnum | (string & {})
 >;
-const ListUsersHistoryHistoryTypesEnumList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListUsersHistoryHistoryTypesEnumList>;
-
 export interface ListUsersHistoryRequest {
   /** Page token to retrieve a specific page of results in the list. */
   pageToken?: string;
@@ -1225,53 +807,24 @@ export interface ListUsersHistoryRequest {
   /** Only return messages with a label matching the ID. */
   labelId?: string;
 }
-const ListUsersHistoryRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListUsersHistoryRequest>;
-
 export interface HistoryMessageAdded {
   message?: Message;
 }
-const HistoryMessageAdded = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<HistoryMessageAdded>;
-
 export type HistoryMessageAddedList = Array<HistoryMessageAdded>;
-const HistoryMessageAddedList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<HistoryMessageAddedList>;
-
 export interface HistoryLabelAdded {
   /** Label IDs added to the message. */
   labelIds?: StringList;
   message?: Message;
 }
-const HistoryLabelAdded = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<HistoryLabelAdded>;
-
 export type HistoryLabelAddedList = Array<HistoryLabelAdded>;
-const HistoryLabelAddedList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<HistoryLabelAddedList>;
-
 export type HistoryMessageDeleted = HistoryMessageAdded;
 export type HistoryMessageDeletedList = Array<HistoryMessageAdded>;
-const HistoryMessageDeletedList =
-  HistoryMessageAddedList as any as S.Schema<HistoryMessageDeletedList>;
-
 export interface HistoryLabelRemoved {
   message?: Message;
   /** Label IDs removed from the message. */
   labelIds?: StringList;
 }
-const HistoryLabelRemoved = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<HistoryLabelRemoved>;
-
 export type HistoryLabelRemovedList = Array<HistoryLabelRemoved>;
-const HistoryLabelRemovedList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<HistoryLabelRemovedList>;
-
 /** A record of a change to the user's mailbox. Each history change may affect multiple messages in multiple ways. */
 export interface History {
   /** Messages added to the mailbox in this history record. */
@@ -1287,11 +840,7 @@ export interface History {
   /** The mailbox sequence ID. */
   id?: string;
 }
-const History = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<History>;
-
 export type HistoryList = Array<History>;
-const HistoryList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<HistoryList>;
-
 export interface ListHistoryResponse {
   /** The ID of the mailbox's current history record. */
   historyId?: string;
@@ -1300,26 +849,15 @@ export interface ListHistoryResponse {
   /** List of history records. Any `messages` contained in the response will typically only have `id` and `threadId` fields populated. */
   history?: HistoryList;
 }
-const ListHistoryResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ListHistoryResponse>;
-
 export interface ListUsersLabelsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const ListUsersLabelsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListUsersLabelsRequest>;
-
 export type LabelList = Array<Label>;
-const LabelList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<LabelList>;
-
 export interface ListLabelsResponse {
   /** List of labels. Note that each label resource only contains an `id`, `name`, `messageListVisibility`, `labelListVisibility`, and `type`. The [`labels.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/labels/get) method can fetch additional label details. */
   labels?: LabelList;
 }
-const ListLabelsResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ListLabelsResponse>;
-
 export interface ListUsersMessagesRequest {
   /** Include messages from `SPAM` and `TRASH` in the results. */
   includeSpamTrash?: boolean;
@@ -1334,11 +872,6 @@ export interface ListUsersMessagesRequest {
   /** Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope. */
   q?: string;
 }
-const ListUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListUsersMessagesRequest>;
-
 export interface ListMessagesResponse {
   /** Token to retrieve the next page of results in the list. */
   nextPageToken?: string;
@@ -1347,11 +880,6 @@ export interface ListMessagesResponse {
   /** Estimated total number of results. */
   resultSizeEstimate?: number;
 }
-const ListMessagesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListMessagesResponse>;
-
 export interface ListUsersSettingsCseIdentitiesRequest {
   /** Pagination token indicating which page of identities to return. If the token is not supplied, then the API will return the first page of results. */
   pageToken?: string;
@@ -1360,25 +888,13 @@ export interface ListUsersSettingsCseIdentitiesRequest {
   /** The number of identities to return. If not provided, the page size will default to 20 entries. */
   pageSize?: number;
 }
-const ListUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListUsersSettingsCseIdentitiesRequest>;
-
 export type CseIdentityList = Array<CseIdentity>;
-const CseIdentityList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<CseIdentityList>;
-
 export interface ListCseIdentitiesResponse {
   /** Pagination token to be passed to a subsequent ListCseIdentities call in order to retrieve the next page of identities. If this value is not returned or is the empty string, then no further pages remain. */
   nextPageToken?: string;
   /** One page of the list of CSE identities configured for the user. */
   cseIdentities?: CseIdentityList;
 }
-const ListCseIdentitiesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListCseIdentitiesResponse>;
-
 export interface ListUsersSettingsCseKeypairsRequest {
   /** The number of key pairs to return. If not provided, the page size will default to 20 entries. */
   pageSize?: number;
@@ -1387,133 +903,64 @@ export interface ListUsersSettingsCseKeypairsRequest {
   /** Pagination token indicating which page of key pairs to return. If the token is not supplied, then the API will return the first page of results. */
   pageToken?: string;
 }
-const ListUsersSettingsCseKeypairsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListUsersSettingsCseKeypairsRequest>;
-
 export type CseKeyPairList = Array<CseKeyPair>;
-const CseKeyPairList = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CseKeyPairList>;
-
 export interface ListCseKeyPairsResponse {
   /** Pagination token to be passed to a subsequent ListCseKeyPairs call in order to retrieve the next page of key pairs. If this value is not returned, then no further pages remain. */
   nextPageToken?: string;
   /** One page of the list of CSE key pairs installed for the user. */
   cseKeyPairs?: CseKeyPairList;
 }
-const ListCseKeyPairsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListCseKeyPairsResponse>;
-
 export interface ListUsersSettingsDelegatesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const ListUsersSettingsDelegatesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListUsersSettingsDelegatesRequest>;
-
 export type DelegateList = Array<Delegate>;
-const DelegateList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<DelegateList>;
-
 /** Response for the ListDelegates method. */
 export interface ListDelegatesResponse {
   /** List of the user's delegates (with any verification status). If an account doesn't have delegates, this field doesn't appear. */
   delegates?: DelegateList;
 }
-const ListDelegatesResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListDelegatesResponse>;
-
 export interface ListUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const ListUsersSettingsFiltersRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListUsersSettingsFiltersRequest>;
-
 export type FilterList = Array<Filter>;
-const FilterList = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<FilterList>;
-
 /** Response for the ListFilters method. */
 export interface ListFiltersResponse {
   /** List of a user's filters. */
   filter?: FilterList;
 }
-const ListFiltersResponse = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ListFiltersResponse>;
-
 export interface ListUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const ListUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListUsersSettingsForwardingAddressesRequest>;
-
 export type ForwardingAddressList = Array<ForwardingAddress>;
-const ForwardingAddressList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ForwardingAddressList>;
-
 /** Response for the ListForwardingAddresses method. */
 export interface ListForwardingAddressesResponse {
   /** List of addresses that may be used for forwarding. */
   forwardingAddresses?: ForwardingAddressList;
 }
-const ListForwardingAddressesResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListForwardingAddressesResponse>;
-
 export interface ListUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-const ListUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListUsersSettingsSendAsRequest>;
-
 export type SendAsList = Array<SendAs>;
-const SendAsList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<SendAsList>;
-
 /** Response for the ListSendAs method. */
 export interface ListSendAsResponse {
   /** List of send-as aliases. */
   sendAs?: SendAsList;
 }
-const ListSendAsResponse = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ListSendAsResponse>;
-
 export interface ListUsersSettingsSendAsSmimeInfoRequest {
   /** The email address that appears in the "From:" header for mail sent using this alias. */
   sendAsEmail: string;
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const ListUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListUsersSettingsSendAsSmimeInfoRequest>;
-
 export type SmimeInfoList = Array<SmimeInfo>;
-const SmimeInfoList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<SmimeInfoList>;
-
 export interface ListSmimeInfoResponse {
   /** List of SmimeInfo. */
   smimeInfo?: SmimeInfoList;
 }
-const ListSmimeInfoResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListSmimeInfoResponse>;
-
 export interface ListUsersThreadsRequest {
   /** Only return threads with labels that match all of the specified label IDs. */
   labelIds?: StringList;
@@ -1528,14 +975,7 @@ export interface ListUsersThreadsRequest {
   /** Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this field is 500. */
   maxResults?: number;
 }
-const ListUsersThreadsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ListUsersThreadsRequest>;
-
 export type ThreadList = Array<Thread>;
-const ThreadList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ThreadList>;
-
 export interface ListThreadsResponse {
   /** List of threads. Note that each thread resource does not contain a list of `messages`. The list of `messages` for a given thread can be fetched using the [`threads.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/threads/get) method. */
   threads?: ThreadList;
@@ -1544,8 +984,6 @@ export interface ListThreadsResponse {
   /** Estimated total number of results. */
   resultSizeEstimate?: number;
 }
-const ListThreadsResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ListThreadsResponse>;
-
 export interface ModifyMessageRequest {
   /** A list of IDs of labels to add to this message. You can add up to 100 labels with each update. */
   addLabelIds?: StringList;
@@ -1556,11 +994,6 @@ export interface ModifyMessageRequest {
   /** A list IDs of labels to remove from this message. You can remove up to 100 labels with each update. */
   removeLabelIds?: StringList;
 }
-const ModifyMessageRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ModifyMessageRequest>;
-
 export interface ModifyUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -1569,19 +1002,12 @@ export interface ModifyUsersMessagesRequest {
   /** Request body */
   body?: ModifyMessageRequest;
 }
-const ModifyUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ModifyUsersMessagesRequest>;
-
 export interface ModifyThreadRequest {
   /** A list of IDs of labels to remove from this thread. You can remove up to 100 labels with each update. */
   removeLabelIds?: StringList;
   /** A list of IDs of labels to add to this thread. You can add up to 100 labels with each update. */
   addLabelIds?: StringList;
 }
-const ModifyThreadRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ModifyThreadRequest>;
-
 export interface ModifyUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -1590,11 +1016,6 @@ export interface ModifyUsersThreadsRequest {
   /** Request body */
   body?: ModifyThreadRequest;
 }
-const ModifyUsersThreadsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ModifyUsersThreadsRequest>;
-
 /** Request to obliterate a CSE key pair. */
 export type ObliterateCseKeyPairRequest = DisableCseKeyPairRequest;
 export interface ObliterateUsersSettingsCseKeypairsRequest {
@@ -1605,15 +1026,7 @@ export interface ObliterateUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: DisableCseKeyPairRequest;
 }
-const ObliterateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ObliterateUsersSettingsCseKeypairsRequest>;
-
 export interface ObliterateUsersSettingsCseKeypairsResponse {}
-const ObliterateUsersSettingsCseKeypairsResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>;
-
 export interface PatchUsersLabelsRequest {
   /** The ID of the label to update. */
   id: string;
@@ -1622,11 +1035,6 @@ export interface PatchUsersLabelsRequest {
   /** Request body */
   body?: Label;
 }
-const PatchUsersLabelsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<PatchUsersLabelsRequest>;
-
 export interface PatchUsersSettingsCseIdentitiesRequest {
   /** The email address of the client-side encryption identity to update. */
   emailAddress: string;
@@ -1635,11 +1043,6 @@ export interface PatchUsersSettingsCseIdentitiesRequest {
   /** Request body */
   body?: CseIdentity;
 }
-const PatchUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<PatchUsersSettingsCseIdentitiesRequest>;
-
 export interface PatchUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
@@ -1648,33 +1051,18 @@ export interface PatchUsersSettingsSendAsRequest {
   /** Request body */
   body?: SendAs;
 }
-const PatchUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<PatchUsersSettingsSendAsRequest>;
-
 export interface SendUsersDraftsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: Draft;
 }
-const SendUsersDraftsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<SendUsersDraftsRequest>;
-
 export interface SendUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: Message;
 }
-const SendUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<SendUsersMessagesRequest>;
-
 export interface SetDefaultUsersSettingsSendAsSmimeInfoRequest {
   /** The email address that appears in the "From:" header for mail sent using this alias. */
   sendAsEmail: string;
@@ -1683,112 +1071,60 @@ export interface SetDefaultUsersSettingsSendAsSmimeInfoRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const SetDefaultUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>;
-
 export interface SetDefaultUsersSettingsSendAsSmimeInfoResponse {}
-const SetDefaultUsersSettingsSendAsSmimeInfoResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
-
 export interface StopUsersRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const StopUsersRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<StopUsersRequest>;
-
 export interface StopUsersResponse {}
-const StopUsersResponse = DeleteUsersDraftsResponse as any as S.Schema<StopUsersResponse>;
-
 export interface TrashUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** The ID of the message to Trash. */
   id: string;
 }
-const TrashUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<TrashUsersMessagesRequest>;
-
 export interface TrashUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** The ID of the thread to Trash. */
   id: string;
 }
-const TrashUsersThreadsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<TrashUsersThreadsRequest>;
-
 export interface UntrashUsersMessagesRequest {
   /** The ID of the message to remove from Trash. */
   id: string;
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-const UntrashUsersMessagesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<UntrashUsersMessagesRequest>;
-
 export interface UntrashUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** The ID of the thread to remove from Trash. */
   id: string;
 }
-const UntrashUsersThreadsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<UntrashUsersThreadsRequest>;
-
 export interface UpdateAutoForwardingUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: AutoForwarding;
 }
-const UpdateAutoForwardingUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<UpdateAutoForwardingUsersSettingsRequest>;
-
 export interface UpdateImapUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: ImapSettings;
 }
-const UpdateImapUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<UpdateImapUsersSettingsRequest>;
-
 export interface UpdateLanguageUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: LanguageSettings;
 }
-const UpdateLanguageUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<UpdateLanguageUsersSettingsRequest>;
-
 export interface UpdatePopUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: PopSettings;
 }
-const UpdatePopUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<UpdatePopUsersSettingsRequest>;
-
 export interface UpdateUsersDraftsRequest {
   /** The ID of the draft to update. */
   id: string;
@@ -1797,11 +1133,6 @@ export interface UpdateUsersDraftsRequest {
   /** Request body */
   body?: Draft;
 }
-const UpdateUsersDraftsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<UpdateUsersDraftsRequest>;
-
 export interface UpdateUsersLabelsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
@@ -1810,11 +1141,6 @@ export interface UpdateUsersLabelsRequest {
   /** Request body */
   body?: Label;
 }
-const UpdateUsersLabelsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<UpdateUsersLabelsRequest>;
-
 export interface UpdateUsersSettingsSendAsRequest {
   /** The send-as alias to be updated. */
   sendAsEmail: string;
@@ -1823,43 +1149,21 @@ export interface UpdateUsersSettingsSendAsRequest {
   /** Request body */
   body?: SendAs;
 }
-const UpdateUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<UpdateUsersSettingsSendAsRequest>;
-
 export interface UpdateVacationUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: VacationSettings;
 }
-const UpdateVacationUsersSettingsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<UpdateVacationUsersSettingsRequest>;
-
 export interface VerifyUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
   /** The send-as alias to be verified. */
   sendAsEmail: string;
 }
-const VerifyUsersSettingsSendAsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<VerifyUsersSettingsSendAsRequest>;
-
 export interface VerifyUsersSettingsSendAsResponse {}
-const VerifyUsersSettingsSendAsResponse =
-  BatchDeleteUsersMessagesResponse as any as S.Schema<VerifyUsersSettingsSendAsResponse>;
-
 export type WatchRequestLabelFilterBehaviorEnum = "include" | "exclude";
-const WatchRequestLabelFilterBehaviorEnum = S.String;
-
 export type WatchRequestLabelFilterActionEnum = "include" | "exclude";
-const WatchRequestLabelFilterActionEnum = S.String;
-
 /** Set up or update a new push notification watch on this user's mailbox. */
 export interface WatchRequest {
   /** List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out. If specified then dictates which labels are required for a push notification to be generated. */
@@ -1871,16 +1175,12 @@ export interface WatchRequest {
   /** Filtering behavior of `labelIds list` specified. This field is deprecated because it caused incorrect behavior in some cases; use `label_filter_behavior` instead. */
   labelFilterAction?: WatchRequestLabelFilterActionEnum | (string & {});
 }
-const WatchRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<WatchRequest>;
-
 export interface WatchUsersRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
   /** Request body */
   body?: WatchRequest;
 }
-const WatchUsersRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<WatchUsersRequest>;
-
 /** Push notification watch response. */
 export interface WatchResponse {
   /** When Gmail will stop sending notifications for mailbox updates (epoch millis). Call `watch` again before this time to renew the watch. */
@@ -1888,8 +1188,6 @@ export interface WatchResponse {
   /** The ID of the mailbox's current history record. */
   historyId?: string;
 }
-const WatchResponse = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<WatchResponse>;
-
 export type BatchDeleteUsersMessagesError =
   | NotFound
   | Forbidden
@@ -1903,8 +1201,8 @@ export const batchDeleteUsersMessages: API.OperationMethod<
   BatchDeleteUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteUsersMessagesRequest,
-  output: BatchDeleteUsersMessagesResponse,
+  input: __S(2) as any as S.Schema<BatchDeleteUsersMessagesRequest>,
+  output: __S(3) as any as S.Schema<BatchDeleteUsersMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1923,8 +1221,8 @@ export const batchModifyUsersMessages: API.OperationMethod<
   BatchModifyUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchModifyUsersMessagesRequest,
-  output: BatchModifyUsersMessagesResponse,
+  input: __S(9) as any as S.Schema<BatchModifyUsersMessagesRequest>,
+  output: __S(3) as any as S.Schema<BatchModifyUsersMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1236,8 @@ export const createUsersDrafts: API.OperationMethod<
   CreateUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersDraftsRequest,
-  output: Draft,
+  input: __S(17) as any as S.Schema<CreateUsersDraftsRequest>,
+  output: __S(16) as any as S.Schema<Draft>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1251,8 @@ export const createUsersLabels: API.OperationMethod<
   CreateUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersLabelsRequest,
-  output: Label,
+  input: __S(20) as any as S.Schema<CreateUsersLabelsRequest>,
+  output: __S(19) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1973,8 +1271,8 @@ export const createUsersSettingsCseIdentities: API.OperationMethod<
   CreateUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSettingsCseIdentitiesRequest,
-  output: CseIdentity,
+  input: __S(23) as any as S.Schema<CreateUsersSettingsCseIdentitiesRequest>,
+  output: __S(22) as any as S.Schema<CseIdentity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1993,8 +1291,8 @@ export const createUsersSettingsCseKeypairs: API.OperationMethod<
   CreateUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSettingsCseKeypairsRequest,
-  output: CseKeyPair,
+  input: __S(29) as any as S.Schema<CreateUsersSettingsCseKeypairsRequest>,
+  output: __S(28) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2013,8 +1311,8 @@ export const createUsersSettingsDelegates: API.OperationMethod<
   CreateUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSettingsDelegatesRequest,
-  output: Delegate,
+  input: __S(31) as any as S.Schema<CreateUsersSettingsDelegatesRequest>,
+  output: __S(30) as any as S.Schema<Delegate>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2033,8 +1331,8 @@ export const createUsersSettingsFilters: API.OperationMethod<
   CreateUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSettingsFiltersRequest,
-  output: Filter,
+  input: __S(35) as any as S.Schema<CreateUsersSettingsFiltersRequest>,
+  output: __S(34) as any as S.Schema<Filter>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2053,8 +1351,8 @@ export const createUsersSettingsForwardingAddresses: API.OperationMethod<
   CreateUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSettingsForwardingAddressesRequest,
-  output: ForwardingAddress,
+  input: __S(37) as any as S.Schema<CreateUsersSettingsForwardingAddressesRequest>,
+  output: __S(36) as any as S.Schema<ForwardingAddress>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2073,8 +1371,8 @@ export const createUsersSettingsSendAs: API.OperationMethod<
   CreateUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSettingsSendAsRequest,
-  output: SendAs,
+  input: __S(40) as any as S.Schema<CreateUsersSettingsSendAsRequest>,
+  output: __S(39) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2088,8 +1386,8 @@ export const deleteUsersDrafts: API.OperationMethod<
   DeleteUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersDraftsRequest,
-  output: DeleteUsersDraftsResponse,
+  input: __S(41) as any as S.Schema<DeleteUsersDraftsRequest>,
+  output: __S(42) as any as S.Schema<DeleteUsersDraftsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2103,8 +1401,8 @@ export const deleteUsersLabels: API.OperationMethod<
   DeleteUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersLabelsRequest,
-  output: DeleteUsersLabelsResponse,
+  input: __S(43) as any as S.Schema<DeleteUsersLabelsRequest>,
+  output: __S(42) as any as S.Schema<DeleteUsersLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2118,8 +1416,8 @@ export const deleteUsersMessages: API.OperationMethod<
   DeleteUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersMessagesRequest,
-  output: DeleteUsersMessagesResponse,
+  input: __S(44) as any as S.Schema<DeleteUsersMessagesRequest>,
+  output: __S(42) as any as S.Schema<DeleteUsersMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2138,8 +1436,8 @@ export const deleteUsersSettingsCseIdentities: API.OperationMethod<
   DeleteUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSettingsCseIdentitiesRequest,
-  output: DeleteUsersSettingsCseIdentitiesResponse,
+  input: __S(45) as any as S.Schema<DeleteUsersSettingsCseIdentitiesRequest>,
+  output: __S(3) as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2158,8 +1456,8 @@ export const deleteUsersSettingsDelegates: API.OperationMethod<
   DeleteUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSettingsDelegatesRequest,
-  output: DeleteUsersSettingsDelegatesResponse,
+  input: __S(46) as any as S.Schema<DeleteUsersSettingsDelegatesRequest>,
+  output: __S(3) as any as S.Schema<DeleteUsersSettingsDelegatesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2178,8 +1476,8 @@ export const deleteUsersSettingsFilters: API.OperationMethod<
   DeleteUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSettingsFiltersRequest,
-  output: DeleteUsersSettingsFiltersResponse,
+  input: __S(47) as any as S.Schema<DeleteUsersSettingsFiltersRequest>,
+  output: __S(3) as any as S.Schema<DeleteUsersSettingsFiltersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2198,8 +1496,8 @@ export const deleteUsersSettingsForwardingAddresses: API.OperationMethod<
   DeleteUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSettingsForwardingAddressesRequest,
-  output: DeleteUsersSettingsForwardingAddressesResponse,
+  input: __S(48) as any as S.Schema<DeleteUsersSettingsForwardingAddressesRequest>,
+  output: __S(3) as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2218,8 +1516,8 @@ export const deleteUsersSettingsSendAs: API.OperationMethod<
   DeleteUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSettingsSendAsRequest,
-  output: DeleteUsersSettingsSendAsResponse,
+  input: __S(49) as any as S.Schema<DeleteUsersSettingsSendAsRequest>,
+  output: __S(3) as any as S.Schema<DeleteUsersSettingsSendAsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2238,8 +1536,8 @@ export const deleteUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   DeleteUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSettingsSendAsSmimeInfoRequest,
-  output: DeleteUsersSettingsSendAsSmimeInfoResponse,
+  input: __S(50) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(3) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2253,8 +1551,8 @@ export const deleteUsersThreads: API.OperationMethod<
   DeleteUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersThreadsRequest,
-  output: DeleteUsersThreadsResponse,
+  input: __S(51) as any as S.Schema<DeleteUsersThreadsRequest>,
+  output: __S(42) as any as S.Schema<DeleteUsersThreadsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2273,8 +1571,8 @@ export const disableUsersSettingsCseKeypairs: API.OperationMethod<
   DisableUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableUsersSettingsCseKeypairsRequest,
-  output: CseKeyPair,
+  input: __S(52) as any as S.Schema<DisableUsersSettingsCseKeypairsRequest>,
+  output: __S(28) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2293,8 +1591,8 @@ export const enableUsersSettingsCseKeypairs: API.OperationMethod<
   EnableUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableUsersSettingsCseKeypairsRequest,
-  output: CseKeyPair,
+  input: __S(53) as any as S.Schema<EnableUsersSettingsCseKeypairsRequest>,
+  output: __S(28) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2308,8 +1606,8 @@ export const getAutoForwardingUsersSettings: API.OperationMethod<
   GetAutoForwardingUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoForwardingUsersSettingsRequest,
-  output: AutoForwarding,
+  input: __S(54) as any as S.Schema<GetAutoForwardingUsersSettingsRequest>,
+  output: __S(55) as any as S.Schema<AutoForwarding>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2323,8 +1621,8 @@ export const getImapUsersSettings: API.OperationMethod<
   GetImapUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImapUsersSettingsRequest,
-  output: ImapSettings,
+  input: __S(56) as any as S.Schema<GetImapUsersSettingsRequest>,
+  output: __S(57) as any as S.Schema<ImapSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2338,8 +1636,8 @@ export const getLanguageUsersSettings: API.OperationMethod<
   GetLanguageUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLanguageUsersSettingsRequest,
-  output: LanguageSettings,
+  input: __S(58) as any as S.Schema<GetLanguageUsersSettingsRequest>,
+  output: __S(59) as any as S.Schema<LanguageSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2353,8 +1651,8 @@ export const getPopUsersSettings: API.OperationMethod<
   GetPopUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPopUsersSettingsRequest,
-  output: PopSettings,
+  input: __S(60) as any as S.Schema<GetPopUsersSettingsRequest>,
+  output: __S(61) as any as S.Schema<PopSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2368,8 +1666,8 @@ export const getProfileUsers: API.OperationMethod<
   GetProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileUsersRequest,
-  output: Profile,
+  input: __S(62) as any as S.Schema<GetProfileUsersRequest>,
+  output: __S(63) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2383,8 +1681,8 @@ export const getUsersDrafts: API.OperationMethod<
   GetUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersDraftsRequest,
-  output: Draft,
+  input: __S(64) as any as S.Schema<GetUsersDraftsRequest>,
+  output: __S(16) as any as S.Schema<Draft>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2398,8 +1696,8 @@ export const getUsersLabels: API.OperationMethod<
   GetUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersLabelsRequest,
-  output: Label,
+  input: __S(65) as any as S.Schema<GetUsersLabelsRequest>,
+  output: __S(19) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2413,8 +1711,8 @@ export const getUsersMessages: API.OperationMethod<
   GetUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersMessagesRequest,
-  output: Message,
+  input: __S(66) as any as S.Schema<GetUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2428,8 +1726,8 @@ export const getUsersMessagesAttachments: API.OperationMethod<
   GetUsersMessagesAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersMessagesAttachmentsRequest,
-  output: MessagePartBody,
+  input: __S(67) as any as S.Schema<GetUsersMessagesAttachmentsRequest>,
+  output: __S(12) as any as S.Schema<MessagePartBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2443,8 +1741,8 @@ export const getUsersSettingsCseIdentities: API.OperationMethod<
   GetUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsCseIdentitiesRequest,
-  output: CseIdentity,
+  input: __S(68) as any as S.Schema<GetUsersSettingsCseIdentitiesRequest>,
+  output: __S(22) as any as S.Schema<CseIdentity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2458,8 +1756,8 @@ export const getUsersSettingsCseKeypairs: API.OperationMethod<
   GetUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsCseKeypairsRequest,
-  output: CseKeyPair,
+  input: __S(69) as any as S.Schema<GetUsersSettingsCseKeypairsRequest>,
+  output: __S(28) as any as S.Schema<CseKeyPair>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2473,8 +1771,8 @@ export const getUsersSettingsDelegates: API.OperationMethod<
   GetUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsDelegatesRequest,
-  output: Delegate,
+  input: __S(70) as any as S.Schema<GetUsersSettingsDelegatesRequest>,
+  output: __S(30) as any as S.Schema<Delegate>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2488,8 +1786,8 @@ export const getUsersSettingsFilters: API.OperationMethod<
   GetUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsFiltersRequest,
-  output: Filter,
+  input: __S(71) as any as S.Schema<GetUsersSettingsFiltersRequest>,
+  output: __S(34) as any as S.Schema<Filter>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2503,8 +1801,8 @@ export const getUsersSettingsForwardingAddresses: API.OperationMethod<
   GetUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsForwardingAddressesRequest,
-  output: ForwardingAddress,
+  input: __S(72) as any as S.Schema<GetUsersSettingsForwardingAddressesRequest>,
+  output: __S(36) as any as S.Schema<ForwardingAddress>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2518,8 +1816,8 @@ export const getUsersSettingsSendAs: API.OperationMethod<
   GetUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsSendAsRequest,
-  output: SendAs,
+  input: __S(73) as any as S.Schema<GetUsersSettingsSendAsRequest>,
+  output: __S(39) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2533,8 +1831,8 @@ export const getUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   GetUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSettingsSendAsSmimeInfoRequest,
-  output: SmimeInfo,
+  input: __S(74) as any as S.Schema<GetUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(75) as any as S.Schema<SmimeInfo>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2548,8 +1846,8 @@ export const getUsersThreads: API.OperationMethod<
   GetUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersThreadsRequest,
-  output: Thread,
+  input: __S(76) as any as S.Schema<GetUsersThreadsRequest>,
+  output: __S(78) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2563,8 +1861,8 @@ export const getVacationUsersSettings: API.OperationMethod<
   GetVacationUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVacationUsersSettingsRequest,
-  output: VacationSettings,
+  input: __S(79) as any as S.Schema<GetVacationUsersSettingsRequest>,
+  output: __S(80) as any as S.Schema<VacationSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2578,8 +1876,8 @@ export const importUsersMessages: API.OperationMethod<
   ImportUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportUsersMessagesRequest,
-  output: Message,
+  input: __S(81) as any as S.Schema<ImportUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2593,8 +1891,8 @@ export const insertUsersMessages: API.OperationMethod<
   InsertUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertUsersMessagesRequest,
-  output: Message,
+  input: __S(82) as any as S.Schema<InsertUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2613,8 +1911,8 @@ export const insertUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   InsertUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertUsersSettingsSendAsSmimeInfoRequest,
-  output: SmimeInfo,
+  input: __S(83) as any as S.Schema<InsertUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(75) as any as S.Schema<SmimeInfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2629,8 +1927,8 @@ export const listUsersDrafts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDraftsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersDraftsRequest,
-  output: ListDraftsResponse,
+  input: __S(84) as any as S.Schema<ListUsersDraftsRequest>,
+  output: __S(86) as any as S.Schema<ListDraftsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2646,8 +1944,8 @@ export const listUsersHistory: API.PaginatedOperationMethod<
   GcpOpContext,
   ListHistoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersHistoryRequest,
-  output: ListHistoryResponse,
+  input: __S(88) as any as S.Schema<ListUsersHistoryRequest>,
+  output: __S(97) as any as S.Schema<ListHistoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2662,8 +1960,8 @@ export const listUsersLabels: API.OperationMethod<
   ListUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersLabelsRequest,
-  output: ListLabelsResponse,
+  input: __S(98) as any as S.Schema<ListUsersLabelsRequest>,
+  output: __S(100) as any as S.Schema<ListLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2678,8 +1976,8 @@ export const listUsersMessages: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersMessagesRequest,
-  output: ListMessagesResponse,
+  input: __S(101) as any as S.Schema<ListUsersMessagesRequest>,
+  output: __S(102) as any as S.Schema<ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2695,8 +1993,8 @@ export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCseIdentitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersSettingsCseIdentitiesRequest,
-  output: ListCseIdentitiesResponse,
+  input: __S(103) as any as S.Schema<ListUsersSettingsCseIdentitiesRequest>,
+  output: __S(105) as any as S.Schema<ListCseIdentitiesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2712,8 +2010,8 @@ export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCseKeyPairsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersSettingsCseKeypairsRequest,
-  output: ListCseKeyPairsResponse,
+  input: __S(106) as any as S.Schema<ListUsersSettingsCseKeypairsRequest>,
+  output: __S(108) as any as S.Schema<ListCseKeyPairsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2728,8 +2026,8 @@ export const listUsersSettingsDelegates: API.OperationMethod<
   ListUsersSettingsDelegatesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersSettingsDelegatesRequest,
-  output: ListDelegatesResponse,
+  input: __S(109) as any as S.Schema<ListUsersSettingsDelegatesRequest>,
+  output: __S(111) as any as S.Schema<ListDelegatesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2743,8 +2041,8 @@ export const listUsersSettingsFilters: API.OperationMethod<
   ListUsersSettingsFiltersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersSettingsFiltersRequest,
-  output: ListFiltersResponse,
+  input: __S(112) as any as S.Schema<ListUsersSettingsFiltersRequest>,
+  output: __S(114) as any as S.Schema<ListFiltersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2758,8 +2056,8 @@ export const listUsersSettingsForwardingAddresses: API.OperationMethod<
   ListUsersSettingsForwardingAddressesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersSettingsForwardingAddressesRequest,
-  output: ListForwardingAddressesResponse,
+  input: __S(115) as any as S.Schema<ListUsersSettingsForwardingAddressesRequest>,
+  output: __S(117) as any as S.Schema<ListForwardingAddressesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2773,8 +2071,8 @@ export const listUsersSettingsSendAs: API.OperationMethod<
   ListUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersSettingsSendAsRequest,
-  output: ListSendAsResponse,
+  input: __S(118) as any as S.Schema<ListUsersSettingsSendAsRequest>,
+  output: __S(120) as any as S.Schema<ListSendAsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2788,8 +2086,8 @@ export const listUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   ListUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersSettingsSendAsSmimeInfoRequest,
-  output: ListSmimeInfoResponse,
+  input: __S(121) as any as S.Schema<ListUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(123) as any as S.Schema<ListSmimeInfoResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2804,8 +2102,8 @@ export const listUsersThreads: API.PaginatedOperationMethod<
   GcpOpContext,
   ListThreadsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersThreadsRequest,
-  output: ListThreadsResponse,
+  input: __S(124) as any as S.Schema<ListUsersThreadsRequest>,
+  output: __S(126) as any as S.Schema<ListThreadsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2118,8 @@ export const modifyUsersMessages: API.OperationMethod<
   ModifyUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyUsersMessagesRequest,
-  output: Message,
+  input: __S(128) as any as S.Schema<ModifyUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2133,8 @@ export const modifyUsersThreads: API.OperationMethod<
   ModifyUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyUsersThreadsRequest,
-  output: Thread,
+  input: __S(130) as any as S.Schema<ModifyUsersThreadsRequest>,
+  output: __S(78) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2855,8 +2153,8 @@ export const obliterateUsersSettingsCseKeypairs: API.OperationMethod<
   ObliterateUsersSettingsCseKeypairsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ObliterateUsersSettingsCseKeypairsRequest,
-  output: ObliterateUsersSettingsCseKeypairsResponse,
+  input: __S(131) as any as S.Schema<ObliterateUsersSettingsCseKeypairsRequest>,
+  output: __S(3) as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2870,8 +2168,8 @@ export const patchUsersLabels: API.OperationMethod<
   PatchUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersLabelsRequest,
-  output: Label,
+  input: __S(132) as any as S.Schema<PatchUsersLabelsRequest>,
+  output: __S(19) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2188,8 @@ export const patchUsersSettingsCseIdentities: API.OperationMethod<
   PatchUsersSettingsCseIdentitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersSettingsCseIdentitiesRequest,
-  output: CseIdentity,
+  input: __S(133) as any as S.Schema<PatchUsersSettingsCseIdentitiesRequest>,
+  output: __S(22) as any as S.Schema<CseIdentity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2910,8 +2208,8 @@ export const patchUsersSettingsSendAs: API.OperationMethod<
   PatchUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersSettingsSendAsRequest,
-  output: SendAs,
+  input: __S(134) as any as S.Schema<PatchUsersSettingsSendAsRequest>,
+  output: __S(39) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2925,8 +2223,8 @@ export const sendUsersDrafts: API.OperationMethod<
   SendUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendUsersDraftsRequest,
-  output: Message,
+  input: __S(135) as any as S.Schema<SendUsersDraftsRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2940,8 +2238,8 @@ export const sendUsersMessages: API.OperationMethod<
   SendUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendUsersMessagesRequest,
-  output: Message,
+  input: __S(136) as any as S.Schema<SendUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2960,8 +2258,8 @@ export const setDefaultUsersSettingsSendAsSmimeInfo: API.OperationMethod<
   SetDefaultUsersSettingsSendAsSmimeInfoError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetDefaultUsersSettingsSendAsSmimeInfoRequest,
-  output: SetDefaultUsersSettingsSendAsSmimeInfoResponse,
+  input: __S(137) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>,
+  output: __S(3) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2975,8 +2273,8 @@ export const stopUsers: API.OperationMethod<
   StopUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopUsersRequest,
-  output: StopUsersResponse,
+  input: __S(138) as any as S.Schema<StopUsersRequest>,
+  output: __S(42) as any as S.Schema<StopUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2990,8 +2288,8 @@ export const trashUsersMessages: API.OperationMethod<
   TrashUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TrashUsersMessagesRequest,
-  output: Message,
+  input: __S(139) as any as S.Schema<TrashUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3005,8 +2303,8 @@ export const trashUsersThreads: API.OperationMethod<
   TrashUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TrashUsersThreadsRequest,
-  output: Thread,
+  input: __S(140) as any as S.Schema<TrashUsersThreadsRequest>,
+  output: __S(78) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3020,8 +2318,8 @@ export const untrashUsersMessages: API.OperationMethod<
   UntrashUsersMessagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntrashUsersMessagesRequest,
-  output: Message,
+  input: __S(141) as any as S.Schema<UntrashUsersMessagesRequest>,
+  output: __S(15) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3035,8 +2333,8 @@ export const untrashUsersThreads: API.OperationMethod<
   UntrashUsersThreadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntrashUsersThreadsRequest,
-  output: Thread,
+  input: __S(142) as any as S.Schema<UntrashUsersThreadsRequest>,
+  output: __S(78) as any as S.Schema<Thread>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3055,8 +2353,8 @@ export const updateAutoForwardingUsersSettings: API.OperationMethod<
   UpdateAutoForwardingUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAutoForwardingUsersSettingsRequest,
-  output: AutoForwarding,
+  input: __S(143) as any as S.Schema<UpdateAutoForwardingUsersSettingsRequest>,
+  output: __S(55) as any as S.Schema<AutoForwarding>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3075,8 +2373,8 @@ export const updateImapUsersSettings: API.OperationMethod<
   UpdateImapUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateImapUsersSettingsRequest,
-  output: ImapSettings,
+  input: __S(144) as any as S.Schema<UpdateImapUsersSettingsRequest>,
+  output: __S(57) as any as S.Schema<ImapSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3095,8 +2393,8 @@ export const updateLanguageUsersSettings: API.OperationMethod<
   UpdateLanguageUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLanguageUsersSettingsRequest,
-  output: LanguageSettings,
+  input: __S(145) as any as S.Schema<UpdateLanguageUsersSettingsRequest>,
+  output: __S(59) as any as S.Schema<LanguageSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3110,8 +2408,8 @@ export const updatePopUsersSettings: API.OperationMethod<
   UpdatePopUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePopUsersSettingsRequest,
-  output: PopSettings,
+  input: __S(146) as any as S.Schema<UpdatePopUsersSettingsRequest>,
+  output: __S(61) as any as S.Schema<PopSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3125,8 +2423,8 @@ export const updateUsersDrafts: API.OperationMethod<
   UpdateUsersDraftsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersDraftsRequest,
-  output: Draft,
+  input: __S(147) as any as S.Schema<UpdateUsersDraftsRequest>,
+  output: __S(16) as any as S.Schema<Draft>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3140,8 +2438,8 @@ export const updateUsersLabels: API.OperationMethod<
   UpdateUsersLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersLabelsRequest,
-  output: Label,
+  input: __S(148) as any as S.Schema<UpdateUsersLabelsRequest>,
+  output: __S(19) as any as S.Schema<Label>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3160,8 +2458,8 @@ export const updateUsersSettingsSendAs: API.OperationMethod<
   UpdateUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersSettingsSendAsRequest,
-  output: SendAs,
+  input: __S(149) as any as S.Schema<UpdateUsersSettingsSendAsRequest>,
+  output: __S(39) as any as S.Schema<SendAs>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3180,8 +2478,8 @@ export const updateVacationUsersSettings: API.OperationMethod<
   UpdateVacationUsersSettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVacationUsersSettingsRequest,
-  output: VacationSettings,
+  input: __S(150) as any as S.Schema<UpdateVacationUsersSettingsRequest>,
+  output: __S(80) as any as S.Schema<VacationSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3200,8 +2498,8 @@ export const verifyUsersSettingsSendAs: API.OperationMethod<
   VerifyUsersSettingsSendAsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyUsersSettingsSendAsRequest,
-  output: VerifyUsersSettingsSendAsResponse,
+  input: __S(151) as any as S.Schema<VerifyUsersSettingsSendAsRequest>,
+  output: __S(3) as any as S.Schema<VerifyUsersSettingsSendAsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3215,8 +2513,8 @@ export const watchUsers: API.OperationMethod<
   WatchUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchUsersRequest,
-  output: WatchResponse,
+  input: __S(153) as any as S.Schema<WatchUsersRequest>,
+  output: __S(154) as any as S.Schema<WatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3230,7 +2528,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(StringList),
+          ids: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "BatchDeleteMessagesRequest",
@@ -3239,7 +2537,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(BatchDeleteMessagesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3264,16 +2562,16 @@ function __c0(j: number): any {
         identifier: "ClassificationLabelFieldValue",
       });
     case 5:
-      return S.Array(ClassificationLabelFieldValue);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           labelId: S.optional(S.String),
-          fields: S.optional(ClassificationLabelFieldValueList),
+          fields: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "ClassificationLabelValue" });
     case 7:
-      return S.Array(ClassificationLabelValue);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -3281,11 +2579,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(StringList),
-          removeClassificationLabelIds: S.optional(StringList),
-          removeLabelIds: S.optional(StringList),
-          addClassificationLabels: S.optional(ClassificationLabelValueList),
-          addLabelIds: S.optional(StringList),
+          ids: S.optional(__S(0)),
+          removeClassificationLabelIds: S.optional(__S(0)),
+          removeLabelIds: S.optional(__S(0)),
+          addClassificationLabels: S.optional(__S(7)),
+          addLabelIds: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "BatchModifyMessagesRequest",
@@ -3294,7 +2592,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(BatchModifyMessagesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3313,7 +2611,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MessagePartHeader" });
     case 3:
-      return S.Array(MessagePartHeader);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3323,15 +2621,15 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MessagePartBody" });
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => MessagePart));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(14)));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(MessagePartHeaderList),
-          body: S.optional(MessagePartBody),
+          headers: S.optional(__S(11)),
+          body: S.optional(__S(12)),
           mimeType: S.optional(S.String),
           filename: S.optional(S.String),
-          parts: S.optional(MessagePartList),
+          parts: S.optional(__S(13)),
           partId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessagePart" });
@@ -3340,14 +2638,14 @@ function __c1(j: number): any {
         S.Struct({
           threadId: S.optional(S.String),
           snippet: S.optional(S.String),
-          classificationLabelValues: S.optional(ClassificationLabelValueList),
-          labelIds: S.optional(StringList),
+          classificationLabelValues: S.optional(__S(7)),
+          labelIds: S.optional(__S(0)),
           internalDate: S.optional(S.String),
           historyId: S.optional(S.String),
           raw: S.optional(S.String),
           sizeEstimate: S.optional(S.Number),
           id: S.optional(S.String),
-          payload: S.optional(MessagePart),
+          payload: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "Message" });
   }
@@ -3357,7 +2655,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(Message),
+          message: S.optional(__S(15)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "Draft" });
@@ -3365,7 +2663,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Draft.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3385,22 +2683,22 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           threadsUnread: S.optional(S.Number),
-          messageListVisibility: S.optional(LabelMessageListVisibilityEnum),
+          messageListVisibility: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(LabelTypeEnum),
+          type: S.optional(S.String),
           threadsTotal: S.optional(S.Number),
-          labelListVisibility: S.optional(LabelLabelListVisibilityEnum),
+          labelListVisibility: S.optional(S.String),
           id: S.optional(S.String),
           messagesUnread: S.optional(S.Number),
           messagesTotal: S.optional(S.Number),
-          color: S.optional(LabelColor),
+          color: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "Label" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Label.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3421,14 +2719,14 @@ function __c2(j: number): any {
         S.Struct({
           primaryKeyPairId: S.optional(S.String),
           emailAddress: S.optional(S.String),
-          signAndEncryptKeyPairs: S.optional(SignAndEncryptKeyPairs),
+          signAndEncryptKeyPairs: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "CseIdentity" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(CseIdentity.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3460,32 +2758,30 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           privateKeyMetadataId: S.optional(S.String),
-          hardwareKeyMetadata: S.optional(HardwareKeyMetadata),
-          kaclsKeyMetadata: S.optional(KaclsKeyMetadata),
+          hardwareKeyMetadata: S.optional(__S(24)),
+          kaclsKeyMetadata: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "CsePrivateKeyMetadata" });
     case 3:
-      return S.Array(CsePrivateKeyMetadata);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enablementState: S.optional(CseKeyPairEnablementStateEnum),
+          enablementState: S.optional(S.String),
           disableTime: S.optional(S.String),
-          subjectEmailAddresses: S.optional(StringList),
+          subjectEmailAddresses: S.optional(__S(0)),
           pem: S.optional(S.String),
           pkcs7: S.optional(S.String),
           keyPairId: S.optional(S.String),
-          privateKeyMetadata: S.optional(CsePrivateKeyMetadataList),
+          privateKeyMetadata: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "CseKeyPair" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          chainValidation: S.optional(
-            CreateUsersSettingsCseKeypairsChainValidationEnum.pipe(T.Query()),
-          ),
-          body: S.optional(CseKeyPair.pipe(T.HttpBody())),
+          chainValidation: S.optional(S.String.pipe(T.Query())),
+          body: S.optional(__S(28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3500,14 +2796,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           delegateEmail: S.optional(S.String),
-          verificationStatus: S.optional(DelegateVerificationStatusEnum),
+          verificationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Delegate" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Delegate.pipe(T.HttpBody())),
+          body: S.optional(__S(30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3528,7 +2824,7 @@ function __c4(j: number): any {
           size: S.optional(S.Number),
           hasAttachment: S.optional(S.Boolean),
           query: S.optional(S.String),
-          sizeComparison: S.optional(FilterCriteriaSizeComparisonEnum),
+          sizeComparison: S.optional(S.String),
           excludeChats: S.optional(S.Boolean),
           from: S.optional(S.String),
           to: S.optional(S.String),
@@ -3539,8 +2835,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          removeLabelIds: S.optional(StringList),
-          addLabelIds: S.optional(StringList),
+          removeLabelIds: S.optional(__S(0)),
+          addLabelIds: S.optional(__S(0)),
           forward: S.optional(S.String),
         }),
       ).annotate({ identifier: "FilterAction" });
@@ -3548,15 +2844,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          criteria: S.optional(FilterCriteria),
-          action: S.optional(FilterAction),
+          criteria: S.optional(__S(32)),
+          action: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "Filter" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Filter.pipe(T.HttpBody())),
+          body: S.optional(__S(34).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3570,7 +2866,7 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          verificationStatus: S.optional(ForwardingAddressVerificationStatusEnum),
+          verificationStatus: S.optional(S.String),
           forwardingEmail: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForwardingAddress" });
@@ -3578,7 +2874,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(ForwardingAddress.pipe(T.HttpBody())),
+          body: S.optional(__S(36).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3592,7 +2888,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          securityMode: S.optional(SmtpMsaSecurityModeEnum),
+          securityMode: S.optional(S.String),
           host: S.optional(S.String),
           username: S.optional(S.String),
           password: S.optional(S.String),
@@ -3605,10 +2901,10 @@ function __c4(j: number): any {
           treatAsAlias: S.optional(S.Boolean),
           isPrimary: S.optional(S.Boolean),
           replyToAddress: S.optional(S.String),
-          verificationStatus: S.optional(SendAsVerificationStatusEnum),
+          verificationStatus: S.optional(S.String),
           displayName: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
-          smtpMsa: S.optional(SmtpMsa),
+          smtpMsa: S.optional(__S(38)),
           sendAsEmail: S.optional(S.String),
           signature: S.optional(S.String),
         }),
@@ -3621,7 +2917,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(SendAs.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3792,7 +3088,7 @@ function __c6(j: number): any {
         S.Struct({
           keyPairId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(DisableCseKeyPairRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(42).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3808,7 +3104,7 @@ function __c6(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           keyPairId: S.String.pipe(T.Label()),
-          body: S.optional(DisableCseKeyPairRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(42).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3838,7 +3134,7 @@ function __c6(j: number): any {
         S.Struct({
           emailAddress: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          disposition: S.optional(AutoForwardingDispositionEnum),
+          disposition: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoForwarding" });
   }
@@ -3864,7 +3160,7 @@ function __c7(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           autoExpunge: S.optional(S.Boolean),
-          expungeBehavior: S.optional(ImapSettingsExpungeBehaviorEnum),
+          expungeBehavior: S.optional(S.String),
           maxFolderSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImapSettings" });
@@ -3905,8 +3201,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accessWindow: S.optional(PopSettingsAccessWindowEnum),
-          disposition: S.optional(PopSettingsDispositionEnum),
+          accessWindow: S.optional(S.String),
+          disposition: S.optional(S.String),
         }),
       ).annotate({ identifier: "PopSettings" });
     case 6:
@@ -3938,7 +3234,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          format: S.optional(GetUsersDraftsFormatEnum.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           id: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -3965,9 +3261,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          metadataHeaders: S.optional(StringList.pipe(T.Query())),
+          metadataHeaders: S.optional(__S(0).pipe(T.Query())),
           id: S.String.pipe(T.Label()),
-          format: S.optional(GetUsersMessagesFormatEnum.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4119,8 +3415,8 @@ function __c9(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          metadataHeaders: S.optional(StringList.pipe(T.Query())),
-          format: S.optional(GetUsersThreadsFormatEnum.pipe(T.Query())),
+          metadataHeaders: S.optional(__S(0).pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4130,12 +3426,12 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "GetUsersThreadsRequest" });
     case 5:
-      return S.Array(Message);
+      return S.Array(__S(15));
     case 6:
       return S.suspend(() =>
         S.Struct({
           snippet: S.optional(S.String),
-          messages: S.optional(MessageList),
+          messages: S.optional(__S(77)),
           historyId: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -4177,9 +3473,9 @@ function __c10(j: number): any {
           userId: S.String.pipe(T.Label()),
           neverMarkSpam: S.optional(S.Boolean.pipe(T.Query())),
           deleted: S.optional(S.Boolean.pipe(T.Query())),
-          internalDateSource: S.optional(ImportUsersMessagesInternalDateSourceEnum.pipe(T.Query())),
+          internalDateSource: S.optional(S.String.pipe(T.Query())),
           processForCalendar: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Message.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4194,9 +3490,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deleted: S.optional(S.Boolean.pipe(T.Query())),
-          internalDateSource: S.optional(InsertUsersMessagesInternalDateSourceEnum.pipe(T.Query())),
+          internalDateSource: S.optional(S.String.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Message.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4212,7 +3508,7 @@ function __c10(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           sendAsEmail: S.String.pipe(T.Label()),
-          body: S.optional(SmimeInfo.pipe(T.HttpBody())),
+          body: S.optional(__S(75).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4240,17 +3536,17 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersDraftsRequest" });
     case 5:
-      return S.Array(Draft);
+      return S.Array(__S(16));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           resultSizeEstimate: S.optional(S.Number),
-          drafts: S.optional(DraftList),
+          drafts: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "ListDraftsResponse" });
     case 7:
-      return S.Array(ListUsersHistoryHistoryTypesEnum);
+      return S.Array(S.String);
   }
 }
 function __c11(j: number): any {
@@ -4262,7 +3558,7 @@ function __c11(j: number): any {
           maxResults: S.optional(S.Number.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
           startHistoryId: S.optional(S.String.pipe(T.Query())),
-          historyTypes: S.optional(ListUsersHistoryHistoryTypesEnumList.pipe(T.Query())),
+          historyTypes: S.optional(__S(87).pipe(T.Query())),
           labelId: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4275,37 +3571,37 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(Message),
+          message: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "HistoryMessageAdded" });
     case 2:
-      return S.Array(HistoryMessageAdded);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(StringList),
-          message: S.optional(Message),
+          labelIds: S.optional(__S(0)),
+          message: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "HistoryLabelAdded" });
     case 4:
-      return S.Array(HistoryLabelAdded);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(Message),
-          labelIds: S.optional(StringList),
+          message: S.optional(__S(15)),
+          labelIds: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "HistoryLabelRemoved" });
     case 6:
-      return S.Array(HistoryLabelRemoved);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          messagesAdded: S.optional(HistoryMessageAddedList),
-          labelsAdded: S.optional(HistoryLabelAddedList),
-          messages: S.optional(MessageList),
-          messagesDeleted: S.optional(HistoryMessageDeletedList),
-          labelsRemoved: S.optional(HistoryLabelRemovedList),
+          messagesAdded: S.optional(__S(90)),
+          labelsAdded: S.optional(__S(92)),
+          messages: S.optional(__S(77)),
+          messagesDeleted: S.optional(__S(90)),
+          labelsRemoved: S.optional(__S(94)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "History" });
@@ -4314,13 +3610,13 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(History);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
           historyId: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          history: S.optional(HistoryList),
+          history: S.optional(__S(96)),
         }),
       ).annotate({ identifier: "ListHistoryResponse" });
     case 2:
@@ -4336,11 +3632,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersLabelsRequest" });
     case 3:
-      return S.Array(Label);
+      return S.Array(__S(19));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelList),
+          labels: S.optional(__S(99)),
         }),
       ).annotate({ identifier: "ListLabelsResponse" });
     case 5:
@@ -4350,7 +3646,7 @@ function __c12(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           userId: S.String.pipe(T.Label()),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          labelIds: S.optional(StringList.pipe(T.Query())),
+          labelIds: S.optional(__S(0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4364,7 +3660,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          messages: S.optional(MessageList),
+          messages: S.optional(__S(77)),
           resultSizeEstimate: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListMessagesResponse" });
@@ -4389,12 +3685,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CseIdentity);
+      return S.Array(__S(22));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cseIdentities: S.optional(CseIdentityList),
+          cseIdentities: S.optional(__S(104)),
         }),
       ).annotate({
         identifier: "ListCseIdentitiesResponse",
@@ -4416,12 +3712,12 @@ function __c13(j: number): any {
         identifier: "ListUsersSettingsCseKeypairsRequest",
       });
     case 3:
-      return S.Array(CseKeyPair);
+      return S.Array(__S(28));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cseKeyPairs: S.optional(CseKeyPairList),
+          cseKeyPairs: S.optional(__S(107)),
         }),
       ).annotate({ identifier: "ListCseKeyPairsResponse" });
     case 5:
@@ -4439,11 +3735,11 @@ function __c13(j: number): any {
         identifier: "ListUsersSettingsDelegatesRequest",
       });
     case 6:
-      return S.Array(Delegate);
+      return S.Array(__S(30));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          delegates: S.optional(DelegateList),
+          delegates: S.optional(__S(110)),
         }),
       ).annotate({ identifier: "ListDelegatesResponse" });
   }
@@ -4465,11 +3761,11 @@ function __c14(j: number): any {
         identifier: "ListUsersSettingsFiltersRequest",
       });
     case 1:
-      return S.Array(Filter);
+      return S.Array(__S(34));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          filter: S.optional(FilterList),
+          filter: S.optional(__S(113)),
         }),
       ).annotate({ identifier: "ListFiltersResponse" });
     case 3:
@@ -4487,11 +3783,11 @@ function __c14(j: number): any {
         identifier: "ListUsersSettingsForwardingAddressesRequest",
       });
     case 4:
-      return S.Array(ForwardingAddress);
+      return S.Array(__S(36));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          forwardingAddresses: S.optional(ForwardingAddressList),
+          forwardingAddresses: S.optional(__S(116)),
         }),
       ).annotate({
         identifier: "ListForwardingAddressesResponse",
@@ -4511,7 +3807,7 @@ function __c14(j: number): any {
         identifier: "ListUsersSettingsSendAsRequest",
       });
     case 7:
-      return S.Array(SendAs);
+      return S.Array(__S(39));
   }
 }
 function __c15(j: number): any {
@@ -4519,7 +3815,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sendAs: S.optional(SendAsList),
+          sendAs: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "ListSendAsResponse" });
     case 1:
@@ -4538,17 +3834,17 @@ function __c15(j: number): any {
         identifier: "ListUsersSettingsSendAsSmimeInfoRequest",
       });
     case 2:
-      return S.Array(SmimeInfo);
+      return S.Array(__S(75));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          smimeInfo: S.optional(SmimeInfoList),
+          smimeInfo: S.optional(__S(122)),
         }),
       ).annotate({ identifier: "ListSmimeInfoResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(StringList.pipe(T.Query())),
+          labelIds: S.optional(__S(0).pipe(T.Query())),
           q: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           includeSpamTrash: S.optional(S.Boolean.pipe(T.Query())),
@@ -4563,11 +3859,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersThreadsRequest" });
     case 5:
-      return S.Array(Thread);
+      return S.Array(__S(78));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          threads: S.optional(ThreadList),
+          threads: S.optional(__S(125)),
           nextPageToken: S.optional(S.String),
           resultSizeEstimate: S.optional(S.Number),
         }),
@@ -4575,10 +3871,10 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          addLabelIds: S.optional(StringList),
-          removeClassificationLabelIds: S.optional(StringList),
-          addClassificationLabels: S.optional(ClassificationLabelValueList),
-          removeLabelIds: S.optional(StringList),
+          addLabelIds: S.optional(__S(0)),
+          removeClassificationLabelIds: S.optional(__S(0)),
+          addClassificationLabels: S.optional(__S(7)),
+          removeLabelIds: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "ModifyMessageRequest" });
   }
@@ -4590,7 +3886,7 @@ function __c16(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(ModifyMessageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(127).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4604,8 +3900,8 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          removeLabelIds: S.optional(StringList),
-          addLabelIds: S.optional(StringList),
+          removeLabelIds: S.optional(__S(0)),
+          addLabelIds: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "ModifyThreadRequest" });
     case 2:
@@ -4613,7 +3909,7 @@ function __c16(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(ModifyThreadRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4629,7 +3925,7 @@ function __c16(j: number): any {
         S.Struct({
           keyPairId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(DisableCseKeyPairRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(42).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4645,7 +3941,7 @@ function __c16(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Label.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4659,7 +3955,7 @@ function __c16(j: number): any {
         S.Struct({
           emailAddress: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(CseIdentity.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4675,7 +3971,7 @@ function __c16(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           sendAsEmail: S.String.pipe(T.Label()),
-          body: S.optional(SendAs.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4690,7 +3986,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Draft.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4707,7 +4003,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Message.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4806,7 +4102,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(AutoForwarding.pipe(T.HttpBody())),
+          body: S.optional(__S(55).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4825,7 +4121,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(ImapSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(57).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4840,7 +4136,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(LanguageSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(59).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4855,7 +4151,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(PopSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(61).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4871,7 +4167,7 @@ function __c18(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Draft.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4885,7 +4181,7 @@ function __c18(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          body: S.optional(Label.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4899,7 +4195,7 @@ function __c18(j: number): any {
         S.Struct({
           sendAsEmail: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(SendAs.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4914,7 +4210,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(VacationSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(80).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4947,17 +4243,17 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(StringList),
+          labelIds: S.optional(__S(0)),
           topicName: S.optional(S.String),
-          labelFilterBehavior: S.optional(WatchRequestLabelFilterBehaviorEnum),
-          labelFilterAction: S.optional(WatchRequestLabelFilterActionEnum),
+          labelFilterBehavior: S.optional(S.String),
+          labelFilterAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           userId: S.String.pipe(T.Label()),
-          body: S.optional(WatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4973,5 +4269,54 @@ function __c19(j: number): any {
           historyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatchResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
   }
 }

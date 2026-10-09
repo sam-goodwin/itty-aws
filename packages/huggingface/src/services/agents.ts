@@ -9,31 +9,18 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export interface GetAgentHarnessesRequest {}
-const GetAgentHarnessesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetAgentHarnessesRequest>;
-
 /** Standard environment variables that any agent can set to identify itself. Their value is matched against the harness ids. */
 export type GetAgentHarnessesResponseStandardEnvVarsList = Array<string>;
-const GetAgentHarnessesResponseStandardEnvVarsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetAgentHarnessesResponseStandardEnvVarsList>;
-
 /** Environment variable(s) identifying this harness, mapped to the value pattern they must match: "*" (set to any non-empty value), an exact value, or a "<prefix>*" fuzzy match. Detection matches if ANY entry matches. */
 export type GetAgentHarnessesResponseHarnessesValueEnvVarsMap = {
   [key: string]: string | undefined;
 };
-const GetAgentHarnessesResponseHarnessesValueEnvVarsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetAgentHarnessesResponseHarnessesValueEnvVarsMap>;
-
 export interface GetAgentHarnessesResponseHarnessesValue {
   /** Human-readable name of the harness */
   prettyLabel: string;
@@ -46,31 +33,16 @@ export interface GetAgentHarnessesResponseHarnessesValue {
   /** Environment variable(s) identifying this harness, mapped to the value pattern they must match: "*" (set to any non-empty value), an exact value, or a "<prefix>*" fuzzy match. Detection matches if ANY entry matches. */
   envVars?: GetAgentHarnessesResponseHarnessesValueEnvVarsMap;
 }
-const GetAgentHarnessesResponseHarnessesValue = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetAgentHarnessesResponseHarnessesValue>;
-
 /** Registered harnesses, keyed by id and ordered by detection priority: the first match wins */
 export type GetAgentHarnessesResponseHarnessesMap = {
   [key: string]: GetAgentHarnessesResponseHarnessesValue | undefined;
 };
-const GetAgentHarnessesResponseHarnessesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetAgentHarnessesResponseHarnessesMap>;
-
 export interface GetAgentHarnessesResponse {
   /** Standard environment variables that any agent can set to identify itself. Their value is matched against the harness ids. */
   standardEnvVars: GetAgentHarnessesResponseStandardEnvVarsList;
   /** Registered harnesses, keyed by id and ordered by detection priority: the first match wins */
   harnesses: GetAgentHarnessesResponseHarnessesMap;
 }
-const GetAgentHarnessesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetAgentHarnessesResponse>;
-
 export type GetAgentHarnessesError = HuggingFaceOpError;
 /** Get agent harnesses Get the registry of AI agents / harnesses known to the Hub, along with the standard environment variables used to detect them. Clients use this registry to identify which agent they are running in when reporting Hub activity. */
 export const getAgentHarnesses: API.OperationMethod<
@@ -79,8 +51,8 @@ export const getAgentHarnesses: API.OperationMethod<
   GetAgentHarnessesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentHarnessesRequest,
-  output: GetAgentHarnessesResponse,
+  input: __S(0) as any as S.Schema<GetAgentHarnessesRequest>,
+  output: __S(5) as any as S.Schema<GetAgentHarnessesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -104,21 +76,32 @@ function __c0(j: number): any {
           repoUrl: S.optional(S.String),
           docsUrl: S.optional(S.String),
           description: S.optional(S.String),
-          envVars: S.optional(GetAgentHarnessesResponseHarnessesValueEnvVarsMap),
+          envVars: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GetAgentHarnessesResponseHarnessesValue",
       });
     case 4:
-      return S.Record(S.String, GetAgentHarnessesResponseHarnessesValue);
+      return S.Record(S.String, __S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          standardEnvVars: GetAgentHarnessesResponseStandardEnvVarsList,
-          harnesses: GetAgentHarnessesResponseHarnessesMap,
+          standardEnvVars: __S(1),
+          harnesses: __S(4),
         }),
       ).annotate({
         identifier: "GetAgentHarnessesResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

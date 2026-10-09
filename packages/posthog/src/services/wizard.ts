@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -47,8 +49,6 @@ export class NotFound
 
 /** * `local` - local * `cloud` - cloud */
 export type RunEnvironmentEnum = "local" | "cloud";
-const RunEnvironmentEnum = S.String;
-
 export interface LocalFolderWorkspace {
   /** Selects a folder on the user's machine as the workspace. */
   type: string;
@@ -62,8 +62,6 @@ export interface GitRepositoryWorkspace {
   repository: string;
 }
 export type WizardWorkspace = LocalFolderWorkspace | GitRepositoryWorkspace;
-const WizardWorkspace = S.Unknown as any as S.Schema<WizardWorkspace>;
-
 export interface CreateWizardRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -78,11 +76,6 @@ export interface CreateWizardRunRequest {
   /** Wizard package version to run. Defaults to the backend pin and accepts latest explicitly. */
   wizard_version?: string;
 }
-const CreateWizardRunRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateWizardRunRequest>;
-
 export interface WizardRunCreator {
   /** Unique ID of the user who created the Wizard run. */
   id: number;
@@ -93,31 +86,14 @@ export interface WizardRunCreator {
   /** Email address of the user who created the Wizard run. */
   email: string;
 }
-const WizardRunCreator = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<WizardRunCreator>;
-
 /** Wizard CLI arguments used to start the program. */
 export type WizardProgramCommandList = Array<string>;
-const WizardProgramCommandList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<WizardProgramCommandList>;
-
 /** Labels that categorize the program. */
 export type WizardProgramTagsList = Array<string>;
-const WizardProgramTagsList = WizardProgramCommandList as any as S.Schema<WizardProgramTagsList>;
-
 /** Programs that should run before this program. */
 export type WizardProgramRequiredProgramsList = Array<string>;
-const WizardProgramRequiredProgramsList =
-  WizardProgramCommandList as any as S.Schema<WizardProgramRequiredProgramsList>;
-
 /** Environments where the program can run. */
 export type WizardProgramSupportedEnvironmentsList = Array<RunEnvironmentEnum>;
-const WizardProgramSupportedEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<WizardProgramSupportedEnvironmentsList>;
-
 export interface WizardProgram {
   /** Stable identifier used to select the program. */
   id: string;
@@ -136,12 +112,8 @@ export interface WizardProgram {
   /** Environments where the program can run. */
   supported_environments: WizardProgramSupportedEnvironmentsList;
 }
-const WizardProgram = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<WizardProgram>;
-
 /** * `created` - created * `running` - running * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
 export type WizardRunStatusEnum = "created" | "running" | "completed" | "failed" | "cancelled";
-const WizardRunStatusEnum = S.String;
-
 /** * `dispatching` - dispatching * `provisioning` - provisioning * `preparing_workspace` - preparing_workspace * `executing_wizard` - executing_wizard * `creating_artifacts` - creating_artifacts */
 export type WizardRunStageEnum =
   | "dispatching"
@@ -149,8 +121,6 @@ export type WizardRunStageEnum =
   | "preparing_workspace"
   | "executing_wizard"
   | "creating_artifacts";
-const WizardRunStageEnum = S.String;
-
 export interface WizardRun {
   /** Unique ID of the Wizard run. */
   id: string;
@@ -185,13 +155,8 @@ export interface WizardRun {
   /** Cloud execution deadline, or null for local runs. */
   deadline_at: string | null;
 }
-const WizardRun = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<WizardRun>;
-
 /** The question text shown to the user. Always empty for sensitive questions. */
 export type PendingInputPromptsList = Array<string>;
-const PendingInputPromptsList =
-  WizardProgramCommandList as any as S.Schema<PendingInputPromptsList>;
-
 /** The in-flight `wizard_ask` question. Typed rather than a free-form dict so the shape the widget renders is enforced at the edge instead of trusted from the producer. */
 export interface PendingInput {
   /** Identifier the wizard mints for this question. Changes when a new question is asked. */
@@ -205,12 +170,8 @@ export interface PendingInput {
   /** The question text shown to the user. Always empty for sensitive questions. */
   prompts?: PendingInputPromptsList;
 }
-const PendingInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<PendingInput>;
-
 /** * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
 export type RunPhaseEnum = "idle" | "running" | "completed" | "error";
-const RunPhaseEnum = S.String;
-
 /** * `pending` - PENDING * `in_progress` - IN_PROGRESS * `completed` - COMPLETED * `failed` - FAILED * `canceled` - CANCELED */
 export type WizardTaskDTOStatusEnum =
   | "pending"
@@ -218,33 +179,16 @@ export type WizardTaskDTOStatusEnum =
   | "completed"
   | "failed"
   | "canceled";
-const WizardTaskDTOStatusEnum = S.String;
-
 export interface WizardTaskDTO {
   id: string;
   title: string;
   status: WizardTaskDTOStatusEnum | (string & {});
 }
-const WizardTaskDTO = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<WizardTaskDTO>;
-
 export type CreateWizardSessionRequestTasksList = Array<WizardTaskDTO>;
-const CreateWizardSessionRequestTasksList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateWizardSessionRequestTasksList>;
-
 /** Optional structured plan of events the wizard intends to instrument. Schema is workflow-specific. */
 export type CreateWizardSessionRequestEventPlanMap = { [key: string]: unknown | undefined };
-const CreateWizardSessionRequestEventPlanMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateWizardSessionRequestEventPlanMap>;
-
 /** Populated when run_phase='error'. Shape: { type: string, message: string }. */
 export type CreateWizardSessionRequestErrorMap = { [key: string]: unknown | undefined };
-const CreateWizardSessionRequestErrorMap =
-  CreateWizardSessionRequestEventPlanMap as any as S.Schema<CreateWizardSessionRequestErrorMap>;
-
 export interface CreateWizardSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -268,30 +212,14 @@ export interface CreateWizardSessionRequest {
   /** Populated when run_phase='error'. Shape: { type: string, message: string }. */
   error?: CreateWizardSessionRequestErrorMap | null;
 }
-const CreateWizardSessionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateWizardSessionRequest>;
-
 export type WizardSessionDTOTasksList = Array<WizardTaskDTO>;
-const WizardSessionDTOTasksList =
-  CreateWizardSessionRequestTasksList as any as S.Schema<WizardSessionDTOTasksList>;
-
 export type WizardSessionDTOEventPlanMap = { [key: string]: unknown | undefined };
-const WizardSessionDTOEventPlanMap =
-  CreateWizardSessionRequestEventPlanMap as any as S.Schema<WizardSessionDTOEventPlanMap>;
-
 export type WizardSessionDTOErrorMap = { [key: string]: unknown | undefined };
-const WizardSessionDTOErrorMap =
-  CreateWizardSessionRequestEventPlanMap as any as S.Schema<WizardSessionDTOErrorMap>;
-
 export interface WizardSessionUserDTO {
   id: number;
   first_name: string;
   email: string;
 }
-const WizardSessionUserDTO = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<WizardSessionUserDTO>;
-
 /** Output: serialises a WizardSessionDTO returned by the facade. */
 export interface WizardSessionDTO {
   /** The question the wizard is currently blocked on, or null when nothing is pending. */
@@ -313,62 +241,31 @@ export interface WizardSessionDTO {
   updated_at: string;
   is_stale: boolean;
 }
-const WizardSessionDTO = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<WizardSessionDTO>;
-
 export interface GetWizardRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   run_id: string;
 }
-const GetWizardRunRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetWizardRunRequest>;
-
 export interface GetWizardRunsArtifactsContentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   run_id: string;
   id: string;
 }
-const GetWizardRunsArtifactsContentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetWizardRunsArtifactsContentRequest>;
-
 export interface GetWizardRunsArtifactsContentResponse {}
-const GetWizardRunsArtifactsContentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetWizardRunsArtifactsContentResponse>;
-
 export interface GetWizardRunsStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   run_id: string;
 }
-const GetWizardRunsStreamRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetWizardRunsStreamRequest>;
-
 export interface GetWizardRunsStreamResponse {}
-const GetWizardRunsStreamResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetWizardRunsStreamResponse>;
-
 export interface GetWizardRunsTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   run_id: string;
 }
-const GetWizardRunsTaskRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetWizardRunsTaskRequest>;
-
 /** * `created` - created * `running` - running * `completed` - completed * `failed` - failed */
 export type WizardTaskStatusEnum = "created" | "running" | "completed" | "failed";
-const WizardTaskStatusEnum = S.String;
-
 export interface WizardRunTask {
   /** Task name, unique within this run. */
   name: string;
@@ -385,31 +282,17 @@ export interface WizardRunTask {
   /** Task failure explanation, or null when none is available. */
   error_message: string | null;
 }
-const WizardRunTask = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<WizardRunTask>;
-
 /** Complete task list in snapshot order. */
 export type WizardRunTaskListTasksList = Array<WizardRunTask>;
-const WizardRunTaskListTasksList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<WizardRunTaskListTasksList>;
-
 export interface WizardRunTaskList {
   /** Complete task list in snapshot order. */
   tasks: WizardRunTaskListTasksList;
 }
-const WizardRunTaskList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<WizardRunTaskList>;
-
 export interface GetWizardSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   session_id: string;
 }
-const GetWizardSessionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetWizardSessionRequest>;
-
 export interface GetWizardSessionsLatestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -418,11 +301,6 @@ export interface GetWizardSessionsLatestRequest {
   /** Workflow to inspect. */
   workflow_id: string;
 }
-const GetWizardSessionsLatestRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetWizardSessionsLatestRequest>;
-
 export interface GetWizardSessionsStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -431,17 +309,7 @@ export interface GetWizardSessionsStreamRequest {
   /** Workflow to inspect. */
   workflow_id: string;
 }
-const GetWizardSessionsStreamRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetWizardSessionsStreamRequest>;
-
 export interface GetWizardSessionsStreamResponse {}
-const GetWizardSessionsStreamResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetWizardSessionsStreamResponse>;
-
 export interface ListWizardRegistryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -450,28 +318,13 @@ export interface ListWizardRegistryRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListWizardRegistryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListWizardRegistryRequest>;
-
 export type PaginatedWizardProgramListResultsList = Array<WizardProgram>;
-const PaginatedWizardProgramListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PaginatedWizardProgramListResultsList>;
-
 export interface PaginatedWizardProgramList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedWizardProgramListResultsList;
 }
-const PaginatedWizardProgramList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PaginatedWizardProgramList>;
-
 export type ListWizardRunsRequestStatusItem =
   | "cancelled"
   | "completed"
@@ -481,9 +334,6 @@ export type ListWizardRunsRequestStatusItem =
 export type ListWizardRunsRequestStatusList = Array<
   ListWizardRunsRequestStatusItem | (string & {})
 >;
-const ListWizardRunsRequestStatusList =
-  WizardProgramSupportedEnvironmentsList as any as S.Schema<ListWizardRunsRequestStatusList>;
-
 export interface ListWizardRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -496,28 +346,13 @@ export interface ListWizardRunsRequest {
   /** Filter by one or more comma-separated run statuses. */
   status?: ListWizardRunsRequestStatusList;
 }
-const ListWizardRunsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListWizardRunsRequest>;
-
 export type PaginatedWizardRunListResultsList = Array<WizardRun>;
-const PaginatedWizardRunListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PaginatedWizardRunListResultsList>;
-
 export interface PaginatedWizardRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedWizardRunListResultsList;
 }
-const PaginatedWizardRunList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<PaginatedWizardRunList>;
-
 export interface ListWizardRunsArtifactsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -527,11 +362,6 @@ export interface ListWizardRunsArtifactsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListWizardRunsArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListWizardRunsArtifactsRequest>;
-
 /** * `git_diff` - git_diff */
 export type WizardRunGitDiffArtifactArtifactTypeEnum = "git_diff";
 export interface WizardRunGitDiffArtifact {
@@ -579,25 +409,13 @@ export interface WizardRunPullRequestArtifact {
   created_at: string;
 }
 export type WizardRunArtifact = WizardRunGitDiffArtifact | WizardRunPullRequestArtifact;
-const WizardRunArtifact = S.Unknown as any as S.Schema<WizardRunArtifact>;
-
 export type PaginatedWizardRunArtifactListResultsList = Array<WizardRunArtifact>;
-const PaginatedWizardRunArtifactListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<PaginatedWizardRunArtifactListResultsList>;
-
 export interface PaginatedWizardRunArtifactList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedWizardRunArtifactListResultsList;
 }
-const PaginatedWizardRunArtifactList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PaginatedWizardRunArtifactList>;
-
 export interface ListWizardSessionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -610,32 +428,15 @@ export interface ListWizardSessionsRequest {
   /** Return sessions for this workflow only. */
   workflow_id?: string;
 }
-const ListWizardSessionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListWizardSessionsRequest>;
-
 export type PaginatedWizardSessionDTOListResultsList = Array<WizardSessionDTO>;
-const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PaginatedWizardSessionDTOListResultsList>;
-
 export interface PaginatedWizardSessionDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedWizardSessionDTOListResultsList;
 }
-const PaginatedWizardSessionDTOList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PaginatedWizardSessionDTOList>;
-
 /** * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
 export type WizardRunStatusUpdateRequestStatusEnum = "completed" | "failed" | "cancelled";
-const WizardRunStatusUpdateRequestStatusEnum = S.String;
-
 export interface UpdateWizardRunsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -645,26 +446,14 @@ export interface UpdateWizardRunsPartialRequest {
   /** Machine-readable reason the Wizard run failed. */
   error_code?: string | null;
 }
-const UpdateWizardRunsPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateWizardRunsPartialRequest>;
-
 export interface UpdateWizardRunTask {
   /** Task name, unique within this run and stable across snapshots. */
   name: string;
   /** Current task status reported by the setup agent. * `created` - created * `running` - running * `completed` - completed * `failed` - failed */
   status: WizardTaskStatusEnum | (string & {});
 }
-const UpdateWizardRunTask = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<UpdateWizardRunTask>;
-
 /** Complete task snapshot. An empty list clears the run's tasks. */
 export type UpdateWizardRunsTaskRequestTasksList = Array<UpdateWizardRunTask>;
-const UpdateWizardRunsTaskRequestTasksList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateWizardRunsTaskRequestTasksList>;
-
 export interface UpdateWizardRunsTaskRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -672,15 +461,7 @@ export interface UpdateWizardRunsTaskRequest {
   /** Complete task snapshot. An empty list clears the run's tasks. */
   tasks: UpdateWizardRunsTaskRequestTasksList;
 }
-const UpdateWizardRunsTaskRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateWizardRunsTaskRequest>;
-
 export interface UpdateWizardRunsTaskResponse {}
-const UpdateWizardRunsTaskResponse =
-  GetWizardRunsStreamResponse as any as S.Schema<UpdateWizardRunsTaskResponse>;
-
 export type CreateWizardRunError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create a local or cloud Wizard run for a project workspace. */
 export const createWizardRun: API.OperationMethod<
@@ -689,8 +470,8 @@ export const createWizardRun: API.OperationMethod<
   CreateWizardRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWizardRunRequest,
-  output: WizardRun,
+  input: __S(0) as any as S.Schema<CreateWizardRunRequest>,
+  output: __S(5) as any as S.Schema<WizardRun>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -704,8 +485,8 @@ export const createWizardSession: API.OperationMethod<
   CreateWizardSessionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWizardSessionRequest,
-  output: WizardSessionDTO,
+  input: __S(10) as any as S.Schema<CreateWizardSessionRequest>,
+  output: __S(12) as any as S.Schema<WizardSessionDTO>,
   errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -719,8 +500,8 @@ export const getWizardRun: API.OperationMethod<
   GetWizardRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardRunRequest,
-  output: WizardRun,
+  input: __S(13) as any as S.Schema<GetWizardRunRequest>,
+  output: __S(5) as any as S.Schema<WizardRun>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -734,8 +515,8 @@ export const getWizardRunsArtifactsContent: API.OperationMethod<
   GetWizardRunsArtifactsContentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardRunsArtifactsContentRequest,
-  output: GetWizardRunsArtifactsContentResponse,
+  input: __S(14) as any as S.Schema<GetWizardRunsArtifactsContentRequest>,
+  output: __S(15) as any as S.Schema<GetWizardRunsArtifactsContentResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -749,8 +530,8 @@ export const getWizardRunsStream: API.OperationMethod<
   GetWizardRunsStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardRunsStreamRequest,
-  output: GetWizardRunsStreamResponse,
+  input: __S(16) as any as S.Schema<GetWizardRunsStreamRequest>,
+  output: __S(17) as any as S.Schema<GetWizardRunsStreamResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -764,8 +545,8 @@ export const getWizardRunsTask: API.OperationMethod<
   GetWizardRunsTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardRunsTaskRequest,
-  output: WizardRunTaskList,
+  input: __S(18) as any as S.Schema<GetWizardRunsTaskRequest>,
+  output: __S(21) as any as S.Schema<WizardRunTaskList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -779,8 +560,8 @@ export const getWizardSession: API.OperationMethod<
   GetWizardSessionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardSessionRequest,
-  output: WizardSessionDTO,
+  input: __S(22) as any as S.Schema<GetWizardSessionRequest>,
+  output: __S(12) as any as S.Schema<WizardSessionDTO>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -794,8 +575,8 @@ export const getWizardSessionsLatest: API.OperationMethod<
   GetWizardSessionsLatestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardSessionsLatestRequest,
-  output: WizardSessionDTO,
+  input: __S(23) as any as S.Schema<GetWizardSessionsLatestRequest>,
+  output: __S(12) as any as S.Schema<WizardSessionDTO>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -809,8 +590,8 @@ export const getWizardSessionsStream: API.OperationMethod<
   GetWizardSessionsStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWizardSessionsStreamRequest,
-  output: GetWizardSessionsStreamResponse,
+  input: __S(24) as any as S.Schema<GetWizardSessionsStreamRequest>,
+  output: __S(25) as any as S.Schema<GetWizardSessionsStreamResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -824,8 +605,8 @@ export const listWizardRegistry: API.OperationMethod<
   ListWizardRegistryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWizardRegistryRequest,
-  output: PaginatedWizardProgramList,
+  input: __S(26) as any as S.Schema<ListWizardRegistryRequest>,
+  output: __S(28) as any as S.Schema<PaginatedWizardProgramList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -839,8 +620,8 @@ export const listWizardRuns: API.OperationMethod<
   ListWizardRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWizardRunsRequest,
-  output: PaginatedWizardRunList,
+  input: __S(29) as any as S.Schema<ListWizardRunsRequest>,
+  output: __S(31) as any as S.Schema<PaginatedWizardRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -854,8 +635,8 @@ export const listWizardRunsArtifacts: API.OperationMethod<
   ListWizardRunsArtifactsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWizardRunsArtifactsRequest,
-  output: PaginatedWizardRunArtifactList,
+  input: __S(32) as any as S.Schema<ListWizardRunsArtifactsRequest>,
+  output: __S(34) as any as S.Schema<PaginatedWizardRunArtifactList>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -869,8 +650,8 @@ export const listWizardSessions: API.OperationMethod<
   ListWizardSessionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWizardSessionsRequest,
-  output: PaginatedWizardSessionDTOList,
+  input: __S(35) as any as S.Schema<ListWizardSessionsRequest>,
+  output: __S(37) as any as S.Schema<PaginatedWizardSessionDTOList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -889,8 +670,8 @@ export const updateWizardRunsPartial: API.OperationMethod<
   UpdateWizardRunsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWizardRunsPartialRequest,
-  output: WizardRun,
+  input: __S(38) as any as S.Schema<UpdateWizardRunsPartialRequest>,
+  output: __S(5) as any as S.Schema<WizardRun>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -904,8 +685,8 @@ export const updateWizardRunsTask: API.OperationMethod<
   UpdateWizardRunsTaskError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWizardRunsTaskRequest,
-  output: UpdateWizardRunsTaskResponse,
+  input: __S(41) as any as S.Schema<UpdateWizardRunsTaskRequest>,
+  output: __S(17) as any as S.Schema<UpdateWizardRunsTaskResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -919,8 +700,8 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           program_id: S.String,
-          environment: RunEnvironmentEnum,
-          workspace: WizardWorkspace,
+          environment: S.String,
+          workspace: S.Unknown,
           idempotency_key: S.optional(S.String),
           wizard_version: S.optional(S.String),
         }).pipe(
@@ -939,7 +720,7 @@ function __c0(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Array(RunEnvironmentEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -947,10 +728,10 @@ function __c0(j: number): any {
           name: S.String,
           description: S.String,
           wizard_version: S.String,
-          command: WizardProgramCommandList,
-          tags: WizardProgramTagsList,
-          required_programs: WizardProgramRequiredProgramsList,
-          supported_environments: WizardProgramSupportedEnvironmentsList,
+          command: __S(2),
+          tags: __S(2),
+          required_programs: __S(2),
+          supported_environments: __S(3),
         }),
       ).annotate({ identifier: "WizardProgram" });
     case 5:
@@ -959,14 +740,14 @@ function __c0(j: number): any {
           id: S.String,
           team_id: S.Number,
           created_by_id: S.NullOr(S.Number),
-          created_by: S.NullOr(WizardRunCreator),
-          environment: RunEnvironmentEnum,
-          workspace: WizardWorkspace,
-          program: WizardProgram,
-          status: WizardRunStatusEnum,
+          created_by: S.NullOr(__S(1)),
+          environment: S.String,
+          workspace: S.Unknown,
+          program: __S(4),
+          status: S.String,
           error_code: S.NullOr(S.String),
           error_message: S.NullOr(S.String),
-          stage: S.NullOr(WizardRunStageEnum),
+          stage: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
           started_at: S.NullOr(S.String),
@@ -981,7 +762,7 @@ function __c0(j: number): any {
           asked_at: S.optional(S.String),
           question_count: S.optional(S.Number),
           sensitive: S.optional(S.Boolean),
-          prompts: S.optional(PendingInputPromptsList),
+          prompts: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "PendingInput" });
     case 7:
@@ -989,7 +770,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           title: S.String,
-          status: WizardTaskDTOStatusEnum,
+          status: S.String,
         }),
       ).annotate({ identifier: "WizardTaskDTO" });
   }
@@ -997,23 +778,23 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WizardTaskDTO);
+      return S.Array(__S(7));
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          pending_input: S.optional(S.NullOr(PendingInput)),
+          pending_input: S.optional(S.NullOr(__S(6))),
           handoff_text: S.optional(S.NullOr(S.String)),
           session_id: S.String,
           workflow_id: S.String,
           skill_id: S.String,
           started_at: S.String,
-          run_phase: RunPhaseEnum,
-          tasks: CreateWizardSessionRequestTasksList,
-          event_plan: S.optional(S.NullOr(CreateWizardSessionRequestEventPlanMap)),
-          error: S.optional(S.NullOr(CreateWizardSessionRequestErrorMap)),
+          run_phase: S.String,
+          tasks: __S(8),
+          event_plan: S.optional(S.NullOr(__S(9))),
+          error: S.optional(S.NullOr(__S(9))),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/wizard/sessions/", code: 200 }),
         ),
@@ -1031,18 +812,18 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pending_input: S.NullOr(PendingInput),
+          pending_input: S.NullOr(__S(6)),
           session_id: S.String,
           team_id: S.Number,
           workflow_id: S.String,
           skill_id: S.String,
           started_at: S.String,
-          run_phase: RunPhaseEnum,
-          tasks: WizardSessionDTOTasksList,
-          event_plan: S.NullOr(WizardSessionDTOEventPlanMap),
-          error: S.NullOr(WizardSessionDTOErrorMap),
+          run_phase: S.String,
+          tasks: __S(8),
+          event_plan: S.NullOr(__S(9)),
+          error: S.NullOr(__S(9)),
           handoff_text: S.NullOr(S.String),
-          created_by: S.NullOr(WizardSessionUserDTO),
+          created_by: S.NullOr(__S(11)),
           created_at: S.String,
           updated_at: S.String,
           is_stale: S.Boolean,
@@ -1121,7 +902,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          status: WizardTaskStatusEnum,
+          status: S.String,
           created_at: S.String,
           started_at: S.NullOr(S.String),
           completed_at: S.NullOr(S.String),
@@ -1130,11 +911,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "WizardRunTask" });
     case 4:
-      return S.Array(WizardRunTask);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tasks: WizardRunTaskListTasksList,
+          tasks: __S(20),
         }),
       ).annotate({ identifier: "WizardRunTaskList" });
     case 6:
@@ -1203,14 +984,14 @@ function __c3(j: number): any {
         identifier: "ListWizardRegistryRequest",
       });
     case 3:
-      return S.Array(WizardProgram);
+      return S.Array(__S(4));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedWizardProgramListResultsList,
+          results: __S(27),
         }),
       ).annotate({
         identifier: "PaginatedWizardProgramList",
@@ -1222,20 +1003,20 @@ function __c3(j: number): any {
           created_after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(ListWizardRunsRequestStatusList.pipe(T.Query())),
+          status: S.optional(__S(3).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/wizard/runs/", code: 200 }),
         ),
       ).annotate({ identifier: "ListWizardRunsRequest" });
     case 6:
-      return S.Array(WizardRun);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedWizardRunListResultsList,
+          results: __S(30),
         }),
       ).annotate({ identifier: "PaginatedWizardRunList" });
   }
@@ -1260,14 +1041,14 @@ function __c4(j: number): any {
         identifier: "ListWizardRunsArtifactsRequest",
       });
     case 1:
-      return S.Array(WizardRunArtifact);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedWizardRunArtifactListResultsList,
+          results: __S(33),
         }),
       ).annotate({
         identifier: "PaginatedWizardRunArtifactList",
@@ -1287,14 +1068,14 @@ function __c4(j: number): any {
         identifier: "ListWizardSessionsRequest",
       });
     case 4:
-      return S.Array(WizardSessionDTO);
+      return S.Array(__S(12));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedWizardSessionDTOListResultsList,
+          results: __S(36),
         }),
       ).annotate({
         identifier: "PaginatedWizardSessionDTOList",
@@ -1304,7 +1085,7 @@ function __c4(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           run_id: S.String.pipe(T.Label()),
-          status: S.optional(WizardRunStatusUpdateRequestStatusEnum),
+          status: S.optional(S.String),
           error_code: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -1320,7 +1101,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          status: WizardTaskStatusEnum,
+          status: S.String,
         }),
       ).annotate({ identifier: "UpdateWizardRunTask" });
   }
@@ -1328,13 +1109,13 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateWizardRunTask);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           run_id: S.String.pipe(T.Label()),
-          tasks: UpdateWizardRunsTaskRequestTasksList,
+          tasks: __S(40),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1345,5 +1126,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateWizardRunsTaskRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,18 +124,8 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** values specifies the set of values. Each returned container exit code (might be multiple in case of multiple containers) is checked against this set of values with respect to the operator. The list of values must be ordered and must not contain duplicates. Value '0' cannot be used for the In operator. At least one element is required. At most 255 elements are allowed. */
 export type IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList = Array<number>;
-const IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList>;
-
 /** PodFailurePolicyOnExitCodesRequirement describes the requirement for handling a failed pod based on its container exit codes. In particular, it lookups the .state.terminated.exitCode for each app container and init container status, represented by the .status.containerStatuses and .status.initContainerStatuses fields in the Pod status, respectively. Containers completed with success (exit code 0) are excluded from the requirement check. */
 export interface IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement {
   /** containerName restricts the check for exit codes to the container with the specified name. When null, the rule applies to all containers. When specified, it should match one the container or initContainer names in the pod template. */
@@ -176,11 +135,6 @@ export interface IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement {
   /** values specifies the set of values. Each returned container exit code (might be multiple in case of multiple containers) is checked against this set of values with respect to the operator. The list of values must be ordered and must not contain duplicates. Value '0' cannot be used for the In operator. At least one element is required. At most 255 elements are allowed. */
   values: IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList;
 }
-const IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement>;
-
 /** PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type. */
 export interface IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern {
   /** status specifies the required Pod condition status. To match a pod condition it is required that the specified status equals the pod condition status. Defaults to True. */
@@ -188,19 +142,9 @@ export interface IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern {
   /** type specifies the required Pod condition type. To match a pod condition it is required that specified type equals the pod condition type. */
   type: string;
 }
-const IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern>;
-
 /** onPodConditions represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed. */
 export type IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList =
   Array<IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern>;
-const IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList>;
-
 /** PodFailurePolicyRule describes how a pod failure is handled when the requirements are met. One of onExitCodes and onPodConditions, but not both, can be used in each rule. */
 export interface IoK8sApiBatchV1PodFailurePolicyRule {
   /** action specifies the action taken on a pod failure when the requirements are satisfied. Possible values are: - FailJob: indicates that the pod's job is marked as Failed and all running pods are terminated. - FailIndex: indicates that the pod's index is marked as Failed and will not be restarted. - Ignore: indicates that the counter towards the .backoffLimit is not incremented and a replacement pod is created. - Count: indicates that the pod is handled in the default way - the counter towards the .backoffLimit is incremented. Additional values are considered to be added in the future. Clients should react to an unknown action by skipping the rule. */
@@ -210,28 +154,13 @@ export interface IoK8sApiBatchV1PodFailurePolicyRule {
   /** onPodConditions represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed. */
   onPodConditions?: IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList;
 }
-const IoK8sApiBatchV1PodFailurePolicyRule = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyRule>;
-
 /** rules is a list of pod failure policy rules. The rules are evaluated in order. Once a rule matches a Pod failure, the remaining of the rules are ignored. When no rule matches the Pod failure, the default handling applies - the counter of pod failures is incremented and it is checked against the backoffLimit. At most 20 elements are allowed. */
 export type IoK8sApiBatchV1PodFailurePolicyRulesList = Array<IoK8sApiBatchV1PodFailurePolicyRule>;
-const IoK8sApiBatchV1PodFailurePolicyRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyRulesList>;
-
 /** PodFailurePolicy describes how failed pods influence the backoffLimit. */
 export interface IoK8sApiBatchV1PodFailurePolicy {
   /** rules is a list of pod failure policy rules. The rules are evaluated in order. Once a rule matches a Pod failure, the remaining of the rules are ignored. When no rule matches the Pod failure, the default handling applies - the counter of pod failures is incremented and it is checked against the backoffLimit. At most 20 elements are allowed. */
   rules?: IoK8sApiBatchV1PodFailurePolicyRulesList;
 }
-const IoK8sApiBatchV1PodFailurePolicy = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicy>;
-
 /** WorkloadPodGroupDisruptionMode defines how individual pods within a group can be disrupted. Exactly one mode must be set. */
 export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupDisruptionMode {
   /** all specifies that all pods in the group must be disrupted together. */
@@ -239,11 +168,6 @@ export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupDisruptionMode {
   /** single specifies that pods can be disrupted independently from each other. */
   single?: unknown;
 }
-const IoK8sApiSchedulingV1alpha3WorkloadPodGroupDisruptionMode = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadPodGroupDisruptionMode>;
-
 /** WorkloadPodGroupResourceClaim references a dynamic resource claim that is shared across pods in the group. */
 export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim {
   /** name uniquely identifies this resource claim inside the group. This field is required. It must be a DNS_LABEL. */
@@ -253,58 +177,27 @@ export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim {
   /** resourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace. This field is optional. If it is not specified, no resource claim template is used. If set, it must be a DNS subdomain. */
   resourceClaimTemplateName?: string;
 }
-const IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim>;
-
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the Job. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. At most 4 claims may be set, matching the limit on the resulting PodGroup. This list is immutable after creation: entries may neither be added, removed, nor modified. */
 export type IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim>;
-const IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList>;
-
 /** TopologyConstraint defines a topology constraint for a PodGroup. */
 export interface IoK8sApiSchedulingV1alpha3TopologyConstraint {
   /** key specifies the key of the node label representing the topology domain. All pods within the PodGroup must be colocated within the same domain instance. Different PodGroups can land on different domain instances even if they derive from the same PodGroupTemplate. Examples: "topology.kubernetes.io/rack" */
   key: string;
 }
-const IoK8sApiSchedulingV1alpha3TopologyConstraint = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
-
 /** topology specifies desired topological placements for all pods within the pod group. If unset, no topology placement is requested. */
 export type IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
-const IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    2,
-  ) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList>;
-
 /** WorkloadPodGroupSchedulingConstraints defines leaf-level scheduling constraints, such as topology. */
 export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraints {
   /** topology specifies desired topological placements for all pods within the pod group. If unset, no topology placement is requested. */
   topology?: IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList;
 }
-const IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraints = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraints>;
-
 /** WorkloadPodGroupGangSchedulingPolicy defines the parameters for gang (all-or-nothing) scheduling. */
 export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupGangSchedulingPolicy {
   /** minCount is the minimum number of pods that must be scheduled at the same time for the scheduler to admit the entire group. This field is optional. If it is not specified, the controller should inject a context-specific sane default (e.g., parallelism for a Job). If set, it must be a positive integer. */
   minCount?: number;
 }
-const IoK8sApiSchedulingV1alpha3WorkloadPodGroupGangSchedulingPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadPodGroupGangSchedulingPolicy>;
-
 /** WorkloadPodGroupSchedulingPolicy defines the scheduling policy for a group of pods managed by a workload controller. Exactly one policy must be set. */
 export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy {
   /** basic specifies that standard, pod-by-pod Kubernetes scheduling behavior should be used. */
@@ -312,11 +205,6 @@ export interface IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy {
   /** gang specifies all-or-nothing scheduling semantics. */
   gang?: IoK8sApiSchedulingV1alpha3WorkloadPodGroupGangSchedulingPolicy;
 }
-const IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy>;
-
 /** JobSchedulingConfiguration composes the reusable workload-aware scheduling building blocks. */
 export interface IoK8sApiBatchV1JobSchedulingConfiguration {
   /** disruptionMode defines the mode in which the Job's pods can be disrupted. One of Single, All. This field is immutable after creation: it may not be added or removed, and the selected mode may not be changed. */
@@ -328,18 +216,8 @@ export interface IoK8sApiBatchV1JobSchedulingConfiguration {
   /** schedulingPolicy defines the scheduling policy for this Job. Exactly one of Basic or Gang must be set. This field is immutable after creation: the policy may not be added or removed. The policy variant (basic/gang) is frozen by hand-written validation; only schedulingPolicy.gang.minCount may be changed. */
   schedulingPolicy?: IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy;
 }
-const IoK8sApiBatchV1JobSchedulingConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApiBatchV1JobSchedulingConfiguration>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
-
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -349,26 +227,13 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
-
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
-
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
@@ -376,11 +241,6 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
-
 /** SuccessPolicyRule describes rule for declaring a Job as succeeded. Each rule must have at least one of the "succeededIndexes" or "succeededCount" specified. */
 export interface IoK8sApiBatchV1SuccessPolicyRule {
   /** succeededCount specifies the minimal required size of the actual set of the succeeded indexes for the Job. When succeededCount is used along with succeededIndexes, the check is constrained only to the set of indexes specified by succeededIndexes. For example, given that succeededIndexes is "1-4", succeededCount is "3", and completed indexes are "1", "3", and "5", the Job isn't declared as succeeded because only "1" and "3" indexes are considered in that rules. When this field is null, this doesn't default to any value and is never evaluated at any time. When specified it needs to be a positive integer. */
@@ -388,33 +248,15 @@ export interface IoK8sApiBatchV1SuccessPolicyRule {
   /** succeededIndexes specifies the set of indexes which need to be contained in the actual set of the succeeded indexes for the Job. The list of indexes must be within 0 to ".spec.completions-1" and must not contain duplicates. At least one element is required. The indexes are represented as intervals separated by commas. The intervals can be a decimal integer or a pair of decimal integers separated by a hyphen. The number are listed in represented by the first and last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3, 4, 5 and 7, they are represented as "1,3-5,7". When this field is null, this field doesn't default to any value and is never evaluated at any time. */
   succeededIndexes?: string;
 }
-const IoK8sApiBatchV1SuccessPolicyRule = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IoK8sApiBatchV1SuccessPolicyRule>;
-
 /** rules represents the list of alternative rules for the declaring the Jobs as successful before `.status.succeeded >= .spec.completions`. Once any of the rules are met, the "SuccessCriteriaMet" condition is added, and the lingering pods are removed. The terminal state for such a Job has the "Complete" condition. Additionally, these rules are evaluated in order; Once the Job meets one of the rules, other rules are ignored. At most 20 elements are allowed. */
 export type IoK8sApiBatchV1SuccessPolicyRulesList = Array<IoK8sApiBatchV1SuccessPolicyRule>;
-const IoK8sApiBatchV1SuccessPolicyRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApiBatchV1SuccessPolicyRulesList>;
-
 /** SuccessPolicy describes when a Job can be declared as succeeded based on the success of some indexes. */
 export interface IoK8sApiBatchV1SuccessPolicy {
   /** rules represents the list of alternative rules for the declaring the Jobs as successful before `.status.succeeded >= .spec.completions`. Once any of the rules are met, the "SuccessCriteriaMet" condition is added, and the lingering pods are removed. The terminal state for such a Job has the "Complete" condition. Additionally, these rules are evaluated in order; Once the Job meets one of the rules, other rules are ignored. At most 20 elements are allowed. */
   rules: IoK8sApiBatchV1SuccessPolicyRulesList;
 }
-const IoK8sApiBatchV1SuccessPolicy = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApiBatchV1SuccessPolicy>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
 export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = Array<string>;
-const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirementValuesList>;
-
 /** A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApiCoreV1NodeSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -424,25 +266,12 @@ export interface IoK8sApiCoreV1NodeSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
   values?: IoK8sApiCoreV1NodeSelectorRequirementValuesList;
 }
-const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorRequirement>;
-
 /** matchExpressions is a list of node selector requirements by node's labels. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList>;
-
 /** matchFields is a list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   Array<IoK8sApiCoreV1NodeSelectorRequirement>;
-const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
-  IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList as any as S.Schema<IoK8sApiCoreV1NodeSelectorTermMatchFieldsList>;
-
 /** A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm. */
 export interface IoK8sApiCoreV1NodeSelectorTerm {
   /** matchExpressions is a list of node selector requirements by node's labels. */
@@ -450,11 +279,6 @@ export interface IoK8sApiCoreV1NodeSelectorTerm {
   /** matchFields is a list of node selector requirements by node's fields. */
   matchFields?: IoK8sApiCoreV1NodeSelectorTermMatchFieldsList;
 }
-const IoK8sApiCoreV1NodeSelectorTerm = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorTerm>;
-
 /** An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op). */
 export interface IoK8sApiCoreV1PreferredSchedulingTerm {
   /** preference is a node selector term, associated with the corresponding weight. */
@@ -462,37 +286,16 @@ export interface IoK8sApiCoreV1PreferredSchedulingTerm {
   /** weight is the weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100. */
   weight: number;
 }
-const IoK8sApiCoreV1PreferredSchedulingTerm = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1PreferredSchedulingTerm>;
-
 /** preferredDuringSchedulingIgnoredDuringExecution specifies that the scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node matches the corresponding matchExpressions; the node(s) with the highest sum are the most preferred. */
 export type IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   Array<IoK8sApiCoreV1PreferredSchedulingTerm>;
-const IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    2,
-  ) as any as S.Schema<IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionList>;
-
 /** nodeSelectorTerms is a list of node selector terms. The terms are ORed. Required. A list of node selector terms. The terms are ORed. */
 export type IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = Array<IoK8sApiCoreV1NodeSelectorTerm>;
-const IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList>;
-
 /** A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms. */
 export interface IoK8sApiCoreV1NodeSelector {
   /** nodeSelectorTerms is a list of node selector terms. The terms are ORed. Required. A list of node selector terms. The terms are ORed. */
   nodeSelectorTerms: IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList;
 }
-const IoK8sApiCoreV1NodeSelector = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1NodeSelector>;
-
 /** Node affinity is a group of node affinity scheduling rules. */
 export interface IoK8sApiCoreV1NodeAffinity {
   /** preferredDuringSchedulingIgnoredDuringExecution specifies that the scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node matches the corresponding matchExpressions; the node(s) with the highest sum are the most preferred. */
@@ -500,26 +303,12 @@ export interface IoK8sApiCoreV1NodeAffinity {
   /** requiredDuringSchedulingIgnoredDuringExecution specifies that if the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node. */
   requiredDuringSchedulingIgnoredDuringExecution?: IoK8sApiCoreV1NodeSelector;
 }
-const IoK8sApiCoreV1NodeAffinity = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1NodeAffinity>;
-
 /** matchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. */
 export type IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList = Array<string>;
-const IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList>;
-
 /** mismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. */
 export type IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList = Array<string>;
-const IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList>;
-
 /** namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means "this pod's namespace". */
 export type IoK8sApiCoreV1PodAffinityTermNamespacesList = Array<string>;
-const IoK8sApiCoreV1PodAffinityTermNamespacesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodAffinityTermNamespacesList>;
-
 /** Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running */
 export interface IoK8sApiCoreV1PodAffinityTerm {
   /** labelSelector is a label query over a set of resources, in this case pods. If it's null, this PodAffinityTerm matches with no Pods. */
@@ -535,11 +324,6 @@ export interface IoK8sApiCoreV1PodAffinityTerm {
   /** topologyKey is the key of the node label that the system uses to denote such a topology domain. This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed. */
   topologyKey: string;
 }
-const IoK8sApiCoreV1PodAffinityTerm = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1PodAffinityTerm>;
-
 /** The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s) */
 export interface IoK8sApiCoreV1WeightedPodAffinityTerm {
   /** podAffinityTerm is a pod affinity term, associated with the corresponding weight. required. */
@@ -547,29 +331,12 @@ export interface IoK8sApiCoreV1WeightedPodAffinityTerm {
   /** weight associated with matching the corresponding podAffinityTerm, in the range 1-100. */
   weight: number;
 }
-const IoK8sApiCoreV1WeightedPodAffinityTerm = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1WeightedPodAffinityTerm>;
-
 /** preferredDuringSchedulingIgnoredDuringExecution specifies that the scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred. */
 export type IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   Array<IoK8sApiCoreV1WeightedPodAffinityTerm>;
-const IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    0,
-  ) as any as S.Schema<IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList>;
-
 /** requiredDuringSchedulingIgnoredDuringExecution specifies that if the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
 export type IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
   Array<IoK8sApiCoreV1PodAffinityTerm>;
-const IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    1,
-  ) as any as S.Schema<IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList>;
-
 /** Pod affinity is a group of inter pod affinity scheduling rules. */
 export interface IoK8sApiCoreV1PodAffinity {
   /** preferredDuringSchedulingIgnoredDuringExecution specifies that the scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred. */
@@ -577,11 +344,6 @@ export interface IoK8sApiCoreV1PodAffinity {
   /** requiredDuringSchedulingIgnoredDuringExecution specifies that if the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
   requiredDuringSchedulingIgnoredDuringExecution?: IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList;
 }
-const IoK8sApiCoreV1PodAffinity = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1PodAffinity>;
-
 /** preferredDuringSchedulingIgnoredDuringExecution specifies that the scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and subtracting "weight" from the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred. */
 export type IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   Array<IoK8sApiCoreV1WeightedPodAffinityTerm>;
@@ -595,9 +357,6 @@ export interface IoK8sApiCoreV1PodAntiAffinity {
   /** requiredDuringSchedulingIgnoredDuringExecution specifies that if the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
   requiredDuringSchedulingIgnoredDuringExecution?: IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList;
 }
-const IoK8sApiCoreV1PodAntiAffinity =
-  IoK8sApiCoreV1PodAffinity as any as S.Schema<IoK8sApiCoreV1PodAntiAffinity>;
-
 /** Affinity is a group of affinity scheduling rules. */
 export interface IoK8sApiCoreV1Affinity {
   /** nodeAffinity describes node affinity scheduling rules for the pod. */
@@ -607,21 +366,10 @@ export interface IoK8sApiCoreV1Affinity {
   /** podAntiAffinity describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)). */
   podAntiAffinity?: IoK8sApiCoreV1PodAntiAffinity;
 }
-const IoK8sApiCoreV1Affinity = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1Affinity>;
-
 /** args are the arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1ContainerArgsList = Array<string>;
-const IoK8sApiCoreV1ContainerArgsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ContainerArgsList>;
-
 /** command is the entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1ContainerCommandList = Array<string>;
-const IoK8sApiCoreV1ContainerCommandList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ContainerCommandList>;
-
 /** Selects a key from a ConfigMap. */
 export interface IoK8sApiCoreV1ConfigMapKeySelector {
   /** key is the key to select from the ConfigMap's Data field. Keys in the BinaryData field are not currently propagated to container env vars. */
@@ -631,11 +379,6 @@ export interface IoK8sApiCoreV1ConfigMapKeySelector {
   /** optional specifies whether the ConfigMap or its key must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1ConfigMapKeySelector = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapKeySelector>;
-
 /** ObjectFieldSelector selects an APIVersioned field of an object. */
 export interface IoK8sApiCoreV1ObjectFieldSelector {
   /** apiVersion is the version of the schema the FieldPath is written in terms of, defaults to "v1". */
@@ -643,11 +386,6 @@ export interface IoK8sApiCoreV1ObjectFieldSelector {
   /** fieldPath is the path of the field to select in the specified API version. */
   fieldPath: string;
 }
-const IoK8sApiCoreV1ObjectFieldSelector = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1ObjectFieldSelector>;
-
 /** FileKeySelector selects a key of the env file. */
 export interface IoK8sApiCoreV1FileKeySelector {
   /** key is the key within the env file. An invalid key will prevent the pod from starting. The keys defined within a source may consist of any printable ASCII characters except '='. During Alpha stage of the EnvFiles feature gate, the key size is limited to 128 characters. */
@@ -659,11 +397,6 @@ export interface IoK8sApiCoreV1FileKeySelector {
   /** volumeName is the name of the volume mount containing the env file. */
   volumeName: string;
 }
-const IoK8sApiCoreV1FileKeySelector = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1FileKeySelector>;
-
 /** ResourceFieldSelector represents container resources (cpu, memory) and their output format */
 export interface IoK8sApiCoreV1ResourceFieldSelector {
   /** containerName is the name of the container: required for volumes, optional for env vars */
@@ -673,11 +406,6 @@ export interface IoK8sApiCoreV1ResourceFieldSelector {
   /** resource is the resource to select */
   resource: string;
 }
-const IoK8sApiCoreV1ResourceFieldSelector = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1ResourceFieldSelector>;
-
 /** SecretKeySelector selects a key of a Secret. */
 export interface IoK8sApiCoreV1SecretKeySelector {
   /** key is the key of the secret to select from. Must be a valid secret key. */
@@ -687,9 +415,6 @@ export interface IoK8sApiCoreV1SecretKeySelector {
   /** optional specifies whether the Secret or its key must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1SecretKeySelector =
-  IoK8sApiCoreV1ConfigMapKeySelector as any as S.Schema<IoK8sApiCoreV1SecretKeySelector>;
-
 /** EnvVarSource represents a source for the value of an EnvVar. */
 export interface IoK8sApiCoreV1EnvVarSource {
   /** configMapKeyRef selects a key of a ConfigMap. */
@@ -703,11 +428,6 @@ export interface IoK8sApiCoreV1EnvVarSource {
   /** secretKeyRef selects a key of a secret in the pod's namespace */
   secretKeyRef?: IoK8sApiCoreV1SecretKeySelector;
 }
-const IoK8sApiCoreV1EnvVarSource = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1EnvVarSource>;
-
 /** EnvVar represents an environment variable present in a Container. */
 export interface IoK8sApiCoreV1EnvVar {
   /** name is the name of the environment variable. May consist of any printable ASCII characters except '='. */
@@ -717,15 +437,8 @@ export interface IoK8sApiCoreV1EnvVar {
   /** valueFrom is the source for the environment variable's value. Cannot be used if value is not empty. */
   valueFrom?: IoK8sApiCoreV1EnvVarSource;
 }
-const IoK8sApiCoreV1EnvVar = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<IoK8sApiCoreV1EnvVar>;
-
 /** env is the list of environment variables to set in the container. Cannot be updated. */
 export type IoK8sApiCoreV1ContainerEnvList = Array<IoK8sApiCoreV1EnvVar>;
-const IoK8sApiCoreV1ContainerEnvList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1ContainerEnvList>;
-
 /** ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables. Keys in the BinaryData field are not currently propagated to container env vars. */
 export interface IoK8sApiCoreV1ConfigMapEnvSource {
   /** name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
@@ -733,11 +446,6 @@ export interface IoK8sApiCoreV1ConfigMapEnvSource {
   /** optional specifies whether the ConfigMap must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1ConfigMapEnvSource = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapEnvSource>;
-
 /** SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables. */
 export interface IoK8sApiCoreV1SecretEnvSource {
   /** name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
@@ -745,9 +453,6 @@ export interface IoK8sApiCoreV1SecretEnvSource {
   /** optional specifies whether the Secret must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1SecretEnvSource =
-  IoK8sApiCoreV1ConfigMapEnvSource as any as S.Schema<IoK8sApiCoreV1SecretEnvSource>;
-
 /** EnvFromSource represents the source of a set of ConfigMaps or Secrets */
 export interface IoK8sApiCoreV1EnvFromSource {
   /** configMapRef is the ConfigMap to select from */
@@ -757,33 +462,15 @@ export interface IoK8sApiCoreV1EnvFromSource {
   /** secretRef is the Secret to select from */
   secretRef?: IoK8sApiCoreV1SecretEnvSource;
 }
-const IoK8sApiCoreV1EnvFromSource = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1EnvFromSource>;
-
 /** envFrom is the list of sources to populate environment variables in the container. The keys defined within a source may consist of any printable ASCII characters except '='. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. */
 export type IoK8sApiCoreV1ContainerEnvFromList = Array<IoK8sApiCoreV1EnvFromSource>;
-const IoK8sApiCoreV1ContainerEnvFromList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1ContainerEnvFromList>;
-
 /** command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
 export type IoK8sApiCoreV1ExecActionCommandList = Array<string>;
-const IoK8sApiCoreV1ExecActionCommandList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ExecActionCommandList>;
-
 /** ExecAction describes a "run in container" action. */
 export interface IoK8sApiCoreV1ExecAction {
   /** command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
   command?: IoK8sApiCoreV1ExecActionCommandList;
 }
-const IoK8sApiCoreV1ExecAction = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1ExecAction>;
-
 /** HTTPHeader describes a custom header to be used in HTTP probes */
 export interface IoK8sApiCoreV1HTTPHeader {
   /** name is the header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header. */
@@ -791,18 +478,8 @@ export interface IoK8sApiCoreV1HTTPHeader {
   /** value is the header field value */
   value: string;
 }
-const IoK8sApiCoreV1HTTPHeader = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1HTTPHeader>;
-
 /** httpHeaders are the custom headers to set in the request. HTTP allows repeated headers. */
 export type IoK8sApiCoreV1HTTPGetActionHttpHeadersList = Array<IoK8sApiCoreV1HTTPHeader>;
-const IoK8sApiCoreV1HTTPGetActionHttpHeadersList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1HTTPGetActionHttpHeadersList>;
-
 /** HTTPGetAction describes an action based on HTTP Get requests. */
 export interface IoK8sApiCoreV1HTTPGetAction {
   /** host is the host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead. */
@@ -818,21 +495,11 @@ export interface IoK8sApiCoreV1HTTPGetAction {
   /** scheme is the scheme to use for connecting to the host. Defaults to HTTP. */
   scheme?: string;
 }
-const IoK8sApiCoreV1HTTPGetAction = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1HTTPGetAction>;
-
 /** SleepAction describes a "sleep" action. */
 export interface IoK8sApiCoreV1SleepAction {
   /** seconds is the number of seconds to sleep. */
   seconds: number;
 }
-const IoK8sApiCoreV1SleepAction = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1SleepAction>;
-
 /** TCPSocketAction describes an action based on opening a socket */
 export interface IoK8sApiCoreV1TCPSocketAction {
   /** host is the optional host name to connect to, defaults to the pod IP. */
@@ -840,11 +507,6 @@ export interface IoK8sApiCoreV1TCPSocketAction {
   /** port is the number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. */
   port: string;
 }
-const IoK8sApiCoreV1TCPSocketAction = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1TCPSocketAction>;
-
 /** LifecycleHandler defines a specific action that should be taken in a lifecycle hook. One and only one of the fields, except TCPSocket must be specified. */
 export interface IoK8sApiCoreV1LifecycleHandler {
   /** exec specifies a command to execute in the container. */
@@ -856,11 +518,6 @@ export interface IoK8sApiCoreV1LifecycleHandler {
   /** tcpSocket is NOT supported as a LifecycleHandler and kept for backward compatibility. There is no validation of this field and lifecycle hooks will fail at runtime when it is specified. Deprecated. */
   tcpSocket?: IoK8sApiCoreV1TCPSocketAction;
 }
-const IoK8sApiCoreV1LifecycleHandler = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1LifecycleHandler>;
-
 /** Lifecycle describes actions that the management system should take in response to container lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container blocks until the action is complete, unless the container process fails, in which case the handler is aborted. */
 export interface IoK8sApiCoreV1Lifecycle {
   /** postStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks */
@@ -870,11 +527,6 @@ export interface IoK8sApiCoreV1Lifecycle {
   /** stopSignal defines which signal will be sent to a container when it is being stopped. If not specified, the default is defined by the container runtime in use. StopSignal can only be set for Pods with a non-empty .spec.os.name */
   stopSignal?: string;
 }
-const IoK8sApiCoreV1Lifecycle = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1Lifecycle>;
-
 /** GRPCAction specifies an action involving a GRPC service. */
 export interface IoK8sApiCoreV1GRPCAction {
   /** mode specifies the connection mode for the gRPC health probe. Set to "TLS" to use TLS without certificate verification. Set to "Plaintext" to use a plaintext (insecure) connection explicitly. If not specified, the probe uses a plaintext (insecure) connection. */
@@ -884,11 +536,6 @@ export interface IoK8sApiCoreV1GRPCAction {
   /** service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC. */
   service?: string;
 }
-const IoK8sApiCoreV1GRPCAction = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1GRPCAction>;
-
 /** Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. */
 export interface IoK8sApiCoreV1Probe {
   /** exec specifies a command to execute in the container. */
@@ -912,8 +559,6 @@ export interface IoK8sApiCoreV1Probe {
   /** timeoutSeconds is the number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes */
   timeoutSeconds?: number;
 }
-const IoK8sApiCoreV1Probe = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<IoK8sApiCoreV1Probe>;
-
 /** ContainerPort represents a network port in a single container. */
 export interface IoK8sApiCoreV1ContainerPort {
   /** containerPort is the number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536. */
@@ -927,18 +572,8 @@ export interface IoK8sApiCoreV1ContainerPort {
   /** protocol is the protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP". */
   protocol?: string;
 }
-const IoK8sApiCoreV1ContainerPort = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1ContainerPort>;
-
 /** ports is the list of ports to expose from the container. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Modifying this array with strategic merge patch may corrupt the data. For more information See https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated. */
 export type IoK8sApiCoreV1ContainerPortsList = Array<IoK8sApiCoreV1ContainerPort>;
-const IoK8sApiCoreV1ContainerPortsList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1ContainerPortsList>;
-
 /** ContainerResizePolicy represents resource resize policy for the container. */
 export interface IoK8sApiCoreV1ContainerResizePolicy {
   /** resourceName is the name of the resource to which this resource resize policy applies. Supported values: cpu, memory. */
@@ -946,18 +581,8 @@ export interface IoK8sApiCoreV1ContainerResizePolicy {
   /** restartPolicy is the restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired. */
   restartPolicy: string;
 }
-const IoK8sApiCoreV1ContainerResizePolicy = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1ContainerResizePolicy>;
-
 /** resizePolicy is the resize policy for the container. This field cannot be set on ephemeral containers. */
 export type IoK8sApiCoreV1ContainerResizePolicyList = Array<IoK8sApiCoreV1ContainerResizePolicy>;
-const IoK8sApiCoreV1ContainerResizePolicyList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1ContainerResizePolicyList>;
-
 /** ResourceClaim references one entry in PodSpec.ResourceClaims. */
 export interface IoK8sApiCoreV1ResourceClaim {
   /** name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container. */
@@ -965,28 +590,12 @@ export interface IoK8sApiCoreV1ResourceClaim {
   /** request is the name chosen for a request in the referenced claim. If empty, everything from the claim is made available, otherwise only the result of this request. */
   request?: string;
 }
-const IoK8sApiCoreV1ResourceClaim = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1ResourceClaim>;
-
 /** claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This field is immutable. It can only be set for containers. */
 export type IoK8sApiCoreV1ResourceRequirementsClaimsList = Array<IoK8sApiCoreV1ResourceClaim>;
-const IoK8sApiCoreV1ResourceRequirementsClaimsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsClaimsList>;
-
 /** limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1ResourceRequirementsLimitsMap = { [key: string]: string | undefined };
-const IoK8sApiCoreV1ResourceRequirementsLimitsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsLimitsMap>;
-
 /** requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1ResourceRequirementsRequestsMap = { [key: string]: string | undefined };
-const IoK8sApiCoreV1ResourceRequirementsRequestsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1ResourceRequirementsRequestsMap>;
-
 /** ResourceRequirements describes the compute resource requirements. */
 export interface IoK8sApiCoreV1ResourceRequirements {
   /** claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This field is immutable. It can only be set for containers. */
@@ -996,18 +605,8 @@ export interface IoK8sApiCoreV1ResourceRequirements {
   /** requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
   requests?: IoK8sApiCoreV1ResourceRequirementsRequestsMap;
 }
-const IoK8sApiCoreV1ResourceRequirements = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1ResourceRequirements>;
-
 /** values specifies the set of values to check for container exit codes. At most 255 elements are allowed. */
 export type IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList = Array<number>;
-const IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList>;
-
 /** ContainerRestartRuleOnExitCodes describes the condition for handling an exited container based on its exit codes. */
 export interface IoK8sApiCoreV1ContainerRestartRuleOnExitCodes {
   /** operator represents the relationship between the container exit code(s) and the specified values. Possible values are: - In: the requirement is satisfied if the container exit code is in the set of specified values. - NotIn: the requirement is satisfied if the container exit code is not in the set of specified values. */
@@ -1015,11 +614,6 @@ export interface IoK8sApiCoreV1ContainerRestartRuleOnExitCodes {
   /** values specifies the set of values to check for container exit codes. At most 255 elements are allowed. */
   values?: IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList;
 }
-const IoK8sApiCoreV1ContainerRestartRuleOnExitCodes = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1ContainerRestartRuleOnExitCodes>;
-
 /** ContainerRestartRule describes how a container exit is handled. */
 export interface IoK8sApiCoreV1ContainerRestartRule {
   /** action specifies the action taken on a container exit if the requirements are satisfied. The only possible value is "Restart" to restart the container. */
@@ -1027,19 +621,9 @@ export interface IoK8sApiCoreV1ContainerRestartRule {
   /** exitCodes represents the exit codes to check on container exits. */
   exitCodes?: IoK8sApiCoreV1ContainerRestartRuleOnExitCodes;
 }
-const IoK8sApiCoreV1ContainerRestartRule = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1ContainerRestartRule>;
-
 /** restartPolicyRules represents a list of rules to be checked to determine if the container should be restarted on exit. The rules are evaluated in order. Once a rule matches a container exit condition, the remaining rules are ignored. If no rule matches the container exit condition, the Container-level restart policy determines the whether the container is restarted or not. Constraints on the rules: - At most 20 rules are allowed. - Rules can have the same action. - Identical rules are not forbidden in validations. When rules are specified, container MUST set RestartPolicy explicitly even it if matches the Pod's RestartPolicy. */
 export type IoK8sApiCoreV1ContainerRestartPolicyRulesList =
   Array<IoK8sApiCoreV1ContainerRestartRule>;
-const IoK8sApiCoreV1ContainerRestartPolicyRulesList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1ContainerRestartPolicyRulesList>;
-
 /** AppArmorProfile defines a pod or container's AppArmor settings. */
 export interface IoK8sApiCoreV1AppArmorProfile {
   /** localhostProfile indicates a profile loaded on the node that should be used. The profile must be preconfigured on the node to work. Must match the loaded name of the profile. Must be set if and only if type is "Localhost". */
@@ -1047,21 +631,10 @@ export interface IoK8sApiCoreV1AppArmorProfile {
   /** type indicates which kind of AppArmor profile will be applied. Valid options are: Localhost - a profile pre-loaded on the node. RuntimeDefault - the container runtime's default profile. Unconfined - no AppArmor enforcement. */
   type: string;
 }
-const IoK8sApiCoreV1AppArmorProfile = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1AppArmorProfile>;
-
 /** add lists the capabilities to add to the container. */
 export type IoK8sApiCoreV1CapabilitiesAddList = Array<string>;
-const IoK8sApiCoreV1CapabilitiesAddList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CapabilitiesAddList>;
-
 /** drop lists the capabilities to remove from the container. */
 export type IoK8sApiCoreV1CapabilitiesDropList = Array<string>;
-const IoK8sApiCoreV1CapabilitiesDropList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CapabilitiesDropList>;
-
 /** Adds and removes POSIX capabilities from running containers. */
 export interface IoK8sApiCoreV1Capabilities {
   /** add lists the capabilities to add to the container. */
@@ -1069,11 +642,6 @@ export interface IoK8sApiCoreV1Capabilities {
   /** drop lists the capabilities to remove from the container. */
   drop?: IoK8sApiCoreV1CapabilitiesDropList;
 }
-const IoK8sApiCoreV1Capabilities = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1Capabilities>;
-
 /** SELinuxOptions are the labels to be applied to the container */
 export interface IoK8sApiCoreV1SELinuxOptions {
   /** level is SELinux level label that applies to the container. */
@@ -1085,11 +653,6 @@ export interface IoK8sApiCoreV1SELinuxOptions {
   /** user is a SELinux user label that applies to the container. */
   user?: string;
 }
-const IoK8sApiCoreV1SELinuxOptions = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1SELinuxOptions>;
-
 /** SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be set. */
 export interface IoK8sApiCoreV1SeccompProfile {
   /** localhostProfile indicates a profile defined in a file on the node should be used. The profile must be preconfigured on the node to work. Must be a descending path, relative to the kubelet's configured seccomp profile location. Must be set if type is "Localhost". Must NOT be set for any other type. */
@@ -1097,9 +660,6 @@ export interface IoK8sApiCoreV1SeccompProfile {
   /** type indicates which kind of seccomp profile will be applied. Valid options are: Localhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied. */
   type: string;
 }
-const IoK8sApiCoreV1SeccompProfile =
-  IoK8sApiCoreV1AppArmorProfile as any as S.Schema<IoK8sApiCoreV1SeccompProfile>;
-
 /** WindowsSecurityContextOptions contain Windows-specific options and credentials. */
 export interface IoK8sApiCoreV1WindowsSecurityContextOptions {
   /** gmsaCredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. */
@@ -1111,11 +671,6 @@ export interface IoK8sApiCoreV1WindowsSecurityContextOptions {
   /** runAsUserName is the UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. */
   runAsUserName?: string;
 }
-const IoK8sApiCoreV1WindowsSecurityContextOptions = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1WindowsSecurityContextOptions>;
-
 /** SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence. */
 export interface IoK8sApiCoreV1SecurityContext {
   /** allowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN Note that this field cannot be set when spec.os.name is windows. */
@@ -1143,11 +698,6 @@ export interface IoK8sApiCoreV1SecurityContext {
   /** windowsOptions is the Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux. */
   windowsOptions?: IoK8sApiCoreV1WindowsSecurityContextOptions;
 }
-const IoK8sApiCoreV1SecurityContext = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1SecurityContext>;
-
 /** volumeDevice describes a mapping of a raw block device within a container. */
 export interface IoK8sApiCoreV1VolumeDevice {
   /** devicePath is the path inside of the container that the device will be mapped to. */
@@ -1155,23 +705,10 @@ export interface IoK8sApiCoreV1VolumeDevice {
   /** name must match the name of a persistentVolumeClaim in the pod */
   name: string;
 }
-const IoK8sApiCoreV1VolumeDevice = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1VolumeDevice>;
-
 /** volumeDevices is the list of block devices to be used by the container. */
 export type IoK8sApiCoreV1ContainerVolumeDevicesList = Array<IoK8sApiCoreV1VolumeDevice>;
-const IoK8sApiCoreV1ContainerVolumeDevicesList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1ContainerVolumeDevicesList>;
-
 /** bindMountOptions is the list of additional bind mount options to apply when mounting this volume into the container. Allowed values are noexec, nodev, and nosuid. These are Linux mount options and have no effect on Windows nodes. This field is not supported with image volumes. This is an alpha field and requires enabling the VolumeBindMountOptions feature gate. */
 export type IoK8sApiCoreV1VolumeMountBindMountOptionsList = Array<string>;
-const IoK8sApiCoreV1VolumeMountBindMountOptionsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1VolumeMountBindMountOptionsList>;
-
 /** VolumeMount describes a mounting of a Volume within a container. */
 export interface IoK8sApiCoreV1VolumeMount {
   /** bindMountOptions is the list of additional bind mount options to apply when mounting this volume into the container. Allowed values are noexec, nodev, and nosuid. These are Linux mount options and have no effect on Windows nodes. This field is not supported with image volumes. This is an alpha field and requires enabling the VolumeBindMountOptions feature gate. */
@@ -1191,18 +728,8 @@ export interface IoK8sApiCoreV1VolumeMount {
   /** subPathExpr is the expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive. */
   subPathExpr?: string;
 }
-const IoK8sApiCoreV1VolumeMount = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1VolumeMount>;
-
 /** volumeMounts are the pod volumes to mount into the container's filesystem. Cannot be updated. */
 export type IoK8sApiCoreV1ContainerVolumeMountsList = Array<IoK8sApiCoreV1VolumeMount>;
-const IoK8sApiCoreV1ContainerVolumeMountsList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1ContainerVolumeMountsList>;
-
 /** A single application container that you want to run within a pod. */
 export interface IoK8sApiCoreV1Container {
   /** args are the arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
@@ -1256,23 +783,10 @@ export interface IoK8sApiCoreV1Container {
   /** workingDir is the Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. */
   workingDir?: string;
 }
-const IoK8sApiCoreV1Container = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1Container>;
-
 /** containers is the list of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. */
 export type IoK8sApiCoreV1PodSpecContainersList = Array<IoK8sApiCoreV1Container>;
-const IoK8sApiCoreV1PodSpecContainersList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecContainersList>;
-
 /** nameservers is a list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed. */
 export type IoK8sApiCoreV1PodDNSConfigNameserversList = Array<string>;
-const IoK8sApiCoreV1PodDNSConfigNameserversList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodDNSConfigNameserversList>;
-
 /** PodDNSConfigOption defines DNS resolver options of a pod. */
 export interface IoK8sApiCoreV1PodDNSConfigOption {
   /** name is this DNS resolver option's name. Required. */
@@ -1280,23 +794,10 @@ export interface IoK8sApiCoreV1PodDNSConfigOption {
   /** value is this DNS resolver option's value. */
   value?: string;
 }
-const IoK8sApiCoreV1PodDNSConfigOption = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigOption>;
-
 /** options is a list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy. */
 export type IoK8sApiCoreV1PodDNSConfigOptionsList = Array<IoK8sApiCoreV1PodDNSConfigOption>;
-const IoK8sApiCoreV1PodDNSConfigOptionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigOptionsList>;
-
 /** searches is a list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed. */
 export type IoK8sApiCoreV1PodDNSConfigSearchesList = Array<string>;
-const IoK8sApiCoreV1PodDNSConfigSearchesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PodDNSConfigSearchesList>;
-
 /** PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy. */
 export interface IoK8sApiCoreV1PodDNSConfig {
   /** nameservers is a list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed. */
@@ -1306,58 +807,26 @@ export interface IoK8sApiCoreV1PodDNSConfig {
   /** searches is a list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed. */
   searches?: IoK8sApiCoreV1PodDNSConfigSearchesList;
 }
-const IoK8sApiCoreV1PodDNSConfig = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1PodDNSConfig>;
-
 /** args are the arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1EphemeralContainerArgsList = Array<string>;
-const IoK8sApiCoreV1EphemeralContainerArgsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerArgsList>;
-
 /** command is the entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
 export type IoK8sApiCoreV1EphemeralContainerCommandList = Array<string>;
-const IoK8sApiCoreV1EphemeralContainerCommandList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerCommandList>;
-
 /** env is the list of environment variables to set in the container. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerEnvList = Array<IoK8sApiCoreV1EnvVar>;
-const IoK8sApiCoreV1EphemeralContainerEnvList =
-  IoK8sApiCoreV1ContainerEnvList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvList>;
-
 /** envFrom is the list of sources to populate environment variables in the container. The keys defined within a source may consist of any printable ASCII characters except '='. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerEnvFromList = Array<IoK8sApiCoreV1EnvFromSource>;
-const IoK8sApiCoreV1EphemeralContainerEnvFromList =
-  IoK8sApiCoreV1ContainerEnvFromList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvFromList>;
-
 /** ports are not allowed for ephemeral containers. */
 export type IoK8sApiCoreV1EphemeralContainerPortsList = Array<IoK8sApiCoreV1ContainerPort>;
-const IoK8sApiCoreV1EphemeralContainerPortsList =
-  IoK8sApiCoreV1ContainerPortsList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerPortsList>;
-
 /** resizePolicy is the resources resize policy for the container. */
 export type IoK8sApiCoreV1EphemeralContainerResizePolicyList =
   Array<IoK8sApiCoreV1ContainerResizePolicy>;
-const IoK8sApiCoreV1EphemeralContainerResizePolicyList =
-  IoK8sApiCoreV1ContainerResizePolicyList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerResizePolicyList>;
-
 /** restartPolicyRules represents a list of rules to be checked to determine if the container should be restarted on exit. You cannot set this field on ephemeral containers. */
 export type IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
   Array<IoK8sApiCoreV1ContainerRestartRule>;
-const IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
-  IoK8sApiCoreV1ContainerRestartPolicyRulesList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList>;
-
 /** volumeDevices is the list of block devices to be used by the container. */
 export type IoK8sApiCoreV1EphemeralContainerVolumeDevicesList = Array<IoK8sApiCoreV1VolumeDevice>;
-const IoK8sApiCoreV1EphemeralContainerVolumeDevicesList =
-  IoK8sApiCoreV1ContainerVolumeDevicesList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerVolumeDevicesList>;
-
 /** volumeMounts are the pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerVolumeMountsList = Array<IoK8sApiCoreV1VolumeMount>;
-const IoK8sApiCoreV1EphemeralContainerVolumeMountsList =
-  IoK8sApiCoreV1ContainerVolumeMountsList as any as S.Schema<IoK8sApiCoreV1EphemeralContainerVolumeMountsList>;
-
 /** An EphemeralContainer is a temporary container that you may add to an existing Pod for user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling guarantees, and they will not be restarted when they exit or when a Pod is removed or restarted. The kubelet may evict a Pod if an ephemeral container causes the Pod to exceed its resource allocation. To add an ephemeral container, use the ephemeralcontainers subresource of an existing Pod. Ephemeral containers may not be removed or restarted. */
 export interface IoK8sApiCoreV1EphemeralContainer {
   /** args are the arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
@@ -1413,18 +882,8 @@ export interface IoK8sApiCoreV1EphemeralContainer {
   /** workingDir is the container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated. */
   workingDir?: string;
 }
-const IoK8sApiCoreV1EphemeralContainer = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralContainer>;
-
 /** ephemeralContainers is the list of ephemeral containers run in this pod. Ephemeral containers may be run in an existing pod to perform user-initiated actions such as debugging. This list cannot be specified when creating a pod, and it cannot be modified by updating the pod spec. In order to add an ephemeral container to an existing pod, use the pod's ephemeralcontainers subresource. */
 export type IoK8sApiCoreV1PodSpecEphemeralContainersList = Array<IoK8sApiCoreV1EphemeralContainer>;
-const IoK8sApiCoreV1PodSpecEphemeralContainersList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecEphemeralContainersList>;
-
 /** EvictionResponder allows you to specify the responder reacting to an Eviction. Responders should observe and communicate through the Eviction Resource API to help with the graceful eviction of a target (e.g. termination of a pod). */
 export interface IoK8sApiCoreV1EvictionResponder {
   /** name allows you to identify the responder responding to the Eviction. It must be a valid domain-prefixed key (such as "acme.io/foo"). Domain names *.k8s.io and *.kubernetes.io are reserved. This field must be unique for each responder. This field is required. */
@@ -1432,23 +891,10 @@ export interface IoK8sApiCoreV1EvictionResponder {
   /** priority for this responder. Higher priorities are selected first by the evictionrequest-controller. If there are responders with the same priority, the responder whose domain name comes first in the alphabetical higher domain order, will be picked. This means that the top domain labels are compared alphabetically first, followed by the lower domain labels. The key is compared last. The responder that is the managing controller of the pod should set the value of this field to 10000 to allow both for preemption or fallback registration by other responders. The minimum value is 0 and the maximum value is 100000. The interval 0-999 is reserved for responders with *.k8s.io suffix. This field is required. */
   priority: number;
 }
-const IoK8sApiCoreV1EvictionResponder = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1EvictionResponder>;
-
 /** evictionResponders reference responders that react to Evictions based on EvictionRequests. Responders should observe and communicate through the Eviction Resource API to help with the graceful termination of a pod. The responders are selected sequentially, according to their specified priority. Responders should periodically report on an eviction progress by updating the .status.responders[].heartbeatTime field of the Eviction object. If this field is not updated within the heartbeat deadline defined by the Eviction API (currently 20 minutes), the eviction is passed over to the next responder with a lower priority. If there is no other responder, the last default imperative-eviction.k8s.io/evictor responder with a priority of 100 will evict the pod using the imperative Eviction API (pods/<name>/eviction subresource). The maximum length of the responders list is 10. Responders are not supported when the pod is part of a PodGroup (.spec.schedulingGroup is set). This field can only be set on creation and is immutable afterwards. */
 export type IoK8sApiCoreV1PodSpecEvictionRespondersList = Array<IoK8sApiCoreV1EvictionResponder>;
-const IoK8sApiCoreV1PodSpecEvictionRespondersList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecEvictionRespondersList>;
-
 /** hostnames for the above IP address. */
 export type IoK8sApiCoreV1HostAliasHostnamesList = Array<string>;
-const IoK8sApiCoreV1HostAliasHostnamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1HostAliasHostnamesList>;
-
 /** HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file. */
 export interface IoK8sApiCoreV1HostAlias {
   /** hostnames for the above IP address. */
@@ -1456,74 +902,33 @@ export interface IoK8sApiCoreV1HostAlias {
   /** ip address of the host file entry. */
   ip: string;
 }
-const IoK8sApiCoreV1HostAlias = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1HostAlias>;
-
 /** hostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts file if specified. */
 export type IoK8sApiCoreV1PodSpecHostAliasesList = Array<IoK8sApiCoreV1HostAlias>;
-const IoK8sApiCoreV1PodSpecHostAliasesList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecHostAliasesList>;
-
 /** LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace. */
 export interface IoK8sApiCoreV1LocalObjectReference {
   /** name of the referent. This field is effectively required, but due to backwards compatibility is allowed to be empty. Instances of this type with an empty value here are almost certainly wrong. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
   name?: string;
 }
-const IoK8sApiCoreV1LocalObjectReference = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1LocalObjectReference>;
-
 /** imagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod */
 export type IoK8sApiCoreV1PodSpecImagePullSecretsList = Array<IoK8sApiCoreV1LocalObjectReference>;
-const IoK8sApiCoreV1PodSpecImagePullSecretsList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecImagePullSecretsList>;
-
 /** initContainers is the list of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/ */
 export type IoK8sApiCoreV1PodSpecInitContainersList = Array<IoK8sApiCoreV1Container>;
-const IoK8sApiCoreV1PodSpecInitContainersList =
-  IoK8sApiCoreV1PodSpecContainersList as any as S.Schema<IoK8sApiCoreV1PodSpecInitContainersList>;
-
 /** nodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/ */
 export type IoK8sApiCoreV1PodSpecNodeSelectorMap = { [key: string]: string | undefined };
-const IoK8sApiCoreV1PodSpecNodeSelectorMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodSpecNodeSelectorMap>;
-
 /** PodOS defines the OS parameters of a pod. */
 export interface IoK8sApiCoreV1PodOS {
   /** name is the name of the operating system. The currently supported values are linux and windows. Additional value may be defined in future and can be one of: https://github.com/opencontainers/runtime-spec/blob/master/config.md#platform-specific-configuration Clients should expect to handle additional values and treat unrecognized values in this field as os: null */
   name: string;
 }
-const IoK8sApiCoreV1PodOS = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<IoK8sApiCoreV1PodOS>;
-
 /** overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: https://git.k8s.io/enhancements/keps/sig-node/688-pod-overhead/README.md */
 export type IoK8sApiCoreV1PodSpecOverheadMap = { [key: string]: string | undefined };
-const IoK8sApiCoreV1PodSpecOverheadMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodSpecOverheadMap>;
-
 /** PodReadinessGate contains the reference to a pod condition */
 export interface IoK8sApiCoreV1PodReadinessGate {
   /** conditionType refers to a condition in the pod's condition list with matching type. */
   conditionType: string;
 }
-const IoK8sApiCoreV1PodReadinessGate = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1PodReadinessGate>;
-
 /** readinessGates if specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/580-pod-readiness-gates */
 export type IoK8sApiCoreV1PodSpecReadinessGatesList = Array<IoK8sApiCoreV1PodReadinessGate>;
-const IoK8sApiCoreV1PodSpecReadinessGatesList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecReadinessGatesList>;
-
 /** PodResourceClaim references exactly one ResourceClaim, either directly or by naming a ResourceClaimTemplate which is then turned into a ResourceClaim for the pod. It adds a name to it that uniquely identifies the ResourceClaim inside the Pod. Containers that need access to the ResourceClaim reference it with this name. When the DRAWorkloadResourceClaims feature gate is enabled and this Pod belongs to a PodGroup, a PodResourceClaim is matched to a PodGroupResourceClaim if all of their fields are equal (Name, ResourceClaimName, and ResourceClaimTemplateName). A matched claim references a single ResourceClaim shared across all Pods in the PodGroup, reserved for the PodGroup in ResourceClaimStatus.ReservedFor rather than for individual Pods. */
 export interface IoK8sApiCoreV1PodResourceClaim {
   /** name uniquely identifies this resource claim inside the pod. This must be a DNS_LABEL. */
@@ -1535,41 +940,20 @@ export interface IoK8sApiCoreV1PodResourceClaim {
 }
 /** resourceClaims defines which ResourceClaims must be allocated and reserved before the Pod is allowed to start. The resources will be made available to those containers which consume them by name. This field is immutable. */
 export type IoK8sApiCoreV1PodSpecResourceClaimsList = Array<IoK8sApiCoreV1PodResourceClaim>;
-const IoK8sApiCoreV1PodSpecResourceClaimsList =
-  IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList as any as S.Schema<IoK8sApiCoreV1PodSpecResourceClaimsList>;
-
 /** PodSchedulingGate is associated to a Pod to guard its scheduling. */
 export interface IoK8sApiCoreV1PodSchedulingGate {
   /** name of the scheduling gate. Each scheduling gate must have a unique name field. */
   name: string;
 }
-const IoK8sApiCoreV1PodSchedulingGate = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1PodSchedulingGate>;
-
 /** schedulingGates is an opaque list of values that if specified will block scheduling the pod. If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the scheduler will not attempt to schedule the pod. SchedulingGates can only be set at pod creation time, and be removed only afterwards. */
 export type IoK8sApiCoreV1PodSpecSchedulingGatesList = Array<IoK8sApiCoreV1PodSchedulingGate>;
-const IoK8sApiCoreV1PodSpecSchedulingGatesList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecSchedulingGatesList>;
-
 /** PodSchedulingGroup identifies the runtime scheduling group instance that a Pod belongs to. The scheduler uses this information to apply workload-aware scheduling semantics. Exactly one field must be specified. */
 export interface IoK8sApiCoreV1PodSchedulingGroup {
   /** podGroupName specifies the name of the standalone PodGroup object that represents the runtime instance of this group. Must be a DNS subdomain. */
   podGroupName?: string;
 }
-const IoK8sApiCoreV1PodSchedulingGroup = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1PodSchedulingGroup>;
-
 /** supplementalGroups is a list of groups applied to the first process run in each container, in addition to the container's primary GID and fsGroup (if specified). If the SupplementalGroupsPolicy feature is enabled, the supplementalGroupsPolicy field determines whether these are in addition to or instead of any group memberships defined in the container image. If unspecified, no additional groups are added, though group memberships defined in the container image may still be used, depending on the supplementalGroupsPolicy field. Note that this field cannot be set when spec.os.name is windows. */
 export type IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList = Array<number>;
-const IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList =
-  IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList as any as S.Schema<IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList>;
-
 /** Sysctl defines a kernel parameter to be set */
 export interface IoK8sApiCoreV1Sysctl {
   /** name of a property to set */
@@ -1579,9 +963,6 @@ export interface IoK8sApiCoreV1Sysctl {
 }
 /** sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows. */
 export type IoK8sApiCoreV1PodSecurityContextSysctlsList = Array<IoK8sApiCoreV1Sysctl>;
-const IoK8sApiCoreV1PodSecurityContextSysctlsList =
-  IoK8sApiCoreV1HTTPGetActionHttpHeadersList as any as S.Schema<IoK8sApiCoreV1PodSecurityContextSysctlsList>;
-
 /** PodSecurityContext holds pod-level security attributes and common container settings. Some fields are also present in container.securityContext. Field values of container.securityContext take precedence over field values of PodSecurityContext. */
 export interface IoK8sApiCoreV1PodSecurityContext {
   /** appArmorProfile is the AppArmor options to use by the containers in this pod. Note that this field cannot be set when spec.os.name is windows. */
@@ -1611,11 +992,6 @@ export interface IoK8sApiCoreV1PodSecurityContext {
   /** windowsOptions is the Windows specific settings applied to all containers. If unspecified, the options within a container's SecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux. */
   windowsOptions?: IoK8sApiCoreV1WindowsSecurityContextOptions;
 }
-const IoK8sApiCoreV1PodSecurityContext = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1PodSecurityContext>;
-
 /** The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export interface IoK8sApiCoreV1Toleration {
   /** effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute. */
@@ -1629,23 +1005,10 @@ export interface IoK8sApiCoreV1Toleration {
   /** value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string. */
   value?: string;
 }
-const IoK8sApiCoreV1Toleration = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1Toleration>;
-
 /** tolerations specifies the pod's tolerations. */
 export type IoK8sApiCoreV1PodSpecTolerationsList = Array<IoK8sApiCoreV1Toleration>;
-const IoK8sApiCoreV1PodSpecTolerationsList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecTolerationsList>;
-
 /** matchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector. This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default). */
 export type IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList = Array<string>;
-const IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList>;
-
 /** TopologySpreadConstraint specifies how to spread matching pods among the given topology. */
 export interface IoK8sApiCoreV1TopologySpreadConstraint {
   /** labelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain. */
@@ -1665,19 +1028,9 @@ export interface IoK8sApiCoreV1TopologySpreadConstraint {
   /** whenUnsatisfiable indicates how to deal with a pod if it doesn't satisfy the spread constraint. - DoNotSchedule (default) tells the scheduler not to schedule it. - ScheduleAnyway tells the scheduler to schedule the pod in any location, but giving higher precedence to topologies that would help reduce the skew. A constraint is considered "Unsatisfiable" for an incoming pod if and only if every possible node assignment for that pod would violate "MaxSkew" on some topology. For example, in a 3-zone cluster, MaxSkew is set to 1, and pods with the same labelSelector spread as 3/1/1: | zone1 | zone2 | zone3 | | P P P | P | P | If WhenUnsatisfiable is set to DoNotSchedule, incoming pod can only be scheduled to zone2(zone3) to become 3/2/1(3/1/2) as ActualSkew(2-1) on zone2(zone3) satisfies MaxSkew(1). In other words, the cluster can still be imbalanced, but scheduler won't make it *more* imbalanced. It's a required field. */
   whenUnsatisfiable: string;
 }
-const IoK8sApiCoreV1TopologySpreadConstraint = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1TopologySpreadConstraint>;
-
 /** topologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed. */
 export type IoK8sApiCoreV1PodSpecTopologySpreadConstraintsList =
   Array<IoK8sApiCoreV1TopologySpreadConstraint>;
-const IoK8sApiCoreV1PodSpecTopologySpreadConstraintsList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecTopologySpreadConstraintsList>;
-
 /** Represents a Persistent Disk resource in AWS. An AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource {
   /** fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore */
@@ -1689,11 +1042,6 @@ export interface IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource {
   /** volumeID is unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore */
   volumeID: string;
 }
-const IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource>;
-
 /** AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. */
 export interface IoK8sApiCoreV1AzureDiskVolumeSource {
   /** cachingMode is the Host Caching mode: None, Read Only, Read Write. */
@@ -1709,11 +1057,6 @@ export interface IoK8sApiCoreV1AzureDiskVolumeSource {
   /** readOnly Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1AzureDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1AzureDiskVolumeSource>;
-
 /** AzureFile represents an Azure File Service mount on the host and bind mount to the pod. */
 export interface IoK8sApiCoreV1AzureFileVolumeSource {
   /** readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. */
@@ -1723,16 +1066,8 @@ export interface IoK8sApiCoreV1AzureFileVolumeSource {
   /** shareName is the azure share Name */
   shareName: string;
 }
-const IoK8sApiCoreV1AzureFileVolumeSource = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1AzureFileVolumeSource>;
-
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
 export type IoK8sApiCoreV1CephFSVolumeSourceMonitorsList = Array<string>;
-const IoK8sApiCoreV1CephFSVolumeSourceMonitorsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1CephFSVolumeSourceMonitorsList>;
-
 /** Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1CephFSVolumeSource {
   /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
@@ -1748,11 +1083,6 @@ export interface IoK8sApiCoreV1CephFSVolumeSource {
   /** user is optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
   user?: string;
 }
-const IoK8sApiCoreV1CephFSVolumeSource = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1CephFSVolumeSource>;
-
 /** Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1CinderVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md */
@@ -1764,11 +1094,6 @@ export interface IoK8sApiCoreV1CinderVolumeSource {
   /** volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md */
   volumeID: string;
 }
-const IoK8sApiCoreV1CinderVolumeSource = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1CinderVolumeSource>;
-
 /** Maps a string key to a path within a volume. */
 export interface IoK8sApiCoreV1KeyToPath {
   /** key is the key to project. */
@@ -1780,18 +1105,8 @@ export interface IoK8sApiCoreV1KeyToPath {
   /** user is Optional: The owner UID of the created file. If specified, the item-level user field takes precedence over defaultUser. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled. */
   user?: number;
 }
-const IoK8sApiCoreV1KeyToPath = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1KeyToPath>;
-
 /** items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1ConfigMapVolumeSourceItemsList = Array<IoK8sApiCoreV1KeyToPath>;
-const IoK8sApiCoreV1ConfigMapVolumeSourceItemsList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapVolumeSourceItemsList>;
-
 /** Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. ConfigMap volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1ConfigMapVolumeSource {
   /** defaultMode is optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
@@ -1805,18 +1120,10 @@ export interface IoK8sApiCoreV1ConfigMapVolumeSource {
   /** optional specify whether the ConfigMap or its keys must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1ConfigMapVolumeSource = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapVolumeSource>;
-
 /** volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values. */
 export type IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap>;
-
 /** Represents a source location of a volume to mount, managed by an external CSI driver */
 export interface IoK8sApiCoreV1CSIVolumeSource {
   /** driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster. */
@@ -1830,11 +1137,6 @@ export interface IoK8sApiCoreV1CSIVolumeSource {
   /** volumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values. */
   volumeAttributes?: IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap;
 }
-const IoK8sApiCoreV1CSIVolumeSource = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1CSIVolumeSource>;
-
 /** DownwardAPIVolumeFile represents information to create the file containing the pod field */
 export interface IoK8sApiCoreV1DownwardAPIVolumeFile {
   /** fieldRef selects a field of the pod: only annotations, labels, name, namespace and uid are supported. Required. */
@@ -1848,19 +1150,9 @@ export interface IoK8sApiCoreV1DownwardAPIVolumeFile {
   /** user is Optional: The owner UID of the created file. If specified, the item-level user field takes precedence over defaultUser. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled. */
   user?: number;
 }
-const IoK8sApiCoreV1DownwardAPIVolumeFile = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1DownwardAPIVolumeFile>;
-
 /** items is a list of downward API volume file */
 export type IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList =
   Array<IoK8sApiCoreV1DownwardAPIVolumeFile>;
-const IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList>;
-
 /** DownwardAPIVolumeSource represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1DownwardAPIVolumeSource {
   /** defaultMode is mode bits to use on created files by default. Must be a Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
@@ -1870,11 +1162,6 @@ export interface IoK8sApiCoreV1DownwardAPIVolumeSource {
   /** items is a list of downward API volume file */
   items?: IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList;
 }
-const IoK8sApiCoreV1DownwardAPIVolumeSource = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1DownwardAPIVolumeSource>;
-
 /** Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1EmptyDirVolumeSource {
   /** medium represents what type of storage medium should back this directory. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir */
@@ -1884,16 +1171,8 @@ export interface IoK8sApiCoreV1EmptyDirVolumeSource {
   /** sizeLimit is the total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir */
   sizeLimit?: string;
 }
-const IoK8sApiCoreV1EmptyDirVolumeSource = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1EmptyDirVolumeSource>;
-
 /** accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
 export type IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList = Array<string>;
-const IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList>;
-
 /** TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace. */
 export interface IoK8sApiCoreV1TypedLocalObjectReference {
   /** apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. */
@@ -1903,11 +1182,6 @@ export interface IoK8sApiCoreV1TypedLocalObjectReference {
   /** name is the name of resource being referenced */
   name: string;
 }
-const IoK8sApiCoreV1TypedLocalObjectReference = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1TypedLocalObjectReference>;
-
 /** TypedObjectReference contains enough information to let you locate the typed referenced object */
 export interface IoK8sApiCoreV1TypedObjectReference {
   /** apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required. */
@@ -1919,25 +1193,14 @@ export interface IoK8sApiCoreV1TypedObjectReference {
   /** namespace is the namespace of resource being referenced Note that when a namespace is specified, a gateway.networking.k8s.io/ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details. (Alpha) This field requires the CrossNamespaceVolumeDataSource feature gate to be enabled. */
   namespace?: string;
 }
-const IoK8sApiCoreV1TypedObjectReference = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1TypedObjectReference>;
-
 /** limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap>;
-
 /** requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
 export type IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap>;
-
 /** VolumeResourceRequirements describes the storage resource requirements for a volume. */
 export interface IoK8sApiCoreV1VolumeResourceRequirements {
   /** limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
@@ -1945,11 +1208,6 @@ export interface IoK8sApiCoreV1VolumeResourceRequirements {
   /** requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. Requests cannot exceed Limits. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ */
   requests?: IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap;
 }
-const IoK8sApiCoreV1VolumeResourceRequirements = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1VolumeResourceRequirements>;
-
 /** PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes */
 export interface IoK8sApiCoreV1PersistentVolumeClaimSpec {
   /** accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
@@ -1971,11 +1229,6 @@ export interface IoK8sApiCoreV1PersistentVolumeClaimSpec {
   /** volumeName is the binding reference to the PersistentVolume backing this claim. */
   volumeName?: string;
 }
-const IoK8sApiCoreV1PersistentVolumeClaimSpec = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimSpec>;
-
 /** PersistentVolumeClaimTemplate is used to produce PersistentVolumeClaim objects as part of an EphemeralVolumeSource. */
 export interface IoK8sApiCoreV1PersistentVolumeClaimTemplate {
   /** metadata may contain labels and annotations that will be copied into the PVC when creating it. No other fields are allowed and will be rejected during validation. */
@@ -1983,31 +1236,15 @@ export interface IoK8sApiCoreV1PersistentVolumeClaimTemplate {
   /** spec is the specification for the PersistentVolumeClaim. The entire content is copied unchanged into the PVC that gets created from this template. The same fields as in a PersistentVolumeClaim are also valid here. */
   spec: IoK8sApiCoreV1PersistentVolumeClaimSpec;
 }
-const IoK8sApiCoreV1PersistentVolumeClaimTemplate = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimTemplate>;
-
 /** Represents an ephemeral volume that is handled by a normal storage driver. */
 export interface IoK8sApiCoreV1EphemeralVolumeSource {
   /** volumeClaimTemplate will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod. The name of the PVC will be `<pod name>-<volume name>` where `<volume name>` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long). An existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster. This field is read-only and no changes will be made by Kubernetes to the PVC after it has been created. Required, must not be nil. */
   volumeClaimTemplate: IoK8sApiCoreV1PersistentVolumeClaimTemplate;
 }
-const IoK8sApiCoreV1EphemeralVolumeSource = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1EphemeralVolumeSource>;
-
 /** targetWWNs is Optional: FC target worldwide names (WWNs) */
 export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = Array<string>;
-const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
-
 /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
 export type IoK8sApiCoreV1FCVolumeSourceWwidsList = Array<string>;
-const IoK8sApiCoreV1FCVolumeSourceWwidsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
-
 /** Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1FCVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -2021,16 +1258,8 @@ export interface IoK8sApiCoreV1FCVolumeSource {
   /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
   wwids?: IoK8sApiCoreV1FCVolumeSourceWwidsList;
 }
-const IoK8sApiCoreV1FCVolumeSource = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1FCVolumeSource>;
-
 /** options is Optional: this field holds extra command options if any. */
 export type IoK8sApiCoreV1FlexVolumeSourceOptionsMap = { [key: string]: string | undefined };
-const IoK8sApiCoreV1FlexVolumeSourceOptionsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1FlexVolumeSourceOptionsMap>;
-
 /** FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. */
 export interface IoK8sApiCoreV1FlexVolumeSource {
   /** driver is the name of the driver to use for this volume. */
@@ -2044,11 +1273,6 @@ export interface IoK8sApiCoreV1FlexVolumeSource {
   /** secretRef is Optional: secretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts. */
   secretRef?: IoK8sApiCoreV1LocalObjectReference;
 }
-const IoK8sApiCoreV1FlexVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1FlexVolumeSource>;
-
 /** Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1FlockerVolumeSource {
   /** datasetName is Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated */
@@ -2056,11 +1280,6 @@ export interface IoK8sApiCoreV1FlockerVolumeSource {
   /** datasetUUID is the UUID of the dataset. This is unique identifier of a Flocker dataset */
   datasetUUID?: string;
 }
-const IoK8sApiCoreV1FlockerVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1FlockerVolumeSource>;
-
 /** Represents a Persistent Disk resource in Google Compute Engine. A GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1GCEPersistentDiskVolumeSource {
   /** fsType is filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk */
@@ -2072,11 +1291,6 @@ export interface IoK8sApiCoreV1GCEPersistentDiskVolumeSource {
   /** readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1GCEPersistentDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1GCEPersistentDiskVolumeSource>;
-
 /** Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container. */
 export interface IoK8sApiCoreV1GitRepoVolumeSource {
   /** directory is the target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository. Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name. */
@@ -2086,11 +1300,6 @@ export interface IoK8sApiCoreV1GitRepoVolumeSource {
   /** revision is the commit hash for the specified revision. */
   revision?: string;
 }
-const IoK8sApiCoreV1GitRepoVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1GitRepoVolumeSource>;
-
 /** Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1GlusterfsVolumeSource {
   /** endpoints is the endpoint name that details Glusterfs topology. */
@@ -2100,11 +1309,6 @@ export interface IoK8sApiCoreV1GlusterfsVolumeSource {
   /** readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1GlusterfsVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1GlusterfsVolumeSource>;
-
 /** Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1HostPathVolumeSource {
   /** path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath */
@@ -2112,11 +1316,6 @@ export interface IoK8sApiCoreV1HostPathVolumeSource {
   /** type for HostPath Volume Defaults to "" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath */
   type?: string;
 }
-const IoK8sApiCoreV1HostPathVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1HostPathVolumeSource>;
-
 /** ImageVolumeSource represents a image volume resource. */
 export interface IoK8sApiCoreV1ImageVolumeSource {
   /** pullPolicy is the policy for pulling OCI objects. Possible values are: Always: the kubelet always attempts to pull the reference. Container creation will fail If the pull fails. Never: the kubelet never pulls the reference and only uses a local image or artifact. Container creation will fail if the reference isn't present. IfNotPresent: the kubelet pulls if the reference isn't already present on disk. Container creation will fail if the reference isn't present and the pull fails. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. */
@@ -2124,16 +1323,8 @@ export interface IoK8sApiCoreV1ImageVolumeSource {
   /** reference is required: Image or artifact reference to be used. Behaves in the same way as pod.spec.containers[*].image. Pull secrets will be assembled in the same way as for the container image by looking up node credentials, SA image pull secrets, and pod spec image pull secrets. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets. */
   reference?: string;
 }
-const IoK8sApiCoreV1ImageVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1ImageVolumeSource>;
-
 /** portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
 export type IoK8sApiCoreV1ISCSIVolumeSourcePortalsList = Array<string>;
-const IoK8sApiCoreV1ISCSIVolumeSourcePortalsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1ISCSIVolumeSourcePortalsList>;
-
 /** Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1ISCSIVolumeSource {
   /** chapAuthDiscovery defines whether support iSCSI Discovery CHAP authentication */
@@ -2159,11 +1350,6 @@ export interface IoK8sApiCoreV1ISCSIVolumeSource {
   /** targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
   targetPortal: string;
 }
-const IoK8sApiCoreV1ISCSIVolumeSource = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1ISCSIVolumeSource>;
-
 /** Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1NFSVolumeSource {
   /** path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs */
@@ -2173,11 +1359,6 @@ export interface IoK8sApiCoreV1NFSVolumeSource {
   /** server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs */
   server: string;
 }
-const IoK8sApiCoreV1NFSVolumeSource = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1NFSVolumeSource>;
-
 /** PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type of volume that is owned by someone else (the system). */
 export interface IoK8sApiCoreV1PersistentVolumeClaimVolumeSource {
   /** claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims */
@@ -2185,11 +1366,6 @@ export interface IoK8sApiCoreV1PersistentVolumeClaimVolumeSource {
   /** readOnly Will force the ReadOnly setting in VolumeMounts. Default false. */
   readOnly?: boolean;
 }
-const IoK8sApiCoreV1PersistentVolumeClaimVolumeSource = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1PersistentVolumeClaimVolumeSource>;
-
 /** Represents a Photon Controller persistent disk resource. */
 export interface IoK8sApiCoreV1PhotonPersistentDiskVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -2197,11 +1373,6 @@ export interface IoK8sApiCoreV1PhotonPersistentDiskVolumeSource {
   /** pdID is the ID that identifies Photon Controller persistent disk */
   pdID: string;
 }
-const IoK8sApiCoreV1PhotonPersistentDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1PhotonPersistentDiskVolumeSource>;
-
 /** PortworxVolumeSource represents a Portworx volume resource. */
 export interface IoK8sApiCoreV1PortworxVolumeSource {
   /** fsType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -2211,11 +1382,6 @@ export interface IoK8sApiCoreV1PortworxVolumeSource {
   /** volumeID uniquely identifies a Portworx volume */
   volumeID: string;
 }
-const IoK8sApiCoreV1PortworxVolumeSource = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1PortworxVolumeSource>;
-
 /** ClusterTrustBundleProjection describes how to select a set of ClusterTrustBundle objects and project their contents into the pod filesystem. */
 export interface IoK8sApiCoreV1ClusterTrustBundleProjection {
   /** labelSelector selects all ClusterTrustBundles that match this label selector. Only has effect if signerName is set. Mutually-exclusive with name. If unset, interpreted as "match nothing". If set but empty, interpreted as "match everything". */
@@ -2231,16 +1397,8 @@ export interface IoK8sApiCoreV1ClusterTrustBundleProjection {
   /** user is Optional: The owner UID of the created file. If specified, the item-level user field takes precedence over defaultUser. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled. */
   user?: number;
 }
-const IoK8sApiCoreV1ClusterTrustBundleProjection = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1ClusterTrustBundleProjection>;
-
 /** items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1ConfigMapProjectionItemsList = Array<IoK8sApiCoreV1KeyToPath>;
-const IoK8sApiCoreV1ConfigMapProjectionItemsList =
-  IoK8sApiCoreV1ConfigMapVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1ConfigMapProjectionItemsList>;
-
 /** Adapts a ConfigMap into a projected volume. The contents of the target ConfigMap's Data field will be presented in a projected volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. Note that this is identical to a configmap volume source without the default mode. */
 export interface IoK8sApiCoreV1ConfigMapProjection {
   /** items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
@@ -2250,34 +1408,18 @@ export interface IoK8sApiCoreV1ConfigMapProjection {
   /** optional specify whether the ConfigMap or its keys must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1ConfigMapProjection = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1ConfigMapProjection>;
-
 /** items is a list of DownwardAPIVolume file */
 export type IoK8sApiCoreV1DownwardAPIProjectionItemsList =
   Array<IoK8sApiCoreV1DownwardAPIVolumeFile>;
-const IoK8sApiCoreV1DownwardAPIProjectionItemsList =
-  IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1DownwardAPIProjectionItemsList>;
-
 /** Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode. */
 export interface IoK8sApiCoreV1DownwardAPIProjection {
   /** items is a list of DownwardAPIVolume file */
   items?: IoK8sApiCoreV1DownwardAPIProjectionItemsList;
 }
-const IoK8sApiCoreV1DownwardAPIProjection = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1DownwardAPIProjection>;
-
 /** userAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. These values are copied verbatim into the `spec.unverifiedUserAnnotations` field of the PodCertificateRequest objects that Kubelet creates. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
 export type IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap>;
-
 /** PodCertificateProjection provides a private key and X.509 certificate in the pod filesystem. */
 export interface IoK8sApiCoreV1PodCertificateProjection {
   /** certificateChainPath is the path to write the certificate chain at this path in the projected volume. Most applications should use credentialBundlePath. When using keyPath and certificateChainPath, your application needs to check that the key and leaf certificate are consistent, because it is possible to read the files mid-rotation. */
@@ -2297,11 +1439,6 @@ export interface IoK8sApiCoreV1PodCertificateProjection {
   /** userAnnotations allow pod authors to pass additional information to the signer implementation. Kubernetes does not restrict or validate this metadata in any way. These values are copied verbatim into the `spec.unverifiedUserAnnotations` field of the PodCertificateRequest objects that Kubelet creates. Entries are subject to the same validation as object metadata annotations, with the addition that all keys must be domain-prefixed. No restrictions are placed on values, except an overall size limitation on the entire field. Signers should document the keys and values they support. Signers should deny requests that contain keys they do not recognize. */
   userAnnotations?: IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap;
 }
-const IoK8sApiCoreV1PodCertificateProjection = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1PodCertificateProjection>;
-
 /** items if unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1SecretProjectionItemsList = Array<IoK8sApiCoreV1KeyToPath>;
 /** Adapts a secret into a projected volume. The contents of the target Secret's Data field will be presented in a projected volume as files using the keys in the Data field as the file names. Note that this is identical to a secret volume source without the default mode. */
@@ -2313,9 +1450,6 @@ export interface IoK8sApiCoreV1SecretProjection {
   /** optional field specify whether the Secret or its key must be defined */
   optional?: boolean;
 }
-const IoK8sApiCoreV1SecretProjection =
-  IoK8sApiCoreV1ConfigMapProjection as any as S.Schema<IoK8sApiCoreV1SecretProjection>;
-
 /** ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise). */
 export interface IoK8sApiCoreV1ServiceAccountTokenProjection {
   /** audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver. */
@@ -2327,11 +1461,6 @@ export interface IoK8sApiCoreV1ServiceAccountTokenProjection {
   /** user is Optional: The owner UID of the created file. If specified, the item-level user field takes precedence over defaultUser. (Alpha) This field requires the AtomicWriteVolumeUserFields feature gate to be enabled. */
   user?: number;
 }
-const IoK8sApiCoreV1ServiceAccountTokenProjection = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1ServiceAccountTokenProjection>;
-
 /** Projection that may be projected along with other supported volume types. Exactly one of these fields must be set. */
 export interface IoK8sApiCoreV1VolumeProjection {
   /** clusterTrustBundle allows a pod to access the `.spec.trustBundle` field of ClusterTrustBundle objects in an auto-updating file. Alpha, gated by the ClusterTrustBundleProjection feature gate. ClusterTrustBundle objects can either be selected by name, or by the combination of signer name and a label selector. Kubelet performs aggressive normalization of the PEM contents written into the pod filesystem. Esoteric PEM features such as inter-block comments and block headers are stripped. Certificates are deduplicated. The ordering of certificates within the file is arbitrary, and Kubelet may change the order over time. */
@@ -2347,18 +1476,8 @@ export interface IoK8sApiCoreV1VolumeProjection {
   /** serviceAccountToken is information about the serviceAccountToken data to project */
   serviceAccountToken?: IoK8sApiCoreV1ServiceAccountTokenProjection;
 }
-const IoK8sApiCoreV1VolumeProjection = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1VolumeProjection>;
-
 /** sources is the list of volume projections. Each entry in this list handles one source. */
 export type IoK8sApiCoreV1ProjectedVolumeSourceSourcesList = Array<IoK8sApiCoreV1VolumeProjection>;
-const IoK8sApiCoreV1ProjectedVolumeSourceSourcesList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1ProjectedVolumeSourceSourcesList>;
-
 /** Represents a projected volume source */
 export interface IoK8sApiCoreV1ProjectedVolumeSource {
   /** defaultMode are the mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
@@ -2368,11 +1487,6 @@ export interface IoK8sApiCoreV1ProjectedVolumeSource {
   /** sources is the list of volume projections. Each entry in this list handles one source. */
   sources?: IoK8sApiCoreV1ProjectedVolumeSourceSourcesList;
 }
-const IoK8sApiCoreV1ProjectedVolumeSource = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1ProjectedVolumeSource>;
-
 /** Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling. */
 export interface IoK8sApiCoreV1QuobyteVolumeSource {
   /** group to map volume access to Default is no group */
@@ -2388,16 +1502,8 @@ export interface IoK8sApiCoreV1QuobyteVolumeSource {
   /** volume is a string that references an already created Quobyte volume by name. */
   volume: string;
 }
-const IoK8sApiCoreV1QuobyteVolumeSource = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1QuobyteVolumeSource>;
-
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
 export type IoK8sApiCoreV1RBDVolumeSourceMonitorsList = Array<string>;
-const IoK8sApiCoreV1RBDVolumeSourceMonitorsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiCoreV1RBDVolumeSourceMonitorsList>;
-
 /** Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1RBDVolumeSource {
   /** fsType is the filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd */
@@ -2417,11 +1523,6 @@ export interface IoK8sApiCoreV1RBDVolumeSource {
   /** user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
   user?: string;
 }
-const IoK8sApiCoreV1RBDVolumeSource = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1RBDVolumeSource>;
-
 /** ScaleIOVolumeSource represents a persistent ScaleIO volume */
 export interface IoK8sApiCoreV1ScaleIOVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs". */
@@ -2445,16 +1546,8 @@ export interface IoK8sApiCoreV1ScaleIOVolumeSource {
   /** volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source. */
   volumeName: string;
 }
-const IoK8sApiCoreV1ScaleIOVolumeSource = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<IoK8sApiCoreV1ScaleIOVolumeSource>;
-
 /** items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1SecretVolumeSourceItemsList = Array<IoK8sApiCoreV1KeyToPath>;
-const IoK8sApiCoreV1SecretVolumeSourceItemsList =
-  IoK8sApiCoreV1ConfigMapVolumeSourceItemsList as any as S.Schema<IoK8sApiCoreV1SecretVolumeSourceItemsList>;
-
 /** Adapts a Secret into a volume. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. Secret volumes support ownership management and SELinux relabeling. */
 export interface IoK8sApiCoreV1SecretVolumeSource {
   /** defaultMode is Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. */
@@ -2468,11 +1561,6 @@ export interface IoK8sApiCoreV1SecretVolumeSource {
   /** secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret */
   secretName?: string;
 }
-const IoK8sApiCoreV1SecretVolumeSource = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<IoK8sApiCoreV1SecretVolumeSource>;
-
 /** Represents a StorageOS persistent volume resource. */
 export interface IoK8sApiCoreV1StorageOSVolumeSource {
   /** fsType is the filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -2486,11 +1574,6 @@ export interface IoK8sApiCoreV1StorageOSVolumeSource {
   /** volumeNamespace specifies the scope of the volume within StorageOS. If no namespace is specified then the Pod's namespace will be used. This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to "default" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created. */
   volumeNamespace?: string;
 }
-const IoK8sApiCoreV1StorageOSVolumeSource = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<IoK8sApiCoreV1StorageOSVolumeSource>;
-
 /** Represents a vSphere volume resource. */
 export interface IoK8sApiCoreV1VsphereVirtualDiskVolumeSource {
   /** fsType is filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. */
@@ -2502,11 +1585,6 @@ export interface IoK8sApiCoreV1VsphereVirtualDiskVolumeSource {
   /** volumePath is the path that identifies vSphere volume vmdk */
   volumePath: string;
 }
-const IoK8sApiCoreV1VsphereVirtualDiskVolumeSource = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1VsphereVirtualDiskVolumeSource>;
-
 /** Volume represents a named volume in a pod that may be accessed by any container in the pod. */
 export interface IoK8sApiCoreV1Volume {
   /** awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore */
@@ -2572,18 +1650,8 @@ export interface IoK8sApiCoreV1Volume {
   /** vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver. */
   vsphereVolume?: IoK8sApiCoreV1VsphereVirtualDiskVolumeSource;
 }
-const IoK8sApiCoreV1Volume = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<IoK8sApiCoreV1Volume>;
-
 /** volumes is the list of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes */
 export type IoK8sApiCoreV1PodSpecVolumesList = Array<IoK8sApiCoreV1Volume>;
-const IoK8sApiCoreV1PodSpecVolumesList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<IoK8sApiCoreV1PodSpecVolumesList>;
-
 /** PodSpec is a description of a pod. */
 export interface IoK8sApiCoreV1PodSpec {
   /** activeDeadlineSeconds is the optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer. */
@@ -2673,11 +1741,6 @@ export interface IoK8sApiCoreV1PodSpec {
   /** volumes is the list of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes */
   volumes?: IoK8sApiCoreV1PodSpecVolumesList;
 }
-const IoK8sApiCoreV1PodSpec = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<IoK8sApiCoreV1PodSpec>;
-
 /** PodTemplateSpec describes the data a pod should have when created from a template */
 export interface IoK8sApiCoreV1PodTemplateSpec {
   /** metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
@@ -2685,11 +1748,6 @@ export interface IoK8sApiCoreV1PodTemplateSpec {
   /** spec is the specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoreV1PodSpec;
 }
-const IoK8sApiCoreV1PodTemplateSpec = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<IoK8sApiCoreV1PodTemplateSpec>;
-
 /** JobSpec describes how the job execution will look like. */
 export interface IoK8sApiBatchV1JobSpec {
   /** activeDeadlineSeconds specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again. */
@@ -2727,11 +1785,6 @@ export interface IoK8sApiBatchV1JobSpec {
   /** ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes. */
   ttlSecondsAfterFinished?: number;
 }
-const IoK8sApiBatchV1JobSpec = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<IoK8sApiBatchV1JobSpec>;
-
 /** JobTemplateSpec describes the data a Job should have when created from a template */
 export interface IoK8sApiBatchV1JobTemplateSpec {
   /** metadata is the standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
@@ -2739,11 +1792,6 @@ export interface IoK8sApiBatchV1JobTemplateSpec {
   /** spec is the specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiBatchV1JobSpec;
 }
-const IoK8sApiBatchV1JobTemplateSpec = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<IoK8sApiBatchV1JobTemplateSpec>;
-
 /** CronJobSpec describes how the job execution will look like and when it will actually run. */
 export interface IoK8sApiBatchV1CronJobSpec {
   /** concurrencyPolicy specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - "Replace": cancels currently running job and replaces it with a new one */
@@ -2763,11 +1811,6 @@ export interface IoK8sApiBatchV1CronJobSpec {
   /** timeZone is the time zone name for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will default to the time zone of the kube-controller-manager process. The set of valid time zone names and the time zone offset is loaded from the system-wide time zone database by the API server during CronJob validation and the controller manager during execution. If no system-wide time zone database can be found a bundled version of the database is used instead. If the time zone name becomes invalid during the lifetime of a CronJob or due to a change in host configuration, the controller will stop creating new new Jobs and will create a system event with the reason UnknownTimeZone. More information can be found in https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones */
   timeZone?: string;
 }
-const IoK8sApiBatchV1CronJobSpec = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<IoK8sApiBatchV1CronJobSpec>;
-
 /** ObjectReference contains enough information to let you inspect or modify the referred object. */
 export interface IoK8sApiCoreV1ObjectReference {
   /** apiVersion is API version of the referent. */
@@ -2785,18 +1828,8 @@ export interface IoK8sApiCoreV1ObjectReference {
   /** uid of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids */
   uid?: string;
 }
-const IoK8sApiCoreV1ObjectReference = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<IoK8sApiCoreV1ObjectReference>;
-
 /** A list of pointers to currently running jobs. */
 export type IoK8sApiBatchV1CronJobStatusActiveList = Array<IoK8sApiCoreV1ObjectReference>;
-const IoK8sApiBatchV1CronJobStatusActiveList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<IoK8sApiBatchV1CronJobStatusActiveList>;
-
 /** CronJobStatus represents the current state of a cron job. */
 export interface IoK8sApiBatchV1CronJobStatus {
   /** A list of pointers to currently running jobs. */
@@ -2806,11 +1839,6 @@ export interface IoK8sApiBatchV1CronJobStatus {
   /** Information when was the last time the job successfully completed. */
   lastSuccessfulTime?: string;
 }
-const IoK8sApiBatchV1CronJobStatus = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<IoK8sApiBatchV1CronJobStatus>;
-
 export interface CreateBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2833,11 +1861,6 @@ export interface CreateBatchV1NamespacedCronJobRequest {
   /** status is the current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1CronJobStatus;
 }
-const CreateBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<CreateBatchV1NamespacedCronJobRequest>;
-
 /** CronJob represents the configuration of a single cron job. */
 export interface IoK8sApiBatchV1CronJob {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2851,11 +1874,6 @@ export interface IoK8sApiBatchV1CronJob {
   /** status is the current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1CronJobStatus;
 }
-const IoK8sApiBatchV1CronJob = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<IoK8sApiBatchV1CronJob>;
-
 /** JobCondition describes current state of a job. */
 export interface IoK8sApiBatchV1JobCondition {
   /** lastProbeTime is the last time the condition was checked. */
@@ -2871,28 +1889,12 @@ export interface IoK8sApiBatchV1JobCondition {
   /** type is the type of job condition, Complete or Failed. */
   type?: string;
 }
-const IoK8sApiBatchV1JobCondition = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<IoK8sApiBatchV1JobCondition>;
-
 /** The latest available observations of an object's current state. When a Job fails, one of the conditions will have type "Failed" and status true. When a Job is suspended, one of the conditions will have type "Suspended" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type "Complete" and status true. A job is considered finished when it is in a terminal condition, either "Complete" or "Failed". A Job cannot have both the "Complete" and "Failed" conditions. Additionally, it cannot be in the "Complete" and "FailureTarget" conditions. The "Complete", "Failed" and "FailureTarget" conditions cannot be disabled. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ */
 export type IoK8sApiBatchV1JobStatusConditionsList = Array<IoK8sApiBatchV1JobCondition>;
-const IoK8sApiBatchV1JobStatusConditionsList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<IoK8sApiBatchV1JobStatusConditionsList>;
-
 /** failed holds UIDs of failed Pods. */
 export type IoK8sApiBatchV1UncountedTerminatedPodsFailedList = Array<string>;
-const IoK8sApiBatchV1UncountedTerminatedPodsFailedList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiBatchV1UncountedTerminatedPodsFailedList>;
-
 /** succeeded holds UIDs of succeeded Pods. */
 export type IoK8sApiBatchV1UncountedTerminatedPodsSucceededList = Array<string>;
-const IoK8sApiBatchV1UncountedTerminatedPodsSucceededList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiBatchV1UncountedTerminatedPodsSucceededList>;
-
 /** UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters. */
 export interface IoK8sApiBatchV1UncountedTerminatedPods {
   /** failed holds UIDs of failed Pods. */
@@ -2900,11 +1902,6 @@ export interface IoK8sApiBatchV1UncountedTerminatedPods {
   /** succeeded holds UIDs of succeeded Pods. */
   succeeded?: IoK8sApiBatchV1UncountedTerminatedPodsSucceededList;
 }
-const IoK8sApiBatchV1UncountedTerminatedPods = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<IoK8sApiBatchV1UncountedTerminatedPods>;
-
 /** JobStatus represents the current state of a Job. */
 export interface IoK8sApiBatchV1JobStatus {
   /** The number of pending and running pods which are not terminating (without a deletionTimestamp). The value is zero for finished jobs. */
@@ -2930,11 +1927,6 @@ export interface IoK8sApiBatchV1JobStatus {
   /** uncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters. The job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status: 1. Add the pod UID to the arrays in this field. 2. Remove the pod finalizer. 3. Remove the pod UID from the arrays while increasing the corresponding counter. Old jobs might not be tracked using this field, in which case the field remains null. The structure is empty for finished jobs. */
   uncountedTerminatedPods?: IoK8sApiBatchV1UncountedTerminatedPods;
 }
-const IoK8sApiBatchV1JobStatus = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<IoK8sApiBatchV1JobStatus>;
-
 export interface CreateBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -2957,11 +1949,6 @@ export interface CreateBatchV1NamespacedJobRequest {
   /** status is the current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1JobStatus;
 }
-const CreateBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<CreateBatchV1NamespacedJobRequest>;
-
 /** Job represents the configuration of a single job. */
 export interface IoK8sApiBatchV1Job {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2975,8 +1962,6 @@ export interface IoK8sApiBatchV1Job {
   /** status is the current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1JobStatus;
 }
-const IoK8sApiBatchV1Job = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<IoK8sApiBatchV1Job>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -2984,11 +1969,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteBatchV1CollectionNamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3029,11 +2009,6 @@ export interface DeleteBatchV1CollectionNamespacedCronJobRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteBatchV1CollectionNamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DeleteBatchV1CollectionNamespacedCronJobRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -3043,19 +2018,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -3071,21 +2036,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -3099,11 +2054,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -3123,11 +2073,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteBatchV1CollectionNamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3168,11 +2113,6 @@ export interface DeleteBatchV1CollectionNamespacedJobRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteBatchV1CollectionNamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DeleteBatchV1CollectionNamespacedJobRequest>;
-
 export interface DeleteBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3197,11 +2137,6 @@ export interface DeleteBatchV1NamespacedCronJobRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<DeleteBatchV1NamespacedCronJobRequest>;
-
 export interface DeleteBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3226,17 +2161,7 @@ export interface DeleteBatchV1NamespacedJobRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DeleteBatchV1NamespacedJobRequest>;
-
 export interface GetBatchAPIGroupRequest {}
-const GetBatchAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetBatchAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -3244,11 +2169,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -3256,27 +2176,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -3292,32 +2197,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetBatchV1APIResourcesRequest {}
-const GetBatchV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetBatchV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -3341,19 +2227,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -3365,11 +2241,6 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface ListBatchV1CronJobForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3396,18 +2267,8 @@ export interface ListBatchV1CronJobForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListBatchV1CronJobForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListBatchV1CronJobForAllNamespacesRequest>;
-
 /** items is the list of CronJobs. */
 export type IoK8sApiBatchV1CronJobListItemsList = Array<IoK8sApiBatchV1CronJob>;
-const IoK8sApiBatchV1CronJobListItemsList = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<IoK8sApiBatchV1CronJobListItemsList>;
-
 /** CronJobList is a collection of cron jobs. */
 export interface IoK8sApiBatchV1CronJobList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -3419,11 +2280,6 @@ export interface IoK8sApiBatchV1CronJobList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiBatchV1CronJobList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<IoK8sApiBatchV1CronJobList>;
-
 export interface ListBatchV1JobForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3450,18 +2306,8 @@ export interface ListBatchV1JobForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListBatchV1JobForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListBatchV1JobForAllNamespacesRequest>;
-
 /** items is the list of Jobs. */
 export type IoK8sApiBatchV1JobListItemsList = Array<IoK8sApiBatchV1Job>;
-const IoK8sApiBatchV1JobListItemsList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<IoK8sApiBatchV1JobListItemsList>;
-
 /** JobList is a collection of jobs. */
 export interface IoK8sApiBatchV1JobList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -3473,11 +2319,6 @@ export interface IoK8sApiBatchV1JobList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiBatchV1JobList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<IoK8sApiBatchV1JobList>;
-
 export interface ListBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3506,11 +2347,6 @@ export interface ListBatchV1NamespacedCronJobRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListBatchV1NamespacedCronJobRequest>;
-
 export interface ListBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3539,11 +2375,6 @@ export interface ListBatchV1NamespacedJobRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListBatchV1NamespacedJobRequest>;
-
 export interface PatchBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3560,11 +2391,6 @@ export interface PatchBatchV1NamespacedCronJobRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<PatchBatchV1NamespacedCronJobRequest>;
-
 export interface PatchBatchV1NamespacedCronJobStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3581,11 +2407,6 @@ export interface PatchBatchV1NamespacedCronJobStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchBatchV1NamespacedCronJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<PatchBatchV1NamespacedCronJobStatusRequest>;
-
 export interface PatchBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3602,11 +2423,6 @@ export interface PatchBatchV1NamespacedJobRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<PatchBatchV1NamespacedJobRequest>;
-
 export interface PatchBatchV1NamespacedJobStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3623,11 +2439,6 @@ export interface PatchBatchV1NamespacedJobStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchBatchV1NamespacedJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<PatchBatchV1NamespacedJobStatusRequest>;
-
 export interface ReadBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3636,11 +2447,6 @@ export interface ReadBatchV1NamespacedCronJobRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ReadBatchV1NamespacedCronJobRequest>;
-
 export interface ReadBatchV1NamespacedCronJobStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3649,11 +2455,6 @@ export interface ReadBatchV1NamespacedCronJobStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadBatchV1NamespacedCronJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ReadBatchV1NamespacedCronJobStatusRequest>;
-
 export interface ReadBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3662,11 +2463,6 @@ export interface ReadBatchV1NamespacedJobRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ReadBatchV1NamespacedJobRequest>;
-
 export interface ReadBatchV1NamespacedJobStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3675,11 +2471,6 @@ export interface ReadBatchV1NamespacedJobStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadBatchV1NamespacedJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ReadBatchV1NamespacedJobStatusRequest>;
-
 export interface ReplaceBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3704,11 +2495,6 @@ export interface ReplaceBatchV1NamespacedCronJobRequest {
   /** status is the current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1CronJobStatus;
 }
-const ReplaceBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ReplaceBatchV1NamespacedCronJobRequest>;
-
 export interface ReplaceBatchV1NamespacedCronJobStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3733,11 +2519,6 @@ export interface ReplaceBatchV1NamespacedCronJobStatusRequest {
   /** status is the current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1CronJobStatus;
 }
-const ReplaceBatchV1NamespacedCronJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ReplaceBatchV1NamespacedCronJobStatusRequest>;
-
 export interface ReplaceBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3762,11 +2543,6 @@ export interface ReplaceBatchV1NamespacedJobRequest {
   /** status is the current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1JobStatus;
 }
-const ReplaceBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ReplaceBatchV1NamespacedJobRequest>;
-
 export interface ReplaceBatchV1NamespacedJobStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3791,11 +2567,6 @@ export interface ReplaceBatchV1NamespacedJobStatusRequest {
   /** status is the current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: IoK8sApiBatchV1JobStatus;
 }
-const ReplaceBatchV1NamespacedJobStatusRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ReplaceBatchV1NamespacedJobStatusRequest>;
-
 export interface WatchBatchV1CronJobListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3822,22 +2593,12 @@ export interface WatchBatchV1CronJobListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchBatchV1CronJobListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<WatchBatchV1CronJobListForAllNamespacesRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchBatchV1JobListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -3864,11 +2625,6 @@ export interface WatchBatchV1JobListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchBatchV1JobListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<WatchBatchV1JobListForAllNamespacesRequest>;
-
 export interface WatchBatchV1NamespacedCronJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3899,11 +2655,6 @@ export interface WatchBatchV1NamespacedCronJobRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchBatchV1NamespacedCronJobRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<WatchBatchV1NamespacedCronJobRequest>;
-
 export interface WatchBatchV1NamespacedCronJobListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3932,11 +2683,6 @@ export interface WatchBatchV1NamespacedCronJobListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchBatchV1NamespacedCronJobListRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<WatchBatchV1NamespacedCronJobListRequest>;
-
 export interface WatchBatchV1NamespacedJobRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -3967,11 +2713,6 @@ export interface WatchBatchV1NamespacedJobRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchBatchV1NamespacedJobRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<WatchBatchV1NamespacedJobRequest>;
-
 export interface WatchBatchV1NamespacedJobListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -4000,11 +2741,6 @@ export interface WatchBatchV1NamespacedJobListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchBatchV1NamespacedJobListRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<WatchBatchV1NamespacedJobListRequest>;
-
 export type CreateBatchV1NamespacedCronJobError =
   | Conflict
   | UnprocessableEntity
@@ -4016,8 +2752,8 @@ export const createBatchV1NamespacedCronJob: API.OperationMethod<
   CreateBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchV1NamespacedCronJobRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(164) as any as S.Schema<CreateBatchV1NamespacedCronJobRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4031,8 +2767,8 @@ export const createBatchV1NamespacedJob: API.OperationMethod<
   CreateBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchV1NamespacedJobRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(170) as any as S.Schema<CreateBatchV1NamespacedJobRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4046,8 +2782,8 @@ export const deleteBatchV1CollectionNamespacedCronJob: API.OperationMethod<
   DeleteBatchV1CollectionNamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchV1CollectionNamespacedCronJobRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(173) as any as S.Schema<DeleteBatchV1CollectionNamespacedCronJobRequest>,
+  output: __S(179) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4061,8 +2797,8 @@ export const deleteBatchV1CollectionNamespacedJob: API.OperationMethod<
   DeleteBatchV1CollectionNamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchV1CollectionNamespacedJobRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(180) as any as S.Schema<DeleteBatchV1CollectionNamespacedJobRequest>,
+  output: __S(179) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4076,8 +2812,8 @@ export const deleteBatchV1NamespacedCronJob: API.OperationMethod<
   DeleteBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchV1NamespacedCronJobRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(181) as any as S.Schema<DeleteBatchV1NamespacedCronJobRequest>,
+  output: __S(179) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4091,8 +2827,8 @@ export const deleteBatchV1NamespacedJob: API.OperationMethod<
   DeleteBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBatchV1NamespacedJobRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(182) as any as S.Schema<DeleteBatchV1NamespacedJobRequest>,
+  output: __S(179) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4106,8 +2842,8 @@ export const getBatchAPIGroup: API.OperationMethod<
   GetBatchAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBatchAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(183) as any as S.Schema<GetBatchAPIGroupRequest>,
+  output: __S(188) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4121,8 +2857,8 @@ export const getBatchV1APIResources: API.OperationMethod<
   GetBatchV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBatchV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(189) as any as S.Schema<GetBatchV1APIResourcesRequest>,
+  output: __S(192) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4136,8 +2872,8 @@ export const listBatchV1CronJobForAllNamespaces: API.OperationMethod<
   ListBatchV1CronJobForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchV1CronJobForAllNamespacesRequest,
-  output: IoK8sApiBatchV1CronJobList,
+  input: __S(193) as any as S.Schema<ListBatchV1CronJobForAllNamespacesRequest>,
+  output: __S(195) as any as S.Schema<IoK8sApiBatchV1CronJobList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4151,8 +2887,8 @@ export const listBatchV1JobForAllNamespaces: API.OperationMethod<
   ListBatchV1JobForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchV1JobForAllNamespacesRequest,
-  output: IoK8sApiBatchV1JobList,
+  input: __S(196) as any as S.Schema<ListBatchV1JobForAllNamespacesRequest>,
+  output: __S(198) as any as S.Schema<IoK8sApiBatchV1JobList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4166,8 +2902,8 @@ export const listBatchV1NamespacedCronJob: API.OperationMethod<
   ListBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchV1NamespacedCronJobRequest,
-  output: IoK8sApiBatchV1CronJobList,
+  input: __S(199) as any as S.Schema<ListBatchV1NamespacedCronJobRequest>,
+  output: __S(195) as any as S.Schema<IoK8sApiBatchV1CronJobList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4181,8 +2917,8 @@ export const listBatchV1NamespacedJob: API.OperationMethod<
   ListBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBatchV1NamespacedJobRequest,
-  output: IoK8sApiBatchV1JobList,
+  input: __S(200) as any as S.Schema<ListBatchV1NamespacedJobRequest>,
+  output: __S(198) as any as S.Schema<IoK8sApiBatchV1JobList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4200,8 +2936,8 @@ export const patchBatchV1NamespacedCronJob: API.OperationMethod<
   PatchBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBatchV1NamespacedCronJobRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(201) as any as S.Schema<PatchBatchV1NamespacedCronJobRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4219,8 +2955,8 @@ export const patchBatchV1NamespacedCronJobStatus: API.OperationMethod<
   PatchBatchV1NamespacedCronJobStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBatchV1NamespacedCronJobStatusRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(202) as any as S.Schema<PatchBatchV1NamespacedCronJobStatusRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4238,8 +2974,8 @@ export const patchBatchV1NamespacedJob: API.OperationMethod<
   PatchBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBatchV1NamespacedJobRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(203) as any as S.Schema<PatchBatchV1NamespacedJobRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4257,8 +2993,8 @@ export const patchBatchV1NamespacedJobStatus: API.OperationMethod<
   PatchBatchV1NamespacedJobStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchBatchV1NamespacedJobStatusRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(204) as any as S.Schema<PatchBatchV1NamespacedJobStatusRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4272,8 +3008,8 @@ export const readBatchV1NamespacedCronJob: API.OperationMethod<
   ReadBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadBatchV1NamespacedCronJobRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(205) as any as S.Schema<ReadBatchV1NamespacedCronJobRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4287,8 +3023,8 @@ export const readBatchV1NamespacedCronJobStatus: API.OperationMethod<
   ReadBatchV1NamespacedCronJobStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadBatchV1NamespacedCronJobStatusRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(206) as any as S.Schema<ReadBatchV1NamespacedCronJobStatusRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4302,8 +3038,8 @@ export const readBatchV1NamespacedJob: API.OperationMethod<
   ReadBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadBatchV1NamespacedJobRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(207) as any as S.Schema<ReadBatchV1NamespacedJobRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4317,8 +3053,8 @@ export const readBatchV1NamespacedJobStatus: API.OperationMethod<
   ReadBatchV1NamespacedJobStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadBatchV1NamespacedJobStatusRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(208) as any as S.Schema<ReadBatchV1NamespacedJobStatusRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4336,8 +3072,8 @@ export const replaceBatchV1NamespacedCronJob: API.OperationMethod<
   ReplaceBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceBatchV1NamespacedCronJobRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(209) as any as S.Schema<ReplaceBatchV1NamespacedCronJobRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4355,8 +3091,8 @@ export const replaceBatchV1NamespacedCronJobStatus: API.OperationMethod<
   ReplaceBatchV1NamespacedCronJobStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceBatchV1NamespacedCronJobStatusRequest,
-  output: IoK8sApiBatchV1CronJob,
+  input: __S(210) as any as S.Schema<ReplaceBatchV1NamespacedCronJobStatusRequest>,
+  output: __S(165) as any as S.Schema<IoK8sApiBatchV1CronJob>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4374,8 +3110,8 @@ export const replaceBatchV1NamespacedJob: API.OperationMethod<
   ReplaceBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceBatchV1NamespacedJobRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(211) as any as S.Schema<ReplaceBatchV1NamespacedJobRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4393,8 +3129,8 @@ export const replaceBatchV1NamespacedJobStatus: API.OperationMethod<
   ReplaceBatchV1NamespacedJobStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceBatchV1NamespacedJobStatusRequest,
-  output: IoK8sApiBatchV1Job,
+  input: __S(212) as any as S.Schema<ReplaceBatchV1NamespacedJobStatusRequest>,
+  output: __S(171) as any as S.Schema<IoK8sApiBatchV1Job>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4408,8 +3144,8 @@ export const watchBatchV1CronJobListForAllNamespaces: API.OperationMethod<
   WatchBatchV1CronJobListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchBatchV1CronJobListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(213) as any as S.Schema<WatchBatchV1CronJobListForAllNamespacesRequest>,
+  output: __S(214) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4423,8 +3159,8 @@ export const watchBatchV1JobListForAllNamespaces: API.OperationMethod<
   WatchBatchV1JobListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchBatchV1JobListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(215) as any as S.Schema<WatchBatchV1JobListForAllNamespacesRequest>,
+  output: __S(214) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4438,8 +3174,8 @@ export const watchBatchV1NamespacedCronJob: API.OperationMethod<
   WatchBatchV1NamespacedCronJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchBatchV1NamespacedCronJobRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(216) as any as S.Schema<WatchBatchV1NamespacedCronJobRequest>,
+  output: __S(214) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4453,8 +3189,8 @@ export const watchBatchV1NamespacedCronJobList: API.OperationMethod<
   WatchBatchV1NamespacedCronJobListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchBatchV1NamespacedCronJobListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(217) as any as S.Schema<WatchBatchV1NamespacedCronJobListRequest>,
+  output: __S(214) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4468,8 +3204,8 @@ export const watchBatchV1NamespacedJob: API.OperationMethod<
   WatchBatchV1NamespacedJobError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchBatchV1NamespacedJobRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(218) as any as S.Schema<WatchBatchV1NamespacedJobRequest>,
+  output: __S(214) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4483,8 +3219,8 @@ export const watchBatchV1NamespacedJobList: API.OperationMethod<
   WatchBatchV1NamespacedJobListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchBatchV1NamespacedJobListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(219) as any as S.Schema<WatchBatchV1NamespacedJobListRequest>,
+  output: __S(214) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -4512,7 +3248,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4527,22 +3263,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0)),
+          managedFields: S.optional(__S(3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -4561,7 +3297,7 @@ function __c1(j: number): any {
         S.Struct({
           containerName: S.optional(S.String),
           operator: S.String,
-          values: IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList,
+          values: __S(7),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement",
@@ -4576,23 +3312,23 @@ function __c1(j: number): any {
         identifier: "IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern",
       });
     case 2:
-      return S.Array(IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          onExitCodes: S.optional(IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirement),
-          onPodConditions: S.optional(IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList),
+          onExitCodes: S.optional(__S(8)),
+          onPodConditions: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1PodFailurePolicyRule",
       });
     case 4:
-      return S.Array(IoK8sApiBatchV1PodFailurePolicyRule);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(IoK8sApiBatchV1PodFailurePolicyRulesList),
+          rules: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1PodFailurePolicy",
@@ -4621,7 +3357,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4631,13 +3367,11 @@ function __c2(j: number): any {
         identifier: "IoK8sApiSchedulingV1alpha3TopologyConstraint",
       });
     case 2:
-      return S.Array(IoK8sApiSchedulingV1alpha3TopologyConstraint);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          topology: S.optional(
-            IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList,
-          ),
+          topology: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraints",
@@ -4654,7 +3388,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           basic: S.optional(S.Unknown),
-          gang: S.optional(IoK8sApiSchedulingV1alpha3WorkloadPodGroupGangSchedulingPolicy),
+          gang: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy",
@@ -4662,12 +3396,10 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disruptionMode: S.optional(IoK8sApiSchedulingV1alpha3WorkloadPodGroupDisruptionMode),
-          resourceClaims: S.optional(IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList),
-          schedulingConstraints: S.optional(
-            IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraints,
-          ),
-          schedulingPolicy: S.optional(IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingPolicy),
+          disruptionMode: S.optional(__S(14)),
+          resourceClaims: S.optional(__S(16)),
+          schedulingConstraints: S.optional(__S(19)),
+          schedulingPolicy: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1JobSchedulingConfiguration",
@@ -4683,20 +3415,18 @@ function __c3(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList),
+          values: S.optional(__S(23)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
       });
     case 1:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(
-            IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList,
-          ),
-          matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
+          matchExpressions: S.optional(__S(25)),
+          matchLabels: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
@@ -4711,11 +3441,11 @@ function __c3(j: number): any {
         identifier: "IoK8sApiBatchV1SuccessPolicyRule",
       });
     case 4:
-      return S.Array(IoK8sApiBatchV1SuccessPolicyRule);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: IoK8sApiBatchV1SuccessPolicyRulesList,
+          rules: __S(28),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1SuccessPolicy",
@@ -4725,13 +3455,13 @@ function __c3(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApiCoreV1NodeSelectorRequirementValuesList),
+          values: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeSelectorRequirement",
       });
     case 7:
-      return S.Array(IoK8sApiCoreV1NodeSelectorRequirement);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -4739,8 +3469,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList),
-          matchFields: S.optional(IoK8sApiCoreV1NodeSelectorTermMatchFieldsList),
+          matchExpressions: S.optional(__S(31)),
+          matchFields: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeSelectorTerm",
@@ -4748,20 +3478,20 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          preference: IoK8sApiCoreV1NodeSelectorTerm,
+          preference: __S(32),
           weight: S.Number,
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PreferredSchedulingTerm",
       });
     case 2:
-      return S.Array(IoK8sApiCoreV1PreferredSchedulingTerm);
+      return S.Array(__S(33));
     case 3:
-      return S.Array(IoK8sApiCoreV1NodeSelectorTerm);
+      return S.Array(__S(32));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          nodeSelectorTerms: IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList,
+          nodeSelectorTerms: __S(35),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeSelector",
@@ -4769,10 +3499,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          preferredDuringSchedulingIgnoredDuringExecution: S.optional(
-            IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionList,
-          ),
-          requiredDuringSchedulingIgnoredDuringExecution: S.optional(IoK8sApiCoreV1NodeSelector),
+          preferredDuringSchedulingIgnoredDuringExecution: S.optional(__S(34)),
+          requiredDuringSchedulingIgnoredDuringExecution: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1NodeAffinity",
@@ -4780,11 +3508,11 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labelSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-          matchLabelKeys: S.optional(IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList),
-          mismatchLabelKeys: S.optional(IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList),
-          namespaceSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-          namespaces: S.optional(IoK8sApiCoreV1PodAffinityTermNamespacesList),
+          labelSelector: S.optional(__S(26)),
+          matchLabelKeys: S.optional(__S(1)),
+          mismatchLabelKeys: S.optional(__S(1)),
+          namespaceSelector: S.optional(__S(26)),
+          namespaces: S.optional(__S(1)),
           topologyKey: S.String,
         }),
       ).annotate({
@@ -4793,7 +3521,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          podAffinityTerm: IoK8sApiCoreV1PodAffinityTerm,
+          podAffinityTerm: __S(38),
           weight: S.Number,
         }),
       ).annotate({
@@ -4804,18 +3532,14 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiCoreV1WeightedPodAffinityTerm);
+      return S.Array(__S(39));
     case 1:
-      return S.Array(IoK8sApiCoreV1PodAffinityTerm);
+      return S.Array(__S(38));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          preferredDuringSchedulingIgnoredDuringExecution: S.optional(
-            IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList,
-          ),
-          requiredDuringSchedulingIgnoredDuringExecution: S.optional(
-            IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList,
-          ),
+          preferredDuringSchedulingIgnoredDuringExecution: S.optional(__S(40)),
+          requiredDuringSchedulingIgnoredDuringExecution: S.optional(__S(41)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PodAffinity",
@@ -4823,9 +3547,9 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          nodeAffinity: S.optional(IoK8sApiCoreV1NodeAffinity),
-          podAffinity: S.optional(IoK8sApiCoreV1PodAffinity),
-          podAntiAffinity: S.optional(IoK8sApiCoreV1PodAntiAffinity),
+          nodeAffinity: S.optional(__S(37)),
+          podAffinity: S.optional(__S(42)),
+          podAntiAffinity: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1Affinity" });
     case 4:
@@ -4875,11 +3599,11 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configMapKeyRef: S.optional(IoK8sApiCoreV1ConfigMapKeySelector),
-          fieldRef: S.optional(IoK8sApiCoreV1ObjectFieldSelector),
-          fileKeyRef: S.optional(IoK8sApiCoreV1FileKeySelector),
-          resourceFieldRef: S.optional(IoK8sApiCoreV1ResourceFieldSelector),
-          secretKeyRef: S.optional(IoK8sApiCoreV1SecretKeySelector),
+          configMapKeyRef: S.optional(__S(44)),
+          fieldRef: S.optional(__S(45)),
+          fileKeyRef: S.optional(__S(46)),
+          resourceFieldRef: S.optional(__S(47)),
+          secretKeyRef: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1EnvVarSource",
@@ -4889,11 +3613,11 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String,
           value: S.optional(S.String),
-          valueFrom: S.optional(IoK8sApiCoreV1EnvVarSource),
+          valueFrom: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1EnvVar" });
     case 2:
-      return S.Array(IoK8sApiCoreV1EnvVar);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4906,19 +3630,19 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configMapRef: S.optional(IoK8sApiCoreV1ConfigMapEnvSource),
+          configMapRef: S.optional(__S(51)),
           prefix: S.optional(S.String),
-          secretRef: S.optional(IoK8sApiCoreV1SecretEnvSource),
+          secretRef: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1EnvFromSource",
       });
     case 5:
-      return S.Array(IoK8sApiCoreV1EnvFromSource);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          command: S.optional(IoK8sApiCoreV1ExecActionCommandList),
+          command: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1ExecAction" });
     case 7:
@@ -4933,12 +3657,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiCoreV1HTTPHeader);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
-          httpHeaders: S.optional(IoK8sApiCoreV1HTTPGetActionHttpHeadersList),
+          httpHeaders: S.optional(__S(56)),
           path: S.optional(S.String),
           port: S.String,
           protocol: S.optional(S.String),
@@ -4967,10 +3691,10 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          exec: S.optional(IoK8sApiCoreV1ExecAction),
-          httpGet: S.optional(IoK8sApiCoreV1HTTPGetAction),
-          sleep: S.optional(IoK8sApiCoreV1SleepAction),
-          tcpSocket: S.optional(IoK8sApiCoreV1TCPSocketAction),
+          exec: S.optional(__S(54)),
+          httpGet: S.optional(__S(57)),
+          sleep: S.optional(__S(58)),
+          tcpSocket: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1LifecycleHandler",
@@ -4978,8 +3702,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          postStart: S.optional(IoK8sApiCoreV1LifecycleHandler),
-          preStop: S.optional(IoK8sApiCoreV1LifecycleHandler),
+          postStart: S.optional(__S(60)),
+          preStop: S.optional(__S(60)),
           stopSignal: S.optional(S.String),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1Lifecycle" });
@@ -4994,14 +3718,14 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          exec: S.optional(IoK8sApiCoreV1ExecAction),
+          exec: S.optional(__S(54)),
           failureThreshold: S.optional(S.Number),
-          grpc: S.optional(IoK8sApiCoreV1GRPCAction),
-          httpGet: S.optional(IoK8sApiCoreV1HTTPGetAction),
+          grpc: S.optional(__S(62)),
+          httpGet: S.optional(__S(57)),
           initialDelaySeconds: S.optional(S.Number),
           periodSeconds: S.optional(S.Number),
           successThreshold: S.optional(S.Number),
-          tcpSocket: S.optional(IoK8sApiCoreV1TCPSocketAction),
+          tcpSocket: S.optional(__S(59)),
           terminationGracePeriodSeconds: S.optional(S.Number),
           timeoutSeconds: S.optional(S.Number),
         }),
@@ -5023,7 +3747,7 @@ function __c8(j: number): any {
         identifier: "IoK8sApiCoreV1ContainerPort",
       });
     case 1:
-      return S.Array(IoK8sApiCoreV1ContainerPort);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5034,7 +3758,7 @@ function __c8(j: number): any {
         identifier: "IoK8sApiCoreV1ContainerResizePolicy",
       });
     case 3:
-      return S.Array(IoK8sApiCoreV1ContainerResizePolicy);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5045,13 +3769,13 @@ function __c8(j: number): any {
         identifier: "IoK8sApiCoreV1ResourceClaim",
       });
     case 5:
-      return S.Array(IoK8sApiCoreV1ResourceClaim);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          claims: S.optional(IoK8sApiCoreV1ResourceRequirementsClaimsList),
-          limits: S.optional(IoK8sApiCoreV1ResourceRequirementsLimitsMap),
-          requests: S.optional(IoK8sApiCoreV1ResourceRequirementsRequestsMap),
+          claims: S.optional(__S(69)),
+          limits: S.optional(__S(0)),
+          requests: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1ResourceRequirements",
@@ -5066,7 +3790,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operator: S.String,
-          values: S.optional(IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList),
+          values: S.optional(__S(71)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1ContainerRestartRuleOnExitCodes",
@@ -5075,13 +3799,13 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          exitCodes: S.optional(IoK8sApiCoreV1ContainerRestartRuleOnExitCodes),
+          exitCodes: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1ContainerRestartRule",
       });
     case 2:
-      return S.Array(IoK8sApiCoreV1ContainerRestartRule);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5094,8 +3818,8 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(IoK8sApiCoreV1CapabilitiesAddList),
-          drop: S.optional(IoK8sApiCoreV1CapabilitiesDropList),
+          add: S.optional(__S(1)),
+          drop: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1Capabilities",
@@ -5126,17 +3850,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           allowPrivilegeEscalation: S.optional(S.Boolean),
-          appArmorProfile: S.optional(IoK8sApiCoreV1AppArmorProfile),
-          capabilities: S.optional(IoK8sApiCoreV1Capabilities),
+          appArmorProfile: S.optional(__S(75)),
+          capabilities: S.optional(__S(76)),
           privileged: S.optional(S.Boolean),
           procMount: S.optional(S.String),
           readOnlyRootFilesystem: S.optional(S.Boolean),
           runAsGroup: S.optional(S.Number),
           runAsNonRoot: S.optional(S.Boolean),
           runAsUser: S.optional(S.Number),
-          seLinuxOptions: S.optional(IoK8sApiCoreV1SELinuxOptions),
-          seccompProfile: S.optional(IoK8sApiCoreV1SeccompProfile),
-          windowsOptions: S.optional(IoK8sApiCoreV1WindowsSecurityContextOptions),
+          seLinuxOptions: S.optional(__S(77)),
+          seccompProfile: S.optional(__S(75)),
+          windowsOptions: S.optional(__S(78)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1SecurityContext",
@@ -5155,11 +3879,11 @@ function __c10(j: number): any {
         identifier: "IoK8sApiCoreV1VolumeDevice",
       });
     case 1:
-      return S.Array(IoK8sApiCoreV1VolumeDevice);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bindMountOptions: S.optional(IoK8sApiCoreV1VolumeMountBindMountOptionsList),
+          bindMountOptions: S.optional(__S(1)),
           mountPath: S.String,
           mountPropagation: S.optional(S.String),
           name: S.String,
@@ -5172,39 +3896,39 @@ function __c10(j: number): any {
         identifier: "IoK8sApiCoreV1VolumeMount",
       });
     case 3:
-      return S.Array(IoK8sApiCoreV1VolumeMount);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(IoK8sApiCoreV1ContainerArgsList),
-          command: S.optional(IoK8sApiCoreV1ContainerCommandList),
-          env: S.optional(IoK8sApiCoreV1ContainerEnvList),
-          envFrom: S.optional(IoK8sApiCoreV1ContainerEnvFromList),
+          args: S.optional(__S(1)),
+          command: S.optional(__S(1)),
+          env: S.optional(__S(50)),
+          envFrom: S.optional(__S(53)),
           image: S.optional(S.String),
           imagePullPolicy: S.optional(S.String),
-          lifecycle: S.optional(IoK8sApiCoreV1Lifecycle),
-          livenessProbe: S.optional(IoK8sApiCoreV1Probe),
+          lifecycle: S.optional(__S(61)),
+          livenessProbe: S.optional(__S(63)),
           name: S.String,
-          ports: S.optional(IoK8sApiCoreV1ContainerPortsList),
-          readinessProbe: S.optional(IoK8sApiCoreV1Probe),
-          resizePolicy: S.optional(IoK8sApiCoreV1ContainerResizePolicyList),
-          resources: S.optional(IoK8sApiCoreV1ResourceRequirements),
+          ports: S.optional(__S(65)),
+          readinessProbe: S.optional(__S(63)),
+          resizePolicy: S.optional(__S(67)),
+          resources: S.optional(__S(70)),
           restartPolicy: S.optional(S.String),
-          restartPolicyRules: S.optional(IoK8sApiCoreV1ContainerRestartPolicyRulesList),
-          securityContext: S.optional(IoK8sApiCoreV1SecurityContext),
-          startupProbe: S.optional(IoK8sApiCoreV1Probe),
+          restartPolicyRules: S.optional(__S(74)),
+          securityContext: S.optional(__S(79)),
+          startupProbe: S.optional(__S(63)),
           stdin: S.optional(S.Boolean),
           stdinOnce: S.optional(S.Boolean),
           terminationMessagePath: S.optional(S.String),
           terminationMessagePolicy: S.optional(S.String),
           tty: S.optional(S.Boolean),
-          volumeDevices: S.optional(IoK8sApiCoreV1ContainerVolumeDevicesList),
-          volumeMounts: S.optional(IoK8sApiCoreV1ContainerVolumeMountsList),
+          volumeDevices: S.optional(__S(81)),
+          volumeMounts: S.optional(__S(83)),
           workingDir: S.optional(S.String),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1Container" });
     case 5:
-      return S.Array(IoK8sApiCoreV1Container);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5215,7 +3939,7 @@ function __c10(j: number): any {
         identifier: "IoK8sApiCoreV1PodDNSConfigOption",
       });
     case 7:
-      return S.Array(IoK8sApiCoreV1PodDNSConfigOption);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -5223,9 +3947,9 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nameservers: S.optional(IoK8sApiCoreV1PodDNSConfigNameserversList),
-          options: S.optional(IoK8sApiCoreV1PodDNSConfigOptionsList),
-          searches: S.optional(IoK8sApiCoreV1PodDNSConfigSearchesList),
+          nameservers: S.optional(__S(1)),
+          options: S.optional(__S(87)),
+          searches: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PodDNSConfig",
@@ -5233,38 +3957,38 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(IoK8sApiCoreV1EphemeralContainerArgsList),
-          command: S.optional(IoK8sApiCoreV1EphemeralContainerCommandList),
-          env: S.optional(IoK8sApiCoreV1EphemeralContainerEnvList),
-          envFrom: S.optional(IoK8sApiCoreV1EphemeralContainerEnvFromList),
+          args: S.optional(__S(1)),
+          command: S.optional(__S(1)),
+          env: S.optional(__S(50)),
+          envFrom: S.optional(__S(53)),
           image: S.optional(S.String),
           imagePullPolicy: S.optional(S.String),
-          lifecycle: S.optional(IoK8sApiCoreV1Lifecycle),
-          livenessProbe: S.optional(IoK8sApiCoreV1Probe),
+          lifecycle: S.optional(__S(61)),
+          livenessProbe: S.optional(__S(63)),
           name: S.String,
-          ports: S.optional(IoK8sApiCoreV1EphemeralContainerPortsList),
-          readinessProbe: S.optional(IoK8sApiCoreV1Probe),
-          resizePolicy: S.optional(IoK8sApiCoreV1EphemeralContainerResizePolicyList),
-          resources: S.optional(IoK8sApiCoreV1ResourceRequirements),
+          ports: S.optional(__S(65)),
+          readinessProbe: S.optional(__S(63)),
+          resizePolicy: S.optional(__S(67)),
+          resources: S.optional(__S(70)),
           restartPolicy: S.optional(S.String),
-          restartPolicyRules: S.optional(IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList),
-          securityContext: S.optional(IoK8sApiCoreV1SecurityContext),
-          startupProbe: S.optional(IoK8sApiCoreV1Probe),
+          restartPolicyRules: S.optional(__S(74)),
+          securityContext: S.optional(__S(79)),
+          startupProbe: S.optional(__S(63)),
           stdin: S.optional(S.Boolean),
           stdinOnce: S.optional(S.Boolean),
           targetContainerName: S.optional(S.String),
           terminationMessagePath: S.optional(S.String),
           terminationMessagePolicy: S.optional(S.String),
           tty: S.optional(S.Boolean),
-          volumeDevices: S.optional(IoK8sApiCoreV1EphemeralContainerVolumeDevicesList),
-          volumeMounts: S.optional(IoK8sApiCoreV1EphemeralContainerVolumeMountsList),
+          volumeDevices: S.optional(__S(81)),
+          volumeMounts: S.optional(__S(83)),
           workingDir: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1EphemeralContainer",
       });
     case 2:
-      return S.Array(IoK8sApiCoreV1EphemeralContainer);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5275,16 +3999,16 @@ function __c11(j: number): any {
         identifier: "IoK8sApiCoreV1EvictionResponder",
       });
     case 4:
-      return S.Array(IoK8sApiCoreV1EvictionResponder);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          hostnames: S.optional(IoK8sApiCoreV1HostAliasHostnamesList),
+          hostnames: S.optional(__S(1)),
           ip: S.String,
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1HostAlias" });
     case 6:
-      return S.Array(IoK8sApiCoreV1HostAlias);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5298,7 +4022,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiCoreV1LocalObjectReference);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5314,7 +4038,7 @@ function __c12(j: number): any {
         identifier: "IoK8sApiCoreV1PodReadinessGate",
       });
     case 3:
-      return S.Array(IoK8sApiCoreV1PodReadinessGate);
+      return S.Array(__S(98));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5324,7 +4048,7 @@ function __c12(j: number): any {
         identifier: "IoK8sApiCoreV1PodSchedulingGate",
       });
     case 5:
-      return S.Array(IoK8sApiCoreV1PodSchedulingGate);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5336,19 +4060,19 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          appArmorProfile: S.optional(IoK8sApiCoreV1AppArmorProfile),
+          appArmorProfile: S.optional(__S(75)),
           fsGroup: S.optional(S.Number),
           fsGroupChangePolicy: S.optional(S.String),
           runAsGroup: S.optional(S.Number),
           runAsNonRoot: S.optional(S.Boolean),
           runAsUser: S.optional(S.Number),
           seLinuxChangePolicy: S.optional(S.String),
-          seLinuxOptions: S.optional(IoK8sApiCoreV1SELinuxOptions),
-          seccompProfile: S.optional(IoK8sApiCoreV1SeccompProfile),
-          supplementalGroups: S.optional(IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList),
+          seLinuxOptions: S.optional(__S(77)),
+          seccompProfile: S.optional(__S(75)),
+          supplementalGroups: S.optional(__S(71)),
           supplementalGroupsPolicy: S.optional(S.String),
-          sysctls: S.optional(IoK8sApiCoreV1PodSecurityContextSysctlsList),
-          windowsOptions: S.optional(IoK8sApiCoreV1WindowsSecurityContextOptions),
+          sysctls: S.optional(__S(56)),
+          windowsOptions: S.optional(__S(78)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PodSecurityContext",
@@ -5368,12 +4092,12 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1Toleration" });
     case 1:
-      return S.Array(IoK8sApiCoreV1Toleration);
+      return S.Array(__S(104));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labelSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-          matchLabelKeys: S.optional(IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList),
+          labelSelector: S.optional(__S(26)),
+          matchLabelKeys: S.optional(__S(1)),
           maxSkew: S.Number,
           minDomains: S.optional(S.Number),
           nodeAffinityPolicy: S.optional(S.String),
@@ -5385,7 +4109,7 @@ function __c13(j: number): any {
         identifier: "IoK8sApiCoreV1TopologySpreadConstraint",
       });
     case 3:
-      return S.Array(IoK8sApiCoreV1TopologySpreadConstraint);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5423,11 +4147,11 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          monitors: IoK8sApiCoreV1CephFSVolumeSourceMonitorsList,
+          monitors: __S(1),
           path: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
           secretFile: S.optional(S.String),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
           user: S.optional(S.String),
         }),
       ).annotate({
@@ -5442,7 +4166,7 @@ function __c14(j: number): any {
         S.Struct({
           fsType: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
           volumeID: S.String,
         }),
       ).annotate({
@@ -5458,13 +4182,13 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1KeyToPath" });
     case 2:
-      return S.Array(IoK8sApiCoreV1KeyToPath);
+      return S.Array(__S(113));
     case 3:
       return S.suspend(() =>
         S.Struct({
           defaultMode: S.optional(S.Number),
           defaultUser: S.optional(S.Number),
-          items: S.optional(IoK8sApiCoreV1ConfigMapVolumeSourceItemsList),
+          items: S.optional(__S(114)),
           name: S.optional(S.String),
           optional: S.optional(S.Boolean),
         }),
@@ -5476,9 +4200,9 @@ function __c14(j: number): any {
         S.Struct({
           driver: S.String,
           fsType: S.optional(S.String),
-          nodePublishSecretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          nodePublishSecretRef: S.optional(__S(95)),
           readOnly: S.optional(S.Boolean),
-          volumeAttributes: S.optional(IoK8sApiCoreV1CSIVolumeSourceVolumeAttributesMap),
+          volumeAttributes: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1CSIVolumeSource",
@@ -5486,23 +4210,23 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldRef: S.optional(IoK8sApiCoreV1ObjectFieldSelector),
+          fieldRef: S.optional(__S(45)),
           mode: S.optional(S.Number),
           path: S.String,
-          resourceFieldRef: S.optional(IoK8sApiCoreV1ResourceFieldSelector),
+          resourceFieldRef: S.optional(__S(47)),
           user: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1DownwardAPIVolumeFile",
       });
     case 6:
-      return S.Array(IoK8sApiCoreV1DownwardAPIVolumeFile);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
           defaultMode: S.optional(S.Number),
           defaultUser: S.optional(S.Number),
-          items: S.optional(IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList),
+          items: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1DownwardAPIVolumeSource",
@@ -5545,8 +4269,8 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(IoK8sApiCoreV1VolumeResourceRequirementsLimitsMap),
-          requests: S.optional(IoK8sApiCoreV1VolumeResourceRequirementsRequestsMap),
+          limits: S.optional(__S(0)),
+          requests: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1VolumeResourceRequirements",
@@ -5554,11 +4278,11 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accessModes: S.optional(IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList),
-          dataSource: S.optional(IoK8sApiCoreV1TypedLocalObjectReference),
-          dataSourceRef: S.optional(IoK8sApiCoreV1TypedObjectReference),
-          resources: S.optional(IoK8sApiCoreV1VolumeResourceRequirements),
-          selector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          accessModes: S.optional(__S(1)),
+          dataSource: S.optional(__S(121)),
+          dataSourceRef: S.optional(__S(122)),
+          resources: S.optional(__S(123)),
+          selector: S.optional(__S(26)),
           storageClassName: S.optional(S.String),
           volumeAttributesClassName: S.optional(S.String),
           volumeMode: S.optional(S.String),
@@ -5570,8 +4294,8 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiCoreV1PersistentVolumeClaimSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(124),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PersistentVolumeClaimTemplate",
@@ -5579,7 +4303,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          volumeClaimTemplate: IoK8sApiCoreV1PersistentVolumeClaimTemplate,
+          volumeClaimTemplate: __S(125),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1EphemeralVolumeSource",
@@ -5590,8 +4314,8 @@ function __c15(j: number): any {
           fsType: S.optional(S.String),
           lun: S.optional(S.Number),
           readOnly: S.optional(S.Boolean),
-          targetWWNs: S.optional(IoK8sApiCoreV1FCVolumeSourceTargetWWNsList),
-          wwids: S.optional(IoK8sApiCoreV1FCVolumeSourceWwidsList),
+          targetWWNs: S.optional(__S(1)),
+          wwids: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1FCVolumeSource",
@@ -5605,9 +4329,9 @@ function __c16(j: number): any {
         S.Struct({
           driver: S.String,
           fsType: S.optional(S.String),
-          options: S.optional(IoK8sApiCoreV1FlexVolumeSourceOptionsMap),
+          options: S.optional(__S(0)),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1FlexVolumeSource",
@@ -5680,9 +4404,9 @@ function __c16(j: number): any {
           iqn: S.String,
           iscsiInterface: S.optional(S.String),
           lun: S.optional(S.Number),
-          portals: S.optional(IoK8sApiCoreV1ISCSIVolumeSourcePortalsList),
+          portals: S.optional(__S(1)),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
           targetPortal: S.String,
         }),
       ).annotate({
@@ -5733,7 +4457,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labelSelector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          labelSelector: S.optional(__S(26)),
           name: S.optional(S.String),
           optional: S.optional(S.Boolean),
           path: S.String,
@@ -5746,7 +4470,7 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(IoK8sApiCoreV1ConfigMapProjectionItemsList),
+          items: S.optional(__S(114)),
           name: S.optional(S.String),
           optional: S.optional(S.Boolean),
         }),
@@ -5756,7 +4480,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(IoK8sApiCoreV1DownwardAPIProjectionItemsList),
+          items: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1DownwardAPIProjection",
@@ -5771,7 +4495,7 @@ function __c17(j: number): any {
           maxExpirationSeconds: S.optional(S.Number),
           signerName: S.String,
           user: S.optional(S.Number),
-          userAnnotations: S.optional(IoK8sApiCoreV1PodCertificateProjectionUserAnnotationsMap),
+          userAnnotations: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PodCertificateProjection",
@@ -5794,24 +4518,24 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          clusterTrustBundle: S.optional(IoK8sApiCoreV1ClusterTrustBundleProjection),
-          configMap: S.optional(IoK8sApiCoreV1ConfigMapProjection),
-          downwardAPI: S.optional(IoK8sApiCoreV1DownwardAPIProjection),
-          podCertificate: S.optional(IoK8sApiCoreV1PodCertificateProjection),
-          secret: S.optional(IoK8sApiCoreV1SecretProjection),
-          serviceAccountToken: S.optional(IoK8sApiCoreV1ServiceAccountTokenProjection),
+          clusterTrustBundle: S.optional(__S(140)),
+          configMap: S.optional(__S(141)),
+          downwardAPI: S.optional(__S(142)),
+          podCertificate: S.optional(__S(143)),
+          secret: S.optional(__S(141)),
+          serviceAccountToken: S.optional(__S(144)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1VolumeProjection",
       });
     case 2:
-      return S.Array(IoK8sApiCoreV1VolumeProjection);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
           defaultMode: S.optional(S.Number),
           defaultUser: S.optional(S.Number),
-          sources: S.optional(IoK8sApiCoreV1ProjectedVolumeSourceSourcesList),
+          sources: S.optional(__S(146)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1ProjectedVolumeSource",
@@ -5835,10 +4559,10 @@ function __c18(j: number): any {
           fsType: S.optional(S.String),
           image: S.String,
           keyring: S.optional(S.String),
-          monitors: IoK8sApiCoreV1RBDVolumeSourceMonitorsList,
+          monitors: __S(1),
           pool: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
           user: S.optional(S.String),
         }),
       ).annotate({
@@ -5851,7 +4575,7 @@ function __c18(j: number): any {
           gateway: S.String,
           protectionDomain: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
           sslEnabled: S.optional(S.Boolean),
           storageMode: S.optional(S.String),
           storagePool: S.optional(S.String),
@@ -5866,7 +4590,7 @@ function __c18(j: number): any {
         S.Struct({
           defaultMode: S.optional(S.Number),
           defaultUser: S.optional(S.Number),
-          items: S.optional(IoK8sApiCoreV1SecretVolumeSourceItemsList),
+          items: S.optional(__S(114)),
           optional: S.optional(S.Boolean),
           secretName: S.optional(S.String),
         }),
@@ -5882,7 +4606,7 @@ function __c19(j: number): any {
         S.Struct({
           fsType: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          secretRef: S.optional(IoK8sApiCoreV1LocalObjectReference),
+          secretRef: S.optional(__S(95)),
           volumeName: S.String,
           volumeNamespace: S.optional(S.String),
         }),
@@ -5903,94 +4627,94 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          awsElasticBlockStore: S.optional(IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource),
-          azureDisk: S.optional(IoK8sApiCoreV1AzureDiskVolumeSource),
-          azureFile: S.optional(IoK8sApiCoreV1AzureFileVolumeSource),
-          cephfs: S.optional(IoK8sApiCoreV1CephFSVolumeSource),
-          cinder: S.optional(IoK8sApiCoreV1CinderVolumeSource),
-          configMap: S.optional(IoK8sApiCoreV1ConfigMapVolumeSource),
-          csi: S.optional(IoK8sApiCoreV1CSIVolumeSource),
-          downwardAPI: S.optional(IoK8sApiCoreV1DownwardAPIVolumeSource),
-          emptyDir: S.optional(IoK8sApiCoreV1EmptyDirVolumeSource),
-          ephemeral: S.optional(IoK8sApiCoreV1EphemeralVolumeSource),
-          fc: S.optional(IoK8sApiCoreV1FCVolumeSource),
-          flexVolume: S.optional(IoK8sApiCoreV1FlexVolumeSource),
-          flocker: S.optional(IoK8sApiCoreV1FlockerVolumeSource),
-          gcePersistentDisk: S.optional(IoK8sApiCoreV1GCEPersistentDiskVolumeSource),
-          gitRepo: S.optional(IoK8sApiCoreV1GitRepoVolumeSource),
-          glusterfs: S.optional(IoK8sApiCoreV1GlusterfsVolumeSource),
-          hostPath: S.optional(IoK8sApiCoreV1HostPathVolumeSource),
-          image: S.optional(IoK8sApiCoreV1ImageVolumeSource),
-          iscsi: S.optional(IoK8sApiCoreV1ISCSIVolumeSource),
+          awsElasticBlockStore: S.optional(__S(108)),
+          azureDisk: S.optional(__S(109)),
+          azureFile: S.optional(__S(110)),
+          cephfs: S.optional(__S(111)),
+          cinder: S.optional(__S(112)),
+          configMap: S.optional(__S(115)),
+          csi: S.optional(__S(116)),
+          downwardAPI: S.optional(__S(119)),
+          emptyDir: S.optional(__S(120)),
+          ephemeral: S.optional(__S(126)),
+          fc: S.optional(__S(127)),
+          flexVolume: S.optional(__S(128)),
+          flocker: S.optional(__S(129)),
+          gcePersistentDisk: S.optional(__S(130)),
+          gitRepo: S.optional(__S(131)),
+          glusterfs: S.optional(__S(132)),
+          hostPath: S.optional(__S(133)),
+          image: S.optional(__S(134)),
+          iscsi: S.optional(__S(135)),
           name: S.String,
-          nfs: S.optional(IoK8sApiCoreV1NFSVolumeSource),
-          persistentVolumeClaim: S.optional(IoK8sApiCoreV1PersistentVolumeClaimVolumeSource),
-          photonPersistentDisk: S.optional(IoK8sApiCoreV1PhotonPersistentDiskVolumeSource),
-          portworxVolume: S.optional(IoK8sApiCoreV1PortworxVolumeSource),
-          projected: S.optional(IoK8sApiCoreV1ProjectedVolumeSource),
-          quobyte: S.optional(IoK8sApiCoreV1QuobyteVolumeSource),
-          rbd: S.optional(IoK8sApiCoreV1RBDVolumeSource),
-          scaleIO: S.optional(IoK8sApiCoreV1ScaleIOVolumeSource),
-          secret: S.optional(IoK8sApiCoreV1SecretVolumeSource),
-          storageos: S.optional(IoK8sApiCoreV1StorageOSVolumeSource),
-          vsphereVolume: S.optional(IoK8sApiCoreV1VsphereVirtualDiskVolumeSource),
+          nfs: S.optional(__S(136)),
+          persistentVolumeClaim: S.optional(__S(137)),
+          photonPersistentDisk: S.optional(__S(138)),
+          portworxVolume: S.optional(__S(139)),
+          projected: S.optional(__S(147)),
+          quobyte: S.optional(__S(148)),
+          rbd: S.optional(__S(149)),
+          scaleIO: S.optional(__S(150)),
+          secret: S.optional(__S(151)),
+          storageos: S.optional(__S(152)),
+          vsphereVolume: S.optional(__S(153)),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1Volume" });
     case 3:
-      return S.Array(IoK8sApiCoreV1Volume);
+      return S.Array(__S(154));
     case 4:
       return S.suspend(() =>
         S.Struct({
           activeDeadlineSeconds: S.optional(S.Number),
-          affinity: S.optional(IoK8sApiCoreV1Affinity),
+          affinity: S.optional(__S(43)),
           automountServiceAccountToken: S.optional(S.Boolean),
-          containers: IoK8sApiCoreV1PodSpecContainersList,
-          dnsConfig: S.optional(IoK8sApiCoreV1PodDNSConfig),
+          containers: __S(85),
+          dnsConfig: S.optional(__S(88)),
           dnsPolicy: S.optional(S.String),
           enableServiceLinks: S.optional(S.Boolean),
-          ephemeralContainers: S.optional(IoK8sApiCoreV1PodSpecEphemeralContainersList),
-          evictionResponders: S.optional(IoK8sApiCoreV1PodSpecEvictionRespondersList),
-          hostAliases: S.optional(IoK8sApiCoreV1PodSpecHostAliasesList),
+          ephemeralContainers: S.optional(__S(90)),
+          evictionResponders: S.optional(__S(92)),
+          hostAliases: S.optional(__S(94)),
           hostIPC: S.optional(S.Boolean),
           hostNetwork: S.optional(S.Boolean),
           hostPID: S.optional(S.Boolean),
           hostUsers: S.optional(S.Boolean),
           hostname: S.optional(S.String),
           hostnameOverride: S.optional(S.String),
-          imagePullSecrets: S.optional(IoK8sApiCoreV1PodSpecImagePullSecretsList),
-          initContainers: S.optional(IoK8sApiCoreV1PodSpecInitContainersList),
+          imagePullSecrets: S.optional(__S(96)),
+          initContainers: S.optional(__S(85)),
           nodeName: S.optional(S.String),
-          nodeSelector: S.optional(IoK8sApiCoreV1PodSpecNodeSelectorMap),
-          os: S.optional(IoK8sApiCoreV1PodOS),
-          overhead: S.optional(IoK8sApiCoreV1PodSpecOverheadMap),
+          nodeSelector: S.optional(__S(0)),
+          os: S.optional(__S(97)),
+          overhead: S.optional(__S(0)),
           preemptionPolicy: S.optional(S.String),
           priority: S.optional(S.Number),
           priorityClassName: S.optional(S.String),
-          readinessGates: S.optional(IoK8sApiCoreV1PodSpecReadinessGatesList),
-          resourceClaims: S.optional(IoK8sApiCoreV1PodSpecResourceClaimsList),
-          resources: S.optional(IoK8sApiCoreV1ResourceRequirements),
+          readinessGates: S.optional(__S(99)),
+          resourceClaims: S.optional(__S(16)),
+          resources: S.optional(__S(70)),
           restartPolicy: S.optional(S.String),
           runtimeClassName: S.optional(S.String),
           schedulerName: S.optional(S.String),
-          schedulingGates: S.optional(IoK8sApiCoreV1PodSpecSchedulingGatesList),
-          schedulingGroup: S.optional(IoK8sApiCoreV1PodSchedulingGroup),
-          securityContext: S.optional(IoK8sApiCoreV1PodSecurityContext),
+          schedulingGates: S.optional(__S(101)),
+          schedulingGroup: S.optional(__S(102)),
+          securityContext: S.optional(__S(103)),
           serviceAccount: S.optional(S.String),
           serviceAccountName: S.optional(S.String),
           setHostnameAsFQDN: S.optional(S.Boolean),
           shareProcessNamespace: S.optional(S.Boolean),
           subdomain: S.optional(S.String),
           terminationGracePeriodSeconds: S.optional(S.Number),
-          tolerations: S.optional(IoK8sApiCoreV1PodSpecTolerationsList),
-          topologySpreadConstraints: S.optional(IoK8sApiCoreV1PodSpecTopologySpreadConstraintsList),
-          volumes: S.optional(IoK8sApiCoreV1PodSpecVolumesList),
+          tolerations: S.optional(__S(105)),
+          topologySpreadConstraints: S.optional(__S(107)),
+          volumes: S.optional(__S(155)),
         }),
       ).annotate({ identifier: "IoK8sApiCoreV1PodSpec" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: S.optional(IoK8sApiCoreV1PodSpec),
+          metadata: S.optional(__S(6)),
+          spec: S.optional(__S(156)),
         }),
       ).annotate({
         identifier: "IoK8sApiCoreV1PodTemplateSpec",
@@ -6007,21 +4731,21 @@ function __c19(j: number): any {
           manualSelector: S.optional(S.Boolean),
           maxFailedIndexes: S.optional(S.Number),
           parallelism: S.optional(S.Number),
-          podFailurePolicy: S.optional(IoK8sApiBatchV1PodFailurePolicy),
+          podFailurePolicy: S.optional(__S(13)),
           podReplacementPolicy: S.optional(S.String),
-          scheduling: S.optional(IoK8sApiBatchV1JobSchedulingConfiguration),
-          selector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
-          successPolicy: S.optional(IoK8sApiBatchV1SuccessPolicy),
+          scheduling: S.optional(__S(22)),
+          selector: S.optional(__S(26)),
+          successPolicy: S.optional(__S(29)),
           suspend: S.optional(S.Boolean),
-          template: IoK8sApiCoreV1PodTemplateSpec,
+          template: __S(157),
           ttlSecondsAfterFinished: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IoK8sApiBatchV1JobSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1JobSpec,
+          metadata: S.optional(__S(6)),
+          spec: __S(158),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1JobTemplateSpec",
@@ -6035,7 +4759,7 @@ function __c20(j: number): any {
         S.Struct({
           concurrencyPolicy: S.optional(S.String),
           failedJobsHistoryLimit: S.optional(S.Number),
-          jobTemplate: IoK8sApiBatchV1JobTemplateSpec,
+          jobTemplate: __S(159),
           schedule: S.String,
           startingDeadlineSeconds: S.optional(S.Number),
           successfulJobsHistoryLimit: S.optional(S.Number),
@@ -6060,11 +4784,11 @@ function __c20(j: number): any {
         identifier: "IoK8sApiCoreV1ObjectReference",
       });
     case 2:
-      return S.Array(IoK8sApiCoreV1ObjectReference);
+      return S.Array(__S(161));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          active: S.optional(IoK8sApiBatchV1CronJobStatusActiveList),
+          active: S.optional(__S(162)),
           lastScheduleTime: S.optional(S.String),
           lastSuccessfulTime: S.optional(S.String),
         }),
@@ -6081,9 +4805,9 @@ function __c20(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1CronJobSpec,
-          status: S.optional(IoK8sApiBatchV1CronJobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(160),
+          status: S.optional(__S(163)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6099,9 +4823,9 @@ function __c20(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1CronJobSpec,
-          status: S.optional(IoK8sApiBatchV1CronJobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(160),
+          status: S.optional(__S(163)),
         }),
       ).annotate({ identifier: "IoK8sApiBatchV1CronJob" });
     case 6:
@@ -6118,7 +4842,7 @@ function __c20(j: number): any {
         identifier: "IoK8sApiBatchV1JobCondition",
       });
     case 7:
-      return S.Array(IoK8sApiBatchV1JobCondition);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -6126,8 +4850,8 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          failed: S.optional(IoK8sApiBatchV1UncountedTerminatedPodsFailedList),
-          succeeded: S.optional(IoK8sApiBatchV1UncountedTerminatedPodsSucceededList),
+          failed: S.optional(__S(1)),
+          succeeded: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1UncountedTerminatedPods",
@@ -6138,14 +4862,14 @@ function __c21(j: number): any {
           active: S.optional(S.Number),
           completedIndexes: S.optional(S.String),
           completionTime: S.optional(S.String),
-          conditions: S.optional(IoK8sApiBatchV1JobStatusConditionsList),
+          conditions: S.optional(__S(167)),
           failed: S.optional(S.Number),
           failedIndexes: S.optional(S.String),
           ready: S.optional(S.Number),
           startTime: S.optional(S.String),
           succeeded: S.optional(S.Number),
           terminating: S.optional(S.Number),
-          uncountedTerminatedPods: S.optional(IoK8sApiBatchV1UncountedTerminatedPods),
+          uncountedTerminatedPods: S.optional(__S(168)),
         }),
       ).annotate({ identifier: "IoK8sApiBatchV1JobStatus" });
     case 2:
@@ -6158,9 +4882,9 @@ function __c21(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1JobSpec,
-          status: S.optional(IoK8sApiBatchV1JobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(158),
+          status: S.optional(__S(169)),
         }).pipe(
           T.Http({ method: "POST", uri: "/apis/batch/v1/namespaces/{namespace}/jobs", code: 200 }),
         ),
@@ -6172,9 +4896,9 @@ function __c21(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1JobSpec,
-          status: S.optional(IoK8sApiBatchV1JobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(158),
+          status: S.optional(__S(169)),
         }),
       ).annotate({ identifier: "IoK8sApiBatchV1Job" });
     case 4:
@@ -6207,7 +4931,7 @@ function __c21(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(172)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6229,7 +4953,7 @@ function __c21(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 7:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(174));
   }
 }
 function __c22(j: number): any {
@@ -6237,7 +4961,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(175)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -6262,7 +4986,7 @@ function __c22(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(177)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -6272,10 +4996,10 @@ function __c22(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(176)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(178)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -6303,7 +5027,7 @@ function __c22(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(172)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6327,7 +5051,7 @@ function __c22(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(172)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6351,7 +5075,7 @@ function __c22(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(172)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -6389,20 +5113,18 @@ function __c23(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 2:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(185));
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(184));
     case 4:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(184)),
+          serverAddressByClientCIDRs: S.optional(__S(186)),
+          versions: __S(187),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -6416,22 +5138,22 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 7:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -6442,7 +5164,7 @@ function __c24(j: number): any {
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(191),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -6467,14 +5189,14 @@ function __c24(j: number): any {
         identifier: "ListBatchV1CronJobForAllNamespacesRequest",
       });
     case 2:
-      return S.Array(IoK8sApiBatchV1CronJob);
+      return S.Array(__S(165));
     case 3:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiBatchV1CronJobListItemsList,
+          items: __S(194),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(178)),
         }),
       ).annotate({
         identifier: "IoK8sApiBatchV1CronJobList",
@@ -6499,14 +5221,14 @@ function __c24(j: number): any {
         identifier: "ListBatchV1JobForAllNamespacesRequest",
       });
     case 5:
-      return S.Array(IoK8sApiBatchV1Job);
+      return S.Array(__S(171));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiBatchV1JobListItemsList,
+          items: __S(197),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(178)),
         }),
       ).annotate({ identifier: "IoK8sApiBatchV1JobList" });
     case 7:
@@ -6720,9 +5442,9 @@ function __c26(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1CronJobSpec,
-          status: S.optional(IoK8sApiBatchV1CronJobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(160),
+          status: S.optional(__S(163)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6744,9 +5466,9 @@ function __c26(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1CronJobSpec,
-          status: S.optional(IoK8sApiBatchV1CronJobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(160),
+          status: S.optional(__S(163)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6768,9 +5490,9 @@ function __c26(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1JobSpec,
-          status: S.optional(IoK8sApiBatchV1JobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(158),
+          status: S.optional(__S(169)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6792,9 +5514,9 @@ function __c26(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiBatchV1JobSpec,
-          status: S.optional(IoK8sApiBatchV1JobStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(158),
+          status: S.optional(__S(169)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6962,5 +5684,70 @@ function __c27(j: number): any {
       ).annotate({
         identifier: "WatchBatchV1NamespacedJobListRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
   }
 }

@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -25,28 +27,14 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type ScansBulkCreateRequestBodyItemCustomHeadersMap = { [key: string]: string | undefined };
-const ScansBulkCreateRequestBodyItemCustomHeadersMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ScansBulkCreateRequestBodyItemCustomHeadersMap>;
-
 export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem =
   | "desktop"
   | "mobile"
   | "tablet";
-const ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem = S.String;
-
 export type ScansBulkCreateRequestBodyItemScreenshotsResolutionsList = Array<
   ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem | (string & {})
 >;
-const ScansBulkCreateRequestBodyItemScreenshotsResolutionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ScansBulkCreateRequestBodyItemScreenshotsResolutionsList>;
-
 export type ScansBulkCreateRequestBodyItemVisibility = "Public" | "Unlisted";
-const ScansBulkCreateRequestBodyItemVisibility = S.String;
-
 export interface ScansBulkCreateRequestBodyItem {
   url: string;
   /** Enable agent readiness checks. */
@@ -60,34 +48,14 @@ export interface ScansBulkCreateRequestBodyItem {
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansBulkCreateRequestBodyItemVisibility | (string & {});
 }
-const ScansBulkCreateRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ScansBulkCreateRequestBodyItem>;
-
 export type ScansBulkCreateRequestBodyList = Array<ScansBulkCreateRequestBodyItem>;
-const ScansBulkCreateRequestBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ScansBulkCreateRequestBodyList>;
-
 export interface BulkCreateScansRequest {
   /** Account ID. */
   accountId: string;
   /** List of urls to scan (up to a 100). */
   body?: ScansBulkCreateRequestBodyList;
 }
-const BulkCreateScansRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BulkCreateScansRequest>;
-
 export type BulkCreateScansResponse = string;
-const BulkCreateScansResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BulkCreateScansResponse>;
-
 export type ScansCreateRequestCountry =
   | "AF"
   | "AL"
@@ -284,22 +252,12 @@ export type ScansCreateRequestCountry =
   | "YE"
   | "ZM"
   | "ZW";
-const ScansCreateRequestCountry = S.String;
-
 export type ScansCreateRequestCustomHeadersMap = { [key: string]: string | undefined };
-const ScansCreateRequestCustomHeadersMap =
-  ScansBulkCreateRequestBodyItemCustomHeadersMap as any as S.Schema<ScansCreateRequestCustomHeadersMap>;
-
 export type ScansCreateRequestScreenshotsResolutionsItem = "desktop" | "mobile" | "tablet";
 export type ScansCreateRequestScreenshotsResolutionsList = Array<
   ScansCreateRequestScreenshotsResolutionsItem | (string & {})
 >;
-const ScansCreateRequestScreenshotsResolutionsList =
-  ScansBulkCreateRequestBodyItemScreenshotsResolutionsList as any as S.Schema<ScansCreateRequestScreenshotsResolutionsList>;
-
 export type ScansCreateRequestVisibility = "Public" | "Unlisted";
-const ScansCreateRequestVisibility = S.String;
-
 export interface CreateScanRequest {
   /** Account ID. */
   accountId: string;
@@ -317,66 +275,37 @@ export interface CreateScanRequest {
   /** The option `Public` means it will be included in listings like recent scans and search results. `Unlisted` means it will not be included in the aforementioned listings, users will need to have the scan's ID to access it. A a scan will be automatically marked as unlisted if it fails, if it contains potential PII or other sensitive material. */
   visibility?: ScansCreateRequestVisibility | (string & {});
 }
-const CreateScanRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateScanRequest>;
-
 export type CreateScanResponse = string;
-const CreateScanResponse = BulkCreateScansResponse as any as S.Schema<CreateScanResponse>;
-
 export interface DomScanRequest {
   /** Account ID. */
   accountId: string;
   /** Scan UUID. */
   scanId: string;
 }
-const DomScanRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DomScanRequest>;
-
 export interface DomScanResponse {}
-const DomScanResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DomScanResponse>;
-
 export interface GetResponsRequest {
   /** Account ID. */
   accountId: string;
   /** Response hash. */
   responseId: string;
 }
-const GetResponsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetResponsRequest>;
-
 export interface GetResponsResponse {}
-const GetResponsResponse = DomScanResponse as any as S.Schema<GetResponsResponse>;
-
 export interface GetScanRequest {
   /** Account ID. */
   accountId: string;
   /** Scan UUID. */
   scanId: string;
 }
-const GetScanRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetScanRequest>;
-
 export interface ScansGetResponseDataConsoleItemMessage {
   level: string;
   source: string;
   text: string;
   url: string;
 }
-const ScansGetResponseDataConsoleItemMessage = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ScansGetResponseDataConsoleItemMessage>;
-
 export interface ScansGetResponseDataConsoleItem {
   message: ScansGetResponseDataConsoleItemMessage;
 }
-const ScansGetResponseDataConsoleItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ScansGetResponseDataConsoleItem>;
-
 export type ScansGetResponseDataConsoleList = Array<ScansGetResponseDataConsoleItem>;
-const ScansGetResponseDataConsoleList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ScansGetResponseDataConsoleList>;
-
 export interface ScansGetResponseDataCookiesItem {
   domain: string;
   expires: number;
@@ -392,74 +321,29 @@ export interface ScansGetResponseDataCookiesItem {
   sourceScheme: string;
   value: string;
 }
-const ScansGetResponseDataCookiesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ScansGetResponseDataCookiesItem>;
-
 export type ScansGetResponseDataCookiesList = Array<ScansGetResponseDataCookiesItem>;
-const ScansGetResponseDataCookiesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ScansGetResponseDataCookiesList>;
-
 export interface ScansGetResponseDataGlobalsItem {
   prop: string;
   type: string;
 }
-const ScansGetResponseDataGlobalsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ScansGetResponseDataGlobalsItem>;
-
 export type ScansGetResponseDataGlobalsList = Array<ScansGetResponseDataGlobalsItem>;
-const ScansGetResponseDataGlobalsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ScansGetResponseDataGlobalsList>;
-
 export interface ScansGetResponseDataLinksItem {
   href: string;
   text: string;
 }
-const ScansGetResponseDataLinksItem = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ScansGetResponseDataLinksItem>;
-
 export type ScansGetResponseDataLinksList = Array<ScansGetResponseDataLinksItem>;
-const ScansGetResponseDataLinksList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ScansGetResponseDataLinksList>;
-
 export interface ScansGetResponseDataPerformanceItem {
   duration: number;
   entryType: string;
   name: string;
   startTime: number;
 }
-const ScansGetResponseDataPerformanceItem = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ScansGetResponseDataPerformanceItem>;
-
 export type ScansGetResponseDataPerformanceList = Array<ScansGetResponseDataPerformanceItem>;
-const ScansGetResponseDataPerformanceList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ScansGetResponseDataPerformanceList>;
-
 export interface ScansGetResponseDataRequestsItemRequestInitiator {
   host: string;
   type: string;
   url: string;
 }
-const ScansGetResponseDataRequestsItemRequestInitiator = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestInitiator>;
-
 export interface ScansGetResponseDataRequestsItemRequestRequest {
   initialPriority: string;
   isSameSite: boolean;
@@ -469,29 +353,12 @@ export interface ScansGetResponseDataRequestsItemRequestRequest {
   url: string;
   headers?: unknown | null;
 }
-const ScansGetResponseDataRequestsItemRequestRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestRequest>;
-
 export interface ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem {
   name: string;
   value: string;
 }
-const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    0,
-  ) as any as S.Schema<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-
 export type ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-const ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    1,
-  ) as any as S.Schema<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList>;
-
 export interface ScansGetResponseDataRequestsItemRequestRedirectResponse {
   charset: string;
   mimeType: string;
@@ -505,11 +372,6 @@ export interface ScansGetResponseDataRequestsItemRequestRedirectResponse {
   url: string;
   headers?: unknown | null;
 }
-const ScansGetResponseDataRequestsItemRequestRedirectResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestRedirectResponse>;
-
 export interface ScansGetResponseDataRequestsItemRequest {
   documentURL: string;
   hasUserGesture: boolean;
@@ -524,11 +386,6 @@ export interface ScansGetResponseDataRequestsItemRequest {
   primaryRequest?: boolean | null;
   redirectResponse?: ScansGetResponseDataRequestsItemRequestRedirectResponse | null;
 }
-const ScansGetResponseDataRequestsItemRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequest>;
-
 export interface ScansGetResponseDataRequestsItemResponseAsn {
   asn: string;
   country: string;
@@ -537,17 +394,7 @@ export interface ScansGetResponseDataRequestsItemResponseAsn {
   name: string;
   org: string;
 }
-const ScansGetResponseDataRequestsItemResponseAsn = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ScansGetResponseDataRequestsItemResponseAsn>;
-
 export type ScansGetResponseDataRequestsItemResponseGeoipLlList = Array<number>;
-const ScansGetResponseDataRequestsItemResponseGeoipLlList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ScansGetResponseDataRequestsItemResponseGeoipLlList>;
-
 export interface ScansGetResponseDataRequestsItemResponseGeoip {
   city: string;
   country: string;
@@ -556,19 +403,8 @@ export interface ScansGetResponseDataRequestsItemResponseGeoip {
   ll: ScansGetResponseDataRequestsItemResponseGeoipLlList;
   region: string;
 }
-const ScansGetResponseDataRequestsItemResponseGeoip = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ScansGetResponseDataRequestsItemResponseGeoip>;
-
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
   Array<string>;
-const ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    7,
-  ) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList>;
-
 export interface ScansGetResponseDataRequestsItemResponseResponseSecurityDetails {
   certificateId: number;
   certificateTransparencyCompliance: string;
@@ -584,18 +420,10 @@ export interface ScansGetResponseDataRequestsItemResponseResponseSecurityDetails
   validFrom: number;
   validTo: number;
 }
-const ScansGetResponseDataRequestsItemResponseResponseSecurityDetails = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityDetails>;
-
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersItem =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 export type ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-const ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList =
-  ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList>;
-
 export interface ScansGetResponseDataRequestsItemResponseResponse {
   charset: string;
   mimeType: string;
@@ -610,11 +438,6 @@ export interface ScansGetResponseDataRequestsItemResponseResponse {
   url: string;
   headers?: unknown | null;
 }
-const ScansGetResponseDataRequestsItemResponseResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ScansGetResponseDataRequestsItemResponseResponse>;
-
 export interface ScansGetResponseDataRequestsItemResponse {
   asn: ScansGetResponseDataRequestsItemResponseAsn;
   dataLength: number;
@@ -628,27 +451,12 @@ export interface ScansGetResponseDataRequestsItemResponse {
   contentAvailable?: boolean | null;
   hash?: string | null;
 }
-const ScansGetResponseDataRequestsItemResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ScansGetResponseDataRequestsItemResponse>;
-
 export interface ScansGetResponseDataRequestsItemRequestsItemInitiator {
   type: string;
 }
-const ScansGetResponseDataRequestsItemRequestsItemInitiator = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsItemInitiator>;
-
 export interface ScansGetResponseDataRequestsItemRequestsItemRequestHeaders {
   name: string;
 }
-const ScansGetResponseDataRequestsItemRequestsItemRequestHeaders = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsItemRequestHeaders>;
-
 export interface ScansGetResponseDataRequestsItemRequestsItemRequest {
   headers: ScansGetResponseDataRequestsItemRequestsItemRequestHeaders;
   initialPriority: string;
@@ -658,11 +466,6 @@ export interface ScansGetResponseDataRequestsItemRequestsItemRequest {
   referrerPolicy: string;
   url: string;
 }
-const ScansGetResponseDataRequestsItemRequestsItemRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsItemRequest>;
-
 export interface ScansGetResponseDataRequestsItemRequestsItem {
   documentURL: string;
   frameId: string;
@@ -675,34 +478,14 @@ export interface ScansGetResponseDataRequestsItemRequestsItem {
   type: string;
   wallTime: number;
 }
-const ScansGetResponseDataRequestsItemRequestsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsItem>;
-
 export type ScansGetResponseDataRequestsItemRequestsList =
   Array<ScansGetResponseDataRequestsItemRequestsItem>;
-const ScansGetResponseDataRequestsItemRequestsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ScansGetResponseDataRequestsItemRequestsList>;
-
 export interface ScansGetResponseDataRequestsItem {
   request: ScansGetResponseDataRequestsItemRequest;
   response: ScansGetResponseDataRequestsItemResponse;
   requests?: ScansGetResponseDataRequestsItemRequestsList | null;
 }
-const ScansGetResponseDataRequestsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ScansGetResponseDataRequestsItem>;
-
 export type ScansGetResponseDataRequestsList = Array<ScansGetResponseDataRequestsItem>;
-const ScansGetResponseDataRequestsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ScansGetResponseDataRequestsList>;
-
 export interface ScansGetResponseData {
   console: ScansGetResponseDataConsoleList;
   cookies: ScansGetResponseDataCookiesList;
@@ -711,63 +494,22 @@ export interface ScansGetResponseData {
   performance: ScansGetResponseDataPerformanceList;
   requests: ScansGetResponseDataRequestsList;
 }
-const ScansGetResponseData = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ScansGetResponseData>;
-
 export type ScansGetResponseListsAsnsList = Array<string>;
-const ScansGetResponseListsAsnsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ScansGetResponseListsAsnsList>;
-
 export interface ScansGetResponseListsCertificatesItem {
   issuer: string;
   subjectName: string;
   validFrom: number;
   validTo: number;
 }
-const ScansGetResponseListsCertificatesItem = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ScansGetResponseListsCertificatesItem>;
-
 export type ScansGetResponseListsCertificatesList = Array<ScansGetResponseListsCertificatesItem>;
-const ScansGetResponseListsCertificatesList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ScansGetResponseListsCertificatesList>;
-
 export type ScansGetResponseListsContinentsList = Array<string>;
-const ScansGetResponseListsContinentsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsContinentsList>;
-
 export type ScansGetResponseListsCountriesList = Array<string>;
-const ScansGetResponseListsCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsCountriesList>;
-
 export type ScansGetResponseListsDomainsList = Array<string>;
-const ScansGetResponseListsDomainsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsDomainsList>;
-
 export type ScansGetResponseListsHashesList = Array<string>;
-const ScansGetResponseListsHashesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsHashesList>;
-
 export type ScansGetResponseListsIpsList = Array<string>;
-const ScansGetResponseListsIpsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsIpsList>;
-
 export type ScansGetResponseListsLinkDomainsList = Array<string>;
-const ScansGetResponseListsLinkDomainsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsLinkDomainsList>;
-
 export type ScansGetResponseListsServersList = Array<string>;
-const ScansGetResponseListsServersList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsServersList>;
-
 export type ScansGetResponseListsUrlsList = Array<string>;
-const ScansGetResponseListsUrlsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseListsUrlsList>;
-
 export interface ScansGetResponseLists {
   asns: ScansGetResponseListsAsnsList;
   certificates: ScansGetResponseListsCertificatesList;
@@ -780,11 +522,6 @@ export interface ScansGetResponseLists {
   servers: ScansGetResponseListsServersList;
   urls: ScansGetResponseListsUrlsList;
 }
-const ScansGetResponseLists = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ScansGetResponseLists>;
-
 export interface ScansGetResponseMetaProcessorsAsnDataItem {
   asn: string;
   country: string;
@@ -792,81 +529,33 @@ export interface ScansGetResponseMetaProcessorsAsnDataItem {
   ip: string;
   name: string;
 }
-const ScansGetResponseMetaProcessorsAsnDataItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAsnDataItem>;
-
 export type ScansGetResponseMetaProcessorsAsnDataList =
   Array<ScansGetResponseMetaProcessorsAsnDataItem>;
-const ScansGetResponseMetaProcessorsAsnDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAsnDataList>;
-
 export interface ScansGetResponseMetaProcessorsAsn {
   data: ScansGetResponseMetaProcessorsAsnDataList;
 }
-const ScansGetResponseMetaProcessorsAsn = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAsn>;
-
 export interface ScansGetResponseMetaProcessorsDnsDataItem {
   address: string;
   dnssecValid: boolean;
   name: string;
   type: string;
 }
-const ScansGetResponseMetaProcessorsDnsDataItem = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ScansGetResponseMetaProcessorsDnsDataItem>;
-
 export type ScansGetResponseMetaProcessorsDnsDataList =
   Array<ScansGetResponseMetaProcessorsDnsDataItem>;
-const ScansGetResponseMetaProcessorsDnsDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ScansGetResponseMetaProcessorsDnsDataList>;
-
 export interface ScansGetResponseMetaProcessorsDns {
   data: ScansGetResponseMetaProcessorsDnsDataList;
 }
-const ScansGetResponseMetaProcessorsDns = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ScansGetResponseMetaProcessorsDns>;
-
 export interface ScansGetResponseMetaProcessorsDomainCategoriesDataItem {
   inherited: unknown;
   isPrimary: boolean;
   name: string;
 }
-const ScansGetResponseMetaProcessorsDomainCategoriesDataItem = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategoriesDataItem>;
-
 export type ScansGetResponseMetaProcessorsDomainCategoriesDataList =
   Array<ScansGetResponseMetaProcessorsDomainCategoriesDataItem>;
-const ScansGetResponseMetaProcessorsDomainCategoriesDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategoriesDataList>;
-
 export interface ScansGetResponseMetaProcessorsDomainCategories {
   data: ScansGetResponseMetaProcessorsDomainCategoriesDataList;
 }
-const ScansGetResponseMetaProcessorsDomainCategories = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessorsDomainCategories>;
-
 export type ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList = Array<number>;
-const ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList =
-  ScansGetResponseDataRequestsItemResponseGeoipLlList as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList>;
-
 export interface ScansGetResponseMetaProcessorsGeoipDataItemGeoip {
   city: string;
   country: string;
@@ -874,106 +563,43 @@ export interface ScansGetResponseMetaProcessorsGeoipDataItemGeoip {
   ll: ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList;
   region: string;
 }
-const ScansGetResponseMetaProcessorsGeoipDataItemGeoip = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataItemGeoip>;
-
 export interface ScansGetResponseMetaProcessorsGeoipDataItem {
   geoip: ScansGetResponseMetaProcessorsGeoipDataItemGeoip;
   ip: string;
 }
-const ScansGetResponseMetaProcessorsGeoipDataItem = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataItem>;
-
 export type ScansGetResponseMetaProcessorsGeoipDataList =
   Array<ScansGetResponseMetaProcessorsGeoipDataItem>;
-const ScansGetResponseMetaProcessorsGeoipDataList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ScansGetResponseMetaProcessorsGeoipDataList>;
-
 export interface ScansGetResponseMetaProcessorsGeoip {
   data: ScansGetResponseMetaProcessorsGeoipDataList;
 }
-const ScansGetResponseMetaProcessorsGeoip = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ScansGetResponseMetaProcessorsGeoip>;
-
 export type ScansGetResponseMetaProcessorsPhishingDataList = Array<string>;
-const ScansGetResponseMetaProcessorsPhishingDataList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseMetaProcessorsPhishingDataList>;
-
 export interface ScansGetResponseMetaProcessorsPhishing {
   data: ScansGetResponseMetaProcessorsPhishingDataList;
 }
-const ScansGetResponseMetaProcessorsPhishing = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ScansGetResponseMetaProcessorsPhishing>;
-
 export interface ScansGetResponseMetaProcessorsRadarRankDataItem {
   bucket: string;
   hostname: string;
   rank?: number | null;
 }
-const ScansGetResponseMetaProcessorsRadarRankDataItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRadarRankDataItem>;
-
 export type ScansGetResponseMetaProcessorsRadarRankDataList =
   Array<ScansGetResponseMetaProcessorsRadarRankDataItem>;
-const ScansGetResponseMetaProcessorsRadarRankDataList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRadarRankDataList>;
-
 export interface ScansGetResponseMetaProcessorsRadarRank {
   data: ScansGetResponseMetaProcessorsRadarRankDataList;
 }
-const ScansGetResponseMetaProcessorsRadarRank = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRadarRank>;
-
 export interface ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem {
   name: string;
   priority: number;
 }
-const ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
-
 export type ScansGetResponseMetaProcessorsWappaDataItemCategoriesList =
   Array<ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem>;
-const ScansGetResponseMetaProcessorsWappaDataItemCategoriesList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemCategoriesList>;
-
 export interface ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem {
   confidence: number;
   name: string;
   pattern: string;
   patternType: string;
 }
-const ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
-
 export type ScansGetResponseMetaProcessorsWappaDataItemConfidenceList =
   Array<ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem>;
-const ScansGetResponseMetaProcessorsWappaDataItemConfidenceList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItemConfidenceList>;
-
 export interface ScansGetResponseMetaProcessorsWappaDataItem {
   app: string;
   categories: ScansGetResponseMetaProcessorsWappaDataItemCategoriesList;
@@ -982,47 +608,20 @@ export interface ScansGetResponseMetaProcessorsWappaDataItem {
   icon: string;
   website: string;
 }
-const ScansGetResponseMetaProcessorsWappaDataItem = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataItem>;
-
 export type ScansGetResponseMetaProcessorsWappaDataList =
   Array<ScansGetResponseMetaProcessorsWappaDataItem>;
-const ScansGetResponseMetaProcessorsWappaDataList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappaDataList>;
-
 export interface ScansGetResponseMetaProcessorsWappa {
   data: ScansGetResponseMetaProcessorsWappaDataList;
 }
-const ScansGetResponseMetaProcessorsWappa = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ScansGetResponseMetaProcessorsWappa>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding {
   outcome: string;
   summary: string;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    7,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest {
   method: string;
   url: string;
   headers?: unknown | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    0,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse {
   status: number;
   statusText: string;
@@ -1031,12 +630,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   headers?: unknown | null;
   redirectedTo?: string | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    1,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem {
   action: string;
   label: string;
@@ -1044,31 +637,13 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   request?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest | null;
   response?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    2,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    3,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef {
   /** Stable, translatable message code. */
   code: string;
   params?: unknown | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    4,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals {
   status: string;
   details?: unknown | null;
@@ -1077,12 +652,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    5,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceItemRequest =
@@ -1093,9 +662,6 @@ export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRo
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules {
@@ -1106,12 +672,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    6,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuthEvidenceItemRequest =
@@ -1132,19 +692,11 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessCont
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl {
   contentSignals: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals;
   robotsTxtAiRules: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules;
   webBotAuth: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceItemRequest =
@@ -1155,9 +707,6 @@ export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenc
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem>;
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpMessageRef =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef;
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp {
@@ -1168,11 +717,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2EvidenceItemRequest =
@@ -1193,9 +737,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2 =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMppEvidenceItemRequest =
@@ -1216,9 +757,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcpEvidenceItemRequest =
@@ -1239,9 +777,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp {
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402EvidenceItemRequest =
@@ -1262,9 +797,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402 =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce {
   acp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp;
   ap2: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2;
@@ -1272,11 +804,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce {
   ucp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp;
   x402: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiationEvidenceItemRequest =
@@ -1297,17 +824,9 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccess
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility {
   markdownNegotiation: ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAidEvidenceItemRequest =
@@ -1328,9 +847,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeadersEvidenceItemRequest =
@@ -1351,9 +867,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxtEvidenceItemRequest =
@@ -1374,9 +887,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemapEvidenceItemRequest =
@@ -1397,20 +907,12 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabili
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability {
   dnsAid: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid;
   linkHeaders: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders;
   robotsTxt: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt;
   sitemap: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCardEvidenceItemRequest =
@@ -1431,9 +933,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aA
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkillsEvidenceItemRequest =
@@ -1454,9 +953,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgen
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalogEvidenceItemRequest =
@@ -1477,9 +973,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiC
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArdEvidenceItemRequest =
@@ -1500,9 +993,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd 
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMdEvidenceItemRequest =
@@ -1523,9 +1013,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuth
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCardEvidenceItemRequest =
@@ -1546,9 +1033,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpS
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscoveryEvidenceItemRequest =
@@ -1569,9 +1053,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOaut
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResourceEvidenceItemRequest =
@@ -1592,9 +1073,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOaut
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemFinding =
   ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding;
 export type ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcpEvidenceItemRequest =
@@ -1615,9 +1093,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebM
   message?: string | null;
   messageRef?: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp =
-  ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery {
   a2aAgentCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard;
   agentSkills: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills;
@@ -1629,11 +1104,6 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery {
   oauthProtectedResource: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource;
   webMcp: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessChecks {
   botAccessControl: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl;
   commerce: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce;
@@ -1641,20 +1111,9 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessChecks {
   discoverability: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability;
   discovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessChecks = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessChecks>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList = Array<string>;
-const ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList =
-  ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
   Array<string>;
-const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList =
-  ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem {
   check: string;
   description: string;
@@ -1662,28 +1121,13 @@ export interface ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequiremen
   skillUrl: string;
   specUrls: ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem>;
-
 export type ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList =
   Array<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem>;
-const ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadinessNextLevel {
   name: string;
   requirements: ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList;
   target: number;
 }
-const ScansGetResponseMetaProcessorsAgentReadinessNextLevel = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadinessNextLevel>;
-
 export interface ScansGetResponseMetaProcessorsAgentReadiness {
   checks: ScansGetResponseMetaProcessorsAgentReadinessChecks;
   level: number;
@@ -1692,161 +1136,72 @@ export interface ScansGetResponseMetaProcessorsAgentReadiness {
   isCommerce?: boolean | null;
   nextLevel?: ScansGetResponseMetaProcessorsAgentReadinessNextLevel | null;
 }
-const ScansGetResponseMetaProcessorsAgentReadiness = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ScansGetResponseMetaProcessorsAgentReadiness>;
-
 export type ScansGetResponseMetaProcessorsPhishingV2DataList = Array<string>;
 export interface ScansGetResponseMetaProcessorsPhishingV2 {
   data: ScansGetResponseMetaProcessorsPhishingV2DataList;
 }
-const ScansGetResponseMetaProcessorsPhishingV2 =
-  ScansGetResponseMetaProcessorsPhishing as any as S.Schema<ScansGetResponseMetaProcessorsPhishingV2>;
-
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList = Array<string>;
-const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList =
-  ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList>;
-
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList = Array<string>;
-const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList =
-  ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList>;
-
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal {
   aiInput?: string | null;
   aiTrain?: string | null;
   search?: string | null;
 }
-const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal>;
-
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue {
   allow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList;
   disallow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList;
   contentSignal?: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal | null;
   crawlDelay?: number | null;
 }
-const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue>;
-
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap = {
   [key: string]: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue | undefined;
 };
-const ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap>;
-
 export type ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList = Array<string>;
-const ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList>;
-
 export interface ScansGetResponseMetaProcessorsRobotsTxtDataItem {
   rules: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap;
   sitemaps: ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList;
   hash?: string | null;
 }
-const ScansGetResponseMetaProcessorsRobotsTxtDataItem = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataItem>;
-
 export type ScansGetResponseMetaProcessorsRobotsTxtDataList =
   Array<ScansGetResponseMetaProcessorsRobotsTxtDataItem>;
-const ScansGetResponseMetaProcessorsRobotsTxtDataList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxtDataList>;
-
 export interface ScansGetResponseMetaProcessorsRobotsTxt {
   data: ScansGetResponseMetaProcessorsRobotsTxtDataList;
 }
-const ScansGetResponseMetaProcessorsRobotsTxt = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessorsRobotsTxt>;
-
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem {
   id: number;
   name: string;
   superCategoryId: number;
 }
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList>;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentItem =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    2,
-  ) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList>;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksItem =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList =
-  ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList>;
-
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited {
   content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList;
   from: string;
   risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList;
 }
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited>;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksItem =
   ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem;
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem>;
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList =
-  ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList>;
-
 export interface ScansGetResponseMetaProcessorsUrlCategoriesDataItem {
   content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList;
   inherited: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited;
   name: string;
   risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList;
 }
-const ScansGetResponseMetaProcessorsUrlCategoriesDataItem = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataItem>;
-
 export type ScansGetResponseMetaProcessorsUrlCategoriesDataList =
   Array<ScansGetResponseMetaProcessorsUrlCategoriesDataItem>;
-const ScansGetResponseMetaProcessorsUrlCategoriesDataList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategoriesDataList>;
-
 export interface ScansGetResponseMetaProcessorsUrlCategories {
   data: ScansGetResponseMetaProcessorsUrlCategoriesDataList;
 }
-const ScansGetResponseMetaProcessorsUrlCategories = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ScansGetResponseMetaProcessorsUrlCategories>;
-
 export interface ScansGetResponseMetaProcessors {
   asn: ScansGetResponseMetaProcessorsAsn;
   dns: ScansGetResponseMetaProcessorsDns;
@@ -1860,30 +1215,15 @@ export interface ScansGetResponseMetaProcessors {
   robotsTxt?: ScansGetResponseMetaProcessorsRobotsTxt | null;
   urlCategories?: ScansGetResponseMetaProcessorsUrlCategories | null;
 }
-const ScansGetResponseMetaProcessors = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ScansGetResponseMetaProcessors>;
-
 export interface ScansGetResponseMeta {
   processors: ScansGetResponseMetaProcessors;
 }
-const ScansGetResponseMeta = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ScansGetResponseMeta>;
-
 export interface ScansGetResponsePageScreenshot {
   dhash: string;
   mm3Hash: number;
   name: string;
   phash: string;
 }
-const ScansGetResponsePageScreenshot = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ScansGetResponsePageScreenshot>;
-
 export interface ScansGetResponsePage {
   apexDomain: string;
   asn: string;
@@ -1903,32 +1243,13 @@ export interface ScansGetResponsePage {
   url: string;
   screenshot?: ScansGetResponsePageScreenshot | null;
 }
-const ScansGetResponsePage = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ScansGetResponsePage>;
-
 export interface ScansGetResponseScanner {
   colo: string;
   country: string;
 }
-const ScansGetResponseScanner = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ScansGetResponseScanner>;
-
 export type ScansGetResponseStatsDomainStatsItemCountriesList = Array<string>;
-const ScansGetResponseStatsDomainStatsItemCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsDomainStatsItemCountriesList>;
-
 export type ScansGetResponseStatsDomainStatsItemInitiatorsList = Array<string>;
-const ScansGetResponseStatsDomainStatsItemInitiatorsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsDomainStatsItemInitiatorsList>;
-
 export type ScansGetResponseStatsDomainStatsItemIpsList = Array<string>;
-const ScansGetResponseStatsDomainStatsItemIpsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsDomainStatsItemIpsList>;
-
 export interface ScansGetResponseStatsDomainStatsItem {
   count: number;
   countries: ScansGetResponseStatsDomainStatsItemCountriesList;
@@ -1940,26 +1261,10 @@ export interface ScansGetResponseStatsDomainStatsItem {
   redirects: number;
   size: number;
 }
-const ScansGetResponseStatsDomainStatsItem = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ScansGetResponseStatsDomainStatsItem>;
-
 export type ScansGetResponseStatsDomainStatsList = Array<ScansGetResponseStatsDomainStatsItem>;
-const ScansGetResponseStatsDomainStatsList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ScansGetResponseStatsDomainStatsList>;
-
 export type ScansGetResponseStatsIpStatsItemAsn = ScansGetResponseDataRequestsItemResponseAsn;
 export type ScansGetResponseStatsIpStatsItemCountriesList = Array<string>;
-const ScansGetResponseStatsIpStatsItemCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsIpStatsItemCountriesList>;
-
 export type ScansGetResponseStatsIpStatsItemDomainsList = Array<string>;
-const ScansGetResponseStatsIpStatsItemDomainsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsIpStatsItemDomainsList>;
-
 export type ScansGetResponseStatsIpStatsItemGeoipLlList = Array<number>;
 export interface ScansGetResponseStatsIpStatsItemGeoip {
   city: string;
@@ -1968,9 +1273,6 @@ export interface ScansGetResponseStatsIpStatsItemGeoip {
   ll: ScansGetResponseStatsIpStatsItemGeoipLlList;
   region: string;
 }
-const ScansGetResponseStatsIpStatsItemGeoip =
-  ScansGetResponseMetaProcessorsGeoipDataItemGeoip as any as S.Schema<ScansGetResponseStatsIpStatsItemGeoip>;
-
 export interface ScansGetResponseStatsIpStatsItem {
   asn: ScansGetResponseDataRequestsItemResponseAsn;
   countries: ScansGetResponseStatsIpStatsItemCountriesList;
@@ -1985,25 +1287,9 @@ export interface ScansGetResponseStatsIpStatsItem {
   size: number;
   count?: number | null;
 }
-const ScansGetResponseStatsIpStatsItem = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ScansGetResponseStatsIpStatsItem>;
-
 export type ScansGetResponseStatsIpStatsList = Array<ScansGetResponseStatsIpStatsItem>;
-const ScansGetResponseStatsIpStatsList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ScansGetResponseStatsIpStatsList>;
-
 export type ScansGetResponseStatsProtocolStatsItemCountriesList = Array<string>;
-const ScansGetResponseStatsProtocolStatsItemCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsProtocolStatsItemCountriesList>;
-
 export type ScansGetResponseStatsProtocolStatsItemIpsList = Array<string>;
-const ScansGetResponseStatsProtocolStatsItemIpsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsProtocolStatsItemIpsList>;
-
 export interface ScansGetResponseStatsProtocolStatsItem {
   count: number;
   countries: ScansGetResponseStatsProtocolStatsItemCountriesList;
@@ -2012,25 +1298,9 @@ export interface ScansGetResponseStatsProtocolStatsItem {
   protocol: string;
   size: number;
 }
-const ScansGetResponseStatsProtocolStatsItem = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ScansGetResponseStatsProtocolStatsItem>;
-
 export type ScansGetResponseStatsProtocolStatsList = Array<ScansGetResponseStatsProtocolStatsItem>;
-const ScansGetResponseStatsProtocolStatsList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ScansGetResponseStatsProtocolStatsList>;
-
 export type ScansGetResponseStatsResourceStatsItemCountriesList = Array<string>;
-const ScansGetResponseStatsResourceStatsItemCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsResourceStatsItemCountriesList>;
-
 export type ScansGetResponseStatsResourceStatsItemIpsList = Array<string>;
-const ScansGetResponseStatsResourceStatsItemIpsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsResourceStatsItemIpsList>;
-
 export interface ScansGetResponseStatsResourceStatsItem {
   compression: number;
   count: number;
@@ -2041,25 +1311,9 @@ export interface ScansGetResponseStatsResourceStatsItem {
   size: number;
   type: string;
 }
-const ScansGetResponseStatsResourceStatsItem = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ScansGetResponseStatsResourceStatsItem>;
-
 export type ScansGetResponseStatsResourceStatsList = Array<ScansGetResponseStatsResourceStatsItem>;
-const ScansGetResponseStatsResourceStatsList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ScansGetResponseStatsResourceStatsList>;
-
 export type ScansGetResponseStatsServerStatsItemCountriesList = Array<string>;
-const ScansGetResponseStatsServerStatsItemCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsServerStatsItemCountriesList>;
-
 export type ScansGetResponseStatsServerStatsItemIpsList = Array<string>;
-const ScansGetResponseStatsServerStatsItemIpsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsServerStatsItemIpsList>;
-
 export interface ScansGetResponseStatsServerStatsItem {
   count: number;
   countries: ScansGetResponseStatsServerStatsItemCountriesList;
@@ -2068,33 +1322,12 @@ export interface ScansGetResponseStatsServerStatsItem {
   server: string;
   size: number;
 }
-const ScansGetResponseStatsServerStatsItem = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ScansGetResponseStatsServerStatsItem>;
-
 export type ScansGetResponseStatsServerStatsList = Array<ScansGetResponseStatsServerStatsItem>;
-const ScansGetResponseStatsServerStatsList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ScansGetResponseStatsServerStatsList>;
-
 export type ScansGetResponseStatsTlsStatsItemCountriesList = Array<string>;
-const ScansGetResponseStatsTlsStatsItemCountriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsTlsStatsItemCountriesList>;
-
 export type ScansGetResponseStatsTlsStatsItemIpsList = Array<string>;
-const ScansGetResponseStatsTlsStatsItemIpsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseStatsTlsStatsItemIpsList>;
-
 export interface ScansGetResponseStatsTlsStatsItemProtocols {
   TLS_1_3___AES_128_GCM: number;
 }
-const ScansGetResponseStatsTlsStatsItemProtocols = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ScansGetResponseStatsTlsStatsItemProtocols>;
-
 export interface ScansGetResponseStatsTlsStatsItem {
   count: number;
   countries: ScansGetResponseStatsTlsStatsItemCountriesList;
@@ -2104,17 +1337,7 @@ export interface ScansGetResponseStatsTlsStatsItem {
   securityState: string;
   size: number;
 }
-const ScansGetResponseStatsTlsStatsItem = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ScansGetResponseStatsTlsStatsItem>;
-
 export type ScansGetResponseStatsTlsStatsList = Array<ScansGetResponseStatsTlsStatsItem>;
-const ScansGetResponseStatsTlsStatsList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ScansGetResponseStatsTlsStatsList>;
-
 export interface ScansGetResponseStats {
   domainStats: ScansGetResponseStatsDomainStatsList;
   ipStats: ScansGetResponseStatsIpStatsList;
@@ -2130,25 +1353,12 @@ export interface ScansGetResponseStats {
   uniqASNs: number;
   uniqCountries: number;
 }
-const ScansGetResponseStats = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ScansGetResponseStats>;
-
 export type ScansGetResponseTaskOptionsScreenshotsResolutionsList = Array<string>;
-const ScansGetResponseTaskOptionsScreenshotsResolutionsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseTaskOptionsScreenshotsResolutionsList>;
-
 export interface ScansGetResponseTaskOptions {
   /** Custom headers set. */
   customHeaders?: unknown | null;
   screenshotsResolutions?: ScansGetResponseTaskOptionsScreenshotsResolutionsList | null;
 }
-const ScansGetResponseTaskOptions = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ScansGetResponseTaskOptions>;
-
 export interface ScansGetResponseTask {
   apexDomain: string;
   domain: string;
@@ -2164,38 +1374,17 @@ export interface ScansGetResponseTask {
   uuid: string;
   visibility: string;
 }
-const ScansGetResponseTask = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ScansGetResponseTask>;
-
 export type ScansGetResponseVerdictsOverallCategoriesList = Array<string>;
-const ScansGetResponseVerdictsOverallCategoriesList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseVerdictsOverallCategoriesList>;
-
 export type ScansGetResponseVerdictsOverallTagsList = Array<string>;
-const ScansGetResponseVerdictsOverallTagsList =
-  ScansGetResponseListsAsnsList as any as S.Schema<ScansGetResponseVerdictsOverallTagsList>;
-
 export interface ScansGetResponseVerdictsOverall {
   categories: ScansGetResponseVerdictsOverallCategoriesList;
   hasVerdicts: boolean;
   malicious: boolean;
   tags: ScansGetResponseVerdictsOverallTagsList;
 }
-const ScansGetResponseVerdictsOverall = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ScansGetResponseVerdictsOverall>;
-
 export interface ScansGetResponseVerdicts {
   overall: ScansGetResponseVerdictsOverall;
 }
-const ScansGetResponseVerdicts = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ScansGetResponseVerdicts>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetScanResponse {
   data: ScansGetResponseData;
@@ -2207,35 +1396,21 @@ export interface GetScanResponse {
   task: ScansGetResponseTask;
   verdicts: ScansGetResponseVerdicts;
 }
-const GetScanResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<GetScanResponse>;
-
 export interface HarScanRequest {
   /** Account ID. */
   accountId: string;
   /** Scan UUID. */
   scanId: string;
 }
-const HarScanRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<HarScanRequest>;
-
 export interface ScansHarResponseLogCreator {
   comment: string;
   name: string;
   version: string;
 }
-const ScansHarResponseLogCreator = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ScansHarResponseLogCreator>;
-
 export type ScansHarResponseLogEntriesItemRequestHeadersItem =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 export type ScansHarResponseLogEntriesItemRequestHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-const ScansHarResponseLogEntriesItemRequestHeadersList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ScansHarResponseLogEntriesItemRequestHeadersList>;
-
 export interface ScansHarResponseLogEntriesItemRequest {
   bodySize: number;
   headers: ScansHarResponseLogEntriesItemRequestHeadersList;
@@ -2244,28 +1419,15 @@ export interface ScansHarResponseLogEntriesItemRequest {
   method: string;
   url: string;
 }
-const ScansHarResponseLogEntriesItemRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ScansHarResponseLogEntriesItemRequest>;
-
 export interface ScansHarResponseLogEntriesItemResponseContent {
   mimeType: string;
   size: number;
   compression?: number | null;
 }
-const ScansHarResponseLogEntriesItemResponseContent = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ScansHarResponseLogEntriesItemResponseContent>;
-
 export type ScansHarResponseLogEntriesItemResponseHeadersItem =
   ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem;
 export type ScansHarResponseLogEntriesItemResponseHeadersList =
   Array<ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem>;
-const ScansHarResponseLogEntriesItemResponseHeadersList =
-  ScansHarResponseLogEntriesItemRequestHeadersList as any as S.Schema<ScansHarResponseLogEntriesItemResponseHeadersList>;
-
 export interface ScansHarResponseLogEntriesItemResponse {
   transferSize: number;
   bodySize: number;
@@ -2277,11 +1439,6 @@ export interface ScansHarResponseLogEntriesItemResponse {
   status: number;
   statusText: string;
 }
-const ScansHarResponseLogEntriesItemResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ScansHarResponseLogEntriesItemResponse>;
-
 export interface ScansHarResponseLogEntriesItem {
   initialPriority: string;
   initiatorType: string;
@@ -2298,57 +1455,28 @@ export interface ScansHarResponseLogEntriesItem {
   startedDateTime: string;
   time: number;
 }
-const ScansHarResponseLogEntriesItem = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ScansHarResponseLogEntriesItem>;
-
 export type ScansHarResponseLogEntriesList = Array<ScansHarResponseLogEntriesItem>;
-const ScansHarResponseLogEntriesList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ScansHarResponseLogEntriesList>;
-
 export interface ScansHarResponseLogPagesItemPageTimings {
   onContentLoad: number;
   onLoad: number;
 }
-const ScansHarResponseLogPagesItemPageTimings = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ScansHarResponseLogPagesItemPageTimings>;
-
 export interface ScansHarResponseLogPagesItem {
   id: string;
   pageTimings: ScansHarResponseLogPagesItemPageTimings;
   startedDateTime: string;
   title: string;
 }
-const ScansHarResponseLogPagesItem = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ScansHarResponseLogPagesItem>;
-
 export type ScansHarResponseLogPagesList = Array<ScansHarResponseLogPagesItem>;
-const ScansHarResponseLogPagesList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ScansHarResponseLogPagesList>;
-
 export interface ScansHarResponseLog {
   creator: ScansHarResponseLogCreator;
   entries: ScansHarResponseLogEntriesList;
   pages: ScansHarResponseLogPagesList;
   version: string;
 }
-const ScansHarResponseLog = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<ScansHarResponseLog>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface HarScanResponse {
   log: ScansHarResponseLog;
 }
-const HarScanResponse = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<HarScanResponse>;
-
 export interface ListScansRequest {
   /** Account ID. */
   accountId: string;
@@ -2357,49 +1485,27 @@ export interface ListScansRequest {
   /** Limit the number of objects in the response. */
   size?: number;
 }
-const ListScansRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ListScansRequest>;
-
 export interface ScansListResponseResultsItemPage {
   asn: string;
   country: string;
   ip: string;
   url: string;
 }
-const ScansListResponseResultsItemPage = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ScansListResponseResultsItemPage>;
-
 export interface ScansListResponseResultsItemStats {
   dataLength: number;
   requests: number;
   uniqCountries: number;
   uniqIPs: number;
 }
-const ScansListResponseResultsItemStats = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ScansListResponseResultsItemStats>;
-
 export interface ScansListResponseResultsItemTask {
   time: string;
   url: string;
   uuid: string;
   visibility: string;
 }
-const ScansListResponseResultsItemTask = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ScansListResponseResultsItemTask>;
-
 export interface ScansListResponseResultsItemVerdicts {
   malicious: boolean;
 }
-const ScansListResponseResultsItemVerdicts = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ScansListResponseResultsItemVerdicts>;
-
 export interface ScansListResponseResultsItem {
   id: string;
   page: ScansListResponseResultsItemPage;
@@ -2408,26 +1514,12 @@ export interface ScansListResponseResultsItem {
   task: ScansListResponseResultsItemTask;
   verdicts: ScansListResponseResultsItemVerdicts;
 }
-const ScansListResponseResultsItem = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ScansListResponseResultsItem>;
-
 export type ScansListResponseResultsList = Array<ScansListResponseResultsItem>;
-const ScansListResponseResultsList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ScansListResponseResultsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListScansResponse {
   results: ScansListResponseResultsList;
 }
-const ListScansResponse = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListScansResponse>;
-
 export type ScansScreenshotRequestResolution = "desktop" | "mobile" | "tablet";
-const ScansScreenshotRequestResolution = S.String;
-
 export interface ScreenshotScanRequest {
   /** Account ID. */
   accountId: string;
@@ -2436,14 +1528,7 @@ export interface ScreenshotScanRequest {
   /** Target device type. */
   resolution?: ScansScreenshotRequestResolution | (string & {});
 }
-const ScreenshotScanRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ScreenshotScanRequest>;
-
 export interface ScreenshotScanResponse {}
-const ScreenshotScanResponse = DomScanResponse as any as S.Schema<ScreenshotScanResponse>;
-
 export type BulkCreateScansError = CloudflareOpError;
 /** Submit URLs to scan. Check limits at https://developers.cloudflare.com/security-center/investigate/scan-limits/ and take into account scans submitted in bulk have lower priority and may take longer to finish. */
 export const bulkCreateScans: API.OperationMethod<
@@ -2452,8 +1537,8 @@ export const bulkCreateScans: API.OperationMethod<
   BulkCreateScansError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateScansRequest,
-  output: BulkCreateScansResponse,
+  input: __S(4) as any as S.Schema<BulkCreateScansRequest>,
+  output: __S(5) as any as S.Schema<BulkCreateScansResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2467,8 +1552,8 @@ export const createScan: API.OperationMethod<
   CreateScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScanRequest,
-  output: CreateScanResponse,
+  input: __S(6) as any as S.Schema<CreateScanRequest>,
+  output: __S(5) as any as S.Schema<CreateScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2482,8 +1567,8 @@ export const domScan: API.OperationMethod<
   DomScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DomScanRequest,
-  output: DomScanResponse,
+  input: __S(7) as any as S.Schema<DomScanRequest>,
+  output: __S(8) as any as S.Schema<DomScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2497,8 +1582,8 @@ export const getRespons: API.OperationMethod<
   GetResponsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResponsRequest,
-  output: GetResponsResponse,
+  input: __S(9) as any as S.Schema<GetResponsRequest>,
+  output: __S(8) as any as S.Schema<GetResponsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2512,8 +1597,8 @@ export const getScan: API.OperationMethod<
   GetScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScanRequest,
-  output: GetScanResponse,
+  input: __S(10) as any as S.Schema<GetScanRequest>,
+  output: __S(126) as any as S.Schema<GetScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2527,8 +1612,8 @@ export const harScan: API.OperationMethod<
   HarScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HarScanRequest,
-  output: HarScanResponse,
+  input: __S(127) as any as S.Schema<HarScanRequest>,
+  output: __S(139) as any as S.Schema<HarScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2542,8 +1627,8 @@ export const listScans: API.OperationMethod<
   ListScansError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListScansRequest,
-  output: ListScansResponse,
+  input: __S(140) as any as S.Schema<ListScansRequest>,
+  output: __S(147) as any as S.Schema<ListScansResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2557,8 +1642,8 @@ export const screenshotScan: API.OperationMethod<
   ScreenshotScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScreenshotScanRequest,
-  output: ScreenshotScanResponse,
+  input: __S(148) as any as S.Schema<ScreenshotScanRequest>,
+  output: __S(8) as any as S.Schema<ScreenshotScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2570,30 +1655,28 @@ function __c0(j: number): any {
     case 0:
       return S.Record(S.String, S.String);
     case 1:
-      return S.Array(ScansBulkCreateRequestBodyItemScreenshotsResolutionsItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           url: S.String,
           agentReadiness: S.optional(S.Boolean),
           customagent: S.optional(S.String),
-          customHeaders: S.optional(ScansBulkCreateRequestBodyItemCustomHeadersMap),
+          customHeaders: S.optional(__S(0)),
           referer: S.optional(S.String),
-          screenshotsResolutions: S.optional(
-            ScansBulkCreateRequestBodyItemScreenshotsResolutionsList,
-          ),
-          visibility: S.optional(ScansBulkCreateRequestBodyItemVisibility),
+          screenshotsResolutions: S.optional(__S(1)),
+          visibility: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ScansBulkCreateRequestBodyItem",
       });
     case 3:
-      return S.Array(ScansBulkCreateRequestBodyItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          body: S.optional(ScansBulkCreateRequestBodyList.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/urlscanner/v2/bulk", code: 200 }),
@@ -2610,12 +1693,12 @@ function __c0(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           url: S.String,
           agentReadiness: S.optional(S.Boolean),
-          country: S.optional(ScansCreateRequestCountry),
+          country: S.optional(S.String),
           customagent: S.optional(S.String),
-          customHeaders: S.optional(ScansCreateRequestCustomHeadersMap),
+          customHeaders: S.optional(__S(0)),
           referer: S.optional(S.String),
-          screenshotsResolutions: S.optional(ScansCreateRequestScreenshotsResolutionsList),
-          visibility: S.optional(ScansCreateRequestVisibility),
+          screenshotsResolutions: S.optional(__S(1)),
+          visibility: S.optional(S.String),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/urlscanner/v2/scan", code: 200 }),
@@ -2689,13 +1772,13 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          message: ScansGetResponseDataConsoleItemMessage,
+          message: __S(11),
         }),
       ).annotate({
         identifier: "ScansGetResponseDataConsoleItem",
       });
     case 5:
-      return S.Array(ScansGetResponseDataConsoleItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2717,7 +1800,7 @@ function __c1(j: number): any {
         identifier: "ScansGetResponseDataCookiesItem",
       });
     case 7:
-      return S.Array(ScansGetResponseDataCookiesItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -2732,7 +1815,7 @@ function __c2(j: number): any {
         identifier: "ScansGetResponseDataGlobalsItem",
       });
     case 1:
-      return S.Array(ScansGetResponseDataGlobalsItem);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2743,7 +1826,7 @@ function __c2(j: number): any {
         identifier: "ScansGetResponseDataLinksItem",
       });
     case 3:
-      return S.Array(ScansGetResponseDataLinksItem);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2756,7 +1839,7 @@ function __c2(j: number): any {
         identifier: "ScansGetResponseDataPerformanceItem",
       });
     case 5:
-      return S.Array(ScansGetResponseDataPerformanceItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2795,7 +1878,7 @@ function __c3(j: number): any {
         identifier: "ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem",
       });
     case 1:
-      return S.Array(ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2804,8 +1887,7 @@ function __c3(j: number): any {
           protocol: S.String,
           remoteIPAddress: S.String,
           remotePort: S.Number,
-          securityHeaders:
-            ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersList,
+          securityHeaders: __S(25),
           securityState: S.String,
           status: S.Number,
           statusText: S.String,
@@ -2820,18 +1902,16 @@ function __c3(j: number): any {
         S.Struct({
           documentURL: S.String,
           hasUserGesture: S.Boolean,
-          initiator: ScansGetResponseDataRequestsItemRequestInitiator,
+          initiator: __S(22),
           redirectHasExtraInfo: S.Boolean,
-          request: ScansGetResponseDataRequestsItemRequestRequest,
+          request: __S(23),
           requestId: S.String,
           type: S.String,
           wallTime: S.Number,
           frameId: S.optional(S.NullOr(S.String)),
           loaderId: S.optional(S.NullOr(S.String)),
           primaryRequest: S.optional(S.NullOr(S.Boolean)),
-          redirectResponse: S.optional(
-            S.NullOr(ScansGetResponseDataRequestsItemRequestRedirectResponse),
-          ),
+          redirectResponse: S.optional(S.NullOr(__S(26))),
         }),
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItemRequest",
@@ -2858,7 +1938,7 @@ function __c3(j: number): any {
           country: S.String,
           countryName: S.String.pipe(T.Body("country_name")),
           geonameId: S.String,
-          ll: ScansGetResponseDataRequestsItemResponseGeoipLlList,
+          ll: __S(29),
           region: S.String,
         }),
       ).annotate({
@@ -2881,7 +1961,7 @@ function __c4(j: number): any {
           keyExchange: S.String,
           keyExchangeGroup: S.String,
           protocol: S.String,
-          sanList: ScansGetResponseDataRequestsItemResponseResponseSecurityDetailsSanListList,
+          sanList: __S(31),
           serverSignatureAlgorithm: S.Number,
           subjectName: S.String,
           validFrom: S.Number,
@@ -2898,8 +1978,8 @@ function __c4(j: number): any {
           protocol: S.String,
           remoteIPAddress: S.String,
           remotePort: S.Number,
-          securityDetails: ScansGetResponseDataRequestsItemResponseResponseSecurityDetails,
-          securityHeaders: ScansGetResponseDataRequestsItemResponseResponseSecurityHeadersList,
+          securityDetails: __S(32),
+          securityHeaders: __S(25),
           securityState: S.String,
           status: S.Number,
           statusText: S.String,
@@ -2912,13 +1992,13 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          asn: ScansGetResponseDataRequestsItemResponseAsn,
+          asn: __S(28),
           dataLength: S.Number,
           encodedDataLength: S.Number,
-          geoip: ScansGetResponseDataRequestsItemResponseGeoip,
+          geoip: __S(30),
           hasExtraInfo: S.Boolean,
           requestId: S.String,
-          response: ScansGetResponseDataRequestsItemResponseResponse,
+          response: __S(33),
           size: S.Number,
           type: S.String,
           contentAvailable: S.optional(S.NullOr(S.Boolean)),
@@ -2946,7 +2026,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: ScansGetResponseDataRequestsItemRequestsItemRequestHeaders,
+          headers: __S(36),
           initialPriority: S.String,
           isSameSite: S.Boolean,
           method: S.String,
@@ -2963,10 +2043,10 @@ function __c4(j: number): any {
           documentURL: S.String,
           frameId: S.String,
           hasUserGesture: S.Boolean,
-          initiator: ScansGetResponseDataRequestsItemRequestsItemInitiator,
+          initiator: __S(35),
           loaderId: S.String,
           redirectHasExtraInfo: S.Boolean,
-          request: ScansGetResponseDataRequestsItemRequestsItemRequest,
+          request: __S(37),
           requestId: S.String,
           type: S.String,
           wallTime: S.Number,
@@ -2975,7 +2055,7 @@ function __c4(j: number): any {
         identifier: "ScansGetResponseDataRequestsItemRequestsItem",
       });
     case 7:
-      return S.Array(ScansGetResponseDataRequestsItemRequestsItem);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -2983,24 +2063,24 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          request: ScansGetResponseDataRequestsItemRequest,
-          response: ScansGetResponseDataRequestsItemResponse,
-          requests: S.optional(S.NullOr(ScansGetResponseDataRequestsItemRequestsList)),
+          request: __S(27),
+          response: __S(34),
+          requests: S.optional(S.NullOr(__S(39))),
         }),
       ).annotate({
         identifier: "ScansGetResponseDataRequestsItem",
       });
     case 1:
-      return S.Array(ScansGetResponseDataRequestsItem);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          console: ScansGetResponseDataConsoleList,
-          cookies: ScansGetResponseDataCookiesList,
-          globals: ScansGetResponseDataGlobalsList,
-          links: ScansGetResponseDataLinksList,
-          performance: ScansGetResponseDataPerformanceList,
-          requests: ScansGetResponseDataRequestsList,
+          console: __S(13),
+          cookies: __S(15),
+          globals: __S(17),
+          links: __S(19),
+          performance: __S(21),
+          requests: __S(41),
         }),
       ).annotate({ identifier: "ScansGetResponseData" });
     case 3:
@@ -3017,20 +2097,20 @@ function __c5(j: number): any {
         identifier: "ScansGetResponseListsCertificatesItem",
       });
     case 5:
-      return S.Array(ScansGetResponseListsCertificatesItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          asns: ScansGetResponseListsAsnsList,
-          certificates: ScansGetResponseListsCertificatesList,
-          continents: ScansGetResponseListsContinentsList,
-          countries: ScansGetResponseListsCountriesList,
-          domains: ScansGetResponseListsDomainsList,
-          hashes: ScansGetResponseListsHashesList,
-          ips: ScansGetResponseListsIpsList,
-          linkDomains: ScansGetResponseListsLinkDomainsList,
-          servers: ScansGetResponseListsServersList,
-          urls: ScansGetResponseListsUrlsList,
+          asns: __S(43),
+          certificates: __S(45),
+          continents: __S(43),
+          countries: __S(43),
+          domains: __S(43),
+          hashes: __S(43),
+          ips: __S(43),
+          linkDomains: __S(43),
+          servers: __S(43),
+          urls: __S(43),
         }),
       ).annotate({ identifier: "ScansGetResponseLists" });
     case 7:
@@ -3050,11 +2130,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ScansGetResponseMetaProcessorsAsnDataItem);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsAsnDataList,
+          data: __S(48),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAsn",
@@ -3071,11 +2151,11 @@ function __c6(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsDnsDataItem",
       });
     case 3:
-      return S.Array(ScansGetResponseMetaProcessorsDnsDataItem);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsDnsDataList,
+          data: __S(51),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsDns",
@@ -3091,11 +2171,11 @@ function __c6(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsDomainCategoriesDataItem",
       });
     case 6:
-      return S.Array(ScansGetResponseMetaProcessorsDomainCategoriesDataItem);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsDomainCategoriesDataList,
+          data: __S(54),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsDomainCategories",
@@ -3110,7 +2190,7 @@ function __c7(j: number): any {
           city: S.String,
           country: S.String,
           countryName: S.String.pipe(T.Body("country_name")),
-          ll: ScansGetResponseMetaProcessorsGeoipDataItemGeoipLlList,
+          ll: __S(29),
           region: S.String,
         }),
       ).annotate({
@@ -3119,18 +2199,18 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          geoip: ScansGetResponseMetaProcessorsGeoipDataItemGeoip,
+          geoip: __S(56),
           ip: S.String,
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsGeoipDataItem",
       });
     case 2:
-      return S.Array(ScansGetResponseMetaProcessorsGeoipDataItem);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsGeoipDataList,
+          data: __S(58),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsGeoip",
@@ -3138,7 +2218,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsPhishingDataList,
+          data: __S(43),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsPhishing",
@@ -3154,11 +2234,11 @@ function __c7(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsRadarRankDataItem",
       });
     case 6:
-      return S.Array(ScansGetResponseMetaProcessorsRadarRankDataItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsRadarRankDataList,
+          data: __S(62),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRadarRank",
@@ -3177,7 +2257,7 @@ function __c8(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem",
       });
     case 1:
-      return S.Array(ScansGetResponseMetaProcessorsWappaDataItemCategoriesItem);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3190,13 +2270,13 @@ function __c8(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem",
       });
     case 3:
-      return S.Array(ScansGetResponseMetaProcessorsWappaDataItemConfidenceItem);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           app: S.String,
-          categories: ScansGetResponseMetaProcessorsWappaDataItemCategoriesList,
-          confidence: ScansGetResponseMetaProcessorsWappaDataItemConfidenceList,
+          categories: __S(65),
+          confidence: __S(67),
           confidenceTotal: S.Number,
           icon: S.String,
           website: S.String,
@@ -3205,11 +2285,11 @@ function __c8(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsWappaDataItem",
       });
     case 5:
-      return S.Array(ScansGetResponseMetaProcessorsWappaDataItem);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsWappaDataList,
+          data: __S(69),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsWappa",
@@ -3258,30 +2338,16 @@ function __c9(j: number): any {
         S.Struct({
           action: S.String,
           label: S.String,
-          finding: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemFinding,
-            ),
-          ),
-          request: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemRequest,
-            ),
-          ),
-          response: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItemResponse,
-            ),
-          ),
+          finding: S.optional(S.NullOr(__S(71))),
+          request: S.optional(S.NullOr(__S(72))),
+          response: S.optional(S.NullOr(__S(73))),
         }),
       ).annotate({
         identifier:
           "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem",
       });
     case 3:
-      return S.Array(
-        ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceItem,
-      );
+      return S.Array(__S(74));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3298,17 +2364,9 @@ function __c9(j: number): any {
           status: S.String,
           details: S.optional(S.NullOr(S.Unknown)),
           durationMs: S.optional(S.NullOr(S.Number)),
-          evidence: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsEvidenceList,
-            ),
-          ),
+          evidence: S.optional(S.NullOr(__S(75))),
           message: S.optional(S.NullOr(S.String)),
-          messageRef: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef,
-            ),
-          ),
+          messageRef: S.optional(S.NullOr(__S(76))),
         }),
       ).annotate({
         identifier:
@@ -3320,17 +2378,9 @@ function __c9(j: number): any {
           status: S.String,
           details: S.optional(S.NullOr(S.Unknown)),
           durationMs: S.optional(S.NullOr(S.Number)),
-          evidence: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRulesEvidenceList,
-            ),
-          ),
+          evidence: S.optional(S.NullOr(__S(75))),
           message: S.optional(S.NullOr(S.String)),
-          messageRef: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef,
-            ),
-          ),
+          messageRef: S.optional(S.NullOr(__S(76))),
         }),
       ).annotate({
         identifier:
@@ -3339,11 +2389,9 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          contentSignals:
-            ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignals,
-          robotsTxtAiRules:
-            ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlRobotsTxtAiRules,
-          webBotAuth: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlWebBotAuth,
+          contentSignals: __S(77),
+          robotsTxtAiRules: __S(78),
+          webBotAuth: __S(77),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl",
@@ -3358,15 +2406,9 @@ function __c10(j: number): any {
           status: S.String,
           details: S.optional(S.NullOr(S.Unknown)),
           durationMs: S.optional(S.NullOr(S.Number)),
-          evidence: S.optional(
-            S.NullOr(ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcpEvidenceList),
-          ),
+          evidence: S.optional(S.NullOr(__S(75))),
           message: S.optional(S.NullOr(S.String)),
-          messageRef: S.optional(
-            S.NullOr(
-              ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControlContentSignalsMessageRef,
-            ),
-          ),
+          messageRef: S.optional(S.NullOr(__S(76))),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp",
@@ -3374,11 +2416,11 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          acp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAcp,
-          ap2: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceAp2,
-          mpp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceMpp,
-          ucp: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceUcp,
-          x402: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerceX402,
+          acp: __S(80),
+          ap2: __S(80),
+          mpp: __S(80),
+          ucp: __S(80),
+          x402: __S(80),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce",
@@ -3386,8 +2428,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          markdownNegotiation:
-            ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibilityMarkdownNegotiation,
+          markdownNegotiation: __S(78),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility",
@@ -3395,10 +2436,10 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dnsAid: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityDnsAid,
-          linkHeaders: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityLinkHeaders,
-          robotsTxt: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilityRobotsTxt,
-          sitemap: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverabilitySitemap,
+          dnsAid: __S(77),
+          linkHeaders: __S(77),
+          robotsTxt: __S(77),
+          sitemap: __S(77),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability",
@@ -3406,16 +2447,15 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          a2aAgentCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryA2aAgentCard,
-          agentSkills: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAgentSkills,
-          apiCatalog: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryApiCatalog,
-          ard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryArd,
-          authMd: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryAuthMd,
-          mcpServerCard: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryMcpServerCard,
-          oauthDiscovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthDiscovery,
-          oauthProtectedResource:
-            ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryOauthProtectedResource,
-          webMcp: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoveryWebMcp,
+          a2aAgentCard: __S(77),
+          agentSkills: __S(77),
+          apiCatalog: __S(80),
+          ard: __S(80),
+          authMd: __S(80),
+          mcpServerCard: __S(77),
+          oauthDiscovery: __S(77),
+          oauthProtectedResource: __S(77),
+          webMcp: __S(80),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery",
@@ -3423,12 +2463,11 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          botAccessControl: ScansGetResponseMetaProcessorsAgentReadinessChecksBotAccessControl,
-          commerce: ScansGetResponseMetaProcessorsAgentReadinessChecksCommerce,
-          contentAccessibility:
-            ScansGetResponseMetaProcessorsAgentReadinessChecksContentAccessibility,
-          discoverability: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscoverability,
-          discovery: ScansGetResponseMetaProcessorsAgentReadinessChecksDiscovery,
+          botAccessControl: __S(79),
+          commerce: __S(81),
+          contentAccessibility: __S(82),
+          discoverability: __S(83),
+          discovery: __S(84),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessChecks",
@@ -3440,14 +2479,13 @@ function __c10(j: number): any {
           description: S.String,
           prompt: S.String,
           skillUrl: S.String,
-          specUrls:
-            ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItemSpecUrlsList,
+          specUrls: __S(31),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem",
       });
     case 7:
-      return S.Array(ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsItem);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -3456,7 +2494,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          requirements: ScansGetResponseMetaProcessorsAgentReadinessNextLevelRequirementsList,
+          requirements: __S(87),
           target: S.Number,
         }),
       ).annotate({
@@ -3465,14 +2503,12 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          checks: ScansGetResponseMetaProcessorsAgentReadinessChecks,
+          checks: __S(85),
           level: S.Number,
           levelName: S.String,
-          commerceSignals: S.optional(
-            S.NullOr(ScansGetResponseMetaProcessorsAgentReadinessCommerceSignalsList),
-          ),
+          commerceSignals: S.optional(S.NullOr(__S(31))),
           isCommerce: S.optional(S.NullOr(S.Boolean)),
-          nextLevel: S.optional(S.NullOr(ScansGetResponseMetaProcessorsAgentReadinessNextLevel)),
+          nextLevel: S.optional(S.NullOr(__S(88))),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsAgentReadiness",
@@ -3490,34 +2526,32 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueAllowList,
-          disallow: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueDisallowList,
-          contentSignal: S.optional(
-            S.NullOr(ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValueContentSignal),
-          ),
+          allow: __S(31),
+          disallow: __S(31),
+          contentSignal: S.optional(S.NullOr(__S(90))),
           crawlDelay: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue",
       });
     case 4:
-      return S.Record(S.String, ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesValue);
+      return S.Record(S.String, __S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          rules: ScansGetResponseMetaProcessorsRobotsTxtDataItemRulesMap,
-          sitemaps: ScansGetResponseMetaProcessorsRobotsTxtDataItemSitemapsList,
+          rules: __S(92),
+          sitemaps: __S(43),
           hash: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxtDataItem",
       });
     case 6:
-      return S.Array(ScansGetResponseMetaProcessorsRobotsTxtDataItem);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsRobotsTxtDataList,
+          data: __S(94),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsRobotsTxt",
@@ -3537,15 +2571,15 @@ function __c12(j: number): any {
         identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem",
       });
     case 1:
-      return S.Array(ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem);
+      return S.Array(__S(96));
     case 2:
-      return S.Array(ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentItem);
+      return S.Array(__S(96));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedContentList,
+          content: __S(98),
           from: S.String,
-          risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInheritedRisksList,
+          risks: __S(98),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited",
@@ -3553,20 +2587,20 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content: ScansGetResponseMetaProcessorsUrlCategoriesDataItemContentList,
-          inherited: ScansGetResponseMetaProcessorsUrlCategoriesDataItemInherited,
+          content: __S(97),
+          inherited: __S(99),
           name: S.String,
-          risks: ScansGetResponseMetaProcessorsUrlCategoriesDataItemRisksList,
+          risks: __S(97),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategoriesDataItem",
       });
     case 5:
-      return S.Array(ScansGetResponseMetaProcessorsUrlCategoriesDataItem);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseMetaProcessorsUrlCategoriesDataList,
+          data: __S(101),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessorsUrlCategories",
@@ -3574,19 +2608,17 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          asn: ScansGetResponseMetaProcessorsAsn,
-          dns: ScansGetResponseMetaProcessorsDns,
-          domainCategories: ScansGetResponseMetaProcessorsDomainCategories,
-          geoip: ScansGetResponseMetaProcessorsGeoip,
-          phishing: ScansGetResponseMetaProcessorsPhishing,
-          radarRank: ScansGetResponseMetaProcessorsRadarRank,
-          wappa: ScansGetResponseMetaProcessorsWappa,
-          agentReadiness: S.optional(S.NullOr(ScansGetResponseMetaProcessorsAgentReadiness)),
-          phishingV2: S.optional(
-            S.NullOr(ScansGetResponseMetaProcessorsPhishingV2).pipe(T.Body("phishing_v2")),
-          ),
-          robotsTxt: S.optional(S.NullOr(ScansGetResponseMetaProcessorsRobotsTxt)),
-          urlCategories: S.optional(S.NullOr(ScansGetResponseMetaProcessorsUrlCategories)),
+          asn: __S(49),
+          dns: __S(52),
+          domainCategories: __S(55),
+          geoip: __S(59),
+          phishing: __S(60),
+          radarRank: __S(63),
+          wappa: __S(70),
+          agentReadiness: S.optional(S.NullOr(__S(89))),
+          phishingV2: S.optional(S.NullOr(__S(60)).pipe(T.Body("phishing_v2"))),
+          robotsTxt: S.optional(S.NullOr(__S(95))),
+          urlCategories: S.optional(S.NullOr(__S(102))),
         }),
       ).annotate({
         identifier: "ScansGetResponseMetaProcessors",
@@ -3598,7 +2630,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          processors: ScansGetResponseMetaProcessors,
+          processors: __S(103),
         }),
       ).annotate({ identifier: "ScansGetResponseMeta" });
     case 1:
@@ -3631,7 +2663,7 @@ function __c13(j: number): any {
           tlsValidDays: S.Number,
           tlsValidFrom: S.String,
           url: S.String,
-          screenshot: S.optional(S.NullOr(ScansGetResponsePageScreenshot)),
+          screenshot: S.optional(S.NullOr(__S(105))),
         }),
       ).annotate({ identifier: "ScansGetResponsePage" });
     case 3:
@@ -3645,12 +2677,12 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: ScansGetResponseStatsDomainStatsItemCountriesList,
+          countries: __S(43),
           domain: S.String,
           encodedSize: S.Number,
           index: S.Number,
-          initiators: ScansGetResponseStatsDomainStatsItemInitiatorsList,
-          ips: ScansGetResponseStatsDomainStatsItemIpsList,
+          initiators: __S(43),
+          ips: __S(43),
           redirects: S.Number,
           size: S.Number,
         }),
@@ -3658,15 +2690,15 @@ function __c13(j: number): any {
         identifier: "ScansGetResponseStatsDomainStatsItem",
       });
     case 5:
-      return S.Array(ScansGetResponseStatsDomainStatsItem);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          asn: ScansGetResponseDataRequestsItemResponseAsn,
-          countries: ScansGetResponseStatsIpStatsItemCountriesList,
-          domains: ScansGetResponseStatsIpStatsItemDomainsList,
+          asn: __S(28),
+          countries: __S(43),
+          domains: __S(43),
           encodedSize: S.Number,
-          geoip: ScansGetResponseStatsIpStatsItemGeoip,
+          geoip: __S(56),
           index: S.Number,
           ip: S.String,
           ipv6: S.Boolean,
@@ -3679,7 +2711,7 @@ function __c13(j: number): any {
         identifier: "ScansGetResponseStatsIpStatsItem",
       });
     case 7:
-      return S.Array(ScansGetResponseStatsIpStatsItem);
+      return S.Array(__S(110));
   }
 }
 function __c14(j: number): any {
@@ -3688,9 +2720,9 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: ScansGetResponseStatsProtocolStatsItemCountriesList,
+          countries: __S(43),
           encodedSize: S.Number,
-          ips: ScansGetResponseStatsProtocolStatsItemIpsList,
+          ips: __S(43),
           protocol: S.String,
           size: S.Number,
         }),
@@ -3698,15 +2730,15 @@ function __c14(j: number): any {
         identifier: "ScansGetResponseStatsProtocolStatsItem",
       });
     case 1:
-      return S.Array(ScansGetResponseStatsProtocolStatsItem);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
           compression: S.Number,
           count: S.Number,
-          countries: ScansGetResponseStatsResourceStatsItemCountriesList,
+          countries: __S(43),
           encodedSize: S.Number,
-          ips: ScansGetResponseStatsResourceStatsItemIpsList,
+          ips: __S(43),
           percentage: S.Number,
           size: S.Number,
           type: S.String,
@@ -3715,14 +2747,14 @@ function __c14(j: number): any {
         identifier: "ScansGetResponseStatsResourceStatsItem",
       });
     case 3:
-      return S.Array(ScansGetResponseStatsResourceStatsItem);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: ScansGetResponseStatsServerStatsItemCountriesList,
+          countries: __S(43),
           encodedSize: S.Number,
-          ips: ScansGetResponseStatsServerStatsItemIpsList,
+          ips: __S(43),
           server: S.String,
           size: S.Number,
         }),
@@ -3730,7 +2762,7 @@ function __c14(j: number): any {
         identifier: "ScansGetResponseStatsServerStatsItem",
       });
     case 5:
-      return S.Array(ScansGetResponseStatsServerStatsItem);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3743,10 +2775,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          countries: ScansGetResponseStatsTlsStatsItemCountriesList,
+          countries: __S(43),
           encodedSize: S.Number,
-          ips: ScansGetResponseStatsTlsStatsItemIpsList,
-          protocols: ScansGetResponseStatsTlsStatsItemProtocols,
+          ips: __S(43),
+          protocols: __S(118),
           securityState: S.String,
           size: S.Number,
         }),
@@ -3758,20 +2790,20 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ScansGetResponseStatsTlsStatsItem);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          domainStats: ScansGetResponseStatsDomainStatsList,
-          ipStats: ScansGetResponseStatsIpStatsList,
+          domainStats: __S(109),
+          ipStats: __S(111),
           iPv6Percentage: S.Number.pipe(T.Body("IPv6Percentage")),
           malicious: S.Number,
-          protocolStats: ScansGetResponseStatsProtocolStatsList,
-          resourceStats: ScansGetResponseStatsResourceStatsList,
+          protocolStats: __S(113),
+          resourceStats: __S(115),
           securePercentage: S.Number,
           secureRequests: S.Number,
-          serverStats: ScansGetResponseStatsServerStatsList,
-          tlsStats: ScansGetResponseStatsTlsStatsList,
+          serverStats: __S(117),
+          tlsStats: __S(120),
           totalLinks: S.Number,
           uniqASNs: S.Number,
           uniqCountries: S.Number,
@@ -3781,9 +2813,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customHeaders: S.optional(S.NullOr(S.Unknown)),
-          screenshotsResolutions: S.optional(
-            S.NullOr(ScansGetResponseTaskOptionsScreenshotsResolutionsList),
-          ),
+          screenshotsResolutions: S.optional(S.NullOr(__S(43))),
         }),
       ).annotate({
         identifier: "ScansGetResponseTaskOptions",
@@ -3795,7 +2825,7 @@ function __c15(j: number): any {
           domain: S.String,
           domURL: S.String,
           method: S.String,
-          options: ScansGetResponseTaskOptions,
+          options: __S(122),
           reportURL: S.String,
           screenshotURL: S.String,
           source: S.String,
@@ -3809,10 +2839,10 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          categories: ScansGetResponseVerdictsOverallCategoriesList,
+          categories: __S(43),
           hasVerdicts: S.Boolean,
           malicious: S.Boolean,
-          tags: ScansGetResponseVerdictsOverallTagsList,
+          tags: __S(43),
         }),
       ).annotate({
         identifier: "ScansGetResponseVerdictsOverall",
@@ -3820,20 +2850,20 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          overall: ScansGetResponseVerdictsOverall,
+          overall: __S(124),
         }),
       ).annotate({ identifier: "ScansGetResponseVerdicts" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ScansGetResponseData,
-          lists: ScansGetResponseLists,
-          meta: ScansGetResponseMeta,
-          page: ScansGetResponsePage,
-          scanner: ScansGetResponseScanner,
-          stats: ScansGetResponseStats,
-          task: ScansGetResponseTask,
-          verdicts: ScansGetResponseVerdicts,
+          data: __S(42),
+          lists: __S(46),
+          meta: __S(104),
+          page: __S(106),
+          scanner: __S(107),
+          stats: __S(121),
+          task: __S(123),
+          verdicts: __S(125),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScanResponse" });
     case 7:
@@ -3866,12 +2896,12 @@ function __c16(j: number): any {
         identifier: "ScansHarResponseLogCreator",
       });
     case 1:
-      return S.Array(ScansGetResponseDataRequestsItemRequestRedirectResponseSecurityHeadersItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           bodySize: S.Number,
-          headers: ScansHarResponseLogEntriesItemRequestHeadersList,
+          headers: __S(129),
           headersSize: S.Number,
           httpVersion: S.String,
           method: S.String,
@@ -3895,8 +2925,8 @@ function __c16(j: number): any {
         S.Struct({
           transferSize: S.Number.pipe(T.Body("_transferSize")),
           bodySize: S.Number,
-          content: ScansHarResponseLogEntriesItemResponseContent,
-          headers: ScansHarResponseLogEntriesItemResponseHeadersList,
+          content: __S(131),
+          headers: __S(129),
           headersSize: S.Number,
           httpVersion: S.String,
           redirectURL: S.String,
@@ -3918,8 +2948,8 @@ function __c16(j: number): any {
           cache: S.Unknown,
           connection: S.String,
           pageref: S.String,
-          request: ScansHarResponseLogEntriesItemRequest,
-          response: ScansHarResponseLogEntriesItemResponse,
+          request: __S(130),
+          response: __S(132),
           serverIPAddress: S.String,
           startedDateTime: S.String,
           time: S.Number,
@@ -3928,7 +2958,7 @@ function __c16(j: number): any {
         identifier: "ScansHarResponseLogEntriesItem",
       });
     case 6:
-      return S.Array(ScansHarResponseLogEntriesItem);
+      return S.Array(__S(133));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3946,7 +2976,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          pageTimings: ScansHarResponseLogPagesItemPageTimings,
+          pageTimings: __S(135),
           startedDateTime: S.String,
           title: S.String,
         }),
@@ -3954,20 +2984,20 @@ function __c17(j: number): any {
         identifier: "ScansHarResponseLogPagesItem",
       });
     case 1:
-      return S.Array(ScansHarResponseLogPagesItem);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          creator: ScansHarResponseLogCreator,
-          entries: ScansHarResponseLogEntriesList,
-          pages: ScansHarResponseLogPagesList,
+          creator: __S(128),
+          entries: __S(134),
+          pages: __S(137),
           version: S.String,
         }),
       ).annotate({ identifier: "ScansHarResponseLog" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          log: ScansHarResponseLog,
+          log: __S(138),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "HarScanResponse" });
     case 4:
@@ -4035,21 +3065,21 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Body("_id")),
-          page: ScansListResponseResultsItemPage,
+          page: __S(141),
           result: S.String,
-          stats: ScansListResponseResultsItemStats,
-          task: ScansListResponseResultsItemTask,
-          verdicts: ScansListResponseResultsItemVerdicts,
+          stats: __S(142),
+          task: __S(143),
+          verdicts: __S(144),
         }),
       ).annotate({
         identifier: "ScansListResponseResultsItem",
       });
     case 2:
-      return S.Array(ScansListResponseResultsItem);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: ScansListResponseResultsList,
+          results: __S(146),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListScansResponse" });
     case 4:
@@ -4057,7 +3087,7 @@ function __c18(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scanId: S.String.pipe(T.Label("scan_id")),
-          resolution: S.optional(ScansScreenshotRequestResolution.pipe(T.Query())),
+          resolution: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -4068,5 +3098,52 @@ function __c18(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ScreenshotScanRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
   }
 }

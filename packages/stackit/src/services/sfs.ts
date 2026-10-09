@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -21,18 +23,8 @@ export class BadRequest
 
 /** List of IPs that can mount the Resource Pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) */
 export type CreateResourcePoolRequestIpAclList = Array<string>;
-const CreateResourcePoolRequestIpAclList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateResourcePoolRequestIpAclList>;
-
 /** An optional object that represents the labels associated with the resource pool. */
 export type CreateResourcePoolRequestLabelsMap = { [key: string]: string | undefined };
-const CreateResourcePoolRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateResourcePoolRequestLabelsMap>;
-
 export interface CreateResourcePoolRequest {
   projectId: string;
   region: string;
@@ -53,20 +45,9 @@ export interface CreateResourcePoolRequest {
   /** Whether the .snapshot directory is visible when mounting the resource pool. Setting this value to false might prevent you from accessing the snapshots (e.g. for security reasons). Additionally, the access to the snapshots is always controlled by the export policy of the resource pool. That means, if snapshots are visible and the export policy allows for reading the resource pool, then it also allows reading the snapshot of all shares. */
   snapshotsAreVisible?: boolean;
 }
-const CreateResourcePoolRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateResourcePoolRequest>;
-
 /** List of IPs that can mount the Resource Pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) */
 export type ResourcePoolIpAclList = Array<string>;
-const ResourcePoolIpAclList =
-  CreateResourcePoolRequestIpAclList as any as S.Schema<ResourcePoolIpAclList>;
-
 export type ResourcePoolLabelsMap = { [key: string]: string | undefined };
-const ResourcePoolLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<ResourcePoolLabelsMap>;
-
 export interface ResourcePoolPerformanceClass {
   /** Name of the performance class */
   name?: string;
@@ -75,22 +56,12 @@ export interface ResourcePoolPerformanceClass {
   /** Throughput of the Resource Pool. */
   throughput?: number;
 }
-const ResourcePoolPerformanceClass = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ResourcePoolPerformanceClass>;
-
 export interface ResourcePoolSnapshotPolicy {
   /** ID of the Snapshot Policy */
   id?: string;
   /** Name of the Snapshot Policy */
   name?: string;
 }
-const ResourcePoolSnapshotPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ResourcePoolSnapshotPolicy>;
-
 export interface ResourcePoolSpace {
   /** Available space of the Resource Pool (only available when retrieving a single Resource Pool by ID) */
   availableGigabytes?: number | null;
@@ -101,8 +72,6 @@ export interface ResourcePoolSpace {
   /** Used space of the Resource Pool (only available when retrieving a single Resource Pool by ID) */
   usedGigabytes?: number | null;
 }
-const ResourcePoolSpace = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResourcePoolSpace>;
-
 export interface ResourcePool {
   /** Name of the respective availability zone */
   availabilityZone?: string;
@@ -133,17 +102,10 @@ export interface ResourcePool {
   /** State of the Resource Pool (possible values: ["pending", "creating", "created", "updating", "error", "deleting"]) */
   state?: string;
 }
-const ResourcePool = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ResourcePool>;
-
 export interface CreateResourcePoolResponse {
   /** Created Resource Pool */
   resourcePool?: ResourcePool;
 }
-const CreateResourcePoolResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateResourcePoolResponse>;
-
 export interface CreateResourcePoolSnapshotRequest {
   projectId: string;
   region: string;
@@ -155,11 +117,6 @@ export interface CreateResourcePoolSnapshotRequest {
   /** (optional) Time in hours after which snaplock on the snapshot expires */
   snaplockRetentionHours?: number | null;
 }
-const CreateResourcePoolSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateResourcePoolSnapshotRequest>;
-
 export interface ResourcePoolSnapshot {
   /** (optional) A comment to add more information about a snapshot */
   comment?: string | null;
@@ -175,22 +132,12 @@ export interface ResourcePoolSnapshot {
   /** Name of the Resource Pool Snapshot */
   snapshotName?: string;
 }
-const ResourcePoolSnapshot = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ResourcePoolSnapshot>;
-
 export interface CreateResourcePoolSnapshotResponse {
   /** Created Resource Pool Snapshot */
   resourcePoolSnapshot?: ResourcePoolSnapshot;
 }
-const CreateResourcePoolSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateResourcePoolSnapshotResponse>;
-
 /** An optional object that represents the labels associated with the share. */
 export type CreateShareRequestLabelsMap = { [key: string]: string | undefined };
-const CreateShareRequestLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<CreateShareRequestLabelsMap>;
-
 export interface CreateShareRequest {
   projectId: string;
   region: string;
@@ -204,18 +151,10 @@ export interface CreateShareRequest {
   /** Space hard limit for the Share. If zero, the Share will have access to the full space of the Resource Pool it lives in. (unit: gibibytes) */
   spaceHardLimitGigabytes: number;
 }
-const CreateShareRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateShareRequest>;
-
 /** An optional object that represents the labels associated with the share export policy. */
 export type ShareExportPolicyLabelsMap = { [key: string]: string | undefined };
-const ShareExportPolicyLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<ShareExportPolicyLabelsMap>;
-
 /** IP access control list, where IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.251/32" for a specific IP) This array cannot be empty */
 export type ShareExportPolicyRuleIpAclList = Array<string>;
-const ShareExportPolicyRuleIpAclList =
-  CreateResourcePoolRequestIpAclList as any as S.Schema<ShareExportPolicyRuleIpAclList>;
-
 export interface ShareExportPolicyRule {
   createdAt?: string;
   /** Description of the Rule (optional) */
@@ -233,18 +172,8 @@ export interface ShareExportPolicyRule {
   /** Flag to indicate if client IPs matching this rule have root access on the Share Default: true */
   superUser?: boolean;
 }
-const ShareExportPolicyRule = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ShareExportPolicyRule>;
-
 /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule */
 export type ShareExportPolicyRulesList = Array<ShareExportPolicyRule>;
-const ShareExportPolicyRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ShareExportPolicyRulesList>;
-
 export interface ShareExportPolicy {
   createdAt?: string;
   /** ID of the Share Export Policy */
@@ -258,12 +187,8 @@ export interface ShareExportPolicy {
   /** Number of Shares using this Share Export Policy */
   sharesUsingExportPolicy?: number;
 }
-const ShareExportPolicy = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ShareExportPolicy>;
-
 /** An optional object that represents the labels associated with the share. */
 export type ShareLabelsMap = { [key: string]: string | undefined };
-const ShareLabelsMap = CreateResourcePoolRequestLabelsMap as any as S.Schema<ShareLabelsMap>;
-
 export interface Share {
   createdAt?: string;
   /** Details of the Share Export Policy to use in the Share. Note that if this is not set, the Share can only be mounted in read only by clients with IPs matching the IP ACL of the Resource Pool hosting this Share */
@@ -281,24 +206,14 @@ export interface Share {
   /** State of the Resource Pool Snapshot (possible values: ["pending", "creating", "created", "error", "deleting"]) */
   state?: string;
 }
-const Share = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Share>;
-
 export interface CreateShareResponse {
   /** Created Share */
   share?: Share;
 }
-const CreateShareResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateShareResponse>;
-
 /** An optional object that represents the labels associated with the share export policy. */
 export type CreateShareExportPolicyRequestLabelsMap = { [key: string]: string | undefined };
-const CreateShareExportPolicyRequestLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<CreateShareExportPolicyRequestLabelsMap>;
-
 /** IP access control list, where IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) This array cannot be empty */
 export type CreateShareExportPolicyRequestRuleIpAclList = Array<string>;
-const CreateShareExportPolicyRequestRuleIpAclList =
-  CreateResourcePoolRequestIpAclList as any as S.Schema<CreateShareExportPolicyRequestRuleIpAclList>;
-
 export interface CreateShareExportPolicyRequestRule {
   /** Description of the Rule (optional) */
   description?: string | null;
@@ -313,18 +228,8 @@ export interface CreateShareExportPolicyRequestRule {
   /** Flag to indicate if client IPs matching this rule have root access on the Share Default: true */
   superUser?: boolean;
 }
-const CreateShareExportPolicyRequestRule = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateShareExportPolicyRequestRule>;
-
 /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule */
 export type CreateShareExportPolicyRequestRulesList = Array<CreateShareExportPolicyRequestRule>;
-const CreateShareExportPolicyRequestRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateShareExportPolicyRequestRulesList>;
-
 export interface CreateShareExportPolicyRequest {
   projectId: string;
   region: string;
@@ -335,184 +240,97 @@ export interface CreateShareExportPolicyRequest {
   /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule */
   rules?: CreateShareExportPolicyRequestRulesList;
 }
-const CreateShareExportPolicyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateShareExportPolicyRequest>;
-
 export interface CreateShareExportPolicyResponse {
   /** Created Share Export Policy */
   shareExportPolicy?: ShareExportPolicy;
 }
-const CreateShareExportPolicyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateShareExportPolicyResponse>;
-
 export interface DeleteResourcePoolRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
 }
-const DeleteResourcePoolRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteResourcePoolRequest>;
-
 export type DeleteResourcePoolResponse2 = unknown;
-const DeleteResourcePoolResponse2 = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteResourcePoolResponse2>;
-
 export interface DeleteResourcePoolSnapshotRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
   snapshotName: string;
 }
-const DeleteResourcePoolSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteResourcePoolSnapshotRequest>;
-
 export type DeleteResourcePoolSnapshotResponse2 = unknown;
-const DeleteResourcePoolSnapshotResponse2 =
-  DeleteResourcePoolResponse2 as any as S.Schema<DeleteResourcePoolSnapshotResponse2>;
-
 export interface DeleteShareRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
   shareId: string;
 }
-const DeleteShareRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteShareRequest>;
-
 export type DeleteShareResponse2 = unknown;
-const DeleteShareResponse2 = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeleteShareResponse2>;
-
 export interface DeleteShareExportPolicyRequest {
   projectId: string;
   region: string;
   policyId: string;
 }
-const DeleteShareExportPolicyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteShareExportPolicyRequest>;
-
 export type DeleteShareExportPolicyResponse2 = unknown;
-const DeleteShareExportPolicyResponse2 =
-  DeleteResourcePoolResponse2 as any as S.Schema<DeleteShareExportPolicyResponse2>;
-
 export interface DisableLockRequest {
   region: string;
   projectId: string;
 }
-const DisableLockRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DisableLockRequest>;
-
 export type DisableLockResponse2 = unknown;
-const DisableLockResponse2 = DeleteShareResponse2 as any as S.Schema<DisableLockResponse2>;
-
 export interface EnableLockRequest {
   region: string;
   projectId: string;
 }
-const EnableLockRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EnableLockRequest>;
-
 export interface EnableLockResponse {
   lockId?: string;
 }
-const EnableLockResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<EnableLockResponse>;
-
 export interface GetLockRequest {
   region: string;
   projectId: string;
 }
-const GetLockRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetLockRequest>;
-
 export interface GetLockResponse {
   lockId?: string;
 }
-const GetLockResponse = EnableLockResponse as any as S.Schema<GetLockResponse>;
-
 export interface GetResourcePoolRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
 }
-const GetResourcePoolRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetResourcePoolRequest>;
-
 export interface GetResourcePoolResponse {
   /** Resource Pool */
   resourcePool?: ResourcePool;
 }
-const GetResourcePoolResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetResourcePoolResponse>;
-
 export interface GetResourcePoolSnapshotRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
   snapshotName: string;
 }
-const GetResourcePoolSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetResourcePoolSnapshotRequest>;
-
 export interface GetResourcePoolSnapshotResponse {
   /** Resource Pool Snapshot */
   resourcePoolSnapshot?: ResourcePoolSnapshot;
 }
-const GetResourcePoolSnapshotResponse =
-  CreateResourcePoolSnapshotResponse as any as S.Schema<GetResourcePoolSnapshotResponse>;
-
 export interface GetShareRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
   shareId: string;
 }
-const GetShareRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetShareRequest>;
-
 export interface GetShareResponse {
   /** Share */
   share?: Share;
 }
-const GetShareResponse = CreateShareResponse as any as S.Schema<GetShareResponse>;
-
 export interface GetShareExportPolicyRequest {
   projectId: string;
   region: string;
   policyId: string;
 }
-const GetShareExportPolicyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetShareExportPolicyRequest>;
-
 export interface GetShareExportPolicyResponse {
   /** Share Export Policies */
   shareExportPolicy?: ShareExportPolicy;
 }
-const GetShareExportPolicyResponse =
-  CreateShareExportPolicyResponse as any as S.Schema<GetShareExportPolicyResponse>;
-
 export interface GetSnapshotPolicyRequest {
   projectId: string;
   id: string;
 }
-const GetSnapshotPolicyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetSnapshotPolicyRequest>;
-
 export interface SnapshotPolicySchedule {
   /** Retention Count */
   count?: number;
@@ -525,18 +343,8 @@ export interface SnapshotPolicySchedule {
   /** ID of the Schedule */
   scheduleId?: string;
 }
-const SnapshotPolicySchedule = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SnapshotPolicySchedule>;
-
 /** (deprecated) associated schedules */
 export type SnapshotPolicySchedulesList = Array<SnapshotPolicySchedule>;
-const SnapshotPolicySchedulesList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<SnapshotPolicySchedulesList>;
-
 export interface SnapshotPolicySnapshotPolicySchedule {
   createdAt?: string;
   /** ID of the Schedule */
@@ -552,18 +360,8 @@ export interface SnapshotPolicySnapshotPolicySchedule {
   /** Retention Period (ISO 8601 format or "infinite") */
   retentionPeriod?: string;
 }
-const SnapshotPolicySnapshotPolicySchedule = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SnapshotPolicySnapshotPolicySchedule>;
-
 /** associated schedules */
 export type SnapshotPolicySnapshotSchedulesList = Array<SnapshotPolicySnapshotPolicySchedule>;
-const SnapshotPolicySnapshotSchedulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<SnapshotPolicySnapshotSchedulesList>;
-
 export interface SnapshotPolicy {
   /** Comment of the Snapshot Policy */
   comment?: string;
@@ -580,23 +378,11 @@ export interface SnapshotPolicy {
   /** associated schedules */
   snapshotSchedules?: SnapshotPolicySnapshotSchedulesList;
 }
-const SnapshotPolicy = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SnapshotPolicy>;
-
 export interface GetSnapshotPolicyResponse {
   /** Snapshot Policy */
   snapshotPolicy?: SnapshotPolicy;
 }
-const GetSnapshotPolicyResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetSnapshotPolicyResponse>;
-
 export interface ListPerformanceClassesRequest {}
-const ListPerformanceClassesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListPerformanceClassesRequest>;
-
 export interface PerformanceClass {
   /** IOPS of the Performance Class */
   iops?: number;
@@ -605,156 +391,69 @@ export interface PerformanceClass {
   /** Throughput of the Performance Class */
   throughput?: number;
 }
-const PerformanceClass = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<PerformanceClass>;
-
 /** List of Performance Classes */
 export type ListPerformanceClassesResponsePerformanceClassesList = Array<PerformanceClass>;
-const ListPerformanceClassesResponsePerformanceClassesList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListPerformanceClassesResponsePerformanceClassesList>;
-
 export interface ListPerformanceClassesResponse {
   /** List of Performance Classes */
   performanceClasses?: ListPerformanceClassesResponsePerformanceClassesList;
 }
-const ListPerformanceClassesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListPerformanceClassesResponse>;
-
 export interface ListResourcePoolsRequest {
   projectId: string;
   region: string;
 }
-const ListResourcePoolsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListResourcePoolsRequest>;
-
 /** List of Resource Pools */
 export type ListResourcePoolsResponseResourcePoolsList = Array<ResourcePool>;
-const ListResourcePoolsResponseResourcePoolsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListResourcePoolsResponseResourcePoolsList>;
-
 export interface ListResourcePoolsResponse {
   /** List of Resource Pools */
   resourcePools?: ListResourcePoolsResponseResourcePoolsList;
 }
-const ListResourcePoolsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListResourcePoolsResponse>;
-
 export interface ListResourcePoolSnapshotsRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
 }
-const ListResourcePoolSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListResourcePoolSnapshotsRequest>;
-
 /** List of Resource Pool Snapshots */
 export type ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList =
   Array<ResourcePoolSnapshot>;
-const ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList>;
-
 export interface ListResourcePoolSnapshotsResponse {
   /** List of Resource Pool Snapshots */
   resourcePoolSnapshots?: ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList;
 }
-const ListResourcePoolSnapshotsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListResourcePoolSnapshotsResponse>;
-
 export interface ListShareExportPoliciesRequest {
   projectId: string;
   region: string;
 }
-const ListShareExportPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListShareExportPoliciesRequest>;
-
 /** List of Share Export Policies */
 export type ListShareExportPoliciesResponseShareExportPoliciesList = Array<ShareExportPolicy>;
-const ListShareExportPoliciesResponseShareExportPoliciesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListShareExportPoliciesResponseShareExportPoliciesList>;
-
 export interface ListShareExportPoliciesResponse {
   /** List of Share Export Policies */
   shareExportPolicies?: ListShareExportPoliciesResponseShareExportPoliciesList;
 }
-const ListShareExportPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListShareExportPoliciesResponse>;
-
 export interface ListSharesRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
 }
-const ListSharesRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListSharesRequest>;
-
 /** List of Shares */
 export type ListSharesResponseSharesList = Array<Share>;
-const ListSharesResponseSharesList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListSharesResponseSharesList>;
-
 export interface ListSharesResponse {
   /** List of Shares */
   shares?: ListSharesResponseSharesList;
 }
-const ListSharesResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListSharesResponse>;
-
 export interface ListSnapshotPoliciesRequest {
   projectId: string;
   immutable?: boolean;
 }
-const ListSnapshotPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListSnapshotPoliciesRequest>;
-
 /** List of Snapshot Policies */
 export type ListSnapshotPoliciesResponseSnapshotPoliciesList = Array<SnapshotPolicy>;
-const ListSnapshotPoliciesResponseSnapshotPoliciesList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListSnapshotPoliciesResponseSnapshotPoliciesList>;
-
 export interface ListSnapshotPoliciesResponse {
   /** List of Snapshot Policies */
   snapshotPolicies?: ListSnapshotPoliciesResponseSnapshotPoliciesList;
 }
-const ListSnapshotPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListSnapshotPoliciesResponse>;
-
 /** (optional) List of IPs that can mount the Resource Pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) */
 export type UpdateResourcePoolRequestIpAclList = Array<string>;
-const UpdateResourcePoolRequestIpAclList =
-  CreateResourcePoolRequestIpAclList as any as S.Schema<UpdateResourcePoolRequestIpAclList>;
-
 /** An optional object that represents the labels associated with the resource pool. */
 export type UpdateResourcePoolRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateResourcePoolRequestLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<UpdateResourcePoolRequestLabelsMap>;
-
 export interface UpdateResourcePoolRequest {
   projectId: string;
   region: string;
@@ -772,18 +471,10 @@ export interface UpdateResourcePoolRequest {
   /** Whether the .snapshot directory is visible when mounting the resource pool. Setting this value to false might prevent you from accessing the snapshots (e.g. for security reasons). Additionally, the access to the snapshots is always controlled by the export policy of the resource pool. That means, if snapshots are visible and the export policy allows for reading the resource pool, then it also allows reading the snapshot of all shares. */
   snapshotsAreVisible?: boolean;
 }
-const UpdateResourcePoolRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UpdateResourcePoolRequest>;
-
 export interface UpdateResourcePoolResponse {
   /** Updated Resource Pool */
   resourcePool?: ResourcePool;
 }
-const UpdateResourcePoolResponse =
-  CreateResourcePoolResponse as any as S.Schema<UpdateResourcePoolResponse>;
-
 export interface UpdateResourcePoolSnapshotRequest {
   projectId: string;
   region: string;
@@ -794,23 +485,12 @@ export interface UpdateResourcePoolSnapshotRequest {
   /** (optional) name of the Resource Pool Snapshot */
   name?: string | null;
 }
-const UpdateResourcePoolSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UpdateResourcePoolSnapshotRequest>;
-
 export interface UpdateResourcePoolSnapshotResponse {
   /** Updated Resource Pool Snapshot */
   resourcePoolSnapshot?: ResourcePoolSnapshot;
 }
-const UpdateResourcePoolSnapshotResponse =
-  CreateResourcePoolSnapshotResponse as any as S.Schema<UpdateResourcePoolSnapshotResponse>;
-
 /** An optional object that represents the labels associated with the share. */
 export type UpdateShareRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateShareRequestLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<UpdateShareRequestLabelsMap>;
-
 export interface UpdateShareRequest {
   projectId: string;
   region: string;
@@ -823,19 +503,12 @@ export interface UpdateShareRequest {
   /** Space hard limit for the Share. If zero, the Share will have access to the full space of the Resource Pool it lives in. (unit: gibibytes) */
   spaceHardLimitGigabytes?: number | null;
 }
-const UpdateShareRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<UpdateShareRequest>;
-
 export interface UpdateShareResponse {
   /** Updated Share */
   share?: Share;
 }
-const UpdateShareResponse = CreateShareResponse as any as S.Schema<UpdateShareResponse>;
-
 /** An optional object that represents the labels associated with the share export policy. */
 export type UpdateShareExportPolicyRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateShareExportPolicyRequestLabelsMap =
-  CreateResourcePoolRequestLabelsMap as any as S.Schema<UpdateShareExportPolicyRequestLabelsMap>;
-
 /** IP access control list, where IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) This array cannot be empty */
 export type UpdateShareExportPolicyBodyRuleIpAclList = Array<string>;
 export interface UpdateShareExportPolicyBodyRule {
@@ -854,9 +527,6 @@ export interface UpdateShareExportPolicyBodyRule {
 }
 /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule. The whole set of rules needs to be sent in the same request, e.g. if 1 rule is sent, the share export policy will have just that 1 rule, as opposed to extending the existing set of rules with the 1 rule that was sent Important note: the array of rules passed always overwrites the rule array (i.e. sending an empty array removes all rules) */
 export type UpdateShareExportPolicyRequestRulesList = Array<UpdateShareExportPolicyBodyRule>;
-const UpdateShareExportPolicyRequestRulesList =
-  CreateShareExportPolicyRequestRulesList as any as S.Schema<UpdateShareExportPolicyRequestRulesList>;
-
 export interface UpdateShareExportPolicyRequest {
   projectId: string;
   region: string;
@@ -866,17 +536,9 @@ export interface UpdateShareExportPolicyRequest {
   /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule. The whole set of rules needs to be sent in the same request, e.g. if 1 rule is sent, the share export policy will have just that 1 rule, as opposed to extending the existing set of rules with the 1 rule that was sent Important note: the array of rules passed always overwrites the rule array (i.e. sending an empty array removes all rules) */
   rules?: UpdateShareExportPolicyRequestRulesList | null;
 }
-const UpdateShareExportPolicyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<UpdateShareExportPolicyRequest>;
-
 export interface UpdateShareExportPolicyResponse {
   shareExportPolicy?: ShareExportPolicy;
 }
-const UpdateShareExportPolicyResponse =
-  CreateShareExportPolicyResponse as any as S.Schema<UpdateShareExportPolicyResponse>;
-
 export type CreateResourcePoolError = BadRequest | StackitOpError;
 /** Create Resource Pool Create a Resource Pool in a project. */
 export const createResourcePool: API.OperationMethod<
@@ -885,8 +547,8 @@ export const createResourcePool: API.OperationMethod<
   CreateResourcePoolError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourcePoolRequest,
-  output: CreateResourcePoolResponse,
+  input: __S(2) as any as S.Schema<CreateResourcePoolRequest>,
+  output: __S(7) as any as S.Schema<CreateResourcePoolResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -900,8 +562,8 @@ export const createResourcePoolSnapshot: API.OperationMethod<
   CreateResourcePoolSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourcePoolSnapshotRequest,
-  output: CreateResourcePoolSnapshotResponse,
+  input: __S(8) as any as S.Schema<CreateResourcePoolSnapshotRequest>,
+  output: __S(10) as any as S.Schema<CreateResourcePoolSnapshotResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -915,8 +577,8 @@ export const createShare: API.OperationMethod<
   CreateShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateShareRequest,
-  output: CreateShareResponse,
+  input: __S(11) as any as S.Schema<CreateShareRequest>,
+  output: __S(16) as any as S.Schema<CreateShareResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -930,8 +592,8 @@ export const createShareExportPolicy: API.OperationMethod<
   CreateShareExportPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateShareExportPolicyRequest,
-  output: CreateShareExportPolicyResponse,
+  input: __S(19) as any as S.Schema<CreateShareExportPolicyRequest>,
+  output: __S(20) as any as S.Schema<CreateShareExportPolicyResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -945,8 +607,8 @@ export const deleteResourcePool: API.OperationMethod<
   DeleteResourcePoolError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePoolRequest,
-  output: DeleteResourcePoolResponse2,
+  input: __S(21) as any as S.Schema<DeleteResourcePoolRequest>,
+  output: __S(22) as any as S.Schema<DeleteResourcePoolResponse2>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -960,8 +622,8 @@ export const deleteResourcePoolSnapshot: API.OperationMethod<
   DeleteResourcePoolSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePoolSnapshotRequest,
-  output: DeleteResourcePoolSnapshotResponse2,
+  input: __S(23) as any as S.Schema<DeleteResourcePoolSnapshotRequest>,
+  output: __S(22) as any as S.Schema<DeleteResourcePoolSnapshotResponse2>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -975,8 +637,8 @@ export const deleteShare: API.OperationMethod<
   DeleteShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteShareRequest,
-  output: DeleteShareResponse2,
+  input: __S(24) as any as S.Schema<DeleteShareRequest>,
+  output: __S(25) as any as S.Schema<DeleteShareResponse2>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -990,8 +652,8 @@ export const deleteShareExportPolicy: API.OperationMethod<
   DeleteShareExportPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteShareExportPolicyRequest,
-  output: DeleteShareExportPolicyResponse2,
+  input: __S(26) as any as S.Schema<DeleteShareExportPolicyRequest>,
+  output: __S(22) as any as S.Schema<DeleteShareExportPolicyResponse2>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1005,8 +667,8 @@ export const disableLock: API.OperationMethod<
   DisableLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableLockRequest,
-  output: DisableLockResponse2,
+  input: __S(27) as any as S.Schema<DisableLockRequest>,
+  output: __S(25) as any as S.Schema<DisableLockResponse2>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1020,8 +682,8 @@ export const enableLock: API.OperationMethod<
   EnableLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableLockRequest,
-  output: EnableLockResponse,
+  input: __S(28) as any as S.Schema<EnableLockRequest>,
+  output: __S(29) as any as S.Schema<EnableLockResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1035,8 +697,8 @@ export const getLock: API.OperationMethod<
   GetLockError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLockRequest,
-  output: GetLockResponse,
+  input: __S(30) as any as S.Schema<GetLockRequest>,
+  output: __S(29) as any as S.Schema<GetLockResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1050,8 +712,8 @@ export const getResourcePool: API.OperationMethod<
   GetResourcePoolError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePoolRequest,
-  output: GetResourcePoolResponse,
+  input: __S(31) as any as S.Schema<GetResourcePoolRequest>,
+  output: __S(32) as any as S.Schema<GetResourcePoolResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1065,8 +727,8 @@ export const getResourcePoolSnapshot: API.OperationMethod<
   GetResourcePoolSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePoolSnapshotRequest,
-  output: GetResourcePoolSnapshotResponse,
+  input: __S(33) as any as S.Schema<GetResourcePoolSnapshotRequest>,
+  output: __S(10) as any as S.Schema<GetResourcePoolSnapshotResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1080,8 +742,8 @@ export const getShare: API.OperationMethod<
   GetShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShareRequest,
-  output: GetShareResponse,
+  input: __S(34) as any as S.Schema<GetShareRequest>,
+  output: __S(16) as any as S.Schema<GetShareResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1095,8 +757,8 @@ export const getShareExportPolicy: API.OperationMethod<
   GetShareExportPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShareExportPolicyRequest,
-  output: GetShareExportPolicyResponse,
+  input: __S(35) as any as S.Schema<GetShareExportPolicyRequest>,
+  output: __S(20) as any as S.Schema<GetShareExportPolicyResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1110,8 +772,8 @@ export const getSnapshotPolicy: API.OperationMethod<
   GetSnapshotPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnapshotPolicyRequest,
-  output: GetSnapshotPolicyResponse,
+  input: __S(36) as any as S.Schema<GetSnapshotPolicyRequest>,
+  output: __S(42) as any as S.Schema<GetSnapshotPolicyResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1125,8 +787,8 @@ export const listPerformanceClasses: API.OperationMethod<
   ListPerformanceClassesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPerformanceClassesRequest,
-  output: ListPerformanceClassesResponse,
+  input: __S(43) as any as S.Schema<ListPerformanceClassesRequest>,
+  output: __S(46) as any as S.Schema<ListPerformanceClassesResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1140,8 +802,8 @@ export const listResourcePools: API.OperationMethod<
   ListResourcePoolsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourcePoolsRequest,
-  output: ListResourcePoolsResponse,
+  input: __S(47) as any as S.Schema<ListResourcePoolsRequest>,
+  output: __S(49) as any as S.Schema<ListResourcePoolsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1155,8 +817,8 @@ export const listResourcePoolSnapshots: API.OperationMethod<
   ListResourcePoolSnapshotsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourcePoolSnapshotsRequest,
-  output: ListResourcePoolSnapshotsResponse,
+  input: __S(50) as any as S.Schema<ListResourcePoolSnapshotsRequest>,
+  output: __S(52) as any as S.Schema<ListResourcePoolSnapshotsResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1170,8 +832,8 @@ export const listShareExportPolicies: API.OperationMethod<
   ListShareExportPoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareExportPoliciesRequest,
-  output: ListShareExportPoliciesResponse,
+  input: __S(53) as any as S.Schema<ListShareExportPoliciesRequest>,
+  output: __S(55) as any as S.Schema<ListShareExportPoliciesResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1185,8 +847,8 @@ export const listShares: API.OperationMethod<
   ListSharesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSharesRequest,
-  output: ListSharesResponse,
+  input: __S(56) as any as S.Schema<ListSharesRequest>,
+  output: __S(58) as any as S.Schema<ListSharesResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1200,8 +862,8 @@ export const listSnapshotPolicies: API.OperationMethod<
   ListSnapshotPoliciesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSnapshotPoliciesRequest,
-  output: ListSnapshotPoliciesResponse,
+  input: __S(59) as any as S.Schema<ListSnapshotPoliciesRequest>,
+  output: __S(61) as any as S.Schema<ListSnapshotPoliciesResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1215,8 +877,8 @@ export const updateResourcePool: API.OperationMethod<
   UpdateResourcePoolError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourcePoolRequest,
-  output: UpdateResourcePoolResponse,
+  input: __S(62) as any as S.Schema<UpdateResourcePoolRequest>,
+  output: __S(7) as any as S.Schema<UpdateResourcePoolResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1230,8 +892,8 @@ export const updateResourcePoolSnapshot: API.OperationMethod<
   UpdateResourcePoolSnapshotError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourcePoolSnapshotRequest,
-  output: UpdateResourcePoolSnapshotResponse,
+  input: __S(63) as any as S.Schema<UpdateResourcePoolSnapshotRequest>,
+  output: __S(10) as any as S.Schema<UpdateResourcePoolSnapshotResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1245,8 +907,8 @@ export const updateShare: API.OperationMethod<
   UpdateShareError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateShareRequest,
-  output: UpdateShareResponse,
+  input: __S(64) as any as S.Schema<UpdateShareRequest>,
+  output: __S(16) as any as S.Schema<UpdateShareResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1260,8 +922,8 @@ export const updateShareExportPolicy: API.OperationMethod<
   UpdateShareExportPolicyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateShareExportPolicyRequest,
-  output: UpdateShareExportPolicyResponse,
+  input: __S(65) as any as S.Schema<UpdateShareExportPolicyRequest>,
+  output: __S(20) as any as S.Schema<UpdateShareExportPolicyResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1280,8 +942,8 @@ function __c0(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           availabilityZone: S.String,
-          ipAcl: CreateResourcePoolRequestIpAclList,
-          labels: S.optional(CreateResourcePoolRequestLabelsMap),
+          ipAcl: __S(0),
+          labels: S.optional(__S(1)),
           name: S.String,
           performanceClass: S.String,
           sizeGigabytes: S.Number,
@@ -1333,23 +995,23 @@ function __c0(j: number): any {
           countShares: S.optional(S.Number),
           createdAt: S.optional(S.String),
           id: S.optional(S.String),
-          ipAcl: S.optional(ResourcePoolIpAclList),
-          labels: S.optional(ResourcePoolLabelsMap),
+          ipAcl: S.optional(__S(0)),
+          labels: S.optional(__S(1)),
           mountPath: S.optional(S.String),
           name: S.optional(S.String),
-          performanceClass: S.optional(ResourcePoolPerformanceClass),
+          performanceClass: S.optional(__S(3)),
           performanceClassDowngradableAt: S.optional(S.String),
           sizeReducibleAt: S.optional(S.String),
-          snapshotPolicy: S.optional(S.NullOr(ResourcePoolSnapshotPolicy)),
+          snapshotPolicy: S.optional(S.NullOr(__S(4))),
           snapshotsAreVisible: S.optional(S.Boolean),
-          space: S.optional(ResourcePoolSpace),
+          space: S.optional(__S(5)),
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcePool" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resourcePool: S.optional(ResourcePool),
+          resourcePool: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "CreateResourcePoolResponse",
@@ -1393,7 +1055,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourcePoolSnapshot: S.optional(ResourcePoolSnapshot),
+          resourcePoolSnapshot: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "CreateResourcePoolSnapshotResponse",
@@ -1405,7 +1067,7 @@ function __c1(j: number): any {
           region: S.String.pipe(T.Label()),
           resourcePoolId: S.String.pipe(T.Label()),
           exportPolicyName: S.optional(S.NullOr(S.String)),
-          labels: S.optional(CreateShareRequestLabelsMap),
+          labels: S.optional(__S(1)),
           name: S.String,
           spaceHardLimitGigabytes: S.Number,
         }).pipe(
@@ -1423,7 +1085,7 @@ function __c1(j: number): any {
           createdAt: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          ipAcl: S.optional(ShareExportPolicyRuleIpAclList),
+          ipAcl: S.optional(__S(0)),
           order: S.optional(S.Number),
           readOnly: S.optional(S.Boolean),
           setUuid: S.optional(S.Boolean),
@@ -1431,15 +1093,15 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ShareExportPolicyRule" });
     case 5:
-      return S.Array(ShareExportPolicyRule);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(ShareExportPolicyLabelsMap),
+          labels: S.optional(__S(1)),
           name: S.optional(S.String),
-          rules: S.optional(ShareExportPolicyRulesList),
+          rules: S.optional(__S(13)),
           sharesUsingExportPolicy: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ShareExportPolicy" });
@@ -1447,9 +1109,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          exportPolicy: S.optional(S.NullOr(ShareExportPolicy)),
+          exportPolicy: S.optional(S.NullOr(__S(14))),
           id: S.optional(S.String),
-          labels: S.optional(ShareLabelsMap),
+          labels: S.optional(__S(1)),
           mountPath: S.optional(S.String),
           name: S.optional(S.String),
           spaceHardLimitGigabytes: S.optional(S.Number),
@@ -1463,14 +1125,14 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          share: S.optional(Share),
+          share: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "CreateShareResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          ipAcl: S.optional(CreateShareExportPolicyRequestRuleIpAclList),
+          ipAcl: S.optional(__S(0)),
           order: S.optional(S.Number),
           readOnly: S.optional(S.Boolean),
           setUuid: S.optional(S.Boolean),
@@ -1480,15 +1142,15 @@ function __c2(j: number): any {
         identifier: "CreateShareExportPolicyRequestRule",
       });
     case 2:
-      return S.Array(CreateShareExportPolicyRequestRule);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          labels: S.optional(CreateShareExportPolicyRequestLabelsMap),
+          labels: S.optional(__S(1)),
           name: S.String,
-          rules: S.optional(CreateShareExportPolicyRequestRulesList),
+          rules: S.optional(__S(18)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1503,7 +1165,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          shareExportPolicy: S.optional(ShareExportPolicy),
+          shareExportPolicy: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "CreateShareExportPolicyResponse",
@@ -1658,7 +1320,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourcePool: S.optional(ResourcePool),
+          resourcePool: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "GetResourcePoolResponse" });
     case 1:
@@ -1737,7 +1399,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SnapshotPolicySchedule" });
     case 6:
-      return S.Array(SnapshotPolicySchedule);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1757,7 +1419,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SnapshotPolicySnapshotPolicySchedule);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1766,14 +1428,14 @@ function __c5(j: number): any {
           enabled: S.optional(S.Boolean),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          schedules: S.optional(SnapshotPolicySchedulesList),
-          snapshotSchedules: S.optional(SnapshotPolicySnapshotSchedulesList),
+          schedules: S.optional(__S(38)),
+          snapshotSchedules: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "SnapshotPolicy" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          snapshotPolicy: S.optional(SnapshotPolicy),
+          snapshotPolicy: S.optional(__S(41)),
         }),
       ).annotate({
         identifier: "GetSnapshotPolicyResponse",
@@ -1800,11 +1462,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "PerformanceClass" });
     case 5:
-      return S.Array(PerformanceClass);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          performanceClasses: S.optional(ListPerformanceClassesResponsePerformanceClassesList),
+          performanceClasses: S.optional(__S(45)),
         }),
       ).annotate({
         identifier: "ListPerformanceClassesResponse",
@@ -1828,11 +1490,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourcePool);
+      return S.Array(__S(6));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourcePools: S.optional(ListResourcePoolsResponseResourcePoolsList),
+          resourcePools: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "ListResourcePoolsResponse",
@@ -1855,13 +1517,11 @@ function __c6(j: number): any {
         identifier: "ListResourcePoolSnapshotsRequest",
       });
     case 3:
-      return S.Array(ResourcePoolSnapshot);
+      return S.Array(__S(9));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourcePoolSnapshots: S.optional(
-            ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList,
-          ),
+          resourcePoolSnapshots: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "ListResourcePoolSnapshotsResponse",
@@ -1883,11 +1543,11 @@ function __c6(j: number): any {
         identifier: "ListShareExportPoliciesRequest",
       });
     case 6:
-      return S.Array(ShareExportPolicy);
+      return S.Array(__S(14));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          shareExportPolicies: S.optional(ListShareExportPoliciesResponseShareExportPoliciesList),
+          shareExportPolicies: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "ListShareExportPoliciesResponse",
@@ -1912,11 +1572,11 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListSharesRequest" });
     case 1:
-      return S.Array(Share);
+      return S.Array(__S(15));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          shares: S.optional(ListSharesResponseSharesList),
+          shares: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "ListSharesResponse" });
     case 3:
@@ -1936,11 +1596,11 @@ function __c7(j: number): any {
         identifier: "ListSnapshotPoliciesRequest",
       });
     case 4:
-      return S.Array(SnapshotPolicy);
+      return S.Array(__S(41));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          snapshotPolicies: S.optional(ListSnapshotPoliciesResponseSnapshotPoliciesList),
+          snapshotPolicies: S.optional(__S(60)),
         }),
       ).annotate({
         identifier: "ListSnapshotPoliciesResponse",
@@ -1951,8 +1611,8 @@ function __c7(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           resourcePoolId: S.String.pipe(T.Label()),
-          ipAcl: S.optional(UpdateResourcePoolRequestIpAclList),
-          labels: S.optional(UpdateResourcePoolRequestLabelsMap),
+          ipAcl: S.optional(__S(0)),
+          labels: S.optional(__S(1)),
           performanceClass: S.optional(S.String),
           sizeGigabytes: S.optional(S.NullOr(S.Number)),
           snapshotPolicyId: S.optional(S.NullOr(S.String)),
@@ -2000,7 +1660,7 @@ function __c8(j: number): any {
           resourcePoolId: S.String.pipe(T.Label()),
           shareId: S.String.pipe(T.Label()),
           exportPolicyName: S.optional(S.NullOr(S.String)),
-          labels: S.optional(UpdateShareRequestLabelsMap),
+          labels: S.optional(__S(1)),
           spaceHardLimitGigabytes: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -2017,8 +1677,8 @@ function __c8(j: number): any {
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
           policyId: S.String.pipe(T.Label()),
-          labels: S.optional(UpdateShareExportPolicyRequestLabelsMap),
-          rules: S.optional(S.NullOr(UpdateShareExportPolicyRequestRulesList)),
+          labels: S.optional(__S(1)),
+          rules: S.optional(S.NullOr(__S(18))),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2030,5 +1690,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateShareExportPolicyRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
   }
 }

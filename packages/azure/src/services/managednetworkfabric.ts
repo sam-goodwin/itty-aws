@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -18,18 +20,8 @@ export interface AccessControlListsResyncRequest {
   /** Name of the Access Control List. */
   accessControlListName: string;
 }
-const AccessControlListsResyncRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccessControlListsResyncRequest>;
-
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ErrorDetailDetailsList>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -37,15 +29,8 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ErrorAdditionalInfo>;
-
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -59,8 +44,6 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ErrorDetail>;
-
 /** Configuration state for the resource. */
 export type ConfigurationState =
   | "Succeeded"
@@ -76,19 +59,12 @@ export type ConfigurationState =
   | "Provisioning"
   | "PendingCommit"
   | "PendingAdministrativeUpdate";
-const ConfigurationState = S.String;
-
 export interface AccessControlListsResyncResponse {
   /** The error object. */
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
 }
-const AccessControlListsResyncResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccessControlListsResyncResponse>;
-
 export interface CommitL2IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -97,20 +73,12 @@ export interface CommitL2IsolationDomainConfigurationRequest {
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
 }
-const CommitL2IsolationDomainConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CommitL2IsolationDomainConfigurationRequest>;
-
 export interface CommitL2IsolationDomainConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
 }
-const CommitL2IsolationDomainConfigurationResponse =
-  AccessControlListsResyncResponse as any as S.Schema<CommitL2IsolationDomainConfigurationResponse>;
-
 export interface CommitL3IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -119,20 +87,12 @@ export interface CommitL3IsolationDomainConfigurationRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-const CommitL3IsolationDomainConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CommitL3IsolationDomainConfigurationRequest>;
-
 export interface CommitL3IsolationDomainConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
 }
-const CommitL3IsolationDomainConfigurationResponse =
-  AccessControlListsResyncResponse as any as S.Schema<CommitL3IsolationDomainConfigurationResponse>;
-
 export interface CommitNetworkFabricBatchStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -143,18 +103,8 @@ export interface CommitNetworkFabricBatchStatusRequest {
   /** Commit Batch Identifier. If not provided, the latest commit batch status will be returned. */
   commitBatchId?: string;
 }
-const CommitNetworkFabricBatchStatusRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CommitNetworkFabricBatchStatusRequest>;
-
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<OperationStatusResultOperationsList>;
-
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -176,19 +126,9 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const OperationStatusResult = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<OperationStatusResult>;
-
 /** The operations list. */
 export type CommitBatchStatusOperationResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
-const CommitBatchStatusOperationResponseOperationsItemOperationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CommitBatchStatusOperationResponseOperationsItemOperationsList>;
-
 /** The current status of an async operation. */
 export interface CommitBatchStatusOperationResponseOperationsItem {
   /** Fully qualified ID for the async operation. */
@@ -210,31 +150,13 @@ export interface CommitBatchStatusOperationResponseOperationsItem {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const CommitBatchStatusOperationResponseOperationsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CommitBatchStatusOperationResponseOperationsItem>;
-
 /** The operations list. */
 export type CommitBatchStatusOperationResponseOperationsList =
   Array<CommitBatchStatusOperationResponseOperationsItem>;
-const CommitBatchStatusOperationResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CommitBatchStatusOperationResponseOperationsList>;
-
 /** The error details. */
 export type CommitBatchStatusOperationResponseErrorDetailsList = Array<ErrorDetail>;
-const CommitBatchStatusOperationResponseErrorDetailsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CommitBatchStatusOperationResponseErrorDetailsList>;
-
 /** The error additional info. */
 export type CommitBatchStatusOperationResponseErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const CommitBatchStatusOperationResponseErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<CommitBatchStatusOperationResponseErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface CommitBatchStatusOperationResponseError {
   /** The error code. */
@@ -248,29 +170,15 @@ export interface CommitBatchStatusOperationResponseError {
   /** The error additional info. */
   additionalInfo?: CommitBatchStatusOperationResponseErrorAdditionalInfoList;
 }
-const CommitBatchStatusOperationResponseError = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CommitBatchStatusOperationResponseError>;
-
 /** Commit Batch State. */
 export type CommitBatchState = "Processing" | "Succeeded" | "Failed";
-const CommitBatchState = S.String;
-
 /** List of devices for which the commit operation failed. */
 export type CommitBatchDetailsFailedDevicesList = Array<string>;
-const CommitBatchDetailsFailedDevicesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CommitBatchDetailsFailedDevicesList>;
-
 /** Commit Batch Details. */
 export interface CommitBatchDetails {
   /** List of devices for which the commit operation failed. */
   failedDevices?: CommitBatchDetailsFailedDevicesList;
 }
-const CommitBatchDetails = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CommitBatchDetails>;
-
 /** Commit Batch Status Response Properties. */
 export interface CommitBatchStatusResponseProperties {
   /** Commit Batch Identifier. */
@@ -280,11 +188,6 @@ export interface CommitBatchStatusResponseProperties {
   /** Commit Batch Details. */
   commitBatchDetails?: CommitBatchDetails;
 }
-const CommitBatchStatusResponseProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CommitBatchStatusResponseProperties>;
-
 /** Commit Batch Status Response. */
 export interface CommitBatchStatusOperationResponse {
   /** Fully qualified ID for the async operation. */
@@ -308,24 +211,12 @@ export interface CommitBatchStatusOperationResponse {
   /** Commit Batch Status Response Properties. */
   properties?: CommitBatchStatusResponseProperties;
 }
-const CommitBatchStatusOperationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CommitBatchStatusOperationResponse>;
-
 /** Commit stage Action to be performed. */
 export type CommitStage = "Start" | "Continue" | "Rollback";
-const CommitStage = S.String;
-
 /** Indicates Commit configuration staging policy. Supported policy is StageCEConfiguration, which indicates to prepare the configuration for the CE device type. */
 export type CommitConfigurationPolicy = "StageCEConfiguration";
-const CommitConfigurationPolicy = S.String;
-
 /** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
 export type CommitNetworkFabricConfigurationRequestDevicesList = Array<string>;
-const CommitNetworkFabricConfigurationRequestDevicesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<CommitNetworkFabricConfigurationRequestDevicesList>;
-
 export interface CommitNetworkFabricConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -340,11 +231,6 @@ export interface CommitNetworkFabricConfigurationRequest {
   /** List of ARM resource IDs of devices to be included in the commit operation. Either CE1 or CE2 is allowed. */
   devices?: CommitNetworkFabricConfigurationRequestDevicesList;
 }
-const CommitNetworkFabricConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CommitNetworkFabricConfigurationRequest>;
-
 /** The operations list. */
 export type CommitConfigurationResponseOperationsItemOperationsList = Array<OperationStatusResult>;
 /** The current status of an async operation. */
@@ -371,9 +257,6 @@ export interface CommitConfigurationResponseOperationsItem {
 /** The operations list. */
 export type CommitConfigurationResponseOperationsList =
   Array<CommitConfigurationResponseOperationsItem>;
-const CommitConfigurationResponseOperationsList =
-  CommitBatchStatusOperationResponseOperationsList as any as S.Schema<CommitConfigurationResponseOperationsList>;
-
 /** The error details. */
 export type CommitConfigurationResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -391,9 +274,6 @@ export interface CommitConfigurationResponseError {
   /** The error additional info. */
   additionalInfo?: CommitConfigurationResponseErrorAdditionalInfoList;
 }
-const CommitConfigurationResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<CommitConfigurationResponseError>;
-
 /** Commit Configuration Response. */
 export interface CommitConfigurationResponse {
   /** Fully qualified ID for the async operation. */
@@ -415,11 +295,6 @@ export interface CommitConfigurationResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const CommitConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CommitConfigurationResponse>;
-
 export interface CommitRoutePolicyConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -428,59 +303,28 @@ export interface CommitRoutePolicyConfigurationRequest {
   /** Name of the Route Policy. */
   routePolicyName: string;
 }
-const CommitRoutePolicyConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CommitRoutePolicyConfigurationRequest>;
-
 export interface CommitRoutePolicyConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
 }
-const CommitRoutePolicyConfigurationResponse =
-  AccessControlListsResyncResponse as any as S.Schema<CommitRoutePolicyConfigurationResponse>;
-
 /** Resource tags. */
 export type CreateAccessControlListRequestTagsMap = { [key: string]: string | undefined };
-const CreateAccessControlListRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateAccessControlListRequestTagsMap>;
-
 /** Input method to configure Access Control List. */
 export type ConfigurationType = "File" | "Inline";
-const ConfigurationType = S.String;
-
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
 export type AccessControlListPropertiesInputDefaultAction = "Permit" | "Deny";
-const AccessControlListPropertiesInputDefaultAction = S.String;
-
 /** IP Address type. */
 export type IPAddressType = "IPv4" | "IPv6";
-const IPAddressType = S.String;
-
 /** List of the protocols that need to be matched. */
 export type AccessControlListMatchConditionProtocolTypesList = Array<string>;
-const AccessControlListMatchConditionProtocolTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionProtocolTypesList>;
-
 /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
 export type VlanMatchConditionVlansList = Array<string>;
-const VlanMatchConditionVlansList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<VlanMatchConditionVlansList>;
-
 /** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
 export type VlanMatchConditionInnerVlansList = Array<string>;
-const VlanMatchConditionInnerVlansList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<VlanMatchConditionInnerVlansList>;
-
 /** List of vlan group names that need to be matched. */
 export type VlanMatchConditionVlanGroupNamesList = Array<string>;
-const VlanMatchConditionVlanGroupNamesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<VlanMatchConditionVlanGroupNamesList>;
-
 /** The vlan match conditions that need to be matched. */
 export interface VlanMatchCondition {
   /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
@@ -490,26 +334,14 @@ export interface VlanMatchCondition {
   /** List of vlan group names that need to be matched. */
   vlanGroupNames?: VlanMatchConditionVlanGroupNamesList;
 }
-const VlanMatchCondition = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<VlanMatchCondition>;
-
 /** IP Address type that needs to be matched. */
 export type SourceDestinationType = "SourceIP" | "DestinationIP" | "Bidirectional";
-const SourceDestinationType = S.String;
-
 /** IP Prefix Type that needs to be matched. */
 export type PrefixType = "Prefix" | "LongestPrefix";
-const PrefixType = S.String;
-
 /** The list of IP Prefixes that need to be matched. */
 export type IpMatchConditionIpPrefixValuesList = Array<string>;
-const IpMatchConditionIpPrefixValuesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpMatchConditionIpPrefixValuesList>;
-
 /** The List of IP Group Names that need to be matched. */
 export type IpMatchConditionIpGroupNamesList = Array<string>;
-const IpMatchConditionIpGroupNamesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpMatchConditionIpGroupNamesList>;
-
 /** Defines the condition that can be filtered using the selected IPs. */
 export interface IpMatchCondition {
   /** IP Address type that needs to be matched. */
@@ -521,61 +353,28 @@ export interface IpMatchCondition {
   /** The List of IP Group Names that need to be matched. */
   ipGroupNames?: IpMatchConditionIpGroupNamesList;
 }
-const IpMatchCondition = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<IpMatchCondition>;
-
 /** List of ether type values that need to be matched. */
 export type AccessControlListMatchConditionEtherTypesList = Array<string>;
-const AccessControlListMatchConditionEtherTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionEtherTypesList>;
-
 /** List of IP fragment packets that need to be matched. */
 export type AccessControlListMatchConditionFragmentsList = Array<string>;
-const AccessControlListMatchConditionFragmentsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionFragmentsList>;
-
 /** List of IP Lengths that need to be matched. */
 export type AccessControlListMatchConditionIpLengthsList = Array<string>;
-const AccessControlListMatchConditionIpLengthsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionIpLengthsList>;
-
 /** List of TTL [Time To Live] values that need to be matched. */
 export type AccessControlListMatchConditionTtlValuesList = Array<string>;
-const AccessControlListMatchConditionTtlValuesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionTtlValuesList>;
-
 /** List of DSCP Markings that need to be matched. */
 export type AccessControlListMatchConditionDscpMarkingsList = Array<string>;
-const AccessControlListMatchConditionDscpMarkingsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionDscpMarkingsList>;
-
 /** Protocol neighbors that need to be matched. */
 export type AccessControlListMatchConditionProtocolNeighborsList = Array<string>;
-const AccessControlListMatchConditionProtocolNeighborsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionProtocolNeighborsList>;
-
 /** Port type that needs to be matched. */
 export type PortType = "SourcePort" | "DestinationPort" | "Bidirectional";
-const PortType = S.String;
-
 /** Layer4 protocol type that needs to be matched. */
 export type Layer4Protocol = "TCP" | "UDP" | "SCTP";
-const Layer4Protocol = S.String;
-
 /** List of the Ports that need to be matched. */
 export type AccessControlListPortConditionPortsList = Array<string>;
-const AccessControlListPortConditionPortsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPortConditionPortsList>;
-
 /** List of the port Group Names that need to be matched. */
 export type AccessControlListPortConditionPortGroupNamesList = Array<string>;
-const AccessControlListPortConditionPortGroupNamesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPortConditionPortGroupNamesList>;
-
 /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
 export type AccessControlListPortConditionFlagsList = Array<string>;
-const AccessControlListPortConditionFlagsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPortConditionFlagsList>;
-
 /** Defines the port condition that needs to be matched. */
 export interface AccessControlListPortCondition {
   /** Port type that needs to be matched. */
@@ -589,26 +388,13 @@ export interface AccessControlListPortCondition {
   /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
   flags?: AccessControlListPortConditionFlagsList;
 }
-const AccessControlListPortCondition = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AccessControlListPortCondition>;
-
 /** Internet Control Message Protocol (ICMP) types */
 export type IcmpConfigurationPropertiesIcmpTypesList = Array<string>;
-const IcmpConfigurationPropertiesIcmpTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IcmpConfigurationPropertiesIcmpTypesList>;
-
 /** Internet Control Message Protocol (ICMP) configuration */
 export interface IcmpConfigurationProperties {
   /** Internet Control Message Protocol (ICMP) types */
   icmpTypes?: IcmpConfigurationPropertiesIcmpTypesList;
 }
-const IcmpConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IcmpConfigurationProperties>;
-
 /** Defines the match condition that is supported to filter the traffic. */
 export interface AccessControlListMatchCondition {
   /** List of the protocols that need to be matched. */
@@ -634,27 +420,13 @@ export interface AccessControlListMatchCondition {
   /** Internet Control Message Protocol (ICMP) configuration */
   icmpConfiguration?: IcmpConfigurationProperties;
 }
-const AccessControlListMatchCondition = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AccessControlListMatchCondition>;
-
 /** List of the match conditions. */
 export type AccessControlListMatchConfigurationMatchConditionsList =
   Array<AccessControlListMatchCondition>;
-const AccessControlListMatchConfigurationMatchConditionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AccessControlListMatchConfigurationMatchConditionsList>;
-
 /** Type of actions that can be performed. */
 export type AclActionType = "Drop" | "Count" | "Log" | "Remark" | "PoliceRate";
-const AclActionType = S.String;
-
 /** Bit rate unit. */
 export type BitRateUnit = "bps" | "Kbps" | "Mbps" | "Gbps" | "Pps";
-const BitRateUnit = S.String;
-
 /** Bit rate in bits per second. */
 export interface BitRate {
   /** Bitrate. */
@@ -662,12 +434,8 @@ export interface BitRate {
   /** Bitrate unit. */
   unit?: BitRateUnit | (string & {});
 }
-const BitRate = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<BitRate>;
-
 /** Burst size unit in packets. */
 export type BurstSizeUnit = "Bytes" | "KBytes" | "MBytes" | "GBytes" | "Packets";
-const BurstSizeUnit = S.String;
-
 /** Burst size in packets. */
 export interface BurstSize {
   /** Burst size. */
@@ -675,8 +443,6 @@ export interface BurstSize {
   /** Burst size unit. */
   unit?: BurstSizeUnit | (string & {});
 }
-const BurstSize = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<BurstSize>;
-
 /** Police rate configuration properties */
 export interface PoliceRateConfigurationProperties {
   /** Rate limit in bits per second. */
@@ -684,11 +450,6 @@ export interface PoliceRateConfigurationProperties {
   /** Burst size in packets. */
   burstSize?: BurstSize;
 }
-const PoliceRateConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PoliceRateConfigurationProperties>;
-
 /** Action that need to performed. */
 export interface AccessControlListAction {
   /** Type of actions that can be performed. */
@@ -700,18 +461,8 @@ export interface AccessControlListAction {
   /** Police rate configuration */
   policeRateConfiguration?: PoliceRateConfigurationProperties;
 }
-const AccessControlListAction = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AccessControlListAction>;
-
 /** List of actions that need to be performed for the matched conditions. */
 export type AccessControlListMatchConfigurationActionsList = Array<AccessControlListAction>;
-const AccessControlListMatchConfigurationActionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<AccessControlListMatchConfigurationActionsList>;
-
 /** Defines the match configuration that are supported to filter the traffic. */
 export interface AccessControlListMatchConfiguration {
   /** The name of the match configuration. */
@@ -725,24 +476,11 @@ export interface AccessControlListMatchConfiguration {
   /** List of actions that need to be performed for the matched conditions. */
   actions?: AccessControlListMatchConfigurationActionsList;
 }
-const AccessControlListMatchConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AccessControlListMatchConfiguration>;
-
 /** List of match configurations. */
 export type AccessControlListPropertiesInputMatchConfigurationsList =
   Array<AccessControlListMatchConfiguration>;
-const AccessControlListPropertiesInputMatchConfigurationsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<AccessControlListPropertiesInputMatchConfigurationsList>;
-
 /** List of IP Prefixes. */
 export type IpGroupPropertiesIpPrefixesList = Array<string>;
-const IpGroupPropertiesIpPrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpGroupPropertiesIpPrefixesList>;
-
 /** IP Group properties. */
 export interface IpGroupProperties {
   /** IP Group name. */
@@ -752,20 +490,10 @@ export interface IpGroupProperties {
   /** List of IP Prefixes. */
   ipPrefixes?: IpGroupPropertiesIpPrefixesList;
 }
-const IpGroupProperties = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<IpGroupProperties>;
-
 /** List of IP Groups. */
 export type CommonDynamicMatchConfigurationIpGroupsList = Array<IpGroupProperties>;
-const CommonDynamicMatchConfigurationIpGroupsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CommonDynamicMatchConfigurationIpGroupsList>;
-
 /** List of vlans. */
 export type VlanGroupPropertiesVlansList = Array<string>;
-const VlanGroupPropertiesVlansList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<VlanGroupPropertiesVlansList>;
-
 /** Vlan group properties. */
 export interface VlanGroupProperties {
   /** Vlan group name. */
@@ -773,20 +501,10 @@ export interface VlanGroupProperties {
   /** List of vlans. */
   vlans?: VlanGroupPropertiesVlansList;
 }
-const VlanGroupProperties = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<VlanGroupProperties>;
-
 /** List of vlan groups. */
 export type CommonDynamicMatchConfigurationVlanGroupsList = Array<VlanGroupProperties>;
-const CommonDynamicMatchConfigurationVlanGroupsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CommonDynamicMatchConfigurationVlanGroupsList>;
-
 /** List of the ports that need to be matched. */
 export type PortGroupPropertiesPortsList = Array<string>;
-const PortGroupPropertiesPortsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<PortGroupPropertiesPortsList>;
-
 /** Port Group properties. */
 export interface PortGroupProperties {
   /** The name of the port group. */
@@ -794,15 +512,8 @@ export interface PortGroupProperties {
   /** List of the ports that need to be matched. */
   ports?: PortGroupPropertiesPortsList;
 }
-const PortGroupProperties = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<PortGroupProperties>;
-
 /** List of the port groups. */
 export type CommonDynamicMatchConfigurationPortGroupsList = Array<PortGroupProperties>;
-const CommonDynamicMatchConfigurationPortGroupsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CommonDynamicMatchConfigurationPortGroupsList>;
-
 /** Dynamic match configuration object. */
 export interface CommonDynamicMatchConfiguration {
   /** List of IP Groups. */
@@ -812,41 +523,20 @@ export interface CommonDynamicMatchConfiguration {
   /** List of the port groups. */
   portGroups?: CommonDynamicMatchConfigurationPortGroupsList;
 }
-const CommonDynamicMatchConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CommonDynamicMatchConfiguration>;
-
 /** List of dynamic match configurations. */
 export type AccessControlListPropertiesInputDynamicMatchConfigurationsList =
   Array<CommonDynamicMatchConfiguration>;
-const AccessControlListPropertiesInputDynamicMatchConfigurationsList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<AccessControlListPropertiesInputDynamicMatchConfigurationsList>;
-
 /** Access Control List (ACL) Type */
 export type AclType = "ControlPlaneTrafficPolicy" | "Tenant" | "Management" | "ControlPlaneAcl";
-const AclType = S.String;
-
 /** Device Role */
 export type DeviceRole = "CE" | "ToR" | "NPB" | "ManagementSwitch";
-const DeviceRole = S.String;
-
 /** Configuration to enable or disable ACL action count. */
 export type GlobalAccessControlListActionPropertiesEnableCount = "True" | "False";
-const GlobalAccessControlListActionPropertiesEnableCount = S.String;
-
 /** Global Access Control List actions properties */
 export interface GlobalAccessControlListActionProperties {
   /** Configuration to enable or disable ACL action count. */
   enableCount?: GlobalAccessControlListActionPropertiesEnableCount | (string & {});
 }
-const GlobalAccessControlListActionProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GlobalAccessControlListActionProperties>;
-
 /** Control Plane Access Control List (ACL) IP condition properties */
 export interface ControlPlanAclIpMatchCondition {
   /** List of the source IP addresses that need to be matched. */
@@ -854,15 +544,8 @@ export interface ControlPlanAclIpMatchCondition {
   /** List of the destination IP addresses that need to be matched. */
   destinationIpPrefix?: string;
 }
-const ControlPlanAclIpMatchCondition = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ControlPlanAclIpMatchCondition>;
-
 /** Control Plane Access Control List (ACL) Time To Live (TTL) match conditions properties */
 export type ControlPlaneAclTtlMatchType = "eq" | "neq" | "gt" | "lt";
-const ControlPlaneAclTtlMatchType = S.String;
-
 /** TTL [Time To Live] match conditions properties */
 export interface ControlPlaneAclTtlMatchCondition {
   /** TTL [Time To Live] values that need to be matched. */
@@ -870,20 +553,10 @@ export interface ControlPlaneAclTtlMatchCondition {
   /** TTL [Time To Live] match type. Example: eq | neq | gt | lt | range */
   ttlMatchType?: ControlPlaneAclTtlMatchType | (string & {});
 }
-const ControlPlaneAclTtlMatchCondition = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ControlPlaneAclTtlMatchCondition>;
-
 /** List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236 */
 export type ControlPlaneAclPortConditionPortsList = Array<string>;
-const ControlPlaneAclPortConditionPortsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<ControlPlaneAclPortConditionPortsList>;
-
 /** Control Plane Access Control List (ACL) port match types */
 export type ControlPlaneAclPortMatchType = "eq" | "neq" | "gt" | "lt" | "range";
-const ControlPlaneAclPortMatchType = S.String;
-
 /** Control Plane Access Control List (ACL) Port Match conditions properties */
 export interface ControlPlaneAclPortCondition {
   /** List of the ports that need to be matched. Possible values: 1234, 1234-1235, 1234,1235,1236 */
@@ -891,11 +564,6 @@ export interface ControlPlaneAclPortCondition {
   /** Port match type. Example: eq | neq | gt | lt | range */
   portMatchType?: ControlPlaneAclPortMatchType | (string & {});
 }
-const ControlPlaneAclPortCondition = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ControlPlaneAclPortCondition>;
-
 /** Control Plane Access Control List (ACL) Port Match conditions properties */
 export interface ControlPlaneAclPortMatchCondition {
   /** List of the ports that need to be matched. */
@@ -903,16 +571,8 @@ export interface ControlPlaneAclPortMatchCondition {
   /** List of the destination ports that need to be matched. */
   destinationPorts?: ControlPlaneAclPortCondition;
 }
-const ControlPlaneAclPortMatchCondition = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ControlPlaneAclPortMatchCondition>;
-
 /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
 export type ControlPlaneAclMatchConditionFlagsList = Array<string>;
-const ControlPlaneAclMatchConditionFlagsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<ControlPlaneAclMatchConditionFlagsList>;
-
 /** Control Plane Access Control List (ACL) match conditions properties */
 export interface ControlPlaneAclMatchCondition {
   /** Protocols that need to be matched. */
@@ -928,15 +588,8 @@ export interface ControlPlaneAclMatchCondition {
   /** Internet Control Message Protocol (ICMP) configuration */
   icmpConfiguration?: IcmpConfigurationProperties;
 }
-const ControlPlaneAclMatchCondition = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ControlPlaneAclMatchCondition>;
-
 /** Control Plane Access Control List (ACL) Action Types */
 export type ControlPlaneAclActionType = "Permit" | "Deny" | "Remark";
-const ControlPlaneAclActionType = S.String;
-
 /** Control Plane Access Control List (ACL) Actions */
 export interface ControlPlaneAclAction {
   /** Type of actions that can be performed. */
@@ -944,11 +597,6 @@ export interface ControlPlaneAclAction {
   /** Remark comment */
   remarkComment?: string;
 }
-const ControlPlaneAclAction = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ControlPlaneAclAction>;
-
 /** Control Plane Access Control List (ACL) match configurations properties */
 export interface ControlPlaneAclMatchConfigurationProperties {
   /** The name of the match configuration. */
@@ -960,19 +608,9 @@ export interface ControlPlaneAclMatchConfigurationProperties {
   /** Action that need to be performed for the matched conditions. */
   action?: ControlPlaneAclAction;
 }
-const ControlPlaneAclMatchConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ControlPlaneAclMatchConfigurationProperties>;
-
 /** Access Control List (ACL) match configurations. */
 export type ControlPlaneAclPropertiesMatchConfigurationsList =
   Array<ControlPlaneAclMatchConfigurationProperties>;
-const ControlPlaneAclPropertiesMatchConfigurationsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ControlPlaneAclPropertiesMatchConfigurationsList>;
-
 /** Access Control List (ACL) configurations properties */
 export interface ControlPlaneAclProperties {
   /** IP Address Type. IPv4 or IPv6 */
@@ -980,19 +618,9 @@ export interface ControlPlaneAclProperties {
   /** Access Control List (ACL) match configurations. */
   matchConfigurations?: ControlPlaneAclPropertiesMatchConfigurationsList;
 }
-const ControlPlaneAclProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ControlPlaneAclProperties>;
-
 /** Access Control List (ACL) configurations. */
 export type AccessControlListPropertiesInputControlPlaneAclConfigurationList =
   Array<ControlPlaneAclProperties>;
-const AccessControlListPropertiesInputControlPlaneAclConfigurationList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<AccessControlListPropertiesInputControlPlaneAclConfigurationList>;
-
 /** Access Control List Properties defines the resource properties. */
 export interface AccessControlListPropertiesInput {
   /** Switch configuration description. */
@@ -1016,11 +644,6 @@ export interface AccessControlListPropertiesInput {
   /** Access Control List (ACL) configurations. */
   controlPlaneAclConfiguration?: AccessControlListPropertiesInputControlPlaneAclConfigurationList;
 }
-const AccessControlListPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<AccessControlListPropertiesInput>;
-
 export interface CreateAccessControlListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1035,19 +658,10 @@ export interface CreateAccessControlListRequest {
   /** The Access ControlList properties. */
   properties: AccessControlListPropertiesInput;
 }
-const CreateAccessControlListRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateAccessControlListRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -1063,52 +677,26 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type CreateAccessControlListResponseTagsMap = { [key: string]: string | undefined };
-const CreateAccessControlListResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateAccessControlListResponseTagsMap>;
-
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
 export type AccessControlListPropertiesDefaultAction = "Permit" | "Deny";
-const AccessControlListPropertiesDefaultAction = S.String;
-
 /** List of match configurations. */
 export type AccessControlListPropertiesMatchConfigurationsList =
   Array<AccessControlListMatchConfiguration>;
-const AccessControlListPropertiesMatchConfigurationsList =
-  AccessControlListPropertiesInputMatchConfigurationsList as any as S.Schema<AccessControlListPropertiesMatchConfigurationsList>;
-
 /** List of dynamic match configurations. */
 export type AccessControlListPropertiesDynamicMatchConfigurationsList =
   Array<CommonDynamicMatchConfiguration>;
-const AccessControlListPropertiesDynamicMatchConfigurationsList =
-  AccessControlListPropertiesInputDynamicMatchConfigurationsList as any as S.Schema<AccessControlListPropertiesDynamicMatchConfigurationsList>;
-
 /** Details of the last operations performed on the resource */
 export interface LastOperationProperties {
   /** Details status of the last operation performed on the resource. */
   details?: string;
 }
-const LastOperationProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<LastOperationProperties>;
-
 /** Associated Network Fabric Resource IDs */
 export type AccessControlListPropertiesNetworkFabricIdsList = Array<string>;
-const AccessControlListPropertiesNetworkFabricIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPropertiesNetworkFabricIdsList>;
-
 /** Access Control List (ACL) configurations. */
 export type AccessControlListPropertiesControlPlaneAclConfigurationList =
   Array<ControlPlaneAclProperties>;
-const AccessControlListPropertiesControlPlaneAclConfigurationList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AccessControlListPropertiesControlPlaneAclConfigurationList>;
-
 /** The current provisioning state. */
 export type ProvisioningState =
   | "Accepted"
@@ -1117,8 +705,6 @@ export type ProvisioningState =
   | "Deleting"
   | "Failed"
   | "Canceled";
-const ProvisioningState = S.String;
-
 /** State defined to represent administrative actions or post actions on a particular resource. */
 export type AdministrativeState =
   | "Enabled"
@@ -1127,8 +713,6 @@ export type AdministrativeState =
   | "RMA"
   | "UnderMaintenance"
   | "EnabledDegraded";
-const AdministrativeState = S.String;
-
 /** Access Control List Properties defines the resource properties. */
 export interface AccessControlListProperties {
   /** Switch configuration description. */
@@ -1164,11 +748,6 @@ export interface AccessControlListProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const AccessControlListProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<AccessControlListProperties>;
-
 export interface CreateAccessControlListResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1185,11 +764,6 @@ export interface CreateAccessControlListResponse {
   /** The Access ControlList properties. */
   properties: AccessControlListProperties;
 }
-const CreateAccessControlListResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateAccessControlListResponse>;
-
 /** Import Route Policy either IPv4 or IPv6. */
 export interface ImportRoutePolicy {
   /** ARM resource ID of RoutePolicy. */
@@ -1197,8 +771,6 @@ export interface ImportRoutePolicy {
   /** ARM resource ID of RoutePolicy. */
   importIpv6RoutePolicyId?: string;
 }
-const ImportRoutePolicy = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ImportRoutePolicy>;
-
 /** Export Route Policy either IPv4 or IPv6. */
 export interface ExportRoutePolicy {
   /** ARM resource ID of RoutePolicy. */
@@ -1206,42 +778,20 @@ export interface ExportRoutePolicy {
   /** ARM resource ID of RoutePolicy. */
   exportIpv6RoutePolicyId?: string;
 }
-const ExportRoutePolicy = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ExportRoutePolicy>;
-
 /** Peering option list. */
 export type PeeringOption = "OptionA" | "OptionB";
-const PeeringOption = S.String;
-
 /** RouteTargets to be applied. This is used for the backward compatibility. */
 export type L3OptionBPropertiesImportRouteTargetsList = Array<string>;
-const L3OptionBPropertiesImportRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<L3OptionBPropertiesImportRouteTargetsList>;
-
 /** RouteTargets to be applied. This is used for the backward compatibility. */
 export type L3OptionBPropertiesExportRouteTargetsList = Array<string>;
-const L3OptionBPropertiesExportRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<L3OptionBPropertiesExportRouteTargetsList>;
-
 /** Route Targets to be applied for incoming routes into CE. */
 export type RouteTargetInformationImportIpv4RouteTargetsList = Array<string>;
-const RouteTargetInformationImportIpv4RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetInformationImportIpv4RouteTargetsList>;
-
 /** Route Targets to be applied for incoming routes from CE. */
 export type RouteTargetInformationImportIpv6RouteTargetsList = Array<string>;
-const RouteTargetInformationImportIpv6RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetInformationImportIpv6RouteTargetsList>;
-
 /** Route Targets to be applied for outgoing routes into CE. */
 export type RouteTargetInformationExportIpv4RouteTargetsList = Array<string>;
-const RouteTargetInformationExportIpv4RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetInformationExportIpv4RouteTargetsList>;
-
 /** Route Targets to be applied for outgoing routes from CE. */
 export type RouteTargetInformationExportIpv6RouteTargetsList = Array<string>;
-const RouteTargetInformationExportIpv6RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetInformationExportIpv6RouteTargetsList>;
-
 /** Route Target Configuration. */
 export interface RouteTargetInformation {
   /** Route Targets to be applied for incoming routes into CE. */
@@ -1253,11 +803,6 @@ export interface RouteTargetInformation {
   /** Route Targets to be applied for outgoing routes from CE. */
   exportIpv6RouteTargets?: RouteTargetInformationExportIpv6RouteTargetsList;
 }
-const RouteTargetInformation = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RouteTargetInformation>;
-
 /** Option B configuration. */
 export interface L3OptionBProperties {
   /** RouteTargets to be applied. This is used for the backward compatibility. */
@@ -1267,8 +812,6 @@ export interface L3OptionBProperties {
   /** RouteTargets to be applied. */
   routeTargets?: RouteTargetInformation;
 }
-const L3OptionBProperties = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<L3OptionBProperties>;
-
 /** BFD configuration properties */
 export interface BfdConfigurationInput {
   /** Interval in milliseconds. Example: 300. */
@@ -1276,37 +819,21 @@ export interface BfdConfigurationInput {
   /** Multiplier for the Bfd Configuration. Example: 5. */
   multiplier?: number;
 }
-const BfdConfigurationInput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<BfdConfigurationInput>;
-
 /** BMP Configuration State. */
 export type ExternalNetworkBmpPropertiesConfigurationState = "Enabled" | "Disabled";
-const ExternalNetworkBmpPropertiesConfigurationState = S.String;
-
 /** BGP Monitoring Protocol (BMP) Configuration properties. */
 export interface ExternalNetworkBmpProperties {
   /** BMP Configuration State. */
   configurationState?: ExternalNetworkBmpPropertiesConfigurationState | (string & {});
 }
-const ExternalNetworkBmpProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ExternalNetworkBmpProperties>;
-
 /** V4OverV6 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession =
   | "Enabled"
   | "Disabled";
-const ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession = S.String;
-
 /** V6OverV4 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession =
   | "Enabled"
   | "Disabled";
-const ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession = S.String;
-
 /** Prefix Limit properties. */
 export interface PrefixLimitProperties {
   /** Maximum routes allowed. */
@@ -1316,28 +843,13 @@ export interface PrefixLimitProperties {
   /** Idle Time Expiry in seconds, default is 60. */
   idleTimeExpiry?: number;
 }
-const PrefixLimitProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<PrefixLimitProperties>;
-
 /** Prefix limits */
 export type NativeIpv4PrefixLimitPropertiesPrefixLimitsList = Array<PrefixLimitProperties>;
-const NativeIpv4PrefixLimitPropertiesPrefixLimitsList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<NativeIpv4PrefixLimitPropertiesPrefixLimitsList>;
-
 /** External Network native IPv4 prefix limit properties */
 export interface NativeIpv4PrefixLimitProperties {
   /** Prefix limits */
   prefixLimits?: NativeIpv4PrefixLimitPropertiesPrefixLimitsList;
 }
-const NativeIpv4PrefixLimitProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<NativeIpv4PrefixLimitProperties>;
-
 /** Prefix limits */
 export type NativeIpv6PrefixLimitPropertiesPrefixLimitsList = Array<PrefixLimitProperties>;
 /** External Network native IPv6 prefix limit properties */
@@ -1345,9 +857,6 @@ export interface NativeIpv6PrefixLimitProperties {
   /** Prefix limits */
   prefixLimits?: NativeIpv6PrefixLimitPropertiesPrefixLimitsList;
 }
-const NativeIpv6PrefixLimitProperties =
-  NativeIpv4PrefixLimitProperties as any as S.Schema<NativeIpv6PrefixLimitProperties>;
-
 /** option A properties object */
 export interface ExternalNetworkPropertiesOptionAPropertiesInput {
   /** IPv4 Address Prefix. */
@@ -1385,16 +894,8 @@ export interface ExternalNetworkPropertiesOptionAPropertiesInput {
   /** Native IPv6 prefix limits configuration */
   nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitProperties;
 }
-const ExternalNetworkPropertiesOptionAPropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ExternalNetworkPropertiesOptionAPropertiesInput>;
-
 /** List of next hop addresses. */
 export type StaticRoutePropertiesNextHopList = Array<string>;
-const StaticRoutePropertiesNextHopList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<StaticRoutePropertiesNextHopList>;
-
 /** Route Properties. */
 export interface StaticRouteProperties {
   /** Prefix of the route. */
@@ -1402,25 +903,12 @@ export interface StaticRouteProperties {
   /** List of next hop addresses. */
   nextHop: StaticRoutePropertiesNextHopList;
 }
-const StaticRouteProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<StaticRouteProperties>;
-
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList =
   Array<StaticRouteProperties>;
-const ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList>;
-
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList =
   Array<StaticRouteProperties>;
-const ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList>;
-
 /** Static Route Configuration properties for ExternalNetwork. */
 export interface ExternalNetworkStaticRouteConfigurationInput {
   /** BFD configuration properties */
@@ -1430,11 +918,6 @@ export interface ExternalNetworkStaticRouteConfigurationInput {
   /** List of IPv6 Routes. */
   ipv6Routes?: ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList;
 }
-const ExternalNetworkStaticRouteConfigurationInput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ExternalNetworkStaticRouteConfigurationInput>;
-
 /** External Network Properties. */
 export interface ExternalNetworkPropertiesInput {
   /** Switch configuration description. */
@@ -1454,11 +937,6 @@ export interface ExternalNetworkPropertiesInput {
   /** Static Route Configuration. */
   staticRouteConfiguration?: ExternalNetworkStaticRouteConfigurationInput;
 }
-const ExternalNetworkPropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ExternalNetworkPropertiesInput>;
-
 export interface CreateExternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1471,15 +949,8 @@ export interface CreateExternalNetworkRequest {
   /** External Network Properties */
   properties: ExternalNetworkPropertiesInput;
 }
-const CreateExternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CreateExternalNetworkRequest>;
-
 /** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
 export type BfdConfigurationAdministrativeState = "Enabled" | "Disabled" | "MAT" | "RMA";
-const BfdConfigurationAdministrativeState = S.String;
-
 /** BFD configuration properties */
 export interface BfdConfiguration {
   /** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
@@ -1489,16 +960,10 @@ export interface BfdConfiguration {
   /** Multiplier for the Bfd Configuration. Example: 5. */
   multiplier?: number;
 }
-const BfdConfiguration = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<BfdConfiguration>;
-
 /** V4OverV6 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession = "Enabled" | "Disabled";
-const ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession = S.String;
-
 /** V6OverV4 BGP Session state */
 export type ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession = "Enabled" | "Disabled";
-const ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession = S.String;
-
 /** option A properties object */
 export interface ExternalNetworkPropertiesOptionAProperties {
   /** IPv4 Address Prefix. */
@@ -1534,21 +999,10 @@ export interface ExternalNetworkPropertiesOptionAProperties {
   /** Native IPv6 prefix limits configuration */
   nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitProperties;
 }
-const ExternalNetworkPropertiesOptionAProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ExternalNetworkPropertiesOptionAProperties>;
-
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRouteConfigurationIpv4RoutesList = Array<StaticRouteProperties>;
-const ExternalNetworkStaticRouteConfigurationIpv4RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<ExternalNetworkStaticRouteConfigurationIpv4RoutesList>;
-
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRouteConfigurationIpv6RoutesList = Array<StaticRouteProperties>;
-const ExternalNetworkStaticRouteConfigurationIpv6RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<ExternalNetworkStaticRouteConfigurationIpv6RoutesList>;
-
 /** Static Route Configuration properties for ExternalNetwork. */
 export interface ExternalNetworkStaticRouteConfiguration {
   /** BFD configuration properties */
@@ -1558,11 +1012,6 @@ export interface ExternalNetworkStaticRouteConfiguration {
   /** List of IPv6 Routes. */
   ipv6Routes?: ExternalNetworkStaticRouteConfigurationIpv6RoutesList;
 }
-const ExternalNetworkStaticRouteConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ExternalNetworkStaticRouteConfiguration>;
-
 /** External Network Properties. */
 export interface ExternalNetworkProperties {
   /** Switch configuration description. */
@@ -1592,11 +1041,6 @@ export interface ExternalNetworkProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const ExternalNetworkProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ExternalNetworkProperties>;
-
 export interface CreateExternalNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1609,15 +1053,8 @@ export interface CreateExternalNetworkResponse {
   /** External Network Properties */
   properties: ExternalNetworkProperties;
 }
-const CreateExternalNetworkResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateExternalNetworkResponse>;
-
 /** Extension. Example: NoExtension | NPB. */
 export type InternalNetworkPropertiesInputExtension = "NoExtension" | "NPB";
-const InternalNetworkPropertiesInputExtension = S.String;
-
 /** Connected Subnet properties. */
 export interface ConnectedSubnet {
   /** Switch configuration description. */
@@ -1625,94 +1062,42 @@ export interface ConnectedSubnet {
   /** Prefix of the Connected Subnet. */
   prefix: string;
 }
-const ConnectedSubnet = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ConnectedSubnet>;
-
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPropertiesInputConnectedIPv4SubnetsList = Array<ConnectedSubnet>;
-const InternalNetworkPropertiesInputConnectedIPv4SubnetsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<InternalNetworkPropertiesInputConnectedIPv4SubnetsList>;
-
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPropertiesInputConnectedIPv6SubnetsList = Array<ConnectedSubnet>;
-const InternalNetworkPropertiesInputConnectedIPv6SubnetsList =
-  InternalNetworkPropertiesInputConnectedIPv4SubnetsList as any as S.Schema<InternalNetworkPropertiesInputConnectedIPv6SubnetsList>;
-
 /** To check whether monitoring of internal network is enabled or not. */
 export type InternalNetworkPropertiesInputIsMonitoringEnabled = "True" | "False";
-const InternalNetworkPropertiesInputIsMonitoringEnabled = S.String;
-
 /** Boolean union. Example- True/False */
 export type BooleanEnumProperty = "True" | "False";
-const BooleanEnumProperty = S.String;
-
 /** Enable Or Disable state. */
 export type AllowASOverride = "Enable" | "Disable";
-const AllowASOverride = S.String;
-
 /** List of BGP IPv4 Listen Range prefixes. */
 export type BgpConfigurationInputIpv4ListenRangePrefixesList = Array<string>;
-const BgpConfigurationInputIpv4ListenRangePrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BgpConfigurationInputIpv4ListenRangePrefixesList>;
-
 /** List of BGP IPv6 Listen Ranges prefixes. */
 export type BgpConfigurationInputIpv6ListenRangePrefixesList = Array<string>;
-const BgpConfigurationInputIpv6ListenRangePrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BgpConfigurationInputIpv6ListenRangePrefixesList>;
-
 /** Neighbor Address properties. */
 export interface NeighborAddressInput {
   /** IP Address. */
   address?: string;
 }
-const NeighborAddressInput = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<NeighborAddressInput>;
-
 /** List with stringified IPv4 Neighbor Addresses. */
 export type BgpConfigurationInputIpv4NeighborAddressList = Array<NeighborAddressInput>;
-const BgpConfigurationInputIpv4NeighborAddressList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<BgpConfigurationInputIpv4NeighborAddressList>;
-
 /** List with stringified IPv6 Neighbor Address. */
 export type BgpConfigurationInputIpv6NeighborAddressList = Array<NeighborAddressInput>;
-const BgpConfigurationInputIpv6NeighborAddressList =
-  BgpConfigurationInputIpv4NeighborAddressList as any as S.Schema<BgpConfigurationInputIpv6NeighborAddressList>;
-
 /** BMP Collector Address. */
 export type InternalNetworkBmpPropertiesNeighborIpExclusionsList = Array<string>;
-const InternalNetworkBmpPropertiesNeighborIpExclusionsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<InternalNetworkBmpPropertiesNeighborIpExclusionsList>;
-
 /** BGP Monitoring Protocol (BMP) configuration state. */
 export type BmpConfigurationState = "Enabled" | "Disabled";
-const BmpConfigurationState = S.String;
-
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
 export type BmpExportPolicy = "Pre-Policy" | "Post-Policy" | "All" | "LocalRib";
-const BmpExportPolicy = S.String;
-
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
 export type BmpExportPolicyPropertiesExportPoliciesList = Array<BmpExportPolicy | (string & {})>;
-const BmpExportPolicyPropertiesExportPoliciesList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<BmpExportPolicyPropertiesExportPoliciesList>;
-
 /** BMP Export Policy Configuration properties. */
 export interface BmpExportPolicyProperties {
   /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
   exportPolicies?: BmpExportPolicyPropertiesExportPoliciesList;
 }
-const BmpExportPolicyProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<BmpExportPolicyProperties>;
-
 /** Internal Network BMP Configuration */
 export interface InternalNetworkBmpProperties {
   /** BMP Collector Address. */
@@ -1722,19 +1107,10 @@ export interface InternalNetworkBmpProperties {
   /** BMP Export Policy configuration. */
   exportPolicyConfiguration?: BmpExportPolicyProperties;
 }
-const InternalNetworkBmpProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<InternalNetworkBmpProperties>;
-
 /** V4 over V6 bgp session. */
 export type BgpConfigurationInputV4OverV6BgpSession = "Enabled" | "Disabled";
-const BgpConfigurationInputV4OverV6BgpSession = S.String;
-
 /** v6 over v4 bgp session. */
 export type BgpConfigurationInputV6OverV4BgpSession = "Enabled" | "Disabled";
-const BgpConfigurationInputV6OverV4BgpSession = S.String;
-
 /** BGP configuration properties */
 export interface BgpConfigurationInput {
   /** Switch configuration description. */
@@ -1764,25 +1140,12 @@ export interface BgpConfigurationInput {
   /** v6 over v4 bgp session. */
   v6OverV4BgpSession?: BgpConfigurationInputV6OverV4BgpSession | (string & {});
 }
-const BgpConfigurationInput = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<BgpConfigurationInput>;
-
 /** List of IPv4 Routes. */
 export type StaticRouteConfigurationInputIpv4RoutesList = Array<StaticRouteProperties>;
-const StaticRouteConfigurationInputIpv4RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<StaticRouteConfigurationInputIpv4RoutesList>;
-
 /** List of IPv6 Routes. */
 export type StaticRouteConfigurationInputIpv6RoutesList = Array<StaticRouteProperties>;
-const StaticRouteConfigurationInputIpv6RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<StaticRouteConfigurationInputIpv6RoutesList>;
-
 /** Extension. Example: NoExtension | NPB. */
 export type StaticRouteConfigurationInputExtension = "NoExtension" | "NPB";
-const StaticRouteConfigurationInputExtension = S.String;
-
 /** Static Route Configuration properties. */
 export interface StaticRouteConfigurationInput {
   /** BFD configuration properties */
@@ -1794,11 +1157,6 @@ export interface StaticRouteConfigurationInput {
   /** Extension. Example: NoExtension | NPB. */
   extension?: StaticRouteConfigurationInputExtension | (string & {});
 }
-const StaticRouteConfigurationInput = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<StaticRouteConfigurationInput>;
-
 /** Internal Network Properties defines the properties of the resource. */
 export interface InternalNetworkPropertiesInput {
   /** Switch configuration description. */
@@ -1832,11 +1190,6 @@ export interface InternalNetworkPropertiesInput {
   /** Native IPv6 Prefix Limit Configuration properties. */
   nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitProperties;
 }
-const InternalNetworkPropertiesInput = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<InternalNetworkPropertiesInput>;
-
 export interface CreateInternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1849,47 +1202,22 @@ export interface CreateInternalNetworkRequest {
   /** The Internal Network Properties */
   properties: InternalNetworkPropertiesInput;
 }
-const CreateInternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateInternalNetworkRequest>;
-
 /** Extension. Example: NoExtension | NPB. */
 export type InternalNetworkPropertiesExtension = "NoExtension" | "NPB";
-const InternalNetworkPropertiesExtension = S.String;
-
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPropertiesConnectedIPv4SubnetsList = Array<ConnectedSubnet>;
-const InternalNetworkPropertiesConnectedIPv4SubnetsList =
-  InternalNetworkPropertiesInputConnectedIPv4SubnetsList as any as S.Schema<InternalNetworkPropertiesConnectedIPv4SubnetsList>;
-
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPropertiesConnectedIPv6SubnetsList = Array<ConnectedSubnet>;
-const InternalNetworkPropertiesConnectedIPv6SubnetsList =
-  InternalNetworkPropertiesInputConnectedIPv4SubnetsList as any as S.Schema<InternalNetworkPropertiesConnectedIPv6SubnetsList>;
-
 /** To check whether monitoring of internal network is enabled or not. */
 export type InternalNetworkPropertiesIsMonitoringEnabled = "True" | "False";
-const InternalNetworkPropertiesIsMonitoringEnabled = S.String;
-
 /** List of BGP IPv4 Listen Range prefixes. */
 export type BgpConfigurationIpv4ListenRangePrefixesList = Array<string>;
-const BgpConfigurationIpv4ListenRangePrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BgpConfigurationIpv4ListenRangePrefixesList>;
-
 /** List of BGP IPv6 Listen Ranges prefixes. */
 export type BgpConfigurationIpv6ListenRangePrefixesList = Array<string>;
-const BgpConfigurationIpv6ListenRangePrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BgpConfigurationIpv6ListenRangePrefixesList>;
-
 /** Administrative state of the BfdConfiguration. Example: Enabled | Disabled. */
 export type BfdAdministrativeState = "Enabled" | "Disabled" | "MAT" | "RMA";
-const BfdAdministrativeState = S.String;
-
 /** Border Gateway Protocol (BGP) Administrative State values */
 export type BgpAdministrativeState = "Enabled" | "Disabled";
-const BgpAdministrativeState = S.String;
-
 /** Neighbor Address properties. */
 export interface NeighborAddress {
   /** IP Address. */
@@ -1901,28 +1229,14 @@ export interface NeighborAddress {
   /** Configuration state of the resource. */
   configurationState?: ConfigurationState;
 }
-const NeighborAddress = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<NeighborAddress>;
-
 /** List with stringified IPv4 Neighbor Addresses. */
 export type BgpConfigurationIpv4NeighborAddressList = Array<NeighborAddress>;
-const BgpConfigurationIpv4NeighborAddressList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<BgpConfigurationIpv4NeighborAddressList>;
-
 /** List with stringified IPv6 Neighbor Address. */
 export type BgpConfigurationIpv6NeighborAddressList = Array<NeighborAddress>;
-const BgpConfigurationIpv6NeighborAddressList =
-  BgpConfigurationIpv4NeighborAddressList as any as S.Schema<BgpConfigurationIpv6NeighborAddressList>;
-
 /** V4 over V6 bgp session. */
 export type BgpConfigurationV4OverV6BgpSession = "Enabled" | "Disabled";
-const BgpConfigurationV4OverV6BgpSession = S.String;
-
 /** v6 over v4 bgp session. */
 export type BgpConfigurationV6OverV4BgpSession = "Enabled" | "Disabled";
-const BgpConfigurationV6OverV4BgpSession = S.String;
-
 /** BGP configuration properties */
 export interface BgpConfiguration {
   /** Switch configuration description. */
@@ -1954,22 +1268,12 @@ export interface BgpConfiguration {
   /** v6 over v4 bgp session. */
   v6OverV4BgpSession?: BgpConfigurationV6OverV4BgpSession;
 }
-const BgpConfiguration = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<BgpConfiguration>;
-
 /** List of IPv4 Routes. */
 export type StaticRouteConfigurationIpv4RoutesList = Array<StaticRouteProperties>;
-const StaticRouteConfigurationIpv4RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<StaticRouteConfigurationIpv4RoutesList>;
-
 /** List of IPv6 Routes. */
 export type StaticRouteConfigurationIpv6RoutesList = Array<StaticRouteProperties>;
-const StaticRouteConfigurationIpv6RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<StaticRouteConfigurationIpv6RoutesList>;
-
 /** Extension. Example: NoExtension | NPB. */
 export type StaticRouteConfigurationExtension = "NoExtension" | "NPB";
-const StaticRouteConfigurationExtension = S.String;
-
 /** Static Route Configuration properties. */
 export interface StaticRouteConfiguration {
   /** BFD configuration properties */
@@ -1981,11 +1285,6 @@ export interface StaticRouteConfiguration {
   /** Extension. Example: NoExtension | NPB. */
   extension?: StaticRouteConfigurationExtension;
 }
-const StaticRouteConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<StaticRouteConfiguration>;
-
 /** Internal Network Properties defines the properties of the resource. */
 export interface InternalNetworkProperties {
   /** Switch configuration description. */
@@ -2029,11 +1328,6 @@ export interface InternalNetworkProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const InternalNetworkProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<InternalNetworkProperties>;
-
 export interface CreateInternalNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2046,20 +1340,10 @@ export interface CreateInternalNetworkResponse {
   /** The Internal Network Properties */
   properties: InternalNetworkProperties;
 }
-const CreateInternalNetworkResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateInternalNetworkResponse>;
-
 /** Resource tags. */
 export type CreateInternetGatewayRequestTagsMap = { [key: string]: string | undefined };
-const CreateInternetGatewayRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateInternetGatewayRequestTagsMap>;
-
 /** Gateway Type of the resource. */
 export type GatewayType = "Infrastructure" | "Workload";
-const GatewayType = S.String;
-
 /** Internet Gateway Properties defines the properties of the resource. */
 export interface InternetGatewayPropertiesInput {
   /** Switch configuration description. */
@@ -2073,11 +1357,6 @@ export interface InternetGatewayPropertiesInput {
   /** ARM Resource ID of the Network Fabric Controller. */
   networkFabricControllerId: string;
 }
-const InternetGatewayPropertiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<InternetGatewayPropertiesInput>;
-
 export interface CreateInternetGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2092,16 +1371,8 @@ export interface CreateInternetGatewayRequest {
   /** The Internet Gateway Properties */
   properties: InternetGatewayPropertiesInput;
 }
-const CreateInternetGatewayRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateInternetGatewayRequest>;
-
 /** Resource tags. */
 export type CreateInternetGatewayResponseTagsMap = { [key: string]: string | undefined };
-const CreateInternetGatewayResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateInternetGatewayResponseTagsMap>;
-
 /** Internet Gateway Properties defines the properties of the resource. */
 export interface InternetGatewayProperties {
   /** Switch configuration description. */
@@ -2123,11 +1394,6 @@ export interface InternetGatewayProperties {
   /** Provisioning state of resource. */
   provisioningState?: ProvisioningState;
 }
-const InternetGatewayProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<InternetGatewayProperties>;
-
 export interface CreateInternetGatewayResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2144,44 +1410,20 @@ export interface CreateInternetGatewayResponse {
   /** The Internet Gateway Properties */
   properties: InternetGatewayProperties;
 }
-const CreateInternetGatewayResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateInternetGatewayResponse>;
-
 /** Resource tags. */
 export type CreateInternetGatewayRuleRequestTagsMap = { [key: string]: string | undefined };
-const CreateInternetGatewayRuleRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateInternetGatewayRuleRequestTagsMap>;
-
 /** Specify action. */
 export type Action = "Allow" | "Deny";
-const Action = S.String;
-
 /** List of Addresses to be allowed or denied. */
 export type RulePropertiesAddressListList = Array<string>;
-const RulePropertiesAddressListList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RulePropertiesAddressListList>;
-
 /** Specify Rule condition. */
 export type RuleCondition = "And" | "Or";
-const RuleCondition = S.String;
-
 /** List of Addresses to be allowed or denied. */
 export type RulePropertiesDestinationAddressListList = Array<string>;
-const RulePropertiesDestinationAddressListList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RulePropertiesDestinationAddressListList>;
-
 /** List of source IPv4 and IPv6 address to be allowed or denied. */
 export type RulePropertiesSourceAddressListList = Array<string>;
-const RulePropertiesSourceAddressListList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RulePropertiesSourceAddressListList>;
-
 /** List of source remote IP to be allowed or denied. */
 export type HeaderAddressPropertiesAddressListList = Array<string>;
-const HeaderAddressPropertiesAddressListList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<HeaderAddressPropertiesAddressListList>;
-
 /** Header name and source addresses associated with the header. */
 export interface HeaderAddressProperties {
   /** Name of the header. */
@@ -2189,18 +1431,8 @@ export interface HeaderAddressProperties {
   /** List of source remote IP to be allowed or denied. */
   addressList?: HeaderAddressPropertiesAddressListList;
 }
-const HeaderAddressProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<HeaderAddressProperties>;
-
 /** List of header Name and source addresses associated with the header. */
 export type RulePropertiesHeaderAddressListList = Array<HeaderAddressProperties>;
-const RulePropertiesHeaderAddressListList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<RulePropertiesHeaderAddressListList>;
-
 /** Rules for the InternetGateways */
 export interface RuleProperties {
   /** Specify action. */
@@ -2216,8 +1448,6 @@ export interface RuleProperties {
   /** List of header Name and source addresses associated with the header. */
   headerAddressList?: RulePropertiesHeaderAddressListList;
 }
-const RuleProperties = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<RuleProperties>;
-
 /** Internet Gateway Rule Properties defines the resource properties. */
 export interface InternetGatewayRulePropertiesInput {
   /** Switch configuration description. */
@@ -2225,11 +1455,6 @@ export interface InternetGatewayRulePropertiesInput {
   /** Rules for the InternetGateways */
   ruleProperties: RuleProperties;
 }
-const InternetGatewayRulePropertiesInput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<InternetGatewayRulePropertiesInput>;
-
 export interface CreateInternetGatewayRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2244,21 +1469,10 @@ export interface CreateInternetGatewayRuleRequest {
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRulePropertiesInput;
 }
-const CreateInternetGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateInternetGatewayRuleRequest>;
-
 /** Resource tags. */
 export type CreateInternetGatewayRuleResponseTagsMap = { [key: string]: string | undefined };
-const CreateInternetGatewayRuleResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateInternetGatewayRuleResponseTagsMap>;
-
 /** List of Internet Gateway resource Id. */
 export type InternetGatewayRulePropertiesInternetGatewayIdsList = Array<string>;
-const InternetGatewayRulePropertiesInternetGatewayIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<InternetGatewayRulePropertiesInternetGatewayIdsList>;
-
 /** Internet Gateway Rule Properties defines the resource properties. */
 export interface InternetGatewayRuleProperties {
   /** Switch configuration description. */
@@ -2272,11 +1486,6 @@ export interface InternetGatewayRuleProperties {
   /** List of Internet Gateway resource Id. */
   internetGatewayIds?: InternetGatewayRulePropertiesInternetGatewayIdsList;
 }
-const InternetGatewayRuleProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<InternetGatewayRuleProperties>;
-
 export interface CreateInternetGatewayRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2293,32 +1502,16 @@ export interface CreateInternetGatewayRuleResponse {
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRuleProperties;
 }
-const CreateInternetGatewayRuleResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateInternetGatewayRuleResponse>;
-
 /** Resource tags. */
 export type CreateIpCommunityRequestTagsMap = { [key: string]: string | undefined };
-const CreateIpCommunityRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateIpCommunityRequestTagsMap>;
-
 /** Community action types. Example: Permit | Deny. */
 export type CommunityActionTypes = "Permit" | "Deny";
-const CommunityActionTypes = S.String;
-
 /** `Internet` - Advertise routes to internet community. `LocalAS` - Advertise routes to only localAS peers. `NoAdvertise` - Don't advertise routes to any peer. `NoExport` - Don't export to next AS. `GShut` - Graceful Shutdown (GSHUT) withdraw routes before terminating BGP connection. */
 export type WellKnownCommunities = "Internet" | "LocalAS" | "NoAdvertise" | "NoExport" | "GShut";
 /** Supported well known Community List. */
 export type IpCommunityRuleWellKnownCommunitiesList = Array<WellKnownCommunities | (string & {})>;
-const IpCommunityRuleWellKnownCommunitiesList =
-  BmpExportPolicyPropertiesExportPoliciesList as any as S.Schema<IpCommunityRuleWellKnownCommunitiesList>;
-
 /** List the community members of IP Community. */
 export type IpCommunityRuleCommunityMembersList = Array<string>;
-const IpCommunityRuleCommunityMembersList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpCommunityRuleCommunityMembersList>;
-
 /** IP Community patchable properties. */
 export interface IpCommunityRule {
   /** Action to be taken on the configuration. Example: Permit | Deny. */
@@ -2330,15 +1523,8 @@ export interface IpCommunityRule {
   /** List the community members of IP Community. */
   communityMembers: IpCommunityRuleCommunityMembersList;
 }
-const IpCommunityRule = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<IpCommunityRule>;
-
 /** List of IP Community Rules. */
 export type IpCommunityPropertiesInputIpCommunityRulesList = Array<IpCommunityRule>;
-const IpCommunityPropertiesInputIpCommunityRulesList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<IpCommunityPropertiesInputIpCommunityRulesList>;
-
 /** IP Community Properties defines the resource properties. */
 export interface IpCommunityPropertiesInput {
   /** Switch configuration description. */
@@ -2346,11 +1532,6 @@ export interface IpCommunityPropertiesInput {
   /** List of IP Community Rules. */
   ipCommunityRules: IpCommunityPropertiesInputIpCommunityRulesList;
 }
-const IpCommunityPropertiesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<IpCommunityPropertiesInput>;
-
 export interface CreateIpCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2365,21 +1546,10 @@ export interface CreateIpCommunityRequest {
   /** The IP Community Properties */
   properties: IpCommunityPropertiesInput;
 }
-const CreateIpCommunityRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateIpCommunityRequest>;
-
 /** Resource tags. */
 export type CreateIpCommunityResponseTagsMap = { [key: string]: string | undefined };
-const CreateIpCommunityResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateIpCommunityResponseTagsMap>;
-
 /** List of IP Community Rules. */
 export type IpCommunityPropertiesIpCommunityRulesList = Array<IpCommunityRule>;
-const IpCommunityPropertiesIpCommunityRulesList =
-  IpCommunityPropertiesInputIpCommunityRulesList as any as S.Schema<IpCommunityPropertiesIpCommunityRulesList>;
-
 /** IP Community Properties defines the resource properties. */
 export interface IpCommunityProperties {
   /** Switch configuration description. */
@@ -2397,11 +1567,6 @@ export interface IpCommunityProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const IpCommunityProperties = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<IpCommunityProperties>;
-
 export interface CreateIpCommunityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2418,21 +1583,10 @@ export interface CreateIpCommunityResponse {
   /** The IP Community Properties */
   properties: IpCommunityProperties;
 }
-const CreateIpCommunityResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateIpCommunityResponse>;
-
 /** Resource tags. */
 export type CreateIpExtendedCommunityRequestTagsMap = { [key: string]: string | undefined };
-const CreateIpExtendedCommunityRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateIpExtendedCommunityRequestTagsMap>;
-
 /** Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295. */
 export type IpExtendedCommunityRuleRouteTargetsList = Array<string>;
-const IpExtendedCommunityRuleRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpExtendedCommunityRuleRouteTargetsList>;
-
 /** List of IP Extended Community Rules. */
 export interface IpExtendedCommunityRule {
   /** Action to be taken on the configuration. Example: Permit | Deny. */
@@ -2442,19 +1596,9 @@ export interface IpExtendedCommunityRule {
   /** Route Target List.The expected formats are ASN(plain):NN >> example 4294967294:50, ASN.ASN:NN >> example 65533.65333:40, IP-address:NN >> example 10.10.10.10:65535. The possible values of ASN,NN are in range of 0-65535, ASN(plain) is in range of 0-4294967295. */
   routeTargets: IpExtendedCommunityRuleRouteTargetsList;
 }
-const IpExtendedCommunityRule = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<IpExtendedCommunityRule>;
-
 /** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList =
   Array<IpExtendedCommunityRule>;
-const IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList>;
-
 /** IP Extended Community Properties defines the resource properties. */
 export interface IpExtendedCommunityPropertiesInput {
   /** Switch configuration description. */
@@ -2462,11 +1606,6 @@ export interface IpExtendedCommunityPropertiesInput {
   /** List of IP Extended Community Rules. */
   ipExtendedCommunityRules: IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList;
 }
-const IpExtendedCommunityPropertiesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<IpExtendedCommunityPropertiesInput>;
-
 export interface CreateIpExtendedCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2481,22 +1620,11 @@ export interface CreateIpExtendedCommunityRequest {
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityPropertiesInput;
 }
-const CreateIpExtendedCommunityRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateIpExtendedCommunityRequest>;
-
 /** Resource tags. */
 export type CreateIpExtendedCommunityResponseTagsMap = { [key: string]: string | undefined };
-const CreateIpExtendedCommunityResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateIpExtendedCommunityResponseTagsMap>;
-
 /** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPropertiesIpExtendedCommunityRulesList =
   Array<IpExtendedCommunityRule>;
-const IpExtendedCommunityPropertiesIpExtendedCommunityRulesList =
-  IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList as any as S.Schema<IpExtendedCommunityPropertiesIpExtendedCommunityRulesList>;
-
 /** IP Extended Community Properties defines the resource properties. */
 export interface IpExtendedCommunityProperties {
   /** Switch configuration description. */
@@ -2514,11 +1642,6 @@ export interface IpExtendedCommunityProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const IpExtendedCommunityProperties = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<IpExtendedCommunityProperties>;
-
 export interface CreateIpExtendedCommunityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2535,20 +1658,10 @@ export interface CreateIpExtendedCommunityResponse {
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityProperties;
 }
-const CreateIpExtendedCommunityResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateIpExtendedCommunityResponse>;
-
 /** Resource tags. */
 export type CreateIpPrefixRequestTagsMap = { [key: string]: string | undefined };
-const CreateIpPrefixRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateIpPrefixRequestTagsMap>;
-
 /** Specify prefix-list bounds. */
 export type Condition = "EqualTo" | "GreaterThanOrEqualTo" | "LesserThanOrEqualTo" | "Range";
-const Condition = S.String;
-
 /** IP Prefix Rule properties. */
 export interface IpPrefixRule {
   /** Action to be taken on the configuration. Example: Permit | Deny. */
@@ -2562,15 +1675,8 @@ export interface IpPrefixRule {
   /** SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128. */
   subnetMaskLength?: string;
 }
-const IpPrefixRule = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<IpPrefixRule>;
-
 /** The list of IP Prefix Rules. */
 export type IpPrefixPropertiesInputIpPrefixRulesList = Array<IpPrefixRule>;
-const IpPrefixPropertiesInputIpPrefixRulesList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<IpPrefixPropertiesInputIpPrefixRulesList>;
-
 /** IP Prefix Properties defines the properties of the resource. */
 export interface IpPrefixPropertiesInput {
   /** Switch configuration description. */
@@ -2578,11 +1684,6 @@ export interface IpPrefixPropertiesInput {
   /** The list of IP Prefix Rules. */
   ipPrefixRules: IpPrefixPropertiesInputIpPrefixRulesList;
 }
-const IpPrefixPropertiesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<IpPrefixPropertiesInput>;
-
 export interface CreateIpPrefixRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2597,21 +1698,10 @@ export interface CreateIpPrefixRequest {
   /** The IP Prefix properties */
   properties: IpPrefixPropertiesInput;
 }
-const CreateIpPrefixRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateIpPrefixRequest>;
-
 /** Resource tags. */
 export type CreateIpPrefixResponseTagsMap = { [key: string]: string | undefined };
-const CreateIpPrefixResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateIpPrefixResponseTagsMap>;
-
 /** The list of IP Prefix Rules. */
 export type IpPrefixPropertiesIpPrefixRulesList = Array<IpPrefixRule>;
-const IpPrefixPropertiesIpPrefixRulesList =
-  IpPrefixPropertiesInputIpPrefixRulesList as any as S.Schema<IpPrefixPropertiesIpPrefixRulesList>;
-
 /** IP Prefix Properties defines the properties of the resource. */
 export interface IpPrefixProperties {
   /** Switch configuration description. */
@@ -2629,8 +1719,6 @@ export interface IpPrefixProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const IpPrefixProperties = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<IpPrefixProperties>;
-
 export interface CreateIpPrefixResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2647,20 +1735,10 @@ export interface CreateIpPrefixResponse {
   /** The IP Prefix properties */
   properties: IpPrefixProperties;
 }
-const CreateIpPrefixResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateIpPrefixResponse>;
-
 /** Resource tags. */
 export type CreateL2IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
-const CreateL2IsolationDomainRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateL2IsolationDomainRequestTagsMap>;
-
 /** Extended VLAN status, default value is Disabled. */
 export type L2IsolationDomainPropertiesInputExtendedVlan = "Enabled" | "Disabled";
-const L2IsolationDomainPropertiesInputExtendedVlan = S.String;
-
 /** L2Isolation Domain Properties defines the properties of the resource. */
 export interface L2IsolationDomainPropertiesInput {
   /** Switch configuration description. */
@@ -2676,45 +1754,23 @@ export interface L2IsolationDomainPropertiesInput {
   /** ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource. */
   networkToNetworkInterconnectId?: string;
 }
-const L2IsolationDomainPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<L2IsolationDomainPropertiesInput>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateL2IsolationDomainRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const CreateL2IsolationDomainRequestIdentity = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CreateL2IsolationDomainRequestIdentity>;
-
 export interface CreateL2IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2731,20 +1787,10 @@ export interface CreateL2IsolationDomainRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateL2IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateL2IsolationDomainRequest>;
-
 /** Resource tags. */
 export type CreateL2IsolationDomainResponseTagsMap = { [key: string]: string | undefined };
-const CreateL2IsolationDomainResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateL2IsolationDomainResponseTagsMap>;
-
 /** Extended VLAN status, default value is Disabled. */
 export type L2IsolationDomainPropertiesExtendedVlan = "Enabled" | "Disabled";
-const L2IsolationDomainPropertiesExtendedVlan = S.String;
-
 /** L2Isolation Domain Properties defines the properties of the resource. */
 export interface L2IsolationDomainProperties {
   /** Switch configuration description. */
@@ -2768,11 +1814,6 @@ export interface L2IsolationDomainProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const L2IsolationDomainProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<L2IsolationDomainProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -2780,18 +1821,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface CreateL2IsolationDomainResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2801,11 +1832,6 @@ export interface CreateL2IsolationDomainResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const CreateL2IsolationDomainResponseIdentity = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CreateL2IsolationDomainResponseIdentity>;
-
 export interface CreateL2IsolationDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2824,43 +1850,21 @@ export interface CreateL2IsolationDomainResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateL2IsolationDomainResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<CreateL2IsolationDomainResponse>;
-
 /** Resource tags. */
 export type CreateL3IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
-const CreateL3IsolationDomainRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateL3IsolationDomainRequestTagsMap>;
-
 /** Advertise Connected Subnets. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesInputRedistributeConnectedSubnets = "True" | "False";
-const L3IsolationDomainPropertiesInputRedistributeConnectedSubnets = S.String;
-
 /** Advertise Static Routes. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesInputRedistributeStaticRoutes = "True" | "False";
-const L3IsolationDomainPropertiesInputRedistributeStaticRoutes = S.String;
-
 /** aggregateIpv4Route model. */
 export interface AggregateRoute {
   /** IPv4 Prefix of the aggregate Ipv4Route. */
   prefix: string;
 }
-const AggregateRoute = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<AggregateRoute>;
-
 /** List of IPv4 Route prefixes. */
 export type AggregateRouteConfigurationIpv4RoutesList = Array<AggregateRoute>;
-const AggregateRouteConfigurationIpv4RoutesList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<AggregateRouteConfigurationIpv4RoutesList>;
-
 /** List of Ipv6Routes prefixes. */
 export type AggregateRouteConfigurationIpv6RoutesList = Array<AggregateRoute>;
-const AggregateRouteConfigurationIpv6RoutesList =
-  AggregateRouteConfigurationIpv4RoutesList as any as S.Schema<AggregateRouteConfigurationIpv6RoutesList>;
-
 /** List of IPv4 and IPv6 aggregate routes. */
 export interface AggregateRouteConfiguration {
   /** List of IPv4 Route prefixes. */
@@ -2868,11 +1872,6 @@ export interface AggregateRouteConfiguration {
   /** List of Ipv6Routes prefixes. */
   ipv6Routes?: AggregateRouteConfigurationIpv6RoutesList;
 }
-const AggregateRouteConfiguration = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<AggregateRouteConfiguration>;
-
 /** Array of ARM Resource ID of the RoutePolicies. */
 export interface L3ExportRoutePolicy {
   /** ARM Resource ID of the RoutePolicy. */
@@ -2880,18 +1879,11 @@ export interface L3ExportRoutePolicy {
   /** ARM Resource ID of the RoutePolicy. */
   exportIpv6RoutePolicyId?: string;
 }
-const L3ExportRoutePolicy = ExportRoutePolicy as any as S.Schema<L3ExportRoutePolicy>;
-
 /** Connected Subnet Route Policy properties. */
 export interface ConnectedSubnetRoutePolicy {
   /** Array of ARM Resource ID of the RoutePolicies. */
   exportRoutePolicy?: L3ExportRoutePolicy;
 }
-const ConnectedSubnetRoutePolicy = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ConnectedSubnetRoutePolicy>;
-
 /** Static Route - route policy properties. */
 export type StaticRouteRoutePolicy = ConnectedSubnetRoutePolicy;
 /** Unique Route Distinguisher properties. */
@@ -2903,11 +1895,6 @@ export interface RoutePrefixLimitProperties {
   /** Threshold for the routes. */
   threshold?: number;
 }
-const RoutePrefixLimitProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<RoutePrefixLimitProperties>;
-
 /** L3 Isolation Domain Properties defines the properties of the resource. */
 export interface L3IsolationDomainPropertiesInput {
   /** Switch configuration description. */
@@ -2937,11 +1924,6 @@ export interface L3IsolationDomainPropertiesInput {
   /** BMP Export Policy configuration. */
   exportPolicyConfiguration?: BmpExportPolicyProperties;
 }
-const L3IsolationDomainPropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<L3IsolationDomainPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateL3IsolationDomainRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateL3IsolationDomainRequest {
@@ -2960,39 +1942,19 @@ export interface CreateL3IsolationDomainRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateL3IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<CreateL3IsolationDomainRequest>;
-
 /** Resource tags. */
 export type CreateL3IsolationDomainResponseTagsMap = { [key: string]: string | undefined };
-const CreateL3IsolationDomainResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateL3IsolationDomainResponseTagsMap>;
-
 /** Advertise Connected Subnets. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesRedistributeConnectedSubnets = "True" | "False";
-const L3IsolationDomainPropertiesRedistributeConnectedSubnets = S.String;
-
 /** Advertise Static Routes. Ex: "True" | "False". */
 export type L3IsolationDomainPropertiesRedistributeStaticRoutes = "True" | "False";
-const L3IsolationDomainPropertiesRedistributeStaticRoutes = S.String;
-
 /** List of Unique Route Distinguisher addresses. */
 export type L3UniqueRouteDistinguisherPropertiesUniqueRdsList = Array<string>;
-const L3UniqueRouteDistinguisherPropertiesUniqueRdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<L3UniqueRouteDistinguisherPropertiesUniqueRdsList>;
-
 /** Unique Route Distinguisher properties. */
 export interface L3UniqueRouteDistinguisherProperties {
   /** List of Unique Route Distinguisher addresses. */
   uniqueRds?: L3UniqueRouteDistinguisherPropertiesUniqueRdsList;
 }
-const L3UniqueRouteDistinguisherProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<L3UniqueRouteDistinguisherProperties>;
-
 /** L3 Isolation Domain Properties defines the properties of the resource. */
 export interface L3IsolationDomainProperties {
   /** Switch configuration description. */
@@ -3026,11 +1988,6 @@ export interface L3IsolationDomainProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const L3IsolationDomainProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<L3IsolationDomainProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateL3IsolationDomainResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateL3IsolationDomainResponse {
@@ -3051,26 +2008,12 @@ export interface CreateL3IsolationDomainResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateL3IsolationDomainResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CreateL3IsolationDomainResponse>;
-
 /** Resource tags. */
 export type CreateNeighborGroupRequestTagsMap = { [key: string]: string | undefined };
-const CreateNeighborGroupRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNeighborGroupRequestTagsMap>;
-
 /** Array of IPv4 Addresses. */
 export type NeighborGroupDestinationIpv4AddressesList = Array<string>;
-const NeighborGroupDestinationIpv4AddressesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupDestinationIpv4AddressesList>;
-
 /** Array of IPv6 Addresses. */
 export type NeighborGroupDestinationIpv6AddressesList = Array<string>;
-const NeighborGroupDestinationIpv6AddressesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupDestinationIpv6AddressesList>;
-
 /** An array of destination IPv4 Addresses or IPv6 Addresses. */
 export interface NeighborGroupDestination {
   /** Array of IPv4 Addresses. */
@@ -3078,11 +2021,6 @@ export interface NeighborGroupDestination {
   /** Array of IPv6 Addresses. */
   ipv6Addresses?: NeighborGroupDestinationIpv6AddressesList;
 }
-const NeighborGroupDestination = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<NeighborGroupDestination>;
-
 /** Neighbor Group Properties defines the properties of the resource. */
 export interface NeighborGroupPropertiesInput {
   /** Switch configuration description. */
@@ -3090,11 +2028,6 @@ export interface NeighborGroupPropertiesInput {
   /** An array of destination IPv4 Addresses or IPv6 Addresses. */
   destination: NeighborGroupDestination;
 }
-const NeighborGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<NeighborGroupPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNeighborGroupRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNeighborGroupRequest {
@@ -3113,31 +2046,14 @@ export interface CreateNeighborGroupRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNeighborGroupRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CreateNeighborGroupRequest>;
-
 /** Resource tags. */
 export type CreateNeighborGroupResponseTagsMap = { [key: string]: string | undefined };
-const CreateNeighborGroupResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNeighborGroupResponseTagsMap>;
-
 /** List of NetworkTap IDs where neighbor group is associated. */
 export type NeighborGroupPropertiesNetworkTapIdsList = Array<string>;
-const NeighborGroupPropertiesNetworkTapIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupPropertiesNetworkTapIdsList>;
-
 /** List of Network Tap Rule IDs where neighbor group is associated. */
 export type NeighborGroupPropertiesNetworkTapRuleIdsList = Array<string>;
-const NeighborGroupPropertiesNetworkTapRuleIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupPropertiesNetworkTapRuleIdsList>;
-
 /** Associated Network Fabric Resource IDs */
 export type NeighborGroupPropertiesNetworkFabricIdsList = Array<string>;
-const NeighborGroupPropertiesNetworkFabricIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupPropertiesNetworkFabricIdsList>;
-
 /** Neighbor Group Properties defines the properties of the resource. */
 export interface NeighborGroupProperties {
   /** Switch configuration description. */
@@ -3157,11 +2073,6 @@ export interface NeighborGroupProperties {
   /** Configuration state of the resource. */
   configurationState?: ConfigurationState;
 }
-const NeighborGroupProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<NeighborGroupProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNeighborGroupResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNeighborGroupResponse {
@@ -3182,16 +2093,8 @@ export interface CreateNeighborGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNeighborGroupResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateNeighborGroupResponse>;
-
 /** Resource tags. */
 export type CreateNetworkBootstrapDeviceRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkBootstrapDeviceRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkBootstrapDeviceRequestTagsMap>;
-
 /** Network Bootstrap Device Properties defines the properties of the resource. */
 export interface NetworkBootstrapDevicePropertiesInput {
   /** Switch configuration description. */
@@ -3203,11 +2106,6 @@ export interface NetworkBootstrapDevicePropertiesInput {
   /** Network Bootstrap Device SKU name. */
   networkDeviceSku?: string;
 }
-const NetworkBootstrapDevicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<NetworkBootstrapDevicePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkBootstrapDeviceRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkBootstrapDeviceRequest {
@@ -3226,16 +2124,8 @@ export interface CreateNetworkBootstrapDeviceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkBootstrapDeviceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<CreateNetworkBootstrapDeviceRequest>;
-
 /** Resource tags. */
 export type CreateNetworkBootstrapDeviceResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkBootstrapDeviceResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkBootstrapDeviceResponseTagsMap>;
-
 /** Network Bootstrap Device Properties defines the properties of the resource. */
 export interface NetworkBootstrapDeviceProperties {
   /** Switch configuration description. */
@@ -3267,11 +2157,6 @@ export interface NetworkBootstrapDeviceProperties {
   /** Configuration state of the resource. */
   configurationState?: ConfigurationState;
 }
-const NetworkBootstrapDeviceProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<NetworkBootstrapDeviceProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkBootstrapDeviceResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkBootstrapDeviceResponse {
@@ -3292,11 +2177,6 @@ export interface CreateNetworkBootstrapDeviceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkBootstrapDeviceResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<CreateNetworkBootstrapDeviceResponse>;
-
 /** Network Bootstrap Interface Properties defines the properties of the resource. */
 export interface NetworkBootstrapInterfacePropertiesInput {
   /** Switch configuration description. */
@@ -3306,11 +2186,6 @@ export interface NetworkBootstrapInterfacePropertiesInput {
   /** Serial number of the interface. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
   serialNumber?: string;
 }
-const NetworkBootstrapInterfacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<NetworkBootstrapInterfacePropertiesInput>;
-
 export interface CreateNetworkBootstrapInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3323,15 +2198,8 @@ export interface CreateNetworkBootstrapInterfaceRequest {
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfacePropertiesInput;
 }
-const CreateNetworkBootstrapInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<CreateNetworkBootstrapInterfaceRequest>;
-
 /** The Interface Type. Example: Management/Data */
 export type InterfaceType = "Management" | "Data";
-const InterfaceType = S.String;
-
 /** Network Bootstrap Interface Properties defines the properties of the resource. */
 export interface NetworkBootstrapInterfaceProperties {
   /** Switch configuration description. */
@@ -3359,11 +2227,6 @@ export interface NetworkBootstrapInterfaceProperties {
   /** Serial number of the interface. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
   serialNumber?: string;
 }
-const NetworkBootstrapInterfaceProperties = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<NetworkBootstrapInterfaceProperties>;
-
 export interface CreateNetworkBootstrapInterfaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3376,20 +2239,10 @@ export interface CreateNetworkBootstrapInterfaceResponse {
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfaceProperties;
 }
-const CreateNetworkBootstrapInterfaceResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<CreateNetworkBootstrapInterfaceResponse>;
-
 /** Resource tags. */
 export type CreateNetworkDeviceRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkDeviceRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkDeviceRequestTagsMap>;
-
 /** The type of managed identity. */
 export type ManagedServiceIdentitySelectorType = "SystemAssignedIdentity" | "UserAssignedIdentity";
-const ManagedServiceIdentitySelectorType = S.String;
-
 /** IdentitySelector represents the selection of a managed identity for use. */
 export interface IdentitySelector {
   /** The type of managed identity that is being selected. */
@@ -3397,8 +2250,6 @@ export interface IdentitySelector {
   /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
   userAssignedIdentityResourceId?: string;
 }
-const IdentitySelector = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<IdentitySelector>;
-
 /** Network Device Properties defines the properties of the resource. */
 export interface NetworkDevicePropertiesInput {
   /** Switch configuration description. */
@@ -3412,11 +2263,6 @@ export interface NetworkDevicePropertiesInput {
   /** Network Device SKU name. */
   networkDeviceSku?: string;
 }
-const NetworkDevicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<NetworkDevicePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkDeviceRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkDeviceRequest {
@@ -3435,24 +2281,12 @@ export interface CreateNetworkDeviceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkDeviceRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<CreateNetworkDeviceRequest>;
-
 /** Resource tags. */
 export type CreateNetworkDeviceResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkDeviceResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkDeviceResponseTagsMap>;
-
 /** NetworkDeviceRole is the device role: Example: CE | ToR. */
 export type NetworkDeviceRole = "CE" | "ToR" | "NPB" | "TS" | "Management";
-const NetworkDeviceRole = S.String;
-
 /** Synchronization status of a secret or certificate for a device (Network Device or Terminal Server). Whether the device has been configured with the latest version of the secret or certificate. */
 export type SynchronizationStatus = "InSync" | "Synchronizing" | "OutOfSync";
-const SynchronizationStatus = S.String;
-
 /** A reference to a version of a secret in a key vault. */
 export interface SecretArchiveReference {
   /** A Uniform Resource Identifier (URI) for the secret in the key vault. */
@@ -3464,11 +2298,6 @@ export interface SecretArchiveReference {
   /** The version of the secret in the key vault. */
   secretVersion?: string;
 }
-const SecretArchiveReference = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<SecretArchiveReference>;
-
 /** Status of a secret rotation for a device (Network Device or Terminal Server). */
 export interface SecretRotationStatus {
   /** The date and time when the secret was last changed. */
@@ -3480,18 +2309,8 @@ export interface SecretRotationStatus {
   /** Identifies the secret according to its purpose. */
   secretType?: string;
 }
-const SecretRotationStatus = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<SecretRotationStatus>;
-
 /** Secret rotation status for the device's secrets. */
 export type NetworkDevicePropertiesSecretRotationStatusList = Array<SecretRotationStatus>;
-const NetworkDevicePropertiesSecretRotationStatusList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<NetworkDevicePropertiesSecretRotationStatusList>;
-
 /** A reference to a version of a certificate in a key vault. */
 export interface CertificateArchiveReference {
   /** A Uniform Resource Identifier (URI) for the certificate in the key vault. */
@@ -3503,11 +2322,6 @@ export interface CertificateArchiveReference {
   /** The version of the certificate in the key vault. */
   certificateVersion?: string;
 }
-const CertificateArchiveReference = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<CertificateArchiveReference>;
-
 /** Status of a certificate rotation for a device (Network Device or Terminal Server). */
 export interface CertificateRotationStatus {
   /** Time at which the certificate will expire, for certificates with a limited validity period. */
@@ -3521,18 +2335,8 @@ export interface CertificateRotationStatus {
   /** Identifies the certificate according to its purpose. */
   certificateType?: string;
 }
-const CertificateRotationStatus = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<CertificateRotationStatus>;
-
 /** Certificate rotation status for the device's certificates. */
 export type NetworkDevicePropertiesCertificateRotationStatusList = Array<CertificateRotationStatus>;
-const NetworkDevicePropertiesCertificateRotationStatusList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<NetworkDevicePropertiesCertificateRotationStatusList>;
-
 /** Network Device Properties defines the properties of the resource. */
 export interface NetworkDeviceProperties {
   /** Switch configuration description. */
@@ -3572,11 +2376,6 @@ export interface NetworkDeviceProperties {
   /** Associated Network Fabric Resource ID */
   networkFabricId?: string;
 }
-const NetworkDeviceProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<NetworkDeviceProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkDeviceResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkDeviceResponse {
@@ -3597,16 +2396,8 @@ export interface CreateNetworkDeviceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkDeviceResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<CreateNetworkDeviceResponse>;
-
 /** Resource tags. */
 export type CreateNetworkFabricRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkFabricRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkFabricRequestTagsMap>;
-
 /** Storage account configuration. */
 export interface StorageAccountConfiguration {
   /** Network Fabric storage account resource identifier. */
@@ -3614,11 +2405,6 @@ export interface StorageAccountConfiguration {
   /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
   storageAccountIdentity?: IdentitySelector;
 }
-const StorageAccountConfiguration = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<StorageAccountConfiguration>;
-
 /** Network and credentials configuration currently applied to terminal server. */
 export interface TerminalServerConfigurationInput {
   /** Username for the terminal server connection. */
@@ -3636,11 +2422,6 @@ export interface TerminalServerConfigurationInput {
   /** Secondary IPv6 Address Prefix. */
   secondaryIpv6Prefix?: string;
 }
-const TerminalServerConfigurationInput = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<TerminalServerConfigurationInput>;
-
 /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
 export type VpnOptionBPropertiesImportRouteTargetsList = Array<string>;
 /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
@@ -3654,8 +2435,6 @@ export interface VpnOptionBProperties {
   /** Route Targets to be applied. */
   routeTargets?: RouteTargetInformation;
 }
-const VpnOptionBProperties = L3OptionBProperties as any as S.Schema<VpnOptionBProperties>;
-
 /** option A properties */
 export interface VpnOptionAPropertiesInput {
   /** IPv4 Address Prefix. */
@@ -3675,11 +2454,6 @@ export interface VpnOptionAPropertiesInput {
   /** BFD Configuration properties. */
   bfdConfiguration?: BfdConfigurationInput;
 }
-const VpnOptionAPropertiesInput = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<VpnOptionAPropertiesInput>;
-
 /** Network and credential configuration currently applied on terminal server. */
 export interface VpnConfigurationPropertiesInput {
   /** ARM Resource ID of the Network To Network Interconnect. */
@@ -3691,11 +2465,6 @@ export interface VpnConfigurationPropertiesInput {
   /** option A properties */
   optionAProperties?: VpnOptionAPropertiesInput;
 }
-const VpnConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<VpnConfigurationPropertiesInput>;
-
 /** Configuration to be used to setup the management network. */
 export interface ManagementNetworkConfigurationPropertiesInput {
   /** VPN Configuration properties. */
@@ -3703,16 +2472,8 @@ export interface ManagementNetworkConfigurationPropertiesInput {
   /** VPN Configuration properties. */
   workloadVpnConfiguration: VpnConfigurationPropertiesInput;
 }
-const ManagementNetworkConfigurationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ManagementNetworkConfigurationPropertiesInput>;
-
 /** Control Plane Access Control List ARM resource IDs. */
 export type NetworkFabricPropertiesInputControlPlaneAclsList = Array<string>;
-const NetworkFabricPropertiesInputControlPlaneAclsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesInputControlPlaneAclsList>;
-
 /** Feature flag properties. */
 export interface FeatureFlagProperties {
   /** Feature flag name. */
@@ -3720,35 +2481,18 @@ export interface FeatureFlagProperties {
   /** Feature flag value. */
   featureFlagValue?: string;
 }
-const FeatureFlagProperties = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<FeatureFlagProperties>;
-
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPropertiesInputFeatureFlagsList = Array<FeatureFlagProperties>;
-const NetworkFabricPropertiesInputFeatureFlagsList = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<NetworkFabricPropertiesInputFeatureFlagsList>;
-
 /** Trusted IP Prefixes ARM resource IDs. */
 export type NetworkFabricPropertiesInputTrustedIpPrefixesList = Array<string>;
-const NetworkFabricPropertiesInputTrustedIpPrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesInputTrustedIpPrefixesList>;
-
 /** Unique Route Distinguisher configuration state. Default is Enabled. */
 export type UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState =
   | "Enabled"
   | "Disabled";
-const UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState = S.String;
-
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState =
   | "Enabled"
   | "Disabled";
-const UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState = S.String;
-
 /** Unique Route Distinguisher properties. */
 export interface UniqueRouteDistinguisherPropertiesInput {
   /** Unique Route Distinguisher configuration state. Default is Enabled. */
@@ -3760,11 +2504,6 @@ export interface UniqueRouteDistinguisherPropertiesInput {
     | UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState
     | (string & {});
 }
-const UniqueRouteDistinguisherPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<UniqueRouteDistinguisherPropertiesInput>;
-
 /** Authorized Transceiver Properties. */
 export interface AuthorizedTransceiverProperties {
   /** Vendor of the transceiver. */
@@ -3772,22 +2511,13 @@ export interface AuthorizedTransceiverProperties {
   /** Key that must be configured on the fabric. */
   key?: string;
 }
-const AuthorizedTransceiverProperties = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<AuthorizedTransceiverProperties>;
-
 /** QoS configuration state. Default is Disabled. */
 export type QosPropertiesQosConfigurationState = "Disabled" | "Enabled";
-const QosPropertiesQosConfigurationState = S.String;
-
 /** NetworkFabric QoS Properties. */
 export interface QosProperties {
   /** QoS configuration state. Default is Disabled. */
   qosConfigurationState?: QosPropertiesQosConfigurationState | (string & {});
 }
-const QosProperties = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<QosProperties>;
-
 /** Network Fabric Properties defines the properties of the resource. */
 export interface NetworkFabricPropertiesInput {
   /** Switch configuration description. */
@@ -3831,11 +2561,6 @@ export interface NetworkFabricPropertiesInput {
   /** NetworkFabric QoS Configuration */
   qosConfiguration?: QosProperties;
 }
-const NetworkFabricPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<NetworkFabricPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkFabricRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkFabricRequest {
@@ -3854,29 +2579,14 @@ export interface CreateNetworkFabricRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkFabricRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CreateNetworkFabricRequest>;
-
 /** Resource tags. */
 export type CreateNetworkFabricResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkFabricResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkFabricResponseTagsMap>;
-
 /** Array of router IDs. */
 export type NetworkFabricPropertiesRouterIdsList = Array<string>;
-const NetworkFabricPropertiesRouterIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesRouterIdsList>;
-
 /** Lock Configuration State. */
 export type LockConfigurationState = "Enabled" | "Disabled";
-const LockConfigurationState = S.String;
-
 /** Network fabric lock type */
 export type NetworkFabricLockType = "Administrative" | "Configuration";
-const NetworkFabricLockType = S.String;
-
 /** Network Fabric Lock Configuration. */
 export interface FabricLockProperties {
   /** NetworkFabric Lock State. */
@@ -3884,23 +2594,10 @@ export interface FabricLockProperties {
   /** NetworkFabric Lock Type. */
   lockType?: NetworkFabricLockType;
 }
-const FabricLockProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<FabricLockProperties>;
-
 /** Network Fabric Lock details */
 export type NetworkFabricPropertiesFabricLocksList = Array<FabricLockProperties>;
-const NetworkFabricPropertiesFabricLocksList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<NetworkFabricPropertiesFabricLocksList>;
-
 /** Secret rotation status for the terminal server's secrets. */
 export type TerminalServerConfigurationSecretRotationStatusList = Array<SecretRotationStatus>;
-const TerminalServerConfigurationSecretRotationStatusList =
-  NetworkDevicePropertiesSecretRotationStatusList as any as S.Schema<TerminalServerConfigurationSecretRotationStatusList>;
-
 /** Network and credentials configuration currently applied to terminal server. */
 export interface TerminalServerConfiguration {
   /** Username for the terminal server connection. */
@@ -3922,11 +2619,6 @@ export interface TerminalServerConfiguration {
   /** Secret rotation status for the terminal server's secrets. */
   secretRotationStatus?: TerminalServerConfigurationSecretRotationStatusList;
 }
-const TerminalServerConfiguration = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<TerminalServerConfiguration>;
-
 /** option A properties */
 export interface VpnOptionAProperties {
   /** IPv4 Address Prefix. */
@@ -3946,11 +2638,6 @@ export interface VpnOptionAProperties {
   /** BFD Configuration properties. */
   bfdConfiguration?: BfdConfiguration;
 }
-const VpnOptionAProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<VpnOptionAProperties>;
-
 /** Network and credential configuration currently applied on terminal server. */
 export interface VpnConfigurationProperties {
   /** ARM Resource ID of the Network To Network Interconnect. */
@@ -3964,11 +2651,6 @@ export interface VpnConfigurationProperties {
   /** option A properties */
   optionAProperties?: VpnOptionAProperties;
 }
-const VpnConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<VpnConfigurationProperties>;
-
 /** Configuration to be used to setup the management network. */
 export interface ManagementNetworkConfigurationProperties {
   /** VPN Configuration properties. */
@@ -3976,56 +2658,26 @@ export interface ManagementNetworkConfigurationProperties {
   /** VPN Configuration properties. */
   workloadVpnConfiguration: VpnConfigurationProperties;
 }
-const ManagementNetworkConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ManagementNetworkConfigurationProperties>;
-
 /** List of NetworkRack resource IDs under the Network Fabric. The number of racks allowed depends on the Network Fabric SKU. */
 export type NetworkFabricPropertiesRacksList = Array<string>;
-const NetworkFabricPropertiesRacksList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesRacksList>;
-
 /** List of L2 Isolation Domain resource IDs under the Network Fabric. */
 export type NetworkFabricPropertiesL2IsolationDomainsList = Array<string>;
-const NetworkFabricPropertiesL2IsolationDomainsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesL2IsolationDomainsList>;
-
 /** List of L3 Isolation Domain resource IDs under the Network Fabric. */
 export type NetworkFabricPropertiesL3IsolationDomainsList = Array<string>;
-const NetworkFabricPropertiesL3IsolationDomainsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesL3IsolationDomainsList>;
-
 /** Control Plane Access Control List ARM resource IDs. */
 export type NetworkFabricPropertiesControlPlaneAclsList = Array<string>;
-const NetworkFabricPropertiesControlPlaneAclsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesControlPlaneAclsList>;
-
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPropertiesFeatureFlagsList = Array<FeatureFlagProperties>;
-const NetworkFabricPropertiesFeatureFlagsList =
-  NetworkFabricPropertiesInputFeatureFlagsList as any as S.Schema<NetworkFabricPropertiesFeatureFlagsList>;
-
 /** Trusted IP Prefixes ARM resource IDs. */
 export type NetworkFabricPropertiesTrustedIpPrefixesList = Array<string>;
-const NetworkFabricPropertiesTrustedIpPrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesTrustedIpPrefixesList>;
-
 /** Unique Route Distinguisher configuration state. Default is Enabled. */
 export type UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState = "Enabled" | "Disabled";
-const UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState = S.String;
-
 /** List of Unique Route Distinguisher addresses. */
 export type UniqueRouteDistinguisherPropertiesUniqueRdsList = Array<string>;
-const UniqueRouteDistinguisherPropertiesUniqueRdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UniqueRouteDistinguisherPropertiesUniqueRdsList>;
-
 /** NNI derived unique Route Distinguisher state. Default is Disabled. */
 export type UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState =
   | "Enabled"
   | "Disabled";
-const UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState = S.String;
-
 /** Unique Route Distinguisher properties. */
 export interface UniqueRouteDistinguisherProperties {
   /** Unique Route Distinguisher configuration state. Default is Enabled. */
@@ -4035,26 +2687,13 @@ export interface UniqueRouteDistinguisherProperties {
   /** NNI derived unique Route Distinguisher state. Default is Disabled. */
   nniDerivedUniqueRdConfigurationState?: UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState;
 }
-const UniqueRouteDistinguisherProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<UniqueRouteDistinguisherProperties>;
-
 /** Active commit batch identifiers */
 export type NetworkFabricPropertiesActiveCommitBatchesList = Array<string>;
-const NetworkFabricPropertiesActiveCommitBatchesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPropertiesActiveCommitBatchesList>;
-
 /** Overview of secret rotation for the Network Fabric. */
 export interface SecretRotationSummary {
   /** The number of active password sets configured on the devices. */
   activePasswordSetCount?: number;
 }
-const SecretRotationSummary = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<SecretRotationSummary>;
-
 /** Network Fabric Properties defines the properties of the resource. */
 export interface NetworkFabricProperties {
   /** Switch configuration description. */
@@ -4120,11 +2759,6 @@ export interface NetworkFabricProperties {
   /** NetworkFabric QoS Configuration */
   qosConfiguration?: QosProperties;
 }
-const NetworkFabricProperties = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<NetworkFabricProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkFabricResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkFabricResponse {
@@ -4145,16 +2779,8 @@ export interface CreateNetworkFabricResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkFabricResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<CreateNetworkFabricResponse>;
-
 /** Resource tags. */
 export type CreateNetworkFabricControllerRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkFabricControllerRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkFabricControllerRequestTagsMap>;
-
 /** The ExpressRoute circuit ID and the Auth Key are required for you to successfully deploy NFC service. */
 export interface ExpressRouteConnectionInformation {
   /** The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute Circuit is a mandatory attribute. */
@@ -4162,26 +2788,12 @@ export interface ExpressRouteConnectionInformation {
   /** Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute. */
   expressRouteAuthorizationKey: string;
 }
-const ExpressRouteConnectionInformation = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ExpressRouteConnectionInformation>;
-
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList =
   Array<ExpressRouteConnectionInformation>;
-const NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    4,
-  ) as any as S.Schema<NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList>;
-
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList =
   Array<ExpressRouteConnectionInformation>;
-const NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList =
-  NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList as any as S.Schema<NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList>;
-
 /** Managed Resource Group configuration properties. */
 export interface ManagedResourceGroupConfiguration {
   /** The NFC service will be hosted in a Managed resource group. */
@@ -4189,21 +2801,12 @@ export interface ManagedResourceGroupConfiguration {
   /** Managed resource group location. */
   location?: string;
 }
-const ManagedResourceGroupConfiguration = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ManagedResourceGroupConfiguration>;
-
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled =
   | "True"
   | "False";
-const NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled = S.String;
-
 /** Network Fabric Controller SKU. */
 export type NetworkFabricControllerPropertiesInputNfcSku = "Basic" | "Standard" | "HighPerformance";
-const NetworkFabricControllerPropertiesInputNfcSku = S.String;
-
 /** NetworkFabricControllerProperties defines the resource properties. */
 export interface NetworkFabricControllerPropertiesInput {
   /** Switch configuration description. */
@@ -4225,11 +2828,6 @@ export interface NetworkFabricControllerPropertiesInput {
   /** Network Fabric Controller SKU. */
   nfcSku?: NetworkFabricControllerPropertiesInputNfcSku | (string & {});
 }
-const NetworkFabricControllerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<NetworkFabricControllerPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkFabricControllerRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkFabricControllerRequest {
@@ -4248,38 +2846,18 @@ export interface CreateNetworkFabricControllerRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkFabricControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<CreateNetworkFabricControllerRequest>;
-
 /** Resource tags. */
 export type CreateNetworkFabricControllerResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkFabricControllerResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkFabricControllerResponseTagsMap>;
-
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList =
   Array<ExpressRouteConnectionInformation>;
-const NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList =
-  NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList as any as S.Schema<NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList>;
-
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList =
   Array<ExpressRouteConnectionInformation>;
-const NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList =
-  NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList as any as S.Schema<NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList>;
-
 /** The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute. */
 export type ControllerServicesIpv4AddressSpacesList = Array<string>;
-const ControllerServicesIpv4AddressSpacesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<ControllerServicesIpv4AddressSpacesList>;
-
 /** The IPv6 is not supported right now. */
 export type ControllerServicesIpv6AddressSpacesList = Array<string>;
-const ControllerServicesIpv6AddressSpacesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<ControllerServicesIpv6AddressSpacesList>;
-
 /** Network Fabric Controller services. */
 export interface ControllerServices {
   /** The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute. */
@@ -4287,26 +2865,14 @@ export interface ControllerServices {
   /** The IPv6 is not supported right now. */
   ipv6AddressSpaces?: ControllerServicesIpv6AddressSpacesList;
 }
-const ControllerServices = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ControllerServices>;
-
 /** The NF-ID will be an input parameter used by the NF to link and get associated with the parent NFC Service. */
 export type NetworkFabricControllerPropertiesNetworkFabricIdsList = Array<string>;
-const NetworkFabricControllerPropertiesNetworkFabricIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricControllerPropertiesNetworkFabricIdsList>;
-
 /** A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints. */
 export type NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled = "True" | "False";
-const NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled = S.String;
-
 /** List of tenant InternetGateway resource IDs */
 export type NetworkFabricControllerPropertiesTenantInternetGatewayIdsList = Array<string>;
-const NetworkFabricControllerPropertiesTenantInternetGatewayIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricControllerPropertiesTenantInternetGatewayIdsList>;
-
 /** Network Fabric Controller SKU. */
 export type NetworkFabricControllerPropertiesNfcSku = "Basic" | "Standard" | "HighPerformance";
-const NetworkFabricControllerPropertiesNfcSku = S.String;
-
 /** NetworkFabricControllerProperties defines the resource properties. */
 export interface NetworkFabricControllerProperties {
   /** Switch configuration description. */
@@ -4338,11 +2904,6 @@ export interface NetworkFabricControllerProperties {
   /** Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning. */
   provisioningState?: ProvisioningState;
 }
-const NetworkFabricControllerProperties = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<NetworkFabricControllerProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkFabricControllerResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkFabricControllerResponse {
@@ -4363,11 +2924,6 @@ export interface CreateNetworkFabricControllerResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkFabricControllerResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<CreateNetworkFabricControllerResponse>;
-
 /** Network Interface Properties defines the properties of the resource. */
 export interface NetworkInterfacePropertiesInput {
   /** Switch configuration description. */
@@ -4375,11 +2931,6 @@ export interface NetworkInterfacePropertiesInput {
   /** Additional description of the interface. */
   additionalDescription?: string;
 }
-const NetworkInterfacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<NetworkInterfacePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkInterfaceRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkInterfaceRequest {
@@ -4396,11 +2947,6 @@ export interface CreateNetworkInterfaceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<CreateNetworkInterfaceRequest>;
-
 /** Network Interface Properties defines the properties of the resource. */
 export interface NetworkInterfaceProperties {
   /** Switch configuration description. */
@@ -4430,11 +2976,6 @@ export interface NetworkInterfaceProperties {
   /** Configuration state of the resource. */
   configurationState?: ConfigurationState;
 }
-const NetworkInterfaceProperties = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<NetworkInterfaceProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkInterfaceResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkInterfaceResponse {
@@ -4451,24 +2992,12 @@ export interface CreateNetworkInterfaceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkInterfaceResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<CreateNetworkInterfaceResponse>;
-
 /** Resource tags. */
 export type CreateNetworkMonitorRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkMonitorRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkMonitorRequestTagsMap>;
-
 /** Station Configuration State. */
 export type StationConfigurationState = "Enabled" | "Disabled";
-const StationConfigurationState = S.String;
-
 /** Station Connection Mode. */
 export type StationConnectionMode = "Active" | "Passive";
-const StationConnectionMode = S.String;
-
 /** Station Connection Properties. */
 export interface StationConnectionProperties {
   /** Connection keepalive idle time in seconds */
@@ -4478,24 +3007,14 @@ export interface StationConnectionProperties {
   /** Probe count, default value is 10 */
   probeCount?: number;
 }
-const StationConnectionProperties = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<StationConnectionProperties>;
-
 /** The List of Network ID's that need to be monitored. */
 export type BmpConfigurationPropertiesMonitoredNetworksList = Array<string>;
-const BmpConfigurationPropertiesMonitoredNetworksList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BmpConfigurationPropertiesMonitoredNetworksList>;
-
 /** Export Policy for the BMP Configuration. */
 export type BmpConfigurationPropertiesExportPolicy =
   | "Pre-Policy"
   | "Post-Policy"
   | "All"
   | "LocalRib";
-const BmpConfigurationPropertiesExportPolicy = S.String;
-
 /** Monitored Address Family. */
 export type BmpMonitoredAddressFamily =
   | "ipv4Unicast"
@@ -4507,9 +3026,6 @@ export type BmpMonitoredAddressFamily =
 export type BmpConfigurationPropertiesMonitoredAddressFamiliesList = Array<
   BmpMonitoredAddressFamily | (string & {})
 >;
-const BmpConfigurationPropertiesMonitoredAddressFamiliesList =
-  BmpExportPolicyPropertiesExportPoliciesList as any as S.Schema<BmpConfigurationPropertiesMonitoredAddressFamiliesList>;
-
 /** BGP Monitoring Protocol (BMP) Configuration properties. */
 export interface BmpConfigurationProperties {
   /** Enabling a station. Either True/False. */
@@ -4537,11 +3053,6 @@ export interface BmpConfigurationProperties {
   /** Monitored Address Families for the BMP Configuration. */
   monitoredAddressFamilies?: BmpConfigurationPropertiesMonitoredAddressFamiliesList;
 }
-const BmpConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<BmpConfigurationProperties>;
-
 /** Network Monitor Properties defines the properties of the resource. */
 export interface NetworkMonitorPropertiesInput {
   /** Switch configuration description. */
@@ -4549,11 +3060,6 @@ export interface NetworkMonitorPropertiesInput {
   /** BMP Configurations for the Network Fabric. */
   bmpConfiguration?: BmpConfigurationProperties;
 }
-const NetworkMonitorPropertiesInput = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<NetworkMonitorPropertiesInput>;
-
 export interface CreateNetworkMonitorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4568,16 +3074,8 @@ export interface CreateNetworkMonitorRequest {
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorPropertiesInput;
 }
-const CreateNetworkMonitorRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<CreateNetworkMonitorRequest>;
-
 /** Resource tags. */
 export type CreateNetworkMonitorResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkMonitorResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkMonitorResponseTagsMap>;
-
 /** Network Monitor Properties defines the properties of the resource. */
 export interface NetworkMonitorProperties {
   /** Switch configuration description. */
@@ -4593,11 +3091,6 @@ export interface NetworkMonitorProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const NetworkMonitorProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<NetworkMonitorProperties>;
-
 export interface CreateNetworkMonitorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4614,26 +3107,13 @@ export interface CreateNetworkMonitorResponse {
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorProperties;
 }
-const CreateNetworkMonitorResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<CreateNetworkMonitorResponse>;
-
 /** Resource tags. */
 export type CreateNetworkPacketBrokerRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkPacketBrokerRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkPacketBrokerRequestTagsMap>;
-
 /** Network Packet Broker Properties defines the properties of the resource. */
 export interface NetworkPacketBrokerPropertiesInput {
   /** ARM resource ID of the Network Fabric. */
   networkFabricId: string;
 }
-const NetworkPacketBrokerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<NetworkPacketBrokerPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkPacketBrokerRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkPacketBrokerRequest {
@@ -4652,36 +3132,16 @@ export interface CreateNetworkPacketBrokerRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkPacketBrokerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<CreateNetworkPacketBrokerRequest>;
-
 /** Resource tags. */
 export type CreateNetworkPacketBrokerResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkPacketBrokerResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkPacketBrokerResponseTagsMap>;
-
 /** List of ARM resource IDs of Network Devices [NPB]. */
 export type NetworkPacketBrokerPropertiesNetworkDeviceIdsList = Array<string>;
-const NetworkPacketBrokerPropertiesNetworkDeviceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkPacketBrokerPropertiesNetworkDeviceIdsList>;
-
 /** List of network interfaces across NPB devices that are used to mirror source traffic. */
 export type NetworkPacketBrokerPropertiesSourceInterfaceIdsList = Array<string>;
-const NetworkPacketBrokerPropertiesSourceInterfaceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkPacketBrokerPropertiesSourceInterfaceIdsList>;
-
 /** List of network Tap IDs configured on NPB. */
 export type NetworkPacketBrokerPropertiesNetworkTapIdsList = Array<string>;
-const NetworkPacketBrokerPropertiesNetworkTapIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkPacketBrokerPropertiesNetworkTapIdsList>;
-
 /** List of neighbor group IDs configured on NPB. */
 export type NetworkPacketBrokerPropertiesNeighborGroupIdsList = Array<string>;
-const NetworkPacketBrokerPropertiesNeighborGroupIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkPacketBrokerPropertiesNeighborGroupIdsList>;
-
 /** Network Packet Broker Properties defines the properties of the resource. */
 export interface NetworkPacketBrokerProperties {
   /** ARM resource ID of the Network Fabric. */
@@ -4701,11 +3161,6 @@ export interface NetworkPacketBrokerProperties {
   /** Configuration state of the resource. */
   configurationState?: ConfigurationState;
 }
-const NetworkPacketBrokerProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<NetworkPacketBrokerProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkPacketBrokerResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkPacketBrokerResponse {
@@ -4726,20 +3181,10 @@ export interface CreateNetworkPacketBrokerResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkPacketBrokerResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<CreateNetworkPacketBrokerResponse>;
-
 /** Resource tags. */
 export type CreateNetworkRackRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkRackRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkRackRequestTagsMap>;
-
 /** Network Rack SKU name. */
 export type NetworkRackType = "Aggregate" | "Compute" | "Combined";
-const NetworkRackType = S.String;
-
 /** Network Rack Properties defines the properties of the resource. */
 export interface NetworkRackPropertiesInput {
   /** Switch configuration description. */
@@ -4749,11 +3194,6 @@ export interface NetworkRackPropertiesInput {
   /** ARM resource ID of the Network Fabric. */
   networkFabricId: string;
 }
-const NetworkRackPropertiesInput = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<NetworkRackPropertiesInput>;
-
 export interface CreateNetworkRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4768,21 +3208,10 @@ export interface CreateNetworkRackRequest {
   /** Network Rack Properties */
   properties: NetworkRackPropertiesInput;
 }
-const CreateNetworkRackRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<CreateNetworkRackRequest>;
-
 /** Resource tags. */
 export type CreateNetworkRackResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkRackResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkRackResponseTagsMap>;
-
 /** List of network device ARM resource IDs. */
 export type NetworkRackPropertiesNetworkDevicesList = Array<string>;
-const NetworkRackPropertiesNetworkDevicesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkRackPropertiesNetworkDevicesList>;
-
 /** Network Rack Properties defines the properties of the resource. */
 export interface NetworkRackProperties {
   /** Switch configuration description. */
@@ -4800,11 +3229,6 @@ export interface NetworkRackProperties {
   /** Configuration state of the resource. */
   configurationState?: ConfigurationState;
 }
-const NetworkRackProperties = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<NetworkRackProperties>;
-
 export interface CreateNetworkRackResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4821,29 +3245,14 @@ export interface CreateNetworkRackResponse {
   /** Network Rack Properties */
   properties: NetworkRackProperties;
 }
-const CreateNetworkRackResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<CreateNetworkRackResponse>;
-
 /** Resource tags. */
 export type CreateNetworkTapRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkTapRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkTapRequestTagsMap>;
-
 /** Type of destination. Input can be IsolationDomain or Direct. */
 export type DestinationType = "IsolationDomain" | "Direct";
-const DestinationType = S.String;
-
 /** Type of encapsulation. */
 export type Encapsulation = "None" | "GRE";
-const Encapsulation = S.String;
-
 /** List of Neighbor Group IDs. */
 export type IsolationDomainPropertiesNeighborGroupIdsList = Array<string>;
-const IsolationDomainPropertiesNeighborGroupIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IsolationDomainPropertiesNeighborGroupIdsList>;
-
 /** Isolation Domain Properties. */
 export interface IsolationDomainProperties {
   /** Type of encapsulation. */
@@ -4851,11 +3260,6 @@ export interface IsolationDomainProperties {
   /** List of Neighbor Group IDs. */
   neighborGroupIds?: IsolationDomainPropertiesNeighborGroupIdsList;
 }
-const IsolationDomainProperties = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<IsolationDomainProperties>;
-
 /** The network tap destination properties. */
 export interface DestinationProperties {
   /** Destination name. */
@@ -4869,22 +3273,10 @@ export interface DestinationProperties {
   /** ARM Resource ID of destination Tap Rule that contains match configurations. */
   destinationTapRuleId?: string;
 }
-const DestinationProperties = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DestinationProperties>;
-
 /** List of destinations to send the filter traffic. */
 export type NetworkTapPropertiesInputDestinationsList = Array<DestinationProperties>;
-const NetworkTapPropertiesInputDestinationsList = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<NetworkTapPropertiesInputDestinationsList>;
-
 /** Polling type. */
 export type NetworkTapPropertiesInputPollingType = "Pull" | "Push";
-const NetworkTapPropertiesInputPollingType = S.String;
-
 /** Network Tap Properties defines the properties of the resource. */
 export interface NetworkTapPropertiesInput {
   /** Switch configuration description. */
@@ -4896,11 +3288,6 @@ export interface NetworkTapPropertiesInput {
   /** Polling type. */
   pollingType?: NetworkTapPropertiesInputPollingType | (string & {});
 }
-const NetworkTapPropertiesInput = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<NetworkTapPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkTapRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkTapRequest {
@@ -4919,30 +3306,14 @@ export interface CreateNetworkTapRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkTapRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<CreateNetworkTapRequest>;
-
 /** Resource tags. */
 export type CreateNetworkTapResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkTapResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkTapResponseTagsMap>;
-
 /** Associated Network Fabric Resource IDs */
 export type NetworkTapPropertiesNetworkFabricIdsList = Array<string>;
-const NetworkTapPropertiesNetworkFabricIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkTapPropertiesNetworkFabricIdsList>;
-
 /** List of destinations to send the filter traffic. */
 export type NetworkTapPropertiesDestinationsList = Array<DestinationProperties>;
-const NetworkTapPropertiesDestinationsList =
-  NetworkTapPropertiesInputDestinationsList as any as S.Schema<NetworkTapPropertiesDestinationsList>;
-
 /** Polling type. */
 export type NetworkTapPropertiesPollingType = "Pull" | "Push";
-const NetworkTapPropertiesPollingType = S.String;
-
 /** Network Tap Properties defines the properties of the resource. */
 export interface NetworkTapProperties {
   /** Switch configuration description. */
@@ -4966,11 +3337,6 @@ export interface NetworkTapProperties {
   /** Administrative state of the resource. Example -Enabled/Disabled */
   administrativeState?: AdministrativeState;
 }
-const NetworkTapProperties = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<NetworkTapProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkTapResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkTapResponse {
@@ -4991,35 +3357,16 @@ export interface CreateNetworkTapResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkTapResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<CreateNetworkTapResponse>;
-
 /** Resource tags. */
 export type CreateNetworkTapRuleRequestTagsMap = { [key: string]: string | undefined };
-const CreateNetworkTapRuleRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkTapRuleRequestTagsMap>;
-
 /** List of the protocols that need to be matched. */
 export type NetworkTapRuleMatchConditionProtocolTypesList = Array<string>;
-const NetworkTapRuleMatchConditionProtocolTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkTapRuleMatchConditionProtocolTypesList>;
-
 /** Encapsulation Type that needs to be matched. */
 export type NetworkTapRuleMatchConditionEncapsulationType = "None" | "GTPv1";
-const NetworkTapRuleMatchConditionEncapsulationType = S.String;
-
 /** List of the Ports that need to be matched. */
 export type PortConditionPortsList = Array<string>;
-const PortConditionPortsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<PortConditionPortsList>;
-
 /** List of the port Group Names that need to be matched. */
 export type PortConditionPortGroupNamesList = Array<string>;
-const PortConditionPortGroupNamesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<PortConditionPortGroupNamesList>;
-
 /** Port condition that needs to be matched. */
 export interface PortCondition {
   /** Port type that needs to be matched. */
@@ -5031,8 +3378,6 @@ export interface PortCondition {
   /** List of the port Group Names that need to be matched. */
   portGroupNames?: PortConditionPortGroupNamesList;
 }
-const PortCondition = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<PortCondition>;
-
 /** Defines the match condition that is supported to filter the traffic. */
 export interface NetworkTapRuleMatchCondition {
   /** List of the protocols that need to be matched. */
@@ -5046,19 +3391,9 @@ export interface NetworkTapRuleMatchCondition {
   /** Defines the port condition that needs to be matched. */
   portCondition?: PortCondition;
 }
-const NetworkTapRuleMatchCondition = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<NetworkTapRuleMatchCondition>;
-
 /** List of the match conditions. */
 export type NetworkTapRuleMatchConfigurationMatchConditionsList =
   Array<NetworkTapRuleMatchCondition>;
-const NetworkTapRuleMatchConfigurationMatchConditionsList = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<NetworkTapRuleMatchConfigurationMatchConditionsList>;
-
 /** Type of actions that can be performed. */
 export type TapRuleActionType =
   | "Drop"
@@ -5068,8 +3403,6 @@ export type TapRuleActionType =
   | "Goto"
   | "Redirect"
   | "Mirror";
-const TapRuleActionType = S.String;
-
 /** Action that need to performed. */
 export interface NetworkTapRuleAction {
   /** Type of actions that can be performed. */
@@ -5083,18 +3416,8 @@ export interface NetworkTapRuleAction {
   /** The name of the match configuration. This is used when Goto type is provided. */
   matchConfigurationName?: string;
 }
-const NetworkTapRuleAction = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<NetworkTapRuleAction>;
-
 /** List of actions that need to be performed for the matched conditions. */
 export type NetworkTapRuleMatchConfigurationActionsList = Array<NetworkTapRuleAction>;
-const NetworkTapRuleMatchConfigurationActionsList = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<NetworkTapRuleMatchConfigurationActionsList>;
-
 /** Defines the match configuration that are supported to filter the traffic. */
 export interface NetworkTapRuleMatchConfiguration {
   /** The name of the match configuration. */
@@ -5108,29 +3431,14 @@ export interface NetworkTapRuleMatchConfiguration {
   /** List of actions that need to be performed for the matched conditions. */
   actions?: NetworkTapRuleMatchConfigurationActionsList;
 }
-const NetworkTapRuleMatchConfiguration = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<NetworkTapRuleMatchConfiguration>;
-
 /** List of match configurations. */
 export type NetworkTapRulePropertiesInputMatchConfigurationsList =
   Array<NetworkTapRuleMatchConfiguration>;
-const NetworkTapRulePropertiesInputMatchConfigurationsList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<NetworkTapRulePropertiesInputMatchConfigurationsList>;
-
 /** List of dynamic match configurations. */
 export type NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
   Array<CommonDynamicMatchConfiguration>;
-const NetworkTapRulePropertiesInputDynamicMatchConfigurationsList =
-  AccessControlListPropertiesInputDynamicMatchConfigurationsList as any as S.Schema<NetworkTapRulePropertiesInputDynamicMatchConfigurationsList>;
-
 /** Configuration to enable network tap rule counter. */
 export type GlobalNetworkTapRuleActionPropertiesEnableCount = "True" | "False";
-const GlobalNetworkTapRuleActionPropertiesEnableCount = S.String;
-
 /** Global network tap rule actions properties */
 export interface GlobalNetworkTapRuleActionProperties {
   /** Configuration to enable network tap rule counter. */
@@ -5138,11 +3446,6 @@ export interface GlobalNetworkTapRuleActionProperties {
   /** Truncate. 0 indicates do not truncate. */
   truncate?: string;
 }
-const GlobalNetworkTapRuleActionProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GlobalNetworkTapRuleActionProperties>;
-
 /** Network Tap Rule Properties defines the resource properties. */
 export interface NetworkTapRulePropertiesInput {
   /** Switch configuration description. */
@@ -5162,11 +3465,6 @@ export interface NetworkTapRulePropertiesInput {
   /** Global network tap rule actions */
   globalNetworkTapRuleActions?: GlobalNetworkTapRuleActionProperties;
 }
-const NetworkTapRulePropertiesInput = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<NetworkTapRulePropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkTapRuleRequestIdentity = CreateL2IsolationDomainRequestIdentity;
 export interface CreateNetworkTapRuleRequest {
@@ -5185,38 +3483,18 @@ export interface CreateNetworkTapRuleRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainRequestIdentity;
 }
-const CreateNetworkTapRuleRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<CreateNetworkTapRuleRequest>;
-
 /** Resource tags. */
 export type CreateNetworkTapRuleResponseTagsMap = { [key: string]: string | undefined };
-const CreateNetworkTapRuleResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateNetworkTapRuleResponseTagsMap>;
-
 /** List of match configurations. */
 export type NetworkTapRulePropertiesMatchConfigurationsList =
   Array<NetworkTapRuleMatchConfiguration>;
-const NetworkTapRulePropertiesMatchConfigurationsList =
-  NetworkTapRulePropertiesInputMatchConfigurationsList as any as S.Schema<NetworkTapRulePropertiesMatchConfigurationsList>;
-
 /** List of dynamic match configurations. */
 export type NetworkTapRulePropertiesDynamicMatchConfigurationsList =
   Array<CommonDynamicMatchConfiguration>;
-const NetworkTapRulePropertiesDynamicMatchConfigurationsList =
-  AccessControlListPropertiesInputDynamicMatchConfigurationsList as any as S.Schema<NetworkTapRulePropertiesDynamicMatchConfigurationsList>;
-
 /** The ARM resource Id of the NetworkTap Rules. */
 export type NetworkTapRulePropertiesNetworkTapIdsList = Array<string>;
-const NetworkTapRulePropertiesNetworkTapIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkTapRulePropertiesNetworkTapIdsList>;
-
 /** Associated Network Fabric Resource IDs */
 export type NetworkTapRulePropertiesNetworkFabricIdsList = Array<string>;
-const NetworkTapRulePropertiesNetworkFabricIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkTapRulePropertiesNetworkFabricIdsList>;
-
 /** Network Tap Rule Properties defines the resource properties. */
 export interface NetworkTapRuleProperties {
   /** Switch configuration description. */
@@ -5252,11 +3530,6 @@ export interface NetworkTapRuleProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const NetworkTapRuleProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<NetworkTapRuleProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type CreateNetworkTapRuleResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface CreateNetworkTapRuleResponse {
@@ -5277,24 +3550,12 @@ export interface CreateNetworkTapRuleResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const CreateNetworkTapRuleResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<CreateNetworkTapRuleResponse>;
-
 /** Type of NNI used. Example: CE | NPB */
 export type NetworkToNetworkInterconnectPropertiesInputNniType = "CE" | "NPB";
-const NetworkToNetworkInterconnectPropertiesInputNniType = S.String;
-
 /** Configuration to use NNI for Infrastructure Management. Example: True/False. */
 export type NetworkToNetworkInterconnectPropertiesInputIsManagementType = "True" | "False";
-const NetworkToNetworkInterconnectPropertiesInputIsManagementType = S.String;
-
 /** List of network device interfaces resource IDs. */
 export type Layer2ConfigurationInterfacesList = Array<string>;
-const Layer2ConfigurationInterfacesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<Layer2ConfigurationInterfacesList>;
-
 /** Common properties for Layer2 Configuration. */
 export interface Layer2Configuration {
   /** MTU of the packets between PE & CE. */
@@ -5302,42 +3563,23 @@ export interface Layer2Configuration {
   /** List of network device interfaces resource IDs. */
   interfaces?: Layer2ConfigurationInterfacesList;
 }
-const Layer2Configuration = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<Layer2Configuration>;
-
 /** Provider Edge (PE) Loopback IP Address. */
 export type OptionBLayer3ConfigurationInputPeLoopbackIpAddressList = Array<string>;
-const OptionBLayer3ConfigurationInputPeLoopbackIpAddressList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<OptionBLayer3ConfigurationInputPeLoopbackIpAddressList>;
-
 /** BGP Monitoring Protocol (BMP) Configuration State. */
 export type NniBmpPropertiesConfigurationState = "Enabled" | "Disabled";
-const NniBmpPropertiesConfigurationState = S.String;
-
 /** BGP Monitoring Protocol (BMP) properties. */
 export interface NniBmpProperties {
   /** BGP Monitoring Protocol (BMP) Configuration State. */
   configurationState: NniBmpPropertiesConfigurationState | (string & {});
 }
-const NniBmpProperties = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<NniBmpProperties>;
-
 /** OptionB Layer3 prefix limit properties. */
 export interface OptionBLayer3PrefixLimitProperties {
   /** Maximum number of routes allowed. */
   maximumRoutes?: number;
 }
-const OptionBLayer3PrefixLimitProperties = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<OptionBLayer3PrefixLimitProperties>;
-
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationInputPrefixLimitsList =
   Array<OptionBLayer3PrefixLimitProperties>;
-const OptionBLayer3ConfigurationInputPrefixLimitsList = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<OptionBLayer3ConfigurationInputPrefixLimitsList>;
-
 /** OptionB Layer3 Configuration properties. */
 export interface OptionBLayer3ConfigurationInput {
   /** IPv4 Address Prefix. */
@@ -5359,11 +3601,6 @@ export interface OptionBLayer3ConfigurationInput {
   /** OptionB Layer3 prefix limit configuration. */
   prefixLimits?: OptionBLayer3ConfigurationInputPrefixLimitsList;
 }
-const OptionBLayer3ConfigurationInput = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<OptionBLayer3ConfigurationInput>;
-
 /** List of IPv4 Routes. */
 export type NpbStaticRouteConfigurationInputIpv4RoutesList = Array<StaticRouteProperties>;
 /** List of IPv6 Routes. */
@@ -5377,9 +3614,6 @@ export interface NpbStaticRouteConfigurationInput {
   /** List of IPv6 Routes. */
   ipv6Routes?: NpbStaticRouteConfigurationInputIpv6RoutesList;
 }
-const NpbStaticRouteConfigurationInput =
-  ExternalNetworkStaticRouteConfigurationInput as any as S.Schema<NpbStaticRouteConfigurationInput>;
-
 /** List of IPv4 Routes. */
 export type NniStaticRouteConfigurationInputIpv4RoutesList = Array<StaticRouteProperties>;
 /** List of IPv6 Routes. */
@@ -5393,9 +3627,6 @@ export interface NniStaticRouteConfigurationInput {
   /** List of IPv6 Routes. */
   ipv6Routes?: NniStaticRouteConfigurationInputIpv6RoutesList;
 }
-const NniStaticRouteConfigurationInput =
-  ExternalNetworkStaticRouteConfigurationInput as any as S.Schema<NniStaticRouteConfigurationInput>;
-
 /** Import Route Policy Configuration. */
 export interface ImportRoutePolicyInformation {
   /** Import IPv4 Route Policy Id. */
@@ -5403,11 +3634,6 @@ export interface ImportRoutePolicyInformation {
   /** Import IPv6 Route Policy Id. */
   importIpv6RoutePolicyId?: string;
 }
-const ImportRoutePolicyInformation = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ImportRoutePolicyInformation>;
-
 /** Export Route Policy Configuration. */
 export interface ExportRoutePolicyInformation {
   /** Export IPv4 Route Policy Id. */
@@ -5415,25 +3641,12 @@ export interface ExportRoutePolicyInformation {
   /** Export IPv6 Route Policy Id. */
   exportIpv6RoutePolicyId?: string;
 }
-const ExportRoutePolicyInformation = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<ExportRoutePolicyInformation>;
-
 /** Micro Bidirectional Forwarding Detection (BFD) enabled/disabled state. */
 export type MicroBfdState = "Enabled" | "Disabled";
-const MicroBfdState = S.String;
-
 /** List of IPv4 Routes. */
 export type ConditionalDefaultRoutePropertiesIpv4RoutesList = Array<StaticRouteProperties>;
-const ConditionalDefaultRoutePropertiesIpv4RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<ConditionalDefaultRoutePropertiesIpv4RoutesList>;
-
 /** List of IPv6 Routes. */
 export type ConditionalDefaultRoutePropertiesIpv6RoutesList = Array<StaticRouteProperties>;
-const ConditionalDefaultRoutePropertiesIpv6RoutesList =
-  ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList as any as S.Schema<ConditionalDefaultRoutePropertiesIpv6RoutesList>;
-
 /** Conditional Default Route Configuration properties. */
 export interface ConditionalDefaultRouteProperties {
   /** List of IPv4 Routes. */
@@ -5441,11 +3654,6 @@ export interface ConditionalDefaultRouteProperties {
   /** List of IPv6 Routes. */
   ipv6Routes?: ConditionalDefaultRoutePropertiesIpv6RoutesList;
 }
-const ConditionalDefaultRouteProperties = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ConditionalDefaultRouteProperties>;
-
 /** Configuration used to setup CE-PE connectivity. */
 export interface NetworkToNetworkInterconnectPropertiesInput {
   /** Type of NNI used. Example: CE | NPB */
@@ -5475,11 +3683,6 @@ export interface NetworkToNetworkInterconnectPropertiesInput {
   /** Conditional Default Route Configuration properties. */
   conditionalDefaultRouteConfiguration?: ConditionalDefaultRouteProperties;
 }
-const NetworkToNetworkInterconnectPropertiesInput = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<NetworkToNetworkInterconnectPropertiesInput>;
-
 export interface CreateNetworkToNetworkInterconnectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5492,29 +3695,14 @@ export interface CreateNetworkToNetworkInterconnectRequest {
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectPropertiesInput;
 }
-const CreateNetworkToNetworkInterconnectRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<CreateNetworkToNetworkInterconnectRequest>;
-
 /** Type of NNI used. Example: CE | NPB */
 export type NetworkToNetworkInterconnectPropertiesNniType = "CE" | "NPB";
-const NetworkToNetworkInterconnectPropertiesNniType = S.String;
-
 /** Configuration to use NNI for Infrastructure Management. Example: True/False. */
 export type NetworkToNetworkInterconnectPropertiesIsManagementType = "True" | "False";
-const NetworkToNetworkInterconnectPropertiesIsManagementType = S.String;
-
 /** Provider Edge (PE) Loopback IP Address. */
 export type OptionBLayer3ConfigurationPeLoopbackIpAddressList = Array<string>;
-const OptionBLayer3ConfigurationPeLoopbackIpAddressList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<OptionBLayer3ConfigurationPeLoopbackIpAddressList>;
-
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationPrefixLimitsList = Array<OptionBLayer3PrefixLimitProperties>;
-const OptionBLayer3ConfigurationPrefixLimitsList =
-  OptionBLayer3ConfigurationInputPrefixLimitsList as any as S.Schema<OptionBLayer3ConfigurationPrefixLimitsList>;
-
 /** OptionB Layer3 Configuration properties. */
 export interface OptionBLayer3Configuration {
   /** IPv4 Address Prefix. */
@@ -5538,11 +3726,6 @@ export interface OptionBLayer3Configuration {
   /** OptionB Layer3 prefix limit configuration. */
   prefixLimits?: OptionBLayer3ConfigurationPrefixLimitsList;
 }
-const OptionBLayer3Configuration = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<OptionBLayer3Configuration>;
-
 /** List of IPv4 Routes. */
 export type NpbStaticRouteConfigurationIpv4RoutesList = Array<StaticRouteProperties>;
 /** List of IPv6 Routes. */
@@ -5556,9 +3739,6 @@ export interface NpbStaticRouteConfiguration {
   /** List of IPv6 Routes. */
   ipv6Routes?: NpbStaticRouteConfigurationIpv6RoutesList;
 }
-const NpbStaticRouteConfiguration =
-  ExternalNetworkStaticRouteConfiguration as any as S.Schema<NpbStaticRouteConfiguration>;
-
 /** List of IPv4 Routes. */
 export type NniStaticRouteConfigurationIpv4RoutesList = Array<StaticRouteProperties>;
 /** List of IPv6 Routes. */
@@ -5572,9 +3752,6 @@ export interface NniStaticRouteConfiguration {
   /** List of IPv6 Routes. */
   ipv6Routes?: NniStaticRouteConfigurationIpv6RoutesList;
 }
-const NniStaticRouteConfiguration =
-  ExternalNetworkStaticRouteConfiguration as any as S.Schema<NniStaticRouteConfiguration>;
-
 /** Configuration used to setup CE-PE connectivity. */
 export interface NetworkToNetworkInterconnectProperties {
   /** Type of NNI used. Example: CE | NPB */
@@ -5612,11 +3789,6 @@ export interface NetworkToNetworkInterconnectProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const NetworkToNetworkInterconnectProperties = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<NetworkToNetworkInterconnectProperties>;
-
 export interface CreateNetworkToNetworkInterconnectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5629,34 +3801,16 @@ export interface CreateNetworkToNetworkInterconnectResponse {
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectProperties;
 }
-const CreateNetworkToNetworkInterconnectResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<CreateNetworkToNetworkInterconnectResponse>;
-
 /** Resource tags. */
 export type CreateRoutePolicyRequestTagsMap = { [key: string]: string | undefined };
-const CreateRoutePolicyRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateRoutePolicyRequestTagsMap>;
-
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
 export type RoutePolicyPropertiesInputDefaultAction = "Permit" | "Deny";
-const RoutePolicyPropertiesInputDefaultAction = S.String;
-
 /** List of IP Community resource IDs. */
 export type StatementConditionPropertiesIpCommunityIdsList = Array<string>;
-const StatementConditionPropertiesIpCommunityIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<StatementConditionPropertiesIpCommunityIdsList>;
-
 /** List of IP Extended Community resource IDs. */
 export type StatementConditionPropertiesIpExtendedCommunityIdsList = Array<string>;
-const StatementConditionPropertiesIpExtendedCommunityIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<StatementConditionPropertiesIpExtendedCommunityIdsList>;
-
 /** Type of the condition used. */
 export type StatementConditionPropertiesType = "Or" | "And";
-const StatementConditionPropertiesType = S.String;
-
 /** Route policy statement condition properties. */
 export interface StatementConditionProperties {
   /** List of IP Community resource IDs. */
@@ -5668,27 +3822,15 @@ export interface StatementConditionProperties {
   /** Arm Resource Id of IpPrefix. */
   ipPrefixId?: string;
 }
-const StatementConditionProperties = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<StatementConditionProperties>;
-
 /** Action type. Example: Permit | Deny | Continue. */
 export type RoutePolicyActionType = "Permit" | "Deny" | "Continue";
-const RoutePolicyActionType = S.String;
-
 /** List of IP Community resource IDs. */
 export type IpCommunityIdListIpCommunityIdsList = Array<string>;
-const IpCommunityIdListIpCommunityIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpCommunityIdListIpCommunityIdsList>;
-
 /** IP Community ID list properties. */
 export interface IpCommunityIdList {
   /** List of IP Community resource IDs. */
   ipCommunityIds?: IpCommunityIdListIpCommunityIdsList;
 }
-const IpCommunityIdList = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<IpCommunityIdList>;
-
 /** IP Community Properties. */
 export interface ActionIpCommunityProperties {
   /** List of IP Community IDs. */
@@ -5698,26 +3840,13 @@ export interface ActionIpCommunityProperties {
   /** List of IP Community IDs. */
   set?: IpCommunityIdList;
 }
-const ActionIpCommunityProperties = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ActionIpCommunityProperties>;
-
 /** List of IP Extended Community resource IDs. */
 export type IpExtendedCommunityIdListIpExtendedCommunityIdsList = Array<string>;
-const IpExtendedCommunityIdListIpExtendedCommunityIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<IpExtendedCommunityIdListIpExtendedCommunityIdsList>;
-
 /** IP Extended Community Id list properties. */
 export interface IpExtendedCommunityIdList {
   /** List of IP Extended Community resource IDs. */
   ipExtendedCommunityIds?: IpExtendedCommunityIdListIpExtendedCommunityIdsList;
 }
-const IpExtendedCommunityIdList = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<IpExtendedCommunityIdList>;
-
 /** IP Extended Community Properties. */
 export interface ActionIpExtendedCommunityProperties {
   /** List of IP Extended Community IDs. */
@@ -5727,11 +3856,6 @@ export interface ActionIpExtendedCommunityProperties {
   /** List of IP Extended Community IDs. */
   set?: IpExtendedCommunityIdList;
 }
-const ActionIpExtendedCommunityProperties = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ActionIpExtendedCommunityProperties>;
-
 /** Route policy action properties. */
 export interface StatementActionProperties {
   /** Local Preference of the route policy. */
@@ -5743,11 +3867,6 @@ export interface StatementActionProperties {
   /** IP Extended Community Properties. */
   ipExtendedCommunityProperties?: ActionIpExtendedCommunityProperties;
 }
-const StatementActionProperties = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<StatementActionProperties>;
-
 /** Route Policy Statement properties. */
 export interface RoutePolicyStatementProperties {
   /** Switch configuration description. */
@@ -5759,22 +3878,10 @@ export interface RoutePolicyStatementProperties {
   /** Route policy action properties. */
   action: StatementActionProperties;
 }
-const RoutePolicyStatementProperties = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<RoutePolicyStatementProperties>;
-
 /** Route Policy statements. */
 export type RoutePolicyPropertiesInputStatementsList = Array<RoutePolicyStatementProperties>;
-const RoutePolicyPropertiesInputStatementsList = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<RoutePolicyPropertiesInputStatementsList>;
-
 /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
 export type RoutePolicyPropertiesInputAddressFamilyType = "IPv4" | "IPv6";
-const RoutePolicyPropertiesInputAddressFamilyType = S.String;
-
 /** RoutePolicyProperties defines the resource properties. */
 export interface RoutePolicyPropertiesInput {
   /** Switch configuration description. */
@@ -5788,11 +3895,6 @@ export interface RoutePolicyPropertiesInput {
   /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
   addressFamilyType?: RoutePolicyPropertiesInputAddressFamilyType | (string & {});
 }
-const RoutePolicyPropertiesInput = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<RoutePolicyPropertiesInput>;
-
 export interface CreateRoutePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5807,29 +3909,14 @@ export interface CreateRoutePolicyRequest {
   /** The RoutePolicy properties */
   properties: RoutePolicyPropertiesInput;
 }
-const CreateRoutePolicyRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<CreateRoutePolicyRequest>;
-
 /** Resource tags. */
 export type CreateRoutePolicyResponseTagsMap = { [key: string]: string | undefined };
-const CreateRoutePolicyResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<CreateRoutePolicyResponseTagsMap>;
-
 /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
 export type RoutePolicyPropertiesDefaultAction = "Permit" | "Deny";
-const RoutePolicyPropertiesDefaultAction = S.String;
-
 /** Route Policy statements. */
 export type RoutePolicyPropertiesStatementsList = Array<RoutePolicyStatementProperties>;
-const RoutePolicyPropertiesStatementsList =
-  RoutePolicyPropertiesInputStatementsList as any as S.Schema<RoutePolicyPropertiesStatementsList>;
-
 /** AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy. */
 export type RoutePolicyPropertiesAddressFamilyType = "IPv4" | "IPv6";
-const RoutePolicyPropertiesAddressFamilyType = S.String;
-
 /** RoutePolicyProperties defines the resource properties. */
 export interface RoutePolicyProperties {
   /** Switch configuration description. */
@@ -5851,11 +3938,6 @@ export interface RoutePolicyProperties {
   /** Administrative state of the resource. */
   administrativeState?: AdministrativeState;
 }
-const RoutePolicyProperties = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<RoutePolicyProperties>;
-
 export interface CreateRoutePolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5872,11 +3954,6 @@ export interface CreateRoutePolicyResponse {
   /** The RoutePolicy properties */
   properties: RoutePolicyProperties;
 }
-const CreateRoutePolicyResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<CreateRoutePolicyResponse>;
-
 export interface DeleteAccessControlListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5885,17 +3962,7 @@ export interface DeleteAccessControlListRequest {
   /** Name of the Access Control List. */
   accessControlListName: string;
 }
-const DeleteAccessControlListRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<DeleteAccessControlListRequest>;
-
 export interface DeleteAccessControlListResponse {}
-const DeleteAccessControlListResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<DeleteAccessControlListResponse>;
-
 export interface DeleteExternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5906,15 +3973,7 @@ export interface DeleteExternalNetworkRequest {
   /** Name of the External Network. */
   externalNetworkName: string;
 }
-const DeleteExternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DeleteExternalNetworkRequest>;
-
 export interface DeleteExternalNetworkResponse {}
-const DeleteExternalNetworkResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteExternalNetworkResponse>;
-
 export interface DeleteInternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5925,15 +3984,7 @@ export interface DeleteInternalNetworkRequest {
   /** Name of the Internal Network. */
   internalNetworkName: string;
 }
-const DeleteInternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<DeleteInternalNetworkRequest>;
-
 export interface DeleteInternalNetworkResponse {}
-const DeleteInternalNetworkResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteInternalNetworkResponse>;
-
 export interface DeleteInternetGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5942,15 +3993,7 @@ export interface DeleteInternetGatewayRequest {
   /** Name of the Internet Gateway. */
   internetGatewayName: string;
 }
-const DeleteInternetGatewayRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DeleteInternetGatewayRequest>;
-
 export interface DeleteInternetGatewayResponse {}
-const DeleteInternetGatewayResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteInternetGatewayResponse>;
-
 export interface DeleteInternetGatewayRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5959,17 +4002,7 @@ export interface DeleteInternetGatewayRuleRequest {
   /** Name of the Internet Gateway rule. */
   internetGatewayRuleName: string;
 }
-const DeleteInternetGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<DeleteInternetGatewayRuleRequest>;
-
 export interface DeleteInternetGatewayRuleResponse {}
-const DeleteInternetGatewayRuleResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<DeleteInternetGatewayRuleResponse>;
-
 export interface DeleteIpCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5978,15 +4011,7 @@ export interface DeleteIpCommunityRequest {
   /** Name of the IP Community. */
   ipCommunityName: string;
 }
-const DeleteIpCommunityRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DeleteIpCommunityRequest>;
-
 export interface DeleteIpCommunityResponse {}
-const DeleteIpCommunityResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteIpCommunityResponse>;
-
 export interface DeleteIpExtendedCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5995,15 +4020,7 @@ export interface DeleteIpExtendedCommunityRequest {
   /** Name of the IP Extended Community. */
   ipExtendedCommunityName: string;
 }
-const DeleteIpExtendedCommunityRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<DeleteIpExtendedCommunityRequest>;
-
 export interface DeleteIpExtendedCommunityResponse {}
-const DeleteIpExtendedCommunityResponse =
-  DeleteInternetGatewayRuleResponse as any as S.Schema<DeleteIpExtendedCommunityResponse>;
-
 export interface DeleteIpPrefixRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6012,14 +4029,7 @@ export interface DeleteIpPrefixRequest {
   /** Name of the IP Prefix. */
   ipPrefixName: string;
 }
-const DeleteIpPrefixRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<DeleteIpPrefixRequest>;
-
 export interface DeleteIpPrefixResponse {}
-const DeleteIpPrefixResponse = UserAssignedIdentityInput as any as S.Schema<DeleteIpPrefixResponse>;
-
 export interface DeleteL2IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6028,15 +4038,7 @@ export interface DeleteL2IsolationDomainRequest {
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
 }
-const DeleteL2IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<DeleteL2IsolationDomainRequest>;
-
 export interface DeleteL2IsolationDomainResponse {}
-const DeleteL2IsolationDomainResponse =
-  DeleteAccessControlListResponse as any as S.Schema<DeleteL2IsolationDomainResponse>;
-
 export interface DeleteL3IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6045,15 +4047,7 @@ export interface DeleteL3IsolationDomainRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-const DeleteL3IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<DeleteL3IsolationDomainRequest>;
-
 export interface DeleteL3IsolationDomainResponse {}
-const DeleteL3IsolationDomainResponse =
-  DeleteAccessControlListResponse as any as S.Schema<DeleteL3IsolationDomainResponse>;
-
 export interface DeleteNeighborGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6062,15 +4056,7 @@ export interface DeleteNeighborGroupRequest {
   /** Name of the Neighbor Group. */
   neighborGroupName: string;
 }
-const DeleteNeighborGroupRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<DeleteNeighborGroupRequest>;
-
 export interface DeleteNeighborGroupResponse {}
-const DeleteNeighborGroupResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNeighborGroupResponse>;
-
 export interface DeleteNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6079,15 +4065,7 @@ export interface DeleteNetworkBootstrapDeviceRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-const DeleteNetworkBootstrapDeviceRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<DeleteNetworkBootstrapDeviceRequest>;
-
 export interface DeleteNetworkBootstrapDeviceResponse {}
-const DeleteNetworkBootstrapDeviceResponse =
-  DeleteInternetGatewayRuleResponse as any as S.Schema<DeleteNetworkBootstrapDeviceResponse>;
-
 export interface DeleteNetworkBootstrapInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6098,15 +4076,7 @@ export interface DeleteNetworkBootstrapInterfaceRequest {
   /** Name of the Network Bootstrap Interface. */
   networkBootstrapInterfaceName: string;
 }
-const DeleteNetworkBootstrapInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<DeleteNetworkBootstrapInterfaceRequest>;
-
 export interface DeleteNetworkBootstrapInterfaceResponse {}
-const DeleteNetworkBootstrapInterfaceResponse =
-  DeleteInternetGatewayRuleResponse as any as S.Schema<DeleteNetworkBootstrapInterfaceResponse>;
-
 export interface DeleteNetworkDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6115,15 +4085,7 @@ export interface DeleteNetworkDeviceRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-const DeleteNetworkDeviceRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<DeleteNetworkDeviceRequest>;
-
 export interface DeleteNetworkDeviceResponse {}
-const DeleteNetworkDeviceResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkDeviceResponse>;
-
 export interface DeleteNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6132,15 +4094,7 @@ export interface DeleteNetworkFabricRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const DeleteNetworkFabricRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<DeleteNetworkFabricRequest>;
-
 export interface DeleteNetworkFabricResponse {}
-const DeleteNetworkFabricResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkFabricResponse>;
-
 export interface DeleteNetworkFabricControllerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6149,15 +4103,7 @@ export interface DeleteNetworkFabricControllerRequest {
   /** Name of the Network Fabric Controller. */
   networkFabricControllerName: string;
 }
-const DeleteNetworkFabricControllerRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<DeleteNetworkFabricControllerRequest>;
-
 export interface DeleteNetworkFabricControllerResponse {}
-const DeleteNetworkFabricControllerResponse =
-  DeleteInternetGatewayRuleResponse as any as S.Schema<DeleteNetworkFabricControllerResponse>;
-
 export interface DeleteNetworkInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6168,15 +4114,7 @@ export interface DeleteNetworkInterfaceRequest {
   /** Name of the Network Interface. */
   networkInterfaceName: string;
 }
-const DeleteNetworkInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<DeleteNetworkInterfaceRequest>;
-
 export interface DeleteNetworkInterfaceResponse {}
-const DeleteNetworkInterfaceResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkInterfaceResponse>;
-
 export interface DeleteNetworkMonitorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6185,15 +4123,7 @@ export interface DeleteNetworkMonitorRequest {
   /** Name of the Network Monitor. */
   networkMonitorName: string;
 }
-const DeleteNetworkMonitorRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<DeleteNetworkMonitorRequest>;
-
 export interface DeleteNetworkMonitorResponse {}
-const DeleteNetworkMonitorResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkMonitorResponse>;
-
 export interface DeleteNetworkPacketBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6202,15 +4132,7 @@ export interface DeleteNetworkPacketBrokerRequest {
   /** Name of the Network Packet Broker. */
   networkPacketBrokerName: string;
 }
-const DeleteNetworkPacketBrokerRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<DeleteNetworkPacketBrokerRequest>;
-
 export interface DeleteNetworkPacketBrokerResponse {}
-const DeleteNetworkPacketBrokerResponse =
-  DeleteInternetGatewayRuleResponse as any as S.Schema<DeleteNetworkPacketBrokerResponse>;
-
 export interface DeleteNetworkRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6219,15 +4141,7 @@ export interface DeleteNetworkRackRequest {
   /** Name of the Network Rack. */
   networkRackName: string;
 }
-const DeleteNetworkRackRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<DeleteNetworkRackRequest>;
-
 export interface DeleteNetworkRackResponse {}
-const DeleteNetworkRackResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkRackResponse>;
-
 export interface DeleteNetworkTapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6236,15 +4150,7 @@ export interface DeleteNetworkTapRequest {
   /** Name of the Network Tap. */
   networkTapName: string;
 }
-const DeleteNetworkTapRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<DeleteNetworkTapRequest>;
-
 export interface DeleteNetworkTapResponse {}
-const DeleteNetworkTapResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkTapResponse>;
-
 export interface DeleteNetworkTapRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6253,15 +4159,7 @@ export interface DeleteNetworkTapRuleRequest {
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
 }
-const DeleteNetworkTapRuleRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<DeleteNetworkTapRuleRequest>;
-
 export interface DeleteNetworkTapRuleResponse {}
-const DeleteNetworkTapRuleResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNetworkTapRuleResponse>;
-
 export interface DeleteNetworkToNetworkInterconnectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6272,15 +4170,7 @@ export interface DeleteNetworkToNetworkInterconnectRequest {
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
 }
-const DeleteNetworkToNetworkInterconnectRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<DeleteNetworkToNetworkInterconnectRequest>;
-
 export interface DeleteNetworkToNetworkInterconnectResponse {}
-const DeleteNetworkToNetworkInterconnectResponse =
-  DeleteInternetGatewayRuleResponse as any as S.Schema<DeleteNetworkToNetworkInterconnectResponse>;
-
 export interface DeleteRoutePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6289,15 +4179,7 @@ export interface DeleteRoutePolicyRequest {
   /** Name of the Route Policy. */
   routePolicyName: string;
 }
-const DeleteRoutePolicyRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<DeleteRoutePolicyRequest>;
-
 export interface DeleteRoutePolicyResponse {}
-const DeleteRoutePolicyResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteRoutePolicyResponse>;
-
 export interface GetAccessControlListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6306,11 +4188,6 @@ export interface GetAccessControlListRequest {
   /** Name of the Access Control List. */
   accessControlListName: string;
 }
-const GetAccessControlListRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GetAccessControlListRequest>;
-
 /** Resource tags. */
 export type GetAccessControlListResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAccessControlListResponse {
@@ -6329,9 +4206,6 @@ export interface GetAccessControlListResponse {
   /** The Access ControlList properties. */
   properties: AccessControlListProperties;
 }
-const GetAccessControlListResponse =
-  CreateAccessControlListResponse as any as S.Schema<GetAccessControlListResponse>;
-
 export interface GetExternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6342,11 +4216,6 @@ export interface GetExternalNetworkRequest {
   /** Name of the External Network. */
   externalNetworkName: string;
 }
-const GetExternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GetExternalNetworkRequest>;
-
 export interface GetExternalNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6359,9 +4228,6 @@ export interface GetExternalNetworkResponse {
   /** External Network Properties */
   properties: ExternalNetworkProperties;
 }
-const GetExternalNetworkResponse =
-  CreateExternalNetworkResponse as any as S.Schema<GetExternalNetworkResponse>;
-
 export interface GetInternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6372,11 +4238,6 @@ export interface GetInternalNetworkRequest {
   /** Name of the Internal Network. */
   internalNetworkName: string;
 }
-const GetInternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GetInternalNetworkRequest>;
-
 export interface GetInternalNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6389,9 +4250,6 @@ export interface GetInternalNetworkResponse {
   /** The Internal Network Properties */
   properties: InternalNetworkProperties;
 }
-const GetInternalNetworkResponse =
-  CreateInternalNetworkResponse as any as S.Schema<GetInternalNetworkResponse>;
-
 export interface GetInternetGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6400,11 +4258,6 @@ export interface GetInternetGatewayRequest {
   /** Name of the Internet Gateway. */
   internetGatewayName: string;
 }
-const GetInternetGatewayRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<GetInternetGatewayRequest>;
-
 /** Resource tags. */
 export type GetInternetGatewayResponseTagsMap = { [key: string]: string | undefined };
 export interface GetInternetGatewayResponse {
@@ -6423,9 +4276,6 @@ export interface GetInternetGatewayResponse {
   /** The Internet Gateway Properties */
   properties: InternetGatewayProperties;
 }
-const GetInternetGatewayResponse =
-  CreateInternetGatewayResponse as any as S.Schema<GetInternetGatewayResponse>;
-
 export interface GetInternetGatewayRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6434,11 +4284,6 @@ export interface GetInternetGatewayRuleRequest {
   /** Name of the Internet Gateway rule. */
   internetGatewayRuleName: string;
 }
-const GetInternetGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetInternetGatewayRuleRequest>;
-
 /** Resource tags. */
 export type GetInternetGatewayRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface GetInternetGatewayRuleResponse {
@@ -6457,9 +4302,6 @@ export interface GetInternetGatewayRuleResponse {
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRuleProperties;
 }
-const GetInternetGatewayRuleResponse =
-  CreateInternetGatewayRuleResponse as any as S.Schema<GetInternetGatewayRuleResponse>;
-
 export interface GetIpCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6468,16 +4310,8 @@ export interface GetIpCommunityRequest {
   /** Name of the IP Community. */
   ipCommunityName: string;
 }
-const GetIpCommunityRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GetIpCommunityRequest>;
-
 /** Resource tags. */
 export type GetIpCommunityResponseTagsMap = { [key: string]: string | undefined };
-const GetIpCommunityResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<GetIpCommunityResponseTagsMap>;
-
 export interface GetIpCommunityResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6494,11 +4328,6 @@ export interface GetIpCommunityResponse {
   /** The IP Community Properties */
   properties: IpCommunityProperties;
 }
-const GetIpCommunityResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetIpCommunityResponse>;
-
 export interface GetIpExtendedCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6507,11 +4336,6 @@ export interface GetIpExtendedCommunityRequest {
   /** Name of the IP Extended Community. */
   ipExtendedCommunityName: string;
 }
-const GetIpExtendedCommunityRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetIpExtendedCommunityRequest>;
-
 /** Resource tags. */
 export type GetIpExtendedCommunityResponseTagsMap = { [key: string]: string | undefined };
 export interface GetIpExtendedCommunityResponse {
@@ -6530,9 +4354,6 @@ export interface GetIpExtendedCommunityResponse {
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityProperties;
 }
-const GetIpExtendedCommunityResponse =
-  CreateIpExtendedCommunityResponse as any as S.Schema<GetIpExtendedCommunityResponse>;
-
 export interface GetIpPrefixRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6541,8 +4362,6 @@ export interface GetIpPrefixRequest {
   /** Name of the IP Prefix. */
   ipPrefixName: string;
 }
-const GetIpPrefixRequest = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<GetIpPrefixRequest>;
-
 /** Resource tags. */
 export type GetIpPrefixResponseTagsMap = { [key: string]: string | undefined };
 export interface GetIpPrefixResponse {
@@ -6561,8 +4380,6 @@ export interface GetIpPrefixResponse {
   /** The IP Prefix properties */
   properties: IpPrefixProperties;
 }
-const GetIpPrefixResponse = CreateIpPrefixResponse as any as S.Schema<GetIpPrefixResponse>;
-
 export interface GetL2IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6571,11 +4388,6 @@ export interface GetL2IsolationDomainRequest {
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
 }
-const GetL2IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GetL2IsolationDomainRequest>;
-
 /** Resource tags. */
 export type GetL2IsolationDomainResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6598,9 +4410,6 @@ export interface GetL2IsolationDomainResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetL2IsolationDomainResponse =
-  CreateL2IsolationDomainResponse as any as S.Schema<GetL2IsolationDomainResponse>;
-
 export interface GetL3IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6609,11 +4418,6 @@ export interface GetL3IsolationDomainRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-const GetL3IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetL3IsolationDomainRequest>;
-
 /** Resource tags. */
 export type GetL3IsolationDomainResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6636,9 +4440,6 @@ export interface GetL3IsolationDomainResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetL3IsolationDomainResponse =
-  CreateL3IsolationDomainResponse as any as S.Schema<GetL3IsolationDomainResponse>;
-
 export interface GetNeighborGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6647,16 +4448,8 @@ export interface GetNeighborGroupRequest {
   /** Name of the Neighbor Group. */
   neighborGroupName: string;
 }
-const GetNeighborGroupRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetNeighborGroupRequest>;
-
 /** Resource tags. */
 export type GetNeighborGroupResponseTagsMap = { [key: string]: string | undefined };
-const GetNeighborGroupResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<GetNeighborGroupResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetNeighborGroupResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface GetNeighborGroupResponse {
@@ -6677,11 +4470,6 @@ export interface GetNeighborGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNeighborGroupResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetNeighborGroupResponse>;
-
 export interface GetNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6690,11 +4478,6 @@ export interface GetNetworkBootstrapDeviceRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-const GetNetworkBootstrapDeviceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetNetworkBootstrapDeviceRequest>;
-
 /** Resource tags. */
 export type GetNetworkBootstrapDeviceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6717,9 +4500,6 @@ export interface GetNetworkBootstrapDeviceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkBootstrapDeviceResponse =
-  CreateNetworkBootstrapDeviceResponse as any as S.Schema<GetNetworkBootstrapDeviceResponse>;
-
 export interface GetNetworkBootstrapInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6730,11 +4510,6 @@ export interface GetNetworkBootstrapInterfaceRequest {
   /** Name of the Network Bootstrap Interface. */
   networkBootstrapInterfaceName: string;
 }
-const GetNetworkBootstrapInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetNetworkBootstrapInterfaceRequest>;
-
 export interface GetNetworkBootstrapInterfaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6747,9 +4522,6 @@ export interface GetNetworkBootstrapInterfaceResponse {
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfaceProperties;
 }
-const GetNetworkBootstrapInterfaceResponse =
-  CreateNetworkBootstrapInterfaceResponse as any as S.Schema<GetNetworkBootstrapInterfaceResponse>;
-
 export interface GetNetworkDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6758,16 +4530,8 @@ export interface GetNetworkDeviceRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-const GetNetworkDeviceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetNetworkDeviceRequest>;
-
 /** Resource tags. */
 export type GetNetworkDeviceResponseTagsMap = { [key: string]: string | undefined };
-const GetNetworkDeviceResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<GetNetworkDeviceResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetNetworkDeviceResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface GetNetworkDeviceResponse {
@@ -6788,22 +4552,12 @@ export interface GetNetworkDeviceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkDeviceResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<GetNetworkDeviceResponse>;
-
 export interface GetNetworkDeviceSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Name of the Network Device SKU. */
   networkDeviceSkuName: string;
 }
-const GetNetworkDeviceSkusRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetNetworkDeviceSkusRequest>;
-
 /** Supported version details of the network device. */
 export interface SupportedVersionProperties {
   /** Operating system and firmware combined versions. */
@@ -6815,25 +4569,12 @@ export interface SupportedVersionProperties {
   /** If true newly provisioned Fabric will use this device version by default to bootstrap the network devices for the first time. */
   isDefault?: BooleanEnumProperty;
 }
-const SupportedVersionProperties = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<SupportedVersionProperties>;
-
 /** List of supported version details of network device. */
 export type NetworkDeviceSkuPropertiesSupportedVersionsList = Array<SupportedVersionProperties>;
-const NetworkDeviceSkuPropertiesSupportedVersionsList = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<NetworkDeviceSkuPropertiesSupportedVersionsList>;
-
 /** Available roles for the network device. */
 export type NetworkDeviceRoleName = "CE" | "ToR" | "NPB" | "TS" | "Management";
 /** Available roles for the network device. */
 export type NetworkDeviceSkuPropertiesSupportedRoleTypesList = Array<NetworkDeviceRoleName>;
-const NetworkDeviceSkuPropertiesSupportedRoleTypesList =
-  BmpExportPolicyPropertiesExportPoliciesList as any as S.Schema<NetworkDeviceSkuPropertiesSupportedRoleTypesList>;
-
 /** Supported connector properties. */
 export interface SupportedConnectorProperties {
   /** Type of connector used. Example: Optical. */
@@ -6841,19 +4582,9 @@ export interface SupportedConnectorProperties {
   /** Maximum speed of the connector in Mbps. */
   maxSpeedInMbps?: number;
 }
-const SupportedConnectorProperties = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<SupportedConnectorProperties>;
-
 /** List of supported connector types. */
 export type DeviceInterfacePropertiesSupportedConnectorTypesList =
   Array<SupportedConnectorProperties>;
-const DeviceInterfacePropertiesSupportedConnectorTypesList = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<DeviceInterfacePropertiesSupportedConnectorTypesList>;
-
 /** Network device interface properties. */
 export interface DeviceInterfaceProperties {
   /** Interface identifier. Example: HundredGigE0/0. */
@@ -6863,18 +4594,8 @@ export interface DeviceInterfaceProperties {
   /** List of supported connector types. */
   supportedConnectorTypes?: DeviceInterfacePropertiesSupportedConnectorTypesList;
 }
-const DeviceInterfaceProperties = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<DeviceInterfaceProperties>;
-
 /** List of network device interfaces. */
 export type NetworkDeviceSkuPropertiesInterfacesList = Array<DeviceInterfaceProperties>;
-const NetworkDeviceSkuPropertiesInterfacesList = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<NetworkDeviceSkuPropertiesInterfacesList>;
-
 /** Network Device SKU Properties defines the properties of the resource. */
 export interface NetworkDeviceSkuProperties {
   /** Model of the network device. */
@@ -6890,11 +4611,6 @@ export interface NetworkDeviceSkuProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-const NetworkDeviceSkuProperties = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<NetworkDeviceSkuProperties>;
-
 export interface GetNetworkDeviceSkusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6907,11 +4623,6 @@ export interface GetNetworkDeviceSkusResponse {
   /** The Network Device SKU properties. */
   properties: NetworkDeviceSkuProperties;
 }
-const GetNetworkDeviceSkusResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetNetworkDeviceSkusResponse>;
-
 export interface GetNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6920,16 +4631,8 @@ export interface GetNetworkFabricRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const GetNetworkFabricRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<GetNetworkFabricRequest>;
-
 /** Resource tags. */
 export type GetNetworkFabricResponseTagsMap = { [key: string]: string | undefined };
-const GetNetworkFabricResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<GetNetworkFabricResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetNetworkFabricResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface GetNetworkFabricResponse {
@@ -6950,11 +4653,6 @@ export interface GetNetworkFabricResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkFabricResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GetNetworkFabricResponse>;
-
 export interface GetNetworkFabricControllerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6963,11 +4661,6 @@ export interface GetNetworkFabricControllerRequest {
   /** Name of the Network Fabric Controller. */
   networkFabricControllerName: string;
 }
-const GetNetworkFabricControllerRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetNetworkFabricControllerRequest>;
-
 /** Resource tags. */
 export type GetNetworkFabricControllerResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6990,29 +4683,16 @@ export interface GetNetworkFabricControllerResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkFabricControllerResponse =
-  CreateNetworkFabricControllerResponse as any as S.Schema<GetNetworkFabricControllerResponse>;
-
 export interface GetNetworkFabricSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Name of the Network Fabric SKU. */
   networkFabricSkuName: string;
 }
-const GetNetworkFabricSkusRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetNetworkFabricSkusRequest>;
-
 /** Type of Network Fabric SKU. */
 export type FabricSkuType = "SingleRack" | "MultiRack";
-const FabricSkuType = S.String;
-
 /** List of supported Network Fabric SKU versions. */
 export type NetworkFabricSkuPropertiesSupportedVersionsList = Array<string>;
-const NetworkFabricSkuPropertiesSupportedVersionsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricSkuPropertiesSupportedVersionsList>;
-
 /** Network Fabric SKU Properties define properties of the resource. */
 export interface NetworkFabricSkuProperties {
   /** Type of Network Fabric SKU. */
@@ -7028,11 +4708,6 @@ export interface NetworkFabricSkuProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-const NetworkFabricSkuProperties = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<NetworkFabricSkuProperties>;
-
 export interface GetNetworkFabricSkusResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7045,11 +4720,6 @@ export interface GetNetworkFabricSkusResponse {
   /** The Network Fabric SKU properties. */
   properties: NetworkFabricSkuProperties;
 }
-const GetNetworkFabricSkusResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetNetworkFabricSkusResponse>;
-
 export interface GetNetworkFabricTopologyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7058,11 +4728,6 @@ export interface GetNetworkFabricTopologyRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const GetNetworkFabricTopologyRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetNetworkFabricTopologyRequest>;
-
 /** The operations list. */
 export type GetTopologyResponseOperationsItemOperationsList = Array<OperationStatusResult>;
 /** The current status of an async operation. */
@@ -7088,19 +4753,10 @@ export interface GetTopologyResponseOperationsItem {
 }
 /** The operations list. */
 export type GetTopologyResponseOperationsList = Array<GetTopologyResponseOperationsItem>;
-const GetTopologyResponseOperationsList =
-  CommitBatchStatusOperationResponseOperationsList as any as S.Schema<GetTopologyResponseOperationsList>;
-
 /** The error details. */
 export type GetTopologyResponseErrorDetailsList = Array<ErrorDetail>;
-const GetTopologyResponseErrorDetailsList =
-  CommitBatchStatusOperationResponseErrorDetailsList as any as S.Schema<GetTopologyResponseErrorDetailsList>;
-
 /** The error additional info. */
 export type GetTopologyResponseErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const GetTopologyResponseErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<GetTopologyResponseErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface GetTopologyResponseError {
   /** The error code. */
@@ -7114,21 +4770,11 @@ export interface GetTopologyResponseError {
   /** The error additional info. */
   additionalInfo?: GetTopologyResponseErrorAdditionalInfoList;
 }
-const GetTopologyResponseError = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GetTopologyResponseError>;
-
 /** Properties of the GetTopology Response. */
 export interface GetTopologyResponseProperties {
   /** Topology JSON string. */
   url?: string;
 }
-const GetTopologyResponseProperties = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetTopologyResponseProperties>;
-
 /** GetTopology Response. */
 export interface GetTopologyResponse {
   /** Fully qualified ID for the async operation. */
@@ -7152,8 +4798,6 @@ export interface GetTopologyResponse {
   /** Properties of the GetTopology Response. */
   properties?: GetTopologyResponseProperties;
 }
-const GetTopologyResponse = /*@__PURE__*/ __L.at(__c40, 6) as any as S.Schema<GetTopologyResponse>;
-
 export interface GetNetworkInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7164,11 +4808,6 @@ export interface GetNetworkInterfaceRequest {
   /** Name of the Network Interface. */
   networkInterfaceName: string;
 }
-const GetNetworkInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetNetworkInterfaceRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetNetworkInterfaceResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface GetNetworkInterfaceResponse {
@@ -7185,9 +4824,6 @@ export interface GetNetworkInterfaceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkInterfaceResponse =
-  CreateNetworkInterfaceResponse as any as S.Schema<GetNetworkInterfaceResponse>;
-
 export interface GetNetworkMonitorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7196,11 +4832,6 @@ export interface GetNetworkMonitorRequest {
   /** Name of the Network Monitor. */
   networkMonitorName: string;
 }
-const GetNetworkMonitorRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<GetNetworkMonitorRequest>;
-
 /** Resource tags. */
 export type GetNetworkMonitorResponseTagsMap = { [key: string]: string | undefined };
 export interface GetNetworkMonitorResponse {
@@ -7219,9 +4850,6 @@ export interface GetNetworkMonitorResponse {
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorProperties;
 }
-const GetNetworkMonitorResponse =
-  CreateNetworkMonitorResponse as any as S.Schema<GetNetworkMonitorResponse>;
-
 export interface GetNetworkPacketBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7230,11 +4858,6 @@ export interface GetNetworkPacketBrokerRequest {
   /** Name of the Network Packet Broker. */
   networkPacketBrokerName: string;
 }
-const GetNetworkPacketBrokerRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<GetNetworkPacketBrokerRequest>;
-
 /** Resource tags. */
 export type GetNetworkPacketBrokerResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7257,9 +4880,6 @@ export interface GetNetworkPacketBrokerResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkPacketBrokerResponse =
-  CreateNetworkPacketBrokerResponse as any as S.Schema<GetNetworkPacketBrokerResponse>;
-
 export interface GetNetworkRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7268,16 +4888,8 @@ export interface GetNetworkRackRequest {
   /** Name of the Network Rack. */
   networkRackName: string;
 }
-const GetNetworkRackRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<GetNetworkRackRequest>;
-
 /** Resource tags. */
 export type GetNetworkRackResponseTagsMap = { [key: string]: string | undefined };
-const GetNetworkRackResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<GetNetworkRackResponseTagsMap>;
-
 export interface GetNetworkRackResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7294,11 +4906,6 @@ export interface GetNetworkRackResponse {
   /** Network Rack Properties */
   properties: NetworkRackProperties;
 }
-const GetNetworkRackResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GetNetworkRackResponse>;
-
 export interface GetNetworkTapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7307,11 +4914,6 @@ export interface GetNetworkTapRequest {
   /** Name of the Network Tap. */
   networkTapName: string;
 }
-const GetNetworkTapRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GetNetworkTapRequest>;
-
 /** Resource tags. */
 export type GetNetworkTapResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7334,8 +4936,6 @@ export interface GetNetworkTapResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkTapResponse = CreateNetworkTapResponse as any as S.Schema<GetNetworkTapResponse>;
-
 export interface GetNetworkTapRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7344,11 +4944,6 @@ export interface GetNetworkTapRuleRequest {
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
 }
-const GetNetworkTapRuleRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<GetNetworkTapRuleRequest>;
-
 /** Resource tags. */
 export type GetNetworkTapRuleResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -7371,9 +4966,6 @@ export interface GetNetworkTapRuleResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const GetNetworkTapRuleResponse =
-  CreateNetworkTapRuleResponse as any as S.Schema<GetNetworkTapRuleResponse>;
-
 export interface GetNetworkToNetworkInterconnectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7384,11 +4976,6 @@ export interface GetNetworkToNetworkInterconnectRequest {
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
 }
-const GetNetworkToNetworkInterconnectRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<GetNetworkToNetworkInterconnectRequest>;
-
 export interface GetNetworkToNetworkInterconnectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7401,9 +4988,6 @@ export interface GetNetworkToNetworkInterconnectResponse {
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectProperties;
 }
-const GetNetworkToNetworkInterconnectResponse =
-  CreateNetworkToNetworkInterconnectResponse as any as S.Schema<GetNetworkToNetworkInterconnectResponse>;
-
 export interface GetRoutePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7412,16 +4996,8 @@ export interface GetRoutePolicyRequest {
   /** Name of the Route Policy. */
   routePolicyName: string;
 }
-const GetRoutePolicyRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<GetRoutePolicyRequest>;
-
 /** Resource tags. */
 export type GetRoutePolicyResponseTagsMap = { [key: string]: string | undefined };
-const GetRoutePolicyResponseTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<GetRoutePolicyResponseTagsMap>;
-
 export interface GetRoutePolicyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7438,27 +5014,14 @@ export interface GetRoutePolicyResponse {
   /** The RoutePolicy properties */
   properties: RoutePolicyProperties;
 }
-const GetRoutePolicyResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<GetRoutePolicyResponse>;
-
 export interface ListAccessControlListByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListAccessControlListByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ListAccessControlListByResourceGroupRequest>;
-
 /** Resource tags. */
 export type AccessControlListTagsMap = { [key: string]: string | undefined };
-const AccessControlListTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<AccessControlListTagsMap>;
-
 /** The Access Control List resource definition. */
 export interface AccessControlList {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7476,15 +5039,8 @@ export interface AccessControlList {
   /** The Access ControlList properties. */
   properties: AccessControlListProperties;
 }
-const AccessControlList = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<AccessControlList>;
-
 /** The AccessControlList items on this page */
 export type AccessControlListsListResultValueList = Array<AccessControlList>;
-const AccessControlListsListResultValueList = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<AccessControlListsListResultValueList>;
-
 /** Paged collection of AccessControlList items */
 export interface AccessControlListsListResult {
   /** The AccessControlList items on this page */
@@ -7492,20 +5048,10 @@ export interface AccessControlListsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AccessControlListsListResult = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<AccessControlListsListResult>;
-
 export interface ListAccessControlListBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListAccessControlListBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListAccessControlListBySubscriptionRequest>;
-
 export interface ListExternalNetworkByL3IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7514,11 +5060,6 @@ export interface ListExternalNetworkByL3IsolationDomainRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-const ListExternalNetworkByL3IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ListExternalNetworkByL3IsolationDomainRequest>;
-
 /** Defines the External Network resource. */
 export interface ExternalNetwork {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7532,15 +5073,8 @@ export interface ExternalNetwork {
   /** External Network Properties */
   properties: ExternalNetworkProperties;
 }
-const ExternalNetwork = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<ExternalNetwork>;
-
 /** The ExternalNetwork items on this page */
 export type ExternalNetworksListValueList = Array<ExternalNetwork>;
-const ExternalNetworksListValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ExternalNetworksListValueList>;
-
 /** Paged collection of ExternalNetwork items */
 export interface ExternalNetworksList {
   /** The ExternalNetwork items on this page */
@@ -7548,11 +5082,6 @@ export interface ExternalNetworksList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ExternalNetworksList = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<ExternalNetworksList>;
-
 export interface ListInternalNetworkByL3IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7561,11 +5090,6 @@ export interface ListInternalNetworkByL3IsolationDomainRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-const ListInternalNetworkByL3IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListInternalNetworkByL3IsolationDomainRequest>;
-
 /** Defines the Internal Network resource. */
 export interface InternalNetwork {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7579,15 +5103,8 @@ export interface InternalNetwork {
   /** The Internal Network Properties */
   properties: InternalNetworkProperties;
 }
-const InternalNetwork = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<InternalNetwork>;
-
 /** The InternalNetwork items on this page */
 export type InternalNetworksListValueList = Array<InternalNetwork>;
-const InternalNetworksListValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<InternalNetworksListValueList>;
-
 /** Paged collection of InternalNetwork items */
 export interface InternalNetworksList {
   /** The InternalNetwork items on this page */
@@ -7595,27 +5112,14 @@ export interface InternalNetworksList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const InternalNetworksList = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<InternalNetworksList>;
-
 export interface ListInternetGatewayByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListInternetGatewayByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListInternetGatewayByResourceGroupRequest>;
-
 /** Resource tags. */
 export type InternetGatewayTagsMap = { [key: string]: string | undefined };
-const InternetGatewayTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<InternetGatewayTagsMap>;
-
 /** The Internet Gateway resource definition. */
 export interface InternetGateway {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7633,15 +5137,8 @@ export interface InternetGateway {
   /** The Internet Gateway Properties */
   properties: InternetGatewayProperties;
 }
-const InternetGateway = /*@__PURE__*/ __L.at(__c43, 7) as any as S.Schema<InternetGateway>;
-
 /** The InternetGateway items on this page */
 export type InternetGatewaysListResultValueList = Array<InternetGateway>;
-const InternetGatewaysListResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<InternetGatewaysListResultValueList>;
-
 /** Paged collection of InternetGateway items */
 export interface InternetGatewaysListResult {
   /** The InternetGateway items on this page */
@@ -7649,36 +5146,18 @@ export interface InternetGatewaysListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const InternetGatewaysListResult = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<InternetGatewaysListResult>;
-
 export interface ListInternetGatewayBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListInternetGatewayBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ListInternetGatewayBySubscriptionRequest>;
-
 export interface ListInternetGatewayRuleByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListInternetGatewayRuleByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<ListInternetGatewayRuleByResourceGroupRequest>;
-
 /** Resource tags. */
 export type InternetGatewayRuleTagsMap = { [key: string]: string | undefined };
-const InternetGatewayRuleTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<InternetGatewayRuleTagsMap>;
-
 /** The Internet Gateway Rule resource definition. */
 export interface InternetGatewayRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7696,15 +5175,8 @@ export interface InternetGatewayRule {
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRuleProperties;
 }
-const InternetGatewayRule = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<InternetGatewayRule>;
-
 /** The InternetGatewayRule items on this page */
 export type InternetGatewayRulesListResultValueList = Array<InternetGatewayRule>;
-const InternetGatewayRulesListResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<InternetGatewayRulesListResultValueList>;
-
 /** Paged collection of InternetGatewayRule items */
 export interface InternetGatewayRulesListResult {
   /** The InternetGatewayRule items on this page */
@@ -7712,31 +5184,16 @@ export interface InternetGatewayRulesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const InternetGatewayRulesListResult = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<InternetGatewayRulesListResult>;
-
 export interface ListInternetGatewayRuleBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListInternetGatewayRuleBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ListInternetGatewayRuleBySubscriptionRequest>;
-
 export interface ListIpCommunityByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListIpCommunityByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<ListIpCommunityByResourceGroupRequest>;
-
 /** Resource tags. */
 export type IpCommunityTagsMap = { [key: string]: string | undefined };
 /** The IP Community resource definition. */
@@ -7756,15 +5213,8 @@ export interface IpCommunity {
   /** The IP Community Properties */
   properties: IpCommunityProperties;
 }
-const IpCommunity = GetIpCommunityResponse as any as S.Schema<IpCommunity>;
-
 /** The IpCommunity items on this page */
 export type IpCommunitiesListResultValueList = Array<IpCommunity>;
-const IpCommunitiesListResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<IpCommunitiesListResultValueList>;
-
 /** Paged collection of IpCommunity items */
 export interface IpCommunitiesListResult {
   /** The IpCommunity items on this page */
@@ -7772,36 +5222,18 @@ export interface IpCommunitiesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const IpCommunitiesListResult = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<IpCommunitiesListResult>;
-
 export interface ListIpCommunityBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListIpCommunityBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<ListIpCommunityBySubscriptionRequest>;
-
 export interface ListIpExtendedCommunityByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListIpExtendedCommunityByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ListIpExtendedCommunityByResourceGroupRequest>;
-
 /** Resource tags. */
 export type IpExtendedCommunityTagsMap = { [key: string]: string | undefined };
-const IpExtendedCommunityTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<IpExtendedCommunityTagsMap>;
-
 /** The IP Extended Community resource definition. */
 export interface IpExtendedCommunity {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7819,15 +5251,8 @@ export interface IpExtendedCommunity {
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityProperties;
 }
-const IpExtendedCommunity = /*@__PURE__*/ __L.at(__c45, 5) as any as S.Schema<IpExtendedCommunity>;
-
 /** The IpExtendedCommunity items on this page */
 export type IpExtendedCommunityListResultValueList = Array<IpExtendedCommunity>;
-const IpExtendedCommunityListResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<IpExtendedCommunityListResultValueList>;
-
 /** The response of a IpExtendedCommunity list operation. */
 export interface IpExtendedCommunityListResult {
   /** The IpExtendedCommunity items on this page */
@@ -7835,31 +5260,16 @@ export interface IpExtendedCommunityListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const IpExtendedCommunityListResult = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<IpExtendedCommunityListResult>;
-
 export interface ListIpExtendedCommunityBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListIpExtendedCommunityBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<ListIpExtendedCommunityBySubscriptionRequest>;
-
 export interface ListIpPrefixByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListIpPrefixByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<ListIpPrefixByResourceGroupRequest>;
-
 /** Resource tags. */
 export type IpPrefixTagsMap = { [key: string]: string | undefined };
 /** The IP Prefix resource definition. */
@@ -7879,15 +5289,8 @@ export interface IpPrefix {
   /** The IP Prefix properties */
   properties: IpPrefixProperties;
 }
-const IpPrefix = CreateIpPrefixResponse as any as S.Schema<IpPrefix>;
-
 /** The IpPrefix items on this page */
 export type IpPrefixesListResultValueList = Array<IpPrefix>;
-const IpPrefixesListResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<IpPrefixesListResultValueList>;
-
 /** Paged collection of IpPrefix items */
 export interface IpPrefixesListResult {
   /** The IpPrefix items on this page */
@@ -7895,36 +5298,18 @@ export interface IpPrefixesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const IpPrefixesListResult = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<IpPrefixesListResult>;
-
 export interface ListIpPrefixBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListIpPrefixBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<ListIpPrefixBySubscriptionRequest>;
-
 export interface ListL2IsolationDomainByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListL2IsolationDomainByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<ListL2IsolationDomainByResourceGroupRequest>;
-
 /** Resource tags. */
 export type L2IsolationDomainTagsMap = { [key: string]: string | undefined };
-const L2IsolationDomainTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<L2IsolationDomainTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type L2IsolationDomainIdentity = CreateL2IsolationDomainResponseIdentity;
 /** The L2 Isolation Domain resource definition. */
@@ -7946,15 +5331,8 @@ export interface L2IsolationDomain {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const L2IsolationDomain = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<L2IsolationDomain>;
-
 /** The L2IsolationDomain items on this page */
 export type L2IsolationDomainsListResultValueList = Array<L2IsolationDomain>;
-const L2IsolationDomainsListResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<L2IsolationDomainsListResultValueList>;
-
 /** Paged collection of L2IsolationDomain items */
 export interface L2IsolationDomainsListResult {
   /** The L2IsolationDomain items on this page */
@@ -7962,36 +5340,18 @@ export interface L2IsolationDomainsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const L2IsolationDomainsListResult = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<L2IsolationDomainsListResult>;
-
 export interface ListL2IsolationDomainBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListL2IsolationDomainBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListL2IsolationDomainBySubscriptionRequest>;
-
 export interface ListL3IsolationDomainByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListL3IsolationDomainByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<ListL3IsolationDomainByResourceGroupRequest>;
-
 /** Resource tags. */
 export type L3IsolationDomainTagsMap = { [key: string]: string | undefined };
-const L3IsolationDomainTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<L3IsolationDomainTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type L3IsolationDomainIdentity = CreateL2IsolationDomainResponseIdentity;
 /** The L3 Isolation Domain resource definition. */
@@ -8013,15 +5373,8 @@ export interface L3IsolationDomain {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const L3IsolationDomain = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<L3IsolationDomain>;
-
 /** The L3IsolationDomain items on this page */
 export type L3IsolationDomainsListResultValueList = Array<L3IsolationDomain>;
-const L3IsolationDomainsListResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<L3IsolationDomainsListResultValueList>;
-
 /** Paged collection of L3IsolationDomain items */
 export interface L3IsolationDomainsListResult {
   /** The L3IsolationDomain items on this page */
@@ -8029,31 +5382,16 @@ export interface L3IsolationDomainsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const L3IsolationDomainsListResult = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<L3IsolationDomainsListResult>;
-
 export interface ListL3IsolationDomainBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListL3IsolationDomainBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListL3IsolationDomainBySubscriptionRequest>;
-
 export interface ListNeighborGroupByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNeighborGroupByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ListNeighborGroupByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NeighborGroupTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8077,15 +5415,8 @@ export interface NeighborGroup {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NeighborGroup = GetNeighborGroupResponse as any as S.Schema<NeighborGroup>;
-
 /** The NeighborGroup items on this page */
 export type NeighborGroupsListResultValueList = Array<NeighborGroup>;
-const NeighborGroupsListResultValueList = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<NeighborGroupsListResultValueList>;
-
 /** Paged collection of NeighborGroup items */
 export interface NeighborGroupsListResult {
   /** The NeighborGroup items on this page */
@@ -8093,36 +5424,18 @@ export interface NeighborGroupsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NeighborGroupsListResult = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<NeighborGroupsListResult>;
-
 export interface ListNeighborGroupBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNeighborGroupBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<ListNeighborGroupBySubscriptionRequest>;
-
 export interface ListNetworkBootstrapDeviceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkBootstrapDeviceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ListNetworkBootstrapDeviceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkBootstrapDeviceTagsMap = { [key: string]: string | undefined };
-const NetworkBootstrapDeviceTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<NetworkBootstrapDeviceTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkBootstrapDeviceIdentity = CreateL2IsolationDomainResponseIdentity;
 /** The Network Bootstrap Device resource definition. */
@@ -8144,18 +5457,8 @@ export interface NetworkBootstrapDevice {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkBootstrapDevice = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<NetworkBootstrapDevice>;
-
 /** The NetworkBootstrapDevice items on this page */
 export type NetworkBootstrapDeviceListResultValueList = Array<NetworkBootstrapDevice>;
-const NetworkBootstrapDeviceListResultValueList = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<NetworkBootstrapDeviceListResultValueList>;
-
 /** The response of a NetworkBootstrapDevice list operation. */
 export interface NetworkBootstrapDeviceListResult {
   /** The NetworkBootstrapDevice items on this page */
@@ -8163,20 +5466,10 @@ export interface NetworkBootstrapDeviceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkBootstrapDeviceListResult = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<NetworkBootstrapDeviceListResult>;
-
 export interface ListNetworkBootstrapDeviceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkBootstrapDeviceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<ListNetworkBootstrapDeviceBySubscriptionRequest>;
-
 export interface ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8185,11 +5478,6 @@ export interface ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-const ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest>;
-
 /** Defines the NetworkBootstrapInterface resource. */
 export interface NetworkBootstrapInterface {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8203,16 +5491,8 @@ export interface NetworkBootstrapInterface {
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfaceProperties;
 }
-const NetworkBootstrapInterface =
-  CreateNetworkBootstrapInterfaceResponse as any as S.Schema<NetworkBootstrapInterface>;
-
 /** The NetworkBootstrapInterface items on this page */
 export type NetworkBootstrapInterfaceListResultValueList = Array<NetworkBootstrapInterface>;
-const NetworkBootstrapInterfaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<NetworkBootstrapInterfaceListResultValueList>;
-
 /** The response of a NetworkBootstrapInterface list operation. */
 export interface NetworkBootstrapInterfaceListResult {
   /** The NetworkBootstrapInterface items on this page */
@@ -8220,22 +5500,12 @@ export interface NetworkBootstrapInterfaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkBootstrapInterfaceListResult = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<NetworkBootstrapInterfaceListResult>;
-
 export interface ListNetworkDeviceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkDeviceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<ListNetworkDeviceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkDeviceTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8259,15 +5529,8 @@ export interface NetworkDevice {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkDevice = GetNetworkDeviceResponse as any as S.Schema<NetworkDevice>;
-
 /** The NetworkDevice items on this page */
 export type NetworkDevicesListResultValueList = Array<NetworkDevice>;
-const NetworkDevicesListResultValueList = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<NetworkDevicesListResultValueList>;
-
 /** Paged collection of NetworkDevice items */
 export interface NetworkDevicesListResult {
   /** The NetworkDevice items on this page */
@@ -8275,29 +5538,14 @@ export interface NetworkDevicesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkDevicesListResult = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<NetworkDevicesListResult>;
-
 export interface ListNetworkDeviceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkDeviceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListNetworkDeviceBySubscriptionRequest>;
-
 export interface ListNetworkDeviceSkusBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkDeviceSkusBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ListNetworkDeviceSkusBySubscriptionRequest>;
-
 /** The NetworkDeviceSku resource definition. */
 export interface NetworkDeviceSku {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8311,15 +5559,8 @@ export interface NetworkDeviceSku {
   /** The Network Device SKU properties. */
   properties: NetworkDeviceSkuProperties;
 }
-const NetworkDeviceSku = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<NetworkDeviceSku>;
-
 /** The NetworkDeviceSku items on this page */
 export type NetworkDeviceSkusListResultValueList = Array<NetworkDeviceSku>;
-const NetworkDeviceSkusListResultValueList = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<NetworkDeviceSkusListResultValueList>;
-
 /** Paged collection of NetworkDeviceSku items */
 export interface NetworkDeviceSkusListResult {
   /** The NetworkDeviceSku items on this page */
@@ -8327,22 +5568,12 @@ export interface NetworkDeviceSkusListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkDeviceSkusListResult = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<NetworkDeviceSkusListResult>;
-
 export interface ListNetworkFabricByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkFabricByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListNetworkFabricByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkFabricTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8366,15 +5597,8 @@ export interface NetworkFabric {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkFabric = GetNetworkFabricResponse as any as S.Schema<NetworkFabric>;
-
 /** The NetworkFabric items on this page */
 export type NetworkFabricsListResultValueList = Array<NetworkFabric>;
-const NetworkFabricsListResultValueList = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<NetworkFabricsListResultValueList>;
-
 /** Paged collection of NetworkFabric items */
 export interface NetworkFabricsListResult {
   /** The NetworkFabric items on this page */
@@ -8382,36 +5606,18 @@ export interface NetworkFabricsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkFabricsListResult = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<NetworkFabricsListResult>;
-
 export interface ListNetworkFabricBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkFabricBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListNetworkFabricBySubscriptionRequest>;
-
 export interface ListNetworkFabricControllerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkFabricControllerByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListNetworkFabricControllerByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkFabricControllerTagsMap = { [key: string]: string | undefined };
-const NetworkFabricControllerTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<NetworkFabricControllerTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkFabricControllerIdentity = CreateL2IsolationDomainResponseIdentity;
 /** The Network Fabric Controller resource definition. */
@@ -8433,18 +5639,8 @@ export interface NetworkFabricController {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkFabricController = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<NetworkFabricController>;
-
 /** The NetworkFabricController items on this page */
 export type NetworkFabricControllersListResultValueList = Array<NetworkFabricController>;
-const NetworkFabricControllersListResultValueList = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<NetworkFabricControllersListResultValueList>;
-
 /** Paged collection of NetworkFabricController items */
 export interface NetworkFabricControllersListResult {
   /** The NetworkFabricController items on this page */
@@ -8452,29 +5648,14 @@ export interface NetworkFabricControllersListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkFabricControllersListResult = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<NetworkFabricControllersListResult>;
-
 export interface ListNetworkFabricControllerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkFabricControllerBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<ListNetworkFabricControllerBySubscriptionRequest>;
-
 export interface ListNetworkFabricSkusBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkFabricSkusBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<ListNetworkFabricSkusBySubscriptionRequest>;
-
 /** The Network Fabric SKU resource definition. */
 export interface NetworkFabricSku {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8488,15 +5669,8 @@ export interface NetworkFabricSku {
   /** The Network Fabric SKU properties. */
   properties: NetworkFabricSkuProperties;
 }
-const NetworkFabricSku = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<NetworkFabricSku>;
-
 /** The NetworkFabricSku items on this page */
 export type NetworkFabricSkusListResultValueList = Array<NetworkFabricSku>;
-const NetworkFabricSkusListResultValueList = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<NetworkFabricSkusListResultValueList>;
-
 /** Paged collection of NetworkFabricSku items */
 export interface NetworkFabricSkusListResult {
   /** The NetworkFabricSku items on this page */
@@ -8504,11 +5678,6 @@ export interface NetworkFabricSkusListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkFabricSkusListResult = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<NetworkFabricSkusListResult>;
-
 export interface ListNetworkInterfaceByNetworkDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8517,11 +5686,6 @@ export interface ListNetworkInterfaceByNetworkDeviceRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-const ListNetworkInterfaceByNetworkDeviceRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListNetworkInterfaceByNetworkDeviceRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkInterfaceIdentity = CreateL2IsolationDomainResponseIdentity;
 /** Defines the NetworkInterface resource. */
@@ -8539,15 +5703,8 @@ export interface NetworkInterface {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkInterface = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<NetworkInterface>;
-
 /** The NetworkInterface items on this page */
 export type NetworkInterfacesListValueList = Array<NetworkInterface>;
-const NetworkInterfacesListValueList = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<NetworkInterfacesListValueList>;
-
 /** Paged collection of NetworkInterface items */
 export interface NetworkInterfacesList {
   /** The NetworkInterface items on this page */
@@ -8555,27 +5712,14 @@ export interface NetworkInterfacesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkInterfacesList = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<NetworkInterfacesList>;
-
 export interface ListNetworkMonitorByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkMonitorByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ListNetworkMonitorByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkMonitorTagsMap = { [key: string]: string | undefined };
-const NetworkMonitorTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<NetworkMonitorTagsMap>;
-
 /** The NetworkMonitor resource definition. */
 export interface NetworkMonitor {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8593,15 +5737,8 @@ export interface NetworkMonitor {
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorProperties;
 }
-const NetworkMonitor = /*@__PURE__*/ __L.at(__c52, 5) as any as S.Schema<NetworkMonitor>;
-
 /** The NetworkMonitor items on this page */
 export type NetworkMonitorListResultValueList = Array<NetworkMonitor>;
-const NetworkMonitorListResultValueList = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<NetworkMonitorListResultValueList>;
-
 /** The response of a NetworkMonitor list operation. */
 export interface NetworkMonitorListResult {
   /** The NetworkMonitor items on this page */
@@ -8609,36 +5746,18 @@ export interface NetworkMonitorListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkMonitorListResult = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<NetworkMonitorListResult>;
-
 export interface ListNetworkMonitorBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkMonitorBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ListNetworkMonitorBySubscriptionRequest>;
-
 export interface ListNetworkPacketBrokerByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkPacketBrokerByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<ListNetworkPacketBrokerByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkPacketBrokerTagsMap = { [key: string]: string | undefined };
-const NetworkPacketBrokerTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<NetworkPacketBrokerTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkPacketBrokerIdentity = CreateL2IsolationDomainResponseIdentity;
 /** The NetworkPacketBroker resource definition. */
@@ -8660,15 +5779,8 @@ export interface NetworkPacketBroker {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkPacketBroker = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<NetworkPacketBroker>;
-
 /** The NetworkPacketBroker items on this page */
 export type NetworkPacketBrokersListResultValueList = Array<NetworkPacketBroker>;
-const NetworkPacketBrokersListResultValueList = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<NetworkPacketBrokersListResultValueList>;
-
 /** Paged collection of NetworkPacketBroker items */
 export interface NetworkPacketBrokersListResult {
   /** The NetworkPacketBroker items on this page */
@@ -8676,31 +5788,16 @@ export interface NetworkPacketBrokersListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkPacketBrokersListResult = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<NetworkPacketBrokersListResult>;
-
 export interface ListNetworkPacketBrokerBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkPacketBrokerBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<ListNetworkPacketBrokerBySubscriptionRequest>;
-
 export interface ListNetworkRackByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkRackByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<ListNetworkRackByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkRackTagsMap = { [key: string]: string | undefined };
 /** The Network Rack resource definition. */
@@ -8720,15 +5817,8 @@ export interface NetworkRack {
   /** Network Rack Properties */
   properties: NetworkRackProperties;
 }
-const NetworkRack = GetNetworkRackResponse as any as S.Schema<NetworkRack>;
-
 /** The NetworkRack items on this page */
 export type NetworkRacksListResultValueList = Array<NetworkRack>;
-const NetworkRacksListResultValueList = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<NetworkRacksListResultValueList>;
-
 /** Paged collection of NetworkRack items */
 export interface NetworkRacksListResult {
   /** The NetworkRack items on this page */
@@ -8736,31 +5826,16 @@ export interface NetworkRacksListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkRacksListResult = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<NetworkRacksListResult>;
-
 export interface ListNetworkRackBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkRackBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<ListNetworkRackBySubscriptionRequest>;
-
 export interface ListNetworkTapByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkTapByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<ListNetworkTapByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkTapTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8784,15 +5859,8 @@ export interface NetworkTap {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkTap = CreateNetworkTapResponse as any as S.Schema<NetworkTap>;
-
 /** The NetworkTap items on this page */
 export type NetworkTapsListResultValueList = Array<NetworkTap>;
-const NetworkTapsListResultValueList = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<NetworkTapsListResultValueList>;
-
 /** Paged collection of NetworkTap items */
 export interface NetworkTapsListResult {
   /** The NetworkTap items on this page */
@@ -8800,36 +5868,18 @@ export interface NetworkTapsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkTapsListResult = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<NetworkTapsListResult>;
-
 export interface ListNetworkTapBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkTapBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<ListNetworkTapBySubscriptionRequest>;
-
 export interface ListNetworkTapRuleByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNetworkTapRuleByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ListNetworkTapRuleByResourceGroupRequest>;
-
 /** Resource tags. */
 export type NetworkTapRuleTagsMap = { [key: string]: string | undefined };
-const NetworkTapRuleTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<NetworkTapRuleTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type NetworkTapRuleIdentity = CreateL2IsolationDomainResponseIdentity;
 /** The NetworkTapRule resource definition. */
@@ -8851,15 +5901,8 @@ export interface NetworkTapRule {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const NetworkTapRule = /*@__PURE__*/ __L.at(__c54, 7) as any as S.Schema<NetworkTapRule>;
-
 /** The NetworkTapRule items on this page */
 export type NetworkTapRulesListResultValueList = Array<NetworkTapRule>;
-const NetworkTapRulesListResultValueList = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<NetworkTapRulesListResultValueList>;
-
 /** Paged collection of NetworkTapRule items */
 export interface NetworkTapRulesListResult {
   /** The NetworkTapRule items on this page */
@@ -8867,20 +5910,10 @@ export interface NetworkTapRulesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkTapRulesListResult = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<NetworkTapRulesListResult>;
-
 export interface ListNetworkTapRuleBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListNetworkTapRuleBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<ListNetworkTapRuleBySubscriptionRequest>;
-
 export interface ListNetworkToNetworkInterconnectByNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8889,11 +5922,6 @@ export interface ListNetworkToNetworkInterconnectByNetworkFabricRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const ListNetworkToNetworkInterconnectByNetworkFabricRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<ListNetworkToNetworkInterconnectByNetworkFabricRequest>;
-
 /** The Network To Network Interconnect resource definition. */
 export interface NetworkToNetworkInterconnect {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8907,16 +5935,8 @@ export interface NetworkToNetworkInterconnect {
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectProperties;
 }
-const NetworkToNetworkInterconnect =
-  CreateNetworkToNetworkInterconnectResponse as any as S.Schema<NetworkToNetworkInterconnect>;
-
 /** The NetworkToNetworkInterconnect items on this page */
 export type NetworkToNetworkInterconnectsListValueList = Array<NetworkToNetworkInterconnect>;
-const NetworkToNetworkInterconnectsListValueList = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<NetworkToNetworkInterconnectsListValueList>;
-
 /** Paged collection of NetworkToNetworkInterconnect items */
 export interface NetworkToNetworkInterconnectsList {
   /** The NetworkToNetworkInterconnect items on this page */
@@ -8924,17 +5944,7 @@ export interface NetworkToNetworkInterconnectsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkToNetworkInterconnectsList = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<NetworkToNetworkInterconnectsList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -8946,16 +5956,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -8969,37 +5973,20 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListRoutePolicyByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListRoutePolicyByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<ListRoutePolicyByResourceGroupRequest>;
-
 /** Resource tags. */
 export type RoutePolicyTagsMap = { [key: string]: string | undefined };
 /** The RoutePolicy resource definition. */
@@ -9019,15 +6006,8 @@ export interface RoutePolicy {
   /** The RoutePolicy properties */
   properties: RoutePolicyProperties;
 }
-const RoutePolicy = GetRoutePolicyResponse as any as S.Schema<RoutePolicy>;
-
 /** The RoutePolicy items on this page */
 export type RoutePoliciesListResultValueList = Array<RoutePolicy>;
-const RoutePoliciesListResultValueList = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<RoutePoliciesListResultValueList>;
-
 /** Paged collection of RoutePolicy items */
 export interface RoutePoliciesListResult {
   /** The RoutePolicy items on this page */
@@ -9035,24 +6015,12 @@ export interface RoutePoliciesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const RoutePoliciesListResult = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<RoutePoliciesListResult>;
-
 export interface ListRoutePolicyBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListRoutePolicyBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<ListRoutePolicyBySubscriptionRequest>;
-
 /** Network fabric lock action */
 export type NetworkFabricLockAction = "Lock" | "Unlock";
-const NetworkFabricLockAction = S.String;
-
 export interface LockNetworkFabricFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9065,11 +6033,6 @@ export interface LockNetworkFabricFabricRequest {
   /** Action to be performed on the lock */
   action?: NetworkFabricLockAction | (string & {});
 }
-const LockNetworkFabricFabricRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<LockNetworkFabricFabricRequest>;
-
 /** The operations list. */
 export type LockNetworkFabricFabricResponseOperationsList = Array<OperationStatusResult>;
 export interface LockNetworkFabricFabricResponse {
@@ -9092,9 +6055,6 @@ export interface LockNetworkFabricFabricResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const LockNetworkFabricFabricResponse =
-  CommitBatchStatusOperationResponseOperationsItem as any as S.Schema<LockNetworkFabricFabricResponse>;
-
 export interface NeighborGroupsResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9103,11 +6063,6 @@ export interface NeighborGroupsResyncRequest {
   /** Name of the Neighbor Group. */
   neighborGroupName: string;
 }
-const NeighborGroupsResyncRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<NeighborGroupsResyncRequest>;
-
 /** The operations list. */
 export type NeighborGroupResyncResponseOperationsItemOperationsList = Array<OperationStatusResult>;
 /** The current status of an async operation. */
@@ -9172,9 +6127,6 @@ export interface NeighborGroupResyncResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NeighborGroupResyncResponse =
-  CommitConfigurationResponse as any as S.Schema<NeighborGroupResyncResponse>;
-
 export interface NetworkBootstrapDevicesResyncPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9183,20 +6135,9 @@ export interface NetworkBootstrapDevicesResyncPasswordsRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-const NetworkBootstrapDevicesResyncPasswordsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<NetworkBootstrapDevicesResyncPasswordsRequest>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
-const NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList =
-  /*@__PURE__*/ __L.at(
-    __c57,
-    2,
-  ) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList>;
-
 /** The current status of an async operation. */
 export interface NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem {
   /** Fully qualified ID for the async operation. */
@@ -9218,32 +6159,14 @@ export interface NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseOperationsList =
   Array<NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem>;
-const NetworkBootstrapDeviceResyncPasswordsResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponseOperationsList>;
-
 /** The error details. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList = Array<ErrorDetail>;
-const NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList =
-  CommitBatchStatusOperationResponseErrorDetailsList as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList>;
-
 /** The error additional info. */
 export type NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-const NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface NetworkBootstrapDeviceResyncPasswordsResponseError {
   /** The error code. */
@@ -9257,11 +6180,6 @@ export interface NetworkBootstrapDeviceResyncPasswordsResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList;
 }
-const NetworkBootstrapDeviceResyncPasswordsResponseError = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponseError>;
-
 /** Response body for a ResyncPasswords request on a Network Bootstrap Device. */
 export interface NetworkBootstrapDeviceResyncPasswordsResponse {
   /** Fully qualified ID for the async operation. */
@@ -9283,11 +6201,6 @@ export interface NetworkBootstrapDeviceResyncPasswordsResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkBootstrapDeviceResyncPasswordsResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>;
-
 export interface NetworkBootstrapDevicesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9298,17 +6211,9 @@ export interface NetworkBootstrapDevicesUpgradeRequest {
   /** Specify the version. */
   version?: string;
 }
-const NetworkBootstrapDevicesUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<NetworkBootstrapDevicesUpgradeRequest>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
-const NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList =
-  NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList as any as S.Schema<NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList>;
-
 /** The current status of an async operation. */
 export interface NetworkBootstrapDeviceUpgradeResponseOperationsItem {
   /** Fully qualified ID for the async operation. */
@@ -9330,19 +6235,9 @@ export interface NetworkBootstrapDeviceUpgradeResponseOperationsItem {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const NetworkBootstrapDeviceUpgradeResponseOperationsItem = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponseOperationsItem>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceUpgradeResponseOperationsList =
   Array<NetworkBootstrapDeviceUpgradeResponseOperationsItem>;
-const NetworkBootstrapDeviceUpgradeResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponseOperationsList>;
-
 /** The error details. */
 export type NetworkBootstrapDeviceUpgradeResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -9361,9 +6256,6 @@ export interface NetworkBootstrapDeviceUpgradeResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkBootstrapDeviceUpgradeResponseErrorAdditionalInfoList;
 }
-const NetworkBootstrapDeviceUpgradeResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<NetworkBootstrapDeviceUpgradeResponseError>;
-
 /** Network Bootstrap Device upgrade Response. */
 export interface NetworkBootstrapDeviceUpgradeResponse {
   /** Fully qualified ID for the async operation. */
@@ -9385,11 +6277,6 @@ export interface NetworkBootstrapDeviceUpgradeResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkBootstrapDeviceUpgradeResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>;
-
 export interface NetworkDevicesResyncCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9398,11 +6285,6 @@ export interface NetworkDevicesResyncCertificatesRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-const NetworkDevicesResyncCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<NetworkDevicesResyncCertificatesRequest>;
-
 /** The operations list. */
 export type NetworkFabricResyncCertificatesResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -9469,9 +6351,6 @@ export interface NetworkFabricResyncCertificatesResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkFabricResyncCertificatesResponse =
-  NetworkBootstrapDeviceUpgradeResponse as any as S.Schema<NetworkFabricResyncCertificatesResponse>;
-
 export interface NetworkDevicesResyncPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9480,11 +6359,6 @@ export interface NetworkDevicesResyncPasswordsRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-const NetworkDevicesResyncPasswordsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<NetworkDevicesResyncPasswordsRequest>;
-
 /** The operations list. */
 export type NetworkDeviceResyncPasswordsResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -9551,9 +6425,6 @@ export interface NetworkDeviceResyncPasswordsResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkDeviceResyncPasswordsResponse =
-  NetworkBootstrapDeviceUpgradeResponse as any as S.Schema<NetworkDeviceResyncPasswordsResponse>;
-
 export interface NetworkDevicesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9566,11 +6437,6 @@ export interface NetworkDevicesUpgradeRequest {
   /** URL to the file containing Read-write configuration to be applied on the device during upgrade. */
   rwDeviceConfigUrl?: string;
 }
-const NetworkDevicesUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<NetworkDevicesUpgradeRequest>;
-
 /** The operations list. */
 export type NetworkDeviceUpgradeResponseOperationsItemOperationsList = Array<OperationStatusResult>;
 /** The current status of an async operation. */
@@ -9635,9 +6501,6 @@ export interface NetworkDeviceUpgradeResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkDeviceUpgradeResponse =
-  CommitConfigurationResponse as any as S.Schema<NetworkDeviceUpgradeResponse>;
-
 export interface NetworkFabricsArmConfigurationDiffRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9646,11 +6509,6 @@ export interface NetworkFabricsArmConfigurationDiffRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const NetworkFabricsArmConfigurationDiffRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<NetworkFabricsArmConfigurationDiffRequest>;
-
 /** The operations list. */
 export type ArmConfigurationDiffOperationResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -9678,9 +6536,6 @@ export interface ArmConfigurationDiffOperationResponseOperationsItem {
 /** The operations list. */
 export type ArmConfigurationDiffOperationResponseOperationsList =
   Array<ArmConfigurationDiffOperationResponseOperationsItem>;
-const ArmConfigurationDiffOperationResponseOperationsList =
-  NetworkBootstrapDeviceUpgradeResponseOperationsList as any as S.Schema<ArmConfigurationDiffOperationResponseOperationsList>;
-
 /** The error details. */
 export type ArmConfigurationDiffOperationResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -9699,19 +6554,11 @@ export interface ArmConfigurationDiffOperationResponseError {
   /** The error additional info. */
   additionalInfo?: ArmConfigurationDiffOperationResponseErrorAdditionalInfoList;
 }
-const ArmConfigurationDiffOperationResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<ArmConfigurationDiffOperationResponseError>;
-
 /** Arm Configuration Diff Response Properties. */
 export interface ArmConfigurationDiffResponseProperties {
   /** Storage URL to the diff file. */
   configurationDiffUrl?: string;
 }
-const ArmConfigurationDiffResponseProperties = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<ArmConfigurationDiffResponseProperties>;
-
 /** Arm Configuration Diff Response V2. */
 export interface ArmConfigurationDiffOperationResponse {
   /** Fully qualified ID for the async operation. */
@@ -9735,11 +6582,6 @@ export interface ArmConfigurationDiffOperationResponse {
   /** Arm Configuration Diff Response Properties. */
   properties?: ArmConfigurationDiffResponseProperties;
 }
-const ArmConfigurationDiffOperationResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<ArmConfigurationDiffOperationResponse>;
-
 export interface NetworkFabricsDeprovisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9748,11 +6590,6 @@ export interface NetworkFabricsDeprovisionRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const NetworkFabricsDeprovisionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<NetworkFabricsDeprovisionRequest>;
-
 /** The operations list. */
 export type NetworkFabricsDeprovisionResponseOperationsList = Array<OperationStatusResult>;
 export interface NetworkFabricsDeprovisionResponse {
@@ -9775,9 +6612,6 @@ export interface NetworkFabricsDeprovisionResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const NetworkFabricsDeprovisionResponse =
-  CommitBatchStatusOperationResponseOperationsItem as any as S.Schema<NetworkFabricsDeprovisionResponse>;
-
 export interface NetworkFabricsDiscardCommitBatchRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9788,11 +6622,6 @@ export interface NetworkFabricsDiscardCommitBatchRequest {
   /** Commit Batch Identifier. If not provided, the latest commit batch status will be returned. */
   commitBatchId?: string;
 }
-const NetworkFabricsDiscardCommitBatchRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<NetworkFabricsDiscardCommitBatchRequest>;
-
 /** The operations list. */
 export type DiscardCommitBatchOperationResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -9820,9 +6649,6 @@ export interface DiscardCommitBatchOperationResponseOperationsItem {
 /** The operations list. */
 export type DiscardCommitBatchOperationResponseOperationsList =
   Array<DiscardCommitBatchOperationResponseOperationsItem>;
-const DiscardCommitBatchOperationResponseOperationsList =
-  NetworkBootstrapDeviceUpgradeResponseOperationsList as any as S.Schema<DiscardCommitBatchOperationResponseOperationsList>;
-
 /** The error details. */
 export type DiscardCommitBatchOperationResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -9840,19 +6666,11 @@ export interface DiscardCommitBatchOperationResponseError {
   /** The error additional info. */
   additionalInfo?: DiscardCommitBatchOperationResponseErrorAdditionalInfoList;
 }
-const DiscardCommitBatchOperationResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<DiscardCommitBatchOperationResponseError>;
-
 /** Discard Commit Batch Response Properties. */
 export interface DiscardCommitBatchResponseProperties {
   /** Commit Batch Identifier. */
   commitBatchId?: string;
 }
-const DiscardCommitBatchResponseProperties = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<DiscardCommitBatchResponseProperties>;
-
 /** Discard Commit Batch Response. */
 export interface DiscardCommitBatchOperationResponse {
   /** Fully qualified ID for the async operation. */
@@ -9876,11 +6694,6 @@ export interface DiscardCommitBatchOperationResponse {
   /** Discard commit batch response properties. */
   properties?: DiscardCommitBatchResponseProperties;
 }
-const DiscardCommitBatchOperationResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<DiscardCommitBatchOperationResponse>;
-
 export interface NetworkFabricsResyncCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9889,11 +6702,6 @@ export interface NetworkFabricsResyncCertificatesRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const NetworkFabricsResyncCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<NetworkFabricsResyncCertificatesRequest>;
-
 export interface NetworkFabricsResyncPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9902,11 +6710,6 @@ export interface NetworkFabricsResyncPasswordsRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const NetworkFabricsResyncPasswordsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<NetworkFabricsResyncPasswordsRequest>;
-
 /** The operations list. */
 export type NetworkFabricResyncPasswordsResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -9973,13 +6776,8 @@ export interface NetworkFabricResyncPasswordsResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkFabricResyncPasswordsResponse =
-  NetworkBootstrapDeviceUpgradeResponse as any as S.Schema<NetworkFabricResyncPasswordsResponse>;
-
 /** Action to be performed while upgrading the fabric. */
 export type NetworkFabricUpgradeAction = "Start" | "Complete";
-const NetworkFabricUpgradeAction = S.String;
-
 export interface NetworkFabricsUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9992,11 +6790,6 @@ export interface NetworkFabricsUpgradeRequest {
   /** Action to be performed while upgrading the fabric. */
   action?: NetworkFabricUpgradeAction | (string & {});
 }
-const NetworkFabricsUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<NetworkFabricsUpgradeRequest>;
-
 /** The operations list. */
 export type NetworkFabricsUpgradeResponseOperationsList = Array<OperationStatusResult>;
 export interface NetworkFabricsUpgradeResponse {
@@ -10019,9 +6812,6 @@ export interface NetworkFabricsUpgradeResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const NetworkFabricsUpgradeResponse =
-  CommitBatchStatusOperationResponseOperationsItem as any as S.Schema<NetworkFabricsUpgradeResponse>;
-
 export interface NetworkFabricsViewDeviceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10030,11 +6820,6 @@ export interface NetworkFabricsViewDeviceConfigurationRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const NetworkFabricsViewDeviceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<NetworkFabricsViewDeviceConfigurationRequest>;
-
 /** The operations list. */
 export type ViewDeviceConfigurationOperationResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -10062,20 +6847,11 @@ export interface ViewDeviceConfigurationOperationResponseOperationsItem {
 /** The operations list. */
 export type ViewDeviceConfigurationOperationResponseOperationsList =
   Array<ViewDeviceConfigurationOperationResponseOperationsItem>;
-const ViewDeviceConfigurationOperationResponseOperationsList =
-  NetworkBootstrapDeviceUpgradeResponseOperationsList as any as S.Schema<ViewDeviceConfigurationOperationResponseOperationsList>;
-
 /** The error details. */
 export type ViewDeviceConfigurationOperationResponseErrorDetailsList = Array<ErrorDetail>;
-const ViewDeviceConfigurationOperationResponseErrorDetailsList =
-  CommitBatchStatusOperationResponseErrorDetailsList as any as S.Schema<ViewDeviceConfigurationOperationResponseErrorDetailsList>;
-
 /** The error additional info. */
 export type ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-const ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList =
-  NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList as any as S.Schema<ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface ViewDeviceConfigurationOperationResponseError {
   /** The error code. */
@@ -10089,21 +6865,11 @@ export interface ViewDeviceConfigurationOperationResponseError {
   /** The error additional info. */
   additionalInfo?: ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList;
 }
-const ViewDeviceConfigurationOperationResponseError = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<ViewDeviceConfigurationOperationResponseError>;
-
 /** View Device Configuration Response Properties. */
 export interface ViewDeviceConfigurationResponseProperties {
   /** Storage URL to the device configuration file. */
   deviceConfigurationUrl?: string;
 }
-const ViewDeviceConfigurationResponseProperties = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<ViewDeviceConfigurationResponseProperties>;
-
 /** View Device Configuration Response V2. */
 export interface ViewDeviceConfigurationOperationResponse {
   /** Fully qualified ID for the async operation. */
@@ -10127,11 +6893,6 @@ export interface ViewDeviceConfigurationOperationResponse {
   /** View Device Configuration Response Properties. */
   properties?: ViewDeviceConfigurationResponseProperties;
 }
-const ViewDeviceConfigurationOperationResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<ViewDeviceConfigurationOperationResponse>;
-
 export interface NetworkTapRulesResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10140,11 +6901,6 @@ export interface NetworkTapRulesResyncRequest {
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
 }
-const NetworkTapRulesResyncRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<NetworkTapRulesResyncRequest>;
-
 /** The operations list. */
 export type NetworkTapRuleResyncResponseOperationsItemOperationsList = Array<OperationStatusResult>;
 /** The current status of an async operation. */
@@ -10209,9 +6965,6 @@ export interface NetworkTapRuleResyncResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkTapRuleResyncResponse =
-  CommitConfigurationResponse as any as S.Schema<NetworkTapRuleResyncResponse>;
-
 export interface NetworkTapsResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10220,11 +6973,6 @@ export interface NetworkTapsResyncRequest {
   /** Name of the Network Tap. */
   networkTapName: string;
 }
-const NetworkTapsResyncRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<NetworkTapsResyncRequest>;
-
 /** The operations list. */
 export type NetworkTapResyncResponseOperationsItemOperationsList = Array<OperationStatusResult>;
 /** The current status of an async operation. */
@@ -10250,9 +6998,6 @@ export interface NetworkTapResyncResponseOperationsItem {
 }
 /** The operations list. */
 export type NetworkTapResyncResponseOperationsList = Array<NetworkTapResyncResponseOperationsItem>;
-const NetworkTapResyncResponseOperationsList =
-  CommitBatchStatusOperationResponseOperationsList as any as S.Schema<NetworkTapResyncResponseOperationsList>;
-
 /** The error details. */
 export type NetworkTapResyncResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -10270,9 +7015,6 @@ export interface NetworkTapResyncResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkTapResyncResponseErrorAdditionalInfoList;
 }
-const NetworkTapResyncResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<NetworkTapResyncResponseError>;
-
 /** Response for NetworkTap Resync operation. */
 export interface NetworkTapResyncResponse {
   /** Fully qualified ID for the async operation. */
@@ -10294,11 +7036,6 @@ export interface NetworkTapResyncResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkTapResyncResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<NetworkTapResyncResponse>;
-
 export interface ProvisionNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10307,11 +7044,6 @@ export interface ProvisionNetworkFabricRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const ProvisionNetworkFabricRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<ProvisionNetworkFabricRequest>;
-
 /** The operations list. */
 export type ProvisionNetworkFabricResponseOperationsList = Array<OperationStatusResult>;
 export interface ProvisionNetworkFabricResponse {
@@ -10334,9 +7066,6 @@ export interface ProvisionNetworkFabricResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const ProvisionNetworkFabricResponse =
-  CommitBatchStatusOperationResponseOperationsItem as any as S.Schema<ProvisionNetworkFabricResponse>;
-
 export interface RebootNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10345,11 +7074,6 @@ export interface RebootNetworkBootstrapDeviceRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-const RebootNetworkBootstrapDeviceRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<RebootNetworkBootstrapDeviceRequest>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceRebootResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -10416,17 +7140,12 @@ export interface NetworkBootstrapDeviceRebootResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkBootstrapDeviceRebootResponse =
-  NetworkBootstrapDeviceUpgradeResponse as any as S.Schema<NetworkBootstrapDeviceRebootResponse>;
-
 /** Type of reboot to be performed. Example: GracefulRebootWithZTP */
 export type RebootType =
   | "GracefulRebootWithZTP"
   | "GracefulRebootWithoutZTP"
   | "UngracefulRebootWithZTP"
   | "UngracefulRebootWithoutZTP";
-const RebootType = S.String;
-
 export interface RebootNetworkDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10437,11 +7156,6 @@ export interface RebootNetworkDeviceRequest {
   /** Type of reboot to be performed. Example: GracefulRebootWithZTP */
   rebootType?: RebootType | (string & {});
 }
-const RebootNetworkDeviceRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<RebootNetworkDeviceRequest>;
-
 /** The operations list. */
 export type RebootNetworkDeviceResponseOperationsList = Array<OperationStatusResult>;
 export interface RebootNetworkDeviceResponse {
@@ -10464,9 +7178,6 @@ export interface RebootNetworkDeviceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const RebootNetworkDeviceResponse =
-  CommitBatchStatusOperationResponseOperationsItem as any as S.Schema<RebootNetworkDeviceResponse>;
-
 export interface RefreshNetworkBootstrapDeviceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10475,17 +7186,9 @@ export interface RefreshNetworkBootstrapDeviceConfigurationRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-const RefreshNetworkBootstrapDeviceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<RefreshNetworkBootstrapDeviceConfigurationRequest>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
-const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList =
-  NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList>;
-
 /** The current status of an async operation. */
 export interface NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem {
   /** Fully qualified ID for the async operation. */
@@ -10507,32 +7210,14 @@ export interface NetworkBootstrapDeviceRefreshConfigurationResponseOperationsIte
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList =
   Array<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem>;
-const NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList>;
-
 /** The error details. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList = Array<ErrorDetail>;
-const NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList>;
-
 /** The error additional info. */
 export type NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-const NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList =
-  NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface NetworkBootstrapDeviceRefreshConfigurationResponseError {
   /** The error code. */
@@ -10546,11 +7231,6 @@ export interface NetworkBootstrapDeviceRefreshConfigurationResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList;
 }
-const NetworkBootstrapDeviceRefreshConfigurationResponseError = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponseError>;
-
 /** The current status of an refresh configuration async operation. */
 export interface NetworkBootstrapDeviceRefreshConfigurationResponse {
   /** Fully qualified ID for the async operation. */
@@ -10572,11 +7252,6 @@ export interface NetworkBootstrapDeviceRefreshConfigurationResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkBootstrapDeviceRefreshConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponse>;
-
 export interface RefreshNetworkDeviceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10585,11 +7260,6 @@ export interface RefreshNetworkDeviceConfigurationRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-const RefreshNetworkDeviceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<RefreshNetworkDeviceConfigurationRequest>;
-
 /** The operations list. */
 export type NetworkDeviceRefreshConfigurationResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -10617,9 +7287,6 @@ export interface NetworkDeviceRefreshConfigurationResponseOperationsItem {
 /** The operations list. */
 export type NetworkDeviceRefreshConfigurationResponseOperationsList =
   Array<NetworkDeviceRefreshConfigurationResponseOperationsItem>;
-const NetworkDeviceRefreshConfigurationResponseOperationsList =
-  NetworkBootstrapDeviceUpgradeResponseOperationsList as any as S.Schema<NetworkDeviceRefreshConfigurationResponseOperationsList>;
-
 /** The error details. */
 export type NetworkDeviceRefreshConfigurationResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -10638,9 +7305,6 @@ export interface NetworkDeviceRefreshConfigurationResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkDeviceRefreshConfigurationResponseErrorAdditionalInfoList;
 }
-const NetworkDeviceRefreshConfigurationResponseError =
-  ViewDeviceConfigurationOperationResponseError as any as S.Schema<NetworkDeviceRefreshConfigurationResponseError>;
-
 /** The current status of an refresh configuration async operation. */
 export interface NetworkDeviceRefreshConfigurationResponse {
   /** Fully qualified ID for the async operation. */
@@ -10662,11 +7326,6 @@ export interface NetworkDeviceRefreshConfigurationResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkDeviceRefreshConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<NetworkDeviceRefreshConfigurationResponse>;
-
 export interface RefreshNetworkFabricConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10675,11 +7334,6 @@ export interface RefreshNetworkFabricConfigurationRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const RefreshNetworkFabricConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<RefreshNetworkFabricConfigurationRequest>;
-
 /** The operations list. */
 export type RefreshNetworkFabricConfigurationResponseOperationsList = Array<OperationStatusResult>;
 export interface RefreshNetworkFabricConfigurationResponse {
@@ -10702,9 +7356,6 @@ export interface RefreshNetworkFabricConfigurationResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const RefreshNetworkFabricConfigurationResponse =
-  CommitBatchStatusOperationResponseOperationsItem as any as S.Schema<RefreshNetworkFabricConfigurationResponse>;
-
 export interface RotateNetworkFabricCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10713,11 +7364,6 @@ export interface RotateNetworkFabricCertificatesRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const RotateNetworkFabricCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<RotateNetworkFabricCertificatesRequest>;
-
 /** The operations list. */
 export type NetworkFabricRotateCertificatesResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -10784,9 +7430,6 @@ export interface NetworkFabricRotateCertificatesResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkFabricRotateCertificatesResponse =
-  NetworkBootstrapDeviceUpgradeResponse as any as S.Schema<NetworkFabricRotateCertificatesResponse>;
-
 export interface RotateNetworkFabricPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10795,11 +7438,6 @@ export interface RotateNetworkFabricPasswordsRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-const RotateNetworkFabricPasswordsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<RotateNetworkFabricPasswordsRequest>;
-
 /** The operations list. */
 export type NetworkFabricRotatePasswordsResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -10866,9 +7504,6 @@ export interface NetworkFabricRotatePasswordsResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkFabricRotatePasswordsResponse =
-  NetworkBootstrapDeviceUpgradeResponse as any as S.Schema<NetworkFabricRotatePasswordsResponse>;
-
 export interface RunNetworkDeviceRoCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10879,11 +7514,6 @@ export interface RunNetworkDeviceRoCommandRequest {
   /** Specify the command. */
   command?: string;
 }
-const RunNetworkDeviceRoCommandRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<RunNetworkDeviceRoCommandRequest>;
-
 /** Common response for device Ro Commands. */
 export interface CommonPostActionResponseForDeviceROCommands {
   /** Gets the configuration state. */
@@ -10893,11 +7523,6 @@ export interface CommonPostActionResponseForDeviceROCommands {
   /** Device RO command Response limited to 4000 characters. */
   deviceConfigurationPreview?: string;
 }
-const CommonPostActionResponseForDeviceROCommands = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<CommonPostActionResponseForDeviceROCommands>;
-
 export interface RunNetworkDeviceRoCommandResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -10916,11 +7541,6 @@ export interface RunNetworkDeviceRoCommandResponse {
   /** Operation status. */
   status: string;
 }
-const RunNetworkDeviceRoCommandResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<RunNetworkDeviceRoCommandResponse>;
-
 export interface RunNetworkDeviceRwCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10933,11 +7553,6 @@ export interface RunNetworkDeviceRwCommandRequest {
   /** Specify the commands file URL. */
   commandUrl?: string;
 }
-const RunNetworkDeviceRwCommandRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<RunNetworkDeviceRwCommandRequest>;
-
 /** The operations list. */
 export type NetworkDeviceRunRwCommandResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -10965,9 +7580,6 @@ export interface NetworkDeviceRunRwCommandResponseOperationsItem {
 /** The operations list. */
 export type NetworkDeviceRunRwCommandResponseOperationsList =
   Array<NetworkDeviceRunRwCommandResponseOperationsItem>;
-const NetworkDeviceRunRwCommandResponseOperationsList =
-  CommitBatchStatusOperationResponseOperationsList as any as S.Schema<NetworkDeviceRunRwCommandResponseOperationsList>;
-
 /** The error details. */
 export type NetworkDeviceRunRwCommandResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -10985,9 +7597,6 @@ export interface NetworkDeviceRunRwCommandResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkDeviceRunRwCommandResponseErrorAdditionalInfoList;
 }
-const NetworkDeviceRunRwCommandResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<NetworkDeviceRunRwCommandResponseError>;
-
 /** Network Device Resource defines the properties of the resource. */
 export interface NetworkDeviceRwCommandResponseProperties {
   /** Gets the configuration state. */
@@ -10995,11 +7604,6 @@ export interface NetworkDeviceRwCommandResponseProperties {
   /** Predefined link containing Device Rw Command output. */
   outputUrl?: string;
 }
-const NetworkDeviceRwCommandResponseProperties = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<NetworkDeviceRwCommandResponseProperties>;
-
 /** Response body for a RunRwCommand request on a Network Device. */
 export interface NetworkDeviceRunRwCommandResponse {
   /** Fully qualified ID for the async operation. */
@@ -11023,21 +7627,10 @@ export interface NetworkDeviceRunRwCommandResponse {
   /** Network Device Run Rw Command Response properties. */
   properties?: NetworkDeviceRwCommandResponseProperties;
 }
-const NetworkDeviceRunRwCommandResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<NetworkDeviceRunRwCommandResponse>;
-
 /** Resource tags. */
 export type UpdateAccessControlListRequestTagsMap = { [key: string]: string | undefined };
-const UpdateAccessControlListRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateAccessControlListRequestTagsMap>;
-
 /** List of the protocols that need to be matched. */
 export type AccessControlListMatchConditionPatchProtocolTypesList = Array<string>;
-const AccessControlListMatchConditionPatchProtocolTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchProtocolTypesList>;
-
 /** List of vlans that need to be matched. Inputs can be single vlan or the range of vlans. */
 export type VlanMatchConditionPatchVlansList = Array<string>;
 /** List of inner vlans that need to be matched.Inputs can be single vlan or the range of vlans. */
@@ -11053,8 +7646,6 @@ export interface VlanMatchConditionPatch {
   /** List of vlan group names that need to be matched. */
   vlanGroupNames?: VlanMatchConditionPatchVlanGroupNamesList;
 }
-const VlanMatchConditionPatch = VlanMatchCondition as any as S.Schema<VlanMatchConditionPatch>;
-
 /** The list of IP Prefixes that need to be matched. */
 export type IpMatchConditionPatchIpPrefixValuesList = Array<string>;
 /** The List of IP Group Names that need to be matched. */
@@ -11070,48 +7661,22 @@ export interface IpMatchConditionPatch {
   /** The List of IP Group Names that need to be matched. */
   ipGroupNames?: IpMatchConditionPatchIpGroupNamesList;
 }
-const IpMatchConditionPatch = IpMatchCondition as any as S.Schema<IpMatchConditionPatch>;
-
 /** List of ether type values that need to be matched. */
 export type AccessControlListMatchConditionPatchEtherTypesList = Array<string>;
-const AccessControlListMatchConditionPatchEtherTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchEtherTypesList>;
-
 /** List of IP fragment packets that need to be matched. */
 export type AccessControlListMatchConditionPatchFragmentsList = Array<string>;
-const AccessControlListMatchConditionPatchFragmentsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchFragmentsList>;
-
 /** List of IP Lengths that need to be matched. */
 export type AccessControlListMatchConditionPatchIpLengthsList = Array<string>;
-const AccessControlListMatchConditionPatchIpLengthsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchIpLengthsList>;
-
 /** List of TTL [Time To Live] values that need to be matched. */
 export type AccessControlListMatchConditionPatchTtlValuesList = Array<string>;
-const AccessControlListMatchConditionPatchTtlValuesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchTtlValuesList>;
-
 /** List of DSCP Markings that need to be matched. */
 export type AccessControlListMatchConditionPatchDscpMarkingsList = Array<string>;
-const AccessControlListMatchConditionPatchDscpMarkingsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchDscpMarkingsList>;
-
 /** List of the Ports that need to be matched. */
 export type AccessControlListPortConditionPatchPortsList = Array<string>;
-const AccessControlListPortConditionPatchPortsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPortConditionPatchPortsList>;
-
 /** List of the port Group Names that need to be matched. */
 export type AccessControlListPortConditionPatchPortGroupNamesList = Array<string>;
-const AccessControlListPortConditionPatchPortGroupNamesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPortConditionPatchPortGroupNamesList>;
-
 /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
 export type AccessControlListPortConditionPatchFlagsList = Array<string>;
-const AccessControlListPortConditionPatchFlagsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListPortConditionPatchFlagsList>;
-
 /** Defines the port condition that needs to be matched. */
 export interface AccessControlListPortConditionPatch {
   /** Port type that needs to be matched. */
@@ -11125,16 +7690,8 @@ export interface AccessControlListPortConditionPatch {
   /** List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg */
   flags?: AccessControlListPortConditionPatchFlagsList;
 }
-const AccessControlListPortConditionPatch = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<AccessControlListPortConditionPatch>;
-
 /** Protocol neighbors that need to be matched. */
 export type AccessControlListMatchConditionPatchProtocolNeighborsList = Array<string>;
-const AccessControlListMatchConditionPatchProtocolNeighborsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<AccessControlListMatchConditionPatchProtocolNeighborsList>;
-
 /** Internet Control Message Protocol (ICMP) types */
 export type IcmpConfigurationPatchPropertiesIcmpTypesList = Array<string>;
 /** Internet Control Message Protocol (ICMP) configuration patch properties */
@@ -11142,9 +7699,6 @@ export interface IcmpConfigurationPatchProperties {
   /** Internet Control Message Protocol (ICMP) types */
   icmpTypes?: IcmpConfigurationPatchPropertiesIcmpTypesList;
 }
-const IcmpConfigurationPatchProperties =
-  IcmpConfigurationProperties as any as S.Schema<IcmpConfigurationPatchProperties>;
-
 /** Defines the match condition that is supported to filter the traffic. */
 export interface AccessControlListMatchConditionPatch {
   /** List of the protocols that need to be matched. */
@@ -11170,26 +7724,13 @@ export interface AccessControlListMatchConditionPatch {
   /** Internet Control Message Protocol (ICMP) configuration */
   icmpConfiguration?: IcmpConfigurationPatchProperties;
 }
-const AccessControlListMatchConditionPatch = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<AccessControlListMatchConditionPatch>;
-
 /** List of the match conditions. */
 export type AccessControlListMatchConfigurationPatchMatchConditionsList =
   Array<AccessControlListMatchConditionPatch>;
-const AccessControlListMatchConfigurationPatchMatchConditionsList = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<AccessControlListMatchConfigurationPatchMatchConditionsList>;
-
 /** Action that need to be performed */
 export type AccessControlListActionPatch = AccessControlListAction;
 /** List of actions that need to be performed for the matched conditions. */
 export type AccessControlListMatchConfigurationPatchActionsList = Array<AccessControlListAction>;
-const AccessControlListMatchConfigurationPatchActionsList =
-  AccessControlListMatchConfigurationActionsList as any as S.Schema<AccessControlListMatchConfigurationPatchActionsList>;
-
 /** Defines the match configuration that are supported to filter the traffic. */
 export interface AccessControlListMatchConfigurationPatch {
   /** The name of the match configuration. */
@@ -11203,19 +7744,9 @@ export interface AccessControlListMatchConfigurationPatch {
   /** List of actions that need to be performed for the matched conditions. */
   actions?: AccessControlListMatchConfigurationPatchActionsList;
 }
-const AccessControlListMatchConfigurationPatch = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<AccessControlListMatchConfigurationPatch>;
-
 /** List of match configurations. */
 export type AccessControlListPatchPropertiesMatchConfigurationsList =
   Array<AccessControlListMatchConfigurationPatch>;
-const AccessControlListPatchPropertiesMatchConfigurationsList = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<AccessControlListPatchPropertiesMatchConfigurationsList>;
-
 /** List of IP Prefixes. */
 export type IpGroupPatchPropertiesIpPrefixesList = Array<string>;
 /** IP Group properties. */
@@ -11263,9 +7794,6 @@ export interface CommonDynamicMatchConfigurationPatch {
 /** List of dynamic match configurations. */
 export type AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
   Array<CommonDynamicMatchConfigurationPatch>;
-const AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
-  AccessControlListPropertiesInputDynamicMatchConfigurationsList as any as S.Schema<AccessControlListPatchPropertiesDynamicMatchConfigurationsList>;
-
 /** Control Plane Access Control List (ACL) IP condition patch properties */
 export type ControlPlaneAclIpMatchConditionPatch = ControlPlanAclIpMatchCondition;
 /** TTL [Time To Live] match conditions patch properties */
@@ -11315,17 +7843,11 @@ export interface ControlPlaneAclPatchProperties {
 /** Access Control List (ACL) configurations. */
 export type AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
   Array<ControlPlaneAclPatchProperties>;
-const AccessControlListPatchPropertiesControlPlaneAclConfigurationList =
-  AccessControlListPropertiesInputControlPlaneAclConfigurationList as any as S.Schema<AccessControlListPatchPropertiesControlPlaneAclConfigurationList>;
-
 /** Global Access Control List actions patch properties */
 export interface GlobalAccessControlListActionPatchProperties {
   /** Configuration to enable or disable ACL action count. */
   enableCount?: BooleanEnumProperty | (string & {});
 }
-const GlobalAccessControlListActionPatchProperties =
-  GlobalAccessControlListActionProperties as any as S.Schema<GlobalAccessControlListActionPatchProperties>;
-
 /** Access Control Lists patch properties. */
 export interface AccessControlListPatchProperties {
   /** Input method to configure Access Control List. */
@@ -11349,11 +7871,6 @@ export interface AccessControlListPatchProperties {
   /** Switch configuration description. */
   annotation?: string;
 }
-const AccessControlListPatchProperties = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<AccessControlListPatchProperties>;
-
 export interface UpdateAccessControlListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11366,11 +7883,6 @@ export interface UpdateAccessControlListRequest {
   /** Access Control Lists patch properties. */
   properties?: AccessControlListPatchProperties;
 }
-const UpdateAccessControlListRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<UpdateAccessControlListRequest>;
-
 /** Resource tags. */
 export type UpdateAccessControlListResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAccessControlListResponse {
@@ -11389,20 +7901,10 @@ export interface UpdateAccessControlListResponse {
   /** The Access ControlList properties. */
   properties: AccessControlListProperties;
 }
-const UpdateAccessControlListResponse =
-  CreateAccessControlListResponse as any as S.Schema<UpdateAccessControlListResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateAccessControlListAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateAccessControlListAdministrativeStateRequestResourceIdsList = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequestResourceIdsList>;
-
 /** Administrative state. */
 export type EnableDisableState = "Enable" | "Disable" | "UnderMaintenance";
-const EnableDisableState = S.String;
-
 export interface UpdateAccessControlListAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11415,11 +7917,6 @@ export interface UpdateAccessControlListAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateAccessControlListAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequest>;
-
 /** The operations list. */
 export type UpdateAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -11447,9 +7944,6 @@ export interface UpdateAdministrativeStateResponseOperationsItem {
 /** The operations list. */
 export type UpdateAdministrativeStateResponseOperationsList =
   Array<UpdateAdministrativeStateResponseOperationsItem>;
-const UpdateAdministrativeStateResponseOperationsList =
-  CommitBatchStatusOperationResponseOperationsList as any as S.Schema<UpdateAdministrativeStateResponseOperationsList>;
-
 /** The error details. */
 export type UpdateAdministrativeStateResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -11467,19 +7961,10 @@ export interface UpdateAdministrativeStateResponseError {
   /** The error additional info. */
   additionalInfo?: UpdateAdministrativeStateResponseErrorAdditionalInfoList;
 }
-const UpdateAdministrativeStateResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<UpdateAdministrativeStateResponseError>;
-
 /** List of ARM Resource IDs for which the given action applied successfully. */
 export type UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList = Array<string>;
-const UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList>;
-
 /** List of ARM Resource IDs for which the given action failed to apply. */
 export type UpdateAdministrativeStateResponsePropertiesFailedResourcesList = Array<string>;
-const UpdateAdministrativeStateResponsePropertiesFailedResourcesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateAdministrativeStateResponsePropertiesFailedResourcesList>;
-
 /** Update Administrative State Response Properties. */
 export interface UpdateAdministrativeStateResponseProperties {
   /** List of ARM Resource IDs for which the given action applied successfully. */
@@ -11487,11 +7972,6 @@ export interface UpdateAdministrativeStateResponseProperties {
   /** List of ARM Resource IDs for which the given action failed to apply. */
   failedResources?: UpdateAdministrativeStateResponsePropertiesFailedResourcesList;
 }
-const UpdateAdministrativeStateResponseProperties = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<UpdateAdministrativeStateResponseProperties>;
-
 /** Update Administrative State Response. */
 export interface UpdateAdministrativeStateResponse {
   /** Fully qualified ID for the async operation. */
@@ -11515,45 +7995,22 @@ export interface UpdateAdministrativeStateResponse {
   /** Response properties in case of successful administrative state update. */
   properties?: UpdateAdministrativeStateResponseProperties;
 }
-const UpdateAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<UpdateAdministrativeStateResponse>;
-
 /** Import Route Policy either IPv4 or IPv6. */
 export type ImportRoutePolicyPatch = ImportRoutePolicy;
 /** Export Route Policy either IPv4 or IPv6. */
 export type ExportRoutePolicyPatch = ExportRoutePolicy;
 /** RouteTargets to be applied. This is used for the backward compatibility. */
 export type L3OptionBPatchPropertiesImportRouteTargetsList = Array<string>;
-const L3OptionBPatchPropertiesImportRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<L3OptionBPatchPropertiesImportRouteTargetsList>;
-
 /** RouteTargets to be applied. This is used for the backward compatibility. */
 export type L3OptionBPatchPropertiesExportRouteTargetsList = Array<string>;
-const L3OptionBPatchPropertiesExportRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<L3OptionBPatchPropertiesExportRouteTargetsList>;
-
 /** Route Targets to be applied for incoming routes into CE. */
 export type RouteTargetPatchInformationImportIpv4RouteTargetsList = Array<string>;
-const RouteTargetPatchInformationImportIpv4RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetPatchInformationImportIpv4RouteTargetsList>;
-
 /** Route Targets to be applied for incoming routes from CE. */
 export type RouteTargetPatchInformationImportIpv6RouteTargetsList = Array<string>;
-const RouteTargetPatchInformationImportIpv6RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetPatchInformationImportIpv6RouteTargetsList>;
-
 /** Route Targets to be applied for outgoing routes into CE. */
 export type RouteTargetPatchInformationExportIpv4RouteTargetsList = Array<string>;
-const RouteTargetPatchInformationExportIpv4RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetPatchInformationExportIpv4RouteTargetsList>;
-
 /** Route Targets to be applied for outgoing routes from CE. */
 export type RouteTargetPatchInformationExportIpv6RouteTargetsList = Array<string>;
-const RouteTargetPatchInformationExportIpv6RouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<RouteTargetPatchInformationExportIpv6RouteTargetsList>;
-
 /** Route Target Configuration. */
 export interface RouteTargetPatchInformation {
   /** Route Targets to be applied for incoming routes into CE. */
@@ -11565,11 +8022,6 @@ export interface RouteTargetPatchInformation {
   /** Route Targets to be applied for outgoing routes from CE. */
   exportIpv6RouteTargets?: RouteTargetPatchInformationExportIpv6RouteTargetsList;
 }
-const RouteTargetPatchInformation = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<RouteTargetPatchInformation>;
-
 /** Option B configuration. */
 export interface L3OptionBPatchProperties {
   /** RouteTargets to be applied. This is used for the backward compatibility. */
@@ -11579,11 +8031,6 @@ export interface L3OptionBPatchProperties {
   /** RouteTargets to be applied. */
   routeTargets?: RouteTargetPatchInformation;
 }
-const L3OptionBPatchProperties = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<L3OptionBPatchProperties>;
-
 /** BFD configuration properties */
 export type BfdPatchConfiguration = BfdConfigurationInput;
 /** BMP Monitoring Configuration patch properties. */
@@ -11591,17 +8038,10 @@ export interface ExternalNetworkBmpPatchProperties {
   /** BMP Configuration State. */
   configurationState?: BmpConfigurationState | (string & {});
 }
-const ExternalNetworkBmpPatchProperties =
-  ExternalNetworkBmpProperties as any as S.Schema<ExternalNetworkBmpPatchProperties>;
-
 /** V4 over V6 BGP session state */
 export type V4OverV6BgpSessionState = "Enabled" | "Disabled";
-const V4OverV6BgpSessionState = S.String;
-
 /** V6 over V4 BGP session state */
 export type V6OverV4BgpSessionState = "Enabled" | "Disabled";
-const V6OverV4BgpSessionState = S.String;
-
 /** Prefix Limit Patch properties. */
 export interface PrefixLimitPatchProperties {
   /** Maximum routes allowed. */
@@ -11611,29 +8051,14 @@ export interface PrefixLimitPatchProperties {
   /** Idle time expiry in seconds. */
   idleTimeExpiry?: number;
 }
-const PrefixLimitPatchProperties = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<PrefixLimitPatchProperties>;
-
 /** Prefix limits */
 export type NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList =
   Array<PrefixLimitPatchProperties>;
-const NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList>;
-
 /** External Network native IPv4 prefix limits patch properties */
 export interface NativeIpv4PrefixLimitPatchProperties {
   /** Prefix limits */
   prefixLimits?: NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList;
 }
-const NativeIpv4PrefixLimitPatchProperties = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<NativeIpv4PrefixLimitPatchProperties>;
-
 /** Prefix limits */
 export type NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList =
   Array<PrefixLimitPatchProperties>;
@@ -11642,9 +8067,6 @@ export interface NativeIpv6PrefixLimitPatchProperties {
   /** Prefix limits */
   prefixLimits?: NativeIpv6PrefixLimitPatchPropertiesPrefixLimitsList;
 }
-const NativeIpv6PrefixLimitPatchProperties =
-  NativeIpv4PrefixLimitPatchProperties as any as S.Schema<NativeIpv6PrefixLimitPatchProperties>;
-
 /** option A properties object */
 export interface ExternalNetworkPatchPropertiesOptionAPropertiesInput {
   /** IPv4 Address Prefix. */
@@ -11678,16 +8100,8 @@ export interface ExternalNetworkPatchPropertiesOptionAPropertiesInput {
   /** Native IPv6 prefix limit configuration */
   nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitPatchProperties;
 }
-const ExternalNetworkPatchPropertiesOptionAPropertiesInput = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<ExternalNetworkPatchPropertiesOptionAPropertiesInput>;
-
 /** List of next hop addresses. */
 export type StaticRoutePatchPropertiesNextHopList = Array<string>;
-const StaticRoutePatchPropertiesNextHopList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<StaticRoutePatchPropertiesNextHopList>;
-
 /** Route Properties. */
 export interface StaticRoutePatchProperties {
   /** Prefix of the route. */
@@ -11695,25 +8109,12 @@ export interface StaticRoutePatchProperties {
   /** List of next hop addresses. */
   nextHop: StaticRoutePatchPropertiesNextHopList;
 }
-const StaticRoutePatchProperties = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<StaticRoutePatchProperties>;
-
 /** List of IPv4 Routes. */
 export type ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList =
   Array<StaticRoutePatchProperties>;
-const ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList>;
-
 /** List of IPv6 Routes. */
 export type ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
   Array<StaticRoutePatchProperties>;
-const ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
-  ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList as any as S.Schema<ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList>;
-
 /** Static Route Configuration properties for External Network. */
 export interface ExternalNetworkStaticRoutePatchConfiguration {
   /** BFD configuration properties */
@@ -11723,11 +8124,6 @@ export interface ExternalNetworkStaticRoutePatchConfiguration {
   /** List of IPv6 Routes. */
   ipv6Routes?: ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList;
 }
-const ExternalNetworkStaticRoutePatchConfiguration = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<ExternalNetworkStaticRoutePatchConfiguration>;
-
 /** External Network Patch properties. */
 export interface ExternalNetworkPatchPropertiesInput {
   /** Switch configuration description. */
@@ -11747,11 +8143,6 @@ export interface ExternalNetworkPatchPropertiesInput {
   /** Static Route Configuration. */
   staticRouteConfiguration?: ExternalNetworkStaticRoutePatchConfiguration;
 }
-const ExternalNetworkPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<ExternalNetworkPatchPropertiesInput>;
-
 export interface UpdateExternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11764,11 +8155,6 @@ export interface UpdateExternalNetworkRequest {
   /** External Network Patch properties. */
   properties?: ExternalNetworkPatchPropertiesInput;
 }
-const UpdateExternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<UpdateExternalNetworkRequest>;
-
 export interface UpdateExternalNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11781,14 +8167,8 @@ export interface UpdateExternalNetworkResponse {
   /** External Network Properties */
   properties: ExternalNetworkProperties;
 }
-const UpdateExternalNetworkResponse =
-  CreateExternalNetworkResponse as any as S.Schema<UpdateExternalNetworkResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateExternalNetworkAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateExternalNetworkAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateExternalNetworkAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11803,15 +8183,8 @@ export interface UpdateExternalNetworkAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateExternalNetworkAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequest>;
-
 /** External Network RouteType. */
 export type ExternalNetworkRouteType = "Static" | "OptionA";
-const ExternalNetworkRouteType = S.String;
-
 export interface UpdateExternalNetworkBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11826,11 +8199,6 @@ export interface UpdateExternalNetworkBfdAdministrativeStateRequest {
   /** Administrative state. */
   administrativeState?: BfdAdministrativeState | (string & {});
 }
-const UpdateExternalNetworkBfdAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<UpdateExternalNetworkBfdAdministrativeStateRequest>;
-
 /** The operations list. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -11858,21 +8226,12 @@ export interface ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsIt
 /** The operations list. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
   Array<ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
-const ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
-  NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList>;
-
 /** The error details. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
   Array<ErrorDetail>;
-const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
-  NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList>;
-
 /** The error additional info. */
 export type ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-const ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList =
-  NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface ExternalNetworkUpdateBfdAdministrativeStateResponseError {
   /** The error code. */
@@ -11886,11 +8245,6 @@ export interface ExternalNetworkUpdateBfdAdministrativeStateResponseError {
   /** The error additional info. */
   additionalInfo?: ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList;
 }
-const ExternalNetworkUpdateBfdAdministrativeStateResponseError = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponseError>;
-
 /** Response properties for External Network BFD Administrative State. */
 export interface ExternalNetworkUpdateBfdAdministrativeStateResponseProperties {
   /** Route Type that helps to know which bfd we are updating. */
@@ -11898,11 +8252,6 @@ export interface ExternalNetworkUpdateBfdAdministrativeStateResponseProperties {
   /** Administrative state. */
   administrativeState?: BfdAdministrativeState;
 }
-const ExternalNetworkUpdateBfdAdministrativeStateResponseProperties = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponseProperties>;
-
 /** External Network Update Administrative State response */
 export interface ExternalNetworkUpdateBfdAdministrativeStateResponse {
   /** Fully qualified ID for the async operation. */
@@ -11926,17 +8275,9 @@ export interface ExternalNetworkUpdateBfdAdministrativeStateResponse {
   /** Response properties. */
   properties?: ExternalNetworkUpdateBfdAdministrativeStateResponseProperties;
 }
-const ExternalNetworkUpdateBfdAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList =
   Array<string>;
-const UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11951,54 +8292,26 @@ export interface UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest>;
-
 /** Connected Subnet properties. */
 export type ConnectedSubnetPatch = ConnectedSubnet;
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList = Array<ConnectedSubnet>;
-const InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
-  InternalNetworkPropertiesInputConnectedIPv4SubnetsList as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList>;
-
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList = Array<ConnectedSubnet>;
-const InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
-  InternalNetworkPropertiesInputConnectedIPv4SubnetsList as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList>;
-
 /** To check whether monitoring of internal network is enabled or not. */
 export type IsMonitoringEnabled = "True" | "False";
-const IsMonitoringEnabled = S.String;
-
 /** List of BGP IPv4 Listen Range prefixes. */
 export type BgpPatchConfigurationInputIpv4ListenRangePrefixesList = Array<string>;
-const BgpPatchConfigurationInputIpv4ListenRangePrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BgpPatchConfigurationInputIpv4ListenRangePrefixesList>;
-
 /** List of BGP IPv6 Listen Ranges prefixes. */
 export type BgpPatchConfigurationInputIpv6ListenRangePrefixesList = Array<string>;
-const BgpPatchConfigurationInputIpv6ListenRangePrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BgpPatchConfigurationInputIpv6ListenRangePrefixesList>;
-
 /** Neighbor Address properties. */
 export type NeighborAddressPatchInput = NeighborAddressInput;
 /** List with stringified IPv4 Neighbor Addresses. */
 export type BgpPatchConfigurationInputIpv4NeighborAddressList = Array<NeighborAddressInput>;
-const BgpPatchConfigurationInputIpv4NeighborAddressList =
-  BgpConfigurationInputIpv4NeighborAddressList as any as S.Schema<BgpPatchConfigurationInputIpv4NeighborAddressList>;
-
 /** List with stringified IPv6 Neighbor Address. */
 export type BgpPatchConfigurationInputIpv6NeighborAddressList = Array<NeighborAddressInput>;
-const BgpPatchConfigurationInputIpv6NeighborAddressList =
-  BgpConfigurationInputIpv4NeighborAddressList as any as S.Schema<BgpPatchConfigurationInputIpv6NeighborAddressList>;
-
 /** Neighbor IP Address exclusions for BMP. */
 export type InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList = Array<string>;
-const InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList>;
-
 /** Internal Network BMP Configuration */
 export interface InternalNetworkBmpPatchProperties {
   /** Neighbor IP Address exclusions for BMP. */
@@ -12006,11 +8319,6 @@ export interface InternalNetworkBmpPatchProperties {
   /** BMP Monitoring configuration state. */
   bmpConfigurationState?: BmpConfigurationState | (string & {});
 }
-const InternalNetworkBmpPatchProperties = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<InternalNetworkBmpPatchProperties>;
-
 /** BGP configuration properties. */
 export interface BgpPatchConfigurationInput {
   /** Switch configuration description. */
@@ -12040,11 +8348,6 @@ export interface BgpPatchConfigurationInput {
   /** v6 over v4 bgp session. */
   v6OverV4BgpSession?: V6OverV4BgpSessionState | (string & {});
 }
-const BgpPatchConfigurationInput = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<BgpPatchConfigurationInput>;
-
 /** List of IPv4 Routes. */
 export type StaticRoutePatchConfigurationIpv4RoutesList = Array<StaticRoutePatchProperties>;
 /** List of IPv6 Routes. */
@@ -12058,9 +8361,6 @@ export interface StaticRoutePatchConfiguration {
   /** List of IPv6 Routes. */
   ipv6Routes?: StaticRoutePatchConfigurationIpv6RoutesList;
 }
-const StaticRoutePatchConfiguration =
-  ExternalNetworkStaticRoutePatchConfiguration as any as S.Schema<StaticRoutePatchConfiguration>;
-
 /** InternalNetwork Patch properties. */
 export interface InternalNetworkPatchPropertiesInput {
   /** Switch configuration description. */
@@ -12090,11 +8390,6 @@ export interface InternalNetworkPatchPropertiesInput {
   /** Native IPv6 Prefix Limit Configuration properties. */
   nativeIpv6PrefixLimit?: NativeIpv6PrefixLimitPatchProperties;
 }
-const InternalNetworkPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<InternalNetworkPatchPropertiesInput>;
-
 export interface UpdateInternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12107,11 +8402,6 @@ export interface UpdateInternalNetworkRequest {
   /** InternalNetwork Patch properties. */
   properties?: InternalNetworkPatchPropertiesInput;
 }
-const UpdateInternalNetworkRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<UpdateInternalNetworkRequest>;
-
 export interface UpdateInternalNetworkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -12124,14 +8414,8 @@ export interface UpdateInternalNetworkResponse {
   /** The Internal Network Properties */
   properties: InternalNetworkProperties;
 }
-const UpdateInternalNetworkResponse =
-  CreateInternalNetworkResponse as any as S.Schema<UpdateInternalNetworkResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateInternalNetworkAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateInternalNetworkAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateInternalNetworkAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12146,15 +8430,8 @@ export interface UpdateInternalNetworkAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateInternalNetworkAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequest>;
-
 /** Internal Network RouteType. */
 export type InternalNetworkRouteType = "Static" | "Bgp";
-const InternalNetworkRouteType = S.String;
-
 export interface UpdateInternalNetworkBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12171,11 +8448,6 @@ export interface UpdateInternalNetworkBfdAdministrativeStateRequest {
   /** BFD Administrative state. */
   administrativeState?: BfdAdministrativeState | (string & {});
 }
-const UpdateInternalNetworkBfdAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<UpdateInternalNetworkBfdAdministrativeStateRequest>;
-
 /** The operations list. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -12203,9 +8475,6 @@ export interface InternalNetworkUpdateBfdAdministrativeStateResponseOperationsIt
 /** The operations list. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
   Array<InternalNetworkUpdateBfdAdministrativeStateResponseOperationsItem>;
-const InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList =
-  NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList>;
-
 /** The error details. */
 export type InternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList =
   Array<ErrorDetail>;
@@ -12225,9 +8494,6 @@ export interface InternalNetworkUpdateBfdAdministrativeStateResponseError {
   /** The error additional info. */
   additionalInfo?: InternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList;
 }
-const InternalNetworkUpdateBfdAdministrativeStateResponseError =
-  ExternalNetworkUpdateBfdAdministrativeStateResponseError as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponseError>;
-
 /** Neighbor Address Bidirectional Forwarding Detection (BFD) Administrative Status */
 export interface NeighborAddressBfdAdministrativeStatus {
   /** NeighborAddress - Input should be either All or Specific Ipv4 Address or Specific Ipv6 Address. */
@@ -12237,30 +8503,14 @@ export interface NeighborAddressBfdAdministrativeStatus {
   /** Error message. */
   error?: string;
 }
-const NeighborAddressBfdAdministrativeStatus = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<NeighborAddressBfdAdministrativeStatus>;
-
 /** NeighborAddress administrative status */
 export type InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
   Array<NeighborAddressBfdAdministrativeStatus>;
-const InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList =
-  /*@__PURE__*/ __L.at(
-    __c67,
-    7,
-  ) as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList>;
-
 /** Internal Network BFD Administrative State response properties */
 export interface InternalNetworkUpdateBfdAdministrativeStateResponseProperties {
   /** NeighborAddress administrative status */
   neighborAddressAdministrativeStatus?: InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList;
 }
-const InternalNetworkUpdateBfdAdministrativeStateResponseProperties = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponseProperties>;
-
 /** Internal Network BFD Administrative State response */
 export interface InternalNetworkUpdateBfdAdministrativeStateResponse {
   /** Fully qualified ID for the async operation. */
@@ -12284,11 +8534,6 @@ export interface InternalNetworkUpdateBfdAdministrativeStateResponse {
   /** Internal Network BFD Administrative State response properties */
   properties?: InternalNetworkUpdateBfdAdministrativeStateResponseProperties;
 }
-const InternalNetworkUpdateBfdAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponse>;
-
 export interface UpdateInternalNetworkBgpAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12303,11 +8548,6 @@ export interface UpdateInternalNetworkBgpAdministrativeStateRequest {
   /** BGP Administrative state. */
   administrativeState?: BgpAdministrativeState | (string & {});
 }
-const UpdateInternalNetworkBgpAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<UpdateInternalNetworkBgpAdministrativeStateRequest>;
-
 /** The operations list. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -12335,9 +8575,6 @@ export interface InternalNetworkUpdateBgpAdministrativeStateResponseOperationsIt
 /** The operations list. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
   Array<InternalNetworkUpdateBgpAdministrativeStateResponseOperationsItem>;
-const InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList =
-  NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList>;
-
 /** The error details. */
 export type InternalNetworkUpdateBgpAdministrativeStateResponseErrorDetailsList =
   Array<ErrorDetail>;
@@ -12357,9 +8594,6 @@ export interface InternalNetworkUpdateBgpAdministrativeStateResponseError {
   /** The error additional info. */
   additionalInfo?: InternalNetworkUpdateBgpAdministrativeStateResponseErrorAdditionalInfoList;
 }
-const InternalNetworkUpdateBgpAdministrativeStateResponseError =
-  ExternalNetworkUpdateBfdAdministrativeStateResponseError as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponseError>;
-
 /** Neighbor Address BGP Administrative Status */
 export interface NeighborAddressBgpAdministrativeStatus {
   /** NeighborAddress - Input should be either All or Specific Ipv4 Address or Specific Ipv6 Address. */
@@ -12377,9 +8611,6 @@ export interface InternalNetworkUpdateBgpAdministrativeStateResponseProperties {
   /** NeighborAddress administrative status */
   neighborAddressAdministrativeStatus?: InternalNetworkUpdateBgpAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList;
 }
-const InternalNetworkUpdateBgpAdministrativeStateResponseProperties =
-  InternalNetworkUpdateBfdAdministrativeStateResponseProperties as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponseProperties>;
-
 /** Internal Network Administrative State Response */
 export interface InternalNetworkUpdateBgpAdministrativeStateResponse {
   /** Fully qualified ID for the async operation. */
@@ -12403,17 +8634,9 @@ export interface InternalNetworkUpdateBgpAdministrativeStateResponse {
   /** Internal Network BGP Administrative State response properties */
   properties?: InternalNetworkUpdateBgpAdministrativeStateResponseProperties;
 }
-const InternalNetworkUpdateBgpAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList =
   Array<string>;
-const UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12428,26 +8651,13 @@ export interface UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest>;
-
 /** Resource tags. */
 export type UpdateInternetGatewayRequestTagsMap = { [key: string]: string | undefined };
-const UpdateInternetGatewayRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateInternetGatewayRequestTagsMap>;
-
 /** PatchProperties for InternetGateway */
 export interface InternetGatewayPatchProperties {
   /** ARM Resource ID of the Internet Gateway Rule. */
   internetGatewayRuleId?: string;
 }
-const InternetGatewayPatchProperties = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<InternetGatewayPatchProperties>;
-
 export interface UpdateInternetGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12460,11 +8670,6 @@ export interface UpdateInternetGatewayRequest {
   /** Resource properties. */
   properties?: InternetGatewayPatchProperties;
 }
-const UpdateInternetGatewayRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<UpdateInternetGatewayRequest>;
-
 /** Resource tags. */
 export type UpdateInternetGatewayResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateInternetGatewayResponse {
@@ -12483,14 +8688,8 @@ export interface UpdateInternetGatewayResponse {
   /** The Internet Gateway Properties */
   properties: InternetGatewayProperties;
 }
-const UpdateInternetGatewayResponse =
-  CreateInternetGatewayResponse as any as S.Schema<UpdateInternetGatewayResponse>;
-
 /** Resource tags. */
 export type UpdateInternetGatewayRuleRequestTagsMap = { [key: string]: string | undefined };
-const UpdateInternetGatewayRuleRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateInternetGatewayRuleRequestTagsMap>;
-
 export interface UpdateInternetGatewayRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12501,11 +8700,6 @@ export interface UpdateInternetGatewayRuleRequest {
   /** Resource tags. */
   tags?: UpdateInternetGatewayRuleRequestTagsMap;
 }
-const UpdateInternetGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<UpdateInternetGatewayRuleRequest>;
-
 /** Resource tags. */
 export type UpdateInternetGatewayRuleResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateInternetGatewayRuleResponse {
@@ -12524,29 +8718,15 @@ export interface UpdateInternetGatewayRuleResponse {
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRuleProperties;
 }
-const UpdateInternetGatewayRuleResponse =
-  CreateInternetGatewayRuleResponse as any as S.Schema<UpdateInternetGatewayRuleResponse>;
-
 /** Resource tags. */
 export type UpdateIpCommunityRequestTagsMap = { [key: string]: string | undefined };
-const UpdateIpCommunityRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateIpCommunityRequestTagsMap>;
-
 /** List of IP Community Rules. */
 export type IpCommunityPatchablePropertiesIpCommunityRulesList = Array<IpCommunityRule>;
-const IpCommunityPatchablePropertiesIpCommunityRulesList =
-  IpCommunityPropertiesInputIpCommunityRulesList as any as S.Schema<IpCommunityPatchablePropertiesIpCommunityRulesList>;
-
 /** IP Community patchable properties. */
 export interface IpCommunityPatchableProperties {
   /** List of IP Community Rules. */
   ipCommunityRules?: IpCommunityPatchablePropertiesIpCommunityRulesList;
 }
-const IpCommunityPatchableProperties = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<IpCommunityPatchableProperties>;
-
 export interface UpdateIpCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12559,11 +8739,6 @@ export interface UpdateIpCommunityRequest {
   /** IP Community patchable properties. */
   properties?: IpCommunityPatchableProperties;
 }
-const UpdateIpCommunityRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<UpdateIpCommunityRequest>;
-
 /** Resource tags. */
 export type UpdateIpCommunityResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateIpCommunityResponse {
@@ -12582,20 +8757,11 @@ export interface UpdateIpCommunityResponse {
   /** The IP Community Properties */
   properties: IpCommunityProperties;
 }
-const UpdateIpCommunityResponse =
-  CreateIpCommunityResponse as any as S.Schema<UpdateIpCommunityResponse>;
-
 /** Resource tags. */
 export type UpdateIpExtendedCommunityRequestTagsMap = { [key: string]: string | undefined };
-const UpdateIpExtendedCommunityRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateIpExtendedCommunityRequestTagsMap>;
-
 /** List of IP Extended Community Rules. */
 export type IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList =
   Array<IpExtendedCommunityRule>;
-const IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList =
-  IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList as any as S.Schema<IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList>;
-
 /** IP Extended Community patchable properties. */
 export interface IpExtendedCommunityPatchProperties {
   /** Switch configuration description. */
@@ -12603,11 +8769,6 @@ export interface IpExtendedCommunityPatchProperties {
   /** List of IP Extended Community Rules. */
   ipExtendedCommunityRules?: IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList;
 }
-const IpExtendedCommunityPatchProperties = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<IpExtendedCommunityPatchProperties>;
-
 export interface UpdateIpExtendedCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12620,11 +8781,6 @@ export interface UpdateIpExtendedCommunityRequest {
   /** IP Extended Community patchable properties. */
   properties?: IpExtendedCommunityPatchProperties;
 }
-const UpdateIpExtendedCommunityRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<UpdateIpExtendedCommunityRequest>;
-
 /** Resource tags. */
 export type UpdateIpExtendedCommunityResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateIpExtendedCommunityResponse {
@@ -12643,19 +8799,10 @@ export interface UpdateIpExtendedCommunityResponse {
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityProperties;
 }
-const UpdateIpExtendedCommunityResponse =
-  CreateIpExtendedCommunityResponse as any as S.Schema<UpdateIpExtendedCommunityResponse>;
-
 /** Resource tags. */
 export type UpdateIpPrefixRequestTagsMap = { [key: string]: string | undefined };
-const UpdateIpPrefixRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateIpPrefixRequestTagsMap>;
-
 /** The list of IP Prefix Rules. */
 export type IpPrefixPatchPropertiesIpPrefixRulesList = Array<IpPrefixRule>;
-const IpPrefixPatchPropertiesIpPrefixRulesList =
-  IpPrefixPropertiesInputIpPrefixRulesList as any as S.Schema<IpPrefixPatchPropertiesIpPrefixRulesList>;
-
 /** IP Prefix patchable properties. */
 export interface IpPrefixPatchProperties {
   /** Switch configuration description. */
@@ -12663,11 +8810,6 @@ export interface IpPrefixPatchProperties {
   /** The list of IP Prefix Rules. */
   ipPrefixRules?: IpPrefixPatchPropertiesIpPrefixRulesList;
 }
-const IpPrefixPatchProperties = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<IpPrefixPatchProperties>;
-
 export interface UpdateIpPrefixRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12680,11 +8822,6 @@ export interface UpdateIpPrefixRequest {
   /** IP Prefix patchable properties. */
   properties?: IpPrefixPatchProperties;
 }
-const UpdateIpPrefixRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<UpdateIpPrefixRequest>;
-
 /** Resource tags. */
 export type UpdateIpPrefixResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateIpPrefixResponse {
@@ -12703,17 +8840,10 @@ export interface UpdateIpPrefixResponse {
   /** The IP Prefix properties */
   properties: IpPrefixProperties;
 }
-const UpdateIpPrefixResponse = CreateIpPrefixResponse as any as S.Schema<UpdateIpPrefixResponse>;
-
 /** Resource tags. */
 export type UpdateL2IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
-const UpdateL2IsolationDomainRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateL2IsolationDomainRequestTagsMap>;
-
 /** Extended VLAN status. */
 export type ExtendedVlan = "Enabled" | "Disabled";
-const ExtendedVlan = S.String;
-
 /** L2 Isolation Domain Patch Properties defines the patchable properties of the resource. */
 export interface L2IsolationDomainPatchProperties {
   /** Switch configuration description. */
@@ -12725,30 +8855,18 @@ export interface L2IsolationDomainPatchProperties {
   /** ARM Resource ID of the networkToNetworkInterconnectId of the L2 ISD resource. */
   networkToNetworkInterconnectId?: string;
 }
-const L2IsolationDomainPatchProperties = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<L2IsolationDomainPatchProperties>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityPatchInputType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityPatchInputType = S.String;
-
 /** User assigned identity properties */
 export type ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue = UserAssignedIdentityInput;
 /** The identities assigned to this resource by the user. */
 export type ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap>;
-
 /** The managed service identities assigned to this resource. */
 export interface ManagedServiceIdentityPatchInput {
   /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -12756,11 +8874,6 @@ export interface ManagedServiceIdentityPatchInput {
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap;
 }
-const ManagedServiceIdentityPatchInput = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<ManagedServiceIdentityPatchInput>;
-
 export interface UpdateL2IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12775,11 +8888,6 @@ export interface UpdateL2IsolationDomainRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateL2IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<UpdateL2IsolationDomainRequest>;
-
 /** Resource tags. */
 export type UpdateL2IsolationDomainResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -12802,14 +8910,8 @@ export interface UpdateL2IsolationDomainResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateL2IsolationDomainResponse =
-  CreateL2IsolationDomainResponse as any as S.Schema<UpdateL2IsolationDomainResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateL2IsolationDomainAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateL2IsolationDomainAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateL2IsolationDomainAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12822,24 +8924,12 @@ export interface UpdateL2IsolationDomainAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateL2IsolationDomainAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequest>;
-
 /** Resource tags. */
 export type UpdateL3IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
-const UpdateL3IsolationDomainRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateL3IsolationDomainRequestTagsMap>;
-
 /** Advertise Connected Subnets. Ex: "True" | "False". */
 export type RedistributeConnectedSubnets = "True" | "False";
-const RedistributeConnectedSubnets = S.String;
-
 /** Advertise Static Routes. Ex: "True" | "False". */
 export type RedistributeStaticRoutes = "True" | "False";
-const RedistributeStaticRoutes = S.String;
-
 /** List of IPv4 Route prefixes. */
 export type AggregateRoutePatchConfigurationIpv4RoutesList = Array<AggregateRoute>;
 /** List of Ipv6Routes prefixes. */
@@ -12851,9 +8941,6 @@ export interface AggregateRoutePatchConfiguration {
   /** List of Ipv6Routes prefixes. */
   ipv6Routes?: AggregateRoutePatchConfigurationIpv6RoutesList;
 }
-const AggregateRoutePatchConfiguration =
-  AggregateRouteConfiguration as any as S.Schema<AggregateRoutePatchConfiguration>;
-
 /** Array of ARM Resource ID of the RoutePolicies. */
 export type L3ExportRoutePolicyPatch = L3ExportRoutePolicy;
 /** Connected Subnet Route Policy properties. */
@@ -12871,9 +8958,6 @@ export interface BmpExportPolicyPatchProperties {
   /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
   exportPolicies?: BmpExportPolicyPatchPropertiesExportPoliciesList;
 }
-const BmpExportPolicyPatchProperties =
-  BmpExportPolicyProperties as any as S.Schema<BmpExportPolicyPatchProperties>;
-
 /** Resource properties. */
 export interface L3IsolationDomainPatchProperties {
   /** Switch configuration description. */
@@ -12895,11 +8979,6 @@ export interface L3IsolationDomainPatchProperties {
   /** BMP Export Policy configuration. */
   exportPolicyConfiguration?: BmpExportPolicyPatchProperties;
 }
-const L3IsolationDomainPatchProperties = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<L3IsolationDomainPatchProperties>;
-
 export interface UpdateL3IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12914,11 +8993,6 @@ export interface UpdateL3IsolationDomainRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateL3IsolationDomainRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<UpdateL3IsolationDomainRequest>;
-
 /** Resource tags. */
 export type UpdateL3IsolationDomainResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -12941,14 +9015,8 @@ export interface UpdateL3IsolationDomainResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateL3IsolationDomainResponse =
-  CreateL3IsolationDomainResponse as any as S.Schema<UpdateL3IsolationDomainResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateL3IsolationDomainAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateL3IsolationDomainAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateL3IsolationDomainAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12961,26 +9029,12 @@ export interface UpdateL3IsolationDomainAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateL3IsolationDomainAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequest>;
-
 /** Resource tags. */
 export type UpdateNeighborGroupRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNeighborGroupRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNeighborGroupRequestTagsMap>;
-
 /** Array of IPv4 Addresses. */
 export type NeighborGroupDestinationPatchIpv4AddressesList = Array<string>;
-const NeighborGroupDestinationPatchIpv4AddressesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupDestinationPatchIpv4AddressesList>;
-
 /** Array of IPv6 Addresses. */
 export type NeighborGroupDestinationPatchIpv6AddressesList = Array<string>;
-const NeighborGroupDestinationPatchIpv6AddressesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NeighborGroupDestinationPatchIpv6AddressesList>;
-
 /** An array of destination IPv4 Addresses or IPv6 Addresses. */
 export interface NeighborGroupDestinationPatch {
   /** Array of IPv4 Addresses. */
@@ -12988,11 +9042,6 @@ export interface NeighborGroupDestinationPatch {
   /** Array of IPv6 Addresses. */
   ipv6Addresses?: NeighborGroupDestinationPatchIpv6AddressesList;
 }
-const NeighborGroupDestinationPatch = /*@__PURE__*/ __L.at(
-  __c70,
-  6,
-) as any as S.Schema<NeighborGroupDestinationPatch>;
-
 /** Neighbor Group Patch properties. */
 export interface NeighborGroupPatchProperties {
   /** Switch configuration description. */
@@ -13000,11 +9049,6 @@ export interface NeighborGroupPatchProperties {
   /** An array of destination IPv4 Addresses or IPv6 Addresses. */
   destination?: NeighborGroupDestinationPatch;
 }
-const NeighborGroupPatchProperties = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<NeighborGroupPatchProperties>;
-
 export interface UpdateNeighborGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13019,11 +9063,6 @@ export interface UpdateNeighborGroupRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNeighborGroupRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<UpdateNeighborGroupRequest>;
-
 /** Resource tags. */
 export type UpdateNeighborGroupResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -13046,14 +9085,8 @@ export interface UpdateNeighborGroupResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNeighborGroupResponse =
-  CreateNeighborGroupResponse as any as S.Schema<UpdateNeighborGroupResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkBootstrapDeviceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkBootstrapDeviceRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkBootstrapDeviceRequestTagsMap>;
-
 /** Network Bootstrap Device Patch properties. */
 export interface NetworkBootstrapDevicePatchProperties {
   /** Switch configuration description. */
@@ -13063,11 +9096,6 @@ export interface NetworkBootstrapDevicePatchProperties {
   /** Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber. */
   serialNumber?: string;
 }
-const NetworkBootstrapDevicePatchProperties = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<NetworkBootstrapDevicePatchProperties>;
-
 export interface UpdateNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13082,11 +9110,6 @@ export interface UpdateNetworkBootstrapDeviceRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkBootstrapDeviceRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<UpdateNetworkBootstrapDeviceRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkBootstrapDeviceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -13109,14 +9132,8 @@ export interface UpdateNetworkBootstrapDeviceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkBootstrapDeviceResponse =
-  CreateNetworkBootstrapDeviceResponse as any as S.Schema<UpdateNetworkBootstrapDeviceResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkBootstrapDeviceAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateNetworkBootstrapDeviceAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkBootstrapDeviceAdministrativeStateRequestResourceIdsList>;
-
 /** Administrative state. */
 export type DeviceAdministrativeState =
   | "RMA"
@@ -13128,8 +9145,6 @@ export type DeviceAdministrativeState =
   | "UnderMaintenance"
   | "Enable"
   | "Disable";
-const DeviceAdministrativeState = S.String;
-
 export interface UpdateNetworkBootstrapDeviceAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13142,11 +9157,6 @@ export interface UpdateNetworkBootstrapDeviceAdministrativeStateRequest {
   /** Administrative state. */
   state?: DeviceAdministrativeState | (string & {});
 }
-const UpdateNetworkBootstrapDeviceAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<UpdateNetworkBootstrapDeviceAdministrativeStateRequest>;
-
 /** The operations list. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -13174,9 +9184,6 @@ export interface NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperatio
 /** The operations list. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList =
   Array<NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsItem>;
-const NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList =
-  NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList as any as S.Schema<NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList>;
-
 /** The error details. */
 export type NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorDetailsList =
   Array<ErrorDetail>;
@@ -13196,9 +9203,6 @@ export interface NetworkBootstrapDeviceUpdateAdministrativeStateResponseError {
   /** The error additional info. */
   additionalInfo?: NetworkBootstrapDeviceUpdateAdministrativeStateResponseErrorAdditionalInfoList;
 }
-const NetworkBootstrapDeviceUpdateAdministrativeStateResponseError =
-  ExternalNetworkUpdateBfdAdministrativeStateResponseError as any as S.Schema<NetworkBootstrapDeviceUpdateAdministrativeStateResponseError>;
-
 /** Network Bootstrap Device Administrative State Update Response. */
 export interface NetworkBootstrapDeviceUpdateAdministrativeStateResponse {
   /** Fully qualified ID for the async operation. */
@@ -13220,11 +9224,6 @@ export interface NetworkBootstrapDeviceUpdateAdministrativeStateResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkBootstrapDeviceUpdateAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<NetworkBootstrapDeviceUpdateAdministrativeStateResponse>;
-
 /** Network Bootstrap Interface Patch properties. */
 export interface NetworkBootstrapInterfacePatchProperties {
   /** Switch configuration description. */
@@ -13234,11 +9233,6 @@ export interface NetworkBootstrapInterfacePatchProperties {
   /** Additional description of the interface. */
   additionalDescription?: string;
 }
-const NetworkBootstrapInterfacePatchProperties = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<NetworkBootstrapInterfacePatchProperties>;
-
 export interface UpdateNetworkBootstrapInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13251,11 +9245,6 @@ export interface UpdateNetworkBootstrapInterfaceRequest {
   /** Network Bootstrap Interface Patch properties. */
   properties?: NetworkBootstrapInterfacePatchProperties;
 }
-const UpdateNetworkBootstrapInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<UpdateNetworkBootstrapInterfaceRequest>;
-
 export interface UpdateNetworkBootstrapInterfaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -13268,15 +9257,9 @@ export interface UpdateNetworkBootstrapInterfaceResponse {
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfaceProperties;
 }
-const UpdateNetworkBootstrapInterfaceResponse =
-  CreateNetworkBootstrapInterfaceResponse as any as S.Schema<UpdateNetworkBootstrapInterfaceResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkBootstrapInterfaceAdministrativeStateRequestResourceIdsList =
   Array<string>;
-const UpdateNetworkBootstrapInterfaceAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkBootstrapInterfaceAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13291,27 +9274,14 @@ export interface UpdateNetworkBootstrapInterfaceAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkBootstrapInterfaceAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateRequest>;
-
 export interface UpdateNetworkBootstrapInterfaceAdministrativeStateResponse {
   /** The error object. */
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
 }
-const UpdateNetworkBootstrapInterfaceAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkDeviceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkDeviceRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkDeviceRequestTagsMap>;
-
 /** IdentitySelector represents the selection of a managed identity for use. */
 export interface IdentitySelectorPatch {
   /** The type of managed identity that is being selected. */
@@ -13319,11 +9289,6 @@ export interface IdentitySelectorPatch {
   /** The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type. */
   userAssignedIdentityResourceId?: string;
 }
-const IdentitySelectorPatch = /*@__PURE__*/ __L.at(
-  __c72,
-  1,
-) as any as S.Schema<IdentitySelectorPatch>;
-
 /** Network Device Patch properties. */
 export interface NetworkDevicePatchParametersProperties {
   /** Switch configuration description. */
@@ -13335,11 +9300,6 @@ export interface NetworkDevicePatchParametersProperties {
   /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
   identitySelector?: IdentitySelectorPatch;
 }
-const NetworkDevicePatchParametersProperties = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<NetworkDevicePatchParametersProperties>;
-
 export interface UpdateNetworkDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13354,11 +9314,6 @@ export interface UpdateNetworkDeviceRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkDeviceRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<UpdateNetworkDeviceRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkDeviceResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -13381,14 +9336,8 @@ export interface UpdateNetworkDeviceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkDeviceResponse =
-  CreateNetworkDeviceResponse as any as S.Schema<UpdateNetworkDeviceResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkDeviceAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateNetworkDeviceAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkDeviceAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13401,11 +9350,6 @@ export interface UpdateNetworkDeviceAdministrativeStateRequest {
   /** Administrative state. */
   state?: DeviceAdministrativeState | (string & {});
 }
-const UpdateNetworkDeviceAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequest>;
-
 /** The operations list. */
 export type NetworkDeviceUpdateAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -13472,14 +9416,8 @@ export interface NetworkDeviceUpdateAdministrativeStateResponse {
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
 }
-const NetworkDeviceUpdateAdministrativeStateResponse =
-  NetworkBootstrapDeviceResyncPasswordsResponse as any as S.Schema<NetworkDeviceUpdateAdministrativeStateResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkFabricRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkFabricRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkFabricRequestTagsMap>;
-
 /** Network and credentials configuration already applied to terminal server. */
 export interface TerminalServerPatchConfiguration {
   /** Username for the terminal server connection. */
@@ -13497,21 +9435,10 @@ export interface TerminalServerPatchConfiguration {
   /** Secondary IPv6 Address Prefix. */
   secondaryIpv6Prefix?: string;
 }
-const TerminalServerPatchConfiguration = /*@__PURE__*/ __L.at(
-  __c72,
-  5,
-) as any as S.Schema<TerminalServerPatchConfiguration>;
-
 /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
 export type VpnOptionBPatchPropertiesImportRouteTargetsList = Array<string>;
-const VpnOptionBPatchPropertiesImportRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<VpnOptionBPatchPropertiesImportRouteTargetsList>;
-
 /** Route Targets to be applied for outgoing routes from CE. This is for backward compatibility. */
 export type VpnOptionBPatchPropertiesExportRouteTargetsList = Array<string>;
-const VpnOptionBPatchPropertiesExportRouteTargetsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<VpnOptionBPatchPropertiesExportRouteTargetsList>;
-
 /** Option B configuration to be used for Management VPN. */
 export interface VpnOptionBPatchProperties {
   /** Route Targets to be applied for incoming routes into CE. This is for backward compatibility. */
@@ -13521,11 +9448,6 @@ export interface VpnOptionBPatchProperties {
   /** Route Targets to be applied. */
   routeTargets?: RouteTargetPatchInformation;
 }
-const VpnOptionBPatchProperties = /*@__PURE__*/ __L.at(
-  __c72,
-  6,
-) as any as S.Schema<VpnOptionBPatchProperties>;
-
 /** Peering optionA properties */
 export interface VpnOptionAPatchProperties {
   /** IPv4 Address Prefix. */
@@ -13545,11 +9467,6 @@ export interface VpnOptionAPatchProperties {
   /** BFD Configuration properties. */
   bfdConfiguration?: BfdConfigurationInput;
 }
-const VpnOptionAPatchProperties = /*@__PURE__*/ __L.at(
-  __c72,
-  7,
-) as any as S.Schema<VpnOptionAPatchProperties>;
-
 /** Network and credential configuration currently applied on terminal server. */
 export interface VpnConfigurationPatchableProperties {
   /** ARM Resource ID of the Network To Network Interconnect. */
@@ -13561,11 +9478,6 @@ export interface VpnConfigurationPatchableProperties {
   /** option A properties */
   optionAProperties?: VpnOptionAPatchProperties;
 }
-const VpnConfigurationPatchableProperties = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<VpnConfigurationPatchableProperties>;
-
 /** Configuration to be used to setup the management network. */
 export interface ManagementNetworkPatchConfiguration {
   /** VPN Configuration properties. */
@@ -13573,11 +9485,6 @@ export interface ManagementNetworkPatchConfiguration {
   /** VPN Configuration properties. */
   workloadVpnConfiguration?: VpnConfigurationPatchableProperties;
 }
-const ManagementNetworkPatchConfiguration = /*@__PURE__*/ __L.at(
-  __c73,
-  1,
-) as any as S.Schema<ManagementNetworkPatchConfiguration>;
-
 /** Storage account configuration. */
 export interface StorageAccountPatchConfiguration {
   /** Network Fabric storage account resource identifier. */
@@ -13585,29 +9492,14 @@ export interface StorageAccountPatchConfiguration {
   /** The selection of the managed identity to use with this storage account. The identity type must be either system assigned or user assigned. */
   storageAccountIdentity?: IdentitySelectorPatch;
 }
-const StorageAccountPatchConfiguration = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<StorageAccountPatchConfiguration>;
-
 /** Control Plane Access Control List ARM resource IDs. */
 export type NetworkFabricPatchPropertiesControlPlaneAclsList = Array<string>;
-const NetworkFabricPatchPropertiesControlPlaneAclsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPatchPropertiesControlPlaneAclsList>;
-
 /** Trusted IP Prefix ARM resource IDs. */
 export type NetworkFabricPatchPropertiesTrustedIpPrefixesList = Array<string>;
-const NetworkFabricPatchPropertiesTrustedIpPrefixesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkFabricPatchPropertiesTrustedIpPrefixesList>;
-
 /** Unique Route Distinguisher Configuration State. */
 export type UniqueRouteDistinguisherConfigurationState = "Enabled" | "Disabled";
-const UniqueRouteDistinguisherConfigurationState = S.String;
-
 /** NNI Derived Unique Route Distinguisher Configuration State. */
 export type NNIDerivedUniqueRouteDistinguisherConfigurationState = "Enabled" | "Disabled";
-const NNIDerivedUniqueRouteDistinguisherConfigurationState = S.String;
-
 /** Unique Route Distinguisher configuration properties. */
 export interface UniqueRouteDistinguisherPatchProperties {
   /** Unique Route Distinguisher configuration state. Default is Enabled. */
@@ -13617,11 +9509,6 @@ export interface UniqueRouteDistinguisherPatchProperties {
     | NNIDerivedUniqueRouteDistinguisherConfigurationState
     | (string & {});
 }
-const UniqueRouteDistinguisherPatchProperties = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<UniqueRouteDistinguisherPatchProperties>;
-
 /** NetworkFabric QoS ConfigurationState. */
 export type QosConfigurationState = "Disabled" | "Enabled";
 /** NetworkFabric QoS Patch Properties. */
@@ -13629,13 +9516,8 @@ export interface QosPatchProperties {
   /** QoS configuration state. Default is Disabled. */
   qosConfigurationState?: QosConfigurationState | (string & {});
 }
-const QosPatchProperties = QosProperties as any as S.Schema<QosPatchProperties>;
-
 /** NetworkFabric feature flag configuration information */
 export type NetworkFabricPatchPropertiesFeatureFlagsList = Array<FeatureFlagProperties>;
-const NetworkFabricPatchPropertiesFeatureFlagsList =
-  NetworkFabricPropertiesInputFeatureFlagsList as any as S.Schema<NetworkFabricPatchPropertiesFeatureFlagsList>;
-
 /** Authorized Transceiver Patch Properties. */
 export type AuthorizedTransceiverPatchProperties = AuthorizedTransceiverProperties;
 /** Network Fabric Patch properties. */
@@ -13673,11 +9555,6 @@ export interface NetworkFabricPatchProperties {
   /** Authorized transciever configuration for NetworkFabric. */
   authorizedTransceiver?: AuthorizedTransceiverProperties;
 }
-const NetworkFabricPatchProperties = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<NetworkFabricPatchProperties>;
-
 export interface UpdateNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13692,11 +9569,6 @@ export interface UpdateNetworkFabricRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkFabricRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  5,
-) as any as S.Schema<UpdateNetworkFabricRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkFabricResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -13719,26 +9591,14 @@ export interface UpdateNetworkFabricResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkFabricResponse =
-  CreateNetworkFabricResponse as any as S.Schema<UpdateNetworkFabricResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkFabricControllerRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkFabricControllerRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkFabricControllerRequestTagsMap>;
-
 /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
 export type NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList =
   Array<ExpressRouteConnectionInformation>;
-const NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList =
-  NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList as any as S.Schema<NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList>;
-
 /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
 export type NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList =
   Array<ExpressRouteConnectionInformation>;
-const NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList =
-  NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList as any as S.Schema<NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList>;
-
 /** Network Fabric Controller patch properties. */
 export interface NetworkFabricControllerPatchProperties {
   /** As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute) */
@@ -13746,11 +9606,6 @@ export interface NetworkFabricControllerPatchProperties {
   /** As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute). */
   workloadExpressRouteConnections?: NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList;
 }
-const NetworkFabricControllerPatchProperties = /*@__PURE__*/ __L.at(
-  __c73,
-  6,
-) as any as S.Schema<NetworkFabricControllerPatchProperties>;
-
 export interface UpdateNetworkFabricControllerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13765,11 +9620,6 @@ export interface UpdateNetworkFabricControllerRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkFabricControllerRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<UpdateNetworkFabricControllerRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkFabricControllerResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -13792,15 +9642,9 @@ export interface UpdateNetworkFabricControllerResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkFabricControllerResponse =
-  CreateNetworkFabricControllerResponse as any as S.Schema<UpdateNetworkFabricControllerResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkFabricInfraManagementBfdConfigurationRequestResourceIdsList =
   Array<string>;
-const UpdateNetworkFabricInfraManagementBfdConfigurationRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkFabricInfraManagementBfdConfigurationRequestResourceIdsList>;
-
 export interface UpdateNetworkFabricInfraManagementBfdConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13813,17 +9657,9 @@ export interface UpdateNetworkFabricInfraManagementBfdConfigurationRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkFabricInfraManagementBfdConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  0,
-) as any as S.Schema<UpdateNetworkFabricInfraManagementBfdConfigurationRequest>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkFabricWorkloadManagementBfdConfigurationRequestResourceIdsList =
   Array<string>;
-const UpdateNetworkFabricWorkloadManagementBfdConfigurationRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkFabricWorkloadManagementBfdConfigurationRequestResourceIdsList>;
-
 export interface UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13836,11 +9672,6 @@ export interface UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  1,
-) as any as S.Schema<UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest>;
-
 /** Network Interface Patch properties. */
 export type NetworkInterfacePatchProperties = NetworkInterfacePropertiesInput;
 export interface UpdateNetworkInterfaceRequest {
@@ -13857,11 +9688,6 @@ export interface UpdateNetworkInterfaceRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  2,
-) as any as S.Schema<UpdateNetworkInterfaceRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateNetworkInterfaceResponseIdentity = CreateL2IsolationDomainResponseIdentity;
 export interface UpdateNetworkInterfaceResponse {
@@ -13878,14 +9704,8 @@ export interface UpdateNetworkInterfaceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkInterfaceResponse =
-  CreateNetworkInterfaceResponse as any as S.Schema<UpdateNetworkInterfaceResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkInterfaceAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateNetworkInterfaceAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkInterfaceAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13900,30 +9720,16 @@ export interface UpdateNetworkInterfaceAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkInterfaceAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  3,
-) as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkMonitorRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkMonitorRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkMonitorRequestTagsMap>;
-
 /** Station Connection PATCH Properties. */
 export type StationConnectionPatchProperties = StationConnectionProperties;
 /** The List of Network ID's that need to be monitored. */
 export type BmpConfigurationPatchPropertiesMonitoredNetworksList = Array<string>;
-const BmpConfigurationPatchPropertiesMonitoredNetworksList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<BmpConfigurationPatchPropertiesMonitoredNetworksList>;
-
 /** Monitored Address Families for the BMP Configuration. */
 export type BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList = Array<
   BmpMonitoredAddressFamily | (string & {})
 >;
-const BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList =
-  BmpConfigurationPropertiesMonitoredAddressFamiliesList as any as S.Schema<BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList>;
-
 /** BMP Configuration patch properties. */
 export interface BmpConfigurationPatchProperties {
   /** Enabling a station. Either True/False. */
@@ -13951,21 +9757,11 @@ export interface BmpConfigurationPatchProperties {
   /** Monitored Address Families for the BMP Configuration. */
   monitoredAddressFamilies?: BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList;
 }
-const BmpConfigurationPatchProperties = /*@__PURE__*/ __L.at(
-  __c74,
-  4,
-) as any as S.Schema<BmpConfigurationPatchProperties>;
-
 /** The Network Monitor Patch Properties. */
 export interface NetworkMonitorPatchProperties {
   /** BGP Monitoring Protocol (BMP) Configurations for the Network Monitor. */
   bmpConfiguration?: BmpConfigurationPatchProperties;
 }
-const NetworkMonitorPatchProperties = /*@__PURE__*/ __L.at(
-  __c74,
-  5,
-) as any as S.Schema<NetworkMonitorPatchProperties>;
-
 export interface UpdateNetworkMonitorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13978,11 +9774,6 @@ export interface UpdateNetworkMonitorRequest {
   /** Network Monitor Patch properties. */
   properties?: NetworkMonitorPatchProperties;
 }
-const UpdateNetworkMonitorRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  6,
-) as any as S.Schema<UpdateNetworkMonitorRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkMonitorResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNetworkMonitorResponse {
@@ -14001,14 +9792,8 @@ export interface UpdateNetworkMonitorResponse {
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorProperties;
 }
-const UpdateNetworkMonitorResponse =
-  CreateNetworkMonitorResponse as any as S.Schema<UpdateNetworkMonitorResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkMonitorAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateNetworkMonitorAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkMonitorAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14021,21 +9806,10 @@ export interface UpdateNetworkMonitorAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkMonitorAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  7,
-) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequest>;
-
 /** List of ARM Resource IDs for which the given action applied successfully. */
 export type UpdateNetworkMonitorAdministrativeStateResponseSuccessfulDevicesList = Array<string>;
-const UpdateNetworkMonitorAdministrativeStateResponseSuccessfulDevicesList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponseSuccessfulDevicesList>;
-
 /** List of ARM Resource IDs for which the given action failed to apply. */
 export type UpdateNetworkMonitorAdministrativeStateResponseFailedDevicesList = Array<string>;
-const UpdateNetworkMonitorAdministrativeStateResponseFailedDevicesList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponseFailedDevicesList>;
-
 export interface UpdateNetworkMonitorAdministrativeStateResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -14046,16 +9820,8 @@ export interface UpdateNetworkMonitorAdministrativeStateResponse {
   /** List of ARM Resource IDs for which the given action failed to apply. */
   failedDevices?: UpdateNetworkMonitorAdministrativeStateResponseFailedDevicesList;
 }
-const UpdateNetworkMonitorAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c75,
-  0,
-) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkPacketBrokerRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkPacketBrokerRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkPacketBrokerRequestTagsMap>;
-
 export interface UpdateNetworkPacketBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14068,11 +9834,6 @@ export interface UpdateNetworkPacketBrokerRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkPacketBrokerRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  1,
-) as any as S.Schema<UpdateNetworkPacketBrokerRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkPacketBrokerResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14095,14 +9856,8 @@ export interface UpdateNetworkPacketBrokerResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkPacketBrokerResponse =
-  CreateNetworkPacketBrokerResponse as any as S.Schema<UpdateNetworkPacketBrokerResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkRackRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkRackRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkRackRequestTagsMap>;
-
 export interface UpdateNetworkRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14113,11 +9868,6 @@ export interface UpdateNetworkRackRequest {
   /** Resource tags. */
   tags?: UpdateNetworkRackRequestTagsMap;
 }
-const UpdateNetworkRackRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  2,
-) as any as S.Schema<UpdateNetworkRackRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkRackResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNetworkRackResponse {
@@ -14136,18 +9886,10 @@ export interface UpdateNetworkRackResponse {
   /** Network Rack Properties */
   properties: NetworkRackProperties;
 }
-const UpdateNetworkRackResponse =
-  CreateNetworkRackResponse as any as S.Schema<UpdateNetworkRackResponse>;
-
 /** Resource tags. */
 export type UpdateNetworkTapRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkTapRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkTapRequestTagsMap>;
-
 /** Polling type. */
 export type PollingType = "Pull" | "Push";
-const PollingType = S.String;
-
 /** List of Neighbor Group IDs. */
 export type IsolationDomainPatchPropertiesNeighborGroupIdsList = Array<string>;
 /** Isolation Domain Properties. */
@@ -14157,9 +9899,6 @@ export interface IsolationDomainPatchProperties {
   /** List of Neighbor Group IDs. */
   neighborGroupIds?: IsolationDomainPatchPropertiesNeighborGroupIdsList;
 }
-const IsolationDomainPatchProperties =
-  IsolationDomainProperties as any as S.Schema<IsolationDomainPatchProperties>;
-
 /** The network tap destination properties. */
 export interface DestinationPatchProperties {
   /** Destination name. */
@@ -14173,18 +9912,8 @@ export interface DestinationPatchProperties {
   /** ARM Resource ID of destination Tap Rule that contains match configurations. */
   destinationTapRuleId?: string;
 }
-const DestinationPatchProperties = /*@__PURE__*/ __L.at(
-  __c75,
-  3,
-) as any as S.Schema<DestinationPatchProperties>;
-
 /** List of destination properties to send the filter traffic. */
 export type NetworkTapPatchPropertiesDestinationsList = Array<DestinationPatchProperties>;
-const NetworkTapPatchPropertiesDestinationsList = /*@__PURE__*/ __L.at(
-  __c75,
-  4,
-) as any as S.Schema<NetworkTapPatchPropertiesDestinationsList>;
-
 /** The Network Tap resource patch definition. */
 export interface NetworkTapPatchProperties {
   /** Switch configuration description. */
@@ -14194,11 +9923,6 @@ export interface NetworkTapPatchProperties {
   /** List of destination properties to send the filter traffic. */
   destinations?: NetworkTapPatchPropertiesDestinationsList;
 }
-const NetworkTapPatchProperties = /*@__PURE__*/ __L.at(
-  __c75,
-  5,
-) as any as S.Schema<NetworkTapPatchProperties>;
-
 export interface UpdateNetworkTapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14213,11 +9937,6 @@ export interface UpdateNetworkTapRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkTapRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  6,
-) as any as S.Schema<UpdateNetworkTapRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkTapResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14240,14 +9959,8 @@ export interface UpdateNetworkTapResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkTapResponse =
-  CreateNetworkTapResponse as any as S.Schema<UpdateNetworkTapResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkTapAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateNetworkTapAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateNetworkTapAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkTapAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14260,35 +9973,16 @@ export interface UpdateNetworkTapAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkTapAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  7,
-) as any as S.Schema<UpdateNetworkTapAdministrativeStateRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkTapRuleRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNetworkTapRuleRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateNetworkTapRuleRequestTagsMap>;
-
 /** List of the protocols that need to be matched. */
 export type NetworkTapRuleMatchConditionPatchProtocolTypesList = Array<string>;
-const NetworkTapRuleMatchConditionPatchProtocolTypesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<NetworkTapRuleMatchConditionPatchProtocolTypesList>;
-
 /** Encapsulation Type that needs to be matched. */
 export type EncapsulationType = "None" | "GTPv1";
-const EncapsulationType = S.String;
-
 /** List of the Ports that need to be matched. */
 export type PortConditionPatchPortsList = Array<string>;
-const PortConditionPatchPortsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<PortConditionPatchPortsList>;
-
 /** List of the port Group Names that need to be matched. */
 export type PortConditionPatchPortGroupNamesList = Array<string>;
-const PortConditionPatchPortGroupNamesList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<PortConditionPatchPortGroupNamesList>;
-
 /** Port condition that needs to be matched. */
 export interface PortConditionPatch {
   /** Port type that needs to be matched. */
@@ -14300,8 +9994,6 @@ export interface PortConditionPatch {
   /** List of the port Group Names that need to be matched. */
   portGroupNames?: PortConditionPatchPortGroupNamesList;
 }
-const PortConditionPatch = /*@__PURE__*/ __L.at(__c76, 0) as any as S.Schema<PortConditionPatch>;
-
 /** Defines the match condition that is supported to filter the traffic. */
 export interface NetworkTapRuleMatchConditionPatch {
   /** List of the protocols that need to be matched. */
@@ -14315,26 +10007,13 @@ export interface NetworkTapRuleMatchConditionPatch {
   /** Defines the port condition that needs to be matched. */
   portCondition?: PortConditionPatch;
 }
-const NetworkTapRuleMatchConditionPatch = /*@__PURE__*/ __L.at(
-  __c76,
-  1,
-) as any as S.Schema<NetworkTapRuleMatchConditionPatch>;
-
 /** List of the match conditions. */
 export type NetworkTapRuleMatchConfigurationPatchMatchConditionsList =
   Array<NetworkTapRuleMatchConditionPatch>;
-const NetworkTapRuleMatchConfigurationPatchMatchConditionsList = /*@__PURE__*/ __L.at(
-  __c76,
-  2,
-) as any as S.Schema<NetworkTapRuleMatchConfigurationPatchMatchConditionsList>;
-
 /** Action that need to performed. */
 export type NetworkTapRuleActionPatch = NetworkTapRuleAction;
 /** List of actions that need to be performed for the matched conditions. */
 export type NetworkTapRuleMatchConfigurationPatchActionsList = Array<NetworkTapRuleAction>;
-const NetworkTapRuleMatchConfigurationPatchActionsList =
-  NetworkTapRuleMatchConfigurationActionsList as any as S.Schema<NetworkTapRuleMatchConfigurationPatchActionsList>;
-
 /** Defines the match configuration that are supported to filter the traffic. */
 export interface NetworkTapRuleMatchConfigurationPatch {
   /** The name of the match configuration. */
@@ -14348,25 +10027,12 @@ export interface NetworkTapRuleMatchConfigurationPatch {
   /** List of actions that need to be performed for the matched conditions. */
   actions?: NetworkTapRuleMatchConfigurationPatchActionsList;
 }
-const NetworkTapRuleMatchConfigurationPatch = /*@__PURE__*/ __L.at(
-  __c76,
-  3,
-) as any as S.Schema<NetworkTapRuleMatchConfigurationPatch>;
-
 /** List of match configurations. */
 export type NetworkTapRulePatchPropertiesMatchConfigurationsList =
   Array<NetworkTapRuleMatchConfigurationPatch>;
-const NetworkTapRulePatchPropertiesMatchConfigurationsList = /*@__PURE__*/ __L.at(
-  __c76,
-  4,
-) as any as S.Schema<NetworkTapRulePatchPropertiesMatchConfigurationsList>;
-
 /** List of dynamic match configurations. */
 export type NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList =
   Array<CommonDynamicMatchConfigurationPatch>;
-const NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList =
-  AccessControlListPropertiesInputDynamicMatchConfigurationsList as any as S.Schema<NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList>;
-
 /** Global network tap rule actions patch properties */
 export interface GlobalNetworkTapRuleActionPatchProperties {
   /** Configuration to enable network tap rule counter. */
@@ -14374,9 +10040,6 @@ export interface GlobalNetworkTapRuleActionPatchProperties {
   /** Truncate. 0 indicates do not truncate. */
   truncate?: string;
 }
-const GlobalNetworkTapRuleActionPatchProperties =
-  GlobalNetworkTapRuleActionProperties as any as S.Schema<GlobalNetworkTapRuleActionPatchProperties>;
-
 /** Network Tap Rule Patch properties. */
 export interface NetworkTapRulePatchProperties {
   /** Switch configuration description. */
@@ -14394,11 +10057,6 @@ export interface NetworkTapRulePatchProperties {
   /** Global network tap rule actions */
   globalNetworkTapRuleActions?: GlobalNetworkTapRuleActionPatchProperties;
 }
-const NetworkTapRulePatchProperties = /*@__PURE__*/ __L.at(
-  __c76,
-  5,
-) as any as S.Schema<NetworkTapRulePatchProperties>;
-
 export interface UpdateNetworkTapRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14413,11 +10071,6 @@ export interface UpdateNetworkTapRuleRequest {
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
-const UpdateNetworkTapRuleRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  6,
-) as any as S.Schema<UpdateNetworkTapRuleRequest>;
-
 /** Resource tags. */
 export type UpdateNetworkTapRuleResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -14440,14 +10093,8 @@ export interface UpdateNetworkTapRuleResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
 }
-const UpdateNetworkTapRuleResponse =
-  CreateNetworkTapRuleResponse as any as S.Schema<UpdateNetworkTapRuleResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkTapRuleAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateNetworkTapRuleAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkTapRuleAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14460,20 +10107,12 @@ export interface UpdateNetworkTapRuleAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkTapRuleAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  7,
-) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequest>;
-
 export interface UpdateNetworkTapRuleAdministrativeStateResponse {
   /** The error object. */
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
 }
-const UpdateNetworkTapRuleAdministrativeStateResponse =
-  AccessControlListsResyncResponse as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateResponse>;
-
 /** List of network device interfaces resource IDs. */
 export type Layer2ConfigurationPatchInterfacesList = Array<string>;
 /** Common properties for Layer2 Configuration. */
@@ -14483,31 +10122,18 @@ export interface Layer2ConfigurationPatch {
   /** List of network device interfaces resource IDs. */
   interfaces?: Layer2ConfigurationPatchInterfacesList;
 }
-const Layer2ConfigurationPatch = Layer2Configuration as any as S.Schema<Layer2ConfigurationPatch>;
-
 /** Provider Edge (PE) Loopback IP Address. */
 export type OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList = Array<string>;
-const OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList>;
-
 /** BGP Monitoring Protocol (BMP) patch properties. */
 export interface NniBmpPatchProperties {
   /** (BGP Monitoring Protocol (BMP) configuration state. */
   configurationState?: BmpConfigurationState | (string & {});
 }
-const NniBmpPatchProperties = /*@__PURE__*/ __L.at(
-  __c77,
-  0,
-) as any as S.Schema<NniBmpPatchProperties>;
-
 /** OptionB Layer3 prefix limit patch properties. */
 export type OptionBLayer3PrefixLimitPatchProperties = OptionBLayer3PrefixLimitProperties;
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
   Array<OptionBLayer3PrefixLimitProperties>;
-const OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
-  OptionBLayer3ConfigurationInputPrefixLimitsList as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList>;
-
 /** Common properties for Layer3Configuration. */
 export interface OptionBLayer3ConfigurationPatchPropertiesInput {
   /** IPv4 Address Prefix. */
@@ -14529,11 +10155,6 @@ export interface OptionBLayer3ConfigurationPatchPropertiesInput {
   /** OptionB Layer3 prefix limit configuration. */
   prefixLimits?: OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList;
 }
-const OptionBLayer3ConfigurationPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c77,
-  1,
-) as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInput>;
-
 /** List of IPv4 Routes. */
 export type NpbStaticRouteConfigurationPatchIpv4RoutesList = Array<StaticRoutePatchProperties>;
 /** List of IPv6 Routes. */
@@ -14547,9 +10168,6 @@ export interface NpbStaticRouteConfigurationPatch {
   /** List of IPv6 Routes. */
   ipv6Routes?: NpbStaticRouteConfigurationPatchIpv6RoutesList;
 }
-const NpbStaticRouteConfigurationPatch =
-  ExternalNetworkStaticRoutePatchConfiguration as any as S.Schema<NpbStaticRouteConfigurationPatch>;
-
 /** List of IPv4 Routes. */
 export type NniStaticRoutePatchConfigurationIpv4RoutesList = Array<StaticRoutePatchProperties>;
 /** List of IPv6 Routes. */
@@ -14563,9 +10181,6 @@ export interface NniStaticRoutePatchConfiguration {
   /** List of IPv6 Routes. */
   ipv6Routes?: NniStaticRoutePatchConfigurationIpv6RoutesList;
 }
-const NniStaticRoutePatchConfiguration =
-  ExternalNetworkStaticRoutePatchConfiguration as any as S.Schema<NniStaticRoutePatchConfiguration>;
-
 /** Import Route Policy Configuration. */
 export type ImportRoutePolicyInformationPatch = ImportRoutePolicyInformation;
 /** Export Route Policy Configuration. */
@@ -14591,11 +10206,6 @@ export interface NetworkToNetworkInterconnectPatchPropertiesInput {
   /** Micro BFD enabled/disabled state. */
   microBfdState?: MicroBfdState | (string & {});
 }
-const NetworkToNetworkInterconnectPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c77,
-  2,
-) as any as S.Schema<NetworkToNetworkInterconnectPatchPropertiesInput>;
-
 export interface UpdateNetworkToNetworkInterconnectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14608,11 +10218,6 @@ export interface UpdateNetworkToNetworkInterconnectRequest {
   /** Resource properties. */
   properties?: NetworkToNetworkInterconnectPatchPropertiesInput;
 }
-const UpdateNetworkToNetworkInterconnectRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  3,
-) as any as S.Schema<UpdateNetworkToNetworkInterconnectRequest>;
-
 export interface UpdateNetworkToNetworkInterconnectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -14625,15 +10230,9 @@ export interface UpdateNetworkToNetworkInterconnectResponse {
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectProperties;
 }
-const UpdateNetworkToNetworkInterconnectResponse =
-  CreateNetworkToNetworkInterconnectResponse as any as S.Schema<UpdateNetworkToNetworkInterconnectResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkToNetworkInterconnectAdministrativeStateRequestResourceIdsList =
   Array<string>;
-const UpdateNetworkToNetworkInterconnectAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkToNetworkInterconnectAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkToNetworkInterconnectAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14648,15 +10247,8 @@ export interface UpdateNetworkToNetworkInterconnectAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkToNetworkInterconnectAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  4,
-) as any as S.Schema<UpdateNetworkToNetworkInterconnectAdministrativeStateRequest>;
-
 /** Route type to be used. */
 export type RouteType = "Static" | "OptionA";
-const RouteType = S.String;
-
 export interface UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14671,11 +10263,6 @@ export interface UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest
   /** State. Select either enable or disable. */
   administrativeState?: BfdAdministrativeState | (string & {});
 }
-const UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  5,
-) as any as S.Schema<UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest>;
-
 /** The operations list. */
 export type NniUpdateBfdAdministrativeStateResponseOperationsItemOperationsList =
   Array<OperationStatusResult>;
@@ -14703,9 +10290,6 @@ export interface NniUpdateBfdAdministrativeStateResponseOperationsItem {
 /** The operations list. */
 export type NniUpdateBfdAdministrativeStateResponseOperationsList =
   Array<NniUpdateBfdAdministrativeStateResponseOperationsItem>;
-const NniUpdateBfdAdministrativeStateResponseOperationsList =
-  NetworkBootstrapDeviceUpgradeResponseOperationsList as any as S.Schema<NniUpdateBfdAdministrativeStateResponseOperationsList>;
-
 /** The error details. */
 export type NniUpdateBfdAdministrativeStateResponseErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -14724,9 +10308,6 @@ export interface NniUpdateBfdAdministrativeStateResponseError {
   /** The error additional info. */
   additionalInfo?: NniUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList;
 }
-const NniUpdateBfdAdministrativeStateResponseError =
-  CommitBatchStatusOperationResponseError as any as S.Schema<NniUpdateBfdAdministrativeStateResponseError>;
-
 /** NNI Bidirectional Forwarding Detection (BFD) Update Administrative State response. */
 export interface NniUpdateBfdAdministrativeStateResponseProperties {
   /** Route Type. Choose either Static or OptionA. */
@@ -14734,11 +10315,6 @@ export interface NniUpdateBfdAdministrativeStateResponseProperties {
   /** State. Select either enable or disable. */
   administrativeState?: BfdAdministrativeState;
 }
-const NniUpdateBfdAdministrativeStateResponseProperties = /*@__PURE__*/ __L.at(
-  __c77,
-  6,
-) as any as S.Schema<NniUpdateBfdAdministrativeStateResponseProperties>;
-
 /** NNI Bidirectional Forwarding Detection (BFD) Administrative State response. */
 export interface NniUpdateBfdAdministrativeStateResponse {
   /** Fully qualified ID for the async operation. */
@@ -14762,17 +10338,9 @@ export interface NniUpdateBfdAdministrativeStateResponse {
   /** Properties of the NNI BFD Administrative State response. */
   properties?: NniUpdateBfdAdministrativeStateResponseProperties;
 }
-const NniUpdateBfdAdministrativeStateResponse = /*@__PURE__*/ __L.at(
-  __c77,
-  7,
-) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
   Array<string>;
-const UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
-  UpdateAccessControlListAdministrativeStateRequestResourceIdsList as any as S.Schema<UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14787,31 +10355,14 @@ export interface UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrati
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest =
-  /*@__PURE__*/ __L.at(
-    __c78,
-    0,
-  ) as any as S.Schema<UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest>;
-
 /** Resource tags. */
 export type UpdateRoutePolicyRequestTagsMap = { [key: string]: string | undefined };
-const UpdateRoutePolicyRequestTagsMap =
-  CreateAccessControlListRequestTagsMap as any as S.Schema<UpdateRoutePolicyRequestTagsMap>;
-
 /** List of IP Community resource IDs. */
 export type StatementConditionPatchPropertiesIpCommunityIdsList = Array<string>;
-const StatementConditionPatchPropertiesIpCommunityIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<StatementConditionPatchPropertiesIpCommunityIdsList>;
-
 /** List of IP Extended Community resource IDs. */
 export type StatementConditionPatchPropertiesIpExtendedCommunityIdsList = Array<string>;
-const StatementConditionPatchPropertiesIpExtendedCommunityIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<StatementConditionPatchPropertiesIpExtendedCommunityIdsList>;
-
 /** Type of the condition used. */
 export type RoutePolicyConditionType = "Or" | "And";
-const RoutePolicyConditionType = S.String;
-
 /** Route policy statement condition properties. */
 export interface StatementConditionPatchProperties {
   /** List of IP Community resource IDs. */
@@ -14823,11 +10374,6 @@ export interface StatementConditionPatchProperties {
   /** Arm Resource Id of IpPrefix. */
   ipPrefixId?: string;
 }
-const StatementConditionPatchProperties = /*@__PURE__*/ __L.at(
-  __c78,
-  1,
-) as any as S.Schema<StatementConditionPatchProperties>;
-
 /** IP Community Properties. */
 export type ActionIpCommunityPatchProperties = ActionIpCommunityProperties;
 /** IP Extended Community Properties. */
@@ -14845,19 +10391,9 @@ export interface RoutePolicyStatementPatchProperties {
   /** Route policy action properties. */
   action: StatementActionProperties;
 }
-const RoutePolicyStatementPatchProperties = /*@__PURE__*/ __L.at(
-  __c78,
-  2,
-) as any as S.Schema<RoutePolicyStatementPatchProperties>;
-
 /** Route Policy statements. */
 export type RoutePolicyPatchablePropertiesStatementsList =
   Array<RoutePolicyStatementPatchProperties>;
-const RoutePolicyPatchablePropertiesStatementsList = /*@__PURE__*/ __L.at(
-  __c78,
-  3,
-) as any as S.Schema<RoutePolicyPatchablePropertiesStatementsList>;
-
 /** Route Policy patchable properties. */
 export interface RoutePolicyPatchableProperties {
   /** Default action that needs to be applied when no condition is matched. Example: Permit | Deny. */
@@ -14865,11 +10401,6 @@ export interface RoutePolicyPatchableProperties {
   /** Route Policy statements. */
   statements?: RoutePolicyPatchablePropertiesStatementsList;
 }
-const RoutePolicyPatchableProperties = /*@__PURE__*/ __L.at(
-  __c78,
-  4,
-) as any as S.Schema<RoutePolicyPatchableProperties>;
-
 export interface UpdateRoutePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14882,11 +10413,6 @@ export interface UpdateRoutePolicyRequest {
   /** The RoutePolicy patchable properties. */
   properties?: RoutePolicyPatchableProperties;
 }
-const UpdateRoutePolicyRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  5,
-) as any as S.Schema<UpdateRoutePolicyRequest>;
-
 /** Resource tags. */
 export type UpdateRoutePolicyResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateRoutePolicyResponse {
@@ -14905,14 +10431,8 @@ export interface UpdateRoutePolicyResponse {
   /** The RoutePolicy properties */
   properties: RoutePolicyProperties;
 }
-const UpdateRoutePolicyResponse =
-  CreateRoutePolicyResponse as any as S.Schema<UpdateRoutePolicyResponse>;
-
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateRoutePolicyAdministrativeStateRequestResourceIdsList = Array<string>;
-const UpdateRoutePolicyAdministrativeStateRequestResourceIdsList =
-  CommitBatchDetailsFailedDevicesList as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequestResourceIdsList>;
-
 export interface UpdateRoutePolicyAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14925,11 +10445,6 @@ export interface UpdateRoutePolicyAdministrativeStateRequest {
   /** Administrative state. */
   state?: EnableDisableState | (string & {});
 }
-const UpdateRoutePolicyAdministrativeStateRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  6,
-) as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequest>;
-
 export interface ValidateAccessControlListConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14938,11 +10453,6 @@ export interface ValidateAccessControlListConfigurationRequest {
   /** Name of the Access Control List. */
   accessControlListName: string;
 }
-const ValidateAccessControlListConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  7,
-) as any as S.Schema<ValidateAccessControlListConfigurationRequest>;
-
 export interface ValidateAccessControlListConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -14951,11 +10461,6 @@ export interface ValidateAccessControlListConfigurationResponse {
   /** URL for the details of the response. */
   url?: string;
 }
-const ValidateAccessControlListConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c79,
-  0,
-) as any as S.Schema<ValidateAccessControlListConfigurationResponse>;
-
 export interface ValidateL2IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14964,11 +10469,6 @@ export interface ValidateL2IsolationDomainConfigurationRequest {
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
 }
-const ValidateL2IsolationDomainConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  1,
-) as any as S.Schema<ValidateL2IsolationDomainConfigurationRequest>;
-
 export interface ValidateL2IsolationDomainConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -14977,9 +10477,6 @@ export interface ValidateL2IsolationDomainConfigurationResponse {
   /** URL for the details of the response. */
   url?: string;
 }
-const ValidateL2IsolationDomainConfigurationResponse =
-  ValidateAccessControlListConfigurationResponse as any as S.Schema<ValidateL2IsolationDomainConfigurationResponse>;
-
 export interface ValidateL3IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14988,11 +10485,6 @@ export interface ValidateL3IsolationDomainConfigurationRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-const ValidateL3IsolationDomainConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  2,
-) as any as S.Schema<ValidateL3IsolationDomainConfigurationRequest>;
-
 export interface ValidateL3IsolationDomainConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -15001,13 +10493,8 @@ export interface ValidateL3IsolationDomainConfigurationResponse {
   /** URL for the details of the response. */
   url?: string;
 }
-const ValidateL3IsolationDomainConfigurationResponse =
-  ValidateAccessControlListConfigurationResponse as any as S.Schema<ValidateL3IsolationDomainConfigurationResponse>;
-
 /** Validate action that to be performed */
 export type ValidateAction = "Cabling" | "Configuration" | "Connectivity";
-const ValidateAction = S.String;
-
 export interface ValidateNetworkFabricConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15018,11 +10505,6 @@ export interface ValidateNetworkFabricConfigurationRequest {
   /** Validate action that to be performed */
   validateAction?: ValidateAction | (string & {});
 }
-const ValidateNetworkFabricConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  3,
-) as any as S.Schema<ValidateNetworkFabricConfigurationRequest>;
-
 export interface ValidateNetworkFabricConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -15031,9 +10513,6 @@ export interface ValidateNetworkFabricConfigurationResponse {
   /** URL for the details of the response. */
   url?: string;
 }
-const ValidateNetworkFabricConfigurationResponse =
-  ValidateAccessControlListConfigurationResponse as any as S.Schema<ValidateNetworkFabricConfigurationResponse>;
-
 export interface ValidateNetworkTapRuleConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15042,11 +10521,6 @@ export interface ValidateNetworkTapRuleConfigurationRequest {
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
 }
-const ValidateNetworkTapRuleConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  4,
-) as any as S.Schema<ValidateNetworkTapRuleConfigurationRequest>;
-
 export interface ValidateNetworkTapRuleConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -15055,9 +10529,6 @@ export interface ValidateNetworkTapRuleConfigurationResponse {
   /** URL for the details of the response. */
   url?: string;
 }
-const ValidateNetworkTapRuleConfigurationResponse =
-  ValidateAccessControlListConfigurationResponse as any as S.Schema<ValidateNetworkTapRuleConfigurationResponse>;
-
 export interface ValidateRoutePolicyConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15066,11 +10537,6 @@ export interface ValidateRoutePolicyConfigurationRequest {
   /** Name of the Route Policy. */
   routePolicyName: string;
 }
-const ValidateRoutePolicyConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  5,
-) as any as S.Schema<ValidateRoutePolicyConfigurationRequest>;
-
 export interface ValidateRoutePolicyConfigurationResponse {
   /** The error object. */
   error?: ErrorDetail;
@@ -15079,9 +10545,6 @@ export interface ValidateRoutePolicyConfigurationResponse {
   /** URL for the details of the response. */
   url?: string;
 }
-const ValidateRoutePolicyConfigurationResponse =
-  ValidateAccessControlListConfigurationResponse as any as S.Schema<ValidateRoutePolicyConfigurationResponse>;
-
 export type AccessControlListsResyncError = AzureOpError;
 /** Implements the operation to the underlying resources. */
 export const AccessControlListsResync: API.OperationMethod<
@@ -15090,8 +10553,8 @@ export const AccessControlListsResync: API.OperationMethod<
   AccessControlListsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccessControlListsResyncRequest,
-  output: AccessControlListsResyncResponse,
+  input: __S(0) as any as S.Schema<AccessControlListsResyncRequest>,
+  output: __S(5) as any as S.Schema<AccessControlListsResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15105,8 +10568,8 @@ export const CommitL2IsolationDomainConfiguration: API.OperationMethod<
   CommitL2IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitL2IsolationDomainConfigurationRequest,
-  output: CommitL2IsolationDomainConfigurationResponse,
+  input: __S(6) as any as S.Schema<CommitL2IsolationDomainConfigurationRequest>,
+  output: __S(5) as any as S.Schema<CommitL2IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15120,8 +10583,8 @@ export const CommitL3IsolationDomainConfiguration: API.OperationMethod<
   CommitL3IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitL3IsolationDomainConfigurationRequest,
-  output: CommitL3IsolationDomainConfigurationResponse,
+  input: __S(7) as any as S.Schema<CommitL3IsolationDomainConfigurationRequest>,
+  output: __S(5) as any as S.Schema<CommitL3IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15135,8 +10598,8 @@ export const CommitNetworkFabricBatchStatus: API.OperationMethod<
   CommitNetworkFabricBatchStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitNetworkFabricBatchStatusRequest,
-  output: CommitBatchStatusOperationResponse,
+  input: __S(8) as any as S.Schema<CommitNetworkFabricBatchStatusRequest>,
+  output: __S(19) as any as S.Schema<CommitBatchStatusOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15150,8 +10613,8 @@ export const CommitNetworkFabricConfiguration: API.OperationMethod<
   CommitNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitNetworkFabricConfigurationRequest,
-  output: CommitConfigurationResponse,
+  input: __S(20) as any as S.Schema<CommitNetworkFabricConfigurationRequest>,
+  output: __S(21) as any as S.Schema<CommitConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15165,8 +10628,8 @@ export const CommitRoutePolicyConfiguration: API.OperationMethod<
   CommitRoutePolicyConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitRoutePolicyConfigurationRequest,
-  output: CommitRoutePolicyConfigurationResponse,
+  input: __S(22) as any as S.Schema<CommitRoutePolicyConfigurationRequest>,
+  output: __S(5) as any as S.Schema<CommitRoutePolicyConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15180,8 +10643,8 @@ export const CreateAccessControlList: API.OperationMethod<
   CreateAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessControlListRequest,
-  output: CreateAccessControlListResponse,
+  input: __S(57) as any as S.Schema<CreateAccessControlListRequest>,
+  output: __S(62) as any as S.Schema<CreateAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15195,8 +10658,8 @@ export const CreateExternalNetwork: API.OperationMethod<
   CreateExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExternalNetworkRequest,
-  output: CreateExternalNetworkResponse,
+  input: __S(77) as any as S.Schema<CreateExternalNetworkRequest>,
+  output: __S(82) as any as S.Schema<CreateExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15210,8 +10673,8 @@ export const CreateInternalNetwork: API.OperationMethod<
   CreateInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInternalNetworkRequest,
-  output: CreateInternalNetworkResponse,
+  input: __S(93) as any as S.Schema<CreateInternalNetworkRequest>,
+  output: __S(99) as any as S.Schema<CreateInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15225,8 +10688,8 @@ export const CreateInternetGateway: API.OperationMethod<
   CreateInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInternetGatewayRequest,
-  output: CreateInternetGatewayResponse,
+  input: __S(101) as any as S.Schema<CreateInternetGatewayRequest>,
+  output: __S(103) as any as S.Schema<CreateInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15240,8 +10703,8 @@ export const CreateInternetGatewayRule: API.OperationMethod<
   CreateInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInternetGatewayRuleRequest,
-  output: CreateInternetGatewayRuleResponse,
+  input: __S(108) as any as S.Schema<CreateInternetGatewayRuleRequest>,
+  output: __S(110) as any as S.Schema<CreateInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15255,8 +10718,8 @@ export const CreateIpCommunity: API.OperationMethod<
   CreateIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpCommunityRequest,
-  output: CreateIpCommunityResponse,
+  input: __S(114) as any as S.Schema<CreateIpCommunityRequest>,
+  output: __S(116) as any as S.Schema<CreateIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15270,8 +10733,8 @@ export const CreateIpExtendedCommunity: API.OperationMethod<
   CreateIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpExtendedCommunityRequest,
-  output: CreateIpExtendedCommunityResponse,
+  input: __S(120) as any as S.Schema<CreateIpExtendedCommunityRequest>,
+  output: __S(122) as any as S.Schema<CreateIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15285,8 +10748,8 @@ export const CreateIpPrefix: API.OperationMethod<
   CreateIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpPrefixRequest,
-  output: CreateIpPrefixResponse,
+  input: __S(126) as any as S.Schema<CreateIpPrefixRequest>,
+  output: __S(128) as any as S.Schema<CreateIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15300,8 +10763,8 @@ export const CreateL2IsolationDomain: API.OperationMethod<
   CreateL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateL2IsolationDomainRequest,
-  output: CreateL2IsolationDomainResponse,
+  input: __S(133) as any as S.Schema<CreateL2IsolationDomainRequest>,
+  output: __S(138) as any as S.Schema<CreateL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15315,8 +10778,8 @@ export const CreateL3IsolationDomain: API.OperationMethod<
   CreateL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateL3IsolationDomainRequest,
-  output: CreateL3IsolationDomainResponse,
+  input: __S(145) as any as S.Schema<CreateL3IsolationDomainRequest>,
+  output: __S(148) as any as S.Schema<CreateL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15330,8 +10793,8 @@ export const CreateNeighborGroup: API.OperationMethod<
   CreateNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNeighborGroupRequest,
-  output: CreateNeighborGroupResponse,
+  input: __S(151) as any as S.Schema<CreateNeighborGroupRequest>,
+  output: __S(153) as any as S.Schema<CreateNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15345,8 +10808,8 @@ export const CreateNetworkBootstrapDevice: API.OperationMethod<
   CreateNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkBootstrapDeviceRequest,
-  output: CreateNetworkBootstrapDeviceResponse,
+  input: __S(155) as any as S.Schema<CreateNetworkBootstrapDeviceRequest>,
+  output: __S(157) as any as S.Schema<CreateNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15360,8 +10823,8 @@ export const CreateNetworkBootstrapInterface: API.OperationMethod<
   CreateNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkBootstrapInterfaceRequest,
-  output: CreateNetworkBootstrapInterfaceResponse,
+  input: __S(159) as any as S.Schema<CreateNetworkBootstrapInterfaceRequest>,
+  output: __S(161) as any as S.Schema<CreateNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15375,8 +10838,8 @@ export const CreateNetworkDevice: API.OperationMethod<
   CreateNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkDeviceRequest,
-  output: CreateNetworkDeviceResponse,
+  input: __S(164) as any as S.Schema<CreateNetworkDeviceRequest>,
+  output: __S(172) as any as S.Schema<CreateNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15390,8 +10853,8 @@ export const CreateNetworkFabric: API.OperationMethod<
   CreateNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkFabricRequest,
-  output: CreateNetworkFabricResponse,
+  input: __S(184) as any as S.Schema<CreateNetworkFabricRequest>,
+  output: __S(194) as any as S.Schema<CreateNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15405,8 +10868,8 @@ export const CreateNetworkFabricController: API.OperationMethod<
   CreateNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkFabricControllerRequest,
-  output: CreateNetworkFabricControllerResponse,
+  input: __S(199) as any as S.Schema<CreateNetworkFabricControllerRequest>,
+  output: __S(202) as any as S.Schema<CreateNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15420,8 +10883,8 @@ export const CreateNetworkInterface: API.OperationMethod<
   CreateNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkInterfaceRequest,
-  output: CreateNetworkInterfaceResponse,
+  input: __S(204) as any as S.Schema<CreateNetworkInterfaceRequest>,
+  output: __S(206) as any as S.Schema<CreateNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15435,8 +10898,8 @@ export const CreateNetworkMonitor: API.OperationMethod<
   CreateNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkMonitorRequest,
-  output: CreateNetworkMonitorResponse,
+  input: __S(210) as any as S.Schema<CreateNetworkMonitorRequest>,
+  output: __S(212) as any as S.Schema<CreateNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15450,8 +10913,8 @@ export const CreateNetworkPacketBroker: API.OperationMethod<
   CreateNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkPacketBrokerRequest,
-  output: CreateNetworkPacketBrokerResponse,
+  input: __S(214) as any as S.Schema<CreateNetworkPacketBrokerRequest>,
+  output: __S(216) as any as S.Schema<CreateNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15465,8 +10928,8 @@ export const CreateNetworkRack: API.OperationMethod<
   CreateNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkRackRequest,
-  output: CreateNetworkRackResponse,
+  input: __S(218) as any as S.Schema<CreateNetworkRackRequest>,
+  output: __S(220) as any as S.Schema<CreateNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15480,8 +10943,8 @@ export const CreateNetworkTap: API.OperationMethod<
   CreateNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkTapRequest,
-  output: CreateNetworkTapResponse,
+  input: __S(225) as any as S.Schema<CreateNetworkTapRequest>,
+  output: __S(227) as any as S.Schema<CreateNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15495,8 +10958,8 @@ export const CreateNetworkTapRule: API.OperationMethod<
   CreateNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkTapRuleRequest,
-  output: CreateNetworkTapRuleResponse,
+  input: __S(237) as any as S.Schema<CreateNetworkTapRuleRequest>,
+  output: __S(239) as any as S.Schema<CreateNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15510,8 +10973,8 @@ export const CreateNetworkToNetworkInterconnect: API.OperationMethod<
   CreateNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkToNetworkInterconnectRequest,
-  output: CreateNetworkToNetworkInterconnectResponse,
+  input: __S(249) as any as S.Schema<CreateNetworkToNetworkInterconnectRequest>,
+  output: __S(252) as any as S.Schema<CreateNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15525,8 +10988,8 @@ export const CreateRoutePolicy: API.OperationMethod<
   CreateRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRoutePolicyRequest,
-  output: CreateRoutePolicyResponse,
+  input: __S(262) as any as S.Schema<CreateRoutePolicyRequest>,
+  output: __S(264) as any as S.Schema<CreateRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15540,8 +11003,8 @@ export const DeleteAccessControlList: API.OperationMethod<
   DeleteAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessControlListRequest,
-  output: DeleteAccessControlListResponse,
+  input: __S(265) as any as S.Schema<DeleteAccessControlListRequest>,
+  output: __S(266) as any as S.Schema<DeleteAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15555,8 +11018,8 @@ export const DeleteExternalNetwork: API.OperationMethod<
   DeleteExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteExternalNetworkRequest,
-  output: DeleteExternalNetworkResponse,
+  input: __S(267) as any as S.Schema<DeleteExternalNetworkRequest>,
+  output: __S(130) as any as S.Schema<DeleteExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15570,8 +11033,8 @@ export const DeleteInternalNetwork: API.OperationMethod<
   DeleteInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInternalNetworkRequest,
-  output: DeleteInternalNetworkResponse,
+  input: __S(268) as any as S.Schema<DeleteInternalNetworkRequest>,
+  output: __S(130) as any as S.Schema<DeleteInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15585,8 +11048,8 @@ export const DeleteInternetGateway: API.OperationMethod<
   DeleteInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInternetGatewayRequest,
-  output: DeleteInternetGatewayResponse,
+  input: __S(269) as any as S.Schema<DeleteInternetGatewayRequest>,
+  output: __S(130) as any as S.Schema<DeleteInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15600,8 +11063,8 @@ export const DeleteInternetGatewayRule: API.OperationMethod<
   DeleteInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInternetGatewayRuleRequest,
-  output: DeleteInternetGatewayRuleResponse,
+  input: __S(270) as any as S.Schema<DeleteInternetGatewayRuleRequest>,
+  output: __S(271) as any as S.Schema<DeleteInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15615,8 +11078,8 @@ export const DeleteIpCommunity: API.OperationMethod<
   DeleteIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpCommunityRequest,
-  output: DeleteIpCommunityResponse,
+  input: __S(272) as any as S.Schema<DeleteIpCommunityRequest>,
+  output: __S(130) as any as S.Schema<DeleteIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15630,8 +11093,8 @@ export const DeleteIpExtendedCommunity: API.OperationMethod<
   DeleteIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpExtendedCommunityRequest,
-  output: DeleteIpExtendedCommunityResponse,
+  input: __S(273) as any as S.Schema<DeleteIpExtendedCommunityRequest>,
+  output: __S(271) as any as S.Schema<DeleteIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15645,8 +11108,8 @@ export const DeleteIpPrefix: API.OperationMethod<
   DeleteIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpPrefixRequest,
-  output: DeleteIpPrefixResponse,
+  input: __S(274) as any as S.Schema<DeleteIpPrefixRequest>,
+  output: __S(130) as any as S.Schema<DeleteIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15660,8 +11123,8 @@ export const DeleteL2IsolationDomain: API.OperationMethod<
   DeleteL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteL2IsolationDomainRequest,
-  output: DeleteL2IsolationDomainResponse,
+  input: __S(275) as any as S.Schema<DeleteL2IsolationDomainRequest>,
+  output: __S(266) as any as S.Schema<DeleteL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15675,8 +11138,8 @@ export const DeleteL3IsolationDomain: API.OperationMethod<
   DeleteL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteL3IsolationDomainRequest,
-  output: DeleteL3IsolationDomainResponse,
+  input: __S(276) as any as S.Schema<DeleteL3IsolationDomainRequest>,
+  output: __S(266) as any as S.Schema<DeleteL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15690,8 +11153,8 @@ export const DeleteNeighborGroup: API.OperationMethod<
   DeleteNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNeighborGroupRequest,
-  output: DeleteNeighborGroupResponse,
+  input: __S(277) as any as S.Schema<DeleteNeighborGroupRequest>,
+  output: __S(130) as any as S.Schema<DeleteNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15705,8 +11168,8 @@ export const DeleteNetworkBootstrapDevice: API.OperationMethod<
   DeleteNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkBootstrapDeviceRequest,
-  output: DeleteNetworkBootstrapDeviceResponse,
+  input: __S(278) as any as S.Schema<DeleteNetworkBootstrapDeviceRequest>,
+  output: __S(271) as any as S.Schema<DeleteNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15720,8 +11183,8 @@ export const DeleteNetworkBootstrapInterface: API.OperationMethod<
   DeleteNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkBootstrapInterfaceRequest,
-  output: DeleteNetworkBootstrapInterfaceResponse,
+  input: __S(279) as any as S.Schema<DeleteNetworkBootstrapInterfaceRequest>,
+  output: __S(271) as any as S.Schema<DeleteNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15735,8 +11198,8 @@ export const DeleteNetworkDevice: API.OperationMethod<
   DeleteNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkDeviceRequest,
-  output: DeleteNetworkDeviceResponse,
+  input: __S(280) as any as S.Schema<DeleteNetworkDeviceRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15750,8 +11213,8 @@ export const DeleteNetworkFabric: API.OperationMethod<
   DeleteNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkFabricRequest,
-  output: DeleteNetworkFabricResponse,
+  input: __S(281) as any as S.Schema<DeleteNetworkFabricRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15765,8 +11228,8 @@ export const DeleteNetworkFabricController: API.OperationMethod<
   DeleteNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkFabricControllerRequest,
-  output: DeleteNetworkFabricControllerResponse,
+  input: __S(282) as any as S.Schema<DeleteNetworkFabricControllerRequest>,
+  output: __S(271) as any as S.Schema<DeleteNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15780,8 +11243,8 @@ export const DeleteNetworkInterface: API.OperationMethod<
   DeleteNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkInterfaceRequest,
-  output: DeleteNetworkInterfaceResponse,
+  input: __S(283) as any as S.Schema<DeleteNetworkInterfaceRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15795,8 +11258,8 @@ export const DeleteNetworkMonitor: API.OperationMethod<
   DeleteNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkMonitorRequest,
-  output: DeleteNetworkMonitorResponse,
+  input: __S(284) as any as S.Schema<DeleteNetworkMonitorRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15810,8 +11273,8 @@ export const DeleteNetworkPacketBroker: API.OperationMethod<
   DeleteNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkPacketBrokerRequest,
-  output: DeleteNetworkPacketBrokerResponse,
+  input: __S(285) as any as S.Schema<DeleteNetworkPacketBrokerRequest>,
+  output: __S(271) as any as S.Schema<DeleteNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15825,8 +11288,8 @@ export const DeleteNetworkRack: API.OperationMethod<
   DeleteNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkRackRequest,
-  output: DeleteNetworkRackResponse,
+  input: __S(286) as any as S.Schema<DeleteNetworkRackRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15840,8 +11303,8 @@ export const DeleteNetworkTap: API.OperationMethod<
   DeleteNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkTapRequest,
-  output: DeleteNetworkTapResponse,
+  input: __S(287) as any as S.Schema<DeleteNetworkTapRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15855,8 +11318,8 @@ export const DeleteNetworkTapRule: API.OperationMethod<
   DeleteNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkTapRuleRequest,
-  output: DeleteNetworkTapRuleResponse,
+  input: __S(288) as any as S.Schema<DeleteNetworkTapRuleRequest>,
+  output: __S(130) as any as S.Schema<DeleteNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15870,8 +11333,8 @@ export const DeleteNetworkToNetworkInterconnect: API.OperationMethod<
   DeleteNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkToNetworkInterconnectRequest,
-  output: DeleteNetworkToNetworkInterconnectResponse,
+  input: __S(289) as any as S.Schema<DeleteNetworkToNetworkInterconnectRequest>,
+  output: __S(271) as any as S.Schema<DeleteNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15885,8 +11348,8 @@ export const DeleteRoutePolicy: API.OperationMethod<
   DeleteRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoutePolicyRequest,
-  output: DeleteRoutePolicyResponse,
+  input: __S(290) as any as S.Schema<DeleteRoutePolicyRequest>,
+  output: __S(130) as any as S.Schema<DeleteRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15900,8 +11363,8 @@ export const GetAccessControlList: API.OperationMethod<
   GetAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessControlListRequest,
-  output: GetAccessControlListResponse,
+  input: __S(291) as any as S.Schema<GetAccessControlListRequest>,
+  output: __S(62) as any as S.Schema<GetAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15915,8 +11378,8 @@ export const GetExternalNetwork: API.OperationMethod<
   GetExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExternalNetworkRequest,
-  output: GetExternalNetworkResponse,
+  input: __S(292) as any as S.Schema<GetExternalNetworkRequest>,
+  output: __S(82) as any as S.Schema<GetExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15930,8 +11393,8 @@ export const GetInternalNetwork: API.OperationMethod<
   GetInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInternalNetworkRequest,
-  output: GetInternalNetworkResponse,
+  input: __S(293) as any as S.Schema<GetInternalNetworkRequest>,
+  output: __S(99) as any as S.Schema<GetInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15945,8 +11408,8 @@ export const GetInternetGateway: API.OperationMethod<
   GetInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInternetGatewayRequest,
-  output: GetInternetGatewayResponse,
+  input: __S(294) as any as S.Schema<GetInternetGatewayRequest>,
+  output: __S(103) as any as S.Schema<GetInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15960,8 +11423,8 @@ export const GetInternetGatewayRule: API.OperationMethod<
   GetInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInternetGatewayRuleRequest,
-  output: GetInternetGatewayRuleResponse,
+  input: __S(295) as any as S.Schema<GetInternetGatewayRuleRequest>,
+  output: __S(110) as any as S.Schema<GetInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15975,8 +11438,8 @@ export const GetIpCommunity: API.OperationMethod<
   GetIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpCommunityRequest,
-  output: GetIpCommunityResponse,
+  input: __S(296) as any as S.Schema<GetIpCommunityRequest>,
+  output: __S(297) as any as S.Schema<GetIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -15990,8 +11453,8 @@ export const GetIpExtendedCommunity: API.OperationMethod<
   GetIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpExtendedCommunityRequest,
-  output: GetIpExtendedCommunityResponse,
+  input: __S(298) as any as S.Schema<GetIpExtendedCommunityRequest>,
+  output: __S(122) as any as S.Schema<GetIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16005,8 +11468,8 @@ export const GetIpPrefix: API.OperationMethod<
   GetIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpPrefixRequest,
-  output: GetIpPrefixResponse,
+  input: __S(299) as any as S.Schema<GetIpPrefixRequest>,
+  output: __S(128) as any as S.Schema<GetIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16020,8 +11483,8 @@ export const GetL2IsolationDomain: API.OperationMethod<
   GetL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetL2IsolationDomainRequest,
-  output: GetL2IsolationDomainResponse,
+  input: __S(300) as any as S.Schema<GetL2IsolationDomainRequest>,
+  output: __S(138) as any as S.Schema<GetL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16035,8 +11498,8 @@ export const GetL3IsolationDomain: API.OperationMethod<
   GetL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetL3IsolationDomainRequest,
-  output: GetL3IsolationDomainResponse,
+  input: __S(301) as any as S.Schema<GetL3IsolationDomainRequest>,
+  output: __S(148) as any as S.Schema<GetL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16050,8 +11513,8 @@ export const GetNeighborGroup: API.OperationMethod<
   GetNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNeighborGroupRequest,
-  output: GetNeighborGroupResponse,
+  input: __S(302) as any as S.Schema<GetNeighborGroupRequest>,
+  output: __S(303) as any as S.Schema<GetNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16065,8 +11528,8 @@ export const GetNetworkBootstrapDevice: API.OperationMethod<
   GetNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkBootstrapDeviceRequest,
-  output: GetNetworkBootstrapDeviceResponse,
+  input: __S(304) as any as S.Schema<GetNetworkBootstrapDeviceRequest>,
+  output: __S(157) as any as S.Schema<GetNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16080,8 +11543,8 @@ export const GetNetworkBootstrapInterface: API.OperationMethod<
   GetNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkBootstrapInterfaceRequest,
-  output: GetNetworkBootstrapInterfaceResponse,
+  input: __S(305) as any as S.Schema<GetNetworkBootstrapInterfaceRequest>,
+  output: __S(161) as any as S.Schema<GetNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16095,8 +11558,8 @@ export const GetNetworkDevice: API.OperationMethod<
   GetNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkDeviceRequest,
-  output: GetNetworkDeviceResponse,
+  input: __S(306) as any as S.Schema<GetNetworkDeviceRequest>,
+  output: __S(307) as any as S.Schema<GetNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16110,8 +11573,8 @@ export const GetNetworkDeviceSkus: API.OperationMethod<
   GetNetworkDeviceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkDeviceSkusRequest,
-  output: GetNetworkDeviceSkusResponse,
+  input: __S(308) as any as S.Schema<GetNetworkDeviceSkusRequest>,
+  output: __S(316) as any as S.Schema<GetNetworkDeviceSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16125,8 +11588,8 @@ export const GetNetworkFabric: API.OperationMethod<
   GetNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkFabricRequest,
-  output: GetNetworkFabricResponse,
+  input: __S(317) as any as S.Schema<GetNetworkFabricRequest>,
+  output: __S(318) as any as S.Schema<GetNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16140,8 +11603,8 @@ export const GetNetworkFabricController: API.OperationMethod<
   GetNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkFabricControllerRequest,
-  output: GetNetworkFabricControllerResponse,
+  input: __S(319) as any as S.Schema<GetNetworkFabricControllerRequest>,
+  output: __S(202) as any as S.Schema<GetNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16155,8 +11618,8 @@ export const GetNetworkFabricSkus: API.OperationMethod<
   GetNetworkFabricSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkFabricSkusRequest,
-  output: GetNetworkFabricSkusResponse,
+  input: __S(320) as any as S.Schema<GetNetworkFabricSkusRequest>,
+  output: __S(322) as any as S.Schema<GetNetworkFabricSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16170,8 +11633,8 @@ export const GetNetworkFabricTopology: API.OperationMethod<
   GetNetworkFabricTopologyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkFabricTopologyRequest,
-  output: GetTopologyResponse,
+  input: __S(323) as any as S.Schema<GetNetworkFabricTopologyRequest>,
+  output: __S(326) as any as S.Schema<GetTopologyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16185,8 +11648,8 @@ export const GetNetworkInterface: API.OperationMethod<
   GetNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkInterfaceRequest,
-  output: GetNetworkInterfaceResponse,
+  input: __S(327) as any as S.Schema<GetNetworkInterfaceRequest>,
+  output: __S(206) as any as S.Schema<GetNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16200,8 +11663,8 @@ export const GetNetworkMonitor: API.OperationMethod<
   GetNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkMonitorRequest,
-  output: GetNetworkMonitorResponse,
+  input: __S(328) as any as S.Schema<GetNetworkMonitorRequest>,
+  output: __S(212) as any as S.Schema<GetNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16215,8 +11678,8 @@ export const GetNetworkPacketBroker: API.OperationMethod<
   GetNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkPacketBrokerRequest,
-  output: GetNetworkPacketBrokerResponse,
+  input: __S(329) as any as S.Schema<GetNetworkPacketBrokerRequest>,
+  output: __S(216) as any as S.Schema<GetNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16230,8 +11693,8 @@ export const GetNetworkRack: API.OperationMethod<
   GetNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkRackRequest,
-  output: GetNetworkRackResponse,
+  input: __S(330) as any as S.Schema<GetNetworkRackRequest>,
+  output: __S(331) as any as S.Schema<GetNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16245,8 +11708,8 @@ export const GetNetworkTap: API.OperationMethod<
   GetNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkTapRequest,
-  output: GetNetworkTapResponse,
+  input: __S(332) as any as S.Schema<GetNetworkTapRequest>,
+  output: __S(227) as any as S.Schema<GetNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16260,8 +11723,8 @@ export const GetNetworkTapRule: API.OperationMethod<
   GetNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkTapRuleRequest,
-  output: GetNetworkTapRuleResponse,
+  input: __S(333) as any as S.Schema<GetNetworkTapRuleRequest>,
+  output: __S(239) as any as S.Schema<GetNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16275,8 +11738,8 @@ export const GetNetworkToNetworkInterconnect: API.OperationMethod<
   GetNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkToNetworkInterconnectRequest,
-  output: GetNetworkToNetworkInterconnectResponse,
+  input: __S(334) as any as S.Schema<GetNetworkToNetworkInterconnectRequest>,
+  output: __S(252) as any as S.Schema<GetNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16290,8 +11753,8 @@ export const GetRoutePolicy: API.OperationMethod<
   GetRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoutePolicyRequest,
-  output: GetRoutePolicyResponse,
+  input: __S(335) as any as S.Schema<GetRoutePolicyRequest>,
+  output: __S(336) as any as S.Schema<GetRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16305,8 +11768,8 @@ export const ListAccessControlListByResourceGroup: API.OperationMethod<
   ListAccessControlListByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessControlListByResourceGroupRequest,
-  output: AccessControlListsListResult,
+  input: __S(337) as any as S.Schema<ListAccessControlListByResourceGroupRequest>,
+  output: __S(340) as any as S.Schema<AccessControlListsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16320,8 +11783,8 @@ export const ListAccessControlListBySubscription: API.OperationMethod<
   ListAccessControlListBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccessControlListBySubscriptionRequest,
-  output: AccessControlListsListResult,
+  input: __S(341) as any as S.Schema<ListAccessControlListBySubscriptionRequest>,
+  output: __S(340) as any as S.Schema<AccessControlListsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16335,8 +11798,8 @@ export const ListExternalNetworkByL3IsolationDomain: API.OperationMethod<
   ListExternalNetworkByL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExternalNetworkByL3IsolationDomainRequest,
-  output: ExternalNetworksList,
+  input: __S(342) as any as S.Schema<ListExternalNetworkByL3IsolationDomainRequest>,
+  output: __S(345) as any as S.Schema<ExternalNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16350,8 +11813,8 @@ export const ListInternalNetworkByL3IsolationDomain: API.OperationMethod<
   ListInternalNetworkByL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInternalNetworkByL3IsolationDomainRequest,
-  output: InternalNetworksList,
+  input: __S(346) as any as S.Schema<ListInternalNetworkByL3IsolationDomainRequest>,
+  output: __S(349) as any as S.Schema<InternalNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16365,8 +11828,8 @@ export const ListInternetGatewayByResourceGroup: API.OperationMethod<
   ListInternetGatewayByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInternetGatewayByResourceGroupRequest,
-  output: InternetGatewaysListResult,
+  input: __S(350) as any as S.Schema<ListInternetGatewayByResourceGroupRequest>,
+  output: __S(353) as any as S.Schema<InternetGatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16380,8 +11843,8 @@ export const ListInternetGatewayBySubscription: API.OperationMethod<
   ListInternetGatewayBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInternetGatewayBySubscriptionRequest,
-  output: InternetGatewaysListResult,
+  input: __S(354) as any as S.Schema<ListInternetGatewayBySubscriptionRequest>,
+  output: __S(353) as any as S.Schema<InternetGatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16395,8 +11858,8 @@ export const ListInternetGatewayRuleByResourceGroup: API.OperationMethod<
   ListInternetGatewayRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInternetGatewayRuleByResourceGroupRequest,
-  output: InternetGatewayRulesListResult,
+  input: __S(355) as any as S.Schema<ListInternetGatewayRuleByResourceGroupRequest>,
+  output: __S(358) as any as S.Schema<InternetGatewayRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16410,8 +11873,8 @@ export const ListInternetGatewayRuleBySubscription: API.OperationMethod<
   ListInternetGatewayRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInternetGatewayRuleBySubscriptionRequest,
-  output: InternetGatewayRulesListResult,
+  input: __S(359) as any as S.Schema<ListInternetGatewayRuleBySubscriptionRequest>,
+  output: __S(358) as any as S.Schema<InternetGatewayRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16425,8 +11888,8 @@ export const ListIpCommunityByResourceGroup: API.OperationMethod<
   ListIpCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpCommunityByResourceGroupRequest,
-  output: IpCommunitiesListResult,
+  input: __S(360) as any as S.Schema<ListIpCommunityByResourceGroupRequest>,
+  output: __S(362) as any as S.Schema<IpCommunitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16440,8 +11903,8 @@ export const ListIpCommunityBySubscription: API.OperationMethod<
   ListIpCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpCommunityBySubscriptionRequest,
-  output: IpCommunitiesListResult,
+  input: __S(363) as any as S.Schema<ListIpCommunityBySubscriptionRequest>,
+  output: __S(362) as any as S.Schema<IpCommunitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16455,8 +11918,8 @@ export const ListIpExtendedCommunityByResourceGroup: API.OperationMethod<
   ListIpExtendedCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpExtendedCommunityByResourceGroupRequest,
-  output: IpExtendedCommunityListResult,
+  input: __S(364) as any as S.Schema<ListIpExtendedCommunityByResourceGroupRequest>,
+  output: __S(367) as any as S.Schema<IpExtendedCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16470,8 +11933,8 @@ export const ListIpExtendedCommunityBySubscription: API.OperationMethod<
   ListIpExtendedCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpExtendedCommunityBySubscriptionRequest,
-  output: IpExtendedCommunityListResult,
+  input: __S(368) as any as S.Schema<ListIpExtendedCommunityBySubscriptionRequest>,
+  output: __S(367) as any as S.Schema<IpExtendedCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16485,8 +11948,8 @@ export const ListIpPrefixByResourceGroup: API.OperationMethod<
   ListIpPrefixByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpPrefixByResourceGroupRequest,
-  output: IpPrefixesListResult,
+  input: __S(369) as any as S.Schema<ListIpPrefixByResourceGroupRequest>,
+  output: __S(371) as any as S.Schema<IpPrefixesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16500,8 +11963,8 @@ export const ListIpPrefixBySubscription: API.OperationMethod<
   ListIpPrefixBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpPrefixBySubscriptionRequest,
-  output: IpPrefixesListResult,
+  input: __S(372) as any as S.Schema<ListIpPrefixBySubscriptionRequest>,
+  output: __S(371) as any as S.Schema<IpPrefixesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16515,8 +11978,8 @@ export const ListL2IsolationDomainByResourceGroup: API.OperationMethod<
   ListL2IsolationDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListL2IsolationDomainByResourceGroupRequest,
-  output: L2IsolationDomainsListResult,
+  input: __S(373) as any as S.Schema<ListL2IsolationDomainByResourceGroupRequest>,
+  output: __S(376) as any as S.Schema<L2IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16530,8 +11993,8 @@ export const ListL2IsolationDomainBySubscription: API.OperationMethod<
   ListL2IsolationDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListL2IsolationDomainBySubscriptionRequest,
-  output: L2IsolationDomainsListResult,
+  input: __S(377) as any as S.Schema<ListL2IsolationDomainBySubscriptionRequest>,
+  output: __S(376) as any as S.Schema<L2IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16545,8 +12008,8 @@ export const ListL3IsolationDomainByResourceGroup: API.OperationMethod<
   ListL3IsolationDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListL3IsolationDomainByResourceGroupRequest,
-  output: L3IsolationDomainsListResult,
+  input: __S(378) as any as S.Schema<ListL3IsolationDomainByResourceGroupRequest>,
+  output: __S(381) as any as S.Schema<L3IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16560,8 +12023,8 @@ export const ListL3IsolationDomainBySubscription: API.OperationMethod<
   ListL3IsolationDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListL3IsolationDomainBySubscriptionRequest,
-  output: L3IsolationDomainsListResult,
+  input: __S(382) as any as S.Schema<ListL3IsolationDomainBySubscriptionRequest>,
+  output: __S(381) as any as S.Schema<L3IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16575,8 +12038,8 @@ export const ListNeighborGroupByResourceGroup: API.OperationMethod<
   ListNeighborGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNeighborGroupByResourceGroupRequest,
-  output: NeighborGroupsListResult,
+  input: __S(383) as any as S.Schema<ListNeighborGroupByResourceGroupRequest>,
+  output: __S(385) as any as S.Schema<NeighborGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16590,8 +12053,8 @@ export const ListNeighborGroupBySubscription: API.OperationMethod<
   ListNeighborGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNeighborGroupBySubscriptionRequest,
-  output: NeighborGroupsListResult,
+  input: __S(386) as any as S.Schema<ListNeighborGroupBySubscriptionRequest>,
+  output: __S(385) as any as S.Schema<NeighborGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16605,8 +12068,8 @@ export const ListNetworkBootstrapDeviceByResourceGroup: API.OperationMethod<
   ListNetworkBootstrapDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkBootstrapDeviceByResourceGroupRequest,
-  output: NetworkBootstrapDeviceListResult,
+  input: __S(387) as any as S.Schema<ListNetworkBootstrapDeviceByResourceGroupRequest>,
+  output: __S(390) as any as S.Schema<NetworkBootstrapDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16620,8 +12083,8 @@ export const ListNetworkBootstrapDeviceBySubscription: API.OperationMethod<
   ListNetworkBootstrapDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkBootstrapDeviceBySubscriptionRequest,
-  output: NetworkBootstrapDeviceListResult,
+  input: __S(391) as any as S.Schema<ListNetworkBootstrapDeviceBySubscriptionRequest>,
+  output: __S(390) as any as S.Schema<NetworkBootstrapDeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16635,8 +12098,8 @@ export const ListNetworkBootstrapInterfaceByNetworkBootstrapDevice: API.Operatio
   ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest,
-  output: NetworkBootstrapInterfaceListResult,
+  input: __S(392) as any as S.Schema<ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest>,
+  output: __S(394) as any as S.Schema<NetworkBootstrapInterfaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16650,8 +12113,8 @@ export const ListNetworkDeviceByResourceGroup: API.OperationMethod<
   ListNetworkDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkDeviceByResourceGroupRequest,
-  output: NetworkDevicesListResult,
+  input: __S(395) as any as S.Schema<ListNetworkDeviceByResourceGroupRequest>,
+  output: __S(397) as any as S.Schema<NetworkDevicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16665,8 +12128,8 @@ export const ListNetworkDeviceBySubscription: API.OperationMethod<
   ListNetworkDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkDeviceBySubscriptionRequest,
-  output: NetworkDevicesListResult,
+  input: __S(398) as any as S.Schema<ListNetworkDeviceBySubscriptionRequest>,
+  output: __S(397) as any as S.Schema<NetworkDevicesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16680,8 +12143,8 @@ export const ListNetworkDeviceSkusBySubscription: API.OperationMethod<
   ListNetworkDeviceSkusBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkDeviceSkusBySubscriptionRequest,
-  output: NetworkDeviceSkusListResult,
+  input: __S(399) as any as S.Schema<ListNetworkDeviceSkusBySubscriptionRequest>,
+  output: __S(402) as any as S.Schema<NetworkDeviceSkusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16695,8 +12158,8 @@ export const ListNetworkFabricByResourceGroup: API.OperationMethod<
   ListNetworkFabricByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkFabricByResourceGroupRequest,
-  output: NetworkFabricsListResult,
+  input: __S(403) as any as S.Schema<ListNetworkFabricByResourceGroupRequest>,
+  output: __S(405) as any as S.Schema<NetworkFabricsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16710,8 +12173,8 @@ export const ListNetworkFabricBySubscription: API.OperationMethod<
   ListNetworkFabricBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkFabricBySubscriptionRequest,
-  output: NetworkFabricsListResult,
+  input: __S(406) as any as S.Schema<ListNetworkFabricBySubscriptionRequest>,
+  output: __S(405) as any as S.Schema<NetworkFabricsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16725,8 +12188,8 @@ export const ListNetworkFabricControllerByResourceGroup: API.OperationMethod<
   ListNetworkFabricControllerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkFabricControllerByResourceGroupRequest,
-  output: NetworkFabricControllersListResult,
+  input: __S(407) as any as S.Schema<ListNetworkFabricControllerByResourceGroupRequest>,
+  output: __S(410) as any as S.Schema<NetworkFabricControllersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16740,8 +12203,8 @@ export const ListNetworkFabricControllerBySubscription: API.OperationMethod<
   ListNetworkFabricControllerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkFabricControllerBySubscriptionRequest,
-  output: NetworkFabricControllersListResult,
+  input: __S(411) as any as S.Schema<ListNetworkFabricControllerBySubscriptionRequest>,
+  output: __S(410) as any as S.Schema<NetworkFabricControllersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16755,8 +12218,8 @@ export const ListNetworkFabricSkusBySubscription: API.OperationMethod<
   ListNetworkFabricSkusBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkFabricSkusBySubscriptionRequest,
-  output: NetworkFabricSkusListResult,
+  input: __S(412) as any as S.Schema<ListNetworkFabricSkusBySubscriptionRequest>,
+  output: __S(415) as any as S.Schema<NetworkFabricSkusListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16770,8 +12233,8 @@ export const ListNetworkInterfaceByNetworkDevice: API.OperationMethod<
   ListNetworkInterfaceByNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkInterfaceByNetworkDeviceRequest,
-  output: NetworkInterfacesList,
+  input: __S(416) as any as S.Schema<ListNetworkInterfaceByNetworkDeviceRequest>,
+  output: __S(419) as any as S.Schema<NetworkInterfacesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16785,8 +12248,8 @@ export const ListNetworkMonitorByResourceGroup: API.OperationMethod<
   ListNetworkMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkMonitorByResourceGroupRequest,
-  output: NetworkMonitorListResult,
+  input: __S(420) as any as S.Schema<ListNetworkMonitorByResourceGroupRequest>,
+  output: __S(423) as any as S.Schema<NetworkMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16800,8 +12263,8 @@ export const ListNetworkMonitorBySubscription: API.OperationMethod<
   ListNetworkMonitorBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkMonitorBySubscriptionRequest,
-  output: NetworkMonitorListResult,
+  input: __S(424) as any as S.Schema<ListNetworkMonitorBySubscriptionRequest>,
+  output: __S(423) as any as S.Schema<NetworkMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16815,8 +12278,8 @@ export const ListNetworkPacketBrokerByResourceGroup: API.OperationMethod<
   ListNetworkPacketBrokerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkPacketBrokerByResourceGroupRequest,
-  output: NetworkPacketBrokersListResult,
+  input: __S(425) as any as S.Schema<ListNetworkPacketBrokerByResourceGroupRequest>,
+  output: __S(428) as any as S.Schema<NetworkPacketBrokersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16830,8 +12293,8 @@ export const ListNetworkPacketBrokerBySubscription: API.OperationMethod<
   ListNetworkPacketBrokerBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkPacketBrokerBySubscriptionRequest,
-  output: NetworkPacketBrokersListResult,
+  input: __S(429) as any as S.Schema<ListNetworkPacketBrokerBySubscriptionRequest>,
+  output: __S(428) as any as S.Schema<NetworkPacketBrokersListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16845,8 +12308,8 @@ export const ListNetworkRackByResourceGroup: API.OperationMethod<
   ListNetworkRackByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkRackByResourceGroupRequest,
-  output: NetworkRacksListResult,
+  input: __S(430) as any as S.Schema<ListNetworkRackByResourceGroupRequest>,
+  output: __S(432) as any as S.Schema<NetworkRacksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16860,8 +12323,8 @@ export const ListNetworkRackBySubscription: API.OperationMethod<
   ListNetworkRackBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkRackBySubscriptionRequest,
-  output: NetworkRacksListResult,
+  input: __S(433) as any as S.Schema<ListNetworkRackBySubscriptionRequest>,
+  output: __S(432) as any as S.Schema<NetworkRacksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16875,8 +12338,8 @@ export const ListNetworkTapByResourceGroup: API.OperationMethod<
   ListNetworkTapByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkTapByResourceGroupRequest,
-  output: NetworkTapsListResult,
+  input: __S(434) as any as S.Schema<ListNetworkTapByResourceGroupRequest>,
+  output: __S(436) as any as S.Schema<NetworkTapsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16890,8 +12353,8 @@ export const ListNetworkTapBySubscription: API.OperationMethod<
   ListNetworkTapBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkTapBySubscriptionRequest,
-  output: NetworkTapsListResult,
+  input: __S(437) as any as S.Schema<ListNetworkTapBySubscriptionRequest>,
+  output: __S(436) as any as S.Schema<NetworkTapsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16905,8 +12368,8 @@ export const ListNetworkTapRuleByResourceGroup: API.OperationMethod<
   ListNetworkTapRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkTapRuleByResourceGroupRequest,
-  output: NetworkTapRulesListResult,
+  input: __S(438) as any as S.Schema<ListNetworkTapRuleByResourceGroupRequest>,
+  output: __S(441) as any as S.Schema<NetworkTapRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16920,8 +12383,8 @@ export const ListNetworkTapRuleBySubscription: API.OperationMethod<
   ListNetworkTapRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkTapRuleBySubscriptionRequest,
-  output: NetworkTapRulesListResult,
+  input: __S(442) as any as S.Schema<ListNetworkTapRuleBySubscriptionRequest>,
+  output: __S(441) as any as S.Schema<NetworkTapRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16935,8 +12398,8 @@ export const ListNetworkToNetworkInterconnectByNetworkFabric: API.OperationMetho
   ListNetworkToNetworkInterconnectByNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkToNetworkInterconnectByNetworkFabricRequest,
-  output: NetworkToNetworkInterconnectsList,
+  input: __S(443) as any as S.Schema<ListNetworkToNetworkInterconnectByNetworkFabricRequest>,
+  output: __S(445) as any as S.Schema<NetworkToNetworkInterconnectsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16950,8 +12413,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(446) as any as S.Schema<ListOperationsRequest>,
+  output: __S(450) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16965,8 +12428,8 @@ export const ListRoutePolicyByResourceGroup: API.OperationMethod<
   ListRoutePolicyByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoutePolicyByResourceGroupRequest,
-  output: RoutePoliciesListResult,
+  input: __S(451) as any as S.Schema<ListRoutePolicyByResourceGroupRequest>,
+  output: __S(453) as any as S.Schema<RoutePoliciesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16980,8 +12443,8 @@ export const ListRoutePolicyBySubscription: API.OperationMethod<
   ListRoutePolicyBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoutePolicyBySubscriptionRequest,
-  output: RoutePoliciesListResult,
+  input: __S(454) as any as S.Schema<ListRoutePolicyBySubscriptionRequest>,
+  output: __S(453) as any as S.Schema<RoutePoliciesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -16995,8 +12458,8 @@ export const LockNetworkFabricFabric: API.OperationMethod<
   LockNetworkFabricFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LockNetworkFabricFabricRequest,
-  output: LockNetworkFabricFabricResponse,
+  input: __S(455) as any as S.Schema<LockNetworkFabricFabricRequest>,
+  output: __S(12) as any as S.Schema<LockNetworkFabricFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17010,8 +12473,8 @@ export const NeighborGroupsResync: API.OperationMethod<
   NeighborGroupsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NeighborGroupsResyncRequest,
-  output: NeighborGroupResyncResponse,
+  input: __S(456) as any as S.Schema<NeighborGroupsResyncRequest>,
+  output: __S(21) as any as S.Schema<NeighborGroupResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17025,8 +12488,8 @@ export const NetworkBootstrapDevicesResyncPasswords: API.OperationMethod<
   NetworkBootstrapDevicesResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkBootstrapDevicesResyncPasswordsRequest,
-  output: NetworkBootstrapDeviceResyncPasswordsResponse,
+  input: __S(457) as any as S.Schema<NetworkBootstrapDevicesResyncPasswordsRequest>,
+  output: __S(463) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17040,8 +12503,8 @@ export const NetworkBootstrapDevicesUpgrade: API.OperationMethod<
   NetworkBootstrapDevicesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkBootstrapDevicesUpgradeRequest,
-  output: NetworkBootstrapDeviceUpgradeResponse,
+  input: __S(464) as any as S.Schema<NetworkBootstrapDevicesUpgradeRequest>,
+  output: __S(467) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17055,8 +12518,8 @@ export const NetworkDevicesResyncCertificates: API.OperationMethod<
   NetworkDevicesResyncCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkDevicesResyncCertificatesRequest,
-  output: NetworkFabricResyncCertificatesResponse,
+  input: __S(468) as any as S.Schema<NetworkDevicesResyncCertificatesRequest>,
+  output: __S(467) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17070,8 +12533,8 @@ export const NetworkDevicesResyncPasswords: API.OperationMethod<
   NetworkDevicesResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkDevicesResyncPasswordsRequest,
-  output: NetworkDeviceResyncPasswordsResponse,
+  input: __S(469) as any as S.Schema<NetworkDevicesResyncPasswordsRequest>,
+  output: __S(467) as any as S.Schema<NetworkDeviceResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17085,8 +12548,8 @@ export const NetworkDevicesUpgrade: API.OperationMethod<
   NetworkDevicesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkDevicesUpgradeRequest,
-  output: NetworkDeviceUpgradeResponse,
+  input: __S(470) as any as S.Schema<NetworkDevicesUpgradeRequest>,
+  output: __S(21) as any as S.Schema<NetworkDeviceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17100,8 +12563,8 @@ export const NetworkFabricsArmConfigurationDiff: API.OperationMethod<
   NetworkFabricsArmConfigurationDiffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsArmConfigurationDiffRequest,
-  output: ArmConfigurationDiffOperationResponse,
+  input: __S(471) as any as S.Schema<NetworkFabricsArmConfigurationDiffRequest>,
+  output: __S(473) as any as S.Schema<ArmConfigurationDiffOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17115,8 +12578,8 @@ export const NetworkFabricsDeprovision: API.OperationMethod<
   NetworkFabricsDeprovisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsDeprovisionRequest,
-  output: NetworkFabricsDeprovisionResponse,
+  input: __S(474) as any as S.Schema<NetworkFabricsDeprovisionRequest>,
+  output: __S(12) as any as S.Schema<NetworkFabricsDeprovisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17130,8 +12593,8 @@ export const NetworkFabricsDiscardCommitBatch: API.OperationMethod<
   NetworkFabricsDiscardCommitBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsDiscardCommitBatchRequest,
-  output: DiscardCommitBatchOperationResponse,
+  input: __S(475) as any as S.Schema<NetworkFabricsDiscardCommitBatchRequest>,
+  output: __S(477) as any as S.Schema<DiscardCommitBatchOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17145,8 +12608,8 @@ export const NetworkFabricsResyncCertificates: API.OperationMethod<
   NetworkFabricsResyncCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsResyncCertificatesRequest,
-  output: NetworkFabricResyncCertificatesResponse,
+  input: __S(478) as any as S.Schema<NetworkFabricsResyncCertificatesRequest>,
+  output: __S(467) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17160,8 +12623,8 @@ export const NetworkFabricsResyncPasswords: API.OperationMethod<
   NetworkFabricsResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsResyncPasswordsRequest,
-  output: NetworkFabricResyncPasswordsResponse,
+  input: __S(479) as any as S.Schema<NetworkFabricsResyncPasswordsRequest>,
+  output: __S(467) as any as S.Schema<NetworkFabricResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17175,8 +12638,8 @@ export const NetworkFabricsUpgrade: API.OperationMethod<
   NetworkFabricsUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsUpgradeRequest,
-  output: NetworkFabricsUpgradeResponse,
+  input: __S(480) as any as S.Schema<NetworkFabricsUpgradeRequest>,
+  output: __S(12) as any as S.Schema<NetworkFabricsUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17190,8 +12653,8 @@ export const NetworkFabricsViewDeviceConfiguration: API.OperationMethod<
   NetworkFabricsViewDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkFabricsViewDeviceConfigurationRequest,
-  output: ViewDeviceConfigurationOperationResponse,
+  input: __S(481) as any as S.Schema<NetworkFabricsViewDeviceConfigurationRequest>,
+  output: __S(484) as any as S.Schema<ViewDeviceConfigurationOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17205,8 +12668,8 @@ export const NetworkTapRulesResync: API.OperationMethod<
   NetworkTapRulesResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkTapRulesResyncRequest,
-  output: NetworkTapRuleResyncResponse,
+  input: __S(485) as any as S.Schema<NetworkTapRulesResyncRequest>,
+  output: __S(21) as any as S.Schema<NetworkTapRuleResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17220,8 +12683,8 @@ export const NetworkTapsResync: API.OperationMethod<
   NetworkTapsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkTapsResyncRequest,
-  output: NetworkTapResyncResponse,
+  input: __S(486) as any as S.Schema<NetworkTapsResyncRequest>,
+  output: __S(487) as any as S.Schema<NetworkTapResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17235,8 +12698,8 @@ export const ProvisionNetworkFabric: API.OperationMethod<
   ProvisionNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProvisionNetworkFabricRequest,
-  output: ProvisionNetworkFabricResponse,
+  input: __S(488) as any as S.Schema<ProvisionNetworkFabricRequest>,
+  output: __S(12) as any as S.Schema<ProvisionNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17250,8 +12713,8 @@ export const RebootNetworkBootstrapDevice: API.OperationMethod<
   RebootNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootNetworkBootstrapDeviceRequest,
-  output: NetworkBootstrapDeviceRebootResponse,
+  input: __S(489) as any as S.Schema<RebootNetworkBootstrapDeviceRequest>,
+  output: __S(467) as any as S.Schema<NetworkBootstrapDeviceRebootResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17265,8 +12728,8 @@ export const RebootNetworkDevice: API.OperationMethod<
   RebootNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootNetworkDeviceRequest,
-  output: RebootNetworkDeviceResponse,
+  input: __S(490) as any as S.Schema<RebootNetworkDeviceRequest>,
+  output: __S(12) as any as S.Schema<RebootNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17280,8 +12743,8 @@ export const RefreshNetworkBootstrapDeviceConfiguration: API.OperationMethod<
   RefreshNetworkBootstrapDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshNetworkBootstrapDeviceConfigurationRequest,
-  output: NetworkBootstrapDeviceRefreshConfigurationResponse,
+  input: __S(491) as any as S.Schema<RefreshNetworkBootstrapDeviceConfigurationRequest>,
+  output: __S(496) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17295,8 +12758,8 @@ export const RefreshNetworkDeviceConfiguration: API.OperationMethod<
   RefreshNetworkDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshNetworkDeviceConfigurationRequest,
-  output: NetworkDeviceRefreshConfigurationResponse,
+  input: __S(497) as any as S.Schema<RefreshNetworkDeviceConfigurationRequest>,
+  output: __S(498) as any as S.Schema<NetworkDeviceRefreshConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17310,8 +12773,8 @@ export const RefreshNetworkFabricConfiguration: API.OperationMethod<
   RefreshNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshNetworkFabricConfigurationRequest,
-  output: RefreshNetworkFabricConfigurationResponse,
+  input: __S(499) as any as S.Schema<RefreshNetworkFabricConfigurationRequest>,
+  output: __S(12) as any as S.Schema<RefreshNetworkFabricConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17325,8 +12788,8 @@ export const RotateNetworkFabricCertificates: API.OperationMethod<
   RotateNetworkFabricCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateNetworkFabricCertificatesRequest,
-  output: NetworkFabricRotateCertificatesResponse,
+  input: __S(500) as any as S.Schema<RotateNetworkFabricCertificatesRequest>,
+  output: __S(467) as any as S.Schema<NetworkFabricRotateCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17340,8 +12803,8 @@ export const RotateNetworkFabricPasswords: API.OperationMethod<
   RotateNetworkFabricPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateNetworkFabricPasswordsRequest,
-  output: NetworkFabricRotatePasswordsResponse,
+  input: __S(501) as any as S.Schema<RotateNetworkFabricPasswordsRequest>,
+  output: __S(467) as any as S.Schema<NetworkFabricRotatePasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17355,8 +12818,8 @@ export const RunNetworkDeviceRoCommand: API.OperationMethod<
   RunNetworkDeviceRoCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunNetworkDeviceRoCommandRequest,
-  output: RunNetworkDeviceRoCommandResponse,
+  input: __S(502) as any as S.Schema<RunNetworkDeviceRoCommandRequest>,
+  output: __S(504) as any as S.Schema<RunNetworkDeviceRoCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17370,8 +12833,8 @@ export const RunNetworkDeviceRwCommand: API.OperationMethod<
   RunNetworkDeviceRwCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunNetworkDeviceRwCommandRequest,
-  output: NetworkDeviceRunRwCommandResponse,
+  input: __S(505) as any as S.Schema<RunNetworkDeviceRwCommandRequest>,
+  output: __S(507) as any as S.Schema<NetworkDeviceRunRwCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17385,8 +12848,8 @@ export const UpdateAccessControlList: API.OperationMethod<
   UpdateAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessControlListRequest,
-  output: UpdateAccessControlListResponse,
+  input: __S(514) as any as S.Schema<UpdateAccessControlListRequest>,
+  output: __S(62) as any as S.Schema<UpdateAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17400,8 +12863,8 @@ export const UpdateAccessControlListAdministrativeState: API.OperationMethod<
   UpdateAccessControlListAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessControlListAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(516) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17415,8 +12878,8 @@ export const UpdateExternalNetwork: API.OperationMethod<
   UpdateExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExternalNetworkRequest,
-  output: UpdateExternalNetworkResponse,
+  input: __S(529) as any as S.Schema<UpdateExternalNetworkRequest>,
+  output: __S(82) as any as S.Schema<UpdateExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17430,8 +12893,8 @@ export const UpdateExternalNetworkAdministrativeState: API.OperationMethod<
   UpdateExternalNetworkAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExternalNetworkAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(530) as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17445,8 +12908,8 @@ export const UpdateExternalNetworkBfdAdministrativeState: API.OperationMethod<
   UpdateExternalNetworkBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExternalNetworkBfdAdministrativeStateRequest,
-  output: ExternalNetworkUpdateBfdAdministrativeStateResponse,
+  input: __S(531) as any as S.Schema<UpdateExternalNetworkBfdAdministrativeStateRequest>,
+  output: __S(534) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17460,8 +12923,8 @@ export const UpdateExternalNetworkStaticRouteBfdAdministrativeState: API.Operati
   UpdateExternalNetworkStaticRouteBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(535) as any as S.Schema<UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17475,8 +12938,8 @@ export const UpdateInternalNetwork: API.OperationMethod<
   UpdateInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternalNetworkRequest,
-  output: UpdateInternalNetworkResponse,
+  input: __S(539) as any as S.Schema<UpdateInternalNetworkRequest>,
+  output: __S(99) as any as S.Schema<UpdateInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17490,8 +12953,8 @@ export const UpdateInternalNetworkAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternalNetworkAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(540) as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17505,8 +12968,8 @@ export const UpdateInternalNetworkBfdAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternalNetworkBfdAdministrativeStateRequest,
-  output: InternalNetworkUpdateBfdAdministrativeStateResponse,
+  input: __S(541) as any as S.Schema<UpdateInternalNetworkBfdAdministrativeStateRequest>,
+  output: __S(545) as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17520,8 +12983,8 @@ export const UpdateInternalNetworkBgpAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkBgpAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternalNetworkBgpAdministrativeStateRequest,
-  output: InternalNetworkUpdateBgpAdministrativeStateResponse,
+  input: __S(546) as any as S.Schema<UpdateInternalNetworkBgpAdministrativeStateRequest>,
+  output: __S(547) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17535,8 +12998,8 @@ export const UpdateInternalNetworkStaticRouteBfdAdministrativeState: API.Operati
   UpdateInternalNetworkStaticRouteBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(548) as any as S.Schema<UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17550,8 +13013,8 @@ export const UpdateInternetGateway: API.OperationMethod<
   UpdateInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternetGatewayRequest,
-  output: UpdateInternetGatewayResponse,
+  input: __S(550) as any as S.Schema<UpdateInternetGatewayRequest>,
+  output: __S(103) as any as S.Schema<UpdateInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17565,8 +13028,8 @@ export const UpdateInternetGatewayRule: API.OperationMethod<
   UpdateInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInternetGatewayRuleRequest,
-  output: UpdateInternetGatewayRuleResponse,
+  input: __S(551) as any as S.Schema<UpdateInternetGatewayRuleRequest>,
+  output: __S(110) as any as S.Schema<UpdateInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17580,8 +13043,8 @@ export const UpdateIpCommunity: API.OperationMethod<
   UpdateIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIpCommunityRequest,
-  output: UpdateIpCommunityResponse,
+  input: __S(553) as any as S.Schema<UpdateIpCommunityRequest>,
+  output: __S(116) as any as S.Schema<UpdateIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17595,8 +13058,8 @@ export const UpdateIpExtendedCommunity: API.OperationMethod<
   UpdateIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIpExtendedCommunityRequest,
-  output: UpdateIpExtendedCommunityResponse,
+  input: __S(555) as any as S.Schema<UpdateIpExtendedCommunityRequest>,
+  output: __S(122) as any as S.Schema<UpdateIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17610,8 +13073,8 @@ export const UpdateIpPrefix: API.OperationMethod<
   UpdateIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIpPrefixRequest,
-  output: UpdateIpPrefixResponse,
+  input: __S(557) as any as S.Schema<UpdateIpPrefixRequest>,
+  output: __S(128) as any as S.Schema<UpdateIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17625,8 +13088,8 @@ export const UpdateL2IsolationDomain: API.OperationMethod<
   UpdateL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateL2IsolationDomainRequest,
-  output: UpdateL2IsolationDomainResponse,
+  input: __S(561) as any as S.Schema<UpdateL2IsolationDomainRequest>,
+  output: __S(138) as any as S.Schema<UpdateL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17640,8 +13103,8 @@ export const UpdateL2IsolationDomainAdministrativeState: API.OperationMethod<
   UpdateL2IsolationDomainAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateL2IsolationDomainAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(562) as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17655,8 +13118,8 @@ export const UpdateL3IsolationDomain: API.OperationMethod<
   UpdateL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateL3IsolationDomainRequest,
-  output: UpdateL3IsolationDomainResponse,
+  input: __S(564) as any as S.Schema<UpdateL3IsolationDomainRequest>,
+  output: __S(148) as any as S.Schema<UpdateL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17670,8 +13133,8 @@ export const UpdateL3IsolationDomainAdministrativeState: API.OperationMethod<
   UpdateL3IsolationDomainAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateL3IsolationDomainAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(565) as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17685,8 +13148,8 @@ export const UpdateNeighborGroup: API.OperationMethod<
   UpdateNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNeighborGroupRequest,
-  output: UpdateNeighborGroupResponse,
+  input: __S(568) as any as S.Schema<UpdateNeighborGroupRequest>,
+  output: __S(153) as any as S.Schema<UpdateNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17700,8 +13163,8 @@ export const UpdateNetworkBootstrapDevice: API.OperationMethod<
   UpdateNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkBootstrapDeviceRequest,
-  output: UpdateNetworkBootstrapDeviceResponse,
+  input: __S(570) as any as S.Schema<UpdateNetworkBootstrapDeviceRequest>,
+  output: __S(157) as any as S.Schema<UpdateNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17715,8 +13178,8 @@ export const UpdateNetworkBootstrapDeviceAdministrativeState: API.OperationMetho
   UpdateNetworkBootstrapDeviceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkBootstrapDeviceAdministrativeStateRequest,
-  output: NetworkBootstrapDeviceUpdateAdministrativeStateResponse,
+  input: __S(571) as any as S.Schema<UpdateNetworkBootstrapDeviceAdministrativeStateRequest>,
+  output: __S(572) as any as S.Schema<NetworkBootstrapDeviceUpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17730,8 +13193,8 @@ export const UpdateNetworkBootstrapInterface: API.OperationMethod<
   UpdateNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkBootstrapInterfaceRequest,
-  output: UpdateNetworkBootstrapInterfaceResponse,
+  input: __S(574) as any as S.Schema<UpdateNetworkBootstrapInterfaceRequest>,
+  output: __S(161) as any as S.Schema<UpdateNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17745,8 +13208,8 @@ export const UpdateNetworkBootstrapInterfaceAdministrativeState: API.OperationMe
   UpdateNetworkBootstrapInterfaceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkBootstrapInterfaceAdministrativeStateRequest,
-  output: UpdateNetworkBootstrapInterfaceAdministrativeStateResponse,
+  input: __S(575) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateRequest>,
+  output: __S(576) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17760,8 +13223,8 @@ export const UpdateNetworkDevice: API.OperationMethod<
   UpdateNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkDeviceRequest,
-  output: UpdateNetworkDeviceResponse,
+  input: __S(579) as any as S.Schema<UpdateNetworkDeviceRequest>,
+  output: __S(172) as any as S.Schema<UpdateNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17775,8 +13238,8 @@ export const UpdateNetworkDeviceAdministrativeState: API.OperationMethod<
   UpdateNetworkDeviceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkDeviceAdministrativeStateRequest,
-  output: NetworkDeviceUpdateAdministrativeStateResponse,
+  input: __S(580) as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequest>,
+  output: __S(463) as any as S.Schema<NetworkDeviceUpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17790,8 +13253,8 @@ export const UpdateNetworkFabric: API.OperationMethod<
   UpdateNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkFabricRequest,
-  output: UpdateNetworkFabricResponse,
+  input: __S(589) as any as S.Schema<UpdateNetworkFabricRequest>,
+  output: __S(194) as any as S.Schema<UpdateNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17805,8 +13268,8 @@ export const UpdateNetworkFabricController: API.OperationMethod<
   UpdateNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkFabricControllerRequest,
-  output: UpdateNetworkFabricControllerResponse,
+  input: __S(591) as any as S.Schema<UpdateNetworkFabricControllerRequest>,
+  output: __S(202) as any as S.Schema<UpdateNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17820,8 +13283,8 @@ export const UpdateNetworkFabricInfraManagementBfdConfiguration: API.OperationMe
   UpdateNetworkFabricInfraManagementBfdConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkFabricInfraManagementBfdConfigurationRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(592) as any as S.Schema<UpdateNetworkFabricInfraManagementBfdConfigurationRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17835,8 +13298,8 @@ export const UpdateNetworkFabricWorkloadManagementBfdConfiguration: API.Operatio
   UpdateNetworkFabricWorkloadManagementBfdConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(593) as any as S.Schema<UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17850,8 +13313,8 @@ export const UpdateNetworkInterface: API.OperationMethod<
   UpdateNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkInterfaceRequest,
-  output: UpdateNetworkInterfaceResponse,
+  input: __S(594) as any as S.Schema<UpdateNetworkInterfaceRequest>,
+  output: __S(206) as any as S.Schema<UpdateNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17865,8 +13328,8 @@ export const UpdateNetworkInterfaceAdministrativeState: API.OperationMethod<
   UpdateNetworkInterfaceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkInterfaceAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(595) as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17880,8 +13343,8 @@ export const UpdateNetworkMonitor: API.OperationMethod<
   UpdateNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkMonitorRequest,
-  output: UpdateNetworkMonitorResponse,
+  input: __S(598) as any as S.Schema<UpdateNetworkMonitorRequest>,
+  output: __S(212) as any as S.Schema<UpdateNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17895,8 +13358,8 @@ export const UpdateNetworkMonitorAdministrativeState: API.OperationMethod<
   UpdateNetworkMonitorAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkMonitorAdministrativeStateRequest,
-  output: UpdateNetworkMonitorAdministrativeStateResponse,
+  input: __S(599) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequest>,
+  output: __S(600) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17910,8 +13373,8 @@ export const UpdateNetworkPacketBroker: API.OperationMethod<
   UpdateNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkPacketBrokerRequest,
-  output: UpdateNetworkPacketBrokerResponse,
+  input: __S(601) as any as S.Schema<UpdateNetworkPacketBrokerRequest>,
+  output: __S(216) as any as S.Schema<UpdateNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17925,8 +13388,8 @@ export const UpdateNetworkRack: API.OperationMethod<
   UpdateNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkRackRequest,
-  output: UpdateNetworkRackResponse,
+  input: __S(602) as any as S.Schema<UpdateNetworkRackRequest>,
+  output: __S(220) as any as S.Schema<UpdateNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17940,8 +13403,8 @@ export const UpdateNetworkTap: API.OperationMethod<
   UpdateNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkTapRequest,
-  output: UpdateNetworkTapResponse,
+  input: __S(606) as any as S.Schema<UpdateNetworkTapRequest>,
+  output: __S(227) as any as S.Schema<UpdateNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17955,8 +13418,8 @@ export const UpdateNetworkTapAdministrativeState: API.OperationMethod<
   UpdateNetworkTapAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkTapAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(607) as any as S.Schema<UpdateNetworkTapAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17970,8 +13433,8 @@ export const UpdateNetworkTapRule: API.OperationMethod<
   UpdateNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkTapRuleRequest,
-  output: UpdateNetworkTapRuleResponse,
+  input: __S(614) as any as S.Schema<UpdateNetworkTapRuleRequest>,
+  output: __S(239) as any as S.Schema<UpdateNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -17985,8 +13448,8 @@ export const UpdateNetworkTapRuleAdministrativeState: API.OperationMethod<
   UpdateNetworkTapRuleAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkTapRuleAdministrativeStateRequest,
-  output: UpdateNetworkTapRuleAdministrativeStateResponse,
+  input: __S(615) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequest>,
+  output: __S(5) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18000,8 +13463,8 @@ export const UpdateNetworkToNetworkInterconnect: API.OperationMethod<
   UpdateNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkToNetworkInterconnectRequest,
-  output: UpdateNetworkToNetworkInterconnectResponse,
+  input: __S(619) as any as S.Schema<UpdateNetworkToNetworkInterconnectRequest>,
+  output: __S(252) as any as S.Schema<UpdateNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18015,8 +13478,8 @@ export const UpdateNetworkToNetworkInterconnectAdministrativeState: API.Operatio
   UpdateNetworkToNetworkInterconnectAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkToNetworkInterconnectAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(620) as any as S.Schema<UpdateNetworkToNetworkInterconnectAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18030,8 +13493,10 @@ export const UpdateNetworkToNetworkInterconnectBfdAdministrativeState: API.Opera
   UpdateNetworkToNetworkInterconnectBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest,
-  output: NniUpdateBfdAdministrativeStateResponse,
+  input: __S(
+    621,
+  ) as any as S.Schema<UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest>,
+  output: __S(623) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18046,8 +13511,10 @@ export const UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeSt
   UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(
+    624,
+  ) as any as S.Schema<UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18061,8 +13528,8 @@ export const UpdateRoutePolicy: API.OperationMethod<
   UpdateRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoutePolicyRequest,
-  output: UpdateRoutePolicyResponse,
+  input: __S(629) as any as S.Schema<UpdateRoutePolicyRequest>,
+  output: __S(264) as any as S.Schema<UpdateRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18076,8 +13543,8 @@ export const UpdateRoutePolicyAdministrativeState: API.OperationMethod<
   UpdateRoutePolicyAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoutePolicyAdministrativeStateRequest,
-  output: UpdateAdministrativeStateResponse,
+  input: __S(630) as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequest>,
+  output: __S(518) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18091,8 +13558,8 @@ export const ValidateAccessControlListConfiguration: API.OperationMethod<
   ValidateAccessControlListConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAccessControlListConfigurationRequest,
-  output: ValidateAccessControlListConfigurationResponse,
+  input: __S(631) as any as S.Schema<ValidateAccessControlListConfigurationRequest>,
+  output: __S(632) as any as S.Schema<ValidateAccessControlListConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18106,8 +13573,8 @@ export const ValidateL2IsolationDomainConfiguration: API.OperationMethod<
   ValidateL2IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateL2IsolationDomainConfigurationRequest,
-  output: ValidateL2IsolationDomainConfigurationResponse,
+  input: __S(633) as any as S.Schema<ValidateL2IsolationDomainConfigurationRequest>,
+  output: __S(632) as any as S.Schema<ValidateL2IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18121,8 +13588,8 @@ export const ValidateL3IsolationDomainConfiguration: API.OperationMethod<
   ValidateL3IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateL3IsolationDomainConfigurationRequest,
-  output: ValidateL3IsolationDomainConfigurationResponse,
+  input: __S(634) as any as S.Schema<ValidateL3IsolationDomainConfigurationRequest>,
+  output: __S(632) as any as S.Schema<ValidateL3IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18136,8 +13603,8 @@ export const ValidateNetworkFabricConfiguration: API.OperationMethod<
   ValidateNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateNetworkFabricConfigurationRequest,
-  output: ValidateNetworkFabricConfigurationResponse,
+  input: __S(635) as any as S.Schema<ValidateNetworkFabricConfigurationRequest>,
+  output: __S(632) as any as S.Schema<ValidateNetworkFabricConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18151,8 +13618,8 @@ export const ValidateNetworkTapRuleConfiguration: API.OperationMethod<
   ValidateNetworkTapRuleConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateNetworkTapRuleConfigurationRequest,
-  output: ValidateNetworkTapRuleConfigurationResponse,
+  input: __S(636) as any as S.Schema<ValidateNetworkTapRuleConfigurationRequest>,
+  output: __S(632) as any as S.Schema<ValidateNetworkTapRuleConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18166,8 +13633,8 @@ export const ValidateRoutePolicyConfiguration: API.OperationMethod<
   ValidateRoutePolicyConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateRoutePolicyConfigurationRequest,
-  output: ValidateRoutePolicyConfigurationResponse,
+  input: __S(637) as any as S.Schema<ValidateRoutePolicyConfigurationRequest>,
+  output: __S(632) as any as S.Schema<ValidateRoutePolicyConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -18194,7 +13661,7 @@ function __c0(j: number): any {
         identifier: "AccessControlListsResyncRequest",
       });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(4)));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -18203,22 +13670,22 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 3:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ErrorDetailDetailsList),
-          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+          details: S.optional(__S(1)),
+          additionalInfo: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ErrorDetail),
-          configurationState: S.optional(ConfigurationState),
+          error: S.optional(__S(4)),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccessControlListsResyncResponse",
@@ -18280,7 +13747,7 @@ function __c1(j: number): any {
         identifier: "CommitNetworkFabricBatchStatusRequest",
       });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(10)));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -18291,12 +13758,12 @@ function __c1(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(OperationStatusResultOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(9)),
+          error: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
     case 3:
-      return S.Array(OperationStatusResult);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18307,24 +13774,24 @@ function __c1(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(CommitBatchStatusOperationResponseOperationsItemOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(11)),
+          error: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "CommitBatchStatusOperationResponseOperationsItem",
       });
     case 5:
-      return S.Array(CommitBatchStatusOperationResponseOperationsItem);
+      return S.Array(__S(12));
     case 6:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(CommitBatchStatusOperationResponseErrorDetailsList),
-          additionalInfo: S.optional(CommitBatchStatusOperationResponseErrorAdditionalInfoList),
+          details: S.optional(__S(14)),
+          additionalInfo: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "CommitBatchStatusOperationResponseError",
@@ -18338,15 +13805,15 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          failedDevices: S.optional(CommitBatchDetailsFailedDevicesList),
+          failedDevices: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "CommitBatchDetails" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           commitBatchId: S.optional(S.String),
-          commitBatchState: S.optional(CommitBatchState),
-          commitBatchDetails: S.optional(CommitBatchDetails),
+          commitBatchState: S.optional(S.String),
+          commitBatchDetails: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "CommitBatchStatusResponseProperties",
@@ -18360,10 +13827,10 @@ function __c2(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(CommitBatchStatusOperationResponseOperationsList),
-          error: S.optional(CommitBatchStatusOperationResponseError),
+          operations: S.optional(__S(13)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
-          properties: S.optional(CommitBatchStatusResponseProperties),
+          properties: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "CommitBatchStatusOperationResponse",
@@ -18374,9 +13841,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          commitStage: S.optional(CommitStage),
-          commitPolicy: S.optional(CommitConfigurationPolicy),
-          devices: S.optional(CommitNetworkFabricConfigurationRequestDevicesList),
+          commitStage: S.optional(S.String),
+          commitPolicy: S.optional(S.String),
+          devices: S.optional(__S(16)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18397,8 +13864,8 @@ function __c2(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(CommitConfigurationResponseOperationsList),
-          error: S.optional(CommitConfigurationResponseError),
+          operations: S.optional(__S(13)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -18430,28 +13897,28 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vlans: S.optional(VlanMatchConditionVlansList),
-          innerVlans: S.optional(VlanMatchConditionInnerVlansList),
-          vlanGroupNames: S.optional(VlanMatchConditionVlanGroupNamesList),
+          vlans: S.optional(__S(16)),
+          innerVlans: S.optional(__S(16)),
+          vlanGroupNames: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "VlanMatchCondition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(SourceDestinationType),
-          prefixType: S.optional(PrefixType),
-          ipPrefixValues: S.optional(IpMatchConditionIpPrefixValuesList),
-          ipGroupNames: S.optional(IpMatchConditionIpGroupNamesList),
+          type: S.optional(S.String),
+          prefixType: S.optional(S.String),
+          ipPrefixValues: S.optional(__S(16)),
+          ipGroupNames: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "IpMatchCondition" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          portType: S.optional(PortType),
-          layer4Protocol: Layer4Protocol,
-          ports: S.optional(AccessControlListPortConditionPortsList),
-          portGroupNames: S.optional(AccessControlListPortConditionPortGroupNamesList),
-          flags: S.optional(AccessControlListPortConditionFlagsList),
+          portType: S.optional(S.String),
+          layer4Protocol: S.String,
+          ports: S.optional(__S(16)),
+          portGroupNames: S.optional(__S(16)),
+          flags: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "AccessControlListPortCondition",
@@ -18459,7 +13926,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          icmpTypes: S.optional(IcmpConfigurationPropertiesIcmpTypesList),
+          icmpTypes: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "IcmpConfigurationProperties",
@@ -18467,35 +13934,35 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(AccessControlListMatchConditionProtocolTypesList),
-          vlanMatchCondition: S.optional(VlanMatchCondition),
-          ipCondition: S.optional(IpMatchCondition),
-          etherTypes: S.optional(AccessControlListMatchConditionEtherTypesList),
-          fragments: S.optional(AccessControlListMatchConditionFragmentsList),
-          ipLengths: S.optional(AccessControlListMatchConditionIpLengthsList),
-          ttlValues: S.optional(AccessControlListMatchConditionTtlValuesList),
-          dscpMarkings: S.optional(AccessControlListMatchConditionDscpMarkingsList),
-          protocolNeighbors: S.optional(AccessControlListMatchConditionProtocolNeighborsList),
-          portCondition: S.optional(AccessControlListPortCondition),
-          icmpConfiguration: S.optional(IcmpConfigurationProperties),
+          protocolTypes: S.optional(__S(16)),
+          vlanMatchCondition: S.optional(__S(24)),
+          ipCondition: S.optional(__S(25)),
+          etherTypes: S.optional(__S(16)),
+          fragments: S.optional(__S(16)),
+          ipLengths: S.optional(__S(16)),
+          ttlValues: S.optional(__S(16)),
+          dscpMarkings: S.optional(__S(16)),
+          protocolNeighbors: S.optional(__S(16)),
+          portCondition: S.optional(__S(26)),
+          icmpConfiguration: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "AccessControlListMatchCondition",
       });
     case 5:
-      return S.Array(AccessControlListMatchCondition);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           rate: S.optional(S.Number),
-          unit: S.optional(BitRateUnit),
+          unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "BitRate" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           size: S.optional(S.Number),
-          unit: S.optional(BurstSizeUnit),
+          unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "BurstSize" });
   }
@@ -18505,8 +13972,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bitRate: S.optional(BitRate),
-          burstSize: S.optional(BurstSize),
+          bitRate: S.optional(__S(30)),
+          burstSize: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "PoliceRateConfigurationProperties",
@@ -18514,43 +13981,43 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(AclActionType),
+          type: S.optional(S.String),
           counterName: S.optional(S.String),
           remarkComment: S.optional(S.String),
-          policeRateConfiguration: S.optional(PoliceRateConfigurationProperties),
+          policeRateConfiguration: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "AccessControlListAction" });
     case 2:
-      return S.Array(AccessControlListAction);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(IPAddressType),
-          matchConditions: S.optional(AccessControlListMatchConfigurationMatchConditionsList),
-          actions: S.optional(AccessControlListMatchConfigurationActionsList),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(29)),
+          actions: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "AccessControlListMatchConfiguration",
       });
     case 4:
-      return S.Array(AccessControlListMatchConfiguration);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          ipAddressType: S.optional(IPAddressType),
-          ipPrefixes: S.optional(IpGroupPropertiesIpPrefixesList),
+          ipAddressType: S.optional(S.String),
+          ipPrefixes: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "IpGroupProperties" });
     case 6:
-      return S.Array(IpGroupProperties);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          vlans: S.optional(VlanGroupPropertiesVlansList),
+          vlans: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "VlanGroupProperties" });
   }
@@ -18558,32 +14025,32 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VlanGroupProperties);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          ports: S.optional(PortGroupPropertiesPortsList),
+          ports: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "PortGroupProperties" });
     case 2:
-      return S.Array(PortGroupProperties);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipGroups: S.optional(CommonDynamicMatchConfigurationIpGroupsList),
-          vlanGroups: S.optional(CommonDynamicMatchConfigurationVlanGroupsList),
-          portGroups: S.optional(CommonDynamicMatchConfigurationPortGroupsList),
+          ipGroups: S.optional(__S(38)),
+          vlanGroups: S.optional(__S(40)),
+          portGroups: S.optional(__S(42)),
         }),
       ).annotate({
         identifier: "CommonDynamicMatchConfiguration",
       });
     case 4:
-      return S.Array(CommonDynamicMatchConfiguration);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          enableCount: S.optional(GlobalAccessControlListActionPropertiesEnableCount),
+          enableCount: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GlobalAccessControlListActionProperties",
@@ -18601,7 +14068,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ttlValue: S.optional(S.String),
-          ttlMatchType: S.optional(ControlPlaneAclTtlMatchType),
+          ttlMatchType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ControlPlaneAclTtlMatchCondition",
@@ -18613,8 +14080,8 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(ControlPlaneAclPortConditionPortsList),
-          portMatchType: S.optional(ControlPlaneAclPortMatchType),
+          ports: S.optional(__S(16)),
+          portMatchType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ControlPlaneAclPortCondition",
@@ -18622,8 +14089,8 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sourcePorts: S.optional(ControlPlaneAclPortCondition),
-          destinationPorts: S.optional(ControlPlaneAclPortCondition),
+          sourcePorts: S.optional(__S(48)),
+          destinationPorts: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "ControlPlaneAclPortMatchCondition",
@@ -18632,11 +14099,11 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           protocolTypes: S.optional(S.String),
-          ipCondition: S.optional(ControlPlanAclIpMatchCondition),
-          ttlMatchCondition: S.optional(ControlPlaneAclTtlMatchCondition),
-          portCondition: S.optional(ControlPlaneAclPortMatchCondition),
-          flags: S.optional(ControlPlaneAclMatchConditionFlagsList),
-          icmpConfiguration: S.optional(IcmpConfigurationProperties),
+          ipCondition: S.optional(__S(46)),
+          ttlMatchCondition: S.optional(__S(47)),
+          portCondition: S.optional(__S(49)),
+          flags: S.optional(__S(16)),
+          icmpConfiguration: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "ControlPlaneAclMatchCondition",
@@ -18644,7 +14111,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ControlPlaneAclActionType),
+          type: S.optional(S.String),
           remarkComment: S.optional(S.String),
         }),
       ).annotate({ identifier: "ControlPlaneAclAction" });
@@ -18653,25 +14120,25 @@ function __c6(j: number): any {
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
-          matchCondition: S.optional(ControlPlaneAclMatchCondition),
-          action: S.optional(ControlPlaneAclAction),
+          matchCondition: S.optional(__S(50)),
+          action: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "ControlPlaneAclMatchConfigurationProperties",
       });
     case 5:
-      return S.Array(ControlPlaneAclMatchConfigurationProperties);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ipAddressType: S.optional(IPAddressType),
-          matchConfigurations: S.optional(ControlPlaneAclPropertiesMatchConfigurationsList),
+          ipAddressType: S.optional(S.String),
+          matchConfigurations: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "ControlPlaneAclProperties",
       });
     case 7:
-      return S.Array(ControlPlaneAclProperties);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -18680,19 +14147,15 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          configurationType: ConfigurationType,
+          configurationType: S.String,
           aclsUrl: S.optional(S.String),
-          defaultAction: S.optional(AccessControlListPropertiesInputDefaultAction),
-          matchConfigurations: S.optional(AccessControlListPropertiesInputMatchConfigurationsList),
-          dynamicMatchConfigurations: S.optional(
-            AccessControlListPropertiesInputDynamicMatchConfigurationsList,
-          ),
-          aclType: S.optional(AclType),
-          deviceRole: S.optional(DeviceRole),
-          globalAccessControlListActions: S.optional(GlobalAccessControlListActionProperties),
-          controlPlaneAclConfiguration: S.optional(
-            AccessControlListPropertiesInputControlPlaneAclConfigurationList,
-          ),
+          defaultAction: S.optional(S.String),
+          matchConfigurations: S.optional(__S(36)),
+          dynamicMatchConfigurations: S.optional(__S(44)),
+          aclType: S.optional(S.String),
+          deviceRole: S.optional(S.String),
+          globalAccessControlListActions: S.optional(__S(45)),
+          controlPlaneAclConfiguration: S.optional(__S(55)),
         }),
       ).annotate({
         identifier: "AccessControlListPropertiesInput",
@@ -18703,9 +14166,9 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accessControlListName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateAccessControlListRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: AccessControlListPropertiesInput,
+          properties: __S(56),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18721,10 +14184,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -18735,30 +14198,26 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "LastOperationProperties" });
     case 4:
-      return S.Array(ControlPlaneAclProperties);
+      return S.Array(__S(54));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          configurationType: ConfigurationType,
+          configurationType: S.String,
           aclsUrl: S.optional(S.String),
-          defaultAction: S.optional(AccessControlListPropertiesDefaultAction),
-          matchConfigurations: S.optional(AccessControlListPropertiesMatchConfigurationsList),
-          dynamicMatchConfigurations: S.optional(
-            AccessControlListPropertiesDynamicMatchConfigurationsList,
-          ),
+          defaultAction: S.optional(S.String),
+          matchConfigurations: S.optional(__S(36)),
+          dynamicMatchConfigurations: S.optional(__S(44)),
           lastSyncedTime: S.optional(S.String),
-          aclType: S.optional(AclType),
-          deviceRole: S.optional(DeviceRole),
-          globalAccessControlListActions: S.optional(GlobalAccessControlListActionProperties),
-          lastOperation: S.optional(LastOperationProperties),
-          networkFabricIds: S.optional(AccessControlListPropertiesNetworkFabricIdsList),
-          controlPlaneAclConfiguration: S.optional(
-            AccessControlListPropertiesControlPlaneAclConfigurationList,
-          ),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          aclType: S.optional(S.String),
+          deviceRole: S.optional(S.String),
+          globalAccessControlListActions: S.optional(__S(45)),
+          lastOperation: S.optional(__S(59)),
+          networkFabricIds: S.optional(__S(16)),
+          controlPlaneAclConfiguration: S.optional(__S(60)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccessControlListProperties",
@@ -18769,10 +14228,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateAccessControlListResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: AccessControlListProperties,
+          properties: __S(61),
         }),
       ).annotate({
         identifier: "CreateAccessControlListResponse",
@@ -18798,18 +14257,18 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          importIpv4RouteTargets: S.optional(RouteTargetInformationImportIpv4RouteTargetsList),
-          importIpv6RouteTargets: S.optional(RouteTargetInformationImportIpv6RouteTargetsList),
-          exportIpv4RouteTargets: S.optional(RouteTargetInformationExportIpv4RouteTargetsList),
-          exportIpv6RouteTargets: S.optional(RouteTargetInformationExportIpv6RouteTargetsList),
+          importIpv4RouteTargets: S.optional(__S(16)),
+          importIpv6RouteTargets: S.optional(__S(16)),
+          exportIpv4RouteTargets: S.optional(__S(16)),
+          exportIpv6RouteTargets: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "RouteTargetInformation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          importRouteTargets: S.optional(L3OptionBPropertiesImportRouteTargetsList),
-          exportRouteTargets: S.optional(L3OptionBPropertiesExportRouteTargetsList),
-          routeTargets: S.optional(RouteTargetInformation),
+          importRouteTargets: S.optional(__S(16)),
+          exportRouteTargets: S.optional(__S(16)),
+          routeTargets: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "L3OptionBProperties" });
     case 3:
@@ -18822,7 +14281,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configurationState: S.optional(ExternalNetworkBmpPropertiesConfigurationState),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExternalNetworkBmpProperties",
@@ -18836,11 +14295,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "PrefixLimitProperties" });
     case 6:
-      return S.Array(PrefixLimitProperties);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          prefixLimits: S.optional(NativeIpv4PrefixLimitPropertiesPrefixLimitsList),
+          prefixLimits: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "NativeIpv4PrefixLimitProperties",
@@ -18859,18 +14318,14 @@ function __c9(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(BfdConfigurationInput),
+          bfdConfiguration: S.optional(__S(67)),
           ingressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(ExternalNetworkBmpProperties),
+          bmpConfiguration: S.optional(__S(68)),
           egressAclId: S.optional(S.String),
-          v4OverV6BgpSession: S.optional(
-            ExternalNetworkPropertiesOptionAPropertiesInputV4OverV6BgpSession,
-          ),
-          v6OverV4BgpSession: S.optional(
-            ExternalNetworkPropertiesOptionAPropertiesInputV6OverV4BgpSession,
-          ),
-          nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitProperties),
-          nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitProperties),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+          nativeIpv4PrefixLimit: S.optional(__S(71)),
+          nativeIpv6PrefixLimit: S.optional(__S(71)),
         }),
       ).annotate({
         identifier: "ExternalNetworkPropertiesOptionAPropertiesInput",
@@ -18879,17 +14334,17 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           prefix: S.String,
-          nextHop: StaticRoutePropertiesNextHopList,
+          nextHop: __S(16),
         }),
       ).annotate({ identifier: "StaticRouteProperties" });
     case 2:
-      return S.Array(StaticRouteProperties);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(BfdConfigurationInput),
-          ipv4Routes: S.optional(ExternalNetworkStaticRouteConfigurationInputIpv4RoutesList),
-          ipv6Routes: S.optional(ExternalNetworkStaticRouteConfigurationInputIpv6RoutesList),
+          bfdConfiguration: S.optional(__S(67)),
+          ipv4Routes: S.optional(__S(74)),
+          ipv6Routes: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "ExternalNetworkStaticRouteConfigurationInput",
@@ -18899,12 +14354,12 @@ function __c9(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(ImportRoutePolicy),
-          exportRoutePolicy: S.optional(ExportRoutePolicy),
-          peeringOption: PeeringOption,
-          optionBProperties: S.optional(L3OptionBProperties),
-          optionAProperties: S.optional(ExternalNetworkPropertiesOptionAPropertiesInput),
-          staticRouteConfiguration: S.optional(ExternalNetworkStaticRouteConfigurationInput),
+          importRoutePolicy: S.optional(__S(63)),
+          exportRoutePolicy: S.optional(__S(64)),
+          peeringOption: S.String,
+          optionBProperties: S.optional(__S(66)),
+          optionAProperties: S.optional(__S(72)),
+          staticRouteConfiguration: S.optional(__S(75)),
         }),
       ).annotate({
         identifier: "ExternalNetworkPropertiesInput",
@@ -18916,7 +14371,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          properties: ExternalNetworkPropertiesInput,
+          properties: __S(76),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18931,7 +14386,7 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          administrativeState: S.optional(BfdConfigurationAdministrativeState),
+          administrativeState: S.optional(S.String),
           intervalInMilliSeconds: S.optional(S.Number),
           multiplier: S.optional(S.Number),
         }),
@@ -18947,18 +14402,14 @@ function __c9(j: number): any {
           vlanId: S.Number,
           fabricASN: S.optional(S.Number),
           peerASN: S.Number,
-          bfdConfiguration: S.optional(BfdConfiguration),
+          bfdConfiguration: S.optional(__S(78)),
           ingressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(ExternalNetworkBmpProperties),
+          bmpConfiguration: S.optional(__S(68)),
           egressAclId: S.optional(S.String),
-          v4OverV6BgpSession: S.optional(
-            ExternalNetworkPropertiesOptionAPropertiesV4OverV6BgpSession,
-          ),
-          v6OverV4BgpSession: S.optional(
-            ExternalNetworkPropertiesOptionAPropertiesV6OverV4BgpSession,
-          ),
-          nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitProperties),
-          nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitProperties),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+          nativeIpv4PrefixLimit: S.optional(__S(71)),
+          nativeIpv6PrefixLimit: S.optional(__S(71)),
         }),
       ).annotate({
         identifier: "ExternalNetworkPropertiesOptionAProperties",
@@ -18970,9 +14421,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(BfdConfiguration),
-          ipv4Routes: S.optional(ExternalNetworkStaticRouteConfigurationIpv4RoutesList),
-          ipv6Routes: S.optional(ExternalNetworkStaticRouteConfigurationIpv6RoutesList),
+          bfdConfiguration: S.optional(__S(78)),
+          ipv4Routes: S.optional(__S(74)),
+          ipv6Routes: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "ExternalNetworkStaticRouteConfiguration",
@@ -18982,17 +14433,17 @@ function __c10(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(ImportRoutePolicy),
-          exportRoutePolicy: S.optional(ExportRoutePolicy),
-          peeringOption: PeeringOption,
-          optionBProperties: S.optional(L3OptionBProperties),
-          optionAProperties: S.optional(ExternalNetworkPropertiesOptionAProperties),
-          staticRouteConfiguration: S.optional(ExternalNetworkStaticRouteConfiguration),
-          lastOperation: S.optional(LastOperationProperties),
+          importRoutePolicy: S.optional(__S(63)),
+          exportRoutePolicy: S.optional(__S(64)),
+          peeringOption: S.String,
+          optionBProperties: S.optional(__S(66)),
+          optionAProperties: S.optional(__S(79)),
+          staticRouteConfiguration: S.optional(__S(80)),
+          lastOperation: S.optional(__S(59)),
           networkFabricId: S.optional(S.String),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExternalNetworkProperties",
@@ -19003,8 +14454,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ExternalNetworkProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(81),
         }),
       ).annotate({
         identifier: "CreateExternalNetworkResponse",
@@ -19017,7 +14468,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ConnectedSubnet" });
     case 4:
-      return S.Array(ConnectedSubnet);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19025,9 +14476,9 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "NeighborAddressInput" });
     case 6:
-      return S.Array(NeighborAddressInput);
+      return S.Array(__S(85));
     case 7:
-      return S.Array(BmpExportPolicy);
+      return S.Array(S.String);
   }
 }
 function __c11(j: number): any {
@@ -19035,7 +14486,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exportPolicies: S.optional(BmpExportPolicyPropertiesExportPoliciesList),
+          exportPolicies: S.optional(__S(87)),
         }),
       ).annotate({
         identifier: "BmpExportPolicyProperties",
@@ -19043,9 +14494,9 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          neighborIpExclusions: S.optional(InternalNetworkBmpPropertiesNeighborIpExclusionsList),
-          bmpConfigurationState: S.optional(BmpConfigurationState),
-          exportPolicyConfiguration: S.optional(BmpExportPolicyProperties),
+          neighborIpExclusions: S.optional(__S(16)),
+          bmpConfigurationState: S.optional(S.String),
+          exportPolicyConfiguration: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "InternalNetworkBmpProperties",
@@ -19054,27 +14505,27 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(BfdConfigurationInput),
-          defaultRouteOriginate: S.optional(BooleanEnumProperty),
+          bfdConfiguration: S.optional(__S(67)),
+          defaultRouteOriginate: S.optional(S.String),
           allowAS: S.optional(S.Number),
-          allowASOverride: S.optional(AllowASOverride),
+          allowASOverride: S.optional(S.String),
           peerASN: S.Number,
-          ipv4ListenRangePrefixes: S.optional(BgpConfigurationInputIpv4ListenRangePrefixesList),
-          ipv6ListenRangePrefixes: S.optional(BgpConfigurationInputIpv6ListenRangePrefixesList),
-          ipv4NeighborAddress: S.optional(BgpConfigurationInputIpv4NeighborAddressList),
-          ipv6NeighborAddress: S.optional(BgpConfigurationInputIpv6NeighborAddressList),
-          bmpConfiguration: S.optional(InternalNetworkBmpProperties),
-          v4OverV6BgpSession: S.optional(BgpConfigurationInputV4OverV6BgpSession),
-          v6OverV4BgpSession: S.optional(BgpConfigurationInputV6OverV4BgpSession),
+          ipv4ListenRangePrefixes: S.optional(__S(16)),
+          ipv6ListenRangePrefixes: S.optional(__S(16)),
+          ipv4NeighborAddress: S.optional(__S(86)),
+          ipv6NeighborAddress: S.optional(__S(86)),
+          bmpConfiguration: S.optional(__S(89)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpConfigurationInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(BfdConfigurationInput),
-          ipv4Routes: S.optional(StaticRouteConfigurationInputIpv4RoutesList),
-          ipv6Routes: S.optional(StaticRouteConfigurationInputIpv6RoutesList),
-          extension: S.optional(StaticRouteConfigurationInputExtension),
+          bfdConfiguration: S.optional(__S(67)),
+          ipv4Routes: S.optional(__S(74)),
+          ipv6Routes: S.optional(__S(74)),
+          extension: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StaticRouteConfigurationInput",
@@ -19083,20 +14534,20 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          extension: S.optional(InternalNetworkPropertiesInputExtension),
+          extension: S.optional(S.String),
           mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(InternalNetworkPropertiesInputConnectedIPv4SubnetsList),
-          connectedIPv6Subnets: S.optional(InternalNetworkPropertiesInputConnectedIPv6SubnetsList),
-          importRoutePolicy: S.optional(ImportRoutePolicy),
-          exportRoutePolicy: S.optional(ExportRoutePolicy),
+          connectedIPv4Subnets: S.optional(__S(84)),
+          connectedIPv6Subnets: S.optional(__S(84)),
+          importRoutePolicy: S.optional(__S(63)),
+          exportRoutePolicy: S.optional(__S(64)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
-          isMonitoringEnabled: S.optional(InternalNetworkPropertiesInputIsMonitoringEnabled),
+          isMonitoringEnabled: S.optional(S.String),
           vlanId: S.Number,
-          bgpConfiguration: S.optional(BgpConfigurationInput),
-          staticRouteConfiguration: S.optional(StaticRouteConfigurationInput),
-          nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitProperties),
-          nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitProperties),
+          bgpConfiguration: S.optional(__S(90)),
+          staticRouteConfiguration: S.optional(__S(91)),
+          nativeIpv4PrefixLimit: S.optional(__S(71)),
+          nativeIpv6PrefixLimit: S.optional(__S(71)),
         }),
       ).annotate({
         identifier: "InternalNetworkPropertiesInput",
@@ -19108,7 +14559,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          properties: InternalNetworkPropertiesInput,
+          properties: __S(92),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19124,13 +14575,13 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           address: S.optional(S.String),
-          bfdAdministrativeState: S.optional(BfdAdministrativeState),
-          bgpAdministrativeState: S.optional(BgpAdministrativeState),
-          configurationState: S.optional(ConfigurationState),
+          bfdAdministrativeState: S.optional(S.String),
+          bgpAdministrativeState: S.optional(S.String),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NeighborAddress" });
     case 7:
-      return S.Array(NeighborAddress);
+      return S.Array(__S(94));
   }
 }
 function __c12(j: number): any {
@@ -19139,53 +14590,53 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(BfdConfiguration),
-          defaultRouteOriginate: S.optional(BooleanEnumProperty),
+          bfdConfiguration: S.optional(__S(78)),
+          defaultRouteOriginate: S.optional(S.String),
           allowAS: S.optional(S.Number),
-          allowASOverride: S.optional(AllowASOverride),
+          allowASOverride: S.optional(S.String),
           fabricASN: S.optional(S.Number),
           peerASN: S.Number,
-          ipv4ListenRangePrefixes: S.optional(BgpConfigurationIpv4ListenRangePrefixesList),
-          ipv6ListenRangePrefixes: S.optional(BgpConfigurationIpv6ListenRangePrefixesList),
-          ipv4NeighborAddress: S.optional(BgpConfigurationIpv4NeighborAddressList),
-          ipv6NeighborAddress: S.optional(BgpConfigurationIpv6NeighborAddressList),
-          bmpConfiguration: S.optional(InternalNetworkBmpProperties),
-          v4OverV6BgpSession: S.optional(BgpConfigurationV4OverV6BgpSession),
-          v6OverV4BgpSession: S.optional(BgpConfigurationV6OverV4BgpSession),
+          ipv4ListenRangePrefixes: S.optional(__S(16)),
+          ipv6ListenRangePrefixes: S.optional(__S(16)),
+          ipv4NeighborAddress: S.optional(__S(95)),
+          ipv6NeighborAddress: S.optional(__S(95)),
+          bmpConfiguration: S.optional(__S(89)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
         }),
       ).annotate({ identifier: "BgpConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(BfdConfiguration),
-          ipv4Routes: S.optional(StaticRouteConfigurationIpv4RoutesList),
-          ipv6Routes: S.optional(StaticRouteConfigurationIpv6RoutesList),
-          extension: S.optional(StaticRouteConfigurationExtension),
+          bfdConfiguration: S.optional(__S(78)),
+          ipv4Routes: S.optional(__S(74)),
+          ipv6Routes: S.optional(__S(74)),
+          extension: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticRouteConfiguration" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          extension: S.optional(InternalNetworkPropertiesExtension),
+          extension: S.optional(S.String),
           mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(InternalNetworkPropertiesConnectedIPv4SubnetsList),
-          connectedIPv6Subnets: S.optional(InternalNetworkPropertiesConnectedIPv6SubnetsList),
-          importRoutePolicy: S.optional(ImportRoutePolicy),
-          exportRoutePolicy: S.optional(ExportRoutePolicy),
+          connectedIPv4Subnets: S.optional(__S(84)),
+          connectedIPv6Subnets: S.optional(__S(84)),
+          importRoutePolicy: S.optional(__S(63)),
+          exportRoutePolicy: S.optional(__S(64)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
-          isMonitoringEnabled: S.optional(InternalNetworkPropertiesIsMonitoringEnabled),
+          isMonitoringEnabled: S.optional(S.String),
           vlanId: S.Number,
-          bgpConfiguration: S.optional(BgpConfiguration),
-          staticRouteConfiguration: S.optional(StaticRouteConfiguration),
-          nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitProperties),
-          nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitProperties),
-          lastOperation: S.optional(LastOperationProperties),
+          bgpConfiguration: S.optional(__S(96)),
+          staticRouteConfiguration: S.optional(__S(97)),
+          nativeIpv4PrefixLimit: S.optional(__S(71)),
+          nativeIpv6PrefixLimit: S.optional(__S(71)),
+          lastOperation: S.optional(__S(59)),
           networkFabricId: S.optional(S.String),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InternalNetworkProperties",
@@ -19196,8 +14647,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: InternalNetworkProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(98),
         }),
       ).annotate({
         identifier: "CreateInternalNetworkResponse",
@@ -19207,8 +14658,8 @@ function __c12(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           internetGatewayRuleId: S.optional(S.String),
-          type: S.optional(GatewayType),
-          internetGatewayType: S.optional(GatewayType),
+          type: S.optional(S.String),
+          internetGatewayType: S.optional(S.String),
           networkFabricControllerId: S.String,
         }),
       ).annotate({
@@ -19220,9 +14671,9 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateInternetGatewayRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: InternetGatewayPropertiesInput,
+          properties: __S(100),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19241,11 +14692,11 @@ function __c12(j: number): any {
           internetGatewayRuleId: S.optional(S.String),
           ipv4Address: S.optional(S.String),
           port: S.optional(S.Number),
-          type: S.optional(GatewayType),
-          internetGatewayType: S.optional(GatewayType),
+          type: S.optional(S.String),
+          internetGatewayType: S.optional(S.String),
           networkFabricControllerId: S.String,
-          lastOperation: S.optional(LastOperationProperties),
-          provisioningState: S.optional(ProvisioningState),
+          lastOperation: S.optional(__S(59)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InternetGatewayProperties",
@@ -19256,10 +14707,10 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateInternetGatewayResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: InternetGatewayProperties,
+          properties: __S(102),
         }),
       ).annotate({
         identifier: "CreateInternetGatewayResponse",
@@ -19272,27 +14723,27 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           headerName: S.optional(S.String),
-          addressList: S.optional(HeaderAddressPropertiesAddressListList),
+          addressList: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "HeaderAddressProperties" });
     case 1:
-      return S.Array(HeaderAddressProperties);
+      return S.Array(__S(104));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: Action,
-          addressList: S.optional(RulePropertiesAddressListList),
-          condition: S.optional(RuleCondition),
-          destinationAddressList: S.optional(RulePropertiesDestinationAddressListList),
-          sourceAddressList: S.optional(RulePropertiesSourceAddressListList),
-          headerAddressList: S.optional(RulePropertiesHeaderAddressListList),
+          action: S.String,
+          addressList: S.optional(__S(16)),
+          condition: S.optional(S.String),
+          destinationAddressList: S.optional(__S(16)),
+          sourceAddressList: S.optional(__S(16)),
+          headerAddressList: S.optional(__S(105)),
         }),
       ).annotate({ identifier: "RuleProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ruleProperties: RuleProperties,
+          ruleProperties: __S(106),
         }),
       ).annotate({
         identifier: "InternetGatewayRulePropertiesInput",
@@ -19303,9 +14754,9 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateInternetGatewayRuleRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: InternetGatewayRulePropertiesInput,
+          properties: __S(107),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19321,10 +14772,10 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ruleProperties: RuleProperties,
-          lastOperation: S.optional(LastOperationProperties),
-          provisioningState: S.optional(ProvisioningState),
-          internetGatewayIds: S.optional(InternetGatewayRulePropertiesInternetGatewayIdsList),
+          ruleProperties: __S(106),
+          lastOperation: S.optional(__S(59)),
+          provisioningState: S.optional(S.String),
+          internetGatewayIds: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "InternetGatewayRuleProperties",
@@ -19335,10 +14786,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateInternetGatewayRuleResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: InternetGatewayRuleProperties,
+          properties: __S(109),
         }),
       ).annotate({
         identifier: "CreateInternetGatewayRuleResponse",
@@ -19346,10 +14797,10 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: CommunityActionTypes,
+          action: S.String,
           sequenceNumber: S.Number,
-          wellKnownCommunities: S.optional(IpCommunityRuleWellKnownCommunitiesList),
-          communityMembers: IpCommunityRuleCommunityMembersList,
+          wellKnownCommunities: S.optional(__S(87)),
+          communityMembers: __S(16),
         }),
       ).annotate({ identifier: "IpCommunityRule" });
   }
@@ -19357,12 +14808,12 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IpCommunityRule);
+      return S.Array(__S(111));
     case 1:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipCommunityRules: IpCommunityPropertiesInputIpCommunityRulesList,
+          ipCommunityRules: __S(112),
         }),
       ).annotate({
         identifier: "IpCommunityPropertiesInput",
@@ -19373,9 +14824,9 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateIpCommunityRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpCommunityPropertiesInput,
+          properties: __S(113),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19390,11 +14841,11 @@ function __c14(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkFabricId: S.optional(S.String),
-          ipCommunityRules: IpCommunityPropertiesIpCommunityRulesList,
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          ipCommunityRules: __S(112),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpCommunityProperties" });
     case 4:
@@ -19403,10 +14854,10 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateIpCommunityResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpCommunityProperties,
+          properties: __S(115),
         }),
       ).annotate({
         identifier: "CreateIpCommunityResponse",
@@ -19414,18 +14865,18 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: CommunityActionTypes,
+          action: S.String,
           sequenceNumber: S.Number,
-          routeTargets: IpExtendedCommunityRuleRouteTargetsList,
+          routeTargets: __S(16),
         }),
       ).annotate({ identifier: "IpExtendedCommunityRule" });
     case 6:
-      return S.Array(IpExtendedCommunityRule);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipExtendedCommunityRules: IpExtendedCommunityPropertiesInputIpExtendedCommunityRulesList,
+          ipExtendedCommunityRules: __S(118),
         }),
       ).annotate({
         identifier: "IpExtendedCommunityPropertiesInput",
@@ -19440,9 +14891,9 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipExtendedCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateIpExtendedCommunityRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpExtendedCommunityPropertiesInput,
+          properties: __S(119),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19458,12 +14909,12 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipExtendedCommunityRules: IpExtendedCommunityPropertiesIpExtendedCommunityRulesList,
+          ipExtendedCommunityRules: __S(118),
           networkFabricId: S.optional(S.String),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IpExtendedCommunityProperties",
@@ -19474,10 +14925,10 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateIpExtendedCommunityResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpExtendedCommunityProperties,
+          properties: __S(121),
         }),
       ).annotate({
         identifier: "CreateIpExtendedCommunityResponse",
@@ -19485,20 +14936,20 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: CommunityActionTypes,
+          action: S.String,
           sequenceNumber: S.Number,
           networkPrefix: S.String,
-          condition: S.optional(Condition),
+          condition: S.optional(S.String),
           subnetMaskLength: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixRule" });
     case 4:
-      return S.Array(IpPrefixRule);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipPrefixRules: IpPrefixPropertiesInputIpPrefixRulesList,
+          ipPrefixRules: __S(124),
         }),
       ).annotate({ identifier: "IpPrefixPropertiesInput" });
     case 6:
@@ -19507,9 +14958,9 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipPrefixName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateIpPrefixRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpPrefixPropertiesInput,
+          properties: __S(125),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19524,11 +14975,11 @@ function __c15(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkFabricId: S.optional(S.String),
-          ipPrefixRules: IpPrefixPropertiesIpPrefixRulesList,
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          ipPrefixRules: __S(124),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixProperties" });
   }
@@ -19541,10 +14992,10 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateIpPrefixResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpPrefixProperties,
+          properties: __S(127),
         }),
       ).annotate({ identifier: "CreateIpPrefixResponse" });
     case 1:
@@ -19554,7 +15005,7 @@ function __c16(j: number): any {
           networkFabricId: S.String,
           vlanId: S.Number,
           mtu: S.optional(S.Number),
-          extendedVlan: S.optional(L2IsolationDomainPropertiesInputExtendedVlan),
+          extendedVlan: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
         }),
       ).annotate({
@@ -19565,12 +15016,12 @@ function __c16(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(130)));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(131)),
         }),
       ).annotate({
         identifier: "CreateL2IsolationDomainRequestIdentity",
@@ -19581,10 +15032,10 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateL2IsolationDomainRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: L2IsolationDomainPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(129),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19603,12 +15054,12 @@ function __c16(j: number): any {
           networkFabricId: S.String,
           vlanId: S.Number,
           mtu: S.optional(S.Number),
-          extendedVlan: S.optional(L2IsolationDomainPropertiesExtendedVlan),
+          extendedVlan: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "L2IsolationDomainProperties",
@@ -19625,14 +15076,14 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(135)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(136)),
         }),
       ).annotate({
         identifier: "CreateL2IsolationDomainResponseIdentity",
@@ -19643,11 +15094,11 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateL2IsolationDomainResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: L2IsolationDomainProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(134),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateL2IsolationDomainResponse",
@@ -19659,12 +15110,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "AggregateRoute" });
     case 4:
-      return S.Array(AggregateRoute);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipv4Routes: S.optional(AggregateRouteConfigurationIpv4RoutesList),
-          ipv6Routes: S.optional(AggregateRouteConfigurationIpv6RoutesList),
+          ipv4Routes: S.optional(__S(140)),
+          ipv6Routes: S.optional(__S(140)),
         }),
       ).annotate({
         identifier: "AggregateRouteConfiguration",
@@ -19672,7 +15123,7 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          exportRoutePolicy: S.optional(L3ExportRoutePolicy),
+          exportRoutePolicy: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "ConnectedSubnetRoutePolicy",
@@ -19694,20 +15145,16 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          redistributeConnectedSubnets: S.optional(
-            L3IsolationDomainPropertiesInputRedistributeConnectedSubnets,
-          ),
-          redistributeStaticRoutes: S.optional(
-            L3IsolationDomainPropertiesInputRedistributeStaticRoutes,
-          ),
-          aggregateRouteConfiguration: S.optional(AggregateRouteConfiguration),
-          connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
+          redistributeConnectedSubnets: S.optional(S.String),
+          redistributeStaticRoutes: S.optional(S.String),
+          aggregateRouteConfiguration: S.optional(__S(141)),
+          connectedSubnetRoutePolicy: S.optional(__S(142)),
           networkFabricId: S.String,
-          staticRouteRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
-          uniqueRdConfiguration: S.optional(UserAssignedIdentityInput),
-          v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
-          v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
-          exportPolicyConfiguration: S.optional(BmpExportPolicyProperties),
+          staticRouteRoutePolicy: S.optional(__S(142)),
+          uniqueRdConfiguration: S.optional(__S(130)),
+          v4routePrefixLimit: S.optional(__S(143)),
+          v6routePrefixLimit: S.optional(__S(143)),
+          exportPolicyConfiguration: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "L3IsolationDomainPropertiesInput",
@@ -19718,10 +15165,10 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateL3IsolationDomainRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: L3IsolationDomainPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(144),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19736,7 +15183,7 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          uniqueRds: S.optional(L3UniqueRouteDistinguisherPropertiesUniqueRdsList),
+          uniqueRds: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "L3UniqueRouteDistinguisherProperties",
@@ -19745,22 +15192,20 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          redistributeConnectedSubnets: S.optional(
-            L3IsolationDomainPropertiesRedistributeConnectedSubnets,
-          ),
-          redistributeStaticRoutes: S.optional(L3IsolationDomainPropertiesRedistributeStaticRoutes),
-          aggregateRouteConfiguration: S.optional(AggregateRouteConfiguration),
-          connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
+          redistributeConnectedSubnets: S.optional(S.String),
+          redistributeStaticRoutes: S.optional(S.String),
+          aggregateRouteConfiguration: S.optional(__S(141)),
+          connectedSubnetRoutePolicy: S.optional(__S(142)),
           networkFabricId: S.String,
-          staticRouteRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
-          uniqueRdConfiguration: S.optional(L3UniqueRouteDistinguisherProperties),
-          v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
-          v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
-          lastOperation: S.optional(LastOperationProperties),
-          exportPolicyConfiguration: S.optional(BmpExportPolicyProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          staticRouteRoutePolicy: S.optional(__S(142)),
+          uniqueRdConfiguration: S.optional(__S(146)),
+          v4routePrefixLimit: S.optional(__S(143)),
+          v6routePrefixLimit: S.optional(__S(143)),
+          lastOperation: S.optional(__S(59)),
+          exportPolicyConfiguration: S.optional(__S(88)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "L3IsolationDomainProperties",
@@ -19771,11 +15216,11 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateL3IsolationDomainResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: L3IsolationDomainProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(147),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateL3IsolationDomainResponse",
@@ -19783,15 +15228,15 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipv4Addresses: S.optional(NeighborGroupDestinationIpv4AddressesList),
-          ipv6Addresses: S.optional(NeighborGroupDestinationIpv6AddressesList),
+          ipv4Addresses: S.optional(__S(16)),
+          ipv6Addresses: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "NeighborGroupDestination" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          destination: NeighborGroupDestination,
+          destination: __S(149),
         }),
       ).annotate({
         identifier: "NeighborGroupPropertiesInput",
@@ -19802,10 +15247,10 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           neighborGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNeighborGroupRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NeighborGroupPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(150),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19825,13 +15270,13 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          destination: NeighborGroupDestination,
-          networkTapIds: S.optional(NeighborGroupPropertiesNetworkTapIdsList),
-          networkTapRuleIds: S.optional(NeighborGroupPropertiesNetworkTapRuleIdsList),
-          networkFabricIds: S.optional(NeighborGroupPropertiesNetworkFabricIdsList),
-          lastOperation: S.optional(LastOperationProperties),
-          provisioningState: S.optional(ProvisioningState),
-          configurationState: S.optional(ConfigurationState),
+          destination: __S(149),
+          networkTapIds: S.optional(__S(16)),
+          networkTapRuleIds: S.optional(__S(16)),
+          networkFabricIds: S.optional(__S(16)),
+          lastOperation: S.optional(__S(59)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NeighborGroupProperties" });
     case 1:
@@ -19840,11 +15285,11 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNeighborGroupResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NeighborGroupProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(152),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNeighborGroupResponse",
@@ -19866,10 +15311,10 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkBootstrapDeviceRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkBootstrapDevicePropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(154),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19894,10 +15339,10 @@ function __c19(j: number): any {
           dhcpV4ServerIpAddress: S.optional(S.String),
           primaryManagementIpv6Address: S.optional(S.String),
           secondaryManagementIpv6Address: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           primaryManagementIpv4Address: S.optional(S.String),
-          administrativeState: S.optional(AdministrativeState),
-          configurationState: S.optional(ConfigurationState),
+          administrativeState: S.optional(S.String),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkBootstrapDeviceProperties",
@@ -19908,11 +15353,11 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkBootstrapDeviceResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkBootstrapDeviceProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(156),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkBootstrapDeviceResponse",
@@ -19934,7 +15379,7 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          properties: NetworkBootstrapInterfacePropertiesInput,
+          properties: __S(158),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19954,12 +15399,12 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
-          configurationState: S.optional(ConfigurationState),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+          configurationState: S.optional(S.String),
           physicalIdentifier: S.optional(S.String),
           connectedTo: S.optional(S.String),
-          interfaceType: S.optional(InterfaceType),
+          interfaceType: S.optional(S.String),
           description: S.optional(S.String),
           additionalDescription: S.optional(S.String),
           ipv4Address: S.optional(S.String),
@@ -19975,8 +15420,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkBootstrapInterfaceProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(160),
         }),
       ).annotate({
         identifier: "CreateNetworkBootstrapInterfaceResponse",
@@ -19984,7 +15429,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identityType: ManagedServiceIdentitySelectorType,
+          identityType: S.String,
           userAssignedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentitySelector" });
@@ -19994,7 +15439,7 @@ function __c20(j: number): any {
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.String,
-          identitySelector: S.optional(IdentitySelector),
+          identitySelector: S.optional(__S(162)),
           networkDeviceSku: S.optional(S.String),
         }),
       ).annotate({
@@ -20006,10 +15451,10 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkDeviceRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkDevicePropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(163),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20034,13 +15479,13 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastRotationTime: S.optional(S.String),
-          synchronizationStatus: S.optional(SynchronizationStatus),
-          secretArchiveReference: S.optional(SecretArchiveReference),
+          synchronizationStatus: S.optional(S.String),
+          secretArchiveReference: S.optional(__S(165)),
           secretType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretRotationStatus" });
     case 7:
-      return S.Array(SecretRotationStatus);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -20061,37 +15506,35 @@ function __c21(j: number): any {
         S.Struct({
           expireTime: S.optional(S.String),
           lastRotationTime: S.optional(S.String),
-          synchronizationStatus: S.optional(SynchronizationStatus),
-          certificateArchiveReference: S.optional(CertificateArchiveReference),
+          synchronizationStatus: S.optional(S.String),
+          certificateArchiveReference: S.optional(__S(168)),
           certificateType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CertificateRotationStatus",
       });
     case 2:
-      return S.Array(CertificateRotationStatus);
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.String,
-          identitySelector: S.optional(IdentitySelector),
+          identitySelector: S.optional(__S(162)),
           version: S.optional(S.String),
           networkDeviceSku: S.optional(S.String),
-          networkDeviceRole: S.optional(NetworkDeviceRole),
+          networkDeviceRole: S.optional(S.String),
           networkRackId: S.optional(S.String),
           managementIpv4Address: S.optional(S.String),
           managementIpv6Address: S.optional(S.String),
           rwDeviceConfig: S.optional(S.String),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
-          secretRotationStatus: S.optional(NetworkDevicePropertiesSecretRotationStatusList),
-          certificateRotationStatus: S.optional(
-            NetworkDevicePropertiesCertificateRotationStatusList,
-          ),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+          secretRotationStatus: S.optional(__S(167)),
+          certificateRotationStatus: S.optional(__S(170)),
           networkFabricId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkDeviceProperties" });
@@ -20101,11 +15544,11 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkDeviceResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkDeviceProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(171),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkDeviceResponse",
@@ -20114,7 +15557,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           storageAccountId: S.optional(S.String),
-          storageAccountIdentity: S.optional(IdentitySelector),
+          storageAccountIdentity: S.optional(__S(162)),
         }),
       ).annotate({
         identifier: "StorageAccountConfiguration",
@@ -20143,7 +15586,7 @@ function __c21(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(BfdConfigurationInput),
+          bfdConfiguration: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "VpnOptionAPropertiesInput",
@@ -20156,9 +15599,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
-          peeringOption: PeeringOption,
-          optionBProperties: S.optional(VpnOptionBProperties),
-          optionAProperties: S.optional(VpnOptionAPropertiesInput),
+          peeringOption: S.String,
+          optionBProperties: S.optional(__S(66)),
+          optionAProperties: S.optional(__S(175)),
         }),
       ).annotate({
         identifier: "VpnConfigurationPropertiesInput",
@@ -20166,8 +15609,8 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: VpnConfigurationPropertiesInput,
-          workloadVpnConfiguration: VpnConfigurationPropertiesInput,
+          infrastructureVpnConfiguration: __S(176),
+          workloadVpnConfiguration: __S(176),
         }),
       ).annotate({
         identifier: "ManagementNetworkConfigurationPropertiesInput",
@@ -20180,16 +15623,12 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "FeatureFlagProperties" });
     case 3:
-      return S.Array(FeatureFlagProperties);
+      return S.Array(__S(178));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          uniqueRdConfigurationState: S.optional(
-            UniqueRouteDistinguisherPropertiesInputUniqueRdConfigurationState,
-          ),
-          nniDerivedUniqueRdConfigurationState: S.optional(
-            UniqueRouteDistinguisherPropertiesInputNniDerivedUniqueRdConfigurationState,
-          ),
+          uniqueRdConfigurationState: S.optional(S.String),
+          nniDerivedUniqueRdConfigurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UniqueRouteDistinguisherPropertiesInput",
@@ -20206,7 +15645,7 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          qosConfigurationState: S.optional(QosPropertiesQosConfigurationState),
+          qosConfigurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "QosProperties" });
     case 7:
@@ -20215,23 +15654,23 @@ function __c22(j: number): any {
           annotation: S.optional(S.String),
           networkFabricSku: S.String,
           fabricVersion: S.optional(S.String),
-          storageAccountConfiguration: S.optional(StorageAccountConfiguration),
+          storageAccountConfiguration: S.optional(__S(173)),
           networkFabricControllerId: S.String,
           rackCount: S.optional(S.Number),
           serverCountPerRack: S.Number,
           ipv4Prefix: S.String,
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.Number,
-          terminalServerConfiguration: TerminalServerConfigurationInput,
-          managementNetworkConfiguration: ManagementNetworkConfigurationPropertiesInput,
+          terminalServerConfiguration: __S(174),
+          managementNetworkConfiguration: __S(177),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(NetworkFabricPropertiesInputControlPlaneAclsList),
-          featureFlags: S.optional(NetworkFabricPropertiesInputFeatureFlagsList),
-          trustedIpPrefixes: S.optional(NetworkFabricPropertiesInputTrustedIpPrefixesList),
-          uniqueRdConfiguration: S.optional(UniqueRouteDistinguisherPropertiesInput),
+          controlPlaneAcls: S.optional(__S(16)),
+          featureFlags: S.optional(__S(179)),
+          trustedIpPrefixes: S.optional(__S(16)),
+          uniqueRdConfiguration: S.optional(__S(180)),
           storageArrayCount: S.optional(S.Number),
-          authorizedTransceiver: S.optional(AuthorizedTransceiverProperties),
-          qosConfiguration: S.optional(QosProperties),
+          authorizedTransceiver: S.optional(__S(181)),
+          qosConfiguration: S.optional(__S(182)),
         }),
       ).annotate({
         identifier: "NetworkFabricPropertiesInput",
@@ -20246,10 +15685,10 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkFabricRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkFabricPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(183),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20264,12 +15703,12 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          lockState: S.optional(LockConfigurationState),
-          lockType: S.optional(NetworkFabricLockType),
+          lockState: S.optional(S.String),
+          lockType: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricLockProperties" });
     case 2:
-      return S.Array(FabricLockProperties);
+      return S.Array(__S(185));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -20281,7 +15720,7 @@ function __c23(j: number): any {
           secondaryIpv4Prefix: S.String,
           secondaryIpv6Prefix: S.optional(S.String),
           networkDeviceId: S.optional(S.String),
-          secretRotationStatus: S.optional(TerminalServerConfigurationSecretRotationStatusList),
+          secretRotationStatus: S.optional(__S(167)),
         }),
       ).annotate({
         identifier: "TerminalServerConfiguration",
@@ -20296,17 +15735,17 @@ function __c23(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(BfdConfiguration),
+          bfdConfiguration: S.optional(__S(78)),
         }),
       ).annotate({ identifier: "VpnOptionAProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
-          administrativeState: S.optional(AdministrativeState),
-          peeringOption: PeeringOption,
-          optionBProperties: S.optional(VpnOptionBProperties),
-          optionAProperties: S.optional(VpnOptionAProperties),
+          administrativeState: S.optional(S.String),
+          peeringOption: S.String,
+          optionBProperties: S.optional(__S(66)),
+          optionAProperties: S.optional(__S(188)),
         }),
       ).annotate({
         identifier: "VpnConfigurationProperties",
@@ -20314,8 +15753,8 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: VpnConfigurationProperties,
-          workloadVpnConfiguration: VpnConfigurationProperties,
+          infrastructureVpnConfiguration: __S(189),
+          workloadVpnConfiguration: __S(189),
         }),
       ).annotate({
         identifier: "ManagementNetworkConfigurationProperties",
@@ -20323,13 +15762,9 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          uniqueRdConfigurationState: S.optional(
-            UniqueRouteDistinguisherPropertiesUniqueRdConfigurationState,
-          ),
-          uniqueRds: S.optional(UniqueRouteDistinguisherPropertiesUniqueRdsList),
-          nniDerivedUniqueRdConfigurationState: S.optional(
-            UniqueRouteDistinguisherPropertiesNniDerivedUniqueRdConfigurationState,
-          ),
+          uniqueRdConfigurationState: S.optional(S.String),
+          uniqueRds: S.optional(__S(16)),
+          nniDerivedUniqueRdConfigurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UniqueRouteDistinguisherProperties",
@@ -20350,34 +15785,34 @@ function __c24(j: number): any {
           annotation: S.optional(S.String),
           networkFabricSku: S.String,
           fabricVersion: S.optional(S.String),
-          routerIds: S.optional(NetworkFabricPropertiesRouterIdsList),
-          storageAccountConfiguration: S.optional(StorageAccountConfiguration),
-          fabricLocks: S.optional(NetworkFabricPropertiesFabricLocksList),
+          routerIds: S.optional(__S(16)),
+          storageAccountConfiguration: S.optional(__S(173)),
+          fabricLocks: S.optional(__S(186)),
           networkFabricControllerId: S.String,
           rackCount: S.optional(S.Number),
           serverCountPerRack: S.Number,
           ipv4Prefix: S.String,
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.Number,
-          terminalServerConfiguration: TerminalServerConfiguration,
-          managementNetworkConfiguration: ManagementNetworkConfigurationProperties,
-          racks: S.optional(NetworkFabricPropertiesRacksList),
-          l2IsolationDomains: S.optional(NetworkFabricPropertiesL2IsolationDomainsList),
-          l3IsolationDomains: S.optional(NetworkFabricPropertiesL3IsolationDomainsList),
+          terminalServerConfiguration: __S(187),
+          managementNetworkConfiguration: __S(190),
+          racks: S.optional(__S(16)),
+          l2IsolationDomains: S.optional(__S(16)),
+          l3IsolationDomains: S.optional(__S(16)),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(NetworkFabricPropertiesControlPlaneAclsList),
-          featureFlags: S.optional(NetworkFabricPropertiesFeatureFlagsList),
-          trustedIpPrefixes: S.optional(NetworkFabricPropertiesTrustedIpPrefixesList),
-          uniqueRdConfiguration: S.optional(UniqueRouteDistinguisherProperties),
+          controlPlaneAcls: S.optional(__S(16)),
+          featureFlags: S.optional(__S(179)),
+          trustedIpPrefixes: S.optional(__S(16)),
+          uniqueRdConfiguration: S.optional(__S(191)),
           storageArrayCount: S.optional(S.Number),
-          activeCommitBatches: S.optional(NetworkFabricPropertiesActiveCommitBatchesList),
-          secretRotationSummary: S.optional(SecretRotationSummary),
-          lastOperation: S.optional(LastOperationProperties),
-          authorizedTransceiver: S.optional(AuthorizedTransceiverProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
-          qosConfiguration: S.optional(QosProperties),
+          activeCommitBatches: S.optional(__S(16)),
+          secretRotationSummary: S.optional(__S(192)),
+          lastOperation: S.optional(__S(59)),
+          authorizedTransceiver: S.optional(__S(181)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+          qosConfiguration: S.optional(__S(182)),
         }),
       ).annotate({ identifier: "NetworkFabricProperties" });
     case 2:
@@ -20386,11 +15821,11 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkFabricResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkFabricProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(193),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkFabricResponse",
@@ -20405,7 +15840,7 @@ function __c24(j: number): any {
         identifier: "ExpressRouteConnectionInformation",
       });
     case 4:
-      return S.Array(ExpressRouteConnectionInformation);
+      return S.Array(__S(195));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20419,19 +15854,13 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          infrastructureExpressRouteConnections: S.optional(
-            NetworkFabricControllerPropertiesInputInfrastructureExpressRouteConnectionsList,
-          ),
-          workloadExpressRouteConnections: S.optional(
-            NetworkFabricControllerPropertiesInputWorkloadExpressRouteConnectionsList,
-          ),
-          managedResourceGroupConfiguration: S.optional(ManagedResourceGroupConfiguration),
-          isWorkloadManagementNetworkEnabled: S.optional(
-            NetworkFabricControllerPropertiesInputIsWorkloadManagementNetworkEnabled,
-          ),
+          infrastructureExpressRouteConnections: S.optional(__S(196)),
+          workloadExpressRouteConnections: S.optional(__S(196)),
+          managedResourceGroupConfiguration: S.optional(__S(197)),
+          isWorkloadManagementNetworkEnabled: S.optional(S.String),
           ipv4AddressSpace: S.optional(S.String),
           ipv6AddressSpace: S.optional(S.String),
-          nfcSku: S.optional(NetworkFabricControllerPropertiesInputNfcSku),
+          nfcSku: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFabricControllerPropertiesInput",
@@ -20442,10 +15871,10 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkFabricControllerRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkFabricControllerPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(198),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20464,35 +15893,27 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipv4AddressSpaces: S.optional(ControllerServicesIpv4AddressSpacesList),
-          ipv6AddressSpaces: S.optional(ControllerServicesIpv6AddressSpacesList),
+          ipv4AddressSpaces: S.optional(__S(16)),
+          ipv6AddressSpaces: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "ControllerServices" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          infrastructureExpressRouteConnections: S.optional(
-            NetworkFabricControllerPropertiesInfrastructureExpressRouteConnectionsList,
-          ),
-          workloadExpressRouteConnections: S.optional(
-            NetworkFabricControllerPropertiesWorkloadExpressRouteConnectionsList,
-          ),
-          infrastructureServices: S.optional(ControllerServices),
-          workloadServices: S.optional(ControllerServices),
-          managedResourceGroupConfiguration: S.optional(ManagedResourceGroupConfiguration),
-          networkFabricIds: S.optional(NetworkFabricControllerPropertiesNetworkFabricIdsList),
-          isWorkloadManagementNetworkEnabled: S.optional(
-            NetworkFabricControllerPropertiesIsWorkloadManagementNetworkEnabled,
-          ),
-          tenantInternetGatewayIds: S.optional(
-            NetworkFabricControllerPropertiesTenantInternetGatewayIdsList,
-          ),
+          infrastructureExpressRouteConnections: S.optional(__S(196)),
+          workloadExpressRouteConnections: S.optional(__S(196)),
+          infrastructureServices: S.optional(__S(200)),
+          workloadServices: S.optional(__S(200)),
+          managedResourceGroupConfiguration: S.optional(__S(197)),
+          networkFabricIds: S.optional(__S(16)),
+          isWorkloadManagementNetworkEnabled: S.optional(S.String),
+          tenantInternetGatewayIds: S.optional(__S(16)),
           ipv4AddressSpace: S.optional(S.String),
           ipv6AddressSpace: S.optional(S.String),
-          nfcSku: S.optional(NetworkFabricControllerPropertiesNfcSku),
-          lastOperation: S.optional(LastOperationProperties),
-          provisioningState: S.optional(ProvisioningState),
+          nfcSku: S.optional(S.String),
+          lastOperation: S.optional(__S(59)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFabricControllerProperties",
@@ -20503,11 +15924,11 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkFabricControllerResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkFabricControllerProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(201),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkFabricControllerResponse",
@@ -20528,8 +15949,8 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
-          properties: NetworkInterfacePropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(203),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20547,16 +15968,16 @@ function __c25(j: number): any {
           annotation: S.optional(S.String),
           physicalIdentifier: S.optional(S.String),
           connectedTo: S.optional(S.String),
-          interfaceType: S.optional(InterfaceType),
+          interfaceType: S.optional(S.String),
           ipv4Address: S.optional(S.String),
           ipv6Address: S.optional(S.String),
           description: S.optional(S.String),
           additionalDescription: S.optional(S.String),
-          lastOperation: S.optional(LastOperationProperties),
+          lastOperation: S.optional(__S(59)),
           networkFabricId: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
-          configurationState: S.optional(ConfigurationState),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkInterfaceProperties",
@@ -20567,9 +15988,9 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkInterfaceProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          systemData: S.optional(__S(58)),
+          properties: __S(205),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkInterfaceResponse",
@@ -20591,20 +16012,18 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stationConfigurationState: S.optional(StationConfigurationState),
+          stationConfigurationState: S.optional(S.String),
           scopeResourceId: S.optional(S.String),
           stationName: S.optional(S.String),
           stationIp: S.optional(S.String),
           stationPort: S.optional(S.Number),
-          stationConnectionMode: S.optional(StationConnectionMode),
-          stationConnectionProperties: S.optional(StationConnectionProperties),
+          stationConnectionMode: S.optional(S.String),
+          stationConnectionProperties: S.optional(__S(207)),
           stationNetwork: S.optional(S.String),
-          monitoredNetworks: S.optional(BmpConfigurationPropertiesMonitoredNetworksList),
-          exportPolicy: S.optional(BmpConfigurationPropertiesExportPolicy),
-          exportPolicyConfiguration: S.optional(BmpExportPolicyProperties),
-          monitoredAddressFamilies: S.optional(
-            BmpConfigurationPropertiesMonitoredAddressFamiliesList,
-          ),
+          monitoredNetworks: S.optional(__S(16)),
+          exportPolicy: S.optional(S.String),
+          exportPolicyConfiguration: S.optional(__S(88)),
+          monitoredAddressFamilies: S.optional(__S(87)),
         }),
       ).annotate({
         identifier: "BmpConfigurationProperties",
@@ -20613,7 +16032,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bmpConfiguration: S.optional(BmpConfigurationProperties),
+          bmpConfiguration: S.optional(__S(208)),
         }),
       ).annotate({
         identifier: "NetworkMonitorPropertiesInput",
@@ -20624,9 +16043,9 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkMonitorRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkMonitorPropertiesInput,
+          properties: __S(209),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20642,11 +16061,11 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bmpConfiguration: S.optional(BmpConfigurationProperties),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          bmpConfiguration: S.optional(__S(208)),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkMonitorProperties" });
     case 4:
@@ -20655,10 +16074,10 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkMonitorResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkMonitorProperties,
+          properties: __S(211),
         }),
       ).annotate({
         identifier: "CreateNetworkMonitorResponse",
@@ -20677,10 +16096,10 @@ function __c26(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkPacketBrokerName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkPacketBrokerRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkPacketBrokerPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(213),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20696,13 +16115,13 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkFabricId: S.String,
-          networkDeviceIds: S.optional(NetworkPacketBrokerPropertiesNetworkDeviceIdsList),
-          sourceInterfaceIds: S.optional(NetworkPacketBrokerPropertiesSourceInterfaceIdsList),
-          networkTapIds: S.optional(NetworkPacketBrokerPropertiesNetworkTapIdsList),
-          neighborGroupIds: S.optional(NetworkPacketBrokerPropertiesNeighborGroupIdsList),
-          lastOperation: S.optional(LastOperationProperties),
-          provisioningState: S.optional(ProvisioningState),
-          configurationState: S.optional(ConfigurationState),
+          networkDeviceIds: S.optional(__S(16)),
+          sourceInterfaceIds: S.optional(__S(16)),
+          networkTapIds: S.optional(__S(16)),
+          neighborGroupIds: S.optional(__S(16)),
+          lastOperation: S.optional(__S(59)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkPacketBrokerProperties",
@@ -20717,11 +16136,11 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkPacketBrokerResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkPacketBrokerProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(215),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkPacketBrokerResponse",
@@ -20730,7 +16149,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          networkRackType: S.optional(NetworkRackType),
+          networkRackType: S.optional(S.String),
           networkFabricId: S.String,
         }),
       ).annotate({
@@ -20742,9 +16161,9 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkRackName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkRackRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkRackPropertiesInput,
+          properties: __S(217),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20758,12 +16177,12 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          networkRackType: S.optional(NetworkRackType),
+          networkRackType: S.optional(S.String),
           networkFabricId: S.String,
-          networkDevices: S.optional(NetworkRackPropertiesNetworkDevicesList),
-          lastOperation: S.optional(LastOperationProperties),
-          provisioningState: S.optional(ProvisioningState),
-          configurationState: S.optional(ConfigurationState),
+          networkDevices: S.optional(__S(16)),
+          lastOperation: S.optional(__S(59)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRackProperties" });
     case 4:
@@ -20772,10 +16191,10 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkRackResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkRackProperties,
+          properties: __S(219),
         }),
       ).annotate({
         identifier: "CreateNetworkRackResponse",
@@ -20783,8 +16202,8 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          encapsulation: S.optional(Encapsulation),
-          neighborGroupIds: S.optional(IsolationDomainPropertiesNeighborGroupIdsList),
+          encapsulation: S.optional(S.String),
+          neighborGroupIds: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "IsolationDomainProperties",
@@ -20793,14 +16212,14 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          destinationType: DestinationType,
+          destinationType: S.String,
           destinationId: S.String,
-          isolationDomainProperties: S.optional(IsolationDomainProperties),
+          isolationDomainProperties: S.optional(__S(221)),
           destinationTapRuleId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationProperties" });
     case 7:
-      return S.Array(DestinationProperties);
+      return S.Array(__S(222));
   }
 }
 function __c28(j: number): any {
@@ -20810,8 +16229,8 @@ function __c28(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkPacketBrokerId: S.String,
-          destinations: NetworkTapPropertiesInputDestinationsList,
-          pollingType: S.optional(NetworkTapPropertiesInputPollingType),
+          destinations: __S(223),
+          pollingType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkTapPropertiesInput",
@@ -20822,10 +16241,10 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkTapRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkTapPropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(224),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20841,13 +16260,13 @@ function __c28(j: number): any {
           annotation: S.optional(S.String),
           networkPacketBrokerId: S.String,
           sourceTapRuleId: S.optional(S.String),
-          networkFabricIds: S.optional(NetworkTapPropertiesNetworkFabricIdsList),
-          destinations: NetworkTapPropertiesDestinationsList,
-          pollingType: S.optional(NetworkTapPropertiesPollingType),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          networkFabricIds: S.optional(__S(16)),
+          destinations: __S(223),
+          pollingType: S.optional(S.String),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapProperties" });
     case 3:
@@ -20856,42 +16275,42 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkTapResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkTapProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(226),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "CreateNetworkTapResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          portType: S.optional(PortType),
-          layer4Protocol: Layer4Protocol,
-          ports: S.optional(PortConditionPortsList),
-          portGroupNames: S.optional(PortConditionPortGroupNamesList),
+          portType: S.optional(S.String),
+          layer4Protocol: S.String,
+          ports: S.optional(__S(16)),
+          portGroupNames: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "PortCondition" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(NetworkTapRuleMatchConditionProtocolTypesList),
-          vlanMatchCondition: S.optional(VlanMatchCondition),
-          ipCondition: S.optional(IpMatchCondition),
-          encapsulationType: S.optional(NetworkTapRuleMatchConditionEncapsulationType),
-          portCondition: S.optional(PortCondition),
+          protocolTypes: S.optional(__S(16)),
+          vlanMatchCondition: S.optional(__S(24)),
+          ipCondition: S.optional(__S(25)),
+          encapsulationType: S.optional(S.String),
+          portCondition: S.optional(__S(228)),
         }),
       ).annotate({
         identifier: "NetworkTapRuleMatchCondition",
       });
     case 6:
-      return S.Array(NetworkTapRuleMatchCondition);
+      return S.Array(__S(229));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(TapRuleActionType),
+          type: S.optional(S.String),
           truncate: S.optional(S.String),
-          isTimestampEnabled: S.optional(BooleanEnumProperty),
+          isTimestampEnabled: S.optional(S.String),
           destinationId: S.optional(S.String),
           matchConfigurationName: S.optional(S.String),
         }),
@@ -20901,25 +16320,25 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NetworkTapRuleAction);
+      return S.Array(__S(231));
     case 1:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(IPAddressType),
-          matchConditions: S.optional(NetworkTapRuleMatchConfigurationMatchConditionsList),
-          actions: S.optional(NetworkTapRuleMatchConfigurationActionsList),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(230)),
+          actions: S.optional(__S(232)),
         }),
       ).annotate({
         identifier: "NetworkTapRuleMatchConfiguration",
       });
     case 2:
-      return S.Array(NetworkTapRuleMatchConfiguration);
+      return S.Array(__S(233));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          enableCount: S.optional(GlobalNetworkTapRuleActionPropertiesEnableCount),
+          enableCount: S.optional(S.String),
           truncate: S.optional(S.String),
         }),
       ).annotate({
@@ -20929,15 +16348,13 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          configurationType: ConfigurationType,
+          configurationType: S.String,
           tapRulesUrl: S.optional(S.String),
-          identitySelector: S.optional(IdentitySelector),
-          matchConfigurations: S.optional(NetworkTapRulePropertiesInputMatchConfigurationsList),
-          dynamicMatchConfigurations: S.optional(
-            NetworkTapRulePropertiesInputDynamicMatchConfigurationsList,
-          ),
+          identitySelector: S.optional(__S(162)),
+          matchConfigurations: S.optional(__S(234)),
+          dynamicMatchConfigurations: S.optional(__S(44)),
           pollingIntervalInSeconds: S.optional(S.Number),
-          globalNetworkTapRuleActions: S.optional(GlobalNetworkTapRuleActionProperties),
+          globalNetworkTapRuleActions: S.optional(__S(235)),
         }),
       ).annotate({
         identifier: "NetworkTapRulePropertiesInput",
@@ -20948,10 +16365,10 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateNetworkTapRuleRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkTapRulePropertiesInput,
-          identity: S.optional(CreateL2IsolationDomainRequestIdentity),
+          properties: __S(236),
+          identity: S.optional(__S(132)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20967,23 +16384,21 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          configurationType: ConfigurationType,
+          configurationType: S.String,
           tapRulesUrl: S.optional(S.String),
-          identitySelector: S.optional(IdentitySelector),
-          matchConfigurations: S.optional(NetworkTapRulePropertiesMatchConfigurationsList),
-          dynamicMatchConfigurations: S.optional(
-            NetworkTapRulePropertiesDynamicMatchConfigurationsList,
-          ),
+          identitySelector: S.optional(__S(162)),
+          matchConfigurations: S.optional(__S(234)),
+          dynamicMatchConfigurations: S.optional(__S(44)),
           networkTapId: S.optional(S.String),
-          networkTapIds: S.optional(NetworkTapRulePropertiesNetworkTapIdsList),
+          networkTapIds: S.optional(__S(16)),
           pollingIntervalInSeconds: S.optional(S.Number),
           lastSyncedTime: S.optional(S.String),
-          globalNetworkTapRuleActions: S.optional(GlobalNetworkTapRuleActionProperties),
-          lastOperation: S.optional(LastOperationProperties),
-          networkFabricIds: S.optional(NetworkTapRulePropertiesNetworkFabricIdsList),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          globalNetworkTapRuleActions: S.optional(__S(235)),
+          lastOperation: S.optional(__S(59)),
+          networkFabricIds: S.optional(__S(16)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapRuleProperties" });
     case 7:
@@ -20992,11 +16407,11 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateNetworkTapRuleResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkTapRuleProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(238),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({
         identifier: "CreateNetworkTapRuleResponse",
@@ -21009,13 +16424,13 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mtu: S.optional(S.Number),
-          interfaces: S.optional(Layer2ConfigurationInterfacesList),
+          interfaces: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "Layer2Configuration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          configurationState: NniBmpPropertiesConfigurationState,
+          configurationState: S.String,
         }),
       ).annotate({ identifier: "NniBmpProperties" });
     case 2:
@@ -21027,7 +16442,7 @@ function __c30(j: number): any {
         identifier: "OptionBLayer3PrefixLimitProperties",
       });
     case 3:
-      return S.Array(OptionBLayer3PrefixLimitProperties);
+      return S.Array(__S(242));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -21037,9 +16452,9 @@ function __c30(j: number): any {
           secondaryIpv6Prefix: S.optional(S.String),
           peerASN: S.Number,
           vlanId: S.Number,
-          peLoopbackIpAddress: S.optional(OptionBLayer3ConfigurationInputPeLoopbackIpAddressList),
-          bmpConfiguration: S.optional(NniBmpProperties),
-          prefixLimits: S.optional(OptionBLayer3ConfigurationInputPrefixLimitsList),
+          peLoopbackIpAddress: S.optional(__S(16)),
+          bmpConfiguration: S.optional(__S(241)),
+          prefixLimits: S.optional(__S(243)),
         }),
       ).annotate({
         identifier: "OptionBLayer3ConfigurationInput",
@@ -21065,8 +16480,8 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ipv4Routes: S.optional(ConditionalDefaultRoutePropertiesIpv4RoutesList),
-          ipv6Routes: S.optional(ConditionalDefaultRoutePropertiesIpv6RoutesList),
+          ipv4Routes: S.optional(__S(74)),
+          ipv6Routes: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "ConditionalDefaultRouteProperties",
@@ -21078,19 +16493,19 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nniType: S.optional(NetworkToNetworkInterconnectPropertiesInputNniType),
-          isManagementType: S.optional(NetworkToNetworkInterconnectPropertiesInputIsManagementType),
-          useOptionB: BooleanEnumProperty,
-          layer2Configuration: S.optional(Layer2Configuration),
-          optionBLayer3Configuration: S.optional(OptionBLayer3ConfigurationInput),
-          npbStaticRouteConfiguration: S.optional(NpbStaticRouteConfigurationInput),
-          staticRouteConfiguration: S.optional(NniStaticRouteConfigurationInput),
-          importRoutePolicy: S.optional(ImportRoutePolicyInformation),
-          exportRoutePolicy: S.optional(ExportRoutePolicyInformation),
+          nniType: S.optional(S.String),
+          isManagementType: S.optional(S.String),
+          useOptionB: S.String,
+          layer2Configuration: S.optional(__S(240)),
+          optionBLayer3Configuration: S.optional(__S(244)),
+          npbStaticRouteConfiguration: S.optional(__S(75)),
+          staticRouteConfiguration: S.optional(__S(75)),
+          importRoutePolicy: S.optional(__S(245)),
+          exportRoutePolicy: S.optional(__S(246)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
-          microBfdState: S.optional(MicroBfdState),
-          conditionalDefaultRouteConfiguration: S.optional(ConditionalDefaultRouteProperties),
+          microBfdState: S.optional(S.String),
+          conditionalDefaultRouteConfiguration: S.optional(__S(247)),
         }),
       ).annotate({
         identifier: "NetworkToNetworkInterconnectPropertiesInput",
@@ -21102,7 +16517,7 @@ function __c31(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          properties: NetworkToNetworkInterconnectPropertiesInput,
+          properties: __S(248),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21124,9 +16539,9 @@ function __c31(j: number): any {
           peerASN: S.Number,
           vlanId: S.Number,
           fabricASN: S.optional(S.Number),
-          peLoopbackIpAddress: S.optional(OptionBLayer3ConfigurationPeLoopbackIpAddressList),
-          bmpConfiguration: S.optional(NniBmpProperties),
-          prefixLimits: S.optional(OptionBLayer3ConfigurationPrefixLimitsList),
+          peLoopbackIpAddress: S.optional(__S(16)),
+          bmpConfiguration: S.optional(__S(241)),
+          prefixLimits: S.optional(__S(243)),
         }),
       ).annotate({
         identifier: "OptionBLayer3Configuration",
@@ -21134,23 +16549,23 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          nniType: S.optional(NetworkToNetworkInterconnectPropertiesNniType),
-          isManagementType: S.optional(NetworkToNetworkInterconnectPropertiesIsManagementType),
-          useOptionB: BooleanEnumProperty,
-          layer2Configuration: S.optional(Layer2Configuration),
-          optionBLayer3Configuration: S.optional(OptionBLayer3Configuration),
-          npbStaticRouteConfiguration: S.optional(NpbStaticRouteConfiguration),
-          staticRouteConfiguration: S.optional(NniStaticRouteConfiguration),
-          importRoutePolicy: S.optional(ImportRoutePolicyInformation),
-          exportRoutePolicy: S.optional(ExportRoutePolicyInformation),
+          nniType: S.optional(S.String),
+          isManagementType: S.optional(S.String),
+          useOptionB: S.String,
+          layer2Configuration: S.optional(__S(240)),
+          optionBLayer3Configuration: S.optional(__S(250)),
+          npbStaticRouteConfiguration: S.optional(__S(80)),
+          staticRouteConfiguration: S.optional(__S(80)),
+          importRoutePolicy: S.optional(__S(245)),
+          exportRoutePolicy: S.optional(__S(246)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
-          microBfdState: S.optional(MicroBfdState),
-          conditionalDefaultRouteConfiguration: S.optional(ConditionalDefaultRouteProperties),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          microBfdState: S.optional(S.String),
+          conditionalDefaultRouteConfiguration: S.optional(__S(247)),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkToNetworkInterconnectProperties",
@@ -21161,8 +16576,8 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkToNetworkInterconnectProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(251),
         }),
       ).annotate({
         identifier: "CreateNetworkToNetworkInterconnectResponse",
@@ -21170,11 +16585,9 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipCommunityIds: S.optional(StatementConditionPropertiesIpCommunityIdsList),
-          ipExtendedCommunityIds: S.optional(
-            StatementConditionPropertiesIpExtendedCommunityIdsList,
-          ),
-          type: S.optional(StatementConditionPropertiesType),
+          ipCommunityIds: S.optional(__S(16)),
+          ipExtendedCommunityIds: S.optional(__S(16)),
+          type: S.optional(S.String),
           ipPrefixId: S.optional(S.String),
         }),
       ).annotate({
@@ -21183,15 +16596,15 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ipCommunityIds: S.optional(IpCommunityIdListIpCommunityIdsList),
+          ipCommunityIds: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "IpCommunityIdList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(IpCommunityIdList),
-          delete: S.optional(IpCommunityIdList),
-          set: S.optional(IpCommunityIdList),
+          add: S.optional(__S(254)),
+          delete: S.optional(__S(254)),
+          set: S.optional(__S(254)),
         }),
       ).annotate({
         identifier: "ActionIpCommunityProperties",
@@ -21203,7 +16616,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipExtendedCommunityIds: S.optional(IpExtendedCommunityIdListIpExtendedCommunityIdsList),
+          ipExtendedCommunityIds: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "IpExtendedCommunityIdList",
@@ -21211,9 +16624,9 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(IpExtendedCommunityIdList),
-          delete: S.optional(IpExtendedCommunityIdList),
-          set: S.optional(IpExtendedCommunityIdList),
+          add: S.optional(__S(256)),
+          delete: S.optional(__S(256)),
+          set: S.optional(__S(256)),
         }),
       ).annotate({
         identifier: "ActionIpExtendedCommunityProperties",
@@ -21222,9 +16635,9 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           localPreference: S.optional(S.Number),
-          actionType: RoutePolicyActionType,
-          ipCommunityProperties: S.optional(ActionIpCommunityProperties),
-          ipExtendedCommunityProperties: S.optional(ActionIpExtendedCommunityProperties),
+          actionType: S.String,
+          ipCommunityProperties: S.optional(__S(255)),
+          ipExtendedCommunityProperties: S.optional(__S(257)),
         }),
       ).annotate({
         identifier: "StatementActionProperties",
@@ -21234,22 +16647,22 @@ function __c32(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           sequenceNumber: S.Number,
-          condition: StatementConditionProperties,
-          action: StatementActionProperties,
+          condition: __S(253),
+          action: __S(258),
         }),
       ).annotate({
         identifier: "RoutePolicyStatementProperties",
       });
     case 4:
-      return S.Array(RoutePolicyStatementProperties);
+      return S.Array(__S(259));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          defaultAction: S.optional(RoutePolicyPropertiesInputDefaultAction),
-          statements: RoutePolicyPropertiesInputStatementsList,
+          defaultAction: S.optional(S.String),
+          statements: __S(260),
           networkFabricId: S.String,
-          addressFamilyType: S.optional(RoutePolicyPropertiesInputAddressFamilyType),
+          addressFamilyType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RoutePolicyPropertiesInput",
@@ -21260,9 +16673,9 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateRoutePolicyRequestTagsMap),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: RoutePolicyPropertiesInput,
+          properties: __S(261),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21276,14 +16689,14 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          defaultAction: S.optional(RoutePolicyPropertiesDefaultAction),
-          statements: RoutePolicyPropertiesStatementsList,
+          defaultAction: S.optional(S.String),
+          statements: __S(260),
           networkFabricId: S.String,
-          addressFamilyType: S.optional(RoutePolicyPropertiesAddressFamilyType),
-          lastOperation: S.optional(LastOperationProperties),
-          configurationState: S.optional(ConfigurationState),
-          provisioningState: S.optional(ProvisioningState),
-          administrativeState: S.optional(AdministrativeState),
+          addressFamilyType: S.optional(S.String),
+          lastOperation: S.optional(__S(59)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutePolicyProperties" });
   }
@@ -21296,10 +16709,10 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateRoutePolicyResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: RoutePolicyProperties,
+          properties: __S(263),
         }),
       ).annotate({
         identifier: "CreateRoutePolicyResponse",
@@ -21839,10 +17252,10 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetIpCommunityResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpCommunityProperties,
+          properties: __S(115),
         }),
       ).annotate({ identifier: "GetIpCommunityResponse" });
     case 2:
@@ -21932,11 +17345,11 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetNeighborGroupResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NeighborGroupProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(152),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "GetNeighborGroupResponse" });
   }
@@ -21999,11 +17412,11 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetNetworkDeviceResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkDeviceProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(171),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "GetNetworkDeviceResponse" });
     case 4:
@@ -22028,13 +17441,13 @@ function __c38(j: number): any {
           version: S.optional(S.String),
           vendorOsVersion: S.optional(S.String),
           vendorFirmwareVersion: S.optional(S.String),
-          isDefault: S.optional(BooleanEnumProperty),
+          isDefault: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SupportedVersionProperties",
       });
     case 6:
-      return S.Array(SupportedVersionProperties);
+      return S.Array(__S(309));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -22049,28 +17462,28 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SupportedConnectorProperties);
+      return S.Array(__S(311));
     case 1:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
           interfaceType: S.optional(S.String),
-          supportedConnectorTypes: S.optional(DeviceInterfacePropertiesSupportedConnectorTypesList),
+          supportedConnectorTypes: S.optional(__S(312)),
         }),
       ).annotate({
         identifier: "DeviceInterfaceProperties",
       });
     case 2:
-      return S.Array(DeviceInterfaceProperties);
+      return S.Array(__S(313));
     case 3:
       return S.suspend(() =>
         S.Struct({
           model: S.String,
           manufacturer: S.optional(S.String),
-          supportedVersions: S.optional(NetworkDeviceSkuPropertiesSupportedVersionsList),
-          supportedRoleTypes: S.optional(NetworkDeviceSkuPropertiesSupportedRoleTypesList),
-          interfaces: S.optional(NetworkDeviceSkuPropertiesInterfacesList),
-          provisioningState: S.optional(ProvisioningState),
+          supportedVersions: S.optional(__S(310)),
+          supportedRoleTypes: S.optional(__S(87)),
+          interfaces: S.optional(__S(314)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkDeviceSkuProperties",
@@ -22081,8 +17494,8 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkDeviceSkuProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(315),
         }),
       ).annotate({
         identifier: "GetNetworkDeviceSkusResponse",
@@ -22108,11 +17521,11 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetNetworkFabricResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkFabricProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(193),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "GetNetworkFabricResponse" });
     case 7:
@@ -22155,12 +17568,12 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(FabricSkuType),
+          type: S.optional(S.String),
           maxComputeRacks: S.optional(S.Number),
           maximumServerCount: S.optional(S.Number),
-          supportedVersions: S.optional(NetworkFabricSkuPropertiesSupportedVersionsList),
+          supportedVersions: S.optional(__S(16)),
           details: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkFabricSkuProperties",
@@ -22171,8 +17584,8 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkFabricSkuProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(321),
         }),
       ).annotate({
         identifier: "GetNetworkFabricSkusResponse",
@@ -22200,8 +17613,8 @@ function __c40(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(GetTopologyResponseErrorDetailsList),
-          additionalInfo: S.optional(GetTopologyResponseErrorAdditionalInfoList),
+          details: S.optional(__S(14)),
+          additionalInfo: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetTopologyResponseError" });
     case 5:
@@ -22221,10 +17634,10 @@ function __c40(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(GetTopologyResponseOperationsList),
-          error: S.optional(GetTopologyResponseError),
+          operations: S.optional(__S(13)),
+          error: S.optional(__S(324)),
           resourceId: S.optional(S.String),
-          properties: S.optional(GetTopologyResponseProperties),
+          properties: S.optional(__S(325)),
         }),
       ).annotate({ identifier: "GetTopologyResponse" });
     case 7:
@@ -22302,10 +17715,10 @@ function __c41(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetNetworkRackResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkRackProperties,
+          properties: __S(219),
         }),
       ).annotate({ identifier: "GetNetworkRackResponse" });
     case 4:
@@ -22381,10 +17794,10 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetRoutePolicyResponseTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: RoutePolicyProperties,
+          properties: __S(263),
         }),
       ).annotate({ identifier: "GetRoutePolicyResponse" });
     case 1:
@@ -22409,18 +17822,18 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(AccessControlListTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: AccessControlListProperties,
+          properties: __S(61),
         }),
       ).annotate({ identifier: "AccessControlList" });
     case 3:
-      return S.Array(AccessControlList);
+      return S.Array(__S(338));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: AccessControlListsListResultValueList,
+          value: __S(339),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22464,8 +17877,8 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ExternalNetworkProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(81),
         }),
       ).annotate({ identifier: "ExternalNetwork" });
   }
@@ -22473,11 +17886,11 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExternalNetwork);
+      return S.Array(__S(343));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ExternalNetworksListValueList,
+          value: __S(344),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalNetworksList" });
@@ -22504,16 +17917,16 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: InternalNetworkProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(98),
         }),
       ).annotate({ identifier: "InternalNetwork" });
     case 4:
-      return S.Array(InternalNetwork);
+      return S.Array(__S(347));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: InternalNetworksListValueList,
+          value: __S(348),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternalNetworksList" });
@@ -22539,10 +17952,10 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(InternetGatewayTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: InternetGatewayProperties,
+          properties: __S(102),
         }),
       ).annotate({ identifier: "InternetGateway" });
   }
@@ -22550,11 +17963,11 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InternetGateway);
+      return S.Array(__S(351));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: InternetGatewaysListResultValueList,
+          value: __S(352),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22597,18 +18010,18 @@ function __c44(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(InternetGatewayRuleTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: InternetGatewayRuleProperties,
+          properties: __S(109),
         }),
       ).annotate({ identifier: "InternetGatewayRule" });
     case 5:
-      return S.Array(InternetGatewayRule);
+      return S.Array(__S(356));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: InternetGatewayRulesListResultValueList,
+          value: __S(357),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22650,11 +18063,11 @@ function __c45(j: number): any {
         identifier: "ListIpCommunityByResourceGroupRequest",
       });
     case 1:
-      return S.Array(IpCommunity);
+      return S.Array(__S(297));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: IpCommunitiesListResultValueList,
+          value: __S(361),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpCommunitiesListResult" });
@@ -22695,18 +18108,18 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(IpExtendedCommunityTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: IpExtendedCommunityProperties,
+          properties: __S(121),
         }),
       ).annotate({ identifier: "IpExtendedCommunity" });
     case 6:
-      return S.Array(IpExtendedCommunity);
+      return S.Array(__S(365));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: IpExtendedCommunityListResultValueList,
+          value: __S(366),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22748,11 +18161,11 @@ function __c46(j: number): any {
         identifier: "ListIpPrefixByResourceGroupRequest",
       });
     case 2:
-      return S.Array(IpPrefix);
+      return S.Array(__S(128));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: IpPrefixesListResultValueList,
+          value: __S(370),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixesListResult" });
@@ -22793,15 +18206,15 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(L2IsolationDomainTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: L2IsolationDomainProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(134),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "L2IsolationDomain" });
     case 7:
-      return S.Array(L2IsolationDomain);
+      return S.Array(__S(374));
   }
 }
 function __c47(j: number): any {
@@ -22809,7 +18222,7 @@ function __c47(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: L2IsolationDomainsListResultValueList,
+          value: __S(375),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22852,19 +18265,19 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(L3IsolationDomainTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: L3IsolationDomainProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(147),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "L3IsolationDomain" });
     case 4:
-      return S.Array(L3IsolationDomain);
+      return S.Array(__S(379));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: L3IsolationDomainsListResultValueList,
+          value: __S(380),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -22906,11 +18319,11 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NeighborGroup);
+      return S.Array(__S(303));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: NeighborGroupsListResultValueList,
+          value: __S(384),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NeighborGroupsListResult" });
@@ -22951,19 +18364,19 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(NetworkBootstrapDeviceTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkBootstrapDeviceProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(156),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "NetworkBootstrapDevice" });
     case 5:
-      return S.Array(NetworkBootstrapDevice);
+      return S.Array(__S(388));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkBootstrapDeviceListResultValueList,
+          value: __S(389),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23006,11 +18419,11 @@ function __c49(j: number): any {
         identifier: "ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest",
       });
     case 1:
-      return S.Array(NetworkBootstrapInterface);
+      return S.Array(__S(161));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkBootstrapInterfaceListResultValueList,
+          value: __S(393),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23033,11 +18446,11 @@ function __c49(j: number): any {
         identifier: "ListNetworkDeviceByResourceGroupRequest",
       });
     case 4:
-      return S.Array(NetworkDevice);
+      return S.Array(__S(307));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkDevicesListResultValueList,
+          value: __S(396),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkDevicesListResult" });
@@ -23081,16 +18494,16 @@ function __c50(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkDeviceSkuProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(315),
         }),
       ).annotate({ identifier: "NetworkDeviceSku" });
     case 1:
-      return S.Array(NetworkDeviceSku);
+      return S.Array(__S(400));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkDeviceSkusListResultValueList,
+          value: __S(401),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23113,11 +18526,11 @@ function __c50(j: number): any {
         identifier: "ListNetworkFabricByResourceGroupRequest",
       });
     case 4:
-      return S.Array(NetworkFabric);
+      return S.Array(__S(318));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkFabricsListResultValueList,
+          value: __S(404),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkFabricsListResult" });
@@ -23162,19 +18575,19 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(NetworkFabricControllerTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkFabricControllerProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(201),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "NetworkFabricController" });
     case 1:
-      return S.Array(NetworkFabricController);
+      return S.Array(__S(408));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkFabricControllersListResultValueList,
+          value: __S(409),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23216,16 +18629,16 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkFabricSkuProperties,
+          systemData: S.optional(__S(58)),
+          properties: __S(321),
         }),
       ).annotate({ identifier: "NetworkFabricSku" });
     case 6:
-      return S.Array(NetworkFabricSku);
+      return S.Array(__S(413));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkFabricSkusListResultValueList,
+          value: __S(414),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23258,17 +18671,17 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: NetworkInterfaceProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          systemData: S.optional(__S(58)),
+          properties: __S(205),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 2:
-      return S.Array(NetworkInterface);
+      return S.Array(__S(417));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkInterfacesListValueList,
+          value: __S(418),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkInterfacesList" });
@@ -23294,18 +18707,18 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(NetworkMonitorTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkMonitorProperties,
+          properties: __S(211),
         }),
       ).annotate({ identifier: "NetworkMonitor" });
     case 6:
-      return S.Array(NetworkMonitor);
+      return S.Array(__S(421));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkMonitorListResultValueList,
+          value: __S(422),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkMonitorListResult" });
@@ -23350,19 +18763,19 @@ function __c53(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(NetworkPacketBrokerTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkPacketBrokerProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(215),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "NetworkPacketBroker" });
     case 3:
-      return S.Array(NetworkPacketBroker);
+      return S.Array(__S(426));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkPacketBrokersListResultValueList,
+          value: __S(427),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23400,7 +18813,7 @@ function __c53(j: number): any {
         identifier: "ListNetworkRackByResourceGroupRequest",
       });
     case 7:
-      return S.Array(NetworkRack);
+      return S.Array(__S(331));
   }
 }
 function __c54(j: number): any {
@@ -23408,7 +18821,7 @@ function __c54(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkRacksListResultValueList,
+          value: __S(431),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRacksListResult" });
@@ -23444,11 +18857,11 @@ function __c54(j: number): any {
         identifier: "ListNetworkTapByResourceGroupRequest",
       });
     case 3:
-      return S.Array(NetworkTap);
+      return S.Array(__S(227));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkTapsListResultValueList,
+          value: __S(435),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapsListResult" });
@@ -23489,11 +18902,11 @@ function __c54(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(NetworkTapRuleTagsMap),
+          systemData: S.optional(__S(58)),
+          tags: S.optional(__S(23)),
           location: S.String,
-          properties: NetworkTapRuleProperties,
-          identity: S.optional(CreateL2IsolationDomainResponseIdentity),
+          properties: __S(238),
+          identity: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "NetworkTapRule" });
   }
@@ -23501,11 +18914,11 @@ function __c54(j: number): any {
 function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NetworkTapRule);
+      return S.Array(__S(439));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkTapRulesListResultValueList,
+          value: __S(440),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23544,11 +18957,11 @@ function __c55(j: number): any {
         identifier: "ListNetworkToNetworkInterconnectByNetworkFabricRequest",
       });
     case 4:
-      return S.Array(NetworkToNetworkInterconnect);
+      return S.Array(__S(252));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkToNetworkInterconnectsListValueList,
+          value: __S(444),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -23583,17 +18996,17 @@ function __c56(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(447)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(448));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(449)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -23614,11 +19027,11 @@ function __c56(j: number): any {
         identifier: "ListRoutePolicyByResourceGroupRequest",
       });
     case 4:
-      return S.Array(RoutePolicy);
+      return S.Array(__S(336));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: RoutePoliciesListResultValueList,
+          value: __S(452),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutePoliciesListResult" });
@@ -23643,8 +19056,8 @@ function __c56(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          lockType: S.optional(NetworkFabricLockType),
-          action: S.optional(NetworkFabricLockAction),
+          lockType: S.optional(S.String),
+          action: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23695,7 +19108,7 @@ function __c57(j: number): any {
         identifier: "NetworkBootstrapDevicesResyncPasswordsRequest",
       });
     case 2:
-      return S.Array(OperationStatusResult);
+      return S.Array(__S(10));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -23706,28 +19119,24 @@ function __c57(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(
-            NetworkBootstrapDeviceResyncPasswordsResponseOperationsItemOperationsList,
-          ),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(458)),
+          error: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem",
       });
     case 4:
-      return S.Array(NetworkBootstrapDeviceResyncPasswordsResponseOperationsItem);
+      return S.Array(__S(459));
     case 5:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(NetworkBootstrapDeviceResyncPasswordsResponseErrorDetailsList),
-          additionalInfo: S.optional(
-            NetworkBootstrapDeviceResyncPasswordsResponseErrorAdditionalInfoList,
-          ),
+          details: S.optional(__S(14)),
+          additionalInfo: S.optional(__S(461)),
         }),
       ).annotate({
         identifier: "NetworkBootstrapDeviceResyncPasswordsResponseError",
@@ -23741,8 +19150,8 @@ function __c57(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkBootstrapDeviceResyncPasswordsResponseOperationsList),
-          error: S.optional(NetworkBootstrapDeviceResyncPasswordsResponseError),
+          operations: S.optional(__S(460)),
+          error: S.optional(__S(462)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -23780,14 +19189,14 @@ function __c58(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkBootstrapDeviceUpgradeResponseOperationsItemOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(458)),
+          error: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "NetworkBootstrapDeviceUpgradeResponseOperationsItem",
       });
     case 2:
-      return S.Array(NetworkBootstrapDeviceUpgradeResponseOperationsItem);
+      return S.Array(__S(465));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -23797,8 +19206,8 @@ function __c58(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkBootstrapDeviceUpgradeResponseOperationsList),
-          error: S.optional(NetworkBootstrapDeviceUpgradeResponseError),
+          operations: S.optional(__S(466)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -23895,10 +19304,10 @@ function __c59(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(ArmConfigurationDiffOperationResponseOperationsList),
-          error: S.optional(ArmConfigurationDiffOperationResponseError),
+          operations: S.optional(__S(466)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
-          properties: S.optional(ArmConfigurationDiffResponseProperties),
+          properties: S.optional(__S(472)),
         }),
       ).annotate({
         identifier: "ArmConfigurationDiffOperationResponse",
@@ -23955,10 +19364,10 @@ function __c59(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(DiscardCommitBatchOperationResponseOperationsList),
-          error: S.optional(DiscardCommitBatchOperationResponseError),
+          operations: S.optional(__S(466)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
-          properties: S.optional(DiscardCommitBatchResponseProperties),
+          properties: S.optional(__S(476)),
         }),
       ).annotate({
         identifier: "DiscardCommitBatchOperationResponse",
@@ -24008,7 +19417,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           version: S.optional(S.String),
-          action: S.optional(NetworkFabricUpgradeAction),
+          action: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24043,10 +19452,8 @@ function __c60(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ViewDeviceConfigurationOperationResponseErrorDetailsList),
-          additionalInfo: S.optional(
-            ViewDeviceConfigurationOperationResponseErrorAdditionalInfoList,
-          ),
+          details: S.optional(__S(14)),
+          additionalInfo: S.optional(__S(461)),
         }),
       ).annotate({
         identifier: "ViewDeviceConfigurationOperationResponseError",
@@ -24068,10 +19475,10 @@ function __c60(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(ViewDeviceConfigurationOperationResponseOperationsList),
-          error: S.optional(ViewDeviceConfigurationOperationResponseError),
+          operations: S.optional(__S(466)),
+          error: S.optional(__S(482)),
           resourceId: S.optional(S.String),
-          properties: S.optional(ViewDeviceConfigurationResponseProperties),
+          properties: S.optional(__S(483)),
         }),
       ).annotate({
         identifier: "ViewDeviceConfigurationOperationResponse",
@@ -24117,8 +19524,8 @@ function __c60(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkTapResyncResponseOperationsList),
-          error: S.optional(NetworkTapResyncResponseError),
+          operations: S.optional(__S(13)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapResyncResponse" });
@@ -24166,7 +19573,7 @@ function __c61(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          rebootType: S.optional(RebootType),
+          rebootType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24205,28 +19612,24 @@ function __c61(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(
-            NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItemOperationsList,
-          ),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(458)),
+          error: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem",
       });
     case 5:
-      return S.Array(NetworkBootstrapDeviceRefreshConfigurationResponseOperationsItem);
+      return S.Array(__S(492));
     case 6:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(4));
     case 7:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(NetworkBootstrapDeviceRefreshConfigurationResponseErrorDetailsList),
-          additionalInfo: S.optional(
-            NetworkBootstrapDeviceRefreshConfigurationResponseErrorAdditionalInfoList,
-          ),
+          details: S.optional(__S(494)),
+          additionalInfo: S.optional(__S(461)),
         }),
       ).annotate({
         identifier: "NetworkBootstrapDeviceRefreshConfigurationResponseError",
@@ -24244,8 +19647,8 @@ function __c62(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkBootstrapDeviceRefreshConfigurationResponseOperationsList),
-          error: S.optional(NetworkBootstrapDeviceRefreshConfigurationResponseError),
+          operations: S.optional(__S(493)),
+          error: S.optional(__S(495)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -24277,8 +19680,8 @@ function __c62(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkDeviceRefreshConfigurationResponseOperationsList),
-          error: S.optional(NetworkDeviceRefreshConfigurationResponseError),
+          operations: S.optional(__S(466)),
+          error: S.optional(__S(482)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -24356,7 +19759,7 @@ function __c62(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          configurationState: S.optional(ConfigurationState),
+          configurationState: S.optional(S.String),
           outputUrl: S.optional(S.String),
           deviceConfigurationPreview: S.optional(S.String),
         }),
@@ -24370,11 +19773,11 @@ function __c63(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ErrorDetail),
+          error: S.optional(__S(4)),
           endTime: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(CommonPostActionResponseForDeviceROCommands),
+          properties: S.optional(__S(503)),
           resourceId: S.optional(S.String),
           startTime: S.optional(S.String),
           status: S.String,
@@ -24404,7 +19807,7 @@ function __c63(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          configurationState: S.optional(ConfigurationState),
+          configurationState: S.optional(S.String),
           outputUrl: S.optional(S.String),
         }),
       ).annotate({
@@ -24419,10 +19822,10 @@ function __c63(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NetworkDeviceRunRwCommandResponseOperationsList),
-          error: S.optional(NetworkDeviceRunRwCommandResponseError),
+          operations: S.optional(__S(13)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
-          properties: S.optional(NetworkDeviceRwCommandResponseProperties),
+          properties: S.optional(__S(506)),
         }),
       ).annotate({
         identifier: "NetworkDeviceRunRwCommandResponse",
@@ -24430,11 +19833,11 @@ function __c63(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          portType: S.optional(PortType),
-          layer4Protocol: S.optional(Layer4Protocol),
-          ports: S.optional(AccessControlListPortConditionPatchPortsList),
-          portGroupNames: S.optional(AccessControlListPortConditionPatchPortGroupNamesList),
-          flags: S.optional(AccessControlListPortConditionPatchFlagsList),
+          portType: S.optional(S.String),
+          layer4Protocol: S.optional(S.String),
+          ports: S.optional(__S(16)),
+          portGroupNames: S.optional(__S(16)),
+          flags: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "AccessControlListPortConditionPatch",
@@ -24442,31 +19845,31 @@ function __c63(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(AccessControlListMatchConditionPatchProtocolTypesList),
-          vlanMatchCondition: S.optional(VlanMatchConditionPatch),
-          ipCondition: S.optional(IpMatchConditionPatch),
-          etherTypes: S.optional(AccessControlListMatchConditionPatchEtherTypesList),
-          fragments: S.optional(AccessControlListMatchConditionPatchFragmentsList),
-          ipLengths: S.optional(AccessControlListMatchConditionPatchIpLengthsList),
-          ttlValues: S.optional(AccessControlListMatchConditionPatchTtlValuesList),
-          dscpMarkings: S.optional(AccessControlListMatchConditionPatchDscpMarkingsList),
-          portCondition: S.optional(AccessControlListPortConditionPatch),
-          protocolNeighbors: S.optional(AccessControlListMatchConditionPatchProtocolNeighborsList),
-          icmpConfiguration: S.optional(IcmpConfigurationPatchProperties),
+          protocolTypes: S.optional(__S(16)),
+          vlanMatchCondition: S.optional(__S(24)),
+          ipCondition: S.optional(__S(25)),
+          etherTypes: S.optional(__S(16)),
+          fragments: S.optional(__S(16)),
+          ipLengths: S.optional(__S(16)),
+          ttlValues: S.optional(__S(16)),
+          dscpMarkings: S.optional(__S(16)),
+          portCondition: S.optional(__S(508)),
+          protocolNeighbors: S.optional(__S(16)),
+          icmpConfiguration: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "AccessControlListMatchConditionPatch",
       });
     case 6:
-      return S.Array(AccessControlListMatchConditionPatch);
+      return S.Array(__S(509));
     case 7:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(IPAddressType),
-          matchConditions: S.optional(AccessControlListMatchConfigurationPatchMatchConditionsList),
-          actions: S.optional(AccessControlListMatchConfigurationPatchActionsList),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(510)),
+          actions: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "AccessControlListMatchConfigurationPatch",
@@ -24476,23 +19879,19 @@ function __c63(j: number): any {
 function __c64(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccessControlListMatchConfigurationPatch);
+      return S.Array(__S(511));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          configurationType: S.optional(ConfigurationType),
+          configurationType: S.optional(S.String),
           aclsUrl: S.optional(S.String),
-          defaultAction: S.optional(CommunityActionTypes),
-          matchConfigurations: S.optional(AccessControlListPatchPropertiesMatchConfigurationsList),
-          dynamicMatchConfigurations: S.optional(
-            AccessControlListPatchPropertiesDynamicMatchConfigurationsList,
-          ),
-          controlPlaneAclConfiguration: S.optional(
-            AccessControlListPatchPropertiesControlPlaneAclConfigurationList,
-          ),
-          aclType: S.optional(AclType),
-          deviceRole: S.optional(DeviceRole),
-          globalAccessControlListActions: S.optional(GlobalAccessControlListActionPatchProperties),
+          defaultAction: S.optional(S.String),
+          matchConfigurations: S.optional(__S(512)),
+          dynamicMatchConfigurations: S.optional(__S(44)),
+          controlPlaneAclConfiguration: S.optional(__S(55)),
+          aclType: S.optional(S.String),
+          deviceRole: S.optional(S.String),
+          globalAccessControlListActions: S.optional(__S(45)),
           annotation: S.optional(S.String),
         }),
       ).annotate({
@@ -24504,8 +19903,8 @@ function __c64(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accessControlListName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateAccessControlListRequestTagsMap),
-          properties: S.optional(AccessControlListPatchProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(513)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -24525,8 +19924,8 @@ function __c64(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accessControlListName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateAccessControlListAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24541,12 +19940,8 @@ function __c64(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          successfulResources: S.optional(
-            UpdateAdministrativeStateResponsePropertiesSuccessfulResourcesList,
-          ),
-          failedResources: S.optional(
-            UpdateAdministrativeStateResponsePropertiesFailedResourcesList,
-          ),
+          successfulResources: S.optional(__S(515)),
+          failedResources: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "UpdateAdministrativeStateResponseProperties",
@@ -24560,10 +19955,10 @@ function __c64(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(UpdateAdministrativeStateResponseOperationsList),
-          error: S.optional(UpdateAdministrativeStateResponseError),
+          operations: S.optional(__S(13)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
-          properties: S.optional(UpdateAdministrativeStateResponseProperties),
+          properties: S.optional(__S(517)),
         }),
       ).annotate({
         identifier: "UpdateAdministrativeStateResponse",
@@ -24571,10 +19966,10 @@ function __c64(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          importIpv4RouteTargets: S.optional(RouteTargetPatchInformationImportIpv4RouteTargetsList),
-          importIpv6RouteTargets: S.optional(RouteTargetPatchInformationImportIpv6RouteTargetsList),
-          exportIpv4RouteTargets: S.optional(RouteTargetPatchInformationExportIpv4RouteTargetsList),
-          exportIpv6RouteTargets: S.optional(RouteTargetPatchInformationExportIpv6RouteTargetsList),
+          importIpv4RouteTargets: S.optional(__S(16)),
+          importIpv6RouteTargets: S.optional(__S(16)),
+          exportIpv4RouteTargets: S.optional(__S(16)),
+          exportIpv6RouteTargets: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "RouteTargetPatchInformation",
@@ -24586,9 +19981,9 @@ function __c65(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          importRouteTargets: S.optional(L3OptionBPatchPropertiesImportRouteTargetsList),
-          exportRouteTargets: S.optional(L3OptionBPatchPropertiesExportRouteTargetsList),
-          routeTargets: S.optional(RouteTargetPatchInformation),
+          importRouteTargets: S.optional(__S(16)),
+          exportRouteTargets: S.optional(__S(16)),
+          routeTargets: S.optional(__S(519)),
         }),
       ).annotate({ identifier: "L3OptionBPatchProperties" });
     case 1:
@@ -24602,11 +19997,11 @@ function __c65(j: number): any {
         identifier: "PrefixLimitPatchProperties",
       });
     case 2:
-      return S.Array(PrefixLimitPatchProperties);
+      return S.Array(__S(521));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          prefixLimits: S.optional(NativeIpv4PrefixLimitPatchPropertiesPrefixLimitsList),
+          prefixLimits: S.optional(__S(522)),
         }),
       ).annotate({
         identifier: "NativeIpv4PrefixLimitPatchProperties",
@@ -24621,14 +20016,14 @@ function __c65(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.optional(S.Number),
           peerASN: S.optional(S.Number),
-          bfdConfiguration: S.optional(BfdConfigurationInput),
+          bfdConfiguration: S.optional(__S(67)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(ExternalNetworkBmpPatchProperties),
-          v4OverV6BgpSession: S.optional(V4OverV6BgpSessionState),
-          v6OverV4BgpSession: S.optional(V6OverV4BgpSessionState),
-          nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitPatchProperties),
-          nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitPatchProperties),
+          bmpConfiguration: S.optional(__S(68)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
+          nativeIpv4PrefixLimit: S.optional(__S(523)),
+          nativeIpv6PrefixLimit: S.optional(__S(523)),
         }),
       ).annotate({
         identifier: "ExternalNetworkPatchPropertiesOptionAPropertiesInput",
@@ -24637,19 +20032,19 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           prefix: S.String,
-          nextHop: StaticRoutePatchPropertiesNextHopList,
+          nextHop: __S(16),
         }),
       ).annotate({
         identifier: "StaticRoutePatchProperties",
       });
     case 6:
-      return S.Array(StaticRoutePatchProperties);
+      return S.Array(__S(525));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(BfdConfigurationInput),
-          ipv4Routes: S.optional(ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList),
-          ipv6Routes: S.optional(ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList),
+          bfdConfiguration: S.optional(__S(67)),
+          ipv4Routes: S.optional(__S(526)),
+          ipv6Routes: S.optional(__S(526)),
         }),
       ).annotate({
         identifier: "ExternalNetworkStaticRoutePatchConfiguration",
@@ -24663,12 +20058,12 @@ function __c66(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(ImportRoutePolicy),
-          exportRoutePolicy: S.optional(ExportRoutePolicy),
-          peeringOption: S.optional(PeeringOption),
-          optionBProperties: S.optional(L3OptionBPatchProperties),
-          optionAProperties: S.optional(ExternalNetworkPatchPropertiesOptionAPropertiesInput),
-          staticRouteConfiguration: S.optional(ExternalNetworkStaticRoutePatchConfiguration),
+          importRoutePolicy: S.optional(__S(63)),
+          exportRoutePolicy: S.optional(__S(64)),
+          peeringOption: S.optional(S.String),
+          optionBProperties: S.optional(__S(520)),
+          optionAProperties: S.optional(__S(524)),
+          staticRouteConfiguration: S.optional(__S(527)),
         }),
       ).annotate({
         identifier: "ExternalNetworkPatchPropertiesInput",
@@ -24680,7 +20075,7 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(ExternalNetworkPatchPropertiesInput),
+          properties: S.optional(__S(528)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -24699,8 +20094,8 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateExternalNetworkAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24719,8 +20114,8 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          routeType: S.optional(ExternalNetworkRouteType),
-          administrativeState: S.optional(BfdAdministrativeState),
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24738,10 +20133,8 @@ function __c66(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ExternalNetworkUpdateBfdAdministrativeStateResponseErrorDetailsList),
-          additionalInfo: S.optional(
-            ExternalNetworkUpdateBfdAdministrativeStateResponseErrorAdditionalInfoList,
-          ),
+          details: S.optional(__S(494)),
+          additionalInfo: S.optional(__S(461)),
         }),
       ).annotate({
         identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseError",
@@ -24749,8 +20142,8 @@ function __c66(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          routeType: S.optional(ExternalNetworkRouteType),
-          administrativeState: S.optional(BfdAdministrativeState),
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponseProperties",
@@ -24764,10 +20157,10 @@ function __c66(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(ExternalNetworkUpdateBfdAdministrativeStateResponseOperationsList),
-          error: S.optional(ExternalNetworkUpdateBfdAdministrativeStateResponseError),
+          operations: S.optional(__S(493)),
+          error: S.optional(__S(532)),
           resourceId: S.optional(S.String),
-          properties: S.optional(ExternalNetworkUpdateBfdAdministrativeStateResponseProperties),
+          properties: S.optional(__S(533)),
         }),
       ).annotate({
         identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponse",
@@ -24779,10 +20172,8 @@ function __c66(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24801,10 +20192,8 @@ function __c67(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          neighborIpExclusions: S.optional(
-            InternalNetworkBmpPatchPropertiesNeighborIpExclusionsList,
-          ),
-          bmpConfigurationState: S.optional(BmpConfigurationState),
+          neighborIpExclusions: S.optional(__S(16)),
+          bmpConfigurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InternalNetworkBmpPatchProperties",
@@ -24813,22 +20202,18 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(BfdConfigurationInput),
-          defaultRouteOriginate: S.optional(BooleanEnumProperty),
+          bfdConfiguration: S.optional(__S(67)),
+          defaultRouteOriginate: S.optional(S.String),
           allowAS: S.optional(S.Number),
-          allowASOverride: S.optional(AllowASOverride),
+          allowASOverride: S.optional(S.String),
           peerASN: S.optional(S.Number),
-          ipv4ListenRangePrefixes: S.optional(
-            BgpPatchConfigurationInputIpv4ListenRangePrefixesList,
-          ),
-          ipv6ListenRangePrefixes: S.optional(
-            BgpPatchConfigurationInputIpv6ListenRangePrefixesList,
-          ),
-          ipv4NeighborAddress: S.optional(BgpPatchConfigurationInputIpv4NeighborAddressList),
-          ipv6NeighborAddress: S.optional(BgpPatchConfigurationInputIpv6NeighborAddressList),
-          bmpConfiguration: S.optional(InternalNetworkBmpPatchProperties),
-          v4OverV6BgpSession: S.optional(V4OverV6BgpSessionState),
-          v6OverV4BgpSession: S.optional(V6OverV4BgpSessionState),
+          ipv4ListenRangePrefixes: S.optional(__S(16)),
+          ipv6ListenRangePrefixes: S.optional(__S(16)),
+          ipv4NeighborAddress: S.optional(__S(86)),
+          ipv6NeighborAddress: S.optional(__S(86)),
+          bmpConfiguration: S.optional(__S(536)),
+          v4OverV6BgpSession: S.optional(S.String),
+          v6OverV4BgpSession: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BgpPatchConfigurationInput",
@@ -24838,21 +20223,17 @@ function __c67(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(
-            InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList,
-          ),
-          connectedIPv6Subnets: S.optional(
-            InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList,
-          ),
-          importRoutePolicy: S.optional(ImportRoutePolicy),
-          exportRoutePolicy: S.optional(ExportRoutePolicy),
+          connectedIPv4Subnets: S.optional(__S(84)),
+          connectedIPv6Subnets: S.optional(__S(84)),
+          importRoutePolicy: S.optional(__S(63)),
+          exportRoutePolicy: S.optional(__S(64)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
-          isMonitoringEnabled: S.optional(IsMonitoringEnabled),
-          bgpConfiguration: S.optional(BgpPatchConfigurationInput),
-          staticRouteConfiguration: S.optional(StaticRoutePatchConfiguration),
-          nativeIpv4PrefixLimit: S.optional(NativeIpv4PrefixLimitPatchProperties),
-          nativeIpv6PrefixLimit: S.optional(NativeIpv6PrefixLimitPatchProperties),
+          isMonitoringEnabled: S.optional(S.String),
+          bgpConfiguration: S.optional(__S(537)),
+          staticRouteConfiguration: S.optional(__S(527)),
+          nativeIpv4PrefixLimit: S.optional(__S(523)),
+          nativeIpv6PrefixLimit: S.optional(__S(523)),
         }),
       ).annotate({
         identifier: "InternalNetworkPatchPropertiesInput",
@@ -24864,7 +20245,7 @@ function __c67(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(InternalNetworkPatchPropertiesInput),
+          properties: S.optional(__S(538)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -24883,8 +20264,8 @@ function __c67(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateInternalNetworkAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24903,9 +20284,9 @@ function __c67(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          routeType: S.optional(InternalNetworkRouteType),
+          routeType: S.optional(S.String),
           neighborAddress: S.optional(S.String),
-          administrativeState: S.optional(BfdAdministrativeState),
+          administrativeState: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24921,14 +20302,14 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           neighborAddress: S.optional(S.String),
-          administrativeState: S.optional(BfdAdministrativeState),
+          administrativeState: S.optional(S.String),
           error: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NeighborAddressBfdAdministrativeStatus",
       });
     case 7:
-      return S.Array(NeighborAddressBfdAdministrativeStatus);
+      return S.Array(__S(542));
   }
 }
 function __c68(j: number): any {
@@ -24936,9 +20317,7 @@ function __c68(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          neighborAddressAdministrativeStatus: S.optional(
-            InternalNetworkUpdateBfdAdministrativeStateResponsePropertiesNeighborAddressAdministrativeStatusList,
-          ),
+          neighborAddressAdministrativeStatus: S.optional(__S(543)),
         }),
       ).annotate({
         identifier: "InternalNetworkUpdateBfdAdministrativeStateResponseProperties",
@@ -24952,10 +20331,10 @@ function __c68(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(InternalNetworkUpdateBfdAdministrativeStateResponseOperationsList),
-          error: S.optional(InternalNetworkUpdateBfdAdministrativeStateResponseError),
+          operations: S.optional(__S(493)),
+          error: S.optional(__S(532)),
           resourceId: S.optional(S.String),
-          properties: S.optional(InternalNetworkUpdateBfdAdministrativeStateResponseProperties),
+          properties: S.optional(__S(544)),
         }),
       ).annotate({
         identifier: "InternalNetworkUpdateBfdAdministrativeStateResponse",
@@ -24968,7 +20347,7 @@ function __c68(j: number): any {
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
           neighborAddress: S.optional(S.String),
-          administrativeState: S.optional(BgpAdministrativeState),
+          administrativeState: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24989,10 +20368,10 @@ function __c68(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(InternalNetworkUpdateBgpAdministrativeStateResponseOperationsList),
-          error: S.optional(InternalNetworkUpdateBgpAdministrativeStateResponseError),
+          operations: S.optional(__S(493)),
+          error: S.optional(__S(532)),
           resourceId: S.optional(S.String),
-          properties: S.optional(InternalNetworkUpdateBgpAdministrativeStateResponseProperties),
+          properties: S.optional(__S(544)),
         }),
       ).annotate({
         identifier: "InternalNetworkUpdateBgpAdministrativeStateResponse",
@@ -25004,10 +20383,8 @@ function __c68(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25033,8 +20410,8 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateInternetGatewayRequestTagsMap),
-          properties: S.optional(InternetGatewayPatchProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(549)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25052,7 +20429,7 @@ function __c68(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateInternetGatewayRuleRequestTagsMap),
+          tags: S.optional(__S(23)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25071,7 +20448,7 @@ function __c69(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipCommunityRules: S.optional(IpCommunityPatchablePropertiesIpCommunityRulesList),
+          ipCommunityRules: S.optional(__S(112)),
         }),
       ).annotate({
         identifier: "IpCommunityPatchableProperties",
@@ -25082,8 +20459,8 @@ function __c69(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateIpCommunityRequestTagsMap),
-          properties: S.optional(IpCommunityPatchableProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(552)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25097,9 +20474,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipExtendedCommunityRules: S.optional(
-            IpExtendedCommunityPatchPropertiesIpExtendedCommunityRulesList,
-          ),
+          ipExtendedCommunityRules: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "IpExtendedCommunityPatchProperties",
@@ -25110,8 +20485,8 @@ function __c69(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipExtendedCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateIpExtendedCommunityRequestTagsMap),
-          properties: S.optional(IpExtendedCommunityPatchProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(554)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25127,7 +20502,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipPrefixRules: S.optional(IpPrefixPatchPropertiesIpPrefixRulesList),
+          ipPrefixRules: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "IpPrefixPatchProperties" });
     case 5:
@@ -25136,8 +20511,8 @@ function __c69(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipPrefixName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateIpPrefixRequestTagsMap),
-          properties: S.optional(IpPrefixPatchProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(556)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25152,14 +20527,14 @@ function __c69(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           mtu: S.optional(S.Number),
-          extendedVlan: S.optional(ExtendedVlan),
+          extendedVlan: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "L2IsolationDomainPatchProperties",
       });
     case 7:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(130));
   }
 }
 function __c70(j: number): any {
@@ -25167,10 +20542,8 @@ function __c70(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedServiceIdentityPatchInputType),
-          userAssignedIdentities: S.optional(
-            ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap,
-          ),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(559)),
         }),
       ).annotate({
         identifier: "ManagedServiceIdentityPatchInput",
@@ -25181,9 +20554,9 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateL2IsolationDomainRequestTagsMap),
-          properties: S.optional(L2IsolationDomainPatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(558)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25201,8 +20574,8 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateL2IsolationDomainAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25218,14 +20591,14 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          redistributeConnectedSubnets: S.optional(RedistributeConnectedSubnets),
-          redistributeStaticRoutes: S.optional(RedistributeStaticRoutes),
-          aggregateRouteConfiguration: S.optional(AggregateRoutePatchConfiguration),
-          connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
-          staticRouteRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
-          v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
-          v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
-          exportPolicyConfiguration: S.optional(BmpExportPolicyPatchProperties),
+          redistributeConnectedSubnets: S.optional(S.String),
+          redistributeStaticRoutes: S.optional(S.String),
+          aggregateRouteConfiguration: S.optional(__S(141)),
+          connectedSubnetRoutePolicy: S.optional(__S(142)),
+          staticRouteRoutePolicy: S.optional(__S(142)),
+          v4routePrefixLimit: S.optional(__S(143)),
+          v6routePrefixLimit: S.optional(__S(143)),
+          exportPolicyConfiguration: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "L3IsolationDomainPatchProperties",
@@ -25236,9 +20609,9 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateL3IsolationDomainRequestTagsMap),
-          properties: S.optional(L3IsolationDomainPatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(563)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25256,8 +20629,8 @@ function __c70(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateL3IsolationDomainAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25272,8 +20645,8 @@ function __c70(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ipv4Addresses: S.optional(NeighborGroupDestinationPatchIpv4AddressesList),
-          ipv6Addresses: S.optional(NeighborGroupDestinationPatchIpv6AddressesList),
+          ipv4Addresses: S.optional(__S(16)),
+          ipv6Addresses: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "NeighborGroupDestinationPatch",
@@ -25282,7 +20655,7 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          destination: S.optional(NeighborGroupDestinationPatch),
+          destination: S.optional(__S(566)),
         }),
       ).annotate({
         identifier: "NeighborGroupPatchProperties",
@@ -25297,9 +20670,9 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           neighborGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNeighborGroupRequestTagsMap),
-          properties: S.optional(NeighborGroupPatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(567)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25327,9 +20700,9 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkBootstrapDeviceRequestTagsMap),
-          properties: S.optional(NetworkBootstrapDevicePatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(569)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25347,10 +20720,8 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateNetworkBootstrapDeviceAdministrativeStateRequestResourceIdsList,
-          ),
-          state: S.optional(DeviceAdministrativeState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25371,10 +20742,8 @@ function __c71(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(
-            NetworkBootstrapDeviceUpdateAdministrativeStateResponseOperationsList,
-          ),
-          error: S.optional(NetworkBootstrapDeviceUpdateAdministrativeStateResponseError),
+          operations: S.optional(__S(493)),
+          error: S.optional(__S(532)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({
@@ -25397,7 +20766,7 @@ function __c71(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          properties: S.optional(NetworkBootstrapInterfacePatchProperties),
+          properties: S.optional(__S(573)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25416,10 +20785,8 @@ function __c71(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateNetworkBootstrapInterfaceAdministrativeStateRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25438,8 +20805,8 @@ function __c72(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ErrorDetail),
-          configurationState: S.optional(ConfigurationState),
+          error: S.optional(__S(4)),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateNetworkBootstrapInterfaceAdministrativeStateResponse",
@@ -25447,7 +20814,7 @@ function __c72(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.optional(ManagedServiceIdentitySelectorType),
+          identityType: S.optional(S.String),
           userAssignedIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentitySelectorPatch" });
@@ -25457,7 +20824,7 @@ function __c72(j: number): any {
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.optional(S.String),
-          identitySelector: S.optional(IdentitySelectorPatch),
+          identitySelector: S.optional(__S(577)),
         }),
       ).annotate({
         identifier: "NetworkDevicePatchParametersProperties",
@@ -25468,9 +20835,9 @@ function __c72(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkDeviceRequestTagsMap),
-          properties: S.optional(NetworkDevicePatchParametersProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(578)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25488,8 +20855,8 @@ function __c72(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateNetworkDeviceAdministrativeStateRequestResourceIdsList),
-          state: S.optional(DeviceAdministrativeState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25518,9 +20885,9 @@ function __c72(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          importRouteTargets: S.optional(VpnOptionBPatchPropertiesImportRouteTargetsList),
-          exportRouteTargets: S.optional(VpnOptionBPatchPropertiesExportRouteTargetsList),
-          routeTargets: S.optional(RouteTargetPatchInformation),
+          importRouteTargets: S.optional(__S(16)),
+          exportRouteTargets: S.optional(__S(16)),
+          routeTargets: S.optional(__S(519)),
         }),
       ).annotate({
         identifier: "VpnOptionBPatchProperties",
@@ -25535,7 +20902,7 @@ function __c72(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.optional(S.Number),
           peerASN: S.optional(S.Number),
-          bfdConfiguration: S.optional(BfdConfigurationInput),
+          bfdConfiguration: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "VpnOptionAPatchProperties",
@@ -25548,9 +20915,9 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
-          peeringOption: S.optional(PeeringOption),
-          optionBProperties: S.optional(VpnOptionBPatchProperties),
-          optionAProperties: S.optional(VpnOptionAPatchProperties),
+          peeringOption: S.optional(S.String),
+          optionBProperties: S.optional(__S(582)),
+          optionAProperties: S.optional(__S(583)),
         }),
       ).annotate({
         identifier: "VpnConfigurationPatchableProperties",
@@ -25558,8 +20925,8 @@ function __c73(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: S.optional(VpnConfigurationPatchableProperties),
-          workloadVpnConfiguration: S.optional(VpnConfigurationPatchableProperties),
+          infrastructureVpnConfiguration: S.optional(__S(584)),
+          workloadVpnConfiguration: S.optional(__S(584)),
         }),
       ).annotate({
         identifier: "ManagementNetworkPatchConfiguration",
@@ -25568,7 +20935,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           storageAccountId: S.optional(S.String),
-          storageAccountIdentity: S.optional(IdentitySelectorPatch),
+          storageAccountIdentity: S.optional(__S(577)),
         }),
       ).annotate({
         identifier: "StorageAccountPatchConfiguration",
@@ -25576,10 +20943,8 @@ function __c73(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          uniqueRdConfigurationState: S.optional(UniqueRouteDistinguisherConfigurationState),
-          nniDerivedUniqueRdConfigurationState: S.optional(
-            NNIDerivedUniqueRouteDistinguisherConfigurationState,
-          ),
+          uniqueRdConfigurationState: S.optional(S.String),
+          nniDerivedUniqueRdConfigurationState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UniqueRouteDistinguisherPatchProperties",
@@ -25593,16 +20958,16 @@ function __c73(j: number): any {
           ipv4Prefix: S.optional(S.String),
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.optional(S.Number),
-          terminalServerConfiguration: S.optional(TerminalServerPatchConfiguration),
-          managementNetworkConfiguration: S.optional(ManagementNetworkPatchConfiguration),
-          storageAccountConfiguration: S.optional(StorageAccountPatchConfiguration),
+          terminalServerConfiguration: S.optional(__S(581)),
+          managementNetworkConfiguration: S.optional(__S(585)),
+          storageAccountConfiguration: S.optional(__S(586)),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(NetworkFabricPatchPropertiesControlPlaneAclsList),
-          trustedIpPrefixes: S.optional(NetworkFabricPatchPropertiesTrustedIpPrefixesList),
-          uniqueRdConfiguration: S.optional(UniqueRouteDistinguisherPatchProperties),
-          qosConfiguration: S.optional(QosPatchProperties),
-          featureFlags: S.optional(NetworkFabricPatchPropertiesFeatureFlagsList),
-          authorizedTransceiver: S.optional(AuthorizedTransceiverProperties),
+          controlPlaneAcls: S.optional(__S(16)),
+          trustedIpPrefixes: S.optional(__S(16)),
+          uniqueRdConfiguration: S.optional(__S(587)),
+          qosConfiguration: S.optional(__S(182)),
+          featureFlags: S.optional(__S(179)),
+          authorizedTransceiver: S.optional(__S(181)),
         }),
       ).annotate({
         identifier: "NetworkFabricPatchProperties",
@@ -25613,9 +20978,9 @@ function __c73(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkFabricRequestTagsMap),
-          properties: S.optional(NetworkFabricPatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(588)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25630,12 +20995,8 @@ function __c73(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          infrastructureExpressRouteConnections: S.optional(
-            NetworkFabricControllerPatchPropertiesInfrastructureExpressRouteConnectionsList,
-          ),
-          workloadExpressRouteConnections: S.optional(
-            NetworkFabricControllerPatchPropertiesWorkloadExpressRouteConnectionsList,
-          ),
+          infrastructureExpressRouteConnections: S.optional(__S(196)),
+          workloadExpressRouteConnections: S.optional(__S(196)),
         }),
       ).annotate({
         identifier: "NetworkFabricControllerPatchProperties",
@@ -25646,9 +21007,9 @@ function __c73(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkFabricControllerRequestTagsMap),
-          properties: S.optional(NetworkFabricControllerPatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(590)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25670,10 +21031,8 @@ function __c74(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateNetworkFabricInfraManagementBfdConfigurationRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25691,10 +21050,8 @@ function __c74(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateNetworkFabricWorkloadManagementBfdConfigurationRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25713,8 +21070,8 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
-          properties: S.optional(NetworkInterfacePropertiesInput),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          properties: S.optional(__S(203)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25733,8 +21090,8 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateNetworkInterfaceAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25749,20 +21106,18 @@ function __c74(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stationConfigurationState: S.optional(StationConfigurationState),
+          stationConfigurationState: S.optional(S.String),
           scopeResourceId: S.optional(S.String),
           stationName: S.optional(S.String),
           stationIp: S.optional(S.String),
           stationPort: S.optional(S.Number),
-          stationConnectionMode: S.optional(StationConnectionMode),
-          stationConnectionProperties: S.optional(StationConnectionProperties),
+          stationConnectionMode: S.optional(S.String),
+          stationConnectionProperties: S.optional(__S(207)),
           stationNetwork: S.optional(S.String),
-          monitoredNetworks: S.optional(BmpConfigurationPatchPropertiesMonitoredNetworksList),
-          exportPolicy: S.optional(BmpExportPolicy),
-          exportPolicyConfiguration: S.optional(BmpExportPolicyPatchProperties),
-          monitoredAddressFamilies: S.optional(
-            BmpConfigurationPatchPropertiesMonitoredAddressFamiliesList,
-          ),
+          monitoredNetworks: S.optional(__S(16)),
+          exportPolicy: S.optional(S.String),
+          exportPolicyConfiguration: S.optional(__S(88)),
+          monitoredAddressFamilies: S.optional(__S(87)),
         }),
       ).annotate({
         identifier: "BmpConfigurationPatchProperties",
@@ -25770,7 +21125,7 @@ function __c74(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bmpConfiguration: S.optional(BmpConfigurationPatchProperties),
+          bmpConfiguration: S.optional(__S(596)),
         }),
       ).annotate({
         identifier: "NetworkMonitorPatchProperties",
@@ -25781,8 +21136,8 @@ function __c74(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkMonitorRequestTagsMap),
-          properties: S.optional(NetworkMonitorPatchProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(597)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25800,8 +21155,8 @@ function __c74(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateNetworkMonitorAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25820,14 +21175,10 @@ function __c75(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ErrorDetail),
-          configurationState: S.optional(ConfigurationState),
-          successfulDevices: S.optional(
-            UpdateNetworkMonitorAdministrativeStateResponseSuccessfulDevicesList,
-          ),
-          failedDevices: S.optional(
-            UpdateNetworkMonitorAdministrativeStateResponseFailedDevicesList,
-          ),
+          error: S.optional(__S(4)),
+          configurationState: S.optional(S.String),
+          successfulDevices: S.optional(__S(515)),
+          failedDevices: S.optional(__S(515)),
         }),
       ).annotate({
         identifier: "UpdateNetworkMonitorAdministrativeStateResponse",
@@ -25838,8 +21189,8 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkPacketBrokerName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkPacketBrokerRequestTagsMap),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25857,7 +21208,7 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkRackName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkRackRequestTagsMap),
+          tags: S.optional(__S(23)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25871,22 +21222,22 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          destinationType: S.optional(DestinationType),
+          destinationType: S.optional(S.String),
           destinationId: S.optional(S.String),
-          isolationDomainProperties: S.optional(IsolationDomainPatchProperties),
+          isolationDomainProperties: S.optional(__S(221)),
           destinationTapRuleId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DestinationPatchProperties",
       });
     case 4:
-      return S.Array(DestinationPatchProperties);
+      return S.Array(__S(603));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          pollingType: S.optional(PollingType),
-          destinations: S.optional(NetworkTapPatchPropertiesDestinationsList),
+          pollingType: S.optional(S.String),
+          destinations: S.optional(__S(604)),
         }),
       ).annotate({
         identifier: "NetworkTapPatchProperties",
@@ -25897,9 +21248,9 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkTapRequestTagsMap),
-          properties: S.optional(NetworkTapPatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(605)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -25915,8 +21266,8 @@ function __c75(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateNetworkTapAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25935,52 +21286,50 @@ function __c76(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          portType: S.optional(PortType),
-          layer4Protocol: S.optional(Layer4Protocol),
-          ports: S.optional(PortConditionPatchPortsList),
-          portGroupNames: S.optional(PortConditionPatchPortGroupNamesList),
+          portType: S.optional(S.String),
+          layer4Protocol: S.optional(S.String),
+          ports: S.optional(__S(16)),
+          portGroupNames: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "PortConditionPatch" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(NetworkTapRuleMatchConditionPatchProtocolTypesList),
-          vlanMatchCondition: S.optional(VlanMatchConditionPatch),
-          ipCondition: S.optional(IpMatchConditionPatch),
-          encapsulationType: S.optional(EncapsulationType),
-          portCondition: S.optional(PortConditionPatch),
+          protocolTypes: S.optional(__S(16)),
+          vlanMatchCondition: S.optional(__S(24)),
+          ipCondition: S.optional(__S(25)),
+          encapsulationType: S.optional(S.String),
+          portCondition: S.optional(__S(608)),
         }),
       ).annotate({
         identifier: "NetworkTapRuleMatchConditionPatch",
       });
     case 2:
-      return S.Array(NetworkTapRuleMatchConditionPatch);
+      return S.Array(__S(609));
     case 3:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
-          ipAddressType: S.optional(IPAddressType),
-          matchConditions: S.optional(NetworkTapRuleMatchConfigurationPatchMatchConditionsList),
-          actions: S.optional(NetworkTapRuleMatchConfigurationPatchActionsList),
+          ipAddressType: S.optional(S.String),
+          matchConditions: S.optional(__S(610)),
+          actions: S.optional(__S(232)),
         }),
       ).annotate({
         identifier: "NetworkTapRuleMatchConfigurationPatch",
       });
     case 4:
-      return S.Array(NetworkTapRuleMatchConfigurationPatch);
+      return S.Array(__S(611));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          configurationType: S.optional(ConfigurationType),
+          configurationType: S.optional(S.String),
           tapRulesUrl: S.optional(S.String),
-          matchConfigurations: S.optional(NetworkTapRulePatchPropertiesMatchConfigurationsList),
-          dynamicMatchConfigurations: S.optional(
-            NetworkTapRulePatchPropertiesDynamicMatchConfigurationsList,
-          ),
-          identitySelector: S.optional(IdentitySelectorPatch),
-          globalNetworkTapRuleActions: S.optional(GlobalNetworkTapRuleActionPatchProperties),
+          matchConfigurations: S.optional(__S(612)),
+          dynamicMatchConfigurations: S.optional(__S(44)),
+          identitySelector: S.optional(__S(577)),
+          globalNetworkTapRuleActions: S.optional(__S(235)),
         }),
       ).annotate({
         identifier: "NetworkTapRulePatchProperties",
@@ -25991,9 +21340,9 @@ function __c76(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNetworkTapRuleRequestTagsMap),
-          properties: S.optional(NetworkTapRulePatchProperties),
-          identity: S.optional(ManagedServiceIdentityPatchInput),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(613)),
+          identity: S.optional(__S(560)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -26011,8 +21360,8 @@ function __c76(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateNetworkTapRuleAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26031,7 +21380,7 @@ function __c77(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configurationState: S.optional(BmpConfigurationState),
+          configurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NniBmpPatchProperties" });
     case 1:
@@ -26043,11 +21392,9 @@ function __c77(j: number): any {
           secondaryIpv6Prefix: S.optional(S.String),
           peerASN: S.optional(S.Number),
           vlanId: S.optional(S.Number),
-          peLoopbackIpAddress: S.optional(
-            OptionBLayer3ConfigurationPatchPropertiesInputPeLoopbackIpAddressList,
-          ),
-          bmpConfiguration: S.optional(NniBmpPatchProperties),
-          prefixLimits: S.optional(OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList),
+          peLoopbackIpAddress: S.optional(__S(515)),
+          bmpConfiguration: S.optional(__S(616)),
+          prefixLimits: S.optional(__S(243)),
         }),
       ).annotate({
         identifier: "OptionBLayer3ConfigurationPatchPropertiesInput",
@@ -26055,15 +21402,15 @@ function __c77(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          layer2Configuration: S.optional(Layer2ConfigurationPatch),
-          optionBLayer3Configuration: S.optional(OptionBLayer3ConfigurationPatchPropertiesInput),
-          npbStaticRouteConfiguration: S.optional(NpbStaticRouteConfigurationPatch),
-          staticRouteConfiguration: S.optional(NniStaticRoutePatchConfiguration),
-          importRoutePolicy: S.optional(ImportRoutePolicyInformation),
-          exportRoutePolicy: S.optional(ExportRoutePolicyInformation),
+          layer2Configuration: S.optional(__S(240)),
+          optionBLayer3Configuration: S.optional(__S(617)),
+          npbStaticRouteConfiguration: S.optional(__S(527)),
+          staticRouteConfiguration: S.optional(__S(527)),
+          importRoutePolicy: S.optional(__S(245)),
+          exportRoutePolicy: S.optional(__S(246)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
-          microBfdState: S.optional(MicroBfdState),
+          microBfdState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkToNetworkInterconnectPatchPropertiesInput",
@@ -26075,7 +21422,7 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          properties: S.optional(NetworkToNetworkInterconnectPatchPropertiesInput),
+          properties: S.optional(__S(618)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -26094,10 +21441,8 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateNetworkToNetworkInterconnectAdministrativeStateRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26116,8 +21461,8 @@ function __c77(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          routeType: S.optional(RouteType),
-          administrativeState: S.optional(BfdAdministrativeState),
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26132,8 +21477,8 @@ function __c77(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          routeType: S.optional(RouteType),
-          administrativeState: S.optional(BfdAdministrativeState),
+          routeType: S.optional(S.String),
+          administrativeState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NniUpdateBfdAdministrativeStateResponseProperties",
@@ -26147,10 +21492,10 @@ function __c77(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(NniUpdateBfdAdministrativeStateResponseOperationsList),
-          error: S.optional(NniUpdateBfdAdministrativeStateResponseError),
+          operations: S.optional(__S(466)),
+          error: S.optional(__S(15)),
           resourceId: S.optional(S.String),
-          properties: S.optional(NniUpdateBfdAdministrativeStateResponseProperties),
+          properties: S.optional(__S(622)),
         }),
       ).annotate({
         identifier: "NniUpdateBfdAdministrativeStateResponse",
@@ -26166,10 +21511,8 @@ function __c78(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(
-            UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList,
-          ),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(515)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26184,11 +21527,9 @@ function __c78(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ipCommunityIds: S.optional(StatementConditionPatchPropertiesIpCommunityIdsList),
-          ipExtendedCommunityIds: S.optional(
-            StatementConditionPatchPropertiesIpExtendedCommunityIdsList,
-          ),
-          type: S.optional(RoutePolicyConditionType),
+          ipCommunityIds: S.optional(__S(16)),
+          ipExtendedCommunityIds: S.optional(__S(16)),
+          type: S.optional(S.String),
           ipPrefixId: S.optional(S.String),
         }),
       ).annotate({
@@ -26199,19 +21540,19 @@ function __c78(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           sequenceNumber: S.Number,
-          condition: StatementConditionPatchProperties,
-          action: StatementActionProperties,
+          condition: __S(625),
+          action: __S(258),
         }),
       ).annotate({
         identifier: "RoutePolicyStatementPatchProperties",
       });
     case 3:
-      return S.Array(RoutePolicyStatementPatchProperties);
+      return S.Array(__S(626));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          defaultAction: S.optional(CommunityActionTypes),
-          statements: S.optional(RoutePolicyPatchablePropertiesStatementsList),
+          defaultAction: S.optional(S.String),
+          statements: S.optional(__S(627)),
         }),
       ).annotate({
         identifier: "RoutePolicyPatchableProperties",
@@ -26222,8 +21563,8 @@ function __c78(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateRoutePolicyRequestTagsMap),
-          properties: S.optional(RoutePolicyPatchableProperties),
+          tags: S.optional(__S(23)),
+          properties: S.optional(__S(628)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -26239,8 +21580,8 @@ function __c78(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(UpdateRoutePolicyAdministrativeStateRequestResourceIdsList),
-          state: S.optional(EnableDisableState),
+          resourceIds: S.optional(__S(16)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26276,8 +21617,8 @@ function __c79(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ErrorDetail),
-          configurationState: S.optional(ConfigurationState),
+          error: S.optional(__S(4)),
+          configurationState: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({
@@ -26323,7 +21664,7 @@ function __c79(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          validateAction: S.optional(ValidateAction),
+          validateAction: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26369,5 +21710,174 @@ function __c79(j: number): any {
       ).annotate({
         identifier: "ValidateRoutePolicyConfigurationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
+    case 70:
+      return __c70(i & 7);
+    case 71:
+      return __c71(i & 7);
+    case 72:
+      return __c72(i & 7);
+    case 73:
+      return __c73(i & 7);
+    case 74:
+      return __c74(i & 7);
+    case 75:
+      return __c75(i & 7);
+    case 76:
+      return __c76(i & 7);
+    case 77:
+      return __c77(i & 7);
+    case 78:
+      return __c78(i & 7);
+    case 79:
+      return __c79(i & 7);
   }
 }

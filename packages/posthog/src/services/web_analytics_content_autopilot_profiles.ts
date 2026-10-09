@@ -5,28 +5,17 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList = Array<string>;
-const CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList>;
-
 /** Same-origin URL path prefixes allowed for research. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList = Array<string>;
-const CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList>;
-
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList = Array<string>;
-const CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList =
-  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList>;
-
 export interface CreateWebAnalyticsContentAutopilotProfileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -43,26 +32,12 @@ export interface CreateWebAnalyticsContentAutopilotProfileRequest {
   /** Whether to use connected Google Search Console data. */
   search_console_enabled?: boolean;
 }
-const CreateWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequest>;
-
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type ContentAutopilotSiteProfileSourceUrlsList = Array<string>;
-const ContentAutopilotSiteProfileSourceUrlsList =
-  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileSourceUrlsList>;
-
 /** Same-origin URL path prefixes allowed for research. */
 export type ContentAutopilotSiteProfileContentBoundariesList = Array<string>;
-const ContentAutopilotSiteProfileContentBoundariesList =
-  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileContentBoundariesList>;
-
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type ContentAutopilotSiteProfileBrandRulesList = Array<string>;
-const ContentAutopilotSiteProfileBrandRulesList =
-  CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileBrandRulesList>;
-
 export interface ContentAutopilotSiteProfile {
   id: string;
   /** Name used to identify this site in the workspace. */
@@ -80,22 +55,12 @@ export interface ContentAutopilotSiteProfile {
   created_at: string;
   updated_at: string;
 }
-const ContentAutopilotSiteProfile = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ContentAutopilotSiteProfile>;
-
 export interface GetWebAnalyticsContentAutopilotProfileRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this content autopilot site profile. */
   id: string;
 }
-const GetWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetWebAnalyticsContentAutopilotProfileRequest>;
-
 export interface ListWebAnalyticsContentAutopilotProfilesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -104,45 +69,21 @@ export interface ListWebAnalyticsContentAutopilotProfilesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListWebAnalyticsContentAutopilotProfilesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListWebAnalyticsContentAutopilotProfilesRequest>;
-
 export type PaginatedContentAutopilotSiteProfileListResultsList =
   Array<ContentAutopilotSiteProfile>;
-const PaginatedContentAutopilotSiteProfileListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PaginatedContentAutopilotSiteProfileListResultsList>;
-
 export interface PaginatedContentAutopilotSiteProfileList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedContentAutopilotSiteProfileListResultsList;
 }
-const PaginatedContentAutopilotSiteProfileList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PaginatedContentAutopilotSiteProfileList>;
-
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList = Array<string>;
-const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList =
-  CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList>;
-
 /** Same-origin URL path prefixes allowed for research. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
   Array<string>;
-const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
-  CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList>;
-
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList = Array<string>;
-const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList =
-  CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList>;
-
 export interface UpdateWebAnalyticsContentAutopilotProfilesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -161,28 +102,13 @@ export interface UpdateWebAnalyticsContentAutopilotProfilesPartialRequest {
   /** Whether to use connected Google Search Console data. */
   search_console_enabled?: boolean;
 }
-const UpdateWebAnalyticsContentAutopilotProfilesPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequest>;
-
 export interface WebAnalyticsContentAutopilotProfilesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this content autopilot site profile. */
   id: string;
 }
-const WebAnalyticsContentAutopilotProfilesDestroyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyRequest>;
-
 export interface WebAnalyticsContentAutopilotProfilesDestroyResponse {}
-const WebAnalyticsContentAutopilotProfilesDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyResponse>;
-
 export type CreateWebAnalyticsContentAutopilotProfileError = PosthogOpError;
 export const createWebAnalyticsContentAutopilotProfile: API.OperationMethod<
   CreateWebAnalyticsContentAutopilotProfileRequest,
@@ -190,8 +116,8 @@ export const createWebAnalyticsContentAutopilotProfile: API.OperationMethod<
   CreateWebAnalyticsContentAutopilotProfileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebAnalyticsContentAutopilotProfileRequest,
-  output: ContentAutopilotSiteProfile,
+  input: __S(2) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequest>,
+  output: __S(3) as any as S.Schema<ContentAutopilotSiteProfile>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -204,8 +130,8 @@ export const getWebAnalyticsContentAutopilotProfile: API.OperationMethod<
   GetWebAnalyticsContentAutopilotProfileError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebAnalyticsContentAutopilotProfileRequest,
-  output: ContentAutopilotSiteProfile,
+  input: __S(4) as any as S.Schema<GetWebAnalyticsContentAutopilotProfileRequest>,
+  output: __S(3) as any as S.Schema<ContentAutopilotSiteProfile>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -218,8 +144,8 @@ export const listWebAnalyticsContentAutopilotProfiles: API.OperationMethod<
   ListWebAnalyticsContentAutopilotProfilesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebAnalyticsContentAutopilotProfilesRequest,
-  output: PaginatedContentAutopilotSiteProfileList,
+  input: __S(5) as any as S.Schema<ListWebAnalyticsContentAutopilotProfilesRequest>,
+  output: __S(7) as any as S.Schema<PaginatedContentAutopilotSiteProfileList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -232,8 +158,8 @@ export const updateWebAnalyticsContentAutopilotProfilesPartial: API.OperationMet
   UpdateWebAnalyticsContentAutopilotProfilesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebAnalyticsContentAutopilotProfilesPartialRequest,
-  output: ContentAutopilotSiteProfile,
+  input: __S(8) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequest>,
+  output: __S(3) as any as S.Schema<ContentAutopilotSiteProfile>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -246,8 +172,8 @@ export const webAnalyticsContentAutopilotProfilesDestroy: API.OperationMethod<
   WebAnalyticsContentAutopilotProfilesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsContentAutopilotProfilesDestroyRequest,
-  output: WebAnalyticsContentAutopilotProfilesDestroyResponse,
+  input: __S(9) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyRequest>,
+  output: __S(10) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -266,9 +192,9 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           domain: S.String,
-          source_urls: CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList,
-          content_boundaries: CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList,
-          brand_rules: CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList,
+          source_urls: __S(0),
+          content_boundaries: __S(1),
+          brand_rules: __S(0),
           search_console_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -286,9 +212,9 @@ function __c0(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           domain: S.String,
-          source_urls: ContentAutopilotSiteProfileSourceUrlsList,
-          content_boundaries: ContentAutopilotSiteProfileContentBoundariesList,
-          brand_rules: ContentAutopilotSiteProfileBrandRulesList,
+          source_urls: __S(0),
+          content_boundaries: __S(0),
+          brand_rules: __S(0),
           search_console_enabled: S.optional(S.Boolean),
           created_at: S.String,
           updated_at: S.String,
@@ -328,14 +254,14 @@ function __c0(j: number): any {
         identifier: "ListWebAnalyticsContentAutopilotProfilesRequest",
       });
     case 6:
-      return S.Array(ContentAutopilotSiteProfile);
+      return S.Array(__S(3));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedContentAutopilotSiteProfileListResultsList,
+          results: __S(6),
         }),
       ).annotate({
         identifier: "PaginatedContentAutopilotSiteProfileList",
@@ -351,15 +277,9 @@ function __c1(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           domain: S.optional(S.String),
-          source_urls: S.optional(
-            UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList,
-          ),
-          content_boundaries: S.optional(
-            UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList,
-          ),
-          brand_rules: S.optional(
-            UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList,
-          ),
+          source_urls: S.optional(__S(1)),
+          content_boundaries: S.optional(__S(1)),
+          brand_rules: S.optional(__S(1)),
           search_console_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -390,5 +310,18 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "WebAnalyticsContentAutopilotProfilesDestroyResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -84,15 +86,7 @@ export class SiteNotFound
   ) {}
 
 export type RulesBulkCreateRequestDeleteRulesList = Array<string>;
-const RulesBulkCreateRequestDeleteRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<RulesBulkCreateRequestDeleteRulesList>;
-
 export type RulesBulkCreateRequestRulesItemPathsList = Array<string>;
-const RulesBulkCreateRequestRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesBulkCreateRequestRulesItemPathsList>;
-
 export interface RulesBulkCreateRequestRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string;
@@ -101,17 +95,7 @@ export interface RulesBulkCreateRequestRulesItem {
   isPaused?: boolean;
   paths?: RulesBulkCreateRequestRulesItemPathsList;
 }
-const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<RulesBulkCreateRequestRulesItem>;
-
 export type RulesBulkCreateRequestRulesList = Array<RulesBulkCreateRequestRulesItem>;
-const RulesBulkCreateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<RulesBulkCreateRequestRulesList>;
-
 export interface BulkCreateRulesRequest {
   /** Identifier. */
   accountId: string;
@@ -122,15 +106,7 @@ export interface BulkCreateRulesRequest {
   /** A list of rules to create or update. */
   rules?: RulesBulkCreateRequestRulesList;
 }
-const BulkCreateRulesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BulkCreateRulesRequest>;
-
 export type RulesBulkCreateResponseRulesItemPathsList = Array<string>;
-const RulesBulkCreateResponseRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesBulkCreateResponseRulesItemPathsList>;
-
 export interface RulesBulkCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
@@ -145,17 +121,7 @@ export interface RulesBulkCreateResponseRulesItem {
   paths?: RulesBulkCreateResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<RulesBulkCreateResponseRulesItem>;
-
 export type RulesBulkCreateResponseRulesList = Array<RulesBulkCreateResponseRulesItem>;
-const RulesBulkCreateResponseRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<RulesBulkCreateResponseRulesList>;
-
 export interface RulesBulkCreateResponseRuleset {
   /** The Web Analytics ruleset identifier. */
   id?: string | null;
@@ -165,26 +131,13 @@ export interface RulesBulkCreateResponseRuleset {
   /** The zone identifier. */
   zoneTag?: string | null;
 }
-const RulesBulkCreateResponseRuleset = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<RulesBulkCreateResponseRuleset>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkCreateRulesResponse {
   /** A list of rules. */
   rules?: RulesBulkCreateResponseRulesList | null;
   ruleset?: RulesBulkCreateResponseRuleset | null;
 }
-const BulkCreateRulesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BulkCreateRulesResponse>;
-
 export type RulesCreateRequestPathsList = Array<string>;
-const RulesCreateRequestPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesCreateRequestPathsList>;
-
 export interface CreateRuleRequest {
   /** Identifier. */
   accountId: string;
@@ -197,12 +150,7 @@ export interface CreateRuleRequest {
   isPaused?: boolean;
   paths?: RulesCreateRequestPathsList;
 }
-const CreateRuleRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateRuleRequest>;
-
 export type RulesCreateResponsePathsList = Array<string>;
-const RulesCreateResponsePathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesCreateResponsePathsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** The Web Analytics rule identifier. */
@@ -218,8 +166,6 @@ export interface CreateRuleResponse {
   paths?: RulesCreateResponsePathsList | null;
   priority?: number | null;
 }
-const CreateRuleResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateRuleResponse>;
-
 export interface CreateSiteInfoRequest {
   /** Identifier. */
   accountId: string;
@@ -230,11 +176,6 @@ export interface CreateSiteInfoRequest {
   /** The zone identifier. */
   zoneTag?: string;
 }
-const CreateSiteInfoRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateSiteInfoRequest>;
-
 export type SiteInfoCreateResponseRulesItemPathsList = Array<string>;
 export interface SiteInfoCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -251,9 +192,6 @@ export interface SiteInfoCreateResponseRulesItem {
   priority?: number | null;
 }
 export type SiteInfoCreateResponseRulesList = Array<SiteInfoCreateResponseRulesItem>;
-const SiteInfoCreateResponseRulesList =
-  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoCreateResponseRulesList>;
-
 export type SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteInfoResponse {
@@ -272,11 +210,6 @@ export interface CreateSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-const CreateSiteInfoResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateSiteInfoResponse>;
-
 export interface DeleteRuleRequest {
   /** Identifier. */
   accountId: string;
@@ -285,44 +218,28 @@ export interface DeleteRuleRequest {
   /** The Web Analytics rule identifier. */
   ruleId: string;
 }
-const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteRuleRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
   /** The Web Analytics rule identifier. */
   id?: string | null;
 }
-const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteRuleResponse>;
-
 export interface DeleteSiteInfoRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   siteId: string;
 }
-const DeleteSiteInfoRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteSiteInfoRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSiteInfoResponse {
   /** The Web Analytics site identifier. */
   siteTag?: string | null;
 }
-const DeleteSiteInfoResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteSiteInfoResponse>;
-
 export interface GetSiteInfoRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   siteId: string;
 }
-const GetSiteInfoRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetSiteInfoRequest>;
-
 export type SiteInfoGetResponseRulesItemPathsList = Array<string>;
 export interface SiteInfoGetResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -357,16 +274,12 @@ export interface GetSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-const GetSiteInfoResponse = CreateSiteInfoResponse as any as S.Schema<GetSiteInfoResponse>;
-
 export interface ListRulesRequest {
   /** Identifier. */
   accountId: string;
   /** The Web Analytics ruleset identifier. */
   rulesetId: string;
 }
-const ListRulesRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListRulesRequest>;
-
 export type RulesListResponseRulesItemPathsList = Array<string>;
 export interface RulesListResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -390,11 +303,7 @@ export interface ListRulesResponse {
   rules?: RulesListResponseRulesList | null;
   ruleset?: RulesBulkCreateResponseRuleset | null;
 }
-const ListRulesResponse = BulkCreateRulesResponse as any as S.Schema<ListRulesResponse>;
-
 export type SiteInfoListRequestOrderBy = "host" | "created";
-const SiteInfoListRequestOrderBy = S.String;
-
 export interface ListSiteInfosRequest {
   /** Identifier. */
   accountId: string;
@@ -405,8 +314,6 @@ export interface ListSiteInfosRequest {
   /** Number of items to return per page of results. */
   perPage?: number;
 }
-const ListSiteInfosRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListSiteInfosRequest>;
-
 export type SiteInfoListResultItemRulesItemPathsList = Array<string>;
 export interface SiteInfoListResultItemRulesItem {
   /** The Web Analytics rule identifier. */
@@ -423,9 +330,6 @@ export interface SiteInfoListResultItemRulesItem {
   priority?: number | null;
 }
 export type SiteInfoListResultItemRulesList = Array<SiteInfoListResultItemRulesItem>;
-const SiteInfoListResultItemRulesList =
-  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoListResultItemRulesList>;
-
 export type SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
 export interface SiteInfoListResultItem {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -443,32 +347,14 @@ export interface SiteInfoListResultItem {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-const SiteInfoListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SiteInfoListResultItem>;
-
 export type SiteInfoListResultList = Array<SiteInfoListResultItem>;
-const SiteInfoListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SiteInfoListResultList>;
-
 export interface ListSiteInfosResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SiteInfoListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSiteInfosResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListSiteInfosResponse>;
-
 export type RulesUpdateRequestPathsList = Array<string>;
-const RulesUpdateRequestPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesUpdateRequestPathsList>;
-
 export interface UpdateRuleRequest {
   /** Identifier. */
   accountId: string;
@@ -483,8 +369,6 @@ export interface UpdateRuleRequest {
   isPaused?: boolean;
   paths?: RulesUpdateRequestPathsList;
 }
-const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<UpdateRuleRequest>;
-
 export type RulesUpdateResponsePathsList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
@@ -501,8 +385,6 @@ export interface UpdateRuleResponse {
   paths?: RulesUpdateResponsePathsList | null;
   priority?: number | null;
 }
-const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
-
 export interface UpdateSiteInfoRequest {
   /** Identifier. */
   accountId: string;
@@ -519,11 +401,6 @@ export interface UpdateSiteInfoRequest {
   /** The zone identifier. */
   zoneTag?: string;
 }
-const UpdateSiteInfoRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdateSiteInfoRequest>;
-
 export type SiteInfoUpdateResponseRulesItemPathsList = Array<string>;
 export interface SiteInfoUpdateResponseRulesItem {
   /** The Web Analytics rule identifier. */
@@ -558,8 +435,6 @@ export interface UpdateSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-const UpdateSiteInfoResponse = CreateSiteInfoResponse as any as S.Schema<UpdateSiteInfoResponse>;
-
 export type BulkCreateRulesError = CloudflareOpError;
 /** Modifies one or more rules in a Web Analytics ruleset with a single request. */
 export const bulkCreateRules: API.OperationMethod<
@@ -568,8 +443,8 @@ export const bulkCreateRules: API.OperationMethod<
   BulkCreateRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateRulesRequest,
-  output: BulkCreateRulesResponse,
+  input: __S(3) as any as S.Schema<BulkCreateRulesRequest>,
+  output: __S(7) as any as S.Schema<BulkCreateRulesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -583,8 +458,8 @@ export const createRule: API.OperationMethod<
   CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleRequest,
-  output: CreateRuleResponse,
+  input: __S(8) as any as S.Schema<CreateRuleRequest>,
+  output: __S(9) as any as S.Schema<CreateRuleResponse>,
   errors: [Forbidden, RulesetNotFound, MaxRulesExceeded, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -598,8 +473,8 @@ export const createSiteInfo: API.OperationMethod<
   CreateSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSiteInfoRequest,
-  output: CreateSiteInfoResponse,
+  input: __S(10) as any as S.Schema<CreateSiteInfoRequest>,
+  output: __S(11) as any as S.Schema<CreateSiteInfoResponse>,
   errors: [Forbidden, RumSiteQuotaExceeded, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -613,8 +488,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleRequest,
-  output: DeleteRuleResponse,
+  input: __S(12) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(13) as any as S.Schema<DeleteRuleResponse>,
   errors: [Forbidden, RulesetNotFound, RuleNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -628,8 +503,8 @@ export const deleteSiteInfo: API.OperationMethod<
   DeleteSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSiteInfoRequest,
-  output: DeleteSiteInfoResponse,
+  input: __S(14) as any as S.Schema<DeleteSiteInfoRequest>,
+  output: __S(15) as any as S.Schema<DeleteSiteInfoResponse>,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -643,8 +518,8 @@ export const getSiteInfo: API.OperationMethod<
   GetSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSiteInfoRequest,
-  output: GetSiteInfoResponse,
+  input: __S(16) as any as S.Schema<GetSiteInfoRequest>,
+  output: __S(11) as any as S.Schema<GetSiteInfoResponse>,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -658,8 +533,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRulesRequest,
-  output: ListRulesResponse,
+  input: __S(17) as any as S.Schema<ListRulesRequest>,
+  output: __S(7) as any as S.Schema<ListRulesResponse>,
   errors: [Forbidden, RulesetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -675,8 +550,8 @@ export const listSiteInfos: API.PaginatedOperationMethod<
   SiteInfoListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSiteInfosRequest,
-    output: ListSiteInfosResponse,
+    input: __S(18) as any as S.Schema<ListSiteInfosRequest>,
+    output: __S(21) as any as S.Schema<ListSiteInfosResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -699,8 +574,8 @@ export const updateRule: API.OperationMethod<
   UpdateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRuleRequest,
-  output: UpdateRuleResponse,
+  input: __S(22) as any as S.Schema<UpdateRuleRequest>,
+  output: __S(9) as any as S.Schema<UpdateRuleResponse>,
   errors: [Forbidden, RulesetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -714,8 +589,8 @@ export const updateSiteInfo: API.OperationMethod<
   UpdateSiteInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSiteInfoRequest,
-  output: UpdateSiteInfoResponse,
+  input: __S(23) as any as S.Schema<UpdateSiteInfoRequest>,
+  output: __S(11) as any as S.Schema<UpdateSiteInfoResponse>,
   errors: [SiteNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -733,22 +608,20 @@ function __c0(j: number): any {
           host: S.optional(S.String),
           inclusive: S.optional(S.Boolean),
           isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-          paths: S.optional(RulesBulkCreateRequestRulesItemPathsList),
+          paths: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "RulesBulkCreateRequestRulesItem",
       });
     case 2:
-      return S.Array(RulesBulkCreateRequestRulesItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
-          deleteRules: S.optional(
-            RulesBulkCreateRequestDeleteRulesList.pipe(T.Body("delete_rules")),
-          ),
-          rules: S.optional(RulesBulkCreateRequestRulesList),
+          deleteRules: S.optional(__S(0).pipe(T.Body("delete_rules"))),
+          rules: S.optional(__S(2)),
         })
           .pipe(
             T.Http({
@@ -767,14 +640,14 @@ function __c0(j: number): any {
           host: S.optional(S.NullOr(S.String)),
           inclusive: S.optional(S.NullOr(S.Boolean)),
           isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-          paths: S.optional(S.NullOr(RulesBulkCreateResponseRulesItemPathsList)),
+          paths: S.optional(S.NullOr(__S(0))),
           priority: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "RulesBulkCreateResponseRulesItem",
       });
     case 5:
-      return S.Array(RulesBulkCreateResponseRulesItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -789,8 +662,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(S.NullOr(RulesBulkCreateResponseRulesList)),
-          ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
+          rules: S.optional(S.NullOr(__S(5))),
+          ruleset: S.optional(S.NullOr(__S(6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkCreateRulesResponse" });
   }
@@ -805,7 +678,7 @@ function __c1(j: number): any {
           host: S.optional(S.String),
           inclusive: S.optional(S.Boolean),
           isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-          paths: S.optional(RulesCreateRequestPathsList),
+          paths: S.optional(__S(0)),
         })
           .pipe(
             T.Http({
@@ -824,7 +697,7 @@ function __c1(j: number): any {
           host: S.optional(S.NullOr(S.String)),
           inclusive: S.optional(S.NullOr(S.Boolean)),
           isPaused: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_paused"))),
-          paths: S.optional(S.NullOr(RulesCreateResponsePathsList)),
+          paths: S.optional(S.NullOr(__S(0))),
           priority: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRuleResponse" });
@@ -844,8 +717,8 @@ function __c1(j: number): any {
         S.Struct({
           autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
           created: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(SiteInfoCreateResponseRulesList)),
-          ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
+          rules: S.optional(S.NullOr(__S(5))),
+          ruleset: S.optional(S.NullOr(__S(6))),
           siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
           siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
           snippet: S.optional(S.NullOr(S.String)),
@@ -933,7 +806,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          orderBy: S.optional(SiteInfoListRequestOrderBy.pipe(T.Query("order_by"))),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -947,8 +820,8 @@ function __c2(j: number): any {
         S.Struct({
           autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
           created: S.optional(S.NullOr(S.String)),
-          rules: S.optional(S.NullOr(SiteInfoListResultItemRulesList)),
-          ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
+          rules: S.optional(S.NullOr(__S(5))),
+          ruleset: S.optional(S.NullOr(__S(6))),
           siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
           siteToken: S.optional(S.NullOr(S.String).pipe(T.Body("site_token"))),
           snippet: S.optional(S.NullOr(S.String)),
@@ -956,11 +829,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SiteInfoListResultItem" });
     case 4:
-      return S.Array(SiteInfoListResultItem);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: SiteInfoListResultList.pipe(T.EnvelopePayload()),
+          result: __S(20).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSiteInfosResponse" });
@@ -973,7 +846,7 @@ function __c2(j: number): any {
           host: S.optional(S.String),
           inclusive: S.optional(S.Boolean),
           isPaused: S.optional(S.Boolean.pipe(T.Body("is_paused"))),
-          paths: S.optional(RulesUpdateRequestPathsList),
+          paths: S.optional(__S(0)),
         })
           .pipe(
             T.Http({
@@ -1004,5 +877,20 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateSiteInfoRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

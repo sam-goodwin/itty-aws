@@ -7,6 +7,8 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -18,31 +20,17 @@ export interface AttachVolumeRequest {
   /** Auto-mount the Volume after attaching it. */
   automount?: boolean;
 }
-const AttachVolumeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AttachVolumeRequest>;
-
 /** Status of the Action. */
 export type AttachVolumeResponseActionStatus = "running" | "success" | "error";
-const AttachVolumeResponseActionStatus = S.String;
-
 export interface AttachVolumeResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const AttachVolumeResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AttachVolumeResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type AttachVolumeResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const AttachVolumeResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AttachVolumeResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface AttachVolumeResponseActionError {
   /** Fixed error code for machines. */
@@ -50,11 +38,6 @@ export interface AttachVolumeResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const AttachVolumeResponseActionError = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AttachVolumeResponseActionError>;
-
 export interface AttachVolumeResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -73,39 +56,22 @@ export interface AttachVolumeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const AttachVolumeResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AttachVolumeResponseAction>;
-
 export interface AttachVolumeResponse {
   action: AttachVolumeResponseAction;
 }
-const AttachVolumeResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AttachVolumeResponse>;
-
 export interface ChangeVolumeProtectionRequest {
   /** ID of the Volume. */
   id: number;
   /** If true, prevents the Volume from being deleted. */
   delete?: boolean;
 }
-const ChangeVolumeProtectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ChangeVolumeProtectionRequest>;
-
 /** Status of the Action. */
 export type ChangeVolumeProtectionResponseActionStatus = "running" | "success" | "error";
-const ChangeVolumeProtectionResponseActionStatus = S.String;
-
 export type ChangeVolumeProtectionResponseActionResourcesItem =
   AttachVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ChangeVolumeProtectionResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const ChangeVolumeProtectionResponseActionResourcesList =
-  AttachVolumeResponseActionResourcesList as any as S.Schema<ChangeVolumeProtectionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeVolumeProtectionResponseActionError = AttachVolumeResponseActionError;
 export interface ChangeVolumeProtectionResponseAction {
@@ -126,36 +92,19 @@ export interface ChangeVolumeProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const ChangeVolumeProtectionResponseAction = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ChangeVolumeProtectionResponseAction>;
-
 export interface ChangeVolumeProtectionResponse {
   action: ChangeVolumeProtectionResponseAction;
 }
-const ChangeVolumeProtectionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ChangeVolumeProtectionResponse>;
-
 export interface DetachVolumeRequest {
   /** ID of the Volume. */
   id: number;
 }
-const DetachVolumeRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DetachVolumeRequest>;
-
 /** Status of the Action. */
 export type DetachVolumeResponseActionStatus = "running" | "success" | "error";
-const DetachVolumeResponseActionStatus = S.String;
-
 export type DetachVolumeResponseActionResourcesItem = AttachVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type DetachVolumeResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const DetachVolumeResponseActionResourcesList =
-  AttachVolumeResponseActionResourcesList as any as S.Schema<DetachVolumeResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DetachVolumeResponseActionError = AttachVolumeResponseActionError;
 export interface DetachVolumeResponseAction {
@@ -176,36 +125,19 @@ export interface DetachVolumeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const DetachVolumeResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DetachVolumeResponseAction>;
-
 export interface DetachVolumeResponse {
   action: DetachVolumeResponseAction;
 }
-const DetachVolumeResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DetachVolumeResponse>;
-
 export interface GetVolumesActionRequest {
   /** ID of the Action. */
   id: number;
 }
-const GetVolumesActionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetVolumesActionRequest>;
-
 /** Status of the Action. */
 export type GetVolumesActionResponseActionStatus = "running" | "success" | "error";
-const GetVolumesActionResponseActionStatus = S.String;
-
 export type GetVolumesActionResponseActionResourcesItem = AttachVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type GetVolumesActionResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const GetVolumesActionResponseActionResourcesList =
-  AttachVolumeResponseActionResourcesList as any as S.Schema<GetVolumesActionResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetVolumesActionResponseActionError = AttachVolumeResponseActionError;
 export interface GetVolumesActionResponseAction {
@@ -226,19 +158,9 @@ export interface GetVolumesActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const GetVolumesActionResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetVolumesActionResponseAction>;
-
 export interface GetVolumesActionResponse {
   action: GetVolumesActionResponseAction;
 }
-const GetVolumesActionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetVolumesActionResponse>;
-
 export type ListVolumeActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -255,24 +177,14 @@ export type ListVolumeActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-const ListVolumeActionsRequestSortItem = S.String;
-
 export type ListVolumeActionsRequestSortList = Array<
   ListVolumeActionsRequestSortItem | (string & {})
 >;
-const ListVolumeActionsRequestSortList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListVolumeActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListVolumeActionsRequestStatusItem = "running" | "success" | "error";
 export type ListVolumeActionsRequestStatusList = Array<
   ListVolumeActionsRequestStatusItem | (string & {})
 >;
-const ListVolumeActionsRequestStatusList =
-  ListVolumeActionsRequestSortList as any as S.Schema<ListVolumeActionsRequestStatusList>;
-
 export interface ListVolumeActionsRequest {
   /** ID of the Volume. */
   id: number;
@@ -285,23 +197,13 @@ export interface ListVolumeActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListVolumeActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListVolumeActionsRequest>;
-
 /** Status of the Action. */
 export type ListVolumeActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListVolumeActionsResponseActionsItemStatus = S.String;
-
 export type ListVolumeActionsResponseActionsItemResourcesItem =
   AttachVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListVolumeActionsResponseActionsItemResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const ListVolumeActionsResponseActionsItemResourcesList =
-  AttachVolumeResponseActionResourcesList as any as S.Schema<ListVolumeActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListVolumeActionsResponseActionsItemError = AttachVolumeResponseActionError;
 export interface ListVolumeActionsResponseActionsItem {
@@ -322,17 +224,7 @@ export interface ListVolumeActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const ListVolumeActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListVolumeActionsResponseActionsItem>;
-
 export type ListVolumeActionsResponseActionsList = Array<ListVolumeActionsResponseActionsItem>;
-const ListVolumeActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListVolumeActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListVolumeActionsResponseMetaPagination {
   /** Current page number. */
@@ -348,35 +240,15 @@ export interface ListVolumeActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListVolumeActionsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListVolumeActionsResponseMetaPagination>;
-
 export interface ListVolumeActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListVolumeActionsResponseMetaPagination;
 }
-const ListVolumeActionsResponseMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListVolumeActionsResponseMeta>;
-
 export interface ListVolumeActionsResponse {
   actions: ListVolumeActionsResponseActionsList;
   meta: ListVolumeActionsResponseMeta;
 }
-const ListVolumeActionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListVolumeActionsResponse>;
-
 export type ListVolumesActionsRequestIdList = Array<number>;
-const ListVolumesActionsRequestIdList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListVolumesActionsRequestIdList>;
-
 export type ListVolumesActionsRequestSortItem =
   | "id"
   | "id:asc"
@@ -396,17 +268,11 @@ export type ListVolumesActionsRequestSortItem =
 export type ListVolumesActionsRequestSortList = Array<
   ListVolumesActionsRequestSortItem | (string & {})
 >;
-const ListVolumesActionsRequestSortList =
-  ListVolumeActionsRequestSortList as any as S.Schema<ListVolumesActionsRequestSortList>;
-
 /** Status of the Action. */
 export type ListVolumesActionsRequestStatusItem = "running" | "success" | "error";
 export type ListVolumesActionsRequestStatusList = Array<
   ListVolumesActionsRequestStatusItem | (string & {})
 >;
-const ListVolumesActionsRequestStatusList =
-  ListVolumeActionsRequestSortList as any as S.Schema<ListVolumesActionsRequestStatusList>;
-
 export interface ListVolumesActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id?: ListVolumesActionsRequestIdList;
@@ -419,23 +285,13 @@ export interface ListVolumesActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListVolumesActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListVolumesActionsRequest>;
-
 /** Status of the Action. */
 export type ListVolumesActionsResponseActionsItemStatus = "running" | "success" | "error";
-const ListVolumesActionsResponseActionsItemStatus = S.String;
-
 export type ListVolumesActionsResponseActionsItemResourcesItem =
   AttachVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ListVolumesActionsResponseActionsItemResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const ListVolumesActionsResponseActionsItemResourcesList =
-  AttachVolumeResponseActionResourcesList as any as S.Schema<ListVolumesActionsResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListVolumesActionsResponseActionsItemError = AttachVolumeResponseActionError;
 export interface ListVolumesActionsResponseActionsItem {
@@ -456,17 +312,7 @@ export interface ListVolumesActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const ListVolumesActionsResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListVolumesActionsResponseActionsItem>;
-
 export type ListVolumesActionsResponseActionsList = Array<ListVolumesActionsResponseActionsItem>;
-const ListVolumesActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListVolumesActionsResponseActionsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListVolumesActionsResponseMetaPagination = ListVolumeActionsResponseMetaPagination;
 export type ListVolumesActionsResponseMeta = ListVolumeActionsResponseMeta;
@@ -474,30 +320,18 @@ export interface ListVolumesActionsResponse {
   actions: ListVolumesActionsResponseActionsList;
   meta: ListVolumeActionsResponseMeta;
 }
-const ListVolumesActionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListVolumesActionsResponse>;
-
 export interface ResizeVolumeRequest {
   /** ID of the Volume. */
   id: number;
   /** New Volume size in GB (must be greater than current size). */
   size: number;
 }
-const ResizeVolumeRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ResizeVolumeRequest>;
-
 /** Status of the Action. */
 export type ResizeVolumeResponseActionStatus = "running" | "success" | "error";
-const ResizeVolumeResponseActionStatus = S.String;
-
 export type ResizeVolumeResponseActionResourcesItem = AttachVolumeResponseActionResourcesItem;
 /** Resources the Action relates to. */
 export type ResizeVolumeResponseActionResourcesList =
   Array<AttachVolumeResponseActionResourcesItem>;
-const ResizeVolumeResponseActionResourcesList =
-  AttachVolumeResponseActionResourcesList as any as S.Schema<ResizeVolumeResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ResizeVolumeResponseActionError = AttachVolumeResponseActionError;
 export interface ResizeVolumeResponseAction {
@@ -518,16 +352,9 @@ export interface ResizeVolumeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AttachVolumeResponseActionError | null;
 }
-const ResizeVolumeResponseAction = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ResizeVolumeResponseAction>;
-
 export interface ResizeVolumeResponse {
   action: ResizeVolumeResponseAction;
 }
-const ResizeVolumeResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ResizeVolumeResponse>;
-
 export type AttachVolumeError = HetznerOpError;
 /** Attach Volume to a Server Attaches a Volume to a Server. Works only if the Server is in the same Location as the Volume. */
 export const attachVolume: API.OperationMethod<
@@ -536,8 +363,8 @@ export const attachVolume: API.OperationMethod<
   AttachVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttachVolumeRequest,
-  output: AttachVolumeResponse,
+  input: __S(0) as any as S.Schema<AttachVolumeRequest>,
+  output: __S(5) as any as S.Schema<AttachVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -551,8 +378,8 @@ export const changeVolumeProtection: API.OperationMethod<
   ChangeVolumeProtectionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChangeVolumeProtectionRequest,
-  output: ChangeVolumeProtectionResponse,
+  input: __S(6) as any as S.Schema<ChangeVolumeProtectionRequest>,
+  output: __S(8) as any as S.Schema<ChangeVolumeProtectionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -566,8 +393,8 @@ export const detachVolume: API.OperationMethod<
   DetachVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetachVolumeRequest,
-  output: DetachVolumeResponse,
+  input: __S(9) as any as S.Schema<DetachVolumeRequest>,
+  output: __S(11) as any as S.Schema<DetachVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -581,8 +408,8 @@ export const getVolumesAction: API.OperationMethod<
   GetVolumesActionError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumesActionRequest,
-  output: GetVolumesActionResponse,
+  input: __S(12) as any as S.Schema<GetVolumesActionRequest>,
+  output: __S(14) as any as S.Schema<GetVolumesActionResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -598,8 +425,8 @@ export const listVolumeActions: API.PaginatedOperationMethod<
   ListVolumeActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListVolumeActionsRequest,
-    output: ListVolumeActionsResponse,
+    input: __S(16) as any as S.Schema<ListVolumeActionsRequest>,
+    output: __S(21) as any as S.Schema<ListVolumeActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -624,8 +451,8 @@ export const listVolumesActions: API.PaginatedOperationMethod<
   ListVolumesActionsResponseActionsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListVolumesActionsRequest,
-    output: ListVolumesActionsResponse,
+    input: __S(23) as any as S.Schema<ListVolumesActionsRequest>,
+    output: __S(26) as any as S.Schema<ListVolumesActionsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -648,8 +475,8 @@ export const resizeVolume: API.OperationMethod<
   ResizeVolumeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResizeVolumeRequest,
-  output: ResizeVolumeResponse,
+  input: __S(27) as any as S.Schema<ResizeVolumeRequest>,
+  output: __S(29) as any as S.Schema<ResizeVolumeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -676,7 +503,7 @@ function __c0(j: number): any {
         identifier: "AttachVolumeResponseActionResourcesItem",
       });
     case 2:
-      return S.Array(AttachVolumeResponseActionResourcesItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -691,12 +518,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: AttachVolumeResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: AttachVolumeResponseActionResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "AttachVolumeResponseAction",
@@ -704,7 +531,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: AttachVolumeResponseAction,
+          action: __S(4),
         }),
       ).annotate({ identifier: "AttachVolumeResponse" });
     case 6:
@@ -723,12 +550,12 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ChangeVolumeProtectionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ChangeVolumeProtectionResponseActionResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ChangeVolumeProtectionResponseAction",
@@ -740,7 +567,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          action: ChangeVolumeProtectionResponseAction,
+          action: __S(7),
         }),
       ).annotate({
         identifier: "ChangeVolumeProtectionResponse",
@@ -756,12 +583,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: DetachVolumeResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: DetachVolumeResponseActionResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "DetachVolumeResponseAction",
@@ -769,7 +596,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: DetachVolumeResponseAction,
+          action: __S(10),
         }),
       ).annotate({ identifier: "DetachVolumeResponse" });
     case 4:
@@ -783,12 +610,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: GetVolumesActionResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: GetVolumesActionResponseActionResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "GetVolumesActionResponseAction",
@@ -796,11 +623,11 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: GetVolumesActionResponseAction,
+          action: __S(13),
         }),
       ).annotate({ identifier: "GetVolumesActionResponse" });
     case 7:
-      return S.Array(ListVolumeActionsRequestSortItem);
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -809,8 +636,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          sort: S.optional(ListVolumeActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListVolumeActionsRequestStatusList.pipe(T.Query())),
+          sort: S.optional(__S(15).pipe(T.Query())),
+          status: S.optional(__S(15).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/volumes/{id}/actions", code: 200 })),
@@ -820,18 +647,18 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListVolumeActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListVolumeActionsResponseActionsItemResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ListVolumeActionsResponseActionsItem",
       });
     case 2:
-      return S.Array(ListVolumeActionsResponseActionsItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -848,7 +675,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListVolumeActionsResponseMetaPagination,
+          pagination: __S(19),
         }),
       ).annotate({
         identifier: "ListVolumeActionsResponseMeta",
@@ -856,8 +683,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: ListVolumeActionsResponseActionsList,
-          meta: ListVolumeActionsResponseMeta,
+          actions: __S(18),
+          meta: __S(20),
         }),
       ).annotate({
         identifier: "ListVolumeActionsResponse",
@@ -867,9 +694,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(ListVolumesActionsRequestIdList.pipe(T.Query())),
-          sort: S.optional(ListVolumesActionsRequestSortList.pipe(T.Query())),
-          status: S.optional(ListVolumesActionsRequestStatusList.pipe(T.Query())),
+          id: S.optional(__S(22).pipe(T.Query())),
+          sort: S.optional(__S(15).pipe(T.Query())),
+          status: S.optional(__S(15).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/volumes/actions", code: 200 })),
@@ -885,23 +712,23 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ListVolumesActionsResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ListVolumesActionsResponseActionsItemResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ListVolumesActionsResponseActionsItem",
       });
     case 1:
-      return S.Array(ListVolumesActionsResponseActionsItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actions: ListVolumesActionsResponseActionsList,
-          meta: ListVolumeActionsResponseMeta,
+          actions: __S(25),
+          meta: __S(20),
         }),
       ).annotate({
         identifier: "ListVolumesActionsResponse",
@@ -918,12 +745,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: ResizeVolumeResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: ResizeVolumeResponseActionResourcesList,
-          error: S.NullOr(AttachVolumeResponseActionError),
+          resources: __S(2),
+          error: S.NullOr(__S(3)),
         }),
       ).annotate({
         identifier: "ResizeVolumeResponseAction",
@@ -931,8 +758,25 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: ResizeVolumeResponseAction,
+          action: __S(28),
         }),
       ).annotate({ identifier: "ResizeVolumeResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -37,8 +39,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 export interface SearchEntitiesRequest {
   /** The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B */
   ids?: StringList;
@@ -55,14 +55,7 @@ export interface SearchEntitiesRequest {
   /** Enables prefix match against names and aliases of entities */
   prefix?: boolean;
 }
-const SearchEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SearchEntitiesRequest>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentList>;
-
 /** Response message includes the context and a list of matching results which contain the detail of associated entities. */
 export interface SearchResponse {
   /** The schema type of top-level JSON-LD object, e.g. ItemList. */
@@ -72,8 +65,6 @@ export interface SearchResponse {
   /** The item list of search results. */
   itemListElement?: DocumentList;
 }
-const SearchResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SearchResponse>;
-
 export type SearchEntitiesError = NotFound | Forbidden | GcpOpError;
 /** Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org */
 export const searchEntities: API.OperationMethod<
@@ -82,8 +73,8 @@ export const searchEntities: API.OperationMethod<
   SearchEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchEntitiesRequest,
-  output: SearchResponse,
+  input: __S(1) as any as S.Schema<SearchEntitiesRequest>,
+  output: __S(3) as any as S.Schema<SearchResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -97,11 +88,11 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(StringList.pipe(T.Query())),
-          types: S.optional(StringList.pipe(T.Query())),
+          ids: S.optional(__S(0).pipe(T.Query())),
+          types: S.optional(__S(0).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           indent: S.optional(S.Boolean.pipe(T.Query())),
-          languages: S.optional(StringList.pipe(T.Query())),
+          languages: S.optional(__S(0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           prefix: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -119,8 +110,19 @@ function __c0(j: number): any {
         S.Struct({
           "@type": S.optional(S.Unknown),
           "@context": S.optional(S.Unknown),
-          itemListElement: S.optional(DocumentList),
+          itemListElement: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "SearchResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

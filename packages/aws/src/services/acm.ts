@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "ACM", serviceShapeName: "CertificateManager" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "acm" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2015-12-08");
@@ -137,7 +139,7 @@ export class ThrottlingException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       throttlingReasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(130)).annotate({
           identifier: "ThrottlingReasonList",
         }),
       ),
@@ -167,44 +169,26 @@ export interface Tag {
   Key: string;
   Value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AddTagsToCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-const AddTagsToCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddTagsToCertificateRequest>;
 export interface AddTagsToCertificateResponse {}
-const AddTagsToCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddTagsToCertificateResponse>;
 export type AcmeEndpointArn = string;
 export type DomainName = string;
 export type DomainScopeOption = "ENABLED" | "DISABLED" | (string & {});
-const DomainScopeOption = S.String;
-
 export interface DomainScope {
   ExactDomain?: DomainScopeOption;
   Subdomains?: DomainScopeOption;
   Wildcards?: DomainScopeOption;
 }
-const DomainScope = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DomainScope>;
 export type HostedZoneId = string;
 export interface DnsPrevalidationOptions {
   DomainScope?: DomainScope;
   HostedZoneId?: string;
 }
-const DnsPrevalidationOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DnsPrevalidationOptions>;
 export type PrevalidationOptions = { DnsPrevalidation: DnsPrevalidationOptions };
-const PrevalidationOptions = /*@__PURE__*/ __L.at(__c0, 6);
 export interface CreateAcmeDomainValidationRequest {
   IdempotencyToken?: string;
   AcmeEndpointArn: string;
@@ -212,38 +196,18 @@ export interface CreateAcmeDomainValidationRequest {
   PrevalidationOptions: PrevalidationOptions;
   Tags?: Tag[];
 }
-const CreateAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateAcmeDomainValidationRequest>;
 export type AcmeDomainValidationArn = string;
 export interface CreateAcmeDomainValidationResponse {
   AcmeDomainValidationArn: string;
 }
-const CreateAcmeDomainValidationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateAcmeDomainValidationResponse>;
 export type AcmeAuthorizationBehavior = "PRE_APPROVED" | (string & {});
-const AcmeAuthorizationBehavior = S.String;
-
 export type AcmeContact = "REQUIRED" | "NOT_REQUIRED" | (string & {});
-const AcmeContact = S.String;
-
 export type PublicKeyAlgorithm = "RSA_2048" | "EC_prime256v1" | "EC_secp384r1" | (string & {});
-const PublicKeyAlgorithm = S.String;
-
 export type PublicKeyAlgorithmList = PublicKeyAlgorithm[];
-const PublicKeyAlgorithmList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface PublicCertificateAuthority {
   AllowedKeyAlgorithms?: PublicKeyAlgorithm[];
 }
-const PublicCertificateAuthority = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PublicCertificateAuthority>;
 export type CertificateAuthority = { PublicCertificateAuthority: PublicCertificateAuthority };
-const CertificateAuthority = /*@__PURE__*/ __L.at(__c1, 3);
 export interface CreateAcmeEndpointRequest {
   IdempotencyToken?: string;
   AuthorizationBehavior: AcmeAuthorizationBehavior;
@@ -252,26 +216,15 @@ export interface CreateAcmeEndpointRequest {
   Tags?: Tag[];
   CertificateTags?: Tag[];
 }
-const CreateAcmeEndpointRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateAcmeEndpointRequest>;
 export interface CreateAcmeEndpointResponse {
   AcmeEndpointArn?: string;
 }
-const CreateAcmeEndpointResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateAcmeEndpointResponse>;
 export type RoleArn = string;
 export type TimeType = "MINUTES" | "HOURS" | "DAYS" | (string & {});
-const TimeType = S.String;
-
 export interface Expiration {
   Value: number;
   Type: TimeType;
 }
-const Expiration = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Expiration>;
 export interface CreateAcmeExternalAccountBindingRequest {
   IdempotencyToken?: string;
   AcmeEndpointArn: string;
@@ -279,10 +232,6 @@ export interface CreateAcmeExternalAccountBindingRequest {
   Expiration?: Expiration;
   Tags?: Tag[];
 }
-const CreateAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateAcmeExternalAccountBindingRequest>;
 export type AcmeExternalAccountBindingArn = string;
 export interface AcmeExternalAccountBinding {
   AcmeExternalAccountBindingArn?: string;
@@ -294,72 +243,31 @@ export interface AcmeExternalAccountBinding {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeExternalAccountBinding = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AcmeExternalAccountBinding>;
 export interface CreateAcmeExternalAccountBindingResponse {
   ExternalAccountBinding?: AcmeExternalAccountBinding;
 }
-const CreateAcmeExternalAccountBindingResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateAcmeExternalAccountBindingResponse>;
 export interface DeleteAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
 }
-const DeleteAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteAcmeDomainValidationRequest>;
 export interface DeleteAcmeDomainValidationResponse {}
-const DeleteAcmeDomainValidationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteAcmeDomainValidationResponse>;
 export interface DeleteAcmeEndpointRequest {
   AcmeEndpointArn: string;
 }
-const DeleteAcmeEndpointRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteAcmeEndpointRequest>;
 export interface DeleteAcmeEndpointResponse {}
-const DeleteAcmeEndpointResponse =
-  AddTagsToCertificateResponse as any as S.Schema<DeleteAcmeEndpointResponse>;
 export interface DeleteAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const DeleteAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteAcmeExternalAccountBindingRequest>;
 export interface DeleteAcmeExternalAccountBindingResponse {}
-const DeleteAcmeExternalAccountBindingResponse =
-  DeleteAcmeDomainValidationResponse as any as S.Schema<DeleteAcmeExternalAccountBindingResponse>;
 export interface DeleteCertificateRequest {
   CertificateArn: string;
 }
-const DeleteCertificateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteCertificateRequest>;
 export interface DeleteCertificateResponse {}
-const DeleteCertificateResponse =
-  AddTagsToCertificateResponse as any as S.Schema<DeleteCertificateResponse>;
 export interface DescribeAcmeAccountRequest {
   AcmeEndpointArn: string;
   AccountUrl: string;
 }
-const DescribeAcmeAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DescribeAcmeAccountRequest>;
 export type AcmeAccountStatus = "VALID" | "DEACTIVATED" | "REVOKED" | (string & {});
-const AcmeAccountStatus = S.String;
-
 export type ContactList = string[];
-const ContactList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface AcmeAccount {
   AccountUrl?: string;
   PublicKeyThumbprint?: string;
@@ -368,52 +276,31 @@ export interface AcmeAccount {
   AcmeExternalAccountBindingArn?: string;
   Contacts?: string[];
 }
-const AcmeAccount = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AcmeAccount>;
 export interface DescribeAcmeAccountResponse {
   AcmeAccount?: AcmeAccount;
 }
-const DescribeAcmeAccountResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DescribeAcmeAccountResponse>;
 export interface DescribeAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
 }
-const DescribeAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DescribeAcmeDomainValidationRequest>;
 export type PrevalidationType = "DNS_PREVALIDATION" | (string & {});
-const PrevalidationType = S.String;
-
 export type RecordType = "CNAME" | (string & {});
-const RecordType = S.String;
-
 export interface ResourceRecord {
   Name: string;
   Type: RecordType;
   Value: string;
 }
-const ResourceRecord = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ResourceRecord>;
 export interface DnsPrevalidationDetails {
   DomainScope?: DomainScope;
   HostedZoneId?: string;
   ResourceRecord?: ResourceRecord;
 }
-const DnsPrevalidationDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DnsPrevalidationDetails>;
 export type PrevalidationDetails = { DnsPrevalidation: DnsPrevalidationDetails };
-const PrevalidationDetails = /*@__PURE__*/ __L.at(__c3, 6);
 export type AcmeDomainValidationStatus =
   | "VALIDATING"
   | "VALID"
   | "INVALID"
   | "DELETING"
   | (string & {});
-const AcmeDomainValidationStatus = S.String;
-
 export type AcmeDomainValidationFailureReason =
   | "ACCESS_DENIED"
   | "DOMAIN_MISMATCH"
@@ -425,13 +312,10 @@ export type AcmeDomainValidationFailureReason =
   | "INVALID_PUBLIC_DOMAIN"
   | "TIMED_OUT"
   | (string & {});
-const AcmeDomainValidationFailureReason = S.String;
-
 export interface FailureDetails {
   Reason?: AcmeDomainValidationFailureReason;
   Message?: string;
 }
-const FailureDetails = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FailureDetails>;
 export interface AcmeDomainValidation {
   AcmeDomainValidationArn?: string;
   AcmeEndpointArn?: string;
@@ -443,24 +327,13 @@ export interface AcmeDomainValidation {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeDomainValidation = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AcmeDomainValidation>;
 export interface DescribeAcmeDomainValidationResponse {
   AcmeDomainValidation?: AcmeDomainValidation;
 }
-const DescribeAcmeDomainValidationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DescribeAcmeDomainValidationResponse>;
 export interface DescribeAcmeEndpointRequest {
   AcmeEndpointArn: string;
 }
-const DescribeAcmeEndpointRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DescribeAcmeEndpointRequest>;
 export type AcmeEndpointStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED" | (string & {});
-const AcmeEndpointStatus = S.String;
-
 export interface AcmeEndpoint {
   AcmeEndpointArn?: string;
   EndpointUrl?: string;
@@ -473,52 +346,28 @@ export interface AcmeEndpoint {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeEndpoint = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AcmeEndpoint>;
 export interface DescribeAcmeEndpointResponse {
   AcmeEndpoint?: AcmeEndpoint;
 }
-const DescribeAcmeEndpointResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DescribeAcmeEndpointResponse>;
 export interface DescribeAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const DescribeAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DescribeAcmeExternalAccountBindingRequest>;
 export interface DescribeAcmeExternalAccountBindingResponse {
   ExternalAccountBinding?: AcmeExternalAccountBinding;
 }
-const DescribeAcmeExternalAccountBindingResponse =
-  CreateAcmeExternalAccountBindingResponse as any as S.Schema<DescribeAcmeExternalAccountBindingResponse>;
 export interface DescribeCertificateRequest {
   CertificateArn: string;
 }
-const DescribeCertificateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DescribeCertificateRequest>;
 export type DomainNameString = string;
 export type DomainList = string[];
-const DomainList = ContactList as any as S.Schema<DomainList>;
 export type CertificateManagedBy = "CLOUDFRONT" | (string & {});
-const CertificateManagedBy = S.String;
-
 export type ValidationEmailList = string[];
-const ValidationEmailList = ContactList as any as S.Schema<ValidationEmailList>;
 export type DomainStatus = "PENDING_VALIDATION" | "SUCCESS" | "FAILED" | (string & {});
-const DomainStatus = S.String;
-
 export interface HttpRedirect {
   RedirectFrom?: string;
   RedirectTo?: string;
 }
-const HttpRedirect = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<HttpRedirect>;
 export type ValidationMethod = "EMAIL" | "DNS" | "HTTP" | (string & {});
-const ValidationMethod = S.String;
-
 export interface DomainValidation {
   DomainName: string;
   ValidationEmails?: string[];
@@ -528,9 +377,7 @@ export interface DomainValidation {
   HttpRedirect?: HttpRedirect;
   ValidationMethod?: ValidationMethod;
 }
-const DomainValidation = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DomainValidation>;
 export type DomainValidationList = DomainValidation[];
-const DomainValidationList = /*@__PURE__*/ __L.at(__c5, 1);
 export type CertificateStatus =
   | "PENDING_VALIDATION"
   | "ISSUED"
@@ -540,8 +387,6 @@ export type CertificateStatus =
   | "REVOKED"
   | "FAILED"
   | (string & {});
-const CertificateStatus = S.String;
-
 export type RevocationReason =
   | "UNSPECIFIED"
   | "KEY_COMPROMISE"
@@ -555,8 +400,6 @@ export type RevocationReason =
   | "PRIVILEGE_WITHDRAWN"
   | "A_A_COMPROMISE"
   | (string & {});
-const RevocationReason = S.String;
-
 export type KeyAlgorithm =
   | "RSA_1024"
   | "RSA_2048"
@@ -566,10 +409,7 @@ export type KeyAlgorithm =
   | "EC_secp384r1"
   | "EC_secp521r1"
   | (string & {});
-const KeyAlgorithm = S.String;
-
 export type InUseList = string[];
-const InUseList = ContactList as any as S.Schema<InUseList>;
 export type FailureReason =
   | "NO_AVAILABLE_CONTACTS"
   | "ADDITIONAL_VERIFICATION_REQUIRED"
@@ -589,26 +429,19 @@ export type FailureReason =
   | "SLR_NOT_FOUND"
   | "OTHER"
   | (string & {});
-const FailureReason = S.String;
-
 export type CertificateType = "IMPORTED" | "AMAZON_ISSUED" | "PRIVATE" | (string & {});
-const CertificateType = S.String;
-
 export type RenewalStatus =
   | "PENDING_AUTO_RENEWAL"
   | "PENDING_VALIDATION"
   | "SUCCESS"
   | "FAILED"
   | (string & {});
-const RenewalStatus = S.String;
-
 export interface RenewalSummary {
   RenewalStatus: RenewalStatus;
   DomainValidationOptions: DomainValidation[];
   RenewalStatusReason?: FailureReason;
   UpdatedAt: Date;
 }
-const RenewalSummary = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<RenewalSummary>;
 export type KeyUsageName =
   | "DIGITAL_SIGNATURE"
   | "NON_REPUDIATION"
@@ -622,14 +455,10 @@ export type KeyUsageName =
   | "ANY"
   | "CUSTOM"
   | (string & {});
-const KeyUsageName = S.String;
-
 export interface KeyUsage {
   Name?: KeyUsageName;
 }
-const KeyUsage = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<KeyUsage>;
 export type KeyUsageList = KeyUsage[];
-const KeyUsageList = /*@__PURE__*/ __L.at(__c5, 4);
 export type ExtendedKeyUsageName =
   | "TLS_WEB_SERVER_AUTHENTICATION"
   | "TLS_WEB_CLIENT_AUTHENTICATION"
@@ -644,44 +473,25 @@ export type ExtendedKeyUsageName =
   | "NONE"
   | "CUSTOM"
   | (string & {});
-const ExtendedKeyUsageName = S.String;
-
 export interface ExtendedKeyUsage {
   Name?: ExtendedKeyUsageName;
   OID?: string;
 }
-const ExtendedKeyUsage = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ExtendedKeyUsage>;
 export type ExtendedKeyUsageList = ExtendedKeyUsage[];
-const ExtendedKeyUsageList = /*@__PURE__*/ __L.at(__c5, 6);
 export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE" | (string & {});
-const RenewalEligibility = S.String;
-
 export type CertificateTransparencyLoggingPreference = "ENABLED" | "DISABLED" | (string & {});
-const CertificateTransparencyLoggingPreference = S.String;
-
 export type CertificateExport = "ENABLED" | "DISABLED" | (string & {});
-const CertificateExport = S.String;
-
 export interface CertificateOptions {
   CertificateTransparencyLoggingPreference?: CertificateTransparencyLoggingPreference;
   Export?: CertificateExport;
   ValidationMethod?: ValidationMethod;
 }
-const CertificateOptions = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CertificateOptions>;
 export type UpdateStatus = "PENDING_DOMAIN_VALIDATION" | "SUCCESS" | "FAILED" | (string & {});
-const UpdateStatus = S.String;
-
 export type UpdateType = "DOMAIN_VALIDATION_METHOD" | (string & {});
-const UpdateType = S.String;
-
 export interface DomainValidationMethodUpdateSummary {
   From?: ValidationMethod;
   To?: ValidationMethod;
 }
-const DomainValidationMethodUpdateSummary = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DomainValidationMethodUpdateSummary>;
 export interface UpdateSummary {
   Status?: UpdateStatus;
   Type?: UpdateType;
@@ -689,10 +499,7 @@ export interface UpdateSummary {
   RequestedAt?: Date;
   UpdatedAt?: Date;
 }
-const UpdateSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UpdateSummary>;
 export type CertificateKeyPairOrigin = "AWS_MANAGED" | "ACME" | "CUSTOMER_PROVIDED" | (string & {});
-const CertificateKeyPairOrigin = S.String;
-
 export type AcmeAccountId = string;
 export interface CertificateDetail {
   CertificateArn?: string;
@@ -727,23 +534,14 @@ export interface CertificateDetail {
   AcmeEndpointArn?: string;
   AcmeAccountId?: string;
 }
-const CertificateDetail = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CertificateDetail>;
 export interface DescribeCertificateResponse {
   Certificate?: CertificateDetail;
 }
-const DescribeCertificateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DescribeCertificateResponse>;
 export type PassphraseBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface ExportCertificateRequest {
   CertificateArn: string;
   Passphrase: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const ExportCertificateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ExportCertificateRequest>;
 export type CertificateBody = string;
 export type CertificateChain = string;
 export type PrivateKey = string | redacted.Redacted<string>;
@@ -752,61 +550,29 @@ export interface ExportCertificateResponse {
   CertificateChain?: string;
   PrivateKey?: string | redacted.Redacted<string>;
 }
-const ExportCertificateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ExportCertificateResponse>;
 export interface GetAccountConfigurationRequest {}
-const GetAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetAccountConfigurationRequest>;
 export type PositiveInteger = number;
 export interface ExpiryEventsConfiguration {
   DaysBeforeExpiry?: number;
 }
-const ExpiryEventsConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ExpiryEventsConfiguration>;
 export interface GetAccountConfigurationResponse {
   ExpiryEvents?: ExpiryEventsConfiguration;
 }
-const GetAccountConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetAccountConfigurationResponse>;
 export interface GetAcmeExternalAccountBindingCredentialsRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const GetAcmeExternalAccountBindingCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsRequest>;
 export type MacKey = string | redacted.Redacted<string>;
 export interface GetAcmeExternalAccountBindingCredentialsResponse {
   KeyId?: string;
   MacKey?: string | redacted.Redacted<string>;
 }
-const GetAcmeExternalAccountBindingCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsResponse>;
 export interface GetCertificateRequest {
   CertificateArn: string;
 }
-const GetCertificateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetCertificateRequest>;
 export interface GetCertificateResponse {
   Certificate?: string;
   CertificateChain?: string;
 }
-const GetCertificateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetCertificateResponse>;
 export type CertificateBodyBlob = Uint8Array;
 export type PrivateKeyBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export type CertificateChainBlob = Uint8Array;
@@ -817,26 +583,14 @@ export interface ImportCertificateRequest {
   CertificateChain?: Uint8Array;
   Tags?: Tag[];
 }
-const ImportCertificateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ImportCertificateRequest>;
 export interface ImportCertificateResponse {
   CertificateArn?: string;
 }
-const ImportCertificateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ImportCertificateResponse>;
 export interface ListAcmeAccountsRequest {
   NextToken?: string;
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-const ListAcmeAccountsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListAcmeAccountsRequest>;
 export interface AcmeAccountSummary {
   AccountUrl?: string;
   PublicKeyThumbprint?: string;
@@ -845,26 +599,16 @@ export interface AcmeAccountSummary {
   AcmeExternalAccountBindingArn?: string;
   Contacts?: string[];
 }
-const AcmeAccountSummary = AcmeAccount as any as S.Schema<AcmeAccountSummary>;
 export type AcmeAccountList = AcmeAccountSummary[];
-const AcmeAccountList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface ListAcmeAccountsResponse {
   AcmeAccounts?: AcmeAccountSummary[];
   NextToken?: string;
 }
-const ListAcmeAccountsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListAcmeAccountsResponse>;
 export interface ListAcmeDomainValidationsRequest {
   NextToken?: string;
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-const ListAcmeDomainValidationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListAcmeDomainValidationsRequest>;
 export interface AcmeDomainValidationSummary {
   AcmeDomainValidationArn?: string;
   AcmeEndpointArn?: string;
@@ -876,28 +620,15 @@ export interface AcmeDomainValidationSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeDomainValidationSummary = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<AcmeDomainValidationSummary>;
 export type AcmeDomainValidationList = AcmeDomainValidationSummary[];
-const AcmeDomainValidationList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ListAcmeDomainValidationsResponse {
   AcmeDomainValidations?: AcmeDomainValidationSummary[];
   NextToken?: string;
 }
-const ListAcmeDomainValidationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListAcmeDomainValidationsResponse>;
 export interface ListAcmeEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAcmeEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListAcmeEndpointsRequest>;
 export interface AcmeEndpointSummary {
   AcmeEndpointArn?: string;
   EndpointUrl?: string;
@@ -910,26 +641,16 @@ export interface AcmeEndpointSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeEndpointSummary = AcmeEndpoint as any as S.Schema<AcmeEndpointSummary>;
 export type AcmeEndpointList = AcmeEndpointSummary[];
-const AcmeEndpointList = /*@__PURE__*/ __L.at(__c8, 7);
 export interface ListAcmeEndpointsResponse {
   AcmeEndpoints?: AcmeEndpointSummary[];
   NextToken?: string;
 }
-const ListAcmeEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListAcmeEndpointsResponse>;
 export interface ListAcmeExternalAccountBindingsRequest {
   NextToken?: string;
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-const ListAcmeExternalAccountBindingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListAcmeExternalAccountBindingsRequest>;
 export interface AcmeExternalAccountBindingSummary {
   AcmeExternalAccountBindingArn?: string;
   AcmeEndpointArn?: string;
@@ -940,18 +661,11 @@ export interface AcmeExternalAccountBindingSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AcmeExternalAccountBindingSummary =
-  AcmeExternalAccountBinding as any as S.Schema<AcmeExternalAccountBindingSummary>;
 export type AcmeExternalAccountBindingList = AcmeExternalAccountBindingSummary[];
-const AcmeExternalAccountBindingList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListAcmeExternalAccountBindingsResponse {
   ExternalAccountBindings?: AcmeExternalAccountBindingSummary[];
   NextToken?: string;
 }
-const ListAcmeExternalAccountBindingsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListAcmeExternalAccountBindingsResponse>;
 export type CertificateArn = string;
 export type NextToken = string;
 export type MaxItems = number;
@@ -960,69 +674,36 @@ export interface ListCertificateDomainValidationsRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-const ListCertificateDomainValidationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListCertificateDomainValidationsRequest>;
 export interface EmailValidationChallenge {
   ValidationEmails?: string[];
   ValidationDomain?: string;
 }
-const EmailValidationChallenge = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<EmailValidationChallenge>;
 export interface DnsValidationChallenge {
   ResourceRecord?: ResourceRecord;
 }
-const DnsValidationChallenge = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DnsValidationChallenge>;
 export type ValidationChallenge =
   | { EmailValidationChallenge: EmailValidationChallenge; DnsValidationChallenge?: never }
   | { EmailValidationChallenge?: never; DnsValidationChallenge: DnsValidationChallenge };
-const ValidationChallenge = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ValidationConfiguration {
   ValidationMethod?: ValidationMethod;
   ValidationChallenge?: ValidationChallenge;
   ValidationStatus?: DomainStatus;
 }
-const ValidationConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ValidationConfiguration>;
 export interface DomainValidationSummary {
   DomainName: string;
   ActiveValidationConfiguration?: ValidationConfiguration;
   RequestedValidationConfiguration?: ValidationConfiguration;
 }
-const DomainValidationSummary = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DomainValidationSummary>;
 export type DomainValidationSummaryList = DomainValidationSummary[];
-const DomainValidationSummaryList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface ListCertificateDomainValidationsResponse {
   DomainValidationSummaryList?: DomainValidationSummary[];
   NextToken?: string;
 }
-const ListCertificateDomainValidationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListCertificateDomainValidationsResponse>;
 export type CertificateStatuses = CertificateStatus[];
-const CertificateStatuses = PublicKeyAlgorithmList as any as S.Schema<CertificateStatuses>;
 export type CertificateKeyPairOrigins = CertificateKeyPairOrigin[];
-const CertificateKeyPairOrigins =
-  PublicKeyAlgorithmList as any as S.Schema<CertificateKeyPairOrigins>;
 export type ExtendedKeyUsageFilterList = ExtendedKeyUsageName[];
-const ExtendedKeyUsageFilterList =
-  PublicKeyAlgorithmList as any as S.Schema<ExtendedKeyUsageFilterList>;
 export type KeyUsageFilterList = KeyUsageName[];
-const KeyUsageFilterList = PublicKeyAlgorithmList as any as S.Schema<KeyUsageFilterList>;
 export type KeyAlgorithmList = KeyAlgorithm[];
-const KeyAlgorithmList = PublicKeyAlgorithmList as any as S.Schema<KeyAlgorithmList>;
 export interface Filters {
   extendedKeyUsage?: ExtendedKeyUsageName[];
   keyUsage?: KeyUsageName[];
@@ -1030,13 +711,8 @@ export interface Filters {
   exportOption?: CertificateExport;
   managedBy?: CertificateManagedBy;
 }
-const Filters = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Filters>;
 export type SortBy = "CREATED_AT" | (string & {});
-const SortBy = S.String;
-
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-const SortOrder = S.String;
-
 export interface ListCertificatesRequest {
   CertificateStatuses?: CertificateStatus[];
   CertificateKeyPairOrigins?: CertificateKeyPairOrigin[];
@@ -1046,14 +722,8 @@ export interface ListCertificatesRequest {
   SortBy?: SortBy;
   SortOrder?: SortOrder;
 }
-const ListCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListCertificatesRequest>;
 export type KeyUsageNames = KeyUsageName[];
-const KeyUsageNames = KeyUsageFilterList as any as S.Schema<KeyUsageNames>;
 export type ExtendedKeyUsageNames = ExtendedKeyUsageName[];
-const ExtendedKeyUsageNames = ExtendedKeyUsageFilterList as any as S.Schema<ExtendedKeyUsageNames>;
 export interface CertificateSummary {
   CertificateArn?: string;
   DomainName?: string;
@@ -1077,88 +747,43 @@ export interface CertificateSummary {
   ManagedBy?: CertificateManagedBy;
   CertificateKeyPairOrigin?: CertificateKeyPairOrigin;
 }
-const CertificateSummary = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<CertificateSummary>;
 export type CertificateSummaryList = CertificateSummary[];
-const CertificateSummaryList = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListCertificatesResponse {
   NextToken?: string;
   CertificateSummaryList?: CertificateSummary[];
 }
-const ListCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListCertificatesResponse>;
 export interface ListTagsForCertificateRequest {
   CertificateArn: string;
 }
-const ListTagsForCertificateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListTagsForCertificateRequest>;
 export interface ListTagsForCertificateResponse {
   Tags?: Tag[];
 }
-const ListTagsForCertificateResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListTagsForCertificateResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse =
-  ListTagsForCertificateResponse as any as S.Schema<ListTagsForResourceResponse>;
 export type IdempotencyToken = string;
 export interface PutAccountConfigurationRequest {
   ExpiryEvents?: ExpiryEventsConfiguration;
   IdempotencyToken: string;
 }
-const PutAccountConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PutAccountConfigurationRequest>;
 export interface PutAccountConfigurationResponse {}
-const PutAccountConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<PutAccountConfigurationResponse>;
 export interface RemoveTagsFromCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-const RemoveTagsFromCertificateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<RemoveTagsFromCertificateRequest>;
 export interface RemoveTagsFromCertificateResponse {}
-const RemoveTagsFromCertificateResponse =
-  DeleteAcmeDomainValidationResponse as any as S.Schema<RemoveTagsFromCertificateResponse>;
 export interface RenewCertificateRequest {
   CertificateArn: string;
 }
-const RenewCertificateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<RenewCertificateRequest>;
 export interface RenewCertificateResponse {}
-const RenewCertificateResponse =
-  AddTagsToCertificateResponse as any as S.Schema<RenewCertificateResponse>;
 export interface DomainValidationOption {
   DomainName: string;
   ValidationDomain: string;
 }
-const DomainValidationOption = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DomainValidationOption>;
 export type DomainValidationOptionList = DomainValidationOption[];
-const DomainValidationOptionList = /*@__PURE__*/ __L.at(__c12, 1);
 export type PcaArn = string;
 export interface RequestCertificateRequest {
   DomainName: string;
@@ -1172,90 +797,49 @@ export interface RequestCertificateRequest {
   KeyAlgorithm?: KeyAlgorithm;
   ManagedBy?: CertificateManagedBy;
 }
-const RequestCertificateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<RequestCertificateRequest>;
 export interface RequestCertificateResponse {
   CertificateArn?: string;
 }
-const RequestCertificateResponse =
-  ImportCertificateResponse as any as S.Schema<RequestCertificateResponse>;
 export interface ResendValidationEmailRequest {
   CertificateArn: string;
   Domain: string;
   ValidationDomain: string;
 }
-const ResendValidationEmailRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ResendValidationEmailRequest>;
 export interface ResendValidationEmailResponse {}
-const ResendValidationEmailResponse =
-  AddTagsToCertificateResponse as any as S.Schema<ResendValidationEmailResponse>;
 export interface RevokeAcmeAccountRequest {
   AcmeEndpointArn: string;
   AccountUrl: string;
 }
-const RevokeAcmeAccountRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<RevokeAcmeAccountRequest>;
 export interface RevokeAcmeAccountResponse {}
-const RevokeAcmeAccountResponse =
-  AddTagsToCertificateResponse as any as S.Schema<RevokeAcmeAccountResponse>;
 export interface RevokeAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-const RevokeAcmeExternalAccountBindingRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<RevokeAcmeExternalAccountBindingRequest>;
 export interface RevokeAcmeExternalAccountBindingResponse {}
-const RevokeAcmeExternalAccountBindingResponse =
-  DeleteAcmeDomainValidationResponse as any as S.Schema<RevokeAcmeExternalAccountBindingResponse>;
 export interface RevokeCertificateRequest {
   CertificateArn: string;
   RevocationReason: RevocationReason;
 }
-const RevokeCertificateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<RevokeCertificateRequest>;
 export interface RevokeCertificateResponse {
   CertificateArn?: string;
 }
-const RevokeCertificateResponse =
-  ImportCertificateResponse as any as S.Schema<RevokeCertificateResponse>;
 export type CertificateFilterStatementList = CertificateFilterStatement[];
-const CertificateFilterStatementList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CertificateFilterStatementList>;
 export type FilterString = string;
 export type ComparisonOperator = "CONTAINS" | "EQUALS" | (string & {});
-const ComparisonOperator = S.String;
-
 export interface CommonNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
 }
-const CommonNameFilter = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<CommonNameFilter>;
 export type SubjectFilter = { CommonName: CommonNameFilter };
-const SubjectFilter = /*@__PURE__*/ __L.at(__c13, 1);
 export interface DnsNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
 }
-const DnsNameFilter = CommonNameFilter as any as S.Schema<DnsNameFilter>;
 export type SubjectAlternativeNameFilter = { DnsName: DnsNameFilter };
-const SubjectAlternativeNameFilter = /*@__PURE__*/ __L.at(__c13, 2);
 export type SerialNumber = string;
 export interface TimestampRange {
   Start?: Date;
   End?: Date;
 }
-const TimestampRange = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<TimestampRange>;
 export type X509AttributeFilter =
   | {
       Subject: SubjectFilter;
@@ -1337,7 +921,6 @@ export type X509AttributeFilter =
       NotAfter?: never;
       NotBefore: TimestampRange;
     };
-const X509AttributeFilter = /*@__PURE__*/ __L.at(__c13, 4);
 export type AcmCertificateMetadataFilter =
   | {
       Status: CertificateStatus;
@@ -1482,7 +1065,6 @@ export type AcmCertificateMetadataFilter =
       AcmeEndpointArn?: never;
       AcmeAccountId: string;
     };
-const AcmCertificateMetadataFilter = /*@__PURE__*/ __L.at(__c13, 5);
 export type CertificateFilter =
   | { CertificateArn: string; X509AttributeFilter?: never; AcmCertificateMetadataFilter?: never }
   | {
@@ -1495,16 +1077,11 @@ export type CertificateFilter =
       X509AttributeFilter?: never;
       AcmCertificateMetadataFilter: AcmCertificateMetadataFilter;
     };
-const CertificateFilter = /*@__PURE__*/ __L.at(__c13, 6);
 export type CertificateFilterStatement =
   | { And: CertificateFilterStatement[]; Or?: never; Not?: never; Filter?: never }
   | { And?: never; Or: CertificateFilterStatement[]; Not?: never; Filter?: never }
   | { And?: never; Or?: never; Not: CertificateFilterStatement; Filter?: never }
   | { And?: never; Or?: never; Not?: never; Filter: CertificateFilter };
-const CertificateFilterStatement = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CertificateFilterStatement>;
 export type SearchMaxResults = number;
 export type SearchCertificatesSortBy =
   | "CREATED_AT"
@@ -1529,11 +1106,7 @@ export type SearchCertificatesSortBy =
   | "ACME_ACCOUNT_ID"
   | "CERTIFICATE_KEY_PAIR_ORIGIN"
   | (string & {});
-const SearchCertificatesSortBy = S.String;
-
 export type SearchCertificatesSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-const SearchCertificatesSortOrder = S.String;
-
 export interface SearchCertificatesRequest {
   FilterStatement?: CertificateFilterStatement;
   MaxResults?: number;
@@ -1541,19 +1114,12 @@ export interface SearchCertificatesRequest {
   SortBy?: SearchCertificatesSortBy;
   SortOrder?: SearchCertificatesSortOrder;
 }
-const SearchCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<SearchCertificatesRequest>;
 export type DomainComponentList = string[];
-const DomainComponentList = ContactList as any as S.Schema<DomainComponentList>;
 export interface CustomAttribute {
   ObjectIdentifier?: string;
   Value?: string;
 }
-const CustomAttribute = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<CustomAttribute>;
 export type CustomAttributeList = CustomAttribute[];
-const CustomAttributeList = /*@__PURE__*/ __L.at(__c14, 2);
 export interface DistinguishedName {
   CommonName?: string;
   DomainComponents?: string[];
@@ -1572,12 +1138,10 @@ export interface DistinguishedName {
   Surname?: string;
   Title?: string;
 }
-const DistinguishedName = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<DistinguishedName>;
 export interface OtherName {
   ObjectIdentifier?: string;
   Value?: string;
 }
-const OtherName = CustomAttribute as any as S.Schema<OtherName>;
 export type GeneralName =
   | {
       DirectoryName: DistinguishedName;
@@ -1642,9 +1206,7 @@ export type GeneralName =
       Rfc822Name?: never;
       UniformResourceIdentifier: string;
     };
-const GeneralName = /*@__PURE__*/ __L.at(__c14, 4);
 export type GeneralNameList = GeneralName[];
-const GeneralNameList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface X509Attributes {
   Issuer?: DistinguishedName;
   Subject?: DistinguishedName;
@@ -1656,7 +1218,6 @@ export interface X509Attributes {
   NotAfter?: Date;
   NotBefore?: Date;
 }
-const X509Attributes = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<X509Attributes>;
 export interface AcmCertificateMetadata {
   CreatedAt?: Date;
   Exported?: boolean;
@@ -1675,86 +1236,45 @@ export interface AcmCertificateMetadata {
   AcmeEndpointArn?: string;
   AcmeAccountId?: string;
 }
-const AcmCertificateMetadata = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<AcmCertificateMetadata>;
 export type CertificateMetadata = { AcmCertificateMetadata: AcmCertificateMetadata };
-const CertificateMetadata = /*@__PURE__*/ __L.at(__c15, 0);
 export interface CertificateSearchResult {
   CertificateArn?: string;
   X509Attributes?: X509Attributes;
   CertificateMetadata?: CertificateMetadata;
 }
-const CertificateSearchResult = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CertificateSearchResult>;
 export type CertificateSearchResultList = CertificateSearchResult[];
-const CertificateSearchResultList = /*@__PURE__*/ __L.at(__c15, 2);
 export interface SearchCertificatesResponse {
   Results?: CertificateSearchResult[];
   NextToken?: string;
 }
-const SearchCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<SearchCertificatesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = AddTagsToCertificateResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ContactList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  AddTagsToCertificateResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
   PrevalidationOptions?: PrevalidationOptions;
 }
-const UpdateAcmeDomainValidationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<UpdateAcmeDomainValidationRequest>;
 export interface UpdateAcmeDomainValidationResponse {}
-const UpdateAcmeDomainValidationResponse =
-  DeleteAcmeDomainValidationResponse as any as S.Schema<UpdateAcmeDomainValidationResponse>;
 export interface UpdateAcmeEndpointRequest {
   AcmeEndpointArn: string;
   AuthorizationBehavior?: AcmeAuthorizationBehavior;
   Contact?: AcmeContact;
   CertificateAuthority?: CertificateAuthority;
 }
-const UpdateAcmeEndpointRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<UpdateAcmeEndpointRequest>;
 export interface UpdateAcmeEndpointResponse {}
-const UpdateAcmeEndpointResponse =
-  AddTagsToCertificateResponse as any as S.Schema<UpdateAcmeEndpointResponse>;
 export interface UpdateCertificateOptionsRequest {
   CertificateArn: string;
   Options: CertificateOptions;
 }
-const UpdateCertificateOptionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<UpdateCertificateOptionsRequest>;
 export interface UpdateCertificateOptionsResponse {}
-const UpdateCertificateOptionsResponse =
-  DeleteAcmeDomainValidationResponse as any as S.Schema<UpdateCertificateOptionsResponse>;
 export type AvailabilityErrorMessage = string;
 export type CoralAvailabilityThrottlingReason = string;
 export type CoralAvailabilityThrottledResource = string;
@@ -1762,9 +1282,7 @@ export interface ThrottlingReason {
   reason?: string;
   resource?: string;
 }
-const ThrottlingReason = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<ThrottlingReason>;
 export type ThrottlingReasonList = ThrottlingReason[];
-const ThrottlingReasonList = /*@__PURE__*/ __L.at(__c16, 2);
 export type ValidationExceptionMessage = string;
 export type ServiceErrorMessage = string;
 export type AddTagsToCertificateError =
@@ -1792,8 +1310,8 @@ export const addTagsToCertificate: API.OperationMethod<
   AddTagsToCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddTagsToCertificateRequest,
-  output: AddTagsToCertificateResponse,
+  input: __S(2) as any as S.Schema<AddTagsToCertificateRequest>,
+  output: __S(3) as any as S.Schema<AddTagsToCertificateResponse>,
   errors: [
     InvalidArnException,
     InvalidParameterException,
@@ -1827,8 +1345,8 @@ export const createAcmeDomainValidation: API.OperationMethod<
   CreateAcmeDomainValidationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAcmeDomainValidationRequest,
-  output: CreateAcmeDomainValidationResponse,
+  input: __S(7) as any as S.Schema<CreateAcmeDomainValidationRequest>,
+  output: __S(8) as any as S.Schema<CreateAcmeDomainValidationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1860,8 +1378,8 @@ export const createAcmeEndpoint: API.OperationMethod<
   CreateAcmeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAcmeEndpointRequest,
-  output: CreateAcmeEndpointResponse,
+  input: __S(12) as any as S.Schema<CreateAcmeEndpointRequest>,
+  output: __S(13) as any as S.Schema<CreateAcmeEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1893,8 +1411,8 @@ export const createAcmeExternalAccountBinding: API.OperationMethod<
   CreateAcmeExternalAccountBindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAcmeExternalAccountBindingRequest,
-  output: CreateAcmeExternalAccountBindingResponse,
+  input: __S(15) as any as S.Schema<CreateAcmeExternalAccountBindingRequest>,
+  output: __S(17) as any as S.Schema<CreateAcmeExternalAccountBindingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1925,8 +1443,8 @@ export const deleteAcmeDomainValidation: API.OperationMethod<
   DeleteAcmeDomainValidationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAcmeDomainValidationRequest,
-  output: DeleteAcmeDomainValidationResponse,
+  input: __S(18) as any as S.Schema<DeleteAcmeDomainValidationRequest>,
+  output: __S(19) as any as S.Schema<DeleteAcmeDomainValidationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1955,8 +1473,8 @@ export const deleteAcmeEndpoint: API.OperationMethod<
   DeleteAcmeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAcmeEndpointRequest,
-  output: DeleteAcmeEndpointResponse,
+  input: __S(20) as any as S.Schema<DeleteAcmeEndpointRequest>,
+  output: __S(3) as any as S.Schema<DeleteAcmeEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1984,8 +1502,8 @@ export const deleteAcmeExternalAccountBinding: API.OperationMethod<
   DeleteAcmeExternalAccountBindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAcmeExternalAccountBindingRequest,
-  output: DeleteAcmeExternalAccountBindingResponse,
+  input: __S(21) as any as S.Schema<DeleteAcmeExternalAccountBindingRequest>,
+  output: __S(19) as any as S.Schema<DeleteAcmeExternalAccountBindingResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2023,8 +1541,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificateRequest,
-  output: DeleteCertificateResponse,
+  input: __S(22) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(3) as any as S.Schema<DeleteCertificateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2055,8 +1573,8 @@ export const describeAcmeAccount: API.OperationMethod<
   DescribeAcmeAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAcmeAccountRequest,
-  output: DescribeAcmeAccountResponse,
+  input: __S(23) as any as S.Schema<DescribeAcmeAccountRequest>,
+  output: __S(26) as any as S.Schema<DescribeAcmeAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2085,8 +1603,8 @@ export const describeAcmeDomainValidation: API.OperationMethod<
   DescribeAcmeDomainValidationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAcmeDomainValidationRequest,
-  output: DescribeAcmeDomainValidationResponse,
+  input: __S(27) as any as S.Schema<DescribeAcmeDomainValidationRequest>,
+  output: __S(33) as any as S.Schema<DescribeAcmeDomainValidationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2115,8 +1633,8 @@ export const describeAcmeEndpoint: API.OperationMethod<
   DescribeAcmeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAcmeEndpointRequest,
-  output: DescribeAcmeEndpointResponse,
+  input: __S(34) as any as S.Schema<DescribeAcmeEndpointRequest>,
+  output: __S(36) as any as S.Schema<DescribeAcmeEndpointResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2145,8 +1663,8 @@ export const describeAcmeExternalAccountBinding: API.OperationMethod<
   DescribeAcmeExternalAccountBindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAcmeExternalAccountBindingRequest,
-  output: DescribeAcmeExternalAccountBindingResponse,
+  input: __S(37) as any as S.Schema<DescribeAcmeExternalAccountBindingRequest>,
+  output: __S(17) as any as S.Schema<DescribeAcmeExternalAccountBindingResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2175,8 +1693,8 @@ export const describeCertificate: API.OperationMethod<
   DescribeCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeCertificateRequest,
-  output: DescribeCertificateResponse,
+  input: __S(38) as any as S.Schema<DescribeCertificateRequest>,
+  output: __S(51) as any as S.Schema<DescribeCertificateResponse>,
   errors: [InvalidArnException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2203,8 +1721,8 @@ export const exportCertificate: API.OperationMethod<
   ExportCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportCertificateRequest,
-  output: ExportCertificateResponse,
+  input: __S(52) as any as S.Schema<ExportCertificateRequest>,
+  output: __S(53) as any as S.Schema<ExportCertificateResponse>,
   errors: [
     InvalidArnException,
     RequestInProgressException,
@@ -2230,8 +1748,8 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountConfigurationRequest,
-  output: GetAccountConfigurationResponse,
+  input: __S(54) as any as S.Schema<GetAccountConfigurationRequest>,
+  output: __S(56) as any as S.Schema<GetAccountConfigurationResponse>,
   errors: [AccessDeniedException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2254,8 +1772,8 @@ export const getAcmeExternalAccountBindingCredentials: API.OperationMethod<
   GetAcmeExternalAccountBindingCredentialsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAcmeExternalAccountBindingCredentialsRequest,
-  output: GetAcmeExternalAccountBindingCredentialsResponse,
+  input: __S(57) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsRequest>,
+  output: __S(58) as any as S.Schema<GetAcmeExternalAccountBindingCredentialsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2283,8 +1801,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateRequest,
-  output: GetCertificateResponse,
+  input: __S(59) as any as S.Schema<GetCertificateRequest>,
+  output: __S(60) as any as S.Schema<GetCertificateResponse>,
   errors: [
     InvalidArnException,
     RequestInProgressException,
@@ -2344,8 +1862,8 @@ export const importCertificate: API.OperationMethod<
   ImportCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportCertificateRequest,
-  output: ImportCertificateResponse,
+  input: __S(61) as any as S.Schema<ImportCertificateRequest>,
+  output: __S(62) as any as S.Schema<ImportCertificateResponse>,
   errors: [
     ConflictException,
     InvalidArnException,
@@ -2379,8 +1897,8 @@ export const listAcmeAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AcmeAccountSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAcmeAccountsRequest,
-  output: ListAcmeAccountsResponse,
+  input: __S(63) as any as S.Schema<ListAcmeAccountsRequest>,
+  output: __S(65) as any as S.Schema<ListAcmeAccountsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2416,8 +1934,8 @@ export const listAcmeDomainValidations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AcmeDomainValidationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAcmeDomainValidationsRequest,
-  output: ListAcmeDomainValidationsResponse,
+  input: __S(66) as any as S.Schema<ListAcmeDomainValidationsRequest>,
+  output: __S(69) as any as S.Schema<ListAcmeDomainValidationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2452,8 +1970,8 @@ export const listAcmeEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AcmeEndpointSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAcmeEndpointsRequest,
-  output: ListAcmeEndpointsResponse,
+  input: __S(70) as any as S.Schema<ListAcmeEndpointsRequest>,
+  output: __S(72) as any as S.Schema<ListAcmeEndpointsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2488,8 +2006,8 @@ export const listAcmeExternalAccountBindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AcmeExternalAccountBindingSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAcmeExternalAccountBindingsRequest,
-  output: ListAcmeExternalAccountBindingsResponse,
+  input: __S(73) as any as S.Schema<ListAcmeExternalAccountBindingsRequest>,
+  output: __S(75) as any as S.Schema<ListAcmeExternalAccountBindingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2524,8 +2042,8 @@ export const listCertificateDomainValidations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainValidationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCertificateDomainValidationsRequest,
-  output: ListCertificateDomainValidationsResponse,
+  input: __S(76) as any as S.Schema<ListCertificateDomainValidationsRequest>,
+  output: __S(83) as any as S.Schema<ListCertificateDomainValidationsResponse>,
   errors: [
     AccessDeniedException,
     InvalidArgsException,
@@ -2556,8 +2074,8 @@ export const listCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CertificateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCertificatesRequest,
-  output: ListCertificatesResponse,
+  input: __S(85) as any as S.Schema<ListCertificatesRequest>,
+  output: __S(88) as any as S.Schema<ListCertificatesResponse>,
   errors: [InvalidArgsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2586,8 +2104,8 @@ export const listTagsForCertificate: API.OperationMethod<
   ListTagsForCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForCertificateRequest,
-  output: ListTagsForCertificateResponse,
+  input: __S(89) as any as S.Schema<ListTagsForCertificateRequest>,
+  output: __S(90) as any as S.Schema<ListTagsForCertificateResponse>,
   errors: [InvalidArnException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2611,8 +2129,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(91) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(90) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2636,8 +2154,8 @@ export const putAccountConfiguration: API.OperationMethod<
   PutAccountConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccountConfigurationRequest,
-  output: PutAccountConfigurationResponse,
+  input: __S(92) as any as S.Schema<PutAccountConfigurationRequest>,
+  output: __S(93) as any as S.Schema<PutAccountConfigurationResponse>,
   errors: [AccessDeniedException, ConflictException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2666,8 +2184,8 @@ export const removeTagsFromCertificate: API.OperationMethod<
   RemoveTagsFromCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveTagsFromCertificateRequest,
-  output: RemoveTagsFromCertificateResponse,
+  input: __S(94) as any as S.Schema<RemoveTagsFromCertificateRequest>,
+  output: __S(19) as any as S.Schema<RemoveTagsFromCertificateResponse>,
   errors: [
     InvalidArnException,
     InvalidParameterException,
@@ -2697,8 +2215,8 @@ export const renewCertificate: API.OperationMethod<
   RenewCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenewCertificateRequest,
-  output: RenewCertificateResponse,
+  input: __S(95) as any as S.Schema<RenewCertificateRequest>,
+  output: __S(3) as any as S.Schema<RenewCertificateResponse>,
   errors: [
     InvalidArnException,
     RequestInProgressException,
@@ -2734,8 +2252,8 @@ export const requestCertificate: API.OperationMethod<
   RequestCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestCertificateRequest,
-  output: RequestCertificateResponse,
+  input: __S(98) as any as S.Schema<RequestCertificateRequest>,
+  output: __S(62) as any as S.Schema<RequestCertificateResponse>,
   errors: [
     InvalidArnException,
     InvalidDomainValidationOptionsException,
@@ -2766,8 +2284,8 @@ export const resendValidationEmail: API.OperationMethod<
   ResendValidationEmailError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResendValidationEmailRequest,
-  output: ResendValidationEmailResponse,
+  input: __S(99) as any as S.Schema<ResendValidationEmailRequest>,
+  output: __S(3) as any as S.Schema<ResendValidationEmailResponse>,
   errors: [
     InvalidArnException,
     InvalidDomainValidationOptionsException,
@@ -2797,8 +2315,8 @@ export const revokeAcmeAccount: API.OperationMethod<
   RevokeAcmeAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAcmeAccountRequest,
-  output: RevokeAcmeAccountResponse,
+  input: __S(100) as any as S.Schema<RevokeAcmeAccountRequest>,
+  output: __S(3) as any as S.Schema<RevokeAcmeAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2829,8 +2347,8 @@ export const revokeAcmeExternalAccountBinding: API.OperationMethod<
   RevokeAcmeExternalAccountBindingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAcmeExternalAccountBindingRequest,
-  output: RevokeAcmeExternalAccountBindingResponse,
+  input: __S(101) as any as S.Schema<RevokeAcmeExternalAccountBindingRequest>,
+  output: __S(19) as any as S.Schema<RevokeAcmeExternalAccountBindingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2864,8 +2382,8 @@ export const revokeCertificate: API.OperationMethod<
   RevokeCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeCertificateRequest,
-  output: RevokeCertificateResponse,
+  input: __S(102) as any as S.Schema<RevokeCertificateRequest>,
+  output: __S(62) as any as S.Schema<RevokeCertificateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2895,8 +2413,8 @@ export const searchCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CertificateSearchResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchCertificatesRequest,
-  output: SearchCertificatesResponse,
+  input: __S(112) as any as S.Schema<SearchCertificatesRequest>,
+  output: __S(123) as any as S.Schema<SearchCertificatesResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2927,8 +2445,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(124) as any as S.Schema<TagResourceRequest>,
+  output: __S(3) as any as S.Schema<TagResourceResponse>,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2949,8 +2467,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(125) as any as S.Schema<UntagResourceRequest>,
+  output: __S(3) as any as S.Schema<UntagResourceResponse>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2974,8 +2492,8 @@ export const updateAcmeDomainValidation: API.OperationMethod<
   UpdateAcmeDomainValidationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAcmeDomainValidationRequest,
-  output: UpdateAcmeDomainValidationResponse,
+  input: __S(126) as any as S.Schema<UpdateAcmeDomainValidationRequest>,
+  output: __S(19) as any as S.Schema<UpdateAcmeDomainValidationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3006,8 +2524,8 @@ export const updateAcmeEndpoint: API.OperationMethod<
   UpdateAcmeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAcmeEndpointRequest,
-  output: UpdateAcmeEndpointResponse,
+  input: __S(127) as any as S.Schema<UpdateAcmeEndpointRequest>,
+  output: __S(3) as any as S.Schema<UpdateAcmeEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3038,8 +2556,8 @@ export const updateCertificateOptions: API.OperationMethod<
   UpdateCertificateOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCertificateOptionsRequest,
-  output: UpdateCertificateOptionsResponse,
+  input: __S(128) as any as S.Schema<UpdateCertificateOptionsRequest>,
+  output: __S(19) as any as S.Schema<UpdateCertificateOptionsResponse>,
   errors: [
     ConflictException,
     InvalidArnException,
@@ -3061,10 +2579,10 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
+        S.Struct({ CertificateArn: S.String, Tags: __S(1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -3085,25 +2603,25 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ExactDomain: S.optional(DomainScopeOption),
-          Subdomains: S.optional(DomainScopeOption),
-          Wildcards: S.optional(DomainScopeOption),
+          ExactDomain: S.optional(S.String),
+          Subdomains: S.optional(S.String),
+          Wildcards: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainScope" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ DomainScope: S.optional(DomainScope), HostedZoneId: S.optional(S.String) }),
+        S.Struct({ DomainScope: S.optional(__S(4)), HostedZoneId: S.optional(S.String) }),
       ).annotate({ identifier: "DnsPrevalidationOptions" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationOptions })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ DnsPrevalidation: __S(5) })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           AcmeEndpointArn: S.String,
           DomainName: S.String,
-          PrevalidationOptions: PrevalidationOptions,
-          Tags: S.optional(TagList),
+          PrevalidationOptions: __S(6),
+          Tags: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -3127,26 +2645,22 @@ function __c1(j: number): any {
         identifier: "CreateAcmeDomainValidationResponse",
       });
     case 1:
-      return S.Array(PublicKeyAlgorithm);
+      return S.Array(S.String);
     case 2:
-      return S.suspend(() =>
-        S.Struct({ AllowedKeyAlgorithms: S.optional(PublicKeyAlgorithmList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ AllowedKeyAlgorithms: S.optional(__S(9)) })).annotate({
         identifier: "PublicCertificateAuthority",
       });
     case 3:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ PublicCertificateAuthority: PublicCertificateAuthority }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ PublicCertificateAuthority: __S(10) })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          AuthorizationBehavior: AcmeAuthorizationBehavior,
-          Contact: S.optional(AcmeContact),
-          CertificateAuthority: CertificateAuthority,
-          Tags: S.optional(TagList),
-          CertificateTags: S.optional(TagList),
+          AuthorizationBehavior: S.String,
+          Contact: S.optional(S.String),
+          CertificateAuthority: __S(11),
+          Tags: S.optional(__S(1)),
+          CertificateTags: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -3166,7 +2680,7 @@ function __c1(j: number): any {
         identifier: "CreateAcmeEndpointResponse",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Value: S.Number, Type: TimeType })).annotate({
+      return S.suspend(() => S.Struct({ Value: S.Number, Type: S.String })).annotate({
         identifier: "Expiration",
       });
     case 7:
@@ -3175,8 +2689,8 @@ function __c1(j: number): any {
           IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           AcmeEndpointArn: S.String,
           RoleArn: S.String,
-          Expiration: S.optional(Expiration),
-          Tags: S.optional(TagList),
+          Expiration: S.optional(__S(14)),
+          Tags: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -3211,9 +2725,7 @@ function __c2(j: number): any {
         identifier: "AcmeExternalAccountBinding",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ ExternalAccountBinding: S.optional(AcmeExternalAccountBinding) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ExternalAccountBinding: S.optional(__S(16)) })).annotate({
         identifier: "CreateAcmeExternalAccountBindingResponse",
       });
     case 2:
@@ -3309,14 +2821,14 @@ function __c3(j: number): any {
         S.Struct({
           AccountUrl: S.optional(S.String),
           PublicKeyThumbprint: S.optional(S.String),
-          Status: S.optional(AcmeAccountStatus),
+          Status: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AcmeExternalAccountBindingArn: S.optional(S.String),
-          Contacts: S.optional(ContactList),
+          Contacts: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "AcmeAccount" });
     case 2:
-      return S.suspend(() => S.Struct({ AcmeAccount: S.optional(AcmeAccount) })).annotate({
+      return S.suspend(() => S.Struct({ AcmeAccount: S.optional(__S(25)) })).annotate({
         identifier: "DescribeAcmeAccountResponse",
       });
     case 3:
@@ -3337,22 +2849,22 @@ function __c3(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Type: RecordType, Value: S.String }),
+        S.Struct({ Name: S.String, Type: S.String, Value: S.String }),
       ).annotate({ identifier: "ResourceRecord" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DomainScope: S.optional(DomainScope),
+          DomainScope: S.optional(__S(4)),
           HostedZoneId: S.optional(S.String),
-          ResourceRecord: S.optional(ResourceRecord),
+          ResourceRecord: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "DnsPrevalidationDetails" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationDetails })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ DnsPrevalidation: __S(29) })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Reason: S.optional(AcmeDomainValidationFailureReason),
+          Reason: S.optional(S.String),
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "FailureDetails" });
@@ -3366,18 +2878,16 @@ function __c4(j: number): any {
           AcmeDomainValidationArn: S.optional(S.String),
           AcmeEndpointArn: S.optional(S.String),
           DomainName: S.optional(S.String),
-          PrevalidationType: S.optional(PrevalidationType),
-          PrevalidationDetails: S.optional(PrevalidationDetails),
-          Status: S.optional(AcmeDomainValidationStatus),
-          FailureDetails: S.optional(FailureDetails),
+          PrevalidationType: S.optional(S.String),
+          PrevalidationDetails: S.optional(__S(30)),
+          Status: S.optional(S.String),
+          FailureDetails: S.optional(__S(31)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AcmeDomainValidation" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ AcmeDomainValidation: S.optional(AcmeDomainValidation) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ AcmeDomainValidation: S.optional(__S(32)) })).annotate({
         identifier: "DescribeAcmeDomainValidationResponse",
       });
     case 2:
@@ -3401,18 +2911,18 @@ function __c4(j: number): any {
         S.Struct({
           AcmeEndpointArn: S.optional(S.String),
           EndpointUrl: S.optional(S.String),
-          Status: S.optional(AcmeEndpointStatus),
+          Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
-          AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
-          Contact: S.optional(AcmeContact),
-          CertificateAuthority: S.optional(CertificateAuthority),
-          CertificateTags: S.optional(TagList),
+          AuthorizationBehavior: S.optional(S.String),
+          Contact: S.optional(S.String),
+          CertificateAuthority: S.optional(__S(11)),
+          CertificateTags: S.optional(__S(1)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AcmeEndpoint" });
     case 4:
-      return S.suspend(() => S.Struct({ AcmeEndpoint: S.optional(AcmeEndpoint) })).annotate({
+      return S.suspend(() => S.Struct({ AcmeEndpoint: S.optional(__S(35)) })).annotate({
         identifier: "DescribeAcmeEndpointResponse",
       });
     case 5:
@@ -3459,45 +2969,43 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          ValidationEmails: S.optional(ValidationEmailList),
+          ValidationEmails: S.optional(__S(24)),
           ValidationDomain: S.optional(S.String),
-          ValidationStatus: S.optional(DomainStatus),
-          ResourceRecord: S.optional(ResourceRecord),
-          HttpRedirect: S.optional(HttpRedirect),
-          ValidationMethod: S.optional(ValidationMethod),
+          ValidationStatus: S.optional(S.String),
+          ResourceRecord: S.optional(__S(28)),
+          HttpRedirect: S.optional(__S(39)),
+          ValidationMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainValidation" });
     case 1:
-      return S.Array(DomainValidation);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          RenewalStatus: RenewalStatus,
-          DomainValidationOptions: DomainValidationList,
-          RenewalStatusReason: S.optional(FailureReason),
+          RenewalStatus: S.String,
+          DomainValidationOptions: __S(41),
+          RenewalStatusReason: S.optional(S.String),
           UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "RenewalSummary" });
     case 3:
-      return S.suspend(() => S.Struct({ Name: S.optional(KeyUsageName) })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "KeyUsage",
       });
     case 4:
-      return S.Array(KeyUsage);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(ExtendedKeyUsageName), OID: S.optional(S.String) }),
+        S.Struct({ Name: S.optional(S.String), OID: S.optional(S.String) }),
       ).annotate({ identifier: "ExtendedKeyUsage" });
     case 6:
-      return S.Array(ExtendedKeyUsage);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CertificateTransparencyLoggingPreference: S.optional(
-            CertificateTransparencyLoggingPreference,
-          ),
-          Export: S.optional(CertificateExport),
-          ValidationMethod: S.optional(ValidationMethod),
+          CertificateTransparencyLoggingPreference: S.optional(S.String),
+          Export: S.optional(S.String),
+          ValidationMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateOptions" });
   }
@@ -3506,16 +3014,16 @@ function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ From: S.optional(ValidationMethod), To: S.optional(ValidationMethod) }),
+        S.Struct({ From: S.optional(S.String), To: S.optional(S.String) }),
       ).annotate({
         identifier: "DomainValidationMethodUpdateSummary",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(UpdateStatus),
-          Type: S.optional(UpdateType),
-          DomainValidationMethodUpdateSummary: S.optional(DomainValidationMethodUpdateSummary),
+          Status: S.optional(S.String),
+          Type: S.optional(S.String),
+          DomainValidationMethodUpdateSummary: S.optional(__S(48)),
           RequestedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -3525,39 +3033,39 @@ function __c6(j: number): any {
         S.Struct({
           CertificateArn: S.optional(S.String),
           DomainName: S.optional(S.String),
-          SubjectAlternativeNames: S.optional(DomainList),
-          ManagedBy: S.optional(CertificateManagedBy),
-          DomainValidationOptions: S.optional(DomainValidationList),
+          SubjectAlternativeNames: S.optional(__S(24)),
+          ManagedBy: S.optional(S.String),
+          DomainValidationOptions: S.optional(__S(41)),
           Serial: S.optional(S.String),
           Subject: S.optional(S.String),
           Issuer: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(CertificateStatus),
+          Status: S.optional(S.String),
           RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RevocationReason: S.optional(RevocationReason),
+          RevocationReason: S.optional(S.String),
           NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          KeyAlgorithm: S.optional(KeyAlgorithm),
+          KeyAlgorithm: S.optional(S.String),
           SignatureAlgorithm: S.optional(S.String),
-          InUseBy: S.optional(InUseList),
-          FailureReason: S.optional(FailureReason),
-          Type: S.optional(CertificateType),
-          RenewalSummary: S.optional(RenewalSummary),
-          KeyUsages: S.optional(KeyUsageList),
-          ExtendedKeyUsages: S.optional(ExtendedKeyUsageList),
+          InUseBy: S.optional(__S(24)),
+          FailureReason: S.optional(S.String),
+          Type: S.optional(S.String),
+          RenewalSummary: S.optional(__S(42)),
+          KeyUsages: S.optional(__S(44)),
+          ExtendedKeyUsages: S.optional(__S(46)),
           CertificateAuthorityArn: S.optional(S.String),
-          RenewalEligibility: S.optional(RenewalEligibility),
-          Options: S.optional(CertificateOptions),
-          UpdateSummary: S.optional(UpdateSummary),
-          CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
+          RenewalEligibility: S.optional(S.String),
+          Options: S.optional(__S(47)),
+          UpdateSummary: S.optional(__S(49)),
+          CertificateKeyPairOrigin: S.optional(S.String),
           AcmeEndpointArn: S.optional(S.String),
           AcmeAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateDetail" });
     case 3:
-      return S.suspend(() => S.Struct({ Certificate: S.optional(CertificateDetail) })).annotate({
+      return S.suspend(() => S.Struct({ Certificate: S.optional(__S(50)) })).annotate({
         identifier: "DescribeCertificateResponse",
       });
     case 4:
@@ -3609,9 +3117,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ ExpiryEvents: S.optional(ExpiryEventsConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ExpiryEvents: S.optional(__S(55)) })).annotate({
         identifier: "GetAccountConfigurationResponse",
       });
     case 1:
@@ -3661,7 +3167,7 @@ function __c7(j: number): any {
           Certificate: T.Blob,
           PrivateKey: SensitiveBlob,
           CertificateChain: S.optional(T.Blob),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -3701,10 +3207,10 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AcmeAccountSummary);
+      return S.Array(__S(25));
     case 1:
       return S.suspend(() =>
-        S.Struct({ AcmeAccounts: S.optional(AcmeAccountList), NextToken: S.optional(S.String) }),
+        S.Struct({ AcmeAccounts: S.optional(__S(64)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAcmeAccountsResponse" });
     case 2:
       return S.suspend(() =>
@@ -3732,10 +3238,10 @@ function __c8(j: number): any {
           AcmeDomainValidationArn: S.optional(S.String),
           AcmeEndpointArn: S.optional(S.String),
           DomainName: S.optional(S.String),
-          PrevalidationType: S.optional(PrevalidationType),
-          PrevalidationDetails: S.optional(PrevalidationDetails),
-          Status: S.optional(AcmeDomainValidationStatus),
-          FailureDetails: S.optional(FailureDetails),
+          PrevalidationType: S.optional(S.String),
+          PrevalidationDetails: S.optional(__S(30)),
+          Status: S.optional(S.String),
+          FailureDetails: S.optional(__S(31)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -3743,11 +3249,11 @@ function __c8(j: number): any {
         identifier: "AcmeDomainValidationSummary",
       });
     case 4:
-      return S.Array(AcmeDomainValidationSummary);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AcmeDomainValidations: S.optional(AcmeDomainValidationList),
+          AcmeDomainValidations: S.optional(__S(68)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3768,14 +3274,14 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListAcmeEndpointsRequest" });
     case 7:
-      return S.Array(AcmeEndpointSummary);
+      return S.Array(__S(35));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AcmeEndpoints: S.optional(AcmeEndpointList), NextToken: S.optional(S.String) }),
+        S.Struct({ AcmeEndpoints: S.optional(__S(71)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAcmeEndpointsResponse",
       });
@@ -3800,11 +3306,11 @@ function __c9(j: number): any {
         identifier: "ListAcmeExternalAccountBindingsRequest",
       });
     case 2:
-      return S.Array(AcmeExternalAccountBindingSummary);
+      return S.Array(__S(16));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ExternalAccountBindings: S.optional(AcmeExternalAccountBindingList),
+          ExternalAccountBindings: S.optional(__S(74)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3833,18 +3339,18 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ValidationEmails: S.optional(ValidationEmailList),
+          ValidationEmails: S.optional(__S(24)),
           ValidationDomain: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailValidationChallenge" });
     case 6:
-      return S.suspend(() => S.Struct({ ResourceRecord: S.optional(ResourceRecord) })).annotate({
+      return S.suspend(() => S.Struct({ ResourceRecord: S.optional(__S(28)) })).annotate({
         identifier: "DnsValidationChallenge",
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ EmailValidationChallenge: EmailValidationChallenge }),
-        /*@__PURE__*/ S.Struct({ DnsValidationChallenge: DnsValidationChallenge }),
+        /*@__PURE__*/ S.Struct({ EmailValidationChallenge: __S(77) }),
+        /*@__PURE__*/ S.Struct({ DnsValidationChallenge: __S(78) }),
       ]);
   }
 }
@@ -3853,25 +3359,25 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ValidationMethod: S.optional(ValidationMethod),
-          ValidationChallenge: S.optional(ValidationChallenge),
-          ValidationStatus: S.optional(DomainStatus),
+          ValidationMethod: S.optional(S.String),
+          ValidationChallenge: S.optional(__S(79)),
+          ValidationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ValidationConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          ActiveValidationConfiguration: S.optional(ValidationConfiguration),
-          RequestedValidationConfiguration: S.optional(ValidationConfiguration),
+          ActiveValidationConfiguration: S.optional(__S(80)),
+          RequestedValidationConfiguration: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "DomainValidationSummary" });
     case 2:
-      return S.Array(DomainValidationSummary);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DomainValidationSummaryList: S.optional(DomainValidationSummaryList),
+          DomainValidationSummaryList: S.optional(__S(82)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3880,23 +3386,23 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          extendedKeyUsage: S.optional(ExtendedKeyUsageFilterList),
-          keyUsage: S.optional(KeyUsageFilterList),
-          keyTypes: S.optional(KeyAlgorithmList),
-          exportOption: S.optional(CertificateExport),
-          managedBy: S.optional(CertificateManagedBy),
+          extendedKeyUsage: S.optional(__S(9)),
+          keyUsage: S.optional(__S(9)),
+          keyTypes: S.optional(__S(9)),
+          exportOption: S.optional(S.String),
+          managedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Filters" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CertificateStatuses: S.optional(CertificateStatuses),
-          CertificateKeyPairOrigins: S.optional(CertificateKeyPairOrigins),
-          Includes: S.optional(Filters),
+          CertificateStatuses: S.optional(__S(9)),
+          CertificateKeyPairOrigins: S.optional(__S(9)),
+          Includes: S.optional(__S(84)),
           NextToken: S.optional(S.String),
           MaxItems: S.optional(S.Number),
-          SortBy: S.optional(SortBy),
-          SortOrder: S.optional(SortOrder),
+          SortBy: S.optional(S.String),
+          SortOrder: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -3914,29 +3420,29 @@ function __c10(j: number): any {
         S.Struct({
           CertificateArn: S.optional(S.String),
           DomainName: S.optional(S.String),
-          SubjectAlternativeNameSummaries: S.optional(DomainList),
+          SubjectAlternativeNameSummaries: S.optional(__S(24)),
           HasAdditionalSubjectAlternativeNames: S.optional(S.Boolean),
-          Status: S.optional(CertificateStatus),
-          Type: S.optional(CertificateType),
-          KeyAlgorithm: S.optional(KeyAlgorithm),
-          KeyUsages: S.optional(KeyUsageNames),
-          ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
-          ExportOption: S.optional(CertificateExport),
+          Status: S.optional(S.String),
+          Type: S.optional(S.String),
+          KeyAlgorithm: S.optional(S.String),
+          KeyUsages: S.optional(__S(9)),
+          ExtendedKeyUsages: S.optional(__S(9)),
+          ExportOption: S.optional(S.String),
           InUse: S.optional(S.Boolean),
           Exported: S.optional(S.Boolean),
-          RenewalEligibility: S.optional(RenewalEligibility),
+          RenewalEligibility: S.optional(S.String),
           NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ManagedBy: S.optional(CertificateManagedBy),
-          CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
+          ManagedBy: S.optional(S.String),
+          CertificateKeyPairOrigin: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateSummary" });
     case 7:
-      return S.Array(CertificateSummary);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -3945,7 +3451,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          CertificateSummaryList: S.optional(CertificateSummaryList),
+          CertificateSummaryList: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
     case 1:
@@ -3965,7 +3471,7 @@ function __c11(j: number): any {
         identifier: "ListTagsForCertificateRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1)) })).annotate({
         identifier: "ListTagsForCertificateResponse",
       });
     case 3:
@@ -3987,7 +3493,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ExpiryEvents: S.optional(ExpiryEventsConfiguration),
+          ExpiryEvents: S.optional(__S(55)),
           IdempotencyToken: S.String,
         }).pipe(
           T.all(
@@ -4009,7 +3515,7 @@ function __c11(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
+        S.Struct({ CertificateArn: S.String, Tags: __S(1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -4046,20 +3552,20 @@ function __c12(j: number): any {
         S.Struct({ DomainName: S.String, ValidationDomain: S.String }),
       ).annotate({ identifier: "DomainValidationOption" });
     case 1:
-      return S.Array(DomainValidationOption);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.String,
-          ValidationMethod: S.optional(ValidationMethod),
-          SubjectAlternativeNames: S.optional(DomainList),
+          ValidationMethod: S.optional(S.String),
+          SubjectAlternativeNames: S.optional(__S(24)),
           IdempotencyToken: S.optional(S.String),
-          DomainValidationOptions: S.optional(DomainValidationOptionList),
-          Options: S.optional(CertificateOptions),
+          DomainValidationOptions: S.optional(__S(97)),
+          Options: S.optional(__S(47)),
           CertificateAuthorityArn: S.optional(S.String),
-          Tags: S.optional(TagList),
-          KeyAlgorithm: S.optional(KeyAlgorithm),
-          ManagedBy: S.optional(CertificateManagedBy),
+          Tags: S.optional(__S(1)),
+          KeyAlgorithm: S.optional(S.String),
+          ManagedBy: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -4122,7 +3628,7 @@ function __c12(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ CertificateArn: S.String, RevocationReason: RevocationReason }).pipe(
+        S.Struct({ CertificateArn: S.String, RevocationReason: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -4136,7 +3642,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "RevokeCertificateRequest" });
     case 7:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(111)).annotate({
           identifier: "CertificateFilterStatement",
         }),
       );
@@ -4145,13 +3651,13 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
-      ).annotate({ identifier: "CommonNameFilter" });
+      return S.suspend(() => S.Struct({ Value: S.String, ComparisonOperator: S.String })).annotate({
+        identifier: "CommonNameFilter",
+      });
     case 1:
-      return S.Union([/*@__PURE__*/ S.Struct({ CommonName: CommonNameFilter })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ CommonName: __S(104) })]);
     case 2:
-      return S.Union([/*@__PURE__*/ S.Struct({ DnsName: DnsNameFilter })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ DnsName: __S(104) })]);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4161,53 +3667,53 @@ function __c13(j: number): any {
       ).annotate({ identifier: "TimestampRange" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Subject: SubjectFilter }),
-        /*@__PURE__*/ S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
-        /*@__PURE__*/ S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
-        /*@__PURE__*/ S.Struct({ KeyUsage: KeyUsageName }),
-        /*@__PURE__*/ S.Struct({ KeyAlgorithm: KeyAlgorithm }),
+        /*@__PURE__*/ S.Struct({ Subject: __S(105) }),
+        /*@__PURE__*/ S.Struct({ SubjectAlternativeName: __S(106) }),
+        /*@__PURE__*/ S.Struct({ ExtendedKeyUsage: S.String }),
+        /*@__PURE__*/ S.Struct({ KeyUsage: S.String }),
+        /*@__PURE__*/ S.Struct({ KeyAlgorithm: S.String }),
         /*@__PURE__*/ S.Struct({ SerialNumber: S.String }),
-        /*@__PURE__*/ S.Struct({ NotAfter: TimestampRange }),
-        /*@__PURE__*/ S.Struct({ NotBefore: TimestampRange }),
+        /*@__PURE__*/ S.Struct({ NotAfter: __S(107) }),
+        /*@__PURE__*/ S.Struct({ NotBefore: __S(107) }),
       ]);
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Status: CertificateStatus }),
-        /*@__PURE__*/ S.Struct({ RenewalStatus: RenewalStatus }),
-        /*@__PURE__*/ S.Struct({ Type: CertificateType }),
+        /*@__PURE__*/ S.Struct({ Status: S.String }),
+        /*@__PURE__*/ S.Struct({ RenewalStatus: S.String }),
+        /*@__PURE__*/ S.Struct({ Type: S.String }),
         /*@__PURE__*/ S.Struct({ InUse: S.Boolean }),
         /*@__PURE__*/ S.Struct({ Exported: S.Boolean }),
-        /*@__PURE__*/ S.Struct({ ExportOption: CertificateExport }),
-        /*@__PURE__*/ S.Struct({ ManagedBy: CertificateManagedBy }),
-        /*@__PURE__*/ S.Struct({ ValidationMethod: ValidationMethod }),
-        /*@__PURE__*/ S.Struct({ CertificateKeyPairOrigin: CertificateKeyPairOrigin }),
+        /*@__PURE__*/ S.Struct({ ExportOption: S.String }),
+        /*@__PURE__*/ S.Struct({ ManagedBy: S.String }),
+        /*@__PURE__*/ S.Struct({ ValidationMethod: S.String }),
+        /*@__PURE__*/ S.Struct({ CertificateKeyPairOrigin: S.String }),
         /*@__PURE__*/ S.Struct({ AcmeEndpointArn: S.String }),
         /*@__PURE__*/ S.Struct({ AcmeAccountId: S.String }),
       ]);
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({ CertificateArn: S.String }),
-        /*@__PURE__*/ S.Struct({ X509AttributeFilter: X509AttributeFilter }),
-        /*@__PURE__*/ S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
+        /*@__PURE__*/ S.Struct({ X509AttributeFilter: __S(108) }),
+        /*@__PURE__*/ S.Struct({ AcmCertificateMetadataFilter: __S(109) }),
       ]);
     case 7:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          And: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
+          And: /*@__PURE__*/ S.suspend(() => __S(103)).annotate({
             identifier: "CertificateFilterStatementList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          Or: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
+          Or: /*@__PURE__*/ S.suspend(() => __S(103)).annotate({
             identifier: "CertificateFilterStatementList",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          Not: /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
+          Not: /*@__PURE__*/ S.suspend(() => __S(111)).annotate({
             identifier: "CertificateFilterStatement",
           }),
         }),
-        /*@__PURE__*/ S.Struct({ Filter: CertificateFilter }),
+        /*@__PURE__*/ S.Struct({ Filter: __S(110) }),
       ]);
   }
 }
@@ -4216,11 +3722,11 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FilterStatement: S.optional(CertificateFilterStatement),
+          FilterStatement: S.optional(__S(111)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          SortBy: S.optional(SearchCertificatesSortBy),
-          SortOrder: S.optional(SearchCertificatesSortOrder),
+          SortBy: S.optional(S.String),
+          SortOrder: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -4240,14 +3746,14 @@ function __c14(j: number): any {
         S.Struct({ ObjectIdentifier: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "CustomAttribute" });
     case 2:
-      return S.Array(CustomAttribute);
+      return S.Array(__S(113));
     case 3:
       return S.suspend(() =>
         S.Struct({
           CommonName: S.optional(S.String),
-          DomainComponents: S.optional(DomainComponentList),
+          DomainComponents: S.optional(__S(24)),
           Country: S.optional(S.String),
-          CustomAttributes: S.optional(CustomAttributeList),
+          CustomAttributes: S.optional(__S(114)),
           DistinguishedNameQualifier: S.optional(S.String),
           GenerationQualifier: S.optional(S.String),
           GivenName: S.optional(S.String),
@@ -4264,25 +3770,25 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DistinguishedName" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ DirectoryName: DistinguishedName }),
+        /*@__PURE__*/ S.Struct({ DirectoryName: __S(115) }),
         /*@__PURE__*/ S.Struct({ DnsName: S.String }),
         /*@__PURE__*/ S.Struct({ IpAddress: S.String }),
-        /*@__PURE__*/ S.Struct({ OtherName: OtherName }),
+        /*@__PURE__*/ S.Struct({ OtherName: __S(113) }),
         /*@__PURE__*/ S.Struct({ RegisteredId: S.String }),
         /*@__PURE__*/ S.Struct({ Rfc822Name: S.String }),
         /*@__PURE__*/ S.Struct({ UniformResourceIdentifier: S.String }),
       ]);
     case 5:
-      return S.Array(GeneralName);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Issuer: S.optional(DistinguishedName),
-          Subject: S.optional(DistinguishedName),
-          SubjectAlternativeNames: S.optional(GeneralNameList),
-          ExtendedKeyUsages: S.optional(ExtendedKeyUsageNames),
-          KeyAlgorithm: S.optional(KeyAlgorithm),
-          KeyUsages: S.optional(KeyUsageNames),
+          Issuer: S.optional(__S(115)),
+          Subject: S.optional(__S(115)),
+          SubjectAlternativeNames: S.optional(__S(117)),
+          ExtendedKeyUsages: S.optional(__S(9)),
+          KeyAlgorithm: S.optional(S.String),
+          KeyUsages: S.optional(__S(9)),
           SerialNumber: S.optional(S.String),
           NotAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           NotBefore: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4296,15 +3802,15 @@ function __c14(j: number): any {
           ImportedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           InUse: S.optional(S.Boolean),
           IssuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RenewalEligibility: S.optional(RenewalEligibility),
+          RenewalEligibility: S.optional(S.String),
           RevokedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Status: S.optional(CertificateStatus),
-          RenewalStatus: S.optional(RenewalStatus),
-          Type: S.optional(CertificateType),
-          ExportOption: S.optional(CertificateExport),
-          ManagedBy: S.optional(CertificateManagedBy),
-          ValidationMethod: S.optional(ValidationMethod),
-          CertificateKeyPairOrigin: S.optional(CertificateKeyPairOrigin),
+          Status: S.optional(S.String),
+          RenewalStatus: S.optional(S.String),
+          Type: S.optional(S.String),
+          ExportOption: S.optional(S.String),
+          ManagedBy: S.optional(S.String),
+          ValidationMethod: S.optional(S.String),
+          CertificateKeyPairOrigin: S.optional(S.String),
           AcmeEndpointArn: S.optional(S.String),
           AcmeAccountId: S.optional(S.String),
         }),
@@ -4314,21 +3820,21 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ AcmCertificateMetadata: __S(119) })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           CertificateArn: S.optional(S.String),
-          X509Attributes: S.optional(X509Attributes),
-          CertificateMetadata: S.optional(CertificateMetadata),
+          X509Attributes: S.optional(__S(118)),
+          CertificateMetadata: S.optional(__S(120)),
         }),
       ).annotate({ identifier: "CertificateSearchResult" });
     case 2:
-      return S.Array(CertificateSearchResult);
+      return S.Array(__S(121));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Results: S.optional(CertificateSearchResultList),
+          Results: S.optional(__S(122)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4336,7 +3842,7 @@ function __c15(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -4350,7 +3856,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(24) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -4366,7 +3872,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AcmeDomainValidationArn: S.String,
-          PrevalidationOptions: S.optional(PrevalidationOptions),
+          PrevalidationOptions: S.optional(__S(6)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -4385,9 +3891,9 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AcmeEndpointArn: S.String,
-          AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
-          Contact: S.optional(AcmeContact),
-          CertificateAuthority: S.optional(CertificateAuthority),
+          AuthorizationBehavior: S.optional(S.String),
+          Contact: S.optional(S.String),
+          CertificateAuthority: S.optional(__S(11)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
@@ -4408,7 +3914,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ CertificateArn: S.String, Options: CertificateOptions }).pipe(
+        S.Struct({ CertificateArn: S.String, Options: __S(47) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/" }),
             svc,
@@ -4427,6 +3933,49 @@ function __c16(j: number): any {
         S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
       ).annotate({ identifier: "ThrottlingReason" });
     case 2:
-      return S.Array(ThrottlingReason);
+      return S.Array(__S(129));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
   }
 }

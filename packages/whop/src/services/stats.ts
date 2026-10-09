@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -45,28 +47,11 @@ export type GetMetricRequestInterval =
   | "week"
   | "month"
   | "year";
-const GetMetricRequestInterval = S.String;
-
 export type GetMetricRequestEventType = "page_view" | "checkout_start" | "other";
-const GetMetricRequestEventType = S.String;
-
 export type GetMetricRequestAdCampaignIdsList = Array<string>;
-const GetMetricRequestAdCampaignIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetMetricRequestAdCampaignIdsList>;
-
 export type GetMetricRequestAdGroupIdsList = Array<string>;
-const GetMetricRequestAdGroupIdsList =
-  GetMetricRequestAdCampaignIdsList as any as S.Schema<GetMetricRequestAdGroupIdsList>;
-
 export type GetMetricRequestAdIdsList = Array<string>;
-const GetMetricRequestAdIdsList =
-  GetMetricRequestAdCampaignIdsList as any as S.Schema<GetMetricRequestAdIdsList>;
-
 export type GetMetricRequestSnapshotWindow = "7d" | "28d" | "30d";
-const GetMetricRequestSnapshotWindow = S.String;
-
 export interface FunnelStep {
   /** The Whop app build ID attached to the event. Comma-separated alternatives are ORed; different filters are ANDed. */
   app_build_id?: string;
@@ -103,8 +88,6 @@ export interface FunnelStep {
   /** The exposed variant name. Requires event=experiment.exposure. Comma-separated alternatives are ORed; different filters are ANDed. */
   variant?: string;
 }
-const FunnelStep = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FunnelStep>;
-
 export interface GetMetricRequestSteps {
   _1: FunnelStep;
   _2: FunnelStep;
@@ -117,11 +100,6 @@ export interface GetMetricRequestSteps {
   _9?: FunnelStep;
   _10?: FunnelStep;
 }
-const GetMetricRequestSteps = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetMetricRequestSteps>;
-
 export interface GetMetricRequest {
   /** The metric to retrieve, for example net_revenue. Use GET /stats to see every metric key. The metric sets the unit and the properties you can filter or break down by. */
   metric: string;
@@ -258,8 +236,6 @@ export interface GetMetricRequest {
   /** People metric only: event_count less than or equal this value. Applies to the current person profile for every time bucket. LTV and AOV are in USD. Not accepted by the Events metric. */
   event_count_lte?: number;
 }
-const GetMetricRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetMetricRequest>;
-
 export interface FunnelStepResult {
   /** The percentage of first-step entrants reaching this step; null when there are no entrants. */
   conversion_rate: number | null;
@@ -268,15 +244,8 @@ export interface FunnelStepResult {
   /** The one-based step number. */
   step: number;
 }
-const FunnelStepResult = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<FunnelStepResult>;
-
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataPointsItemBreakdownItemStepsList = Array<FunnelStepResult>;
-const GetMetricResponseDataPointsItemBreakdownItemStepsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetMetricResponseDataPointsItemBreakdownItemStepsList>;
-
 export interface GetMetricResponseDataPointsItemBreakdownItem {
   /** The property value, for example usd or visa. */
   name: string;
@@ -285,24 +254,11 @@ export interface GetMetricResponseDataPointsItemBreakdownItem {
   /** The metric's value for this entry. */
   value: number | null;
 }
-const GetMetricResponseDataPointsItemBreakdownItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetMetricResponseDataPointsItemBreakdownItem>;
-
 /** Present only when broken down: one entry per property value in this period. */
 export type GetMetricResponseDataPointsItemBreakdownList =
   Array<GetMetricResponseDataPointsItemBreakdownItem>;
-const GetMetricResponseDataPointsItemBreakdownList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetMetricResponseDataPointsItemBreakdownList>;
-
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataPointsItemStepsList = Array<FunnelStepResult>;
-const GetMetricResponseDataPointsItemStepsList =
-  GetMetricResponseDataPointsItemBreakdownItemStepsList as any as S.Schema<GetMetricResponseDataPointsItemStepsList>;
-
 export interface GetMetricResponseDataPointsItem {
   /** Present only when broken down: one entry per property value in this period. */
   breakdown?: GetMetricResponseDataPointsItemBreakdownList;
@@ -313,29 +269,14 @@ export interface GetMetricResponseDataPointsItem {
   /** The metric's value for this period, in the metric's unit. */
   value: number | null;
 }
-const GetMetricResponseDataPointsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetMetricResponseDataPointsItem>;
-
 /** One entry per period, oldest first. */
 export type GetMetricResponseDataPointsList = Array<GetMetricResponseDataPointsItem>;
-const GetMetricResponseDataPointsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetMetricResponseDataPointsList>;
-
 export interface FunnelConfidenceInterval {
   /** The lower confidence bound, in percent or percentage points for a difference. */
   lower: number;
   /** The upper confidence bound, in percent or percentage points for a difference. */
   upper: number;
 }
-const FunnelConfidenceInterval = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<FunnelConfidenceInterval>;
-
 export interface FunnelComparison {
   /** The reference group's name. */
   baseline: string;
@@ -346,13 +287,8 @@ export interface FunnelComparison {
   /** Relative conversion improvement in percent; null if baseline conversion is zero. */
   relative_lift_percent: number | null;
 }
-const FunnelComparison = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<FunnelComparison>;
-
 /** Present for the funnel metric. People reaching each step in order, starting with the entry step. */
 export type GetMetricResponseDataTotalsItemStepsList = Array<FunnelStepResult>;
-const GetMetricResponseDataTotalsItemStepsList =
-  GetMetricResponseDataPointsItemBreakdownItemStepsList as any as S.Schema<GetMetricResponseDataTotalsItemStepsList>;
-
 export interface GetMetricResponseDataTotalsItem {
   comparison?: FunnelComparison | null;
   /** Funnel only. The Wilson interval for final conversion, present when confidence_level or compare_to is supplied. */
@@ -364,18 +300,8 @@ export interface GetMetricResponseDataTotalsItem {
   /** The metric's whole-window value for this entry. */
   value: number | null;
 }
-const GetMetricResponseDataTotalsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetMetricResponseDataTotalsItem>;
-
 /** Whole-window aggregates, present when the metric computes them. Don't derive these from `points`: a rate is measured across the whole window, not averaged across its points, and whole-window unique people are distinct across every bucket. */
 export type GetMetricResponseDataTotalsList = Array<GetMetricResponseDataTotalsItem>;
-const GetMetricResponseDataTotalsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetMetricResponseDataTotalsList>;
-
 export interface GetMetricResponseData {
   /** ISO currency the values are denominated in. Present for currency-unit metrics: the convert_to currency, or usd. */
   currency?: string | null;
@@ -384,38 +310,18 @@ export interface GetMetricResponseData {
   /** Whole-window aggregates, present when the metric computes them. Don't derive these from `points`: a rate is measured across the whole window, not averaged across its points, and whole-window unique people are distinct across every bucket. */
   totals?: GetMetricResponseDataTotalsList | null;
 }
-const GetMetricResponseData = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetMetricResponseData>;
-
 export interface GetMetricResponse {
   data: GetMetricResponseData;
 }
-const GetMetricResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetMetricResponse>;
-
 export interface ListMetricsRequest {}
-const ListMetricsRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListMetricsRequest>;
-
 /** Supported breakdown_by values when they differ from the filter properties. */
 export type ListMetricsResponseDataItemBreakdownsList = Array<string>;
-const ListMetricsResponseDataItemBreakdownsList =
-  GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemBreakdownsList>;
-
 /** The properties you can use with this metric -- pass one as a filter (property=value) to narrow the series, or as breakdown_by=property to split it. */
 export type ListMetricsResponseDataItemPropertiesList = Array<string>;
-const ListMetricsResponseDataItemPropertiesList =
-  GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemPropertiesList>;
-
 /** How to read the metric's values: count is an integer, currency is a decimal amount, and percent is a number where 1.6 means 1.6%. */
 export type ListMetricsResponseDataItemUnit = "count" | "currency" | "percent";
-const ListMetricsResponseDataItemUnit = S.String;
-
 /** Snapshot metrics only: the trailing windows you can pass as snapshot_window, for example 30d. Absent on live metrics, which use from/to instead. */
 export type ListMetricsResponseDataItemWindowsList = Array<string>;
-const ListMetricsResponseDataItemWindowsList =
-  GetMetricRequestAdCampaignIdsList as any as S.Schema<ListMetricsResponseDataItemWindowsList>;
-
 export interface ListMetricsResponseDataItem {
   /** Supported breakdown_by values when they differ from the filter properties. */
   breakdowns?: ListMetricsResponseDataItemBreakdownsList;
@@ -432,24 +338,12 @@ export interface ListMetricsResponseDataItem {
   /** Snapshot metrics only: the trailing windows you can pass as snapshot_window, for example 30d. Absent on live metrics, which use from/to instead. */
   windows?: ListMetricsResponseDataItemWindowsList;
 }
-const ListMetricsResponseDataItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListMetricsResponseDataItem>;
-
 /** The available metrics. */
 export type ListMetricsResponseDataList = Array<ListMetricsResponseDataItem>;
-const ListMetricsResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListMetricsResponseDataList>;
-
 export interface ListMetricsResponse {
   /** The available metrics. */
   data: ListMetricsResponseDataList;
 }
-const ListMetricsResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListMetricsResponse>;
-
 export type GetMetricError = BadRequest | Forbidden | NotFound | WhopOpError;
 /** Retrieve Metric Retrieves a metric as a time series of points for an account or user over a time range. The `market_prices` metric is public and requires no authentication. The `funnel` metric measures 2 to 10 ordered events per person. Its first matching event inside from/to anchors the cohort, breakdown and conversion window; later entries do not restart it. Intervening events are allowed, and conversions may occur after to. Funnel values are final conversion percentages; steps include counts and cumulative conversion percentages. Experiment funnels use experiment.exposure as step 1 and breakdown_by=variant. Pass steps using bracket parameters such as steps[1][event]=pixel.page&steps[1][page]=/pricing*&steps[2][event]=payment.completed. */
 export const getMetric: API.OperationMethod<
@@ -458,8 +352,8 @@ export const getMetric: API.OperationMethod<
   GetMetricError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricRequest,
-  output: GetMetricResponse,
+  input: __S(3) as any as S.Schema<GetMetricRequest>,
+  output: __S(15) as any as S.Schema<GetMetricResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -473,8 +367,8 @@ export const listMetrics: API.OperationMethod<
   ListMetricsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMetricsRequest,
-  output: ListMetricsResponse,
+  input: __S(16) as any as S.Schema<ListMetricsRequest>,
+  output: __S(19) as any as S.Schema<ListMetricsResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -510,16 +404,16 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          _1: FunnelStep.pipe(T.Body("1")),
-          _2: FunnelStep.pipe(T.Body("2")),
-          _3: S.optional(FunnelStep.pipe(T.Body("3"))),
-          _4: S.optional(FunnelStep.pipe(T.Body("4"))),
-          _5: S.optional(FunnelStep.pipe(T.Body("5"))),
-          _6: S.optional(FunnelStep.pipe(T.Body("6"))),
-          _7: S.optional(FunnelStep.pipe(T.Body("7"))),
-          _8: S.optional(FunnelStep.pipe(T.Body("8"))),
-          _9: S.optional(FunnelStep.pipe(T.Body("9"))),
-          _10: S.optional(FunnelStep.pipe(T.Body("10"))),
+          _1: __S(1).pipe(T.Body("1")),
+          _2: __S(1).pipe(T.Body("2")),
+          _3: S.optional(__S(1).pipe(T.Body("3"))),
+          _4: S.optional(__S(1).pipe(T.Body("4"))),
+          _5: S.optional(__S(1).pipe(T.Body("5"))),
+          _6: S.optional(__S(1).pipe(T.Body("6"))),
+          _7: S.optional(__S(1).pipe(T.Body("7"))),
+          _8: S.optional(__S(1).pipe(T.Body("8"))),
+          _9: S.optional(__S(1).pipe(T.Body("9"))),
+          _10: S.optional(__S(1).pipe(T.Body("10"))),
         }),
       ).annotate({ identifier: "GetMetricRequestSteps" });
     case 3:
@@ -530,7 +424,7 @@ function __c0(j: number): any {
           user_id: S.optional(S.String.pipe(T.Query())),
           from: S.String.pipe(T.Query()),
           to: S.String.pipe(T.Query()),
-          interval: S.optional(GetMetricRequestInterval.pipe(T.Query())),
+          interval: S.optional(S.String.pipe(T.Query())),
           breakdown_by: S.optional(S.String.pipe(T.Query())),
           convert_to: S.optional(S.String.pipe(T.Query())),
           currency: S.optional(S.String.pipe(T.Query())),
@@ -544,7 +438,7 @@ function __c0(j: number): any {
           device_type: S.optional(S.String.pipe(T.Query())),
           country_code: S.optional(S.String.pipe(T.Query())),
           event_name: S.optional(S.String.pipe(T.Query())),
-          event_type: S.optional(GetMetricRequestEventType.pipe(T.Query())),
+          event_type: S.optional(S.String.pipe(T.Query())),
           custom_name: S.optional(S.String.pipe(T.Query())),
           segment: S.optional(S.String.pipe(T.Query())),
           category: S.optional(S.String.pipe(T.Query())),
@@ -555,14 +449,14 @@ function __c0(j: number): any {
           access_level: S.optional(S.String.pipe(T.Query())),
           most_recent_action: S.optional(S.String.pipe(T.Query())),
           referred_user_id: S.optional(S.String.pipe(T.Query())),
-          ad_campaign_ids: S.optional(GetMetricRequestAdCampaignIdsList.pipe(T.Query())),
-          ad_group_ids: S.optional(GetMetricRequestAdGroupIdsList.pipe(T.Query())),
-          ad_ids: S.optional(GetMetricRequestAdIdsList.pipe(T.Query())),
-          snapshot_window: S.optional(GetMetricRequestSnapshotWindow.pipe(T.Query())),
+          ad_campaign_ids: S.optional(__S(0).pipe(T.Query())),
+          ad_group_ids: S.optional(__S(0).pipe(T.Query())),
+          ad_ids: S.optional(__S(0).pipe(T.Query())),
+          snapshot_window: S.optional(S.String.pipe(T.Query())),
           event: S.optional(S.String.pipe(T.Query())),
           conversion_window: S.optional(S.String.pipe(T.Query())),
           mature_only: S.optional(S.Boolean.pipe(T.Query())),
-          steps: S.optional(GetMetricRequestSteps.pipe(T.Query())),
+          steps: S.optional(__S(2).pipe(T.Query())),
           compare_to: S.optional(S.String.pipe(T.Query())),
           confidence_level: S.optional(S.Number.pipe(T.Query())),
           contactable: S.optional(S.Boolean.pipe(T.Query())),
@@ -603,19 +497,19 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FunnelStepResult" });
     case 5:
-      return S.Array(FunnelStepResult);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          steps: S.optional(GetMetricResponseDataPointsItemBreakdownItemStepsList),
+          steps: S.optional(__S(5)),
           value: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "GetMetricResponseDataPointsItemBreakdownItem",
       });
     case 7:
-      return S.Array(GetMetricResponseDataPointsItemBreakdownItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -623,8 +517,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(GetMetricResponseDataPointsItemBreakdownList),
-          steps: S.optional(GetMetricResponseDataPointsItemStepsList),
+          breakdown: S.optional(__S(7)),
+          steps: S.optional(__S(5)),
           timestamp: S.Number,
           value: S.NullOr(S.Number),
         }),
@@ -632,7 +526,7 @@ function __c1(j: number): any {
         identifier: "GetMetricResponseDataPointsItem",
       });
     case 1:
-      return S.Array(GetMetricResponseDataPointsItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -644,7 +538,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           baseline: S.String,
-          difference_confidence_interval: S.NullOr(FunnelConfidenceInterval),
+          difference_confidence_interval: S.NullOr(__S(10)),
           difference_percentage_points: S.Number,
           relative_lift_percent: S.NullOr(S.Number),
         }),
@@ -652,29 +546,29 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          comparison: S.optional(S.NullOr(FunnelComparison)),
-          confidence_interval: S.optional(S.NullOr(FunnelConfidenceInterval)),
+          comparison: S.optional(S.NullOr(__S(11))),
+          confidence_interval: S.optional(S.NullOr(__S(10))),
           name: S.String,
-          steps: S.optional(GetMetricResponseDataTotalsItemStepsList),
+          steps: S.optional(__S(5)),
           value: S.NullOr(S.Number),
         }),
       ).annotate({
         identifier: "GetMetricResponseDataTotalsItem",
       });
     case 5:
-      return S.Array(GetMetricResponseDataTotalsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.NullOr(S.String)),
-          points: GetMetricResponseDataPointsList,
-          totals: S.optional(S.NullOr(GetMetricResponseDataTotalsList)),
+          points: __S(9),
+          totals: S.optional(S.NullOr(__S(13))),
         }),
       ).annotate({ identifier: "GetMetricResponseData" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: GetMetricResponseData,
+          data: __S(14),
         }),
       ).annotate({ identifier: "GetMetricResponse" });
   }
@@ -688,24 +582,39 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          breakdowns: S.optional(ListMetricsResponseDataItemBreakdownsList),
+          breakdowns: S.optional(__S(0)),
           description: S.String,
           key: S.String,
           name: S.String,
-          properties: ListMetricsResponseDataItemPropertiesList,
-          unit: ListMetricsResponseDataItemUnit,
-          windows: S.optional(ListMetricsResponseDataItemWindowsList),
+          properties: __S(0),
+          unit: S.String,
+          windows: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "ListMetricsResponseDataItem",
       });
     case 2:
-      return S.Array(ListMetricsResponseDataItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ListMetricsResponseDataList,
+          data: __S(18),
         }),
       ).annotate({ identifier: "ListMetricsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }
